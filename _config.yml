@@ -1,7 +1,8 @@
-google_analytics:
+title: "aprendes.com"
+
 theme: jekyll-theme-cayman
 
 plugins:
   - jekyll-pdf-embed
 
-title: "aprendes.com"
+google_analytics:

@@ -1,4 +1,5 @@
-theme: jekyll-theme-tactile
+google_analytics:
+theme: jekyll-theme-cayman
 
 plugins:
   - jekyll-pdf-embed

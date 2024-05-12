@@ -2,7 +2,12 @@ Material publicat per Miquel Àngel Perelló.
 
 # Matemàtiques de Batxillerat
 
-Aviat serà publicat.
+1. Demostració i Teoria de Conjunts
+2. Àlgebra
+3. Geometria
+4. Càlcul
+5. Combinatòria i Probabilitats
+6. Estadística
 
 
 # Matemàtiques d'Universitat

@@ -1,4 +1,4 @@
-
+Material publicat per Miquel Àngel Perelló.
 
 # Matemàtiques de Batxillerat
 

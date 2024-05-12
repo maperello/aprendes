@@ -1,21 +1,7 @@
-En construcció: Material didàctic publicat pel professor Miquel Àngel Perelló.
-
 # Matemàtiques de Batxillerat
 
-## I. Científic-Tecnològic
+Aviat serà publicat.
 
-1. [Primer any](1batxcte/index.md)
-2. Segon Any
-
-## II. Ciències Socials
-
-1. Primer any
-2. Segon any
-
-## III. Preparació Prova Selectivitat
-
-1. Científic-Tecnològic
-2. Social
 
 # Matemàtiques d'Universitat
 
@@ -25,4 +11,4 @@ En construcció: Material didàctic publicat pel professor Miquel Àngel Perell�
 4. Equacions Diferencials
 5. Estadística Inferencial
 
-# Reflexions filosòfiques
+

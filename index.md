@@ -1,6 +1,6 @@
 Material publicat per Miquel Àngel Perelló.
 
-# Matemàtiques de Batxillerat
+# Batxillerat
 
 1. Demostració i Teoria de Conjunts
 2. Àlgebra
@@ -10,7 +10,7 @@ Material publicat per Miquel Àngel Perelló.
 6. Estadística
 
 
-# Matemàtiques d'Universitat
+# Universitat
 
 1. Àlgebra Lineal
 2. Anàlisi Matemàtic

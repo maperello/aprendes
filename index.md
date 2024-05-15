@@ -1,8 +1,8 @@
 Material publicat per Miquel Àngel Perelló.
 
-# Texts en PDF de Batxillerat
+# Texts de Batxillerat
 
-1. Demostració i Teoria de Conjunts
+1. Demostració i Teoria de Conjunts  WEB  PDF
 2. Àlgebra
 3. Geometria
 4. Càlcul

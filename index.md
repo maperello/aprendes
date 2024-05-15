@@ -1,6 +1,6 @@
 Material publicat per Miquel Àngel Perelló.
 
-# Batxillerat
+# Texts en PDF de Batxillerat
 
 1. Demostració i Teoria de Conjunts
 2. Àlgebra

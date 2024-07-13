@@ -2,7 +2,9 @@ Material publicat per Miquel Àngel Perelló.
 
 # Batxillerat
 
-1. Demostració i Teoria de Conjunts
+1. Conjunts i Demostracions
+      * [Lògica, Raonament i Demostració](/batx/uni1/logic/tlogica.pdf)
+      * Conjunts, Relacions i Aplicacions
 2. Àlgebra
 3. Geometria
 4. Càlcul

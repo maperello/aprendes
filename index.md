@@ -4,7 +4,7 @@ Material publicat per Miquel Àngel Perelló.
 
 1. Conjunts i Demostracions
       * [Lògica, Raonament i Demostració](/batx/uni1/logic/tlogica.pdf)
-      * [Conjunts, Relacions i Aplicacions](/batx/uni1/logic/tconjunts.pdf)
+      * [Conjunts, Relacions i Aplicacions](/batx/uni1/conjunts/tconjunts.pdf)
 2. Àlgebra
 3. Geometria
 4. Càlcul

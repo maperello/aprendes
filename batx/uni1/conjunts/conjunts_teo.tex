@@ -1,0 +1,1469 @@
+
+
+\section{Conjunts}
+
+Partint de la noci\'{o} intu\"{\i}tiva de conjunt, en aquesta secci\'{o}
+desenvoluparem les propietats b\`{a}siques dels conjunts. L'objectiu
+d'aquesta breu exposici\'{o} ser\`{a} aconseguir que et familiaritzis amb la
+terminologia i les notacions que s'introdueixen i que s'empraran en totes
+les altres unitats did\`{a}ctiques. Es recomanable abans de seguir fer abans
+una lectura compresiva de la unitat \textquotedblleft L\`{o}gica, raonament
+i demostraci\'{o} a matem\`{a}tiques\textquotedblright.
+
+\subsection{Les nocions d'element, conjunt i pertinen\c{c}a}
+
+Una caixa de boles, un ra\"{\i}m, o un \`{a}lbum de fotos s\'{o}n tots
+exemples de conjunts de coses o col\textperiodcentered leccions d'objectes.
+La noci\'{o} de conjunt \'{e}s fonamental en totes les branques de les matem%
+\`{a}tiques. Per exemple:
+
+\begin{itemize}
+\item En geometria plana es diu circumfer\`{e}ncia el conjunt de punts que s%
+\'{o}n equidistants d'un punt fix donat.
+
+\item En \`{a}lgebra es parla del conjunt dels nombres parells que est\`{a}
+format per tots els enters que s\'{o}n divisibles per 2.
+
+\item En c\`{a}lcul s'anomena domini d'una funci\'{o} real de variable real
+el conjunt de nombres reals pels quals hi ha ben definida la seva imatge.
+\end{itemize}
+
+Emprarem la paraula \textbf{conjunt} com a sin\`{o}nim de
+col\textperiodcentered lecci\'{o} d'objectes. Els objectes que formen un
+conjunt es diuen \textbf{elements} del conjunt. D'aquesta manera, direm que
+un conjunt est\`{a} format per elements o que uns determinats elements
+formen un conjunt.
+
+\bigskip
+
+Ara b\'{e}, un conjunt estar\`{a} ben definit si \'{e}s possible donar un
+criteri que permeti decidir si un element donat qualsevol pertany o no al
+conjunt. Per exemple, les boles vermelles d'aquesta caixa o les fotos d'en
+Miquel en aquest \`{a}lbum s\'{o}n conjunts ben definits. En el primer cas,
+una bola de la caixa \'{e}s del conjunt si \'{e}s vermella i, en el segon,
+una foto \'{e}s del conjunt si en ella apareix en Miquel. Observa ambd\'{o}s
+casos, per\`{o} que abans de definir els conjunts anteriors, tenim els
+elements, o sigui les boles de la caixa i les fotos de l'\`{a}lbum.
+
+\bigskip
+
+Si ara simbolitzem per $U$ una determinada col\textperiodcentered lecci\'{o}
+d'objectes, llavors diem que uns determinats objectes d'$U$ formen un
+conjunt $A$ i si $x$ simbolitza un element d'$A$, aleshores direm que
+l'element $x$ \textbf{pertany} al conjunt $A$ i escriurem%
+\begin{equation*}
+x\in A\text{.}
+\end{equation*}
+Si $x$ \'{e}s un element d'$U$, per\`{o} no \'{e}s un element de $A$, direm
+que l'element $x$ no pertany al conjunt $A$ i escriurem%
+\begin{equation*}
+x\notin A\text{.}
+\end{equation*}
+El s\'{\i}mbol matem\`{a}tic $\in$ s'interpreta com la relaci\'{o} de
+pertinen\c{c}a que s'estableix entre elements i conjunts. Per conseg\"{u}%
+ent, un conjunt est\`{a} determinat per una relaci\'{o} de pertinen\c{c}a a
+ell. Tot i aix\`{o}, com veurem m\'{e}s endavant (quan parlem del conjunt de
+parts d'un conjunt donat), un element pot ser alhora un conjunt i un conjunt
+pot ser un element d'un altre conjunt.
+
+\bigskip
+
+Per cursos anteriors, tenim coneixement de l'exist\`{e}ncia d'alguns
+conjunts num\`{e}rics l'\'{u}s dels quals \'{e}s molt freq\"{u}ent en les
+matem\`{a}tiques i que es designen amb s\'{\i}mbols especials. Aix\'{\i},
+tenim
+
+\begin{equation*}
+\begin{tabular}{c|c}
+Conjunts num\`{e}rics & S\'{\i}mbol \\ \hline
+Naturals & $\mathbb{N}$ \\
+Enters & $\mathbb{Z}$ \\
+Racionals & $\mathbb{Q}$ \\
+Reals & $\mathbb{R}$ \\
+Complexos & $\mathbb{C}$%
+\end{tabular}
+\ \
+\end{equation*}
+
+\begin{exem}
+Pel coneixement que d'ells ja tenim, podem escriure les seg\"{u}ents
+relacions:%
+\begin{equation*}
+\begin{tabular}{lllllll}
+$-2\notin\mathbb{N}$ &  & $-3\in\mathbb{Z}$ &  & $\sqrt{2}\notin\mathbb{Q}$
+&  & $\sqrt[3]{5}\in\mathbb{R}$ \\
+&  &  &  &  &  &  \\
+$1\in\mathbb{N}$ &  & $\dfrac{1}{2}\notin\mathbb{Z}$ &  & $2.3555...\in
+\mathbb{Q}$ &  & $1+i\notin\mathbb{R}$%
+\end{tabular}
+\
+\end{equation*}
+\end{exem}
+
+\subsection{Formes de definir conjunts}
+
+Direm que un conjunt est\`{a} determinat per \textbf{extensi\'{o}} si donem
+una llista de tots els seus elements. En tal cas, escriurem als elements
+entre claus separats per comes. Per exemple, el conjunt $A$ format pels n%
+\'{u}meros%
+\begin{equation*}
+1,2,3
+\end{equation*}
+l'escriurem per%
+\begin{equation*}
+A=\{1,2,3\}\text{.}
+\end{equation*}
+
+\bigskip
+
+Un conjunt est\`{a} determinat per \textbf{comprensi\'{o}} si donem una
+condici\'{o} que satisfan tots els seus elements. Aix\'{\i}, el conjunt
+anterior el podem definir per comprensi\'{o} dient que $A$ \'{e}s el conjunt
+format pels nombres enters positius menors que quatre. En aquest \'{u}ltim
+cas escriurem%
+\begin{equation*}
+A=\{x\in\mathbb{Z}:0<x<4\}
+\end{equation*}
+i es llegeix com \textquotedblleft$A$ \'{e}s el conjunt de nombres enters
+que s\'{o}n majors que 0 i menors que $4$\textquotedblright. En general, si $%
+P(x)$ expressa una condici\'{o} o propietat que dep\`{e}n d'una variable $x$%
+, llavors%
+\begin{equation*}
+B=\left\{ x\in U:P(x)\right\}
+\end{equation*}
+designa el conjunt dels elements d'$U$ que satisfan la propietat $P(x)$.
+
+\bigskip
+
+Pot oc\'{o}rrer que per a una certa propietat no hi hagi cap element d'un
+conjunt at\`{e}s que la satisfaci. Per aquesta ra\'{o}, admetem l'exist\`{e}%
+ncia d'un conjunt que no cont\'{e} elements i al qual denominem \textbf{%
+conjunt buit}, designant-ho pel s\'{\i}mbol $\emptyset$. D'aquesta manera,
+per a tot $x$ la relaci\'{o}%
+\begin{equation*}
+x\in\emptyset
+\end{equation*}
+\'{e}s sempre falsa, i%
+\begin{equation*}
+x\notin\emptyset
+\end{equation*}
+\'{e}s sempre vertadera.
+
+\bigskip
+
+\'{E}s instructiu representar gr\`{a}ficament un conjunt mitjan\c{c}ant una
+regi\'{o} tancada del pla de manera que tots els elements del conjunt
+estiguin tancats en aquesta regi\'{o}. Es diuen \textbf{diagrames de Venn} i
+es construeixen com s'indica en el seg\"{u}ent gr\`{a}fic, on hem
+representat el conjunt $A=\{a,b,e\}$.\FRAME{dtbpF}{6.7107cm}{5.1511cm}{0pt}{%
+}{}{set1.jpg}{\special{ language "Scientific Word"; type "GRAPHIC";
+maintain-aspect-ratio TRUE; display "USEDEF"; valid_file "F"; width
+6.7107cm; height 5.1511cm; depth 0pt; original-width 6.6404cm;
+original-height 5.0808cm; cropleft "0"; croptop "1"; cropright "1";
+cropbottom "0"; filename 'img/set1.jpg';file-properties "XNPEU";}}
+
+\begin{obs}
+Observa que no hem definit els conceptes de conjunt i element. En el seu
+lloc, hem intentat donar una idea intu\"{\i}tiva clara de totes dues
+nocions. En cursos m\'{e}s avan\c{c}ats es pot veure que en la construcci%
+\'{o} axiom\`{a}tica d'una teoria de conjunts, els termes \textquotedblleft
+conjunt\textquotedblright\ i \textquotedblleft pertinen\c{c}%
+a\textquotedblright\ no es defineixen i s'empren sense explicar el seu
+significat. Un conjunt ser\`{a} qualsevol cosa que satisfaci els axiomes de
+la teoria. D'aquesta manera, no hi ha dubte que la intu\"{\i}ci\'{o} sobre
+la qual es basa la teva noci\'{o} de conjunt pot estar equivocada, per\`{o}
+del que es tracta no \'{e}s tant de saber qu\`{e} s\'{o}n els conjunts sin%
+\'{o} que podem fer amb ells correctament. Aix\`{o} \'{u}ltim \'{e}s el que
+volem fer aqu\'{\i}.
+\end{obs}
+
+\begin{obs}
+Podria semblar natural admetre que tota condici\'{o} $P(x)$ defineix un
+conjunt%
+\begin{equation}
+\{x:x\text{ compleix }P(x)\}\text{,}   \label{3}
+\end{equation}
+per\`{o}, d'aquesta manera, resulta que hi ha condicions \textquotedblleft
+rares\textquotedblright\ que donen lloc a \textquotedblleft
+conjunts\textquotedblright\ contradictoris sobre els quals no \'{e}s
+possible raonar. Per exemple , si considerem la condici\'{o} $x\notin x$
+(tots els conjunts que no s\'{o}n elements de si mateixos) i denotem per $B$
+al \textquotedblleft conjunt\textquotedblright\ d'elements que satisfan
+aquesta condici\'{o}, \'{e}s a dir,%
+\begin{equation*}
+B=\{x:x\notin x\}
+\end{equation*}
+llavors es compleix%
+\begin{equation*}
+\left( \forall x\right) (x\in B\Longleftrightarrow x\notin x)
+\end{equation*}
+i, en particular, tamb\'{e} es compleix%
+\begin{equation*}
+B\in B\Longleftrightarrow B\notin B
+\end{equation*}
+el que, evidentment, constitueix una contradicci\'{o}. Per a evitar aquests
+absurds, \'{e}s preferible limitar la condici\'{o} als elements d'algun
+conjunt ja conegut $U$. Per aquest motiu hem escrit%
+\begin{equation*}
+\{x\in U:x\text{ compleix }P(x)\text{\}}
+\end{equation*}
+en lloc de (\ref{3}).
+\end{obs}
+
+\subsection{Igualtat i inclusi\'{o} entre conjunts}
+
+Direm que dos conjunts $A$ i $B$ s\'{o}n \textbf{iguals} si contenen els
+mateixos elements, \'{e}s a dir, si per a cada $x$, $x\in A$ equival a $x\in
+B$. En s\'{\i}mbols
+\begin{equation*}
+\left( \forall x\right) \left( x\in A\Longleftrightarrow x\in B\right)
+\end{equation*}
+i es llegeix \textquotedblleft per a tot $x$, $x$ \'{e}s de $A$ si i nom\'{e}%
+s si $x$ \'{e}s de $B$\textquotedblright. Si els conjunts $A$ i $B$ s\'{o}n
+iguals, escriurem%
+\begin{equation*}
+A=B
+\end{equation*}
+i la seva negaci\'{o} per a%
+\begin{equation*}
+A\neq B\text{.}
+\end{equation*}
+
+El s\'{\i}mbol matem\`{a}tic $=$ s'interpreta com la relaci\'{o} d'igualtat
+que s'estableix entre conjunts. A partir de la definici\'{o}, \'{e}s
+immediat comprovar que aquesta relaci\'{o} satisf\`{a} les seg\"{u}ents
+propietats:
+
+\begin{enumerate}
+\item Per a tot conjunt $A$, $A=A$.
+
+\begin{prova}
+Sabem que $x\in A\Longleftrightarrow x\in A$ \'{e}s una equival\`{e}ncia l%
+\`{o}gica. Com $x$ \'{e}s un element arbitrari d'$A$, aleshores es compleix $%
+\left( \forall x\right) \left( x\in A\Longleftrightarrow x\in A\right) $ i,
+com a consequ\`{e}ncia, $A=A$.
+\end{prova}
+
+\item Donats dos conjunts $A$ i $B$, si $A=B$ llavors $B=A$.
+
+\begin{prova}
+Sabem que per a tot $x$, es t\'{e} que $x\in A\longleftrightarrow x\in B$
+\'{e}s equivalent a $x\in B\longleftrightarrow x\in A$ i, per tant, si $A=B$%
+, llavors $B=A$.
+\end{prova}
+
+\item Donats tres conjunts $A$, $B$ i $C$, si $A=B$ i $B=C$, llavors $A=C$.
+
+\begin{prova}
+Sabem que per a tot $x$, es t\'{e} que $x\in A\longleftrightarrow x\in B$ i $%
+x\in B\longleftrightarrow x\in C$. Llavors, per la propietat transitiva del
+bicondicional es t\'{e} $x\in A\longleftrightarrow x\in C$ i, per tant, si $%
+A=B$ i $B=C$, llavors $A=C$.
+\end{prova}
+\end{enumerate}
+
+\bigskip
+
+Si $A$ i $B$ s\'{o}n dos conjunts tals que tot element d'$A$ \'{e}s tamb\'{e}
+un element de $B$, \'{e}s a dir,
+\begin{equation*}
+\left( \forall x\right) \left( x\in A\Longrightarrow x\in B\right) \text{,}
+\end{equation*}
+llavors es diu que $A$ \'{e}s un \textbf{subconjunt} de $B$ o que $A$ est%
+\`{a} \textbf{incl\`{o}s} en $B$ i se simbolitza per a%
+\begin{equation*}
+A\subset B\text{ \ \ \ \ o \ \ \ }B\supset A\text{.}
+\end{equation*}
+
+Mitjan\c{c}ant diagrames de Venn, representem aquest fet aix\'{\i}\FRAME{%
+dtbpFU}{3.7474cm}{4.6744cm}{0pt}{\Qcb{$A\subset B$}}{}{set2.jpg}{\special{
+language "Scientific Word"; type "GRAPHIC"; maintain-aspect-ratio TRUE;
+display "USEDEF"; valid_file "F"; width 3.7474cm; height 4.6744cm; depth
+0pt; original-width 3.6772cm; original-height 4.6041cm; cropleft "0";
+croptop "1"; cropright "1"; cropbottom "0"; filename
+'../../conj_cat/set2.jpg';file-properties "NPEU";}}
+
+Si $A\subset B$ i $A\neq B$ es diu que $A$ \'{e}s un \textbf{subconjunt propi%
+} de $B$. El s\'{\i}mbol matem\`{a}tic $\subset$ s'interpreta com la relaci%
+\'{o} d'inclusi\'{o} que s'estableix entre conjunts; en particular,
+simbolitzem per $A\varsubsetneq B$ el fet que $A$ \'{e}s un subconjunt propi
+de $B$. A partir de la definici\'{o} i regles de deducci\'{o} l\`{o}gica,
+\'{e}s immediat comprovar que aquesta relaci\'{o} satisf\`{a} les seg\"{u}%
+ents propietats:
+
+\begin{enumerate}
+\item Per a tot conjunt $A$, $A\subset A\,$.
+
+\item Donats dos conjunts $A$ i $B$, si $A\subset B$ i $A\supset B$, llavors
+$A=B$.
+
+\item Donats tres conjunts $A$, $B$ i $C$, si $A\subset B$ i $B\subset C$,
+llavors $A\subset C$.
+\end{enumerate}
+
+\bigskip
+
+\begin{exem}
+Observa que es compleixen les seg\"{u}ents relacions:
+
+\begin{itemize}
+\item $\emptyset\subset A$
+
+\item $\left\{ 1\right\} \subset\left\{ 1,2,3\right\} $
+
+\item $\{2,4\}\subset\left\{ x\in\mathbb{N}:x\text{ \'{e}s parell}\right\} $
+
+\item $\{x\in\mathbb{Z}:0<x<4\}\varsubsetneq\left\{ x\in\mathbb{Z}%
+:x^{2}-3x+2=0\right\} $
+\end{itemize}
+\end{exem}
+
+\subsection{Operacions amb conjunts}
+
+En aquest apartat veurem com podem construir nous conjunts a partir d'uns
+altres ja donats. Suposem que existeix un conjunt $U$ que anomenem \textbf{%
+univers} i del qual prendrem tots els subconjunts.
+
+\subsubsection{Parts d'un conjunt}
+
+Si $A$ \'{e}s un conjunt, es diu \textbf{conjunt de parts} d'$A$ el conjunt
+els elements del qual s\'{o}n tots els subconjunts d'$A$ i es designa per $%
+\mathcal{P}(A)$. Aix\'{\i}, tenim%
+\begin{equation*}
+\mathcal{P}(A)=\left\{ x\subset U:x\subset A\right\} \text{.}
+\end{equation*}
+Observa que $\mathcal{P}(A)$ \'{e}s un conjunt els elements del qual s\'{o}n
+alhora conjunts.
+
+\bigskip
+
+\begin{exem}
+Observa que si $A=\{a,b,c\}$, llavors%
+\begin{equation*}
+\mathcal{P}(A)=\{\emptyset ,\{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},A\}%
+\text{.}
+\end{equation*}
+\end{exem}
+
+\subsubsection{Uni\'{o} de dos conjunts}
+
+Si $A$ i $B$ s\'{o}n conjunts, es diu \textbf{uni\'{o}} d'$A$ i $B$ al
+conjunt simbolitzat per $A\cup B$ que t\'{e} per elements tots els que
+pertanyen a $A$ o a $B$ o als dos alhora. Mitjan\c{c}ant diagrames de Venn,
+representem aquest fet aix\'{\i} \FRAME{dtbpFU}{2.4863in}{1.3716in}{0pt}{%
+\Qcb{$A\cup B$}}{}{set3.jpg}{\special{ language "Scientific Word"; type
+"GRAPHIC"; maintain-aspect-ratio TRUE; display "USEDEF"; valid_file "F";
+width 2.4863in; height 1.3716in; depth 0pt; original-width 2.4587in;
+original-height 1.3439in; cropleft "0"; croptop "1"; cropright "1";
+cropbottom "0"; filename '../../conjunts/set3.jpg';file-properties "NPEU";}}
+Simb\`{o}licament, escrivim%
+\begin{equation*}
+A\cup B=\{x\in U:x\in A\text{ ~o~ }x\in B\}
+\end{equation*}
+
+\begin{exem}
+Observa que si $A=\left\{ 1,2,3\right\} $ i $B=\left\{ 3,4,5\right\} $,
+llavors%
+\begin{equation*}
+A\cup B=\left\{ 1,2,3,4,5\right\} \text{.}
+\end{equation*}
+\end{exem}
+
+\subsubsection{Intersecci\'{o} de dos conjunts}
+
+Si $A$ i $B$ s\'{o}n conjunts, es diu \textbf{intersecci\'{o}} d'$A$ i $B$
+al conjunt denotat per $A\cap B$ que t\'{e} per elements tots els que
+pertanyen tant a $A$ com a $B$. El diagrama de Venn que representa aquest
+fet \'{e}s el seg\"{u}ent: \FRAME{dtbpFU}{6.3417cm}{3.4048cm}{0pt}{\Qcb{$%
+A\cap B$}}{}{set4.jpg}{\special{ language "Scientific Word"; type "GRAPHIC";
+maintain-aspect-ratio TRUE; display "USEDEF"; valid_file "F"; width
+6.3417cm; height 3.4048cm; depth 0pt; original-width 6.2714cm;
+original-height 3.3345cm; cropleft "0"; croptop "1"; cropright "1";
+cropbottom "0"; filename 'img/set4.jpg';file-properties "XNPEU";}} Simb\`{o}%
+licament, escrivim%
+\begin{equation*}
+A\cap B=\{x\in U:x\in A\text{ ~i~ }x\in B\}
+\end{equation*}
+
+Si $A\cap B=\emptyset$, llavors es diu que els conjunts $A$ i $B$ s\'{o}n
+\textbf{disjunts}, o sigui que no tenen res en com\'{u}.
+
+\begin{exem}
+Observa que si $A=\left\{ 1,2,3\right\} $ i $B=\left\{ 3,4,5\right\} $,
+llavors%
+\begin{equation*}
+A\cap B=\left\{ 3\right\} \text{.}
+\end{equation*}
+\end{exem}
+
+\subsubsection{Propietats de la uni\'{o} i de la intersecci\'{o} de conjunts}
+
+Donats tres conjunts qualssevol $A$, $B$ i $C$ es compleixen les seg\"{u}%
+ents relacions:
+
+\begin{enumerate}
+\item $A\cup A=A$ i $A\cap A=A$
+
+\item $A\cup(B\cup C)=(A\cup B)\cup C$ i $A\cap(B\cap C)=(A\cap B)\cap C$
+
+\item $A\cup B=B\cup A$ i $A\cap B=B\cap A$
+
+\item $A\cup(B\cap C)=(A\cup B)\cap(A\cup B)$ i $A\cap(B\cup C)=(A\cap
+B)\cup(A\cap C)$
+
+\item $A\cup(B\cap A)=A$ i $A\cap(B\cup A)=A$
+
+\item $A\cup\emptyset=A$ i $A\cap\emptyset=\emptyset$
+\end{enumerate}
+
+Les demostracions d'aquestes propietats les trobar\`{a}s en els exercicis
+resolts.
+
+\subsubsection{Difer\`{e}ncia entre dos conjunts}
+
+Si $A$ i $B$ s\'{o}n conjunts, es diu \textbf{difer\`{e}ncia} entre $A$ i $B$
+al conjunt denotat per $A\setminus B$ i que t\'{e} per elements tots els que
+pertanyen a $A$ i que no s\'{o}n de $B$. El diagrama de Venn en aquest cas
+\'{e}s:\FRAME{dtbpFU}{2.5486in}{1.299in}{0pt}{\Qcb{$A-B$}}{}{set5.jpg}{%
+\special{ language "Scientific Word"; type "GRAPHIC"; maintain-aspect-ratio
+TRUE; display "USEDEF"; valid_file "F"; width 2.5486in; height 1.299in;
+depth 0pt; original-width 2.5209in; original-height 1.2704in; cropleft "0";
+croptop "1"; cropright "1"; cropbottom "0"; filename
+'../../conjunts/set5.jpg';file-properties "NPEU";}} Simb\`{o}licament,
+escrivim%
+\begin{equation*}
+A-B=\{x\in U:x\in A\text{ ~i~ }x\notin B\}
+\end{equation*}
+
+\begin{exem}
+Si $A=\left\{ 1,2,3\right\} $ i $B=\left\{ 3,4,5\right\} $, llavors es t\'{e}%
+\begin{equation*}
+A-B=\left\{ 1,2\right\} \text{.}
+\end{equation*}
+\end{exem}
+
+\subsubsection{Complementari d'un conjunt}
+
+Donat un conjunt $A$, es diu \textbf{complementari} d'$A$ al conjunt denotat
+per $\complement A$ i que t\'{e} per elements tots els que s\'{o}n de
+l'univers $E$ i no pertanyen a $A$.\FRAME{dtbpFU}{2.5175in}{1.4961in}{0pt}{%
+\Qcb{$\complement A$}}{}{set6.jpg}{\special{ language "Scientific Word";
+type "GRAPHIC"; maintain-aspect-ratio TRUE; display "USEDEF"; valid_file
+"F"; width 2.5175in; height 1.4961in; depth 0pt; original-width 2.4898in;
+original-height 1.4684in; cropleft "0"; croptop "1"; cropright "1";
+cropbottom "0"; filename '../../conjunts/set6.jpg';file-properties "NPEU";}}
+En altres paraules, es t\'{e}%
+\begin{equation*}
+\complement A=\{x\in E:x\notin A\}\text{.}
+\end{equation*}
+\'{E}s evident que es compleix%
+\begin{equation*}
+\complement A=E-A\text{.}
+\end{equation*}
+
+\begin{exem}
+Si $E=\mathbb{R}$ i $A=\left\{ x\in\mathbb{R}:\left\vert x\right\vert
+=1\right\} $, llavors es t\'{e}%
+\begin{equation*}
+\complement_{E}A=\mathbb{R}-\left\{ -1,1\right\}
+\end{equation*}
+\end{exem}
+
+\subsubsection{Propietats del complementari d'un conjunt}
+
+Si $U$ \'{e}s l'univers, llavors es compleixen les seg\"{u}ents propietats:
+
+\begin{enumerate}
+\item $\complement U=\emptyset$ i $\complement\emptyset=U$
+
+\item $\complement\left( \complement A\right) =A$
+
+\item Lleis de De Morgan: $\complement\left( A\cup B\right) =\complement
+A\cap\complement B$ i $\complement\left( A\cap B\right) =\complement
+A\cup\complement B$
+\end{enumerate}
+
+Les demostracions d'aquestes propietats les trobar\`{a}s en els exercicis
+resolts.
+
+\subsection{Parell ordenat i producte cartesi\`{a} de dos conjunts}
+
+Es diu \textbf{parell ordenat} de dos elements $x$ i $y$ al conjunt denotat
+per $(x,y)$ que t\'{e} per elements els conjunts $\left\{ x\right\} $ i $%
+\left\{ x,y\right\} $, \'{e}s a dir,%
+\begin{equation*}
+(x,y)=\left\{ \left\{ x\right\} ,\left\{ x,y\right\} \right\} \text{.}
+\end{equation*}
+Llavors, diem que $x$ \'{e}s la \textbf{primera component} i $y$ \'{e}s la
+\textbf{segona component} del parell ordenat $(x,y)$. Per la definici\'{o}
+d'igualtat de conjunts, \'{e}s f\`{a}cil deduir que es compleix%
+\begin{equation*}
+\begin{array}{ccc}
+\left\{ a,b\right\} =\left\{ c,d\right\} & \Longleftrightarrow & a=c\text{ i
+}b=d\text{ o b\'{e} }a=d\text{ i }b=c%
+\end{array}
+\end{equation*}
+mentre que%
+\begin{equation*}
+\begin{array}{ccc}
+(a,b)=(c,d) & \Longleftrightarrow & a=c\text{ i }b=d%
+\end{array}
+\end{equation*}
+Per tant, l'\'{u}nica difer\`{e}ncia entre els conjunts $\left\{ x,y\right\}
+$ i $(x,y)$ resideix en l'ordre. Si $x$ i$\ y$ s\'{o}n dos elements
+diferents, llavors $\left\{ x,y\right\} =\left\{ y,x\right\} $ i, en canvi, $%
+(x,y)\neq(y,x)$.
+
+\bigskip
+
+Donats dos conjunts $A$ i $B$, es diu \textbf{producte cartesi\`{a}} d'$A$ i
+$B$ al conjunt denotat per $A\times B$ que t\'{e} per elements tots els
+parells ordenats la primera component dels quals \'{e}s un element d'$A$ i
+la segona component \'{e}s un element de $B$, simb\`{o}licament escrivim
+\begin{equation*}
+A\times B=\left\{ (x,y):x\in A\text{ i }y\in B\right\} \text{.}
+\end{equation*}
+
+\begin{exem}
+Si $A=\left\{ 1,2\right\} $ i $B=\left\{ a,b\right\} $, llavors es t\'{e}%
+\begin{equation*}
+A\times B=\left\{ (1,a),(1,b),(2,a),(2,b)\right\}
+\end{equation*}
+Observa que%
+\begin{equation*}
+B\times A=\left\{ (a,1),(a,2),(b,1),(b,2)\right\}
+\end{equation*}
+i \'{e}s evident que $A\times B\neq B\times A$.
+\end{exem}
+
+\section{Relacions}
+
+Identifiquem les relacions amb conjunts de parells ordenats i, per tant, amb
+subconjunts del producte cartesi\`{a} de dos conjunts donats. Que un parell
+ordenat pertanyi a una relaci\'{o} significa que la relaci\'{o} en q\"{u}esti%
+\'{o} es dona entre el primer component del parell i el segon.
+
+\subsection{Relacions entre dos conjunts}
+
+Donats dos conjunts $A$ i $B$, es diu \textbf{relaci\'{o}} entre $A$ i $B$ a
+tot subconjunt de $A\times B$. Si $R\subset A\times B$ \'{e}s una relaci\'{o}
+entre $A$ i $B$, llavors quan es compleix que $(a,b)\in R$ diem que la relaci%
+\'{o} \textbf{es dona} entre $a$ i $b$, o simplement, que $a$ \textbf{est%
+\`{a} relacionat amb} $b$.
+
+\begin{exem}
+Si $A=\{1,2\}$ i $B=\{a,b\}$, llavors $R=\left\{ (1,a),(2,b)\right\} $, $%
+S=\left\{ (1,a)\right\} $ i $T=\left\{ (2,a),(2,b)\right\} $ s\'{o}n
+relacions entre $A$ i $B$ i, en canvi, $J=\left\{ (a,2),(2,1)\right\} $ no
+ho \'{e}s.
+\end{exem}
+
+Per ser conjunts, si $R$ i $S$ s\'{o}n relacions entre $A$ i $B$, llavors $%
+R=S$ si i nom\'{e}s si $R$ i $S$ contenen els mateixos parells ordenats. Es
+diu \textbf{domini} d'una relaci\'{o} $R$ entre $A$ i $B$ al conjunt denotat
+per $\mathcal{D}\left( R\right) $ que t\'{e} per elements les primeres
+components dels parells ordenats de $R$. Es diu \textbf{recorregut} de $R$
+el conjunt denotat per $\mathcal{R}\left( R\right) $ que t\'{e} per elements
+les segones components dels parells ordenats de $R$. Aix\'{\i}, tenim%
+\begin{equation*}
+\mathcal{D}\left( R\right) =\left\{ x:x\in A\text{ i existeix }y\in B\text{
+tal que }(x,y)\in R\right\}
+\end{equation*}
+i%
+\begin{equation*}
+\mathcal{R}\left( R\right) =\left\{ y:y\in B\text{ i existeix }x\in A\text{
+tal que }(x,y)\in R\right\} \text{.}
+\end{equation*}
+
+\begin{exem}
+Si $A=\{1,2\}$, $B=\{a,b\}$ i $R=\left\{ (2,a),(2,b)\right\} $ \'{e}s una
+relaci\'{o} entre $A$ i $B$, llavors $\mathcal{D}\left( R\right) =\left\{
+2\right\} $ i $\mathcal{R}\left( R\right) =\left\{ a,b\right\} =B$.
+\end{exem}
+
+\subsection{Relacions bin\`{a}ries en un conjunt}
+
+Si $A$ \'{e}s un conjunt, diem que $R$ \'{e}s una \textbf{relaci\'{o} bin%
+\`{a}ria} en $A$ si $R\subset A\times A$. En tot conjunt $A$ sempre podem
+definir les relacions bin\`{a}ries seg\"{u}ents:
+
+\begin{enumerate}
+\item Relaci\'{o} d'identitat en $A$: $I_{A}=\left\{ (x,x):x\in A\right\} $
+
+\item Relaci\'{o} nul\textperiodcentered la en $A$: $\emptyset$
+
+\item Relaci\'{o} total en $A$: $A\times A$
+\end{enumerate}
+
+\bigskip
+
+Considerem un conjunt $A$ i una relaci\'{o} bin\`{a}ria $R\subset A\times A$%
+. Distingim les seg\"{u}ents propietats de $R$:
+
+\begin{enumerate}
+\item $R$ \'{e}s \textbf{reflexiva}: per a tot $x\in A$, $(x,x)\in R$
+
+\item $R$ \'{e}s \textbf{irreflexiva}: per a tot $x\in A$, $(x,x)\notin R$
+
+\item $R$ \'{e}s \textbf{sim\`{e}trica}: per a tot $x,y\in A$, si $(x,y)\in R
+$ llavors $(y,x)\in R$
+
+\item $R$ \'{e}s \textbf{asim\`{e}trica}: per a tot $x,y\in A$, si $(x,y)\in
+R$ llavors $(y,x)\notin R$
+
+\item $R$ \'{e}s \textbf{antisim\`{e}trica}: per a tot $x,y\in A$, si $%
+(x,y)\in R $ i $(y,x)\in R$, llavors $x=y$
+
+\item $R$ \'{e}s \textbf{transitiva}: per a tot $x,y,z\in A$, si $(x,y)\in R$
+i $(y,z)\in R$, llavors $(x,z)\in R$
+\end{enumerate}
+
+\begin{exem}
+Si $A=\left\{ 1,2,3\right\} $ i $R=\left\{ (1,2),(2,3),(2,2),(1,3)\right\} $%
+, llavors es compleix:
+
+\begin{itemize}
+\item $R$ no \'{e}s reflexiva, doncs $(1,1)\notin R$.
+
+\item $R$ no \'{e}s irreflexiva, doncs $(2,2)\in R$.
+
+\item $R$ no \'{e}s sim\`{e}trica, perqu\`{e} $(1,2)\in R$ i $(2,1)\notin R$.
+
+\item $R$ no \'{e}s asim\`{e}trica, doncs $(2,2)\in R$.
+
+\item $R$ \'{e}s antisim\`{e}trica, perqu\`{e} no hi ha cap parell
+d'elements diferents $x,y$ tals que $(x,y)\in R$ i $(y,x)\in R$.
+
+\item $R$ \'{e}s transitiva, perqu\`{e} no hi ha tres elements $x,y,z$ tals
+que $(x,y)\in R$ i $(y,z)\in R$ i $(x,z)\notin R$.
+\end{itemize}
+\end{exem}
+
+\subsection{Relacions d'equival\`{e}ncia}
+
+Donat un conjunt $A$ i una relaci\'{o} bin\`{a}ria $R$ en $A$, diem que $R$
+\'{e}s una \textbf{relaci\'{o} d'equival\`{e}ncia} si $R$ \'{e}s reflexiva,
+sim\`{e}trica i transitiva.
+
+Tota relaci\'{o} d'equival\`{e}ncia $R$ en un conjunt $A$ ens permet
+classificar els elements del conjunt en classes d'equival\`{e}ncia. Es diu
+\textbf{classe d'equival\`{e}ncia} d'un element $a\in A$ al conjunt denotat
+per $\left[ a\right] $ que t\'{e} per elements tots els elements d'$A$ que
+estan relacionats amb $a$. Aix\'{\i}, tenim%
+\begin{equation*}
+\left[ a\right] =\left\{ x\in A:(x,a)\in R\right\} \text{.}
+\end{equation*}
+
+De la definici\'{o} de classe d'equival\`{e}ncia, dedu\"{\i}m de seguida que%
+\begin{equation*}
+\begin{array}{ccc}
+\left[ a\right] =\left[ b\right] & \Longleftrightarrow & (a,b)\in R%
+\end{array}
+\end{equation*}
+o b\'{e},%
+\begin{equation*}
+\begin{array}{ccc}
+\left[ a\right] =\left[ b\right] & \Longleftrightarrow & \left( a\in\left[ b%
+\right] \Longleftrightarrow b\in\left[ a\right] \right)%
+\end{array}
+\end{equation*}
+
+Llavors es diu \textbf{conjunt quocient} de $A$ per la relaci\'{o} $R$ al
+conjunt denotat per $A/R$ que t\'{e} per elements les classes d'equival\`{e}%
+ncia de tots els elements d'$A$ respecte de $R$. Aix\'{\i}, tenim%
+\begin{equation*}
+A/R=\left\{ \left[ a\right] :a\in A\right\}
+\end{equation*}
+
+Quan $R$ \'{e}s d'equival\`{e}ncia diem que el conjunt quocient $A/R$ \'{e}s
+una \textbf{partici\'{o}} del conjunt $A$, aix\`{o} vol dir que \'{e}s una
+col\textperiodcentered lecci\'{o} de subconjunts no buits d'$A$, disjunts
+dos a dos, i tals que la seva uni\'{o} \'{e}s $A$. Podem expressar aix\`{o}
+afirmant que en $A/R$ es compleixen les seg\"{u}ents propietats:
+
+\begin{enumerate}
+\item Per a tot $a\in A$, $\left[ a\right] \neq\emptyset$.
+
+\item Per a tot $a,b\in A$ i $\left[ a\right] \neq\left[ b\right] $, $\left[
+a\right] \cap\left[ b\right] =\emptyset$.
+
+\item $\dbigcup A/R=A$, on $\dbigcup A/R$ \'{e}s la uni\'{o} de totes les
+classes d'equival\`{e}ncia, doncs $A/R$ \'{e}s el conjunt els elements del
+qual s\'{o}n els que pertanyen a alguna classe de $A/R$, o sigui
+\begin{equation*}
+\begin{array}{ccc}
+x\in\dbigcup A/R & \Longleftrightarrow & \text{existeix alguna classe }\left[
+a\right] \in A/R\text{ tal que }x\in\left[ a\right] \text{.}%
+\end{array}
+\end{equation*}
+\end{enumerate}
+
+\'{E}s habitual usar $\sim$ o $\equiv$ com a s\'{\i}mbols de relacions
+d'equival\`{e}ncia sobre un conjunt.
+
+\begin{exem}
+En el conjunt dels nombres enters $\mathbb{Z}$ es defineix la seg\"{u}ent
+relaci\'{o} bin\`{a}ria $\equiv$%
+\begin{equation*}
+\begin{array}{ccc}
+x\equiv y & \Longleftrightarrow & x-y\text{ \'{e}s m\'{u}ltiple de }3%
+\end{array}
+\end{equation*}
+\'{E}s immediat comprovar que $\equiv$ \'{e}s una relaci\'{o} d'equival\`{e}%
+ncia en $\mathbb{Z}$:
+
+\begin{itemize}
+\item $\equiv$ \'{e}s reflexiva: per a tot $x\in\mathbb{Z}$, $x\equiv x$
+doncs $x-x=0$, que \'{e}s un m\'{u}ltiple de $3$.
+
+\item $\equiv$ \'{e}s sim\`{e}trica: per a tot $x,y\in\mathbb{Z}$, si $%
+x\equiv y$, \'{e}s a dir si $x-y$ \'{e}s un m\'{u}ltiple de $3$, llavors $%
+-(x-y)=y-x$ tamb\'{e} \'{e}s un m\'{u}ltiple de $3$ i, per tant, $y\equiv x$.
+
+\item $\equiv$ \'{e}s transitiva: per a tot $x,y,z\in\mathbb{Z}$, si $%
+x\equiv y$ i $x\equiv z$, \'{e}s a dir, si $x-y$ i $y-z$ s\'{o}n m\'{u}%
+ltiples de $3$, tamb\'{e} ho ser\`{a} la seva suma, $(x-y)+(y-z)=x-z$ i, per
+tant, $x\equiv z$.
+\end{itemize}
+
+Existeixen tres classes d'equival\`{e}ncia per a aquesta relaci\'{o}:
+
+\begin{itemize}
+\item $\left[ 0\right] =\left\{ x\in\mathbb{Z}\mid x\text{ \'{e}s m\'{u}%
+ltiple de }3\right\} =\left\{ ...,-6,-3,0,3,6,...\right\} $
+
+\item $\left[ 1\right] =\left\{ x\in\mathbb{Z}\mid x-1\text{ \'{e}s m\'{u}%
+ltiple de }3\right\} =\left\{ ...,-5,-2,1,4,7,...\right\} $
+
+\item $\left[ 2\right] =\left\{ x\in\mathbb{Z}\mid x-2\text{ \'{e}s m\'{u}%
+ltiple de }3\right\} =\left\{ ...,-4,-1,2,5,8,...\right\} $
+\end{itemize}
+
+Finalment, el conjunt quocient \'{e}s%
+\begin{equation*}
+\mathbb{Z}/\equiv~=\left\{ \left[ 1\right] ,\left[ 2\right] ,\left[ 3\right]
+\right\} \text{.}
+\end{equation*}
+\end{exem}
+
+\subsection{Relacions d'ordre}
+
+Donat un conjunt $A$ i una relaci\'{o} bin\`{a}ria $R$ en $A$, diem que $R$
+\'{e}s una \textbf{relaci\'{o} d'ordre} si $R$ \'{e}s reflexiva, antisim\`{e}%
+trica i transitiva. Un conjunt amb una relaci\'{o} d'ordre es diu un \textbf{%
+conjunt ordenat}.
+
+Una relaci\'{o} d'ordre $R$ en un conjunt $A$ es diu d'ordre \textbf{total}
+si per a tot $x,y\in A$ es compleix:%
+\begin{equation*}
+(x,y)\in R\text{ \ \ o b\'{e} \ \ }(y,x)\in R\text{.}
+\end{equation*}
+En aquest cas es diu que $A$ est\`{a} \textbf{totalment ordenat}. En canvi,
+si existeixen $x,y\in A$ tals que $(x,y)\notin R$ i $(y,x)\notin R$, llavors
+la relaci\'{o} es diu d'ordre \textbf{parcial} i es diu que $A$ est\`{a}
+\textbf{parcialment ordenat}. \'{E}s habitual usar $\leq$ com a s\'{\i}mbol
+de relaci\'{o} d'ordre en un conjunt.
+
+\begin{exem}
+Si $A=\{1,2,3\}$, la seg\"{u}ent relaci\'{o}%
+\begin{equation*}
+R=\left\{ (1,1),(2,2),(3,3),(1,2),(1,3)\right\}
+\end{equation*}
+\'{e}s un ordre parcial en $A$, mentre que la relaci\'{o}%
+\begin{equation*}
+S=\left\{ (1,1),(2,2),(3,3),(1,2),(1,3),(2,3)\right\}
+\end{equation*}
+\'{e}s un ordre total en $A$.
+\end{exem}
+
+\begin{exem}
+Si $A$ \'{e}s un conjunt qualsevol, la relaci\'{o} d'inclusi\'{o} \'{e}s un
+ordre parcial en el conjunt de parts d'$A$.
+\end{exem}
+
+\begin{exem}
+La relaci\'{o} $\leq$ \'{e}s un ordre total en $\mathbb{N}$, $\mathbb{Z}$, $%
+\mathbb{Q}$ o $\mathbb{R}$.
+\end{exem}
+
+\subsubsection{Elements notables d'una relaci\'{o} d'ordre}
+
+Si $A$ \'{e}s un conjunt ordenat per la relaci\'{o} $\leq$, llavors tenim
+les seg\"{u}ents definicions:
+
+\begin{enumerate}
+\item $a\in A$ \'{e}s un element \textbf{maximal} d'$A$ si no existeix $x\in
+A$ i $x\neq a$ tal que $a\leq x$.
+
+\item $a\in A$ \'{e}s un element \textbf{minimal} d'$A$ si no existeix $x\in
+A$ i $x\neq a$ tal que $x\leq a$.
+
+\item $a\in A$ \'{e}s el \textbf{m\`{a}xim} d'$A$ si per a tot $x\in A$, $%
+x\leq a$, i s'escriu $a=\max A$.
+
+\item $a\in A$ \'{e}s el \textbf{m\'{\i}nim} d'$A$ si per a tot $x\in A$, $%
+a\leq x$, i s'escriu $a=\min A$.
+\end{enumerate}
+
+No \'{e}s dif\'{\i}cil demostrar que en tot ordre parcial hi ha com a m\`{a}%
+xim un element m\`{a}xim i un element m\'{\i}nim. Aix\'{\i} mateix, un
+element m\`{a}xim (resp. m\'{\i}nim), si existeix, \'{e}s un element maximal
+(resp. minimal). Si l'ordre \'{e}s total, tot element minimal \'{e}s m\'{\i}%
+nim i tot element maximal \'{e}s m\`{a}xim.
+
+\begin{exem}
+Considerem el conjunt $A=\{a,b,c,d,e,f,g\}$ ordenat per la relaci\'{o}%
+\begin{equation*}
+R=\left\{ (a,b),(a,c),(b,d),(c,d),(a,d),(e,f)\right\} \cup\Delta_{A}\text{.}
+\end{equation*}
+Llavors, tenim:
+
+\begin{itemize}
+\item $R$ no \'{e}s un ordre total
+
+\item Els elements $d$, $f$ i $g$ s\'{o}n maximals
+
+\item Els elements $a$, $e$ i $g$ s\'{o}n minimals
+
+\item No hi ha m\`{a}xim ni m\'{\i}nim
+\end{itemize}
+\end{exem}
+
+\begin{exem}
+Donat el conjunt $A=\{a,b\}$, considerem el conjunt de parts $\mathcal{P}(A)$
+ordenat per la relaci\'{o} d'inclusi\'{o}. Llavors es t\'{e}:
+
+\begin{itemize}
+\item $A$ \'{e}s m\'{a}ximal i $\emptyset$ \'{e}s m\'{\i}nimal
+
+\item $A$ \'{e}s m\`{a}xim i $\emptyset$ \'{e}s m\'{\i}nim
+\end{itemize}
+\end{exem}
+
+Si $A$ \'{e}s un conjunt ordenat per la relaci\'{o} $\leq$ i $B\subset A$,
+llavors:
+
+\begin{enumerate}
+\item $a\in A$ \'{e}s una \textbf{cota superior} o \textbf{mayorante} de $B$
+si per a tot $x\in B$, $x\leq a$.
+
+\item $a\in A$ \'{e}s una \textbf{cota inferior} o \textbf{minorante} de $B$
+si per a tot $x\in B$, $a\leq x$.
+
+\item $a\in A$ \'{e}s el \textbf{suprem} o \textbf{extrem superior} de $B$
+si $a$ \'{e}s el m\'{\i}nim de les cotes superiors de $B$; en tal cas
+s'escriu $a=\sup B$.
+
+\item $a\in A$ \'{e}s l'\textbf{\'{\i}nfim} o \textbf{extrem inferior} de $B$
+si $a$ \'{e}s el m\`{a}xim de les cotes inferiors de $B$; en tal cas
+escrivim $a=\inf B$.
+\end{enumerate}
+
+\begin{exem}
+Considerem el conjunt $A=\left\{ 2,3,4,5,6,8,9,10,12\right\} $ ordenat per
+la relaci\'{o} $\mid$ definida per%
+\begin{equation*}
+\begin{array}{ccc}
+x\mid y & \Longleftrightarrow & x\text{ divideix a }y%
+\end{array}
+\end{equation*}
+Volem: (a) representar gr\`{a}ficament aquest ordre, (b) trobar els seus
+elements maximals, minimals, m\`{a}xim i m\'{\i}nim, (c) considerant el
+subconjunt $B=\left\{ 4,6,8,10\right\} $, trobar cotes superiors i
+inferiors, suprem i \'{\i}nfim.
+\end{exem}
+
+\begin{solucio}
+(a) Una possible representaci\'{o} gr\`{a}fica d'aquest ordre \'{e}s:%
+\begin{equation*}
+\begin{array}{ccccccc}
+&  & 8 &  & 12 &  &  \\
+&  & \mid & \diagup & \mid &  &  \\
+10 &  & 4 &  & 6 &  & 9 \\
+\mid & \diagdown & \mid & \diagup &  & \diagdown & \mid \\
+5 &  & 2 &  &  &  & 3%
+\end{array}
+\end{equation*}
+
+(b) Els maximals s\'{o}n $10,8,12$ i $9$; els minimals s\'{o}n $5,2$ i $3$;
+i no hi ha m\`{a}xim ni m\'{\i}nim.
+
+(c) No hi ha cotes superiors i nom\'{e}s hi ha una cota inferior que \'{e}s $%
+2$. Per tant, no hi ha suprem i $\inf B=2$.
+\end{solucio}
+
+\subsubsection{Conjunts ben ordenats}
+
+Si $A$ \'{e}s un conjunt ordenat, diem que $A$ est\`{a} \textbf{ben ordenat}
+si tot subconjunt de $A$ t\'{e} m\'{\i}nim.
+
+\begin{exem}
+El conjunt dels nombres naturals $\mathbb{N}$ est\`{a} ben ordenat per la
+relaci\'{o} $\leq$.
+\end{exem}
+
+\begin{exem}
+El conjunt dels nombres reals $\mathbb{R}$ no est\`{a} ben ordenat per la
+relaci\'{o} $\leq$ perqu\`{e}, per exemple, el subconjunt $(1,2)$ no t\'{e} m%
+\'{\i}nim.
+\end{exem}
+
+\begin{exem}
+Donat el conjunt $A=\left\{ a,b,c\right\} $, considerem el conjunt de parts $%
+\mathcal{P}(A)$ ordenat per la relaci\'{o} d'inclusi\'{o}. Considerant els
+subconjunts $B=\left\{ \left\{ a\right\} ,\left\{ a,b\right\} \right\} $ i $%
+C=\left\{ \left\{ b\right\} ,\left\{ c\right\} ,\left\{ b,c\right\} \right\}
+$, (a) volem saber si aquests conjunts estan o no ben ordenats. (b) Volem
+tamb\'{e} trobar els elements notables d'aquesta relaci\'{o} en $\mathcal{P}%
+(A),B$ i $C$.
+\end{exem}
+
+\begin{solucio}
+(a) $B$ est\`{a} ben ordenat perqu\`{e} $\left\{ a\right\} \subset\left\{
+a\right\} $ i $\left\{ a\right\} \subset\left\{ a,b\right\} $; a m\'{e}s,
+observa que $B$ est\`{a} totalment ordenada per $\subset$. En canvi, $C$ no
+ho est\`{a}, ja que el subconjunt $\left\{ \left\{ b\right\} ,\left\{
+c\right\} \right\} $ no t\'{e} m\'{\i}nim.
+
+(b) Els elements notables s\'{o}n:%
+\begin{equation*}
+\begin{tabular}{|l|l|l|l|}
+\hline
+& $P(A)$ & $B$ & $C$ \\ \hline
+$\text{Maximals}$ & $A$ & $\left\{ a,b\right\} $ & $\left\{ b,c\right\} $ \\
+\hline
+$\text{Minimals}$ & $\emptyset$ & $\left\{ a\right\} $ & $\left\{ b\right\}
+,\left\{ c\right\} $ \\ \hline
+M\`{a}xim & \thinspace$A$ & $\left\{ a,b\right\} $ & $\left\{ b,c\right\} $
+\\ \hline
+M\'{\i}nim & $\emptyset$ & $\left\{ a\right\} $ & $\text{No n'hi ha}$ \\
+\hline
+Cotes superiors & $A$ & $\left\{ a,b\right\} ,A$ & $\left\{ b,c\right\} ,A$
+\\ \hline
+Cotes inferiors & $\emptyset$ & $\left\{ a\right\} ,\emptyset$ & $\emptyset $
+\\ \hline
+Suprem &  & $\left\{ a,b\right\} $ & $\left\{ b,c\right\} $ \\ \hline
+\'{I}nfim & $\emptyset$ & $\left\{ a\right\} $ & $\emptyset$ \\ \hline
+\end{tabular}
+\
+\end{equation*}
+\end{solucio}
+
+\section{Aplicacions}
+
+Donats dos conjunts $A$ i $B$, i una relaci\'{o} $R$ entre $A$ i $B$, es diu
+\textbf{aplicaci\'{o}} d'$A$ en $B$ si $\mathcal{D}\left( R\right) =A$ i per
+a tot $a\in$ $\mathcal{D}\left( R\right) $ existeix un \'{u}nic $b\in B$ tal
+que $(a,b)\in R$. \'{E}s habitual usar $f,g$ o $h$ com a s\'{\i}mbols
+d'aplicacions. D'aquesta manera, per a designar una aplicaci\'{o} $f$ d'$A$
+en $B$ escriurem%
+\begin{equation*}
+f:A\longrightarrow B\text{,}
+\end{equation*}
+o b\'{e}%
+\begin{equation*}
+A\overset{f}{\longrightarrow}B\text{.}
+\end{equation*}
+Considerem l'aplicaci\'{o} $f:A\longrightarrow B$ i sigui $a\in A$, llavors $%
+f(a)$ es diu la \textbf{imatge} d'$a$ per $f$. Si $f(a)=b$, llavors diem que
+$a$ \'{e}s una \textbf{antiimatge} de $b$ per $f$; tamb\'{e} simbolitzem
+aquest fet com $a\longmapsto f(a)=b$. Al conjunt%
+\begin{equation*}
+\mathcal{R}\left( f\right) =\left\{ y\in B:\text{existeix }x\in A\text{ tal
+que }f(x)=y\right\}
+\end{equation*}
+se'n diu \textbf{imatge} o \textbf{recorregut} de l'aplicaci\'{o} $f$ i tamb%
+\'{e} s'escriu $\func{Im}f$. Observa que $\mathcal{R}\left( f\right) $ \'{e}%
+s el conjunt dels elements de $B$ que tenen almenys una antiimatge per
+l'aplicaci\'{o} $f$.
+
+\bigskip
+
+Donades dues aplicacions $f:A\longrightarrow B$ i $g:A\longrightarrow B$,
+diem que s\'{o}n \textbf{iguals}, representant-ho per $f=g$, si per a tot $%
+x\in A$ es compleix $f(x)=g(x)$. En s\'{\i}mbols, escrivim%
+\begin{equation*}
+\begin{array}{ccc}
+f=g & \Longleftrightarrow & \left( \forall x\right) \left( x\in
+A\Longrightarrow f(x)=g(x)\right)%
+\end{array}
+\end{equation*}
+
+\bigskip
+
+Es diu \textbf{graf} de l'aplicaci\'{o} $f:A\longrightarrow B$ al conjunt%
+\begin{equation*}
+\text{ }\mathcal{G}\left( f\right) =\left\{ (x,y)\in A\times
+B:f(x)=y\right\}
+\end{equation*}
+Llavors, \'{e}s evident que dues aplicacions $f$ i $g$ d'$A$ en $B$ s\'{o}n
+iguals si i nom\'{e}s si $\mathcal{G}\left( f\right) =$ $\mathcal{G}\left(
+g\right) $.
+
+\begin{exem}
+Donats els conjunts $A=\{0,1,2,3,4\}$ i $B=\{2,6,9,12,20,21\}$, considerem
+la relaci\'{o} $R$ entre $A$ i $B$ definida per: $x\in A$ est\`{a}
+relacionat amb $y\in B$ si i nom\'{e}s si $y=3x$. (a) \'{E}s aquesta relaci%
+\'{o} una aplicaci\'{o} d'$A$ en $B$? (b) Quins n\'{u}meros s'han d'excloure
+de $A$ perqu\`{e} ho sigui? Calcula la imatge i el graf de l'aplicaci\'{o}
+que aix\'{\i} s'obt\'{e}.
+\end{exem}
+
+\begin{solucio}
+(a) Aquesta relaci\'{o} no \'{e}s una aplicaci\'{o} d'$A$ en $B$, perqu\`{e}
+el seu domini \'{e}s el conjunt $\left\{ 2,3,4\right\} $ i no coincideix amb
+$A$.
+
+(b) Si excloem $0$ i $1$ d'$A$, llavors la relaci\'{o} defineix una aplicaci%
+\'{o} de $\mathcal{D}(R)=\left\{ 2,3,4\right\} $ en $B$. \'{E}s clar que la
+imatge d'aquesta aplicaci\'{o} \'{e}s%
+\begin{equation*}
+\mathcal{R}(R)=\left\{ 6,9,12\right\}
+\end{equation*}
+i el graf \'{e}s%
+\begin{equation*}
+\mathcal{G}(R)=\left\{ (2,6),(3,9),(4,12)\right\} \text{.}
+\end{equation*}
+\end{solucio}
+
+\begin{exem}
+Siguin $A=\{1,2,3,4\}$, $B=\{1,2,3,4,5,6,7\}$ i considerem el seg\"{u}ent
+conjunt%
+\begin{equation*}
+G=\{\text{\thinspace}(x,y)\in A\times B\mid y=2x-1\}
+\end{equation*}
+(a) \'{E}s $G$ el graf d'una aplicaci\'{o} $f$ d'$A$ en $B$? (b) Si ho \'{e}%
+s, com es defineix la imatge d'un element qualsevol d'$A$? Quins elements de
+$B$ tenen antiimatge?
+\end{exem}
+
+\begin{solucio}
+(a) \'{E}s immediat comprovar que%
+\begin{equation*}
+G=\{(1,1),(2,3),(3,5),(4,7)\}
+\end{equation*}
+\'{E}s clar que $G$ defineix una aplicaci\'{o} $f$ d'$A$ en $B$ perqu\`{e} $%
+\mathcal{D}(f)=A$ i tot element d'$A$ t\'{e} una i nom\'{e}s una imatge.
+
+(b) L'aplicaci\'{o} $f$ es defineix per $f(x)=2x-1$. Els elements de $B$ que
+tenen antiimatge determinen el recorregut de l'aplicaci\'{o} qu\`{e} \'{e}s%
+\begin{equation*}
+\mathcal{R}(f)=\{1,3,5,7\}\text{.}
+\end{equation*}
+\end{solucio}
+
+\begin{obs}
+Els conceptes d'aplicaci\'{o} i funci\'{o} es consideren sovint com a sin%
+\`{o}nims. Tot i aix\`{o}, el concepte de funci\'{o} pot considerar-se menys
+restrictiu que el d'aplicaci\'{o}. La ra\'{o} est\`{a} en el fet que quan
+tractem amb funcions \'{e}s habitual no especificar des d'un principi els
+conjunts de sortida i d'arribada com aix\'{\i} fem en definir el concepte
+d'aplicaci\'{o}. En general , una funci\'{o} es defineix com una relaci\'{o}
+$R$ entre dos conjunts referencials (prou amplis) que satisf\`{a} la seg\"{u}%
+ent propietat: per a qualssevol objectes $a,b,c$%
+\begin{equation*}
+\begin{array}{ccc}
+(a,b)\in R\text{ i }(a,c)\in R & \Longrightarrow & b=c%
+\end{array}
+\end{equation*}
+En altres paraules, una relaci\'{o} $R$ entre dos conjunts referencials \'{e}%
+s una funci\'{o} si i nom\'{e}s si per a tot $a\in$ $\mathcal{D}(R)$
+existeix un \'{u}nic $b$ tal que $(a,b)\in R$. Definit d'aquesta manera el
+concepte de funci\'{o}, aleshores diem que $f$ \'{e}s una funci\'{o} d'$A$
+en $B$ si $\mathcal{D}(f)=A$ i $\mathcal{R}(f)\subset B$. Ara, \'{e}s
+evident que una funci\'{o} d'$A$ en $B$ \'{e}s una aplicaci\'{o} d'$A$ en $B$%
+. Per exemple, les funcions de $\mathbb{R}$ en $\mathbb{R}$ (funcions reals
+de variable real) s\'{o}n aplicacions del seu domini en $\mathbb{R}$.
+\end{obs}
+
+\subsection{Classes d'aplicacions}
+
+Donats els conjunts $A$, $B$ i l'aplicaci\'{o} $f:A\longrightarrow B$.
+Distingim les seg\"{u}ents classes d'aplicacions:
+
+\begin{enumerate}
+\item L'aplicaci\'{o} es diu \textbf{injectiva} quan qualsevol parell
+d'elements diferents de $A$ tenen imatges diferents, o dit d'una altra forma
+equivalent, si no hi ha dos elements diferents d'$A$ amb la mateixa imatge.
+En s\'{\i}mbols, escrivim%
+\begin{equation*}
+\begin{array}{lll}
+f\text{ \'{e}s injectiva} & \Longleftrightarrow & x\neq y\Longrightarrow
+f(x)\neq f(y) \\
+& \Longleftrightarrow & f(x)=f(y)\Longrightarrow x=y%
+\end{array}
+\end{equation*}
+per a tot $x,y\in A$.
+
+\item L'aplicaci\'{o} es diu \textbf{exhaustiva} si tot element de $B$ t\'{e}
+almenys una antiimatge en $A$, o dit d'una altra forma equivalent, si $%
+\mathcal{R}\left( f\right) =B$. En s\'{\i}mbols, escrivim%
+\begin{equation*}
+\begin{array}{lll}
+f\text{ \'{e}s exhaustiva} & \Longleftrightarrow & \left( \forall y\right)
+\left( y\in B\Longrightarrow\left( \exists x\right) \left( x\in A\text{ i }%
+f(x)=y\right) \right)%
+\end{array}
+\end{equation*}
+
+\item L'apliaci\'{o} es diu \textbf{bijectiva} quan \'{e}s injectiva i
+exhaustiva.
+\end{enumerate}
+
+\begin{exem}
+L'aplicaci\'{o} $f:\mathbb{R}\longrightarrow\mathbb{R}$ definida per $%
+f(x)=x^{2}$ no \'{e}s injectiva ni exhaustiva. En efecte, $f$ no \'{e}s
+injectiva perqu\`{e}, per exemple, $-1\neq1$ i, en canvi , $f(-1)=f(1)$.
+Tampoc \'{e}s exhaustiva perqu\`{e} $-1$ no t\'{e} antiimatge.
+\end{exem}
+
+\begin{exem}
+L'aplicaci\'{o} $f:[0,+\infty)\longrightarrow\mathbb{R}$ definida per $%
+f(x)=x^{2}$ \'{e}s injectiva per\`{o} no \'{e}s exhaustiva. En efecte, $f$
+\'{e}s injectiva perqu\`{e} si $f(x)=f(y)$, dedu\"{\i}m $x^{2}=y^{2}$. D'aqu%
+\'{\i}, obtenim $\left\vert x\right\vert =\left\vert y\right\vert $, per\`{o}
+com $x,y\in\lbrack0,+\infty)$, dedu\"{\i}m $x=y$. No \'{e}s exhaustiva perqu%
+\`{e}, per exemple, $-1$ no t\'{e} antiimatge.
+\end{exem}
+
+\begin{exem}
+L'aplicaci\'{o} $f:\mathbb{R}\longrightarrow\lbrack0,+\infty)$ definida per $%
+f(x)=x^{2}$ no \'{e}s injectiva per\`{o} s\'{\i} que \'{e}s exhaustiva. En
+efecte, $f$ no \'{e}s injectiva perqu\`{e} $-1\neq1$ i, en canvi, $f(-1)=f(1)
+$. Si $y\in\lbrack0,+\infty)$, llavors $\sqrt{y}\in\mathbb{R}$ i es compleix
+$f\left( \sqrt{y}\right) =\left( \sqrt{y}\right) ^{2}=y$. Per tant,
+qualsevol element de $[0,+\infty)$ t\'{e} antiimatge i, per tant, $f$ \'{e}s
+exhaustiva.
+\end{exem}
+
+\begin{exem}
+L'aplicaci\'{o} $f:[0,+\infty)\longrightarrow\lbrack0,+\infty)$ definida per
+$f(x)=x^{2}$ \'{e}s bijectiva. En efecte, el raonament utilitzat en (2)
+prova que $f$ \'{e}s injectiva, i el raonament utilitzat en (3) prova que $f$
+\'{e}s exhaustiva. Per tant, $f$ \'{e}s bijectiva.
+\end{exem}
+
+\subsection{Imatge i antiimatge d'un conjunt}
+
+Donats els conjunts $A$, $B$ i l'aplicaci\'{o} $f:A\longrightarrow B$.
+Considerem $C\subset A$ i $D\subset B$, llavors es diu \textbf{imatge del
+conjunt} $C$ al conjunt%
+\begin{equation*}
+f(C)=\left\{ y\in B:\text{existeix }x\in C\text{ tal que }f(x)=y\right\}
+\text{,}
+\end{equation*}
+\'{e}s a dir, el conjunt $f(C)$ est\`{a} format per les imatges de tots els
+elements de $C$. Es diu \textbf{antiimatge del conjunt} $D$ al conjunt%
+\begin{equation*}
+f^{-1}(D)=\left\{ x\in A:f(x)\in D\right\} \text{,}
+\end{equation*}
+\'{e}s a dir, el conjunt $f^{-1}(D)$ est\`{a} format per les antiimatges de
+tots els elements de $D$\textbf{. }
+
+\begin{exem}
+Considerem l'aplicaci\'{o} $f:\mathbb{R}\longrightarrow\mathbb{R}$ definida
+per%
+\begin{equation*}
+f(x)=\frac{x^{2}-1}{x^{2}+1}\text{.}
+\end{equation*}
+Volem calcular la imatge del conjunt $\left\{ -2,-1,0,1,2\right\} $ i
+l'antiimatge del conjunt $\left\{ 0,1,2\right\} $.
+\end{exem}
+
+\begin{solucio}
+Per a determinar $f\left( \left\{ -2,-1,0,1,2\right\} \right) $ haurem de
+calcular les imatges de tots els elements del conjunt en q\"{u}esti\'{o}. Aix%
+\'{\i}, tenim%
+\begin{equation*}
+\begin{array}{c}
+f(-2)=\frac{(-2)^{2}-1}{(-2)^{2}+1}=\frac{3}{5} \\
+f(-1)=\frac{(-1)^{2}-1}{(-1)^{2}+1}=0 \\
+f(0)=\frac{0-1}{0+1}=-1 \\
+f(1)=\frac{1-1}{1+1}=0 \\
+f(2)=\frac{4-1}{4+1}=\frac{3}{5}%
+\end{array}
+\end{equation*}
+Per tant,%
+\begin{equation*}
+f\left( \left\{ -2,-1,0,1,2\right\} \right) =\left\{ -1,0,\frac{3}{5}%
+\right\} \text{.}
+\end{equation*}
+
+Per a determinar $f^{-1}\left( \left\{ 0,1,2\right\} \right) $ haurem
+calcular les antiimatges de tots els elements del conjunt en q\"{u}esti\'{o}%
+. Aix\'{\i}, tenim%
+\begin{equation*}
+\begin{array}{ccccc}
+f(x)=0 & \Longrightarrow & \frac{x^{2}-1}{x^{2}+1}=0 & \Longrightarrow & x=1%
+\text{ o }x=-1 \\
+f(x)=1 & \Longrightarrow & \frac{x^{2}-1}{x^{2}+1}=1 & \Longrightarrow &
+\text{No hi ha soluci\'{o}} \\
+f(x)=2 & \Longrightarrow & \frac{x^{2}-1}{x^{2}+1}=2 & \Longrightarrow &
+\text{No hi ha soluci\'{o}}%
+\end{array}
+\end{equation*}
+Per tant,%
+\begin{equation*}
+f^{-1}\left( \left\{ 0,1,2\right\} \right) =\left\{ -1,1\right\} \text{.}
+\end{equation*}
+\end{solucio}
+
+\begin{obs}
+Veurem en un altre apartat que si una aplicaci\'{o} $f$ \'{e}s bijectiva,
+llavors existeix l'aplicaci\'{o} $f^{-1}$ que se'n diu inversa de $f$. En
+usar la notaci\'{o} $f^{-1}(D)$ no s'ha de pressuposar que $f$ \'{e}s
+bijectiva; ara $f^{-1}(D)$ designa simplement el conjunt que t\'{e} per
+elements totes les antiimatges dels elements de $D$. Tot i aix\`{o}, en el
+cas que $f$ sigui bijectiva, la notaci\'{o} $f^{-1}(D)$ ser\`{a} consistent
+amb el fet que $f^{-1}(D)$ s'interpreti tamb\'{e} com la imatge del conjunt $%
+D$ per l'aplicaci\'{o} inversa de $f$.
+\end{obs}
+
+\subsection{Composici\'{o} d'aplicacions}
+
+Donats els conjunts $A$, $B$ i $C$, considerem les aplicacions $%
+f:A\longrightarrow B$ i $g:B\longrightarrow C$. A l'aplicaci\'{o} $%
+h:A\longrightarrow C$ definida per%
+\begin{equation*}
+h(x)=g\left( f(x)\right)
+\end{equation*}
+se'n diu \textbf{aplicaci\'{o} composta} de $f$ i $g$ o \textbf{aplicaci\'{o}
+composici\'{o}} de $f$ amb $g$, i s'escriu $h=g\circ f$. El seg\"{u}ent
+diagrama justifica la definici\'{o} de l'aplicaci\'{o} composta de $f$ amb $g
+$.\FRAME{dtbpF}{3.0061in}{1.3923in}{0pt}{}{}{set7.jpg}{\special{ language
+"Scientific Word"; type "GRAPHIC"; maintain-aspect-ratio TRUE; display
+"USEDEF"; valid_file "F"; width 3.0061in; height 1.3923in; depth 0pt;
+original-width 2.9793in; original-height 1.3647in; cropleft "0"; croptop
+"1"; cropright "1"; cropbottom "0"; filename
+'../../conjunts/set7.jpg';file-properties "NPEU";}}
+
+\begin{exem}
+Considerem les aplicacions $f:\mathbb{R}\longrightarrow\mathbb{R}$ i $g:%
+\mathbb{R}\longrightarrow\mathbb{R}$ definides per $f(x)=x+1$ i $g(x)=1-2x$.
+Volem calcular l'aplicaci\'{o} composta de $f$ amb $g$.
+\end{exem}
+
+\begin{solucio}
+Segons la definici\'{o}, tenim%
+\begin{align*}
+(g\circ f)(x) & =g\left( f(x)\right) \\
+& =g(x+1) \\
+& =1-2(x+1) \\
+& =1-2x-2 \\
+& =-1-2x
+\end{align*}
+\end{solucio}
+
+\begin{obs}
+Volem fer dues observacions importants:
+
+\begin{itemize}
+\item \'{E}s important assenyalar que la composici\'{o} $g\circ f$ de dues
+aplicacions $f$ i $g$ nom\'{e}s existeix quan el conjunt d'arribada de $f$
+coincideix amb el conjunt de sortida de $g$.
+
+\item Observa que en l'expressi\'{o} $g\circ f$ les aplicacions apareixen
+escrites en ordre invers al d'actuaci\'{o}, que \'{e}s: primer $f$ i despr%
+\'{e}s $g$.
+\end{itemize}
+\end{obs}
+
+\subsection{Aplicaci\'{o} inversa}
+
+Donada una aplicaci\'{o} $f:A\longrightarrow B$ bijectiva, l'aplicaci\'{o} $%
+g:B\longrightarrow A$ definida per
+\begin{equation*}
+\begin{array}{ccc}
+g(y)=x & \Longleftrightarrow & f(x)=y%
+\end{array}
+\end{equation*}
+es diu \textbf{aplicaci\'{o} inversa} de $f$ i \'{e}s habitual denotar-la
+per $f^{-1}$. Segons la definici\'{o}, \'{e}s immediat comprovar que%
+\begin{equation*}
+f^{-1}\circ f=I_{A}\text{ \ \ i \ \ }f\circ f^{-1}=I_{B}
+\end{equation*}
+on les aplicacions $I_{A}:A\longrightarrow A$ i $I_{B}:B\longrightarrow B$
+definides per $I_{A}(x)=x$ per a tot $x\in A$ i $I_{B}(x)=x$ per a tot $x\in
+B$ es diuen, respectivament, l'aplicaci\'{o} \textbf{identitat} d'$A$ i
+l'aplicaci\'{o} identitat de $B$\textbf{. }
+
+\begin{exem}
+Considerem l'aplicaci\'{o} $f:\mathbb{R}-\left\{ 1\right\} \longrightarrow
+\mathbb{R}-\left\{ 2\right\} $ definida per%
+\begin{equation*}
+f(x)=\frac{2x+1}{x-1}
+\end{equation*}
+(a) Provarem que $f$ \'{e}s bijectiva i (b) calcularem l'aplicaci\'{o}
+inversa.
+\end{exem}
+
+\begin{solucio}
+(a) Si $x,y\in\mathbb{R}-\left\{ 1\right\} $ i suposem que $f(x)=f(y)$,
+llavors
+\begin{align*}
+\frac{2x+1}{x-1} & =\frac{2y+1}{y-1} \\
+2xy-2x+y-1 & =2xy+x-2y-1 \\
+3y & =3x \\
+y & =x
+\end{align*}
+i, per tant, $f$ \'{e}s injectiva. Si $y\in\mathbb{R}-\left\{ 2\right\} $ i
+fem $f(x)=y$, llavors%
+\begin{align*}
+\frac{2x+1}{x-1} & =y \\
+2x+1 & =xy-y \\
+1+y & =xy-2x \\
+1+y & =x(y-2) \\
+\frac{1+y}{y-2} & =x
+\end{align*}
+Per tant, donat $y\in\mathbb{R}-\left\{ 2\right\} $, existeix
+\begin{equation*}
+\frac{1+y}{y-2}\in\mathbb{R}-\left\{ 1\right\}
+\end{equation*}
+i es compleix%
+\begin{equation*}
+f\left( \frac{1+y}{y-2}\right) =y\text{.}
+\end{equation*}
+Aix\`{o} vol dir que $f$ tamb\'{e} \'{e}s exhaustiva i, en conseq\"{u}\`{e}%
+ncia, $f$ \'{e}s bijectiva.
+
+(b) Com que per a tot $x\in\mathbb{R}-\left\{ 1\right\} $ i $y\in \mathbb{R}%
+-\left\{ 2\right\} $, es compleix
+\begin{equation*}
+\begin{array}{ccc}
+\frac{1+y}{y-2}=x & \Longleftrightarrow & \frac{2x+1}{x-1}=y%
+\end{array}
+\end{equation*}
+llavors%
+\begin{equation*}
+f^{-1}(y)=\frac{1+y}{y-2}
+\end{equation*}
+Substituint ara $y$ per $x$, obtenim%
+\begin{equation*}
+f^{-1}(x)=\frac{1+x}{x-2}\text{.}
+\end{equation*}
+\end{solucio}
+
+\subsection{Cardinal d'un conjunt}
+
+En aquest apartat precisarem la noci\'{o} intu\"{\i}tiva que tots tenim de
+nombre d'elements d'un conjunt finit.
+
+\bigskip
+
+Diem que dos conjunts $A$ i $B$ s\'{o}n \textbf{equipotents} quan existeix
+una aplicaci\'{o} bijectiva d'$A$ en $B$. Ara podem associar a cada conjunt $%
+A$ el que es diu \textbf{cardinal} o \textbf{pot\`{e}ncia} d'$A$ que es
+denota per $\#A$. El cardinal d'un conjunt es defineix de manera que es
+compleixi la seg\"{u}ent condici\'{o}: Dos conjunts tenen el mateix cardinal
+si i nom\'{e}s si s\'{o}n equipotents.
+
+\bigskip
+
+Si $U$ \'{e}s l'univers i considerem en $\mathcal{P}(U)$ la relaci\'{o} de
+equipot\`{e}ncia $\sim$ definida per%
+\begin{equation*}
+\begin{array}{ccc}
+A\sim B & \Longleftrightarrow & \#A=\#B\text{,}%
+\end{array}
+\end{equation*}
+\'{e}s immediat comprovar que $\sim$ \'{e}s una relaci\'{o} d'equival\`{e}%
+ncia en $\mathcal{P}(U)$ i cada classe es diu un \textbf{nombre cardinal}.
+En altres paraules, $n$ \'{e}s un nombre cardinal si existeix un conjunt $A$
+tal que $\#A=n$.
+
+\bigskip
+
+Aix\'{\i}, tots els conjunts equipotents a un conjunt unitari com, per
+exemple , $\left\{ \emptyset\right\} $, direm que tenen cardinal $1$, tots
+els conjunts equipotents a un parell com, per exemple, $\left\{ \emptyset
+,\left\{ \emptyset\right\} \right\} $ tenen cardinal $2$, i aix\'{\i}
+successivament. Admetem que el cardinal del conjunt buit \'{e}s $0$, \'{e}s
+a dir, $\#\emptyset=0$.
+
+\bigskip
+
+Intu\"{\i}tivament, \'{e}s clar que un conjunt finit no pot ser equipotent a
+un dels seus subconjunts propis. Tanmateix, aix\`{o} \'{e}s possible per a
+conjunts infinits. Per exemple, el conjunt dels nombres naturals $\mathbb{N}$
+\'{e}s equipotent amb el seg\"{u}ent subconjunt propi format pels parells:
+\begin{equation*}
+P=\left\{ 2n:n\in\mathbb{N}\right\}
+\end{equation*}
+ja que l'aplicaci\'{o}%
+\begin{equation*}
+\begin{array}{ccc}
+\mathbb{N} & \longrightarrow & P \\
+n & \longmapsto & 2n%
+\end{array}
+\end{equation*}
+\'{e}s bijectiva. Aquest fet justifica la seg\"{u}ent definici\'{o}.
+
+\bigskip
+
+Diem que un conjunt $A$ \'{e}s \textbf{infinit} si $A$ \'{e}s equipotent amb
+un subconjunt propi de $A$. Si un conjunt no \'{e}s infinit, llavors diem
+que \'{e}s \textbf{finit}. D'aquesta manera, per a dos conjunts finits $A$ i
+$B$, evidentment tenim que $A$ \'{e}s equipotent a $B$ si i nom\'{e}s si $A$
+i $B$ contenen el mateix nombre d'elements. Per als conjunts infinits, la
+idea "tenir el mateix nombre d'elements" \'{e}s vaga, mentre que la idea que
+$A$ sigui bijectable amb $B$ conserva la seva claredat.
+
+\bigskip
+
+Finalment, diem que un conjunt $A$ \'{e}s \textbf{infinit numerable} si $A$
+\'{e}s equipotent al conjunt dels nombres naturals $\mathbb{N}$, i diem
+simplement \textbf{numerable} si $A$ \'{e}s finit o infinit numerable.
+
+\subsubsection{Propietats per a conjunts finits}
+
+Les f\'{o}rmules m\'{e}s usuals (encara que no les \'{u}niques) que
+relacionen els cardinals i les operacions entre conjunts s\'{o}n:
+
+\begin{enumerate}
+\item $\#\left( A\cup B\right) =$ $\#A+$ $\#B-$ $\#\left( A\cap B\right) $
+
+\item $\#\left( A\cup B\cup C\right) =$ $\#A+$ $\#B+$ $\#B-$ $\#\left( A\cap
+B\right) -$ $\#\left( A\cap C\right) -$ $\#\left( B\cap C\right) +$ $%
+\#\left( A\cap B\cap C\right) $
+
+\item $\#\complement A=$ $\#U-\#A$
+
+\item $\#\left( A\times B\right) =\#A\cdot\#B$
+
+\item $\#\mathcal{P}(A)=2^{\#A}$
+\end{enumerate}
+
+Les demostracions d'aquestes propietats les trobar\`{a}s en els exercicis
+resolts.
+
+\begin{exem}
+A un examen de Matem\`{a}tiques i F\'{\i}sica han concorregut 100 alumnes.
+Sabent que F\'{\i}sica l'han aprovat 60 alumnes, Matem\`{a}tiques 48 i que
+el nombre d'alumnes que han aprovat totes dues assignatures ha estat 30,
+volem esbrinar el nombre d'alumnes que no han aprovat cap assignatura en
+aquest examen.
+\end{exem}
+
+\begin{solucio}
+Tenim els seg\"{u}ents conjunts: el conjunt $U$ d'alumnes que s'examinen, el
+conjunt $A$ d'alumnes que han aprovat F\'{\i}sica i el conjunt $B$ d'alumnes
+que han aprovat Matem\`{a}tiques. Per l'enunciat del problema, se sap que $%
+\#U=100$, $\#A=60$, $\#B=48$ i $\#A\cap B=30$. El conjunt d'alumnes que han
+aprovat alguna assignatura \'{e}s $A\cup B$ i el nombre d'elements d'aquest
+conjunt \'{e}s%
+\begin{align*}
+\#\left( A\cup B\right) & =\#A+\#B-\#\left( A\cap B\right) \\
+& =60+48-30 \\
+& =78
+\end{align*}
+Llavors, el nombre d'alumnes que no han aprovat cap assignatura \'{e}s $22$
+perqu\`{e} aquest nombre \'{e}s el cardinal del conjunt $\complement(A\cup B)
+$ i es compleix que%
+\begin{align*}
+\#\complement(A\cup B) & =\#U-\#\left( A\cup B\right) \\
+& =100-78 \\
+& =22\text{.}
+\end{align*}
+\end{solucio}
+
+\end{document}

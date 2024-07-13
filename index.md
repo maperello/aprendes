@@ -10,6 +10,7 @@ Material publicat per Miquel Àngel Perelló.
 4. Càlcul
 5. Combinatòria i Probabilitats
 6. Estadística
+7. Matemàtica Financera
 
 
 # Universitat

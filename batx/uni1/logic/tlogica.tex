@@ -1,0 +1,96 @@
+
+\documentclass[a4paper,12pt]{book}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{LastRevised=Sunday, June 30, 2024 17:48:02}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+
+\input{aprendes}
+\input{tcilatex}
+\renewcommand{\FRAME}[8]{
+\begin{center}
+\includegraphics[width=#2,height=#3]{img/#7}
+\end{center}}
+
+\begin{document}
+\pagecolor{fons!20}
+\title{{\color{apren}\textbf{\huge{Lògica, Raonament i Demostració}}}}
+\author{Miquel Àngel Perelló}
+\date{\today}
+
+\let\cleardoublepage\clearpage
+\maketitle
+\tableofcontents
+\frontmatter
+
+\let\cleardoublepage\clearpage
+
+\chapter*{Prefaci}
+
+\markboth{PREFACIO}{PREFACIO}Aquest document \'{e}s la primera part del
+llibre que t\'{e} com a objectiu donar les bases per una comprensi\'{o} m%
+\'{e}s rigorosa del desenvolupament de les Matem\`{a}tiques des d'un punt de
+vista molt elemental. T\'{e} quatre cap\'{\i}tols: El primer s'anomena
+"Teoria" i com hom pot imaginar s'hi exposen els conceptes i procediments
+que despr\'{e}s s'apliquen al segon cap\'{\i}tol anomenat "Pr\`{a}ctica". En
+aquest cap\'{\i}tol es mostren les resolucions d'una certa varietat
+d'exercicis representatius per la comprensi\'{o} del contingut tractat al
+primer. El tercer cap\'{\i}tol anomenat "Exercicis proposats" \'{e}s una
+llista d'exercicis per a completar l'aprenentatge i, finalment, el quart cap%
+\'{\i}tol, anomenat "Tests" s\'{o}n ex\`{a}mens per comprovar que els
+objectius s'han assolit amb \`{e}xit.
+
+\let\cleardoublepage\clearpage
+
+\chapter{Introducci\'{o}}
+
+En aquest document fem una breu introducci\'{o} a com es construeixen les
+demostracions a matem\`{a}tiques. Per portar a terme aquest objectiu comen%
+\c{c}arem aprenent d'una manera molt informal la l\`{o}gica proposicional i
+de predicats del llenguatge de les matem\`{a}tiques. Con\`{e}ixer aquesta l%
+\`{o}gica \'{e}s fonamental per comprendre el desenvolupament de les
+demostracions. Despr\'{e}s donarem els m\`{e}todes de demostraci\'{o} m\'{e}%
+s comuns a matem\`{a}tiques. Finalment, per posar en relleu el que s'ha
+explicat abans tractarem dues teories axiom\`{a}tiques. De fet a matem\`{a}%
+tiques \'{e}s com\'{u} definir una teoria pels seus axiomes. Un axioma \'{e}%
+s un enunciat matem\`{a}tic. Les propietats d'una teoria s\'{o}n els
+enunciats que es dedueixen l\`{o}gicament dels axiomes. Ara b\'{e}, cal fer
+una demostraci\'{o} d'aquest fet amb l'ajut dels m\`{e}todes que s'hauran
+tractat abans. En concret, introduirem la geometria euclidiana en el pla i
+l'aritm\`{e}tica dels nombres naturals. Dels seus axiomes deduirem alguns
+resultats dels quals donarem les seves demostracions.
+
+\let\cleardoublepage\clearpage
+
+\mainmatter
+
+\chapter{Teoria}
+
+\input{logica_teo}
+
+\chapter{Pràctica}
+
+\input{logica_pra}
+
+\chapter{Exercicis proposats}
+
+\input{logica_pro.tex}
+
+\chapter{Tests}
+
+\section{Lògica i raonament}
+
+\input{logica_exa1.tex}
+
+\section{Demostració}
+
+\input{logica_exa2.tex}
+
+\backmatter
+
+\backmatter
+
+\end{document}

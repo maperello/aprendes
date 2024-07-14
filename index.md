@@ -3,7 +3,7 @@ Material publicat per Miquel Àngel Perelló.
 # Batxillerat
 
 1. Conjunts i Demostracions
-      * [Lògica, Raonament i Demostració](/batx/uni1/logic/tlogica.pdf)
+      * Lògica, Raonament i Demostració
       * Conjunts, Relacions i Aplicacions
 2. Àlgebra
       * Els nombres naturals, enters i racionals

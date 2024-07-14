@@ -6,6 +6,11 @@ Material publicat per Miquel Àngel Perelló.
       * [Lògica, Raonament i Demostració](/batx/uni1/logic/tlogica.pdf)
       * Conjunts, Relacions i Aplicacions
 2. Àlgebra
+      * Els nombres naturals, enters i racionals
+      * Els nombres reals i complexes
+      * Algebraització i els polinomis
+      * Equacions i sistemes
+      * Inequacions, sistemes i programació lineal
 3. Geometria
 4. Càlcul
 5. Combinatòria i Probabilitats

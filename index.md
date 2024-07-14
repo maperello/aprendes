@@ -7,7 +7,7 @@ Material publicat per Miquel Àngel Perelló.
       * Conjunts, Relacions i Aplicacions
 2. Àlgebra
       * Els nombres naturals, enters i racionals
-      * Els nombres reals i complexes
+      * Els nombres reals i complexos
       * Algebraització i els polinomis
       * Equacions i sistemes
       * Inequacions, sistemes i programació lineal

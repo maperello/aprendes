@@ -3,7 +3,7 @@ Material publicat per Miquel Àngel Perelló.
 # Batxillerat
 
 1. Conjunts i Demostracions
-      * [Lògica, Raonament i Demostració](https://github.com/maperello/scorm-aprendes/blob/main/index.html)
+      * [Lògica, Raonament i Demostració](/batx/uni1/logic/tlogica.pdf)
       * [Conjunts, Relacions i Aplicacions](/batx/uni1/conjunts/tconjunts.pdf)
 2. Àlgebra
       * Els nombres naturals, enters i racionals

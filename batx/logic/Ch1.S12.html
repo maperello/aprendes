@@ -1,0 +1,1151 @@
+<!DOCTYPE html><html lang="ca">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració</title>
+<!--Generated on Sun Sep  7 20:03:08 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on 7 de setembre de 2025.-->
+<style>:root { --bml-ltx-font-size: 12; }</style>
+<link rel="stylesheet" href="LaTeXML.css" type="text/css">
+<link rel="stylesheet" href="ltx-book.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/style.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-table.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-search.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-bookdown.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-fontsettings.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.gitbook,plain.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.gitbook.css" type="text/css">
+<link rel="stylesheet" href="bmluser/colors.gitbook-plantilla.css" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
+<link rel="up" href="Ch1.html" title="Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="up up" href="index.html" title="Lògica, Raonament i Demostració">
+<link rel="start" href="index.html" title="Lògica, Raonament i Demostració">
+<link rel="prev" href="Ch1.S11.html" title="1.11 Definicions i la identitat ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="next" href="Ch1.S13.html" title="1.13 Teories axiomàtiques ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S1.html" title="1.1 Variables i constants ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S2.html" title="1.2 Proposicions i predicats ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S3.html" title="1.3 Connectives lògiques ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S4.html" title="1.4 Proposicions elementals i compostes ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S5.html" title="1.5 Formes proposicionals ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S6.html" title="1.6 Tautologies i contradiccions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S7.html" title="1.7 Implicació lògica ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S8.html" title="1.8 Equivalència lògica ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S9.html" title="1.9 Inferència lògica ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S10.html" title="1.10 Quantificadors ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S11.html" title="1.11 Definicions i la identitat ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S13.html" title="1.13 Teories axiomàtiques ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Chx1.html" title="Prefaci ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Chx2.html" title="Introducció ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch1.html" title="Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch2.html" title="Capítol 2 Pràctica ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch3.html" title="Capítol 3 Exercicis proposats ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch4.html" title="Capítol 4 Tests ‣ Lògica, Raonament i Demostració">
+</head>
+<body>
+<div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+<a href="#bml-main-content" tabindex="0" class="bml-skip-to-content">Skip to content.</a>
+<div class="book-summary"><nav class="ltx_page_navbar">
+<ul class="ltx_toclist summary">
+<li>
+<a href="index.html" title="" class="ltx_ref" rel="start">Lògica, Raonament i Demostració</a>
+</li>
+<li class="divider">
+<li data-level="" data-path="Chx1.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Chx1.html" title="In Lògica, Raonament i Demostració" class="ltx_ref">Prefaci</a></li>
+<li data-level="" data-path="Chx2.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Chx2.html" title="In Lògica, Raonament i Demostració" class="ltx_ref">Introducció</a></li>
+<li data-level="1" data-path="Ch1.html" class="ltx_tocentry ltx_tocentry_chapter  chapter ">
+<a href="Ch1.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1 </span></b>Teoria</a>
+<ol class="ltx_toclist ltx_toclist_chapter">
+<li data-level="1.1" data-path="Ch1.S1.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S1.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.1 </span></b>Variables i constants</a></li>
+<li data-level="1.2" data-path="Ch1.S2.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S2.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.2 </span></b>Proposicions i predicats</a></li>
+<li data-level="1.3" data-path="Ch1.S3.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S3.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.3 </span></b>Connectives lògiques</a></li>
+<li data-level="1.4" data-path="Ch1.S4.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S4.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.4 </span></b>Proposicions elementals i compostes</a></li>
+<li data-level="1.5" data-path="Ch1.S5.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S5.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.5 </span></b>Formes proposicionals</a></li>
+<li data-level="1.6" data-path="Ch1.S6.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S6.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.6 </span></b>Tautologies i contradiccions</a></li>
+<li data-level="1.7" data-path="Ch1.S7.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S7.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.7 </span></b>Implicació lògica</a></li>
+<li data-level="1.8" data-path="Ch1.S8.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S8.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.8 </span></b>Equivalència lògica</a></li>
+<li data-level="1.9" data-path="Ch1.S9.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S9.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.9 </span></b>Inferència lògica</a></li>
+<li data-level="1.10" data-path="Ch1.S10.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S10.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.10 </span></b>Quantificadors</a></li>
+<li data-level="1.11" data-path="Ch1.S11.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S11.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.11 </span></b>Definicions i la identitat</a></li>
+<li data-level="1.12" data-path="" class="ltx_tocentry ltx_tocentry_section ltx_ref_self  chapter active">
+<a href="" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.12 </span></b>Demostracions</a>
+<ol class="ltx_toclist ltx_toclist_section">
+<li data-level="1.12.1" data-path="" class="ltx_tocentry ltx_tocentry_subsection  chapter "><a href="#SS1" title="In 1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.12.1 </span></b>Demostracions directes</a></li>
+<li data-level="1.12.2" data-path="" class="ltx_tocentry ltx_tocentry_subsection  chapter "><a href="#SS2" title="In 1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.12.2 </span></b>Demostracions cap enrere</a></li>
+<li data-level="1.12.3" data-path="" class="ltx_tocentry ltx_tocentry_subsection  chapter "><a href="#SS3" title="In 1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.12.3 </span></b>Demostracions per contrarecíproc</a></li>
+<li data-level="1.12.4" data-path="" class="ltx_tocentry ltx_tocentry_subsection  chapter "><a href="#SS4" title="In 1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.12.4 </span></b>Demostracions reducció a l’absurd</a></li>
+<li data-level="1.12.5" data-path="" class="ltx_tocentry ltx_tocentry_subsection  chapter "><a href="#SS5" title="In 1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.12.5 </span></b>Demostracions per contraexemple</a></li>
+<li data-level="1.12.6" data-path="" class="ltx_tocentry ltx_tocentry_subsection  chapter "><a href="#SS6" title="In 1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.12.6 </span></b>Demostracions per casos</a></li>
+<li data-level="1.12.7" data-path="" class="ltx_tocentry ltx_tocentry_subsection  chapter "><a href="#SS7" title="In 1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.12.7 </span></b>Demostracions d’existència i unicitat</a></li>
+<li data-level="1.12.8" data-path="" class="ltx_tocentry ltx_tocentry_subsection  chapter "><a href="#SS8" title="In 1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.12.8 </span></b>Demostracions per inducció</a></li>
+</ol>
+</li>
+<li data-level="1.13" data-path="Ch1.S13.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S13.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.13 </span></b>Teories axiomàtiques</a></li>
+</ol>
+</li>
+<li data-level="2" data-path="Ch2.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch2.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">2 </span></b>Pràctica</a></li>
+<li data-level="3" data-path="Ch3.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch3.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">3 </span></b>Exercicis proposats</a></li>
+<li data-level="4" data-path="Ch4.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch4.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">4 </span></b>Tests</a></li>
+</ul>
+</nav></div>
+<div class="ltx_page_main book-body fixed">
+<div class="body-inner">
+<div class="book-header fixed" role="navigation"><h1></h1></div>
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="ltx_page_content page-inner" id="bml-main-content">
+<section class="ltx_section normal" lang="ca">
+<div class="section level1">
+
+<h1 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section header-section-number"><span class="ltx_text bml_color_FF4057">1.12</span></span> <span class="ltx_text bml_color_FF4057">Demostracions</span>
+</h1>
+
+<div id="p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Entrem a la secció més important d’aquest document que són les
+demostracions a matemàtiques. És important ser conscients de les
+raons per les quals hem fet fins ara una petita introducció a la lògica. N’hi ha tres raons de molt significatives:</p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<ol id="I1" class="ltx_enumerate">
+<li id="I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span><div id="I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">En primer lloc, les taules de veritat que hem estudiat ens indiquen
+els significats exactes de les paraules ‘i’, ‘o’, ‘no’, ‘si … llavors …’
+i ‘… si i només si …’. Per exemple, sempre que fem servir o llegim
+la construcció ‘Si …, llavors…’ en un context matemàtic, la lògica ens indica exactament què es vol dir.</p>
+</div>
+</li>
+<li id="I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span><div id="I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">En segon lloc, les regles d’inferència proporcionen un camí
+pel qual podem construir nova informació (proposicions) a partir
+d’informació coneguda.</p>
+</div>
+</li>
+<li id="I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span><div id="I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Finalment, les equivalències lògiques ens ajuden a canviar
+correctament certes proposicions en unes altres proposicions amb el mateix
+significat però molt més útils.</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="p3" class="ltx_para ltx_noindent">
+<p class="ltx_p">En resum, la lògica ens ajuda a entendre els significats dels enunciats
+i també a construir de nous. De fet és el llenguatge bàsic que
+ens permet escriure i comprendre bé els enunciats matemàtics. Però, malgrat el seu paper fonamental, el seu lloc queda en un segon pla.
+Els símbols <math id="p3.m1" class="ltx_Math" alttext="\wedge,\vee,\lnot,\longrightarrow,\longleftrightarrow,\forall" display="inline"><semantics><mrow><mo rspace="0em">∧</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">∨</mo><mo>,</mo><mo>¬</mo><mo>,</mo><mo lspace="0em" rspace="0em" stretchy="false">⟶</mo><mo>,</mo><mo lspace="0em" rspace="0em" stretchy="false">⟷</mo><mo>,</mo><mo>∀</mo></mrow><annotation encoding="application/x-tex">\wedge,\vee,\lnot,\longrightarrow,\longleftrightarrow,\forall</annotation></semantics></math> i <math id="p3.m2" class="ltx_Math" alttext="\exists" display="inline"><semantics><mo>∃</mo><annotation encoding="application/x-tex">\exists</annotation></semantics></math> poques vegades s’escriuen a la pissarra o en els
+llibres de text. Tot i això, hem de ser conscients dels seus significats
+constantment; quan llegim o escrivim una frase relacionada amb les matemàtiques, hem d’analitzar-la amb aquests símbols, sigui mentalment o
+sobre paper en brut, per tal d’entendre o comunicar bé el seu
+significat, que ha de ser sempre vertader i inequívoc.</p>
+</div>
+<div id="p4" class="ltx_para ltx_noindent">
+<br class="ltx_break">
+</div>
+<div id="p5" class="ltx_para ltx_noindent">
+<p class="ltx_p">A matemàtiques un raonament lògic és senzillament l’enunciat
+d’un teorema. La justificació que fa que un teorema sigui vàlid és la seva prova o demostració. Quan passem a la construcció de
+demostracions matemàtiques, ens centrem en el contingut matemàtic de
+les proposicions implicades en la prova i no ens referim explícitament
+a les regles d’inferència lògica discutides en les seccions
+anteriors; fer-ho seria una distracció de les qüestions matemàtiques. Tampoc utilitzem la notació lògica de les seccions
+anteriors. Tot i això, farem servir les regles d’inferència de
+manera implícita tot el temps, no oblidem que és el marc sobre el
+qual es basa tot.</p>
+</div>
+<div id="p6" class="ltx_para ltx_noindent">
+<p class="ltx_p">Sovint passa que la nostra intuïció ens indica el que és
+important, el què creiem que pot ser cert, el què hem de provar després i més coses. Desafortunadament, els objectes matemàtics solen
+ser tan complicats o abstractes que la nostra intuïció falla. Per
+això construïm demostracions, per verificar que una afirmació
+determinada que ens sembla intuïtivament certa és realment certa,
+només així podem avançar a matemàtiques. Finalment, afegir
+també que ens interessa aprendre a fer demostracions perquè ens
+ajuda a entendre les nocions o fets relacionats amb el resultat que es vol
+demostrar.</p>
+</div>
+<div id="p7" class="ltx_para ltx_noindent">
+<br class="ltx_break">
+</div>
+<div id="p8" class="ltx_para ltx_noindent">
+<p class="ltx_p">Quan es té l’enunciat d’un teorema, primer s’ha de comprendre el que
+significa, segon s’ha de saber escriure amb rigor (seguint el llenguatge de
+la lògica) i finalment, amb l’ajut d’altres nocions, proposicions o
+teoremes, s’ha d’explorar els possibles camins per portar a terme la seva
+demostració. Per construir la prova, el primer que cal fer és
+especificar en rigor el què se suposa que es compleix, que anomenem les
+<span class="ltx_text ltx_font_bold">hipòtesis, </span>i després el què s’intenta demostrar, que
+se’n diu <span class="ltx_text ltx_font_bold">tesi</span>. A continuació, s’ha d’escollir una estratègia per a la prova. La següent etapa és obtenir la prova, fent ús de l’estratègia escollida. Si no es pot idear una prova amb l’estratègia escollida, potser s’hauria d’intentar una altra. No hi ha una
+manera fixa de trobar la prova; sempre requereix experimentar, jugar i
+provar coses diferents. En els apartats següents tractarem les maneres més importants de fer demostracions.</p>
+</div>
+<section id="SS1" class="ltx_subsection normal">
+<div class="section level2">
+
+<h2 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection header-section-number"><span class="ltx_text bml_color_FF4057">1.12.1</span></span> <span class="ltx_text bml_color_FF4057">Demostracions directes</span>
+</h2>
+
+<div id="SS1.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Molts teoremes tenen la forma <math id="SS1.p1.m1" class="ltx_Math" alttext="A\Longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟹</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\Longrightarrow B</annotation></semantics></math>. El camí més
+senzill per provar <math id="SS1.p1.m2" class="ltx_Math" alttext="A\Longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟹</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\Longrightarrow B</annotation></semantics></math> és fer-ho directament: suposem
+que <math id="SS1.p1.m3" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> és vertadera i hem d’arribar a deduïr <math id="SS1.p1.m4" class="ltx_Math" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math> mitjançant
+una seqüència de passos que comença en <math id="SS1.p1.m5" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> i acaba en <math id="SS1.p1.m6" class="ltx_Math" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>.
+Aquest tipus de prova es diu <span class="ltx_text ltx_font_bold">prova directa</span> per distinguir-la
+d’altres mètodes de demostració.</p>
+</div>
+<div id="Ch1.Thmexemple11" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.11</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple11.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Reformuleu simbòlicament cadascun dels teoremes següents en la forma
+<math id="Ch1.Thmexemple11.p1.m1" class="ltx_Math" alttext="A\longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow B</annotation></semantics></math>.</p>
+</div>
+<div id="Ch1.Thmexemple11.p2" class="ltx_para">
+<ol id="I2" class="ltx_enumerate">
+<li id="I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span><div id="I2.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">L’àrea d’un cercle de radi <math id="I2.i1.p1.m1" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math> és <math id="I2.i1.p1.m2" class="ltx_Math" alttext="\pi r^{2}" display="inline"><semantics><mrow><mi>π</mi><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\pi r^{2}</annotation></semantics></math>.</p>
+</div>
+</li>
+<li id="I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span><div id="I2.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Donada una recta <math id="I2.i2.p1.m1" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math> i un punt <math id="I2.i2.p1.m2" class="ltx_Math" alttext="P" display="inline"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math> que no és de <math id="I2.i2.p1.m3" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>, hi ha
+exactament una recta <math id="I2.i2.p1.m4" class="ltx_Math" alttext="s" display="inline"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math> que passa pel punt <math id="I2.i2.p1.m5" class="ltx_Math" alttext="P" display="inline"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math> i és
+paral·lela a <math id="I2.i2.p1.m6" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>.</p>
+</div>
+</li>
+<li id="I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span><div id="I2.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">En tot triangle <math id="I2.i3.p1.m1" class="ltx_Math" alttext="ABC" display="inline"><semantics><mrow><mi>A</mi><mo>⁢</mo><mi>B</mi><mo>⁢</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">ABC</annotation></semantics></math>, els costats del qual són <math id="I2.i3.p1.m2" class="ltx_Math" alttext="a,b" display="inline"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math> i <math id="I2.i3.p1.m3" class="ltx_Math" alttext="c" display="inline"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>,
+llavors es compleix</p>
+<div id="Ex1" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex1.m1" class="ltx_Math" alttext="\frac{a}{\sin A}=\frac{b}{\sin B}=\frac{c}{\sin C}\text{.}" display="block"><semantics><mrow><mfrac><mi>a</mi><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></mfrac><mo>=</mo><mfrac><mi>b</mi><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>B</mi></mrow></mfrac><mo>=</mo><mrow><mfrac><mi>c</mi><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>C</mi></mrow></mfrac><mo>⁢</mo><mtext>.</mtext></mrow></mrow><annotation encoding="application/x-tex">\frac{a}{\sin A}=\frac{b}{\sin B}=\frac{c}{\sin C}\text{.}</annotation></semantics></math></span>
+</div>
+</div>
+</li>
+<li id="I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span><div id="I2.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I2.i4.p1.m1" class="ltx_Math" alttext="e^{x}\cdot e^{y}=e^{x+y}" display="inline"><semantics><mrow><mrow><msup><mi>e</mi><mi>x</mi></msup><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mi>e</mi><mi>y</mi></msup></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></msup></mrow><annotation encoding="application/x-tex">e^{x}\cdot e^{y}=e^{x+y}</annotation></semantics></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="SS1.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+(1) Si <math id="SS1.p2.m1" class="ltx_Math" alttext="C(r)=" display="inline"><semantics><mrow><mrow><mi>C</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">C(r)=</annotation></semantics></math>“<math id="SS1.p2.m2" class="ltx_Math" alttext="C" display="inline"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math> és un cercle del pla de radi <math id="SS1.p2.m3" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>” i <math id="SS1.p2.m4" class="ltx_Math" alttext="A(x)=" display="inline"><semantics><mrow><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">A(x)=</annotation></semantics></math>“ àrea de la figura <math id="SS1.p2.m5" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>”, aleshores es té <math id="SS1.p2.m6" class="ltx_Math" alttext="\forall r\left(C(r)\longrightarrow A(C(r))=\pi r^{2}\right)" display="inline"><semantics><mrow><mo rspace="0.167em">∀</mo><mrow><mi>r</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>C</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">⟶</mo><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>C</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>π</mi><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup></mrow></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\forall r\left(C(r)\longrightarrow A(C(r))=\pi r^{2}\right)</annotation></semantics></math>. De fet, si <math id="SS1.p2.m7" class="ltx_Math" alttext="r&gt;0" display="inline"><semantics><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r&gt;0</annotation></semantics></math>, aleshores <math id="SS1.p2.m8" class="ltx_Math" alttext="C(r)=\left\{\left(x,y\right)\in\mathbb{R}^{2}:x^{2}+y^{2}=r^{2}\right\}\," display="inline"><semantics><mrow><mrow><mi>C</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mrow><mo>(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>)</mo></mrow><mo>∈</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mo>}</mo></mrow></mrow><annotation encoding="application/x-tex">C(r)=\left\{\left(x,y\right)\in\mathbb{R}^{2}:x^{2}+y^{2}=r^{2}\right\}\,</annotation></semantics></math>.</p>
+</div>
+<div id="SS1.p3" class="ltx_para ltx_noindent">
+<p class="ltx_p">(2) Si <math id="SS1.p3.m1" class="ltx_Math" alttext="R(x)=" display="inline"><semantics><mrow><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">R(x)=</annotation></semantics></math>“és una recta del pla”, <math id="SS1.p3.m2" class="ltx_Math" alttext="P(x)=" display="inline"><semantics><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">P(x)=</annotation></semantics></math>“és un punt del pla” i <math id="SS1.p3.m3" class="ltx_Math" alttext="x\parallel y=" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>∥</mo><mi>y</mi></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">x\parallel y=</annotation></semantics></math>“x és paral·lel a
+y”, aleshores</p>
+<div id="Ex2" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex2.m1" class="ltx_Math" alttext="\forall x,y\left(R(x)\wedge P(y)\longrightarrow\exists z\left(R(z)\wedge y\in z%
+\wedge z\parallel x\right)\right)" display="block"><semantics><mrow><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow><mo>,</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>z</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mi>y</mi></mrow><mo>∈</mo><mrow><mi>z</mi><mo>∧</mo><mrow><mi>z</mi><mo>∥</mo><mi>x</mi></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\forall x,y\left(R(x)\wedge P(y)\longrightarrow\exists z\left(R(z)\wedge y\in z%
+\wedge z\parallel x\right)\right)</annotation></semantics></math></span>
+</div>
+</div>
+<div id="SS1.p4" class="ltx_para ltx_noindent">
+<p class="ltx_p">(3) Si <math id="SS1.p4.m1" class="ltx_Math" alttext="T(x,y,z)=" display="inline"><semantics><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">T(x,y,z)=</annotation></semantics></math>“<math id="SS1.p4.m2" class="ltx_Math" alttext="T" display="inline"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math> és un triangle del pla de costats
+<math id="SS1.p4.m3" class="ltx_Math" alttext="x,y,z" display="inline"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">x,y,z</annotation></semantics></math>” i <math id="SS1.p4.m4" class="ltx_Math" alttext="A(x)=" display="inline"><semantics><mrow><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">A(x)=</annotation></semantics></math>“angle oposat al costat
+<math id="SS1.p4.m5" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> del triangle <math id="SS1.p4.m6" class="ltx_Math" alttext="T" display="inline"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>”. Aleshores</p>
+<div id="Ex3" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex3.m1" class="ltx_Math" alttext="\forall x,y,z\left(T(x,y,z)\longrightarrow\frac{x}{\sin A(x)}=\frac{y}{\sin A(%
+y)}=\frac{z}{\sin A(z)}\right)\text{.}" display="block"><semantics><mrow><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow><mo>,</mo><mi>y</mi><mo>,</mo><mrow><mi>z</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">⟶</mo><mfrac><mi>x</mi><mrow><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>=</mo><mfrac><mi>y</mi><mrow><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>=</mo><mfrac><mi>z</mi><mrow><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow><mo>)</mo></mrow><mo>⁢</mo><mtext>.</mtext></mrow></mrow><annotation encoding="application/x-tex">\forall x,y,z\left(T(x,y,z)\longrightarrow\frac{x}{\sin A(x)}=\frac{y}{\sin A(%
+y)}=\frac{z}{\sin A(z)}\right)\text{.}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">De fet, <math id="SS1.p4.m7" class="ltx_Math" alttext="T(x,y,z)=\left\{(x,y,z)\in\mathbb{R}^{3}:x\leq y+z\right\}" display="inline"><semantics><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>x</mi><mo>≤</mo><mrow><mi>y</mi><mo>+</mo><mi>z</mi></mrow></mrow><mo>}</mo></mrow></mrow><annotation encoding="application/x-tex">T(x,y,z)=\left\{(x,y,z)\in\mathbb{R}^{3}:x\leq y+z\right\}</annotation></semantics></math>.</p>
+</div>
+<div id="SS1.p5" class="ltx_para ltx_noindent">
+<p class="ltx_p">(4) <math id="SS1.p5.m1" class="ltx_Math" alttext="\forall x,y\left(x,y\in\mathbb{R}\longrightarrow e^{x}\cdot e^{y}=e^{x+y}\right)" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow><mo>,</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><mi>ℝ</mi><mo stretchy="false">⟶</mo><mrow><msup><mi>e</mi><mi>x</mi></msup><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mi>e</mi><mi>y</mi></msup></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow></msup></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\forall x,y\left(x,y\in\mathbb{R}\longrightarrow e^{x}\cdot e^{y}=e^{x+y}\right)</annotation></semantics></math>.
+  <math id="SS1.p5.m2" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+<div id="Ch1.Thmexemple12" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.12</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple12.p1" class="ltx_para">
+<p class="ltx_p">Considerem tres nombres enters qualssevol <math id="Ch1.Thmexemple12.p1.m1" class="ltx_Math" alttext="a,b" display="inline"><semantics><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a,b</annotation></semantics></math> i <math id="Ch1.Thmexemple12.p1.m2" class="ltx_Math" alttext="c" display="inline"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>. Si <math id="Ch1.Thmexemple12.p1.m3" class="ltx_Math" alttext="a" display="inline"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math> divideix <math id="Ch1.Thmexemple12.p1.m4" class="ltx_Math" alttext="b" display="inline"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math> i
+<math id="Ch1.Thmexemple12.p1.m5" class="ltx_Math" alttext="b" display="inline"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math> divideix <math id="Ch1.Thmexemple12.p1.m6" class="ltx_Math" alttext="c" display="inline"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>, prova que <math id="Ch1.Thmexemple12.p1.m7" class="ltx_Math" alttext="a" display="inline"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math> divideix <math id="Ch1.Thmexemple12.p1.m8" class="ltx_Math" alttext="c" display="inline"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>.</p>
+</div>
+</div>
+<div id="SS1.p6" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+Primer observem que a l’enunciat hi apareix un predicat "<math id="SS1.p6.m1" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> divideix <math id="SS1.p6.m2" class="ltx_Math" alttext="y" display="inline"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>",
+que simbolitzem per <math id="SS1.p6.m3" class="ltx_Math" alttext="x\mid y" display="inline"><semantics><mrow><mi>x</mi><mo>∣</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x\mid y</annotation></semantics></math>. La seva definició és: <math id="SS1.p6.m4" class="ltx_Math" alttext="x\mid y" display="inline"><semantics><mrow><mi>x</mi><mo>∣</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x\mid y</annotation></semantics></math> sii
+(abreujatura de "si i només si") existeix <math id="SS1.p6.m5" class="ltx_Math" alttext="k\in\mathbb{Z}" display="inline"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">k\in\mathbb{Z}</annotation></semantics></math> tal que <math id="SS1.p6.m6" class="ltx_Math" alttext="kx=y" display="inline"><semantics><mrow><mrow><mi>k</mi><mo>⁢</mo><mi>x</mi></mrow><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">kx=y</annotation></semantics></math>. Ara hem d’escollir una estrategia per la prova. En aquest cas escollim la
+prova directa: suposem que <math id="SS1.p6.m7" class="ltx_Math" alttext="a\mid b" display="inline"><semantics><mrow><mi>a</mi><mo>∣</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a\mid b</annotation></semantics></math> i <math id="SS1.p6.m8" class="ltx_Math" alttext="b\mid c" display="inline"><semantics><mrow><mi>b</mi><mo>∣</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">b\mid c</annotation></semantics></math> (hipotèsis) i tenim que
+veure que <math id="SS1.p6.m9" class="ltx_Math" alttext="a\mid c" display="inline"><semantics><mrow><mi>a</mi><mo>∣</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a\mid c</annotation></semantics></math> (tesi).</p>
+</div>
+<div id="SS1.p7" class="ltx_para ltx_noindent">
+<p class="ltx_p">Si <math id="SS1.p7.m1" class="ltx_Math" alttext="a\mid b" display="inline"><semantics><mrow><mi>a</mi><mo>∣</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a\mid b</annotation></semantics></math> i <math id="SS1.p7.m2" class="ltx_Math" alttext="b\mid c" display="inline"><semantics><mrow><mi>b</mi><mo>∣</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">b\mid c</annotation></semantics></math>, llavors existeixen <math id="SS1.p7.m3" class="ltx_Math" alttext="k_{1},k_{2}\in\mathbb{Z}" display="inline"><semantics><mrow><mrow><msub><mi>k</mi><mn>1</mn></msub><mo>,</mo><msub><mi>k</mi><mn>2</mn></msub></mrow><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">k_{1},k_{2}\in\mathbb{Z}</annotation></semantics></math> tals
+que <math id="SS1.p7.m4" class="ltx_Math" alttext="k_{1}a=b" display="inline"><semantics><mrow><mrow><msub><mi>k</mi><mn>1</mn></msub><mo>⁢</mo><mi>a</mi></mrow><mo>=</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">k_{1}a=b</annotation></semantics></math> i <math id="SS1.p7.m5" class="ltx_Math" alttext="k_{2}b=c" display="inline"><semantics><mrow><mrow><msub><mi>k</mi><mn>2</mn></msub><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">k_{2}b=c</annotation></semantics></math>. D’aquí, per substitució es té: <math id="SS1.p7.m6" class="ltx_Math" alttext="k_{2}\left(k_{1}a\right)=\left(k_{1}k_{2}\right)a=c" display="inline"><semantics><mrow><mrow><msub><mi>k</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo>(</mo><mrow><msub><mi>k</mi><mn>1</mn></msub><mo>⁢</mo><mi>a</mi></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo>(</mo><mrow><msub><mi>k</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>k</mi><mn>2</mn></msub></mrow><mo>)</mo></mrow><mo>⁢</mo><mi>a</mi></mrow><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">k_{2}\left(k_{1}a\right)=\left(k_{1}k_{2}\right)a=c</annotation></semantics></math>. Per tant, existeix
+<math id="SS1.p7.m7" class="ltx_Math" alttext="k=k_{1}k_{2}\in\mathbb{Z}" display="inline"><semantics><mrow><mi>k</mi><mo>=</mo><mrow><msub><mi>k</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>k</mi><mn>2</mn></msub></mrow><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">k=k_{1}k_{2}\in\mathbb{Z}</annotation></semantics></math> tal que <math id="SS1.p7.m8" class="ltx_Math" alttext="ka=c" display="inline"><semantics><mrow><mrow><mi>k</mi><mo>⁢</mo><mi>a</mi></mrow><mo>=</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">ka=c</annotation></semantics></math> i, com a conseqüència, <math id="SS1.p7.m9" class="ltx_Math" alttext="a\mid c" display="inline"><semantics><mrow><mi>a</mi><mo>∣</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a\mid c</annotation></semantics></math>.
+  <math id="SS1.p7.m10" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+<div id="Ch1.Thmexemple13" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.13</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple13.p1" class="ltx_para">
+<p class="ltx_p">Provar que per a qualssevol nombres positius <math id="Ch1.Thmexemple13.p1.m1" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> i <math id="Ch1.Thmexemple13.p1.m2" class="ltx_Math" alttext="y" display="inline"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> es compleix que la
+mitja aritmètica és més gran que la mitja geomètrica.</p>
+</div>
+</div>
+<div id="SS1.p8" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+Primer observem que a l’enunciat hi apareixen dos conceptes: mitja aritmètica i geomètrica de dos nombres positius. La mitja aritmètica i geomètrica de <math id="SS1.p8.m1" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> i <math id="SS1.p8.m2" class="ltx_Math" alttext="y" display="inline"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> són respectivament: <math id="SS1.p8.m3" class="ltx_Math" alttext="\sqrt{xy}" display="inline"><semantics><msqrt><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></msqrt><annotation encoding="application/x-tex">\sqrt{xy}</annotation></semantics></math> i <math id="SS1.p8.m4" class="ltx_Math" alttext="\dfrac{x+y}{2}" display="inline"><semantics><mstyle displaystyle="true"><mfrac><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mn>2</mn></mfrac></mstyle><annotation encoding="application/x-tex">\dfrac{x+y}{2}</annotation></semantics></math>. Escollim una prova directa: com hipòtesi suposem <math id="SS1.p8.m5" class="ltx_Math" alttext="x,y\geq 0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x,y\geq 0</annotation></semantics></math>, tenim
+que veure <math id="SS1.p8.m6" class="ltx_Math" alttext="\sqrt{xy}\leq\dfrac{x+y}{2}" display="inline"><semantics><mrow><msqrt><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></msqrt><mo>≤</mo><mstyle displaystyle="true"><mfrac><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\sqrt{xy}\leq\dfrac{x+y}{2}</annotation></semantics></math> (tesi).</p>
+</div>
+<div id="SS1.p9" class="ltx_para ltx_noindent">
+<p class="ltx_p">Si <math id="SS1.p9.m1" class="ltx_Math" alttext="x,y\geq 0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x,y\geq 0</annotation></semantics></math> aleshores <math id="SS1.p9.m2" class="ltx_Math" alttext="\sqrt{x}" display="inline"><semantics><msqrt><mi>x</mi></msqrt><annotation encoding="application/x-tex">\sqrt{x}</annotation></semantics></math> i <math id="SS1.p9.m3" class="ltx_Math" alttext="\sqrt{y}" display="inline"><semantics><msqrt><mi>y</mi></msqrt><annotation encoding="application/x-tex">\sqrt{y}</annotation></semantics></math> existeixen. És evident
+que <math id="SS1.p9.m4" class="ltx_Math" alttext="(\sqrt{x}-\sqrt{y})^{2}\geq 0" display="inline"><semantics><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msqrt><mi>x</mi></msqrt><mo>−</mo><msqrt><mi>y</mi></msqrt></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(\sqrt{x}-\sqrt{y})^{2}\geq 0</annotation></semantics></math>. Desemvolupant aquesta última expressió i passant l’arrel quadrada a l’altre costat de la desigualtat, es té</p>
+<table id="Ch4.S3.EGx2" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex4.m1" class="ltx_Math" alttext="\displaystyle x-2\sqrt{xy}+y" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msqrt><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></msqrt></mrow></mrow><mo>+</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">\displaystyle x-2\sqrt{xy}+y</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex4.m2" class="ltx_Math" alttext="\displaystyle\geq 0" display="inline"><semantics><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\displaystyle\geq 0</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex5.m1" class="ltx_Math" alttext="\displaystyle x+y" display="inline"><semantics><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">\displaystyle x+y</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex5.m2" class="ltx_Math" alttext="\displaystyle\geq 2\sqrt{xy}" display="inline"><semantics><mrow><mi></mi><mo>≥</mo><mrow><mn>2</mn><mo>⁢</mo><msqrt><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></msqrt></mrow></mrow><annotation encoding="application/x-tex">\displaystyle\geq 2\sqrt{xy}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Finalment, dividind tots dos costats per <math id="SS1.p9.m5" class="ltx_Math" alttext="2" display="inline"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math>, es té el resultat que
+voliem:</p>
+<div id="Ex6" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex6.m1" class="ltx_Math" alttext="\frac{x+y}{2}\geq\sqrt{xy}\text{.}" display="block"><semantics><mrow><mfrac><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mn>2</mn></mfrac><mo>≥</mo><mrow><msqrt><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></msqrt><mo>⁢</mo><mtext>.</mtext></mrow></mrow><annotation encoding="application/x-tex">\frac{x+y}{2}\geq\sqrt{xy}\text{.}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p"><math id="SS1.p9.m6" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+</div>
+</section>
+<section id="SS2" class="ltx_subsection normal">
+<div class="section level2">
+
+<h2 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection header-section-number"><span class="ltx_text bml_color_FF4057">1.12.2</span></span> <span class="ltx_text bml_color_FF4057">Demostracions cap enrere</span>
+</h2>
+
+<div id="SS2.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Un altre mètode de construir una demostració és treballant
+mentalment des de la tesi cap a les hipòtesis. Es diu <span class="ltx_text ltx_font_bold">prova
+pensada cap enrere</span> per distingir-la de les demés. Tot i això, la
+prova finalment es construeix de forma directa. Mirem-ho construïnt la
+prova cap enrere de la següent proposició:</p>
+</div>
+<div id="Ch1.Thmexemple14" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.14</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple14.p1" class="ltx_para">
+<p class="ltx_p">Provar que per a qualssevol nombres reals <math id="Ch1.Thmexemple14.p1.m1" class="ltx_Math" alttext="x,y" display="inline"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math> i <math id="Ch1.Thmexemple14.p1.m2" class="ltx_Math" alttext="x&lt;y" display="inline"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x&lt;y</annotation></semantics></math>, es té que <math id="Ch1.Thmexemple14.p1.m3" class="ltx_Math" alttext="4xy&lt;(x+y)^{2}" display="inline"><semantics><mrow><mrow><mn>4</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>&lt;</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">4xy&lt;(x+y)^{2}</annotation></semantics></math>.</p>
+</div>
+</div>
+<div id="SS2.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+L’hipòtesi és <math id="SS2.p2.m1" class="ltx_Math" alttext="x,y\in\mathbb{R}" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">x,y\in\mathbb{R}</annotation></semantics></math> i <math id="SS2.p2.m2" class="ltx_Math" alttext="x&lt;y" display="inline"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x&lt;y</annotation></semantics></math>, i la tesi, <math id="SS2.p2.m3" class="ltx_Math" alttext="4xy&lt;(x+y)^{2}" display="inline"><semantics><mrow><mrow><mn>4</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>&lt;</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">4xy&lt;(x+y)^{2}</annotation></semantics></math>. La prova cap enrere surt de la tesi, i, per tant, podem fer es següent:</p>
+<table id="Ch4.S3.EGx3" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex7.m1" class="ltx_Math" alttext="\displaystyle 4xy" display="inline"><semantics><mrow><mn>4</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">\displaystyle 4xy</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex7.m2" class="ltx_Math" alttext="\displaystyle&lt;(x+y)^{2}" display="inline"><semantics><mrow><mi></mi><mo>&lt;</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\displaystyle&lt;(x+y)^{2}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex8.m1" class="ltx_Math" alttext="\displaystyle 4xy" display="inline"><semantics><mrow><mn>4</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">\displaystyle 4xy</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex8.m2" class="ltx_Math" alttext="\displaystyle&lt;x^{2}+2xy+y^{2}" display="inline"><semantics><mrow><mi></mi><mo>&lt;</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow><annotation encoding="application/x-tex">\displaystyle&lt;x^{2}+2xy+y^{2}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex9"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex9.m1" class="ltx_Math" alttext="\displaystyle 0" display="inline"><semantics><mn>0</mn><annotation encoding="application/x-tex">\displaystyle 0</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex9.m2" class="ltx_Math" alttext="\displaystyle&lt;x^{2}-2xy+y^{2}" display="inline"><semantics><mrow><mi></mi><mo>&lt;</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow><annotation encoding="application/x-tex">\displaystyle&lt;x^{2}-2xy+y^{2}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex10"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex10.m1" class="ltx_Math" alttext="\displaystyle 0" display="inline"><semantics><mn>0</mn><annotation encoding="application/x-tex">\displaystyle 0</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex10.m2" class="ltx_Math" alttext="\displaystyle&lt;(x-y)^{2}" display="inline"><semantics><mrow><mi></mi><mo>&lt;</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\displaystyle&lt;(x-y)^{2}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">De la última desigüaltat, s’obté <math id="SS2.p2.m4" class="ltx_Math" alttext="x-y\neq 0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x-y\neq 0</annotation></semantics></math> i, per tant, <math id="SS2.p2.m5" class="ltx_Math" alttext="x\neq y" display="inline"><semantics><mrow><mi>x</mi><mo>≠</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x\neq y</annotation></semantics></math>. En particular, <math id="SS2.p2.m6" class="ltx_Math" alttext="x&lt;y" display="inline"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x&lt;y</annotation></semantics></math>. De fet, això que hem escrit s’havia d’haver
+pensat mentalment perquè la demostració real és una prova
+directa: Si <math id="SS2.p2.m7" class="ltx_Math" alttext="x&lt;y" display="inline"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x&lt;y</annotation></semantics></math>, llavors <math id="SS2.p2.m8" class="ltx_Math" alttext="x\neq y" display="inline"><semantics><mrow><mi>x</mi><mo>≠</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x\neq y</annotation></semantics></math> i, per tant, <math id="SS2.p2.m9" class="ltx_Math" alttext="x-y\neq 0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x-y\neq 0</annotation></semantics></math>. D’aquí,
+es té <math id="SS2.p2.m10" class="ltx_Math" alttext="(x-y)^{2}&gt;0" display="inline"><semantics><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">(x-y)^{2}&gt;0</annotation></semantics></math> i, per tant, <math id="SS2.p2.m11" class="ltx_Math" alttext="x^{2}-2xy+y^{2}&gt;0" display="inline"><semantics><mrow><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x^{2}-2xy+y^{2}&gt;0</annotation></semantics></math>. Sumant a tots dos
+costats <math id="SS2.p2.m12" class="ltx_Math" alttext="4xy" display="inline"><semantics><mrow><mn>4</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">4xy</annotation></semantics></math> es té: <math id="SS2.p2.m13" class="ltx_Math" alttext="x^{2}+2xy+y^{2}&gt;4xy" display="inline"><semantics><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>&gt;</mo><mrow><mn>4</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><annotation encoding="application/x-tex">x^{2}+2xy+y^{2}&gt;4xy</annotation></semantics></math> i, per tant, <math id="SS2.p2.m14" class="ltx_Math" alttext="(x+y)^{2}&gt;4xy" display="inline"><semantics><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>&gt;</mo><mrow><mn>4</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><annotation encoding="application/x-tex">(x+y)^{2}&gt;4xy</annotation></semantics></math>,
+com voliem demostrar.
+  <math id="SS2.p2.m15" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+</div>
+</section>
+<section id="SS3" class="ltx_subsection normal">
+<div class="section level2">
+
+<h2 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection header-section-number"><span class="ltx_text bml_color_FF4057">1.12.3</span></span> <span class="ltx_text bml_color_FF4057">Demostracions per contrarecíproc</span>
+</h2>
+
+<div id="SS3.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Recordem que el contrarecíproc de <math id="SS3.p1.m1" class="ltx_Math" alttext="A\longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow B</annotation></semantics></math> és <math id="SS3.p1.m2" class="ltx_Math" alttext="\lnot B\longrightarrow\lnot A" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">¬</mo><mi>A</mi></mrow></mrow><annotation encoding="application/x-tex">\lnot B\longrightarrow\lnot A</annotation></semantics></math>, i també l’equivalència lògica <math id="SS3.p1.m3" class="ltx_Math" alttext="\left(A\longrightarrow B\right)\Longleftrightarrow\left(\lnot B\longrightarrow%
+\lnot A\right)" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><mo>)</mo></mrow><mo stretchy="false">⟺</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">¬</mo><mi>A</mi></mrow></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(A\longrightarrow B\right)\Longleftrightarrow\left(\lnot B\longrightarrow%
+\lnot A\right)</annotation></semantics></math>, anomenada llei del contrarecíproc. Per això, si
+volem provar <math id="SS3.p1.m4" class="ltx_Math" alttext="A\longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow B</annotation></semantics></math>, podem fer-ho de manera equivalent, construïnt una prova directa de <math id="SS3.p1.m5" class="ltx_Math" alttext="\lnot B\longrightarrow\lnot A" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">¬</mo><mi>A</mi></mrow></mrow><annotation encoding="application/x-tex">\lnot B\longrightarrow\lnot A</annotation></semantics></math>. L’estratègia és doncs pendre com hipòtesi que <math id="SS3.p1.m6" class="ltx_Math" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math> és falsa i hem
+d’arribar a que <math id="SS3.p1.m7" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> és també falsa (tesi). Aquest tipus de demostració es diu <span class="ltx_text ltx_font_bold">prova per contrarecíproc</span>. Veiem-ho amb un exemple:</p>
+</div>
+<div id="Ch1.Thmexemple15" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.15</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple15.p1" class="ltx_para">
+<p class="ltx_p">Provar que per a qualsevol nombre enter <math id="Ch1.Thmexemple15.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>, si <math id="Ch1.Thmexemple15.p1.m2" class="ltx_Math" alttext="n^{2}" display="inline"><semantics><msup><mi>n</mi><mn>2</mn></msup><annotation encoding="application/x-tex">n^{2}</annotation></semantics></math> és
+parell, llavors <math id="Ch1.Thmexemple15.p1.m3" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és parell.</p>
+</div>
+</div>
+<div id="SS3.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+Volem constuir una prova per contrarecíproc. Aleshores, les hipòtesis són que <math id="SS3.p2.m1" class="ltx_Math" alttext="n\in\mathbb{Z}" display="inline"><semantics><mrow><mi>n</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">n\in\mathbb{Z}</annotation></semantics></math> i <math id="SS3.p2.m2" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> no és parell. La tesi és
+que <math id="SS3.p2.m3" class="ltx_Math" alttext="n^{2}" display="inline"><semantics><msup><mi>n</mi><mn>2</mn></msup><annotation encoding="application/x-tex">n^{2}</annotation></semantics></math> no és parell. Si <math id="SS3.p2.m4" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> no és parell, <math id="SS3.p2.m5" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és senar i,
+per tant, existeix <math id="SS3.p2.m6" class="ltx_Math" alttext="k\in\mathbb{Z}" display="inline"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">k\in\mathbb{Z}</annotation></semantics></math> i <math id="SS3.p2.m7" class="ltx_Math" alttext="n=2k+1" display="inline"><semantics><mrow><mi>n</mi><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>k</mi></mrow><mo>+</mo><mn>1</mn></mrow></mrow><annotation encoding="application/x-tex">n=2k+1</annotation></semantics></math>. Hem de veure que <math id="SS3.p2.m8" class="ltx_Math" alttext="n^{2}" display="inline"><semantics><msup><mi>n</mi><mn>2</mn></msup><annotation encoding="application/x-tex">n^{2}</annotation></semantics></math> també és senar. En efecte, com <math id="SS3.p2.m9" class="ltx_Math" alttext="n=2k+1" display="inline"><semantics><mrow><mi>n</mi><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>k</mi></mrow><mo>+</mo><mn>1</mn></mrow></mrow><annotation encoding="application/x-tex">n=2k+1</annotation></semantics></math>, aleshores <math id="SS3.p2.m10" class="ltx_Math" alttext="n^{2}=\left(2k+1\right)^{2}=4k^{2}+4k+1=2\left(2k^{2}+2k\right)+1" display="inline"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>=</mo><msup><mrow><mo>(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>k</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo>)</mo></mrow><mn>2</mn></msup><mo>=</mo><mrow><mrow><mn>4</mn><mo>⁢</mo><msup><mi>k</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><mi>k</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>k</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>k</mi></mrow></mrow><mo>)</mo></mrow></mrow><mo>+</mo><mn>1</mn></mrow></mrow><annotation encoding="application/x-tex">n^{2}=\left(2k+1\right)^{2}=4k^{2}+4k+1=2\left(2k^{2}+2k\right)+1</annotation></semantics></math> i com <math id="SS3.p2.m11" class="ltx_Math" alttext="2k^{2}+2k\in\mathbb{Z}" display="inline"><semantics><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>k</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>k</mi></mrow></mrow><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">2k^{2}+2k\in\mathbb{Z}</annotation></semantics></math>, s’obté que <math id="SS3.p2.m12" class="ltx_Math" alttext="n^{2}" display="inline"><semantics><msup><mi>n</mi><mn>2</mn></msup><annotation encoding="application/x-tex">n^{2}</annotation></semantics></math> és senar, com voliem demostrar.
+  <math id="SS3.p2.m13" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+</div>
+</section>
+<section id="SS4" class="ltx_subsection normal">
+<div class="section level2">
+
+<h2 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection header-section-number"><span class="ltx_text bml_color_FF4057">1.12.4</span></span> <span class="ltx_text bml_color_FF4057">Demostracions reducció a l’absurd</span>
+</h2>
+
+<div id="SS4.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">El principi del tercer exclòs permet afirmar que una proposició o es
+vertadera o bé falsa. Aquest principi és la base del següent mètode de demostració. En concret, si volem demostrar que una
+proposició <math id="SS4.p1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> és certa, aquest mètode proposar suposar el
+contrari, o sigui que <math id="SS4.p1.m2" class="ltx_Math" alttext="\lnot p" display="inline"><semantics><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">\lnot p</annotation></semantics></math> és certa, i llavors per regles d’inferència hem d’arribar a una contradicció com per exemple <math id="SS4.p1.m3" class="ltx_Math" alttext="q\wedge\lnot q" display="inline"><semantics><mrow><mi>q</mi><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mi>q</mi></mrow></mrow><annotation encoding="application/x-tex">q\wedge\lnot q</annotation></semantics></math>, on <math id="SS4.p1.m4" class="ltx_Math" alttext="q" display="inline"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math> és una proposició qualsevol, per poder concluir que la
+suposició que <math id="SS4.p1.m5" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> és falsa no és possible i, en conseqüència, <math id="SS4.p1.m6" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> és certa.</p>
+</div>
+<div id="SS4.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p">A matemàtiques els teoremes tenen la forma <math id="SS4.p2.m1" class="ltx_Math" alttext="A\longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow B</annotation></semantics></math> i, per
+tant, hem d’adaptar el raonament anterior a aquest cas. Recordem l’equivalència lògica <math id="SS4.p2.m2" class="ltx_Math" alttext="\lnot\left(A\longrightarrow B\right)\Longleftrightarrow A\wedge\lnot B" display="inline"><semantics><mrow><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><mo>)</mo></mrow></mrow><mo stretchy="false">⟺</mo><mrow><mi>A</mi><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(A\longrightarrow B\right)\Longleftrightarrow A\wedge\lnot B</annotation></semantics></math>. Per tant, si volem construir una
+demostració de <math id="SS4.p2.m3" class="ltx_Math" alttext="A\longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow B</annotation></semantics></math>, hem de suposar que <math id="SS4.p2.m4" class="ltx_Math" alttext="\lnot\left(A\longrightarrow B\right)" display="inline"><semantics><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(A\longrightarrow B\right)</annotation></semantics></math> és certa. Això és equivalent a
+suposar que <math id="SS4.p2.m5" class="ltx_Math" alttext="A\wedge\lnot B" display="inline"><semantics><mrow><mi>A</mi><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow></mrow><annotation encoding="application/x-tex">A\wedge\lnot B</annotation></semantics></math> és certa, o sigui que <math id="SS4.p2.m6" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> és certa i <math id="SS4.p2.m7" class="ltx_Math" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>
+és falsa i d’aquí hem de provar que s’arriba a una contradicció. Una vegada s’ha arribat a la contradicció, concluïm que <math id="SS4.p2.m8" class="ltx_Math" alttext="A\wedge\lnot B" display="inline"><semantics><mrow><mi>A</mi><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow></mrow><annotation encoding="application/x-tex">A\wedge\lnot B</annotation></semantics></math> és falsa i, per tant, <math id="SS4.p2.m9" class="ltx_Math" alttext="A\longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow B</annotation></semantics></math> és
+vertadera.</p>
+</div>
+<div id="SS4.p3" class="ltx_para ltx_noindent">
+<p class="ltx_p">Aquest mètode de demostració es coneix com a <span class="ltx_text ltx_font_bold">prova per
+reducció a l’absurd</span>. L’hipòtesi és <math id="SS4.p3.m1" class="ltx_Math" alttext="A\wedge\lnot B" display="inline"><semantics><mrow><mi>A</mi><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow></mrow><annotation encoding="application/x-tex">A\wedge\lnot B</annotation></semantics></math> i la tesi
+és una contradicció o absurd.</p>
+</div>
+<div id="Ch1.Thmexemple16" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.16</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple16.p1" class="ltx_para">
+<p class="ltx_p">Volem provar que <math id="Ch1.Thmexemple16.p1.m1" class="ltx_Math" alttext="\sqrt{2}" display="inline"><semantics><msqrt><mn>2</mn></msqrt><annotation encoding="application/x-tex">\sqrt{2}</annotation></semantics></math> és un nombre irracional.</p>
+</div>
+</div>
+<div id="SS4.p4" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+En primer lloc observem que l’enunciat no és un condicional. Però,
+recordem la definició de un nombre racional diferent de zero: <math id="SS4.p4.m1" class="ltx_Math" alttext="a\neq 0" display="inline"><semantics><mrow><mi>a</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a\neq 0</annotation></semantics></math>
+és racional sii existeixen enters no nuls <math id="SS4.p4.m2" class="ltx_Math" alttext="m,n" display="inline"><semantics><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m,n</annotation></semantics></math> tals que <math id="SS4.p4.m3" class="ltx_Math" alttext="a=\dfrac{m}{n}" display="inline"><semantics><mrow><mi>a</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mi>m</mi><mi>n</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">a=\dfrac{m}{n}</annotation></semantics></math>. Llavors, podem reformular l’enunciat com volem. En efecte, l’enunciat "<math id="SS4.p4.m4" class="ltx_Math" alttext="\sqrt{2}" display="inline"><semantics><msqrt><mn>2</mn></msqrt><annotation encoding="application/x-tex">\sqrt{2}</annotation></semantics></math> és un nombre irracional"és equivalent a la proposició
+següent escrita simbòlicament</p>
+<div id="Ex11" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex11.m1" class="ltx_Math" alttext="\left(\forall m,n\in\mathbb{Z}\right)\left(n\neq 0\wedge m\neq 0\wedge\frac{m}%
+{n}\neq\sqrt{2}\right)." display="block"><semantics><mrow><mrow><mrow><mo>(</mo><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>m</mi></mrow><mo>,</mo><mi>n</mi></mrow><mo>∈</mo><mi>ℤ</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>n</mi><mo>≠</mo><mrow><mn>0</mn><mo>∧</mo><mi>m</mi></mrow><mo>≠</mo><mrow><mn>0</mn><mo>∧</mo><mfrac><mi>m</mi><mi>n</mi></mfrac></mrow><mo>≠</mo><msqrt><mn>2</mn></msqrt></mrow><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow><annotation encoding="application/x-tex">\left(\forall m,n\in\mathbb{Z}\right)\left(n\neq 0\wedge m\neq 0\wedge\frac{m}%
+{n}\neq\sqrt{2}\right).</annotation></semantics></math></span>
+</div>
+</div>
+<div id="SS4.p5" class="ltx_para ltx_noindent">
+<p class="ltx_p">Per demostrar aquesta proposició universal, considerem dos nombre enters
+no nuls <math id="SS4.p5.m1" class="ltx_Math" alttext="m,n" display="inline"><semantics><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">m,n</annotation></semantics></math>. Hem demostrar que no és possible que <math id="SS4.p5.m2" class="ltx_Math" alttext="\dfrac{m}{n}=\sqrt{2}" display="inline"><semantics><mrow><mstyle displaystyle="true"><mfrac><mi>m</mi><mi>n</mi></mfrac></mstyle><mo>=</mo><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">\dfrac{m}{n}=\sqrt{2}</annotation></semantics></math>. L’estratègia serà fer la prova per reducció a l’absurd:
+suposem <math id="SS4.p5.m3" class="ltx_Math" alttext="m" display="inline"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> i <math id="SS4.p5.m4" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> són enters no nuls i que <math id="SS4.p5.m5" class="ltx_Math" alttext="\dfrac{m}{n}=\sqrt{2}" display="inline"><semantics><mrow><mstyle displaystyle="true"><mfrac><mi>m</mi><mi>n</mi></mfrac></mstyle><mo>=</mo><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">\dfrac{m}{n}=\sqrt{2}</annotation></semantics></math> (hipòtesi), hem de trobar un contradicció (tesi). No és restrictiu
+suposar que la fracció <math id="SS4.p5.m6" class="ltx_Math" alttext="\dfrac{m}{n}" display="inline"><semantics><mstyle displaystyle="true"><mfrac><mi>m</mi><mi>n</mi></mfrac></mstyle><annotation encoding="application/x-tex">\dfrac{m}{n}</annotation></semantics></math> és irreductible; cas contrari,
+escriuríem la fracció irreductible equivalent. Si <math id="SS4.p5.m7" class="ltx_Math" alttext="\dfrac{m}{n}=\sqrt{2}" display="inline"><semantics><mrow><mstyle displaystyle="true"><mfrac><mi>m</mi><mi>n</mi></mfrac></mstyle><mo>=</mo><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">\dfrac{m}{n}=\sqrt{2}</annotation></semantics></math>, aleshores <math id="SS4.p5.m8" class="ltx_Math" alttext="m=\sqrt{2}n" display="inline"><semantics><mrow><mi>m</mi><mo>=</mo><mrow><msqrt><mn>2</mn></msqrt><mo>⁢</mo><mi>n</mi></mrow></mrow><annotation encoding="application/x-tex">m=\sqrt{2}n</annotation></semantics></math> i, per tant, <math id="SS4.p5.m9" class="ltx_Math" alttext="m^{2}=2n^{2}" display="inline"><semantics><mrow><msup><mi>m</mi><mn>2</mn></msup><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>n</mi><mn>2</mn></msup></mrow></mrow><annotation encoding="application/x-tex">m^{2}=2n^{2}</annotation></semantics></math>. D’aquí,
+deduïm que <math id="SS4.p5.m10" class="ltx_Math" alttext="m^{2}" display="inline"><semantics><msup><mi>m</mi><mn>2</mn></msup><annotation encoding="application/x-tex">m^{2}</annotation></semantics></math> és un enter parell. Llavors <math id="SS4.p5.m11" class="ltx_Math" alttext="m" display="inline"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> és parell
+com hem provat en l’exemple <a href="#Ch1.Thmexemple15" title="Exemple 1.15. ‣ 1.12.3 Demostracions per contrarecíproc ‣ 1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.15</span></a>. Llavors, <math id="SS4.p5.m12" class="ltx_Math" alttext="m=2k" display="inline"><semantics><mrow><mi>m</mi><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mi>k</mi></mrow></mrow><annotation encoding="application/x-tex">m=2k</annotation></semantics></math>, on <math id="SS4.p5.m13" class="ltx_Math" alttext="k\in\mathbb{Z}" display="inline"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">k\in\mathbb{Z}</annotation></semantics></math>.
+D’aquí, <math id="SS4.p5.m14" class="ltx_Math" alttext="m^{2}=4k^{2}=2n^{2}" display="inline"><semantics><mrow><msup><mi>m</mi><mn>2</mn></msup><mo>=</mo><mrow><mn>4</mn><mo>⁢</mo><msup><mi>k</mi><mn>2</mn></msup></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>n</mi><mn>2</mn></msup></mrow></mrow><annotation encoding="application/x-tex">m^{2}=4k^{2}=2n^{2}</annotation></semantics></math> i, per tant, <math id="SS4.p5.m15" class="ltx_Math" alttext="n^{2}=2k^{2}" display="inline"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>k</mi><mn>2</mn></msup></mrow></mrow><annotation encoding="application/x-tex">n^{2}=2k^{2}</annotation></semantics></math>. Deduïm
+que <math id="SS4.p5.m16" class="ltx_Math" alttext="n^{2}" display="inline"><semantics><msup><mi>n</mi><mn>2</mn></msup><annotation encoding="application/x-tex">n^{2}</annotation></semantics></math> és parell i, per tant, <math id="SS4.p5.m17" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> també. Però, això
+és una contradicció perquè aleshores la fracció <math id="SS4.p5.m18" class="ltx_Math" alttext="\dfrac{m}{n}" display="inline"><semantics><mstyle displaystyle="true"><mfrac><mi>m</mi><mi>n</mi></mfrac></mstyle><annotation encoding="application/x-tex">\dfrac{m}{n}</annotation></semantics></math> és reductible. En conseqüència, no és possible que <math id="SS4.p5.m19" class="ltx_Math" alttext="\dfrac{m}{n}=\sqrt{2}" display="inline"><semantics><mrow><mstyle displaystyle="true"><mfrac><mi>m</mi><mi>n</mi></mfrac></mstyle><mo>=</mo><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">\dfrac{m}{n}=\sqrt{2}</annotation></semantics></math>, i, com <math id="SS4.p5.m20" class="ltx_Math" alttext="m" display="inline"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> i <math id="SS4.p5.m21" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> son arbitraris, <math id="SS4.p5.m22" class="ltx_Math" alttext="\sqrt{2}" display="inline"><semantics><msqrt><mn>2</mn></msqrt><annotation encoding="application/x-tex">\sqrt{2}</annotation></semantics></math> no és
+racional.</p>
+</div>
+<div id="SS4.p6" class="ltx_para ltx_noindent">
+<p class="ltx_p">Aquí volem fer èmfasi en el fet següent: Hem pogut reformular
+l’enunciat pensant lògicament i això a part d’entendre millor
+l’enunciat ens ha permès fer una demostració per reducció a
+l’absurd.
+  <math id="SS4.p6.m1" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+<div id="Ch1.Thmexemple17" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.17</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple17.p1" class="ltx_para">
+<p class="ltx_p">Volem provar que no existeix cap nombre real <math id="Ch1.Thmexemple17.p1.m1" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> tal que <math id="Ch1.Thmexemple17.p1.m2" class="ltx_Math" alttext="x^{2}+1=0" display="inline"><semantics><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x^{2}+1=0</annotation></semantics></math>.</p>
+</div>
+</div>
+<div id="SS4.p7" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+Primer, escribim simbòlicament l’enunciat: <math id="SS4.p7.m1" class="ltx_Math" alttext="\lnot\left(\exists x\in\mathbb{R}\right)\left(x^{2}+1=0\right)" display="inline"><semantics><mrow><mo>¬</mo><mrow><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">∃</mo><mi>x</mi></mrow><mo>∈</mo><mi>ℝ</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo>=</mo><mn>0</mn></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(\exists x\in\mathbb{R}\right)\left(x^{2}+1=0\right)</annotation></semantics></math>. Veiem que és la negació
+d’una proposició existencial. Fent ús de la següent equivalència lògica</p>
+<div id="Ex12" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex12.m1" class="ltx_Math" alttext="\lnot\left(\exists x\in\mathbb{R}\right)\left(x^{2}+1=0\right)%
+\Longleftrightarrow\left(\forall x\in\mathbb{R}\right)\left(x^{2}+1\neq 0%
+\right)\text{,}" display="block"><semantics><mrow><mrow><mo>¬</mo><mrow><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">∃</mo><mi>x</mi></mrow><mo>∈</mo><mi>ℝ</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo>=</mo><mn>0</mn></mrow><mo>)</mo></mrow></mrow></mrow><mo stretchy="false">⟺</mo><mrow><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow><mo>∈</mo><mi>ℝ</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo>≠</mo><mn>0</mn></mrow><mo>)</mo></mrow><mo>⁢</mo><mtext>,</mtext></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(\exists x\in\mathbb{R}\right)\left(x^{2}+1=0\right)%
+\Longleftrightarrow\left(\forall x\in\mathbb{R}\right)\left(x^{2}+1\neq 0%
+\right)\text{,}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">i de la regla d’inferència IQU:</p>
+<div id="Ex13" class="ltx_equation ltx_eqn_div">
+<span>
+<table class="ltx_tabular ltx_markedasmath ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ex13.m1.m1" class="ltx_Math" alttext="P(b)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(b)</annotation></semantics></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ex13.m1.m2" class="ltx_Math" alttext="\left(\forall x\in U\right)P(x)" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow><mo>∈</mo><mi>U</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\forall x\in U\right)P(x)</annotation></semantics></math></td>
+</tr>
+</table>
+<span class="ltx_text ltx_font_italic">  </span><span class="ltx_text ltx_markedasmath">,</span></span>
+</div>
+<p class="ltx_p">llavors només cal provar que prenent un nombre real qualsevol <math id="SS4.p7.m2" class="ltx_Math" alttext="b" display="inline"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>, es
+compleix que <math id="SS4.p7.m3" class="ltx_Math" alttext="b^{2}+1\neq 0" display="inline"><semantics><mrow><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b^{2}+1\neq 0</annotation></semantics></math>. Però, això és immediat perquè <math id="SS4.p7.m4" class="ltx_Math" alttext="b^{2}\geq 0" display="inline"><semantics><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b^{2}\geq 0</annotation></semantics></math> i, per tant, <math id="SS4.p7.m5" class="ltx_Math" alttext="b^{2}+1\geq 1" display="inline"><semantics><mrow><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">b^{2}+1\geq 1</annotation></semantics></math>; en particular, <math id="SS4.p7.m6" class="ltx_Math" alttext="b^{2}+1\neq 0" display="inline"><semantics><mrow><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b^{2}+1\neq 0</annotation></semantics></math>.
+  <math id="SS4.p7.m7" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+</div>
+</section>
+<section id="SS5" class="ltx_subsection normal">
+<div class="section level2">
+
+<h2 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection header-section-number"><span class="ltx_text bml_color_FF4057">1.12.5</span></span> <span class="ltx_text bml_color_FF4057">Demostracions per contraexemple</span>
+</h2>
+
+<div id="SS5.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">A matemàtiques també trobem enunciats amb quantificadors que
+rebutjant propietats. Però, de fet rebutjar una propietat enunciada per
+una proposició ‘<math id="SS5.p1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>’ és el mateix que provar ‘<math id="SS5.p1.m2" class="ltx_Math" alttext="\lnot p" display="inline"><semantics><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">\lnot p</annotation></semantics></math>’. Per
+exemple, per demostrar que no és el cas que <math id="SS5.p1.m3" class="ltx_Math" alttext="\left(\forall x\in U\right)P(x)" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow><mo>∈</mo><mi>U</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\forall x\in U\right)P(x)</annotation></semantics></math>, primer cal pensar en la següent equivalència lògica:</p>
+<div id="Ex14" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex14.m1" class="ltx_Math" alttext="\lnot\left(\forall x\in U,P(x)\right)\Longleftrightarrow\exists x\in U,\lnot P%
+\left(x\right)" display="block"><semantics><mrow><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow><mo>∈</mo><mrow><mi>U</mi><mo>,</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>)</mo></mrow></mrow><mo stretchy="false">⟺</mo><mrow><mrow><mo rspace="0.167em">∃</mo><mi>x</mi></mrow><mo>∈</mo><mrow><mi>U</mi><mo>,</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo>(</mo><mi>x</mi><mo>)</mo></mrow></mrow></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(\forall x\in U,P(x)\right)\Longleftrightarrow\exists x\in U,\lnot P%
+\left(x\right)</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">i després recordar la regla d’inferencia IQE:</p>
+<div id="Ex15" class="ltx_equation ltx_eqn_div">
+<span>
+<table class="ltx_tabular ltx_markedasmath ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ex15.m1.m1" class="ltx_Math" alttext="\lnot P(d)" display="inline"><semantics><mrow><mo rspace="0.167em">¬</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\lnot P(d)</annotation></semantics></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ex15.m1.m2" class="ltx_Math" alttext="\left(\exists x\in U\right)\lnot P(x)" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">∃</mo><mi>x</mi></mrow><mo>∈</mo><mi>U</mi></mrow><mo>)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">\left(\exists x\in U\right)\lnot P(x)</annotation></semantics></math></td>
+</tr>
+</table>
+<span class="ltx_text ltx_markedasmath">.</span></span>
+</div>
+<p class="ltx_p">Llavors, només cal trobar un exemple pel qual <math id="SS5.p1.m4" class="ltx_Math" alttext="P(x)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(x)</annotation></semantics></math> és fals.
+Aquesta manera de fer la demostració és coneix com <span class="ltx_text ltx_font_bold">prova per
+contraexemple</span>.</p>
+</div>
+<div id="Ch1.Thmexemple18" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.18</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple18.p1" class="ltx_para">
+<p class="ltx_p">Volem provar que no és veritat que la suma de dos nombres irracionals
+és irracional.</p>
+</div>
+</div>
+<div id="SS5.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+Per buscar una estratègia, primer haurem de reformular l’enunciat lògicament: si <math id="SS5.p2.m1" class="ltx_Math" alttext="\mathbb{I}=\mathbb{R}\smallsetminus\mathbb{Q}" display="inline"><semantics><mrow><mi>𝕀</mi><mo>=</mo><mrow><mi>ℝ</mi><mo>∖</mo><mi>ℚ</mi></mrow></mrow><annotation encoding="application/x-tex">\mathbb{I}=\mathbb{R}\smallsetminus\mathbb{Q}</annotation></semantics></math> és el
+conjunt dels nombres irracionals, aleshores</p>
+<div id="Ex16" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex16.m1" class="ltx_Math" alttext="\lnot\left(\forall x,y\in\mathbb{I}\right)\left(x+y\in\mathbb{I}\right)" display="block"><semantics><mrow><mo>¬</mo><mrow><mrow><mo>(</mo><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><mi>𝕀</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo>∈</mo><mi>𝕀</mi></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(\forall x,y\in\mathbb{I}\right)\left(x+y\in\mathbb{I}\right)</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">Hem vist que aquest enunciat és equivalent al següent:</p>
+<div id="Ex17" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex17.m1" class="ltx_Math" alttext="\left(\exists x,y\in\mathbb{I}\right)\left(x+y\notin\mathbb{I}\right)" display="block"><semantics><mrow><mrow><mo>(</mo><mrow><mrow><mrow><mo rspace="0.167em">∃</mo><mi>x</mi></mrow><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><mi>𝕀</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo>∉</mo><mi>𝕀</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\exists x,y\in\mathbb{I}\right)\left(x+y\notin\mathbb{I}\right)</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">Per tant, per demostrar l’enunciat només cal trobar dos nombres
+irracionals la suma dels quals no és irracional.
+  <math id="SS5.p2.m2" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+</div>
+</section>
+<section id="SS6" class="ltx_subsection normal">
+<div class="section level2">
+
+<h2 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection header-section-number"><span class="ltx_text bml_color_FF4057">1.12.6</span></span> <span class="ltx_text bml_color_FF4057">Demostracions per casos</span>
+</h2>
+
+<div id="SS6.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">A vegades trobem enunciats que són de la forma <math id="SS6.p1.m1" class="ltx_Math" alttext="\left(C\vee D\right)\longrightarrow B" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mi>C</mi><mo>∨</mo><mi>D</mi></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">\left(C\vee D\right)\longrightarrow B</annotation></semantics></math>, és a dir, que inclouen una disjunció en
+l’antecedent. En aquests casos, la següent equivalència</p>
+<div id="Ex18" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex18.m1" class="ltx_Math" alttext="\left(C\vee D\right)\longrightarrow B\Longleftrightarrow\left(C\longrightarrow
+B%
+\right)\wedge\left(D\longrightarrow B\right)\text{,}" display="block"><semantics><mrow><mrow><mrow><mo>(</mo><mrow><mi>C</mi><mo>∨</mo><mi>D</mi></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mi>B</mi></mrow><mo stretchy="false">⟺</mo><mrow><mrow><mo>(</mo><mrow><mi>C</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><mo>)</mo></mrow><mo>∧</mo><mrow><mrow><mo>(</mo><mrow><mi>D</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mtext>,</mtext></mrow></mrow></mrow><annotation encoding="application/x-tex">\left(C\vee D\right)\longrightarrow B\Longleftrightarrow\left(C\longrightarrow
+B%
+\right)\wedge\left(D\longrightarrow B\right)\text{,}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">proporciona l’estratègia que hem de seguir. En efecte, per demostrar que
+<math id="SS6.p1.m2" class="ltx_Math" alttext="\left(C\vee D\right)\longrightarrow B" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mi>C</mi><mo>∨</mo><mi>D</mi></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">\left(C\vee D\right)\longrightarrow B</annotation></semantics></math> és certa és suficient
+demostrar que <math id="SS6.p1.m3" class="ltx_Math" alttext="C\longrightarrow B" display="inline"><semantics><mrow><mi>C</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">C\longrightarrow B</annotation></semantics></math> i <math id="SS6.p1.m4" class="ltx_Math" alttext="D\longrightarrow B" display="inline"><semantics><mrow><mi>D</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">D\longrightarrow B</annotation></semantics></math> són ambdues
+certes. De fet, la demostració la construïm per casos (en aquest
+cas, n’hi ha dos casos) segons la forma que tingui l’antecedent. La
+demostració de cadascun dels casos seguirà l’estratègia que faci
+falta. Aquest mètode de demostració es coneix com <span class="ltx_text ltx_font_bold">prova per
+casos</span>.</p>
+</div>
+<div id="Ch1.Thmexemple19" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.19</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple19.p1" class="ltx_para">
+<p class="ltx_p">Volem provar que si <math id="Ch1.Thmexemple19.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és un nombre enter, llavors <math id="Ch1.Thmexemple19.p1.m2" class="ltx_Math" alttext="n^{2}+n" display="inline"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n^{2}+n</annotation></semantics></math> és
+parell.</p>
+</div>
+</div>
+<div id="SS6.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+Sabem que tot nombre enter <math id="SS6.p2.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és o parell o bé senar. Aquesta idea
+proporciona l’estratègia de la demostració: construïr una prova
+per casos. Volem provar que (1) si <math id="SS6.p2.m2" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és parell, aleshores <math id="SS6.p2.m3" class="ltx_Math" alttext="n^{2}+n" display="inline"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n^{2}+n</annotation></semantics></math>
+és parell, i (2) si <math id="SS6.p2.m4" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és senar, aleshores <math id="SS6.p2.m5" class="ltx_Math" alttext="n^{2}+n" display="inline"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n^{2}+n</annotation></semantics></math> és senar.</p>
+</div>
+<div id="SS6.p3" class="ltx_para ltx_noindent">
+<dl id="I3" class="ltx_description">
+<dt id="I3.ix1" class="ltx_item"><span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">Cas 1:</span></span></dt>
+<dd class="ltx_item">
+<div id="I3.ix1.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Si <math id="I3.ix1.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és parell, llavors per definició existeix <math id="I3.ix1.p1.m2" class="ltx_Math" alttext="k\in\mathbb{Z}" display="inline"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">k\in\mathbb{Z}</annotation></semantics></math> tal que <math id="I3.ix1.p1.m3" class="ltx_Math" alttext="n=2k" display="inline"><semantics><mrow><mi>n</mi><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mi>k</mi></mrow></mrow><annotation encoding="application/x-tex">n=2k</annotation></semantics></math>. Aleshores es té:</p>
+<div id="Ex19" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex19.m1" class="ltx_Math" alttext="n^{2}+n=4k^{2}+2k=2\left(2k^{2}+k\right)\text{,}" display="block"><semantics><mrow><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>n</mi></mrow><mo>=</mo><mrow><mrow><mn>4</mn><mo>⁢</mo><msup><mi>k</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>k</mi></mrow></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>k</mi><mn>2</mn></msup></mrow><mo>+</mo><mi>k</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mtext>,</mtext></mrow></mrow><annotation encoding="application/x-tex">n^{2}+n=4k^{2}+2k=2\left(2k^{2}+k\right)\text{,}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">i, per tant, <math id="I3.ix1.p1.m4" class="ltx_Math" alttext="n^{2}+n" display="inline"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n^{2}+n</annotation></semantics></math> és parell perquè <math id="I3.ix1.p1.m5" class="ltx_Math" alttext="2k^{2}+k\in\mathbb{Z}" display="inline"><semantics><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>k</mi><mn>2</mn></msup></mrow><mo>+</mo><mi>k</mi></mrow><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">2k^{2}+k\in\mathbb{Z}</annotation></semantics></math>.</p>
+</div>
+</dd>
+<dt id="I3.ix2" class="ltx_item"><span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">Cas 2:</span></span></dt>
+<dd class="ltx_item">
+<div id="I3.ix2.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Si <math id="I3.ix2.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és senar, llavors per definició existeix <math id="I3.ix2.p1.m2" class="ltx_Math" alttext="m\in\mathbb{Z}" display="inline"><semantics><mrow><mi>m</mi><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">m\in\mathbb{Z}</annotation></semantics></math> tal que <math id="I3.ix2.p1.m3" class="ltx_Math" alttext="n=2m+1" display="inline"><semantics><mrow><mi>n</mi><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>m</mi></mrow><mo>+</mo><mn>1</mn></mrow></mrow><annotation encoding="application/x-tex">n=2m+1</annotation></semantics></math>. Aleshores es té:</p>
+<table id="Ch4.S3.EGx4" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex20"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex20.m1" class="ltx_Math" alttext="\displaystyle n^{2}+n" display="inline"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\displaystyle n^{2}+n</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex20.m2" class="ltx_Math" alttext="\displaystyle=\left(2m+1\right)^{2}+2m+1" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><msup><mrow><mo>(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>m</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>m</mi></mrow><mo>+</mo><mn>1</mn></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=\left(2m+1\right)^{2}+2m+1</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex21"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex21.m1" class="ltx_Math" alttext="\displaystyle=4m^{2}+6m+2=2\left(2m^{2}+3m+1\right)\text{,}" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><mrow><mn>4</mn><mo>⁢</mo><msup><mi>m</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>6</mn><mo>⁢</mo><mi>m</mi></mrow><mo>+</mo><mn>2</mn></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>m</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>m</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo>)</mo></mrow><mo>⁢</mo><mtext>,</mtext></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=4m^{2}+6m+2=2\left(2m^{2}+3m+1\right)\text{,}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">i, per tant, <math id="I3.ix2.p1.m4" class="ltx_Math" alttext="n^{2}+n" display="inline"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">n^{2}+n</annotation></semantics></math> és parell perquè <math id="I3.ix2.p1.m5" class="ltx_Math" alttext="2m^{2}+3m+1\in\mathbb{Z}" display="inline"><semantics><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>m</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>m</mi></mrow><mo>+</mo><mn>1</mn></mrow><mo>∈</mo><mi>ℤ</mi></mrow><annotation encoding="application/x-tex">2m^{2}+3m+1\in\mathbb{Z}</annotation></semantics></math>.</p>
+</div>
+</dd>
+</dl>
+<p class="ltx_p"><math id="SS6.p3.m1" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+<div id="SS6.p4" class="ltx_para ltx_noindent">
+<br class="ltx_break">
+</div>
+<div id="SS6.p5" class="ltx_para ltx_noindent">
+<p class="ltx_p">Ara passem als teoremes de la forma <math id="SS6.p5.m1" class="ltx_Math" alttext="A\longrightarrow\left(C\vee D\right)" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mrow><mo>(</mo><mrow><mi>C</mi><mo>∨</mo><mi>D</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">A\longrightarrow\left(C\vee D\right)</annotation></semantics></math>
+on hi trobem una disjuntiva en el conseqüent. Una estratègia per a
+fer la demostració és fent ús primer de la llei del contrarecíproc i després una de les lleis de De Morgan:</p>
+<table id="Ch4.S3.EGx5" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex22"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex22.m1" class="ltx_Math" alttext="\displaystyle A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">\displaystyle A</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex22.m2" class="ltx_Math" alttext="\displaystyle\longrightarrow\left(C\vee D\right)\Longleftrightarrow\lnot\left(%
+C\vee D\right)\longrightarrow\lnot A" display="inline"><semantics><mrow><mrow><mi></mi><mo stretchy="false">⟶</mo><mrow><mo>(</mo><mrow><mi>C</mi><mo>∨</mo><mi>D</mi></mrow><mo>)</mo></mrow></mrow><mo stretchy="false">⟺</mo><mrow><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mi>C</mi><mo>∨</mo><mi>D</mi></mrow><mo>)</mo></mrow></mrow><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">¬</mo><mi>A</mi></mrow></mrow></mrow><annotation encoding="application/x-tex">\displaystyle\longrightarrow\left(C\vee D\right)\Longleftrightarrow\lnot\left(%
+C\vee D\right)\longrightarrow\lnot A</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex23"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex23.m1" class="ltx_Math" alttext="\displaystyle\Longleftrightarrow\left(\lnot C\wedge\lnot D\right)%
+\longrightarrow\lnot A" display="inline"><semantics><mrow><mi></mi><mo stretchy="false">⟺</mo><mrow><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>C</mi></mrow><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mi>D</mi></mrow></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">¬</mo><mi>A</mi></mrow></mrow></mrow><annotation encoding="application/x-tex">\displaystyle\Longleftrightarrow\left(\lnot C\wedge\lnot D\right)%
+\longrightarrow\lnot A</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">A partir d’aquí, construïm la prova directa o per reducció al
+absurd. Veiem-ho en un exemple.</p>
+</div>
+<div id="Ch1.Thmexemple20" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.20</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple20.p1" class="ltx_para">
+<p class="ltx_p">Considerem dos nombres reals <math id="Ch1.Thmexemple20.p1.m1" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> i <math id="Ch1.Thmexemple20.p1.m2" class="ltx_Math" alttext="y" display="inline"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math>. Volem provar que si <math id="Ch1.Thmexemple20.p1.m3" class="ltx_Math" alttext="xy" display="inline"><semantics><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">xy</annotation></semantics></math> és
+irracional, llavors <math id="Ch1.Thmexemple20.p1.m4" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> o <math id="Ch1.Thmexemple20.p1.m5" class="ltx_Math" alttext="y" display="inline"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> és irracional.</p>
+</div>
+</div>
+<div id="SS6.p6" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+Segons el que hem vist anteriorment, aquest enunciat és equivalent al següent: Si <math id="SS6.p6.m1" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> és racional i <math id="SS6.p6.m2" class="ltx_Math" alttext="y" display="inline"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> també ho és, llavors <math id="SS6.p6.m3" class="ltx_Math" alttext="xy" display="inline"><semantics><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">xy</annotation></semantics></math>
+és racional. Però això és evident perquè sabem que la
+multiplicació és una operación interna del cos dels racionals.
+  <math id="SS6.p6.m4" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+<div id="SS6.p7" class="ltx_para ltx_noindent">
+<br class="ltx_break">
+</div>
+<div id="SS6.p8" class="ltx_para ltx_noindent">
+<p class="ltx_p">Després d’haver discutit sobre l’aparició de la connectiva <math id="SS6.p8.m1" class="ltx_Math" alttext="\vee" display="inline"><semantics><mo>∨</mo><annotation encoding="application/x-tex">\vee</annotation></semantics></math>,
+anem ara a tractar els casos quan aprareix la connectiva <math id="SS6.p8.m2" class="ltx_Math" alttext="\wedge" display="inline"><semantics><mo>∧</mo><annotation encoding="application/x-tex">\wedge</annotation></semantics></math> en els
+teoremes de la forma <math id="SS6.p8.m3" class="ltx_Math" alttext="A\longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow B</annotation></semantics></math>. Per demostar un enunciat de la
+forma <math id="SS6.p8.m4" class="ltx_Math" alttext="A\longrightarrow\left(C\wedge D\right)" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mrow><mo>(</mo><mrow><mi>C</mi><mo>∧</mo><mi>D</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">A\longrightarrow\left(C\wedge D\right)</annotation></semantics></math> fem ús de l’equivalència següent:</p>
+<div id="Ex24" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex24.m1" class="ltx_Math" alttext="A\longrightarrow\left(C\wedge D\right)\Longleftrightarrow\left(A%
+\longrightarrow C\right)\wedge\left(A\longrightarrow D\right)" display="block"><semantics><mrow><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mrow><mo>(</mo><mrow><mi>C</mi><mo>∧</mo><mi>D</mi></mrow><mo>)</mo></mrow></mrow><mo stretchy="false">⟺</mo><mrow><mrow><mo>(</mo><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>C</mi></mrow><mo>)</mo></mrow><mo>∧</mo><mrow><mo>(</mo><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>D</mi></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">A\longrightarrow\left(C\wedge D\right)\Longleftrightarrow\left(A%
+\longrightarrow C\right)\wedge\left(A\longrightarrow D\right)</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">A partir d’aquí, la demostració consisteix en provar que  <math id="SS6.p8.m5" class="ltx_Math" alttext="A\longrightarrow C" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow C</annotation></semantics></math> i <math id="SS6.p8.m6" class="ltx_Math" alttext="A\longrightarrow D" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>D</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow D</annotation></semantics></math> són certes.</p>
+</div>
+<div id="SS6.p9" class="ltx_para ltx_noindent">
+<p class="ltx_p">Si l’enunciat és de la forma <math id="SS6.p9.m1" class="ltx_Math" alttext="\left(C\wedge D\right)\longrightarrow B" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mi>C</mi><mo>∧</mo><mi>D</mi></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">\left(C\wedge D\right)\longrightarrow B</annotation></semantics></math>, llavors l’estratègia és prendre com hipòtesis que <math id="SS6.p9.m2" class="ltx_Math" alttext="C" display="inline"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math> i <math id="SS6.p9.m3" class="ltx_Math" alttext="D" display="inline"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math> són certes i com a tesi que <math id="SS6.p9.m4" class="ltx_Math" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math> és certa. La prova pot ser directe o
+per reducció a l’aburd.</p>
+</div>
+<div id="SS6.p10" class="ltx_para ltx_noindent">
+<p class="ltx_p">Finalment, volem tractar una altra forma lògica que presenten molts
+teoremes. Són els teoremes de la forma <math id="SS6.p10.m1" class="ltx_Math" alttext="A\longleftrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟷</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longleftrightarrow B</annotation></semantics></math> i que
+ens donen condicions necessàries i suficients. La llei del bicondicional
+ens dona la resposta per construir proves d’aquest teoremes:</p>
+<div id="Ex25" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex25.m1" class="ltx_Math" alttext="A\longleftrightarrow B\Longleftrightarrow\left(A\longrightarrow B\right)\wedge%
+\left(B\longrightarrow A\right)\text{.}" display="block"><semantics><mrow><mi>A</mi><mo stretchy="false">⟷</mo><mi>B</mi><mo stretchy="false">⟺</mo><mrow><mrow><mo>(</mo><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><mo>)</mo></mrow><mo>∧</mo><mrow><mrow><mo>(</mo><mrow><mi>B</mi><mo stretchy="false">⟶</mo><mi>A</mi></mrow><mo>)</mo></mrow><mo>⁢</mo><mtext>.</mtext></mrow></mrow></mrow><annotation encoding="application/x-tex">A\longleftrightarrow B\Longleftrightarrow\left(A\longrightarrow B\right)\wedge%
+\left(B\longrightarrow A\right)\text{.}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">Per tant, és suficient provar <math id="SS6.p10.m2" class="ltx_Math" alttext="A\longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow B</annotation></semantics></math> i <math id="SS6.p10.m3" class="ltx_Math" alttext="B\longrightarrow A" display="inline"><semantics><mrow><mi>B</mi><mo stretchy="false">⟶</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">B\longrightarrow A</annotation></semantics></math>, cadascun dels quals es pot demostrar mitjançant qualsevol dels mètodes que hem vist fins ara.</p>
+</div>
+<div id="Ch1.Thmexemple21" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.21</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple21.p1" class="ltx_para">
+<p class="ltx_p">Volem provar que si <math id="Ch1.Thmexemple21.p1.m1" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> i <math id="Ch1.Thmexemple21.p1.m2" class="ltx_Math" alttext="y" display="inline"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> son dos nombres reals, llavors <math id="Ch1.Thmexemple21.p1.m3" class="ltx_Math" alttext="xy=0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy=0</annotation></semantics></math> sii <math id="Ch1.Thmexemple21.p1.m4" class="ltx_Math" alttext="x=0" display="inline"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math>
+o <math id="Ch1.Thmexemple21.p1.m5" class="ltx_Math" alttext="y=0" display="inline"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>.</p>
+</div>
+</div>
+<div id="SS6.p11" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+L’enunciat expressat formalment és:</p>
+<div id="Ex26" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex26.m1" class="ltx_math_unparsed" alttext="\left(\forall x,y\in\mathbb{R}\right)\left(xy=0\longleftrightarrow x=0\vee y=0%
+\right)\text{.}" display="block"><semantics><mrow><mrow><mo>(</mo><mo rspace="0.167em">∀</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>∈</mo><mi>ℝ</mi><mo>)</mo></mrow><mrow><mo>(</mo><mi>x</mi><mi>y</mi><mo>=</mo><mn>0</mn><mo stretchy="false">⟷</mo><mi>x</mi><mo>=</mo><mn>0</mn><mo>∨</mo><mi>y</mi><mo>=</mo><mn>0</mn><mo>)</mo></mrow><mtext>.</mtext></mrow><annotation encoding="application/x-tex">\left(\forall x,y\in\mathbb{R}\right)\left(xy=0\longleftrightarrow x=0\vee y=0%
+\right)\text{.}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">Per tant, si <math id="SS6.p11.m1" class="ltx_Math" alttext="x,y" display="inline"><semantics><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math> són nombres reals arbitraris, hem de demostrar <math id="SS6.p11.m2" class="ltx_Math" alttext="xy=0\longleftrightarrow x=0\vee y=0" display="inline"><semantics><mrow><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>=</mo><mn>0</mn></mrow><mo stretchy="false">⟷</mo><mrow><mi>x</mi><mo>=</mo><mrow><mn>0</mn><mo>∨</mo><mi>y</mi></mrow><mo>=</mo><mn>0</mn></mrow></mrow><annotation encoding="application/x-tex">xy=0\longleftrightarrow x=0\vee y=0</annotation></semantics></math>. Segons hem dit abans, això és
+equivalent a demostrar cadascun del teoremes següents: (1) <math id="SS6.p11.m3" class="ltx_Math" alttext="xy=0\longrightarrow x=0\vee y=0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>=</mo><mn>0</mn><mo stretchy="false">⟶</mo><mi>x</mi><mo>=</mo><mrow><mn>0</mn><mo>∨</mo><mi>y</mi></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy=0\longrightarrow x=0\vee y=0</annotation></semantics></math> i (2) <math id="SS6.p11.m4" class="ltx_Math" alttext="x=0\vee y=0\longrightarrow xy=0" display="inline"><semantics><mrow><mi>x</mi><mo>=</mo><mrow><mn>0</mn><mo>∨</mo><mi>y</mi></mrow><mo>=</mo><mn>0</mn><mo stretchy="false">⟶</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0\vee y=0\longrightarrow xy=0</annotation></semantics></math>.</p>
+</div>
+<div id="SS6.p12" class="ltx_para ltx_noindent">
+<p class="ltx_p">(1) Demostrem que la condició necessària perquè  <math id="SS6.p12.m1" class="ltx_Math" alttext="xy=0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy=0</annotation></semantics></math> és <math id="SS6.p12.m2" class="ltx_Math" alttext="x=0" display="inline"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math> o <math id="SS6.p12.m3" class="ltx_Math" alttext="y=0" display="inline"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>. Això és equivalent a provar que si <math id="SS6.p12.m4" class="ltx_Math" alttext="x\neq 0" display="inline"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x\neq 0</annotation></semantics></math>
+i <math id="SS6.p12.m5" class="ltx_Math" alttext="y\neq 0" display="inline"><semantics><mrow><mi>y</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y\neq 0</annotation></semantics></math> aleshores <math id="SS6.p12.m6" class="ltx_Math" alttext="xy\neq 0\," display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy\neq 0\,</annotation></semantics></math>. No és restrictiu suposar que <math id="SS6.p12.m7" class="ltx_Math" alttext="x\leq y" display="inline"><semantics><mrow><mi>x</mi><mo>≤</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x\leq y</annotation></semantics></math>; cas contrari, faríem que <math id="SS6.p12.m8" class="ltx_Math" alttext="x&gt;y" display="inline"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x&gt;y</annotation></semantics></math> i la prova es contrueix de forma anàloga. Ara l’estratègia és fer la demostració per casos: si <math id="SS6.p12.m9" class="ltx_Math" alttext="x\neq 0" display="inline"><semantics><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x\neq 0</annotation></semantics></math>, llavors o <math id="SS6.p12.m10" class="ltx_Math" alttext="x&gt;0" display="inline"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&gt;0</annotation></semantics></math> o bé <math id="SS6.p12.m11" class="ltx_Math" alttext="x&lt;0" display="inline"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&lt;0</annotation></semantics></math>.</p>
+</div>
+<div id="SS6.p13" class="ltx_para ltx_noindent">
+<dl id="I4" class="ltx_description">
+<dt id="I4.ix1" class="ltx_item"><span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">Cas 1:</span></span></dt>
+<dd class="ltx_item">
+<div id="I4.ix1.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Si <math id="I4.ix1.p1.m1" class="ltx_Math" alttext="0&lt;x\leq y" display="inline"><semantics><mrow><mn>0</mn><mo>&lt;</mo><mi>x</mi><mo>≤</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">0&lt;x\leq y</annotation></semantics></math>, llavors <math id="I4.ix1.p1.m2" class="ltx_Math" alttext="xy&gt;0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy&gt;0</annotation></semantics></math> i, per tant, <math id="I4.ix1.p1.m3" class="ltx_Math" alttext="xy\neq 0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy\neq 0</annotation></semantics></math>.</p>
+</div>
+</dd>
+<dt id="I4.ix2" class="ltx_item"><span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">Cas 2:</span></span></dt>
+<dd class="ltx_item">
+<div id="I4.ix2.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Si <math id="I4.ix2.p1.m1" class="ltx_Math" alttext="x&lt;0" display="inline"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&lt;0</annotation></semantics></math> i <math id="I4.ix2.p1.m2" class="ltx_Math" alttext="y\geq x" display="inline"><semantics><mrow><mi>y</mi><mo>≥</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y\geq x</annotation></semantics></math>, llavors apareixen dos subcasos: (2.1) <math id="I4.ix2.p1.m3" class="ltx_Math" alttext="x&lt;0" display="inline"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&lt;0</annotation></semantics></math> i <math id="I4.ix2.p1.m4" class="ltx_Math" alttext="y&gt;0" display="inline"><semantics><mrow><mi>y</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y&gt;0</annotation></semantics></math> (2.2) <math id="I4.ix2.p1.m5" class="ltx_Math" alttext="x&lt;0" display="inline"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&lt;0</annotation></semantics></math> i <math id="I4.ix2.p1.m6" class="ltx_Math" alttext="y&lt;0" display="inline"><semantics><mrow><mi>y</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y&lt;0</annotation></semantics></math> i <math id="I4.ix2.p1.m7" class="ltx_Math" alttext="y\geq x" display="inline"><semantics><mrow><mi>y</mi><mo>≥</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y\geq x</annotation></semantics></math>.</p>
+</div>
+</dd>
+<dt id="I4.ix3" class="ltx_item"><span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">Subcas 2.1:</span></span></dt>
+<dd class="ltx_item">
+<div id="I4.ix3.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Si <math id="I4.ix3.p1.m1" class="ltx_Math" alttext="x&lt;0" display="inline"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&lt;0</annotation></semantics></math> i <math id="I4.ix3.p1.m2" class="ltx_Math" alttext="y&gt;0" display="inline"><semantics><mrow><mi>y</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y&gt;0</annotation></semantics></math>, llavors <math id="I4.ix3.p1.m3" class="ltx_Math" alttext="xy&lt;0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy&lt;0</annotation></semantics></math> i, per tant, <math id="I4.ix3.p1.m4" class="ltx_Math" alttext="xy\neq 0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy\neq 0</annotation></semantics></math>.</p>
+</div>
+</dd>
+<dt id="I4.ix4" class="ltx_item"><span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">Subcas 2.2:</span></span></dt>
+<dd class="ltx_item">
+<div id="I4.ix4.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Si <math id="I4.ix4.p1.m1" class="ltx_Math" alttext="x&lt;0" display="inline"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&lt;0</annotation></semantics></math> i <math id="I4.ix4.p1.m2" class="ltx_Math" alttext="y&lt;0" display="inline"><semantics><mrow><mi>y</mi><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y&lt;0</annotation></semantics></math> i <math id="I4.ix4.p1.m3" class="ltx_Math" alttext="y\geq x" display="inline"><semantics><mrow><mi>y</mi><mo>≥</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">y\geq x</annotation></semantics></math>, llavors <math id="I4.ix4.p1.m4" class="ltx_Math" alttext="xy&gt;0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy&gt;0</annotation></semantics></math> i, per tant,
+<math id="I4.ix4.p1.m5" class="ltx_Math" alttext="xy\neq 0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy\neq 0</annotation></semantics></math>.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div id="SS6.p14" class="ltx_para ltx_noindent">
+<p class="ltx_p">Com a conseqüència, concluïm el que volíem demostrar.</p>
+</div>
+<div id="SS6.p15" class="ltx_para ltx_noindent">
+<p class="ltx_p">(2) Demostrem que la condició suficient perquè <math id="SS6.p15.m1" class="ltx_Math" alttext="xy=0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">xy=0</annotation></semantics></math> és que <math id="SS6.p15.m2" class="ltx_Math" alttext="x=0" display="inline"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math> o <math id="SS6.p15.m3" class="ltx_Math" alttext="y=0" display="inline"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>. Això és evident perquè si <math id="SS6.p15.m4" class="ltx_Math" alttext="x=0" display="inline"><semantics><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x=0</annotation></semantics></math> aleshores <math id="SS6.p15.m5" class="ltx_Math" alttext="0\cdot y=0" display="inline"><semantics><mrow><mrow><mn>0</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>y</mi></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">0\cdot y=0</annotation></semantics></math> i si <math id="SS6.p15.m6" class="ltx_Math" alttext="y=0" display="inline"><semantics><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">y=0</annotation></semantics></math>, <math id="SS6.p15.m7" class="ltx_Math" alttext="x\cdot 0=0" display="inline"><semantics><mrow><mrow><mi>x</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>0</mn></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x\cdot 0=0</annotation></semantics></math>.
+  <math id="SS6.p15.m8" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+</div>
+</section>
+<section id="SS7" class="ltx_subsection normal">
+<div class="section level2">
+
+<h2 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection header-section-number"><span class="ltx_text bml_color_FF4057">1.12.7</span></span> <span class="ltx_text bml_color_FF4057">Demostracions d’existència i unicitat</span>
+</h2>
+
+<div id="SS7.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">És molt freqüent trobar demostracions que impliquin l’existència
+d’un objecte que compleix una determinada propietat i també la seva
+unicitat. Quant a la prova d’existència només cal trobar l’objecte
+en concret que compleix la propietat. Quant a la unicitat, l’estratègia més comuna és suposar que <math id="SS7.p1.m1" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> i <math id="SS7.p1.m2" class="ltx_Math" alttext="y" display="inline"><semantics><mi>y</mi><annotation encoding="application/x-tex">y</annotation></semantics></math> són dos objectes que satisfan
+la propietat donada, llavors hem de demostrar que <math id="SS7.p1.m3" class="ltx_Math" alttext="x=y" display="inline"><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x=y</annotation></semantics></math>.</p>
+</div>
+<div id="Ch1.Thmexemple22" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.22</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple22.p1" class="ltx_para">
+<p class="ltx_p">Volem provar que la proporció entre dos nombres reals <math id="Ch1.Thmexemple22.p1.m1" class="ltx_Math" alttext="a" display="inline"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math> i <math id="Ch1.Thmexemple22.p1.m2" class="ltx_Math" alttext="b" display="inline"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math>, <math id="Ch1.Thmexemple22.p1.m3" class="ltx_Math" alttext="a&gt;b&gt;0" display="inline"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a&gt;b&gt;0</annotation></semantics></math>, que compleixen la propietat</p>
+<div id="Ex27" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex27.m1" class="ltx_Math" alttext="\frac{a}{b}=\frac{a+b}{a}" display="block"><semantics><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>=</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mi>a</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{a}{b}=\frac{a+b}{a}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">és un nombre irracional i a més és únic.</p>
+</div>
+</div>
+<div id="SS7.p2" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+Primer hem de provar l’existència, buscant aquest nombre que representa
+la proporció donada. Suposem que existeix, aleshores es compleix</p>
+<div id="Ex28" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex28.m1" class="ltx_Math" alttext="\frac{a}{b}=\frac{a+b}{a}\Longleftrightarrow\frac{a}{b}=\frac{\dfrac{a}{b}+1}{%
+\dfrac{a}{b}}" display="block"><semantics><mrow><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>=</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mi>a</mi></mfrac></mrow><mo stretchy="false">⟺</mo><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>=</mo><mfrac><mrow><mstyle displaystyle="true"><mfrac><mi>a</mi><mi>b</mi></mfrac></mstyle><mo>+</mo><mn>1</mn></mrow><mstyle displaystyle="true"><mfrac><mi>a</mi><mi>b</mi></mfrac></mstyle></mfrac></mrow></mrow><annotation encoding="application/x-tex">\frac{a}{b}=\frac{a+b}{a}\Longleftrightarrow\frac{a}{b}=\frac{\dfrac{a}{b}+1}{%
+\dfrac{a}{b}}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">Fent que <math id="SS7.p2.m1" class="ltx_Math" alttext="\dfrac{a}{b}=x" display="inline"><semantics><mrow><mstyle displaystyle="true"><mfrac><mi>a</mi><mi>b</mi></mfrac></mstyle><mo>=</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\dfrac{a}{b}=x</annotation></semantics></math>, llavors tenim</p>
+<div id="Ex29" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex29.m1" class="ltx_Math" alttext="x=\frac{x+1}{x}\Longleftrightarrow x^{2}-x-1=0" display="block"><semantics><mrow><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mi>x</mi></mfrac></mrow><mo stretchy="false">⟺</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mo>=</mo><mn>0</mn></mrow></mrow><annotation encoding="application/x-tex">x=\frac{x+1}{x}\Longleftrightarrow x^{2}-x-1=0</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">i, resolent l’equació de segon grau i sabent que <math id="SS7.p2.m2" class="ltx_Math" alttext="x&gt;0" display="inline"><semantics><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">x&gt;0</annotation></semantics></math>, es té la
+solució</p>
+<div id="Ex30" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex30.m1" class="ltx_Math" alttext="\Phi=\frac{1}{2}\left(1+\sqrt{5}\right)" display="block"><semantics><mrow><mi mathvariant="normal">Φ</mi><mo>=</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\Phi=\frac{1}{2}\left(1+\sqrt{5}\right)</annotation></semantics></math></span>
+</div>
+</div>
+<div id="SS7.p3" class="ltx_para ltx_noindent">
+<p class="ltx_p">Ara, hem de veure que <math id="SS7.p3.m1" class="ltx_Math" alttext="\Phi" display="inline"><semantics><mi mathvariant="normal">Φ</mi><annotation encoding="application/x-tex">\Phi</annotation></semantics></math> és irracional. Considerem el conjunt <math id="SS7.p3.m2" class="ltx_Math" alttext="A=\left\{a\in\mathbb{N}\text{: }\exists b\in\mathbb{N}\text{ i }a&gt;b&gt;0\text{
+i }\Phi=\dfrac{a}{b}\right\}" display="inline"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo>{</mo><mrow><mi>a</mi><mo>∈</mo><mrow><mi>ℕ</mi><mo>⁢</mo><mtext>: </mtext><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∃</mo><mi>b</mi></mrow></mrow><mo>∈</mo><mrow><mi>ℕ</mi><mo>⁢</mo><mtext> i </mtext><mo>⁢</mo><mi>a</mi></mrow><mo>&gt;</mo><mi>b</mi><mo>&gt;</mo><mrow><mn>0</mn><mo>⁢</mo><mtext> i </mtext><mo>⁢</mo><mi mathvariant="normal">Φ</mi></mrow><mo>=</mo><mstyle displaystyle="true"><mfrac><mi>a</mi><mi>b</mi></mfrac></mstyle></mrow><mo>}</mo></mrow></mrow><annotation encoding="application/x-tex">A=\left\{a\in\mathbb{N}\text{: }\exists b\in\mathbb{N}\text{ i }a&gt;b&gt;0\text{
+i }\Phi=\dfrac{a}{b}\right\}</annotation></semantics></math>.Si <math id="SS7.p3.m3" class="ltx_Math" alttext="A=\emptyset" display="inline"><semantics><mrow><mi>A</mi><mo>=</mo><mi>∅︀</mi></mrow><annotation encoding="application/x-tex">A=\emptyset</annotation></semantics></math>, llavors <math id="SS7.p3.m4" class="ltx_Math" alttext="\Phi" display="inline"><semantics><mi mathvariant="normal">Φ</mi><annotation encoding="application/x-tex">\Phi</annotation></semantics></math> és
+irracional. Suposem ara que no és el vuit. Aleshores, com <math id="SS7.p3.m5" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> és un
+subconjunt de <math id="SS7.p3.m6" class="ltx_Math" alttext="\mathbb{N}" display="inline"><semantics><mi>ℕ</mi><annotation encoding="application/x-tex">\mathbb{N}</annotation></semantics></math>, <math id="SS7.p3.m7" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> té primer element, que denotem per <math id="SS7.p3.m8" class="ltx_Math" alttext="m" display="inline"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>.
+Llavors es té <math id="SS7.p3.m9" class="ltx_Math" alttext="\Phi=\dfrac{m}{b}" display="inline"><semantics><mrow><mi mathvariant="normal">Φ</mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mi>m</mi><mi>b</mi></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\Phi=\dfrac{m}{b}</annotation></semantics></math> i <math id="SS7.p3.m10" class="ltx_Math" alttext="m&gt;b&gt;0" display="inline"><semantics><mrow><mi>m</mi><mo>&gt;</mo><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">m&gt;b&gt;0</annotation></semantics></math>, per tant, <math id="SS7.p3.m11" class="ltx_Math" alttext="m+b&gt;m" display="inline"><semantics><mrow><mrow><mi>m</mi><mo>+</mo><mi>b</mi></mrow><mo>&gt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">m+b&gt;m</annotation></semantics></math> i</p>
+<div id="Ex31" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex31.m1" class="ltx_Math" alttext="\dfrac{m}{b}&lt;\frac{m+b}{b}" display="block"><semantics><mrow><mfrac><mi>m</mi><mi>b</mi></mfrac><mo>&lt;</mo><mfrac><mrow><mi>m</mi><mo>+</mo><mi>b</mi></mrow><mi>b</mi></mfrac></mrow><annotation encoding="application/x-tex">\dfrac{m}{b}&lt;\frac{m+b}{b}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">però, això és una contradicció perquè</p>
+<div id="Ex32" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex32.m1" class="ltx_Math" alttext="\frac{m}{b}=\frac{m+b}{b}=\Phi\text{.}" display="block"><semantics><mrow><mfrac><mi>m</mi><mi>b</mi></mfrac><mo>=</mo><mfrac><mrow><mi>m</mi><mo>+</mo><mi>b</mi></mrow><mi>b</mi></mfrac><mo>=</mo><mrow><mi mathvariant="normal">Φ</mi><mo>⁢</mo><mtext>.</mtext></mrow></mrow><annotation encoding="application/x-tex">\frac{m}{b}=\frac{m+b}{b}=\Phi\text{.}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">Deduïm que <math id="SS7.p3.m12" class="ltx_Math" alttext="\Phi" display="inline"><semantics><mi mathvariant="normal">Φ</mi><annotation encoding="application/x-tex">\Phi</annotation></semantics></math> és irracional.</p>
+</div>
+<div id="SS7.p4" class="ltx_para ltx_noindent">
+<p class="ltx_p">Finalment, hem de demostrar la unicitat. Suposem que <math id="SS7.p4.m1" class="ltx_Math" alttext="\Phi_{1}" display="inline"><semantics><msub><mi mathvariant="normal">Φ</mi><mn>1</mn></msub><annotation encoding="application/x-tex">\Phi_{1}</annotation></semantics></math> i <math id="SS7.p4.m2" class="ltx_Math" alttext="\Phi_{2}" display="inline"><semantics><msub><mi mathvariant="normal">Φ</mi><mn>2</mn></msub><annotation encoding="application/x-tex">\Phi_{2}</annotation></semantics></math>
+compleixen la propietat. Llavors, de (<a href="#SS8" title="1.12.8 Demostracions per inducció ‣ 1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.12.8</span></a>) es té</p>
+<table id="Ch4.S3.EGx6" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex33"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex33.m1" class="ltx_Math" alttext="\displaystyle\Phi_{1}^{2}-\Phi_{1}-1" display="inline"><semantics><mrow><msubsup><mi mathvariant="normal">Φ</mi><mn>1</mn><mn>2</mn></msubsup><mo>−</mo><msub><mi mathvariant="normal">Φ</mi><mn>1</mn></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\displaystyle\Phi_{1}^{2}-\Phi_{1}-1</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex33.m2" class="ltx_Math" alttext="\displaystyle=\Phi_{2}^{2}-\Phi_{2}-1" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><msubsup><mi mathvariant="normal">Φ</mi><mn>2</mn><mn>2</mn></msubsup><mo>−</mo><msub><mi mathvariant="normal">Φ</mi><mn>2</mn></msub><mo>−</mo><mn>1</mn></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=\Phi_{2}^{2}-\Phi_{2}-1</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex34"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex34.m1" class="ltx_Math" alttext="\displaystyle\Phi_{1}^{2}-\Phi_{2}^{2}-\Phi_{1}+\Phi_{2}" display="inline"><semantics><mrow><mrow><msubsup><mi mathvariant="normal">Φ</mi><mn>1</mn><mn>2</mn></msubsup><mo>−</mo><msubsup><mi mathvariant="normal">Φ</mi><mn>2</mn><mn>2</mn></msubsup><mo>−</mo><msub><mi mathvariant="normal">Φ</mi><mn>1</mn></msub></mrow><mo>+</mo><msub><mi mathvariant="normal">Φ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\displaystyle\Phi_{1}^{2}-\Phi_{2}^{2}-\Phi_{1}+\Phi_{2}</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex34.m2" class="ltx_Math" alttext="\displaystyle=0" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\displaystyle=0</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex35"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex35.m1" class="ltx_Math" alttext="\displaystyle\left(\Phi_{1}-\Phi_{2}\right)\left(\Phi_{1}+\Phi_{2}-1\right)" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><msub><mi mathvariant="normal">Φ</mi><mn>1</mn></msub><mo>−</mo><msub><mi mathvariant="normal">Φ</mi><mn>2</mn></msub></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><msub><mi mathvariant="normal">Φ</mi><mn>1</mn></msub><mo>+</mo><msub><mi mathvariant="normal">Φ</mi><mn>2</mn></msub></mrow><mo>−</mo><mn>1</mn></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\displaystyle\left(\Phi_{1}-\Phi_{2}\right)\left(\Phi_{1}+\Phi_{2}-1\right)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex35.m2" class="ltx_Math" alttext="\displaystyle=0" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\displaystyle=0</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">i, per tant, <math id="SS7.p4.m3" class="ltx_Math" alttext="\Phi_{1}-\Phi_{2}=0" display="inline"><semantics><mrow><mrow><msub><mi mathvariant="normal">Φ</mi><mn>1</mn></msub><mo>−</mo><msub><mi mathvariant="normal">Φ</mi><mn>2</mn></msub></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Phi_{1}-\Phi_{2}=0</annotation></semantics></math> o <math id="SS7.p4.m4" class="ltx_Math" alttext="\Phi_{1}+\Phi_{2}-1=0" display="inline"><semantics><mrow><mrow><mrow><msub><mi mathvariant="normal">Φ</mi><mn>1</mn></msub><mo>+</mo><msub><mi mathvariant="normal">Φ</mi><mn>2</mn></msub></mrow><mo>−</mo><mn>1</mn></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\Phi_{1}+\Phi_{2}-1=0</annotation></semantics></math> però, <math id="SS7.p4.m5" class="ltx_Math" alttext="\Phi_{1}+\Phi_{2}&gt;1" display="inline"><semantics><mrow><mrow><msub><mi mathvariant="normal">Φ</mi><mn>1</mn></msub><mo>+</mo><msub><mi mathvariant="normal">Φ</mi><mn>2</mn></msub></mrow><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\Phi_{1}+\Phi_{2}&gt;1</annotation></semantics></math> perquè <math id="SS7.p4.m6" class="ltx_Math" alttext="a&gt;b&gt;0" display="inline"><semantics><mrow><mi>a</mi><mo>&gt;</mo><mi>b</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">a&gt;b&gt;0</annotation></semantics></math>. Per tant, <math id="SS7.p4.m7" class="ltx_Math" alttext="\Phi_{1}=\Phi_{2}" display="inline"><semantics><mrow><msub><mi mathvariant="normal">Φ</mi><mn>1</mn></msub><mo>=</mo><msub><mi mathvariant="normal">Φ</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">\Phi_{1}=\Phi_{2}</annotation></semantics></math>.
+  <math id="SS7.p4.m8" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+</div>
+</section>
+<section id="SS8" class="ltx_subsection normal">
+<div class="section level2">
+
+<h2 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection header-section-number"><span class="ltx_text bml_color_FF4057">1.12.8</span></span> <span class="ltx_text bml_color_FF4057">Demostracions per inducció</span>
+</h2>
+
+<div id="SS8.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">La inducció matemàtica és una tècnica útil per demostrar
+enunciats sobre nombres naturals. Considerem, per exemple, l’enunciat següent: "Si <math id="SS8.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és parell, llavors <math id="SS8.p1.m2" class="ltx_Math" alttext="n^{2}" display="inline"><semantics><msup><mi>n</mi><mn>2</mn></msup><annotation encoding="application/x-tex">n^{2}</annotation></semantics></math> és divisible per 4".
+Volem provar que aquest enunciat és correcte. Com ho fem? Aplicant
+inducció sobre <math id="SS8.p1.m3" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>, que vol dir provar els dos passos següents:</p>
+</div>
+<div id="SS8.p2" class="ltx_para ltx_noindent">
+<ol id="I5" class="ltx_enumerate">
+<li id="I5.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span><div id="I5.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Primer hem de provar que la propietat és vertadera pel primer
+element. En aquest cas el primer element és <math id="I5.i1.p1.m1" class="ltx_Math" alttext="2" display="inline"><semantics><mn>2</mn><annotation encoding="application/x-tex">2</annotation></semantics></math> perquè tractem amb
+nombres naturals parells. La propietat es certa perquè <math id="I5.i1.p1.m2" class="ltx_Math" alttext="2^{2}=4" display="inline"><semantics><mrow><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">2^{2}=4</annotation></semantics></math> que
+és divisible per 4.</p>
+</div>
+</li>
+<li id="I5.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span><div id="I5.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Per a tot nombre natural <math id="I5.i2.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> (no sabem quin és), si la propietat
+és certa per <math id="I5.i2.p1.m2" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>, llavors hem de provar que també ho és per el
+següent element: Suposem  <math id="I5.i2.p1.m3" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és parell i que <math id="I5.i2.p1.m4" class="ltx_Math" alttext="n^{2}" display="inline"><semantics><msup><mi>n</mi><mn>2</mn></msup><annotation encoding="application/x-tex">n^{2}</annotation></semantics></math> és
+divisible per 4, aleshores hem de provar que el següent parell <math id="I5.i2.p1.m5" class="ltx_Math" alttext="(n+2)^{2}" display="inline"><semantics><msup><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><annotation encoding="application/x-tex">(n+2)^{2}</annotation></semantics></math> és divisible per 4. En efecte, <math id="I5.i2.p1.m6" class="ltx_Math" alttext="(n+2)^{2}=n^{2}+4n+4=4k+4n+4=4(k+n+1)" display="inline"><semantics><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>=</mo><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><mi>n</mi></mrow><mo>+</mo><mn>4</mn></mrow><mo>=</mo><mrow><mrow><mn>4</mn><mo>⁢</mo><mi>k</mi></mrow><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><mi>n</mi></mrow><mo>+</mo><mn>4</mn></mrow><mo>=</mo><mrow><mn>4</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>+</mo><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">(n+2)^{2}=n^{2}+4n+4=4k+4n+4=4(k+n+1)</annotation></semantics></math>, on <math id="I5.i2.p1.m7" class="ltx_Math" alttext="n^{2}=4k" display="inline"><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>=</mo><mrow><mn>4</mn><mo>⁢</mo><mi>k</mi></mrow></mrow><annotation encoding="application/x-tex">n^{2}=4k</annotation></semantics></math> i <math id="I5.i2.p1.m8" class="ltx_Math" alttext="k\in\mathbb{N}" display="inline"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>ℕ</mi></mrow><annotation encoding="application/x-tex">k\in\mathbb{N}</annotation></semantics></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="SS8.p3" class="ltx_para ltx_noindent">
+<p class="ltx_p">Concluïm que la propietat és vàlida per a tot nombre natural
+parell.</p>
+</div>
+<div id="SS8.p4" class="ltx_para ltx_noindent">
+<p class="ltx_p">Intuïtivament, aquestes dues condicions permeten assegurar que la
+propietat es compleix per tots els naturals. En efecte, <math id="SS8.p4.m1" class="ltx_Math" alttext="P(2)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(2)</annotation></semantics></math> és
+vertadera, <math id="SS8.p4.m2" class="ltx_Math" alttext="P(2)\longrightarrow P(4)" display="inline"><semantics><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">⟶</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">P(2)\longrightarrow P(4)</annotation></semantics></math> és vertadera i, per tant, <math id="SS8.p4.m3" class="ltx_Math" alttext="P(4)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(4)</annotation></semantics></math>
+també ho és; <math id="SS8.p4.m4" class="ltx_Math" alttext="P(4)\longrightarrow P(6)" display="inline"><semantics><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">⟶</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">P(4)\longrightarrow P(6)</annotation></semantics></math> és certa i, per tant, <math id="SS8.p4.m5" class="ltx_Math" alttext="P(6)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(6)</annotation></semantics></math> també. I així succesivament.</p>
+</div>
+<div id="SS8.p5" class="ltx_para ltx_noindent">
+<br class="ltx_break">
+</div>
+<div id="SS8.p6" class="ltx_para ltx_noindent">
+<p class="ltx_p">La base d’aquest mètode de demostració és el principi d’inducció que, de fet és un dels axiomes que defineixen els nombres
+naturals. Aquest principi diu: Si <math id="SS8.p6.m1" class="ltx_Math" alttext="P(n)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(n)</annotation></semantics></math> és un enunciat sobre els
+naturals i es compleixen les dues condicions següents: A la primera
+part, anomenada <span class="ltx_text ltx_font_bold">cas base</span>, mostrem que <math id="SS8.p6.m2" class="ltx_Math" alttext="P(1)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(1)</annotation></semantics></math> és es compleix (el
+primer element no necessàriament és 1, depèn de cada cas). A la
+segona part, anomenada pas inductiu, suposem que <math id="SS8.p6.m3" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> és un natural tal
+que <math id="SS8.p6.m4" class="ltx_Math" alttext="P(n)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(n)</annotation></semantics></math> és certa, tot i que no sabem què és <math id="SS8.p6.m5" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>, i hem de deduïr que <math id="SS8.p6.m6" class="ltx_Math" alttext="P(n+1)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(n+1)</annotation></semantics></math> és certa. La suposició que <math id="SS8.p6.m7" class="ltx_Math" alttext="P(n)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(n)</annotation></semantics></math> és
+vertadera es diu <span class="ltx_text ltx_font_bold">hipòtesi d’inducció</span>. La conclusió
+d’aquest raonament és que <math id="SS8.p6.m8" class="ltx_Math" alttext="P(n)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(n)</annotation></semantics></math> és vàlida per a tot <math id="SS8.p6.m9" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+natural. Aquest mètode de demostració es coneix com <span class="ltx_text ltx_font_bold">prova
+per inducció</span> sobre <math id="SS8.p6.m10" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.</p>
+</div>
+<div id="SS8.p7" class="ltx_para ltx_noindent">
+<br class="ltx_break">
+</div>
+<div id="SS8.p8" class="ltx_para ltx_noindent">
+<p class="ltx_p">Veiem en detall aquest mètode en un exemple:</p>
+</div>
+<div id="Ch1.Thmexemple23" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.23</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple23.p1" class="ltx_para">
+<p class="ltx_p">Volem demostrar que per a tot <math id="Ch1.Thmexemple23.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> natural es compleix</p>
+<div id="Ex36" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex36.m1" class="ltx_Math" alttext="1+2+\cdots+n=\frac{n(n+1)}{2}\text{.}" display="block"><semantics><mrow><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mi>n</mi></mrow><mo>=</mo><mrow><mfrac><mrow><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></mfrac><mo>⁢</mo><mtext>.</mtext></mrow></mrow><annotation encoding="application/x-tex">1+2+\cdots+n=\frac{n(n+1)}{2}\text{.}</annotation></semantics></math></span>
+</div>
+</div>
+</div>
+<div id="SS8.p9" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+Construïm una prova d’inducció sobre <math id="SS8.p9.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>, sent <math id="SS8.p9.m2" class="ltx_Math" alttext="P(n)=" display="inline"><semantics><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">P(n)=</annotation></semantics></math> ‘<math id="SS8.p9.m3" class="ltx_Math" alttext="1+2+\cdots+n=\dfrac{n(n+1)}{2}" display="inline"><semantics><mrow><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mi>n</mi></mrow><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">1+2+\cdots+n=\dfrac{n(n+1)}{2}</annotation></semantics></math>’.</p>
+</div>
+<div id="SS8.p10" class="ltx_para ltx_noindent">
+<dl id="I6" class="ltx_description">
+<dt id="I6.ix1" class="ltx_item"><span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">Cas base:</span></span></dt>
+<dd class="ltx_item">
+<div id="I6.ix1.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p"><math id="I6.ix1.p1.m1" class="ltx_Math" alttext="P(1)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(1)</annotation></semantics></math> és <math id="I6.ix1.p1.m2" class="ltx_Math" alttext="1=\frac{1(1+1)}{2}" display="inline"><semantics><mrow><mn>1</mn><mo>=</mo><mfrac><mrow><mn>1</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">1=\frac{1(1+1)}{2}</annotation></semantics></math> i, evidentment és
+veritat.</p>
+</div>
+</dd>
+<dt id="I6.ix2" class="ltx_item"><span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">Hipòtesi d’inducció:</span></span></dt>
+<dd class="ltx_item">
+<div id="I6.ix2.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Suposem que <math id="I6.ix2.p1.m1" class="ltx_Math" alttext="P(n)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(n)</annotation></semantics></math> és certa, o sigui
+que <math id="I6.ix2.p1.m2" class="ltx_Math" alttext="1+2+\cdots+n=\dfrac{n(n+1)}{2}" display="inline"><semantics><mrow><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mi>n</mi></mrow><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">1+2+\cdots+n=\dfrac{n(n+1)}{2}</annotation></semantics></math>.</p>
+</div>
+</dd>
+<dt id="I6.ix3" class="ltx_item"><span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">Tesi:</span></span></dt>
+<dd class="ltx_item">
+<div id="I6.ix3.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Hem de demostrar que <math id="I6.ix3.p1.m1" class="ltx_Math" alttext="P(n+1)=" display="inline"><semantics><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">P(n+1)=</annotation></semantics></math>‘<math id="I6.ix3.p1.m2" class="ltx_Math" alttext="1+2+\cdots+n=\dfrac{(n+1)(n+2)}{2}" display="inline"><semantics><mrow><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mi>n</mi></mrow><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">1+2+\cdots+n=\dfrac{(n+1)(n+2)}{2}</annotation></semantics></math>’ és certa.</p>
+</div>
+</dd>
+</dl>
+</div>
+<div id="SS8.p11" class="ltx_para ltx_noindent">
+<p class="ltx_p">En efecte, aplicant l’hipòtesi d’inducció, es té</p>
+<table id="Ch4.S3.EGx7" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex37"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex37.m1" class="ltx_Math" alttext="\displaystyle 1+2+\cdots+n+n+1" display="inline"><semantics><mrow><mn>1</mn><mo>+</mo><mn>2</mn><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mi>n</mi><mo>+</mo><mi>n</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\displaystyle 1+2+\cdots+n+n+1</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex37.m2" class="ltx_Math" alttext="\displaystyle=\dfrac{n(n+1)}{2}+n+1" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></mfrac></mstyle><mo>+</mo><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=\dfrac{n(n+1)}{2}+n+1</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex38"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex38.m1" class="ltx_Math" alttext="\displaystyle=\frac{\left(n+1\right)(n+2)}{2}" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mrow><mo>(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></mfrac></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle=\frac{\left(n+1\right)(n+2)}{2}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">que és el que volíem veure.</p>
+</div>
+<div id="SS8.p12" class="ltx_para ltx_noindent">
+<dl id="I7" class="ltx_description">
+<dt id="I7.ix1" class="ltx_item"><span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">Conclusió:</span></span></dt>
+<dd class="ltx_item">
+<div id="I7.ix1.p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Pel principi d’inducció sobre <math id="I7.ix1.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>, deduïm que
+<math id="I7.ix1.p1.m2" class="ltx_Math" alttext="P(n)" display="inline"><semantics><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">P(n)</annotation></semantics></math> és certa per a tot <math id="I7.ix1.p1.m3" class="ltx_Math" alttext="n\in\mathbb{N}" display="inline"><semantics><mrow><mi>n</mi><mo>∈</mo><mi>ℕ</mi></mrow><annotation encoding="application/x-tex">n\in\mathbb{N}</annotation></semantics></math>.</p>
+</div>
+</dd>
+</dl>
+<p class="ltx_p"><math id="SS8.p12.m1" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+<div id="Ch1.Thmexemple24" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.24</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple24.p1" class="ltx_para">
+<p class="ltx_p">Volem demostrar que per a tot nombre natural <math id="Ch1.Thmexemple24.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> es compleix que <math id="Ch1.Thmexemple24.p1.m2" class="ltx_Math" alttext="8^{n}-3^{n}" display="inline"><semantics><mrow><msup><mn>8</mn><mi>n</mi></msup><mo>−</mo><msup><mn>3</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">8^{n}-3^{n}</annotation></semantics></math> és divisible per 5.</p>
+</div>
+</div>
+<div id="SS8.p13" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+El cas base és per <math id="SS8.p13.m1" class="ltx_Math" alttext="n=1" display="inline"><semantics><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n=1</annotation></semantics></math>: <math id="SS8.p13.m2" class="ltx_Math" alttext="8-3=5" display="inline"><semantics><mrow><mrow><mn>8</mn><mo>−</mo><mn>3</mn></mrow><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">8-3=5</annotation></semantics></math> que és divisible per <math id="SS8.p13.m3" class="ltx_Math" alttext="5" display="inline"><semantics><mn>5</mn><annotation encoding="application/x-tex">5</annotation></semantics></math>. Suposem
+ara que per a tot nombre natural <math id="SS8.p13.m4" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> es té que <math id="SS8.p13.m5" class="ltx_Math" alttext="8^{n}-3^{n}" display="inline"><semantics><mrow><msup><mn>8</mn><mi>n</mi></msup><mo>−</mo><msup><mn>3</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">8^{n}-3^{n}</annotation></semantics></math> és
+divisible per 5 (hipòtesi d’inducció), hem de demostrar que <math id="SS8.p13.m6" class="ltx_Math" alttext="8^{n+1}-3^{n+1}" display="inline"><semantics><mrow><msup><mn>8</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>−</mo><msup><mn>3</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">8^{n+1}-3^{n+1}</annotation></semantics></math> també és divisible per 5. En efecte, tenim</p>
+<table id="Ch4.S3.EGx8" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex39"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex39.m1" class="ltx_Math" alttext="\displaystyle 8^{n+1}-3^{n+1}" display="inline"><semantics><mrow><msup><mn>8</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>−</mo><msup><mn>3</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\displaystyle 8^{n+1}-3^{n+1}</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex39.m2" class="ltx_Math" alttext="\displaystyle=8\cdot 8^{n}-3\cdot 3^{n}" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><mrow><mn>8</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>8</mn><mi>n</mi></msup></mrow><mo>−</mo><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>3</mn><mi>n</mi></msup></mrow></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=8\cdot 8^{n}-3\cdot 3^{n}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex40"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex40.m1" class="ltx_Math" alttext="\displaystyle=8\cdot 8^{n}-\left(8-5\right)\cdot 3^{n}" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><mrow><mn>8</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>8</mn><mi>n</mi></msup></mrow><mo>−</mo><mrow><mrow><mo>(</mo><mrow><mn>8</mn><mo>−</mo><mn>5</mn></mrow><mo rspace="0.055em">)</mo></mrow><mo rspace="0.222em">⋅</mo><msup><mn>3</mn><mi>n</mi></msup></mrow></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=8\cdot 8^{n}-\left(8-5\right)\cdot 3^{n}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex41"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex41.m1" class="ltx_Math" alttext="\displaystyle=8\cdot\left(8^{n}-3^{n}\right)+5\cdot 3^{n}" display="inline"><semantics><mrow><mi></mi><mo>=</mo><mrow><mrow><mn>8</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>(</mo><mrow><msup><mn>8</mn><mi>n</mi></msup><mo>−</mo><msup><mn>3</mn><mi>n</mi></msup></mrow><mo>)</mo></mrow></mrow><mo>+</mo><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>3</mn><mi>n</mi></msup></mrow></mrow></mrow><annotation encoding="application/x-tex">\displaystyle=8\cdot\left(8^{n}-3^{n}\right)+5\cdot 3^{n}</annotation></semantics></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">però, per hipòtesi d’inducció, <math id="SS8.p13.m7" class="ltx_Math" alttext="8^{n}-3^{n}=5k" display="inline"><semantics><mrow><mrow><msup><mn>8</mn><mi>n</mi></msup><mo>−</mo><msup><mn>3</mn><mi>n</mi></msup></mrow><mo>=</mo><mrow><mn>5</mn><mo>⁢</mo><mi>k</mi></mrow></mrow><annotation encoding="application/x-tex">8^{n}-3^{n}=5k</annotation></semantics></math>, sent <math id="SS8.p13.m8" class="ltx_Math" alttext="k\in\mathbb{N}" display="inline"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>ℕ</mi></mrow><annotation encoding="application/x-tex">k\in\mathbb{N}</annotation></semantics></math>. Per tant,</p>
+<div id="Ex42" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex42.m1" class="ltx_Math" alttext="8^{n+1}-3^{n+1}=5\cdot\left(8k+3^{n}\right)" display="block"><semantics><mrow><mrow><msup><mn>8</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>−</mo><msup><mn>3</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>=</mo><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>(</mo><mrow><mrow><mn>8</mn><mo>⁢</mo><mi>k</mi></mrow><mo>+</mo><msup><mn>3</mn><mi>n</mi></msup></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">8^{n+1}-3^{n+1}=5\cdot\left(8k+3^{n}\right)</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">i, d’aquí, s’obté que <math id="SS8.p13.m9" class="ltx_Math" alttext="8^{n+1}-3^{n+1}" display="inline"><semantics><mrow><msup><mn>8</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>−</mo><msup><mn>3</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">8^{n+1}-3^{n+1}</annotation></semantics></math> és divisible per 5 perquè <math id="SS8.p13.m10" class="ltx_Math" alttext="8k+3^{n}\in\mathbb{N}" display="inline"><semantics><mrow><mrow><mrow><mn>8</mn><mo>⁢</mo><mi>k</mi></mrow><mo>+</mo><msup><mn>3</mn><mi>n</mi></msup></mrow><mo>∈</mo><mi>ℕ</mi></mrow><annotation encoding="application/x-tex">8k+3^{n}\in\mathbb{N}</annotation></semantics></math>. Com a conseqüència, <math id="SS8.p13.m11" class="ltx_Math" alttext="8^{n}-3^{n}" display="inline"><semantics><mrow><msup><mn>8</mn><mi>n</mi></msup><mo>−</mo><msup><mn>3</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">8^{n}-3^{n}</annotation></semantics></math>
+és divisible per 5 per a tot nombre natural <math id="SS8.p13.m12" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
+  <math id="SS8.p13.m13" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+<div id="SS8.p14" class="ltx_para ltx_noindent">
+<p class="ltx_p">Les definicions <span class="ltx_text ltx_font_bold">inductives</span> estan implícites en les definicions
+de diverses funcions molt comuns que impliquen nombres enters no negatius.
+Per exemple, el factorial d’un nombre enter no negatiu <math id="SS8.p14.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>, designat per <math id="SS8.p14.m2" class="ltx_Math" alttext="n!" display="inline"><semantics><mrow><mi>n</mi><mo>!</mo></mrow><annotation encoding="application/x-tex">n!</annotation></semantics></math>, es defineix inductivament d’aquesta manera:</p>
+</div>
+<div id="SS8.p15" class="ltx_para ltx_noindent">
+<ul id="I8" class="ltx_itemize">
+<li id="I8.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span><div id="I8.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I8.i1.p1.m1" class="ltx_Math" alttext="0!=1;" display="inline"><semantics><mrow><mrow><mrow><mn>0</mn><mo>!</mo></mrow><mo>=</mo><mn>1</mn></mrow><mo>;</mo></mrow><annotation encoding="application/x-tex">0!=1;</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I8.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span><div id="I8.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I8.i2.p1.m1" class="ltx_Math" alttext="\left(n+1\right)!=\left(n+1\right)\cdot n!" display="inline"><semantics><mrow><mrow><mrow><mo>(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo>)</mo></mrow><mo>!</mo></mrow><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo rspace="0.055em">)</mo></mrow><mo rspace="0.222em">⋅</mo><mrow><mi>n</mi><mo>!</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\left(n+1\right)!=\left(n+1\right)\cdot n!</annotation></semantics></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="SS8.p16" class="ltx_para ltx_noindent">
+<p class="ltx_p">Un altre exemple son les definicions per <span class="ltx_text ltx_font_bold">recursió</span>. La successió de Fibonacci és un bon exemple: <math id="SS8.p16.m1" class="ltx_Math" alttext="1,1,2,3,5,8,13,..." display="inline"><semantics><mrow><mn>1</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>5</mn><mo>,</mo><mn>8</mn><mo>,</mo><mn>13</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow><annotation encoding="application/x-tex">1,1,2,3,5,8,13,...</annotation></semantics></math>, que podem
+definir per recursió d’aquesta manera:</p>
+</div>
+<div id="SS8.p17" class="ltx_para ltx_noindent">
+<ul id="I9" class="ltx_itemize">
+<li id="I9.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span><div id="I9.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I9.i1.p1.m1" class="ltx_Math" alttext="u_{1}=1" display="inline"><semantics><mrow><msub><mi>u</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">u_{1}=1</annotation></semantics></math>,</p>
+</div>
+</li>
+<li id="I9.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span><div id="I9.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I9.i2.p1.m1" class="ltx_Math" alttext="u_{2}=1" display="inline"><semantics><mrow><msub><mi>u</mi><mn>2</mn></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">u_{2}=1</annotation></semantics></math>,</p>
+</div>
+</li>
+<li id="I9.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span><div id="I9.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I9.i3.p1.m1" class="ltx_Math" alttext="u_{k+1}=u_{k-1}+u_{k}" display="inline"><semantics><mrow><msub><mi>u</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><msub><mi>u</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>u</mi><mi>k</mi></msub></mrow></mrow><annotation encoding="application/x-tex">u_{k+1}=u_{k-1}+u_{k}</annotation></semantics></math> per <math id="I9.i3.p1.m2" class="ltx_Math" alttext="k\in\mathbb{N}" display="inline"><semantics><mrow><mi>k</mi><mo>∈</mo><mi>ℕ</mi></mrow><annotation encoding="application/x-tex">k\in\mathbb{N}</annotation></semantics></math> i <math id="I9.i3.p1.m3" class="ltx_Math" alttext="k\geq 2" display="inline"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">k\geq 2</annotation></semantics></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+</section>
+</div>
+</div>
+</div>
+<a href="Ch1.S11.html" class="navigation navigation-prev" aria-label="Previous page"><i class="fa fa-angle-left"></i></a><a href="Ch1.S13.html" class="navigation navigation-next" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+</div>
+</div>
+<script src="bookml/gitbook/js/app.min.js"></script>
+<script src="bookml/gitbook/js/jquery.highlight.js"></script>
+<script src="bookml/gitbook/js/plugin-search.js"></script>
+<script src="bookml/gitbook/js/plugin-fontsettings.js"></script>
+<script src="bookml/gitbook/js/plugin-bookdown.js"></script>
+<script src="bookml/js/mathjax3.js"></script>
+<script type="text/javascript">
+                gitbook.require(["gitbook"], function(gitbook) {
+                gitbook.start({
+                  "fontsettings": {
+                    "theme": "white",
+                    "family": "sans",
+                    "size": 2
+                  },
+                  "download": [ [ "plantilla.pdf", "PDF" ], ],
+                  "search": {
+                    "engine": "fuse"
+                  },
+                  "toc": {
+                    "collapse": "none"
+                  }
+                });
+              });
+            </script>
+</body>
+
+</html>

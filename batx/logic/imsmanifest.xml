@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.imsglobal.org/xsd/imscp_v1p1" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3" xmlns:lom="http://ltsc.ieee.org/xsd/LOM" identifier="com.github.io.vlmantova.bookml.SCORM" xml:lang="ca" version="7 de setembre de 2025">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>2004 3rd Edition</schemaversion>
+    <lom:lom>
+      <lom:general>
+        <lom:title>
+          <lom:string>Lògica, Raonament i Demostració</lom:string>
+        </lom:title>
+      </lom:general>
+      <lom:lifeCycle>
+        <lom:contribute>
+          <lom:role>
+            <lom:value>author</lom:value>
+          </lom:role>
+          <lom:entity><![CDATA[BEGIN:VCARD VERSION:2.1
+FN:Miquel Àngel Perelló
+END:VCARD]]></lom:entity>
+        </lom:contribute>
+        <lom:version>
+          <lom:string>7 de setembre de 2025</lom:string>
+        </lom:version>
+      </lom:lifeCycle>
+    </lom:lom>
+  </metadata>
+  <organizations>
+    <organization identifier="org1">
+      <title>Lògica, Raonament i Demostració</title>
+      <item identifier="item1" identifierref="resource1">
+        <title>Lògica, Raonament i Demostració</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="resource1" type="webcontent" adlcp:scormType="asset" href="index.html">
+      <file href="index.html"/>
+      <file href="Ch1.S1.html"/>
+      <file href="Ch1.S10.html"/>
+      <file href="Ch1.S11.html"/>
+      <file href="Ch1.S12.html"/>
+      <file href="Ch1.S13.html"/>
+      <file href="Ch1.S2.html"/>
+      <file href="Ch1.S3.html"/>
+      <file href="Ch1.S4.html"/>
+      <file href="Ch1.S5.html"/>
+      <file href="Ch1.S6.html"/>
+      <file href="Ch1.S7.html"/>
+      <file href="Ch1.S8.html"/>
+      <file href="Ch1.S9.html"/>
+      <file href="Ch1.html"/>
+      <file href="Ch2.S1.html"/>
+      <file href="Ch2.S2.html"/>
+      <file href="Ch2.S3.html"/>
+      <file href="Ch2.html"/>
+      <file href="Ch3.html"/>
+      <file href="Ch4.S1.html"/>
+      <file href="Ch4.S2.html"/>
+      <file href="Ch4.S3.html"/>
+      <file href="Ch4.html"/>
+      <file href="Chx1.html"/>
+      <file href="Chx2.html"/>
+      <file href="LaTeXML.css"/>
+      <file href="ltx-book.css"/>
+      <file href="plantilla.pdf"/>
+      <file href="search_index.json"/>
+      <file href="bmluser/colors.gitbook-plantilla.css"/>
+      <file href="bookml/CSS/style.css"/>
+      <file href="bookml/CSS/style.gitbook,plain.css"/>
+      <file href="bookml/CSS/style.gitbook.css"/>
+      <file href="bookml/gitbook/css/plugin-bookdown.css"/>
+      <file href="bookml/gitbook/css/plugin-fontsettings.css"/>
+      <file href="bookml/gitbook/css/plugin-search.css"/>
+      <file href="bookml/gitbook/css/plugin-table.css"/>
+      <file href="bookml/gitbook/css/style.css"/>
+      <file href="bookml/gitbook/css/fontawesome/fontawesome-webfont.ttf"/>
+      <file href="bookml/gitbook/js/app.min.js"/>
+      <file href="bookml/gitbook/js/jquery.highlight.js"/>
+      <file href="bookml/gitbook/js/plugin-bookdown.js"/>
+      <file href="bookml/gitbook/js/plugin-fontsettings.js"/>
+      <file href="bookml/gitbook/js/plugin-search.js"/>
+      <file href="bookml/js/mathjax3.js"/>
+      <file href="img/logi1.jpg"/>
+      <file href="img/logi2.jpg"/>
+      <file href="img/logi3.jpg"/>
+      <file href="img/logi4.jpg"/>
+      <file href="img/logi5.jpg"/>
+    </resource>
+  </resources>
+</manifest>

@@ -1,0 +1,492 @@
+<!DOCTYPE html><html lang="ca">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>1.6 Tautologies i contradiccions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració</title>
+<!--Generated on Sun Sep  7 20:03:08 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on 7 de setembre de 2025.-->
+<style>:root { --bml-ltx-font-size: 12; }</style>
+<link rel="stylesheet" href="LaTeXML.css" type="text/css">
+<link rel="stylesheet" href="ltx-book.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/style.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-table.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-search.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-bookdown.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-fontsettings.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.gitbook,plain.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.gitbook.css" type="text/css">
+<link rel="stylesheet" href="bmluser/colors.gitbook-plantilla.css" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
+<link rel="up" href="Ch1.html" title="Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="up up" href="index.html" title="Lògica, Raonament i Demostració">
+<link rel="start" href="index.html" title="Lògica, Raonament i Demostració">
+<link rel="prev" href="Ch1.S5.html" title="1.5 Formes proposicionals ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="next" href="Ch1.S7.html" title="1.7 Implicació lògica ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S1.html" title="1.1 Variables i constants ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S2.html" title="1.2 Proposicions i predicats ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S3.html" title="1.3 Connectives lògiques ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S4.html" title="1.4 Proposicions elementals i compostes ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S5.html" title="1.5 Formes proposicionals ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S7.html" title="1.7 Implicació lògica ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S8.html" title="1.8 Equivalència lògica ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S9.html" title="1.9 Inferència lògica ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S10.html" title="1.10 Quantificadors ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S11.html" title="1.11 Definicions i la identitat ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S12.html" title="1.12 Demostracions ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch1.S13.html" title="1.13 Teories axiomàtiques ‣ Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Chx1.html" title="Prefaci ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Chx2.html" title="Introducció ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch1.html" title="Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch2.html" title="Capítol 2 Pràctica ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch3.html" title="Capítol 3 Exercicis proposats ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch4.html" title="Capítol 4 Tests ‣ Lògica, Raonament i Demostració">
+</head>
+<body>
+<div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+<a href="#bml-main-content" tabindex="0" class="bml-skip-to-content">Skip to content.</a>
+<div class="book-summary"><nav class="ltx_page_navbar">
+<ul class="ltx_toclist summary">
+<li>
+<a href="index.html" title="" class="ltx_ref" rel="start">Lògica, Raonament i Demostració</a>
+</li>
+<li class="divider">
+<li data-level="" data-path="Chx1.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Chx1.html" title="In Lògica, Raonament i Demostració" class="ltx_ref">Prefaci</a></li>
+<li data-level="" data-path="Chx2.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Chx2.html" title="In Lògica, Raonament i Demostració" class="ltx_ref">Introducció</a></li>
+<li data-level="1" data-path="Ch1.html" class="ltx_tocentry ltx_tocentry_chapter  chapter ">
+<a href="Ch1.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1 </span></b>Teoria</a>
+<ol class="ltx_toclist ltx_toclist_chapter">
+<li data-level="1.1" data-path="Ch1.S1.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S1.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.1 </span></b>Variables i constants</a></li>
+<li data-level="1.2" data-path="Ch1.S2.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S2.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.2 </span></b>Proposicions i predicats</a></li>
+<li data-level="1.3" data-path="Ch1.S3.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S3.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.3 </span></b>Connectives lògiques</a></li>
+<li data-level="1.4" data-path="Ch1.S4.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S4.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.4 </span></b>Proposicions elementals i compostes</a></li>
+<li data-level="1.5" data-path="Ch1.S5.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S5.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.5 </span></b>Formes proposicionals</a></li>
+<li data-level="1.6" data-path="" class="ltx_tocentry ltx_tocentry_section ltx_ref_self  chapter active"><a href="" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.6 </span></b>Tautologies i contradiccions</a></li>
+<li data-level="1.7" data-path="Ch1.S7.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S7.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.7 </span></b>Implicació lògica</a></li>
+<li data-level="1.8" data-path="Ch1.S8.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S8.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.8 </span></b>Equivalència lògica</a></li>
+<li data-level="1.9" data-path="Ch1.S9.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S9.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.9 </span></b>Inferència lògica</a></li>
+<li data-level="1.10" data-path="Ch1.S10.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S10.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.10 </span></b>Quantificadors</a></li>
+<li data-level="1.11" data-path="Ch1.S11.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S11.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.11 </span></b>Definicions i la identitat</a></li>
+<li data-level="1.12" data-path="Ch1.S12.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S12.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.12 </span></b>Demostracions</a></li>
+<li data-level="1.13" data-path="Ch1.S13.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch1.S13.html" title="In Capítol 1 Teoria ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1.13 </span></b>Teories axiomàtiques</a></li>
+</ol>
+</li>
+<li data-level="2" data-path="Ch2.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch2.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">2 </span></b>Pràctica</a></li>
+<li data-level="3" data-path="Ch3.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch3.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">3 </span></b>Exercicis proposats</a></li>
+<li data-level="4" data-path="Ch4.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch4.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">4 </span></b>Tests</a></li>
+</ul>
+</nav></div>
+<div class="ltx_page_main book-body fixed">
+<div class="body-inner">
+<div class="book-header fixed" role="navigation"><h1></h1></div>
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="ltx_page_content page-inner" id="bml-main-content">
+<section class="ltx_section normal" lang="ca">
+<div class="section level1">
+
+<h1 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section header-section-number"><span class="ltx_text bml_color_FF4057">1.6</span></span> <span class="ltx_text bml_color_FF4057">Tautologies i contradiccions</span>
+</h1>
+
+<div id="p1" class="ltx_para ltx_noindent">
+<p class="ltx_p">Una <span class="ltx_text ltx_font_bold">tautologia</span> és una proposició que és vertadera per
+necessitat lògica. Una tautologia característica de la lògica clàssica és la proposició ‘<math id="p1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> o no <math id="p1.m2" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>’, sent <math id="p1.m3" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> qualsevol
+proposició. Aquesta tautologia se la coneix també amb el nom de
+<span class="ltx_text ltx_font_bold">principi del tercer exclòs</span>, segons el qual la disjunció
+d’una proposició i la seva negació és sempre vertadera. En
+efecte, la taula de veritat d’aquesta proposició és</p>
+<div id="Ex1" class="ltx_equation ltx_eqn_div">
+<span>
+<table class="ltx_tabular ltx_markedasmath ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ex1.m1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r"><math id="Ex1.m1.m2" class="ltx_Math" alttext="\lnot p" display="inline"><semantics><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">\lnot p</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left"><math id="Ex1.m1.m3" class="ltx_Math" alttext="p\vee\lnot p" display="inline"><semantics><mrow><mi>p</mi><mo>∨</mo><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow></mrow><annotation encoding="application/x-tex">p\vee\lnot p</annotation></semantics></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_t">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l">V</td>
+</tr>
+</table>
+<span class="ltx_text ltx_markedasmath">,</span></span>
+</div>
+<p class="ltx_p">on veiem que l’última columna hi ha només el valor V com era
+d’esperar. Es evident que la tautologia no té cap interés matemàtic perquè no informa de res, però permet simplificar a vegades les
+demostracions com veurem més endavant.</p>
+</div>
+<div id="p2" class="ltx_para ltx_noindent">
+<br class="ltx_break">
+</div>
+<div id="p3" class="ltx_para ltx_noindent">
+<p class="ltx_p">Ara bé, el concepte de tautologia té més sentit quan en lloc de
+tractar amb proposicions treballem en formes. Una forma és tautologia
+quan la matriu de la forma només genera proposicions vertaderes; en unes
+altres paraules, quan és certa en totes les circumstàncies
+possibles. Per exemple, la forma <math id="p3.m1" class="ltx_Math" alttext="A(p,q)=(p\wedge q)\longrightarrow(p\vee q)" display="inline"><semantics><mrow><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>∧</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟶</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>∨</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">A(p,q)=(p\wedge q)\longrightarrow(p\vee q)</annotation></semantics></math> és tautologia perquè la seva taula és:</p>
+<div id="Ex2" class="ltx_equation ltx_eqn_div">
+<span>
+<table class="ltx_tabular ltx_markedasmath ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ex2.m1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r"><math id="Ex2.m1.m2" class="ltx_Math" alttext="q" display="inline"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r"><math id="Ex2.m1.m3" class="ltx_Math" alttext="p\wedge q" display="inline"><semantics><mrow><mi>p</mi><mo>∧</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p\wedge q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r"><math id="Ex2.m1.m4" class="ltx_Math" alttext="p\vee q" display="inline"><semantics><mrow><mi>p</mi><mo>∨</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p\vee q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left"><math id="Ex2.m1.m5" class="ltx_Math" alttext="(p\wedge q)\longrightarrow(p\vee q)" display="inline"><semantics><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>∧</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟶</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>∨</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">(p\wedge q)\longrightarrow(p\vee q)</annotation></semantics></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_t">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l">V</td>
+</tr>
+</table></span>
+</div>
+<p class="ltx_p">D’aquí surt el fet següent: qualsevol proposició composta de la
+forma ‘<math id="p3.m2" class="ltx_Math" alttext="(p\wedge q)\longrightarrow(p\vee q)" display="inline"><semantics><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>∧</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟶</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>∨</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">(p\wedge q)\longrightarrow(p\vee q)</annotation></semantics></math>’ és una tautologia,
+independentment del que siguin les proposicions <math id="p3.m3" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> i <math id="p3.m4" class="ltx_Math" alttext="q" display="inline"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math>.</p>
+</div>
+<div id="p4" class="ltx_para ltx_noindent">
+<br class="ltx_break">
+</div>
+<div id="p5" class="ltx_para ltx_noindent">
+<p class="ltx_p">Una <span class="ltx_text ltx_font_bold">contradicció</span> és una proposició que és falsa per
+necessitat lògica. De fet, tota contradicció és la negació
+d’una tautologia i, al contrari, tota tautologia és la negació d’una
+contradicció. La negació del principi del tercer exclòs és
+una contradicció coneguda com el <span class="ltx_text ltx_font_bold">principi de contradicció</span>,
+segons el qual la conjunció d’una proposició i la seva negació
+és una proposició sempre falsa. És la proposició ‘<math id="p5.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> i no<math id="p5.m2" class="ltx_Math" alttext="\leavevmode\nobreak\ p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">\leavevmode\nobreak\ p</annotation></semantics></math>’, sent <math id="p5.m3" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> qualsevol proposició. La taula de veritat d’aquesta
+proposició és</p>
+<div id="Ex3" class="ltx_equation ltx_eqn_div">
+<span>
+<table class="ltx_tabular ltx_markedasmath ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ex3.m1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r"><math id="Ex3.m1.m2" class="ltx_Math" alttext="\lnot p" display="inline"><semantics><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">\lnot p</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left"><math id="Ex3.m1.m3" class="ltx_Math" alttext="p\wedge\lnot p" display="inline"><semantics><mrow><mi>p</mi><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow></mrow><annotation encoding="application/x-tex">p\wedge\lnot p</annotation></semantics></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_t">F</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l">F</td>
+</tr>
+</table>
+<span class="ltx_text ltx_markedasmath">,</span></span>
+</div>
+<p class="ltx_p">i veiem que l’última columna només té el valor F. De la mateixa
+manera que la tautologia, la contradicció té més sentit quan
+s’aplica a formes proposicionals. Una forma és contradicció quan la
+seva matriu només genera proposicions falses. Per exemple, segons el
+principi de contradicció la forma <math id="p5.m4" class="ltx_Math" alttext="\left(p\longrightarrow q\right)\wedge\lnot\left(p\longrightarrow q\right)" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mi>p</mi><mo stretchy="false">⟶</mo><mi>q</mi></mrow><mo>)</mo></mrow><mo>∧</mo><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mi>p</mi><mo stretchy="false">⟶</mo><mi>q</mi></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\left(p\longrightarrow q\right)\wedge\lnot\left(p\longrightarrow q\right)</annotation></semantics></math> és una contradicció.
+Podem comprovar-ho fent la seva matriu:</p>
+<div id="Ex4" class="ltx_equation ltx_eqn_div">
+<span>
+<table class="ltx_tabular ltx_markedasmath ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ex4.m1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r"><math id="Ex4.m1.m2" class="ltx_Math" alttext="q" display="inline"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r"><math id="Ex4.m1.m3" class="ltx_Math" alttext="p\longrightarrow q" display="inline"><semantics><mrow><mi>p</mi><mo stretchy="false">⟶</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p\longrightarrow q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_border_r"><math id="Ex4.m1.m4" class="ltx_Math" alttext="\lnot\left(p\longrightarrow q\right)" display="inline"><semantics><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mi>p</mi><mo stretchy="false">⟶</mo><mi>q</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(p\longrightarrow q\right)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left"><math id="Ex4.m1.m5" class="ltx_Math" alttext="(p\longrightarrow q)\wedge\lnot\left(p\longrightarrow q\right)" display="inline"><semantics><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo stretchy="false">⟶</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mi>p</mi><mo stretchy="false">⟶</mo><mi>q</mi></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">(p\longrightarrow q)\wedge\lnot\left(p\longrightarrow q\right)</annotation></semantics></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r ltx_border_t">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_t">F</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l">F</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l">F</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_l">F</td>
+</tr>
+</table>
+<span class="ltx_text ltx_markedasmath">.</span></span>
+</div>
+</div>
+<div id="p6" class="ltx_para ltx_noindent">
+<p class="ltx_p">Per acabar, quan una forma proposicional no és tautologia ni contradicció es diu que és <span class="ltx_text ltx_font_bold">contingència</span>; en unes altres  paraules, quan admet algunes proposicions vertaderes i altres falses per als
+valors de veritat de les variables proposicionals. Un exemple de contingència és la forma <math id="p6.m1" class="ltx_Math" alttext="(p\vee q)\longrightarrow(p\wedge q)" display="inline"><semantics><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>∨</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟶</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>∧</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">(p\vee q)\longrightarrow(p\wedge q)</annotation></semantics></math> perquè la
+seva matriu és:</p>
+<div id="Ex5" class="ltx_equation ltx_eqn_div">
+<span>
+<table class="ltx_tabular ltx_markedasmath ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center"><math id="Ex5.m1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math id="Ex5.m1.m2" class="ltx_Math" alttext="q" display="inline"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math id="Ex5.m1.m3" class="ltx_Math" alttext="p\vee q" display="inline"><semantics><mrow><mi>p</mi><mo>∨</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p\vee q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math id="Ex5.m1.m4" class="ltx_Math" alttext="p\wedge q" display="inline"><semantics><mrow><mi>p</mi><mo>∧</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p\wedge q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center ltx_border_r"><math id="Ex5.m1.m5" class="ltx_Math" alttext="(p\vee q)\longrightarrow(p\wedge q)" display="inline"><semantics><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>∨</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow><mo stretchy="false">⟶</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>∧</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">(p\vee q)\longrightarrow(p\wedge q)</annotation></semantics></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r">V</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">F</td>
+<td class="ltx_td ltx_align_center ltx_border_r">V</td>
+</tr>
+</table>
+<span class="ltx_text ltx_markedasmath">.</span></span>
+</div>
+</div>
+<div id="p7" class="ltx_para ltx_noindent">
+<br class="ltx_break">
+</div>
+<div id="p8" class="ltx_para ltx_noindent">
+<p class="ltx_p">Les formes proposicionals poden ser connectades amb operadors lògics per
+a formar noves formes proposicionals. D’aquesta manera, si <math id="p8.m1" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> i <math id="p8.m2" class="ltx_Math" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math> són
+formes, llavors <math id="p8.m3" class="ltx_Math" alttext="\lnot A" display="inline"><semantics><mrow><mo rspace="0.167em">¬</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">\lnot A</annotation></semantics></math>, <math id="p8.m4" class="ltx_Math" alttext="A\wedge B" display="inline"><semantics><mrow><mi>A</mi><mo>∧</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\wedge B</annotation></semantics></math>, <math id="p8.m5" class="ltx_Math" alttext="A\vee B" display="inline"><semantics><mrow><mi>A</mi><mo>∨</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\vee B</annotation></semantics></math>, <math id="p8.m6" class="ltx_Math" alttext="A\longrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longrightarrow B</annotation></semantics></math> i <math id="p8.m7" class="ltx_Math" alttext="A\longleftrightarrow B" display="inline"><semantics><mrow><mi>A</mi><mo stretchy="false">⟷</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\longleftrightarrow B</annotation></semantics></math> representen noves formes proposicionals. Per
+exemple, si <math id="p8.m8" class="ltx_Math" alttext="A(p,q)=\lnot p\longrightarrow q" display="inline"><semantics><mrow><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo stretchy="false">⟶</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">A(p,q)=\lnot p\longrightarrow q</annotation></semantics></math> i <math id="p8.m9" class="ltx_Math" alttext="B(p,r,s)=s\longrightarrow\left(p\vee\lnot r\right)" display="inline"><semantics><mrow><mrow><mi>B</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo>,</mo><mi>r</mi><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>s</mi><mo stretchy="false">⟶</mo><mrow><mo>(</mo><mrow><mi>p</mi><mo>∨</mo><mrow><mo rspace="0.167em">¬</mo><mi>r</mi></mrow></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">B(p,r,s)=s\longrightarrow\left(p\vee\lnot r\right)</annotation></semantics></math>, aleshores <math id="p8.m10" class="ltx_Math" alttext="C(p,q,r,s)=A(p,q)\longrightarrow B(p,r,s)" display="inline"><semantics><mrow><mrow><mi>C</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>r</mi><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">⟶</mo><mrow><mi>B</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo>,</mo><mi>r</mi><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">C(p,q,r,s)=A(p,q)\longrightarrow B(p,r,s)</annotation></semantics></math>, és a dir, <math id="p8.m11" class="ltx_Math" alttext="C(p,q,r,s)=\left(\lnot p\longrightarrow q\right)\longrightarrow\left(s%
+\longrightarrow\left(p\vee\lnot r\right)\right)" display="inline"><semantics><mrow><mrow><mi>C</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo>,</mo><mi>r</mi><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo stretchy="false">⟶</mo><mi>q</mi></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mrow><mo>(</mo><mrow><mi>s</mi><mo stretchy="false">⟶</mo><mrow><mo>(</mo><mrow><mi>p</mi><mo>∨</mo><mrow><mo rspace="0.167em">¬</mo><mi>r</mi></mrow></mrow><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">C(p,q,r,s)=\left(\lnot p\longrightarrow q\right)\longrightarrow\left(s%
+\longrightarrow\left(p\vee\lnot r\right)\right)</annotation></semantics></math>.
+Observem que <math id="p8.m12" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> té <math id="p8.m13" class="ltx_Math" alttext="2^{2}=4" display="inline"><semantics><mrow><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">2^{2}=4</annotation></semantics></math> interpretacions, <math id="p8.m14" class="ltx_Math" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math> en té <math id="p8.m15" class="ltx_Math" alttext="2^{3}=8" display="inline"><semantics><mrow><msup><mn>2</mn><mn>3</mn></msup><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">2^{3}=8</annotation></semantics></math>
+interpretacions, i <math id="p8.m16" class="ltx_Math" alttext="C" display="inline"><semantics><mi>C</mi><annotation encoding="application/x-tex">C</annotation></semantics></math> en té <math id="p8.m17" class="ltx_Math" alttext="2^{4}=16" display="inline"><semantics><mrow><msup><mn>2</mn><mn>4</mn></msup><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">2^{4}=16</annotation></semantics></math> interpretacions.</p>
+</div>
+<div id="Ch1.Thmexemple4" class="ltx_theorem ltx_theorem_exemple">
+
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem header-section-number"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Exemple 1.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Ch1.Thmexemple4.p1" class="ltx_para">
+<p class="ltx_p">Si <math id="Ch1.Thmexemple4.p1.m1" class="ltx_Math" alttext="p,q" display="inline"><semantics><mrow><mi>p</mi><mo>,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p,q</annotation></semantics></math> i <math id="Ch1.Thmexemple4.p1.m2" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math> són variables proposicionals, llavors <math id="Ch1.Thmexemple4.p1.m3" class="ltx_Math" alttext="\left(\left(\lnot p\vee q\right)\wedge\left(\lnot r\longrightarrow q\right)%
+\right)\longrightarrow\left(p\longrightarrow r\right)" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo>∨</mo><mi>q</mi></mrow><mo>)</mo></mrow><mo>∧</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>r</mi></mrow><mo stretchy="false">⟶</mo><mi>q</mi></mrow><mo>)</mo></mrow></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mrow><mo>(</mo><mrow><mi>p</mi><mo stretchy="false">⟶</mo><mi>r</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\left(\lnot p\vee q\right)\wedge\left(\lnot r\longrightarrow q\right)%
+\right)\longrightarrow\left(p\longrightarrow r\right)</annotation></semantics></math> és una forma
+proposicional tautològica?</p>
+</div>
+</div>
+<div id="p9" class="ltx_para ltx_noindent">
+<p class="ltx_p"><span class="ltx_text bml_color_FF4057 ltx_font_bold">Solució:<span class="ltx_text ltx_font_medium"> </span></span>
+La forma conté 3 variables i per tant la matriu de la forma té <math id="p9.m1" class="ltx_Math" alttext="2^{3}=8" display="inline"><semantics><mrow><msup><mn>2</mn><mn>3</mn></msup><mo>=</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">2^{3}=8</annotation></semantics></math> interpretacions possibles. En lloc de fer la taula, podem raonar
+suposant que la forma s’interpretés com a contradicció. Aleshores
+existeix una valoració de les variables segons la qual l’implicación
+és falsa i, per tant, l’antecedent <math id="p9.m2" class="ltx_Math" alttext="\left(\lnot p\vee q\right)\wedge\left(\lnot r\longrightarrow q\right)" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo>∨</mo><mi>q</mi></mrow><mo>)</mo></mrow><mo>∧</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>r</mi></mrow><mo stretchy="false">⟶</mo><mi>q</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\lnot p\vee q\right)\wedge\left(\lnot r\longrightarrow q\right)</annotation></semantics></math> és vertader i el conseqüent <math id="p9.m3" class="ltx_Math" alttext="p\longrightarrow r" display="inline"><semantics><mrow><mi>p</mi><mo stretchy="false">⟶</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">p\longrightarrow r</annotation></semantics></math> és fals. Ara bé, l’antecedent és
+vertader quan <math id="p9.m4" class="ltx_Math" alttext="\lnot p\vee q" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo>∨</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">\lnot p\vee q</annotation></semantics></math> i <math id="p9.m5" class="ltx_Math" alttext="\lnot r\longrightarrow q" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mi>r</mi></mrow><mo stretchy="false">⟶</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">\lnot r\longrightarrow q</annotation></semantics></math> són ambdues
+vertaderes, i el conseqüent és fals quan <math id="p9.m6" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> és vertader i <math id="p9.m7" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+és fals. Però si prenem aquesta interpretació, aleshores <math id="p9.m8" class="ltx_Math" alttext="\lnot p\vee q" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo>∨</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">\lnot p\vee q</annotation></semantics></math> i <math id="p9.m9" class="ltx_Math" alttext="\lnot r\longrightarrow q" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mi>r</mi></mrow><mo stretchy="false">⟶</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">\lnot r\longrightarrow q</annotation></semantics></math> no poden ser ambdues vertaderes perquè <math id="p9.m10" class="ltx_Math" alttext="\lnot p\vee q" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo>∨</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">\lnot p\vee q</annotation></semantics></math> és vertadera només si <math id="p9.m11" class="ltx_Math" alttext="q" display="inline"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math> és vertadera, però <math id="p9.m12" class="ltx_Math" alttext="\lnot r\longrightarrow q" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mi>r</mi></mrow><mo stretchy="false">⟶</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">\lnot r\longrightarrow q</annotation></semantics></math> és aleshores falsa i, per tant, això
+no és possible. Com a conseqüència, concluïm que la forma
+no pot prendre el valor fals i, per tant, és tautologia.</p>
+</div>
+<div id="p10" class="ltx_para ltx_noindent">
+<p class="ltx_p">Alternativament, si construïm la matriu de la forma es té:</p>
+<div id="Ex6" class="ltx_equation ltx_eqn_div">
+<span>
+<table class="ltx_tabular ltx_markedasmath ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center"><math id="Ex6.m1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center"><math id="Ex6.m1.m2" class="ltx_Math" alttext="q" display="inline"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center"><math id="Ex6.m1.m3" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center"><math id="Ex6.m1.m4" class="ltx_Math" alttext="\lnot p" display="inline"><semantics><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><annotation encoding="application/x-tex">\lnot p</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center"><math id="Ex6.m1.m5" class="ltx_Math" alttext="\lnot r" display="inline"><semantics><mrow><mo rspace="0.167em">¬</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">\lnot r</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center"><math id="Ex6.m1.m6" class="ltx_Math" alttext="\alpha=\lnot p\vee q" display="inline"><semantics><mrow><mi>α</mi><mo>=</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo>∨</mo><mi>q</mi></mrow></mrow><annotation encoding="application/x-tex">\alpha=\lnot p\vee q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center"><math id="Ex6.m1.m7" class="ltx_Math" alttext="\beta=\lnot r\vee q" display="inline"><semantics><mrow><mi>β</mi><mo>=</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>r</mi></mrow><mo>∨</mo><mi>q</mi></mrow></mrow><annotation encoding="application/x-tex">\beta=\lnot r\vee q</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center"><math id="Ex6.m1.m8" class="ltx_Math" alttext="\gamma=p\longrightarrow r" display="inline"><semantics><mrow><mi>γ</mi><mo>=</mo><mi>p</mi><mo stretchy="false">⟶</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">\gamma=p\longrightarrow r</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center"><math id="Ex6.m1.m9" class="ltx_Math" alttext="\alpha\wedge\beta" display="inline"><semantics><mrow><mi>α</mi><mo>∧</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">\alpha\wedge\beta</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_center"><math id="Ex6.m1.m10" class="ltx_Math" alttext="\left(\alpha\wedge\beta\right)\longrightarrow\gamma" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mi>α</mi><mo>∧</mo><mi>β</mi></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mi>γ</mi></mrow><annotation encoding="application/x-tex">\left(\alpha\wedge\beta\right)\longrightarrow\gamma</annotation></semantics></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_t">F</td>
+<td class="ltx_td ltx_align_center ltx_border_t">F</td>
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+<td class="ltx_td ltx_align_center ltx_border_t">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">F</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+<td class="ltx_td ltx_align_center">V</td>
+</tr>
+</table></span>
+</div>
+<p class="ltx_p">i surt que és tautologia com era d’esperar.
+  <math id="p10.m1" class="ltx_Math" alttext="\square" display="inline"><semantics><mi mathvariant="normal">□</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<a href="Ch1.S5.html" class="navigation navigation-prev" aria-label="Previous page"><i class="fa fa-angle-left"></i></a><a href="Ch1.S7.html" class="navigation navigation-next" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+</div>
+</div>
+<script src="bookml/gitbook/js/app.min.js"></script>
+<script src="bookml/gitbook/js/jquery.highlight.js"></script>
+<script src="bookml/gitbook/js/plugin-search.js"></script>
+<script src="bookml/gitbook/js/plugin-fontsettings.js"></script>
+<script src="bookml/gitbook/js/plugin-bookdown.js"></script>
+<script src="bookml/js/mathjax3.js"></script>
+<script type="text/javascript">
+                gitbook.require(["gitbook"], function(gitbook) {
+                gitbook.start({
+                  "fontsettings": {
+                    "theme": "white",
+                    "family": "sans",
+                    "size": 2
+                  },
+                  "download": [ [ "plantilla.pdf", "PDF" ], ],
+                  "search": {
+                    "engine": "fuse"
+                  },
+                  "toc": {
+                    "collapse": "none"
+                  }
+                });
+              });
+            </script>
+</body>
+
+</html>

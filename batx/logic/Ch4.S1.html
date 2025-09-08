@@ -1,0 +1,469 @@
+<!DOCTYPE html><html lang="ca">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>4.1 Lògica i raonament ‣ Capítol 4 Tests ‣ Lògica, Raonament i Demostració</title>
+<!--Generated on Sun Sep  7 20:03:08 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on 7 de setembre de 2025.-->
+<style>:root { --bml-ltx-font-size: 12; }</style>
+<link rel="stylesheet" href="LaTeXML.css" type="text/css">
+<link rel="stylesheet" href="ltx-book.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/style.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-table.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-search.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-bookdown.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-fontsettings.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.gitbook,plain.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.gitbook.css" type="text/css">
+<link rel="stylesheet" href="bmluser/colors.gitbook-plantilla.css" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
+<link rel="up" href="Ch4.html" title="Capítol 4 Tests ‣ Lògica, Raonament i Demostració">
+<link rel="up up" href="index.html" title="Lògica, Raonament i Demostració">
+<link rel="start" href="index.html" title="Lògica, Raonament i Demostració">
+<link rel="prev" href="Ch4.html" title="Capítol 4 Tests ‣ Lògica, Raonament i Demostració">
+<link rel="next" href="Ch4.S2.html" title="4.2 Demostració ‣ Capítol 4 Tests ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch4.S2.html" title="4.2 Demostració ‣ Capítol 4 Tests ‣ Lògica, Raonament i Demostració">
+<link rel="section" href="Ch4.S3.html" title="4.3 Posa’t a prova amb un test general senzill! ‣ Capítol 4 Tests ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Chx1.html" title="Prefaci ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Chx2.html" title="Introducció ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch1.html" title="Capítol 1 Teoria ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch2.html" title="Capítol 2 Pràctica ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch3.html" title="Capítol 3 Exercicis proposats ‣ Lògica, Raonament i Demostració">
+<link rel="chapter" href="Ch4.html" title="Capítol 4 Tests ‣ Lògica, Raonament i Demostració">
+</head>
+<body>
+<div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+<a href="#bml-main-content" tabindex="0" class="bml-skip-to-content">Skip to content.</a>
+<div class="book-summary"><nav class="ltx_page_navbar">
+<ul class="ltx_toclist summary">
+<li>
+<a href="index.html" title="" class="ltx_ref" rel="start">Lògica, Raonament i Demostració</a>
+</li>
+<li class="divider">
+<li data-level="" data-path="Chx1.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Chx1.html" title="In Lògica, Raonament i Demostració" class="ltx_ref">Prefaci</a></li>
+<li data-level="" data-path="Chx2.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Chx2.html" title="In Lògica, Raonament i Demostració" class="ltx_ref">Introducció</a></li>
+<li data-level="1" data-path="Ch1.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch1.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1 </span></b>Teoria</a></li>
+<li data-level="2" data-path="Ch2.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch2.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">2 </span></b>Pràctica</a></li>
+<li data-level="3" data-path="Ch3.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch3.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">3 </span></b>Exercicis proposats</a></li>
+<li data-level="4" data-path="Ch4.html" class="ltx_tocentry ltx_tocentry_chapter  chapter ">
+<a href="Ch4.html" title="In Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">4 </span></b>Tests</a>
+<ol class="ltx_toclist ltx_toclist_chapter">
+<li data-level="4.1" data-path="" class="ltx_tocentry ltx_tocentry_section ltx_ref_self  chapter active"><a href="" title="In Capítol 4 Tests ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">4.1 </span></b>Lògica i raonament</a></li>
+<li data-level="4.2" data-path="Ch4.S2.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch4.S2.html" title="In Capítol 4 Tests ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">4.2 </span></b>Demostració</a></li>
+<li data-level="4.3" data-path="Ch4.S3.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch4.S3.html" title="In Capítol 4 Tests ‣ Lògica, Raonament i Demostració" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">4.3 </span></b>Posa’t a prova amb un test general senzill!</a></li>
+</ol>
+</li>
+</ul>
+</nav></div>
+<div class="ltx_page_main book-body fixed">
+<div class="body-inner">
+<div class="book-header fixed" role="navigation"><h1></h1></div>
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="ltx_page_content page-inner" id="bml-main-content">
+<section class="ltx_section normal" lang="ca">
+<div class="section level1">
+
+<h1 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section header-section-number"><span class="ltx_text bml_color_FF4057">4.1</span></span> <span class="ltx_text bml_color_FF4057">Lògica i raonament</span>
+</h1>
+
+<div id="p1" class="ltx_para ltx_noindent">
+<ol id="I1" class="ltx_enumerate">
+<li id="I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span><div id="I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Considerem l’enunciat següent sobre una festa: "Si és el teu
+aniversari o hi haurà pastís, hi haurà pastís". Quina de les
+següents afirmacions és falsa?</p>
+</div>
+<div id="I1.i1.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i1.I1" class="ltx_enumerate">
+<li id="I1.i1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i1.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Si <math id="I1.i1.I1.i1.p1.m1" class="ltx_Math" alttext="p=" display="inline"><semantics><mrow><mi>p</mi><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">p=</annotation></semantics></math>“és el teu aniversari” i
+<math id="I1.i1.I1.i1.p1.m2" class="ltx_Math" alttext="q=" display="inline"><semantics><mrow><mi>q</mi><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">q=</annotation></semantics></math>“hi haurà pastís”, llavors
+l’enunciat s’expressa formalment així: <math id="I1.i1.I1.i1.p1.m3" class="ltx_Math" alttext="\left(p\vee q\right)\longrightarrow q" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mi>p</mi><mo>∨</mo><mi>q</mi></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">\left(p\vee q\right)\longrightarrow q</annotation></semantics></math>.</p>
+</div>
+</li>
+<li id="I1.i1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i1.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Suposant que l’enunciat és cert, podem concloure (si és que hi
+ha alguna cosa) afirmant només que hi haurà pastís.</p>
+</div>
+</li>
+<li id="I1.i1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i1.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Suposant que l’enunciat és cert, si no hi haurà pastís
+podem concloure que és el teu aniversari. (*)</p>
+</div>
+</li>
+<li id="I1.i1.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i1.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Suposem que s’ha descobert que l’afirmació és mentida, aleshores
+podem concloure que és el teu aniversari, però el pastís és mentida.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span><div id="I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Si <math id="I1.i2.p1.m1" class="ltx_Math" alttext="p=" display="inline"><semantics><mrow><mi>p</mi><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">p=</annotation></semantics></math>“Joan sempre diu la veritat” i
+<math id="I1.i2.p1.m2" class="ltx_Math" alttext="q=" display="inline"><semantics><mrow><mi>q</mi><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">q=</annotation></semantics></math>“Jaume sempre menteix”, llavors quina de
+les següents afirmacions és falsa?</p>
+</div>
+<div id="I1.i2.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i2.I1" class="ltx_enumerate">
+<li id="I1.i2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i2.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">L’enunciat “No és cert que en Joan o Jaume diguin
+sempre mentides” s’expressa formalment d’aquesta manera:
+<math id="I1.i2.I1.i1.p1.m1" class="ltx_Math" alttext="\lnot\left(\lnot p\vee q\right)" display="inline"><semantics><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo>∨</mo><mi>q</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(\lnot p\vee q\right)</annotation></semantics></math>.</p>
+</div>
+</li>
+<li id="I1.i2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i2.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i2.I1.i2.p1.m1" class="ltx_Math" alttext="\lnot p\longrightarrow\lnot q" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">¬</mo><mi>q</mi></mrow></mrow><annotation encoding="application/x-tex">\lnot p\longrightarrow\lnot q</annotation></semantics></math> és l’enunciat “Si
+en Joan menteix, llavors en Jaume diu la veritat”.</p>
+</div>
+</li>
+<li id="I1.i2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i2.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i2.I1.i3.p1.m1" class="ltx_Math" alttext="p\wedge\lnot q" display="inline"><semantics><mrow><mi>p</mi><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mi>q</mi></mrow></mrow><annotation encoding="application/x-tex">p\wedge\lnot q</annotation></semantics></math> és l’enunciat “Joan i Jaume no
+menteixen”.</p>
+</div>
+</li>
+<li id="I1.i2.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i2.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">L’enunciat “No és el cas que si en Joan menteix,
+aleshores en Jaume digui sempre la veritat” s’expressa
+formalment així <math id="I1.i2.I1.i4.p1.m1" class="ltx_Math" alttext="\lnot\left(\lnot p\longrightarrow q\right)" display="inline"><semantics><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo stretchy="false">⟶</mo><mi>q</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(\lnot p\longrightarrow q\right)</annotation></semantics></math>. (*)</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span><div id="I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Prenent com univers el conjunt del nombres enters <math id="I1.i3.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><semantics><mi>ℤ</mi><annotation encoding="application/x-tex">\mathbb{Z}</annotation></semantics></math>. Si
+<math id="I1.i3.p1.m2" class="ltx_Math" alttext="p=" display="inline"><semantics><mrow><mi>p</mi><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">p=</annotation></semantics></math>“<math id="I1.i3.p1.m3" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> és múltiple de <math id="I1.i3.p1.m4" class="ltx_Math" alttext="3" display="inline"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>” i
+<math id="I1.i3.p1.m5" class="ltx_Math" alttext="q=" display="inline"><semantics><mrow><mi>q</mi><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">q=</annotation></semantics></math>“<math id="I1.i3.p1.m6" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> és enter positiu més petit que <math id="I1.i3.p1.m7" class="ltx_Math" alttext="10" display="inline"><semantics><mn>10</mn><annotation encoding="application/x-tex">10</annotation></semantics></math>”. Quina de les següents afirmacions és vertadera?</p>
+</div>
+<div id="I1.i3.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i3.I1" class="ltx_enumerate">
+<li id="I1.i3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i3.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i3.I1.i1.p1.m1" class="ltx_Math" alttext="\lnot\left(\lnot p\vee\lnot q\right)=" display="inline"><semantics><mrow><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo>∨</mo><mrow><mo rspace="0.167em">¬</mo><mi>q</mi></mrow></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">\lnot\left(\lnot p\vee\lnot q\right)=</annotation></semantics></math>“<math id="I1.i3.I1.i1.p1.m2" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> és
+mútiple de <math id="I1.i3.I1.i1.p1.m3" class="ltx_Math" alttext="3" display="inline"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math> més petit que <math id="I1.i3.I1.i1.p1.m4" class="ltx_Math" alttext="10" display="inline"><semantics><mn>10</mn><annotation encoding="application/x-tex">10</annotation></semantics></math>”.</p>
+</div>
+</li>
+<li id="I1.i3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i3.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i3.I1.i2.p1.m1" class="ltx_Math" alttext="p\longrightarrow\lnot q=" display="inline"><semantics><mrow><mi>p</mi><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">¬</mo><mi>q</mi></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">p\longrightarrow\lnot q=</annotation></semantics></math>“si <math id="I1.i3.I1.i2.p1.m2" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> es múltiple de
+<math id="I1.i3.I1.i2.p1.m3" class="ltx_Math" alttext="3" display="inline"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math>, aleshores <math id="I1.i3.I1.i2.p1.m4" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> és un enter més petit o igual que <math id="I1.i3.I1.i2.p1.m5" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> o és
+més gran o igual que <math id="I1.i3.I1.i2.p1.m6" class="ltx_Math" alttext="10" display="inline"><semantics><mn>10</mn><annotation encoding="application/x-tex">10</annotation></semantics></math>”. (*)</p>
+</div>
+</li>
+<li id="I1.i3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i3.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i3.I1.i3.p1.m1" class="ltx_Math" alttext="\left(p\wedge\lnot q\right)\vee\left(\lnot p\wedge q\right)=" display="inline"><semantics><mrow><mrow><mrow><mo>(</mo><mrow><mi>p</mi><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mi>q</mi></mrow></mrow><mo>)</mo></mrow><mo>∨</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow><mo>∧</mo><mi>q</mi></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mi></mi></mrow><annotation encoding="application/x-tex">\left(p\wedge\lnot q\right)\vee\left(\lnot p\wedge q\right)=</annotation></semantics></math>“<math id="I1.i3.I1.i3.p1.m2" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> és múltiple de <math id="I1.i3.I1.i3.p1.m3" class="ltx_Math" alttext="3" display="inline"><semantics><mn>3</mn><annotation encoding="application/x-tex">3</annotation></semantics></math> o <math id="I1.i3.I1.i3.p1.m4" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> és enter positiu
+més petit que <math id="I1.i3.I1.i3.p1.m5" class="ltx_Math" alttext="10" display="inline"><semantics><mn>10</mn><annotation encoding="application/x-tex">10</annotation></semantics></math>”.</p>
+</div>
+</li>
+<li id="I1.i3.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i3.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i3.I1.i4.p1.m1" class="ltx_Math" alttext="\left(p\longrightarrow q\right)\vee\lnot p" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mi>p</mi><mo stretchy="false">⟶</mo><mi>q</mi></mrow><mo>)</mo></mrow><mo>∨</mo><mrow><mo rspace="0.167em">¬</mo><mi>p</mi></mrow></mrow><annotation encoding="application/x-tex">\left(p\longrightarrow q\right)\vee\lnot p</annotation></semantics></math> és una
+proposició que només és falsa quan assignem a la variable <math id="I1.i3.I1.i4.p1.m2" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>
+valors enters més grans o iguals que <math id="I1.i3.I1.i4.p1.m3" class="ltx_Math" alttext="10" display="inline"><semantics><mn>10</mn><annotation encoding="application/x-tex">10</annotation></semantics></math>”.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span><div id="I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">La proposició <math id="I1.i4.p1.m1" class="ltx_math_unparsed" alttext="\left(\lnot p\longleftrightarrow\lnot q\right)\vee\left(r\longrightarrow q\right)" display="inline"><semantics><mrow><mrow><mo>(</mo><mo rspace="0.167em">¬</mo><mi>p</mi><mo stretchy="false">⟷</mo><mo rspace="0.167em">¬</mo><mi>q</mi><mo>)</mo></mrow><mo>∨</mo><mrow><mo>(</mo><mi>r</mi><mo stretchy="false">⟶</mo><mi>q</mi><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(\lnot p\longleftrightarrow\lnot q\right)\vee\left(r\longrightarrow q\right)</annotation></semantics></math> és falsa quan:</p>
+</div>
+<div id="I1.i4.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i4.I1" class="ltx_enumerate">
+<li id="I1.i4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i4.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i4.I1.i1.p1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> i <math id="I1.i4.I1.i1.p1.m2" class="ltx_Math" alttext="q" display="inline"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math> són falses, i <math id="I1.i4.I1.i1.p1.m3" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math> és vertadera.</p>
+</div>
+</li>
+<li id="I1.i4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i4.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i4.I1.i2.p1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> és vertadera, i <math id="I1.i4.I1.i2.p1.m2" class="ltx_Math" alttext="q" display="inline"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math> i <math id="I1.i4.I1.i2.p1.m3" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math> són vertaderes.</p>
+</div>
+</li>
+<li id="I1.i4.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i4.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i4.I1.i3.p1.m1" class="ltx_Math" alttext="p" display="inline"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> i <math id="I1.i4.I1.i3.p1.m2" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math> són vertaderes, i <math id="I1.i4.I1.i3.p1.m3" class="ltx_Math" alttext="q" display="inline"><semantics><mi>q</mi><annotation encoding="application/x-tex">q</annotation></semantics></math> és falsa. (*)</p>
+</div>
+</li>
+<li id="I1.i4.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i4.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i4.I1.i4.p1.m1" class="ltx_Math" alttext="p,q" display="inline"><semantics><mrow><mi>p</mi><mo>,</mo><mi>q</mi></mrow><annotation encoding="application/x-tex">p,q</annotation></semantics></math> i <math id="I1.i4.I1.i4.p1.m2" class="ltx_Math" alttext="r" display="inline"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math> són falses.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">5.</span><div id="I1.i5.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Quin parell de formes proposicionals són lògicament equivalents?</p>
+</div>
+<div id="I1.i5.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i5.I1" class="ltx_enumerate">
+<li id="I1.i5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i5.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i5.I1.i1.p1.m1" class="ltx_Math" alttext="A\wedge B" display="inline"><semantics><mrow><mi>A</mi><mo>∧</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A\wedge B</annotation></semantics></math> i <math id="I1.i5.I1.i1.p1.m2" class="ltx_Math" alttext="\lnot\left(\lnot A\longrightarrow B\right)" display="inline"><semantics><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>A</mi></mrow><mo stretchy="false">⟶</mo><mi>B</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(\lnot A\longrightarrow B\right)</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i5.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i5.I1.i2.p1.m1" class="ltx_Math" alttext="\left(A\wedge B\right)\vee\left(B\vee\lnot C\right)" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mi>A</mi><mo>∧</mo><mi>B</mi></mrow><mo>)</mo></mrow><mo>∨</mo><mrow><mo>(</mo><mrow><mi>B</mi><mo>∨</mo><mrow><mo rspace="0.167em">¬</mo><mi>C</mi></mrow></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\left(A\wedge B\right)\vee\left(B\vee\lnot C\right)</annotation></semantics></math> i <math id="I1.i5.I1.i2.p1.m2" class="ltx_Math" alttext="\left(\lnot A\vee\lnot B\right)\longrightarrow\lnot\left(\lnot B\wedge C\right)" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>A</mi></mrow><mo>∨</mo><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow><mo>∧</mo><mi>C</mi></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\left(\lnot A\vee\lnot B\right)\longrightarrow\lnot\left(\lnot B\wedge C\right)</annotation></semantics></math> (*)</p>
+</div>
+</li>
+<li id="I1.i5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i5.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i5.I1.i3.p1.m1" class="ltx_Math" alttext="\lnot\left((A\rightarrow\lnot B)\vee\lnot(C\wedge\lnot C)\right)" display="inline"><semantics><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo stretchy="false">→</mo><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∨</mo><mrow><mo>¬</mo><mrow><mo stretchy="false">(</mo><mrow><mi>C</mi><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mi>C</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\lnot\left((A\rightarrow\lnot B)\vee\lnot(C\wedge\lnot C)\right)</annotation></semantics></math> i
+<math id="I1.i5.I1.i3.p1.m2" class="ltx_Math" alttext="C\vee\lnot C" display="inline"><semantics><mrow><mi>C</mi><mo>∨</mo><mrow><mo rspace="0.167em">¬</mo><mi>C</mi></mrow></mrow><annotation encoding="application/x-tex">C\vee\lnot C</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i5.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i5.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i5.I1.i4.p1.m1" class="ltx_Math" alttext="\left(A\longrightarrow B\right)\longleftrightarrow B" display="inline"><semantics><mrow><mrow><mo>(</mo><mrow><mi>A</mi><mo stretchy="false">⟶</mo><mi>B</mi></mrow><mo>)</mo></mrow><mo stretchy="false">⟷</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">\left(A\longrightarrow B\right)\longleftrightarrow B</annotation></semantics></math> i <math id="I1.i5.I1.i4.p1.m2" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">6.</span><div id="I1.i6.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">En Pere t’estava explicant el que va menjar ahir a la tarda. Et diu:
+“Vaig prendre crispetes o panses. A més, si tenia
+entrepans de cogombre, llavors tenia refresc. Però no vaig beure refresc
+ni te". Per descomptat, sabeu que en Pere és el pitjor mentider del
+món, i tot el que diu és fals. Què va menjar en Pere?</p>
+</div>
+<div id="I1.i6.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i6.I1" class="ltx_enumerate">
+<li id="I1.i6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i6.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">entrepans de cogombre  i te (*)</p>
+</div>
+</li>
+<li id="I1.i6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i6.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">crispetes o panses i refresc</p>
+</div>
+</li>
+<li id="I1.i6.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i6.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">nomé te</p>
+</div>
+</li>
+<li id="I1.i6.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i6.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">entrepans de cogombre  i refresc</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i7" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">7.</span><div id="I1.i7.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">De les premisses <math id="I1.i7.p1.m1" class="ltx_Math" alttext="P_{1}=\lnot A\longrightarrow\left(B\longrightarrow\lnot C\right),P_{2}=C%
+\longrightarrow\lnot A,P_{3}=\left(\lnot D\vee A\right)\longrightarrow\lnot\lnot
+C" display="inline"><semantics><mrow><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>=</mo><mrow><mo rspace="0.167em">¬</mo><mi>A</mi></mrow><mo stretchy="false">⟶</mo><mrow><mo>(</mo><mrow><mi>B</mi><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">¬</mo><mi>C</mi></mrow></mrow><mo>)</mo></mrow></mrow><mo>,</mo><mrow><msub><mi>P</mi><mn>2</mn></msub><mo>=</mo><mi>C</mi><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">¬</mo><mi>A</mi></mrow></mrow><mo>,</mo><mrow><msub><mi>P</mi><mn>3</mn></msub><mo>=</mo><mrow><mo>(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mi>D</mi></mrow><mo>∨</mo><mi>A</mi></mrow><mo>)</mo></mrow><mo stretchy="false">⟶</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mo rspace="0.167em">¬</mo><mi>C</mi></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">P_{1}=\lnot A\longrightarrow\left(B\longrightarrow\lnot C\right),P_{2}=C%
+\longrightarrow\lnot A,P_{3}=\left(\lnot D\vee A\right)\longrightarrow\lnot\lnot
+C</annotation></semantics></math> i <math id="I1.i7.p1.m2" class="ltx_Math" alttext="P_{4}=\lnot D" display="inline"><semantics><mrow><msub><mi>P</mi><mn>4</mn></msub><mo>=</mo><mrow><mo rspace="0.167em">¬</mo><mi>D</mi></mrow></mrow><annotation encoding="application/x-tex">P_{4}=\lnot D</annotation></semantics></math>, què es pot
+deduïr si és vàlid?</p>
+</div>
+<div id="I1.i7.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i7.I1" class="ltx_enumerate">
+<li id="I1.i7.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i7.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Podem deduir qualsevol cosa perquè les premisses són inconsistents.</p>
+</div>
+</li>
+<li id="I1.i7.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i7.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i7.I1.i2.p1.m1" class="ltx_Math" alttext="B\wedge\lnot\left(A\vee D\right)" display="inline"><semantics><mrow><mi>B</mi><mo>∧</mo><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mi>A</mi><mo>∨</mo><mi>D</mi></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">B\wedge\lnot\left(A\vee D\right)</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i7.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i7.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i7.I1.i3.p1.m1" class="ltx_Math" alttext="\lnot B\wedge\left(A\vee D\right)" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mi>B</mi></mrow><mo>∧</mo><mrow><mo>(</mo><mrow><mi>A</mi><mo>∨</mo><mi>D</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\lnot B\wedge\left(A\vee D\right)</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i7.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i7.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i7.I1.i4.p1.m1" class="ltx_Math" alttext="\lnot\left(A\vee B\vee D\right)" display="inline"><semantics><mrow><mo>¬</mo><mrow><mo>(</mo><mrow><mi>A</mi><mo>∨</mo><mi>B</mi><mo>∨</mo><mi>D</mi></mrow><mo>)</mo></mrow></mrow><annotation encoding="application/x-tex">\lnot\left(A\vee B\vee D\right)</annotation></semantics></math> (*)</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i8" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">8.</span><div id="I1.i8.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Volem simplificar els enunciats següents de manera que la
+negació només apareix directament al costat dels predicats, quina les
+següents equivalències no és correcte?</p>
+</div>
+<div id="I1.i8.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i8.I1" class="ltx_enumerate">
+<li id="I1.i8.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i8.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i8.I1.i1.p1.m1" class="ltx_Math" alttext="\lnot\exists x\forall y(\lnot O(x)\vee E(y))\Longleftrightarrow\forall x%
+\exists y(O(x)\wedge\lnot E(y))" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo rspace="0.167em">¬</mo><mrow><mi>O</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>∨</mo><mrow><mi>E</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></mrow><mo stretchy="false">⟺</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>O</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mi>E</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">\lnot\exists x\forall y(\lnot O(x)\vee E(y))\Longleftrightarrow\forall x%
+\exists y(O(x)\wedge\lnot E(y))</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i8.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i8.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i8.I1.i2.p1.m1" class="ltx_Math" alttext="\lnot\forall x\lnot\forall y\lnot(x&lt;y\wedge\exists z(x&lt;z\vee y&lt;z))%
+\Longleftrightarrow\exists x\forall y(x&lt;y\wedge\exists z(x&lt;z\vee y&lt;z))" display="inline"><semantics><mrow><mrow><mo rspace="0.167em">¬</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>y</mi><mo lspace="0.167em">⁢</mo><mrow><mo>¬</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>&lt;</mo><mrow><mi>y</mi><mo>∧</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>&lt;</mo><mrow><mi>z</mi><mo>∨</mo><mi>y</mi></mrow><mo>&lt;</mo><mi>z</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></mrow></mrow></mrow><mo stretchy="false">⟺</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>&lt;</mo><mrow><mi>y</mi><mo>∧</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>&lt;</mo><mrow><mi>z</mi><mo>∨</mo><mi>y</mi></mrow><mo>&lt;</mo><mi>z</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">\lnot\forall x\lnot\forall y\lnot(x&lt;y\wedge\exists z(x&lt;z\vee y&lt;z))%
+\Longleftrightarrow\exists x\forall y(x&lt;y\wedge\exists z(x&lt;z\vee y&lt;z))</annotation></semantics></math> (*)</p>
+</div>
+</li>
+<li id="I1.i8.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i8.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">“Hi ha un nombre <math id="I1.i8.I1.i3.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> per al qual cap altre nombre
+és menor o igual a <math id="I1.i8.I1.i3.p1.m2" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>” és equivalent a
+“Hi ha un nombre <math id="I1.i8.I1.i3.p1.m3" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> per al qual tots els altres nombres
+són estrictament majors que <math id="I1.i8.I1.i3.p1.m4" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>”.</p>
+</div>
+</li>
+<li id="I1.i8.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i8.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">“És fals que per a cada nombre <math id="I1.i8.I1.i4.p1.m1" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> hi hagi dos
+nombres més entre els quals es troba <math id="I1.i8.I1.i4.p1.m2" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>” és
+equivalent a “Hi ha un nombre <math id="I1.i8.I1.i4.p1.m3" class="ltx_Math" alttext="n" display="inline"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> que no està entre
+altres dos nombres”.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i9" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">9.</span><div id="I1.i9.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Es diu que el raonament següent és vàlid</p>
+<div id="Ex1" class="ltx_equation ltx_eqn_div">
+<span>
+<table class="ltx_tabular ltx_markedasmath ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ex1.m1.m1" class="ltx_Math" alttext="P_{1}:" display="inline"><semantics><mrow><msub><mi>P</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mi></mi></mrow><annotation encoding="application/x-tex">P_{1}:</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left"><math id="Ex1.m1.m2" class="ltx_Math" alttext="\exists x\leavevmode\nobreak\ \left(P(x)\wedge Q(x)\right)" display="inline"><semantics><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo lspace="0.600em">⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>Q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\exists x\leavevmode\nobreak\ \left(P(x)\wedge Q(x)\right)</annotation></semantics></math></td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left"><math id="Ex1.m1.m3" class="ltx_Math" alttext="P_{2}:" display="inline"><semantics><mrow><msub><mi>P</mi><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mi></mi></mrow><annotation encoding="application/x-tex">P_{2}:</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left">
+<math id="Ex1.m1.m4" class="ltx_Math" alttext="\exists x" display="inline"><semantics><mrow><mo rspace="0.167em">∃</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\exists x</annotation></semantics></math> <math id="Ex1.m1.m5" class="ltx_Math" alttext="\left(M(x)\wedge\lnot P(x)\right)" display="inline"><semantics><mrow><mo>(</mo><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>)</mo></mrow><annotation encoding="application/x-tex">\left(M(x)\wedge\lnot P(x)\right)</annotation></semantics></math>
+</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_border_t"></td>
+<td class="ltx_td ltx_align_left ltx_border_t"><math id="Ex1.m1.m6" class="ltx_Math" alttext="\exists x\leavevmode\nobreak\ \left(M(x)\wedge Q(x)\right)" display="inline"><semantics><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo lspace="0.600em">⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>Q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\exists x\leavevmode\nobreak\ \left(M(x)\wedge Q(x)\right)</annotation></semantics></math></td>
+</tr>
+</table></span>
+</div>
+<p class="ltx_p">perquè es considera com a prova la deducció següent:</p>
+<div id="Ex2" class="ltx_equation ltx_eqn_div">
+<span>
+<table class="ltx_tabular ltx_markedasmath ltx_align_middle">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">1.</td>
+<td class="ltx_td ltx_align_left"><math id="Ex2.m1.m1" class="ltx_Math" alttext="\exists x\leavevmode\nobreak\ \left(P(x)\wedge Q(x)\right)" display="inline"><semantics><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo lspace="0.600em">⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>Q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\exists x\leavevmode\nobreak\ \left(P(x)\wedge Q(x)\right)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left">P 1</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">2.</td>
+<td class="ltx_td ltx_align_left">
+<math id="Ex2.m1.m2" class="ltx_Math" alttext="\exists x" display="inline"><semantics><mrow><mo rspace="0.167em">∃</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">\exists x</annotation></semantics></math> <math id="Ex2.m1.m3" class="ltx_Math" alttext="M(x)" display="inline"><semantics><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">M(x)</annotation></semantics></math>
+</td>
+<td class="ltx_td ltx_align_left">P 2</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">3.</td>
+<td class="ltx_td ltx_align_left"><math id="Ex2.m1.m4" class="ltx_Math" alttext="P(a)\wedge Q(a)" display="inline"><semantics><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>Q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">P(a)\wedge Q(a)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left">EQE 1</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">4.</td>
+<td class="ltx_td ltx_align_left"><math id="Ex2.m1.m5" class="ltx_Math" alttext="Q(a)" display="inline"><semantics><mrow><mi>Q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">Q(a)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left">EC 3</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">5.</td>
+<td class="ltx_td ltx_align_left"><math id="Ex2.m1.m6" class="ltx_Math" alttext="M(a)\wedge\lnot P(a)" display="inline"><semantics><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">M(a)\wedge\lnot P(a)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left">EQE 2</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">6.</td>
+<td class="ltx_td ltx_align_left"><math id="Ex2.m1.m7" class="ltx_Math" alttext="M(a)" display="inline"><semantics><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">M(a)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left">EC 5</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">7.</td>
+<td class="ltx_td ltx_align_left"><math id="Ex2.m1.m8" class="ltx_Math" alttext="M(a)\wedge Q(a)" display="inline"><semantics><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>Q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">M(a)\wedge Q(a)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left">IC (4,5)</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">8.</td>
+<td class="ltx_td ltx_align_left ltx_border_t"><math id="Ex2.m1.m9" class="ltx_Math" alttext="\exists x\leavevmode\nobreak\ \left(M(x)\wedge Q(x)\right)" display="inline"><semantics><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo lspace="0.600em">⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>Q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">\exists x\leavevmode\nobreak\ \left(M(x)\wedge Q(x)\right)</annotation></semantics></math></td>
+<td class="ltx_td ltx_align_left ltx_border_t">IQE 6</td>
+</tr>
+</table></span>
+</div>
+</div>
+<div id="I1.i9.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i9.I1" class="ltx_enumerate">
+<li id="I1.i9.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i9.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Ès correcte.</p>
+</div>
+</li>
+<li id="I1.i9.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i9.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">No és vàlid perquè EQE 2 no permet escriure <math id="I1.i9.I1.i2.p1.m1" class="ltx_Math" alttext="M(a)\wedge\lnot P(a)" display="inline"><semantics><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">M(a)\wedge\lnot P(a)</annotation></semantics></math> sinó, per exemple, <math id="I1.i9.I1.i2.p1.m2" class="ltx_Math" alttext="M(b)\wedge\lnot P(b)" display="inline"><semantics><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">M(b)\wedge\lnot P(b)</annotation></semantics></math> sent <math id="I1.i9.I1.i2.p1.m3" class="ltx_Math" alttext="b" display="inline"><semantics><mi>b</mi><annotation encoding="application/x-tex">b</annotation></semantics></math> una instància
+de <math id="I1.i9.I1.i2.p1.m4" class="ltx_Math" alttext="x" display="inline"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> que no apareix abans. (*)</p>
+</div>
+</li>
+<li id="I1.i9.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i9.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">El raonament no és vàlid perquè és inconsistent; de les
+premisses es dedueix <math id="I1.i9.I1.i3.p1.m1" class="ltx_Math" alttext="P(a)\wedge\lnot P(a)" display="inline"><semantics><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">P(a)\wedge\lnot P(a)</annotation></semantics></math>.</p>
+</div>
+</li>
+<li id="I1.i9.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i9.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Cap de les respostes anteriors és certa.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i10" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">10.</span><div id="I1.i10.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Dels següents raonaments: (i) Qui menysprea a tots els fanàtics
+menysprea també a tots els polítics. Algú no menysprea a un
+determinat polític. Per consegüent, hi ha un fanàtic al qual no
+tothom menysprea; i (2) A tots els gats simpàtics i
+intel·ligents els agrada el fetge picat. Cada siamès
+és simpàtic. Hi ha un siamès que no li agrada el fetge picat. Per
+consegüent, hi ha un gat estúpid.</p>
+</div>
+<div id="I1.i10.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i10.I1" class="ltx_enumerate">
+<li id="I1.i10.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i10.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">(i) i (ii) són vàlids. (*)</p>
+</div>
+</li>
+<li id="I1.i10.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i10.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Cap dels dos és vàlid.</p>
+</div>
+</li>
+<li id="I1.i10.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i10.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">(i) és vàlid, i (ii) no.</p>
+</div>
+</li>
+<li id="I1.i10.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i10.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">(i) no és vàlid, i (ii) sí.</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<a href="Ch4.html" class="navigation navigation-prev" aria-label="Previous page"><i class="fa fa-angle-left"></i></a><a href="Ch4.S2.html" class="navigation navigation-next" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+</div>
+</div>
+<script src="bookml/gitbook/js/app.min.js"></script>
+<script src="bookml/gitbook/js/jquery.highlight.js"></script>
+<script src="bookml/gitbook/js/plugin-search.js"></script>
+<script src="bookml/gitbook/js/plugin-fontsettings.js"></script>
+<script src="bookml/gitbook/js/plugin-bookdown.js"></script>
+<script src="bookml/js/mathjax3.js"></script>
+<script type="text/javascript">
+                gitbook.require(["gitbook"], function(gitbook) {
+                gitbook.start({
+                  "fontsettings": {
+                    "theme": "white",
+                    "family": "sans",
+                    "size": 2
+                  },
+                  "download": [ [ "plantilla.pdf", "PDF" ], ],
+                  "search": {
+                    "engine": "fuse"
+                  },
+                  "toc": {
+                    "collapse": "none"
+                  }
+                });
+              });
+            </script>
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+% Plantilla LaTeX unificada compatible con LaTeXML
+% Combina elementos de aprendes.tex
+% ——— Llengua i tipografia ———
+% ——— Matemàtiques i entorns ———
+% ——— Estructures i enllaços ———
+% ——— Colors per a LaTeXML (evitar tcolorbox) ———
+% ——— Definició d'estils d'enunciats ———
+% Numeració per capítol pels teoremes
+% Numeració independent per a definicions (sense número de capítulo)
+% ——— Entorns personalitzats sense tcolorbox ———
+% --- Llistes ---
+% ——— Estils per a seccions ———
+% ——— Configuració general ———
+% --- Macros útils (afegeix aquí les teves comandes) ---
+% ——— Inici del document ———
+
+
+\documentclass[12pt,a4paper,oneside]{book}
+\usepackage{eurosym}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[catalan]{babel}
+\usepackage{csquotes}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\usepackage{import}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{sectsty}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=Latex.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{LastRevised=Sunday, September 07, 2025 19:37:50}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+
+\geometry{hmargin={3cm,3cm},vmargin={2.5cm,2.5cm},offset=0pt,footskip=1cm,headsep=1cm}
+\hypersetup{
+  pdftitle={Títol del llibre},
+  pdfauthor={Autor/a},
+  colorlinks=true,
+  linktoc=page,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+\definecolor{fons}{RGB}{243,231,220}
+\definecolor{apren}{RGB}{255,64,87}
+\definecolor{cdefn}{RGB}{101,255,205}
+\definecolor{cexem}{RGB}{23,205,255}
+\definecolor{cexer}{RGB}{137,255,133}
+\definecolor{cobs}{RGB}{250,163,92}
+\definecolor{cdemo}{RGB}{255,115,100}
+\definecolor{csolu}{RGB}{110,132,169}
+\theoremstyle{plain}
+\newtheorem{teorema}{\color{apren}\textbf{Teorema}}[chapter]
+\newtheorem{lema}[teorema]{\color{apren}Lema}
+\newtheorem{corollari}[teorema]{\color{apren}Coro\l.lari}
+\newtheorem{proposicio}[teorema]{\color{apren}Proposici\'{o}}
+\theoremstyle{definition}
+\newtheorem{definicio}{\color{apren}Definici\'{o}}[chapter]
+\newtheorem{exemple}{\color{apren}Exemple}[chapter]
+\newtheorem{exercici}{\color{apren}Exercici}[chapter]
+\theoremstyle{remark}
+\newtheorem{observacio}{\color{apren}Observaci\'{o}}[chapter]
+\newtheorem*{nota}{\color{apren}Nota}
+\newenvironment{prova}
+  {\par\noindent{\color{apren}\textbf{Demostraci\'{o}:}\ }}{\quad\hfill $\blacksquare$\par}
+\newenvironment{solucio}
+  {\par\noindent{\color{apren}\textbf{Soluci\'{o}:}\ }}{\quad\hfill $\square$\par}
+\setlist{itemsep=0.25em, topsep=0.25em}
+\sectionfont{\color{apren}}
+\subsectionfont{\color{apren}}
+\subsubsectionfont{\color{apren}}
+\setlength{\parindent}{0pt}
+\numberwithin{equation}{section}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\input{tcilatex}
+\renewcommand{\FRAME}[8]{
+\begin{center}
+\includegraphics[width=#2,height=#3]{img/#7}
+\end{center}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\begin{document}
+
+\frontmatter
+\title{Lògica, Raonament i Demostració}
+\author{Miquel Àngel Perelló}
+\date{\today}
+\maketitle
+\tableofcontents
+\frontmatter
+
+\pagecolor{fons!20}
+
+\let\cleardoublepage\clearpage
+
+\chapter*{Prefaci}
+
+Aquests apunts neixen de la voluntat de proporcionar a l'alumnat de
+batxillerat una base s\`{o}lida i rigorosa en el llenguatge de les matem\`{a}%
+tiques: la l\`{o}gica i les demostracions.
+
+El cam\'{\i} cap a la comprensi\'{o} de les matem\`{a}tiques superiors est%
+\`{a} pavimentat amb la capacitat de comprendre i construir arguments l\`{o}%
+gics. Aquest document vol ser la primera pedra d'aquest cam\'{\i}. S'ha
+elaborat amb la intenci\'{o} de ser una eina clara, accessible i, alhora,
+precisa, que gui\"{\i} l'estudiant a trav\'{e}s dels conceptes fonamentals
+de la l\`{o}gica proposicional, els quantificadors i les t\`{e}cniques de
+demostraci\'{o}.
+
+El material que es presenta aqu\'{\i} \'{e}s el fruit de l'experi\`{e}ncia
+docent i la convicci\'{o} que la bellesa de les matem\`{a}tiques rau no nom%
+\'{e}s en els seus resultats, sin\'{o} sobretot en el proc\'{e}s rigor\'{o}s
+i elegant que condueix a ells. Especial \`{e}mfasi s'ha posat en la relaci%
+\'{o} entre el llenguatge natural i el simb\`{o}lic, i en la traducci\'{o}
+d'uns en altres, ja que \'{e}s en aquest pas on sovint es troben les majors
+dificultats.
+
+Agra\"{\i}ments a tots els estudiants les seves preguntes i curiositat han
+anat donant forma a aquest text, i als companys docents pels seus valuosos
+comentaris i suggeriments.
+
+Esperem que aquests apunts us acompanyin en el vostre descobriment de com es
+construeix i es valida el coneixement matem\`{a}tic.
+
+\let\cleardoublepage\clearpage
+
+\chapter{Introducci\'{o}}
+
+Aquest document \'{e}s una introducci\'{o} als m\`{e}todes de raonament i
+demostraci\'{o} propis de les matem\`{a}tiques. El seu objectiu \'{e}s
+proporcionar les eines l\`{o}giques necess\`{a}ries per comprendre i
+construir arguments matem\`{a}tics v\`{a}lids i rigorosos.
+
+La finalitat \'{u}ltima \'{e}s que l'estudiant sigui capa\c{c} de:
+
+\begin{itemize}
+\item Entendre el significat prec\'{\i}s dels enunciats matem\`{a}tics.
+
+\item Analitzar la seva estructura l\`{o}gica.
+
+\item Construir demostracions correctes de resultats simples.
+\end{itemize}
+
+Per assolir-ho, el llibre est\`{a} estructurat en tres grans blocs:
+
+\begin{enumerate}
+\item Coneixements generals de L\`{o}gica (Cap\'{\i}tol 1: seccions 1 a 11):
+S'introdueixen els conceptes b\`{a}sics de la l\`{o}gica proposicional i de
+predicats. S'apren a treballar amb connectives l\`{o}giques (i, o, no,
+si...llavors..., si i nom\'{e}s si), taules de veritat, tautologies, equival%
+\`{e}ncies i regles d'infer\`{e}ncia. Aquests elements s\'{o}n l'alfabet amb
+qu\`{e} s'escriuen les matem\`{a}tiques.
+
+\item T\`{e}cniques de Demostraci\'{o} (Cap\'{\i}tol 1: secci\'{o} 12): Es
+presenten i es practiquen les estrat\`{e}gies de demostraci\'{o} m\'{e}s
+comunes i essencials: demostracions directes, per contrarec\'{\i}proc, per
+reducci\'{o} a l'absurd, per inducci\'{o}, per casos i per contraexemple.
+Aquestes s\'{o}n les "jugades" b\`{a}siques del joc de demostrar.
+
+\item Pr\`{a}ctica i Aplicaci\'{o} (Cap\'{\i}tols 2, 3 i 4): La part te\`{o}%
+rica es consolida amb una \`{a}mplia col\textperiodcentered lecci\'{o}
+d'exercicis resolts, exercicis proposats i tests d'autoevaluaci\'{o} que
+permeten posar a prova la comprensi\'{o} i aplicar els coneixements
+adquirits.
+\end{enumerate}
+
+El document es tanca amb una molt breu mirada a com s'apliquen aquests
+principis en el context de teories axiom\`{a}tiques concretes, com la
+geometria euclidiana i l'aritm\`{e}tica, il\textperiodcentered lustrant que
+tot l'edifici matem\`{a}tic es construeix sobre els fonaments l\`{o}gics que
+aqu\'{\i} es presenten (Cap\'{\i}tul 1: secci\'{o} 13).
+
+Aquests apunts no nom\'{e}s us prepararan per a assignatures futures sin\'{o}
+que, \'{e}s el nostre desig, us obriran la porta a una visi\'{o} m\'{e}s
+profunda i satisfact\`{o}ria del fascinant m\'{o}n de les matem\`{a}tiques.
+
+Com utilitzar aquest document? Es recomana llegir la teoria amb atenci\'{o},
+assegurant-se de comprendre cada concepte abans de passar al seg\"{u}ent.
+Els exercicis de pr\`{a}ctica s\'{o}n una part indispensable de
+l'aprenentatge; no si val a saltar-se'n cap! Us animem a intentar
+resoldre'ls abans de mirar la soluci\'{o} proposada.
+
+\let\cleardoublepage\clearpage
+
+\mainmatter
+
+\import{./capituls/}{teoria.tex} \import{./capituls/}{practica.tex} %
+\import{./capituls/}{exercicis.tex}
+
+\chapter{Tests}
+
+\label{cap:tests}
+
+\import{./tests/}{test1.tex} \import{./tests/}{test2.tex} %
+\import{./tests/}{test3.tex}
+
+\backmatter
+
+\end{document}

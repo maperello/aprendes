@@ -1,6 +1,6 @@
 Material publicat per Miquel Àngel Perelló.
 
-Envia qualsevol pregunta i comentari a la meva adreça de correu electrònic: mapccoments@gmail.com
+Envia qualsevol pregunta o comentari a la meva adreça de correu electrònic: mapccoments@gmail.com
 
 # Batxillerat
 

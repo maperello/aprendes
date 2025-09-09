@@ -1,4 +1,6 @@
-Material publicat per Miquel Àngel Perelló.
+Material publicat per Miquel Àngel Perelló
+
+Envia qualsevol pregunta o comentari a la meva adreça de correu electrònic: mapccoments@gmail.com
 
 # Batxillerat
 

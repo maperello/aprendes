@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.imsglobal.org/xsd/imscp_v1p1" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3" xmlns:lom="http://ltsc.ieee.org/xsd/LOM" identifier="com.github.io.vlmantova.bookml.SCORM" xml:lang="ca" version="9 de setembre de 2025">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>2004 3rd Edition</schemaversion>
+    <lom:lom>
+      <lom:general>
+        <lom:title>
+          <lom:string>Conjunts, Relacions i Aplicacions</lom:string>
+        </lom:title>
+      </lom:general>
+      <lom:lifeCycle>
+        <lom:contribute>
+          <lom:role>
+            <lom:value>author</lom:value>
+          </lom:role>
+          <lom:entity><![CDATA[BEGIN:VCARD VERSION:2.1
+FN:Miquel Àngel Perelló
+END:VCARD]]></lom:entity>
+        </lom:contribute>
+        <lom:version>
+          <lom:string>9 de setembre de 2025</lom:string>
+        </lom:version>
+      </lom:lifeCycle>
+    </lom:lom>
+  </metadata>
+  <organizations>
+    <organization identifier="org1">
+      <title>Conjunts, Relacions i Aplicacions</title>
+      <item identifier="item1" identifierref="resource1">
+        <title>Conjunts, Relacions i Aplicacions</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="resource1" type="webcontent" adlcp:scormType="asset" href="index.html">
+      <file href="index.html"/>
+      <file href="Ch1.S1.html"/>
+      <file href="Ch1.S2.html"/>
+      <file href="Ch1.S3.html"/>
+      <file href="Ch1.html"/>
+      <file href="Ch2.S1.html"/>
+      <file href="Ch2.S2.html"/>
+      <file href="Ch2.S3.html"/>
+      <file href="Ch2.S4.html"/>
+      <file href="Ch2.html"/>
+      <file href="Ch3.html"/>
+      <file href="Ch4.S1.html"/>
+      <file href="Ch4.S2.html"/>
+      <file href="Ch4.S3.html"/>
+      <file href="Ch4.html"/>
+      <file href="Chx1.html"/>
+      <file href="Chx2.html"/>
+      <file href="LaTeXML.css"/>
+      <file href="conjunts.pdf"/>
+      <file href="ltx-book.css"/>
+      <file href="search_index.json"/>
+      <file href="bmluser/colors.gitbook-conjunts.css"/>
+      <file href="bookml/CSS/style.css"/>
+      <file href="bookml/CSS/style.gitbook,plain.css"/>
+      <file href="bookml/CSS/style.gitbook.css"/>
+      <file href="bookml/gitbook/css/plugin-bookdown.css"/>
+      <file href="bookml/gitbook/css/plugin-fontsettings.css"/>
+      <file href="bookml/gitbook/css/plugin-search.css"/>
+      <file href="bookml/gitbook/css/plugin-table.css"/>
+      <file href="bookml/gitbook/css/style.css"/>
+      <file href="bookml/gitbook/css/fontawesome/fontawesome-webfont.ttf"/>
+      <file href="bookml/gitbook/js/app.min.js"/>
+      <file href="bookml/gitbook/js/jquery.highlight.js"/>
+      <file href="bookml/gitbook/js/plugin-bookdown.js"/>
+      <file href="bookml/gitbook/js/plugin-fontsettings.js"/>
+      <file href="bookml/gitbook/js/plugin-search.js"/>
+      <file href="bookml/js/mathjax3.js"/>
+      <file href="img/set1.jpg"/>
+      <file href="img/set10.jpg"/>
+      <file href="img/set11.jpg"/>
+      <file href="img/set2.jpg"/>
+      <file href="img/set3.jpg"/>
+      <file href="img/set4.jpg"/>
+      <file href="img/set5.jpg"/>
+      <file href="img/set6.jpg"/>
+      <file href="img/set7.jpg"/>
+      <file href="img/set8.jpg"/>
+      <file href="img/set9.jpg"/>
+    </resource>
+  </resources>
+</manifest>

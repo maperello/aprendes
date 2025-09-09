@@ -1,0 +1,369 @@
+<!DOCTYPE html><html lang="ca">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>4.2 Aplicaciones i Cardinals ‣ Capítol 4 Tests ‣ Conjunts, Relacions i Aplicacions</title>
+<!--Generated on Tue Sep  9 19:04:29 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on 9 de setembre de 2025.-->
+<style>:root { --bml-ltx-font-size: 12; }</style>
+<link rel="stylesheet" href="LaTeXML.css" type="text/css">
+<link rel="stylesheet" href="ltx-book.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/style.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-table.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-search.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-bookdown.css" type="text/css">
+<link rel="stylesheet" href="bookml/gitbook/css/plugin-fontsettings.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.gitbook,plain.css" type="text/css">
+<link rel="stylesheet" href="bookml/CSS/style.gitbook.css" type="text/css">
+<link rel="stylesheet" href="bmluser/colors.gitbook-conjunts.css" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
+<link rel="up" href="Ch4.html" title="Capítol 4 Tests ‣ Conjunts, Relacions i Aplicacions">
+<link rel="up up" href="index.html" title="Conjunts, Relacions i Aplicacions">
+<link rel="start" href="index.html" title="Conjunts, Relacions i Aplicacions">
+<link rel="prev" href="Ch4.S1.html" title="4.1 Conjunts i Relacions ‣ Capítol 4 Tests ‣ Conjunts, Relacions i Aplicacions">
+<link rel="next" href="Ch4.S3.html" title="4.3 Posa’t a prova amb un test molt senzill! ‣ Capítol 4 Tests ‣ Conjunts, Relacions i Aplicacions">
+<link rel="section" href="Ch4.S1.html" title="4.1 Conjunts i Relacions ‣ Capítol 4 Tests ‣ Conjunts, Relacions i Aplicacions">
+<link rel="section" href="Ch4.S3.html" title="4.3 Posa’t a prova amb un test molt senzill! ‣ Capítol 4 Tests ‣ Conjunts, Relacions i Aplicacions">
+<link rel="chapter" href="Chx1.html" title="Prefaci ‣ Conjunts, Relacions i Aplicacions">
+<link rel="chapter" href="Chx2.html" title="Introducció ‣ Conjunts, Relacions i Aplicacions">
+<link rel="chapter" href="Ch1.html" title="Capítol 1 Teoria ‣ Conjunts, Relacions i Aplicacions">
+<link rel="chapter" href="Ch2.html" title="Capítol 2 Pràctica ‣ Conjunts, Relacions i Aplicacions">
+<link rel="chapter" href="Ch3.html" title="Capítol 3 Exercicis proposats ‣ Conjunts, Relacions i Aplicacions">
+<link rel="chapter" href="Ch4.html" title="Capítol 4 Tests ‣ Conjunts, Relacions i Aplicacions">
+</head>
+<body>
+<div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+<a href="#bml-main-content" tabindex="0" class="bml-skip-to-content">Skip to content.</a>
+<div class="book-summary"><nav class="ltx_page_navbar">
+<ul class="ltx_toclist summary">
+<li>
+<a href="index.html" title="" class="ltx_ref" rel="start">Conjunts, Relacions i Aplicacions</a>
+</li>
+<li class="divider">
+<li data-level="" data-path="Chx1.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Chx1.html" title="In Conjunts, Relacions i Aplicacions" class="ltx_ref">Prefaci</a></li>
+<li data-level="" data-path="Chx2.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Chx2.html" title="In Conjunts, Relacions i Aplicacions" class="ltx_ref">Introducció</a></li>
+<li data-level="1" data-path="Ch1.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch1.html" title="In Conjunts, Relacions i Aplicacions" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">1 </span></b>Teoria</a></li>
+<li data-level="2" data-path="Ch2.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch2.html" title="In Conjunts, Relacions i Aplicacions" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">2 </span></b>Pràctica</a></li>
+<li data-level="3" data-path="Ch3.html" class="ltx_tocentry ltx_tocentry_chapter  chapter "><a href="Ch3.html" title="In Conjunts, Relacions i Aplicacions" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">3 </span></b>Exercicis proposats</a></li>
+<li data-level="4" data-path="Ch4.html" class="ltx_tocentry ltx_tocentry_chapter  chapter ">
+<a href="Ch4.html" title="In Conjunts, Relacions i Aplicacions" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">4 </span></b>Tests</a>
+<ol class="ltx_toclist ltx_toclist_chapter">
+<li data-level="4.1" data-path="Ch4.S1.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch4.S1.html" title="In Capítol 4 Tests ‣ Conjunts, Relacions i Aplicacions" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">4.1 </span></b>Conjunts i Relacions</a></li>
+<li data-level="4.2" data-path="" class="ltx_tocentry ltx_tocentry_section ltx_ref_self  chapter active"><a href="" title="In Capítol 4 Tests ‣ Conjunts, Relacions i Aplicacions" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">4.2 </span></b>Aplicaciones i Cardinals</a></li>
+<li data-level="4.3" data-path="Ch4.S3.html" class="ltx_tocentry ltx_tocentry_section  chapter "><a href="Ch4.S3.html" title="In Capítol 4 Tests ‣ Conjunts, Relacions i Aplicacions" class="ltx_ref"><b><span class="ltx_tag ltx_tag_ref">4.3 </span></b>Posa’t a prova amb un test molt senzill!</a></li>
+</ol>
+</li>
+</ul>
+</nav></div>
+<div class="ltx_page_main book-body fixed">
+<div class="body-inner">
+<div class="book-header fixed" role="navigation"><h1></h1></div>
+<div class="page-wrapper" tabindex="-1" role="main">
+<div class="ltx_page_content page-inner" id="bml-main-content">
+<section class="ltx_section normal" lang="ca">
+<div class="section level1">
+
+<h1 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section header-section-number"><span class="ltx_text bml_color_FF4057">4.2</span></span> <span class="ltx_text bml_color_FF4057">Aplicaciones i Cardinals</span>
+</h1>
+
+<div id="p1" class="ltx_para ltx_noindent">
+<ol id="I1" class="ltx_enumerate">
+<li id="I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span><div id="I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Quin de les següents relacions <math id="I1.i1.p1.m1" class="ltx_Math" alttext="R" display="inline"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math> entre <math id="I1.i1.p1.m2" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> i <math id="I1.i1.p1.m3" class="ltx_Math" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math> és una
+aplicació d’<math id="I1.i1.p1.m4" class="ltx_Math" alttext="A" display="inline"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math> en <math id="I1.i1.p1.m5" class="ltx_Math" alttext="B" display="inline"><semantics><mi>B</mi><annotation encoding="application/x-tex">B</annotation></semantics></math>?</p>
+</div>
+<div id="I1.i1.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i1.I1" class="ltx_enumerate">
+<li id="I1.i1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i1.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i1.I1.i1.p1.m1" class="ltx_Math" alttext="A=\left\{1,2,3,4,5\right\}" display="inline"><semantics><mrow><mi>A</mi><mo>=</mo><mrow><mo>{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>5</mn><mo>}</mo></mrow></mrow><annotation encoding="application/x-tex">A=\left\{1,2,3,4,5\right\}</annotation></semantics></math>, <math id="I1.i1.I1.i1.p1.m2" class="ltx_Math" alttext="B=\left\{1,2\right\}" display="inline"><semantics><mrow><mi>B</mi><mo>=</mo><mrow><mo>{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>}</mo></mrow></mrow><annotation encoding="application/x-tex">B=\left\{1,2\right\}</annotation></semantics></math> i <math id="I1.i1.I1.i1.p1.m3" class="ltx_Math" alttext="R=\left\{(1,1),(3,2),(5,1),(4,1)\right\}" display="inline"><semantics><mrow><mi>R</mi><mo>=</mo><mrow><mo>{</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>,</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mo>,</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>,</mo><mrow><mo stretchy="false">(</mo><mn>4</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>}</mo></mrow></mrow><annotation encoding="application/x-tex">R=\left\{(1,1),(3,2),(5,1),(4,1)\right\}</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i1.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i1.I1.i2.p1.m1" class="ltx_Math" alttext="A=B=\mathbb{R}" display="inline"><semantics><mrow><mi>A</mi><mo>=</mo><mi>B</mi><mo>=</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">A=B=\mathbb{R}</annotation></semantics></math> i <math id="I1.i1.I1.i2.p1.m2" class="ltx_Math" alttext="R=\left\{(x,y)\in\mathbb{R}\times\mathbb{R}:x+y^{3}=0\right\}" display="inline"><semantics><mrow><mi>R</mi><mo>=</mo><mrow><mo>{</mo><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>x</mi><mo>+</mo><msup><mi>y</mi><mn>3</mn></msup></mrow><mo>=</mo><mn>0</mn></mrow><mo>}</mo></mrow></mrow><annotation encoding="application/x-tex">R=\left\{(x,y)\in\mathbb{R}\times\mathbb{R}:x+y^{3}=0\right\}</annotation></semantics></math> *</p>
+</div>
+</li>
+<li id="I1.i1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i1.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i1.I1.i3.p1.m1" class="ltx_Math" alttext="A=B=\mathbb{R}" display="inline"><semantics><mrow><mi>A</mi><mo>=</mo><mi>B</mi><mo>=</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">A=B=\mathbb{R}</annotation></semantics></math> i <math id="I1.i1.I1.i3.p1.m2" class="ltx_Math" alttext="R=\left\{(x,y)\in\mathbb{R}\times\mathbb{R}:xy=1\right\}" display="inline"><semantics><mrow><mi>R</mi><mo>=</mo><mrow><mo>{</mo><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>=</mo><mn>1</mn></mrow><mo>}</mo></mrow></mrow><annotation encoding="application/x-tex">R=\left\{(x,y)\in\mathbb{R}\times\mathbb{R}:xy=1\right\}</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i1.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i1.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i1.I1.i4.p1.m1" class="ltx_Math" alttext="A=B=\mathbb{R}" display="inline"><semantics><mrow><mi>A</mi><mo>=</mo><mi>B</mi><mo>=</mo><mi>ℝ</mi></mrow><annotation encoding="application/x-tex">A=B=\mathbb{R}</annotation></semantics></math> i <math id="I1.i1.I1.i4.p1.m2" class="ltx_Math" alttext="R=\left\{(x,y)\in\mathbb{R}\times\mathbb{R}:y=\sqrt{x-1}\right\}" display="inline"><semantics><mrow><mi>R</mi><mo>=</mo><mrow><mo>{</mo><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>y</mi><mo>=</mo><msqrt><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></msqrt></mrow><mo>}</mo></mrow></mrow><annotation encoding="application/x-tex">R=\left\{(x,y)\in\mathbb{R}\times\mathbb{R}:y=\sqrt{x-1}\right\}</annotation></semantics></math></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span><div id="I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Es defineix l’aplicació <math id="I1.i2.p1.m1" class="ltx_Math" alttext="f:\mathbb{R}\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ \mathbb{R}" display="inline"><semantics><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℝ</mi><mo lspace="0.878em" rspace="0.878em" stretchy="false">⟶</mo><mi>ℝ</mi></mrow></mrow><annotation encoding="application/x-tex">f:\mathbb{R}\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ \mathbb{R}</annotation></semantics></math>
+mitjançant <math id="I1.i2.p1.m2" class="ltx_Math" alttext="f(x)=x^{2}+4" display="inline"><semantics><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>4</mn></mrow></mrow><annotation encoding="application/x-tex">f(x)=x^{2}+4</annotation></semantics></math>. Llavors,</p>
+</div>
+<div id="I1.i2.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i2.I1" class="ltx_enumerate">
+<li id="I1.i2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i2.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i2.I1.i1.p1.m1" class="ltx_Math" alttext="f^{-1}(\left\{0\right\})=\{-2,2\}" display="inline"><semantics><mrow><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo>{</mo><mn>0</mn><mo>}</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mo>−</mo><mn>2</mn></mrow><mo>,</mo><mn>2</mn><mo stretchy="false">}</mo></mrow></mrow><annotation encoding="application/x-tex">f^{-1}(\left\{0\right\})=\{-2,2\}</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i2.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i2.I1.i2.p1.m1" class="ltx_Math" alttext="f\left([0,1]\right)=[0,1]" display="inline"><semantics><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow><annotation encoding="application/x-tex">f\left([0,1]\right)=[0,1]</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i2.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i2.I1.i3.p1.m1" class="ltx_Math" alttext="f^{-1}\left((0,4)\right)=(0,2)" display="inline"><semantics><mrow><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><annotation encoding="application/x-tex">f^{-1}\left((0,4)\right)=(0,2)</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i2.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i2.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Cap de les anteriors és certa *</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span><div id="I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">La gràfica d’una aplicació <math id="I1.i3.p1.m1" class="ltx_Math" alttext="f:\mathbb{R}\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ \mathbb{R}" display="inline"><semantics><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℝ</mi><mo lspace="0.878em" rspace="0.878em" stretchy="false">⟶</mo><mi>ℝ</mi></mrow></mrow><annotation encoding="application/x-tex">f:\mathbb{R}\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ \mathbb{R}</annotation></semantics></math> és</p>
+<img src="img/set11.jpg" id="I1.i3.p1.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="294" height="200" alt="[Uncaptioned image]">
+<p class="ltx_p">llavors:</p>
+</div>
+<div id="I1.i3.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i3.I1" class="ltx_enumerate">
+<li id="I1.i3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i3.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i3.I1.i1.p1.m1" class="ltx_Math" alttext="f" display="inline"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> és injectiva</p>
+</div>
+</li>
+<li id="I1.i3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i3.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i3.I1.i2.p1.m1" class="ltx_Math" alttext="f" display="inline"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> és exhaustiva</p>
+</div>
+</li>
+<li id="I1.i3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i3.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i3.I1.i3.p1.m1" class="ltx_Math" alttext="f:[0,+\infty)\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ [0,1]" display="inline"><semantics><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo rspace="0.600em" stretchy="false">)</mo></mrow><mo rspace="0.878em" stretchy="false">⟶</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></mrow><annotation encoding="application/x-tex">f:[0,+\infty)\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ [0,1]</annotation></semantics></math> és bijectiva *</p>
+</div>
+</li>
+<li id="I1.i3.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i3.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i3.I1.i4.p1.m1" class="ltx_Math" alttext="f:[0,+\infty)\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ \mathbb{R}" display="inline"><semantics><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo rspace="0.600em" stretchy="false">)</mo></mrow><mo rspace="0.878em" stretchy="false">⟶</mo><mi>ℝ</mi></mrow></mrow><annotation encoding="application/x-tex">f:[0,+\infty)\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ \mathbb{R}</annotation></semantics></math> és exhaustiva</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span><div id="I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Considerem les aplicacions: <math id="I1.i4.p1.m1" class="ltx_Math" alttext="f:\mathbb{R}-\{-2\}\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ %
+\mathbb{R}-\{3\}" display="inline"><semantics><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>ℝ</mi><mo>−</mo><mrow><mo stretchy="false">{</mo><mrow><mo>−</mo><mn>2</mn></mrow><mo rspace="0.600em" stretchy="false">}</mo></mrow></mrow><mo rspace="0.878em" stretchy="false">⟶</mo><mrow><mi>ℝ</mi><mo>−</mo><mrow><mo stretchy="false">{</mo><mn>3</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">f:\mathbb{R}-\{-2\}\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ %
+\mathbb{R}-\{3\}</annotation></semantics></math> definida per</p>
+<div id="Ex1" class="ltx_equation ltx_eqn_div">
+<span><math id="Ex1.m1" class="ltx_Math" alttext="f(x)=\frac{3+3x}{x+2}" display="block"><semantics><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mn>3</mn><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">f(x)=\frac{3+3x}{x+2}</annotation></semantics></math></span>
+</div>
+<p class="ltx_p">i <math id="I1.i4.p1.m2" class="ltx_Math" alttext="g:\mathbb{R}-\{3\}\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ %
+\mathbb{R}" display="inline"><semantics><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>ℝ</mi><mo>−</mo><mrow><mo stretchy="false">{</mo><mn>3</mn><mo rspace="0.600em" stretchy="false">}</mo></mrow></mrow><mo rspace="0.878em" stretchy="false">⟶</mo><mi>ℝ</mi></mrow></mrow><annotation encoding="application/x-tex">g:\mathbb{R}-\{3\}\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ %
+\mathbb{R}</annotation></semantics></math> definida per <math id="I1.i4.p1.m3" class="ltx_Math" alttext="g(x)=x^{3}" display="inline"><semantics><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">g(x)=x^{3}</annotation></semantics></math>.
+Llavors, quin de les següents afirmacions és falsa?</p>
+</div>
+<div id="I1.i4.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i4.I1" class="ltx_enumerate">
+<li id="I1.i4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i4.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i4.I1.i1.p1.m1" class="ltx_Math" alttext="f" display="inline"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> és bijectiva i <math id="I1.i4.I1.i1.p1.m2" class="ltx_Math" alttext="f^{-1}(x)=\frac{3-2x}{x-3}" display="inline"><semantics><mrow><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mn>3</mn><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></mfrac></mrow><annotation encoding="application/x-tex">f^{-1}(x)=\frac{3-2x}{x-3}</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i4.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i4.I1.i2.p1.m1" class="ltx_Math" alttext="g" display="inline"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math> és bijectiva i <math id="I1.i4.I1.i2.p1.m2" class="ltx_Math" alttext="g^{-1}(x)=\sqrt[3]{x}" display="inline"><semantics><mrow><mrow><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mroot><mi>x</mi><mn>3</mn></mroot></mrow><annotation encoding="application/x-tex">g^{-1}(x)=\sqrt[3]{x}</annotation></semantics></math> *</p>
+</div>
+</li>
+<li id="I1.i4.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i4.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i4.I1.i3.p1.m1" class="ltx_Math" alttext="f\circ g" display="inline"><semantics><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f\circ g</annotation></semantics></math> no és aplicació</p>
+</div>
+</li>
+<li id="I1.i4.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i4.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i4.I1.i4.p1.m1" class="ltx_Math" alttext="g\circ f" display="inline"><semantics><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">g\circ f</annotation></semantics></math> és injectiva i <math id="I1.i4.I1.i4.p1.m2" class="ltx_Math" alttext="(g\circ f)(x)=\left(\frac{3+3x}{x+2}\right)^{3}" display="inline"><semantics><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mrow><mo>(</mo><mfrac><mrow><mn>3</mn><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mrow><mi>x</mi><mo>+</mo><mn>2</mn></mrow></mfrac><mo>)</mo></mrow><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">(g\circ f)(x)=\left(\frac{3+3x}{x+2}\right)^{3}</annotation></semantics></math></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">5.</span><div id="I1.i5.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Sigui <math id="I1.i5.p1.m1" class="ltx_Math" alttext="f:A\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ B" display="inline"><semantics><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>A</mi><mo lspace="0.878em" rspace="0.878em" stretchy="false">⟶</mo><mi>B</mi></mrow></mrow><annotation encoding="application/x-tex">f:A\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ B</annotation></semantics></math> una aplicació i suposem que <math id="I1.i5.p1.m2" class="ltx_Math" alttext="\#A=n" display="inline"><semantics><mrow><mrow><mi mathvariant="normal">#</mi><mo>⁢</mo><mi>A</mi></mrow><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\#A=n</annotation></semantics></math>
+i <math id="I1.i5.p1.m3" class="ltx_Math" alttext="\#B=m" display="inline"><semantics><mrow><mrow><mi mathvariant="normal">#</mi><mo>⁢</mo><mi>B</mi></mrow><mo>=</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">\#B=m</annotation></semantics></math>. Llavors:</p>
+</div>
+<div id="I1.i5.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i5.I1" class="ltx_enumerate">
+<li id="I1.i5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i5.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Si <math id="I1.i5.I1.i1.p1.m1" class="ltx_Math" alttext="f" display="inline"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> és injectiva, llavors <math id="I1.i5.I1.i1.p1.m2" class="ltx_Math" alttext="n\leq m" display="inline"><semantics><mrow><mi>n</mi><mo>≤</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n\leq m</annotation></semantics></math> *</p>
+</div>
+</li>
+<li id="I1.i5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i5.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Si <math id="I1.i5.I1.i2.p1.m1" class="ltx_Math" alttext="f" display="inline"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> és exhaustiva, llavors <math id="I1.i5.I1.i2.p1.m2" class="ltx_Math" alttext="n\leq m" display="inline"><semantics><mrow><mi>n</mi><mo>≤</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n\leq m</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i5.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Si <math id="I1.i5.I1.i3.p1.m1" class="ltx_Math" alttext="n=m" display="inline"><semantics><mrow><mi>n</mi><mo>=</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n=m</annotation></semantics></math>, llavors <math id="I1.i5.I1.i3.p1.m2" class="ltx_Math" alttext="f" display="inline"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math> és bijectiva</p>
+</div>
+</li>
+<li id="I1.i5.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i5.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">No pot ocórrer que <math id="I1.i5.I1.i4.p1.m1" class="ltx_Math" alttext="n&lt;m" display="inline"><semantics><mrow><mi>n</mi><mo>&lt;</mo><mi>m</mi></mrow><annotation encoding="application/x-tex">n&lt;m</annotation></semantics></math></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">6.</span><div id="I1.i6.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Si <math id="I1.i6.p1.m1" class="ltx_Math" alttext="f,g" display="inline"><semantics><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><annotation encoding="application/x-tex">f,g</annotation></semantics></math> són aplicacions d’en <math id="I1.i6.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math> <math id="I1.i6.p1.m3" class="ltx_Math" alttext="\mathbb{R}" display="inline"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math> tals que <math id="I1.i6.p1.m4" class="ltx_Math" alttext="g(x)=x^{3}" display="inline"><semantics><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>x</mi><mn>3</mn></msup></mrow><annotation encoding="application/x-tex">g(x)=x^{3}</annotation></semantics></math> i <math id="I1.i6.p1.m5" class="ltx_Math" alttext="(g\circ f)(x)=x^{3}-3x^{2}+3x-1" display="inline"><semantics><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><msup><mi>x</mi><mn>3</mn></msup><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>−</mo><mn>1</mn></mrow></mrow><annotation encoding="application/x-tex">(g\circ f)(x)=x^{3}-3x^{2}+3x-1</annotation></semantics></math>. Llavors:</p>
+</div>
+<div id="I1.i6.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i6.I1" class="ltx_enumerate">
+<li id="I1.i6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i6.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i6.I1.i1.p1.m1" class="ltx_Math" alttext="f(x)=x+1" display="inline"><semantics><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mrow><annotation encoding="application/x-tex">f(x)=x+1</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i6.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i6.I1.i2.p1.m1" class="ltx_Math" alttext="f(x)=1-x" display="inline"><semantics><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>−</mo><mi>x</mi></mrow></mrow><annotation encoding="application/x-tex">f(x)=1-x</annotation></semantics></math> *</p>
+</div>
+</li>
+<li id="I1.i6.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i6.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i6.I1.i3.p1.m1" class="ltx_Math" alttext="f(x)=x-1" display="inline"><semantics><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mrow><annotation encoding="application/x-tex">f(x)=x-1</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i6.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i6.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i6.I1.i4.p1.m1" class="ltx_Math" alttext="f(x)=-1-x" display="inline"><semantics><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo>−</mo><mn>1</mn></mrow><mo>−</mo><mi>x</mi></mrow></mrow><annotation encoding="application/x-tex">f(x)=-1-x</annotation></semantics></math></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i7" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">7.</span><div id="I1.i7.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Sigui <math id="I1.i7.p1.m1" class="ltx_Math" alttext="f:A\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ B" display="inline"><semantics><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>A</mi><mo lspace="0.878em" rspace="0.878em" stretchy="false">⟶</mo><mi>B</mi></mrow></mrow><annotation encoding="application/x-tex">f:A\leavevmode\nobreak\ \longrightarrow\leavevmode\nobreak\ B</annotation></semantics></math> una aplicació i considerem <math id="I1.i7.p1.m2" class="ltx_Math" alttext="X,Y\subset A" display="inline"><semantics><mrow><mrow><mi>X</mi><mo>,</mo><mi>Y</mi></mrow><mo>⊂</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">X,Y\subset A</annotation></semantics></math> i <math id="I1.i7.p1.m3" class="ltx_Math" alttext="Z,T\subset B" display="inline"><semantics><mrow><mrow><mi>Z</mi><mo>,</mo><mi>T</mi></mrow><mo>⊂</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">Z,T\subset B</annotation></semantics></math>, llavors</p>
+</div>
+<div id="I1.i7.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i7.I1" class="ltx_enumerate">
+<li id="I1.i7.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i7.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i7.I1.i1.p1.m1" class="ltx_Math" alttext="f(X\cap Y)=f(X)\cap f(Y)" display="inline"><semantics><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∩</mo><mi>Y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∩</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">f(X\cap Y)=f(X)\cap f(Y)</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i7.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i7.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i7.I1.i2.p1.m1" class="ltx_Math" alttext="f^{-1}\left(f(X)\right)=X" display="inline"><semantics><mrow><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mi>X</mi></mrow><annotation encoding="application/x-tex">f^{-1}\left(f(X)\right)=X</annotation></semantics></math></p>
+</div>
+</li>
+<li id="I1.i7.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i7.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i7.I1.i3.p1.m1" class="ltx_Math" alttext="f^{-1}(Z\cap T)=f^{-1}(Z)\cap f^{-1}(T)" display="inline"><semantics><mrow><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>Z</mi><mo>∩</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∩</mo><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><annotation encoding="application/x-tex">f^{-1}(Z\cap T)=f^{-1}(Z)\cap f^{-1}(T)</annotation></semantics></math> *</p>
+</div>
+</li>
+<li id="I1.i7.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i7.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p"><math id="I1.i7.I1.i4.p1.m1" class="ltx_Math" alttext="f\left(f^{-1}(Z)\right)=Z" display="inline"><semantics><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mi>Z</mi></mrow><annotation encoding="application/x-tex">f\left(f^{-1}(Z)\right)=Z</annotation></semantics></math></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i8" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">8.</span><div id="I1.i8.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Efectuant una mostra de 1000 individus s’observa que mengen peix i
+carn però no ous 60, peix i ous però no carn 40, carn i ous però
+no pescat 30, només pescat 50, només carn 40 i només ous 30.
+Tots mengen carn, ous o peix. Quants mengen peix?</p>
+</div>
+<div id="I1.i8.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i8.I1" class="ltx_enumerate">
+<li id="I1.i8.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i8.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">900 *</p>
+</div>
+</li>
+<li id="I1.i8.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i8.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">750</p>
+</div>
+</li>
+<li id="I1.i8.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i8.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">800</p>
+</div>
+</li>
+<li id="I1.i8.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i8.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Cap de les anteriors</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i9" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">9.</span><div id="I1.i9.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">En una classe de 100 alumnes que s’han examinat de matemàtiques i Física es coneixen els següents resultats: No han aprovat cap
+assignatura 20 alumnes. Han aprovat les dues assignatures 25 alumnes. Han
+aprovat el doble d’alumnes Matemàtiques que Física.
+¿Quants alumnes han aprovat Matemàtiques?</p>
+</div>
+<div id="I1.i9.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i9.I1" class="ltx_enumerate">
+<li id="I1.i9.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i9.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">10</p>
+</div>
+</li>
+<li id="I1.i9.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i9.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">20</p>
+</div>
+</li>
+<li id="I1.i9.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i9.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">35</p>
+</div>
+</li>
+<li id="I1.i9.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i9.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">45 *</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li id="I1.i10" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">10.</span><div id="I1.i10.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">En el conjunt dels nombres naturals menors que 500, ¿quants números cal no siguin múltiples de 2, ni de 3, ni de 5?</p>
+</div>
+<div id="I1.i10.p2" class="ltx_para ltx_noindent">
+<ol id="I1.i10.I1" class="ltx_enumerate">
+<li id="I1.i10.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span><div id="I1.i10.I1.i1.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">120</p>
+</div>
+</li>
+<li id="I1.i10.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span><div id="I1.i10.I1.i2.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">134 *</p>
+</div>
+</li>
+<li id="I1.i10.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span><div id="I1.i10.I1.i3.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">100</p>
+</div>
+</li>
+<li id="I1.i10.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span><div id="I1.i10.I1.i4.p1" class="ltx_para ltx_noindent">​<p class="ltx_p">Cap de les anteriors</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+<a href="Ch4.S1.html" class="navigation navigation-prev" aria-label="Previous page"><i class="fa fa-angle-left"></i></a><a href="Ch4.S3.html" class="navigation navigation-next" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+</div>
+</div>
+<script src="bookml/gitbook/js/app.min.js"></script>
+<script src="bookml/gitbook/js/jquery.highlight.js"></script>
+<script src="bookml/gitbook/js/plugin-search.js"></script>
+<script src="bookml/gitbook/js/plugin-fontsettings.js"></script>
+<script src="bookml/gitbook/js/plugin-bookdown.js"></script>
+<script src="bookml/js/mathjax3.js"></script>
+<script type="text/javascript">
+                gitbook.require(["gitbook"], function(gitbook) {
+                gitbook.start({
+                  "fontsettings": {
+                    "theme": "white",
+                    "family": "sans",
+                    "size": 2
+                  },
+                  "download": [ [ "conjunts.pdf", "PDF" ], ],
+                  "search": {
+                    "engine": "fuse"
+                  },
+                  "toc": {
+                    "collapse": "none"
+                  }
+                });
+              });
+            </script>
+</body>
+
+</html>

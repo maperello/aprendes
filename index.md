@@ -6,7 +6,7 @@ Envia qualsevol pregunta o comentari a la meva adreça de correu electrònic: [m
 
 1. Conjunts i Demostracions
       * Lògica, Raonament i Demostració      [HTML](/batx/logic/index.html) --- [PDF](/batx/logic/logic.pdf)
-      * Conjunts, Relacions i Aplicacions
+      * Conjunts, Relacions i Aplicacions     [HTML](/batx/conjunts/index.html) --- [PDF](/batx/conjunts/conjunts.pdf)
 2. Àlgebra
       * Els nombres naturals, enters i racionals
       * Els nombres reals i complexos

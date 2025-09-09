@@ -1,0 +1,175 @@
+% Plantilla LaTeX unificada compatible con LaTeXML
+% Combina elementos de aprendes.tex
+% ——— Llengua i tipografia ———
+% ——— Matemàtiques i entorns ———
+% ——— Estructures i enllaços ———
+% ——— Colors per a LaTeXML (evitar tcolorbox) ———
+% ——— Definició d'estils d'enunciats ———
+% Numeració per capítol pels teoremes
+% Numeració independent per a definicions (sense número de capítulo)
+% ——— Entorns personalitzats sense tcolorbox ———
+% --- Llistes ---
+% ——— Estils per a seccions ———
+% ——— Configuració general ———
+% --- Macros útils (afegeix aquí les teves comandes) ---
+% ——— Inici del document ———
+
+
+\documentclass[12pt,a4paper,oneside]{book}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{eurosym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[catalan]{babel}
+\usepackage{csquotes}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\usepackage{import}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{sectsty}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=Latex.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{LastRevised=Tuesday, September 09, 2025 16:57:42}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+
+\geometry{hmargin={3cm,3cm},vmargin={2.5cm,2.5cm},offset=0pt,footskip=1cm,headsep=1cm}
+\hypersetup{
+  pdftitle={Títol del llibre},
+  pdfauthor={Autor/a},
+  colorlinks=true,
+  linktoc=page,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+\definecolor{fons}{RGB}{243,231,220}
+\definecolor{apren}{RGB}{255,64,87}
+\definecolor{cdefn}{RGB}{101,255,205}
+\definecolor{cexem}{RGB}{23,205,255}
+\definecolor{cexer}{RGB}{137,255,133}
+\definecolor{cobs}{RGB}{250,163,92}
+\definecolor{cdemo}{RGB}{255,115,100}
+\definecolor{csolu}{RGB}{110,132,169}
+\theoremstyle{plain}
+\newtheorem{teorema}{\color{apren}\textbf{Teorema}}[chapter]
+\newtheorem{lema}[teorema]{\color{apren}Lema}
+\newtheorem{corollari}[teorema]{\color{apren}Coro\l.lari}
+\newtheorem{proposicio}[teorema]{\color{apren}Proposici\'{o}}
+\theoremstyle{definition}
+\newtheorem{definicio}{\color{apren}Definici\'{o}}[chapter]
+\newtheorem{exemple}{\color{apren}Exemple}[chapter]
+\newtheorem{exercici}{\color{apren}Exercici}[chapter]
+\theoremstyle{remark}
+\newtheorem{observacio}{\color{apren}Observaci\'{o}}[chapter]
+\newtheorem*{nota}{\color{apren}Nota}
+\newenvironment{prova}
+  {\par\noindent{\color{apren}\textbf{Demostraci\'{o}:}\ }}{\quad\hfill $\blacksquare$\par}
+\newenvironment{solucio}
+  {\par\noindent{\color{apren}\textbf{Soluci\'{o}:}\ }}{\quad\hfill $\square$\par}
+\setlist{itemsep=0.25em, topsep=0.25em}
+\sectionfont{\color{apren}}
+\subsectionfont{\color{apren}}
+\subsubsectionfont{\color{apren}}
+\setlength{\parindent}{0pt}
+\numberwithin{equation}{section}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\input{tcilatex}
+\renewcommand{\FRAME}[8]{
+\begin{center}
+\includegraphics[width=#2,height=#3]{img/#7}
+\end{center}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\begin{document}
+
+\frontmatter
+\title{Conjunts, Relacions i Aplicacions}
+\author{Miquel Àngel Perelló}
+\date{\today}
+\maketitle
+\tableofcontents
+\frontmatter
+
+\pagecolor{fons!20}
+
+\let\cleardoublepage\clearpage
+
+\chapter*{Prefaci}
+
+Aquests apunts de Conjunts, Relacions i Aplicacions han estat elaborats amb la finalitat de servir de guia i suport als estudiants de batxillerat que volen aprofundir en els fonaments de la teoria de conjunts i les seves aplicacions en matemàtiques. El seu objectiu principal és oferir una base sòlida per comprendre i aplicar els conceptes bàsics de conjunts, relacions i funcions, eines essencials per a qualsevol estudiant que vulgui enfocar-se en disciplines científiques o tecnològiques.
+
+\bigskip
+
+El text s’estructura de manera progressiva, començant pels conceptes més bàsics de conjunts i les seves operacions, passant per les relacions binàries i les relacions d’equivalència i d’ordre, fins a arribar a les aplicacions (funcions) i les seves propietats. Cada capítol inclou exemples pràctics i exercicis resolts per facilitar la comprensió i l’aprenentatge.
+
+\bigskip
+
+Es recomana als estudiants que abans de començar amb aquesta unitat, facin una lectura compresiva dels apunts “Lògica, Raonament i Demostració”, ja que els conceptes i les tècniques que s’hi desenvolupen són fonamentals per a una correcta assimilació dels continguts que aquí es presenten.
+
+\bigskip
+
+Aquests apunts no només pretenen ser un recurs per a l’estudi, sinó també una eina per a la reflexió i el desenvolupament del raonament lògic i matemàtic. Esperem que resultin útils i enriquidors per a tots els que s’apropen a aquests temes.
+
+\let\cleardoublepage\clearpage
+
+\chapter{Introducci\'{o}}
+
+La teoria de conjunts és la base sobre la qual es construeixen les matemàtiques modernes. Des de les operacions més simples fins als conceptes més abstractes, els conjunts són presents en totes les branques del saber matemàtic. En aquesta introducció, ens aproparem a la noció intuïtiva de conjunt, entès com una col·lecció d’objectes, i començarem a familiaritzar-nos amb el llenguatge i les notacions bàsiques que ens acompanyaran al llarg de tot el text.
+
+\bigskip
+
+Els objectius d’aquesta unitat són:
+
+\begin{itemize}
+\item Comprendre les nocions bàsiques de conjunt, element i pertinença.
+
+\item Aprendre a definir conjunts per extensió i per comprensió.
+
+\item Entendre les relacions d’igualtat i inclusió entre conjunts.
+
+\item Dominar les operacions bàsiques amb conjunts: unió, intersecció, diferència i complementari.
+
+\item Introduir el concepte de parell ordenat i producte cartesià.
+
+\item Estudiar les relacions entre conjunts, especialment les relacions binàries, d’equivalència i d’ordre.
+
+\item Definir el concepte d’aplicació (funció) i les seves propietats: injectivitat, exhaustivitat i bijectivitat.
+
+\item Aprendre a calcular el cardinal d’un conjunt i entendre les seves propietats bàsiques.
+\end{itemize}
+
+\bigskip
+A mesura que avancem, descobrirem com aquests conceptes no són només abstractes, sinó que tenen aplicacions pràctiques en la resolució de problemes i en la formalització de molts aspectes de les matemàtiques i d’altres disciplines.
+
+\bigskip
+
+Esperem que aquest viatge pels fonaments de la teoria de conjunts sigui clar, estimulant i, sobretot, útil per a la teva formació matemàtica.
+
+\let\cleardoublepage\clearpage
+
+\mainmatter
+
+\import{./capituls/}{teoria.tex}
+\import{./capituls/}{practica.tex}
+\import{./capituls/}{exercicis.tex}
+
+\chapter{Tests}
+
+\label{cap:tests}
+
+\import{./tests/}{test1.tex} \import{./tests/}{test2.tex} %
+\import{./tests/}{test3.tex}
+
+\backmatter
+
+\end{document}

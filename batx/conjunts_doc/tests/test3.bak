@@ -1,0 +1,199 @@
+%% Este documento es propiedad de Miquel A. Perelló. Reservados todos sus derechos.
+% \usepackage{mdframed}
+% \usepackage{fancyhdr}
+
+\documentclass[a4paper,12pt]{article}%
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[hmargin={3cm,3cm},vmargin={2.5cm,2.5cm}%
+,offset=0pt,footskip=1cm,headsep=1cm]{geometry}
+\usepackage[catalan]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\usepackage{amsthm}%
+\setcounter{MaxMatrixCols}{30}
+%TCIDATA{OutputFilter=latex2.dll}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{Created=Tuesday, August 16, 2022 19:36:09}
+%TCIDATA{LastRevised=Tuesday, September 09, 2025 18:25:32}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Articles\SW\aprendes">}
+%BeginMSIPreambleData
+\providecommand{\U}[1]{\protect\rule{.1in}{.1in}}
+%EndMSIPreambleData
+\graphicspath{./img}
+\theoremstyle{plain}
+\newtheorem{thm}{Teorema}[section]
+\newtheorem{cor}[thm]{Coro\l.lari}
+\newtheorem{lem}{Lema}[section]
+\newtheorem{prop}{Proposici\'{o}}[section]
+\theoremstyle{definition}
+\newtheorem{defn}{Definici\'{o}}[section]
+\newtheorem{exem}{Exemple}[section]
+\newtheorem{exer}{Exercici}
+\theoremstyle{remark}
+\newtheorem{obs}{Observaci\'{o}}[section]
+\newtheorem{caso}{Cas}
+\numberwithin{equation}{section}
+\newenvironment{prova}{\textbf{Demostraci\'{o}:}}{\quad\hfill $\blacksquare$}
+\newenvironment{solucio}{\textbf{Soluci\'{o}:}}{\quad\hfill $\square$}
+\setlength{\parindent}{0pt}
+\begin{document}
+
+\title{L\`{o}gica, raonament i demostraci\'{o}\\Test 2 (Demostraci\'{o})}
+\author{Miquel Angel Perell\'{o}\\aprendes.com}
+\date{Versi\'{o} 2021}
+\maketitle
+
+\begin{enumerate}
+Test 3
+
+\item Quin \'{e}s el conjunt de parts de $A=\{1,2\}$?
+
+\begin{enumerate}
+\item $\{\{1\},\{2\}\}$
+
+\item $\{\emptyset,\{1\},\{2\},\{1,2\}\}$ \ \U{2705}
+
+\item $\{\{1,2\},\{1\}\}$ 
+
+\item $\{\emptyset,\{1,2\}\}$
+\end{enumerate}
+
+\item Si $A\subseteq B$ i $B\subseteq A$, llavors...
+
+\begin{enumerate}
+\item $A=\emptyset$
+
+\item $B=\emptyset$
+
+\item $A=B$ \ \U{2705}
+
+\item No es pot determinar
+\end{enumerate}
+
+\item La intersecci\'{o} de $A=\{1,2,3\}$ i $B=\{3,4,5\}$ \'{e}s:
+
+\begin{enumerate}
+\item $\{1,2,3,4,5\}$
+
+\item $\{3\}$ \U{2705}
+
+\item $\{1,2\}$
+
+\item $\{4,5\}$
+\end{enumerate}
+
+\item Dos conjunts s\'{o}n disjunts quan...
+
+\begin{enumerate}
+\item Tenen els mateixos elements
+
+\item No tenen cap element en com\'{u} \U{2705}
+
+\item Un \'{e}s subconjunt de l'altre
+
+\item La seva uni\'{o} \'{e}s buida
+\end{enumerate}
+
+\item El cardinal de $\mathcal{P}(\{a,b,c\})$ \'{e}s:
+
+\begin{enumerate}
+\item 3
+
+\item 6
+
+\item 8 \U{2705}
+
+\item 9
+\end{enumerate}
+
+\item Quina de les seg\"{u}ents relacions \'{e}s d'equival\`{e}ncia?
+
+\begin{enumerate}
+\item \textquotedblleft Ser m\'{e}s alt que\textquotedblright
+
+\item \textquotedblleft Ser germ\`{a} de\textquotedblright
+
+\item \textquotedblleft Tenir la mateixa edat\textquotedblright\ \U{2705}
+
+\item \textquotedblleft Dividir\textquotedblright
+\end{enumerate}
+
+\item En el conjunt $\mathbb{N}$ la relaci\'{o} \textquotedblleft$x$ divideix
+a $y$\textquotedblright\ \'{e}s\ldots
+
+\begin{enumerate}
+\item Reflexiva, sim\`{e}trica i transitiva
+
+\item Reflexiva, antisim\`{e}trica i transitiva \U{2705}
+
+\item Nom\'{e}s sim\`{e}trica
+
+\item Nom\'{e}s transitiva
+\end{enumerate}
+
+\item Sigui $f:\mathbb{R}\rightarrow\mathbb{R}$, $f(x)=x^{2}$. Quina propietat compleix?
+
+\begin{enumerate}
+\item \'{E}s injectiva i exhaustiva
+
+\item \'{E}s injectiva per\`{o} no exhaustiva
+
+\item \'{E}s exhaustiva per\`{o} no injectiva
+
+\item No \'{e}s injectiva ni exhaustiva \U{2705}
+\end{enumerate}
+
+\item Si $\#A=3$ i $\#B=4$, quants elements t\'{e} $A\times B$?
+
+\begin{enumerate}
+\item 7
+
+\item 12 \U{2705}
+
+\item 24
+
+\item 81
+\end{enumerate}
+
+\item Identifica la fal\textperiodcentered l\`{a}cia en el seg\"{u}ent
+raonament: "Si un estudiant estudia ($p$), aprova l'examen ($q$). L'estudiant
+ha aprovat l'examen ($q$). Per tant, l'estudiant ha estudiat ($p$)."
+
+\begin{enumerate}
+\item Fal\textperiodcentered l\`{a}cia de negaci\'{o} de l'antecedent.
+
+\item Fal\textperiodcentered l\`{a}cia d'afirmaci\'{o} del conseq\"{u}ent.
+
+\item Reducci\'{o} a l'absurd.
+
+\item Sil\textperiodcentered logisme disjuntiu.
+\end{enumerate}
+
+\item L'enunciat "No hi ha cap estudiant que sigui bo en matem\`{a}tiques i en
+f\'{\i}sica" es pot expressar formalment com:
+
+\begin{enumerate}
+\item $\exists x(M(x)\wedge F(x))$
+
+\item $\forall x(\lnot M(x)\vee\lnot F(x))$
+
+\item $\lnot\exists x(M(x)\wedge F(x))$
+
+\item $\forall x(\lnot M(x)\wedge\lnot F(x))$
+\end{enumerate}
+\end{enumerate}
+
+\bigskip
+
+Les solucions s\'{o}n: 1(d), 2(a), 3(b), 4(d), 5(a), 6(a), 7(b), 8(b), 9(b), 10(c).
+
+
+\end{document}

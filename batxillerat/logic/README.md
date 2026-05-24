@@ -9,14 +9,13 @@ Inclou:
 - Figures i diagrames
 - PDF final generat
 
-## Estructura del projecte
+## Estructura del projecte de Lògica (Batxillerat)
 
 batxillerat/logic/
 ├── preamble/
 ├── chapters/
 ├── figures/
 └── pdf/
-
 
 ## Compilació
 

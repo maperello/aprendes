@@ -12,10 +12,10 @@ Inclou:
 ## Estructura del projecte
 
 batxillerat/logic/
-├── preamble/     # Fitxers del preàmbul LaTeX
-├── chapters/     # Capítols del llibre
-├── figures/      # Imatges i diagrames
-└── pdf/          # PDF generat
+├── preamble/
+├── chapters/
+├── figures/
+└── pdf/
 
 
 ## Compilació

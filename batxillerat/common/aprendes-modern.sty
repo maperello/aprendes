@@ -1,0 +1,131 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aprendes-modern}[2026/05/25 Modern style for Aprendes]
+
+\RequirePackage{xcolor}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable}
+\RequirePackage{titlesec}
+\RequirePackage{amsthm}
+\RequirePackage{enumitem}
+\RequirePackage{amssymb}
+
+% Colors
+\definecolor{AprenSuau}{HTML}{FF8A9A}
+\definecolor{DefinicioSuau}{HTML}{B8FFE6}
+\definecolor{ExempleSuau}{HTML}{A7E9FF}
+\definecolor{ExerciciSuau}{HTML}{C9FFC7}
+\definecolor{ObservacioSuau}{HTML}{FFD6B3}
+\definecolor{DemostracioSuau}{HTML}{FFB3A9}
+\definecolor{SolucioSuau}{HTML}{C3D0E1}
+\definecolor{TeoremaSuau}{HTML}{D4C4FF}
+\definecolor{LemaSuau}{HTML}{E8DFFF}
+\definecolor{ProposicioSuau}{HTML}{FFE4F2}
+\definecolor{CorollariSuau}{HTML}{FFF2CC}
+
+\tcbset{
+  aprendesbox/.style={
+    sharp corners,
+    boxrule=0.8pt,
+    colback=#1!20,
+    colframe=#1!60,
+    coltitle=black,
+    fonttitle=\bfseries,
+    left=6pt,
+    right=6pt,
+    top=6pt,
+    bottom=6pt,
+    before skip=0.8em,
+    after skip=0.8em,
+    breakable,
+  }
+}
+
+\AtBeginDocument{%
+  \renewenvironment{definicio}{%
+    \refstepcounter{definicio}%
+    \begin{tcolorbox}[aprendesbox=DefinicioSuau,title={Definici\'{o}~\thedefinicio}]%
+  }{%
+    \end{tcolorbox}%
+  }%
+  \renewenvironment{exemple}{%
+    \refstepcounter{exemple}%
+    \begin{tcolorbox}[aprendesbox=ExempleSuau,title={Exemple~\theexemple}]%
+  }{%
+    \end{tcolorbox}%
+  }%
+  \renewenvironment{exercici}{%
+    \refstepcounter{exercici}%
+    \begin{tcolorbox}[aprendesbox=ExerciciSuau,title={Exercici~\theexercici}]%
+  }{%
+    \end{tcolorbox}%
+  }%
+  \renewenvironment{observacio}{%
+    \refstepcounter{observacio}%
+    \begin{tcolorbox}[aprendesbox=ObservacioSuau,title={Observaci\'{o}~\theobservacio}]%
+  }{%
+    \end{tcolorbox}%
+  }%
+  \renewenvironment{solucio}{%
+    \begin{tcolorbox}[aprendesbox=SolucioSuau,title={Soluci\'{o}}]%
+  }{%
+    \end{tcolorbox}%
+  }%
+  \renewenvironment{prova}{%
+    \begin{tcolorbox}[aprendesbox=DemostracioSuau,title={Demostraci\'{o}}]%
+  }{%
+    \end{tcolorbox}%
+  }%
+  \renewenvironment{teorema}{%
+    \refstepcounter{teorema}%
+    \begin{tcolorbox}[aprendesbox=TeoremaSuau,title={Teorema~\theteorema}]%
+  }{%
+    \end{tcolorbox}%
+  }%
+  \renewenvironment{lema}{%
+    \refstepcounter{teorema}%
+    \begin{tcolorbox}[aprendesbox=LemaSuau,title={Lema~\theteorema}]%
+  }{%
+    \end{tcolorbox}%
+  }%
+  \renewenvironment{proposicio}{%
+    \refstepcounter{teorema}%
+    \begin{tcolorbox}[aprendesbox=ProposicioSuau,title={Proposici\'{o}~\theteorema}]%
+  }{%
+    \end{tcolorbox}%
+  }%
+  \renewenvironment{corollari}{%
+    \refstepcounter{teorema}%
+    \begin{tcolorbox}[aprendesbox=CorollariSuau,title={Corol\textperiodcentered lari~\theteorema}]%
+  }{%
+    \end{tcolorbox}%
+  }%
+}
+
+\titleformat{\chapter}
+  {\Huge\bfseries\color{AprenSuau}}
+  {\thechapter}
+  {1em}
+  {}
+
+\newcommand{\secformat}[1]{{\color{AprenSuau}\thesection\quad #1}}
+\titleformat{\section}
+  {\Large\bfseries}
+  {}
+  {0pt}
+  {\secformat}
+
+\newcommand{\subsecformat}[1]{{\color{AprenSuau}\thesubsection\quad #1}}
+\titleformat{\subsection}
+  {\large\bfseries}
+  {}
+  {0pt}
+  {\subsecformat}
+
+\newcommand{\subsubsecformat}[1]{{\color{AprenSuau}\thesubsubsection\quad #1}}
+\titleformat{\subsubsection}
+  {\bfseries}
+  {}
+  {0pt}
+  {\subsubsecformat}
+
+\setlist{itemsep=0.25em,topsep=0.25em}

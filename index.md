@@ -16,3 +16,7 @@ Materials de matemàtiques, lògica i teoria de categories.
 ### Conjunts
 
 [Obrir PDF](batxillerat/conjunts/main.pdf)
+
+## Universitat
+
+## Filosofia

@@ -1,1 +1,28 @@
+---
+layout: default
+title: Universitat
+---
 
+<section class="page-intro">
+  <h1>Universitat</h1>
+  <p>
+    Materials per als primers cursos universitaris de matemàtiques,
+    enginyeria, física, informàtica i disciplines afins.
+  </p>
+</section>
+
+<section>
+  <h2>Àrees</h2>
+
+  <div class="grid">
+    {% for area in site.data.areas %}
+      {% if area.level == "universitat" %}
+        <article class="area-card">
+          <h3>{{ area.title }}</h3>
+          <p>{{ area.description }}</p>
+          <a class="button secondary" href="{{ site.baseurl }}{{ area.url }}">Veure materials</a>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

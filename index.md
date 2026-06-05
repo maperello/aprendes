@@ -7,7 +7,7 @@ title: Inici
   <h1>Materials de matemàtiques per a Batxillerat i Universitat</h1>
 
   <p>
-    Aprendes és una col·lecció oberta de documents acadèmics de matemàtiques
+    aprendes.com és una col·lecció oberta de documents acadèmics de matemàtiques
     en LaTeX, amb teoria, exemples, exercicis i materials de pràctica.
   </p>
 

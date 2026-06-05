@@ -5,9 +5,10 @@ title: Batxillerat
 
 <section class="page-intro">
   <h1>Batxillerat</h1>
+
   <p>
-    Materials per consolidar el llenguatge matemàtic, el càlcul,
-    la resolució de problemes i la preparació per a estudis superiors.
+    Materials per consolidar el càlcul, l’àlgebra, l’anàlisi, la geometria,
+    la probabilitat i l’estadística.
   </p>
 </section>
 
@@ -15,14 +16,24 @@ title: Batxillerat
   <h2>Àrees</h2>
 
   <div class="grid">
-    {% for area in site.data.areas %}
-      {% if area.level == "batxillerat" %}
-        <article class="area-card">
-          <h3>{{ area.title }}</h3>
-          <p>{{ area.description }}</p>
-          <a class="button secondary" href="{{ site.baseurl }}{{ area.url }}">Veure materials</a>
-        </article>
-      {% endif %}
-    {% endfor %}
+    <article class="area-card">
+      <h3>Àlgebra</h3>
+      <p>Equacions, sistemes, polinomis, successions i nombres complexos.</p>
+    </article>
+
+    <article class="area-card">
+      <h3>Anàlisi i càlcul</h3>
+      <p>Funcions, límits, continuïtat, derivades i integrals.</p>
+    </article>
+
+    <article class="area-card">
+      <h3>Geometria</h3>
+      <p>Vectors, trigonometria, rectes, plans i geometria analítica.</p>
+    </article>
+
+    <article class="area-card">
+      <h3>Probabilitat i estadística</h3>
+      <p>Combinatòria, probabilitat i estadística descriptiva.</p>
+    </article>
   </div>
 </section>

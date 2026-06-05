@@ -1,4 +1,6 @@
-title: Aprendes
-description: Matemàtiques, lògica i teoria de categories
+title: aprendes.com
+description: Materials acadèmics de matemàtiques per a batxillerat i universitat.
+url: "https://aprendes.com"
+baseurl: ""
 theme: jekyll-theme-minimal
 markdown: kramdown

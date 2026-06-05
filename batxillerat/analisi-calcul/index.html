@@ -1,1 +1,24 @@
+---
+layout: default
+title: Anàlisi i càlcul
+level: batxillerat
+area: analisi-calcul
+---
 
+<section class="page-intro">
+  <h1>Anàlisi i càlcul</h1>
+  <p>Materials de batxillerat sobre funcions, límits, derivades i integrals.</p>
+</section>
+
+<section>
+  <h2>Documents disponibles</h2>
+
+  <div class="grid">
+    {% assign materials = site.data.materials | sort: "order" %}
+    {% for material in materials %}
+      {% if material.level == page.level and material.area == page.area %}
+        {% include material-card.html material=material %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

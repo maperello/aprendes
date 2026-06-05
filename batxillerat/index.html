@@ -1,1 +1,28 @@
+---
+layout: default
+title: Batxillerat
+---
 
+<section class="page-intro">
+  <h1>Batxillerat</h1>
+  <p>
+    Materials per consolidar el llenguatge matemàtic, el càlcul,
+    la resolució de problemes i la preparació per a estudis superiors.
+  </p>
+</section>
+
+<section>
+  <h2>Àrees</h2>
+
+  <div class="grid">
+    {% for area in site.data.areas %}
+      {% if area.level == "batxillerat" %}
+        <article class="area-card">
+          <h3>{{ area.title }}</h3>
+          <p>{{ area.description }}</p>
+          <a class="button secondary" href="{{ site.baseurl }}{{ area.url }}">Veure materials</a>
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>

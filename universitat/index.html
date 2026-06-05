@@ -5,6 +5,7 @@ title: Universitat
 
 <section class="page-intro">
   <h1>Universitat</h1>
+
   <p>
     Materials per als primers cursos universitaris de matemàtiques,
     enginyeria, física, informàtica i disciplines afins.
@@ -15,14 +16,24 @@ title: Universitat
   <h2>Àrees</h2>
 
   <div class="grid">
-    {% for area in site.data.areas %}
-      {% if area.level == "universitat" %}
-        <article class="area-card">
-          <h3>{{ area.title }}</h3>
-          <p>{{ area.description }}</p>
-          <a class="button secondary" href="{{ site.baseurl }}{{ area.url }}">Veure materials</a>
-        </article>
-      {% endif %}
-    {% endfor %}
+    <article class="area-card">
+      <h3>Àlgebra lineal</h3>
+      <p>Matrius, sistemes lineals, espais vectorials, aplicacions lineals i diagonalització.</p>
+    </article>
+
+    <article class="area-card">
+      <h3>Càlcul</h3>
+      <p>Límits, continuïtat, derivació, integració i càlcul en diverses variables.</p>
+    </article>
+
+    <article class="area-card">
+      <h3>Anàlisi</h3>
+      <p>Successions, sèries, convergència, continuïtat i derivabilitat.</p>
+    </article>
+
+    <article class="area-card">
+      <h3>Probabilitat i estadística</h3>
+      <p>Variables aleatòries, distribucions, inferència i models estadístics.</p>
+    </article>
   </div>
 </section>

@@ -4,11 +4,14 @@ title: Inici
 ---
 
 <section class="hero">
-  <h1>Materials de matemàtiques per a Batxillerat i Universitat</h1>
+  <p class="site-kicker"><strong>aprendes</strong></p>
+
+  <h1>Matemàtiques per a Batxillerat i Universitat</h1>
 
   <p>
-    Aprendes és una col·lecció oberta de documents acadèmics de matemàtiques
-    en LaTeX, amb teoria, exemples, exercicis i materials de pràctica.
+    <strong>aprendes</strong> és una col·lecció oberta de documents acadèmics
+    de matemàtiques en LaTeX, amb teoria, exemples, exercicis i materials
+    de pràctica.
   </p>
 
   <div class="hero-actions">

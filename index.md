@@ -6,7 +6,7 @@ title: Inici
 <section class="hero">
   <p class="site-kicker"><strong>aprendes</strong></p>
 
-  <h1>Matemàtiques per a Batxillerat i Universitat</h1>
+  <h1>Matemàtiques</h1>
 
   <p>
     <strong>aprendes</strong> és una col·lecció oberta de documents acadèmics

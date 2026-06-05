@@ -1,1 +1,29 @@
+- id: sistemes-equacions
+  title: Sistemes d’equacions
+  level: batxillerat
+  area: algebra
+  description: Resolució de sistemes lineals i no lineals amb exemples i exercicis.
+  pdf: batxillerat/algebra/sistemes-equacions/main.pdf
+  source: https://github.com/maperello/aprendes/tree/main/batxillerat/algebra/sistemes-equacions
+  status: En revisió
+  order: 10
 
+- id: funcions-elementals
+  title: Funcions elementals
+  level: batxillerat
+  area: analisi-calcul
+  description: Introducció a les funcions polinòmiques, racionals, exponencials, logarítmiques i trigonomètriques.
+  pdf: batxillerat/analisi-calcul/funcions-elementals/main.pdf
+  source: https://github.com/maperello/aprendes/tree/main/batxillerat/analisi-calcul/funcions-elementals
+  status: En revisió
+  order: 20
+
+- id: matrius
+  title: Matrius
+  level: universitat
+  area: algebra-lineal
+  description: Operacions amb matrius, matriu inversa, rang i sistemes lineals.
+  pdf: universitat/algebra-lineal/matrius/main.pdf
+  source: https://github.com/maperello/aprendes/tree/main/universitat/algebra-lineal/matrius
+  status: Esborrany
+  order: 10

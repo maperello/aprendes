@@ -1,1 +1,47 @@
+- id: algebra
+  level: batxillerat
+  title: Àlgebra
+  description: Equacions, inequacions, sistemes, polinomis i nombres complexos.
+  url: /batxillerat/algebra/
 
+- id: analisi-calcul
+  level: batxillerat
+  title: Anàlisi i càlcul
+  description: Funcions, límits, continuïtat, derivades i integrals bàsiques.
+  url: /batxillerat/analisi-calcul/
+
+- id: geometria
+  level: batxillerat
+  title: Geometria
+  description: Vectors, trigonometria, rectes, plans i geometria analítica.
+  url: /batxillerat/geometria/
+
+- id: probabilitat-estadistica
+  level: batxillerat
+  title: Probabilitat i estadística
+  description: Combinatòria, probabilitat i estadística descriptiva.
+  url: /batxillerat/probabilitat-estadistica/
+
+- id: algebra-lineal
+  level: universitat
+  title: Àlgebra lineal
+  description: Matrius, espais vectorials, aplicacions lineals, determinants i diagonalització.
+  url: /universitat/algebra-lineal/
+
+- id: calcul
+  level: universitat
+  title: Càlcul
+  description: Límits, continuïtat, derivació, integració i càlcul en diverses variables.
+  url: /universitat/calcul/
+
+- id: analisi
+  level: universitat
+  title: Anàlisi
+  description: Successions, sèries, convergència, continuïtat i derivabilitat.
+  url: /universitat/analisi/
+
+- id: probabilitat-estadistica
+  level: universitat
+  title: Probabilitat i estadística
+  description: Variables aleatòries, distribucions, inferència i models estadístics.
+  url: /universitat/probabilitat-estadistica/

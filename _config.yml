@@ -1,6 +1,6 @@
-title: aprendes.com
+title: Aprendes
 description: Materials acadèmics de matemàtiques per a batxillerat i universitat.
 url: "https://aprendes.com"
 baseurl: ""
-theme: jekyll-theme-minimal
+
 markdown: kramdown

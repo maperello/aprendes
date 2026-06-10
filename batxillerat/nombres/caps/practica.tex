@@ -1,0 +1,1416 @@
+\chapter{Pràctica}
+\label{cap:practica}
+
+\section{Naturals i inducció}
+
+\begin{exercici}[Ús directe dels axiomes de Peano]
+Prova que \(3\ne0\) i que \(3\ne2\), entenent
+\[
+1=S(0),\qquad 2=S(S(0)),\qquad 3=S(S(S(0))).
+\]
+\end{exercici}
+
+\begin{solucio}
+Tenim \(3=S(S(S(0)))\). Si \(3=0\), aleshores \(S(S(S(0)))=0\), contradicció amb l'axioma que diu que \(0\) no és successor de cap natural.
+
+Si \(3=2\), aleshores
+\[
+S(S(S(0)))=S(S(0)).
+\]
+Per injectivitat de \(S\), obtenim \(S(S(0))=S(0)\), i aplicant de nou la injectivitat, \(S(0)=0\), contradicció. Per tant, \(3\ne2\).
+\end{solucio}
+
+\begin{exercici}[Inducció]
+Demostra que per a tot \(n\in\N\),
+\[
+1+3+5+\cdots+(2n+1)=(n+1)^2.
+\]
+\end{exercici}
+
+\begin{solucio}
+Per \(n=0\), el membre esquerre és \(1\) i el dret és \((0+1)^2=1\).
+
+Suposem certa la igualtat per a \(n\):
+\[
+1+3+\cdots+(2n+1)=(n+1)^2.
+\]
+Aleshores, per a \(n+1\),
+\[
+\begin{aligned}
+1+3+\cdots+(2n+1)+(2(n+1)+1)
+&=(n+1)^2+2n+3\\
+&=n^2+2n+1+2n+3\\
+&=n^2+4n+4\\
+&=(n+2)^2.
+\end{aligned}
+\]
+Així queda provada la fórmula per inducció.
+\end{solucio}
+
+\begin{exercici}[Inducció forta]
+Prova que tot natural \(n\ge2\) és primer o producte de nombres primers.
+\end{exercici}
+
+\begin{solucio}
+Fem inducció forta sobre \(n\). El cas \(n=2\) és cert perquè \(2\) és primer.
+
+Suposem que la propietat és certa per a tots els naturals \(k\) amb \(2\le k\le n\), i provem-la per a \(n+1\). Si \(n+1\) és primer, no cal fer res. Si no és primer, existeixen \(a,b\in\N\) amb
+\[
+1<a<n+1,
+\qquad
+1<b<n+1,
+\qquad
+n+1=ab.
+\]
+Per hipòtesi d'inducció, \(a\) i \(b\) són primers o producte de primers. Per tant, \(n+1=ab\) és producte de nombres primers.
+\end{solucio}
+
+\begin{exercici}[Algoritme d'Euclides]
+Calcula \(\mcd(252,198)\).
+\end{exercici}
+
+\begin{solucio}
+Fem divisions successives:
+\[
+252=198\cdot1+54,
+\]
+\[
+198=54\cdot3+36,
+\]
+\[
+54=36\cdot1+18,
+\]
+\[
+36=18\cdot2+0.
+\]
+Per tant, \(\mcd(252,198)=18\).
+\end{solucio}
+
+
+
+\begin{exercici}[Cancel·lació de la suma]
+Prova que, per a tots \(a,b,c\in\N\), si
+\[
+a+c=b+c,
+\]
+aleshores
+\[
+a=b.
+\]
+\end{exercici}
+
+\begin{solucio}
+Fem inducció sobre \(c\).
+
+Per a \(c=0\), si
+\[
+a+0=b+0,
+\]
+aleshores, per la definició de la suma,
+\[
+a=b.
+\]
+
+Suposem ara que la propietat és certa per a un cert \(c\in\N\). Volem provar-la per a \(S(c)\). Suposem que
+\[
+a+S(c)=b+S(c).
+\]
+Per la definició de la suma,
+\[
+S(a+c)=S(b+c).
+\]
+Com que el successor és injectiu, obtenim
+\[
+a+c=b+c.
+\]
+Per la hipòtesi d'inducció, concloem que
+\[
+a=b.
+\]
+
+Per tant, per inducció, la propietat queda provada per a tot \(c\in\N\).
+\end{solucio}
+
+\begin{exercici}[Compatibilitat de l'ordre amb la suma]
+Prova que, per a tots \(a,b,c\in\N\), si
+\[
+a\leq b,
+\]
+aleshores
+\[
+a+c\leq b+c.
+\]
+\end{exercici}
+
+\begin{solucio}
+Suposem que \(a\leq b\). Per definició de l'ordre, existeix \(n\in\N\) tal que
+\[
+b=a+n.
+\]
+Aleshores
+\[
+b+c=(a+n)+c.
+\]
+Per l'associativitat i la commutativitat de la suma,
+\[
+(a+n)+c=(a+c)+n.
+\]
+Per tant,
+\[
+b+c=(a+c)+n.
+\]
+Això vol dir, per definició de l'ordre, que
+\[
+a+c\leq b+c.
+\]
+\end{solucio}
+
+\begin{exercici}[Cancel\textperiodcentered{}lació de l'ordre amb la suma]\label{ex:cancelacio-ordre-suma}
+Demostra que, per a tots $a,b,c\in\N$, si
+\[
+a+c\leq b+c,
+\]
+aleshores
+\[
+a\leq b.
+\]
+\end{exercici}
+
+\begin{solucio}
+Suposem que
+\[
+a+c\leq b+c.
+\]
+Per la definició de l'ordre en $\N$, existeix $n\in\N$ tal que
+\[
+b+c=(a+c)+n.
+\]
+Per l'associativitat de la suma,
+\[
+(a+c)+n=a+(c+n).
+\]
+Per la commutativitat de la suma,
+\[
+c+n=n+c.
+\]
+Per tant,
+\[
+a+(c+n)=a+(n+c)=(a+n)+c.
+\]
+Així,
+\[
+b+c=(a+n)+c.
+\]
+Per la propietat de cancel\textperiodcentered{}lació de la suma, obtenim
+\[
+b=a+n.
+\]
+Com que existeix $n\in\N$ tal que
+\[
+b=a+n,
+\]
+per la definició de l'ordre concloem que
+\[
+a\leq b.
+\]
+\end{solucio}
+
+\begin{exercici}[Compatibilitat de l'ordre amb el producte]
+Prova que, per a tots \(a,b,c\in\N\), si
+\[
+a\leq b,
+\]
+aleshores
+\[
+a\cdot c\leq b\cdot c.
+\]
+Prova també que, si \(a<b\) i \(c\neq 0\), aleshores
+\[
+a\cdot c<b\cdot c.
+\]
+\end{exercici}
+
+\begin{solucio}
+Suposem primer que \(a\leq b\). Per definició de l'ordre, existeix \(n\in\N\) tal que
+\[
+b=a+n.
+\]
+Multiplicant per \(c\), obtenim
+\[
+b\cdot c=(a+n)\cdot c.
+\]
+Per la distributivitat del producte respecte de la suma,
+\[
+(a+n)\cdot c=a\cdot c+n\cdot c.
+\]
+Així,
+\[
+b\cdot c=a\cdot c+n\cdot c.
+\]
+Com que \(n\cdot c\in\N\), per definició de l'ordre tenim
+\[
+a\cdot c\leq b\cdot c.
+\]
+
+Suposem ara que \(a<b\) i \(c\neq 0\). Aleshores existeix \(n\in\N\), amb \(n\neq 0\), tal que
+\[
+b=a+n.
+\]
+Com abans,
+\[
+b\cdot c=a\cdot c+n\cdot c.
+\]
+Com que \(n\neq0\) i \(c\neq0\), pel resultat sobre el producte nul tenim
+\[
+n\cdot c\neq0.
+\]
+Per tant, per definició de l'ordre estricte,
+\[
+a\cdot c<b\cdot c.
+\]
+\end{solucio}
+
+\begin{exercici}[Cancel·lació del producte]
+Prova que, per a tots \(a,b,c\in\N\), si \(c\neq0\) i
+\[
+a\cdot c=b\cdot c,
+\]
+aleshores
+\[
+a=b.
+\]
+\end{exercici}
+
+\begin{solucio}
+Suposem que \(c\neq0\) i que
+\[
+a\cdot c=b\cdot c.
+\]
+Per la tricotomia de l'ordre en \(\N\), es compleix exactament una de les tres possibilitats:
+\[
+a<b,\qquad a=b,\qquad b<a.
+\]
+
+Si \(a<b\), com que \(c\neq0\), per la compatibilitat estricta de l'ordre amb el producte tenim
+\[
+a\cdot c<b\cdot c,
+\]
+cosa que contradiu la igualtat \(a\cdot c=b\cdot c\).
+
+Si \(b<a\), de la mateixa manera obtenim
+\[
+b\cdot c<a\cdot c,
+\]
+que també contradiu \(a\cdot c=b\cdot c\).
+
+Per tant, l'única possibilitat és
+\[
+a=b.
+\]
+\end{solucio}
+
+\begin{exercici}[Potències definides per recursió]
+Siguin \(a,n\in\N\). Definim les potències de base \(a\) per recursió:
+\[
+\left\{
+\begin{array}{l}
+a^0=1,\\
+a^{S(n)}=a^n\cdot a.
+\end{array}
+\right.
+\]
+Prova que, per a tots \(m,n\in\N\),
+\[
+a^m\cdot a^n=a^{m+n}.
+\]
+\end{exercici}
+
+\begin{solucio}
+Fixem \(a,m\in\N\) i fem inducció sobre \(n\).
+
+Per a \(n=0\), tenim
+\[
+a^m\cdot a^0=a^m\cdot 1=a^m.
+\]
+Com que \(m+0=m\), obtenim
+\[
+a^m\cdot a^0=a^{m+0}.
+\]
+
+Suposem ara que la propietat és certa per a un cert \(n\in\N\), és a dir,
+\[
+a^m\cdot a^n=a^{m+n}.
+\]
+Volem provar que també és certa per a \(S(n)\). Per la definició de potència,
+\[
+a^m\cdot a^{S(n)}=a^m\cdot(a^n\cdot a).
+\]
+Per l'associativitat del producte,
+\[
+a^m\cdot(a^n\cdot a)=(a^m\cdot a^n)\cdot a.
+\]
+Per la hipòtesi d'inducció,
+\[
+(a^m\cdot a^n)\cdot a=a^{m+n}\cdot a.
+\]
+Per la definició de potència,
+\[
+a^{m+n}\cdot a=a^{S(m+n)}.
+\]
+Finalment, com que
+\[
+m+S(n)=S(m+n),
+\]
+tenim
+\[
+a^{S(m+n)}=a^{m+S(n)}.
+\]
+Per tant,
+\[
+a^m\cdot a^{S(n)}=a^{m+S(n)}.
+\]
+
+Pel principi d'inducció, queda provat que
+\[
+a^m\cdot a^n=a^{m+n}
+\]
+per a tots \(m,n\in\N\).
+\end{solucio}
+
+\section{Enters i propietats}
+
+\begin{exercici}[Classes d'equivalència en \(\Z\)]
+Decideix si els parells \((4,9)\), \((7,12)\), \((10,15)\) i \((2,5)\) representen el mateix enter.
+\end{exercici}
+
+\begin{solucio}
+Recordem que \((a,b)\sim(c,d)\) si \(a+d=b+c\). Comparem:
+\[
+(4,9)\sim(7,12)
+\quad\Longleftrightarrow\quad
+4+12=9+7,
+\]
+i això és cert perquè tots dos membres valen \(16\). També
+\[
+(4,9)\sim(10,15)
+\quad\Longleftrightarrow\quad
+4+15=9+10,
+\]
+i tots dos membres valen \(19\). En canvi,
+\[
+(4,9)\sim(2,5)
+\quad\Longleftrightarrow\quad
+4+5=9+2,
+\]
+que és fals, perquè \(9\ne11\). Per tant, els tres primers parells representen l'enter \(-5\), mentre que \((2,5)\) representa \(-3\).
+\end{solucio}
+
+\begin{exercici}[Suma i oposat]
+Siguin
+\[
+x=\classe{(3,8)},
+\qquad
+ y=\classe{(10,4)}.
+\]
+Calcula \(x+y\), \(-x\) i \(x-y\).
+\end{exercici}
+
+\begin{solucio}
+Per definició,
+\[
+x+y=\classe{(3+10,8+4)}=\classe{(13,12)}.
+\]
+Aquesta classe representa \(1\). L'oposat és
+\[
+-x=\classe{(8,3)}.
+\]
+Finalment,
+\[
+x-y=x+(-y)=\classe{(3,8)}+\classe{(4,10)}=\classe{(7,18)},
+\]
+que representa \(-11\).
+\end{solucio}
+
+\begin{exercici}[Producte d'enters com a classes]
+Calcula
+\[
+\classe{(2,7)}\cdot\classe{(9,4)}.
+\]
+Interpreta el resultat amb la notació usual d'enters.
+\end{exercici}
+
+\begin{solucio}
+La fórmula del producte és
+\[
+\classe{(a,b)}\classe{(c,d)}=\classe{(ac+bd,ad+bc)}.
+\]
+Per tant,
+\[
+\classe{(2,7)}\cdot\classe{(9,4)}
+=\classe{(2\cdot9+7\cdot4,2\cdot4+7\cdot9)}
+=\classe{(46,71)}.
+\]
+La classe \(\classe{(46,71)}\) representa \(46-71=-25\). Això concorda amb la interpretació usual:
+\[
+(2-7)(9-4)=(-5)\cdot5=-25.
+\]
+\end{solucio}
+
+\begin{exercici}[Ordre en \(\Z\)]
+Comprova, usant la definició d'ordre per classes, que
+\[
+\classe{(2,9)}<\classe{(5,1)}.
+\]
+\end{exercici}
+
+\begin{solucio}
+Per definició,
+\[
+\classe{(a,b)}\le\classe{(c,d)}
+\quad\Longleftrightarrow\quad
+ a+d\le c+b.
+\]
+En aquest cas,
+\[
+2+1\le5+9,
+\]
+és a dir, \(3\le14\), que és cert. A més, les classes no són iguals, perquè
+\[
+2+1\ne9+5.
+\]
+Per tant,
+\[
+\classe{(2,9)}<\classe{(5,1)}.
+\]
+\end{solucio}
+
+\begin{exercici}[Equacions de la forma \(x+a=b\)]
+Resol en $\Z$ l'equació
+\[
+x+7=5.
+\]
+Interpreta la solució utilitzant classes d'equivalència.
+\end{exercici}
+
+\begin{solucio}
+Volem trobar un enter $x$ tal que
+\[
+x+7=5.
+\]
+Això equival a
+\[
+x=5-7.
+\]
+Com que identifiquem $5$ i $7$ amb els enters $[(5,0)]$ i $[(7,0)]$, tenim
+\[
+5-7=[(5,0)]-[(7,0)].
+\]
+Per definició de la resta en $\Z$,
+\[
+[(5,0)]-[(7,0)]=[(5,0)]+[-(7,0)].
+\]
+Com que l'oposat de $[(7,0)]$ és $[(0,7)]$, obtenim
+\[
+[(5,0)]+[(0,7)]=[(5,7)].
+\]
+Per tant,
+\[
+x=[(5,7)].
+\]
+Aquest enter correspon a $-2$, ja que representa la diferència $5-7$.
+
+Comprovem-ho:
+\[
+[(5,7)]+[(7,0)]=[(12,7)].
+\]
+Ara bé,
+\[
+[(12,7)]=[(5,0)],
+\]
+perquè
+\[
+12+0=7+5.
+\]
+Així,
+\[
+x+7=5.
+\]
+\end{solucio}
+
+
+\begin{exercici}[Producte i signe]
+Calcula els productes següents i interpreta'n el signe:
+\[
+[(0,3)]\cdot[(0,4)],
+\qquad
+[(5,0)]\cdot[(0,2)],
+\qquad
+[(0,6)]\cdot[(7,0)].
+\]
+\end{exercici}
+
+\begin{solucio}
+Recordem que
+\[
+[(a,b)]\cdot[(c,d)]
+=
+[(a\cdot c+b\cdot d,\ a\cdot d+b\cdot c)].
+\]
+
+En primer lloc,
+\[
+[(0,3)]\cdot[(0,4)]
+=
+[(0\cdot 0+3\cdot 4,\ 0\cdot 4+3\cdot 0)]
+=
+[(12,0)].
+\]
+Per tant,
+\[
+(-3)\cdot(-4)=12.
+\]
+El producte de dos enters negatius és positiu.
+
+En segon lloc,
+\[
+[(5,0)]\cdot[(0,2)]
+=
+[(5\cdot 0+0\cdot 2,\ 5\cdot 2+0\cdot 0)]
+=
+[(0,10)].
+\]
+Per tant,
+\[
+5\cdot(-2)=-10.
+\]
+
+Finalment,
+\[
+[(0,6)]\cdot[(7,0)]
+=
+[(0\cdot 7+6\cdot 0,\ 0\cdot 0+6\cdot 7)]
+=
+[(0,42)].
+\]
+Per tant,
+\[
+(-6)\cdot 7=-42.
+\]
+\end{solucio}
+
+\begin{exercici}[Compatibilitat de l'ordre amb la suma]
+Siguin $a,b,c\in\Z$. Demostra que, si
+\[
+a\leq b,
+\]
+aleshores
+\[
+a+c\leq b+c.
+\]
+\end{exercici}
+
+\begin{solucio}
+Suposem que
+\[
+a\leq b.
+\]
+Això vol dir que
+\[
+b-a\geq 0.
+\]
+Ara bé,
+\[
+(b+c)-(a+c)=b+c-a-c=b-a.
+\]
+Com que
+\[
+b-a\geq 0,
+\]
+obtenim
+\[
+(b+c)-(a+c)\geq 0.
+\]
+Per tant,
+\[
+a+c\leq b+c.
+\]
+
+Així, sumar un mateix enter als dos membres d'una desigualtat no en modifica el sentit.
+\end{solucio}
+
+
+\begin{exercici}[Multiplicació d'una desigualtat per un enter positiu o negatiu]
+Siguin $a,b,c\in\Z$ amb
+\[
+a\leq b.
+\]
+Demostra que:
+\[
+\begin{array}{ll}
+\text{\textbf{(i)}} & \text{si } c\geq 0,\text{ aleshores } ac\leq bc,\\[1mm]
+\text{\textbf{(ii)}} & \text{si } c\leq 0,\text{ aleshores } bc\leq ac.
+\end{array}
+\]
+\end{exercici}
+
+\begin{solucio}
+Com que
+\[
+a\leq b,
+\]
+tenim
+\[
+b-a\geq 0.
+\]
+
+\medskip
+
+\noindent\textbf{(i)} Suposem primer que
+\[
+c\geq 0.
+\]
+Aleshores el producte de dos enters no negatius és no negatiu, i per tant
+\[
+(b-a)c\geq 0.
+\]
+Per la propietat distributiva,
+\[
+(b-a)c=bc-ac.
+\]
+Així,
+\[
+bc-ac\geq 0.
+\]
+Per tant,
+\[
+ac\leq bc.
+\]
+
+\medskip
+
+\noindent\textbf{(ii)} Suposem ara que
+\[
+c\leq 0.
+\]
+Aleshores
+\[
+-c\geq 0.
+\]
+Com que
+\[
+b-a\geq 0
+\]
+i
+\[
+-c\geq 0,
+\]
+tenim
+\[
+(b-a)(-c)\geq 0.
+\]
+Per la propietat distributiva,
+\[
+(b-a)(-c)=ac-bc.
+\]
+Així,
+\[
+ac-bc\geq 0.
+\]
+Per tant,
+\[
+bc\leq ac.
+\]
+
+Això mostra que, quan multipliquem una desigualtat per un enter positiu, el sentit de la desigualtat es conserva, mentre que, quan la multipliquem per un enter negatiu, el sentit s'inverteix.
+\end{solucio}
+
+
+\begin{exercici}[Ús de la compatibilitat de l'ordre amb les operacions]
+Resol la desigualtat
+\[
+-3x+2\leq 11
+\]
+en el conjunt dels nombres enters.
+\end{exercici}
+
+\begin{solucio}
+Partim de la desigualtat
+\[
+-3x+2\leq 11.
+\]
+Restem $2$ als dos membres:
+\[
+-3x\leq 9.
+\]
+Ara multipliquem els dos membres per $-1$. Com que multipliquem per un enter negatiu, el sentit de la desigualtat s'inverteix:
+\[
+3x\geq -9.
+\]
+Això equival a
+\[
+-9\leq 3x.
+\]
+Com que $3>0$, podem dividir intuïtivament per $3$, o bé observar que això equival a
+\[
+x\geq -3.
+\]
+Per tant, les solucions enteres són
+\[
+x\in\Z
+\qquad\text{amb}\qquad
+x\geq -3.
+\]
+És a dir,
+\[
+x\in\{-3,-2,-1,0,1,2,\ldots\}.
+\]
+\end{solucio}
+
+
+\begin{exercici}[Oposat i valor absolut]
+Demostra que, per a tot $n\in\Z$,
+\[
+|-n|=|n|.
+\]
+\end{exercici}
+
+\begin{solucio}
+Distingim casos segons el signe de $n$.
+
+Si $n\geq 0$, aleshores
+\[
+|n|=n.
+\]
+En aquest cas, $-n\leq 0$, i per tant
+\[
+|-n|=-(-n)=n.
+\]
+Així,
+\[
+|-n|=|n|.
+\]
+
+Si $n<0$, aleshores
+\[
+|n|=-n.
+\]
+En aquest cas, $-n>0$, i per tant
+\[
+|-n|=-n.
+\]
+Així,
+\[
+|-n|=|n|.
+\]
+
+Per tant, en tots els casos,
+\[
+|-n|=|n|.
+\]
+\end{solucio}
+
+
+\begin{exercici}[Distància entre enters]
+Demostra que, per a tots $n,m\in\Z$,
+\[
+|n-m|=|m-n|.
+\]
+\end{exercici}
+
+\begin{solucio}
+Observem que
+\[
+n-m=-(m-n).
+\]
+Per la propietat demostrada a l'exercici anterior,
+\[
+|-(m-n)|=|m-n|.
+\]
+Per tant,
+\[
+|n-m|=|-(m-n)|=|m-n|.
+\]
+\end{solucio}
+
+
+\begin{exercici}[Valor absolut d'un producte]
+Demostra que, per a tots $n,m\in\Z$,
+\[
+|n\cdot m|=|n|\cdot |m|.
+\]
+\end{exercici}
+
+\begin{solucio}
+Distingim casos segons els signes de $n$ i $m$.
+
+Si $n\geq 0$ i $m\geq 0$, aleshores $n\cdot m\geq 0$ i, per tant,
+\[
+|n\cdot m|=n\cdot m=|n|\cdot |m|.
+\]
+
+Si $n\geq 0$ i $m<0$, aleshores $n\cdot m\leq 0$. Per tant,
+\[
+|n\cdot m|=-(n\cdot m)=n\cdot(-m).
+\]
+Com que $|n|=n$ i $|m|=-m$, obtenim
+\[
+|n\cdot m|=|n|\cdot |m|.
+\]
+
+Si $n<0$ i $m\geq 0$, el raonament és anàleg:
+\[
+|n\cdot m|=(-n)\cdot m=|n|\cdot |m|.
+\]
+
+Finalment, si $n<0$ i $m<0$, aleshores $n\cdot m>0$. Per tant,
+\[
+|n\cdot m|=n\cdot m.
+\]
+Ara bé, com que $|n|=-n$ i $|m|=-m$, tenim
+\[
+|n|\cdot |m|=(-n)(-m)=n\cdot m.
+\]
+Així,
+\[
+|n\cdot m|=|n|\cdot |m|.
+\]
+\end{solucio}
+
+
+\begin{exercici}[Desigualtat triangular]
+Demostra que, per a tots $n,m\in\Z$,
+\[
+|n+m|\leq |n|+|m|.
+\]
+\end{exercici}
+
+\begin{solucio}
+Per les propietats bàsiques del valor absolut, sabem que
+\[
+-|n|\leq n\leq |n|
+\]
+i
+\[
+-|m|\leq m\leq |m|.
+\]
+Sumant aquestes desigualtats, obtenim
+\[
+-(|n|+|m|)\leq n+m\leq |n|+|m|.
+\]
+Com que
+\[
+|n|+|m|\geq 0,
+\]
+podem aplicar la propietat
+\[
+|x|\leq k \iff -k\leq x\leq k,
+\]
+amb
+\[
+x=n+m
+\qquad\text{i}\qquad
+k=|n|+|m|.
+\]
+Així,
+\[
+|n+m|\leq |n|+|m|.
+\]
+\end{solucio}
+
+
+\begin{exercici}[Desigualtats amb valor absolut]
+Troba tots els enters $n\in\Z$ que compleixen
+\[
+|n-3|\leq 2.
+\]
+\end{exercici}
+
+\begin{solucio}
+Utilitzem la propietat
+\[
+|x|\leq k \iff -k\leq x\leq k,
+\]
+amb
+\[
+x=n-3
+\qquad\text{i}\qquad
+k=2.
+\]
+Així,
+\[
+|n-3|\leq 2
+\]
+equival a
+\[
+-2\leq n-3\leq 2.
+\]
+Sumant $3$ a tots els membres, obtenim
+\[
+1\leq n\leq 5.
+\]
+Per tant, els enters que compleixen la desigualtat són
+\[
+n\in\{1,2,3,4,5\}.
+\]
+\end{solucio}
+
+
+\begin{exercici}[Teorema de la divisió en \(\Z\)]
+Troba el quocient i el residu de la divisió de $-37$ entre $5$, i també de la divisió de $-37$ entre $-5$.
+\end{exercici}
+
+\begin{solucio}
+Primer dividim $-37$ entre $5$. Busquem $q,r\in\Z$ tals que
+\[
+-37=5q+r
+\]
+i
+\[
+0\leq r<5.
+\]
+Si prenem $q=-8$, obtenim
+\[
+5q=5\cdot(-8)=-40.
+\]
+Per tant,
+\[
+-37=-40+3=5\cdot(-8)+3.
+\]
+Així, en la divisió de $-37$ entre $5$, el quocient és
+\[
+q=-8
+\]
+i el residu és
+\[
+r=3.
+\]
+
+Ara dividim $-37$ entre $-5$. Busquem $q,r\in\Z$ tals que
+\[
+-37=(-5)q+r
+\]
+i
+\[
+0\leq r<|-5|=5.
+\]
+Si prenem $q=8$, obtenim
+\[
+(-5)\cdot 8=-40.
+\]
+Per tant,
+\[
+-37=-40+3=(-5)\cdot 8+3.
+\]
+Així, en la divisió de $-37$ entre $-5$, el quocient és
+\[
+q=8
+\]
+i el residu és
+\[
+r=3.
+\]
+\end{solucio}
+
+\begin{exercici}[Divisibilitat en \(\Z\)]
+Determina si les afirmacions següents són certes o falses:
+\[
+-4\mid 20,
+\qquad
+4\mid (-20),
+\qquad
+-5\mid (-35),
+\qquad
+6\mid 20.
+\]
+\end{exercici}
+
+\begin{solucio}
+Recordem que, si $a,b\in\Z$ i $a\neq 0$, diem que
+\[
+a\mid b
+\]
+si existeix $q\in\Z$ tal que
+\[
+b=aq.
+\]
+
+En primer lloc,
+\[
+-4\mid 20,
+\]
+perquè
+\[
+20=(-4)\cdot(-5).
+\]
+Per tant, l'afirmació és certa.
+
+En segon lloc,
+\[
+4\mid (-20),
+\]
+perquè
+\[
+-20=4\cdot(-5).
+\]
+Per tant, l'afirmació és certa.
+
+En tercer lloc,
+\[
+-5\mid (-35),
+\]
+perquè
+\[
+-35=(-5)\cdot 7.
+\]
+Per tant, l'afirmació és certa.
+
+Finalment,
+\[
+6\nmid 20.
+\]
+En efecte, no existeix cap $q\in\Z$ tal que
+\[
+20=6q,
+\]
+ja que $20$ no és múltiple de $6$.
+
+Així,
+\[
+-4\mid 20,\qquad 4\mid (-20),\qquad -5\mid (-35),
+\]
+però
+\[
+6\nmid 20.
+\]
+\end{solucio}
+
+
+\begin{exercici}[Divisors enters d'un nombre]
+Troba tots els divisors enters de $18$.
+\end{exercici}
+
+\begin{solucio}
+Busquem tots els enters $d\in\Z$, amb $d\neq 0$, tals que
+\[
+d\mid 18.
+\]
+És a dir, busquem tots els enters $d$ per als quals existeix $q\in\Z$ tal que
+\[
+18=dq.
+\]
+
+Primer trobem els divisors positius de $18$:
+\[
+1,\ 2,\ 3,\ 6,\ 9,\ 18.
+\]
+Com que treballem en $\Z$, també hem de considerar els divisors negatius corresponents:
+\[
+-1,\ -2,\ -3,\ -6,\ -9,\ -18.
+\]
+Per exemple,
+\[
+18=(-3)\cdot(-6),
+\]
+de manera que $-3$ també és divisor de $18$.
+
+Per tant, els divisors enters de $18$ són
+\[
+\pm 1,\ \pm 2,\ \pm 3,\ \pm 6,\ \pm 9,\ \pm 18.
+\]
+És a dir,
+\[
+\{-18,-9,-6,-3,-2,-1,1,2,3,6,9,18\}.
+\]
+\end{solucio}
+
+
+\begin{exercici}[Propietats bàsiques de la divisibilitat en \(\Z\)]
+Siguin $a,b,c\in\Z$, amb $a\neq 0$. Demostra que, si
+\[
+a\mid b
+\qquad\text{i}\qquad
+a\mid c,
+\]
+aleshores
+\[
+a\mid (b-c).
+\]
+\end{exercici}
+
+\begin{solucio}
+Suposem que
+\[
+a\mid b
+\qquad\text{i}\qquad
+a\mid c.
+\]
+Per la definició de divisibilitat en $\Z$, existeixen $q,r\in\Z$ tals que
+\[
+b=aq
+\qquad\text{i}\qquad
+c=ar.
+\]
+Per tant,
+\[
+b-c=aq-ar.
+\]
+Factoritzant $a$, obtenim
+\[
+b-c=a(q-r).
+\]
+Com que
+\[
+q-r\in\Z,
+\]
+existeix un enter $q-r$ tal que
+\[
+b-c=a(q-r).
+\]
+Així, per definició de divisibilitat,
+\[
+a\mid (b-c).
+\]
+\end{solucio}
+
+
+\begin{exercici}[Transitivitat de la divisibilitat]
+Siguin $a,b,c\in\Z$, amb $a\neq 0$ i $b\neq 0$. Demostra que, si
+\[
+a\mid b
+\qquad\text{i}\qquad
+b\mid c,
+\]
+aleshores
+\[
+a\mid c.
+\]
+\end{exercici}
+
+\begin{solucio}
+Suposem que
+\[
+a\mid b
+\qquad\text{i}\qquad
+b\mid c.
+\]
+Per la definició de divisibilitat en $\Z$, existeixen $q,r\in\Z$ tals que
+\[
+b=aq
+\qquad\text{i}\qquad
+c=br.
+\]
+Substituint la primera igualtat en la segona, obtenim
+\[
+c=(aq)r.
+\]
+Per associativitat del producte,
+\[
+c=a(qr).
+\]
+Com que
+\[
+qr\in\Z,
+\]
+existeix un enter $qr$ tal que
+\[
+c=a(qr).
+\]
+Per tant,
+\[
+a\mid c.
+\]
+\end{solucio}
+
+\section{Aplicacions i modelització}
+\label{sec:aplicacions-modelitzacio}
+
+Els nombres naturals i enters no serveixen només per fer càlculs abstractes. També permeten descriure i resoldre situacions molt habituals: organitzar grups, repartir objectes, estudiar cicles que es repeteixen, interpretar saldos, comparar temperatures, mesurar diferències o saber si una quantitat es pot repartir exactament.
+
+En cada cas, el pas important és identificar quina estructura matemàtica hi ha darrere de la situació. Si volem formar grups iguals tan grans com sigui possible, apareix el màxim comú divisor. Si volem saber quan coincideixen dos processos periòdics, apareix el mínim comú múltiple. Si repartim una quantitat i en sobra una part, fem servir la divisió amb residu. Si treballem amb guanys, pèrdues, temperatures sota zero o desnivells, necessitem els nombres enters. I si només ens interessa la distància entre dues quantitats, sense importar el signe, fem servir el valor absolut.
+
+Les situacions següents mostren com les idees treballades en aquesta unitat apareixen de manera natural en problemes quotidians.
+
+
+\begin{exercici}[Situació 1. Organitzar grups iguals]
+En una activitat de centre hi participen \(84\) alumnes de primer de batxillerat i \(60\) alumnes de segon. Es volen formar grups de la mateixa mida, sense barrejar nivells i sense que sobri cap alumne. A més, es vol que els grups siguin tan grans com sigui possible.
+
+Quants alumnes ha de tenir cada grup?
+\end{exercici}
+
+\begin{solucio}
+Cal trobar el nombre més gran que divideixi \(84\) i \(60\). Per tant, hem de calcular
+\[
+\mcd(84,60).
+\]
+Fem la descomposició en factors primers:
+\[
+84=2^2\cdot3\cdot7,
+\qquad
+60=2^2\cdot3\cdot5.
+\]
+Els factors comuns amb l'exponent més petit són
+\[
+2^2\cdot3=12.
+\]
+Per tant,
+\[
+\mcd(84,60)=12.
+\]
+Així, cada grup ha de tenir \(12\) alumnes. Es formaran \(7\) grups de primer, perquè
+\[
+84=12\cdot7,
+\]
+i \(5\) grups de segon, perquè
+\[
+60=12\cdot5.
+\]
+\end{solucio}
+
+
+\begin{exercici}[Situació 2. Cicles que tornen a coincidir]
+Dos autobusos passen per una mateixa parada. El primer passa cada \(12\) minuts i el segon cada \(18\) minuts. Si ara acaben de coincidir, d'aquí a quants minuts tornaran a coincidir?
+\end{exercici}
+
+\begin{solucio}
+Cal trobar el primer instant que sigui múltiple de \(12\) i també de \(18\). Per tant, hem de calcular
+\[
+\mcm(12,18).
+\]
+Descomponem:
+\[
+12=2^2\cdot3,
+\qquad
+18=2\cdot3^2.
+\]
+Prenem tots els factors que apareixen amb l'exponent més gran:
+\[
+\mcm(12,18)=2^2\cdot3^2=36.
+\]
+Així, els dos autobusos tornaran a coincidir d'aquí a \(36\) minuts.
+\end{solucio}
+
+
+\begin{exercici}[Situació 3. Repartiments amb residu]
+Una biblioteca ha rebut \(157\) llibres nous i els vol col\textperiodcentered{}locar en capses de \(12\) llibres. Quantes capses completes es poden omplir? Quants llibres sobraran?
+\end{exercici}
+
+\begin{solucio}
+Hem de fer una divisió amb residu:
+\[
+157=12q+r,
+\qquad
+0\leq r<12.
+\]
+Com que
+\[
+12\cdot13=156,
+\]
+obtenim
+\[
+157=12\cdot13+1.
+\]
+Per tant, es poden omplir \(13\) capses completes i sobrarà \(1\) llibre.
+
+Aquesta és una aplicació directa del teorema de la divisió: el quocient indica el nombre de capses completes i el residu indica allò que sobra.
+\end{solucio}
+
+
+\begin{exercici}[Situació 4. Saldos positius i negatius]
+Una persona té \(25\) euros al compte. Després paga una factura de \(40\) euros i, més tard, rep un ingrés de \(18\) euros. Quin és el saldo final?
+\end{exercici}
+
+\begin{solucio}
+Representem els ingressos amb enters positius i les despeses amb enters negatius. El saldo final és
+\[
+25-40+18.
+\]
+Primer,
+\[
+25-40=-15.
+\]
+Després,
+\[
+-15+18=3.
+\]
+Per tant, el saldo final és de \(3\) euros.
+
+Els nombres enters permeten expressar en un mateix càlcul quantitats a favor i quantitats en contra.
+\end{solucio}
+
+
+\begin{exercici}[Situació 5. Comparar temperatures sota zero]
+En dues poblacions de muntanya, la temperatura mínima ha estat de \(-7^\circ\text{C}\) en una i de \(-3^\circ\text{C}\) en l'altra. En quina població ha fet més fred?
+\end{exercici}
+
+\begin{solucio}
+Cal comparar els enters
+\[
+-7
+\qquad\text{i}\qquad
+-3.
+\]
+En l'ordre dels enters es compleix
+\[
+-7<-3.
+\]
+Per tant, ha fet més fred a la població on la temperatura ha estat de
+\[
+-7^\circ\text{C}.
+\]
+
+Aquest exemple mostra que, quan treballem amb nombres negatius, un nombre amb valor numèric aparentment més gran pot representar una quantitat menor. En particular, \(-7\) és menor que \(-3\).
+\end{solucio}
+
+
+\begin{exercici}[Situació 6. Mesurar errors amb valor absolut]
+Un termòmetre havia previst una temperatura de \(18^\circ\text{C}\), però la temperatura real ha estat de \(15^\circ\text{C}\). Un altre dia havia previst \(11^\circ\text{C}\), però la temperatura real ha estat de \(14^\circ\text{C}\). En quin dels dos dies l'error ha estat més gran?
+\end{exercici}
+
+\begin{solucio}
+L'error no ha de dependre del signe, sinó de la distància entre la previsió i el valor real. Per això fem servir el valor absolut.
+
+En el primer cas, l'error és
+\[
+|15-18|=|-3|=3.
+\]
+En el segon cas, l'error és
+\[
+|14-11|=|3|=3.
+\]
+Per tant, en tots dos dies l'error ha estat el mateix:
+\[
+3^\circ\text{C}.
+\]
+
+El valor absolut permet mesurar una diferència sense importar si ens hem quedat per sobre o per sota del valor real.
+\end{solucio}
+
+
+\begin{exercici}[Situació 7. Repartir un deute exactament]
+Un grup de \(7\) persones ha acumulat un deute conjunt de \(84\) euros. Volen repartir-lo exactament a parts iguals. Es pot fer? Quin enter representa la part que correspon a cada persona?
+\end{exercici}
+
+\begin{solucio}
+El deute total es pot representar amb l'enter
+\[
+-84.
+\]
+Volem saber si aquest nombre és divisible per \(7\). Com que
+\[
+-84=7\cdot(-12),
+\]
+tenim
+\[
+7\mid(-84).
+\]
+Per tant, el deute es pot repartir exactament.
+
+A cada persona li correspon
+\[
+-12
+\]
+euros, és a dir, un deute de \(12\) euros.
+
+Aquest exemple mostra que la divisibilitat també té sentit en \(\Z\): no només podem dividir quantitats positives, sinó també saldos negatius, pèrdues o deutes.
+\end{solucio}
+

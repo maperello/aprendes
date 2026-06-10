@@ -1,0 +1,536 @@
+
+
+\chapter{Exercicis proposats}
+\label{cap:exercicis-proposats}
+
+\section{Els nombres naturals}
+
+\begin{exercici}[Ús dels axiomes de Peano]
+Usant només els axiomes de Peano, prova que
+\[
+2\neq 0,\qquad 2\neq 1,\qquad 5\neq 3.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Escriu \(1=S(0)\), \(2=S(1)\), \(3=S(2)\), etc. Usa que \(0\) no és successor de cap natural i que el successor és injectiu.
+\end{indicacio}
+
+
+\begin{exercici}[Suma dels primers naturals]
+Demostra per inducció que, per a tot \(n\in\N\),
+\[
+2(0+1+2+\cdots+n)=n(n+1).
+\]
+\end{exercici}
+
+\begin{indicacio}
+Fes inducció sobre \(n\). En el pas inductiu, escriu la suma fins a \(n+1\) com la suma fins a \(n\) més \(n+1\), i factoritza \(n+1\).
+\end{indicacio}
+
+
+\begin{exercici}[Suma dels quadrats]
+Demostra per inducció que, per a tot \(n\in\N\), amb \(n\geq 1\),
+\[
+6(1^2+2^2+\cdots+n^2)=n(n+1)(2n+1).
+\]
+\end{exercici}
+
+\begin{indicacio}
+Fes inducció sobre \(n\). En el pas inductiu, afegeix \(6(n+1)^2\) als dos membres i comprova que el resultat es pot factoritzar com \((n+1)(n+2)(2n+3)\).
+\end{indicacio}
+
+
+\begin{exercici}[Cancel\textperiodcentered{}lació de la suma]
+Demostra que si \(a,b,c\in\N\) i
+\[
+a+c=b+c,
+\]
+aleshores
+\[
+a=b.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Fes inducció sobre \(c\). En el pas inductiu, transforma \(a+S(c)=b+S(c)\) en \(S(a+c)=S(b+c)\) i usa la injectivitat del successor.
+\end{indicacio}
+
+
+\begin{exercici}[Cancel\textperiodcentered{}lació de l'ordre amb la suma]
+Demostra que, per a tots \(a,b,t\in\N\), si
+\[
+a+t\leq b+t,
+\]
+aleshores
+\[
+a\leq b.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Usa la definició d'ordre: de \(a+t\leq b+t\) obtens \(b+t=(a+t)+n\) per a algun \(n\in\N\). Reordena els termes i aplica la cancel\textperiodcentered{}lació de la suma.
+\end{indicacio}
+
+
+\begin{exercici}[Compatibilitat de l'ordre amb la suma]
+Demostra que si \(a,b,c\in\N\) i
+\[
+a\leq b,
+\]
+aleshores
+\[
+a+c\leq b+c.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Escriu \(b=a+n\) per a algun \(n\in\N\). Després suma \(c\) i reordena:
+\[
+b+c=(a+c)+n.
+\]
+\end{indicacio}
+
+
+\begin{exercici}[Compatibilitat de l'ordre amb el producte]
+Demostra que si \(a,b,c\in\N\) i
+\[
+a\leq b,
+\]
+aleshores
+\[
+a\cdot c\leq b\cdot c.
+\]
+A més, si \(a<b\) i \(c\neq0\), demostra que
+\[
+a\cdot c<b\cdot c.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Escriu \(b=a+n\). En multiplicar per \(c\), obtens
+\[
+b\cdot c=a\cdot c+n\cdot c.
+\]
+Per a la desigualtat estricta, usa que si \(n\neq0\) i \(c\neq0\), aleshores \(n\cdot c\neq0\).
+\end{indicacio}
+
+
+\begin{exercici}[Cancel\textperiodcentered{}lació del producte]
+Demostra que si \(a,b,c\in\N\), \(c\neq0\), i
+\[
+a\cdot c=b\cdot c,
+\]
+aleshores
+\[
+a=b.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Usa la tricotomia de l'ordre. Si \(a<b\), aleshores \(a\cdot c<b\cdot c\); si \(b<a\), aleshores \(b\cdot c<a\cdot c\). Tots dos casos contradiuen la igualtat.
+\end{indicacio}
+
+
+\begin{exercici}[Potències]
+Definim les potències d'un natural \(a\) per recursió:
+\[
+a^0=1,
+\qquad
+a^{S(n)}=a^n\cdot a.
+\]
+Demostra que, per a tots \(m,n\in\N\),
+\[
+a^m\cdot a^n=a^{m+n}.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Fixa \(m\) i fes inducció sobre \(n\). En el pas inductiu, usa
+\[
+a^{S(n)}=a^n\cdot a
+\]
+i l'associativitat del producte.
+\end{indicacio}
+
+
+\begin{exercici}[Algorisme d'Euclides]
+Calcula
+\[
+\mcd(924,396)
+\]
+amb l'algorisme d'Euclides i expressa'l com a combinació lineal amb coeficients enters de \(924\) i \(396\).
+\end{exercici}
+
+\begin{indicacio}
+Comença dividint \(924\) entre \(396\):
+\[
+924=396\cdot2+132.
+\]
+Després divideix \(396\) entre \(132\). Per a la combinació lineal, aïlla el residu \(132\) de la primera igualtat.
+\end{indicacio}
+
+
+\begin{exercici}[Descomposició en factors primers]
+Descompon en factors primers els nombres \(840\), \(1155\) i \(2025\). Calcula després el \(\mcd\) i el \(\mcm\) de \(840\) i \(1155\).
+\end{exercici}
+
+\begin{indicacio}
+Descompon cada nombre en potències de primers. Per al \(\mcd\), pren els factors comuns amb l'exponent més petit. Per al \(\mcm\), pren tots els factors amb l'exponent més gran.
+\end{indicacio}
+
+
+\section{Els nombres enters}
+
+\begin{exercici}[Classes d'equivalència]
+Comprova si els parells següents són equivalents en la construcció de \(\Z\):
+\[
+(8,13),\qquad (2,7),\qquad (10,14),\qquad (15,20).
+\]
+Agrupa'ls per classes d'equivalència.
+\end{exercici}
+
+\begin{indicacio}
+Recorda que
+\[
+(a,b)\sim(c,d)\iff a+d=b+c.
+\]
+Compara cada parell amb \((8,13)\). Tres dels parells representen el mateix enter.
+\end{indicacio}
+
+
+\begin{exercici}[Representants d'una mateixa classe]
+Demostra que, per a tots \(a,b,k\in\N\),
+\[
+\classe{(a,b)}=\classe{(a+k,b+k)}.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Cal provar que
+\[
+(a,b)\sim(a+k,b+k).
+\]
+És a dir, comprova que
+\[
+a+(b+k)=b+(a+k)
+\]
+usant l'associativitat i la commutativitat de la suma en \(\N\).
+\end{indicacio}
+
+
+\begin{exercici}[Suma, resta i producte]
+Calcula, com a classes d'equivalència:
+\[
+\classe{(6,11)}+\classe{(9,2)},
+\qquad
+\classe{(6,11)}-\classe{(9,2)},
+\qquad
+\classe{(6,11)}\cdot\classe{(9,2)}.
+\]
+Interpreta cada resultat en la notació usual dels enters.
+\end{exercici}
+
+\begin{indicacio}
+Per a la suma, suma component a component. Per a la resta, primer pren l'oposat de \(\classe{(9,2)}\). Per al producte, usa
+\[
+\classe{(a,b)}\cdot\classe{(c,d)}
+=
+\classe{(ac+bd,ad+bc)}.
+\]
+\end{indicacio}
+
+
+\begin{exercici}[L'oposat d'un enter]
+Prova que l'oposat de
+\[
+\classe{(a,b)}
+\]
+és
+\[
+\classe{(b,a)}.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Suma les dues classes:
+\[
+\classe{(a,b)}+\classe{(b,a)}.
+\]
+Has d'obtenir una classe equivalent a \(\classe{(0,0)}\).
+\end{indicacio}
+
+
+\begin{exercici}[Equacions de la forma \(x+a=b\)]
+Resol en \(\Z\) l'equació
+\[
+x+7=5.
+\]
+Dona la solució com a classe d'equivalència i en la notació usual dels enters.
+\end{exercici}
+
+\begin{indicacio}
+Aïlla formalment:
+\[
+x=5-7.
+\]
+Després escriu \(5=\classe{(5,0)}\), \(7=\classe{(7,0)}\) i usa la definició de resta.
+\end{indicacio}
+
+
+\begin{exercici}[Producte d'enters i signe]
+Calcula els productes següents i interpreta'n el signe:
+\[
+\classe{(0,3)}\cdot\classe{(0,4)},
+\qquad
+\classe{(5,0)}\cdot\classe{(0,2)},
+\qquad
+\classe{(0,6)}\cdot\classe{(7,0)}.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Interpreta primer les classes com enters usuals:
+\[
+\classe{(0,3)}=-3,\quad \classe{(0,4)}=-4,\quad \classe{(5,0)}=5.
+\]
+Després comprova els resultats amb la fórmula del producte de classes.
+\end{indicacio}
+
+
+\begin{exercici}[Ordre en \(\Z\)]
+Usant la definició d'ordre en \(\Z\), ordena de menor a major les classes següents, indicant si n'hi ha dues d'iguals:
+\[
+\classe{(1,8)},
+\qquad
+\classe{(5,5)},
+\qquad
+\classe{(9,2)},
+\qquad
+\classe{(3,10)}.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Pots interpretar cada classe com la diferència entre els seus components. Observa especialment que \(\classe{(1,8)}\) i \(\classe{(3,10)}\) representen el mateix enter.
+\end{indicacio}
+
+
+\begin{exercici}[Compatibilitat de l'ordre amb la suma]
+Demostra que, si \(x\leq y\) en \(\Z\), aleshores
+\[
+x+z\leq y+z
+\]
+per a tot \(z\in\Z\).
+\end{exercici}
+
+\begin{indicacio}
+Usa la caracterització
+\[
+x\leq y\iff y-x\geq0.
+\]
+Després observa que
+\[
+(y+z)-(x+z)=y-x.
+\]
+\end{indicacio}
+
+
+\begin{exercici}[Multiplicació d'una desigualtat]
+Siguin \(a,b,c\in\Z\), amb
+\[
+a\leq b.
+\]
+Demostra que:
+\[
+\begin{array}{ll}
+\text{\textbf{(i)}} & \text{si } c\geq0,\text{ aleshores } ac\leq bc,\\[1mm]
+\text{\textbf{(ii)}} & \text{si } c\leq0,\text{ aleshores } bc\leq ac.
+\end{array}
+\]
+\end{exercici}
+
+\begin{indicacio}
+De \(a\leq b\) dedueix \(b-a\geq0\). Si \(c\geq0\), estudia \((b-a)c\). Si \(c\leq0\), estudia \((b-a)(-c)\).
+\end{indicacio}
+
+
+\begin{exercici}[Resolució d'una desigualtat]
+Resol en \(\Z\) la desigualtat
+\[
+-3x+2\leq 11.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Resta \(2\) als dos membres. Després multiplica per \(-1\) i recorda que el sentit de la desigualtat s'inverteix.
+\end{indicacio}
+
+
+\begin{exercici}[Càlculs amb valor absolut]
+Calcula:
+\[
+|-8|,
+\qquad
+|5-12|,
+\qquad
+|-4\cdot6|.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Calcula primer l'enter que hi ha dins del valor absolut i després pren-ne la distància a \(0\).
+\end{indicacio}
+
+
+\begin{exercici}[Oposat i valor absolut]
+Demostra que, per a tot \(n\in\Z\),
+\[
+|-n|=|n|.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Distingueix els casos \(n\geq0\) i \(n<0\). En cada cas, aplica directament la definició de valor absolut.
+\end{indicacio}
+
+
+\begin{exercici}[Distància entre enters]
+Demostra que, per a tots \(n,m\in\Z\),
+\[
+|n-m|=|m-n|.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Observa que
+\[
+n-m=-(m-n).
+\]
+Després aplica la propietat \(|-x|=|x|\).
+\end{indicacio}
+
+
+\begin{exercici}[Valor absolut d'un producte]
+Demostra que, per a tots \(n,m\in\Z\),
+\[
+|nm|=|n||m|.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Distingueix quatre casos segons els signes de \(n\) i \(m\): tots dos no negatius, un no negatiu i l'altre negatiu, o tots dos negatius.
+\end{indicacio}
+
+
+\begin{exercici}[Desigualtat triangular]
+Demostra que, per a tots \(n,m\in\Z\),
+\[
+|n+m|\leq |n|+|m|.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Parteix de
+\[
+-|n|\leq n\leq |n|
+\qquad\text{i}\qquad
+-|m|\leq m\leq |m|.
+\]
+Suma les dues desigualtats i aplica la caracterització de \(|x|\leq k\).
+\end{indicacio}
+
+
+\begin{exercici}[Desigualtats amb valor absolut]
+Troba tots els enters \(n\in\Z\) que compleixen
+\[
+|n-3|\leq2.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Transforma la desigualtat en
+\[
+-2\leq n-3\leq2.
+\]
+Després suma \(3\) als tres membres.
+\end{indicacio}
+
+
+\begin{exercici}[Teorema de la divisió en \(\Z\)]
+Troba el quocient i el residu de la divisió de \(-37\) entre \(5\), i també de la divisió de \(-37\) entre \(-5\).
+\end{exercici}
+
+\begin{indicacio}
+El residu ha de ser sempre no negatiu i menor que el valor absolut del divisor. Busca \(q\) de manera que
+\[
+-37=bq+r,\qquad 0\leq r<|b|.
+\]
+\end{indicacio}
+
+
+\begin{exercici}[Divisibilitat en \(\Z\)]
+Determina si les afirmacions següents són certes o falses:
+\[
+-4\mid20,
+\qquad
+4\mid(-20),
+\qquad
+-5\mid(-35),
+\qquad
+6\mid20.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Usa la definició: \(a\mid b\) si existeix \(q\in\Z\) tal que \(b=aq\). En cada cas, intenta trobar aquest enter \(q\).
+\end{indicacio}
+
+
+\begin{exercici}[Divisors enters]
+Troba tots els divisors enters de \(18\).
+\end{exercici}
+
+\begin{indicacio}
+Comença trobant els divisors positius de \(18\). Després afegeix els oposats corresponents, perquè en \(\Z\) els divisors apareixen per parelles de signe.
+\end{indicacio}
+
+
+\begin{exercici}[Diferència de múltiples]
+Siguin \(a,b,c\in\Z\), amb \(a\neq0\). Demostra que, si
+\[
+a\mid b
+\qquad\text{i}\qquad
+a\mid c,
+\]
+aleshores
+\[
+a\mid(b-c).
+\]
+\end{exercici}
+
+\begin{indicacio}
+Escriu \(b=aq\) i \(c=ar\), amb \(q,r\in\Z\). Després factoritza:
+\[
+b-c=aq-ar=a(q-r).
+\]
+\end{indicacio}
+
+
+\begin{exercici}[Transitivitat de la divisibilitat]
+Siguin \(a,b,c\in\Z\), amb \(a\neq0\) i \(b\neq0\). Demostra que, si
+\[
+a\mid b
+\qquad\text{i}\qquad
+b\mid c,
+\]
+aleshores
+\[
+a\mid c.
+\]
+\end{exercici}
+
+\begin{indicacio}
+Escriu \(b=aq\) i \(c=br\), amb \(q,r\in\Z\). Substitueix \(b\) dins de l'expressió de \(c\).
+\end{indicacio}
+

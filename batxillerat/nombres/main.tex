@@ -1,0 +1,99 @@
+\documentclass[12pt,a4paper,oneside]{book}
+
+\usepackage{../common/aprendes-modern}
+\input{../common/preamble.tex}
+\input{../common/environments.tex}
+\input{../common/macros.tex}
+\input{../common/interactive-tests.tex}
+
+
+
+\begin{document}
+\pagecolor{fons!20}
+
+\frontmatter
+\title{Nombres naturals i enters}
+\author{Miquel Àngel Perelló}
+\date{\today}
+\hypersetup{
+  pdftitle={Nombres naturals i enters},
+  pdfauthor={Miquel Àngel Perelló}
+}
+\maketitle
+\tableofcontents
+
+
+\let\cleardoublepage\clearpage
+
+\chapter*{Prefaci}
+
+Aquests apunts formen una unitat dedicada als nombres naturals i enters. La intenció no és només aprendre a operar amb aquests nombres, sinó entendre com es poden construir de manera rigorosa i per què les propietats que fem servir habitualment són certes. Per això, els nombres naturals s'introdueixen a partir dels axiomes de Peano, i els nombres enters es construeixen com a classes d'equivalència de parelles de naturals.
+
+Aquesta perspectiva permet veure els nombres com a estructures matemàtiques. En el cas dels naturals, es construeixen la suma, el producte, l'ordre, la divisibilitat i el principi d'inducció. En el cas dels enters, s'estudia com ampliar els naturals per donar sentit a les diferències, als nombres negatius, al valor absolut, a la divisió amb residu i a la divisibilitat dins de \(\Z\).
+
+El text està organitzat en quatre blocs. El primer bloc desenvolupa la teoria i presenta les definicions i propietats fonamentals. El segon bloc conté exercicis de pràctica resolta i una secció d'aplicacions i modelització, on es mostra la utilitat dels conceptes en situacions quotidianes. El tercer bloc proposa exercicis amb indicacions breus per orientar-ne la resolució. Finalment, el quart bloc inclou tres tests interactius d'autoavaluació: un sobre nombres naturals, un sobre nombres enters i un de síntesi.
+
+El nivell és adequat per a estudiants de batxillerat que vulguin aprofundir en el fonament dels nombres i també per a professorat que vulgui disposar d'un material estructurat, rigorós i aplicable a l'aula.
+
+
+\chapter{Introducció}
+
+Els nombres naturals apareixen de manera natural quan volem comptar objectes. Comptem alumnes, llibres, dies, passos o resultats. Aquesta necessitat porta al conjunt
+\[
+\N=\{0,1,2,3,\ldots\}.
+\]
+Ara bé, les matemàtiques no es limiten a donar noms als nombres que fem servir. També busquen entendre quina estructura tenen i quines propietats se'n poden deduir. Per això, en aquesta unitat els nombres naturals no s'introdueixen només com una llista infinita, sinó a partir dels axiomes de Peano, que formalitzen la idea de començar per \(0\) i anar comptant d'un en un.
+
+A partir d'aquesta estructura inicial es defineixen les operacions de suma i producte, l'ordre dels naturals, la divisibilitat, el màxim comú divisor, el mínim comú múltiple i el principi d'inducció. Aquestes eines permeten justificar resultats que sovint s'utilitzen de manera mecànica, però que tenen una base matemàtica precisa.
+
+Tanmateix, els nombres naturals no són suficients per descriure totes les situacions. Si volem representar pèrdues, deutes, temperatures sota zero, diferències o desplaçaments en sentits oposats, necessitem ampliar el conjunt dels naturals. Així apareixen els nombres enters:
+\[
+\Z=\{\ldots,-3,-2,-1,0,1,2,3,\ldots\}.
+\]
+En aquesta unitat construirem \(\Z\) a partir de \(\N\), considerant classes d'equivalència de parelles de naturals. Aquesta construcció permet entendre formalment per què un enter pot interpretar-se com una diferència entre dos naturals.
+
+El pas de \(\N\) a \(\Z\) es pot resumir en la inclusió
+\[
+\N\subset \Z,
+\]
+entesa a través de la identificació de cada natural \(n\) amb l'enter \(\classe{(n,0)}\). Aquesta ampliació conserva les operacions dels naturals i, al mateix temps, permet resoldre equacions com
+\[
+x+a=b
+\]
+també quan \(b<a\).
+
+Els objectius principals d'aquesta unitat són:
+\begin{itemize}
+\item comprendre el paper dels axiomes de Peano i del principi d'inducció;
+\item definir recursivament la suma, el producte i les potències en \(\N\);
+\item estudiar l'ordre, la divisibilitat, el màxim comú divisor i el mínim comú múltiple en \(\N\);
+\item construir els nombres enters com a classes d'equivalència de parelles de naturals;
+\item definir la suma, l'oposat, la resta, el producte i l'ordre en \(\Z\);
+\item treballar el valor absolut, la divisió amb residu i la divisibilitat en els enters;
+\item aplicar aquests conceptes a situacions quotidianes mitjançant problemes de modelització;
+\item consolidar els continguts amb exercicis proposats i tests interactius.
+\end{itemize}
+
+D'aquesta manera, la unitat combina tres perspectives: la construcció rigorosa dels nombres, la pràctica tècnica amb les seves propietats i l'aplicació dels conceptes a situacions concretes.
+
+
+\let\cleardoublepage\clearpage
+
+\mainmatter
+
+\input{caps/teoria}
+\input{caps/practica}
+\input{caps/exercicis}
+
+\chapter{Tests}
+\label{cap:tests}
+
+\begin{Form}
+\input{tests/test1}
+\input{tests/test2}
+\input{tests/test3}
+\end{Form}
+
+\backmatter
+
+\end{document}

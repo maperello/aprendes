@@ -8,6 +8,22 @@
 #5\par\smallskip
 \includegraphics[width=#2,height=#3,keepaspectratio]{img/#7}
 \end{center}}
+
+\usepackage{newunicodechar}
+\newunicodechar{·}{\textperiodcentered{}}
+\newunicodechar{’}{'}
+
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Natpos}{\mathbb{N}^{*}}
+\newcommand{\Zstar}{\mathbb{Z}^{*}}
+\newcommand{\mcd}{\operatorname{mcd}}
+\newcommand{\mcm}{\operatorname{mcm}}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\classe}[1]{\left[#1\right]}
+\newcommand{\divides}{\mid}
+\newcommand{\notdivides}{\nmid}
+\newcommand{\decimalperiodic}[2]{#1,\overline{#2}}
+\DeclareMathOperator{\sgn}{sgn} 

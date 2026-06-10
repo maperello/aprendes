@@ -19,7 +19,8 @@
 \definecolor{SolucioSuau}{HTML}{C3D0E1}
 \definecolor{TeoremaSuau}{HTML}{D4C4FF}
 \definecolor{LemaSuau}{HTML}{E8DFFF}
-\definecolor{ProposicioSuau}{HTML}{FFE4F2}
+%\definecolor{ProposicioSuau}{HTML}{FFE4F2}
+\definecolor{ProposicioSuau}{HTML}{FFD6EA}
 \definecolor{CorollariSuau}{HTML}{FFF2CC}
 
 \tcbset{
@@ -41,24 +42,56 @@
 }
 
 \AtBeginDocument{%
-  \renewenvironment{definicio}{%
+%  \renewenvironment{definicio}{%
+%   \refstepcounter{definicio}%
+%    \begin{tcolorbox}[aprendesbox=DefinicioSuau,title={Definici\'{o}~\thedefinicio}]%
+%  }{%
+%    \end{tcolorbox}%
+%  }%
+  
+  \renewenvironment{definicio}[1][]{%
     \refstepcounter{definicio}%
-    \begin{tcolorbox}[aprendesbox=DefinicioSuau,title={Definici\'{o}~\thedefinicio}]%
+    \begin{tcolorbox}[
+      aprendesbox=DefinicioSuau,
+      title={Definici\'{o}~\thedefinicio\ifstrempty{#1}{}{ (#1)}}
+    ]%
   }{%
     \end{tcolorbox}%
   }%
-  \renewenvironment{exemple}{%
+
+% \renewenvironment{exemple}{%
+%   \refstepcounter{exemple}%
+%   \begin{tcolorbox}[aprendesbox=ExempleSuau,title={Exemple~\theexemple}]%
+% }{%
+%   \end{tcolorbox}%
+%  }%
+  \renewenvironment{exemple}[1][]{%
     \refstepcounter{exemple}%
-    \begin{tcolorbox}[aprendesbox=ExempleSuau,title={Exemple~\theexemple}]%
-  }{%
+    \begin{tcolorbox}[
+        aprendesbox=ExempleSuau,
+        title={Exemple~\theexemple\if\relax\detokenize{#1}\relax\else\ (#1)\fi}
+    ]%
+    }{%
     \end{tcolorbox}%
-  }%
-  \renewenvironment{exercici}{%
+    }
+  
+%  \renewenvironment{exercici}{%
+%    \refstepcounter{exercici}%
+%    \begin{tcolorbox}[aprendesbox=ExerciciSuau,title={Exercici~\theexercici}]%
+%  }{%
+%    \end{tcolorbox}%
+%  }%
+
+  \renewenvironment{exercici}[1][]{%
     \refstepcounter{exercici}%
-    \begin{tcolorbox}[aprendesbox=ExerciciSuau,title={Exercici~\theexercici}]%
-  }{%
+    \begin{tcolorbox}[
+        aprendesbox=ExerciciSuau,
+        title={Exercici~\theexercici\if\relax\detokenize{#1}\relax\else\ (#1)\fi}
+    ]%
+    }{%
     \end{tcolorbox}%
-  }%
+    }
+  
   \renewenvironment{observacio}{%
     \refstepcounter{observacio}%
     \begin{tcolorbox}[aprendesbox=ObservacioSuau,title={Observaci\'{o}~\theobservacio}]%
@@ -75,32 +108,52 @@
   }{%
     \end{tcolorbox}%
   }%
-  \renewenvironment{teorema}{%
+%  \renewenvironment{teorema}{%
+%    \refstepcounter{teorema}%
+%    \begin{tcolorbox}[aprendesbox=TeoremaSuau,title={Teorema~\theteorema}]%
+%  }{%
+%    \end{tcolorbox}%
+%  }%
+
+  \renewenvironment{teorema}[1][]{%
     \refstepcounter{teorema}%
-    \begin{tcolorbox}[aprendesbox=TeoremaSuau,title={Teorema~\theteorema}]%
-  }{%
+    \begin{tcolorbox}[
+        aprendesbox=TeoremaSuau,
+        title={Teorema~\theteorema\if\relax\detokenize{#1}\relax\else\ (#1)\fi}
+    ]%
+    }{%
     \end{tcolorbox}%
-  }%
+    }
   \renewenvironment{lema}{%
     \refstepcounter{teorema}%
     \begin{tcolorbox}[aprendesbox=LemaSuau,title={Lema~\theteorema}]%
   }{%
     \end{tcolorbox}%
   }%
-  \renewenvironment{proposicio}{%
+%  \renewenvironment{proposicio}{%
+%    \refstepcounter{teorema}%
+%    \begin{tcolorbox}[aprendesbox=ProposicioSuau,title={Proposici\'{o}~\theteorema}]%
+%  }{%
+%    \end{tcolorbox}%
+%  }%
+  
+  \renewenvironment{proposicio}[1][]{%
     \refstepcounter{teorema}%
-    \begin{tcolorbox}[aprendesbox=ProposicioSuau,title={Proposici\'{o}~\theteorema}]%
+    \begin{tcolorbox}[
+      aprendesbox=ProposicioSuau,
+      title={Proposici\'{o}~\theteorema\ifstrempty{#1}{}{ (#1)}}
+    ]%
   }{%
     \end{tcolorbox}%
   }%
+
   \renewenvironment{corollari}{%
     \refstepcounter{teorema}%
     \begin{tcolorbox}[aprendesbox=CorollariSuau,title={Corol\textperiodcentered lari~\theteorema}]%
   }{%
     \end{tcolorbox}%
   }%
-}
-
+  }
 \titleformat{\chapter}
   {\Huge\bfseries\color{AprenSuau}}
   {\thechapter}
@@ -129,3 +182,46 @@
   {\subsubsecformat}
 
 \setlist{itemsep=0.25em,topsep=0.25em}
+
+
+
+% ------------------------------------------------------------
+% Respostes breus interactives i minimalistes
+% ------------------------------------------------------------
+
+%\usepackage{ocgx2}
+%\usepackage{xparse}
+
+%\newcounter{respostabreuocg}
+
+%\NewDocumentEnvironment{respostabreu}{O{Resposta breu} +b}
+%{%
+%  \refstepcounter{respostabreuocg}%
+%  \par\smallskip
+%  \noindent
+%  \switchocg{respostabreu-\therespostabreuocg}{%
+%    {\color{apren}\footnotesize\textbf{[Mostra/Amaga Resposta]}}%
+%  }%
+%  \begin{ocg}{#1}{respostabreu-\therespostabreuocg}{0}
+%    \par\smallskip
+%    \begin{tcolorbox}[
+%      colback=csolu!12,
+%      colframe=csolu!70!black,
+%      boxrule=0.3pt,
+%      arc=1mm,
+%      left=1.5mm,
+%      right=1.5mm,
+%      top=1mm,
+%      bottom=1mm,
+%      before skip=2pt,
+%      after skip=4pt
+%    ]
+%    \footnotesize
+%    #2
+%    \end{tcolorbox}
+%  \end{ocg}
+%  \par\smallskip
+%}
+%{}
+
+

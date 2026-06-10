@@ -24,4 +24,21 @@
 \newenvironment{prova}
   {\par\noindent{\color{apren}\textbf{Demostraci\'{o}:}\ }}{\quad\hfill $\blacksquare$\par}
 \newenvironment{solucio}
-  {\par\noindent{\color{apren}\textbf{Soluci\'{o}:}\ }}{\quad\hfill $\square$\par}
+  {\par\noindent{\color{apren}\textbf{Soluci\'{o}:}\ }}{\quad\hfill $\square$\par} 
+
+
+% ------------------------------------------------------------
+% Indicacions breus per als exercicis
+% ------------------------------------------------------------
+
+\newenvironment{indicacio}
+   {%
+    \par\smallskip
+     \begingroup
+     \footnotesize
+     \noindent{\color{csolu}\textbf{Indicaci\'{o}:}\ }%
+   }
+   {%
+    \par\smallskip
+     \endgroup
+   } 

@@ -179,3 +179,16 @@ nav a:hover {
     gap: 16px;
   }
 }
+
+.notice {
+  margin: 32px 0;
+  padding: 18px 22px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.notice p {
+  margin: 0;
+  color: var(--text);
+}

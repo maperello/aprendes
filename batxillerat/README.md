@@ -19,6 +19,9 @@ Cada projecte té aquesta estructura bàsica:
 - `img/`: imatges utilitzades pel document.
 - `main.pdf`: versió compilada del document.
 
+**Nota sobre els tests interactius.**
+Els tests interactius inclosos en alguns documents PDF funcionen millor amb **Adobe Acrobat Reader**. Alguns visualitzadors de PDF integrats als navegadors —com Chrome, Edge, Firefox o Safari— poden no executar correctament les funcions interactives. Per aquest motiu, es recomana descarregar el PDF i obrir-lo amb Acrobat Reader.
+
 ## Compilació
 
 Per generar el PDF cal tenir una distribució LaTeX instal·lada. Des de l'arrel del projecte:

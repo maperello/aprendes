@@ -61,6 +61,9 @@ https://aprendes.com
 
 Des de la web es podrà accedir progressivament als PDFs publicats i als diferents nivells i àrees.
 
+**Nota sobre els tests interactius.**
+Els tests interactius inclosos en alguns documents PDF funcionen millor amb **Adobe Acrobat Reader**. Alguns visualitzadors de PDF integrats als navegadors —com Chrome, Edge, Firefox o Safari— poden no executar correctament les funcions interactives. Per aquest motiu, es recomana descarregar el PDF i obrir-lo amb Acrobat Reader.
+
 ## Col·laboració
 
 **aprendes** és un projecte obert a la col·laboració.

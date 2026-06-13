@@ -2167,6 +2167,51 @@ Sigui $S\subset \Z$, $S\neq \emptyset$ i fitat inferiorment. Aleshores $S$ té m
 Provarem la primera part; l'altra es demostra de manera anàloga. Com $S$ està fitat inferiorment, existeix una fita inferior $a\in \Z$ tal que $a\leq n$ per a tot $n\in S$. Així $n-a\geq 0$, i $n-a\in \N$ per a tot $n\in S$. Considerem el conjunt $T=\{n-a:n\in S\}$. Com $S\neq \emptyset$, també $T\neq \emptyset$, i $T\subset \N$. Pel principi de bon ordre a $\N$, $T$ té primer element, diguem $m=p-a$ per a un cert $p\in S$. Llavors $p$ és l'element mínim de $S$, perquè $m\leq n-a$ per a tot $n\in S$ implica sumant $a$ als dos costats $p\leq n$ per a tot $n\in S$.
 \end{prova}
 
+\subsection{Representació gràfica dels nombres enters}
+\label{subsec:representacio-enters}
+
+Els nombres enters es poden representar geomètricament com a punts d'una recta, que anomenem \emph{recta numèrica}. Per fer-ho, fixem un punt de la recta i l'identifiquem amb el nombre \(0\), que anomenarem \emph{origen}. A continuació, triem una unitat de longitud i un sentit positiu sobre la recta.
+
+Amb aquestes convencions:
+\begin{itemize}
+	\item el nombre \(1\) es representa pel punt situat a una unitat de l'origen en el sentit positiu;
+	\item el nombre \(2\) es representa pel punt situat a dues unitats de l'origen en el mateix sentit;
+	\item en general, cada enter positiu \(n\) es representa avançant \(n\) unitats des de l'origen en el sentit positiu;
+	\item el nombre \(-1\) es representa pel punt situat a una unitat de l'origen en el sentit contrari;
+	\item en general, cada enter negatiu \(-n\) es representa avançant \(n\) unitats des de l'origen en el sentit negatiu.
+\end{itemize}
+
+D'aquesta manera, a cada nombre enter li correspon un únic punt de la recta, i recíprocament, els punts obtinguts així representen nombres enters.
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+	\draw[->] (-5.5,0) -- (5.5,0);
+	\foreach \x in {-5,-4,-3,-2,-1,0,1,2,3,4,5}
+	{
+		\draw (\x,0.1) -- (\x,-0.1);
+		\node[below] at (\x,-0.1) {\(\x\)};
+	}
+	\fill (0,0) circle (1.5pt);
+\end{tikzpicture}
+
+\smallskip
+\textit{Representació d'alguns nombres enters sobre la recta numèrica.}
+\end{center}
+
+Aquesta representació geomètrica permet visualitzar l'ordre dels nombres enters. Si \(a,b\in\Z\), aleshores
+\[
+	a<b
+\]
+si, i només si, el punt que representa \(a\) queda a l'esquerra del punt que representa \(b\) sobre la recta numèrica.
+
+Per exemple,
+\[
+	-3<-1<0<2<5,
+\]
+perquè, en la recta numèrica, el punt corresponent a \(-3\) queda més a l'esquerra que el punt corresponent a \(-1\), aquest queda a l'esquerra de \(0\), i així successivament.
+
+La distància d'un nombre enter a l'origen queda determinada pel seu valor absolut. Així, els nombres \(3\) i \(-3\) es representen en punts simètrics respecte de l'origen i es troben tots dos a distància \(3\) del punt \(0\).
+
 \subsection{El teorema de la divisió}
 
 Vam aprendre a fer divisions enteres fa anys per resoldre qüestions com la següent: volem repartir 15 pomes entre 7 persones de manera que cadascú rebi el màxim possible i tots la mateixa quantitat. Fent la divisió de $15$ (dividend) entre $7$ (divisor), obtenim que cadascú rep $2$ (quocient) pomes i sobra $1$ (residu). Aritmèticament, $15=7\cdot 2+1$. El resultat que vindrà ens diu que sempre podem fer això a $\Z$.

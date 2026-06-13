@@ -1,0 +1,94 @@
+\documentclass[12pt,a4paper,oneside]{book}
+
+\input{../common/aprendes-modern.sty}
+\input{../common/preamble.tex}
+\input{../common/environments.tex}
+\input{../common/macros.tex}
+\input{../common/interactive-tests.tex}
+
+\begin{document}
+	\pagecolor{fons!20}
+	
+	\frontmatter
+	
+	\title{Nombres racionals}
+	\author{Miquel Àngel Perelló}
+	\date{\today}
+	
+	\hypersetup{
+		pdftitle={Nombres racionals},
+		pdfauthor={Miquel Àngel Perelló}
+	}
+	
+	\maketitle
+	\tableofcontents
+	
+	\let\cleardoublepage\clearpage
+	
+	\chapter*{Prefaci}
+	
+	Aquests apunts formen la unitat d'\textbf{aprendes} dedicada als \textbf{nombres racionals}. Aquesta parteix de la construcció prèvia dels nombres naturals i dels nombres enters, desenvolupada a la unitat \href{https://aprendes.com/batxillerat/nombres/main.pdf}{Nombres naturals i enters}, i continua el procés d'ampliació dels conjunts numèrics amb l'objectiu de donar resposta a la divisió entre enters.
+	
+	La intenció no és només aprendre a operar amb fraccions, sinó entendre què és un nombre racional, per què diferents fraccions poden representar el mateix nombre i com les operacions i l'ordre es defineixen de manera coherent a partir dels nombres enters. Per això, els nombres racionals es presenten com a classes d'equivalència de parelles d'enters, i aquesta construcció es relaciona després amb el càlcul ordinari amb fraccions, les expressions decimals i les proporcions.
+	
+	El text està dividit en quatre blocs: teoria, pràctica, exercicis proposats i tests interactius d'autoavaluació. El nivell és adequat per a estudiants de batxillerat amb interès en una fonamentació rigorosa i per a professorat que vulgui disposar d'un material de suport per a la seva docència.
+	
+	\chapter{Introducció}
+	
+	En la unitat \href{https://aprendes.com/batxillerat/nombres/main.pdf}{Nombres naturals i enters} es va veure que els nombres enters amplien els nombres naturals i permeten resoldre de manera general equacions de la forma
+	\[
+	a+x=b.
+	\]
+	Tanmateix, els enters encara no són suficients per resoldre de manera general equacions de la forma
+	\[
+	ax=b,
+	\]
+	quan \(a\ne 0\). Per exemple, l'equació \(2x=1\) no té solució en \(\Z\). Per donar sentit a aquestes divisions cal construir un nou conjunt numèric: el conjunt dels nombres racionals.
+	
+	Els nombres racionals formalitzen els quocients entre enters. La idea intuïtiva és representar el resultat de dividir un enter \(a\) per un enter no nul \(b\) mitjançant una fracció
+	\[
+	\frac{a}{b},
+	\]
+	però aquesta representació no és única: per exemple, \(1/2\), \(2/4\) i \((-3)/(-6)\) representen el mateix nombre. Per aquest motiu, la construcció rigorosa de \(\Q\) exigeix identificar les fraccions equivalents mitjançant una relació d'equivalència.
+	
+	Aquesta unitat estudia la inclusió
+	\[
+	\Z\subset \Q
+	\]
+	com una ampliació algebraica i d'ordre. El pas de \(\Z\) a \(\Q\) permet dividir per qualsevol nombre no nul i dona lloc a una estructura més rica: el cos ordenat dels nombres racionals.
+	
+	Els objectius principals són:
+	\begin{itemize}
+		\item comprendre la necessitat quotidiana dels nombres racionals en repartiments, mesures, preus, escales i proporcions;
+		\item interpretar geomètricament els nombres racionals com a raons de segments i com a punts de la recta numèrica;
+		\item comprendre la necessitat d'ampliar \(\Z\) per resoldre divisions entre enters i equacions de la forma \(ax=b\), amb \(a\neq0\);
+		\item definir les fraccions equivalents i construir \(\Q\) com un conjunt quocient de \(\Z\times\Zstar\);
+		\item interpretar cada racional com una classe d'equivalència de fraccions;
+		\item definir correctament la suma, el producte, l'oposat i l'invers dels nombres racionals;
+		\item justificar que \(\Q\) és un cos commutatiu i un cos ordenat;
+		\item estudiar la densitat dels nombres racionals i la seva representació a la recta numèrica;
+		\item relacionar els nombres racionals amb les fraccions, les expressions decimals i les proporcions;
+		\item aplicar la teoria al càlcul, a la proporcionalitat aritmètica i geomètrica, i a situacions de la vida quotidiana.
+	\end{itemize}
+	
+	\let\cleardoublepage\clearpage
+	
+	\mainmatter
+	
+	\input{caps/teoria}
+	\input{caps/practica}
+	\input{caps/exercicis}
+	
+	\chapter{Tests interactius}
+	\label{cap:tests}
+	
+	\begin{Form}
+		\IfFileExists{tests/test1.tex}{\input{tests/test1}}{}
+		\IfFileExists{tests/test2.tex}{\input{tests/test2}}{}
+		\IfFileExists{tests/test3.tex}{\input{tests/test3}}{}
+        \IfFileExists{tests/test4.tex}{\input{tests/test4}}{}
+	\end{Form}
+	
+	\backmatter
+	
+\end{document}

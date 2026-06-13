@@ -101,7 +101,7 @@ nav a:hover {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
 }
 
@@ -178,6 +178,9 @@ nav a:hover {
     flex-wrap: wrap;
     gap: 16px;
   }
+  .grid {
+  grid-template-columns: 1fr;
+  }
 }
 
 .notice {
@@ -191,4 +194,39 @@ nav a:hover {
 .notice p {
   margin: 0;
   color: var(--text);
+}
+
+.material-group {
+  margin-top: 32px;
+}
+
+.material-group + .material-group {
+  margin-top: 44px;
+}
+
+.material-group-header {
+  margin-bottom: 18px;
+}
+
+.material-group-header h3 {
+  margin: 0 0 6px;
+  font-size: 1.35rem;
+}
+
+.material-group-header p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 760px;
+}
+
+.material-card {
+  min-height: 250px;
+}
+
+.material-card p {
+  margin-bottom: 0;
+}
+
+.material-card .card-actions {
+  margin-top: 28px;
 }

@@ -15,11 +15,11 @@ Gràcies per voler millorar aquest material.
 - Feu canvis petits i ben delimitats.
 - Indiqueu clarament quin problema resol la proposta.
 - Si corregiu un exercici o una resposta de test, expliqueu breument el motiu matemàtic.
-- Comproveu, si és possible, que el document compila amb:
+- Comproveu, si és possible, que el document compila, per exemple,  amb: 
 
 ```bash
 cd batxillerat/logica
 latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-Per al projecte de conjunts, feu servir `cd batxillerat/conjunts`.
+Per exemple, per al projecte de conjunts, feu servir `cd batxillerat/conjunts`.

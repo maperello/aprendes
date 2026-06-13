@@ -10,10 +10,14 @@
 \usepackage{geometry}
 \usepackage{import}
 \usepackage{graphicx}
+\usepackage{tikz}
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{enumitem}
 \usepackage{titlesec}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 
 \setcounter{MaxMatrixCols}{10}
 
@@ -30,8 +34,13 @@
 }
 
 \setlist{itemsep=0.25em, topsep=0.25em}
-\setlength{\parindent}{0pt}
+% \setlength{\parindent}{0pt}
 \numberwithin{equation}{section}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{2}
+
+% Configuració dels paràgrafs
+\usepackage{indentfirst}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.3em}
 

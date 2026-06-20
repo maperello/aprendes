@@ -9,6 +9,8 @@ El projecte conté apunts en LaTeX amb teoria, exemples, exercicis resolts, exer
 - `batxillerat/logica/`: apunts de lògica, raonament i demostració.
 - `batxillerat/conjunts/`: apunts de conjunts, relacions i aplicacions.
 - `batxillerat/nombres/`: Nombres naturals i enters.
+- `batxillerat/racionals/`: Nombres racionals.
+- `batxillerat/reals/`: Nombres reals.
 - `batxillerat/common/`: preàmbul, macros, entorns, tests interactius i estil Aprendes compartits.
 
 Cada projecte té aquesta estructura bàsica:

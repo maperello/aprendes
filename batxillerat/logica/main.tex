@@ -1,5 +1,4 @@
 \documentclass[12pt,a4paper,oneside]{book}
-
 \input{../common/preamble.tex}
 \input{../common/environments.tex}
 \input{../common/macros.tex}
@@ -7,124 +6,70 @@
 \input{../common/interactive-tests.tex}
 
 \begin{document}
-
 \pagecolor{fons!20}
 \frontmatter
-\title{Lògica, Raonament i Demostració}
+\title{Lògica, raonament i demostració}
 \author{Miquel Àngel Perelló}
 \date{\today}
 \maketitle
 \tableofcontents
 
-
-
 \let\cleardoublepage\clearpage
-
 \chapter*{Prefaci}
 
-Aquests apunts neixen de la voluntat de proporcionar a l'alumnat de
-batxillerat una base s\`{o}lida i rigorosa en el llenguatge de les matem\`{a}%
-tiques: la l\`{o}gica i les demostracions.
+Aquests apunts neixen de la voluntat de proporcionar a l'alumnat de batxillerat una base sòlida i rigorosa en el llenguatge de les matemàtiques: la lògica i les demostracions.
 
-El cam\'{\i} cap a la comprensi\'{o} de les matem\`{a}tiques superiors est%
-\`{a} pavimentat amb la capacitat de comprendre i construir arguments l\`{o}%
-gics. Aquest document vol ser la primera pedra d'aquest cam\'{\i}. S'ha
-elaborat amb la intenci\'{o} de ser una eina clara, accessible i, alhora,
-precisa, que gui\"{\i} l'estudiant a trav\'{e}s dels conceptes fonamentals
-de la l\`{o}gica proposicional, els quantificadors i les t\`{e}cniques de
-demostraci\'{o}.
+El camí cap a la comprensió de les matemàtiques superiors està pavimentat amb la capacitat de comprendre i construir arguments lògics. Aquest document vol ser la primera pedra d'aquest camí. S'ha elaborat amb la intenció de ser una eina clara, accessible i, alhora, precisa, que guiï l'estudiant a través dels conceptes fonamentals de la lògica proposicional, els quantificadors i les tècniques de demostració.
 
-El material que es presenta aqu\'{\i} \'{e}s el fruit de l'experi\`{e}ncia
-docent i la convicci\'{o} que la bellesa de les matem\`{a}tiques rau no nom%
-\'{e}s en els seus resultats, sin\'{o} sobretot en el proc\'{e}s rigor\'{o}s
-i elegant que hi condueix. S'ha posat un \`{e}mfasi especial en la relaci%
-\'{o} entre el llenguatge natural i el simb\`{o}lic, i en la traducci\'{o}
-dels uns als altres, ja que \'{e}s en aquest pas on sovint es troben les dificultats
-m\'{e}s grans.
+El material que es presenta aquí és el fruit de l'experiència docent i de la convicció que, sense lògica, raonament i demostració, les matemàtiques perdrien allò que les defineix: no n'hi ha prou amb arribar a un resultat; cal justificar rigorosament per què és cert. S'ha posat un èmfasi especial en la relació entre el llenguatge natural i el llenguatge simbòlic, i en el pas de l'un a l'altre, ja que és precisament en aquesta traducció on sovint apareixen les dificultats més grans.
 
-Agra\"{\i}m a tots els estudiants les preguntes i la curiositat que han
-anat donant forma a aquest text, i als companys docents els seus valuosos
-comentaris i suggeriments.
+Agraïm als estudiants les preguntes i les observacions que han contribuït a donar forma a aquest text, i als companys docents els seus valuosos comentaris i suggeriments.
 
-Esperem que aquests apunts us acompanyin en el vostre descobriment de com es
-construeix i es valida el coneixement matem\`{a}tic.
+Esperem que aquests apunts us ajudin a comprendre com es construeix i es valida el coneixement matemàtic.
 
 \let\cleardoublepage\clearpage
+\chapter{Introducció}
 
-\chapter{Introducci\'{o}}
+Aquest document és una introducció als mètodes de raonament i demostració propis de les matemàtiques. El seu objectiu és proporcionar les eines lògiques necessàries per comprendre i construir arguments matemàtics vàlids i rigorosos.
 
-Aquest document \'{e}s una introducci\'{o} als m\`{e}todes de raonament i
-demostraci\'{o} propis de les matem\`{a}tiques. El seu objectiu \'{e}s
-proporcionar les eines l\`{o}giques necess\`{a}ries per comprendre i
-construir arguments matem\`{a}tics v\`{a}lids i rigorosos.
-
-La finalitat \'{u}ltima \'{e}s que l'estudiant sigui capa\c{c} de:
-
+La finalitat última és que l'estudiant sigui capaç de:
 \begin{itemize}
-\item Entendre el significat prec\'{\i}s dels enunciats matem\`{a}tics.
-
-\item Analitzar la seva estructura l\`{o}gica.
-
+\item Entendre el significat precís dels enunciats matemàtics.
+\item Analitzar la seva estructura lògica.
 \item Construir demostracions correctes de resultats simples.
 \end{itemize}
 
-Per assolir-ho, el llibre est\`{a} estructurat en tres grans blocs:
-
+Per assolir-ho, el llibre està estructurat en tres grans blocs:
 \begin{enumerate}
-\item Coneixements generals de L\`{o}gica (Cap\'{\i}tol 1: seccions 1 a 11):
-S'introdueixen els conceptes b\`{a}sics de la l\`{o}gica proposicional i de
-predicats. S'aprèn a treballar amb connectives l\`{o}giques (i, o, no,
-si...llavors..., si i nom\'{e}s si), taules de veritat, tautologies, equival%
-\`{e}ncies i regles d'infer\`{e}ncia. Aquests elements s\'{o}n l'alfabet amb
-qu\`{e} s'escriuen les matem\`{a}tiques.
-
-\item T\`{e}cniques de Demostraci\'{o} (Cap\'{\i}tol 1: secci\'{o} 12): Es
-presenten i es practiquen les estrat\`{e}gies de demostraci\'{o} m\'{e}s
-comunes i essencials: demostracions directes, per contrarec\'{\i}proc, per
-reducci\'{o} a l'absurd, per inducci\'{o}, per casos i per contraexemple.
-Aquestes s\'{o}n les "jugades" b\`{a}siques del joc de demostrar.
-
-\item Pr\`{a}ctica i Aplicaci\'{o} (Cap\'{\i}tols 2, 3 i 4): La part te\`{o}%
-rica es consolida amb una \`{a}mplia col\textperiodcentered lecci\'{o}
-d'exercicis resolts, exercicis proposats i tests d'autoavaluaci\'{o} que
-permeten posar a prova la comprensi\'{o} i aplicar els coneixements
-adquirits.
+\item Coneixements generals de lògica (Capítol 1: seccions 1 a 11). S'introdueixen els conceptes bàsics de la lògica proposicional i de predicats. S'aprèn a treballar amb connectives lògiques (i, o, no, si... llavors..., si i només si), taules de veritat, tautologies, equivalències i regles d'inferència. Aquests elements són l'alfabet amb què s'escriuen les matemàtiques.
+\item Tècniques de demostració (Capítol 1: secció 12). Es presenten i es practiquen les estratègies de demostració més comunes i essencials: demostracions directes, per contrarecíproc, per reducció a l'absurd, per inducció, per casos i per contraexemple. Aquestes són les jugades bàsiques del joc de demostrar.
+\item Pràctica i aplicació (Capítols 2, 3 i 4). La part teòrica es consolida amb una àmplia col·lecció d'exercicis resolts, exercicis proposats i tests d'autoavaluació que permeten posar a prova la comprensió i aplicar els coneixements adquirits.
 \end{enumerate}
 
-El document es tanca amb una molt breu mirada a com s'apliquen aquests
-principis en el context de teories axiom\`{a}tiques concretes, com la
-geometria euclidiana i l'aritm\`{e}tica, il\textperiodcentered lustrant que
-tot l'edifici matem\`{a}tic es construeix sobre els fonaments l\`{o}gics que
-aqu\'{\i} es presenten (Cap\'{\i}tol 1: secci\'{o} 13).
+El document es tanca amb una molt breu mirada a com s'apliquen aquests principis en el context de teories axiomàtiques concretes, com la geometria euclidiana i l'aritmètica, il·lustrant que tot l'edifici matemàtic es construeix sobre els fonaments lògics que aquí es presenten (Capítol 1: secció 13).
 
-Aquests apunts no nom\'{e}s us prepararan per a assignatures futures sin\'{o}
-que, \'{e}s el nostre desig, us obriran la porta a una visi\'{o} m\'{e}s
-profunda i satisfact\`{o}ria del fascinant m\'{o}n de les matem\`{a}tiques.
+Aquests apunts no només us prepararan per a assignatures futures, sinó que també volen obrir la porta a una visió més profunda del món de les matemàtiques.
 
-Com utilitzar aquest document? Es recomana llegir la teoria amb atenci\'{o},
-assegurant-se de comprendre cada concepte abans de passar al seg\"{u}ent.
-Els exercicis de pr\`{a}ctica s\'{o}n una part indispensable de
-l'aprenentatge; no s'hi val a saltar-se'n cap! Us animem a intentar
-resoldre'ls abans de mirar la soluci\'{o} proposada.
+Com utilitzar aquest document? Es recomana llegir la teoria amb atenció, assegurant-se de comprendre cada concepte abans de passar al següent. Els exercicis de pràctica són una part indispensable de l'aprenentatge; us animem a intentar resoldre'ls abans de mirar la solució proposada.
 
 \let\cleardoublepage\clearpage
-
 \mainmatter
-
-\input{caps/teoria} 
-\input{caps/practica}%
+\input{caps/teoria}
+\input{caps/practica}
 \input{caps/exercicis}
 
 \chapter{Tests}
-
 \label{cap:tests}
+
+\begin{observacio}
+Els tests interactius funcionen millor amb \textbf{Adobe Acrobat Reader}. Alguns visualitzadors de PDF integrats als navegadors poden mostrar el document correctament, però no sempre executen bé els botons i els camps interactius.
+\end{observacio}
 
 \begin{Form}
 \input{tests/test1}
-\input{tests/test2}%
+\input{tests/test2}
 \input{tests/test3}
 \end{Form}
 
 \backmatter
-
 \end{document}

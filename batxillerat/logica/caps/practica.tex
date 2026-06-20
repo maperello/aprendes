@@ -1,23 +1,23 @@
 \chapter{Pràctica}
 \label{cap:practica}
 
-\section{L\`{o}gica}
+\section{Lògica}
 
 \begin{exercici}
-Reformuleu els enunciats seg\"{u}ents fent \'{u}s de variables i constants:
-(a) El producte de dos nombres parells \'{e}s parell; (b) Donat un nombre real
-no negatiu, busqueu dos nombres reals la difer\`{e}ncia dels seus quadrats no
-sigui m\'{e}s gran que el nombre donat.
+Reformuleu els enunciats següents fent ús de variables i constants:
+(a) El producte de dos nombres parells és parell; (b) Donat un nombre real
+no negatiu, busqueu dos nombres reals la diferència dels seus quadrats no
+sigui més gran que el nombre donat.
 \end{exercici}
 
 \begin{solucio}
-(a) Si simbolitzem per $P$ el predicat \textquotedblleft ser
-parell\textquotedblright, aleshores podem escriure:%
+(a) Si simbolitzem per $P$ el predicat \enquote{ser
+parell}, aleshores podem escriure:%
 \[
 \forall x,y\left(  P\left(  x\right)  \wedge P\left(  y\right)
 \longrightarrow P\left(  x\cdot y\right)  \right)  \text{.}%
 \]
-Observa que tamb\'{e} podem escriure:%
+Observa que també podem escriure:%
 \[
 \forall x\left(  P\left(  x\right)  \longleftrightarrow\left(  \exists
 k\right)  \left(  k\in\mathbb{Z}\wedge x=2k\right)  \right)  \text{.}%
@@ -34,89 +34,86 @@ podem escriure:%
 \end{solucio}
 
 \begin{exercici}
-Quines de les expressions seg\"{u}ents s\'{o}n proposicions i quines
+Quines de les expressions següents són proposicions i quines
 predicats? (a) $4<3$; (b) $y>7$; (c) $x+y=z$.
 \end{exercici}
 
 \begin{solucio}
-(a) \'{E}s una proposici\'{o} perqu\`{e} \'{e}s un enunciat vertader; (b)
-\'{E}s un predicat perqu\`{e} \'{e}s un enunciat que cont\'{e} una variable
-$y$ i si li assignem un valor es t\'{e} una proposici\'{o}; (c) \'{E}s un
+(a) És una proposició falsa, perquè és un enunciat del qual podem determinar el valor de veritat; (b)
+és un predicat perquè és un enunciat que conté una variable
+$y$ i si li assignem un valor es té una proposició; (c) És un
 predicat de tres variables $x,y$ i $z$. Assignant valors a les tres variables
-s'obt\'{e} una proposici\'{o}.
+s'obté una proposició.
 \end{solucio}
 
 \begin{exercici}
-Quins dels seg\"{u}ents enunciats s\'{o}n predicats i quins no ho s\'{o}n?
-Justifica la teva resposta. (a) $x$ \'{e}s un divisor de 210; (b) El producte
+Quins dels següents enunciats són predicats i quins no ho són?
+Justifica la teva resposta. (a) $x$ és un divisor de 210; (b) El producte
 dels nombres $x$ i $y$; (c) La suma de dos nombres és menor que $1$.
 \end{exercici}
 
 \begin{solucio}
-(a) \'{E}s un predicat d'una variable $x$ que \'{e}s vertader quan, per
-exemple, $x$ pren el valor $7$, i fals quan, per exemple, \'{e}s $8$; (b) No
-\'{e}s predicat perqu\`{e} quan assignem valors a les variables $x$ i $y$ no
-s'obt\'{e} una proposici\'{o}. De fet, l'enunciat \'{e}s l'expressi\'{o}
-algebraica $x\cdot y$; (c) \'{E}s un predicat que cont\'{e} dues variables.
-Podem expressar-lo com $x+y<1$. \'{E}s clar que quan donem valors a $x$ i $y$
-s'obt\'{e} una proposici\'{o}.
+(a) És un predicat d'una variable $x$ que és vertader quan, per
+exemple, $x$ pren el valor $7$, i fals quan, per exemple, és $8$; (b) No
+és predicat perquè quan assignem valors a les variables $x$ i $y$ no
+s'obté una proposició. De fet, l'enunciat és l'expressió
+algebraica $x\cdot y$; (c) És un predicat que conté dues variables.
+Podem expressar-lo com $x+y<1$. És clar que quan donem valors a $x$ i $y$
+s'obté una proposició.
 \end{solucio}
 
 \begin{exercici}
-Considereu els enunciats seg\"{u}ents: $p=$ \textquotedblleft Estic
-content\textquotedblright, $q=$ \textquotedblleft Estic veient una
-pel\textperiodcentered l\'{\i}cula\textquotedblright\ i $r=$ \textquotedblleft
-Estic menjant espagueti\textquotedblright. Expresseu en paraules els enunciats
-seg\"{u}ents: (a) $\left(  q\vee r\right)  \longrightarrow p$; (b) $\left(
+Considereu els enunciats següents: $p=$ \enquote{Estic
+content}, $q=$ \enquote{Estic veient una
+pel·lícula}\ i $r=$ \enquote{Estic menjant espagueti}. Expresseu en paraules els enunciats
+següents: (a) $\left(  q\vee r\right)  \longrightarrow p$; (b) $\left(
 p\wedge\lnot q\right)  \longleftrightarrow\left(  q\vee r\right)  $.
 \end{exercici}
 
 \begin{solucio}
-(a) Estic content quan veig una pel\textperiodcentered l\'{\i}cula o mengo
-espagueti; (b) Veig una pel\textperiodcentered l\'{\i}cula o mengo espagueti
-nom\'{e}s si estic content sense veure una pel\textperiodcentered l\'{\i}cula.
+(a) Estic content quan veig una pel·lícula o mengo
+espagueti; (b) Veig una pel·lícula o mengo espagueti
+només si estic content sense veure una pel·lícula.
 \end{solucio}
 
 \begin{exercici}
-Analitza les formes l\`{o}giques dels enunciats seg\"{u}ents: (a) El joc es
-cancel\textperiodcentered lar\`{a} si plou o neva; (b) Tenir almenys deu
-persones \'{e}s una condici\'{o} necess\`{a}ria i suficient per a la
-confer\`{e}ncia que s'est\`{a} impartint; (c) Si en Miquel va anar a la
+Analitza les formes lògiques dels enunciats següents: (a) El joc es
+cancel·larà si plou o neva; (b) Tenir almenys deu
+persones és una condició necessària i suficient per a la
+conferència que s'està impartint; (c) Si en Miquel va anar a la
 botiga, llavors tenim ous a casa, si no no en tenim.
 \end{exercici}
 
 \begin{solucio}
-(a) Si $C=$\textquotedblleft El joc ser\`{a} cancel\textperiodcentered
-lat\textquotedblright, $P=$\textquotedblleft Plou\textquotedblright\ i
-$N=$\textquotedblleft Est\`{a} nevant\textquotedblright. Aleshores l'enunciat
-\textquotedblleft El joc es cancel\textperiodcentered lar\`{a} si plou o
-neva\textquotedblright\ es la proposici\'{o} $C\leftrightarrow(P\vee N)$.
+(a) Si $C=$\enquote{El joc serà cancel·
+lat}, $P=$\enquote{Plou}\ i
+$N=$\enquote{Està nevant}. Aleshores l'enunciat \enquote{El joc es cancel·larà si plou o neva} és la proposició $(P\vee N)\longrightarrow C$.
 
-(b) Si $P=$\textquotedblleft Hi ha almenys deu persones\textquotedblright\ i
-$C=$\textquotedblleft La confer\`{e}ncia es donar\`{a}\textquotedblright.
-Aleshores l'enunciat \textquotedblleft Tenir almenys deu persones \'{e}s una
-condici\'{o} necess\`{a}ria i suficient per a la confer\`{e}ncia que
-s'est\`{a} impartint\textquotedblright\ \'{e}s la proposici\'{o}
+(b) Si $P=$\enquote{Hi ha almenys deu persones}\ i
+$C=$\enquote{La conferència es donarà}.
+Aleshores l'enunciat \enquote{Tenir almenys deu persones és una
+condició necessària i suficient per a la conferència que
+s'està impartint}\ és la proposició
 $P\longleftrightarrow C$.
 
-(c) Si $B=$\textquotedblleft Miquel va anar a la botiga\textquotedblright\ i
-$C=$\textquotedblleft Hi ha ous a casa". Aleshores, l'enunciat
-\textquotedblleft Si en Miquel va anar a la botiga, llavors tenim ous a casa,
-si no no en tenim\textquotedblright\ \'{e}s la proposici\'{o} $(B\rightarrow
-C)\wedge(\lnot B\rightarrow\lnot C)$. Aix\`{o} \'{e}s equivalent a
-$B\longleftrightarrow C$ perqu\`{e} per la llei del contrarec\'{\i}proc
-s'obt\'{e} $(B\rightarrow C)\wedge(C\rightarrow B)$, qu\`{e} \'{e}s alhora
+(c) Si $B=$\enquote{Miquel va anar a la botiga} i
+$C=$\enquote{Hi ha ous a casa}. Aleshores, l'enunciat
+\enquote{Si en Miquel va anar a la botiga, llavors tenim ous a casa,
+si no no en tenim}\ és la proposició $(B\rightarrow
+C)\wedge(\lnot B\rightarrow\lnot C)$. Això és equivalent a
+$B\longleftrightarrow C$ perquè per la llei del contrarecíproc
+s'obté $(B\rightarrow C)\wedge(C\rightarrow B)$, què és alhora
 equivalent al que hem dit.
 \end{solucio}
 
 \begin{exercici}
-Considereu els enunciats seg\"{u}ents: $p=$ \textquotedblleft L'Eduard t\'{e}
-els cabells vermells\textquotedblright, $q=$ \textquotedblleft L'Eduard t\'{e}
-un nas gran\textquotedblright\ i $r=$ \textquotedblleft A l'Eduard li agrada
-menjar crispetes\textquotedblright. Tradueix els enunciats seg\"{u}ents a
-s\'{\i}mbols: (a) \textquotedblleft L'Eduard t\'{e} els cabells vermells i no
-t\'{e} un nas gran\textquotedblright; (b) \textquotedblleft No \'{e}s el cas
-que l'Eduard tingui un nas gran o li agradi menjar crispetes\textquotedblright.
+Considereu els enunciats següents: $p=$ \enquote{L'Eduard té
+els cabells vermells}, $q=$ \enquote{L'Eduard té
+un nas gran}\ i $r=$ \enquote{A l'Eduard li agrada
+menjar crispetes}. Tradueix els enunciats següents a
+símbols: (a) \enquote{L'Eduard té els cabells vermells i no
+té un nas gran}; (b) \enquote{No és el cas
+que l'Eduard tingui un nas gran o li agradi menjar crispetes}.
 \end{exercici}
 
 \begin{solucio}
@@ -124,7 +121,7 @@ que l'Eduard tingui un nas gran o li agradi menjar crispetes\textquotedblright.
 \end{solucio}
 
 \begin{exercici}
-Construeix les taules de veritat de les seg\"{u}ents expressions l\`{o}giques:
+Construeix les taules de veritat de les següents expressions lògiques:
 (a) $(p\wedge q)\vee\lnot p$; (b) $\lnot p\longrightarrow\lnot(q\vee r)$.
 \end{exercici}
 
@@ -148,43 +145,41 @@ V
 
 (b)%
 \[%
-\begin{tabular}
-[c]{cc|c|c|c|cc}%
-$p$ & $q$ & $r$ & $\lnot p$ & $q\wedge r$ & $\lnot(q\vee r)$ & $\lnot
-p\longrightarrow\lnot(q\vee r)$\\\hline
-V & V & V & F & V & F & V\\
-V & V & F & F & F & V & V\\
-V & F & V & F & F & V & V\\
-V & F & F & F & F & V & V\\
-F & V & V & V & V & F & F\\
-F & V & F & V & F & V & V\\
-F & F & V & V & F & V & V\\
-F & F & F & V & F & V & V
+\begin{tabular}{ccc|c|c|c}
+$p$ & $q$ & $r$ & $\lnot p$ & $\lnot(q\vee r)$ & $\lnot p\longrightarrow\lnot(q\vee r)$\\\hline
+V & V & V & F & F & V\\
+V & V & F & F & F & V\\
+V & F & V & F & F & V\\
+V & F & F & F & V & V\\
+F & V & V & V & F & F\\
+F & V & F & V & F & F\\
+F & F & V & V & F & F\\
+F & F & F & V & V & V
 \end{tabular}
 \]
 
 \end{solucio}
 
 \begin{exercici}
-Considerem els predicats $P(x,y)=$ `$x+y=4$' i $Q(x,y)=$ `$x<y$'. Troba els
-valors de veritat de les seg\"{u}ents expressions l\`{o}giques: (a) $\lnot
+Considerem els predicats $P(x,y)=$ \enquote{$x+y=4$} i $Q(x,y)=$ \enquote{$x<y$}. Troba els
+valors de veritat de les següents expressions lògiques: (a) $\lnot
 P(x,y)\vee Q(x,y)$ i (b) $\lnot(P(x,y)\longleftrightarrow Q(x,y))$ quan usem
-els valors seg\"{u}ents (1) $x=1,y=3$; (2) $x=2,y=1$.
+els valors següents (1) $x=1,y=3$; (2) $x=2,y=1$.
 \end{exercici}
 
 \begin{solucio}
-Per a l'expressi\'{o} $\lnot P(x,y)\vee Q(x,y)$, tenim:
-(1) amb $x=1$ i $y=3$, \'{e}s vertadera, ja que $Q(1,3)$ \'{e}s vertadera;
-(2) amb $x=2$ i $y=1$, tamb\'{e} \'{e}s vertadera, ja que $P(2,1)$ \'{e}s falsa.
+Per a l'expressió $\lnot P(x,y)\vee Q(x,y)$, tenim:
+(1) amb $x=1$ i $y=3$, és vertadera, ja que $Q(1,3)$ és vertadera;
+(2) amb $x=2$ i $y=1$, també és vertadera, ja que $P(2,1)$ és falsa.
 
-Per a l'expressi\'{o} $\lnot(P(x,y)\longleftrightarrow Q(x,y))$, tenim:
-(1) amb $x=1$ i $y=3$, \'{e}s falsa, ja que $P(1,3)$ i $Q(1,3)$ s\'{o}n
-ambdues vertaderes; (2) amb $x=2$ i $y=1$, tamb\'{e} \'{e}s falsa, ja que
-$P(2,1)$ i $Q(2,1)$ s\'{o}n ambdues falses.
+Per a l'expressió $\lnot(P(x,y)\longleftrightarrow Q(x,y))$, tenim:
+(1) amb $x=1$ i $y=3$, és falsa, ja que $P(1,3)$ i $Q(1,3)$ són
+ambdues vertaderes; (2) amb $x=2$ i $y=1$, també és falsa, ja que
+$P(2,1)$ i $Q(2,1)$ són ambdues falses.
 \end{solucio}
 
 \begin{exercici}
-Proveu les implicacions seg\"{u}ents: (a) $(A\longrightarrow B)\wedge\lnot
+Proveu les implicacions següents: (a) $(A\longrightarrow B)\wedge\lnot
 B\Longrightarrow\lnot A$; (b) $\left(  A\longrightarrow B\right)
 \wedge\left(  B\longrightarrow C\right)  \Longrightarrow A\longrightarrow C$.
 \end{exercici}
@@ -192,7 +187,7 @@ B\Longrightarrow\lnot A$; (b) $\left(  A\longrightarrow B\right)
 \begin{solucio}
 (a) Per veure que $(A\longrightarrow B)\wedge\lnot B\Longrightarrow\lnot A$
 hem de comprovar que $\left(  (A\longrightarrow B)\wedge\lnot B\right)  $
-$\longrightarrow\lnot A$ \'{e}s tautologia. Constru\"{\i}m la taula de veritat
+$\longrightarrow\lnot A$ és tautologia. Construïm la taula de veritat
 corresponent:%
 \[%
 \begin{tabular}
@@ -206,14 +201,14 @@ F & V & V & F & V & F & V\\
 F & F & V & V & V & V & V
 \end{tabular}
 \]
-i s'obt\'{e} una tautologia doncs veiem que l'\'{u}ltima columna nom\'{e}s
-t\'{e} el valor V.
+i s'obté una tautologia doncs veiem que l'última columna només
+té el valor V.
 
 (b) Per veure que $\left(  A\longrightarrow B\right)  \wedge\left(
 B\longrightarrow C\right)  \Longrightarrow A\longrightarrow C$ hem de
 comprovar que $\left(  \left(  A\longrightarrow B\right)  \wedge\left(
 B\longrightarrow C\right)  \right)  $ $\longrightarrow\left(  A\longrightarrow
-C\right)  $ \'{e}s tautologia. Constru\"{\i}m la taula de veritat corresponent
+C\right)  $ és tautologia. Construïm la taula de veritat corresponent
 prenent $\alpha=A\longrightarrow B$, $\beta=B\longrightarrow C $ i
 $\gamma=A\longrightarrow C$:%
 \[%
@@ -231,11 +226,11 @@ F & F & V & V & V & V & V & V\\
 F & F & F & V & V & V & V & V
 \end{tabular}
 \]
-i surt que \'{e}s tautologia com era d'esperar.
+i surt que és tautologia com era d'esperar.
 \end{solucio}
 
 \begin{exercici}
-Proveu les equival\`{e}ncies l\`{o}giques seg\"{u}ents: (a) $A\longrightarrow
+Proveu les equivalències lògiques següents: (a) $A\longrightarrow
 B\Longleftrightarrow\lnot A\vee B$; (b) $A\longrightarrow\left(  B\wedge
 C\right)  \Longleftrightarrow\left(  A\longrightarrow B\right)  \wedge\left(
 A\longrightarrow C\right)  $.
@@ -244,7 +239,7 @@ A\longrightarrow C\right)  $.
 \begin{solucio}
 (a) Per veure que $A\longrightarrow B\Longleftrightarrow\lnot A\vee B$ hem de
 comprovar que $(A\longrightarrow B)\longleftrightarrow\left(  \lnot A\vee
-B\right)  $ \'{e}s tautologia. Constru\"{\i}m la taula de veritat
+B\right)  $ és tautologia. Construïm la taula de veritat
 corresponent:%
 \[%
 \begin{tabular}
@@ -258,15 +253,15 @@ F & V & V & V & V & V\\
 F & F & V & V & V & V
 \end{tabular}
 \]
-i s'obt\'{e} una tautologia doncs veiem que l'\'{u}ltima columna nom\'{e}s
-t\'{e} el valor V.
+i s'obté una tautologia doncs veiem que l'última columna només
+té el valor V.
 
 (b) Per veure que $A\longrightarrow\left(  B\wedge C\right)
 \Longleftrightarrow\left(  A\longrightarrow B\right)  \wedge\left(
 A\longrightarrow C\right)  $ hem de comprovar que $(A\longrightarrow\left(
 B\wedge C\right)  )\longleftrightarrow\left(  \left(  A\longrightarrow
-B\right)  \wedge\left(  A\longrightarrow C\right)  \right)  $ \'{e}s
-tautologia. Constru\"{\i}m la taula de veritat corresponent, prenent
+B\right)  \wedge\left(  A\longrightarrow C\right)  \right)  $ és
+tautologia. Construïm la taula de veritat corresponent, prenent
 $\alpha=A\longrightarrow B$, $\beta=A\longrightarrow C$ i $\gamma
 =A\longrightarrow\left(  B\wedge C\right)  $:
 \[%
@@ -284,43 +279,43 @@ F & F & V & V & F & V & V & V & V\\
 F & F & F & V & F & V & V & V & V
 \end{tabular}
 \]
-i surt que \'{e}s tautologia com era d'esperar.
+i surt que és tautologia com era d'esperar.
 \end{solucio}
 
 \begin{exercici}
-Simplifiqueu les afirmacions seg\"{u}ents. Podeu fer \'{u}s de les
-equival\`{e}ncies de l'exercici anterior a m\'{e}s de les equival\`{e}ncies
-comentades a teoria i pr\`{a}ctica: (a) $X\longrightarrow\left(  X\wedge
+Simplifiqueu les afirmacions següents. Podeu fer ús de les
+equivalències de l'exercici anterior a més de les equivalències
+comentades a teoria i pràctica: (a) $X\longrightarrow\left(  X\wedge
 Y\right)  $; (b) $\lnot\left(  X\vee Y\right)  \wedge Y$.
 \end{exercici}
 
 \begin{solucio}
-(a) Aplicant la primera equival\`{e}ncia de l'apartat anterior es t\'{e}:
+(a) Aplicant la primera equivalència de l'apartat anterior es té:
 $X\longrightarrow\left(  X\wedge Y\right)  \Longleftrightarrow\lnot
 X\vee\left(  X\wedge Y\right)  $. Aplicant ara la llei distributiva de $\vee$
-respecte de $\wedge$ s'obt\'{e}%
+respecte de $\wedge$ s'obté%
 \[
 \lnot X\vee\left(  X\wedge Y\right)  \Longleftrightarrow\left(  \lnot X\vee
 X\right)  \wedge\left(  \lnot X\vee Y\right)
 \]
-Ara b\'{e}, $\lnot X\vee X$ \'{e}s tautologia. Per tant, $\left(  \lnot X\vee
+Ara bé, $\lnot X\vee X$ és tautologia. Per tant, $\left(  \lnot X\vee
 X\right)  \wedge\left(  \lnot X\vee Y\right)  \Longleftrightarrow\lnot X\vee Y
-$. Com a conseq\"{u}\`{e}ncia, obtenim que $X\longrightarrow\left(  X\wedge Y\right)
+$. Com a conseqüència, obtenim que $X\longrightarrow\left(  X\wedge Y\right)
 \Longleftrightarrow X\longrightarrow Y$, doncs $\lnot X\vee
 Y\Longleftrightarrow X\longrightarrow Y$.
 
-(b) Aplicant les lleis de De Morgan es t\'{e}:%
+(b) Aplicant les lleis de De Morgan es té:%
 \[
 \lnot\left(  X\vee Y\right)  \wedge Y\Longleftrightarrow\left(  \lnot
 X\wedge\lnot Y\right)  \vee Y.
 \]
-Ara, aplicant la llei distributiva de $\vee$ respecte de $\wedge$, s'obt\'{e}
+Ara, aplicant la llei distributiva de $\vee$ respecte de $\wedge$, s'obté
 \[
 \lnot\left(  X\vee Y\right)  \wedge Y\Longleftrightarrow\left(  \lnot X\vee
 Y\right)  \wedge\left(  \lnot Y\vee Y\right)  .
 \]
-Finalment, com $\lnot Y\vee Y$ \'{e}s tautologia i $\lnot X\vee
-Y\Longleftrightarrow X\longrightarrow Y$, es t\'{e}%
+Finalment, com $\lnot Y\vee Y$ és tautologia i $\lnot X\vee
+Y\Longleftrightarrow X\longrightarrow Y$, es té%
 \[
 \lnot\left(  X\vee Y\right)  \wedge Y\Longleftrightarrow X\longrightarrow
 Y\text{.}%
@@ -329,57 +324,56 @@ Y\text{.}%
 \end{solucio}
 
 \begin{exercici}
-Escriu la negaci\'{o} dels enunciats seg\"{u}ents: (a) $3>5$ o $7\leq8$; (b)
-Si $x=3$, llavors $x^{2}=5$; (c)\ $a-b=c$ si i nom\'{e}s si $a=b+c$.
+Escriu la negació dels enunciats següents: (a) $3>5$ o $7\leq8$; (b)
+Si $x=3$, llavors $x^{2}=5$; (c)\ $a-b=c$ si i només si $a=b+c$.
 \end{exercici}
 
 \begin{solucio}
 (a) Aplicant la llei de de Morgan, $3\leq5$ o $7>8$.
 
-(b) L'enunciat \'{e}s de la forma $A\longrightarrow B$, aleshores la seva
-negaci\'{o} \'{e}s $\lnot\left(  A\longrightarrow B\right)  \,$. Ara b\'{e},
+(b) L'enunciat és de la forma $A\longrightarrow B$, aleshores la seva
+negació és $\lnot\left(  A\longrightarrow B\right)  \,$. Ara bé,
 sabem que $A\longrightarrow B\Longleftrightarrow\lnot A\vee B$ i aplicant de
-nou la llei de De Morgan es t\'{e} $\lnot\left(  A\longrightarrow B\right)
-\Longleftrightarrow A\wedge\lnot B$. Per tant, la negaci\'{o} de l'enunciat
-\'{e}s $x=3$ i $x^{2}\neq5$.
+nou la llei de De Morgan es té $\lnot\left(  A\longrightarrow B\right)
+\Longleftrightarrow A\wedge\lnot B$. Per tant, la negació de l'enunciat
+és $x=3$ i $x^{2}\neq5$.
 
-(c) Observem primer que $a-b=c$ \'{e}s equivalent a $a=b+c$. Per tant,
-l'enunciat \'{e}s tautol\`{o}gic i de la forma $A\longleftrightarrow A$,
-aleshores la seva negaci\'{o} \'{e}s contradicci\'{o}: $a-b=c$ i $a\neq b+c$.
+(c) Observem primer que $a-b=c$ és equivalent a $a=b+c$. Per tant,
+l'enunciat és tautològic i de la forma $A\longleftrightarrow A$,
+aleshores la seva negació és contradicció: $a-b=c$ i $a\neq b+c$.
 \end{solucio}
 
-\section{Raonament l\`{o}gic}
+\section{Raonament lògic}
 
 \begin{exercici}
-Per a cadascun dels raonaments seg\"{u}ents, si \'{e}s v\`{a}lid, doneu una
-deducci\'{o}, i si no \'{e}s v\`{a}lid, mostreu el perqu\`{e}.
+Per a cadascun dels raonaments següents, si és vàlid, doneu una
+deducció, i si no és vàlid, mostreu el perquè.
 
 \begin{enumerate}
-\item Si el fre falla i el cam\'{\i} est\`{a} gelat, llavors el cotxe no
-parar\`{a}. Si el cotxe es va revisar, no fallaran els frens. Per\`{o} el
-cotxe no es va revisar. Per tant, el cotxe no parar\`{a}.
+\item Si el fre falla i el camí està gelat, llavors el cotxe no
+pararà. Si el cotxe es va revisar, no fallaran els frens. Però el
+cotxe no es va revisar. Per tant, el cotxe no pararà.
 
-\item Si el punt d'una recta representa un enter, llavors el n\'{u}mero es pot
+\item Si el punt d'una recta representa un enter, llavors el número es pot
 definir com un decimal infinit o per un parell de decimals infinits. O el
-n\'{u}mero es pot definir per un decimal finit o el n\'{u}mero pot ser definit
-o b\'{e} per un decimal infinit o per un parell de decimals infinits. El
-n\'{u}mero no pot ser definit per un decimal finit. Per tant, el punt de la
+número es pot definir per un decimal finit o el número pot ser definit
+o bé per un decimal infinit o per un parell de decimals infinits. El
+número no pot ser definit per un decimal finit. Per tant, el punt de la
 recta representa un enter.
 
-\item Si el rellotge est\`{a} avan\c{c}at, llavors en Joan va arribar abans de
+\item Si el rellotge està avançat, llavors en Joan va arribar abans de
 les deu i va veure sortir el cotxe de l'Andreu. Si l'Andreu no diu la veritat,
 llavors en Joan no va veure sortir el cotxe de l'Andreu. L'Andreu no diu la
-veritat o estava en l'edifici en el moment del crim. El rellotge est\`{a}
-avan\c{c}at. Per tant, l'Andreu estava en l'edifici en el moment del crim.
+veritat o estava en l'edifici en el moment del crim. El rellotge està
+avançat. Per tant, l'Andreu estava en l'edifici en el moment del crim.
 \end{enumerate}
 \end{exercici}
 
 \begin{solucio}
-(1) Les proposicions simples d'aquest raonament s\'{o}n: $p=$\textquotedblleft
-els frens fallen\textquotedblright, $q=$\textquotedblleft el cam\'{\i}
-est\`{a} gelat\textquotedblright, $r=$\textquotedblleft el cotxe parar\'{a}" i
-$s=$\textquotedblleft el cotxe es va revisar\textquotedblright. Expressem ara
-el raonament simb\`{o}licament:%
+(1) Les proposicions simples d'aquest raonament són: $p=$\enquote{els frens fallen}, $q=$\enquote{el camí
+està gelat}, $r=$\enquote{el cotxe parará} i
+$s=$\enquote{el cotxe es va revisar}. Expressem ara
+el raonament simbòlicament:%
 \[%
 \begin{tabular}
 [c]{ll}%
@@ -391,20 +385,20 @@ $C:$ & $\lnot r$%
 \]
 
 
-L'argument \'{e}s fals. Prenem com interpretaci\'{o}: $%
+L'argument és fals. Prenem com interpretació: $%
 \begin{tabular}
 [c]{cccc}%
 $p$ & $q$ & $r$ & $s$\\\hline
 $V$ & $F$ & $V$ & $F$%
 \end{tabular}
-$, aleshores les premisses s\'{o}n vertaderes
+$, aleshores les premisses són vertaderes
 \begin{tabular}
 [c]{ccc}%
 $\left(  p\wedge q\right)  \longrightarrow\lnot r$ & $s\longrightarrow\lnot p
 $ & $\lnot s$\\\hline
 $V$ & $V$ & $V$%
 \end{tabular}
-i la conclusi\'{o}, falsa
+i la conclusió, falsa
 \begin{tabular}
 [c]{c}%
 $\lnot r$\\\hline
@@ -412,13 +406,12 @@ $F$%
 \end{tabular}
 .
 
-(2) Les proposicions simples d'aquest raonament s\'{o}n: $p=$\textquotedblleft
-el punt d'una recta representa un enter\textquotedblright, $q=$%
-\textquotedblleft el n\'{u}mero es pot definir com un decimal
-infinit\textquotedblright, $r=$\textquotedblleft el n\'{u}mero es pot definir
-per un parell de decimals infinits" i $s=$\textquotedblleft el n\'{u}mero es
-pot definir per un decimal finit\textquotedblright. Expressem ara el raonament
-simb\`{o}licament:%
+(2) Les proposicions simples d'aquest raonament són: $p=$\enquote{el punt d'una recta representa un enter}, $q=$%
+\enquote{el número es pot definir com un decimal
+infinit}, $r=$\enquote{el número es pot definir
+per un parell de decimals infinits} i $s=$\enquote{el número es
+pot definir per un decimal finit}. Expressem ara el raonament
+simbòlicament:%
 \[%
 \begin{tabular}
 [c]{ll}%
@@ -431,20 +424,20 @@ $C:$ & $p$%
 \]
 
 
-L'argument \'{e}s fals. Prenem com interpretaci\'{o}: $%
+L'argument és fals. Prenem com interpretació: $%
 \begin{tabular}
 [c]{cccc}%
 $p$ & $q$ & $r$ & $s$\\\hline
 $F$ & $V$ & $V$ & $F$%
 \end{tabular}
-$, aleshores les premisses s\'{o}n vertaderes
+$, aleshores les premisses són vertaderes
 \begin{tabular}
 [c]{ccc}%
 $p\longrightarrow\left(  q\vee r\right)  $ & $\lnot\left(
 s\longleftrightarrow\left(  q\vee r\right)  \right)  $ & $\lnot s$\\\hline
 $V$ & $V$ & $V$%
 \end{tabular}
-i la conclusi\'{o}, falsa
+i la conclusió, falsa
 \begin{tabular}
 [c]{c}%
 $p$\\\hline
@@ -452,13 +445,12 @@ $F$%
 \end{tabular}
 .
 
-(3) Les proposicions simples d'aquest raonament s\'{o}n: $p=$\textquotedblleft
-el rellotge est\`{a} avan\c{c}at\textquotedblright, $q=$\textquotedblleft Joan
-va arribar abans de les deu\textquotedblright, $r=$\textquotedblleft Joan va
-veure sortir el cotxe de l'Andreu", $s=$\textquotedblleft l'Andreu diu la
-veritat\textquotedblright\ i $t=$\textquotedblleft Andreu estava en l'edifici
-en el moment del crim\textquotedblright. Expressem ara el raonament
-simb\`{o}licament:%
+(3) Les proposicions simples d'aquest raonament són: $p=$\enquote{el rellotge està avançat}, $q=$\enquote{Joan
+va arribar abans de les deu}, $r=$\enquote{Joan va
+veure sortir el cotxe de l'Andreu}, $s=$\enquote{l'Andreu diu la
+veritat} i $t=$\enquote{Andreu estava en l'edifici
+en el moment del crim}. Expressem ara el raonament
+simbòlicament:%
 \[%
 \begin{tabular}
 [c]{ll}%
@@ -470,7 +462,7 @@ $C:$ & $t$%
 \end{tabular}
 \]
 Ara provarem la validesa d'aquest argument utilitzant les regles
-d'infer\`{e}ncia:%
+d'inferència:%
 \[%
 \begin{tabular}
 [c]{lll}%
@@ -490,8 +482,8 @@ d'infer\`{e}ncia:%
 \end{solucio}
 
 \begin{exercici}
-Per a cadascun dels arguments seg\"{u}ents, si \'{e}s v\`{a}lid, doneu una
-deducci\'{o}, i si no \'{e}s v\`{a}lid, mostreu el perqu\`{e}.
+Per a cadascun dels arguments següents, si és vàlid, doneu una
+deducció, i si no és vàlid, mostreu el perquè.
 
 \begin{enumerate}
 \item $%
@@ -519,7 +511,7 @@ $
 \end{exercici}
 
 \begin{solucio}
-(1) L'argument \'{e}s v\`{a}lid i una deducci\'{o} \'{e}s:
+(1) L'argument és vàlid i una deducció és:
 \[%
 \begin{tabular}
 [c]{lll}%
@@ -534,7 +526,7 @@ $
 \]
 
 
-(2) L'argument tamb\'{e} \'{e}s v\`{a}lid i una deducci\'{o} \'{e}s:%
+(2) L'argument també és vàlid i una deducció és:%
 \[%
 \begin{tabular}
 [c]{lll}%
@@ -555,21 +547,20 @@ $P_{1}$\\
 \end{solucio}
 
 \begin{exercici}
-Escriviu una deducci\'{o} per el seg\"{u}ent raonament. Indiqueu si les
-premisses s\'{o}n consistents o inconsistents:\textquotedblleft Els ordinadors
-s\'{o}n \'{u}tils i divertits i els ordinadors consumeixen molt de temps. Si
-els ordinadors s\'{o}n dif\'{\i}cils d'utilitzar, no s\'{o}n divertits. Si els
-ordinadors no estan ben dissenyats, llavors s\'{o}n dif\'{\i}cils d'utilitzar.
-Per tant, els ordinadors estan ben dissenyats\textquotedblright.
+Escriviu una deducció per el següent raonament. Indiqueu si les
+premisses són consistents o inconsistents:\enquote{Els ordinadors
+són útils i divertits i els ordinadors consumeixen molt de temps. Si
+els ordinadors són difícils d'utilitzar, no són divertits. Si els
+ordinadors no estan ben dissenyats, llavors són difícils d'utilitzar.
+Per tant, els ordinadors estan ben dissenyats}.
 \end{exercici}
 
 \begin{solucio}
-(1) Les proposicions simples d'aquest raonament s\'{o}n: $p=$\textquotedblleft
-els ordinadors s\'{o}n \'{u}tils i divertits\textquotedblright, $q=$%
-\textquotedblleft els ordinadors consumeixen molt de temps\textquotedblright,
-$r=$\textquotedblleft els ordinadors s\'{o}n dif\'{\i}cils d'utilitzar" i
-$s=$\textquotedblleft els ordinadors estan ben dissenyats\textquotedblright.
-Expressem ara el raonament simb\`{o}licament:%
+(1) Les proposicions simples d'aquest raonament són: $p=$\enquote{els ordinadors són útils i divertits}, $q=$%
+\enquote{els ordinadors consumeixen molt de temps},
+$r=$\enquote{els ordinadors són difícils d'utilitzar} i
+$s=$\enquote{els ordinadors estan ben dissenyats}.
+Expressem ara el raonament simbòlicament:%
 \[%
 \begin{tabular}
 [c]{ll}%
@@ -582,7 +573,7 @@ $C:$ & $s$%
 
 
 Ara provarem la validesa d'aquest argument utilitzant les regles
-d'infer\`{e}ncia:%
+d'inferència:%
 \[%
 \begin{tabular}
 [c]{lll}%
@@ -598,8 +589,8 @@ d'infer\`{e}ncia:%
 \]
 
 
-Podem provar la consist\`{e}ncia de les premisses comprovant que hi ha una
-interpretaci\'{o} que faci totes les premisses vertaderes:%
+Podem provar la consistència de les premisses comprovant que hi ha una
+interpretació que faci totes les premisses vertaderes:%
 \[%
 \begin{tabular}
 [c]{lll|llll|llll}%
@@ -614,18 +605,18 @@ V & V & V & F & V & F & V & F & V & V & F
 \end{solucio}
 
 \begin{exercici}
-\'{E}s una fal\textperiodcentered l\`{a}cia el raonament seg\"{u}ent:
-\textquotedblleft Si el poble elegeix un alcalde, s'augmentaran els impostos.
-Si no s'augmenten els impostos al poble, llavors no es construir\`{a} un
-estadi nou. El poble no tria un alcalde. Per tant, no es construir\`{a} un
-estadi nou\textquotedblright.
+És una fal·làcia el raonament següent:
+\enquote{Si el poble elegeix un alcalde, s'augmentaran els impostos.
+Si no s'augmenten els impostos al poble, llavors no es construirà un
+estadi nou. El poble no tria un alcalde. Per tant, no es construirà un
+estadi nou}.
 \end{exercici}
 
 \begin{solucio}
-Si formalitzem l'argument prenent: $p=$\textquotedblleft el poble elegeix un
-alcalde\textquotedblright, $q=$\textquotedblleft augmentar\`{a} els
-impostos\textquotedblright, i $r=$\textquotedblleft es construir\`{a} un
-estadi nou\textquotedblright. Aleshores, es t\'{e}%
+Si formalitzem l'argument prenent: $p=$\enquote{el poble elegeix un
+alcalde}, $q=$\enquote{augmentarà els
+impostos}, i $r=$\enquote{es construirà un
+estadi nou}. Aleshores, es té%
 \[%
 \begin{tabular}
 [c]{ll}%
@@ -635,10 +626,10 @@ $P_{3}:$ & $\lnot p$\\\hline
 $C:$ & $\lnot r$%
 \end{tabular}
 \]
-Es clar que es tracta d'una fal\textperiodcentered l\`{a}cia perqu\`{e} es
+Es clar que es tracta d'una fal·làcia perquè es
 pensa que pel fet de no triar un alcalde no s'augmentaran els impostos i com a
-conseq\"{u}\`{e}ncia no es construir\`{a} un estadi nou. Aix\`{o} \'{e}s fals com
-es pot veure a continuaci\'{o}:%
+conseqüència no es construirà un estadi nou. Això és fals com
+es pot veure a continuació:%
 \[%
 \begin{tabular}
 [c]{lll|lllll|ll|ll}%
@@ -652,56 +643,55 @@ F & V & F & V & F & F! & F & V & V & F & F & V
 \end{solucio}
 
 \begin{exercici}
-Formalitzeu els seg\"{u}ents enunciats: (1) \textquotedblleft Tots els enters
-que no s\'{o}n senars s\'{o}n parells\textquotedblright; (2) \textquotedblleft
-Hi ha un nombre enter que no \'{e}s parell\textquotedblright; (3)
-\textquotedblleft Per a cada nombre real $x$, hi ha un nombre real $y$ per al
-qual $y^{3}=x$\textquotedblright; i (4) \textquotedblleft Donats dos nombres
-racionals $a$ i $b$, el producte $ab$ \'{e}s racional\textquotedblright.
+Formalitzeu els següents enunciats: (1) \enquote{Tots els enters
+que no són senars són parells}; (2) \enquote{Hi ha un nombre enter que no és parell}; (3)
+\enquote{Per a cada nombre real $x$, hi ha un nombre real $y$ per al
+qual $y^{3}=x$}; i (4) \enquote{Donats dos nombres
+racionals $a$ i $b$, el producte $ab$ és racional}.
 \end{exercici}
 
 \begin{solucio}
-Primer identifiquem els predicats i despr\'{e}s escrivim l'enunciat simb\`{o}licament.
+Primer identifiquem els predicats i després escrivim l'enunciat simbòlicament.
 
-(1) Suposem que $P$ \'{e}s el predicat "ser parell" i $S$ \'{e}s el predicat
-"ser senar", aleshores es t\'{e}:%
+(1) Suposem que $P$ és el predicat \enquote{ser parell} i $S$ és el predicat
+"ser senar", aleshores es té:%
 \[
 \forall x\in\mathbb{Z}\text{, }\lnot S(x)\longrightarrow P(x)\text{,}%
 \]
-o tamb\'{e}, m\'{e}s formalment,
+o també, més formalment,
 \[
 \left(  \forall x\right)  \left(  \left(  x\in\mathbb{Z}\wedge\lnot
 S(x)\right)  \longrightarrow P\left(  x\right)  \right)  \text{.}%
 \]
 
 
-(2) Usant la mateixa notaci\'{o} que l'apartat anterior, es t\'{e}:%
+(2) Usant la mateixa notació que l'apartat anterior, es té:%
 \[
 \exists x\in\mathbb{Z}\text{, }\lnot P\left(  x\right)  \text{,}%
 \]
-o b\'{e},%
+o bé,%
 \[
 \left(  \exists x\right)  \left(  x\in\mathbb{Z\wedge}\lnot P\left(  x\right)
 \right)  \text{.}%
 \]
 
 
-(3) L'enunciat simb\`{o}licament s'escriu aix\'{\i}:%
+(3) L'enunciat simbòlicament s'escriu així:%
 \[
 \forall x\in\mathbb{R}\text{, }\exists y\in\mathbb{R}\text{, }y^{3}=x\text{,}%
 \]
-o b\'{e}, tamb\'{e} com%
+o bé, també com%
 \[
 \left(  \forall x\right)  \left(  \exists y\right)  \left(  x\in
 \mathbb{R\wedge}\text{ }y\in\mathbb{R\wedge~}y^{3}=x\right)  \text{.}%
 \]
 
 
-(4) L'enunciat s'escriu aix\'{\i} simb\`{o}licament:%
+(4) L'enunciat s'escriu així simbòlicament:%
 \[
 \forall a,b\in\mathbb{Q}\text{, }ab\in\mathbb{Q}\text{,}%
 \]
-o b\'{e}, com%
+o bé, com%
 \[
 \left(  \forall a,b\right)  \left(  a,b\in\mathbb{Q}\longrightarrow
 ab\in\mathbb{Q}\right)  \text{.}%
@@ -710,40 +700,40 @@ ab\in\mathbb{Q}\right)  \text{.}%
 \end{solucio}
 
 \begin{exercici}
-Expresseu formalment els enunciats seg\"{u}ents:
+Expresseu formalment els enunciats següents:
 
 \begin{enumerate}
-\item Alg\'{u} no va fer els deures.
+\item Algú no va fer els deures.
 
-\item Tothom al dormitori t\'{e} un company de pis que no li agrada.
+\item Tothom al dormitori té un company de pis que no li agrada.
 
-\item Si alg\'{u} al dormitori t\'{e} un amic que t\'{e} el xarampi\'{o},
-llavors tothom el dormitori s'haur\`{a} de posar en quarantena.
+\item Si algú al dormitori té un amic que té el xarampió,
+llavors tothom el dormitori s'haurà de posar en quarantena.
 
-\item Tot en aquesta botiga t\'{e} un preu excessiu o est\`{a} mal fet.
+\item Tot en aquesta botiga té un preu excessiu o està mal fet.
 \end{enumerate}
 \end{exercici}
 
 \begin{solucio}
-(1) Si $P(x)=$\textquotedblleft$x$ fa els deures\textquotedblright, aleshores
+(1) Si $P(x)=$\enquote{$x$ fa els deures}, aleshores
 l'enunciat es formalitza d'aquesta manera: $\exists x\lnot P(x)$.
 
 (2) Necessitem tres predicats per formalitzar l'enunciat: $P(x)=$%
-\textquotedblleft$x$ viu en el pis\textquotedblright, $Q(x,y)=$%
-\textquotedblleft$x$ i $y$ s\'{o}n company de pis\textquotedblright\ i
-$R(x,y)=$\textquotedblleft$x$ li agrada $y$\textquotedblright. Aleshores es
-t\'{e}:%
+\enquote{$x$ viu en el pis}, $Q(x,y)=$%
+\enquote{$x$ i $y$ són company de pis}\ i
+$R(x,y)=$\enquote{$x$ li agrada $y$}. Aleshores es
+té:%
 \[
 \forall x(P(x)\longrightarrow\exists y\left(  Q\left(  x,y\right)  \wedge\lnot
 R\left(  x,y\right)  \right)
 \]
 
 
-(3) Introdu\"{\i}m quatre predicats per formalitzar l'enunciat: $P(x)=$%
-\textquotedblleft$x$ viu en el pis\textquotedblright, $Q(x,y)=$%
-\textquotedblleft$x$ i $y$ s\'{o}n amics\textquotedblright, $R(x)=$%
-\textquotedblleft$x$ t\'{e} xarampi\'{o}\textquotedblright\ i $S(x)=$%
-\textquotedblleft$x$ est\`{a} en quarantena\textquotedblright. Aleshores
+(3) Introduïm quatre predicats per formalitzar l'enunciat: $P(x)=$%
+\enquote{$x$ viu en el pis}, $Q(x,y)=$%
+\enquote{$x$ i $y$ són amics}, $R(x)=$%
+\enquote{$x$ té xarampió}\ i $S(x)=$%
+\enquote{$x$ està en quarantena}. Aleshores
 escrivim%
 \[
 \forall x\left(  P(x)\longrightarrow\exists y\left(  \left(  R(y)\wedge
@@ -751,10 +741,10 @@ Q\left(  x,y\right)  \right)  \longrightarrow S(x)\right)  \right)
 \]
 
 
-(4) Si considerem $P(x)=$\textquotedblleft$x$ est\`{a} a la
-botiga\textquotedblright, $Q(x)=$\textquotedblleft$x$ t\'{e} el preu
-excessiu\textquotedblright\ i $R(x)=$\textquotedblleft$x$ est\`{a} mal
-fet\textquotedblright, llavors l'enunciat formalitzat s'escriu aix\'{\i}:%
+(4) Si considerem $P(x)=$\enquote{$x$ està a la
+botiga}, $Q(x)=$\enquote{$x$ té el preu
+excessiu}\ i $R(x)=$\enquote{$x$ està mal
+fet}, llavors l'enunciat formalitzat s'escriu així:%
 \[
 \forall x\left(  P(x)\longrightarrow\left(  Q(x)\vee R(x)\right)  \right)
 \]
@@ -762,40 +752,39 @@ fet\textquotedblright, llavors l'enunciat formalitzat s'escriu aix\'{\i}:%
 \end{solucio}
 
 \begin{exercici}
-Tradueix les expressions seg\"{u}ents en paraules:
+Tradueix les expressions següents en paraules:
 
 \begin{enumerate}
 \item $\forall x\left(  \left(  H(x)\wedge\lnot\exists yC(x,y)\right)
-\longrightarrow\lnot F(x)\right)  $, si $H(x)=$\textquotedblleft x \'{e}s un
-home\textquotedblright, $C(x,y)=$\textquotedblleft$x$ est\`{a} casat amb $y
-$\textquotedblright\ i $F(x)=$\textquotedblleft$x$ \'{e}s
-feli\c{c}\textquotedblright.
+\longrightarrow\lnot F(x)\right)  $, si $H(x)=$\enquote{x és un
+home}, $C(x,y)=$\enquote{$x$ està casat amb $y
+$}\ i $F(x)=$\enquote{$x$ és
+feliç}.
 
-\item $\forall x\left(  W(x)\wedge Z(x)\right)  $, si $Z(x)=$\textquotedblleft%
-$x$ li agrada les croquetes\textquotedblright\ i $W(x)=$\textquotedblleft$x$
-t\'{e} una granota de mascota\textquotedblright.
+\item $\forall x\left(  W(x)\wedge Z(x)\right)  $, si $Z(x)=$\enquote{%
+$x$ li agrada les croquetes}\ i $W(x)=$\enquote{$x$
+té una granota de mascota}.
 
 \item $\exists x\left(  N(x)\wedge\forall y\left(  N(y)\longrightarrow x\leq
-y\right)  \right)  $, si $N(x)=$\textquotedblleft$x$ \'{e}s un nombre
-natural\textquotedblright.
+y\right)  \right)  $, si $N(x)=$\enquote{$x$ és un nombre
+natural}.
 \end{enumerate}
 \end{exercici}
 
 \begin{solucio}
-(1) \textquotedblleft Tot home que no est\`{a} casat no \'{e}s
-feli\c{c}\textquotedblright, o dit en unes altres paraules, \textquotedblleft
-Tots els homes solters s\'{o}n infeli\c{c}os\textquotedblright.
+(1) \enquote{Tot home que no està casat no és
+feliç}, o dit en unes altres paraules, \enquote{Tots els homes solters són infeliços}.
 
-(2) \textquotedblleft A tots els que tenen una granota com a mascota els
-agraden les croquetes\textquotedblright.
+(2) \enquote{A tots els que tenen una granota com a mascota els
+agraden les croquetes}.
 
-(3) \textquotedblleft Existeix un nombre natural m\'{e}s petit o igual que
-qualsevol altre nombre natural\textquotedblright.
+(3) \enquote{Existeix un nombre natural més petit o igual que
+qualsevol altre nombre natural}.
 \end{solucio}
 
 \begin{exercici}
-Qu\`{e} signifiquen les afirmacions seg\"{u}ents? S\'{o}n vertaderes o falses?
-L'univers del discurs en cada cas \'{e}s $\mathbb{N}$, el conjunt de tots els
+Què signifiquen les afirmacions següents? Són vertaderes o falses?
+L'univers del discurs en cada cas és $\mathbb{N}$, el conjunt de tots els
 nombres naturals.
 
 \begin{enumerate}
@@ -812,55 +801,55 @@ nombres naturals.
 \end{exercici}
 
 \begin{solucio}
-(1) Aix\`{o} vol dir que per a cada nombre natural $x$, l'afirmaci\'{o}
-$\exists y(x<y)$ \'{e}s certa. En altres paraules, per a cada nombre natural
-$x$, hi ha un nombre natural m\'{e}s gran que $x$. Aix\`{o} \'{e}s cert. Per
-exemple, $x+1$ sempre \'{e}s m\'{e}s gran que $x$.
+(1) Això vol dir que per a cada nombre natural $x$, l'afirmació
+$\exists y(x<y)$ és certa. En altres paraules, per a cada nombre natural
+$x$, hi ha un nombre natural més gran que $x$. Això és cert. Per
+exemple, $x+1$ sempre és més gran que $x$.
 
-(2) Aix\`{o} vol dir que hi ha algun nombre natural $y$ tal que l'enunciat
-$\forall x(x<y)$ \'{e}s cert. En altres paraules, hi ha algun nombre natural
-$y$ tal que tots els nombres naturals s\'{o}n m\'{e}s petits que $y$. Es clar
-que aix\`{o} \'{e}s fals. No importa el nombre natural $y$ que triem, sempre
-hi haur\`{a} nombres naturals m\'{e}s grans.
+(2) Això vol dir que hi ha algun nombre natural $y$ tal que l'enunciat
+$\forall x(x<y)$ és cert. En altres paraules, hi ha algun nombre natural
+$y$ tal que tots els nombres naturals són més petits que $y$. Es clar
+que això és fals. No importa el nombre natural $y$ que triem, sempre
+hi haurà nombres naturals més grans.
 
-(3) Aix\`{o} vol dir que hi ha un nombre natural $x$ tal que $\exists y(x<y)$
-\'{e}s cert. Per\`{o} com hem vist al primer apartat, aix\`{o} \'{e}s cert per
-a tots els nombres naturals $x$, de manera que en particular \'{e}s cert per
+(3) Això vol dir que hi ha un nombre natural $x$ tal que $\exists y(x<y)$
+és cert. Però com hem vist al primer apartat, això és cert per
+a tots els nombres naturals $x$, de manera que en particular és cert per
 almenys un.
 
-(4)\ Aix\`{o} vol dir que hi ha un nombre natural $x$ tal que l'enunciat
-$\forall y(x<y)$ \'{e}s cert. Podr\'{\i}eu tenir la temptaci\'{o} de dir que
-aquesta afirmaci\'{o} ser\`{a} certa si $x=0$, per\`{o} aix\`{o} no \'{e}s
-correcte. Com que $0$ \'{e}s el nombre natural m\'{e}s petit, l'enunciat $0<y
-$ \'{e}s cert per a tots els valors de $y$ excepte $y=0$, per\`{o} si $y=0$,
-llavors $0<y$ \'{e}s fals i, per tant, $\forall y(0<y)$ \'{e}s fals. Un
+(4)\ Això vol dir que hi ha un nombre natural $x$ tal que l'enunciat
+$\forall y(x<y)$ és cert. Podríeu tenir la temptació de dir que
+aquesta afirmació serà certa si $x=0$, però això no és
+correcte. Com que $0$ és el nombre natural més petit, l'enunciat $0<y
+$ és cert per a tots els valors de $y$ excepte $y=0$, però si $y=0$,
+llavors $0<y$ és fals i, per tant, $\forall y(0<y)$ és fals. Un
 raonament similar mostra que per a cada valor de $x$ l'enunciat $\forall
-y(x<y)$ \'{e}s fals, per tant $\exists x\forall y(x<y)$ \'{e}s fals.
+y(x<y)$ és fals, per tant $\exists x\forall y(x<y)$ és fals.
 
-(5) Aix\`{o} vol dir que per a cada nombre natural $x$, l'enunciat $\forall
-y(x<y)$ \'{e}s vertader. Per\`{o} com hem vist a l'apartat anterior, ni tan
-sols hi ha un valor de $x$ per al qual aquesta afirmaci\'{o} \'{e}s certa.
-Aix\'{\i} doncs $\forall x\forall y(x<y)$ \'{e}s fals.
+(5) Això vol dir que per a cada nombre natural $x$, l'enunciat $\forall
+y(x<y)$ és vertader. Però com hem vist a l'apartat anterior, ni tan
+sols hi ha un valor de $x$ per al qual aquesta afirmació és certa.
+Així doncs $\forall x\forall y(x<y)$ és fals.
 \end{solucio}
 
 \begin{exercici}
-Escriu la negaci\'{o} de l'enunciat seg\"{u}ent: \textquotedblleft per a cada
+Escriu la negació de l'enunciat següent: \enquote{per a cada
 nombre real $\varepsilon>0$, hi ha un enter positiu $k$ tal que per a tots els
-enters positius $n$, es t\'{e} $\left\vert a_{n}-k^{2}\right\vert
-<\varepsilon$\textquotedblright.
+enters positius $n$, es té $\left\vert a_{n}-k^{2}\right\vert
+<\varepsilon$}.
 \end{exercici}
 
 \begin{solucio}
 Considerem com univers del discurs el conjunt de tots els nombres reals i
 simbolitzem per $\mathbb{Z}^{+}$ el conjunt del enters positius. D'aquesta
-manera l'enunciat s'escriu formalment aix\'{\i}:
+manera l'enunciat s'escriu formalment així:
 \[
 \forall\varepsilon>0,\exists k\in\mathbb{Z}^{+},\forall n\in\mathbb{Z}%
 ^{+},\left\vert a_{n}-k^{2}\right\vert <\varepsilon\text{.}%
 \]
 
 
-Aleshores la seva negaci\'{o} \'{e}s:%
+Aleshores la seva negació és:%
 \[
 \exists\varepsilon>0,\forall k\in\mathbb{Z}^{+},\exists n\in\mathbb{Z}%
 ^{+},\left\vert a_{n}-k^{2}\right\vert \geq\varepsilon\text{,}%
@@ -872,7 +861,7 @@ que es compleixi $\left\vert a_{n}-k^{2}\right\vert \geq\varepsilon$.
 
 \begin{exercici}
 Assumint com a domini de les variables $x$ i $y$ el conjunt $U$, escriviu una
-deducci\'{o} per el seg\"{u}ent raonament:%
+deducció per el següent raonament:%
 \[%
 \begin{tabular}
 [c]{ll}%
@@ -887,7 +876,7 @@ $C:$ & $\exists x\ R(x)$%
 \end{exercici}
 
 \begin{solucio}
-Fem ara la deducci\'{o} per provar la seva validesa:%
+Fem ara la deducció per provar la seva validesa:%
 \[%
 \begin{tabular}
 [c]{lll}%
@@ -910,22 +899,21 @@ T(x)\right)  $ & $P_{1}$\\
 \end{solucio}
 
 \begin{exercici}
-Escriviu una deducci\'{o} del argument seg\"{u}ent: \textquotedblleft Tota
-panerola intel\textperiodcentered ligent menga escombraries. Hi ha una
-panerola que li agrada la brut\'{\i}cia i no li agrada la pols. Per a cada
-panerola, no \'{e}s el cas que no li agradi la brut\'{\i}cia o mengi
-escombraries. Per tant, hi ha una panerola tal que no \'{e}s el cas que si no
-\'{e}s intel\textperiodcentered ligent, li agradi la pols.\textquotedblright.
+Escriviu una deducció del argument següent: \enquote{Tota
+panerola intel·ligent menga escombraries. Hi ha una
+panerola que li agrada la brutícia i no li agrada la pols. Per a cada
+panerola, no és el cas que no li agradi la brutícia o mengi
+escombraries. Per tant, hi ha una panerola tal que no és el cas que si no
+és intel·ligent, li agradi la pols.}.
 \end{exercici}
 
 \begin{solucio}
 Formalitzem els enunciats del raonament. Per facilitar l'escriptura,
-considerem que la variable $x$ t\'{e} per domini el conjunt de totes les
-paneroles. Denotem per $I$, $E$, $B$ i $P$ els predicats \textquotedblleft%
-\'{e}s intel\textperiodcentered ligent\textquotedblright, \textquotedblleft
-mengen porqueria\textquotedblright, \textquotedblleft agrada la
-brut\'{\i}cia\textquotedblright, i \textquotedblleft agrada la
-pols\textquotedblright, respectivament. Aleshores, el raonament podem
+considerem que la variable $x$ té per domini el conjunt de totes les
+paneroles. Denotem per $I$, $E$, $B$ i $P$ els predicats \enquote{%
+és intel·ligent}, \enquote{mengen porqueria}, \enquote{agrada la
+brutícia}, i \enquote{agrada la
+pols}, respectivament. Aleshores, el raonament podem
 simbolitzar-lo d'aquesta manera:%
 \[%
 \begin{tabular}
@@ -936,7 +924,7 @@ $P_{3}:$ & $\forall x~\lnot\left(  \lnot B(x)\vee E(x)\right)  $\\\hline
 $C:$ & $\exists x~\lnot\left(  \lnot I(x)\longrightarrow P(x)\right)  $%
 \end{tabular}
 \]
-Fem ara la deducci\'{o} per provar la seva validesa:%
+Fem ara la deducció per provar la seva validesa:%
 \[%
 \begin{tabular}
 [c]{lll}%
@@ -957,85 +945,68 @@ Fem ara la deducci\'{o} per provar la seva validesa:%
 13
 \end{tabular}
 \]
-on EQ significa que hem aplicat l'equivalencia l\`{o}gica: $A\longrightarrow
+on EQ significa que hem aplicat l'equivalencia lògica: $A\longrightarrow
 B\Longleftrightarrow\lnot A\vee B$.
 \end{solucio}
 
-\section{Demostraci\'{o}}
+\section{Demostració}
 
 \begin{exercici}
-Donat un enter positiu $n$, proveu directament que $n^{3}-n$ \'{e}s sempre
-m\'{u}ltiple de 3.
+Donat un enter positiu $n$, proveu directament que $n^{3}-n$ és sempre
+múltiple de 3.
 \end{exercici}
 
 \begin{solucio}
-Observa primer que $n(n^{2}-1)=n(n+1)(n-1)$. Aquest tres factors s\'{o}n tres
-nombres naturals consecutius i, per tant, un d'ells ser\`{a} un m\'{u}ltiple
-de 3. Com a conseq\"{u}\`{e}ncia $n^{3}-n$ \'{e}s sempre m\'{u}ltiple de 3.
+Observa primer que $n(n^{2}-1)=n(n+1)(n-1)$. Aquest tres factors són tres
+nombres naturals consecutius i, per tant, un d'ells serà un múltiple
+de 3. Com a conseqüència $n^{3}-n$ és sempre múltiple de 3.
 \end{solucio}
+
 
 \begin{exercici}
 Demostreu directament que per a cada terna de nombres reals positius $a,b$ i
-$c$ es compleix que%
+$c$ es compleix que
 \[
-\frac{a}{b+c}+\frac{b}{a+c}+\frac{c}{a+b}\geq1\text{.}%
+\frac{a}{b+c}+\frac{b}{a+c}+\frac{c}{a+b}\geq1.
 \]
-
 \end{exercici}
 
 \begin{solucio}
-Considerem $a>0,b>0$ i $c>0$. Aleshores podem escriure les tres expressions
-seg\"{u}ents:%
-\begin{align*}
-M  &  =\frac{a}{b+c}+\frac{b}{a+c}+\frac{c}{a+b}\\
-N  &  =\frac{a}{a+c}+\frac{c}{b+c}+\frac{b}{a+b}\\
-P  &  =\frac{c}{a+c}+\frac{b}{b+c}+\frac{a}{a+b}%
-\end{align*}
-Es clar que $N+P=3$ i $3M\geq M+N+P$. Aleshores es t\'{e} $2M\geq N+P$ i, per
-tant, $M\geq\frac{3}{2}>1$.
-
-Una altra forma de provar aquesta desigualtat \'{e}s aplicant el fet que la
-mitjana aritm\`{e}tica \'{e}s m\'{e}s gran que la hipergeom\`{e}trica. En
-efecte, podem escriure ara d'aquesta manera:
-\begin{align*}
-M  &  =\frac{a}{b+c}+\frac{a}{a+c}+\frac{a}{a+b}\\
-N  &  =\frac{b}{b+c}+\frac{b}{a+c}+\frac{b}{a+b}\\
-P  &  =\frac{c}{b+c}+\frac{c}{a+c}+\frac{c}{a+b}%
-\end{align*}
-Sumant tenim:%
-\begin{equation}
-M+N+P=\frac{a}{b+c}+\frac{b}{a+c}+\frac{c}{a+b}+3 \label{eq:nesbitt-suma}%
-\end{equation}
-Ara b\'{e},%
+De fet, provarem la desigualtat més forta
 \[
-M+N+P=\frac{a+b+c}{b+c}+\frac{a+b+c}{a+c}+\frac{a+b+c}{a+b}%
+\frac{a}{b+c}+\frac{b}{a+c}+\frac{c}{a+b}\geq \frac32.
 \]
-Aplicant el que hem dit abans:\qquad%
+Com que $a,b,c>0$, podem escriure
 \[
-\frac{1}{2}\cdot\frac{(b+c)+(a+c)+(a+b)}{3}\geq\frac{3}{\dfrac{1}{b+c}%
-+\dfrac{1}{a+c}+\dfrac{1}{a+b}}\text{.}%
+\frac{a}{b+c}=\frac{a^2}{a(b+c)},\qquad
+\frac{b}{a+c}=\frac{b^2}{b(a+c)},\qquad
+\frac{c}{a+b}=\frac{c^2}{c(a+b)}.
 \]
-Per tant, es t\'{e}%
+Aplicant la desigualtat de Cauchy-Schwarz en la forma d'Engel, obtenim
 \[
-\frac{a+b+c}{b+c}+\frac{a+b+c}{a+c}+\frac{a+b+c}{a+b}=
-\]%
-\[
-\frac{3}{2}\frac{(b+c)+(a+c)+(a+b)}{3}\left(  \dfrac{1}{b+c}+\dfrac{1}%
-{a+c}+\dfrac{1}{a+b}\right)  \geq
-\]%
-\[
-\frac{3}{2}\frac{3}{\dfrac{1}{b+c}+\dfrac{1}{a+c}+\dfrac{1}{a+b}}\dfrac
-{1}{b+c}+\dfrac{1}{a+c}+\dfrac{1}{a+b}\geq\frac{9}{2}\text{.}%
+\frac{a^2}{a(b+c)}+\frac{b^2}{b(a+c)}+\frac{c^2}{c(a+b)}
+\geq
+\frac{(a+b+c)^2}{a(b+c)+b(a+c)+c(a+b)}.
 \]
-D'aqu\'{\i} i (\ref{eq:nesbitt-suma}), surt%
+Ara bé,
 \[
-\frac{a}{b+c}+\frac{b}{a+c}+\frac{c}{a+b}+3\geq\frac{9}{2}\text{,}%
+a(b+c)+b(a+c)+c(a+b)=2(ab+ac+bc).
 \]
-i, per tant,%
+Per tant,
 \[
-\frac{a}{b+c}+\frac{b}{a+c}+\frac{c}{a+b}\geq\frac{3}{2}\text{.}%
+\frac{a}{b+c}+\frac{b}{a+c}+\frac{c}{a+b}
+\geq
+\frac{(a+b+c)^2}{2(ab+ac+bc)}.
 \]
-
+Finalment, com que
+\[
+(a+b+c)^2=a^2+b^2+c^2+2(ab+ac+bc)\geq 3(ab+ac+bc),
+\]
+s'obté
+\[
+\frac{(a+b+c)^2}{2(ab+ac+bc)}\geq \frac32>1.
+\]
+Això demostra, en particular, la desigualtat demanada.
 \end{solucio}
 
 \begin{exercici}
@@ -1044,85 +1015,85 @@ $a^{2}>b^{2}$.
 \end{exercici}
 
 \begin{solucio}
-La prova cap enrere surt de la tesi, i, per tant, podem fer es seg\"{u}ent:%
+La prova cap enrere surt de la tesi, i, per tant, podem fer es següent:%
 \[%
 \begin{tabular}
 [c]{ll}%
 $a^{2}>b^{2}$ & Tesi\\
 $\left\vert a\right\vert >\left\vert b\right\vert $ & Prenent arrels
 quadrades\\
-$-a>-b$ & $a,b$ s\'{o}n negatius\\
-$a<b$ & Multiplicant per $-1$ i surt l'hip\`{o}tesi
+$-a>-b$ & $a,b$ són negatius\\
+$a<b$ & Multiplicant per $-1$ i surt l'hipòtesi
 \end{tabular}
 \]
-De fet, aix\`{o} que hem escrit s'havia d'haver pensat mentalment perqu\`{e}
-la demostraci\'{o} real \'{e}s una prova directa: Si $a<b$, multiplicant per
-$-1$, es t\'{e} $-a>-b$ i $-a,-b$ s\'{o}n positius. Per tant, $\left(
+De fet, això que hem escrit s'havia d'haver pensat mentalment perquè
+la demostració real és una prova directa: Si $a<b$, multiplicant per
+$-1$, es té $-a>-b$ i $-a,-b$ són positius. Per tant, $\left(
 -a\right)  ^{2}>(-b)^{2}$ o sigui, $a^{2}>b^{2}$.
 \end{solucio}
 
 \begin{exercici}
-Proveu per contrarec\'{\i}proc que per a qualssevol $n,m\in\mathbb{Z}$, si
-$mn$ \'{e}s senar, llavors $m$ i $n$ s\'{o}n senars.
+Proveu per contrarecíproc que per a qualssevol $n,m\in\mathbb{Z}$, si
+$mn$ és senar, llavors $m$ i $n$ són senars.
 \end{exercici}
 
 \begin{solucio}
-Si fessim la prova directa seria prendre com hip\`{o}tesi que $mn$ \'{e}s
-senar i hem d'arribar a veure que $m$ i $n$ tamb\'{e} ho s\'{o}n. En canvi,
-per contrarec\'{\i}proc ser\`{a} prendre com hip\`{o}tesi que no \'{e}s el cas
-que $m$ i $n$ siguin senars i hem d'arribar a provar que $mn$ no \'{e}s senar.
+Si fessim la prova directa seria prendre com hipòtesi que $mn$ és
+senar i hem d'arribar a veure que $m$ i $n$ també ho són. En canvi,
+per contrarecíproc serà prendre com hipòtesi que no és el cas
+que $m$ i $n$ siguin senars i hem d'arribar a provar que $mn$ no és senar.
 
-Si no \'{e}s el cas que $m$ i $n$ siguin senars, vol dir que $m$ \'{e}s parell
-o $n$ \'{e}s parell. Suposem per exemple que $m$ \'{e}s parell. Aleshores
+Si no és el cas que $m$ i $n$ siguin senars, vol dir que $m$ és parell
+o $n$ és parell. Suposem per exemple que $m$ és parell. Aleshores
 existeix $k\in\mathbb{Z}$ tal que $m=2k$. Per tant, $mn=2kn$ i $kn\in
-\mathbb{Z}$. Aleshores $mn$ \'{e}s parell com volíem demostrar.
+\mathbb{Z}$. Aleshores $mn$ és parell com volíem demostrar.
 \end{solucio}
 
 \begin{exercici}
-Proveu per reducci\'{o} a l'absurd que els \'{u}nics enters consecutius no
-negatius $a,b$ i $c$ que compleixen $a^{2}+b^{2}=c^{2}$ s\'{o}n $3,4$ i $5$.
+Proveu per reducció a l'absurd que els únics enters consecutius no
+negatius $a,b$ i $c$ que compleixen $a^{2}+b^{2}=c^{2}$ són $3,4$ i $5$.
 \end{exercici}
 
 \begin{solucio}
-Suposem que $3,4$ i~$5$ no s\'{o}n els \'{u}nics enters consecutius no
-negatius que compleixen $a^{2}+b^{2}=c^{2}$. Aix\`{o} \'{e}s equivalent a
+Suposem que $3,4$ i~$5$ no són els únics enters consecutius no
+negatius que compleixen $a^{2}+b^{2}=c^{2}$. Això és equivalent a
 suposar que existeixen enters no negatius $n,n+1$ i $n+2$ i $n\neq3$ tals que%
 \[
 n^{2}+(n+1)^{2}=(n+2)^{2}%
 \]
-Ara b\'{e}, fent operacions, s'obt\'{e} l'equaci\'{o} $n^{2}-2n-3=0$, qu\`{e}
-t\'{e} com a solucions $3$ i $-1$. Per tant, arribem a un absurd perqu\`{e}
-hem suposat que $n\neq3$. Com a conseq\"{u}\`{e}ncia, hem provat el que vol\'{\i}em.
+Ara bé, fent operacions, s'obté l'equació $n^{2}-2n-3=0$, què
+té com a solucions $3$ i $-1$. Per tant, arribem a un absurd perquè
+hem suposat que $n\neq3$. Com a conseqüència, hem provat el que volíem.
 \end{solucio}
 
 \begin{exercici}
 Siguin $a,b$ i $c$ enters. Suposem que hi ha un nombre enter $d$ que $d\mid a
-$ i $d\mid b$, per\`{o} que $d$ no divideix $c$. Demostreu per reducci\'{o} a
-l'absurd que l'equaci\'{o} $ax+by=c$ no t\'{e} cap soluci\'{o} que $x$ i $y $
+$ i $d\mid b$, però que $d$ no divideix $c$. Demostreu per reducció a
+l'absurd que l'equació $ax+by=c$ no té cap solució que $x$ i $y $
 siguin enters.
 \end{exercici}
 
 \begin{solucio}
-Suposem que $ax+by=c$ t\'{e} una soluci\'{o} tal que $x$ i $y$ s\'{o}n enters.
-Com $d$ divideix $a$ i tamb\'{e} $b$, aleshores existeixen enters $m$ i $n$
-tals que $a=md$ i $b=nd$. Aleshores, es t\'{e}%
+Suposem que $ax+by=c$ té una solució tal que $x$ i $y$ són enters.
+Com $d$ divideix $a$ i també $b$, aleshores existeixen enters $m$ i $n$
+tals que $a=md$ i $b=nd$. Aleshores, es té%
 \[
 mdx+ndy=c
 \]
-Dividint per $d$, s'obt\'{e}%
+Dividint per $d$, s'obté%
 \[
 mx+ny=\frac{c}{d}%
 \]
-Per\`{o} aix\`{o} \'{e}s absurd perqu\`{e} $mx+ny$ \'{e}s enter i, per tant,
-tamb\'{e} $\dfrac{c}{d}$ i aix\`{o} no \'{e}s possible perqu\`{e} $d$ no
+Però això és absurd perquè $mx+ny$ és enter i, per tant,
+també $\dfrac{c}{d}$ i això no és possible perquè $d$ no
 divideix $c$.
 \end{solucio}
 
 \begin{exercici}
-Proveu per inducci\'{o}:
+Proveu per inducció:
 
 \begin{enumerate}
-\item Si $n$ \'{e}s un nombre enter no negatiu, llavors $%
+\item Si $n$ és un nombre enter no negatiu, llavors $%
 %TCIMACRO{\dsum \limits_{k=0}^{n}}%
 %BeginExpansion
 {\displaystyle\sum\limits_{k=0}^{n}}
@@ -1135,24 +1106,24 @@ tot $x\in\mathbb{R}$ i $x>-1$.
 \end{exercici}
 
 \begin{solucio}
-(1) Constru\"{\i}m una prova d'inducci\'{o} sobre $n$, essent $P(n)=$
-\textquotedblleft$%
+(1) Construïm una prova d'inducció sobre $n$, essent $P(n)=$
+\enquote{$%
 %TCIMACRO{\dsum \limits_{k=0}^{n}}%
 %BeginExpansion
 {\displaystyle\sum\limits_{k=0}^{n}}
 %EndExpansion
-k\cdot k!=\left(  n+1\right)  !-1$\textquotedblright.
+k\cdot k!=\left(  n+1\right)  !-1$}.
 
 \begin{description}
-\item[Cas base:] $P(1)$ \'{e}s $%
+\item[Cas base:] $P(0)$ és $%
 %TCIMACRO{\dsum \limits_{k=0}^{1}}%
 %BeginExpansion
-{\displaystyle\sum\limits_{k=0}^{1}}
+{\displaystyle\sum\limits_{k=0}^{0}}
 %EndExpansion
-k\cdot k!=\left(  1+1\right)  !-1$ i, aix\`{o} \'{e}s veritat perqu\`{e}
-$0\cdot0!+1\cdot1!=1$.
+k\cdot k!=\left(  0+1\right)  !-1$ i, això és veritat perquè
+$0\cdot0!=0=1!-1$.
 
-\item[Hip\`{o}tesi d'inducci\'{o}:] Suposem que $P(n)$ \'{e}s certa, o sigui
+\item[Hipòtesi d'inducció:] Suposem que $P(n)$ és certa, o sigui
 que $%
 %TCIMACRO{\dsum \limits_{k=0}^{n}}%
 %BeginExpansion
@@ -1160,15 +1131,15 @@ que $%
 %EndExpansion
 k\cdot k!=\left(  n+1\right)  !-1$.
 
-\item[Tesi:] Hem de demostrar que $P(n+1)=$\textquotedblleft$%
+\item[Tesi:] Hem de demostrar que $P(n+1)=$\enquote{$%
 %TCIMACRO{\dsum \limits_{k=0}^{n+1}}%
 %BeginExpansion
 {\displaystyle\sum\limits_{k=0}^{n+1}}
 %EndExpansion
-k\cdot k!=\left(  n+2\right)  !-1$\textquotedblright\ \'{e}s certa.
+k\cdot k!=\left(  n+2\right)  !-1$}\ és certa.
 \end{description}
 
-En efecte, aplicant l'hip\`{o}tesi d'inducci\'{o}, es t\'{e}%
+En efecte, aplicant l'hipòtesi d'inducció, es té%
 \begin{align*}%
 %TCIMACRO{\dsum \limits_{k=0}^{n+1}}%
 %BeginExpansion
@@ -1184,60 +1155,60 @@ k\cdot k!+(n+1)(n+1)!\\
 &  =(1+n+1)(n+1)!-1\\
 &  =(n+2)!-1
 \end{align*}
-que \'{e}s el que vol\'{\i}em veure.
+que és el que volíem veure.
 
 \begin{description}
-\item[Conclusi\'{o}:] Pel principi d'inducci\'{o} sobre $n$, dedu\"{\i}m que
-$P(n)$ \'{e}s certa per a tot $n\in\mathbb{N}$.
+\item[Conclusió:] Pel principi d'inducció sobre $n$, deduïm que
+$P(n)$ és certa per a tot $n\in\mathbb{N}$.
 \end{description}
 
-(2) Constru\"{\i}m una prova d'inducci\'{o} sobre $n$, essent $P(n)=$
-\textquotedblleft Si $n\in\mathbb{N}$, llavors $\left(  1+x\right)  ^{n}%
-\geq1+nx$ per a tot $x\in\mathbb{R}$ i $x>-1$\textquotedblright.
+(2) Construïm una prova d'inducció sobre $n$, essent $P(n)=$
+\enquote{Si $n\in\mathbb{N}$, llavors $\left(  1+x\right)  ^{n}%
+\geq1+nx$ per a tot $x\in\mathbb{R}$ i $x>-1$}.
 
 \begin{description}
-\item[Cas base:] $P(1)$ \'{e}s evident que \'{e}s vertadera.
+\item[Cas base:] $P(1)$ és evident que és vertadera.
 
-\item[Hip\`{o}tesi d'inducci\'{o}:] Suposem que $P(n)$ \'{e}s certa, o sigui
+\item[Hipòtesi d'inducció:] Suposem que $P(n)$ és certa, o sigui
 que si $n\in\mathbb{N}$, llavors $\left(  1+x\right)  ^{n}\geq1+nx$ per a tot
 $x\in\mathbb{R}$ i $x>-1$.
 
-\item[Tesi:] Hem de demostrar que $P(n+1)=$\textquotedblleft Si $n\in
+\item[Tesi:] Hem de demostrar que $P(n+1)=$\enquote{Si $n\in
 \mathbb{N}$, llavors $\left(  1+x\right)  ^{n+1}\geq1+(n+1)x$ per a tot
-$x\in\mathbb{R}$ i $x>-1$\textquotedblright\ \'{e}s certa.
+$x\in\mathbb{R}$ i $x>-1$}\ és certa.
 \end{description}
 
-En efecte, aplicant l'hip\`{o}tesi d'inducci\'{o}, es t\'{e}%
+En efecte, aplicant l'hipòtesi d'inducció, es té%
 \begin{align*}
 \left(  1+x\right)  ^{n+1}  &  =(1+x)^{n}(1+x)\\
-&  =\left(  1+nx\right)  (1+x)\\
+&  \geq\left(  1+nx\right)  (1+x)\\
 &  =1+x+nx+nx^{2}\\
 &  =1+(n+1)x+nx^{2}\\
 &  \geq1+(n+1)x
 \end{align*}
-que \'{e}s el que vol\'{\i}em veure.
+que és el que volíem veure.
 
 \begin{description}
-\item[Conclusi\'{o}:] Pel principi d'inducci\'{o} sobre $n$, dedu\"{\i}m que
-$P(n)$ \'{e}s certa per a tot $n\in\mathbb{N}$.
+\item[Conclusió:] Pel principi d'inducció sobre $n$, deduïm que
+$P(n)$ és certa per a tot $n\in\mathbb{N}$.
 \end{description}
 \end{solucio}
 
 \begin{exercici}
 Proveu que el residu del quadrat de qualsevol nombre enter quan es divideix
-per 4 \'{e}s $0$ o $1$.
+per 4 és $0$ o $1$.
 \end{exercici}
 
 \begin{solucio}
-Tot nombre enter $n$ \'{e}s o parell o b\'{e} senar. Aquesta idea proporciona
-l'estrat\`{e}gia de la demostraci\'{o}: constru\"{\i}r una prova per casos:
+Tot nombre enter $n$ és o parell o bé senar. Aquesta idea proporciona
+l'estratègia de la demostració: construïr una prova per casos:
 
-(1) Si $n$ \'{e}s parell, aleshores $n=2k$, on $k\in\mathbb{Z}$. Llavors,
-$n^{2}=4k^{2}$ qu\`{e} \'{e}s m\'{u}ltiple de $4$ i, per tant, quan es
+(1) Si $n$ és parell, aleshores $n=2k$, on $k\in\mathbb{Z}$. Llavors,
+$n^{2}=4k^{2}$ què és múltiple de $4$ i, per tant, quan es
 divideix per $4$ el residu val $0$.
 
-(2) si $n$ \'{e}s senar, aleshores $n=2k+1$, on $k\in\mathbb{Z}$. Llavors,
-$n^{2}=4k^{2}+4k+1=4\left(  k^{2}+k\right)  +1$ qu\`{e} quan es divideix per
+(2) si $n$ és senar, aleshores $n=2k+1$, on $k\in\mathbb{Z}$. Llavors,
+$n^{2}=4k^{2}+4k+1=4\left(  k^{2}+k\right)  +1$ què quan es divideix per
 $4$ el residu val $1$.
 \end{solucio}
 
@@ -1247,51 +1218,59 @@ llavors $x^{2}>6x$.
 \end{exercici}
 
 \begin{solucio}
-Per definici\'{o} de valor absolut, $\left\vert x-3\right\vert =x-3$ si
+Per definició de valor absolut, $\left\vert x-3\right\vert =x-3$ si
 $x-3\geq0$, i $\left\vert x-3\right\vert =-\left(  x-3\right)  $ si $x-3<0$.
-Constru\"{\i}m una prova per casos:
+Construïm una prova per casos:
 
 (1) Si $x-3\geq0$, aleshores $\left\vert x-3\right\vert =x-3>3$ i, per tant,
-$x>6$. D'aqu\'{\i}, s'obt\'{e} $x^{2}>6x$.
+$x>6$. D'aquí, s'obté $x^{2}>6x$.
 
 (2) Si $x-3<0$, aleshores $\left\vert x-3\right\vert =-x+3>3$ i, per tant,
-$x<0$. D'aqu\'{\i}, s'obt\'{e} $x^{2}>6x$.
+$x<0$. D'aquí, s'obté $x^{2}>6x$.
 \end{solucio}
 
 \begin{exercici}
-\'{E}s cert que per a cada enter positiu $n$ es compleix que $n^{2}-n+17$
-\'{e}s un nombre primer?
+És cert que per a cada enter positiu $n$ es compleix que $n^{2}-n+17$
+és un nombre primer?
 \end{exercici}
 
 \begin{solucio}
-Si pensem que l'enunciat \'{e}s fals hem de trobar un contraexemple per
+Si pensem que l'enunciat és fals hem de trobar un contraexemple per
 provar-ho. En efecte, si prenem $n=17$, aleshores $n^{2}-n+17=289$ que no
-\'{e}s primer.
+és primer.
 \end{solucio}
 
+
 \begin{exercici}
-(Algoritme de la divisi\'{o}) Si $a,b\in\mathbb{N}$, proveu que existeixen
-enters $q,r$ i s\'{o}n \'{u}nics tals que $a=bq+r$, amb $0\leq r<b$.
+(Algorisme de la divisió) Si $a,b\in\mathbb{N}$ i $b>0$, proveu que existeixen enters $q,r$ únics tals que $a=bq+r$, amb $0\leq r<b$.
 \end{exercici}
 
 \begin{solucio}
-Sabem que $a,b\in\mathbb{N}$. Primer hem de provar l'exist\`{e}ncia, buscant
-aquests nombres enters que compleixen la propietat. Considerem el conjunt de
-m\'{u}ltiples positius $b$: $B=\left\{  kb:k\in\mathbb{N}\right\}  $. Com el
-conjunt dels nombres naturals $\mathbb{N}$ est\`{a} ben ordenat per la
-relaci\'{o} $\leq$, tot subconjunt t\'{e} m\'{\i}nim. Per tant, existeix un
-natural $n$ de $B$ tal que $nb\leq a<(n+1)b$. Aix\`{o} \'{e}s equivalent a
-$0\leq a-nb<b$, i si ara prenem $r=a-nb$ i $q=n$ es compleix la propietat.
+Considerem el conjunt
+\[
+S=\{a-bq:q\in\mathbb{Z},\ a-bq\geq 0\}.
+\]
+Aquest conjunt no és buit, perquè $a=a-b\cdot 0\in S$. Pel principi del mínim, $S$ té un element mínim; escrivim-lo com
+\[
+r=a-bq
+\]
+per a algun enter $q$. Per construcció, $r\geq 0$. Vegem que $r<b$. Si fos $r\geq b$, aleshores
+\[
+r-b=a-bq-b=a-b(q+1)\geq 0,
+\]
+i per tant $r-b\in S$. Però $r-b<r$, cosa que contradiu que $r$ era el mínim de $S$. Així, $0\leq r<b$ i $a=bq+r$.
 
-Finalment, hem de demostrar la unicitat. Suposem que existeixen $r^{\prime}$ i
-$q^{\prime}$ que compleixen $a=bq^{\prime}+r^{\prime}$, amb $0\leq r^{\prime
-}<b$. Aleshores, es t\'{e}%
-\begin{align*}
-bq+r  &  =bq^{\prime}+r^{\prime}\\
-r-r^{\prime}  &  =(q^{\prime}-q)b
-\end{align*}
-i aix\`{o} vol dir que $r-r^{\prime}$ \'{e}s m\'{u}ltiple de $b$. Llavors, com
-$0\leq r<b$ i $0\leq r^{\prime}<b$, s'obt\'{e} $0\leq\left\vert r-r^{\prime
-}\right\vert <b$, i com a conseq\"{u}\`{e}ncia, $\left\vert r-r^{\prime
-}\right\vert =0$ o sigui $r^{\prime}=r$. Aleshores, tamb\'{e} $q^{\prime}=q$.
+Per provar la unicitat, suposem que
+\[
+a=bq+r=bq'+r',\qquad 0\leq r,r'<b.
+\]
+Aleshores
+\[
+r-r'=b(q'-q).
+\]
+Així, $r-r'$ és múltiple de $b$. Però, com que $0\leq r,r'<b$, tenim
+\[
+-b<r-r'<b.
+\]
+L'únic múltiple de $b$ que pot estar estrictament entre $-b$ i $b$ és $0$. Per tant, $r-r'=0$, és a dir, $r=r'$, i llavors també $q=q'$.
 \end{solucio}

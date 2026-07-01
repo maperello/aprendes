@@ -1,0 +1,1434 @@
+\chapter{Teoria}
+\label{cap:teoria}
+
+\section{Anell dels polinomis}
+
+S'anomena \textbf{polinomi en la indeterminada} (o variable) $x$ tota
+expressió reduïble a la forma:
+\begin{equation*}
+a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}
+\end{equation*}
+on $n$ és un nombre natural i $a_{0},a_{1},a_{2},\ldots,a_{n-1},a_{n}$
+són nombres reals qualssevol. La lletra $x$ que apareix en el
+polinomi no designa res en particular i, per això, s’anomena
+indeterminada; en realitat, pot substituir-se per qualsevol altra lletra o
+signe. Si $a_{n}\neq 0$, aleshores es diu que $n$ és el \textbf{grau }del
+polinomi; s'admet que un nombre real diferent de zero és un polinomi
+de grau zero i que el nombre real $0$ és un polinomi sense grau, s'anomena \textbf{polinomi zero}. A cadascun dels sumands $a_{i}x^{i}$ ($i=1,2,...,n$) del polinomi l'anomenem \textbf{monomi de grau} $i$ i
+aleshores $a_{i}$ s’anomena \textbf{coeficient del monomi de grau} $i$. El terme $a_{0}$ s'anomena \textbf{terme independent} del polinomi (o
+coeficient del monomi de grau zero si $a_{0}\neq 0$).
+
+En general, els nombres reals $a_{0},a_{1},\ldots,a_{n-1},a_{n}$ s'anomenen també \textbf{coeficients del polinomi} i, per a referir-nos a un d'ells, direm també que $a_{i}$ és el \textbf{coeficient del terme de grau} $i$ del polinomi. S'anomena \textbf{nombre de termes} del polinomi el nombre de monomis no nuls que apareixen en el
+polinomi; si són dos, el polinomi s’anomena \textbf{binomi}, i si són
+tres, \textbf{trinomi}. Finalment, per a referir-nos a un polinomi en la
+indeterminada $x$ farem servir la notació $p(x)$. D'aquesta manera, si $p(x)$ és un polinomi de grau $n$ amb coeficients $a_{0},a_{1},\ldots,a_{n-1},a_{n}$, escriurem
+\begin{equation*}
+p(x)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}
+\end{equation*}
+Dos polinomis són \textbf{iguals} si coincideixen els coeficients de tots
+els termes del mateix grau en un i l'altre polinomi. És clar que si
+dos polinomis són iguals, aleshores tots dos tenen el mateix grau; en
+particular, donats dos polinomis de grau $n$
+\begin{equation*}
+p(x)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}~\ \
+(a_{n}\neq 0)
+\end{equation*}i\begin{equation*}
+q(x)=b_{0}+b_{1}x+b_{2}x^{2}+\cdots +b_{n-1}x^{n-1}+b_{n}x^{n}~\ \
+(b_{n}\neq 0)
+\end{equation*}direm que $p(x)=q(x)$ si
+\begin{equation*}
+a_{k}=b_{k}~\ \ \ \ (k=0,1,2,...,n)
+\end{equation*}
+
+Per exemple,\begin{equation*}
+p(x)=-1+2x-3x^{2}+5x^{4}
+\end{equation*}és un polinomi de grau $4$ amb coeficients $-1,2,-3$ i $5$, essent el seu terme independent $-1$. Observa que $p(x)$ està format per una
+suma de monomis: $-1$ és un monomi de grau zero, $2x$ és un monomi de
+grau $1$, $-3x^{2}$ és un monomi de grau $2$ i $5x^{4}$ és un monomi de
+grau $4$. Per exemple, el coeficient del monomi de grau $2$ és $-3$ i el coeficient
+del monomi de grau $3$ és $0$
+
+De vegades un polinomi no és donat en forma reduïda. Això passa, per
+exemple, amb el següent polinomi\begin{equation*}
+p(x)=x^{3}-3x^{2}-\sqrt{2}+\sqrt{3}x-7x^{2}+5x^{3}+1-6x^{3}+10x^{2}+x
+\end{equation*}Aleshores, efectuant operacions amb els monomis del mateix grau,
+anomenats \textbf{termes semblants}, obtenim\begin{eqnarray*}
+p(x) &=&-\sqrt{2}+1+(\sqrt{3}+1)x+(-3-7+10)x^{2}+(1+5-6)x^{3} \\
+&=&-\sqrt{2}+1+(\sqrt{3}+1)x
+\end{eqnarray*}Mitjançant aquesta \textbf{reducció de termes semblants} veiem que
+resulta un polinomi de grau $1$ amb coeficients $-\sqrt{2}+1$ i $\sqrt{3}+1$.
+
+\subsection{Valor numèric d'un polinomi}
+
+Hem dit que la indeterminada d'un polinomi pot ser qualsevol cosa.
+En particular, un polinomi\begin{equation*}
+p(x)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}
+\end{equation*}pren un valor quan a la indeterminada $x$ li assignem un nombre real.
+S'anomena \textbf{valor numèric} d'un polinomi $p(x)$ per a $x=k$ ($k$
+és un nombre real qualsevol) el nombre\begin{equation*}
+p(k)=a_{0}+a_{1}k+a_{2}k^{2}+\cdots +a_{n-1}k^{n-1}+a_{n}k^{n}
+\end{equation*}és a dir, al resultat de substituir la $x$ pel nombre $k$ i efectuar
+després les operacions.
+
+Per exemple, el valor numèric del polinomi $p(x)=1+x-x^{3}$ per a $x=-1$
+és\begin{eqnarray*}
+p(-1) &=&1+(-1)-(-1)^{3} \\
+&=&1-1+1 \\
+&=&1
+\end{eqnarray*}
+
+\subsection{Suma de polinomis}
+
+Donats dos polinomis\begin{equation*}
+\begin{array}{l}
+p(x)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n} \\
+q(x)=b_{0}+b_{1}x+b_{2}x^{2}+\cdots +b_{m-1}x^{m-1}+b_{m}x^{m}\end{array}\end{equation*}amb $a_{n}\neq 0$ i $b_{m}\neq 0$, o sigui, de graus $n$ i $m$
+respectivament. Definim la \textbf{suma de dos monomis del mateix grau} $i$ de la manera següent\begin{equation*}
+a_{i}x^{i}+b_{i}x^{i}=(a_{i}+b_{i})x^{i}
+\end{equation*}
+Observa que, quan $x$ pren algun valor numèric, aquesta definició és coherent amb el fet que el producte de nombres reals
+sigui distributiu respecte de la suma. Aleshores, definim \textbf{polinomi
+suma} el polinomi $p(x)+q(x)$ que resulta de sumar els monomis del mateix
+grau. Així, tenim\begin{equation*}
+p(x)+q(x)=(a_{0}+b_{0})+(a_{1}+b_{1})x+(a_{2}+b_{2})x^{2}+\cdots
+\end{equation*}Si en un polinomi o en tots dos falta algun monomi, s'ha de suposar que
+el seu coeficient és zero.
+
+Per exemple, si\begin{equation*}
+\begin{array}{l}
+p(x)=2-3x+5x^{2} \\
+q(x)=-1+3x^{2}-2x^{3}\end{array}\end{equation*}aleshores el polinomi suma $p(x)+q(x)$ és\begin{equation*}
+\begin{array}{cccccc}
+p(x) & = & 2 & -3x & 5x^{2} & 0x^{3} \\
+q(x) & = & -1 & 0x & 3x^{2} & -2x^{3} \\ \hline
+p(x)+q(x) & = & 1 & -3x & 8x^{2} & -2x^{3}\end{array}\end{equation*}és a dir,\begin{equation*}
+p(x)+q(x)=1-3x+8x^{2}-2x^{3}
+\end{equation*}
+
+\subsubsection{Propietats de la suma}
+
+\begin{enumerate}
+\item[(1)] \textbf{Associativa}: qualssevol que siguin els polinomis $p(x),q(x)$ i $r(x)$ es compleix\begin{equation*}
+\left[ p(x)+q(x)\right] +r(x)=p(x)+\left[ q(x)+r(x)\right]
+\end{equation*}
+
+\item[(2)] \textbf{Commutativa}: qualssevol que siguin els polinomis $p(x)$
+i $q(x)$ es compleix\begin{equation*}
+p(x)+q(x)=q(x)+p(x)
+\end{equation*}
+
+\item[(3)] \textbf{Existència d'element neutre}: per a qualsevol polinomi $p(x)$ es compleix\begin{equation*}
+p(x)+0=p(x)
+\end{equation*}essent $0$ el polinomi zero, és a dir, el polinomi que té tots les seves
+coeficients iguals a $0$.
+
+\item[(4)] \textbf{Existència d'element oposat}: per a cada polinomi $p(x) $existeix $-p(x)$, anomenat \textbf{polinomi oposat} de $p(x)$, tal
+que\begin{equation*}
+p(x)+\left[ -p(x)\right] =0
+\end{equation*}Aquest polinomi és únic per a cada $p(x)$ i, si $p(x)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}$, aleshores\begin{equation*}
+-p(x)=(-a_{0})+(-a_{1})x+(-a_{2})x^{2}+\cdots
++(-a_{n-1})x^{n-1}+(-a_{n})x^{n}
+\end{equation*}és a dir, $-p(x)$ té per coeficients els oposats dels coeficients de
+$p(x)$. Com és habitual, definim\begin{equation*}
+p(x)-q(x)=p(x)+\left[ -q(x)\right]
+\end{equation*}és a dir, la \textbf{resta} de dos polinomis $p(x)-q(x)$ és la suma de $p(x) $amb el oposat de $q(x)$.
+
+\item[(5)] \textbf{Grau del polinomi suma}: el grau del polinomi suma és
+més petit o igual que el màxim dels graus dels
+polinomis sumands\begin{equation*}
+\text{grad\,}\left[ p(x)+q(x)\right] \leq \max \left\{ \text{grad
+\,}p(x),\text{grad\,}q(x)\right\}
+\end{equation*}Per exemple, si\begin{equation*}
+\begin{array}{l}
+p(x)=-16+x^{2}-6x^{4}+x^{5} \\
+q(x)=1+2x^{2}-5x^{3}\end{array}\end{equation*}aleshores\begin{equation*}
+p(x)+q(x)=-15+3x^{2}-5x^{3}-6x^{4}+x^{5}
+\end{equation*}i es compleix\begin{equation*}
+\text{grad\,}\left[ p(x)+q(x)\right] =5\leq 5=\max
+\left\{\text{grad\,}p(x),\text{grad\,}q(x)\right\}
+\end{equation*}Però, si\begin{equation*}
+\begin{array}{l}
+p(x)=-16+x^{2}-6x^{4}+x^{5} \\
+q(x)=1+2x^{2}-x^{5}\end{array}\end{equation*}aleshores\begin{equation*}
+p(x)+q(x)=-15+3x^{2}-6x^{4}
+\end{equation*}i també es compleix\begin{equation*}
+\text{grad\,}\left[ p(x)+q(x)\right] =4\leq 5=\max \left\{
+\text{grad\,}p(x),\text{grad\,}q(x)\right\}
+\end{equation*}
+\end{enumerate}
+
+\subsection{Producte de polinomis}
+
+Donats dos polinomis\begin{equation*}
+\begin{array}{l}
+p(x)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n} \\
+q(x)=b_{0}+b_{1}x+b_{2}x^{2}+\cdots +b_{m-1}x^{m-1}+b_{m}x^{m}\end{array}\end{equation*}amb $a_{n}\neq 0$ i $b_{m}\neq 0$, o sigui, de graus $n$ i $m$
+respectivament. Definim el \textbf{producte de dos monomis }qualssevol
+de la manera següent\begin{equation*}
+\left( a_{i}x^{i}\right) \cdot \left( b_{j}x^{j}\right) =\left(
+a_{i}b_{j}\right) ~x^{i+j}
+\end{equation*}
+Observa que, quan $x$ pren algun valor numèric, aquesta definició és coherent amb les propietats commutativa i associativa del
+producte de nombres reals i també amb la propietat del producte
+de potències. Aleshores, definim \textbf{polinomi producte} el polinomi $p(x)\cdot q(x)$ que resulta de multiplicar cada monomi de $p(x)$ per tots
+els monomis de $q(x)$ i després sumar-los tots. Així, tenim\begin{equation*}
+p(x)\cdot
+q(x)=(a_{0}b_{0})+(a_{0}b_{1}+a_{1}b_{0})x+(a_{0}b_{2}+a_{1}b_{1}+a_{2}b_{0})x^{2}+\cdots
+\end{equation*}
+
+Per exemple, si\begin{equation*}
+\begin{array}{l}
+p(x)=2-3x+5x^{2} \\
+q(x)=-1+3x^{2}-2x^{3}\end{array}\end{equation*}aleshores el polinomi producte $p(x)\cdot q(x)$ és\begin{equation*}
+\begin{array}{cccccccccccccc}
+p(x) & = & & & & & & & & 2 & - & 3x & + & 5x^{2} \\
+q(x) & = & & & & & & & - & 1 & + & 3x^{2} & - & 2x^{3} \\ \hline
+& & - & 2 & & & + & 6x^{2} & - & 4x^{3} & & & & \\
+& & & & & 3x & & & - & 9x^{3} & + & 6x^{4} & & \\
+& & & & & & - & 5x^{2} & & & + & 15x^{4} & - & 10x^{5} \\ \hline
+p(x)\cdot q(x) & = & - & 2 & + & 3x & + & x^{2} & - & 13x^{3} & + & 21x^{4}
+& - & 10x^{5}\end{array}\end{equation*}
+
+\subsubsection{Propietats del producte}
+
+\begin{enumerate}
+\item[(1)] \textbf{Associativa}: qualssevol que siguin els polinomis $p(x),q(x)$ i $r(x)$ es compleix\begin{equation*}
+\left[ p(x)\cdot q(x)\right] \cdot r(x)=p(x)\cdot \left[ q(x)\cdot r(x)\right]
+\end{equation*}
+
+\item[(2)] \textbf{Commutativa}: qualssevol que siguin els polinomis $p(x)$
+i $q(x)$ es compleix\begin{equation*}
+p(x)\cdot q(x)=q(x)\cdot p(x)
+\end{equation*}
+
+\item[(3)] \textbf{Existència d'element unitat}: per a qualsevol polinomi $p(x)$ es compleix\begin{equation*}
+p(x)\cdot 1=p(x)
+\end{equation*}essent $1$ la unitat dels nombres reals, és a dir, un polinomi de
+grau zero. A $1$ s'anomena aleshores \textbf{polinomi unitat}.
+
+\item[(4)] \textbf{Distributiva del producte respecte de la suma}:
+qualssevol que siguin els polinomis $p(x),q(x)$ i $r(x)$ es compleix\begin{equation*}
+p(x)\cdot \left[ q(x)+r(x)\right] =p(x)\cdot q(x)+p(x)\cdot r(x)
+\end{equation*}
+
+\item[(5)] \textbf{No té divisors de zero}: si $p(x)\neq 0$ i $q(x)\neq
+0 $, aleshores\begin{equation*}
+p(x)\cdot q(x)\neq 0
+\end{equation*}o dit d'una altra manera equivalent, si $p(x)\cdot q(x)=0$, aleshores $p(x)=0$
+o $q(x)=0$.
+
+\item[(6)] \textbf{Grau del polinomi producte}: si els polinomis
+multiplicants són no nuls, aleshores el grau del polinomi producte es
+igual a la suma dels graus dels polinomis\begin{equation*}
+\text{grad\,}\left[ p(x)\cdot q(x)\right]
+=\text{grad\,}p(x)+\text{grad\,}q(x)
+\end{equation*}amb $p(x)\neq 0$ i $q(x)\neq 0$. Per exemple, si
+\begin{equation*}
+\begin{array}{l}
+p(x)=2-3x+5x^{2} \\
+q(x)=-1+3x^{2}-2x^{3}\end{array}\end{equation*}aleshores\begin{equation*}
+p(x)\cdot q(x)=-2+3x+x^{2}-13x^{3}+21x^{4}-10x^{5}
+\end{equation*}i es compleix\begin{equation*}
+\text{grad\,}\left[ p(x)\cdot q(x)\right]
+=5=2+3=\text{grad\,}p(x)+\text{grad\,}q(x)
+\end{equation*}
+\end{enumerate}
+
+\subsection{Anell dels polinomis}
+
+Si designem per $\mathbb{R}[x]$ el conjunt de tots els polinomis amb
+coeficients reals, aleshores diem que $\mathbb{R}[x]$ té estructura
+de \textbf{anell unitari commutatiu sense divisors de zero}. Això és així, perquè les operacions de suma i producte de polinomis són internes
+(la suma de dos polinomis és un altre polinomi, i el producte de dos
+polinomis és un altre polinomi) i, (i) la suma de polinomis compleix les
+propietats (1) a (4) i (ii) el producte de polinomis compleix les
+propietats (1) a (5). Designem per $\mathbb{Z}[x]$ el conjunt de tots
+els polinomis amb coeficients enters i per $\mathbb{Q}[x]$, el conjunt
+de tots els polinomis amb coeficients racionals.
+
+Observa que $\mathbb{R}\subset \mathbb{R}[x]$, perquè, hem assumit el
+conveni de considerar els nombres reals diferents de zero com
+polinomis de grau zero; el nombre real $0$ és un polinomi sense grau.
+Aquesta inclusió dels nombres reals en el anell dels polinomis
+és tal que tota propietat relativa a aquest anell serà coherent amb
+les propietats ja conegudes dels nombres reals. Per exemple, les
+propietats de la suma de polinomis es tradueixen en les propietats de la
+suma de nombres reals al considerar els polinomis de grau zero i el nombre real $0$.
+
+\section{Potència d'un binomi. Fórmula de Newton}
+
+Considerem ara el cas particular que el polinomi $p(x)$ sigui un
+binomi. S'anomena potència $n$-èsima del binomi al producte de $p(x)$
+per si mateix $n$ vegades, és a dir,\begin{equation*}
+\left[ p(x)\right] ^{n}=p(x)\cdot \overset{n\text{ vegades}}{\cdots }\cdot
+~p(x)
+\end{equation*}Per a trobar una expressió general d'aquesta potència anem a suposar que
+el binomi és de la forma $A+B$, essent $A$ i $B$ monomis de graus
+qualssevol. A partir de les propietats de la suma i producte de monomis
+així com de les propietats dels nombres combinatoris \footnote{Recorda que el nombre combinatori
+\begin{equation*}
+\binom{n}{m}=\frac{n!}{m!\cdot (n-m)!}
+\end{equation*}és el nombre de subconjunts de $m$ elements que poden obtenir-se a
+partir d'un conjunt de $n$ elements o, de forma equivalent, és el nombre de col·leccions de $m$ objectes que es poden fer a partir d'una
+col·lecció de $n$ objectes, prescindint de l'ordre.}, es compleix la
+\textbf{fórmula de Newton}\begin{equation*}
+(A+B)^{n}=\binom{n}{0}A^{n}+\binom{n}{1}A^{n-1}B+\binom{n}{2}A^{n-2}B+\cdots
++\binom{n}{n-1}AB^{n-1}+\binom{n}{n}B^{n}
+\end{equation*}En efecte, demostrarem aquesta fórmula per inducció \footnote{El mètode de demostració anomenat per inducció s'utilitza a
+sovint per a provar que una determinada propietat o fórmula és vàlida
+per a tot nombre natural. La prova consiste en demostrar dos fets:
+(1) que la propietat o fórmula es compleix per a $n=1$ i (2) que per a tot nombre natural $k$, si la propietat es compleix per a $n=k$ (hipòtesi
+d'inducció), aleshores també es compleix per al seu següent $n=k+1$.
+Una vegada demostrats aquests dos fets, pel principi d'inducció
+dels nombres naturals, la propietat es compleix per a tot nombre
+natural $n$.}. Per a $n=1$, cal demostrar que es compleix la següent
+igualtat\begin{equation*}
+(A+B)^{1}=\binom{1}{0}A^{1}+\binom{1}{1}A^{0}B
+\end{equation*}Però, això és evident ja que\begin{equation*}
+\binom{1}{0}=\binom{1}{1}=1
+\end{equation*}i per definició $A^{0}=1$ (Aquest fet és coherent amb la propietat
+que $a^{0}=1$ per a tot nombre real diferent de zero). Suposem
+ara que la fórmula es compleix per a $n=k$ (hipòtesi d'inducció), essent $k$ qualsevol nombre natural\begin{equation*}
+(A+B)^{k}=\binom{k}{0}A^{k}+\binom{k}{1}A^{k-1}B+\binom{k}{2}A^{k-2}B+\cdots
++\binom{k}{k-1}AB^{k-1}+\binom{k}{k}B^{k}
+\end{equation*}Es tracta ara de demostrar que també es compleix per a $n=k+1$. En
+efecte,\begin{eqnarray*}
+(A+B)^{k+1} &=&(A+B)^{k}(A+B) \\
+&=&\left[ \binom{k}{0}A^{k}+\binom{k}{1}A^{k-1}B+\binom{k}{2}A^{k-2}B+\cdots
++\binom{k}{k-1}AB^{k-1}+\binom{k}{k}B^{k}\right] (A+B) \\
+&=&\binom{k}{0}A^{k+1}+\binom{k}{1}A^{k}B+\binom{k}{2}A^{k-1}B+\cdots +\binom{k}{k-1}A^{2}B^{k-1}+\binom{k}{k}AB^{k}+ \\
+&&\binom{k}{0}A^{k}B+\binom{k}{1}A^{k-1}B^{2}+\binom{k}{2}A^{k-2}B^{2}+\cdots +\binom{k}{k-1}AB^{k}+\binom{k}{k}B^{k+1} \\
+&=&\binom{k}{0}A^{k+1}+\left[ \binom{k}{0}+\binom{k}{1}\right] A^{k}B+\left[
+\binom{k}{1}+\binom{k}{2}\right] A^{k-1}B^{2}+\cdots +\left[ \binom{k}{k-2}+\binom{k}{k-1}\right] A^{2}B^{k-1}+ \\
+&&\left[ \binom{k}{k-1}+\binom{k}{k}\right] AB^{k}+\binom{k}{k}B^{k+1} \\
+&=&\binom{k+1}{0}A^{k+1}+\binom{k+1}{1}A^{k}B+\binom{k+1}{2}A^{k-1}B^{2}+\cdots +\binom{k+1}{k-1}A^{2}B^{k-1}+\binom{k+1}{k}AB^{k}+\binom{k+1}{k+1}B^{k+1}
+\end{eqnarray*}perquè, sabem que es compleixen les següents propietats dels nombres
+combinatoris\begin{equation*}
+\binom{n}{0}=\binom{n}{n}=1
+\end{equation*}i\begin{equation*}
+\binom{n}{m}+\binom{n}{m+1}=\binom{n+1}{m+1}
+\end{equation*}
+
+Per exemple, si
+\begin{equation*}
+\begin{array}{c}
+A=x^{2} \\
+B=1\end{array}\end{equation*}aleshores\begin{eqnarray*}
+(x^{2}+1)^{4} &=&\binom{4}{0}\left( x^{2}\right) ^{4}+\binom{4}{1}\left(
+x^{2}\right) ^{3}\cdot 1+\binom{4}{2}\left( x^{2}\right) ^{2}\cdot 1^{2}+\binom{4}{3}\left( x^{2}\right) \cdot 1^{3}+\binom{4}{4}1^{4} \\
+&=&x^{8}+4x^{6}+6x^{4}+4x^{2}+1
+\end{eqnarray*}
+
+És important observar que la fórmula de Newton no només serà vàlida per a desenvolupar expressions de la forma $(A+B)^{n}$, amb $A$ i $B$
+monomis de graus qualssevol, sinó que també ho serà per a
+desenvolupar expressions del mateix tipus on $A$ i $B$ siguin nombres
+reals o expressions subjectes a les mateixes propietats.
+
+\subsection{Càlcul dels coeficients en la fórmula de Newton}
+
+Per a calcular els nombres combinatoris que apareixen en la fórmula
+de Newton és útil formar el \textbf{triangle de Tartaglia}\begin{equation*}
+\begin{array}{ccccccccccccc}
+& & & & & 1 & & 1 & & & & & \\
+& & & & 1 & & 2 & & 1 & & & & \\
+& & & 1 & & 3 & & 3 & & 1 & & & \\
+& & 1 & & 4 & & 6 & & 4 & & 1 & & \\
+& 1 & & 5 & & 10 & & 10 & & 5 & & 1 & \\
+1 & & 6 & & 15 & & 20 & & 15 & & 6 & & 1 \\
+& \cdots & & \cdots & & \cdots & & \cdots & & \cdots & & \cdots &
+\end{array}\end{equation*}Aquest triangle té com base la propietat dels nombres
+combinatoris segons la qual\begin{equation*}
+\binom{n}{m}+\binom{n}{m+1}=\binom{n+1}{m+1}
+\end{equation*}a més que\begin{equation*}
+\binom{n}{0}=\binom{n}{n}=1
+\end{equation*}
+
+Per exemple, per a calcular $(a+b)^{5}$ primer construirem el triangle de Tartaglia fins a la fila 5. Els nombres d'aquesta fila es
+corresponen en ordre amb els nombres combinatoris que apareixen en el
+desenvolupament per la fórmula de Newton de $(a+b)^{5}$. Així tenim\begin{eqnarray*}
+(a+b)^{5} &=&\binom{5}{0}a^{5}+\binom{5}{1}a^{4}b+\binom{5}{2}a^{3}b^{2}+\binom{5}{3}a^{2}b^{3}+\binom{5}{4}ab^{4}+\binom{5}{5}b^{5} \\
+&=&1\cdot a^{5}+5\cdot a^{4}b+10\cdot a^{3}b^{2}+10\cdot a^{2}b^{3}+5\cdot
+ab^{4}+1\cdot b^{5} \\
+&=&a^{5}+5a^{4}b+10a^{3}b^{2}+10a^{2}b^{3}+5ab^{4}+b^{5}
+\end{eqnarray*}
+
+\subsection{Càlcul d'un terme del desenvolupament d'un binomi}
+
+Observa que en la fórmula de Newton\begin{equation*}
+(A+B)^{n}=\binom{n}{0}A^{n}+\binom{n}{1}A^{n-1}B+\binom{n}{2}A^{n-2}B+\cdots
++\binom{n}{n-1}AB^{n-1}+\binom{n}{n}B^{n}
+\end{equation*}apareixen $n+1$ termes i en cada terme hi ha un nombre
+combinatori que té com numerador sempre $n$ i com denominador un nombre que és una unitat més petit que el lloc que ocupa aquest terme
+com a sumand del desenvolupament. A més, prenent per definició que $A^{0}=B^{0}=1$, en cada terme apareix el producte d’una potència de $A $per una altra de $B$ de manera que l'exponent de $A$ és la diferència de
+els dos nombres que formen el nombre combinatori i l'exponent de $B$ és el denominador del nombre combinatori. Amb aquestes observacions
+previas no és difícil comprender que el terme que ocupal lloc $k$ ($1\leq k\leq n+1$) en el desenvolupament de $(A+B)^{n}$ sigui\begin{equation*}
+t_{k}=\binom{n}{k-1}\cdot A^{n-(k-1)}\cdot B^{k-1}
+\end{equation*}
+
+Per exemple, es tracta de calcular el terme $5^{o}$ del desenvolupament de $(x^{2}-3x)^{6}$ sense necessitat de fer tot el desenvolupament. Així, tenim\begin{eqnarray*}
+t_{5} &=&\binom{6}{4}\cdot \left( x^{2}\right) ^{6-4}\cdot \left( -3x\right)
+^{4} \\
+&=&15\cdot x^{4}\cdot 81x^{4} \\
+&=&1215x^{8}
+\end{eqnarray*}Observa que hem pres $A=x^{2}$ i $B=-3x$, perquè $(x^{2}-3x)^{6}=\left[
+x^{2}+\left( -3x\right) \right] ^{6}$.
+
+\section{Divisió de polinomis}
+
+Donats dos polinomis qualssevol $p(x)$ i $q(x)$ tals que
+grad\,$p(x)\geq $grad\,$q(x)$, es pot demostrar que sempre
+existeixen dos polinomis $c(x)$ i $r(x)$ tals que\begin{equation*}
+p(x)=q(x)\cdot c(x)+r(x)
+\end{equation*}amb grad\,$r(x)<$ grad\,$q(x)$ o $r(x)=0$. L'operació que
+consisteix en trobar els polinomis $c(x)$ i $r(x)$ s’anomena
+\textbf{divisió} de $p(x)$ per $q(x)$. Aleshores els
+polinomis $c(x)$ i $r(x)$ s'anomenen \textbf{quocient} i
+\textbf{residu} de la divisió respectivament, i a $p(x)$ i
+$q(x)$, \textbf{dividend} i \textbf{divisor} de la divisió,
+respectivament.
+
+Observa que, com que són grad\,$r(x)<$ grad\,$q(x)$, el grau del
+quocient d’una divisió de polinomis sempre és la diferència
+dels graus del dividend i divisor. En efecte, atès que
+\begin{eqnarray*}
+\text{grad\,}p(x) &=&\text{grad\,}\left( q(x)\cdot c(x)+r(x)\right) \\
+&=&\text{grad\,}\left( q(x)\cdot c(x)\right) \text{ja que }\operatorname{grau}\,r(x)<\text{grad}\,q(x) \\
+&=&\text{grad}\,q(x)+\text{grad}\,c(x)
+\end{eqnarray*}d'on\begin{equation*}
+\text{grad}\,c(x)=\text{grad}\,p(x)-\text{grad}\,q(x)
+\end{equation*}
+
+\subsection{Algorisme de la divisió}
+
+Exposem a continuació un mètode per a trobar el quocient i el
+residu d’una divisió de polinomis.
+
+\begin{enumerate}
+\item Ordenem els polinomis $p(x)$ i $q(x)$, dividend i divisor de la
+divisió, en forma de potències decreixents en lloc de creixents com
+fins a ara. El monomi de grau més gran del quocient s’obté dividint el
+monomi de grau més gran de $p(x)$ pel monomi de grau més gran de $q(x)$.
+Aleshores, es multiplica el divisor per aquest monomi i es resta aquest producte
+del dividend. La diferència resultant és el primer residu parcial.
+
+\begin{equation*}
+\begin{array}{ccccccc|ccccc}
+-2x^{3} & + & 3x^{2} & + & 0x & - & 1 & 5x^{2} & - & 3x & + & 2 \\
+\cline{8-12}
+2x^{3} & - & \frac{6}{5}x^{2} & + & \frac{4}{5}x & & & -\frac{2}{5}x & &
+& & \\ \cline{1-5}
+\diagup & & \frac{9}{5}x^{2} & + & \frac{4}{5}x & - & 1 & & & & &
+\end{array}\end{equation*}
+
+\item Si el residu parcial obtingut abans és de grau igual o més gran que el
+del divisor, repetim el pas anterior fins a obtenir un residu de grau
+més petit que el del divisor.
+
+\begin{equation*}
+\begin{array}{ccccccc|ccccc}
+-2x^{3} & + & 3x^{2} & + & 0x & - & 1 & 5x^{2} & - & 3x & + & 2 \\
+\cline{8-12}
+2x^{3} & - & \frac{6}{5}x^{2} & + & \frac{4}{5}x & & & -\frac{2}{5}x & + &
+\frac{9}{25} & & \\ \cline{1-5}
+\diagup & & \frac{9}{5}x^{2} & + & \frac{4}{5}x & - & 1 & & & & & \\
+& - & \frac{9}{5}x^{2} & + & \frac{27}{25}x & - & \frac{18}{25} & & & &
+& \\ \cline{2-7}
+& & \diagup & & \frac{47}{25}x & - & \frac{43}{25} & & & & &
+\end{array}\end{equation*}Observa que el residu és ara\begin{equation*}
+\frac{47}{25}x-\frac{43}{25}
+\end{equation*}de grau més petit que el del divisor i, per tant, la divisió ha
+finalizado.
+\end{enumerate}
+
+Com a conseqüència tenim que en dividir $p(x)=-2x^{3}+3x^{2}-1$ per $q(x)=5x^{2}-3x+2$ s'obtenen com residu i quocient, respectivament,\begin{equation*}
+r(x)=\frac{47}{25}x-\frac{43}{25}\text{ \ \ \ i \ \ \ }c(x)=-\frac{2}{5}x+\frac{9}{25}
+\end{equation*}i es compleix\begin{equation*}
+-2x^{3}+3x^{2}-1=(5x^{2}-3x+2)\left( -\frac{2}{5}x+\frac{9}{25}\right) +\frac{47}{25}x-\frac{43}{25}
+\end{equation*}
+
+\subsection{Divisibilitat de polinomis}
+
+Donats dos polinomis $p(x)$ i $q(x)$, diem que $p(x)$ és \textbf{divisible} per $q(x)$ o també que $q(x)$ és un \textbf{divisor} de $p(x)$ si
+existeix un polinomi $c(x)$ tal que\begin{equation*}
+p(x)=q(x)\cdot c(x)
+\end{equation*}Aquesta relació també s'expressa dient que $p(x)$ és un \textbf{múltiple} de $q(x)$. Observa que si $p(x)$ és un múltiple de $q(x)$,
+aleshores el residu de la divisió de $p(x)$ per $q(x)$ és exacta, és a
+dir, es té residu igual a $0$.
+
+Per exemple, $x^{2}-1$ és un múltiple de $x+1$, perquè\begin{equation*}
+x^{2}-1=(x+1)\cdot (x-1)
+\end{equation*}
+
+Un polinomi de grau $n$
+\begin{equation*}
+p(x)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}
+\end{equation*}s’anomena \textbf{mònic} o \textbf{unitari} si el coeficient del
+monomi de grau més gran és igual a la unitat, és a dir, $a_{n}=1$. Per exemple, els polinomis $x^{2}+1$, $2-3x+x^{2}$ o $1+x^{4}$, són mònics.
+
+Tot polinomi pot escriure's com a producte d'un polinomi mònic del
+mateix grau per un nombre real, perquè\begin{equation*}
+a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}=a_{n}\cdot \left(
+\frac{a_{0}}{a_{n}}+\frac{a_{1}}{a_{n}}x+\frac{a_{2}}{a_{n}}x^{2}+\cdots +\frac{a_{n-1}}{a_{n}}x^{n-1}+x^{n}\right)
+\end{equation*}
+Per exemple, el polinomi $p(x)=1-3x-4x^{3}$ pot escriure's de la manera següent\begin{equation*}
+p(x)=\left( -4\right) \cdot \left( -\frac{1}{4}+\frac{3}{4}x+x^{3}\right)
+\end{equation*}i, en aquest cas, es diu que el polinomi\begin{equation*}
+-\frac{1}{4}+\frac{3}{4}x+x^{3}
+\end{equation*}és el polinomi mònic de $p(x)$.
+
+Un polinomi $p(x)$ s’anomena \textbf{irreduïble} si els únics
+divisors mònics de $p(x)$ són el polinomi unitat $1$ i el seu polinomi mònic corresponent. Per exemple, els polinomis $x+1$, $x^{2}+1$, $2x-3$ o $x^{2}+x+1$ són irreduïbles.
+
+\subsection{Màxim comú divisor de dos polinomis}
+
+S'anomena \textbf{màxim comú divisor} dels polinomis $p(x)$ i $q(x)$ el polinomi mònic $d(x)$ que satisfà la propietat següent: $d(x)$ és el polinomi de grau més gran que és divisor de $p(x)$ i de $q(x)$.
+Escriurem\begin{equation*}
+d(x)=\text{m.c.d.}\left( p(x),q(x)\right)
+\end{equation*}
+
+Per exemple, el màxim comú divisor dels polinomis $p(x)=x^{2}+2x+1$ i $q(x)=x^{2}-1$ és $d(x)=x+1$, perquè,\begin{eqnarray*}
+p(x) &=&(x+1)^{2} \\
+q(x) &=&(x+1)(x-1)
+\end{eqnarray*}i, per tant, $x+1$ el divisor comú de grau més gran. Així,
+escriurem\begin{equation*}
+\text{m.c.d.}\left( x^{2}+2x+1,x^{2}-1\right) =x+1
+\end{equation*}
+
+Si $p(x)$ i $q(x)$ són dos polinomis tals que $\operatorname{grau}~p(x)\geq $$\operatorname{grau}~q(x)$, aleshores es compleix\begin{equation*}
+\text{m.c.d.}\left( p(x),q(x)\right) =\text{m.c.d.}\left( q(x),r(x)\right)
+\end{equation*}on $r(x)$ és el residu de la divisió de $p(x)$ per $q(x)$.
+
+En efecte, dividint $p(x)$ per $q(x)$ obtenim\begin{equation}
+p(x)=q(x)\cdot c(x)+r(x) \label{1}
+\end{equation}i, per tant,\begin{equation}
+r(x)=p(x)-q(x)\cdot c(x) \label{2}
+\end{equation}Com que $d(x)=$~m.c.d.$\left( p(x),q(x)\right) $ és un divisor de $p(x)$
+i de $q(x)$, aleshores, per (\ref{2}), $d(x)$ serà també un divisor
+de $r(x)$. Com a conseqüència, $d(x)$ és un divisor de m.c.d.$\left(
+q(x),r(x)\right) $. D'altra banda, i de la mateixa manera, com que m.c.d.$\left(
+q(x),r(x)\right) $ és un divisor de $q(x)$ i $r(x)$, aleshores, per (\ref{1}), m.c.d.$\left( q(x),r(x)\right) $serà també un divisor de $p(x)$. Com a conseqüència, m.c.d.$\left( q(x),r(x)\right) $ és un divisor de $d(x)$. Hem demostrat així que $d(x)$ divideix a m.c.d.$\left(
+q(x),r(x)\right) $i que m.c.d.$\left( q(x),r(x)\right) $divideix a $d(x)$.
+Per tant, com que són tots dos polinomis mònics, es dedueix\footnote{És fàcil demostrar que donats dos polinomis mònics, si el primer
+divideix al segon i el segon el primer, aleshores els dos polinomis són
+iguals.}\begin{equation*}
+\text{m.c.d.}\left( p(x),q(x)\right) =d(x)=\text{m.c.d.}\left(
+q(x),r(x)\right)
+\end{equation*}
+
+Aquest resultat és la base de l'algorisme d'Euclides per a trobar el màxim comú divisor de dos polinomis.
+
+\subsubsection{algorisme d’Euclides}
+
+Donats dos polinomis $p(x)$ i $q(x)$ tals que $\operatorname{grau}~p(x)\geq $$\operatorname{grau}~q(x)$,
+efectuem la divisió de $p(x)$ per $q(x)$ i obtenim un residu $r_{1}(x) $. Aleshores es compleix\begin{equation*}
+\text{m.c.d.}\left( p(x),q(x)\right) =\text{m.c.d.}\left(
+q(x),r_{1}(x)\right)
+\end{equation*}amb $\operatorname{grau}~r_{1}(x)<$ $\operatorname{grau}~q(x)$. Si $r_{1}(x)$ no és un nombre real,
+efectuem la divisió de $q(x)$ per $r_{1}(x)$ i obtenim un residu $r_{2}(x)$. Aleshores es compleix\begin{equation*}
+\text{m.c.d.}\left( q(x),r_{1}(x)\right) =\text{m.c.d.}\left(
+r_{1}(x),r_{2}(x)\right)
+\end{equation*}amb $\operatorname{grau}~r_{2}(x)<$ $\operatorname{grau}~r_{1}(x)$. Si encara $r_{2}(x)$ no és un nombre real, continuem dividint fins a obtenir residu $r_{n}(x)$ que
+sigui un nombre real; observa que això passarà amb seguretat perquè\begin{equation*}
+\text{grau}~p(x)\geq \text{grau}~q(x)>\text{grau}~r_{1}(x)>\text{grau}~r_{2}(x)>\cdots
+\end{equation*}Com a conseqüència, obtindrem\begin{eqnarray*}
+\text{m.c.d.}\left( p(x),q(x)\right) &=&\text{m.c.d.}\left(
+q(x),r_{1}(x)\right) \\
+&=&\text{m.c.d.}\left( r_{1}(x),r_{2}(x)\right) \\
+&&\cdots \\
+&=&\text{m.c.d.}\left( r_{n-1}(x),r_{n}(x)\right) \\
+&=&r_{n-1}^{\ast }(x)
+\end{eqnarray*}essent $r_{n}(x)$ un nombre real i $r_{n-1}^{\ast }(x)$ el polinomi mònic de $r_{n-1}(x)$.
+
+Per a efectuar les successives divisions i trobar $r_{n-1}(x)$ se sol
+utilitzar el esquema següent\begin{equation*}
+\begin{array}{c|c|c|c|c|c}
+& c_{1}(x) & c_{2}(x) & & c_{n-1}(x) & \\ \hline
+p(x) & q(x) & r_{1}(x) & \cdots & r_{n-2}(x) & r_{n-1}(x) \\ \hline
+r_{1}(x) & r_{2}(x) & r_{3}(x) & & r_{n}(x)\in \mathbb{R} &
+\end{array}\end{equation*}Per exemple, calcularem el màxim comú divisor dels polinomis\begin{eqnarray*}
+p(x) &=&x^{5}+2x^{3}+3x^{2}-15x-9 \\
+q(x) &=&x^{4}-9
+\end{eqnarray*}segons el esquema considerat:\begin{equation*}
+\begin{array}{ccccc|ccccc|cccc|cc}
+& & & & & x & & & & & \frac{1}{2}x & -\frac{3}{4} & & & 2x & +3 \\
+\cline{6-16}
+x^{5} & +2x^{3} & +3x^{2} & -15x & -9 & x^{4} & 0 & 0 & 0 & -9 & 2x^{3} &
++3x^{2} & -6x & -9 & x^{2} & -3 \\
+-x^{5} & & & +9x & & -x^{4} & -\frac{3}{2}x^{3} & +3x^{2} & +\frac{9}{2}x
+& & -2x^{3} & & +6x & & & \\ \cline{1-5}\cline{6-9}\cline{11-13}
+\diagup & +2x^{3} & +3x^{2} & -6x & -9 & \diagup & -\frac{3}{2}x^{3} &
++3x^{2} & +\frac{9}{2}x & -9 & \diagup & 3x^{2} & \diagup & -9 & & \\
+& & & & & & \frac{3}{2}x^{3} & +\frac{9}{4}x^{2} & -\frac{9}{2}x & -\frac{27}{4} & & -3x^{2} & & +9 & & \\ \cline{7-10}\cline{12-14}
+& & & & & & \diagup & \frac{21}{4}x^{2} & \diagup & -\frac{63}{4} & &
+\diagup & & \diagup & & \\
+& & & & & & & x^{2} & & -3 & & & & & &
+\end{array}\end{equation*}és a dir, hem obtingut que\begin{equation*}
+\text{m.c.d.}\left( x^{5}+2x^{3}+3x^{2}-15x-9,x^{4}-9\right) =\text{m.c.d.}\left( x^{2}-3,0\right) =x^{2}-3
+\end{equation*}Observa que hem aplicat en el esquemal següent fet\begin{equation*}
+\text{m.c.d.}\left( 2x^{3}+3x^{2}-6x-9,\frac{21}{4}(x^{2}-3)\right) =\text{m.c.d.}\left( 2x^{3}+3x^{2}-6x-9,x^{2}-3\right)
+\end{equation*}cosa que és evident.
+
+\subsection{Mínim comú múltiple de dos polinomis}
+
+S'anomena \textbf{mínim comú múltiple} dels polinomis $p(x)$
+i $q(x)$ el polinomi mònic $m(x)$ que satisfà la següent
+propietat: $m(x)$ és el polinomi de grau més petit que és múltiple de $p(x) $i de $q(x)$. Escriurem\begin{equation*}
+m(x)=\text{m.c.m.}\left( p(x),q(x)\right)
+\end{equation*}
+
+Per exemple, el mínim comú múltiple dels polinomis $p(x)=x^{2}+2x+1$ i $q(x)=x^{2}-1$ és $m(x)=(x+1)^{2}(x-1)$, perquè,\begin{eqnarray*}
+p(x) &=&(x+1)^{2} \\
+q(x) &=&(x+1)(x-1)
+\end{eqnarray*}i, per tant, $(x+1)^{2}(x-1)$ el múltiple comú de més petit
+grau. Així, escriurem\begin{equation*}
+\text{m.c.m.}\left( x^{2}+2x+1,x^{2}-1\right) =(x+1)^{2}(x-1)
+\end{equation*}
+
+És clar que si $p(x)$ és múltiple de $q(x)$, aleshores el mínim comú múltiple és $p(x)$. Es demostra en cursos superiors que es
+compleix la següent relació\begin{equation*}
+\text{m.c.d.}\left( p(x),q(x)\right) \cdot \text{m.c.m.}\left(
+p(x),q(x)\right) =\frac{p(x)\cdot q(x)}{a_{n}\cdot b_{m}}
+\end{equation*}on $a_{n}$ i $b_{m}$ són els coeficients dels monomis de grau més gran
+de $p(x)$ i~$q(x)$, respectivament. Aquesta relació nos sirve per a trobar
+el mínim comú múltiple a partir del màxim comú
+divisor, perquè,\begin{equation*}
+\text{m.c.m.}\left( p(x),q(x)\right) =\frac{1}{a_{n}\cdot b_{m}}\frac{p(x)\cdot q(x)}{\text{m.c.d.}\left( p(x),q(x)\right) }
+\end{equation*}Per exemple, si
+\begin{eqnarray*}
+p(x) &=&x^{5}+2x^{3}+3x^{2}-15x-9 \\
+q(x) &=&x^{4}-9
+\end{eqnarray*}aleshores\begin{eqnarray*}
+\text{m.c.m.}\left( x^{5}+2x^{3}+3x^{2}-15x-9,x^{4}-9\right) &=&\frac{(x^{5}+2x^{3}+3x^{2}-15x-9)(x^{4}-9)}{x^{2}-3} \\
+&=&x^{7}+5x^{5}+3x^{4}-9x^{3}-45x-27
+\end{eqnarray*}
+
+En un altre apartat veurem com la descomposició factorial d'un
+polinomi dona un altre mètode de càlcul del màxim comú divisor
+i mínim comú múltiple.
+
+\section{Regla de Ruffini i teorema del residu}
+
+En aquest apartat veurem com es poden calcular el quocient i el residu de
+la divisió d'un polinomi per un binomi de primer grau de la forma $x-a$ per un mètode més senzill que l'aplicació de l'algorisme
+clàssic de la divisió. Aquest mètode es coneix com la regla de
+Ruffini. També donarem un teorema amb el que podrem saber si un
+polinomi és o no divisible per un binomi de primer grau de la forma $x-a$
+amb només calcular el valor numèric del polinomi per a $x=a$ i
+veure si és o no zero. Aquest resultat es coneix com el teorema del residu.
+
+\subsection{Regla de Ruffini}
+
+Donat un polinomi qualsevol $p(x)$, ara volem dividir-lo pel binomi
+de primer grau $x-a$, és a dir, volem trobar els polinomis quocient $c(x)$ i residu $r(x)$ tals que\begin{equation}
+p(x)=(x-a)\cdot c(x)+r(x) \label{3}
+\end{equation}Observa primer que $\operatorname{grau}~r(x)=0$ o bé $r(x)=0$, perquè, sabem que $\operatorname{grau}~r(x)<$ $\operatorname{grau}~(x-a)=1$. Per tant, $r(x)$ serà un nombre real $r$.
+Observa també que\begin{equation*}
+\text{grau}~c(x)=\text{grau}~p(x)-\text{grau}~(x-a)=\text{grau}~p(x)-1
+\end{equation*}Per tant, si\begin{equation*}
+p(x)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}
+\end{equation*}aleshores\begin{equation*}
+c(x)=b_{0}+b_{1}x+b_{2}x^{2}+\cdots +b_{n-2}x^{n-2}+b_{n-1}x^{n-1}
+\end{equation*}i segons (\ref{3}), tenim\begin{eqnarray*}
+a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}
+&=&(x-a)(b_{0}+b_{1}x+b_{2}x^{2}+\cdots +b_{n-2}x^{n-2}+b_{n-1}x^{n-1})+r \\
+&=&(r-ab_{0})+(b_{0}-ab_{1})x+(b_{1}-ab_{2})x^{2}+\cdots + \\
+&&(b_{n-2}-ab_{n-1})x^{n-1}+b_{n-1}x^{n}
+\end{eqnarray*}i, per tant,\begin{equation*}
+\begin{array}{l}
+a_{0}=r-ab_{0} \\
+a_{1}=b_{0}-ab_{1} \\
+a_{2}=b_{1}-ab_{2} \\
+\multicolumn{1}{c}{\cdots} \\
+a_{n-1}=b_{n-2}-ab_{n-1} \\
+a_{n}=b_{n-1}\end{array}\end{equation*}i, en conseqüència, obtenim les següents fórmules que ens permetran determinar $c(x)$ i $r$\begin{equation*}
+\begin{array}{l}
+b_{n-1}=a_{n} \\
+b_{n-2}=a_{n-1}+a\cdot b_{n-1} \\
+\multicolumn{1}{c}{\cdots} \\
+b_{1}=a_{2}+ab_{2} \\
+b_{0}=a_{1}+ab_{1} \\
+r=a_{0}+ab_{0}\end{array}\end{equation*}Tanmateix, el càlcul dels coeficients $b_{i}$ ($0\leq i\leq n-1$)
+i $r$ es poden fer de manera molt senzilla mitjançant l'esquema següent
+anomenat \textbf{regla de Ruffini}.
+
+\begin{center}
+\includegraphics[width=4.0906in,height=0.9331in,keepaspectratio]{poli1.png}
+\end{center}
+
+Per exemple, calcularem el quocient i el residu de dividir $p(x)=x^{3}-2x+7$
+per $x-2$. Per fer-ho, farem servir la regla de Ruffini.\begin{equation*}
+\begin{array}{c|cccc}
+& 1 & 0 & -2 & 7 \\
+2 & & 2 & 4 & 4 \\ \hline
+& 1 & 2 & 2 & 11\end{array}\end{equation*}Dit amb paraules, baixem el primer coeficient del dividend. Aleshores,
+multipliquem per 2 i col·loquem el resultat sota del segon coeficient
+del dividend i, després, els sumem. Repetim aquest procés fins a
+completar el quadre. L'última fila del quadre són els coeficients del
+quocient (el seu grau és una unitat inferior al del dividend) i l'últim nombre és el residu. Així, tenim $c(x)=x^{2}+2x+2$ i $r=11$.
+
+Observa que es col·loquen zeros per als coeficients dels monomis que no
+apareixen en el polinomi dividend.
+
+\subsection{Teorema del residu}
+
+El valor numèric del polinomi $p(x)$ per a $x=a$ coincideix amb el residu
+de dividir $p(x)$ per $x-a$.
+
+En efecte, si dividim $p(x)$ per $x-a$ obtenim un quocient $c(x)$ i un
+residu $r$ de forma que\begin{equation*}
+p(x)=(x-a)\cdot c(x)+r
+\end{equation*}Aleshores, el valor numèric de $p(x)$ per a $x=a$ és\begin{equation*}
+p(a)=(a-a)\cdot c(a)+r=0+r=r
+\end{equation*}és a dir, es compleix que $p(a)=r$.
+
+Per exemple, calcularem el residu $r$ de dividir $x^{3}-2x+7$ per $x-2$. Segons el teorema del residu es compleix\begin{equation*}
+r=p(2)=2^{3}-2\cdot 2+7=11
+\end{equation*}
+
+Aleshores, observa que un polinomi serà divisible pel binomi de
+primer grau $x-a$ si el valor numèric del polinomi és zero per a $x=a$.
+
+Per exemple, volem esbrinar si el polinomi $p(x)=x^{3}-2x+1$ es
+divisible per $x-1$. Per a contestar a aquesta pregunta només cal
+calcular el valor numèric de $p(x)$ per a $x=1$ i veure si és zero o no.
+En concret,\begin{equation*}
+p(1)=1-2+1=0
+\end{equation*}Per tant, $p(x)$ és divisible per \thinspace $x-1$.
+
+\section{Arrels i descomposició factorial d'un polinomi}
+
+Diem que un nombre real $a$ és una \textbf{arrel} o \textbf{zero}
+d'un polinomi $p(x)$ si $p(a)=0$. Així, $1$ és una arrel del
+polinomi $p(x)=x^{2}-1$ perquè $p(1)=0$, així com $\sqrt{3}$ és una arrel de $q(x)=x^{2}-3$, perquè,\begin{equation*}
+q(\sqrt{3})=\left( \sqrt{3}\right) ^{2}-3=0
+\end{equation*}
+
+Segons el teorema del residu, si $a$ és una arrel de $p(x)$, aleshores $p(x)$ és divisible per $x-a$ i, per tant, podem escriure\begin{equation*}
+p(x)=(x-a)\cdot c(x)
+\end{equation*}
+
+Aleshores, diem que $a$ és una \textbf{arrel simple} de $p(x)$ si $c(a)\neq 0$, és a dir, quan el quocient de dividir $p(x)$ per $x-a$ no
+torna a ser divisible per $x-a$.
+
+Per exemple, $3$ és una arrel simple del polinomi $p(x)=x^{3}+x^{2}-9x-9 $, ja que per Ruffini\begin{equation*}
+\begin{array}{r|rrrr}
+& 1 & 1 & -9 & -9 \\
+3 & & 3 & 12 & 9 \\ \hline
+& 1 & 4 & 3 & 0\end{array}\end{equation*}obtenim\begin{equation*}
+p(x)=(x-3)(x^{2}+4x+3)
+\end{equation*}i a més es compleix\begin{equation*}
+c(3)=3^{2}+4\cdot 3+3=24\neq 0
+\end{equation*}
+
+Diem que $a$ és una \textbf{arrel múltiple} de $p(x)$ si $a$ es
+una arrel simple
+\begin{equation*}
+p(x)=(x-a)\cdot c(x)
+\end{equation*}i a més es compleix $c(a)=0$, és a dir, si $c(x)$ torna a ser divisible
+per $x-a$.
+
+Per exemple, $1$ és una arrel múltiple del polinomi $p(x)=x^{3}+x^{2}-5x+3$, perquè, per Ruffini\begin{equation*}
+\begin{array}{r|rrrr}
+& 1 & 1 & -5 & 3 \\
+1 & & 1 & 2 & -3 \\ \hline
+& 1 & 2 & -3 & 0\end{array}\end{equation*}obtenim\begin{equation*}
+p(x)=(x-1)(x^{2}+2x-3)
+\end{equation*}i es compleix\begin{equation*}
+c(1)=1+2-3=0
+\end{equation*}A més, observa que si ara tornem a aplicar Ruffini al quocient,\begin{equation*}
+\begin{array}{r|rrr}
+& 1 & 2 & -3 \\
+1 & & 1 & 3 \\ \hline
+& 1 & 3 & 0\end{array}\end{equation*}aleshores obtenim\begin{equation*}
+c(x)=(x-1)(x+3)
+\end{equation*}i, com a conseqüència,\begin{eqnarray*}
+p(x) &=&(x-1)(x-1)(x+3) \\
+&=&(x-1)^{2}(x+3)
+\end{eqnarray*}Observem que en aquest cas hem pogut dividir dos vegades $p(x)$ per $x-1$. Aleshores, diem que $1$ és una arrel múltiple de ordre 2 o
+simplement una arrel doble.
+
+En general, si $a$ és una arrel de $p(x)$ i es compleix\begin{equation*}
+p(x)=(x-a)^{s}\cdot c(x)
+\end{equation*}amb $c(a)\neq 0$, aleshores diem que $a$ és una \textbf{arrel múltiple de ordre} $s$ o també que $a$ és una \textbf{arrel de
+multiplicitat} $s$.
+
+Per exemple, volem esbrinar la multiplicitat de l'arrel $-1$ en el
+polinomi\begin{equation*}
+p(x)=x^{5}-x^{4}-5x^{3}+x^{2}+8x+4
+\end{equation*}Per fer-ho, aplicarem repetidament la regla de Ruffini\begin{equation*}
+\begin{array}{r|rrrrrr}
+& 1 & -1 & -5 & 1 & 8 & 4 \\
+-1 & & -1 & 2 & 3 & -4 & -4 \\ \hline
+& 1 & -2 & -3 & 4 & 4 & 0 \\
+-1 & & -1 & 3 & 0 & -4 & \\ \hline
+& 1 & -3 & 0 & 4 & 0 & \\
+-1 & & -1 & 4 & -4 & & \\ \hline
+& 1 & -4 & 4 & 0 & & \\
+-1 & & -1 & 5 & & & \\ \hline
+& 1 & -5 & 9 & & &
+\end{array}\end{equation*}
+Observem que $p(x)$ pot dividir-se 3 vegades per $x+1$. A més, es
+compleix\begin{equation*}
+p(x)=(x+1)^{3}(x^{2}-4x+4)
+\end{equation*}i el tercer quocient que s’obté de la tercera divisió per $x+1$
+compleix\begin{equation*}
+c_{3}(-1)=1+4+4=9\neq 0
+\end{equation*}Per tant, $-1$ és una arrel de $p(x)$ de multiplicitat $3$.
+
+\subsection{Arrels enteres d'un polinomi amb coeficients enters}
+
+Considerem ara un polinomi $p(x)$ amb coeficients enters, és a dir,\begin{equation*}
+p(x)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}
+\end{equation*}i $a_{i}\in \mathbb{Z}$ ($0\leq i\leq n$). Suposem que $k$ és una arrel entera ($k\in \mathbb{Z}$) de $p(x)$. Aleshores, es compleix\begin{eqnarray*}
+a_{0}+a_{1}k+a_{2}k^{2}+\cdots +a_{n-1}k^{n-1}+a_{n}k^{n} &=&0 \\
+(a_{1}+a_{2}k+\cdots +a_{n-1}k^{n-2}+a_{n}k^{n-1})~k &=&-a_{0} \\
+a_{1}+a_{2}k+\cdots +a_{n-1}k^{n-2}+a_{n}k^{n-1} &=&-\frac{a_{0}}{k}
+\end{eqnarray*}i com $a_{1}+a_{2}k+\cdots +a_{n-1}k^{n-2}+a_{n}k^{n-1}\in \mathbb{Z}$, $k$
+ha de ser necessàriament un divisor del terme independent $a_{0}$.
+D'aquesta manera, les arrels enteres d'un polinomi amb coeficients
+enters s'han de trobar entre els divisors del seu terme
+independent.
+
+Per exemple, si volem calcular les arrels enteres del polinomi $p(x)=x^{4}-2x^{3}-2x^{2}-2x+3$, caldrà provar només amb $\pm 1$ i $\pm
+3$, que són els divisors del terme independent. Un càlcul senzill mostra que $3$ i $-1$ són les úniques arrels enteres d'aquest
+polinomi.
+
+\subsection{Descomposició factorial d'un polinomi}
+
+De la mateixa manera que tot nombre enter pot descompondre's com a producte
+de nombres primers, tot polinomi pot descompondre's en producte de
+polinomis irreduïbles. La descomposició varia segons el
+anell de polinomis que considerem. Per exemple, $x^{2}-2$ és irreduïble
+en $\mathbb{Q}[x]$ i, en canvi, pot descompondre's en
+\begin{equation*}
+(x-\sqrt{2})(x+\sqrt{2})
+\end{equation*}
+en $\mathbb{R}[x]$. Admetem, sense demostrar-ho, que els polinomis
+irreduïbles en $\mathbb{R}[x]$ són de primer grau o bé de segon grau.
+Qualsevol polinomi de primer grau $a+bx$ és irreduïble, perquè no té
+altres divisors mònics més que la unitat i el polinomi\begin{equation*}
+\frac{a}{b}+x
+\end{equation*}Un polinomi de segon grau és irreduïble si l'equació $c+bx+ax^{2}=0$ no té arrels reals, és a dir, quan $b^{2}-4ac<0$.
+
+Ja hem vist en l'apartat anterior que si $k_{1}$ és una arrel de $p(x)$, aleshores\begin{equation*}
+p(x)=(x-k_{1})\cdot c_{1}(x)
+\end{equation*}Si ara $c_{1}(x)$ admet una altra arrel $k_{2}$, també serà arrel de $p(x)$ i es compleix\begin{equation*}
+p(x)=(x-k_{1})\cdot (x-k_{2})\cdot c_{2}(x)
+\end{equation*}Reiterant aquest procés, si $p(x)$ admet $n$ arrels reals $k_{1},k_{2},...,k_{n}$, aleshores podrem descompondre $p(x)$ en factors
+lineals (polinomis de primer grau) de la forma següent\begin{equation}
+p(x)=a_{n}\cdot (x-k_{1})\cdot (x-k_{2})\cdot \cdots \cdot (x-k_{n})
+\label{4}
+\end{equation}on $a_{n}$ és el coeficient del monomi de grau $n$ de $p(x)$.
+
+Observa que un polinomi de grau $n$ no pot tenir més que $n$ arrels reals diferents, perquè, si no fos així, si $k_{n+1}$ fos una altra arrel real diferent a totes les anteriors, aleshores caldria complir-se\begin{equation*}
+p(k_{n+1})=a_{n}\cdot (k_{n+1}-k_{1})\cdot (k_{n+1}-k_{2})\cdot \cdots \cdot
+(k_{n+1}-k_{n})=0
+\end{equation*}cosa que implicaria $a_{n}=0$, i això és contradictori amb el fet de
+que el polinomi és de grau $n$.
+
+Observa que no sempre podrà efectuar-se una descomposició com (\ref{4}), perquè, com ja hem dit, existeixen polinomis de segon grau que són
+irreduïbles i, per tant, no poden descompondre's en factors lineals. Per exemple,
+\begin{equation*}
+x^{3}-1=(x+1)\cdot (x^{2}-x+1)
+\end{equation*}i el factor $x^{2}-x+1$ no pot descompondre's més ja que $b^{2}-4ac=-3<0 $.
+
+En general, podrem obtenir una descomposició d'un polinomi $p(x)$
+de la forma\begin{equation}
+p(x)=p_{1}(x)\cdot p_{2}(x)\cdot \cdots \cdot p_{r}(x) \label{5}
+\end{equation}amb\begin{equation*}
+\text{grau}~p(x)=\text{grau}~p_{1}(x)+\text{grau}~p_{2}(x)+\cdots +\text{grau}~p_{r}(x)
+\end{equation*}on cada $p_{i}(x)$ ($1\leq i\leq r$) és un polinomi irreduïble de $\mathbb{R}[x]$.
+
+Per exemple, el polinomi $p(x)=x^{4}+x^{3}+2x^{2}+x+1$ admet la següent
+descomposició
+\begin{equation*}
+p(x)=(x^{2}+1)\cdot (x^{2}+x+1)
+\end{equation*}els factors del qual són polinomis irreduïbles.
+
+Si cada $p_{i}(x)$ és lineal, és a dir, si $p(x)$ admet totes les arrels i són simples, aleshores (\ref{5}) s'escriurà com\begin{equation*}
+p(x)=a_{n}\cdot (x-k_{1})\cdot (x-k_{2})\cdot \cdots \cdot (x-k_{n})
+\end{equation*}essent $k_{i}$ ($1\leq i\leq n$) les arrels de $p(x)$.
+
+Per exemple, és immediat comprovar que el polinomi $2x^{4}-10x^{2}+8$
+té arrels $\pm 1$ i $\pm 2$ i, per tant, es descompon en factors
+lineals de la forma següent\begin{equation*}
+2x^{4}-10x^{2}+8=2\cdot (x-1)\cdot (x+1)\cdot (x-2)\cdot (x+2)
+\end{equation*}
+
+Si el polinomi $p(x)$ admet totes les arrels i algunes són múltiples, agrupant els factors lineals iguals, obtindrem una
+descomposició de la forma\begin{equation*}
+p(x)=a_{n}\cdot (x-k_{1})^{n_{1}}\cdot (x-k_{2})^{n_{2}}\cdot \cdots \cdot
+(x-k_{r})^{n_{r}}
+\end{equation*}amb $n_{1}+n_{2}+\cdots +n_{r}=n$, essent $n_{i}$ ($1\leq i\leq r$) la
+multiplicitat de l'arrel $k_{i}$.
+
+Per exemple, per a descompondre el polinomi $p(x)=x^{5}-5x^{4}+3x^{3}+13x^{2}-8x-12$ podem utilitzar la regla de
+Ruffini. A més, com els seus coeficients són enters, les arrels seran divisors del terme independent, és a dir, es trobaran entre $\pm 1$, $\pm 2$, $\pm 3$, $\pm 4$, $\pm 6$ i $\pm 12$. Observa que es compleix\begin{equation*}
+\begin{array}{r|rrrrrr}
+& 1 & -5 & 3 & 13 & -8 & -12 \\
+-1 & & -1 & 6 & -9 & -4 & 12 \\ \hline
+& 1 & -6 & 9 & 4 & -12 & 0 \\
+-1 & & -1 & 7 & -16 & 12 & \\ \hline
+& 1 & -7 & 16 & -12 & 0 & \\
+2 & & 2 & -10 & 12 & & \\ \hline
+& 1 & -5 & 6 & 0 & & \\
+2 & & 2 & -6 & & & \\ \hline
+& 1 & -3 & 0 & & & \\
+3 & & 3 & & & & \\ \hline
+& 1 & 0 & & & &
+\end{array}\end{equation*}o sigui, les arrels de $p(x)$ són $-1$ (doble), $2$ (doble) i $3$. Per tant, $p(x)$ es descompondrà de la forma següent\begin{equation*}
+p(x)=(x+1)^{2}(x-2)^{2}(x-3)
+\end{equation*}
+
+\subsubsection{Càlcul del m.c.d. i m.c.m.}
+
+Conocidas les descomposicions factorials en $\mathbb{R}[x]$ de dos
+polinomis $p(x)$ i $q(x)$, el màxim comú divisor s'obtindrà
+multiplicant els factors irreduïbles comuns elevats a l'exponent més petit que figuri en les dues descomposicions, i el mínim comú múltiple s'obtindrà multiplicant els factors irreduïbles
+comuns i no comuns elevats a l'exponent més gran que figuri en
+totes dues descomposicions.
+
+Per exemple, calcularem el m.c.d. i el m.c.m. dels polinomis\begin{eqnarray*}
+p(x) &=&2x^{5}-2x^{4}-10x^{3}+2x^{2}+16x+8 \\
+q(x) &=&3x^{3}-6x^{2}-3x+6
+\end{eqnarray*}Primer, buscarem les descomposicions de tots dos polinomis. Els polinomis
+mònics de cada polinomi són\begin{eqnarray*}
+p^{\ast }(x) &=&x^{5}-x^{4}-5x^{3}+x^{2}+8x+4 \\
+q^{\ast }(x) &=&x^{3}-2x^{2}-x+2
+\end{eqnarray*}
+Aleshores, per a $p^{\ast }(x)$ tenim\begin{equation*}
+\begin{array}{r|rrrrrr}
+& 1 & -1 & -5 & 1 & 8 & 4 \\
+-1 & & -1 & 2 & 3 & -4 & -4 \\ \hline
+& 1 & -2 & -3 & 4 & 4 & 0 \\
+-1 & & -1 & 3 & 0 & -4 & \\ \hline
+& 1 & -3 & 0 & 4 & 0 & \\
+-1 & & -1 & 4 & -4 & & \\ \hline
+& 1 & -4 & 4 & 0 & & \\
+2 & & 2 & -4 & & & \\ \hline
+& 1 & -2 & 0 & & &
+\end{array}\end{equation*}i, per tant,\begin{equation*}
+p^{\ast }(x)=(x+1)^{3}\cdot (x-2)^{2}
+\end{equation*}i\begin{equation*}
+p(x)=2\cdot (x+1)^{3}\cdot (x-2)^{2}
+\end{equation*}Per a $q^{\ast }(x)$ tenim\begin{equation*}
+\begin{array}{r|rrrr}
+& 1 & -2 & -1 & 2 \\
+-1 & & -1 & 3 & -2 \\ \hline
+& 1 & -3 & 2 & 0 \\
+1 & & 1 & -2 & \\ \hline
+& 1 & -2 & 0 &
+\end{array}\end{equation*}i, per tant,\begin{equation*}
+q^{\ast }(x)=(x+1)\cdot (x-1)\cdot (x-2)
+\end{equation*}i\begin{equation*}
+q(x)=3\cdot (x+1)\cdot (x-1)\cdot (x-2)
+\end{equation*}Ara ja podem determinar m.c.d. i m.c.m. de $p(x)$ i $q(x)$. Així,
+tenim\begin{equation*}
+\text{m.c.d.}\left( p(x),q(x)\right) =(x+1)\cdot (x-2)
+\end{equation*}i\begin{equation*}
+\text{m.c.m.}\left( p(x),q(x)\right) =(x+1)\cdot (x+1)^{3}\cdot (x-2)^{2}
+\end{equation*}
+
+\section{Fraccions racionals}
+
+De la mateixa manera que l'equació
+\begin{equation*}
+3\cdot x=2
+\end{equation*}no té solució en l'anell dels nombres enters i per a
+resoldre aquest problema tuvimos que ampliar $\mathbb{Z}$ construint el
+conjunt dels nombres racionals, l'equació\begin{equation*}
+(x-1)\cdot A(x)=x^{2}+1
+\end{equation*}no té solució en l'anell de polinomis $\mathbb{R}[x]$ (ja que $x^{2}+1$ no és múltiple de $x-1$) i per a solucióar aquest problema
+caldrà ampliar $\mathbb{R}[x]$ construint el conjunt de les fraccions
+racionals.
+
+S'anomena \textbf{fracció algebraica} o \textbf{polinòmica} a tota
+expressió de la forma\begin{equation*}
+\frac{p(x)}{q(x)}
+\end{equation*}on $p(x)$ i $q(x)$ són polinomis i $q(x)$ és diferent del polinomi zero.
+
+Per exemple,\begin{equation*}
+\frac{x^{2}+1}{x},\frac{x-1}{2},\frac{x^{3}}{x^{2}-1}
+\end{equation*}són fraccions algebraiques.
+
+En el conjunt de totes les fraccions algebraiques definim una relació d'equivalència de la forma següent: diem que dues fraccions
+algebraiques\begin{equation*}
+\frac{p(x)}{q(x)}\text{ \ \ \ i \ \ \ }\frac{r(x)}{s(x)}
+\end{equation*}són \textbf{equivalents} si i només si\begin{equation*}
+p(x)\cdot s(x)=q(x)\cdot r(x)
+\end{equation*}
+
+Aquesta relació d'equivalència dona lloc a una clesificación de les
+fraccions algebraiques en classes. Cada fracció
+\begin{equation*}
+\frac{p(x)}{q(x)}
+\end{equation*}define una classe, que es pot representar per\begin{equation*}
+\left\{ \frac{p(x)}{q(x)}\right\}
+\end{equation*}a la qual pertanyen totes les fraccions equivalents, és a dir,\begin{equation*}
+\left\{ \frac{p(x)}{q(x)}\right\} =\left\{ \frac{r(x)}{s(x)}:p(x)\cdot
+s(x)=q(x)\cdot r(x)\right\}
+\end{equation*}Anomenem \textbf{fracció racional} cada classe de fraccions
+algebraiques. Com resulta molt feixuc escriure cada fracció racional
+mitjançant claus, convindrem a escriurela simplement per un representant
+de la classe. Així, en lloc de escriure\begin{equation*}
+\left\{ \frac{p(x)}{q(x)}\right\}
+\end{equation*}escriurem\begin{equation*}
+\frac{p(x)}{q(x)}
+\end{equation*}prenent aquesta fracció com a representant de la fracció racional. De
+aquest modo, si\begin{equation*}
+\frac{p(x)}{q(x)}\text{ \ \ \ i \ \ \ }\frac{r(x)}{s(x)}
+\end{equation*}són equivalents, atès que pertanyen a la mateixa classe i cada una delles
+representa una fracció racional, escriurem\begin{equation*}
+\frac{p(x)}{q(x)}=\frac{r(x)}{s(x)}
+\end{equation*}Així, amb aquest conveni,
+\begin{equation*}
+\frac{x-1}{x^{2}}=\frac{x^{2}-1}{x^{2}(x-1)}
+\end{equation*}no significa que siguin iguals les fraccions algebraiques, sinó que són
+iguals les fraccions racionals que determinen.
+
+Una fracció algebraica
+\begin{equation*}
+\frac{p(x)}{q(x)}
+\end{equation*}s’anomena \textbf{irreduïble} si $p(x)$ i $q(x)$ són primers entre si,
+és a dir, si no té cap factor comú de grau més gran o igual
+que $1$. Per exemple, les fraccions següents són irreduïbles\begin{equation*}
+\frac{x-1}{x^{2}},\frac{x^{2}+1}{x-1},\frac{x^{3}}{x^{2}+1}
+\end{equation*}mentre que les fraccions següents\begin{equation*}
+\frac{x}{x^{2}-x},\frac{x^{2}-1}{x+1},\frac{x^{3}+1}{x^{2}-1}
+\end{equation*}no ho són.
+
+S'enté per \textbf{simplificar} una fracció algebraica buscar
+la fracció irreduïble equivalent. En la pràctica i per a facilitar
+els càlculs, sovint es pren com a representant d’una fracció
+racional la fracció irreduïble.
+
+Per exemple, volem simplificar la següent fracció\begin{equation*}
+\frac{x^{3}+5x^{2}+6x}{x^{3}+3x^{2}+2x}
+\end{equation*}Descomponent en factors els polinomis numerador i denominador, obtenim\begin{equation*}
+\frac{x^{3}+5x^{2}+6x}{x^{3}+3x^{2}+2x}=\frac{x(x+3)(x+2)}{x(x+1)(x+2)}=\frac{x+3}{x+1}
+\end{equation*}Per tant,\begin{equation*}
+\frac{x+3}{x+1}
+\end{equation*}és la fracció irreduïble equivalent a la fracció dada.
+
+\subsection{Operacions en el conjunt de les fraccions racionals}
+
+Les definicions i regles per a efectuar la suma i el producte de dos
+fraccions racionals són totalment anàlogues a les definicions i
+regles per a les operacions amb nombres racionals.
+
+\subsubsection{Suma de fraccions racionals}
+
+Donades dues fraccions racionals, definim la fracció racional \textbf{suma} com la que té com a representant la suma dels representants de
+les fraccions racionals donades. Per a efectuar la suma s'aplica la regla\begin{equation*}
+\frac{p(x)}{q(x)}+\frac{r(x)}{s(x)}=\frac{p(x)\cdot s(x)+q(x)\cdot r(x)}{q(x)\cdot s(x)}
+\end{equation*}Observa que aquesta fracció és algebraica, perquè, ni $q(x)$ ni $s(x)$ són
+el polinomi zero, i, per tant, $q(x)\cdot s(x)$ tampoc ho és. A més,
+és fàcil demostrar que aquesta suma no depèn dels representants
+escollits i, en conseqüència, la operació está bien definida.
+
+Les propietats associativa i commutativa, així com la existència del
+element neutre i de la fracció racional oposada d’una qualsevol es
+dedueix de la mateixa manera ja coneguda per als nombres racionals.
+Recordem, simplement, que el element neutre és\begin{equation*}
+\frac{0}{q(x)}
+\end{equation*}amb el polinomi zero en el numerador i qualsevol polinomi no nul en el
+denominador, i que la fracció racional oposada de\begin{equation*}
+\frac{p(x)}{q(x)}
+\end{equation*}és\begin{equation*}
+\frac{-p(x)}{q(x)}
+\end{equation*}
+
+Per exemple, volem efectuar la següent suma de fraccions\begin{equation*}
+\frac{x+3}{x^{2}+x}+\frac{x-2}{x^{2}+3x+2}
+\end{equation*}Evidentment podem utilitzar la regla que hem donat al definir la suma de
+fraccions. Tanmateix, resulta molt més còmode utilitzar el m.c.m.
+dels polinomis denominadors i convertir les dues fraccions donades en
+altres equivalents amb el mateix denominador; observa, perquè, que es
+es procedeix de la mateixa manera que la suma de fraccions numèriques. Les
+descomposicions factorials dels polinomis denominadors són\begin{equation*}
+\begin{array}{l}
+x^{2}+x=x(x+1) \\
+x^{2}+3x+2=(x+1)(x+2)\end{array}\end{equation*}i, per tant, obtenim\begin{equation*}
+\text{m.c.m.}\left( x^{2}+x,x^{2}+3x+2\right) =x(x+1)(x+2)
+\end{equation*}Aleshores, podem escriure\begin{eqnarray*}
+\frac{x+3}{x^{2}+x}+\frac{x-2}{x^{2}+3x+2} &=&\frac{(x+3)(x+2)}{x(x+1)(x+2)}+\frac{x(x-2)}{x(x+1)(x+2)} \\
+&=&\frac{(x+3)(x+2)+x(x-2)}{x(x+1)(x+2)} \\
+&=&\frac{2x^{2}+3x+6}{x^{3}+3x^{2}+2x}
+\end{eqnarray*}
+
+\subsubsection{Producte de fraccions racionals}
+
+Donades dues fraccions racionals, definim la fracció racional \textbf{producte} com la que té com a representant el producte dels
+representants de les fraccions racionals donades. Per a efectuar el producte
+s'aplica la regla\begin{equation*}
+\frac{p(x)}{q(x)}\cdot \frac{r(x)}{s(x)}=\frac{p(x)\cdot r(x)}{q(x)\cdot s(x)}
+\end{equation*}Observa que aquesta fracció és algebraica, perquè, ni $q(x)$ ni $s(x)$ són
+el polinomi zero, i, per tant, $q(x)\cdot s(x)$ tampoc ho és. A més,
+és fàcil demostrar que aquest producte no depèn dels representants
+escollits i, en conseqüència, la operació está bien definida.
+
+Les propietats associativa i commutativa es demostren de la mateixa manera que
+per als nombres racionals. L'element neutre està constituït per
+la fracció racional que té com a representant qualsevol fracció
+algebraica de numerador igual al denominador. La fracció racional
+inversa de
+\begin{equation*}
+\frac{p(x)}{q(x)}
+\end{equation*}és\begin{equation*}
+\frac{q(x)}{p(x)}
+\end{equation*}Observa que aquesta fracció serà algebraica si $p(x)$ no és el
+polinomi nul. Per tant, totes les fraccions racionals tenen inversa excepte
+la fracció racional zero\begin{equation*}
+\frac{0}{q(x)}
+\end{equation*}on $q(x)$ és qualsevol polinomi no nul. També es compleix la
+propietat distributiva respecte de la suma.
+
+Per exemple, volem trobar la fracció irreduïble equivalent al
+següent producte de fraccions\begin{equation*}
+\frac{1+x}{1-x}\cdot \frac{x}{1-x^{2}}
+\end{equation*}Dit amb altres paraules, es tracta d'efectuar el producte i simplificar després la fracció resultant. Així, tenim\begin{eqnarray*}
+\frac{1+x}{1-x}\cdot \frac{x}{1-x^{2}} &=&\frac{x(1+x)}{(1-x)(1-x^{2})} \\
+&=&\frac{x(1+x)}{(1-x)^{2}(1+x)} \\
+&=&\frac{x}{(1-x)^{2}} \\
+&=&\frac{1}{1-2x+x^{2}}
+\end{eqnarray*}
+
+\subsection{El cos de les fraccions racionals}
+
+Les propietats de la suma i el producte de fraccions racionals es
+s'enuncien conjuntament dient que el conjunt de les fraccions racionals
+amb la suma i el producte constitueixen un cos commutatiu, anomenat
+\textbf{cos de les fraccions racionals} de $\mathbb{R}[x]$.
+
+Ara ja podem donar resposta al problema plantejat a l'inici d'aquesta secció. Recordem que es tractava de resoldre l'equació següent\begin{equation*}
+(x-1)\cdot A(x)=x^{2}+1
+\end{equation*}
+
+Evidentment podem escriure aquesta equació mitjançant fraccions
+racionals de la manera següent\begin{equation*}
+\frac{x-1}{1}\cdot \frac{A(x)}{1}=\frac{x^{2}+1}{1}
+\end{equation*}on hem identificat cada polinomi $p(x)$ amb la fracció\begin{equation*}
+\frac{p(x)}{1}
+\end{equation*}Multiplicant ara els dos membres de l'equació per la fracció
+racional inversa de
+\begin{equation*}
+\frac{x-1}{1}
+\end{equation*}és a dir, multiplicant per\begin{equation*}
+\frac{1}{x-1}
+\end{equation*}obtenim\begin{eqnarray*}
+\frac{1}{x-1}\cdot \left( \frac{x-1}{1}\cdot \frac{p(x)}{1}\right) &=&\frac{1}{x-1}\cdot \frac{x^{2}+1}{1} \\
+\left( \frac{1}{x-1}\cdot \frac{x-1}{1}\right) \cdot \frac{p(x)}{1} &=&\frac{x^{2}+1}{x-1} \\
+\frac{x-1}{x-1}\cdot \frac{p(x)}{1} &=&\frac{x^{2}+1}{x-1} \\
+p(x) &=&\frac{x^{2}+1}{x-1}
+\end{eqnarray*}
+
+\section{Funcions polinòmiques}
+
+S'anomena \textbf{funció polinòmica} de grau $n$ a tota funció
+real de variable real $f$ definida per\begin{equation*}
+f(x)=a_{0}+a_{1}x+a_{2}x^{2}+\cdots +a_{n-1}x^{n-1}+a_{n}x^{n}
+\end{equation*}per a tot $x\in \mathbb{R}$, amb $a_{i}\in \mathbb{R}$ ($1\leq i\leq n$) i $a_{n}\neq 0$.
+
+Observa que les operacions que hi cal fer per obtenir la imatge d'un
+element $x$ es poden fer per a qualsevol nombre real i, per tant, una
+funció polinòmica té com domini tot el conjunt dels nombres reals.
+
+El valor que pren la funció per a $x=0$ coincideix amb el terme
+independent del polinomi\begin{equation*}
+f(0)=a_{0}
+\end{equation*}i, per tant, la gràfica de la funció tallarà l'eix
+d'ordenades en el punt $(0,a_{0})$. Els punts de tall de la gràfica amb
+l'eix d'abscisses seran els punts $x$ tals que $f(x)=0$, és a dir,
+els zeros de la funció; aquests punts es corresponen amb les arrels del polinomi.
+
+A continuació tractarem alguns casos particulars de funcions polinòmiques així com les seves gràfiques.
+
+\subsection{Funcions constants}
+
+Una \textbf{funció constant} és una funció polinòmica de
+grau zero. Tota funció constant $f$ ve definida per\begin{equation*}
+f(x)=a
+\end{equation*}per a tot $x\in \mathbb{R}$, amb $a\in \mathbb{R}$.
+
+És fàcil veure que la gràfica d'aquesta funció és una recta
+paral·lela a l'eix d'abscisses que passa pel punt $(0,a)$ i la qual equació és\begin{equation*}
+y=a
+\end{equation*}Per tant, el recorregut d'aquesta funció és redueix a un un sol punt $y=a$.
+
+En la figura següent, hem dibuixat diferents funcions d'aquest tipus per a
+diferents valors de $a$. La funció constant igual a $0$, o també anomenada \textbf{funció nula}, ve donada per $f(x)=0$ per a tot $x\in
+\mathbb{R}$; la gràfica d'aquesta funció és la recta $y=0$ que
+coincideix amb l'eix d’abscisses. \begin{center}
+\includegraphics[width=2.5486in,height=2.5797in,keepaspectratio]{poli2.png}
+\end{center}
+
+\subsection{Funcions afins}
+
+Una \textbf{funció afí} és una funció polinòmica de primer
+grau. Tota funció afí $f$ ve definida per\begin{equation*}
+f(x)=ax+b
+\end{equation*}per a tot $x\in \mathbb{R}$, amb $a,b\in \mathbb{R}$ i $a\neq 0$.
+
+És fàcil veure que la gràfica d'aquesta funció és una recta que
+passa pels punts $(0,b)$ i $(-b/a,0)$, i la qual equació és\begin{equation*}
+y=ax+b
+\end{equation*}Per tant, el recorregut d'aquesta funció és tot el conjunt dels nombres reals.
+
+Observa que si $a>0$, aleshores es compleix\begin{equation*}
+\begin{array}{ccccc}
+x_{1}\leq x_{2} & \Longrightarrow & ax_{1}\leq ax_{2} & \Longrightarrow &
+f(x_{1})=ax_{1}+b\leq ax_{2}+b=f(x_{2})\end{array}\end{equation*}i, per tant, la funció és creixent. De la mateixa manera, si $a<0$,
+aleshores es compleix\begin{equation*}
+\begin{array}{ccccc}
+x_{1}\leq x_{2} & \Longrightarrow & ax_{1}\geq ax_{2} & \Longrightarrow &
+f(x_{1})=ax_{1}+b\geq ax_{2}+b=f(x_{2})\end{array}\end{equation*}i, per tant, la funció és decreixent.
+
+Si $b=0$, la funció s’anomena \textbf{lineal} i la seva gràfica és una
+recta de pendent $a$ que passa per l’origen de coordenades. En la
+següent figura hem dibuixat les gràfiques d'algunes funcions d'
+aquest tipus. \begin{center}
+\includegraphics[width=2.674in,height=2.5581in,keepaspectratio]{poli3.png}
+\end{center}
+
+\subsection{Funcions quadràtiques}
+
+Una \textbf{funció quadràtica} és una funció polinòmica de
+segon grau. Tota funció quadràtica $f$ ve definida per\begin{equation*}
+f(x)=ax^{2}+bx+c
+\end{equation*}per a tot $x\in \mathbb{R}$, amb $a,b,c\in \mathbb{R}$ i $a\neq 0$.
+
+Abans de passar a estudiar aquest cas general, tractarem alguns casos
+especials més senzills.
+
+\begin{enumerate}
+\item $f(x)=x^{2}$
+\end{enumerate}
+
+És el cas més senzill de funció quadràtica. La gràfica d'
+aquesta funció és representada per la paràbola $y=x^{2}$; hem
+dibuixat aquesta corba en la figura següent \begin{center}
+\includegraphics[width=2.6524in,height=2.6948in,keepaspectratio]{poli4.png}
+\end{center}A partir de la gràfica d'aquesta
+funció podem observar les següents propietats:
+
+\begin{itemize}
+\item La funció és sempre positiva
+
+\item És simètrica respecte de l'eix d’ordenades, ja que $f(-x)=f(x)$; a l'eix de simetria s'anomena eix de la paràbola.
+
+\item Presenta un punt d'ordenada mínima (mínim) en el punt $(0,0)$; a aquest punt s'anomena vèrtex de la paràbola.
+
+\item Per a valors positius de la $x$ la funció és creixent, perquè\begin{equation*}
+\begin{array}{ccc}
+0<x_{1}\leq x_{2} & \Longrightarrow & f(x_{1})=x_{1}^{2}\leq
+x_{2}^{2}=f(x_{2})\end{array}\end{equation*}i per a valors negatius de la $x$ la funció és decreixent, perquè\begin{equation*}
+\begin{array}{ccc}
+x_{1}\leq x_{2}<0 & \Longrightarrow & f(x_{1})=x_{1}^{2}\geq
+x_{2}^{2}=f(x_{2})\end{array}\end{equation*}
+\end{itemize}
+
+\begin{enumerate}
+\item[2.] $f(x)=-x^{2}$
+\end{enumerate}
+
+La gràfica d'aquesta funció s’obté per simetria respecte de l'
+eix d'abscisses de la paràbola $y=x^{2}$. \begin{center}
+\includegraphics[width=2.6636in,height=2.5071in,keepaspectratio]{poli5.png}
+\end{center}En aquest cas la funció en lloc
+de ser positiva sempre és negativa. La simetria respecte de l'eix
+d'ordenades es conserva però canvia el creixement de la funció. Ara la
+funció és creixent per a valors negatius de la $x$ i decreixent per a
+valors positius. En lloc de tenir un punt d'ordenada mínima en $(0,0)$ ara té un punt d'ordenada màxima (màxim).
+
+\begin{enumerate}
+\item[3.] $f(x)=ax^{2}$, amb $a\in \mathbb{R}$ i $a\neq 0$
+\end{enumerate}
+
+La gràfica d'aquesta funció s'obtindrà a partir de la paràbola $y=x^{2}$ multiplicant les seves ordenades per la constant $a$. Serà
+una paràbola amb les mateixes característiques que $y=x^{2}$ o $y=-x^{2}$, segons que $a$ sigui positiu o negatiu, respectivament. En la
+figura següent hem dibuixat diverses paràboles del tipus $y=ax^{2}$; és
+important observar que les branques de la paràbola seran més
+tancades o obertes segons que $a$ augmenti o disminueixi en valor absolut.
+\begin{center}
+\includegraphics[width=2.9032in,height=2.8608in,keepaspectratio]{poli6.png}
+\end{center}
+
+\begin{enumerate}
+\item[4.] $f(x)=ax^{2}+c$, amb $a,c\in \mathbb{R}$ i $a,c$ no nuls
+\end{enumerate}
+
+La gràfica d'aquesta funció s'obtindrà a partir de la paràbola $y=ax^{2}$ traslladant-la $c$ unitats seguint l'eix d'ordenades; es traslladarà $c$ unitats en el sentit positiu de l'eix d'ordenades si $c>0$, i $c$ unitats en el sentit negatiu d'aquest eix si $c<0$. Observa la figura següent per a adonar-te d'aquest fet. \begin{center}
+\includegraphics[width=2.642in,height=2.5797in,keepaspectratio]{poli7.png}
+\end{center}És
+important observar que ara el vèrtex de la paràbola s'ha
+traslladat del punt $(0,0)$ al punt $(0,c)$. També és important saber
+que ara la funció no ha de ser necessàriament sempre positiva o sempre
+negativa. En efecte, si $a>0$ i $c<0$, aleshores la paràbola $y=ax^{2}+c$
+tallarà l'eix d'abscisses en els punts\begin{equation*}
+\left( \sqrt{-\frac{c}{a}},0\right) \text{ \ \ \ i \ \ \ }\left( -\sqrt{-\frac{c}{a}},0\right)
+\end{equation*}ja que\begin{equation*}
+a\left( \pm \sqrt{-\frac{c}{a}}\right) ^{2}+c=a\left( -\frac{c}{a}\right)
++c=0
+\end{equation*}Observa que passal mateix si $a<0$ i $c>0$. En resum, si $a$ i $c$
+té signes oposats, la paràbola talla l'eix d'abscisses en dos
+punts diferents i, com a conseqüència, la funció canvia de signe.
+
+\begin{enumerate}
+\item[5.] $f(x)=a(x-p)^{2}+q$, amb $a,p,q\in \mathbb{R}$ i $a,p,q$ no nuls
+\end{enumerate}
+
+La gràfica d'aquesta funció s'obtindrà a partir de la paràbola $y=ax^{2}+q$ traslladant-la $p$ unitats seguint l'eix d'abscisses; es traslladarà $p$ unitats en el sentit positiu de l'eix d'abscisses si $p>0$, i $p$ unitats en el sentit negatiu d'aquest eix si $p<0 $. Observa la figura següent per a adonar-te d'aquest fet. \begin{center}
+\includegraphics[width=2.6636in,height=2.6636in,keepaspectratio]{poli8.png}
+\end{center}
+
+És important observar que ara el vèrtex de la paràbola s'ha
+traslladat del punt $(0,q)$ al punt $(p,q)$. L'eix de simetria de la
+paràbola és ara paral·lel a l'eix d’ordenades i passa pel punt $(p,q)$. És fàcil comprovar que per a $a>0$, la funció és
+decreixent a l'esquerra del vèrtex i creixent a la seva dreta, i la seva gràfica presenta un mínim en el vèrtex; anàlogament, es
+comprova que si $a<0$, la funció és creixent a l'esquerra del vèrtex i decreixent a la seva dreta, i la seva gràfica presenta un màxim en
+el vèrtex.
+
+\begin{enumerate}
+\item[6.] $f(x)=ax^{2}+bx+c$, amb $a,b,c\in \mathbb{R}$ i $a\neq 0$
+\end{enumerate}
+
+Considerem finalment el cas general. Observa en primer lloc que podem
+escriure\begin{equation*}
+ax^{2}+bx+c=a\left( x+\frac{b}{2a}\right) ^{2}+\left( c-\frac{b^{2}}{4a}\right)
+\end{equation*}Per exemple,\begin{equation*}
+2x^{2}+16x+34=2(x+4)^{2}+2
+\end{equation*}Per tant, si fem\begin{eqnarray*}
+p &=&\frac{b}{2a} \\
+q &=&c-\frac{b^{2}}{4a}
+\end{eqnarray*}aleshores\begin{equation*}
+ax^{2}+bx+c=a(x-p)^{2}+q
+\end{equation*}de manera que la gràfica d'aquesta funció és una paràbola de la
+forma\begin{equation*}
+y=a(x-p)^{2}+q
+\end{equation*}Com ja hem vist les característiques d'aquesta paràbola són:
+
+\begin{itemize}
+\item Vèrtex en el punt $\left( -\frac{b}{2a},c-\frac{b^{2}}{4a}\right) $
+
+\item Eix de simetria paral·lel a l'eix d’ordenades i passa pel vèrtex
+
+\item Per a $a>0$, la funció presenta un punt d'ordenada mínima
+en el vèrtex (mínim) i, per a $a<0$, la funció presenta un
+punt d'ordenada màxima en el vèrtex (màxim). Per tant, si $a>0$, el recorregut de la funció és $\left[ c-\frac{b^{2}}{4a},+\infty
+\right) $, i si $a<0$, és $\left( -\infty,c-\frac{b^{2}}{4a}\right] $
+
+\item Per a $a>0$, diem que la paràbola té concavitat positiva
+(convexa) i, per a $a<0$, diem que la paràbola té concavitat
+negativa (còncava)
+
+\item La paràbola talla l'eix d’ordenades en el punt $(0,c)$; talla
+al eix d'abscisses si $a$ i $c-\frac{b^{2}}{4a}$ té signes oposats o $c-\frac{b^{2}}{4a}=0$ (la paràbola és aleshores tangent a l'eix d’abscisses
+y el punt de contacte és el vèrtex). Observa que perquè la paràbola talli l'eix d'abscisses el polinomi $ax^{2}+bx+c$ ha de tenir arrels reals i, per tant, si $a>0$ la condició perquè això passi és\begin{equation*}
+c-\frac{b^{2}}{4a}\leq 0
+\end{equation*}equivalent a\begin{equation*}
+b^{2}-4ac\geq 0
+\end{equation*}Com a conseqüència, el polinomi $ax^{2}+bx+c$ no tindrà arrels
+reals si $b^{2}-4ac<0$.
+\end{itemize}
+
+Per exemple, en la figura següent hem representat la gràfica de la
+funció $f(x)=x^{2}-2x-3$. \begin{center}
+\includegraphics[width=2.5694in,height=2.5789in,keepaspectratio]{poli9.png}
+\end{center}Com que\begin{equation*}
+x^{2}-2x-3=(x-1)^{2}-4
+\end{equation*}aleshores $(1,-4)$ és el vèrtex de la paràbola. El seu eix de simetria és la recta vertical d'equació $x=1$. La funció té un mínim en $x=1$ el valor del qual és $-4$. La gràfica és convexa i talla l’
+eix d’ordenades en el punt $(0,-3)$. Els punts de tall amb l'eix d'abscisses són les arrels del polinomi $x^{2}-2x-3$. Com que\begin{equation*}
+x^{2}-2x-3=(x+1)(x-3)
+\end{equation*}aleshores les arrels són $-1$ i $3$, i, per tant, els punts de tall
+amb l'eix d'abscisses són $(-1,0)$ i $(3,0)$.
+
+\subsection{Altres funcions polinòmiques senzilles}
+
+En l'apartat anterior s'ha vist com a partir de la paràbola $y=x^{2}$ es pot representar qualsevol altra paràbola de la forma $y=ax^{2}+bx+c$, mitjançant simetries o translacions dels eixos. La mateixa
+tècnica pot servir-nos per a representar altres funcions polinòmiques
+senzilles.
+
+Per exemple, a partir de la gràfica de la funció $f(x)=x^{3}$,
+obtinguda mitjançant una taula de valors, \begin{center}
+\includegraphics[width=2.6109in,height=2.5382in,keepaspectratio]{poli10.png}
+\end{center}podem obtenir altres gràfiques de
+funcions polinòmiques de tercer grau.
+
+Per exemple, la gràfica de la funció\begin{equation*}
+f(x)=x^{3}-3x^{2}+3x+3
+\end{equation*}pot obtenir-se a partir de $y=x^{3}$, perquè\begin{equation*}
+x^{3}-3x^{2}+3x+3=(x-1)^{3}+4
+\end{equation*}En efecte, de la gràfica de $y=x^{3}$, mitjançant una translació
+vertical, seguint l'eix d’ordenades en el sentit positiu $4$ unitats,
+obtindrem la gràfica de $y=x^{3}+4$. D'aquesta gràfica, mitjançant una
+translació horizontal, seguint l'eix d'abscisses en el sentit
+positiu $1$ unitat, obtindrem la gràfica de $y=(x-1)^{3}+4$, \begin{center}
+\includegraphics[width=2.5797in,height=2.5382in,keepaspectratio]{poli11.png}
+\end{center}y, a partir de la seva gràfica, podem deduir algunes de les seves
+propietats.
+
+Evidentment, a partir de la gràfica de la funció $f(x)=x^{4}$,
+obtinguda mitjançant una taula de valors, \begin{center}
+\includegraphics[width=2.725in,height=2.6844in,keepaspectratio]{poli12.png}
+\end{center}podem obtenir altres gràfiques de
+funcions polinòmiques de quart grau.
+
+Per exemple, la gràfica de la funció\begin{equation*}
+f(x)=-x^{4}-4x^{3}-6x^{3}-4x+4
+\end{equation*}pot obtenir-se a partir de $y=x^{4}$, perquè\begin{equation*}
+-x^{4}-4x^{3}-6x^{2}-4x+4=-(x+1)^{4}+5
+\end{equation*}Recorda que\begin{equation*}
+(x+1)^{4}=x^{4}+4x^{3}+6x^{2}+4x+1
+\end{equation*}En efecte, de la gràfica de $y=x^{4}$, mitjançant una simetria
+respecte de l'eix d’abscisses, obtindrem la gràfica de $y=-x^{4}$.
+Ara, mitjançant una translació vertical, seguint l'eix d’ordenades
+en el sentit positiu $5$ unitats, obtindrem la gràfica de $y=-x^{4}+5$. D'aquesta gràfica, mitjançant una translació horizontal,
+seguint l'eix d'abscisses en el sentit negatiu $1$ unitat, obtindrem
+la gràfica de $y=-(x+1)^{4}+5$, \begin{center}
+\includegraphics[width=2.7882in,height=2.5797in,keepaspectratio]{poli13.png}
+\end{center}y, a partir de la seva gràfica,
+podem deduir algunes de les seves propietats.
+
+\section{Funcions racionals}
+
+Així com cada polinomi dona lloc a una funció polinòmica, cada
+fracció algebraica dona lloc a una funció que s’anomena \textbf{funció racional}, associada a una fracció algebraica. Una funció
+racional és tota funció real de variable real $f$ definida per\begin{equation*}
+f(x)=\frac{p(x)}{q(x)}
+\end{equation*}per a tot $x\in \mathbb{R}$, on $p(x),q(x)\in \mathbb{R}[x]$ i $q(x)$ no
+és el polinomi zero.
+
+Per exemple,\begin{equation*}
+f(x)=\frac{x^{2}-1}{3x-2}
+\end{equation*}és una funció racional. Encara que no tractarem aquí aquest tipus de
+funcions, només farem algunes observacions. En buscar la imatge d'un
+nombre real per $f$ pot passar que per a aquest valor s'anul·li el
+denominador, cas en què el quocient no té sentit. Aquests valors de $x$
+que anul·len el denominador no tenen imatge i cal prescindir-ne. Per tant, el domini d’una funció racional és\begin{eqnarray*}
+\text{Dom }f &=&\left\{ x\in \mathbb{R}:q(x)\neq 0\right\} \\
+&=&\mathbb{R}-\left\{ x\in \mathbb{R}:q(x)=0\right\}
+\end{eqnarray*}
+
+En l'exemple anterior, el valor $x=\frac{2}{3}$ no té imatge i, per
+tant,\begin{eqnarray*}
+\text{Dom }f &=&\mathbb{R}-\left\{ x\in \mathbb{R}:3x-2=0\right\} \\
+&=&\mathbb{R}-\left\{ \frac{2}{3}\right\}
+\end{eqnarray*}
+
+Si s'efectua la representació gràfica d’una funció
+racional caldrà prendre la precaució de assenyalar els punts $x$
+que no tenen imatge. De moment, per a efectuar la representació gràfica de la funció\begin{equation*}
+f(x)=\frac{x^{2}-1}{3x-2}
+\end{equation*}podem utilitzar una taula de valors i assenyalar el valor $x=\frac{2}{3}$. Cap valor de $y$ associat a $\frac{2}{3}$ pot ser punt de la gràfica, és a dir, no és possible que la recta vertical $x=\frac{2}{3}$
+talli la gràfica de la funció. Com que el valor $\frac{2}{3}$
+no es pot donar, tractarem de completar la taula amb valors pròxims a
+aquest punt. En la figura següent es mostra la gràfica d'aquesta funció\begin{center}
+\includegraphics[width=2.6316in,height=2.6109in,keepaspectratio]{poli14.png}
+\end{center}En aquesta gràfica hem dibuixat també la recta
+\begin{equation*}
+y=\frac{1}{3}x+\frac{2}{9}
+\end{equation*}a la que les branques de la gràfica s'aproximen a mesura que $x$ augmenta o
+disminueix indefinidament. Veurem en un altre apartat el significat d'aquesta
+recta així com el de la recta\begin{equation*}
+x=\frac{2}{3}
+\end{equation*}

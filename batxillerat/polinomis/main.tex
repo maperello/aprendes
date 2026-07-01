@@ -1,0 +1,79 @@
+\documentclass[12pt,a4paper,oneside]{book}
+
+\input{../common/aprendes-modern.sty}
+\input{../common/preamble.tex}
+\input{../common/environments.tex}
+\input{../common/macros.tex}
+\input{../common/interactive-tests.tex}
+
+\begin{document}
+\pagecolor{fons!20}
+
+\frontmatter
+
+\title{Polinomis}
+\author{Miquel Àngel Perelló}
+\date{\today}
+
+\hypersetup{
+ pdftitle={Polinomis},
+ pdfauthor={Miquel Àngel Perelló}
+}
+
+\maketitle
+\tableofcontents
+
+\let\cleardoublepage\clearpage
+
+\chapter*{Prefaci}
+
+Aquests apunts formen la unitat d'\textbf{aprendes} dedicada als \textbf{polinomis}.
+La unitat continua l'estudi de l'àlgebra elemental i introdueix els polinomis com a expressions algebraiques que permeten representar, operar i estudiar funcions d'una manera sistemàtica.
+
+L'objectiu no és només aprendre a fer càlculs amb polinomis, sinó entendre l'estructura algebraica que hi ha al darrere: la noció de grau, els coeficients, les operacions de suma i producte, la divisió euclidiana, la factorització, les arrels i la relació entre polinomis i funcions polinòmiques.
+
+El text està dividit en quatre blocs: teoria, pràctica, exercicis proposats i tests interactius d'autoavaluació. La pràctica conté exercicis resolts; els exercicis proposats inclouen indicacions breus perquè l'alumnat pugui treballar de manera autònoma sense veure directament la solució.
+
+\chapter{Introducció}
+
+Els polinomis apareixen de manera natural quan es vol generalitzar el càlcul amb nombres a expressions que depenen d'una variable. Expressions com
+\[
+3x^2-5x+1, \qquad x^4-2x^2+7, \qquad (x-1)(x+3)
+\]
+permeten descriure relacions numèriques, construir funcions, formular equacions i modelitzar situacions geomètriques o físiques.
+
+En aquesta unitat s'estudia primer què és un polinomi i com s'identifiquen els seus termes, coeficients i grau. Després es defineixen les operacions bàsiques de suma, resta i producte, i es justifica que els polinomis formen un anell. A continuació s'introdueixen la potència d'un binomi i la fórmula de Newton, la divisió de polinomis, la regla de Ruffini, el teorema del residu, el teorema del factor, la factorització i les fraccions racionals.
+
+Els objectius principals són:
+\begin{itemize}
+\item reconèixer monomis i polinomis i determinar-ne el grau, els coeficients i el terme independent;
+\item operar amb polinomis i reduir termes semblants;
+\item aplicar la fórmula del binomi de Newton;
+\item dividir polinomis i interpretar el quocient i el residu;
+\item utilitzar la regla de Ruffini i el teorema del residu;
+\item relacionar arrels, factors i descomposició factorial;
+\item calcular el màxim comú divisor i el mínim comú múltiple de polinomis;
+\item simplificar i operar amb fraccions racionals;
+\item interpretar gràficament funcions polinòmiques senzilles.
+\end{itemize}
+
+\let\cleardoublepage\clearpage
+\mainmatter
+
+\input{caps/teoria}
+\input{caps/practica}
+\input{caps/exercicis}
+
+\chapter{Tests interactius}
+\label{cap:tests}
+
+\begin{Form}
+\IfFileExists{tests/test1.tex}{\input{tests/test1}}{}
+\IfFileExists{tests/test2.tex}{\input{tests/test2}}{}
+\IfFileExists{tests/test3.tex}{\input{tests/test3}}{}
+\IfFileExists{tests/test4.tex}{\input{tests/test4}}{}
+\end{Form}
+
+\backmatter
+
+\end{document}

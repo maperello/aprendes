@@ -1,142 +1,38 @@
 \documentclass[12pt,a4paper,oneside]{book}
 
-% Compilació amb XeLaTeX: el fitxer és UTF-8 natiu.
-\usepackage{fontspec}
-\usepackage[catalan]{babel}
-\usepackage{microtype}
-\usepackage{amsmath,amssymb,amsfonts,amsthm,mathtools}
-\usepackage{geometry}
-\usepackage{graphicx}
-\usepackage{xcolor}
-\usepackage{enumitem}
-\usepackage{hyperref}
-\usepackage{titlesec}
-\usepackage{tcolorbox}
-\tcbuselibrary{breakable}
+\input{../common/aprendes-modern.sty}
+\input{../common/preamble.tex}
+\input{../common/environments.tex}
+\input{../common/macros.tex}
 \input{../common/interactive-tests.tex}
 
-\geometry{hmargin={3cm,3cm},vmargin={2.5cm,2.5cm},offset=0pt,footskip=1cm,headsep=1cm}
-\hypersetup{
-  pdftitle={Nombres reals},
-  pdfauthor={Miquel Àngel Perelló},
-  colorlinks=true,
-  linktoc=page,
-  linkcolor=blue,
-  urlcolor=blue,
-  citecolor=blue,
-  hypertexnames=false
-}
-
-\setcounter{MaxMatrixCols}{10}
-\setlist{itemsep=0.25em,topsep=0.25em}
-\setlength{\parindent}{0pt}
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{2}
-\numberwithin{equation}{section}
-
-\definecolor{fons}{RGB}{243,231,220}
-\definecolor{AprenSuau}{HTML}{FF8A9A}
-\definecolor{DefinicioSuau}{HTML}{B8FFE6}
-\definecolor{ExempleSuau}{HTML}{A7E9FF}
-\definecolor{ExerciciSuau}{HTML}{C9FFC7}
-\definecolor{ObservacioSuau}{HTML}{FFD6B3}
-\definecolor{DemostracioSuau}{HTML}{FFB3A9}
-\definecolor{SolucioSuau}{HTML}{C3D0E1}
-\definecolor{TeoremaSuau}{HTML}{D4C4FF}
-\definecolor{LemaSuau}{HTML}{E8DFFF}
-\definecolor{ProposicioSuau}{HTML}{FFE4F2}
-\definecolor{CorollariSuau}{HTML}{FFF2CC}
-
-\tcbset{
-  aprendesbox/.style={
-    sharp corners,
-    boxrule=0.8pt,
-    colback=#1!20,
-    colframe=#1!60,
-    coltitle=black,
-    fonttitle=\bfseries,
-    left=6pt,
-    right=6pt,
-    top=6pt,
-    bottom=6pt,
-    before skip=0.8em,
-    after skip=0.8em,
-    breakable,
-  }
-}
-
-\theoremstyle{plain}
-\newtheorem{teorema}{Teorema}[chapter]
-\newtheorem{axioma}[teorema]{Axioma}
-\newtheorem{conjectura}[teorema]{Conjectura}
-\newtheorem{corollari}[teorema]{Corol·lari}
-\newtheorem{lema}[teorema]{Lema}
-\newtheorem{proposicio}[teorema]{Proposició}
-\theoremstyle{definition}
-\newtheorem{definicio}{Definició}[chapter]
-\newtheorem{exemple}{Exemple}[chapter]
-\newtheorem{exercici}{Exercici}[chapter]
-\newtheorem{problema}{Problema}[chapter]
-\newtheorem{notacio}{Notació}[chapter]
-\newtheorem{algoritmo}{Algoritme}[chapter]
-\newtheorem{cas}{Cas}[chapter]
-\newtheorem{afirmacio}{Afirmació}[chapter]
-\newtheorem{conclusio}{Conclusió}[chapter]
-\newtheorem{condicio}{Condició}[chapter]
-\newtheorem{criteri}{Criteri}[chapter]
-\newtheorem{sumario}{Resum}[chapter]
-\theoremstyle{remark}
-\newtheorem{observacio}{Observació}[chapter]
-\newtheorem{agraiment}{Agraïment}[chapter]
-
-\newenvironment{demostracio}[1][Demostració]{\begin{tcolorbox}[aprendesbox=DemostracioSuau,title={#1}]}{\end{tcolorbox}}
-\newenvironment{solucio}[1][Solució]{\begin{tcolorbox}[aprendesbox=SolucioSuau,title={#1}]}{\end{tcolorbox}}
-\newenvironment{indicacio}[1][Indicació]{\begin{tcolorbox}[aprendesbox=SolucioSuau,title={#1}]}{\end{tcolorbox}}
-\newenvironment{taula}[1][ht]{\par\smallskip\noindent\textbf{Taula.}\ }{\par\smallskip}
-
-\AtBeginDocument{%
-  \renewenvironment{definicio}{\refstepcounter{definicio}\begin{tcolorbox}[aprendesbox=DefinicioSuau,title={Definició~\thedefinicio}]}{\end{tcolorbox}}%
-  \renewenvironment{exemple}{\refstepcounter{exemple}\begin{tcolorbox}[aprendesbox=ExempleSuau,title={Exemple~\theexemple}]}{\end{tcolorbox}}%
-  \renewenvironment{exercici}{\refstepcounter{exercici}\begin{tcolorbox}[aprendesbox=ExerciciSuau,title={Exercici~\theexercici}]}{\end{tcolorbox}}%
-  \renewenvironment{problema}{\refstepcounter{problema}\begin{tcolorbox}[aprendesbox=ExerciciSuau,title={Problema~\theproblema}]}{\end{tcolorbox}}%
-  \renewenvironment{observacio}{\refstepcounter{observacio}\begin{tcolorbox}[aprendesbox=ObservacioSuau,title={Observació~\theobservacio}]}{\end{tcolorbox}}%
-  \renewenvironment{teorema}{\refstepcounter{teorema}\begin{tcolorbox}[aprendesbox=TeoremaSuau,title={Teorema~\theteorema}]}{\end{tcolorbox}}%
-  \renewenvironment{lema}{\refstepcounter{teorema}\begin{tcolorbox}[aprendesbox=LemaSuau,title={Lema~\theteorema}]}{\end{tcolorbox}}%
-  \renewenvironment{proposicio}{\refstepcounter{teorema}\begin{tcolorbox}[aprendesbox=ProposicioSuau,title={Proposició~\theteorema}]}{\end{tcolorbox}}%
-  \renewenvironment{corollari}{\refstepcounter{teorema}\begin{tcolorbox}[aprendesbox=CorollariSuau,title={Corol·lari~\theteorema}]}{\end{tcolorbox}}%
-}
-
-\titleformat{\chapter}{\Huge\bfseries\color{AprenSuau}}{\thechapter}{1em}{}
-\newcommand{\secformat}[1]{{\color{AprenSuau}\thesection\quad #1}}
-\titleformat{\section}{\Large\bfseries}{}{0pt}{\secformat}
-\newcommand{\subsecformat}[1]{{\color{AprenSuau}\thesubsection\quad #1}}
-\titleformat{\subsection}{\large\bfseries}{}{0pt}{\subsecformat}
-\newcommand{\subsubsecformat}[1]{{\color{AprenSuau}\thesubsubsection\quad #1}}
-\titleformat{\subsubsection}{\bfseries}{}{0pt}{\subsubsecformat}
-
-\newcommand{\func}[1]{\operatorname{#1}}
-
-\title{Nombres reals}
-\author{Miquel Àngel Perelló}
-\date{\today}
-
 \begin{document}
-\selectlanguage{catalan}
-\pagecolor{fons!20}
+	\pagecolor{fons!20}
+	
+	\frontmatter
+	
+	\title{}
+	\author{Miquel Àngel Perelló}
+	\date{\today}
+	
+	\hypersetup{
+		pdftitle={},
+		pdfauthor={Miquel Àngel Perelló}
+	}
+	
+	\maketitle
+	\tableofcontents
+	
+	\let\cleardoublepage\clearpage
 
-\frontmatter
-\maketitle
-\tableofcontents
-\let\cleardoublepage\clearpage
 
 \chapter*{Prefaci}
-\addcontentsline{toc}{chapter}{Prefaci}
 
 Aquests apunts reuneixen en un únic volum els materials d’aprendes dedicats als nombres reals: teoria, exercicis resolts, exercicis proposats i tests d’autoavaluació. L’objectiu és oferir una presentació ordenada i progressiva dels conceptes bàsics que permeten treballar amb els diferents conjunts numèrics i, en particular, amb la recta real.
 
 El text conserva el contingut original dels documents independents, però l’organitza en format de llibre per facilitar-ne la lectura continuada, la consulta i la impressió. La part teòrica introdueix les nocions fonamentals; la pràctica mostra procediments i problemes resolts; els exercicis proposats permeten consolidar l’aprenentatge, i els tests finals serveixen com a comprovació ràpida de la comprensió assolida.
 
-\chapter{Introducció}
+\chapter*{Introducció}
 
 L’estudi dels nombres reals ocupa un lloc central en les matemàtiques del batxillerat. Els nombres naturals, enters, racionals i irracionals s’integren finalment en el conjunt dels nombres reals, que permet representar magnituds, mesurar longituds, ordenar quantitats i descriure processos continus.
 
@@ -149,24 +45,25 @@ Els objectius principals d’aquesta unitat són:
 \item aplicar aquests conceptes en exercicis i problemes.
 \end{itemize}
 
-\mainmatter
+\let\cleardoublepage\clearpage
+	
+	\mainmatter
+	
+	
+	\input{caps/teoria}
+	\input{caps/practica}
+	\input{caps/exercicis}
 
-\chapter{Teoria}
-\input{caps/teoria}
-
-\chapter{Pràctica}
-\input{caps/practica}
-
-\chapter{Exercicis proposats}
-\input{caps/exercicis}
-
-\chapter{Tests}
-\begin{Form}
-\input{tests/test1}
-\input{tests/test2}
-\input{tests/test3}
-\end{Form}
-
-\backmatter
-
-\end{document}
+	\chapter{Tests interactius}
+	\label{cap:tests}
+	
+	\begin{Form}
+		\IfFileExists{tests/test1.tex}{\input{tests/test1}}{}
+		\IfFileExists{tests/test2.tex}{\input{tests/test2}}{}
+		\IfFileExists{tests/test3.tex}{\input{tests/test3}}{}
+        \IfFileExists{tests/test4.tex}{\input{tests/test4}}{}
+	\end{Form}
+	
+	\backmatter
+	
+\end{document} 

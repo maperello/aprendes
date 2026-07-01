@@ -21,6 +21,11 @@
 \newtheorem{observacio}{\color{apren}Observaci\'{o}}[chapter]
 \newtheorem*{nota}{\color{apren}Nota}
 
+\newcounter{cas}[chapter]
+\newenvironment{cas}
+  {\refstepcounter{cas}\par\smallskip\noindent{\color{apren}\textbf{Cas~\thecas:}}\ }
+  {\par\smallskip}
+
 \newenvironment{prova}
   {\par\noindent{\color{apren}\textbf{Demostraci\'{o}:}\ }}{\quad\hfill $\blacksquare$\par}
 \newenvironment{solucio}
@@ -41,4 +46,4 @@
    {%
     \par\smallskip
      \endgroup
-   } 
+   }

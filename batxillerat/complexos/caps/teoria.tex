@@ -1,0 +1,3043 @@
+\chapter{Teoria}
+\label{cap:teoria}
+\section{Introducció}
+
+En el cos $\mathbb{R}$ dels nombres reals hi ha equacions que no tenen solució, com ara
+\begin{equation*}
+x^{2}+1=0
+\end{equation*}
+i
+\begin{equation*}
+x^{2}+x+1=0.
+\end{equation*}
+
+Per aquesta raó, el cos dels nombres reals s'amplia a un altre cos numèric en què aquestes equacions, i de fet totes les equacions polinòmiques, tinguin solució. Aquest nou cos s'anomena \textbf{cos dels nombres complexos} i es denota per $\mathbb{C}$.
+
+Com que $\mathbb{C}$ és una ampliació de $\mathbb{R}$, l'equació
+\begin{equation*}
+x^{2}+1=0
+\end{equation*}
+té solució si el nou cos conté un element que faci el paper de
+\begin{equation*}
+\sqrt{-1}.
+\end{equation*}
+Aquest element es denota per $i$ i s'anomena \textbf{unitat imaginària}; per definició, compleix $i^2=-1$.
+
+Aleshores, l'equació
+\begin{equation*}
+x^{2}+x+1=0
+\end{equation*}
+té com a solucions
+\begin{eqnarray*}
+\frac{-1\pm \sqrt{1-4}}{2} &=&\frac{-1\pm \sqrt{-3}}{2} \\
+&=&\frac{-1\pm \sqrt{3}\,\sqrt{-1}}{2} \\
+&=&\frac{-1\pm \sqrt{3}i}{2}.
+\end{eqnarray*}
+Per tant, $\mathbb{C}$ ha de contenir els elements
+\begin{equation*}
+-\frac{1}{2}+\frac{\sqrt{3}}{2}i \qquad \text{i} \qquad -\frac{1}{2}-\frac{\sqrt{3}}{2}i.
+\end{equation*}
+
+En general, com veurem en l'apartat següent, el cos dels nombres complexos està format pels nombres de la forma
+\begin{equation*}
+a+bi,
+\end{equation*}
+on $a$ i $b$ són nombres reals.
+
+\section{El cos dels nombres complexos}
+
+En el conjunt $\mathbb{R}\times \mathbb{R}$ dels parells ordenats de nombres reals definim les dues operacions següents:
+\begin{equation}
+(a,b)+(c,d)=(a+c,b+d)  \label{7}
+\end{equation}
+i
+\begin{equation}
+(a,b)\cdot (c,d)=(ac-bd,ad+bc)  \label{8}
+\end{equation}
+El lector pot comprovar sense gaire dificultat les propietats següents:
+
+\begin{enumerate}
+\item $(\mathbb{R}\times \mathbb{R},+)$ és un grup commutatiu d’element neutre $(0,0)$, en què $(-a,-b)$ és l’oposat de $(a,b)$.
+
+\item La multiplicació (\ref{8}) és distributiva respecte a la suma (
+\ref{7}).
+
+\item $(\mathbb{R}\times \mathbb{R}-\{(0,0)\},\cdot )$ és un grup
+commutatiu d’element neutre $(1,0)$, en què el simètric de $(a,b)$
+és
+\begin{equation*}
+\left( \frac{a}{a^{2}+b^{2}},\frac{-b}{a^{2}+b^{2}}\right)
+\end{equation*}
+\end{enumerate}
+
+Com a conseqüència, $(\mathbb{R}\times \mathbb{R},+,\cdot )$ és un cos
+commutatiu que anomenarem \textbf{cos dels nombres complexos}
+i denotarem per $\mathbb{C}$. Un \textbf{nombre complex} és un
+element de $\mathbb{C}$, és a dir, un parell ordenat de nombres reals.
+
+Identificarem el nombre real $a$ amb el nombre complex $(a,0)$ i,
+com a conseqüència, podrem afirmar que $\mathbb{C}$ és una extensió de
+$\mathbb{R}$.
+
+Com que
+\begin{equation*}
+(0,1)\cdot (0,1)=(-1,0)
+\end{equation*}
+és natural escriure $(0,1)=i$, complint-se aleshores que $i^{2}=-1$, i,
+per tant, $-1$ té arrel quadrada en $\mathbb{C}$. A més, si $b$
+és un nombre real, aleshores es compleix
+\begin{equation*}
+(0,1)\cdot (b,0)=(0,b)
+\end{equation*}
+i podem escriure $bi$ en lloc de $(0,b)$. D’aquesta manera, si $z$ és el nombre complex $(a,b)$, aleshores podem escriure’l de manera única
+en la forma
+\begin{equation*}
+(a,b)=(a,0)+(0,b)
+\end{equation*}
+i, com a conseqüència, és natural escriure $z$ com
+\begin{equation*}
+a+bi
+\end{equation*}
+Aquesta manera de representar un nombre complex s’anomena \textbf{forma binòmica}. Aleshores, $a$ s’anomena \textbf{part real} de $z$ i s’escriu
+\begin{equation*}
+\func{Re}z=a
+\end{equation*}
+i $b$ s’anomena \textbf{part imaginària} de $z$ i s’escriu
+\begin{equation*}
+\func{Im}z=b
+\end{equation*}
+Si $b=0$, diem que $z$ és un \textbf{nombre real}; si $a=0$, diem que $z$ és un \textbf{nombre imaginari pur}. Al nombre
+complex $i$ se l’anomena \textbf{unitat imaginària}.
+
+Les operacions (\ref{7}) i (\ref{8}), poden escriure’s en forma binòmica, operant com en el cas dels nombres reals, tenint en compte que $i^{2}=-1$:
+\begin{equation*}
+(a+bi)+(c+di)=(a+c)+(b+d)i
+\end{equation*}
+ja que
+\begin{eqnarray*}
+(a+bi)+(c+di) &=&a+bi+c+di \\
+&=&a+c+bi+di \\
+&=&(a+c)+(b+d)i
+\end{eqnarray*}
+i
+\begin{equation*}
+(a+bi)\cdot (c+di)=(ac-bd)+(ad+bc)i
+\end{equation*}
+ja que
+\begin{eqnarray*}
+(a+bi)\cdot (c+di) &=&(a+bi)\cdot c+(a+bi)\cdot di \\
+&=&ac+bci+adi+bdi^{2} \\
+&=&ac-bd+bci+adi \\
+&=&(ac-bd)+(bc+ad)i
+\end{eqnarray*}
+
+És clar que dos nombres complexos $a+bi$ i $c+di$ són \textbf{iguals}
+\begin{equation*}
+\begin{array}{lllll}
+a+bi=c+di & \Longleftrightarrow & (a,b)=(c,d) & \Longleftrightarrow &
+\left\{
+\begin{array}{l}
+a=c \\
+b=d
+\end{array}
+\right.
+\end{array}
+\end{equation*}
+quan tenen iguals les seves parts reals i les seves parts imaginàries.
+
+S’anomena \textbf{conjugat} del complex $z=a+bi$ el complex $\overline{z}
+=a-bi$. De la definició es dedueixen les propietats evidents següents:
+
+\begin{enumerate}
+\item[1)] $\func{Re}\overline{z}=\func{Re}z$ i $\func{Im}\overline{z}=-\func{
+Im}z$
+
+\item[2)] $z$ és real si i només si $\overline{z}=z$
+
+\item[3)] $z$ és imaginari pur si i només si $\overline{z}+z=0$
+\end{enumerate}
+
+El cos $\mathbb{C}$ dels nombres complexos dotat de les dues
+operacions següents
+\begin{equation*}
+(a+bi)+(c+di)=(a+c)+(b+d)i
+\end{equation*}
+i
+\begin{equation*}
+k\cdot (a+bi)=ka+kbi
+\end{equation*}
+amb $k\in \mathbb{R}$, és un espai vectorial sobre $\mathbb{R}$. És immediat comprovar-ho. A més, $1$ i $i$ formen una base d’aquest espai, ja que són evidentment generadors
+\begin{equation*}
+a+ib=a\cdot 1+b\cdot i
+\end{equation*}
+i també linealment independents, ja que
+\begin{equation*}
+\begin{array}{ccc}
+\lambda \cdot 1+\mu \cdot i=0+0\cdot i & \Longleftrightarrow & \lambda =\mu
+=0
+\end{array}
+\end{equation*}
+
+\begin{exemple}
+Expressa en forma binòmica cadascun dels nombres següents
+complexos: $(-2,1)$, $(0,-1)$, $(-1,-1)$ i $(-3,0)$.
+\end{exemple}
+
+\begin{solucio}
+Recordant que el nombre complex $(a,b)$ s’expressa en forma binòmica com $a+bi$, obtenim
+\begin{equation*}
+\begin{array}{ccc}
+\text{Parell ordenat} &  & \text{Binòmica} \\
+(-2,1) &  & -2+i \\
+(0,-1) &  & -i \\
+(-1,-1) &  & -1-i \\
+(-3,0) &  & -3
+\end{array}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Expressa els nombres següents en forma cartesiana o de parell ordenat: $
+-3 $, $2i$, $\sqrt{-5}$ i $1-\sqrt{-4}$.
+\end{exemple}
+
+\begin{solucio}
+Recordant que $i$ és en lloc de $\sqrt{-1}$, obtenim
+\begin{equation*}
+\begin{array}{lll}
+&  & \text{Parell ordenat} \\
+-3 &  & (-3,0) \\
+2i &  & (0,2) \\
+\sqrt{-5}=\sqrt{5}\cdot \sqrt{-1}=\sqrt{5}i &  & (0,\sqrt{5}) \\
+1-\sqrt{-4}=1-\sqrt{4}\cdot \sqrt{-1}=1-2i &  & (1,-2)
+\end{array}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Resol les equacions següents de segon grau en $\mathbb{C}$: (a) $
+x^{2}-2x+5=0$ i $(b)$ \thinspace $x^{2}+9=0$.
+\end{exemple}
+
+\begin{solucio}
+(a) Observa que, com el discriminant de l’equació
+\begin{equation*}
+\Delta =b^{2}-4ac=-16<0
+\end{equation*}
+és negatiu, l’equació no té solució en $\mathbb{R}$. En $
+\mathbb{C}$, les solucions són
+\begin{eqnarray*}
+\frac{-(-2)\pm \sqrt{(-2)^{2}-4\cdot 1\cdot 5}}{2\cdot 1} &=&\frac{2\pm
+\sqrt{-16}}{2} \\
+&=&\frac{2\pm \sqrt{16}\cdot \sqrt{-1}}{2} \\
+&=&\frac{2\pm 4i}{2} \\
+&=&1\pm 2i
+\end{eqnarray*}
+
+(b) És clar que
+\begin{equation*}
+\begin{array}{lll}
+x^{2}=-9 & \Longrightarrow & x=\pm \sqrt{-9}=\pm \sqrt{9}\cdot \sqrt{-1}=\pm
+3i
+\end{array}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Donats els nombres següents complexos: $z_{1}=-2+i$, $z_{2}=4-3i$, $
+z_{3}=-2$ i $z_{4}=-i$. Calcula: (a) $z_{1}-z_{2}+z_{3}-z_{4}$, (b) $
+z_{1}-2\cdot (z_{2}+z_{3})+3\cdot z_{4}$, (c) $(z_{1}+z_{2})\cdot
+(z_{3}+z_{4})$, i (d) $(i\cdot z_{1}-z_{2}+i\cdot z_{3})\cdot z_{4}$.
+\end{exemple}
+
+\begin{solucio}
+(a)
+\begin{eqnarray*}
+z_{1}-z_{2}+z_{3}-z_{4} &=&(-2+i)-(4-3i)+(-2)-(-i) \\
+&=&-2+i-4+3i-2+i \\
+&=&-8+5i
+\end{eqnarray*}
+
+(b)
+\begin{eqnarray*}
+z_{1}-2\cdot (z_{2}+z_{3})+3\cdot z_{4} &=&(-2+i)-2\cdot \left(
+4-3i-2\right) +3\cdot (-i) \\
+&=&-2+i-2\cdot (2-3i)-3i \\
+&=&-2+i-4+6i-3i \\
+&=&-6+4i
+\end{eqnarray*}
+
+(c)
+\begin{eqnarray*}
+(z_{1}+z_{2})\cdot (z_{3}+z_{4}) &=&(-2+i+4-3i)\cdot (-2-i) \\
+&=&(2-2i)\cdot (-2-i) \\
+&=&-4+4i-2i+2i^{2} \\
+&=&-4+2i-2 \\
+&=&-6+2i
+\end{eqnarray*}
+
+(d)
+\begin{eqnarray*}
+(i\cdot z_{1}-z_{2}+i\cdot z_{3})\cdot z_{4} &=&\left[ i\cdot
+(-2+i)-(4-3i)+i\cdot (-2)\right] \cdot (-i) \\
+&=&(-2i+i^{2}-4+3i-2i)\cdot (-i) \\
+&=&(-5-i)\cdot (-i) \\
+&=&5i+i^{2} \\
+&=&-1+5i
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exemple}
+(a) Comprova que l’invers de $z=a+bi$ és
+\begin{equation*}
+z^{-1}=\frac{1}{z}=\frac{a}{a^{2}+b^{2}}-\frac{b}{a^{2}+b^{2}}i
+\end{equation*}
+(b) Com a aplicació calcula els inversos dels nombres següents
+complexos: $z_{1}=1-i$, $z_{2}=-3i$ i $z_{3}=2$.
+\end{exemple}
+
+\begin{solucio}
+(a) Observa que es compleix
+\begin{eqnarray*}
+\left( \frac{a}{a^{2}+b^{2}}-\frac{b}{a^{2}+b^{2}}i\right) (a+bi) &=&\frac{
+a^{2}}{a^{2}+b^{2}}-\frac{ab}{a^{2}+b^{2}}i+\frac{ab}{a^{2}+b^{2}}i-\frac{
+b^{2}}{a^{2}+b^{2}}i^{2} \\
+&=&\frac{a^{2}}{a^{2}+b^{2}}+\frac{b^{2}}{a^{2}+b^{2}} \\
+&=&\frac{a^{2}+b^{2}}{a^{2}+b^{2}}=1
+\end{eqnarray*}
+i, per tant, com l’invers d’un nombre si existeix és únic,
+deduïm que
+\begin{equation*}
+z^{-1}=\frac{a}{a^{2}+b^{2}}-\frac{b}{a^{2}+b^{2}}i
+\end{equation*}
+
+(b) Aplicant aquest resultat, obtenim
+\begin{equation*}
+\begin{array}{ll}
+\text{Complex} & \text{Complex invers} \\
+z_{1}=1-i & z_{1}^{-1}=\frac{1}{2}+\frac{1}{2}i \\
+z_{2}=-3i & z_{2}^{-1}=\frac{1}{3}i \\
+z_{3}=2 & z_{3}^{-1}=\frac{1}{2}
+\end{array}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+(a) Escriu els conjugats dels nombres següents complexos: $
+z_{1}=2+3i$, $z_{2}=3-i$, $z_{3}=-1$ i $z_{4}=2i$. (b) Comprova que $z\cdot
+\overline{z}$ és un nombre real no negatiu, i positiu si $z\neq 0$.
+\end{exemple}
+
+\begin{solucio}
+(a) De la definició obtenim
+\begin{equation*}
+\begin{array}{ll}
+\text{Complex} & \text{Complex conjugat} \\
+z_{1}=2+3i & \overline{z_{1}}=2-3i \\
+z_{2}=3-i & \overline{z_{2}}=3+i \\
+z_{3}=-1 & \overline{z_{3}}=-1 \\
+z_{4}=2i & \overline{z_{4}}=-2i
+\end{array}
+\end{equation*}
+
+(b) Si $z=a+bi$, aleshores \thinspace $\overline{z}=a-bi$ i, per tant,
+\begin{eqnarray*}
+z\cdot \overline{z} &=&(a+bi)\cdot (a-bi) \\
+&=&a^{2}-b^{2}i^{2} \\
+&=&a^{2}+b^{2}
+\end{eqnarray*}
+és a dir, $z\cdot \overline{z}$ és una suma de quadrats. Per tant, $
+z\cdot \overline{z}$ és un nombre real no negatiu; és positiu si $z\neq 0$.
+\end{solucio}
+
+\begin{exemple}
+Comprova les propietats següents de la conjugació de nombres
+complexos:
+
+\begin{enumerate}
+\item[a)] $\overline{\overline{z}}=z$
+
+\item[b)] $\overline{z+z^{\prime }}=\overline{z}+\overline{z^{\prime }}$
+
+\item[c)] $\overline{z\cdot z^{\prime }}=\overline{z}\cdot \overline{
+z^{\prime }}$
+\end{enumerate}
+\end{exemple}
+
+\begin{solucio}
+(a) Si $z=a+bi$, aleshores \thinspace $\overline{z}=a-bi$ i, per tant, $
+\overline{\overline{z}}=a-(-b)i=a+bi=z$.
+
+(b) Si $z=a+bi$ i $z^{\prime }=c+di$, aleshores \thinspace $z+z^{\prime
+}=(a+c)+(b+d)i$ i, per tant,
+\begin{eqnarray*}
+\overline{z+z^{\prime }} &=&(a+c)-(b+d)i \\
+&=&(a-bi)+(c-di) \\
+&=&\overline{z}+\overline{z^{\prime }}
+\end{eqnarray*}
+
+(c) Si $z=a+bi$ i $z^{\prime }=c+di$, aleshores \thinspace $z\cdot z^{\prime
+}=(ac-bd)+(bc+ad)i$ i, per tant,
+\begin{equation*}
+\overline{z\cdot z^{\prime }}=(ac-bd)-(bc+ad)i
+\end{equation*}
+D’altra banda, tenim
+\begin{eqnarray*}
+\overline{z}\cdot \overline{z^{\prime }} &=&(a-bi)\cdot (c-di) \\
+&=&(ac-bd)+(-bc-ad)i \\
+&=&(ac-bd)-(bc+ad)i
+\end{eqnarray*}
+Després,
+\begin{equation*}
+\overline{z\cdot z^{\prime }}=\overline{z}\cdot \overline{z^{\prime }}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+(a) Comprova que l’invers d’un nombre complex $z$ pot expressar-se
+de la manera següent:
+\begin{equation*}
+z^{-1}=\frac{1}{z}=\frac{\overline{z}}{z\cdot \overline{z}}
+\end{equation*}
+(b) Mitjançant aquest procediment calcula l’invers de $-1+2i$.
+\end{exemple}
+
+\begin{solucio}
+(a) Hem vist en l’exemple anterior que si $z=a+bi$, aleshores
+\begin{equation*}
+z^{-1}=\frac{1}{a+bi}=\frac{a}{a^{2}+b^{2}}-\frac{b}{a^{2}+b^{2}}i=\frac{a-bi
+}{a^{2}+b^{2}}
+\end{equation*}
+Ara bé, segons l’exemple anterior,
+\begin{equation*}
+z\cdot \overline{z}=a^{2}+b^{2}
+\end{equation*}
+Per tant,
+\begin{equation*}
+z^{-1}=\frac{1}{a+bi}=\frac{a-bi}{a^{2}+b^{2}}=\frac{\overline{z}}{z\cdot
+\overline{z}}
+\end{equation*}
+Per tant, per calcular l’invers de $a+bi$
+\begin{equation*}
+\frac{1}{a+bi}
+\end{equation*}
+multiplicarem numerador i denominador pel conjugat de $a+bi$, o sigui,
+per $a-bi$.
+
+(b)
+\begin{eqnarray*}
+\frac{1}{-1+2i} &=&\frac{-1-2i}{(-1+2i)\cdot (-1-2i)} \\
+&=&\frac{-1-2i}{(-1)^{2}+2^{2}} \\
+&=&-\frac{1}{5}-\frac{2}{5}i
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exemple}
+Expressa en forma binòmica les divisions següents de nombres
+complexos:
+
+\begin{enumerate}
+\item[a)]
+\begin{equation*}
+\frac{1-i}{2+3i}
+\end{equation*}
+
+\item[b)]
+\begin{equation*}
+\frac{5+2i}{1-4i}
+\end{equation*}
+
+\item[c)]
+\begin{equation*}
+\frac{1+i}{i}
+\end{equation*}
+\end{enumerate}
+\end{exemple}
+
+\begin{solucio}
+Segons el exemple anterior,
+\begin{equation*}
+\frac{1}{z}=\frac{\overline{z}}{z\cdot \overline{z}}
+\end{equation*}
+Aleshores,
+\begin{eqnarray*}
+\frac{u}{z} &=&u\cdot \frac{1}{z} \\
+&=&u\cdot \frac{\overline{z}}{z\cdot \overline{z}} \\
+&=&\frac{u\cdot \overline{z}}{z\cdot \overline{z}}
+\end{eqnarray*}
+Per tant, per calcular un quocient de nombres complexos
+multiplicarem numerador i denominador pel conjugat del denominador.
+
+(a)
+\begin{eqnarray*}
+\frac{1-i}{2+3i} &=&\frac{(1-i)\cdot (2-3i)}{(2+3i)\cdot (2-3i)} \\
+&=&\frac{2-2i-3i+3i^{2}}{4-9i^{2}} \\
+&=&\frac{-1-5i}{13} \\
+&=&-\frac{1}{13}-\frac{5}{13}i
+\end{eqnarray*}
+
+(b)
+\begin{eqnarray*}
+\frac{5+2i}{1-4i} &=&\frac{(5+2i)\cdot (1+4i)}{(1-4i)\cdot (1+4i)} \\
+&=&\frac{5+2i+20i+8i^{2}}{1-16i^{2}} \\
+&=&\frac{-3+22i}{17} \\
+&=&-\frac{3}{17}+\frac{22}{17}i
+\end{eqnarray*}
+
+(c)
+\begin{eqnarray*}
+\frac{1+i}{i} &=&\frac{(1+i)\cdot (-i)}{i\cdot (-i)} \\
+&=&\frac{-i-i^{2}}{-i^{2}} \\
+&=&1-i
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exemple}
+Expressa en forma binòmica el resultat de les operacions següents amb
+nombres complexos:
+
+\begin{enumerate}
+\item[a)]
+\begin{equation*}
+\frac{(3-i)\cdot (2+i)}{(2+3i)\cdot (1-2i)}
+\end{equation*}
+
+\item[b)]
+\begin{equation*}
+\frac{(2+3i)\cdot i}{(1+i)\cdot (2-i)}-\frac{1+i}{2(2-3i)}
+\end{equation*}
+\end{enumerate}
+\end{exemple}
+
+\begin{solucio}
+(a)
+\begin{eqnarray*}
+\frac{(3-i)\cdot (2+i)}{(2+3i)\cdot (1-2i)} &=&\frac{6-2i+3i-i^{2}}{
+2+3i-4i-6i^{2}} \\
+&=&\frac{7+i}{8-i} \\
+&=&\frac{(7+i)\cdot (8+i)}{(8-i)\cdot (8+i)} \\
+&=&\frac{56+8i+7i+i^{2}}{64-i^{2}} \\
+&=&\frac{55+15i}{65} \\
+&=&\frac{11}{13}+\frac{3}{13}i
+\end{eqnarray*}
+
+(b) Com que
+\begin{eqnarray*}
+\frac{(2+3i)\cdot i}{(1+i)\cdot (2-i)} &=&\frac{2i+3i^{2}}{2+2i-i-i^{2}} \\
+&=&\frac{-3+2i}{3+i} \\
+&=&\frac{(-3+2i)\cdot (3-i)}{(3+i)\cdot (3-i)} \\
+&=&\frac{-9+6i+3i-2i^{2}}{9-i^{2}} \\
+&=&-\frac{7}{10}+\frac{9}{10}i
+\end{eqnarray*}
+\medskip
+\noindent A més,
+\begin{eqnarray*}
+\frac{1+i}{2(2-3i)} &=&\frac{(1+i)\cdot (2+3i)}{2(2-3i)\cdot (2+3i)} \\
+&=&\frac{2+2i+3i+3i^{2}}{2(4-9i^{2})} \\
+&=&-\frac{1}{26}+\frac{5}{26}i
+\end{eqnarray*}
+aleshores
+\begin{eqnarray*}
+\frac{(2+3i)\cdot i}{(1+i)\cdot (2-i)}-\frac{1+i}{2(2-3i)} &=&-\frac{7}{10}+
+\frac{9}{10}i-\left( -\frac{1}{26}+\frac{5}{26}i\right) \\
+&=&-\frac{7}{10}+\frac{1}{26}+\left( \frac{9}{10}-\frac{5}{26}\right) i \\
+&=&-\frac{86}{130}+\frac{92}{130}i \\
+&=&-\frac{43}{65}+\frac{46}{65}i
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exemple}
+Calcula les potències successives de $i$. Dedueix la fórmula per
+calcular-les. Troba: $i^{207}$, $i^{26}$, $i^{2004}$ i $i^{37}$.
+\end{exemple}
+
+\begin{solucio}
+Per definició, tenim
+\begin{equation*}
+i^{2}=-1
+\end{equation*}
+Aleshores,
+\begin{equation*}
+i^{3}=i^{2}\cdot i=(-1)\cdot i=-i
+\end{equation*}
+i
+\begin{equation*}
+i^{4}=i^{3}\cdot i=(-i)\cdot i=-i^{2}=1
+\end{equation*}
+i, d’aquí, obtenim:
+\begin{equation*}
+\begin{array}{l}
+i^{0}=i^{4}=i^{8}=\cdots =1 \\
+i^{1}=i^{5}=i^{9}=\cdots =i \\
+i^{2}=i^{6}=i^{10}=\cdots =-1 \\
+i^{3}=i^{7}=i^{11}=\cdots =-i
+\end{array}
+\end{equation*}
+Per tant, es compleix que
+\begin{equation*}
+i^{r+4\cdot c}=i^{r}
+\end{equation*}
+sent $0\leq r<4$. Amb l’ajuda d’aquesta fórmula, obtenim
+\begin{equation*}
+\begin{array}{l}
+i^{207}=i^{3+4\cdot 51}=i^{3}=-i \\
+i^{26}=i^{2+4\cdot 6}=i^{2}=-1 \\
+i^{2004}=i^{0+4\cdot 501}=i^{0}=1 \\
+i^{37}=i^{1+4\cdot 9}=i^{1}=i
+\end{array}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Expressa en forma binòmica el resultat de les operacions següents amb
+nombres complexos:
+
+\begin{enumerate}
+\item[a)]
+\begin{equation*}
+(i^{7}-i^{5})^{3}
+\end{equation*}
+
+\item[b)]
+\begin{equation*}
+(1-i)^{5}
+\end{equation*}
+
+\item[c)]
+\begin{equation*}
+\frac{i^{7}-i^{-7}}{2i}
+\end{equation*}
+
+\item[d)]
+\begin{equation*}
+i+i^{2}+i^{3}+\cdots +i^{22}
+\end{equation*}
+\end{enumerate}
+\end{exemple}
+
+\begin{solucio}
+(a) Com que
+\begin{equation*}
+\begin{array}{l}
+i^{7}=i^{3+4}=i^{3}=-i \\
+i^{5}=i^{1+4}=i
+\end{array}
+\end{equation*}
+aleshores
+\begin{equation*}
+(i^{7}-i^{5})^{3}=(-i-i)^{3}=(-2i)^{3}=-8i^{3}=8i
+\end{equation*}
+
+(b) Per la fórmula del binomi de Newton obtenim
+\begin{equation*}
+(1-i)^{5}=\binom{5}{0}-\binom{5}{1}i+\binom{5}{2}i^{2}-\binom{5}{3}i^{3}+
+\binom{5}{4}i^{4}-\binom{5}{5}i^{5}
+\end{equation*}
+Els nombres combinatoris s’obtenen amb el triangle de Tartaglia
+de la manera següent
+\begin{equation*}
+\begin{array}{lllllllllll}
+&  &  &  & 1 &  & 1 &  &  &  &  \\
+&  &  & 1 &  & 2 &  & 1 &  &  &  \\
+&  & 1 &  & 3 &  & 3 &  & 1 &  &  \\
+& 1 &  & 4 &  & 6 &  & 4 &  & 1 &  \\
+1 &  & 5 &  & 10 &  & 10 &  & 5 &  & 1
+\end{array}
+\end{equation*}
+Després,
+\begin{eqnarray*}
+(1-i)^{5} &=&1-5i+10i^{2}-10i^{3}+5i^{4}-i^{5} \\
+&=&1-5i-10+10i+5-i \\
+&=&-4+4i
+\end{eqnarray*}
+
+(c) Com que
+\begin{equation*}
+i^{7}=i^{3+4}=i^{3}=-i
+\end{equation*}
+aleshores
+\begin{eqnarray*}
+\frac{i^{7}-i^{-7}}{2i} &=&\frac{i^{7}-\frac{1}{i^{7}}}{2i} \\
+&=&\frac{-i+\frac{1}{i}}{2i} \\
+&=&\frac{\frac{-i^{2}+1}{i}}{2i} \\
+&=&\frac{2}{2i^{2}}=\frac{2}{-2}=-1
+\end{eqnarray*}
+
+(d) La successió
+\begin{equation*}
+i,i^{2},i^{3},\cdots ,i^{22}
+\end{equation*}
+és una progressió geomètrica de raó $i$ amb 22 termes.
+Recordant que la suma dels $n$ primers termes d’una progressió geomètrica es calcula mitjançant la fórmula
+\begin{equation*}
+S_{n}=\frac{a_{1}(1-r^{n})}{1-r}
+\end{equation*}
+obtenim
+\begin{eqnarray*}
+i+i^{2}+i^{3}+\cdots +i^{22} &=&\frac{i(1-i^{22})}{1-i} \\
+&=&\frac{i(1-i^{2})}{1-i} \\
+&=&\frac{2i}{1-i} \\
+&=&\frac{2i\cdot (1+i)}{(1-i)\cdot (1+i)} \\
+&=&\frac{2i+2i^{2}}{1-i^{2}} \\
+&=&-1+i
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exemple}
+Resol en $\mathbb{C}$ les equacions següents amb una incògnita $z$:
+
+\begin{enumerate}
+\item[a)]
+\begin{equation*}
+\frac{z}{3-i}+\frac{2z-i}{3+i}=1
+\end{equation*}
+
+\item[b)]
+\begin{equation*}
+\frac{z}{1+2i}+3+2i=2+5i
+\end{equation*}
+\end{enumerate}
+\end{exemple}
+
+\begin{solucio}
+(a)
+\begin{eqnarray*}
+\frac{z}{3-i}+\frac{2z-i}{3+i} &=&1 \\
+\frac{(3+i)z}{(3-i)(3+i)}+\frac{(3-i)(2z-i)}{(3-i)(3+i)} &=&\frac{(3-i)(3+i)
+}{(3-i)(3+i)} \\
+3z+iz+6z-2iz+-3i+i^{2} &=&9-i^{2} \\
+9z-iz &=&11+3i \\
+(9-i)z &=&11+3i \\
+z &=&\frac{11+3i}{9-i}
+\end{eqnarray*}
+Aleshores, la solució en forma binòmica és,
+\begin{eqnarray*}
+z &=&\frac{11+3i}{9-i} \\
+&=&\frac{(11+3i)(9+i)}{(9-i)(9+i)} \\
+&=&\frac{99+27i+11i+3i^{2}}{81-i^{2}} \\
+&=&\frac{96}{82}+\frac{38}{82}i \\
+&=&\frac{48}{41}+\frac{19}{41}i
+\end{eqnarray*}
+
+(b)
+\begin{eqnarray*}
+\frac{z}{1+2i}+3+2i &=&2+5i \\
+\frac{z}{1+2i} &=&2+5i-3-2i \\
+\frac{z}{1+2i} &=&-1+3i \\
+z &=&(1+2i)(-1+3i) \\
+&=&-1-2i+3i+6i^{2} \\
+&=&-7+i
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exemple}
+Troba els nombres reals $a$ i $b$ tals que
+\begin{equation*}
+(a+2i)\cdot (4-bi)=18-i
+\end{equation*}
+\end{exemple}
+
+\begin{solucio}
+És clar que
+\begin{eqnarray*}
+(a+2i)\cdot (4-bi) &=&4a+8i-abi-2bi^{2} \\
+&=&(4a+2b)+(8-ab)i
+\end{eqnarray*}
+i, per tant,
+\begin{equation*}
+(4a+2b)+(8-ab)i=18-i
+\end{equation*}
+Com dos nombres complexos són iguals si tenen iguals les seves parts reals i les seves parts imaginàries, aleshores s’ha de complir
+\begin{equation*}
+\left\{
+\begin{array}{l}
+4a+2b=18 \\
+8-ab=-1
+\end{array}
+\right.
+\end{equation*}
+De la primera equació, obtenim
+\begin{equation*}
+b=9-2a
+\end{equation*}
+i, substituint aquesta expressió en la segona, tenim
+\begin{eqnarray*}
+8-a(9-2a) &=&-1 \\
+2a^{2}-9a+9 &=&0
+\end{eqnarray*}
+d’on s’obté $a=3$ o $a=3/2$. Per tant, hi ha dues solucions:
+\begin{equation*}
+\left\{
+\begin{array}{l}
+a=3 \\
+b=3
+\end{array}
+\right. \text{ \ \ \ o bé \ \ \ }\left\{
+\begin{array}{l}
+a=\frac{3}{2} \\
+b=6
+\end{array}
+\right.
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Resol el sistema següent:
+\begin{equation*}
+\left\{
+\begin{array}{l}
+iu+(2-2i)v=2i \\
+u+iv=3+i
+\end{array}
+\right.
+\end{equation*}
+\end{exemple}
+
+\begin{solucio}
+Els sistemes d’equacions en $\mathbb{C}$ es resolen de la mateixa manera
+que en $\mathbb{R}$. Resoldrem el sistema donat per reducció.
+Multiplicant la segona equació per $-i$ i sumant després membre a membre, obtenim
+\begin{equation*}
+\begin{array}{llllll}
+& iu & + & (2-2i)v & = & 2i \\
+- & iu & - & i^{2}v & = & -3i-i^{2} \\
+&  &  & (3-2i)v & = & 1-i
+\end{array}
+\end{equation*}
+Després,
+\begin{equation*}
+v=\frac{1-i}{3-2i}=\frac{(1-i)\cdot (3+2i)}{(3-2i)\cdot (3+2i)}=\frac{5}{13}-
+\frac{1}{13}i
+\end{equation*}
+Substituint el valor de $v$ en la segona equació, obtenim
+\begin{eqnarray*}
+u+i\cdot \left( \frac{5}{13}-\frac{1}{13}i\right) &=&3+i \\
+u+\frac{1}{13}+\frac{5}{13}i &=&3+i \\
+u &=&\frac{38}{13}+\frac{8}{13}i
+\end{eqnarray*}
+Per tant, la solució del sistema és
+\begin{equation*}
+u=\frac{38}{13}+\frac{8}{13}i\text{ \ \ i \ \ }v=\frac{5}{13}-\frac{1}{13}i
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Calcula el nombre real $a$ perquè el producte
+\begin{equation*}
+(3+2i)\cdot (a+6i)
+\end{equation*}
+sigui (a) un nombre real i (b) un nombre imaginari pur.
+\end{exemple}
+
+\begin{solucio}
+És clar que
+\begin{eqnarray*}
+(3+2i)\cdot (a+6i) &=&3a+2ai+18i+12i^{2} \\
+&=&(3a-12)+(2a+18)i
+\end{eqnarray*}
+
+(a) Perquè un nombre complex sigui real la seva part imaginària ha de ser
+zero. Per tant,
+\begin{eqnarray*}
+2a+18 &=&0 \\
+2a &=&-18 \\
+a &=&-9
+\end{eqnarray*}
+
+(b) Perquè un nombre complex sigui imaginari pur la seva part real ha de
+ser zero. Per tant,
+\begin{eqnarray*}
+3a-12 &=&0 \\
+3a &=&12 \\
+a &=&4
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exemple}
+(a) Prova que si l’equació $ax^{2}+bx+c=0$, sent $a,b,c\in \mathbb{R
+}$, no té solucions reals, aleshores les seves solucions són dos nombres
+complex conjugats. (b) Generalitza aquest resultat a qualsevol equació
+polinòmica amb coeficients reals, demostrant que si $z$ és solució de l’equació, aleshores també ho és el seu conjugat $\overline{z}$
+. (c) Si $1+i$ és arrel d’una equació de segon grau amb
+coeficients reals, quin és l’altra arrel?
+Escriu l’equació de segon grau. (d) Dos de les arrels de un
+polinomi de quart grau amb coeficients reals són $i$ i $2-i$. Troba les
+altres arrels i escriu el polinomi.
+\end{exemple}
+
+\begin{solucio}
+(a) Per tenir $\mathbb{C}$ la mateixa estructura algebraica que $\mathbb{R}$,
+és immediat comprovar que si
+\begin{equation*}
+\alpha z^{2}+\beta z+\gamma =0
+\end{equation*}
+és una equació de segon grau amb coeficients $\alpha ,\beta ,\gamma
+\in \mathbb{C}$ i $\alpha \neq 0$, aleshores les seves solucions complexes $z_{1}$
+i $z_{2}$ satisfan les relacions següents
+\begin{equation*}
+z_{1}+z_{2}=-\frac{\beta }{\alpha }\text{ \ \ i \ \ }z_{1}\cdot z_{2}=\frac{
+\gamma }{\alpha }
+\end{equation*}
+i, per aquesta raó, l’equació de segon grau pot escriure’s
+també en termes de les seves solucions de la manera següent:
+\begin{equation*}
+z^{2}-(z_{1}+z_{2})z+z_{1}\cdot z_{2}=0
+\end{equation*}
+En particular, si aquesta equació de segon grau té els seus coeficients
+en $\mathbb{R}$ i suponemos que les seves solucions no són nombres reals,
+aleshores es compleix
+\begin{equation*}
+z_{1}+z_{2}\in \mathbb{R}\text{ \ \ \ i \ \ \ }z_{1}\cdot z_{2}\in \mathbb{R}
+\end{equation*}
+Ara bé, si $z_{1}=a+bi$ i $z_{2}=c+di$, aleshores la condició $
+z_{1}+z_{2}\in \mathbb{R}$ és equivalente a que
+\begin{equation*}
+d=-b
+\end{equation*}
+i, aleshores, la condició $z_{1}\cdot z_{2}\in \mathbb{R}$ és
+equivalente a que
+\begin{equation*}
+bc-ab=b(c-a)=0
+\end{equation*}
+però com $b\neq 0$ (Les solucions de l’equació de segon grau no
+són nombres reals), aleshores
+\begin{equation*}
+c=a
+\end{equation*}
+Després, si el complex $z=a+bi$ és solució (no real) d’una equació
+de segon grau els quals coeficients són nombres reals, aleshores su
+conjugat\thinspace $\overline{z}=a-bi$ és l’altra solució de l’equació. En altres paraules, si una equació de segon grau amb
+coeficients reals no té solucions reals, les seves solucions són dos nombres complexos conjugats.
+
+(b) Cal demostrar que si el complex $z$ és solució de l’equació polinòmica
+\begin{equation*}
+a_{n}x^{n}+a_{n-1}x^{n-1}+\cdots +a_{1}x+a_{0}=0
+\end{equation*}
+sent $a_{n},a_{n-1},...,a_{1},a_{0}\in \mathbb{R}$, aleshores també
+ho és $\overline{z}$. En efecte, per les propietats de la conjugació
+de nombres complexos (vegeu l’exemple anterior), obtenim
+\begin{eqnarray*}
+a_{n}\left( \overline{z}\right) ^{n}+a_{n-1}\left( \overline{z}\right)
+^{n-1}+\cdots +a_{1}\left( \overline{z}\right) +a_{0} &=&a_{n}\overline{
+\left( z^{n}\right) }+a_{n-1}\overline{\left( z^{n-1}\right) }+\cdots +a_{1}
+\overline{z}+a_{0} \\
+&=&\overline{a_{n}z^{n}}+\overline{a_{n-1}z^{n-1}}+\cdots +\overline{a_{1}z}+
+\overline{a_{0}} \\
+&=&\overline{a_{n}z^{n}+a_{n-1}z^{n-1}+\cdots +a_{1}z+a_{0}} \\
+&=&\overline{0}=0
+\end{eqnarray*}
+Després, $\overline{z}$ és arrel del polinomi i, per tant, solució
+de l’equació.
+
+(c) Segons l’apartat (a), si $z_{1}=1+i$ és solució de l’equació de segon grau amb coeficients reals, l’altra solució és $
+z_{2}=\overline{z_{1}}=1-i$ i, a més, l’equació s’escriu de la
+següent manera:
+\begin{equation*}
+z^{2}-(z_{1}+z_{2})z+z_{1}\cdot z_{2}=0
+\end{equation*}
+és a dir,
+\begin{equation*}
+z^{2}-2z+2=0
+\end{equation*}
+
+(d) Segons l’apartat (b), si $z_{1}=i$ i $z_{2}=2-i$ són arrels de
+un polinomi de quart grau amb coeficients reals, aleshores \thinspace $
+z_{3}=\overline{z_{1}}=-i$ i $z_{4}=\overline{z_{2}}=2+i$ són les altres dues
+arrels del polinomi. Aleshores, el polinomi admite la següent
+descomposició factorial
+\begin{eqnarray*}
+(x-i)\cdot (x+i)\cdot \left[ x-(2-i)\right] \cdot \left[ x-(2+i)\right]
+&=&(x^{2}+1)\cdot \left[ \left( x-2\right) +i\right] \cdot \left[ (x-2)-i
+\right] \\
+&=&(x^{2}+1)\cdot \left[ (x-2)^{2}+1\right] \\
+&=&(x^{2}+1)\cdot (x^{2}-2x+5) \\
+&=&x^{4}-2x^{3}+6x^{2}-2x+5
+\end{eqnarray*}
+Per tant, el polinomi buscat és
+\begin{equation*}
+x^{4}-2x^{3}+6x^{2}-2x+5
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+(a) L’equació
+\begin{equation*}
+2z^{3}-3z^{2}-4z+1=0
+\end{equation*}
+pot tenir tres solucions no reals? Justifica per què almenys una de les solucions ha de ser real. (b) Generalitza el
+resultat anterior, demostrant que tota equació polinòmica amb
+coeficients reals de grau senar ha de tenir almenys una solució real.
+\end{exemple}
+
+\begin{solucio}
+(a) Segons l’apartat (b) de l’exemple anterior, si una equació polinòmica amb coeficients reals té una solució que és un nombre
+complex, també té com a solució el seu complex conjugat. D’aquesta manera, les solucions complexes de les equacions polinòmiques amb
+coeficients reals de grau major o igual que $2$ apareixen per parelles de nombres complexos conjugats. Per tant, no és possible que l’equació
+\begin{equation*}
+2z^{3}-3z^{2}-4z+1=0
+\end{equation*}
+tingui tres solucions complexes. De fet, aquesta equació pot tenir tres solucions reals o bé una solució real i dues solucions no reals conjugades.
+
+(b) Pel raonament fet en l’apartat anterior, és evident que
+si una equació polinòmica amb coeficients reals té grau senar
+ha de tenir almenys una solució real.
+\end{solucio}
+
+\begin{exemple}
+Troba dos nombres complexos tals que la seva suma és $1+3i$, el seu quocient és
+imaginari pur i la part real del primer és $2$.
+\end{exemple}
+
+\begin{solucio}
+El primer complex és de la forma $2+bi$, ja que la seva part real és $2$.
+Suposem que el segon complex és $c+di$. Aleshores, com la seva suma és $
+1+3i $, s’ha de complir
+\begin{eqnarray*}
+(2+bi)+(c+di) &=&1+3i \\
+(2+c)+(b+d)i &=&1+3i
+\end{eqnarray*}
+i, per tant,
+\begin{equation*}
+\left\{
+\begin{array}{l}
+2+c=1 \\
+b+d=3
+\end{array}
+\right.
+\end{equation*}
+d’on s’obté $b=3-d$ i $c=-1$. Calculant el seu quocient,
+\begin{eqnarray*}
+\frac{2+(3-d)i}{-1+di} &=&\frac{2+(3-d)i}{-1+di}\cdot \frac{-1-di}{-1-di} \\
+&=&\frac{-2-(3-d)i-2di-d(3-d)i^{2}}{1-d^{2}i^{2}} \\
+&=&\frac{-2+d(3-d)}{1+d^{2}}+\frac{-5-d}{1+d^{2}}i
+\end{eqnarray*}
+com ha de ser imaginari pur, s’ha de complir també que
+\begin{equation*}
+\frac{-2+d(3-d)}{1+d^{2}}=0
+\end{equation*}
+és a dir,
+\begin{equation*}
+-2+3d-d^{2}=0
+\end{equation*}
+Resolent aquesta equació, obtenim $d=1$ o $d=2$ i, per tant, $b=2$ o
+$b=1$. Per tant, hi ha dues solucions:
+\begin{equation*}
+2+2i\text{ \ \ \ i \ \ \ }-1+i
+\end{equation*}
+o
+\begin{equation*}
+2+i\text{ \ \ \ i \ \ \ }-1+2i
+\end{equation*}
+\end{solucio}
+
+\section{Representació geomètrica dels nombres complexos}
+
+La geometria euclídea del pla proporciona una imatge adecuada
+del cos dels nombres complexos.
+
+\subsection{Afix d’un nombre complex}
+
+Considerem en el pla ordinario un origen $O$ i uns eixos de coordenades
+rectangulars $X$ i $I$. Siguin $\mathbf{e}_{1},\mathbf{e}_{2}$ els
+vectors de la base ortonormal corresponent. Aleshores, entre l’espai vectorial $V_{2}$ dels vectors lliures del pla i el cos $\mathbb{C}$
+dels nombres complexos, considerado com espai vectorial real de
+base $(1,i)$, existeix una corresponncia bijectiva definida per
+\begin{equation*}
+\begin{array}{ccc}
+\mathbb{C} & \longleftrightarrow & V_{2} \\
+z=x+yi & \longleftrightarrow & \mathbf{v}=x\mathbf{e}_{1}+y\mathbf{e}_{2}
+\end{array}
+\end{equation*}
+Al vector lliure $\mathbf{v}=x\mathbf{e}_{1}+y\mathbf{e}_{2}$ associat al
+complex $z=x+yi$ correspon un vector fix d’origen $O$ i extrem el
+punt $P$ de coordenades $(x,y)$ que s’anomena \textbf{afix} del nombre
+complex $z$.\begin{center}
+\includegraphics[width=2.4232in,height=2.111in,keepaspectratio]{com-1.png}
+\end{center} D’aquesta manera, entre el pla ordinario i el cos dels nombres complexos queda establerta una bijecció que el converteix en lo
+que s’anomena \textbf{pla complex}. Els complexos que són nombres
+reals tenen per afixos els punts de l’eix $X$, i els que són nombres
+imaginaris purs, els punts de l’eix $Y$. Aquesta és la raó per la qual
+aquests eixos s’anomenen aleshores \textbf{eix real} i \textbf{eix imaginari}
+del pla complex, respectivament. Tanmateix, aquestes denominacions són
+un abús del llenguatge, ja que tant el eix $Y$ com el pla $XY$ estan descrits per punts de coordenades reals.
+
+En particular, els afixos dels nombres complexos $z$ i $-z$ són dos
+punts simètrics respecte de l’origen $O$, i els afixos dels nombres complexos $z$ i $\overline{z}$ són dos punts simètrics respecte
+de l’eix $X$.\begin{center}
+\includegraphics[width=2.9343in,height=2.4448in,keepaspectratio]{com-9.png}
+\end{center}
+
+\begin{exemple}
+Representa gràficament els nombres següents complexos: $
+z_{1}=5+6i $, $z_{2}=3$, $z_{3}=5i$, $z_{4}=-5+3i$, $z_{5}=-4$, $z_{6}=-3-5i$
+, $z_{7}=-3i$ i $z_{8}=3-4i$.
+\end{exemple}
+
+\begin{solucio}
+\begin{center}
+\includegraphics[width=2.674in,height=2.8816in,keepaspectratio]{com-3.png}
+\end{center}
+\end{solucio}
+
+\begin{exemple}
+Quina figura formen els afixos dels complexos $z$
+tals que $z+\overline{z}=2$? I els que compleixen que $z-
+\overline{z}=2i$?
+\end{exemple}
+
+\begin{solucio}
+Si l’afix de $z$ és el punt de coordenades $(x,y)$, aleshores l’afix de $
+z+\overline{z}$ és el punt $(2x,0)$. Per tant, segons l’enunciat,
+ha de ser $2x=2$, o sigui, $x=1$. Com a conseqüència, els afixos dels
+complexos $z$ tals que $z+\overline{z}=2$ formen la recta $x=1$.
+
+De la mateixa manera, l’afix de $z-\overline{z}$ és el punt $(0,2y)$. Per
+tant, segons l’enunciat, ha de ser $2y=2$, o sigui, $y=1$. Com
+conseqüència, els afixos dels complexos $z$ tals que $z-\overline{z}=2i$
+formen la recta $y=1$.
+\end{solucio}
+
+\begin{exemple}
+Si l’afix del complex $z$ és el punt de coordenades $(-2,1)$,
+quins són els afixos de l’oposat i del conjugat de $
+z $?
+\end{exemple}
+
+\begin{solucio}
+Com els afixos dels nombres complexos $z$ i $-z$ són dos punts simètrics respecte de l’origen $O$, deduïm que l’afix de $-z$ és el
+punt $(2,-1)$.
+
+Com els afixos dels nombres complexos $z$ i $\overline{z}$ són dos
+punts simètrics respecte de l’eix $X$, deduïm que l’afix de $
+\overline{z}$ és el punt $(-2,-1)$.
+\end{solucio}
+
+\subsection{Interpretació geomètrica de la suma de dos nombres
+complexos}
+
+Si $P$ i $Q$ són els afixos de dos nombres complexos $z_{1}$ i $z_{2}$,
+i es compleix
+\begin{equation*}
+\overrightarrow{OP}+\overrightarrow{OQ}=\overrightarrow{OR}
+\end{equation*}
+aleshores $R$ és l’afix del complex suma $z_{1}+z_{2}$, ja que per sumar
+vectors d’origen $O$ basta amb sumar les seves components respecte dels eixos
+de coordenades; observa que $z_{1}+z_{2}$ és la diagonal del paral·lelogram
+que determinen $z_{1}$ i $z_{2}$.\begin{center}
+\includegraphics[width=2.111in,height=2.0903in,keepaspectratio]{com-2.png}
+\end{center}
+
+Per tant, l’aplicació de $\mathbb{C}$ en $\mathbb{C}$ que $
+z~\longmapsto ~z+z_{0}$ representa geomètricament una \textbf{translació} de vector associat el complex $z_{0}$.
+
+\begin{exemple}
+Donats els punts $O=(0,0),P=(2,-3)$ i $Q=(-1,4)$, troba les coordenades del
+punt $R$ perquè els punts $OPRQ$ formen un paral·lelogram.
+\end{exemple}
+
+\begin{solucio}
+Els punts $P$ i $Q$ són els afixos dels nombres complexos $z_{1}=2-3i$
+i $z_{2}=-1+4i$, respectivament. Aleshores, el punt $R$ és l’afix de la
+suma
+\begin{eqnarray*}
+z_{1}+z_{2} &=&(2-3i)+(-1+4i) \\
+&=&1+i
+\end{eqnarray*}
+és a dir,
+\begin{equation*}
+R=(1,1)
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Calcula el transformat del punt $(2,3)$ per la translació del vector
+de components $(1,1)$.
+\end{exemple}
+
+\begin{solucio}
+El punt $(2,3)$ és l’afix del complex $z=2+3i$. Considerem el complex
+$z_{0}=1+i$ que té com vector associat el de components $(1,1)$.
+Aleshores, el transformat del punt $(2,3)$ és l’afix del complex suma
+\begin{eqnarray*}
+z+z_{0} &=&(2+3i)+(1+i) \\
+&=&3+4i
+\end{eqnarray*}
+és a dir, el punt de coordenades $(3,4)$.
+\end{solucio}
+
+\subsection{Mòdul i argument d’un nombre complex}
+
+S’anomena \textbf{mòdul} d’un nombre complex $z=x+iy$ i es denota
+per $\left\vert z\right\vert $ a la norma del vector $\mathbf{v}=x\mathbf{e}
+_{1}+y\mathbf{e}_{2}$ associat a $z$, és a dir,
+\begin{equation*}
+\left\vert z\right\vert =\left\Vert \mathbf{v}\right\Vert =\sqrt{x^{2}+y^{2}}
+\end{equation*}
+De les propietats de la norma euclídea es dedueixen enseguida les
+propietats del mòdul d’un nombre complex:
+
+\begin{enumerate}
+\item $\left\vert z\right\vert =0$ si i només si $z=0$
+
+\item $\left\vert z\cdot z^{\prime }\right\vert =\left\vert z\right\vert
+\cdot \left\vert z^{\prime }\right\vert $
+
+\item $\left\vert z+z^{\prime }\right\vert \leq \left\vert z\right\vert
++\left\vert z^{\prime }\right\vert $
+\end{enumerate}
+
+i d’aquesta manera l’aplicació
+\begin{equation*}
+\begin{array}{ccc}
+\mathbb{C} & \longrightarrow & \mathbb{R}^{+} \\
+z & \longmapsto & \left\vert z\right\vert
+\end{array}
+\end{equation*}
+és un valor absolut en $\mathbb{C}$. Aleshores podem anomenar $\left\vert
+z\right\vert $ valor absolut de $z$, però el costum fa que es prefereixi
+el terme mòdul.\begin{center}
+\includegraphics[width=2.9032in,height=2.0695in,keepaspectratio]{com-4.png}
+\end{center}
+
+S’anomena \textbf{argument} d’un nombre complex no nul $z=x+iy$ a la
+mesura de l’angle orientat $\alpha $ que determina el vector $\mathbf{e}
+_{1}$ amb el vector $\mathbf{v}=x\mathbf{e}_{1}+y\mathbf{e}_{2}\,$associat a
+$z$. L’argument d’un nombre complex $z$ es denota per $\arg z$. El
+argument no està definit de manera unívoca, ja que si $\alpha _{0}$
+és argument de $z$
+\begin{equation*}
+\alpha _{0}+k\cdot 2\pi
+\end{equation*}
+amb $k\in \mathbb{Z}$, també ho és. Per evitar ambigüitats,
+recomanem utilitzar el \textbf{valor principal} de l’argument de $z$,
+que es defineix mitjançant $0\leq \alpha <2\pi $. Per calcular-lo, observa
+que si $\alpha =\arg z$ aleshores es compleix
+\begin{equation*}
+\tan \alpha =\frac{y}{x}
+\end{equation*}
+i, d’aquí resulta que
+\begin{equation*}
+\arg z=\arctan \left( \frac{y}{x}\right) \text{ \ \ o bé \ \ }\arg z=\pi
++\arctan \left( \frac{y}{x}\right)
+\end{equation*}
+i escollirem el que correspongui en funció del quadrant en què es trobi l’afix del complex $z$.
+
+De la representació geomètrica d’un nombre complex $z$ es dedueix de manera immediata les propietats següents:
+
+\begin{enumerate}
+\item[1)] $\left\vert -z\right\vert =\left\vert z\right\vert $ i $\arg
+(-z)=\arg z+\pi $
+
+\item[2)] $\left\vert \overline{z}\right\vert =\left\vert z\right\vert $ i $
+\arg (\overline{z})=-\arg z$
+\end{enumerate}
+
+\begin{exemple}
+Sense fer càlculs, troba el mòdul i l’argument dels següents
+nombres complexos: $3$, $-2$, $i$ i $-4i$.
+\end{exemple}
+
+\begin{solucio}
+Representant gràficament els nombres complexos donats s’obté de
+manera immediata que
+\begin{equation*}
+\begin{array}{ccc}
+\text{Complex} & \text{Mòdul} & \text{Argument} \\
+3 & 3 & 0 \\
+-2 & 2 & \pi \\
+i & 1 & \frac{\pi }{2} \\
+-4i & 4 & -\frac{\pi }{2}
+\end{array}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Calcula el mòdul i l’argument dels nombres següents
+complexos: (a) $z_{1}=1-i$ i (b) $z_{2}=-\frac{\sqrt{2}}{2}+\frac{\sqrt{2}}{2
+}i$.
+\end{exemple}
+
+\begin{solucio}
+(a)
+\begin{equation*}
+\left\vert z_{1}\right\vert =\sqrt{1^{2}+(-1)^{2}}=\sqrt{2}
+\end{equation*}
+i, si $\alpha =\arg z_{1}$, aleshores
+\begin{equation*}
+\begin{array}{lll}
+\tan \alpha =\frac{-1}{1}=-1 & \Longrightarrow & \left\{
+\begin{array}{l}
+\alpha =\frac{3\pi }{4} \\
+\alpha =-\frac{\pi }{4}
+\end{array}
+\right.
+\end{array}
+\end{equation*}
+i atès que l’afix de $z_{1}$ és en el quart quadrant, és
+\begin{equation*}
+\arg z_{1}=-\frac{\pi }{4}
+\end{equation*}
+
+(b)
+\begin{equation*}
+\left\vert z_{2}\right\vert =\sqrt{\left( -\frac{\sqrt{2}}{2}\right)
+^{2}+\left( \frac{\sqrt{2}}{2}\right) ^{2}}=1
+\end{equation*}
+i, si $\beta =\arg z_{2}$, aleshores
+\begin{equation*}
+\begin{array}{lll}
+\tan \alpha =\frac{\frac{\sqrt{2}}{2}}{-\frac{\sqrt{2}}{2}}=-1 &
+\Longrightarrow & \left\{
+\begin{array}{l}
+\alpha =\frac{3\pi }{4} \\
+\alpha =-\frac{\pi }{4}
+\end{array}
+\right.
+\end{array}
+\end{equation*}
+i atès que l’afix de $z_{2}$ és en el segon quadrant, és
+\begin{equation*}
+\arg z_{2}=\frac{3\pi }{4}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Sense efectuar les operacions indicades, calcula el mòdul dels
+següents nombres complexos:
+
+\begin{enumerate}
+\item[a)]
+\begin{equation*}
+\frac{1}{4+3i}
+\end{equation*}
+
+\item[b)]
+\begin{equation*}
+\frac{3i}{(3-4i)\cdot (-1+i)}
+\end{equation*}
+\end{enumerate}
+\end{exemple}
+
+\begin{solucio}
+Primer observa lo següent: si $z\neq 0$, aleshores
+\begin{equation*}
+z\cdot \frac{1}{z}=1
+\end{equation*}
+i, per tant,
+\begin{equation*}
+\left\vert z\cdot \frac{1}{z}\right\vert =1
+\end{equation*}
+De aquí, per les propietats del mòdul, obtenim
+\begin{equation*}
+\left\vert z\right\vert \cdot \left\vert \frac{1}{z}\right\vert =1
+\end{equation*}
+Després,
+\begin{equation*}
+\left\vert \frac{1}{z}\right\vert =\frac{1}{\left\vert z\right\vert }
+\end{equation*}
+
+(a) Com que
+\begin{equation*}
+\left\vert 4+3i\right\vert =\sqrt{4^{2}+3^{2}}=5
+\end{equation*}
+i pel que acabem de veure, obtenim
+\begin{equation*}
+\left\vert \frac{1}{4+3i}\right\vert =\frac{1}{\left\vert 4+3i\right\vert }=
+\frac{1}{5}
+\end{equation*}
+
+(b) Com que
+\begin{equation*}
+\begin{array}{l}
+\left\vert 3i\right\vert =3 \\
+\left\vert 3-4i\right\vert =5 \\
+\left\vert -1+i\right\vert =\sqrt{2}
+\end{array}
+\end{equation*}
+i per les propietats del mòdul, obtenim
+\begin{eqnarray*}
+\left\vert \frac{3i}{(3-4i)\cdot (-1+i)}\right\vert &=&\left\vert 3i\cdot
+\frac{1}{(3-4i)\cdot (-1+i)}\right\vert \\
+&=&\left\vert 3i\right\vert \cdot \left\vert \frac{1}{(3-4i)\cdot (-1+i)}
+\right\vert \\
+&=&\left\vert 3i\right\vert \cdot \frac{1}{\left\vert (3-4i)\cdot
+(-1+i)\right\vert } \\
+&=&\left\vert 3i\right\vert \cdot \frac{1}{\left\vert 3-4i\right\vert \cdot
+\left\vert -1+i\right\vert } \\
+&=&\frac{3}{5\sqrt{2}}=\frac{3\sqrt{2}}{10}
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exemple}
+(a) Prova que si $z\neq 0$, aleshores
+\begin{equation*}
+z^{-1}=\frac{\overline{z}}{\left\vert z\right\vert ^{2}}
+\end{equation*}
+(b) Prova que un nombre complex $z$ és \textbf{unitari} (Té mòdul igual a $1$) si i només si $z^{-1}=\overline{z}$. (c) Com a aplicació del resultat obtingut en el primer apartat, sense efectuar les
+operacions indicades, calcula el mòdul de
+\begin{equation*}
+\frac{1}{-3-4i}
+\end{equation*}
+\end{exemple}
+
+\begin{solucio}
+(a) Si $z=x+yi$, aleshores
+\begin{equation*}
+z\cdot \overline{z}=x^{2}+y^{2}
+\end{equation*}
+i es compleix
+\begin{equation*}
+\left\vert z\right\vert =\sqrt{z\cdot \overline{z}}
+\end{equation*}
+i, per tot nombre complex $z\neq 0$, segons l’exemple anterior,
+obtenim
+\begin{equation*}
+z^{-1}=\frac{\overline{z}}{z\cdot \overline{z}}=\frac{\overline{z}}{
+\left\vert z\right\vert ^{2}}
+\end{equation*}
+En particular, d’aquí es dedueix que un nombre complex $z$ és
+unitari (té mòdul $1$) si i només si $z^{-1}=\overline{z}$.
+
+(b) Per l’apartat anterior, és evident que
+\begin{equation*}
+\begin{array}{lll}
+z^{-1}=\overline{z} & \Longleftrightarrow & \left\vert z\right\vert =1
+\end{array}
+\end{equation*}
+
+(c) Per l’apartat (a), és evident que
+\begin{equation*}
+\left\vert z^{-1}\right\vert =\left\vert \frac{\overline{z}}{\left\vert
+z\right\vert ^{2}}\right\vert =\frac{\left\vert \overline{z}\right\vert }{
+\left\vert z\right\vert ^{2}}
+\end{equation*}
+i, per tant,
+\begin{equation*}
+\left\vert \frac{1}{-3-4i}\right\vert =\frac{\left\vert -3+4i\right\vert }{\left( \sqrt{
+(-3)^{2}+(-4)^{2}}\right) ^{2}}=\frac{5}{25}=\frac{1}{5}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Calcula el valor de $a$ perquè
+\begin{equation*}
+\frac{a+i}{2+i}
+\end{equation*}
+tingui mòdul $\sqrt{2}$.
+\end{exemple}
+
+\begin{solucio}
+Com que
+\begin{equation*}
+\left\vert \frac{a+i}{2+i}\right\vert =\frac{\left\vert a+i\right\vert }{
+\left\vert 2+i\right\vert }=\frac{\sqrt{a^{2}+1}}{\sqrt{4+1}}
+\end{equation*}
+aleshores
+\begin{equation*}
+\frac{\sqrt{a^{2}+1}}{\sqrt{5}}=\sqrt{2}
+\end{equation*}
+i, per tant,
+\begin{equation*}
+\sqrt{a^{2}+1}=\sqrt{10}
+\end{equation*}
+Després,
+\begin{eqnarray*}
+a^{2}+1 &=&10 \\
+a^{2} &=&9
+\end{eqnarray*}
+és a dir,
+\begin{equation*}
+a=3\text{ \ \ \ o \ \ \ }a=-3
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+(a) Prova que el mòdul de
+\begin{equation*}
+z=\frac{1+ai}{1-ai}
+\end{equation*}
+és $1$. (b) Calcula $a$ perquè $\arg z=\arctan (3/4)$.
+\end{exemple}
+
+\begin{solucio}
+(a)
+\begin{equation*}
+\left\vert \frac{1+ai}{1-ai}\right\vert =\frac{\left\vert 1+ai\right\vert }{
+\left\vert 1-ai\right\vert }=\frac{\sqrt{1+a^{2}}}{\sqrt{1+(-a)^{2}}}=1
+\end{equation*}
+
+(b) Expresando $z$ en forma binòmica, tenim
+\begin{eqnarray*}
+\frac{1+ai}{1-ai} &=&\frac{(1+ai)^{2}}{(1-ai)\cdot (1+ai)} \\
+&=&\frac{1+2ai+a^{2}i^{2}}{1-a^{2}i^{2}} \\
+&=&\frac{1-a^{2}}{1+a^{2}}+\frac{2a}{1+a^{2}}i
+\end{eqnarray*}
+Si $\arg z=\arctan (3/4)$, aleshores
+\begin{equation*}
+\frac{3}{4}=\tan (\arctan (3/4))=\frac{\frac{2a}{1+a^{2}}}{\frac{1-a^{2}}{
+1+a^{2}}}=\frac{2a}{1-a^{2}}
+\end{equation*}
+Resolent l’equació
+\begin{equation*}
+\frac{2a}{1-a^{2}}=\frac{3}{4}
+\end{equation*}
+s’obtenen els valors $a=-3$ i $a=\frac{1}{3}$. Ara bé, l’angle $\arctan(3/4)$ és del primer quadrant. Per tant, la part real i la part imaginària de $z$ han de ser positives, i l’únic valor admissible és
+\begin{equation*}
+a=\frac{1}{3}.
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+(a) Donats dos nombres complexos $z$ i $z^{\prime }$ els quals afixos són els
+punts $P$ i $Q$, respectivament. Justifica la igualtat següent:
+\begin{equation*}
+\left\vert z^{\prime }-z\right\vert =d(P,Q)
+\end{equation*}
+(b) Quina figura determinen els afixos dels nombres complexos $z$
+tals que
+\begin{equation*}
+\left\vert z-(a+bi)\right\vert =r
+\end{equation*}
+sent $a,b,r\in \mathbb{R}$. (c) Troba els nombres complexos $z$
+que satisfan
+\begin{equation*}
+\left\{
+\begin{array}{l}
+\left\vert z-i\right\vert =1 \\
+\left\vert z+i\right\vert =1
+\end{array}
+\right.
+\end{equation*}
+Representa els afixos d’aquests nombres complexos.
+\end{exemple}
+
+\begin{solucio}
+(a) Si $P$ i $Q$ són dos punts del pla euclídeo, $\overrightarrow{OP}
+$ i $\overrightarrow{OQ}$ són els seus vectors de posición, la distància
+entre ells es defineix per
+\begin{equation*}
+d(P,Q)=\left\Vert \overrightarrow{OQ}-\overrightarrow{OP}\right\Vert
+\end{equation*}
+Si ara interpretamos els punts $P$ i $Q$ com els afixos dels nombres complexos $z$ i $z^{\prime }$, aleshores $\overrightarrow{OP}$ i $
+\overrightarrow{OQ}$ són vectors associats a $z$ i $z^{\prime }$. Per
+tant, s’ha de complir
+\begin{equation*}
+\left\vert z^{\prime }-z\right\vert =\left\Vert \overrightarrow{OQ}-
+\overrightarrow{OP}\right\Vert =d(P,Q)
+\end{equation*}
+
+(b) Segons el que acabem de veure, si l’afix de $z$ és el punt $Q$ de
+coordenades $(x,y)$ i l’afix de $a+bi$ és el punt $P=(a,b)$, aleshores
+\begin{equation*}
+\left\vert z-(a+bi)\right\vert =d(P,Q)=\sqrt{(x-a)^{2}+(y-b)^{2}}
+\end{equation*}
+Després, l’equació
+\begin{equation*}
+\left\vert z-(a+bi)\right\vert =r
+\end{equation*}
+és equivalente a
+\begin{equation*}
+\sqrt{(x-a)^{2}+(y-b)^{2}}=r
+\end{equation*}
+és a dir,
+\begin{equation*}
+(x-a)^{2}+(y-b)^{2}=r^{2}
+\end{equation*}
+Les solucions d’aquesta equació es representen en el pla com una
+circumferència de centre $(a,b)$ i radi $r$.
+
+(c) Segons l’apartat (b), les solucions de l’equació
+\begin{equation*}
+\left\vert z-i\right\vert =1
+\end{equation*}
+es representen en el pla com una circumferència de centre $(0,1)$ i radi
+$1$. De la mateixa manera, les solucions de l’equació
+\begin{equation*}
+\left\vert z+i\right\vert =1
+\end{equation*}
+formen una circumferència de centre $(0,-1)$ i radi $1$. Per tant, les
+solucions del sistema
+\begin{equation*}
+\left\{
+\begin{array}{l}
+\left\vert z-i\right\vert =1 \\
+\left\vert z+i\right\vert =1
+\end{array}
+\right.
+\end{equation*}
+són la intersecció de dos circumferències que són tangents en el
+origen. Després, la solució d’aquest sistema és $z=0$.
+\end{solucio}
+
+\begin{exemple}
+Al multiplicar un complex per $i$ s’obté un altre complex de mòdul $5$
+, part real $-4$ i el seu afix està situat en el tercer quadrant.
+Calcula aquest complex.
+\end{exemple}
+
+\begin{solucio}
+Suposem que el complex és $a+bi$. Aleshores,
+\begin{eqnarray*}
+(a+bi)\cdot i &=&ai+bi^{2} \\
+&=&-b+ai
+\end{eqnarray*}
+i com la part real del producte és $-4$ i el seu mòdul és $5$, ha de
+complir-se
+\begin{equation*}
+\left\{
+\begin{array}{l}
+-b=-4 \\
+\sqrt{(-b)^{2}+a^{2}}=5
+\end{array}
+\right.
+\end{equation*}
+és a dir, $b=4$ i
+\begin{equation*}
+\sqrt{16+a^{2}}=5
+\end{equation*}
+Després,
+\begin{eqnarray*}
+16+a^{2} &=&25 \\
+a^{2} &=&9
+\end{eqnarray*}
+i, per tant, $a=3$ o $a=-3$. Ara bé, com l’afix d’aquest producte ha d’estar situat en el tercer quadrant, deduïm que $a<0$. Per
+consegüent, el complex que busquem és
+\begin{equation*}
+-3+4i
+\end{equation*}
+\end{solucio}
+
+\section{Forma polar i trigonomètrica d’un nombre complex}
+
+Fins ara hem vist que un nombre complex $z$ pot escriure’s de
+dos maneres diferents. La primera, anomenada \textbf{forma cartesiana},
+consisteix en escriure $z$ com un parell ordenat $(x,y)$; les components de
+aquest parell se interpreten geomètricament com les coordenades de l’afix
+de $z$. La segona, anomenada \textbf{forma binòmica}, consisteix en
+escriure $z$ com $x+yi$; $x$ és la part real e $y$ és la part imaginària
+de $z$.
+
+Ara donarem altres dos maneres de escriure un nombre complex: forma
+polar i forma trigonomètrica.
+
+\subsection{Forma polar d’un nombre complex}
+
+Si un nombre complex $z\neq 0$ té mòdul $r$ i argument $\alpha
+$, s’anomena \textbf{forma polar} o \textbf{mòdul-argumental} de $z$
+al parell $(r,\alpha )$, representat sovint per $r_{\alpha }$. \begin{center}
+\includegraphics[width=2.1828in,height=2.0799in,keepaspectratio]{com-5.png}
+\end{center}La
+la igualtat de nombres complexos es tradueix de la manera següent
+\begin{equation*}
+\begin{array}{ccc}
+r_{\alpha }=r_{\alpha ^{\prime }}^{\prime } & \Longleftrightarrow &
+r=r^{\prime }\text{ i }\alpha ^{\prime }=\alpha +k\cdot 2\pi
+\end{array}
+\end{equation*}
+sent $k\in \mathbb{Z}$.
+
+Donat un nombre complex no nul en forma binòmica $z=x+iy$, aleshores
+les relacions següents
+\begin{equation*}
+r=\sqrt{x^{2}+y^{2}}
+\end{equation*}
+i
+\begin{equation}
+\tan \alpha =\frac{y}{x}  \label{1}
+\end{equation}
+permeten determinar la forma polar $r_{\alpha }$ de $z$. Recorda que hi ha dues angles que cumplen (\ref{1}): si $y>0$, es pren $\alpha \in (0,\pi
+) $, i si $y<0$, es pren $\alpha \in (\pi ,2\pi )$. Si $x=0$, podem prendre $
+\theta =\pi /2$ si $y>0$, i $\theta =3\pi /2$ quan $y<0$.
+
+A partir del mòdul $r$ i l’argument $\alpha $ del complex $z$
+trobarem les coordenades de l’afix de $z$ mitjançant les fórmules
+\begin{equation*}
+\left\{
+\begin{array}{l}
+x=r\cos \alpha  \\
+y=r\sin \alpha
+\end{array}
+\right.
+\end{equation*}
+i, per tant, l’expressió de $z$ en forma binòmica. De fet, les
+equacions anteriors constituyen les fórmules del canvi de coordenades
+polares a cartesianes.
+
+\begin{exemple}
+Escriu en forma polar els nombres següents complexos: $
+3,(-4,0),5i,(0,-2),i^{39},2+2i$ i $\sqrt{3}-i$.
+\end{exemple}
+
+\begin{solucio}
+Els cinc primers complexos s’escriuen en forma polar de manera immediata:
+\begin{equation*}
+\begin{array}{cccc}
+\text{Complex} & \text{Mòdul} & \text{Argument} & \text{Forma polar}
+\\
+3 & 3 & 0 & 3_{0} \\
+(-4,0) & 4 & \pi & 4_{\pi } \\
+5i & 5 & \frac{\pi }{2} & 5_{\frac{\pi }{2}} \\
+(0,-2) & 2 & -\frac{\pi }{2} & 2_{-\frac{\pi }{2}} \\
+i^{39}=i^{3}=-i & 1 & -\frac{\pi }{2} & 1_{-\frac{\pi }{2}}
+\end{array}
+\end{equation*}
+
+Per escriure en forma polar $z=2+2i$ calculem el seu mòdul i su
+argument:
+\begin{equation*}
+\left\vert z\right\vert =\sqrt{2^{2}+2^{2}}=2\sqrt{2}
+\end{equation*}
+i, sabent que l’afix de $z$ és en el primer quadrant,
+\begin{equation*}
+\begin{array}{lll}
+\tan \alpha =\frac{2}{2}=1 & \Longrightarrow & \alpha =\frac{\pi }{4}
+\end{array}
+\end{equation*}
+Per tant, la forma polar de $z=2+2i$ és
+\begin{equation*}
+\left( 2\sqrt{2}\right) _{\frac{\pi }{4}}
+\end{equation*}
+
+De la mateixa manera, per escriure en forma polar $z^{\prime }=\sqrt{3}-i$,
+tenim
+\begin{equation*}
+\left\vert z^{\prime }\right\vert =\sqrt{\left( \sqrt{3}\right) ^{2}+(-1)^{2}
+}=2
+\end{equation*}
+i, atès que l’afix de $z^{\prime }$ és en el quart quadrant,
+\begin{equation*}
+\begin{array}{lll}
+\tan \alpha =-\frac{1}{\sqrt{3}}=-\frac{\sqrt{3}}{3} & \Longrightarrow &
+\alpha =-\frac{\pi }{6}
+\end{array}
+\end{equation*}
+Per tant, la forma polar de $z^{\prime }=\sqrt{3}-i$ és
+\begin{equation*}
+2_{-\frac{\pi }{6}}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Escriu en forma binòmica els nombres següents complexos: $
+2_{0},3_{\pi },1_{\frac{\pi }{2}},5_{\frac{3\pi }{2}},4_{\frac{\pi }{3}}$ i $
+\left( \sqrt{3}\right) _{\frac{3\pi }{4}}$.
+\end{exemple}
+
+\begin{solucio}
+Els cuatro primers complexos se escriben en forma binòmica de manera
+inmediata:
+\begin{equation*}
+\begin{array}{cc}
+\text{Forma polar} & \text{Forma binòmica} \\
+2_{0} & 2 \\
+3_{\pi } & -3 \\
+1_{\frac{\pi }{2}} & i \\
+5_{\frac{3\pi }{2}} & -5i
+\end{array}
+\end{equation*}
+
+Per escriure en forma binòmica $z=$ $4_{\frac{\pi }{3}}$ calculem les
+coordenades del seu afix:
+\begin{equation*}
+\left\{
+\begin{array}{l}
+x=4\cos \frac{\pi }{3}=2 \\
+y=4\sin \frac{\pi }{3}=2\sqrt{3}
+\end{array}
+\right.
+\end{equation*}
+Per tant, $z=$ $4_{\frac{\pi }{3}}$ escrito és forma binòmica és
+\begin{equation*}
+2+2\sqrt{3}i
+\end{equation*}
+
+De la mateixa manera, per escriure en forma binòmica $z=$ $\left( \sqrt{3}
+\right) _{\frac{3\pi }{4}}$ calculem les coordenades del seu afix:
+\begin{equation*}
+\left\{
+\begin{array}{l}
+x=\sqrt{3}\cos \frac{3\pi }{4}=-\frac{\sqrt{2}}{2} \\
+y=\sqrt{3}\sin \frac{3\pi }{4}=\frac{\sqrt{2}}{2}
+\end{array}
+\right.
+\end{equation*}
+Per tant, $z=$ $\left( \sqrt{3}\right) _{\frac{3\pi }{4}}$ escrito és forma
+binòmica és
+\begin{equation*}
+-\frac{\sqrt{2}}{2}+\frac{\sqrt{2}}{2}i
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Si $z=5_{\frac{\pi }{6}}$, escriu en forma polar i binòmica els
+complexos $-z$ i $\overline{z}$.
+\end{exemple}
+
+\begin{solucio}
+Per la posición dels afixos és evident que
+\begin{equation*}
+\begin{array}{llll}
+& z & -z & \overline{z} \\
+\text{Mòdul} & r & r & r \\
+\text{Argument} & \alpha & \alpha +\pi & -\alpha
+\end{array}
+\end{equation*}
+Després, si $z=r_{\alpha }$, aleshores $-z=r_{\alpha +\pi }$ i $\overline{z}
+=r_{-\alpha }$. D’aquesta manera, obtenim
+\begin{equation*}
+\begin{array}{l}
+-z=5_{\frac{\pi }{6}+\pi } \\
+\overline{z}=5_{-\frac{\pi }{6}}
+\end{array}
+\end{equation*}
+
+Per escriure en forma binòmica $z=$ $5_{\frac{\pi }{6}}$ calculem les
+coordenades del seu afix:
+\begin{equation*}
+\left\{
+\begin{array}{l}
+x=5\cos \frac{\pi }{6}=\frac{5\sqrt{3}}{2} \\
+y=5\sin \frac{\pi }{6}=\frac{5}{2}
+\end{array}
+\right.
+\end{equation*}
+Per tant, $z=$ $5_{\frac{\pi }{6}}$ escrito és forma binòmica és
+\begin{equation*}
+\frac{5\sqrt{3}}{2}+\frac{5}{2}i
+\end{equation*}
+Aleshores, és evident que
+\begin{equation*}
+-z=-\frac{5\sqrt{3}}{2}-\frac{5}{2}i
+\end{equation*}
+i
+\begin{equation*}
+\overline{z}=\frac{5\sqrt{3}}{2}-\frac{5}{2}i
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Calcula $a$ i $b$ perquè
+\begin{equation*}
+\frac{a+2i}{3+bi}=\left( \sqrt{2}\right) _{\frac{\pi }{4}}
+\end{equation*}
+\end{exemple}
+
+\begin{solucio}
+Primer escriurem $\left( \sqrt{2}\right) _{\frac{\pi }{4}}$ en forma binòmica. Com que
+\begin{equation*}
+\left\{
+\begin{array}{l}
+x=\sqrt{2}\cos \frac{\pi }{4}=1 \\
+y=\sqrt{2}\sin \frac{\pi }{4}=1
+\end{array}
+\right.
+\end{equation*}
+aleshores la forma binòmica del complex considerado és $1+i$. L’equació
+\begin{equation*}
+\frac{a+2i}{3+bi}=\left( \sqrt{2}\right) _{\frac{\pi }{4}}
+\end{equation*}
+també pot escriure’s de la manera següent
+\begin{equation*}
+\frac{a+2i}{3+bi}=1+i
+\end{equation*}
+Després,
+\begin{eqnarray*}
+a+2i &=&(3+bi)\cdot (1+i) \\
+a+2i &=&3+bi+3i-b \\
+a+2i &=&3-b+(b+3)i
+\end{eqnarray*}
+i, per tant,
+\begin{equation*}
+\left\{
+\begin{array}{l}
+a=3-b \\
+2=b+3
+\end{array}
+\right.
+\end{equation*}
+d’on es dedueix $a=4$ i $b=-1$.
+\end{solucio}
+
+\subsection{Forma trigonomètrica d’un nombre complex}
+
+Donat un nombre complex $z=r_{\alpha }$ en forma polar, la següent
+figura\begin{center}
+\includegraphics[width=2.1724in,height=2.0799in,keepaspectratio]{com-5.png}
+\end{center}mostra que es compleixen les relacions següents
+\begin{equation*}
+x=r\cos \alpha \text{ \ \ \ i \ \ \ }y=r\sin \alpha
+\end{equation*}
+de manera que qualsevol nombre complex no nul $z=x+yi$ de mòdul $
+r $ i argument $\alpha $ es pot escriure de la manera següent:
+\begin{equation*}
+z=x+yi=r\cos \alpha +r\sin \alpha \cdot i=r(\cos \alpha +i\sin \alpha )
+\end{equation*}
+Decimos que un nombre complex viene donat en \textbf{forma trigonomètrica} quan s’escriu así
+\begin{equation*}
+r(\cos \alpha +i\sin \alpha )
+\end{equation*}
+
+Donat un nombre complex no nul en forma binòmica $z=x+iy$, aleshores
+les relacions següents
+\begin{equation*}
+r=\sqrt{x^{2}+y^{2}}
+\end{equation*}
+i
+\begin{equation*}
+\sin \theta =\frac{y}{\sqrt{x^{2}+y^{2}}}\text{ \ \ i \ \ }\cos \theta =
+\frac{x}{\sqrt{x^{2}+y^{2}}}
+\end{equation*}
+permeten determinar la forma trigonomètrica de $z$.
+
+\begin{exemple}
+Escriu en forma trigonomètrica els nombres següents complexos: $
+3,(-4,0),5i,(0,-2),i^{39},2+2i,\sqrt{3}-i$ i $3_{\frac{7\pi }{4}}$.
+\end{exemple}
+
+\begin{solucio}
+Per escriure un complex en forma trigonomètrica hace falta conocer el seu mòdul i el seu argument. Basándonos en els resultats obtinguts en el
+exemple anterior, tenim
+\begin{equation*}
+\begin{array}{cccc}
+\text{Complex} & \text{Mòdul} & \text{Argument} & \text{Forma trigonomètrica} \\
+3 & 3 & 0 & 3(\cos 0+i\sin 0) \\
+(-4,0) & 4 & \pi & 4(\cos \pi +i\sin \pi ) \\
+5i & 5 & \frac{\pi }{2} & 5\left( \cos \frac{\pi }{2}+\sin \frac{\pi }{2}
+\right) \\
+(0,-2) & 2 & -\frac{\pi }{2} & 2\left( \cos \left( -\frac{\pi }{2}\right)
++i\sin \left( -\frac{\pi }{2}\right) \right) \\
+i^{39}=i^{3}=-i & 1 & -\frac{\pi }{2} & \cos \left( -\frac{\pi }{2}\right)
++i\sin \left( -\frac{\pi }{2}\right) \\
+2+2i & 2\sqrt{2} & \frac{\pi }{4} & 2\sqrt{2}\left( \cos \frac{\pi }{4}
++i\sin \frac{\pi }{4}\right) \\
+\sqrt{3}-i & 2 & -\frac{\pi }{6} & 2\left( \cos \left( -\frac{\pi }{6}
+\right) +i\sin \left( -\frac{\pi }{6}\right) \right) \\
+3_{\frac{7\pi }{4}} & 3 & \frac{7\pi }{4} & 3\left( \cos \frac{7\pi }{4}
++i\sin \frac{7\pi }{4}\right)
+\end{array}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Escriu en forma binòmica i en forma polar els nombres següents
+complexos: (a) $2(\cos 210
+^{\circ}
++i\sin 210
+^{\circ}
+)$, (b) $\cos 30
+^{\circ}
+-i\sin 30
+^{\circ}
+$, (c) $4(-\cos 60
+^{\circ}
++i\sin 60
+^{\circ}
+)$ i (d) $-\cos 45
+^{\circ}
+-i\sin 45
+^{\circ}
+$.
+\end{exemple}
+
+\begin{solucio}
+Per pasar de la forma trigonomètrica a la forma binòmica
+calcularem les raons trigonomètriques i efectuarem l’operació
+indicada. Así, tenim
+
+(a) La forma binòmica de $2(\cos 210
+^{\circ}
++i\sin 210
+^{\circ}
+)$ és
+\begin{equation*}
+2\left( -\frac{\sqrt{3}}{2}-\frac{1}{2}i\right) =-\sqrt{3}-i
+\end{equation*}
+La forma polar d’aquest nombre complex és evidentmente
+\begin{equation*}
+2_{\frac{7\pi }{6}}
+\end{equation*}
+
+(b) La forma binòmica de $\cos 30
+^{\circ}
+-i\sin 30
+^{\circ}
+$ és
+\begin{equation*}
+\frac{\sqrt{3}}{2}-\frac{1}{2}i
+\end{equation*}
+Per trobar su forma polar, observa que el complex $\cos 30
+^{\circ}
+-i\sin 30
+^{\circ}
+$ és el conjugat de $\cos 30
+^{\circ}
++i\sin 30
+^{\circ}
+$. Per tant, la forma polar d’aquest complex és
+\begin{equation*}
+1_{-\frac{\pi }{6}}
+\end{equation*}
+
+(c) La forma binòmica de $4(-\cos 60
+^{\circ}
++i\sin 60
+^{\circ}
+)$ és
+\begin{equation*}
+4\left( -\frac{1}{2}+\frac{\sqrt{3}}{2}i\right) =-2+2\sqrt{3}i
+\end{equation*}
+Per trobar su forma polar, observa que el complex $4(-\cos 60
+^{\circ}
++i\sin 60
+^{\circ}
+)$ és l’oposat del conjugat de $4(\cos 60
+^{\circ}
++i\sin 60
+^{\circ}
+)$. Per tant, la forma polar d’aquest complex és
+\begin{equation*}
+4_{-\frac{\pi }{3}+\pi }=4_{\frac{2\pi }{3}}
+\end{equation*}
+
+(d) La forma binòmica de $-\cos 45
+^{\circ}
+-i\sin 45
+^{\circ}
+$ és
+\begin{equation*}
+-\frac{\sqrt{2}}{2}-\frac{\sqrt{2}}{2}i
+\end{equation*}
+Per trobar su forma polar, observa que el complex $-\cos 45
+^{\circ}
+-i\sin 45
+^{\circ}
+$ és l’oposat de $\cos 45
+^{\circ}
++i\sin 45
+^{\circ}
+$. Per tant, la forma polar d’aquest complex és
+\begin{equation*}
+1_{\frac{\pi }{4}+\pi }=1_{\frac{5\pi }{4}}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Si $z=-2-2\sqrt{3}i$, escriu en forma trigonomètrica els complexos $-z$
+i $\overline{z}$.
+\end{exemple}
+
+\begin{solucio}
+Primer escriurem $z$ en forma trigonomètrica. Calculant el mòdul i l’argument de $z$, obtenim
+\begin{equation*}
+\left\vert z\right\vert =\sqrt{(-2)^{2}+\left( -2\sqrt{3}\right) ^{2}}=4
+\end{equation*}
+i, com l’afix de $z$ es troba en el tercer quadrant,
+\begin{equation*}
+\begin{array}{lll}
+\tan \alpha =\frac{-2\sqrt{3}}{-2}=\sqrt{3} & \Longrightarrow & \alpha =
+\frac{4\pi }{3}
+\end{array}
+\end{equation*}
+Per tant,
+\begin{equation*}
+z=4\left( \cos \frac{4\pi }{3}+i\sin \frac{4\pi }{3}\right)
+\end{equation*}
+i, d’aquí, deduïm que
+\begin{equation*}
+-z=4\left( -\cos \frac{4\pi }{3}-i\sin \frac{4\pi }{3}\right)
+\end{equation*}
+i
+\begin{equation*}
+\overline{z}=4\left( \cos \frac{4\pi }{3}-i\sin \frac{4\pi }{3}\right)
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Troba el complex que al sumarlo amb
+\begin{equation*}
+\frac{1+i}{2-2i}
+\end{equation*}
+s’obté un altre complex de mòdul $\sqrt{2}$ i argument $45
+^{\circ}
+$.
+\end{exemple}
+
+\begin{solucio}
+Si $z$ és el complex que busquem, segons l’enunciat, s’ha de complir
+\begin{equation*}
+z+\frac{1+i}{2-2i}=\left( \sqrt{2}\right) _{45
+^{\circ}
+}
+\end{equation*}
+La forma trigonomètrica del complex $\left( \sqrt{2}\right) _{45
+^{\circ}
+}$ és
+\begin{equation*}
+\sqrt{2}(\cos 45
+^{\circ}
++i\sin 45
+^{\circ}
+)
+\end{equation*}
+i, per tant, su forma binòmica és
+\begin{equation*}
+\sqrt{2}\left( \frac{\sqrt{2}}{2}+\frac{\sqrt{2}}{2}i\right) =1+i
+\end{equation*}
+Per tant,
+\begin{equation*}
+z=1+i-\frac{1+i}{2-2i}
+\end{equation*}
+Efectuant l’operació, obtenim
+\begin{eqnarray*}
+1+i-\frac{1+i}{2-2i} &=&1+i-\frac{(1+i)(2+2i)}{(2-2i)(2+2i)} \\
+&=&1+i-\frac{4i}{8} \\
+&=&1+\frac{1}{2}i
+\end{eqnarray*}
+Per tant,
+\begin{equation*}
+z=1+\frac{1}{2}i
+\end{equation*}
+\end{solucio}
+
+\subsection{Interpretació geomètrica del producte de dos nombres complexos}
+
+Donats dos nombres complexos escrits en forma trigonomètrica
+\begin{equation*}
+z_{1}=r_{1}(\cos \alpha _{1}+i\sin \alpha _{1})\text{ \ \ i \ \ }
+z_{2}=r_{2}(\cos \alpha _{2}+i\sin \alpha _{2})
+\end{equation*}
+aleshores, calculant el seu producte
+\begin{eqnarray*}
+z_{1}\cdot z_{2} &=&r_{1}\cdot r_{2}(\cos \alpha _{1}+i\sin \alpha
+_{1})(\cos \alpha _{2}+i\sin \alpha _{2}) \\
+&=&r_{1}\cdot r_{2}\left[ (\cos \alpha _{1}\cdot \cos \alpha _{2}-\sin
+\alpha _{1}\cdot \sin \alpha _{2})+i(\cos \alpha _{1}\cdot \sin \alpha
+_{2}+\sin \alpha _{1}\cdot \cos \alpha _{2})\right] \\
+&=&r_{1}\cdot r_{2}\left[ \cos (\alpha _{1}+\alpha _{2})+i\sin (\alpha
+_{1}+\alpha _{2})\right]
+\end{eqnarray*}
+(3) Per trigonometria sabem que
+\begin{equation*}
+\cos (\alpha +\beta )=\cos \alpha \cdot \cos \beta -\sin \alpha \cdot \sin
+\beta
+\end{equation*}
+i
+\begin{equation*}
+\sin (\alpha +\beta )=\sin \alpha \cdot \cos \beta +\sin \beta \cdot \cos
+\alpha
+\end{equation*}
+obtenim
+\begin{equation*}
+z_{1}\cdot z_{2}=r_{1}\cdot r_{2}\left[ \cos (\alpha _{1}+\alpha _{2})+i\sin
+(\alpha _{1}+\alpha _{2})\right]
+\end{equation*}
+i, com a conseqüència, deduïm que l’argument del producte de dos nombres complexos és la suma dels arguments dels dos nombres
+complexos:
+\begin{equation*}
+\arg (z_{1}\cdot z_{2})=\arg z_{1}+\arg z_{2}
+\end{equation*}
+i
+\begin{equation*}
+\left\vert z_{1}\cdot z_{2}\right\vert =\left\vert z_{1}\right\vert \cdot
+\left\vert z_{2}\right\vert
+\end{equation*}
+Aquest resultat proporciona una interpretació geomètrica del
+producte de dos nombres complexos. En efecte, aplicant l’homotècia de
+centre $O$ i raó $r_{2}$ al triangle $OPQ$, s’obté el triangle semejante $OP^{\prime }Q^{\prime }$ en què $\overline{OQ^{\prime }}
+=r_{2}$ i $\overline{OP^{\prime }}=r_{1}\cdot r_{2}$. Aplicant después
+al triangle $OP^{\prime }Q^{\prime }$ un gir de centre $O$ i angle $\alpha _{2}$, s’obté el triangle semejante $OP^{\prime
+\prime }Q^{\prime \prime }$ en què $\overline{OP^{\prime \prime }}
+=r_{1}\cdot r_{2}$ i l’angle $P^{\prime \prime }OQ^{\prime \prime }$
+és $\alpha _{1}$.\begin{center}
+\includegraphics[width=2.2572in,height=2.226in,keepaspectratio]{com-6.png}
+\end{center}Aleshores, per construcció, l’afix del producte $z_{1}\cdot
+z_{2}$ és el punt $P^{\prime \prime }$, ja que el mòdul del vector
+\thinspace $\overrightarrow{OP^{\prime \prime }}$ és $r_{1}\cdot r_{2}$ i el
+angle $P^{\prime \prime }OQ$ és $\alpha _{1}+\alpha _{2}$.
+
+Per tant, l’aplicació de $\mathbb{C}$ en $\mathbb{C}$ que $
+z~\longmapsto ~z\cdot z_{0}$ representa geomètricament la composició d’una \textbf{homotècia} de centre l’origen i raó $\left\vert
+z_{0}\right\vert $ i un \textbf{gir} de centre l’origen i angle $\arg
+z_{0}$.
+
+En particular, obtenim les transformacions següents geomètriques:
+
+\begin{enumerate}
+\item[1)] Si $z_{0}=1_{\alpha }$, aleshores la transformació $
+z~\longmapsto ~z\cdot 1_{\alpha }$ representa un \textbf{gir} de centre l’origen i angle $\alpha $.
+
+\item[2)] Si $z_{0}=r_{0
+^{\circ}
+}$, aleshores la transformació $z~\longmapsto ~z\cdot r_{0
+^{\circ}
+}$ representa una \textbf{homotècia} de centre l’origen i raó $r$.
+\end{enumerate}
+
+\begin{exemple}
+Calcula el transformat del punt $(1,2)$ per l’homotècia de centre l’origen i raó $2$, seguida del gir de centre l’origen i angle $30
+^{\circ}
+$.
+\end{exemple}
+
+\begin{solucio}
+El punt $(1,2)$ és l’afix del nombre complex $z=1+2i$. Considerem
+el nombre complex $z_{0}$ de mòdul $2$ i argument $30
+^{\circ}
+$
+\begin{eqnarray*}
+z_{0} &=&2(\cos 30
+^{\circ}
++i\sin 30
+^{\circ}
+) \\
+&=&2\left( \frac{\sqrt{3}}{2}+\frac{1}{2}i\right) \\
+&=&\sqrt{3}+i
+\end{eqnarray*}
+Aleshores, el transformat de $(1,2)$ és l’afix del producte
+\begin{eqnarray*}
+z_{0}\cdot z &=&(\sqrt{3}+i)\cdot (1+2i) \\
+&=&\sqrt{3}+i+2\sqrt{3}i-2 \\
+&=&\sqrt{3}-2+(1+2\sqrt{3})i
+\end{eqnarray*}
+és a dir, el punt
+\begin{equation*}
+\left( \sqrt{3}-2,1+2\sqrt{3}\right)
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Calcula el transformat del punt $(1,2)$ per un gir de 60
+$^{\circ}$
+amb centre en l’origen.
+\end{exemple}
+
+\begin{solucio}
+El punt $(1,2)$ és l’afix del complex $z=1+2i$. Considerem el complex
+unitari de argument $60
+^{\circ}
+$
+\begin{equation*}
+\cos 60
+^{\circ}
++i\sin 60
+^{\circ}
+=\frac{1}{2}+\frac{\sqrt{3}}{2}i
+\end{equation*}
+Aleshores, el transformat del punt $(1,2)$ és l’afix del producte
+\begin{eqnarray*}
+(1+2i)\cdot \left( \frac{1}{2}+\frac{\sqrt{3}}{2}i\right) &=&\frac{1}{2}+i+
+\frac{\sqrt{3}}{2}i+\sqrt{3}i^{2} \\
+&=&\left( \frac{1}{2}-\sqrt{3}\right) +\left( 1+\frac{\sqrt{3}}{2}\right) i
+\end{eqnarray*}
+és a dir, el punt de coordenades
+\begin{equation*}
+\left( \frac{1}{2}-\sqrt{3},1+\frac{\sqrt{3}}{2}\right)
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Donat el triangle de vèrtexs $A(1,1)$, $B=(3,2)$ i $C=(2,3)$,
+calcula els vèrtexs del seu transformat segons una homotècia de
+centre l’origen i raó $3$ seguida d’un gir de centre l’origen i
+angle $45
+^{\circ}
+$.
+\end{exemple}
+
+\begin{solucio}
+Els punts $A(1,1)$, $B=(3,2)$ i $C=(2,3)$ són els afixos dels complexos $
+z_{A}=1+i$, $z_{B}=3+2i$ i $z_{C}=2+3i$. Aleshores, els afixos dels
+complexos
+\begin{equation*}
+\begin{array}{l}
+z_{A}^{\prime }=z_{A}\cdot 3_{45
+^{\circ}
+} \\
+z_{B}^{\prime }=z_{B}\cdot 3_{45
+^{\circ}
+} \\
+z_{C}^{\prime }=z_{C}\cdot 3_{45
+^{\circ}
+}
+\end{array}
+\end{equation*}
+són els vèrtexs del nou triangle. Com
+\begin{eqnarray*}
+z_{A^{\prime }} &=&(1+i)\cdot 3(\cos 45
+^{\circ}
++i\sin 45
+^{\circ}
+) \\
+&=&(1+i)\cdot \left( \frac{3\sqrt{2}}{2}+\frac{3\sqrt{2}}{2}i\right) \\
+&=&3\sqrt{2}i
+\end{eqnarray*}
+\begin{eqnarray*}
+z_{B^{\prime }} &=&(3+2i)\cdot 3(\cos 45
+^{\circ}
++i\sin 45
+^{\circ}
+) \\
+&=&(3+2i)\cdot \left( \frac{3\sqrt{2}}{2}+\frac{3\sqrt{2}}{2}i\right) \\
+&=&\frac{3\sqrt{2}}{2}+\frac{15\sqrt{2}}{2}i
+\end{eqnarray*}
+i
+\begin{eqnarray*}
+z_{C^{\prime }} &=&(2+3i)\cdot 3(\cos 45
+^{\circ}
++i\sin 45
+^{\circ}
+) \\
+&=&(2+3i)\cdot \left( \frac{3\sqrt{2}}{2}+\frac{3\sqrt{2}}{2}i\right) \\
+&=&-\frac{3\sqrt{2}}{2}+\frac{15\sqrt{2}}{2}i
+\end{eqnarray*}
+aleshores les coordenades de aquests vèrtexs són
+\begin{equation*}
+\begin{array}{l}
+A^{\prime }=\left( 0,3\sqrt{2}\right) \\
+B^{\prime }=\left( \frac{3\sqrt{2}}{2},\frac{15\sqrt{2}}{2}\right) \\
+C^{\prime }=\left( -\frac{3\sqrt{2}}{2},\frac{15\sqrt{2}}{2}\right)
+\end{array}
+\end{equation*}
+\end{solucio}
+
+\section{Operacions amb nombres complexos en forma polar}
+
+La forma polar no pot utilitzarse per sumar o restar nombres complexos.
+
+\subsection{Productes}
+
+Hem vist en l’apartat anterior que
+\begin{equation*}
+\arg (z\cdot z^{\prime })=\arg z+\arg z^{\prime }
+\end{equation*}
+i, per tant, si $z=r_{\alpha }$ i $z^{\prime }=r_{\alpha ^{\prime
+}}^{\prime }$, aleshores
+\begin{equation*}
+r_{\alpha }\cdot r_{\alpha ^{\prime }}^{\prime }=(r\cdot r^{\prime
+})_{\alpha +\alpha ^{\prime }}
+\end{equation*}
+
+\begin{exemple}
+Calcula el producte $2_{\frac{\pi }{3}}\cdot 3_{\frac{\pi }{4}}$ i expressa
+el resultat en forma binòmica sense usar la calculadora.
+\end{exemple}
+
+\begin{solucio}
+És evident que
+\begin{equation*}
+2_{\frac{\pi }{3}}\cdot 3_{\frac{\pi }{4}}=\left( 2\cdot 3\right) _{\frac{
+\pi }{3}+\frac{\pi }{4}}=6_{\frac{7\pi }{12}}
+\end{equation*}
+Passant aquest nombre complex a la forma trigonomètrica, tenim
+\begin{equation*}
+6\left( \cos \frac{7\pi }{12}+i\sin \frac{7\pi }{12}\right) =6(\cos 105
+^{\circ}
++i\sin 105
+^{\circ}
+)
+\end{equation*}
+Per trigonometría, tenim
+\begin{eqnarray*}
+\cos 105
+^{\circ}
+&=&\cos (60
+^{\circ}
++45
+^{\circ}
+) \\
+&=&\cos 60
+^{\circ}
+\cdot \cos 45
+^{\circ}
+-\sin 60
+^{\circ}
+\cdot \sin 45
+^{\circ}
+\\
+&=&\frac{1}{2}\cdot \frac{\sqrt{2}}{2}-\frac{\sqrt{3}}{2}\frac{\sqrt{2}}{2}
+\\
+&=&\frac{\sqrt{2}-\sqrt{6}}{4}
+\end{eqnarray*}
+i
+\begin{eqnarray*}
+\sin 105
+^{\circ}
+&=&\sin (60
+^{\circ}
++45
+^{\circ}
+) \\
+&=&\sin 60
+^{\circ}
+\cdot \cos 45
+^{\circ}
++\sin 45
+^{\circ}
+\cdot \cos 60
+^{\circ}
+\\
+&=&\frac{1}{2}\cdot \frac{\sqrt{2}}{2}+\frac{\sqrt{2}}{2}\cdot \frac{\sqrt{3}
+}{2} \\
+&=&\frac{\sqrt{2}+\sqrt{6}}{4}
+\end{eqnarray*}
+Per tant, el resultat de l’operació en forma binòmica és
+\begin{equation*}
+6\left( \frac{\sqrt{2}-\sqrt{6}}{4}+\frac{\sqrt{2}+\sqrt{6}}{4}i\right) =
+\frac{3\sqrt{2}-3\sqrt{6}}{2}+\frac{3\sqrt{2}+3\sqrt{6}}{2}i
+\end{equation*}
+\end{solucio}
+
+\subsection{Quocients}
+
+Hem vist que si $z\neq 0$, aleshores
+\begin{equation*}
+\frac{1}{z}=\frac{\overline{z}}{\left\vert z\right\vert ^{2}}=\frac{1}{
+\left\vert z\right\vert ^{2}}\cdot \overline{z}
+\end{equation*}
+Per tant,
+\begin{eqnarray*}
+\arg \left( \frac{1}{z}\right) &=&\arg \left( \frac{1}{\left\vert
+z\right\vert ^{2}}\cdot \overline{z}\right) \\
+&=&\arg \left( \frac{1}{\left\vert z\right\vert ^{2}}\right) +\arg (
+\overline{z}) \\
+&=&0-\alpha =-\alpha
+\end{eqnarray*}
+i, com a conseqüència, si $z=r_{\alpha }$, aleshores
+\begin{equation*}
+\left( r_{\alpha }\right) ^{-1}=\frac{1}{r_{\alpha }}=\left( \frac{1}{r}
+\right) _{-\alpha }
+\end{equation*}
+ja que
+\begin{equation*}
+\left\vert z^{-1}\right\vert =\frac{1}{\left\vert z\right\vert }=\frac{1}{r}
+\end{equation*}
+Amb aquest resultat podem deduir el quocient de dos nombres complexos
+en forma polar. En efecte, atès que
+\begin{equation*}
+\frac{z}{z^{\prime }}=z\cdot \frac{1}{z^{\prime }}
+\end{equation*}
+amb $z^{\prime }\neq 0$. Aleshores
+\begin{equation*}
+\arg \left( \frac{z}{z^{\prime }}\right) =\arg \left( z\cdot \frac{1}{
+z^{\prime }}\right) =\arg z+\arg \left( \frac{1}{z^{\prime }}\right)
+\end{equation*}
+i, per tant, si $z=r_{\alpha }$ i $z^{\prime }=r_{\alpha ^{\prime
+}}^{\prime }$, aleshores
+\begin{equation*}
+\frac{r_{\alpha }}{r_{\alpha ^{\prime }}^{\prime }}=\left( \frac{r}{
+r^{\prime }}\right) _{\alpha -\alpha ^{\prime }}
+\end{equation*}
+ja que
+\begin{equation*}
+\left\vert \frac{z}{z^{\prime }}\right\vert =\frac{\left\vert z\right\vert }{
+\left\vert z^{\prime }\right\vert }
+\end{equation*}
+
+\begin{exemple}
+Calcula el quocient $2_{\frac{\pi }{3}}/3_{\frac{\pi }{4}}$ i expressa el
+resultat en forma binòmica sense usar la calculadora.
+\end{exemple}
+
+\begin{solucio}
+És clar que
+\begin{equation*}
+\frac{2_{\frac{\pi }{3}}}{3_{\frac{\pi }{4}}}=\left( \frac{2}{3}\right) _{
+\frac{\pi }{3}-\frac{\pi }{4}}=\left( \frac{2}{3}\right) _{\frac{\pi }{12}}
+\end{equation*}
+Passant aquest nombre complex a la forma trigonomètrica, tenim
+\begin{equation*}
+\frac{2}{3}\left( \cos \frac{\pi }{12}+i\sin \frac{\pi }{12}\right) =\frac{2
+}{3}(\cos 15
+^{\circ}
++i\sin 15
+^{\circ}
+)
+\end{equation*}
+Per trigonometría, tenim
+\begin{eqnarray*}
+\cos 15
+^{\circ}
+&=&\cos (60
+^{\circ}
+-45
+^{\circ}
+) \\
+&=&\cos 60
+^{\circ}
+\cdot \cos 45
+^{\circ}
++\sin 60
+^{\circ}
+\cdot \sin 45
+^{\circ}
+\\
+&=&\frac{1}{2}\cdot \frac{\sqrt{2}}{2}+\frac{\sqrt{3}}{2}\frac{\sqrt{2}}{2}
+\\
+&=&\frac{\sqrt{2}+\sqrt{6}}{4}
+\end{eqnarray*}
+i
+\begin{eqnarray*}
+\sin 105
+^{\circ}
+&=&\sin (60
+^{\circ}
+-45
+^{\circ}
+) \\
+&=&\sin 60
+^{\circ}
+\cdot \cos 45
+^{\circ}
+-\sin 45
+^{\circ}
+\cdot \cos 60
+^{\circ}
+\\
+&=&\frac{1}{2}\cdot \frac{\sqrt{2}}{2}-\frac{\sqrt{2}}{2}\cdot \frac{\sqrt{3}
+}{2} \\
+&=&\frac{\sqrt{2}-\sqrt{6}}{4}
+\end{eqnarray*}
+Per tant, el resultat de l’operació en forma binòmica és
+\begin{equation*}
+\frac{2}{3}\left( \frac{\sqrt{2}+\sqrt{6}}{4}+\frac{\sqrt{2}-\sqrt{6}}{4}
+i\right) =\frac{\sqrt{2}+\sqrt{6}}{6}+\frac{\sqrt{2}-\sqrt{6}}{6}i
+\end{equation*}
+\end{solucio}
+
+\subsection{Potències. Fórmula de De Moivre}
+
+És clar que per inducción sobre el nombre de factores, de les fórmules
+\begin{equation*}
+\left\vert z\cdot z^{\prime }\right\vert =\left\vert z\right\vert \cdot
+\left\vert z^{\prime }\right\vert
+\end{equation*}
+i
+\begin{equation*}
+\arg (z\cdot z^{\prime })=\arg z+\arg z^{\prime }
+\end{equation*}
+
+podem deduir
+\begin{equation*}
+\left\vert \displaystyle\prod\limits_{i=1}^{n}z_{i}\right\vert
+=\displaystyle\prod\limits_{i=1}^{n}\left\vert z_{i}\right\vert
+\end{equation*}
+i
+\begin{equation*}
+\arg \left( \displaystyle\prod\limits_{i=1}^{n}z_{i}\right) =\displaystyle\sum\limits_{i=1}^{n}\arg
+z_{i}
+\end{equation*}
+En particular, per $n\in \mathbb{N}$ tenim
+\begin{equation*}
+\left\vert z^{n}\right\vert =\left\vert z\right\vert ^{n}\text{ \ \ i \ \ }
+\left\vert z^{-n}\right\vert =\left\vert z^{-1}\right\vert ^{n}\text{ \ }
+(z\neq 0)
+\end{equation*}
+i
+\begin{equation*}
+\arg z^{n}=n\cdot \arg z\text{ \ \ i \ \ }\arg z^{-n}=-n\cdot \arg z\text{ \
+}(z\neq 0)
+\end{equation*}
+i, per tant, si $z=r_{\alpha }$, aleshores
+\begin{equation*}
+\left( r_{\alpha }\right) ^{n}=\left( r^{n}\right) _{n\cdot \alpha }
+\end{equation*}
+per tot $n\in \mathbb{Z}$.
+
+Aquesta última fórmula, escrita en forma trigonomètrica és
+\begin{equation*}
+\left[ r(\cos \alpha +i\sin \alpha )\right] ^{n}=r^{n}\left[ \cos (n\theta
+)+i\sin (n\theta )\right]
+\end{equation*}
+i si, a més, el complex és unitari, o sigui, $r=1$, aleshores obtenim
+la \textbf{fórmula de De Moivre}
+\begin{equation*}
+(\cos \alpha +i\sin \alpha )^{n}=\cos (n\alpha )+i\sin (n\alpha )
+\end{equation*}
+per tot $n\in \mathbb{Z}$.
+
+\begin{exemple}
+Calcula de dos maneres la potencia $(1-\sqrt{3}i)^{4}$.
+\end{exemple}
+
+\begin{solucio}
+Primer calcularem la potencia utilitzant la fórmula del binomi de
+Newton:
+\begin{eqnarray*}
+(1-\sqrt{3}i)^{4} &=&\binom{4}{0}-\binom{4}{1}\sqrt{3}i+\binom{4}{2}\left(
+\sqrt{3}\right) ^{2}i^{2}-\binom{4}{3}\left( \sqrt{3}\right) ^{3}i^{3}+
+\binom{4}{4}\left( \sqrt{3}\right) ^{4}i^{4} \\
+&=&\binom{4}{0}-\binom{4}{1}\sqrt{3}i-3\binom{4}{2}+3\sqrt{3}\binom{4}{3}i+9
+\binom{4}{4}
+\end{eqnarray*}
+Els nombres combinatoris s’obtenen amb el triangle de Tartaglia
+de la manera següent
+\begin{equation*}
+\begin{array}{lllllllll}
+&  &  & 1 &  & 1 &  &  &  \\
+&  & 1 &  & 2 &  & 1 &  &  \\
+& 1 &  & 3 &  & 3 &  & 1 &  \\
+1 &  & 4 &  & 6 &  & 4 &  & 1
+\end{array}
+\end{equation*}
+Després,
+\begin{eqnarray*}
+(1-\sqrt{3}i)^{4} &=&1-4\sqrt{3}i-18+12\sqrt{3}i+9 \\
+&=&-8+8\sqrt{3}i
+\end{eqnarray*}
+
+Ara calcularemos la potencia escribiendo primer el complex en forma
+polar. El mòdul i l’argument de $z=1-\sqrt{3}i$ són
+\begin{equation*}
+\left\vert z\right\vert =\sqrt{1^{2}+\left( -\sqrt{3}\right) ^{2}}=2
+\end{equation*}
+i, com l’afix de $z$ es troba en el quart quadrant,
+\begin{equation*}
+\begin{array}{lll}
+\tan \alpha =\frac{-\sqrt{3}}{1}=-\sqrt{3} & \Longrightarrow & \alpha =-60
+^{\circ}
+\end{array}
+\end{equation*}
+Per tant, la forma polar de $z$ és
+\begin{equation*}
+2_{-\frac{\pi }{3}}
+\end{equation*}
+Aleshores, la potencia és
+\begin{equation*}
+\left( 2_{-\frac{\pi }{3}}\right) ^{4}=\left( 2^{4}\right) _{-\frac{4\pi }{3}
+}=16_{\frac{2\pi }{3}}
+\end{equation*}
+
+Observa que aquest últim resultat coincideix amb què hem encontrado
+anteriorment, ja que si passem $16_{\frac{2\pi }{3}}$ a forma binòmica,
+obtenim
+\begin{eqnarray*}
+16(\cos 120
+^{\circ}
++i\sin 120
+^{\circ}
+) &=&16\left( -\frac{1}{2}+\frac{\sqrt{3}}{2}i\right) \\
+&=&-8+8\sqrt{3}i
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exemple}
+Donats els complexos $z_{1}=2_{15
+^{\circ}
+}$, $z_{2}=3_{45
+^{\circ}
+}$, $z_{3}=2i$, calcula els complexos següents: (a) $z_{1}\cdot z_{2}$,
+(b) $z_{3}-z_{2}$, (c) $z_{3}/z_{2}^{2}$, (d) $z_{3}\cdot z_{1}^{4}$ i (e) $
+z_{2}^{-3}$. Expressa els resultats en forma binòmica.
+\end{exemple}
+
+\begin{solucio}
+(a)
+\begin{equation*}
+z_{1}\cdot z_{2}=2_{15
+^{\circ}
+}\cdot 3_{45
+^{\circ}
+}=\left( 2\cdot 3\right) _{15
+^{\circ}
++45
+^{\circ}
+}=6_{60
+^{\circ}
+}
+\end{equation*}
+Per tant,
+\begin{eqnarray*}
+z_{1}\cdot z_{2} &=&6(\cos 60
+^{\circ}
++i\sin 60
+^{\circ}
+) \\
+&=&6\left( \frac{1}{2}+\frac{\sqrt{3}}{2}i\right) \\
+&=&3+3\sqrt{3}i
+\end{eqnarray*}
+
+(b) Com que
+\begin{eqnarray*}
+z_{2} &=&3(\cos 45
+^{\circ}
++i\sin 45
+^{\circ}
+) \\
+&=&3\left( \frac{\sqrt{2}}{2}+\frac{\sqrt{2}}{2}i\right) \\
+&=&\frac{3\sqrt{2}}{2}+\frac{3\sqrt{2}}{2}i
+\end{eqnarray*}
+aleshores
+\begin{eqnarray*}
+z_{3}-z_{2} &=&2i-\left( \frac{3\sqrt{2}}{2}+\frac{3\sqrt{2}}{2}i\right) \\
+&=&-\frac{3\sqrt{2}}{2}+\frac{4-3\sqrt{2}}{2}i
+\end{eqnarray*}
+
+(c) Com que $z_{3}=2_{90
+^{\circ}
+}$, aleshores
+\begin{equation*}
+\frac{z_{3}}{z_{2}^{2}}=\frac{2_{90
+^{\circ}
+}}{\left( 3_{45
+^{\circ}
+}\right) ^{2}}=\frac{2_{90
+^{\circ}
+}}{\left( 3^{2}\right) _{2\cdot 45
+^{\circ}
+}}=\left( \frac{2}{9}\right) _{90
+^{\circ}
+-90
+^{\circ}
+}=\left( \frac{2}{9}\right) _{0
+^{\circ}
+}
+\end{equation*}
+Per tant,
+\begin{equation*}
+\frac{z_{3}}{z_{2}^{2}}=\frac{2}{9}
+\end{equation*}
+
+(d)
+\begin{eqnarray*}
+z_{3}\cdot z_{1}^{4} &=&2_{90
+^{\circ}
+}\cdot \left( 2_{15
+^{\circ}
+}\right) ^{4} \\
+&=&2_{90
+^{\circ}
+}\cdot \left( 2^{4}\right) _{4\cdot 15
+^{\circ}
+} \\
+&=&\left( 2^{5}\right) _{90
+^{\circ}
++60
+^{\circ}
+} \\
+&=&32_{150
+^{\circ}
+}
+\end{eqnarray*}
+Per tant,
+\begin{eqnarray*}
+z_{3}\cdot z_{1}^{4} &=&32(\cos 150
+^{\circ}
++i\sin 150
+^{\circ}
+) \\
+&=&32\left( -\frac{\sqrt{3}}{2}+\frac{1}{2}i\right) \\
+&=&-16\sqrt{3}+16i
+\end{eqnarray*}
+
+(e)
+\begin{equation*}
+z_{2}^{-3}=\left( 3_{45
+^{\circ}
+}\right) ^{-3}=\left( 3^{-3}\right) _{(-3)\cdot 45
+^{\circ}
+}=\left( \frac{1}{27}\right) _{-135
+^{\circ}
+}=\left( \frac{1}{27}\right) _{225
+^{\circ}
+}
+\end{equation*}
+Per tant,
+\begin{eqnarray*}
+z_{2}^{-3} &=&\frac{1}{27}(\cos 225
+^{\circ}
++i\sin 225
+^{\circ}
+) \\
+&=&\frac{1}{27}\left( -\frac{\sqrt{2}}{2}-\frac{\sqrt{2}}{2}i\right) \\
+&=&-\frac{\sqrt{2}}{54}-\frac{\sqrt{2}}{54}i
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exemple}
+Escriu la fórmula de Moivre pel cas $n=2$ i dedueix d’aquí
+les fórmules del sinus i el cosinus de l’angle doble.
+\end{exemple}
+
+\begin{solucio}
+La fórmula de Moivre és
+\begin{equation*}
+(\cos \alpha +i\sin \alpha )^{n}=\cos (n\alpha )+i\sin (n\alpha )
+\end{equation*}
+per $n\in \mathbb{Z}$. En particular, per $n=2$ obtenim
+\begin{equation*}
+(\cos \alpha +i\sin \alpha )^{2}=\cos 2\alpha +i\sin 2\alpha
+\end{equation*}
+
+Desenvolupant el membre esquerre de la igualtat, obtenim
+\begin{eqnarray*}
+(\cos \alpha +i\sin \alpha )^{2} &=&\cos ^{2}\alpha +2i\sin \alpha \cos
+\alpha +i^{2}\sin ^{2}\alpha \\
+&=&\cos ^{2}\alpha -\sin ^{2}\alpha +2i\sin \alpha \cos \alpha
+\end{eqnarray*}
+Per tant, tenim la igualtat següent
+\begin{equation*}
+\cos ^{2}\alpha -\sin ^{2}\alpha +2i\sin \alpha \cos \alpha =\cos 2\alpha
++i\sin 2\alpha
+\end{equation*}
+d’on obtenim
+\begin{equation*}
+\begin{array}{l}
+\cos 2\alpha =\cos ^{2}\alpha -\sin ^{2}\alpha \\
+\sin 2\alpha =2\sin \alpha \cos \alpha
+\end{array}
+\end{equation*}
+ja que dos nombres complexos són iguals quan són iguals les seves parts reals i les seves parts imaginàries.
+\end{solucio}
+
+\subsection{Arrels $n$-èsimes}
+
+Un nombre complex $z$ s’anomena \textbf{arrel }$n$\textbf{-èsima}
+d’un nombre complex $z^{\prime }$ si
+\begin{equation*}
+z^{n}=z^{\prime }
+\end{equation*}
+Si $z=r_{\alpha }$ i $z^{\prime }=r_{\alpha ^{\prime }}^{\prime }$, aleshores
+la igualtat anterior pot escriure’s en forma polar de la manera següent:
+\begin{eqnarray*}
+\left( r_{\alpha }\right) ^{n} &=&r_{\alpha ^{\prime }}^{\prime } \\
+\left( r^{n}\right) _{n\cdot \alpha } &=&r_{\alpha ^{\prime }}^{\prime }
+\end{eqnarray*}
+Per tant,
+\begin{equation*}
+r^{n}=r^{\prime }
+\end{equation*}
+i
+\begin{equation*}
+n\alpha \equiv \alpha ^{\prime }+k\cdot 2\pi \text{ \ \ }(k\in \mathbb{Z})
+\end{equation*}
+és a dir,
+\begin{equation*}
+r=\sqrt[n]{r^{\prime }}
+\end{equation*}
+i
+\begin{equation*}
+\alpha =\frac{\alpha ^{\prime }}{n}+k\cdot \frac{2\pi }{n}
+\end{equation*}
+Ara bé, com $0\leq \alpha \leq 2\pi $, aleshores
+\begin{equation*}
+\alpha =\frac{\alpha ^{\prime }}{n}+k\cdot \frac{2\pi }{n}\text{ \ }
+(k=0,1,...,n-1)
+\end{equation*}
+
+Com a conseqüència, obtenim la fórmula següent per trobar les arrels $n$-èsimes d’un complex
+\begin{equation*}
+\sqrt[n]{r_{\alpha }}=\left( \sqrt[n]{r}\right) _{\frac{\alpha }{n}+k\cdot
+\frac{2\pi }{n}}\text{ \ }(k=0,1,...,n-1)
+\end{equation*}
+Observa que tot complex no nul té $n$ arrels diferents.
+
+\begin{exemple}
+Calcula les arrels cinquenes de $-1+\sqrt{3}i$.
+\end{exemple}
+
+\begin{solucio}
+Per calcular les arrels cinquenes del complex $z=-1+\sqrt{3}i$, primer
+escriurem $z$ en forma polar. És clar que
+\begin{equation*}
+\left\vert z\right\vert =2
+\end{equation*}
+i, com l’afix de $z$ es troba en el segon quadrant, obtenim
+\begin{equation*}
+\arg z=\arctan (-\sqrt{3})=-\frac{\pi }{3}+\pi =\frac{2\pi }{3}
+\end{equation*}
+Després,
+\begin{equation*}
+z=2_{120
+^{\circ}
+}
+\end{equation*}
+i, per tant,
+\begin{equation*}
+\begin{array}{lll}
+\sqrt[5]{2_{120
+^{\circ}
+}}=\left( \sqrt[5]{2}\right) _{\frac{120
+^{\circ}
+}{5}+k\cdot \frac{360
+^{\circ}
+}{5}} & = & \left\{
+\begin{array}{ll}
+\left( \sqrt[5]{2}\right) _{24
+^{\circ}
+} & k=0 \\
+\left( \sqrt[5]{2}\right) _{96
+^{\circ}
+} & k=1 \\
+\left( \sqrt[5]{2}\right) _{168
+^{\circ}
+} & k=2 \\
+\left( \sqrt[5]{2}\right) _{240
+^{\circ}
+} & k=3 \\
+\left( \sqrt[5]{2}\right) _{312
+^{\circ}
+} & k=4
+\end{array}
+\right.
+\end{array}
+\end{equation*}
+\end{solucio}
+
+\begin{exemple}
+Resol l’equació següent
+\begin{equation*}
+(1+i)\cdot z^{3}-2i=0
+\end{equation*}
+\end{exemple}
+
+\begin{solucio}
+És clar que
+\begin{eqnarray*}
+z^{3} &=&\frac{2i}{1+i} \\
+&=&\frac{2i(1-i)}{(1+i)(1-i)} \\
+&=&\frac{2+2i}{2} \\
+&=&1+i
+\end{eqnarray*}
+i, per tant,
+\begin{equation*}
+z=\sqrt[3]{1+i}
+\end{equation*}
+Calculant el mòdul i l’argument de $1+i$, obtenim
+\begin{equation*}
+r=\sqrt{2}
+\end{equation*}
+i, com l’afix del complex és en el primer quadrant,
+\begin{equation*}
+\alpha =\arctan 1=\frac{\pi }{4}
+\end{equation*}
+Després,
+\begin{equation*}
+\sqrt[3]{\left( \sqrt{2}\right) _{45
+^{\circ}
+}}=\left( \sqrt[3]{\sqrt{2}}\right) _{\frac{45
+^{\circ}
+}{3}+k\cdot \frac{360
+^{\circ}
+}{3}}=\left( \sqrt[6]{2}\right) _{\frac{45
+^{\circ}
+}{3}+k\cdot \frac{360
+^{\circ}
+}{3}}
+\end{equation*}
+i, per tant,
+\begin{equation*}
+\begin{array}{lll}
+\sqrt[3]{1+i} & = & \left\{
+\begin{array}{ll}
+\left( \sqrt[6]{2}\right) _{15
+^{\circ}
+} & k=0 \\
+\left( \sqrt[6]{2}\right) _{135
+^{\circ}
+} & k=1 \\
+\left( \sqrt[6]{2}\right) _{255
+^{\circ}
+} & k=2
+\end{array}
+\right.
+\end{array}
+\end{equation*}
+\end{solucio}
+
+\subsection{Interpretació geomètrica de les arrels $n$-èsimes d’un nombre complex}
+
+Suposem que les arrels $n$-èsimes d’un complex $z$ no nul són
+\begin{equation*}
+z_{0},z_{1},...,z_{n-1}
+\end{equation*}
+aleshores,
+\begin{equation*}
+\left\vert z_{k}\right\vert =\sqrt[n]{\left\vert z\right\vert }
+\end{equation*}
+i
+\begin{equation*}
+\arg z_{k}=\frac{\arg z}{n}+k\cdot \frac{2\pi }{n}
+\end{equation*}
+sent $0\leq k\leq n-1$. Per tant, és evident que
+\begin{equation*}
+\left\vert z_{k}\right\vert =\left\vert z_{k+1}\right\vert =\sqrt[n]{
+\left\vert z\right\vert }
+\end{equation*}
+i
+\begin{equation*}
+\arg z_{k+1}=\frac{2\pi }{n}+\arg z_{k}
+\end{equation*}
+Geomètricament, aquests resultats s’interpreten de la manera següent:
+
+\begin{enumerate}
+\item[1)] Si $n=2$, els afixos de les dues arrels quadrades $z_{0}$ i $
+z_{1}$ d’un complex $z$ són dos punts simètrics respecte de l’origen
+de coordenades.
+
+\item[2)] Si $n>2$, els afixos de les $n$ arrels $n$-èsimes $
+z_{0},z_{1},...,z_{n-1}$ d’un complex $z$ són els vèrtexs d’un polígon regular de $n$ costats inscrit en una circumferència de centre l’origen de coordenades i radi $\sqrt[n]{\left\vert z\right\vert }$.
+\end{enumerate}
+
+\begin{exemple}
+Els afixos de les arrels cinquenes d’un complex $z$ són els vèrtexs d’un pentàgon regular inscrit en una circumferència de radi $
+2 $ i centre en l’origen de coordenades. Sabent que l’argument de una
+d’aquaquestes arrels és $100
+^{\circ}
+$, calcula $z$ i les altres arrels.
+\end{exemple}
+
+\begin{solucio}
+Per l’enunciat deduïm que $2_{100
+^{\circ}
+}$ és una arrel cinquena del nombre complex $z$. Per tant,
+\begin{equation*}
+z=\left( 2_{100
+^{\circ}
+}\right) ^{5}=\left( 2^{5}\right) _{5\cdot 100
+^{\circ}
+}=32_{140
+^{\circ}
+}
+\end{equation*}
+Com els mòduls de totes les arrels cinquenes de $z$ són iguals a $
+2 $ i els arguments de dues arrels consecutives difereixen en
+\begin{equation*}
+\frac{360
+^{\circ}
+}{5}=72
+^{\circ}
+\end{equation*}
+aleshores les restantes arrels són:
+\begin{equation*}
+\begin{array}{l}
+2_{100
+^{\circ}
+-72
+^{\circ}
+}=2_{28
+^{\circ}
+} \\
+2_{100
+^{\circ}
++72
+^{\circ}
+}=2_{172
+^{\circ}
+} \\
+2_{172
+^{\circ}
++72
+^{\circ}
+}=2_{244
+^{\circ}
+} \\
+2_{244
+^{\circ}
++72
+^{\circ}
+}=2_{316
+^{\circ}
+}
+\end{array}
+\end{equation*}
+\end{solucio}

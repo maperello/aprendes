@@ -1,0 +1,71 @@
+\documentclass[12pt,a4paper,oneside]{book}
+
+\input{../common/aprendes-modern.sty}
+\input{../common/preamble.tex}
+\input{../common/environments.tex}
+\input{../common/macros.tex}
+\input{../common/interactive-tests.tex}
+
+\begin{document}
+
+\pagecolor{fons!20}
+
+\frontmatter
+\title{Nombres complexos}
+\author{Miquel Àngel Perelló}
+\date{\today}
+\hypersetup{
+  pdftitle={Nombres complexos},
+  pdfauthor={Miquel Àngel Perelló}
+}
+\maketitle
+\tableofcontents
+
+\let\cleardoublepage\clearpage
+\chapter*{Prefaci}
+Aquests apunts formen la unitat d'\textbf{aprendes} dedicada als \textbf{nombres complexos}.
+
+La unitat continua l'estudi dels conjunts numèrics i introdueix els nombres complexos com una ampliació natural dels nombres reals. Aquesta ampliació permet resoldre equacions com $x^2+1=0$ i proporciona una eina algebraica i geomètrica fonamental. L'objectiu no és només aprendre a operar amb expressions de la forma $a+bi$, sinó entendre l'estructura del cos dels nombres complexos, la representació en el pla complex, el conjugat, el mòdul, l'argument, la forma polar, la fórmula de De Moivre i el càlcul d'arrels.
+
+El text està organitzat seguint el model de la unitat de polinomis d'\textbf{aprendes}: teoria, pràctica, exercicis proposats i tests interactius d'autoavaluació.
+
+\chapter{Introducció}
+Els nombres complexos apareixen de manera natural quan es vol ampliar el camp d'equacions que es poden resoldre. En els nombres reals, l'equació
+\[
+x^2+1=0
+\]
+no té solució, perquè cap quadrat real és negatiu. La introducció d'una unitat imaginària $i$, definida per la propietat $i^2=-1$, permet construir nombres de la forma
+\[
+a+bi, \qquad a,b\in\mathbb{R},
+\]
+i treballar-hi de manera coherent.
+
+En aquesta unitat s'estudia primer la forma binòmica i les operacions bàsiques. Després s'introdueix la representació geomètrica dels complexos en el pla, el conjugat, el mòdul i l'argument. Finalment es presenten la forma polar i trigonomètrica, la fórmula de De Moivre, el càlcul de potències i el càlcul d'arrels.
+
+Els objectius principals són:
+\begin{itemize}
+\item reconèixer i operar amb nombres complexos en forma binòmica;
+\item calcular el conjugat, el mòdul i l'argument d'un complex;
+\item representar complexos en el pla i interpretar geomètricament les operacions principals;
+\item expressar un complex en forma polar i trigonomètrica;
+\item aplicar la fórmula de De Moivre al càlcul de potències;
+\item calcular arrels $n$-èsimes i interpretar-ne la disposició geomètrica;
+\item resoldre equacions i problemes algebraics senzills amb nombres complexos.
+\end{itemize}
+
+\let\cleardoublepage\clearpage
+\mainmatter
+\input{caps/teoria}
+\input{caps/practica}
+\input{caps/exercicis}
+
+\chapter{Tests interactius}
+\label{cap:tests}
+\begin{Form}
+\input{tests/test1}
+\input{tests/test2}
+\input{tests/test3}
+\end{Form}
+
+\backmatter
+\end{document}

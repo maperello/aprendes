@@ -1,0 +1,1768 @@
+\chapter{Pràctica}
+\label{cap:practica}
+\begin{exercici}
+Calcula el nombre real $a$ perquè el quocient
+\[
+\frac{a+i}{2-i}
+\]
+sigui (a) un nombre real, i (b) imaginari.
+\end{exercici}
+
+\begin{solucio}
+Efectuant el quocient, obtenim
+\begin{eqnarray*}
+\frac{a+i}{2-i} &=&\frac{(a+i)(2+i)}{(2-i)(2+i)} \\
+&=&\frac{2a+2i+ai+i^{2}}{4-i^{2}} \\
+&=&\frac{2a-1}{5}+\frac{2+a}{5}i
+\end{eqnarray*}
+
+(a) Perquè el quocient sigui un nombre real la part imaginària ha de ser
+zero:
+\[
+\begin{array}{lll}
+\frac{2+a}{5}=0 & \Longrightarrow & a=-2
+\end{array}
+\]
+
+(b) Perquè el quocient sigui un nombre imaginari la part real ha de ser
+zero:
+\[
+\begin{array}{lll}
+\frac{2a-1}{5}=0 & \Longrightarrow & a=\frac{1}{2}
+\end{array}
+\]
+\end{solucio}
+
+\begin{exercici}
+Troba el complex $z$ del qual se sap que $z+\overline{z}=6$ i $z\cdot
+\overline{z}=25$.
+\end{exercici}
+
+\begin{solucio}
+Suposem que $z=a+bi$. Aleshores $\overline{z}=a-bi$ i, per tant, les
+condicions de l’enunciat s’expressen mitjançant el sistema següent:
+\[
+\left\{
+\begin{array}{l}
+(a+bi)+(a-bi)=6 \\
+(a+bi)\cdot (a-bi)=25
+\end{array}
+\right.
+\]
+és a dir,
+\[
+\left\{
+\begin{array}{l}
+2a=6 \\
+a^{2}+b^{2}=25
+\end{array}
+\right.
+\]
+Després, $a=3$ i
+\begin{eqnarray*}
+b^{2} &=&25-9 \\
+b^{2} &=&16
+\end{eqnarray*}
+i, per tant, $b=4$ o $b=-4$. Hi ha, ja que dues solucions: $z=3+4i$ o $z=3-4i$.
+\end{solucio}
+
+\begin{exercici}
+Calcula l’expressió següent en $\mathbb{C}$
+\[
+\sqrt{-4}+\sqrt{9}-\sqrt{-16}+\sqrt{25}+2-i
+\]
+\end{exercici}
+
+\begin{solucio}
+Com que
+\[
+\sqrt{-4}=\sqrt{4}\cdot \sqrt{-1}=2i
+\]
+aleshores
+\[
+\sqrt{-4}+\sqrt{9}-\sqrt{-16}+\sqrt{25}+2-i=2i+3-4i+5+2-i=10-3i
+\]
+\end{solucio}
+
+\begin{exercici}
+Escriu l’equació de segon grau amb coeficients reals que té $
+z=-2-i$ com una de les seves solucions. Comprova després el resultat.
+\end{exercici}
+
+\begin{solucio}
+Com els coeficients de l’equació de segon grau són nombres
+reals, les solucions d’aquesta equació són dos complexos conjugats.
+Per tant, si $z=-2-i$ és solució, l’altra és $\overline{z}=-2+i$.
+Com que la suma d’aquests complexos és
+\[
+z+\overline{z}=-4
+\]
+i el seu producte és
+\[
+z\cdot \overline{z}=4-i^{2}=5
+\]
+aleshores, l’equació és
+\[
+x^{2}+4x+5=0
+\]
+
+Resolent ara aquesta equació, obtenim
+\[
+\frac{-4\pm \sqrt{16-20}}{2}=\frac{-4\pm \sqrt{-4}}{2}=\frac{-4\pm 2i}{2}
+=\left\{
+\begin{array}{l}
+-2+i \\
+-2-i
+\end{array}
+\right.
+\]
+\end{solucio}
+
+\begin{exercici}
+Calcula els nombres reals $a$ i $b$ perquè
+\[
+\frac{3a-9i}{3a+bi}=5+4i
+\]
+\end{exercici}
+
+\begin{solucio}
+S’ha de complir que
+\begin{eqnarray*}
+3a-9i &=&(5+4i)\cdot (3a+bi) \\
+3a-9i &=&15a+12ai+5bi+4bi^{2} \\
+3a-9i &=&(15a-4b)+(12a+5b)i
+\end{eqnarray*}
+Per tant,
+\[
+\left\{
+\begin{array}{l}
+15a-4b=3a \\
+12a+5b=-9
+\end{array}
+\right.
+\]
+Resolent el sistema, obtenim
+\[
+a=-\frac{1}{3}\text{ \ \ \ i \ \ \ }b=-1
+\]
+\end{solucio}
+
+\begin{exercici}
+Interpreta geomètricament les transformacions següents del pla
+complex: (a) $z~\longmapsto ~-z$, (b) $z~\longmapsto ~\overline{z}$, (c) $
+z~\longmapsto ~iz$.
+\end{exercici}
+
+\begin{solucio}
+(a) La transformació $z~\longmapsto ~-z$ és una simetria respecte
+de l’origen o un gir de $180
+^{\circ}
+$.\begin{center}
+\includegraphics[width=2.6316in,height=1.9865in,keepaspectratio]{com-10.png}
+\end{center}
+
+(b) La conjugació $z~\longmapsto ~\overline{z}$ és una simetria
+respecte de l’eix $X$.\begin{center}
+\includegraphics[width=1.8299in,height=1.5385in,keepaspectratio]{com-11.png}
+\end{center}
+
+(c) La transformació $z~\longmapsto ~iz$ aplical afix $(x,y)$ de $z$
+en el de $iz$ que és $(-y,x)$, ja que
+\[
+i(x+iy)=ix+i^{2}y=-y+ix
+\]
+Per tant, aquesta transformació és un gir de $90
+^{\circ}
+$.\begin{center}
+\includegraphics[width=2.2987in,height=1.548in,keepaspectratio]{com-12.png}
+\end{center}
+\end{solucio}
+
+\begin{exercici}
+Representa en el pla els conjunts de nombres complexos que satisfan
+cada una de les condicions següents: (a) $\left\vert z\right\vert =2$,
+(b) $\left\vert z-4+i\right\vert =2$, (c) $\left\vert z\right\vert <2$, (d) $
+\left\vert z-4+i\right\vert \geq 2$ i (e) $\arg z=45
+^{\circ}
+$.
+\end{exercici}
+
+\begin{solucio}
+(a) Els afixos dels complexos $z$ que satisfan la condició que el seu mòdul sigui $2$ formen una circumferència de centre l’origen i radi $2$.
+
+(b) Els afixos dels complexos $z$ que satisfan la condició
+\[
+\left\vert z-(4-i)\right\vert =2
+\]
+és una circumferència de centre $(4,-1)$ i radi $2$.
+
+(c) Els afixos dels complexos $z$ que satisfan la condició que el seu mòdul sigui menor que $2$ formen un disc de centre l’origen i radi $2$.
+
+(d) Els afixos dels complexos $z$ que satisfan la condició
+\[
+\left\vert z-(4-i)\right\vert \geq 2
+\]
+formen tot el pla amb un forat delimitat per la circumferència de centre $
+(4,-1)$ i radi $2$.
+
+(e) Els afixos dels complexos $z=x+iy$ que tenen argument $45
+^{\circ}
+$ és la semirecta
+\[
+\left\{
+\begin{array}{l}
+y=x \\
+y>0
+\end{array}
+\right.
+\]
+\end{solucio}
+
+\begin{exercici}
+Determina els conjunts següents del pla complex:
+\[
+\begin{array}{cccccccc}
+a) & z\overline{z}=4 &  & b) & \func{Re}\frac{1}{z}=1 &  & c) & 1<\left\vert
+z-i\right\vert <2
+\end{array}
+\]
+\end{exercici}
+
+\begin{solucio}
+(a) Si $z\overline{z}=4$, aleshores
+\[
+\left\vert z\right\vert =\sqrt{z\overline{z}}=2
+\]
+i, per tant, els afixos dels complexos satisfan la condició $z
+\overline{z}=4$ formen una circumferència de centre l’origen i radi $2$.
+
+(b) Si $z=x+iy\neq 0$, aleshores
+\[
+\func{Re}\left( \frac{1}{z}\right) =\frac{x}{x^{2}+y^{2}}
+\]
+Per tant, s’ha de complir que
+\[
+\frac{x}{x^{2}+y^{2}}=1
+\]
+és a dir,
+\[
+x^{2}+y^{2}-x=0
+\]
+Aquesta equació pot expressar-se de la manera següent
+\[
+(x-\frac{1}{2})^{2}+y^{2}=\frac{1}{4}
+\]
+i, com a conseqüència, els afixos dels complexos que satisfan $\func{Re}
+\frac{1}{z}=1$ és una circumferència de centre $(1/2,0)$ i radi $1/2$.
+
+(c) Es tracta d’una corona circular, centrada en el punt $(0,1)$ i les quals
+circumferències interior i exterior tenen radis 1 i 2, respectivament.
+\end{solucio}
+
+\begin{exercici}
+Si l’argument del complex $z=a+bi$ és $35
+^{\circ}
+$, troba l’argument de $-b+ai$, $a-bi$, $-a-bi$ i $-b-ai$. Expressa
+cadascun d’ells en termes del complex $z$.
+\end{exercici}
+
+\begin{solucio}
+Els arguments d’aquests complexos es dedueixen de manera immediata a partir de
+la seva representació gràfica.\begin{center}
+\includegraphics[width=2.5382in,height=2.3514in,keepaspectratio]{com-13.png}
+\end{center}Así, tenim
+\[
+\begin{array}{ccc}
+\text{Complex} & \text{Argument} &  \\
+-b+ai & 125
+^{\circ}
+& iz \\
+a-bi & -35
+^{\circ}
+& \overline{z} \\
+-a-bi & 215
+^{\circ}
+& -z \\
+-b-ai & 235
+^{\circ}
+& \overline{iz}
+\end{array}
+\]
+\end{solucio}
+
+\begin{exercici}
+Si el mòdul del complex $z$ és $2$, troba el mòdul dels
+complexos següents: (a) $\left\vert 2z\right\vert $, (b) $\left\vert -
+\overline{z}\right\vert $, (c) $\left\vert 3/z\right\vert $ i (d) $z^{3}$.
+\end{exercici}
+
+\begin{solucio}
+Per les propietats del mòdul d’un nombre complex, tenim:
+
+(a)
+\[
+\left\vert 2z\right\vert =\left\vert 2\right\vert \cdot \left\vert
+z\right\vert =2\cdot 2=4
+\]
+
+(b)
+\[
+\left\vert -\overline{z}\right\vert =\left\vert \overline{z}\right\vert
+=\left\vert z\right\vert =2
+\]
+
+(c)
+\[
+\left\vert \frac{3}{z}\right\vert =\frac{\left\vert 3\right\vert }{
+\left\vert z\right\vert }=\frac{3}{2}
+\]
+
+(d)
+\[
+\left\vert z^{3}\right\vert =\left\vert z\right\vert ^{3}=2^{3}=8
+\]
+\end{solucio}
+
+\begin{exercici}
+Si $z$ és un complex unitari d’argument $\alpha $, expressa en forma
+polar i trigonomètrica: $z$, $-z$, $\overline{z}$ i $-\overline{z}$.
+\end{exercici}
+
+\begin{solucio}
+\[
+\begin{array}{lll}
+\text{Complex} & \text{Polar} & \text{Trigonomètrica} \\
+z & 1_{\alpha } & \cos \alpha +i\sin \alpha \\
+-z & 1_{\alpha +\pi } & -\cos \alpha -i\sin \alpha \\
+\overline{z} & 1_{-\alpha } & \cos \alpha -i\sin \alpha \\
+-\overline{z} & 1_{-\alpha +\pi } & -\cos \alpha +i\sin \alpha
+\end{array}
+\]
+\end{solucio}
+
+\begin{exercici}
+Efectúa les operacions següents, expressant el resultat en forma binòmica:
+
+\begin{enumerate}
+\item[a)]
+\[
+1_{0}+2_{\frac{\pi }{2}}+3_{\pi }+4_{\frac{3\pi }{2}}
+\]
+
+\item[b)]
+\[
+\frac{4_{-\frac{\pi }{6}}\cdot (\cos 28
+^{\circ}
++i\sin 28
+^{\circ}
+)}{(\cos 31
+^{\circ}
+-i\sin 31
+^{\circ}
+)^{2}}
+\]
+
+\item[c)]
+\[
+\frac{5\cdot \left( \sqrt{2}\right) _{\frac{\pi }{4}}\cdot \left( \sqrt{12}
++2i\right) \cdot (-\cos 25
+^{\circ}
+-i\sin 25
+^{\circ}
+)}{2(\cos 50
+^{\circ}
+-i\sin 50
+^{\circ}
+)}
+\]
+\end{enumerate}
+\end{exercici}
+
+\begin{solucio}
+(a) Com que els nombres complexos no se poden sumar en forma polar,
+passem cadascun d’ells a forma binòmica, i resulta
+\begin{eqnarray*}
+1_{0}+2_{\frac{\pi }{2}}+3_{\pi }+4_{\frac{3\pi }{2}} &=&1+2i-3-4i \\
+&=&-2-2i
+\end{eqnarray*}
+
+(b) Efectuarem l’operació
+\[
+\frac{4_{-\frac{\pi }{6}}\cdot (\cos 28
+^{\circ}
++i\sin 28
+^{\circ}
+)}{(\cos 31
+^{\circ}
+-i\sin 31
+^{\circ}
+)^{2}}
+\]
+passant tots els complexos a la forma polar. D’aquesta manera, tenim
+\begin{eqnarray*}
+\frac{4_{-30
+^{\circ}
+}\cdot 1_{28
+^{\circ}
+}}{(1_{-31
+^{\circ}
+})^{2}} &=&\frac{\left( 4\cdot 1\right) _{-30
+^{\circ}
++28
+^{\circ}
+}}{\left( 1^{2}\right) _{2\cdot (-31
+^{\circ}
+)}} \\
+&=&\frac{4_{-2
+^{\circ}
+}}{1_{-62
+^{\circ}
+}} \\
+&=&\left( \frac{4}{1}\right) _{-2
+^{\circ}
+-(-62
+^{\circ}
+)} \\
+&=&4_{60
+^{\circ}
+}
+\end{eqnarray*}
+Passant aquest resultat a forma binòmica, obtenim
+\[
+4(\cos 60
+^{\circ}
++i\sin 60
+^{\circ}
+)=4\left( \frac{1}{2}+\frac{\sqrt{3}}{2}i\right) =2+2\sqrt{3}i
+\]
+
+(c) Efectuarem l’operació
+\[
+\frac{5\cdot \left( \sqrt{2}\right) _{\frac{\pi }{4}}\cdot \left( \sqrt{12}
++2i\right) \cdot (-\cos 25
+^{\circ}
+-i\sin 25
+^{\circ}
+)}{2(\cos 50
+^{\circ}
+-i\sin 50
+^{\circ}
+)}
+\]
+passant tots els complexos a la forma polar. D’aquesta manera, tenim
+\begin{eqnarray*}
+\frac{5_{0
+^{\circ}
+}\cdot \left( \sqrt{2}\right) _{45
+^{\circ}
+}\cdot 4_{30
+^{\circ}
+}\cdot 1_{25
+^{\circ}
++180
+^{\circ}
+}}{2_{-50
+^{\circ}
+}} &=&\frac{\left( 20\sqrt{2}\right) _{280
+^{\circ}
+}}{2_{-50
+^{\circ}
+}} \\
+&=&\left( 10\sqrt{2}\right) _{330
+^{\circ}
+}
+\end{eqnarray*}
+Passant aquest resultat a forma binòmica, obtenim
+\begin{eqnarray*}
+10\sqrt{2}(\cos 330
+^{\circ}
++i\sin 330
+^{\circ}
+) &=&10\sqrt{2}\left( \frac{\sqrt{3}}{2}-\frac{1}{2}i\right) \\
+&=&5\sqrt{6}-5\sqrt{2}i
+\end{eqnarray*}
+\end{solucio}
+
+\begin{exercici}
+Efectúa les operacions següents, expressant el resultat en forma binòmica:
+
+\begin{enumerate}
+\item[a)]
+\[
+(i^{5}+i^{8})^{10}
+\]
+
+\item[b)]
+\[
+\left( \frac{1+\sqrt{3}i}{1-i}\right) ^{10}
+\]
+
+\item[c)]
+\[
+\frac{(-1+i)^{5}}{(-2-2\sqrt{3}i)^{6}}
+\]
+
+\item[d)]
+\[
+\left[ 2(\cos 40
+^{\circ}
++i\sin 40
+^{\circ}
+)\right] ^{3}+\left[ 2(\cos 20
+^{\circ}
++i\sin 20
+^{\circ}
+)\right] ^{3}
+\]
+\end{enumerate}
+\end{exercici}
+
+\begin{solucio}
+(a) Com que $i^{5}=i$ i $i^{8}=1$, hem de calcular
+\[
+(1+i)^{10}
+\]
+Per això, passarem a forma polar el complex $1+i$. El seu mòdul és
+\[
+r=\sqrt{1^{2}+1^{2}}=\sqrt{2}
+\]
+i, com el seu afix és en el primer quadrant, el seu argument és
+\[
+\begin{array}{lll}
+\tan \alpha =1 & \Longrightarrow & \alpha =45
+^{\circ}
+\end{array}
+\]
+Després,
+\[
+\left[ \left( \sqrt{2}\right) _{45
+^{\circ}
+}\right] ^{10}=\left( \sqrt{2}\right) _{10\cdot 45
+^{\circ}
+}^{10}=\left( 2^{5}\right) _{90
+^{\circ}
++360
+^{\circ}
+}=32_{90
+^{\circ}
+}
+\]
+Per tant
+\[
+(1+i)^{10}=32i
+\]
+
+(b) Efectuarem l’operació
+\[
+\left( \frac{1+\sqrt{3}i}{1-i}\right) ^{10}
+\]
+en forma polar. El mòdul de $1+\sqrt{3}i$ és
+\[
+r=\sqrt{1^{2}+\left( \sqrt{3}\right) ^{2}}=2
+\]
+i, com el seu afix es troba en el primer quadrant, el seu argument és
+\[
+\begin{array}{lll}
+\tan \alpha =\sqrt{3} & \Longrightarrow & \alpha =60
+^{\circ}
+\end{array}
+\]
+El mòdul de $1-i$ és
+\[
+r^{\prime }=\sqrt{1^{2}+(-1)^{2}}=\sqrt{2}
+\]
+i, com el seu afix es troba en el quart quadrant, el seu argument és
+\[
+\begin{array}{lll}
+\tan \alpha ^{\prime }=-1 & \Longrightarrow & \alpha ^{\prime }=-45
+^{\circ}
+\end{array}
+\]
+Per tant, l’operació que volem calcular en forma polar és
+\begin{eqnarray*}
+\left[ \frac{2_{60
+^{\circ}
+}}{\left( \sqrt{2}\right) _{-45
+^{\circ}
+}}\right] ^{10} &=&\left[ \left( \frac{2}{\sqrt{2}}\right) _{105
+^{\circ}
+}\right] ^{10} \\
+&=&\left[ \left( \sqrt{2}\right) ^{10}\right] _{10\cdot 105
+^{\circ}
+} \\
+&=&\left( 2^{5}\right) _{330
+^{\circ}
++2\cdot 360
+^{\circ}
+} \\
+&=&32_{330
+^{\circ}
+}
+\end{eqnarray*}
+Per tant,
+\begin{eqnarray*}
+\left( \frac{1+\sqrt{3}i}{1-i}\right) ^{10} &=&32(\cos 330
+^{\circ}
++i\sin 330
+^{\circ}
+) \\
+&=&32\left( \frac{\sqrt{3}}{2}-\frac{1}{2}i\right) \\
+&=&16\sqrt{3}-16i
+\end{eqnarray*}
+
+(c) Efectuarem l’operació
+\[
+\frac{(-1+i)^{5}}{(-2-2\sqrt{3}i)^{6}}
+\]
+en forma polar. El mòdul de $-1+i$ és
+\[
+r=\sqrt{(-1)^{2}+1^{2}}=\sqrt{2}
+\]
+i, com el seu afix es troba en el segon quadrant, el seu argument és
+\[
+\begin{array}{lll}
+\tan \alpha =-1 & \Longrightarrow & \alpha =135
+^{\circ}
+\end{array}
+\]
+El mòdul de $-2-2\sqrt{3}i$ és
+\[
+r^{\prime }=\sqrt{(-2)^{2}+\left( -2\sqrt{3}\right) ^{2}}=4
+\]
+i, com el seu afix es troba en el tercer quadrant, el seu argument és
+\[
+\begin{array}{lll}
+\tan \alpha ^{\prime }=\sqrt{3} & \Longrightarrow & \alpha ^{\prime }=240
+^{\circ}
+\end{array}
+\]
+Per tant, l’operació que volem calcular en forma polar és
+\begin{eqnarray*}
+\frac{\left[ \left( \sqrt{2}\right) _{135}\right] ^{5}}{\left( 4_{240
+^{\circ}
+}\right) ^{6}} &=&\frac{\left[ \left( \sqrt{2}\right) ^{5}\right] _{5\cdot
+135
+^{\circ}
+}}{\left( 4^{6}\right) _{6\cdot 240
+^{\circ}
+}} \\
+&=&\left( \frac{4\sqrt{2}}{4096}\right) _{675
+^{\circ}
+-1440
+^{\circ}
+} \\
+&=&\left( \frac{\sqrt{2}}{1024}\right) _{-45
+^{\circ}
+-2\cdot 360
+^{\circ}
+} \\
+&=&\left( \frac{\sqrt{2}}{1024}\right) _{-45
+^{\circ}
+}
+\end{eqnarray*}
+Per tant,
+\begin{eqnarray*}
+\frac{(-1+i)^{5}}{(-2-2\sqrt{3}i)^{6}} &=&\frac{\sqrt{2}}{1024}(\cos (-45
+^{\circ}
+)+i\sin (-45
+^{\circ}
+)) \\
+&=&\frac{\sqrt{2}}{1024}\left( \frac{\sqrt{2}}{2}-\frac{\sqrt{2}}{2}i\right)
+\\
+&=&\frac{1}{1024}-\frac{1}{1024}i
+\end{eqnarray*}
+
+(d) Passant l’expressió
+\[
+\left[ 2(\cos 40
+^{\circ}
++i\sin 40
+^{\circ}
+)\right] ^{3}+\left[ 2(\cos 20
+^{\circ}
++i\sin 20
+^{\circ}
+)\right] ^{3}
+\]
+a forma polar, obtenim
+\[
+\left( 2_{40
+^{\circ}
+}\right) ^{3}+\left( 2_{20
+^{\circ}
+}\right) ^{3}=8_{120
+^{\circ}
+}+8_{60
+^{\circ}
+}
+\]
+Per calcular aquesta suma de nombres complexos, passem a forma binòmica cadascun dels sumands. La forma binòmica de $8_{120
+^{\circ}
+}$ és
+\begin{eqnarray*}
+8(\cos 120
+^{\circ}
++i\sin 120
+^{\circ}
+) &=&8\left( -\frac{1}{2}+\frac{\sqrt{3}}{2}i\right) \\
+&=&-4+4\sqrt{3}i
+\end{eqnarray*}
+i la de $8_{60
+^{\circ}
+}$ és
+\begin{eqnarray*}
+8(\cos 60
+^{\circ}
++i\sin 60
+^{\circ}
+) &=&8\left( \frac{1}{2}+\frac{\sqrt{3}}{2}i\right) \\
+&=&4+4\sqrt{3}i
+\end{eqnarray*}
+Per tant,
+\[
+\left[ 2(\cos 40
+^{\circ}
++i\sin 40
+^{\circ}
+)\right] ^{3}+\left[ 2(\cos 20
+^{\circ}
++i\sin 20
+^{\circ}
+)\right] ^{3}=8\sqrt{3}i
+\]
+\end{solucio}
+
+\begin{exercici}
+Demostra les següents fórmules d’addició d’angles
+\[
+\sin (\alpha +\beta )=\sin \alpha \cdot \cos \beta +\sin \beta \cdot \cos
+\alpha
+\]
+i
+\[
+\cos (\alpha +\beta )=\cos \alpha \cdot \cos \beta -\sin \alpha \cdot \sin
+\beta
+\]
+\end{exercici}
+
+\begin{solucio}
+Com que
+\[
+1_{\alpha }\cdot 1_{\beta }=1_{\alpha +\beta }
+\]
+deduïm que
+\[
+(\cos \alpha +i\sin \alpha )(\cos \beta +i\sin \beta )=\cos (\alpha +\beta
+)+i\sin (\alpha +\beta )
+\]
+Ara bé, com
+\begin{eqnarray*}
+(\cos \alpha +i\sin \alpha )(\cos \beta +i\sin \beta ) &=&\cos \alpha \cdot
+\cos \beta +i\sin \alpha \cdot \cos \beta +i\cos \alpha \cdot \sin \beta
++i^{2}\sin \alpha \cdot \sin \beta \\
+&=&(\cos \alpha \cdot \cos \beta -\sin \alpha \cdot \sin \beta )+(\sin
+\alpha \cdot \cos \beta +\sin \beta \cdot \cos \alpha )i
+\end{eqnarray*}
+aleshores
+\[
+(\cos \alpha \cdot \cos \beta -\sin \alpha \cdot \sin \beta )+(\sin \alpha
+\cdot \cos \beta +\sin \beta \cdot \cos \alpha )i=\cos (\alpha +\beta
+)+i\sin (\alpha +\beta )
+\]
+i, per tant,
+\[
+\cos (\alpha +\beta )=\cos \alpha \cdot \cos \beta -\sin \alpha \cdot \sin
+\beta
+\]
+i
+\[
+\sin (\alpha +\beta )=\sin \alpha \cdot \cos \beta +\sin \beta \cdot \cos
+\alpha
+\]
+\end{solucio}
+
+\begin{exercici}
+Calcula $\beta $ perquè
+\[
+\frac{10_{3\beta }}{2_{\beta }}=\frac{5}{\sqrt{2}}+\frac{5}{\sqrt{2}}i
+\]
+\end{exercici}
+
+\begin{solucio}
+Primer passarem a forma polar el complex
+\[
+\frac{5}{\sqrt{2}}+\frac{5}{\sqrt{2}}i
+\]
+El seu mòdul és
+\[
+r=\sqrt{\left( \frac{5}{\sqrt{2}}\right) ^{2}+\left( \frac{5}{\sqrt{2}}
+\right) ^{2}}=5
+\]
+i, com el seu afix és en el primer quadrant, el seu argument és
+\[
+\begin{array}{lll}
+\tan \alpha =1 & \Longrightarrow & \alpha =45
+^{\circ}
+\end{array}
+\]
+Aleshores podem escriure
+\[
+\frac{10_{3\beta }}{2_{\beta }}=5_{45
+^{\circ}
+}
+\]
+és a dir,
+\[
+5_{2\beta }=5_{45
+^{\circ}
+}
+\]
+Per tant,
+\[
+2\beta =45
+^{\circ}
++k\cdot 360
+^{\circ}
+\]
+o sigui,
+\[
+\beta =22.5
+^{\circ}
++k\cdot 180
+^{\circ}
+\]
+\end{solucio}
+
+\begin{exercici}
+A partir de la fórmula de Moivre expressa $\sin 3\alpha $ i $\cos 3\alpha
+$ en termes de $\sin \alpha $ i $\cos \alpha $.
+\end{exercici}
+
+\begin{solucio}
+Per la fórmula de Moivre, tenim
+\[
+\left( \cos \alpha +i\sin \alpha \right) ^{3}=\cos 3\alpha +i\sin 3\alpha
+\]
+Desenvolupant $\left( \cos \alpha +i\sin \alpha \right) ^{3}$ per la fórmula del binomi de Newton, obtenim
+\begin{eqnarray*}
+\left( \cos \alpha +i\sin \alpha \right) ^{3} &=&\binom{3}{0}\cos ^{3}\alpha
++\binom{3}{1}\cos ^{2}\alpha \cdot i\sin \alpha +\binom{3}{2}\cos \alpha
+\cdot i^{2}\sin ^{2}\alpha +\binom{3}{3}i^{3}\sin ^{3}\alpha \\
+&=&\binom{3}{0}\cos ^{3}\alpha +\binom{3}{1}\cos ^{2}\alpha \cdot i\sin
+\alpha -\binom{3}{2}\cos \alpha \cdot \sin ^{2}\alpha -\binom{3}{3}i\sin
+^{3}\alpha
+\end{eqnarray*}
+Mitjançant el triangle de Tartaglia calculem els nombres
+combinatoris:
+\[
+\begin{array}{lllllll}
+&  & 1 &  & 1 &  &  \\
+& 1 &  & 2 &  & 1 &  \\
+1 &  & 3 &  & 3 &  & 1
+\end{array}
+\]
+Després,
+\begin{eqnarray*}
+\left( \cos \alpha +i\sin \alpha \right) ^{3} &=&\cos ^{3}\alpha +3\cos
+^{2}\alpha \cdot i\sin \alpha -3\cos \alpha \cdot \sin ^{2}\alpha -i\sin
+^{3}\alpha \\
+&=&(\cos ^{3}\alpha -3\cos \alpha \cdot \sin ^{2}\alpha )+(3\cos ^{2}\alpha
+\cdot \sin \alpha -\sin ^{3}\alpha )i
+\end{eqnarray*}
+Per tant,
+\[
+(\cos ^{3}\alpha -3\cos \alpha \cdot \sin ^{2}\alpha )+(3\cos ^{2}\alpha
+\cdot \sin \alpha -\sin ^{3}\alpha )i=\cos 3\alpha +i\sin 3\alpha
+\]
+i, com a conseqüència, deduïm
+\[
+\cos 3\alpha =\cos ^{3}\alpha -3\cos \alpha \cdot \sin ^{2}\alpha
+\]
+i
+\[
+\sin 3\alpha =3\cos ^{2}\alpha \cdot \sin \alpha -\sin ^{3}\alpha
+\]
+\end{solucio}
+
+\begin{exercici}
+Calcula les arrels sisenes de $-1$ i els afixos corresponents.
+Quina figura formen aquests punts? Calcula la suma de
+aquestes arrels.
+\end{exercici}
+
+\begin{solucio}
+El complex $-1$ en forma polar és
+\[
+1_{180
+^{\circ}
+}
+\]
+Per tant,
+\[
+\sqrt[6]{1_{180
+^{\circ}
+}}=1_{\frac{180
+^{\circ}
+}{6}+k\cdot \frac{360
+^{\circ}
+}{6}}=\left\{
+\begin{array}{ll}
+1_{30
+^{\circ}
+} & k=0 \\
+1_{90
+^{\circ}
+} & k=1 \\
+1_{150
+^{\circ}
+} & k=2 \\
+1_{210
+^{\circ}
+} & k=3 \\
+1_{270
+^{\circ}
+} & k=4 \\
+1_{330
+^{\circ}
+} & k=5
+\end{array}
+\right.
+\]
+Passant aquests complexos a forma binòmica s’obtindran les
+coordenades dels afixos de les arrels. Así, tenim
+\[
+\begin{array}{llll}
+\text{Polar} & \text{Trigonomètrica} & \text{Binòmica} & \text{Afix}
+\\
+1_{30
+^{\circ}
+} & \cos 30
+^{\circ}
++i\sin 30
+^{\circ}
+& \frac{\sqrt{3}}{2}+\frac{1}{2}i & \left( \frac{\sqrt{3}}{2},\frac{1}{2}
+\right) \\
+1_{90
+^{\circ}
+} & \cos 90
+^{\circ}
++i\sin 90
+^{\circ}
+& i & (0,1) \\
+1_{150
+^{\circ}
+} & \cos 150
+^{\circ}
++i\sin 150
+^{\circ}
+& -\frac{\sqrt{3}}{2}+\frac{1}{2}i & \left( -\frac{\sqrt{3}}{2},\frac{1}{2}
+\right) \\
+1_{210
+^{\circ}
+} & \cos 210
+^{\circ}
++i\sin 210
+^{\circ}
+& -\frac{\sqrt{3}}{2}-\frac{1}{2}i & \left( -\frac{\sqrt{3}}{2},-\frac{1}{2}
+\right) \\
+1_{270
+^{\circ}
+} & \cos 270
+^{\circ}
++i\sin 270
+^{\circ}
+& -i & (0,-1) \\
+1_{330
+^{\circ}
+} & \cos 330
+^{\circ}
++i\sin 330
+^{\circ}
+& \frac{\sqrt{3}}{2}-\frac{1}{2}i & \left( \frac{\sqrt{3}}{2},-\frac{1}{2}
+\right)
+\end{array}
+\]
+Els afixos de les arrels sisenes de $-1$ formen un hexàgon regular
+inscrit en una circumferència de centre l’origen i radi $1$.\begin{center}
+\includegraphics[width=2.476in,height=2.476in,keepaspectratio]{com-7.png}
+\end{center}És
+evident que la suma de aquestes arrels és zero, ja que és zero la suma de
+els seus vectors associats.
+\end{solucio}
+
+\begin{exercici}
+Calcula la arrel quadrada de $3+4i$ sense utilitzar la forma polar.
+\end{exercici}
+
+\begin{solucio}
+Si $a+bi$ és una arrel quadrada de $3+4i$, aleshores
+\[
+(a+bi)^{2}=3+4i
+\]
+Després,
+\begin{eqnarray*}
+a^{2}+2abi+b^{2}i^{2} &=&3+4i \\
+(a^{2}-b^{2})+2abi &=&3+4i
+\end{eqnarray*}
+i, per tant,
+\[
+\left\{
+\begin{array}{l}
+a^{2}-b^{2}=3 \\
+2ab=4
+\end{array}
+\right.
+\]
+Resolent aquest sistema, s’obtén dues solucions
+\[
+\left\{
+\begin{array}{l}
+a=2 \\
+b=1
+\end{array}
+\right. \text{ \ \ \ i \ \ \ }\left\{
+\begin{array}{l}
+a=-2 \\
+b=-1
+\end{array}
+\right.
+\]
+Per tant, les arrels quadrades del complex donat són $2+i$ i $
+-2-i$.
+\end{solucio}
+
+\begin{exercici}
+Una arrel cúbica d’un complex és $1-i$. Calcula aquest complex i
+les demás arrels.
+\end{exercici}
+
+\begin{solucio}
+El complex $1-i$ en forma polar és $\left( \sqrt{2}\right) _{-45
+^{\circ}
+}$. Si $z$ és el complex que busquem, aleshores s’ha de complir
+\[
+z=\left[ \left( \sqrt{2}\right) _{-45
+^{\circ}
+}\right] ^{3}
+\]
+i, per tant,
+\[
+z=\left( 2\sqrt{2}\right) _{-135
+^{\circ}
+}=\left( 2\sqrt{2}\right) _{225
+^{\circ}
+}
+\]
+és a dir,
+\begin{eqnarray*}
+z &=&2\sqrt{2}(\cos 225
+^{\circ}
++i\sin 225
+^{\circ}
+) \\
+&=&2\sqrt{2}\left( -\frac{\sqrt{2}}{2}-\frac{\sqrt{2}}{2}i\right) \\
+&=&-2-2i
+\end{eqnarray*}
+Com els mòduls de totes les arrels cúbiques de $z$ són iguals
+a $\sqrt{2}$ i els arguments de dues arrels consecutives difereixen en
+\[
+\frac{360
+^{\circ}
+}{3}=120
+^{\circ}
+\]
+aleshores les restantes arrels són:
+\[
+\begin{array}{l}
+\left( \sqrt{2}\right) _{195
+^{\circ}
++120
+^{\circ}
+}=\left( \sqrt{2}\right) _{75
+^{\circ}
+} \\
+\left( \sqrt{2}\right) _{315
+^{\circ}
+-120
+^{\circ}
+}=\left( \sqrt{2}\right) _{195
+^{\circ}
+}
+\end{array}
+\]
+\end{solucio}
+
+\begin{exercici}
+(a) Prova que si $z_{0}$ és una arrel $n$-èsima d’un complex no
+nul $z$, aleshores les arrels $n$-èsimes de $z$ són les arrels
+$n$-èsimes de la unitat multiplicades per $z_{0}$. (b) Com a aplicació, resol l’exercici anterior.
+\end{exercici}
+
+\begin{solucio}
+Si $z_{0}$ és una arrel $n$-èsima de $z$, aleshores
+\[
+z_{0}^{n}=z
+\]
+Si $z_{1}$ és qualsevol una altra arrel $n$-èsima de $z$, tenim
+\[
+z_{1}^{n}=z
+\]
+i, per tant,
+\[
+\frac{z_{1}^{n}}{z_{0}^{n}}=\left( \frac{z_{1}}{z_{0}}\right) ^{n}=1
+\]
+Després, el complex $\frac{z_{1}}{z_{0}}$ és una arrel $n$-èsima de
+la unitat. Com a conseqüència, qualsevol una altra arrel $n$-èsima de $z$
+és el producte de $z_{0}$ per una arrel $n$-èsima de la unitat.
+
+(b) Sabem que una arrel cúbica d’un complex $z$ és $z_{1}=1-i$ i
+volem trobar les altres dues arrels. Com les arrels cúbiques de la unitat són
+\[
+\begin{array}{l}
+u_{1}=1_{0
+^{\circ}
+}=1 \\
+u_{2}=1_{120
+^{\circ}
+}=-\frac{1}{2}+\frac{\sqrt{3}}{2}i \\
+u_{3}=1_{240
+^{\circ}
+}=-\frac{1}{2}-\frac{\sqrt{3}}{2}i
+\end{array}
+\]
+les altres arrels de $z$ són
+\[
+z_{2}=(1-i)\cdot \left( -\frac{1}{2}+\frac{\sqrt{3}}{2}i\right) =-\frac{1}{2}
++\frac{\sqrt{3}}{2}+\left( \frac{\sqrt{3}}{2}+\frac{1}{2}\right) i
+\]
+i
+\[
+z_{3}=(1-i)\cdot \left( -\frac{1}{2}-\frac{\sqrt{3}}{2}i\right) =-\frac{1}{2}
+-\frac{\sqrt{3}}{2}+\left( -\frac{\sqrt{3}}{2}+\frac{1}{2}\right) i
+\]
+\end{solucio}
+
+\begin{exercici}
+Resol en $\mathbb{C}$ l’equació següent
+\[
+(2-i)z^{2}-(3+i)z-2+6i=0
+\]
+Per què les solucions no són dos complexos conjugats?
+\end{exercici}
+
+\begin{solucio}
+Al no ser una equació de segon grau amb coeficients reals, no
+podem assegurar que les seves solucions siguin dos complexos conjugats.
+
+Resolent l’equació com en el cas del cos $\mathbb{R}$ dels nombres reals, obtenim
+\[
+\frac{3+i+\sqrt{(3+i)^{2}-4(2-i)(-2+6i)}}{2(2-i)}=\frac{3+i+\sqrt{-50i}}{4-2i
+}
+\]
+Ara bé, com $-50i$ en forma polar és $50_{270
+^{\circ}
+}$, tenim
+\[
+\sqrt{50_{270
+^{\circ}
+}}=\left( \sqrt{50}\right) _{\frac{270
+^{\circ}
+}{2}+k\cdot \frac{360
+^{\circ}
+}{2}}=\left\{
+\begin{array}{ll}
+\left( 5\sqrt{2}\right) _{135
+^{\circ}
+} & k=0 \\
+\left( 5\sqrt{2}\right) _{315
+^{\circ}
+} & k=1
+\end{array}
+\right.
+\]
+i, expressant aquestes arrels en forma binòmica, obtenim
+\[
+\sqrt{-50i}=\left\{
+\begin{array}{l}
+-5+5i \\
+5-5i
+\end{array}
+\right.
+\]
+Per tant,
+\begin{eqnarray*}
+\frac{3+i+\sqrt{-50i}}{4-2i} &=&\frac{3+i-5+5i}{4-2i} \\
+&=&\frac{-2+6i}{4-2i} \\
+&=&\frac{(-1+3i)(2+i)}{(2-i)(2+i)} \\
+&=&-1+i
+\end{eqnarray*}
+o bé
+\begin{eqnarray*}
+\frac{3+i+\sqrt{-50i}}{4-2i} &=&\frac{3+i+5-5i}{4-2i} \\
+&=&\frac{8-4i}{4-2i} \\
+&=&2
+\end{eqnarray*}
+Per tant, les solucions de
+\[
+(2-i)z^{2}-(3+i)z-2+6i=0
+\]
+són $z=2$ o $z=-1+i$.
+\end{solucio}
+
+\begin{exercici}
+Resol en $\mathbb{C}$ les equacions següents:
+
+\begin{enumerate}
+\item[a)]
+\[
+z^{4}+64z=0
+\]
+
+\item[b)]
+\[
+z^{6}-28z^{3}+27=0
+\]
+\end{enumerate}
+\end{exercici}
+
+\begin{solucio}
+(a)
+\[
+\begin{array}{lll}
+z(z^{3}+64)=0 & \Longrightarrow & \left\{
+\begin{array}{l}
+z=0 \\
+z^{3}+64=0
+\end{array}
+\right.
+\end{array}
+\]
+Les solucions de l’equació
+\[
+z^{3}+64=0
+\]
+són les arrels cúbiques de $-64$. Com $-64$ en forma polar és $
+64_{180
+^{\circ}
+}$, tenim
+\[
+\sqrt[3]{64_{180
+^{\circ}
+}}=\left( \sqrt[3]{64}\right) _{\frac{180
+^{\circ}
+}{3}+k\cdot \frac{360
+^{\circ}
+}{3}}=\left\{
+\begin{array}{ll}
+4_{60
+^{\circ}
+} & k=0 \\
+4_{180
+^{\circ}
+} & k=1 \\
+4_{240
+^{\circ}
+} & k=2
+\end{array}
+\right.
+\]
+Passant aquestes arrels a forma binòmica, obtenim
+\[
+\begin{array}{ll}
+\text{Polar} & \text{Binòmica} \\
+4_{60
+^{\circ}
+} & 2+2\sqrt{3}i \\
+4_{180
+^{\circ}
+} & -4 \\
+4_{240
+^{\circ}
+} & 2-2\sqrt{3}i
+\end{array}
+\]
+Per tant, les solucions de l’equació $z^{4}+64z=0$ són $
+z_{1}=0$, $z_{2}=2+2\sqrt{3}i$, $z_{3}=-4$ i $z_{4}=2-2\sqrt{3}i$.
+
+(b) Observa que l’equació
+\[
+z^{6}-28z^{3}+27=0
+\]
+és biquadrada. Mitjançant el canvi $u=z^{3}$, s’obté l’equació
+\[
+u^{2}-28u+27=0
+\]
+Resolent aquesta equació, obtenim
+\[
+\frac{28+\sqrt{784-108}}{2}=\frac{28\pm 26}{2}=\left\{
+\begin{array}{l}
+27 \\
+1
+\end{array}
+\right.
+\]
+Per tant, ara cal resoldre en $\mathbb{C}$ les equacions següents:
+\[
+z^{3}=27\text{ \ \ \ i \ \ \ }z^{3}=1
+\]
+Les solucions de la primera són les arrels cúbiques de $27_{0
+^{\circ}
+}$, és a dir,
+\[
+\sqrt[3]{27_{0
+^{\circ}
+}}=\left( \sqrt[3]{27}\right) _{k\cdot \frac{360
+^{\circ}
+}{3}}=\left\{
+\begin{array}{ll}
+3_{0
+^{\circ}
+} & k=0 \\
+3_{120
+^{\circ}
+} & k=1 \\
+3_{240
+^{\circ}
+} & k=2
+\end{array}
+\right.
+\]
+i, les solucions de la segona són les arrels cúbiques de $1_{0
+^{\circ}
+}$, és a dir,
+\[
+\sqrt[3]{1_{0
+^{\circ}
+}}=\left( \sqrt[3]{1}\right) _{k\cdot \frac{360
+^{\circ}
+}{3}}=\left\{
+\begin{array}{ll}
+1_{0
+^{\circ}
+} & k=0 \\
+1_{120
+^{\circ}
+} & k=1 \\
+1_{240
+^{\circ}
+} & k=2
+\end{array}
+\right.
+\]
+Escribiendo aquestes arrels en forma binòmica, obtenim
+\[
+\begin{array}{ll}
+\text{Polar} & \text{Binòmica} \\
+3_{0
+^{\circ}
+} & 3 \\
+3_{120
+^{\circ}
+} & -\frac{3}{2}+\frac{3\sqrt{3}}{2}i \\
+3_{240
+^{\circ}
+} & -\frac{3}{2}-\frac{3\sqrt{3}}{2}i
+\end{array}
+\text{ \ \ i \ \ }
+\begin{array}{ll}
+\text{Polar} & \text{Binòmica} \\
+1_{0
+^{\circ}
+} & 1 \\
+1_{120
+^{\circ}
+} & -\frac{1}{2}+\frac{\sqrt{3}}{2}i \\
+1_{240
+^{\circ}
+} & -\frac{1}{2}-\frac{\sqrt{3}}{2}i
+\end{array}
+\]
+Per tant, les solucions de l’equació
+\[
+z^{6}-28z^{3}+27=0
+\]
+són $z_{1}=3$, $z_{2}=1$, $z_{3}=-\frac{3}{2}+\frac{3\sqrt{3}}{2}i$, $z_{4}=-
+\frac{1}{2}+\frac{\sqrt{3}}{2}i$, $z_{5}=-\frac{3}{2}-\frac{3\sqrt{3}}{2}i$
+i $z_{6}=-\frac{1}{2}-\frac{\sqrt{3}}{2}i$.
+\end{solucio}
+
+\begin{exercici}
+Troba dos nombres complexos tals que el seu producte és $2i$, i el
+quadrat de uno de ellos, dividido pel un altre, és $1/2$.
+\end{exercici}
+
+\begin{solucio}
+Suposem que $r_{\alpha }$ i $s_{\beta }$ són les formes polars dels complexos que volem trobar. Com el producte de tots dos és $2i$, podem
+escriure
+\begin{eqnarray*}
+r_{\alpha }\cdot s_{\beta } &=&2_{90
+^{\circ}
+} \\
+\left( r\cdot s\right) _{\alpha +\beta } &=&2_{90
+^{\circ}
+}
+\end{eqnarray*}
+De aquí, deduïm
+\[
+\left\{
+\begin{array}{l}
+r\cdot s=2 \\
+\alpha +\beta =90
+^{\circ}
++k\cdot 360
+^{\circ}
+\end{array}
+\right.
+\]
+Per un un altre costat, com el quadrat de uno de ellos, dividido pel un altre és $
+1/2 $, podem escriure
+\begin{eqnarray*}
+\frac{\left( r_{\alpha }\right) ^{2}}{s_{\beta }} &=&\left( \frac{1}{2}
+\right) _{0
+^{\circ}
+} \\
+\left( \frac{r^{2}}{s}\right) _{2\alpha -\beta } &=&\left( \frac{1}{2}
+\right) _{0
+^{\circ}
+}
+\end{eqnarray*}
+De aquí, deduïm
+\[
+\left\{
+\begin{array}{l}
+\frac{r^{2}}{s}=\frac{1}{2} \\
+2\alpha -\beta =k\cdot 360
+^{\circ}
+\end{array}
+\right.
+\]
+Per tant, hem obtingut un parell de sistemes:
+\[
+\left\{
+\begin{array}{l}
+r\cdot s=2 \\
+\frac{r^{2}}{s}=\frac{1}{2}
+\end{array}
+\right. \text{ \ \ \ i \ \ \ }\left\{
+\begin{array}{l}
+\alpha +\beta =90
+^{\circ}
++k\cdot 360
+^{\circ}
+\\
+2\alpha -\beta =k\cdot 360
+^{\circ}
+\end{array}
+\right.
+\]
+Del primer, s’obté $r=1$ i $s=2$, i del segon,
+\[
+\begin{array}{l}
+\alpha =30
+^{\circ}
++k\cdot 120
+^{\circ}
+\\
+\beta =60
+^{\circ}
++k\cdot 120
+^{\circ}
+\end{array}
+\]
+Per tant, obtenim tres solucions
+\[
+\begin{array}{lll}
+r_{\alpha } & s_{\beta } &  \\
+1_{30
+^{\circ}
+} & 2_{60
+^{\circ}
+} & k=0 \\
+1_{150
+^{\circ}
+} & 2_{180
+^{\circ}
+} & k=1 \\
+1_{270
+^{\circ}
+} & 2_{300
+^{\circ}
+} & k=2
+\end{array}
+\]
+\end{solucio}
+
+\begin{exercici}
+Troba els complexos tals que el quadrat del seu invers és l’oposat del seu conjugat.
+\end{exercici}
+
+\begin{solucio}
+Si $z$ és un dels complexos que busquem, aleshores ha de complir la
+següent condició:
+\[
+\left( \frac{1}{z}\right) ^{2}=-\overline{z}
+\]
+Si $z=r_{\alpha }$, aleshores
+\[
+\begin{array}{lll}
+\frac{1}{z}=\left( \frac{1}{r}\right) _{-\alpha } & \Longrightarrow & \left(
+\frac{1}{z}\right) ^{2}=\left[ \left( \frac{1}{r}\right) ^{2}
+\right] _{-2\alpha }
+\end{array}
+\]
+i
+\[
+\begin{array}{lll}
+\overline{z}=r_{-\alpha } & \Longrightarrow & -\overline{z}=r_{-\alpha +180
+^{\circ}
+}
+\end{array}
+\]
+Per tant, expressant la condició en forma polar, tenim
+\[
+\left[ \left( \frac{1}{r}\right) ^{2}\right] _{-2\alpha }=r_{-\alpha +180
+^{\circ}
+}
+\]
+Després,
+\[
+\left\{
+\begin{array}{l}
+\left( \frac{1}{r}\right) ^{2}=r \\
+-2\alpha =-\alpha +180
+^{\circ}
++k\cdot 360
+^{\circ}
+\end{array}
+\right.
+\]
+De la primera equació s’obté $r=1$, i de la segona,
+\[
+\alpha =180
+^{\circ}
+\]
+Per tant,
+\[
+z=-1
+\]
+\end{solucio}
+
+\begin{exercici}
+Troba dos complexos del mateix mòdul, els quals arguments sumen $90
+^{\circ}
+$ i el primer és conjugat del quadrat del segon.
+\end{exercici}
+
+\begin{solucio}
+Suposem que $r_{\alpha }$ i $s_{\beta }$ són les formes polars dels complexos que volem trobar. Com són del mateix mòdul i els seus arguments sumen $90
+^{\circ}
+$, podem escriure
+\[
+\left\{
+\begin{array}{l}
+r=s \\
+\alpha +\beta =90
+^{\circ}
+\end{array}
+\right.
+\]
+Si el primer és conjugat del quadrat del segon, podem escriure
+\[
+r_{\alpha }=\left( s^{2}\right) _{-2\beta }
+\]
+i, per tant, s’ha de complir
+\[
+\left\{
+\begin{array}{l}
+r=s^{2} \\
+\alpha =-2\beta +k\cdot 360
+^{\circ}
+\end{array}
+\right.
+\]
+D’aquesta manera, tenim dos sistemes:
+\[
+\left\{
+\begin{array}{l}
+r=s \\
+r=s^{2}
+\end{array}
+\right. \text{ \ \ \ i \ \ \ }\left\{
+\begin{array}{l}
+\alpha +\beta =90
+^{\circ}
+\\
+\alpha =-2\beta +k\cdot 360
+^{\circ}
+\end{array}
+\right.
+\]
+Del primer s’obté $r=s=1$, i del segon,
+\[
+\begin{array}{l}
+\alpha =180
+^{\circ}
+\\
+\beta =-90
+^{\circ}
+\end{array}
+\]
+Per tant, els nombres complexos són $-1$ i $-i$.
+\end{solucio}
+
+\begin{exercici}
+Donats dos complexos $z_{1}$ i $z_{2}$, interpreta geomètricament la
+següent transformació
+\[
+z~\longmapsto ~z_{1}+z\cdot z_{2}
+\]
+sent $z\in \mathbb{C}$. Com a aplicació d’aquest resultat, calcula el vèrtex $C$ d’un triangle equilàter $ABC$ si sabem que $
+A=(1,1)$ i $B=(4,2)$.
+\end{exercici}
+
+\begin{solucio}
+Recorda que la transformació $z~\longmapsto ~z+z_{0}$ representa geomètricament una translació, i $z~\longmapsto ~z\cdot z_{0}$, la
+composició d’una homotècia i un gir. Com l’operació $
+z_{1}+z\cdot z_{2}$ és una combinació de les dues anteriors, la
+transformació $z~\longmapsto ~z_{1}+z\cdot z_{2}$ representa geomètricament la composició d’una homotècia i un gir seguida d’una
+translació. Per exemple, en la figura següent\begin{center}
+\includegraphics[width=1.58in,height=1.7677in,keepaspectratio]{com-15.png}
+\end{center}es compleix
+\[
+z_{C}=z_{A}+(z_{B}-z_{A})\cdot r_{\theta }
+\]
+sent
+\[
+r=\left\vert \frac{z_{C}-z_{A}}{z_{B}-z_{A}}\right\vert
+\]
+
+Considerem els complexos $z_{A}$ i $z_{B}$ els quals afixos són els punts $
+A=(1,1)$ i $B=(4,2)$. Aleshores, és claro que el complex $z_{B}-z_{A}$ té
+per mòdul la longitud del costat del triangle equilàter. A més, com tots els angles d’aquest triangle mesuren $60
+^{\circ}
+$, es compleix
+\[
+z_{C}=z_{A}+(z_{B}-z_{A})\cdot 1_{60
+^{\circ}
+}
+\]
+o bé,
+\[
+z_{C}=z_{A}+(z_{B}-z_{A})\cdot 1_{-60
+^{\circ}
+}
+\]
+\begin{center}
+\includegraphics[width=1.8507in,height=1.8715in,keepaspectratio]{com-8.png}
+\end{center}Per tant, prenent la primera equació, obtenim
+\begin{eqnarray*}
+z_{C} &=&1+i+(3+i)\cdot (\cos 60
+^{\circ}
++i\sin 60
+^{\circ}
+) \\
+&=&1+i+(3+i)\cdot \left( \frac{1}{2}+\frac{\sqrt{3}}{2}i\right) \\
+&=&1+i+\frac{3}{2}+\frac{1}{2}i+\frac{3\sqrt{3}}{2}i+\frac{\sqrt{3}}{2}i^{2}
+\\
+&=&\frac{5-\sqrt{3}}{2}+\frac{3+3\sqrt{3}}{2}i
+\end{eqnarray*}
+i, com a conseqüència, les coordenades del punt $C$ són
+\[
+C=\left( \frac{5-\sqrt{3}}{2},\frac{3+3\sqrt{3}}{2}\right)
+\]
+De la mateixa manera, prenent la segona equació, s’obté l’altra solució
+\[
+C^{\prime }=\left( \frac{5+\sqrt{3}}{2},\frac{3-3\sqrt{3}}{2}\right)
+\]
+\end{solucio}
+
+\begin{exercici}
+Determina les coordenades dels vèrtexs $C$ i $D$ del quadrat $ABCD$,
+si $A=(1,3)$ i $B=(5,2)$.
+\end{exercici}
+
+\begin{solucio}
+Suposem que $z_{A}$, $z_{B}$, $z_{C}$ i $z_{D}$ són els complexos els quals
+afixos són els vèrtexs del quadrat. Com que es tracta d’un quadrat, els
+complexos $z_{B}-z_{A}$ i $z_{D}-z_{A}$ tenen el mateix mòdul i l’angle que determinen els seus vectors associats és recte. Per tant, es compleix
+\[
+z_{D}=z_{A}+(z_{B}-z_{A})\cdot 1_{90
+^{\circ}
+}
+\]
+o bé,
+\[
+z_{D}=z_{A}+(z_{B}-z_{A})\cdot 1_{-90
+^{\circ}
+}
+\]
+\begin{center}
+\includegraphics[width=1.58in,height=1.7573in,keepaspectratio]{com-14.png}
+\end{center}
+
+Prenent la primera equació, obtenim
+\[
+z_{D}=1+3i+(4-i)\cdot i=2+7i
+\]
+i, per tant, el punt $D=(2,7)$. Per determinar $C$, observem que també
+es compleix
+\[
+z_{C}=z_{B}+(z_{A}-z_{B})\cdot 1_{-90
+^{\circ}
+}
+\]
+Després,
+\[
+z_{C}=5+2i+(-4+i)\cdot (-i)=6+6i
+\]
+i, per tant, el punt $C=(6,6)$.
+
+De la mateixa manera, prenent la segona equació, s’obté $D=(0,-1)$ i
+después $C=(4,-2)$.
+\end{solucio}
+
+\begin{exercici}
+Donats els nombres complexos $z_{1}=-1+i$ i $z=-2+3i$, calcula dos nombres complexos $z_{2},z_{3}$ tals que els afixos de $z_{1},z_{2}$ i $z_{3}$
+formen un triangle equilàter de centre l’afix de $z$.
+\end{exercici}
+
+\begin{solucio}
+Sabem que els afixos de les arrels cúbiques d’un nombre
+complex $w$ són els vèrtexs d’un triangle equilàter inscrit en
+una circumferència de centre l’origen i radi $\sqrt[3]{\left\vert
+w\right\vert }$. Com que el nostre triangle ha d’estar centrat en el
+afix de $z$, haurem d’efectuar una translació de vector associat a $
+z$. D’aquesta manera, tenim
+\[
+z_{i}=z+\sqrt[3]{w}~\ \ (i=1,2,3)
+\]
+Com una de les arrels cúbiques de $w$ és $z_{1}-z$, podem obtenir
+les arrels cúbiques de $w$ multiplicant $z_{1}-z$ per les arrels cúbiques de la unitat (vegeu l’exercici anterior). Les arrels cúbiques de la unitat són
+\[
+\begin{array}{l}
+u_{1}=1 \\
+u_{2}=\cos \frac{2\pi }{3}+i\sin \frac{2\pi }{3}=-\frac{1}{2}+i\frac{\sqrt{3}
+}{2} \\
+u_{3}=\cos \frac{4\pi }{3}+i\sin \frac{4\pi }{3}=-\frac{1}{2}-i\frac{\sqrt{3}
+}{2}
+\end{array}
+\]
+Per tant, les arrels cúbiques de $w$ són
+\[
+\begin{array}{l}
+w_{1}=1-2i \\
+w_{2}=(1-2i)\left( -\frac{1}{2}+i\frac{\sqrt{3}}{2}\right) =-\frac{1}{2}+
+\sqrt{3}+i\left( \frac{\sqrt{3}}{2}+1\right) \\
+w_{3}=(1-2i)\left( -\frac{1}{2}-i\frac{\sqrt{3}}{2}\right) =-\frac{1}{2}-
+\sqrt{3}+i\left( -\frac{\sqrt{3}}{2}+1\right)
+\end{array}
+\]
+i, en conseqüència, els nombres complexos que busquem són
+\[
+\begin{array}{l}
+z_{1}=z+w_{1}=-1+i \\
+z_{2}=z+w_{2}=-\frac{5}{2}+\sqrt{3}+i\left( \frac{\sqrt{3}}{2}+4\right) \\
+z_{3}=z+w_{3}=-\frac{5}{2}-\sqrt{3}+i\left( -\frac{\sqrt{3}}{2}+4\right)
+\end{array}
+\]
+\end{solucio}

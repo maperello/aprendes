@@ -1,0 +1,41 @@
+
+\chapter{Resum}
+
+\section{Conceptes clau}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{p{0.28\textwidth}p{0.62\textwidth}}
+\textbf{Espai vectorial} & Conjunt $E$ amb una suma i un producte per escalars d'un cos $\mathbb{K}$ que satisfan els vuit axiomes. \\
+\textbf{Subespai} & $S\subseteq E$ no buit tal que $\lambda \mathbf{u}+\mu \mathbf{v}\in S$ per a tots $\mathbf{u},\mathbf{v}\in S$ i $\lambda ,\mu \in \mathbb{K}$. \\
+\textbf{Clausura lineal} & $\left\langle \mathbf{v}_{1},...,\mathbf{v}_{m}\right\rangle $: conjunt de totes les combinacions lineals; és el subespai més petit que conté els vectors. \\
+\textbf{Sistema lligat} & (Linealment dependent.) Existeix una combinació lineal nul·la amb algun coeficient diferent de zero; equival al fet que algun vector sigui combinació lineal dels altres. \\
+\textbf{Sistema lliure} & (Linealment independent.) L'única combinació lineal nul·la és la trivial. \\
+\textbf{Base} & Sistema alhora lliure i generador; cada vector hi té coordenades úniques. \\
+\textbf{Dimensió} & Nombre de vectors de qualsevol base (totes en tenen el mateix). \\
+\textbf{Rang} & Dimensió de la clausura lineal del sistema; no canvia amb les transformacions elementals T1, T2 i T3. \\
+\textbf{Suma directa} & $S\oplus T$ quan $S\cap T=\left\{ \mathbf{0}\right\} $; cada vector de la suma és descompon de manera única. \\
+\textbf{Espai quocient} & $E/F$: classes $\mathbf{v}+F$ (varietats lineals paral·leles a $F$).
+\end{tabular}
+\end{center}
+
+\section{Fórmules per recordar}
+
+\begin{itemize}
+\item \textbf{Fórmula de Grassmann:}
+$\dim (S+T)=\dim S+\dim T-\dim (S\cap T)$.
+\item \textbf{Dimensió del quocient:} $\dim (E/F)=\dim E-\dim F$.
+\item En un espai de dimensió $n$: tot sistema lliure té com a màxim $n$ vectors; tot sistema generador en té com a mínim $n$; i $n$ vectors lliures (o generadors) formen automàticament una base.
+\item \textbf{Canvi de base:} si $P$ té per columnes els vectors de la base nova expressats en l'antiga, aleshores $A=PB$, on $A$ i $B$ són les coordenades antigues i noves d'un mateix vector, i $Q=P^{-1}$ fa el pas invers.
+\item Dos espais vectorials de dimensió finita són isomorfs si i només si tenen la mateixa dimensió; en particular, tot espai de dimensió $n$ sobre $\mathbb{K}$ és isomorf a $\mathbb{K}^{n}$.
+\end{itemize}
+
+\section{Errors freqüents}
+
+\begin{itemize}
+\item \textbf{La unió de subespais no és, en general, un subespai.} La intersecció sí que ho és sempre. La unió només ho és quan un dels subespais conté l'altre.
+\item \textbf{D'una relació de dependència només se'n pot eliminar un vector.} Si $\lambda _{1}\mathbf{v}_{1}+\cdots +\lambda _{m}\mathbf{v}_{m}=\mathbf{0}$ amb $\lambda _{i}\neq 0$, es pot suprimir $\mathbf{v}_{i}$ i el sistema resultant és equivalent; però no es poden suprimir alhora tots els vectors amb coeficient no nul.
+\item \textbf{Contenir el vector zero no fa subespai.} És condició necessària, però no suficient: cal comprovar el tancament respecte de la suma i del producte per escalars.
+\item \textbf{Coordenades no és el mateix que components.} Les components d'un vector de $\mathbb{K}^{n}$ són les seves coordenades en la base canònica; en una altra base, les coordenades canvien encara que el vector sigui el mateix.
+\item \textbf{Un sistema que conté el vector zero sempre és lligat}, encara que la resta de vectors siguin independents entre si.
+\end{itemize} 

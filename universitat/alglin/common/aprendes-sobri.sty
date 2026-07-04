@@ -1,0 +1,151 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aprendes-sobri}[2026/07/04 Estil sobri per a Aprendes Universitat]
+
+\RequirePackage{xcolor}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\RequirePackage{titlesec}
+\RequirePackage{amsthm}
+\RequirePackage{enumitem}
+\RequirePackage{amssymb}
+\RequirePackage{etoolbox}
+
+% ------------------------------------------------------------
+% Paleta reduïda: dues famílies semàntiques + neutres
+%   - AprenFosc: variant fosca del vermell corporatiu (FF4057),
+%     per a numeració de seccions i definicions.
+%   - ResultatBlau: blau pissarra fosc per a resultats
+%     (teorema, lema, proposició, corol·lari).
+%   - Grisos neutres per a demostracions i solucions.
+% ------------------------------------------------------------
+\definecolor{AprenFosc}{HTML}{B02438}
+\definecolor{ResultatBlau}{HTML}{27476E}
+\definecolor{NeutreFosc}{HTML}{555555}
+\definecolor{NeutreClar}{HTML}{BBBBBB}
+
+% ------------------------------------------------------------
+% Dos estils de bloc:
+%   blocenunciat: fons molt tènue + filet esquerre (enunciats
+%                 que l'estudiant torna a consultar).
+%   blocdiscurs:  sense fons, només filet esquerre fi i gris
+%                 (demostracions i solucions: text de lectura).
+% ------------------------------------------------------------
+\tcbset{
+  blocenunciat/.style={
+    enhanced, breakable, sharp corners,
+    frame hidden, boxrule=0pt,
+    colback=#1!4,
+    borderline west={2.2pt}{0pt}{#1},
+    left=8pt, right=4pt, top=5pt, bottom=5pt,
+    before skip=0.9em, after skip=0.9em,
+  },
+  blocdiscurs/.style={
+    enhanced, breakable, sharp corners,
+    frame hidden, boxrule=0pt,
+    colback=white, opacityback=0,
+    borderline west={1pt}{0pt}{NeutreClar},
+    left=8pt, right=0pt, top=2pt, bottom=2pt,
+    before skip=0.7em, after skip=0.7em,
+  },
+}
+
+% Etiquetes: versaletes en negreta, color de la família
+\newcommand{\etiqueta}[2]{{\color{#1}\bfseries\scshape #2.}\hspace{0.6em}}
+
+\AtBeginDocument{%
+  % ---------- Enunciats amb bloc ----------
+  \renewenvironment{definicio}[1][]{%
+    \refstepcounter{definicio}%
+    \begin{tcolorbox}[blocenunciat=AprenFosc]%
+    \etiqueta{AprenFosc}{Definici\'{o}~\thedefinicio\ifstrempty{#1}{}{ (#1)}}%
+  }{\end{tcolorbox}}%
+  %
+  \renewenvironment{teorema}[1][]{%
+    \refstepcounter{teorema}%
+    \begin{tcolorbox}[blocenunciat=ResultatBlau,fontupper=\itshape]%
+    \etiqueta{ResultatBlau}{Teorema~\theteorema\ifstrempty{#1}{}{ (#1)}}%
+  }{\end{tcolorbox}}%
+  %
+  \renewenvironment{lema}{%
+    \refstepcounter{teorema}%
+    \begin{tcolorbox}[blocenunciat=ResultatBlau,fontupper=\itshape]%
+    \etiqueta{ResultatBlau}{Lema~\theteorema}%
+  }{\end{tcolorbox}}%
+  %
+  \renewenvironment{proposicio}[1][]{%
+    \refstepcounter{teorema}%
+    \begin{tcolorbox}[blocenunciat=ResultatBlau,fontupper=\itshape]%
+    \etiqueta{ResultatBlau}{Proposici\'{o}~\theteorema\ifstrempty{#1}{}{ (#1)}}%
+  }{\end{tcolorbox}}%
+  %
+  \renewenvironment{corollari}{%
+    \refstepcounter{teorema}%
+    \begin{tcolorbox}[blocenunciat=ResultatBlau,fontupper=\itshape]%
+    \etiqueta{ResultatBlau}{Corol\textperiodcentered lari~\theteorema}%
+  }{\end{tcolorbox}}%
+  %
+  % ---------- Discurs: sense fons, filet gris ----------
+  \renewenvironment{prova}{%
+    \begin{tcolorbox}[blocdiscurs]%
+    {\color{NeutreFosc}\bfseries\itshape Demostraci\'{o}.}\hspace{0.6em}%
+  }{\par\nobreak\hfill$\blacksquare$\end{tcolorbox}}%
+  %
+  \renewenvironment{solucio}{%
+    \begin{tcolorbox}[blocdiscurs]%
+    {\color{NeutreFosc}\bfseries\itshape Soluci\'{o}.}\hspace{0.6em}%
+  }{\par\nobreak\hfill$\square$\end{tcolorbox}}%
+  %
+  % ---------- Exemples, exercicis i observacions: text pla ----------
+  \renewenvironment{exemple}[1][]{%
+    \refstepcounter{exemple}%
+    \par\addvspace{0.9em}\noindent
+    \etiqueta{AprenFosc}{Exemple~\theexemple\ifstrempty{#1}{}{ (#1)}}%
+    \ignorespaces
+  }{\par\addvspace{0.9em}}%
+  %
+  \renewenvironment{exercici}[1][]{%
+    \refstepcounter{exercici}%
+    \par\addvspace{0.9em}\noindent
+    \etiqueta{AprenFosc}{Exercici~\theexercici\ifstrempty{#1}{}{ (#1)}}%
+    \ignorespaces
+  }{\par\addvspace{0.9em}}%
+  %
+  \renewenvironment{observacio}{%
+    \refstepcounter{observacio}%
+    \par\addvspace{0.9em}\noindent
+    \etiqueta{NeutreFosc}{Observaci\'{o}~\theobservacio}%
+    \ignorespaces
+  }{\par\addvspace{0.9em}}%
+}
+
+% ------------------------------------------------------------
+% Títols: negre amb numeració en el vermell corporatiu fosc
+% ------------------------------------------------------------
+\titleformat{\chapter}
+  {\Huge\bfseries}
+  {{\color{AprenFosc}\thechapter}}
+  {1em}
+  {}
+
+\newcommand{\secformat}[1]{{\color{AprenFosc}\thesection}\quad #1}
+\titleformat{\section}
+  {\Large\bfseries}
+  {}
+  {0pt}
+  {\secformat}
+
+\newcommand{\subsecformat}[1]{{\color{AprenFosc}\thesubsection}\quad #1}
+\titleformat{\subsection}
+  {\large\bfseries}
+  {}
+  {0pt}
+  {\subsecformat}
+
+\newcommand{\subsubsecformat}[1]{{\color{AprenFosc}\thesubsubsection}\quad #1}
+\titleformat{\subsubsection}
+  {\bfseries}
+  {}
+  {0pt}
+  {\subsubsecformat}
+
+\setlist{itemsep=0.25em,topsep=0.25em}

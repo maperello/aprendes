@@ -1,0 +1,21 @@
+% Tests interactius en PDF
+\newcounter{testquestion}
+\newcommand{\testprefix}{}
+\newcommand{\testkeys}{}
+\newcommand{\iniciTest}[2]{%
+  \renewcommand{\testprefix}{#1}%
+  \renewcommand{\testkeys}{#2}%
+  \setcounter{testquestion}{0}%
+  \begin{center}
+  \fbox{\begin{minipage}{0.9\textwidth}
+  \textbf{Instruccions.} Marca una sola resposta per pregunta. En acabar, prem el bot\'{o} \textbf{Corregir}. El camp \textbf{Nota} mostrar\`{a} el resultat.\par\medskip
+  \PushButton[name=#1corregir,width=3.2cm,height=0.8cm,bordercolor={0 0 1},onclick={var p='#1';var k='#2'.split(',');var opts=['a','b','c','d'];var s=0;for(var i=0;i<k.length;i++){var ans='';var n=0;for(var j=0;j<opts.length;j++){var q=this.getField(p+'q'+(i+1)+opts[j]);if(q && q.value!='Off'){ans=opts[j];n++;}}var f=this.getField(p+'f'+(i+1));if(n==1 && ans==k[i]){s++;if(f)f.value='Correcte';}else{if(f)f.value=(n==0?'Sense respondre. Correcta: '+k[i]:(n>1?'Marca una sola resposta. Correcta: '+k[i]:'Incorrecte. Correcta: '+k[i]));}}this.getField(p+'nota').value=s+' / '+k.length;app.alert('Puntuació: '+s+' / '+k.length);}]{Corregir}\quad
+  \PushButton[name=#1netejar,width=3.2cm,height=0.8cm,bordercolor={1 0 0},onclick={var keys='#2'.split(',');var opts=['a','b','c','d'];this.getField('#1nota').value='';for(var i=1;i<=keys.length;i++){var f=this.getField('#1f'+i);if(f)f.value='';for(var j=0;j<opts.length;j++){var q=this.getField('#1q'+i+opts[j]);if(q)q.value='Off';}}}]{Netejar}\quad
+  \textbf{Nota: }\TextField[name=#1nota,readonly=true,width=4cm,bordercolor={0 0 0}]{}
+  \end{minipage}}
+  \end{center}
+  \bigskip
+}
+\newcommand{\pregunta}{\stepcounter{testquestion}\item}
+\long\def\opcio#1#2{\item \CheckBox[name=\testprefix{}q\thetestquestion#1,width=1.1em,height=1.1em,bordercolor={0 0 0},onclick={var opts=['a','b','c','d'];for(var j=0;j<opts.length;j++){if(opts[j]!='#1'){var q=this.getField('\testprefix{}q\thetestquestion'+opts[j]);if(q)q.value='Off';}}}]{}\quad #2}
+\newcommand{\feedback}{\par\smallskip\textbf{Correcci\'{o}: }\TextField[name=\testprefix{}f\thetestquestion,readonly=true,width=9cm,bordercolor={0.6 0.6 0.6}]{}\par\medskip}

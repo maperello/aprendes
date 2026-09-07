@@ -1,0 +1,48 @@
+% Macros matemàtiques i auxiliars compartides
+\newcommand{\Qcb}[1]{#1}
+\newcommand{\func}[1]{\operatorname{#1}}
+\newcommand{\dbigcup}{\displaystyle\bigcup}
+\newcommand{\dbigcap}{\displaystyle\bigcap}
+\newcommand{\FRAME}[8]{%
+\begin{center}
+#5\par\smallskip
+\includegraphics[width=#2,height=#3,keepaspectratio]{img/#7}
+\end{center}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Natpos}{\mathbb{N}^{*}}
+\newcommand{\Zstar}{\mathbb{Z}^{*}}
+\newcommand{\mcd}{\operatorname{mcd}}
+\newcommand{\mcm}{\operatorname{mcm}}
+\newcommand{\abs}[1]{\left\lvert #1\right\rvert}
+\newcommand{\classe}[1]{\left[#1\right]}
+\newcommand{\divides}{\mid}
+\newcommand{\notdivides}{\nmid}
+\newcommand{\decimalperiodic}[2]{#1,\overline{#2}}
+\DeclareMathOperator{\sgn}{sgn} 
+% ------------------------------------------------------------
+% Macros pròpies de teoria de categories
+% ------------------------------------------------------------
+\newcommand{\cat}[1]{\mathbf{#1}}          % noms de categories: \cat{Set}
+\newcommand{\id}{\operatorname{id}}         % identitat
+\providecommand{\Hom}{\operatorname{Hom}}   % conjunts de morfismes
+\newcommand{\op}{^{\mathrm{op}}}            % categoria oposada
+\newcommand{\Obj}{\operatorname{Obj}}       % col·lecció d'objectes
+\newcommand{\comp}{\circ}                    % composició
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\cod}{cod}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Free}{Free}
+\DeclareMathOperator{\Nat}{Nat}       % transformacions naturals com a homconjunt
+\DeclareMathOperator{\Sub}{Sub}       % preordre de subobjectes
+\DeclareMathOperator{\ev}{ev}         % morfisme d'avaluació (exponencials)
+\DeclareMathOperator{\Imatge}{Im}     % imatge d'un morfisme (factorització imatge)
+% Claudàtors semàntics [[-]] sense dependre de stmaryrd:
+\providecommand{\llbracket}{\mathopen{[\![}}
+\providecommand{\rrbracket}{\mathclose{]\!]}}
+\newcommand{\yon}{\mathrm{y}}          % plançó de Yoneda
+\DeclareMathOperator*{\colimop}{colim} % colímit (amb límits sota)

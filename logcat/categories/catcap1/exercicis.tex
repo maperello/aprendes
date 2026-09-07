@@ -1,0 +1,198 @@
+\chapter[Categories]{Categories i morfismes especials}
+
+Els exercicis següents completen els resolts al capítol corresponent de la part de Pràctica. Cada enunciat va acompanyat d'una indicació breu per si el lector s'encalla; convé, però, intentar-lo primer sense mirar-la. La marca \enquote{$\star$} assenyala un exercici de consolidació i \enquote{$\star\star$} un d'ampliació.
+
+\section{Categories i axiomes}
+
+\begin{exercici}
+Comprova que un conjunt qualsevol $X$ dona lloc a una categoria \textbf{discreta}: els objectes són els elements de $X$ i els únics morfismes són les identitats. Verifica els axiomes. \hfill{\normalfont$\star$}
+\begin{indicacio}
+No hi ha cap morfisme entre objectes diferents; l'única composició possible en cada objecte és $\id_x\comp\id_x$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\cat{C}$ una categoria. Comprova que fixar un objecte $A$ i considerar només les fletxes $A\to A$, amb la composició de $\cat{C}$, dona un \textbf{monoide}. Quin és el seu element neutre? \hfill{\normalfont$\star$}
+\begin{indicacio}
+Els morfismes $A\to A$ es poden compondre entre ells i el resultat torna a anar d'$A$ a $A$. El neutre és $\id_A$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que els espais topològics amb les aplicacions contínues formen una categoria $\cat{Top}$. Cal usar dues propietats de les aplicacions contínues: quines? \hfill{\normalfont$\star$}
+\begin{indicacio}
+La composició de contínues és contínua, i la identitat és contínua.
+\end{indicacio}
+\end{exercici}
+
+\section{Fletxes, camins i diagrames commutatius}
+
+\begin{exercici}
+Escriu l'equació que expressa la commutativitat del triangle
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.3em, row sep=2.6em] {
+    A & B \\
+      & C \\
+  };
+  \draw[-{Stealth[scale=1.05]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.05]}] (m-1-2) -- node[right] {$g$} (m-2-2);
+  \draw[-{Stealth[scale=1.05]}] (m-1-1) -- node[below left] {$h$} (m-2-2);
+\end{tikzpicture}
+\]
+i explica quins són els dos camins que es comparen. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Tots dos camins comencen a $A$ i acaben a $C$; un passa per $B$ i l'altre és la fletxa directa.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Representa mitjançant un quadrat commutatiu l'equació
+\[
+q\comp u=v\comp p,
+\]
+on $u\colon A\to B$, $q\colon B\to D$, $p\colon A\to C$ i $v\colon C\to D$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Col·loca $A$ a l'angle superior esquerre i $D$ a l'inferior dret. Els dos membres de l'equació són dos camins d'$A$ a $D$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Dona un exemple de quatre aplicacions entre conjunts que formin un quadrat que \emph{no} commuti. Indica explícitament un element sobre el qual les dues composicions donin resultats diferents. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Pots treballar amb conjunts molt petits, per exemple $\{0,1\}$, i comparar els dos camins sobre l'element $0$.
+\end{indicacio}
+\end{exercici}
+
+\section{Primers exemples}
+
+\begin{exercici}
+En un sistema deductiu $T$, suposem
+\[
+A\vdash_T B,
+\qquad
+B\vdash_T C,
+\qquad
+C\vdash_T A.
+\]
+Dibuixa el diagrama corresponent a $\cat{Prov}_T$ i comprova que $A$, $B$ i $C$ són isomorfs dos a dos. \hfill{\normalfont$\star$}
+\begin{indicacio}
+La transitivitat dona també $A\vdash_T C$, $B\vdash_T A$ i $C\vdash_T B$. En una categoria prima, dues fletxes en sentits oposats ja donen un isomorfisme.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova directament que la composició de dos morfismes de grafs és un morfisme de grafs. Si $F\colon G\to H$ i $K\colon H\to L$, verifica les equacions d'origen i destí per a $K\comp F$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Per a l'origen, parteix de
+\[
+F_V\comp s_G=s_H\comp F_E,
+\qquad
+K_V\comp s_H=s_L\comp K_E,
+\]
+i compon les igualtats adequadament. Fes el mateix amb $t$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Explica amb precisió quina informació té un graf dirigit que encara no té l'estructura d'una categoria. Després indica què afegeix la categoria lliure sobre aquest graf. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un graf té vèrtexs, arestes, origen i destí. Una categoria necessita, a més, identitats, composició i axiomes; la categoria lliure els genera mitjançant camins.
+\end{indicacio}
+\end{exercici}
+
+\section{Isomorfismes}
+
+\begin{exercici}
+Comprova que a la categoria $\cat{Mon}$ dels monoides i els homomorfismes, un isomorfisme és exactament un homomorfisme bijectiu. Compara-ho amb el que pot passar a $\cat{Pos}$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Comprova que la inversa d'un homomorfisme bijectiu torna a ser un homomorfisme; per a $\cat{Pos}$, en canvi, la inversa d'una aplicació monòtona bijectiva pot no ser monòtona.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+En una categoria, un morfisme $f\colon A\to B$ es diu que té una \textbf{secció} si existeix $s\colon B\to A$ amb $f\comp s=\id_B$. Comprova que tot isomorfisme té secció. Després, prenent $A=\{0,1\}$, $B=\{\ast\}$ i $f$ l'única aplicació $A\to B$, dona una secció $s\colon B\to A$ explícita i comprova que $f$ no és isomorfisme. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Tria $s(\ast)=0$ o $s(\ast)=1$. Aleshores $f\comp s=\id_B$, però $s\comp f\neq\id_A$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que si $g\comp f$ és un isomorfisme, no cal que ho siguin ni $f$ ni $g$. Busca'n un exemple senzill a $\cat{Set}$ i representa'l amb fletxes. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Pensa en una inclusió seguida d'una projecció entre conjunts de mides diferents.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Demostra la caracterització dual de l'exercici resolt a la part de pràctica: un morfisme $f$ és un isomorfisme si i només si és un epimorfisme escindit (té secció) i un monomorfisme. \hfill{\normalfont$\star$}
+\begin{indicacio}
+És el dual de \enquote{mono escindit i epi $\Rightarrow$ iso}: parteix d'una secció $s$ amb $f\comp s=\id_B$ i fes servir que $f$ és mono per veure que $s\comp f=\id_A$.
+\end{indicacio}
+\end{exercici}
+
+\section{Construccions sobre categories}
+
+\begin{exercici}
+Descriu la categoria producte $\cat{3}\times\cat{3}$, on $\cat{3}$ és la categoria associada a l'ordre $0<1<2$. Quants objectes i quants morfismes té? Dibuixa les fletxes bàsiques i explica quines altres fletxes apareixen per composició. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+$\cat{3}$ té tres objectes i sis morfismes. En el producte, els objectes i els morfismes són parelles.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Compara directament $(\cat{C}\times\cat{D})\op$ i $\cat{C}\op\times\cat{D}\op$. Comprova que tenen els mateixos objectes i que els seus morfismes, identitats i composicions s'identifiquen component a component. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un morfisme $(A,X)\to(B,Y)$ a $(\cat{C}\times\cat{D})\op$ és, per definició, un morfisme $(B,Y)\to(A,X)$ a $\cat{C}\times\cat{D}$. Escriu què significa això en cadascuna de les dues components.
+\end{indicacio}
+\end{exercici}
+
+\section{Grafs i categories lliures}
+
+\begin{exercici}
+Classifica, \textbf{fins a isomorfisme}, els grafs dirigits que generen una categoria lliure amb exactament \textbf{quatre} morfismes. Recorda que les identitats compten com a morfismes. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Compta primer les identitats, una per vèrtex, i després les arestes i els camins que generen. Recorda també que la definició de graf permet arestes paral·leles. Evita els cicles, que produeixen infinits camins.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Considera el graf
+\[
+A\xrightarrow{f}B\xrightarrow{g}C.
+\]
+Llista tots els morfismes de la categoria lliure que genera, dibuixa també la fletxa composta i comprova que hi ha exactament sis morfismes. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Compta els tres camins buits, les dues arestes $f$ i $g$, i el camí compost de longitud dos.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Per què un graf amb un cicle, per exemple una aresta $a\colon A\to A$, genera sempre una categoria lliure amb infinits morfismes? \hfill{\normalfont$\star$}
+\begin{indicacio}
+El cicle es pot recórrer tantes vegades com es vulgui: $a,a^2,a^3,\ldots$, i cada repetició dona un camí diferent.
+\end{indicacio}
+\end{exercici}
+
+\section{Qüestions de mida}
+
+\begin{exercici}
+Comprova que un preordre, vist com a categoria, és una categoria \textbf{petita} sempre que el conjunt subjacent $P$ sigui un conjunt. Quants morfismes hi ha, com a màxim, entre dos objectes? \hfill{\normalfont$\star$}
+\begin{indicacio}
+Entre dos objectes hi ha zero o un morfisme; la col·lecció total de morfismes es pot identificar amb un subconjunt de $P\times P$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Explica per què $\cat{Set}$ és localment petita. És a dir, per què, donats dos conjunts $A$ i $B$, la col·lecció d'aplicacions $A\to B$ és un conjunt. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Les aplicacions $A\to B$ es poden identificar amb certs subconjunts de $A\times B$; per tant formen un subconjunt de $\mathcal P(A\times B)$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Explica per què $\cat{Graph}$ és localment petita: donats dos grafs dirigits $G$ i $H$, per què els morfismes de grafs $G\to H$ formen un conjunt? \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un morfisme de grafs és una parella d'aplicacions $V_G\to V_H$ i $E_G\to E_H$ que satisfà dues condicions. Aquestes parelles formen un subconjunt d'un producte de dos conjunts d'aplicacions.
+\end{indicacio}
+\end{exercici}

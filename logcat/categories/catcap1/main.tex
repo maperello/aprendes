@@ -1,0 +1,52 @@
+\documentclass[12pt,a4paper,oneside]{book}
+
+\input{metadata.tex}
+\input{../common/categories-preamble.tex}
+\input{../common/interactive-tests.tex}
+\input{../common/categories/tests-estatics.tex}
+
+\makeindex[title={Índex alfabètic},columns=2,intoc]
+
+\begin{document}
+\pagecolor{fons!20}
+\hypermetadata
+
+\frontmatter
+\maketitle
+\tableofcontents
+\let\cleardoublepage\clearpage
+
+\chapter*{Sobre aquest fascicle}
+\addcontentsline{toc}{chapter}{Sobre aquest fascicle}
+Aquest fascicle recull el capítol 1 de \emph{Teoria de categories},
+\textbf{Categories i morfismes especials}, en la revisió 2.
+Inclou la teoria, la pràctica amb exercicis resolts, els exercicis
+proposats amb indicacions i el test interactiu amb una clau de respostes
+ també llegible en paper.
+
+El prefaci i la introducció es publiquen separadament al fascicle
+\emph{Prefaci i introducció} (\texttt{catintro}). Les remissions a altres
+capítols o apèndixs es refereixen al volum complet i no impliquen que
+ aquests materials formin part d'aquesta revisió publicada.
+
+\mainmatter
+\part{Teoria}
+\setcounter{chapter}{0}
+\input{teoria.tex}
+
+\part{Pràctica: exercicis resolts}
+\setcounter{chapter}{0}
+\input{practica.tex}
+
+\part{Exercicis proposats}
+\setcounter{chapter}{0}
+\input{exercicis.tex}
+
+\part{Test interactiu}
+\setcounter{chapter}{0}
+\input{test.tex}
+
+\backmatter
+\input{bibliografia.tex}
+\printindex
+\end{document}

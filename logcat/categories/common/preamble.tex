@@ -1,0 +1,101 @@
+% ============================================================
+%  Preàmbul compartit — Aprendes Universitat
+%  Compartit pels llibres d'Aprendes Universitat.
+%  Les dades pròpies de cada llibre (títol, autor i metadades PDF)
+%  van al metadata.tex local de cada projecte, carregat ABANS
+%  d'aquest fitxer. La macro \hypermetadata es crida DESPRÉS,
+%  quan hyperref ja ha estat carregat.
+% ============================================================
+
+\usepackage{eurosym}
+\usepackage{iftex}
+\ifpdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\else
+  % XeLaTeX / LuaLaTeX: Unicode natiu, res d'inputenc
+  \usepackage{fontspec}
+  % Carrega Latin Modern per nom de fitxer, que XeTeX/LuaTeX pot
+  % resoldre via kpathsea fins i tot si fontconfig no l'ha registrat.
+  \setmainfont{lmroman10-regular.otf}[
+    BoldFont=lmroman10-bold.otf,
+    ItalicFont=lmroman10-italic.otf,
+    BoldItalicFont=lmroman10-bolditalic.otf
+  ]
+  \setsansfont{lmsans10-regular.otf}[
+    BoldFont=lmsans10-bold.otf,
+    ItalicFont=lmsans10-oblique.otf,
+    BoldItalicFont=lmsans10-boldoblique.otf
+  ]
+  \setmonofont{lmmono10-regular.otf}[ItalicFont=lmmono10-italic.otf]
+\fi
+% microtype: protrusion i expansió completes només amb pdfLaTeX.
+% Amb XeLaTeX/LuaLaTeX només hi ha protrusion i generaria avisos de
+% «slot number»; per això només l'activem sota pdfTeX.
+\ifpdftex
+  \usepackage{microtype}
+\fi
+\usepackage[catalan, provide=*]{babel}
+\usepackage[autostyle=true,babel=true]{csquotes}
+% csquotes no porta estil català: el declarem perquè \enquote{...}
+% doni guillemets «...» (exteriors) i cometes altes “...” (interiors),
+% independentment de la versió de csquotes instal·lada.
+\DeclareQuoteStyle{catalan}
+  {\guillemotleft}{\guillemotright}
+  {\quotedblbase}{\textquotedblleft}
+\DeclareQuoteAlias{catalan}{catala}
+\usepackage{amsmath,mathtools}% amssymb, amsthm: via aprendes.sty
+\usepackage{geometry}
+\usepackage{import}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,matrix}
+\usepackage[all]{xy}% diagrames de grafs (llaços i arestes múltiples) a l'apèndix de grafs
+\usepackage{float}
+\usepackage[section]{placeins}% FloatBarrier automàtic: cap figura no travessa una secció
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{imakeidx}
+\usepackage{booktabs}
+
+% La bibliografia es configura localment en cada projecte quan hi ha referències.
+
+\setcounter{MaxMatrixCols}{10}
+
+\graphicspath{{img/}}
+\geometry{hmargin={3cm,3cm},vmargin={2.5cm,2.5cm},offset=0pt,footskip=1cm,headsep=1cm}
+
+
+\setlist{itemsep=0.25em, topsep=0.25em}
+\numberwithin{equation}{section}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+% Configuració dels paràgrafs
+\usepackage{indentfirst}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.3em}
+
+% ============================================================
+%  hyperref: ÚLTIM paquet, com recomana el seu manual.
+%  Els colors dels enllaços es fixen aquí. Les metadades
+%  pròpies del llibre ja s'han definit abans en metadata.tex;
+%  la macro \hypermetadata s'executa després de carregar aquest fitxer.
+% ============================================================
+\usepackage{hyperref}
+% Color dels enllaços: el blau pissarra de la paleta d'aprendes,
+% una mica enfosquit. Prou distint del vermell corporatiu dels
+% títols, exemples i exercicis, i coherent amb la resta de colors.
+\colorlet{EnllacBlau}{ResultatBlau!90!black}
+\hypersetup{
+  colorlinks=true,
+  linktoc=page,
+  linkcolor=EnllacBlau,
+  urlcolor=EnllacBlau,
+  citecolor=EnllacBlau,
+  filecolor=EnllacBlau,
+  hypertexnames=false,
+}
+\usepackage{bookmark}% millora els marcadors del PDF; ha d'anar després d'hyperref

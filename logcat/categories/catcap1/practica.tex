@@ -1,0 +1,406 @@
+\chapter[Categories]{Categories i morfismes especials}
+
+En aquest capítol resolem amb detall una selecció d'exercicis corresponents al capítol \emph{Categories} de la part de Teoria. L'objectiu no és només arribar al resultat, sinó mostrar \emph{com} es raona en el llenguatge categòric: comprovar axiomes, seguir camins, traduir diagrames a equacions i reconèixer una mateixa estructura en conjunts, preordres, lògica i grafs. Convé intentar cada exercici abans de llegir-ne la solució.
+
+\section{Definició de categoria}
+
+\begin{exercici}
+Comprova que els conjunts amb les relacions formen una categoria $\cat{Rel}$, on un morfisme $A\to B$ és una relació $R\subseteq A\times B$, la identitat de $A$ és la relació d'igualtat, i la composició de $R\subseteq A\times B$ amb $S\subseteq B\times C$ és
+\[
+S\comp R=\{(a,c)\in A\times C\mid \exists\,b\in B\text{ tal que }(a,b)\in R\text{ i }(b,c)\in S\}.
+\]
+\end{exercici}
+
+\begin{solucio}
+Hem de comprovar els dos axiomes. Comencem per les \textbf{identitats}. Sigui $\Delta_A=\{(a,a)\mid a\in A\}$ la relació d'igualtat sobre $A$. Per a tota relació $R\subseteq A\times B$,
+\[
+R\comp\Delta_A
+=\{(a,b)\mid \exists\,a'\ (a,a')\in\Delta_A\text{ i }(a',b)\in R\}
+=R,
+\]
+perquè $(a,a')\in\Delta_A$ obliga $a'=a$. Anàlogament $\Delta_B\comp R=R$.
+
+Per a l'\textbf{associativitat}, siguin $R\subseteq A\times B$, $S\subseteq B\times C$ i $T\subseteq C\times D$. Un parell $(a,d)$ pertany a $T\comp(S\comp R)$ si i només si existeixen $b\in B$ i $c\in C$ tals que
+\[
+(a,b)\in R,
+\qquad
+(b,c)\in S,
+\qquad
+(c,d)\in T.
+\]
+La mateixa condició caracteritza $(T\comp S)\comp R$. Per tant
+\[
+T\comp(S\comp R)=(T\comp S)\comp R,
+\]
+i $\cat{Rel}$ és una categoria.
+\end{solucio}
+
+\section{Fletxes, camins i diagrames commutatius}
+
+\begin{exercici}
+Llegeix el diagrama següent i escriu l'equació que expressa que commuta:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.7em, column sep=3.6em] {
+    A & B \\
+    C & D \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$u$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$v$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$g$} (m-2-2);
+\end{tikzpicture}
+\]
+Explica també per què l'ordre de les composicions és el que escrius.
+\end{exercici}
+
+\begin{solucio}
+Hi ha dos camins dirigits de $A$ a $D$. El camí superior-dret és
+\[
+A\xrightarrow{f}B\xrightarrow{v}D,
+\]
+i per tant determina $v\comp f$. El camí esquerre-inferior és
+\[
+A\xrightarrow{u}C\xrightarrow{g}D,
+\]
+i determina $g\comp u$. El quadrat commuta exactament quan
+\[
+\boxed{v\comp f=g\comp u}.
+\]
+L'ordre de cada composició es llegeix de dreta a esquerra: en $v\comp f$ seguim primer $f$ i després $v$.
+\end{solucio}
+
+\begin{exercici}
+Considera a $\cat{Set}$ quatre còpies de $\mathbb Z$ i les aplicacions
+\[
+f(n)=n+1,
+\qquad
+u(n)=2n,
+\qquad
+v(n)=2n,
+\qquad
+g(n)=n+2.
+\]
+Comprova que el quadrat
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=4.2em] {
+    \mathbb Z & \mathbb Z \\
+    \mathbb Z & \mathbb Z \\
+  };
+  \draw[-{Stealth[scale=1.05]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.05]}] (m-1-1) -- node[left] {$u$} (m-2-1);
+  \draw[-{Stealth[scale=1.05]}] (m-1-2) -- node[right] {$v$} (m-2-2);
+  \draw[-{Stealth[scale=1.05]}] (m-2-1) -- node[below] {$g$} (m-2-2);
+\end{tikzpicture}
+\]
+commuta.
+\end{exercici}
+
+\begin{solucio}
+Cal comprovar que $v\comp f=g\comp u$. Per a qualsevol $n\in\mathbb Z$,
+\[
+(v\comp f)(n)=v(n+1)=2n+2,
+\]
+mentre que
+\[
+(g\comp u)(n)=g(2n)=2n+2.
+\]
+Les dues aplicacions coincideixen en tots els enters. Per tant
+\[
+v\comp f=g\comp u,
+\]
+i el quadrat commuta. Aquest exemple mostra com una afirmació sobre funcions es pot llegir simultàniament com una igualtat algebraica i com la commutativitat d'un diagrama.
+\end{solucio}
+
+\section{Primers exemples}
+
+\begin{exercici}
+Sigui $T$ un sistema deductiu amb una relació de deduïbilitat $\vdash_T$ reflexiva i transitiva. Comprova amb detall que les fórmules, amb una única fletxa $A\to B$ quan $A\vdash_T B$, formen una categoria prima $\cat{Prov}_T$.
+\end{exercici}
+
+\begin{solucio}
+Els \textbf{objectes} són les fórmules. Entre dues fórmules $A$ i $B$ posem un únic morfisme $A\to B$ exactament quan $A\vdash_T B$.
+
+La \textbf{identitat} existeix perquè la deduïbilitat és reflexiva:
+\[
+A\vdash_T A.
+\]
+Per tant hi ha una fletxa $\id_A\colon A\to A$.
+
+La \textbf{composició} existeix perquè la deduïbilitat és transitiva. Si
+\[
+A\vdash_T B
+\qquad\text{i}\qquad
+B\vdash_T C,
+\]
+aleshores
+\[
+A\vdash_T C.
+\]
+Diagramàticament,
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.4em] { A & B & C \\ };
+  \draw[-{Stealth[scale=1.05]}] (m-1-1) -- (m-1-2);
+  \draw[-{Stealth[scale=1.05]}] (m-1-2) -- (m-1-3);
+  \draw[-{Stealth[scale=1.0]}] (m-1-1) to[bend right=25] (m-1-3);
+\end{tikzpicture}
+\]
+
+Finalment, entre dues fórmules hi ha com a màxim una fletxa. Això fa que les igualtats exigides pels axiomes d'associativitat i identitat siguin automàtiques sempre que les composicions existeixin. Per tant $\cat{Prov}_T$ és una categoria prima.
+
+Cal remarcar què hem oblidat: si hi ha dues demostracions diferents de $B$ a partir d'$A$, aquesta categoria les identifica en una sola fletxa. Només conserva la relació de deduïbilitat.
+\end{solucio}
+
+\begin{exercici}
+Siguin els grafs dirigits $G$ i $H$ següents:
+\[
+G:\quad 0\xrightarrow{a}1,
+\qquad
+H:\quad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.0em, column sep=2.8em] {
+    & y \\
+    x & z \\
+  };
+  \draw[-{Stealth[scale=1.0]}] (m-2-1) -- node[above left] {$r$} (m-1-2);
+  \draw[-{Stealth[scale=1.0]}] (m-2-1) -- node[below] {$s$} (m-2-2);
+\end{tikzpicture}
+\]
+Defineix $F_V(0)=x$, $F_V(1)=y$ i $F_E(a)=r$. Comprova que això defineix un morfisme de grafs $F\colon G\to H$. Explica per què substituir $F_E(a)=r$ per $F_E(a)=s$, mantenint $F_V$, no defineix un morfisme de grafs.
+\end{exercici}
+
+\begin{solucio}
+En $G$ tenim
+\[
+s_G(a)=0,
+\qquad
+t_G(a)=1,
+\]
+i en $H$,
+\[
+s_H(r)=x,
+\qquad
+t_H(r)=y.
+\]
+Per tant
+\[
+F_V(s_G(a))=F_V(0)=x=s_H(r)=s_H(F_E(a))
+\]
+i
+\[
+F_V(t_G(a))=F_V(1)=y=t_H(r)=t_H(F_E(a)).
+\]
+Així es compleixen les dues equacions
+\[
+F_V\comp s_G=s_H\comp F_E,
+\qquad
+F_V\comp t_G=t_H\comp F_E,
+\]
+i $F$ és un morfisme de grafs.
+
+Si poséssim $F_E(a)=s$, l'origen encara seria correcte perquè $s_H(s)=x$, però el destí fallaria:
+\[
+t_H(s)=z\neq y=F_V(1).
+\]
+Per tant el quadrat corresponent al destí no commutaria i no tindríem un morfisme de grafs.
+\end{solucio}
+
+\section{Isomorfismes}
+
+\begin{exercici}
+En una categoria qualsevol, comprova que si $f\colon A\to B$ i $g\colon B\to C$ tenen inversos, aleshores $g\comp f$ també en té, i
+\[
+(g\comp f)^{-1}=f^{-1}\comp g^{-1}.
+\]
+\end{exercici}
+
+\begin{solucio}
+La situació és
+\[
+A\xrightarrow{f}B\xrightarrow{g}C.
+\]
+Per recórrer aquest camí en sentit contrari hem d'invertir també l'ordre: primer $g^{-1}$ i després $f^{-1}$. Proposem, doncs, $f^{-1}\comp g^{-1}$ com a invers.
+
+D'una banda,
+\[
+(f^{-1}\comp g^{-1})\comp(g\comp f)
+=f^{-1}\comp(g^{-1}\comp g)\comp f
+=f^{-1}\comp f
+=\id_A,
+\]
+i de l'altra,
+\[
+(g\comp f)\comp(f^{-1}\comp g^{-1})
+=g\comp(f\comp f^{-1})\comp g^{-1}
+=g\comp g^{-1}
+=\id_C.
+\]
+Per tant $(g\comp f)^{-1}=f^{-1}\comp g^{-1}$.
+\end{solucio}
+
+\begin{exercici}
+Comprova que a $\cat{Rel}$ una relació $R\colon A\to B$ és un isomorfisme si i només si és el graf d'una bijecció de $A$ a $B$.
+\end{exercici}
+
+\begin{solucio}
+Si $f\colon A\to B$ és una bijecció i $R$ és el seu graf, el graf de $f^{-1}$ és una relació $B\to A$ i les dues composicions són les relacions d'igualtat. Per tant $R$ és un isomorfisme.
+
+Recíprocament, suposem que $R$ té un invers $S\colon B\to A$, és a dir,
+\[
+S\comp R=\Delta_A,
+\qquad
+R\comp S=\Delta_B.
+\]
+Per a cada $a\in A$, com $(a,a)\in S\comp R$, existeix algun $b\in B$ amb $(a,b)\in R$ i $(b,a)\in S$. Així cada $a$ es relaciona amb almenys un $b$.
+
+Si $(a,b)\in R$ i $(a,b')\in R$, triem $b_0$ amb $(a,b_0)\in R$ i $(b_0,a)\in S$. Llavors
+\[
+(b_0,b)\in R\comp S=\Delta_B,
+\qquad
+(b_0,b')\in R\comp S=\Delta_B,
+\]
+i per tant $b=b_0=b'$. Així cada $a$ es relaciona amb un únic $b$, i $R$ és el graf d'una aplicació $f\colon A\to B$.
+
+Aplicat a $S$, el mateix argument dona una aplicació $g\colon B\to A$. Les igualtats $S\comp R=\Delta_A$ i $R\comp S=\Delta_B$ es converteixen en
+\[
+g\comp f=\id_A,
+\qquad
+f\comp g=\id_B.
+\]
+Per tant $f$ és bijectiva i $R$ n'és el graf.
+\end{solucio}
+
+\begin{exercici}
+Sigui $\cat{C}$ una categoria. Comprova que la relació \enquote{ésser isomorf} entre objectes de $\cat{C}$ és una relació d'equivalència.
+\end{exercici}
+
+\begin{solucio}
+\textbf{Reflexivitat}: $\id_A$ és el seu propi invers, de manera que $A\cong A$.
+
+\textbf{Simetria}: si $f\colon A\to B$ és un isomorfisme amb invers $f^{-1}\colon B\to A$, aleshores $f^{-1}$ és també un isomorfisme, amb invers $f$; per tant $B\cong A$.
+
+\textbf{Transitivitat}: si $f\colon A\to B$ i $g\colon B\to C$ són isomorfismes, la composició $g\comp f$ també ho és pel primer exercici de la secció; per tant $A\cong C$.
+\end{solucio}
+
+\begin{exercici}
+A la categoria prima $\cat{Prov}_T$, comprova que dues fórmules $A$ i $B$ són isomorfes si i només si són interdeduïbles:
+\[
+A\vdash_T B
+\qquad\text{i}\qquad
+B\vdash_T A.
+\]
+\end{exercici}
+
+\begin{solucio}
+Si $A\cong B$, per definició existeixen fletxes
+\[
+A\longrightarrow B
+\qquad\text{i}\qquad
+B\longrightarrow A.
+\]
+A $\cat{Prov}_T$ això significa exactament $A\vdash_T B$ i $B\vdash_T A$.
+
+Recíprocament, si tenim aquestes dues deduccions, existeixen les dues fletxes. Com que $\cat{Prov}_T$ és prima, qualsevol endomorfisme $A\to A$ és necessàriament l'única fletxa $\id_A$, i igualment per a $B$. Per tant les dues composicions són les identitats i les fletxes són inverses. Així $A\cong B$.
+\end{solucio}
+
+\begin{exercici}
+Demostra que un morfisme $f$ és un isomorfisme si i només si és un monomorfisme escindit (té retracció) i un epimorfisme.
+\end{exercici}
+
+\begin{solucio}
+Si $f$ és un isomorfisme, el seu invers és alhora retracció i secció, de manera que $f$ és mono escindit; i tot isomorfisme és epi. Recíprocament, suposem que $f\colon A\to B$ té una retracció $r$ (amb $r\comp f=\id_A$) i que és epi. De $r\comp f=\id_A$ obtenim
+\[
+f\comp r\comp f = f = f\comp\id_B,
+\]
+i com que $f$ és epi, es pot cancel·lar per la dreta, d'on $f\comp r=\id_B$. Així $r$ és també invers per la dreta de $f$: $f$ és un isomorfisme amb invers $r$.
+\end{solucio}
+
+\section{Construccions sobre categories}
+
+\begin{exercici}
+Descriu explícitament la categoria producte $\cat{2}\times\cat{3}$, on $\cat{2}$ és la categoria associada a l'ordre $0<1$ i $\cat{3}$ la categoria associada a $0<1<2$. Quants objectes i quants morfismes té? Com es componen?
+\end{exercici}
+
+\begin{solucio}
+Els objectes són les parelles $(i,j)$ amb $i\in\{0,1\}$ i $j\in\{0,1,2\}$. N'hi ha sis i es poden disposar en una graella:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.4em, column sep=2.8em] {
+    (0,0) & (0,1) & (0,2) \\
+    (1,0) & (1,1) & (1,2) \\
+  };
+  \draw[-{Stealth[scale=1.05]}] (m-1-1) -- (m-1-2);
+  \draw[-{Stealth[scale=1.05]}] (m-1-2) -- (m-1-3);
+  \draw[-{Stealth[scale=1.05]}] (m-2-1) -- (m-2-2);
+  \draw[-{Stealth[scale=1.05]}] (m-2-2) -- (m-2-3);
+  \draw[-{Stealth[scale=1.05]}] (m-1-1) -- (m-2-1);
+  \draw[-{Stealth[scale=1.05]}] (m-1-2) -- (m-2-2);
+  \draw[-{Stealth[scale=1.05]}] (m-1-3) -- (m-2-3);
+\end{tikzpicture}
+\]
+Només hi hem dibuixat les fletxes bàsiques; les composicions produeixen també fletxes més llargues i diagonals.
+
+Com que $\cat{2}$ i $\cat{3}$ són primes, entre $(i,j)$ i $(i',j')$ hi ha un únic morfisme exactament quan
+\[
+i\le i'
+\qquad\text{i}\qquad
+j\le j'.
+\]
+$\cat{2}$ té tres morfismes i $\cat{3}$ en té sis. Com que un morfisme del producte és una parella, hi ha
+\[
+3\cdot6=18
+\]
+morfismes. La composició es fa component a component. Tots els quadrats de la graella commuten perquè el producte és també una categoria prima.
+\end{solucio}
+
+\begin{exercici}
+Descriu explícitament la categoria oposada $\cat{P}\op$ quan $\cat{P}$ és un preordre $(P,\leq)$ vist com a categoria. Quina relació d'ordre li correspon?
+\end{exercici}
+
+\begin{solucio}
+A $\cat{P}$ hi ha un morfisme $x\to y$ exactament quan $x\leq y$. A $\cat{P}\op$ les fletxes s'inverteixen:
+\[
+x\longrightarrow y\text{ a }\cat{P}\op
+\quad\Longleftrightarrow\quad
+y\longrightarrow x\text{ a }\cat{P}
+\quad\Longleftrightarrow\quad
+y\leq x.
+\]
+Per tant $\cat{P}\op$ és el preordre invers $(P,\geq)$. En aquest exemple, invertir les fletxes és literalment invertir la desigualtat.
+\end{solucio}
+
+\section{Grafs i categories lliures}
+
+\begin{exercici}
+Considera el graf amb un sol vèrtex i dues arestes que són bucles, $a$ i $b$. Descriu la categoria lliure que genera. Quants morfismes té?
+\end{exercici}
+
+\begin{solucio}
+La categoria lliure té un sol objecte. Els morfismes són tots els camins finits:
+\[
+\varepsilon,
+\quad a,
+\quad b,
+\quad aa,
+\quad ab,
+\quad ba,
+\quad bb,
+\quad aaa,
+\quad\ldots
+\]
+on $\varepsilon$ és el camí buit i actua com a identitat. La composició és la concatenació de paraules. Com que cap relació no identifica camins diferents, hi ha una infinitat numerable de morfismes: és el monoide lliure sobre l'alfabet $\{a,b\}$.
+\end{solucio}
+
+\section{Qüestions de mida}
+
+\begin{exercici}
+En una categoria petita, l'oposada $\cat{C}\op$ també és petita. Comprova-ho, i comprova a més que $\cat{C}$ i $\cat{C}\op$ tenen exactament el mateix nombre de morfismes.
+\end{exercici}
+
+\begin{solucio}
+Els objectes de $\cat{C}\op$ són els mateixos que els de $\cat{C}$. Cada morfisme $f\colon A\to B$ de $\cat{C}$ correspon al mateix morfisme vist com $f\colon B\to A$ a $\cat{C}\op$. Això dona una bijecció entre les col·leccions de morfismes de totes dues categories.
+
+Per tant, si els objectes i els morfismes de $\cat{C}$ formen conjunts, també ho fan els de $\cat{C}\op$. En particular, $\cat{C}$ és petita si i només si ho és $\cat{C}\op$.
+\end{solucio}

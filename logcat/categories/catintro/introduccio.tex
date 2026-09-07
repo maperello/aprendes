@@ -1,0 +1,72 @@
+\chapter*{Per què aprendre categories}
+\addcontentsline{toc}{chapter}{Introducció}
+\markboth{Introducció}{Introducció}
+
+\begingroup
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{section}{0}
+
+\begin{quote}
+\itshape
+Aquest capítol presenta l'objectiu i el mètode de la teoria de categories abans d'introduir-ne les definicions formals. Els exemples només fan servir conjunts, preordres, fórmules i deduccions, grafs i monoides; tots reapareixeran al llarg del llibre.
+\end{quote}
+
+\section{Un llenguatge comú per a estructures diferents}
+
+Moltes àrees de les matemàtiques estudien objectes equipats amb morfismes que en preserven l'estructura. Entre conjunts hi ha aplicacions; entre grups, homomorfismes; entre preordres, aplicacions monòtones; entre grafs, morfismes que preserven origen i destí. En un sistema deductiu, la relació de deduïbilitat també permet passar d'una fórmula a una altra.
+
+En tots aquests casos hi ha identitats i una composició associativa. La teoria de categories aïlla aquestes dades i les estudia independentment de la naturalesa interna dels objectes. Això permet formular una construcció una sola vegada i aplicar-la després en contextos diferents.
+
+El producte n'és un primer exemple. En conjunts és el producte cartesià; en un preordre és l'ínfim, quan existeix; en lògica correspon a la conjunció. Les construccions concretes són diferents, però satisfan una mateixa propietat universal. La teoria de categories estudia aquesta propietat comuna.
+
+\section{Descripcions externes dels objectes}
+
+Un objecte matemàtic es pot descriure pels seus elements i operacions internes, però també pels morfismes que hi arriben i els que en surten. Per exemple, un conjunt d'un sol element es caracteritza perquè des de qualsevol conjunt hi ha una única aplicació cap a ell. Aquesta caracterització no esmenta els elements del conjunt i té sentit en qualsevol categoria; defineix un objecte terminal.
+
+Aquest tipus de descripció és estable sota isomorfismes i es trasllada entre àmbits. En un preordre, un objecte terminal és un element màxim. En la categoria prima d'una lògica, correspon a una fórmula deduïble des de qualsevol altra. En la categoria dels monoides, el monoide trivial és terminal.
+
+La descripció mitjançant morfismes no substitueix l'estudi intern dels objectes. Proporciona un nivell d'abstracció diferent, especialment adequat per comparar construccions i formular propietats universals.
+
+\section{Els morfismes formen part de l'estructura}
+
+La teoria no considera una col·lecció d'objectes sense especificar quines transformacions entre ells són admissibles. La mateixa classe d'objectes pot donar lloc a categories diferents si es canvien els morfismes. Els conjunts amb totes les aplicacions, els conjunts amb només les injeccions i els conjunts amb relacions binàries tenen propietats categòriques diferents.
+
+Els monoides mostren que els morfismes no han de ser aplicacions entre objectes diferents. Un monoide es pot veure com una categoria amb un únic objecte, en què els elements del monoide són endomorfismes i el producte és la composició. Els grafs, en canvi, proporcionen l'estructura combinatòria inicial dels diagrames, però encara no tenen composicions ni identitats especificades.
+
+\section{Diagrames i equacions}
+
+Els diagrames són una notació per organitzar objectes, morfismes i igualtats de composicions. Si $f\colon A\to B$ i $g\colon B\to C$, la composició es representa amb
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.4em, row sep=2.7em] {
+    A & B \\
+      & C \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$g$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$g\comp f$} (m-2-2);
+\end{tikzpicture}
+\]
+La commutativitat afirma que els dos camins d'$A$ a $C$ determinen el mateix morfisme. Per tant, el diagrama expressa l'equació que defineix la composició indicada.
+
+Al llarg del llibre, cada diagrama s'ha de llegir juntament amb les equacions que representa. En propietats universals cal distingir, a més, la commutativitat de l'existència i la unicitat del morfisme que completa el diagrama.
+
+\section{Dualitat}
+
+Invertir totes les fletxes d'una categoria produeix la categoria oposada. Qualsevol definició formulada només amb objectes, morfismes, identitats i composició té una definició dual. Així, els objectes inicials són duals dels terminals, els coproductes dels productes, els epimorfismes dels monomorfismes i els colímits dels límits.
+
+La dualitat permet obtenir resultats nous a partir de resultats ja demostrats, sempre que també s'inverteixin correctament les hipòtesis i les construccions. No afirma que les interpretacions concretes dels dos resultats siguin idèntiques; afirma que comparteixen una mateixa estructura categòrica amb les fletxes invertides.
+
+\section{Relació amb la lògica i altres àrees}
+
+La teoria de categories proporciona llenguatge per a la semàntica de tipus, termes i fórmules. Les categories cartesianes tancades interpreten el càlcul lambda simplement tipat; els subobjectes interpreten predicats; els pullbacks, substitucions; i determinades adjuncions, quantificadors. Aquestes correspondències exigeixen hipòtesis precises, que el llibre introdueix gradualment.
+
+En informàtica teòrica, els mateixos conceptes apareixen en semàntica denotacional, teoria de tipus, programació funcional i composició de sistemes. En àlgebra, topologia i geometria, les categories permeten comparar construccions que tenen propietats universals comunes. Aquestes aplicacions no substitueixen els continguts específics de cada disciplina; n'organitzen les relacions estructurals.
+
+\section{Organització del recorregut}
+
+El llibre comença amb categories, functors i transformacions naturals. Després introdueix representabilitat, Yoneda, límits i adjuncions. Els tres capítols següents estudien categories cartesianes tancades, subobjectes i topos, que formen la preparació immediata per a la lògica categòrica.
+
+Els exemples de conjunts, preordres, lògica, grafs i monoides es mantindran com a referències recurrents. La seva funció és mostrar què conserva una definició abstracta i quines propietats depenen de la categoria concreta.
+
+\endgroup 

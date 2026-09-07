@@ -1,0 +1,364 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aprendes}[2026/08/17 Estil unificat per a Aprendes Universitat]
+
+% ============================================================
+%  aprendes.sty  --  FULL UNIFICAT
+%
+%  Aquest únic paquet substitueix el trio anterior
+%  (aprendes.sty / aprendes-sobri.sty / aprendes-modern.sty)
+%  i, a més, absorbeix la paleta i els entorns de teorema que
+%  abans vivien a common/environments.tex, de manera que ja no
+%  cal cap fitxer auxiliar ni cap ordre de càrrega concret.
+%
+%  Càrrega:
+%     \usepackage{aprendes}            % estil «sobri» (per defecte)
+%     \usepackage[sobri]{aprendes}     % idem, explícit
+%     \usepackage[modern]{aprendes}    % estil «modern» (blocs pastel)
+%     \usepackage[classic]{aprendes}   % sense tcolorbox: amsthm pur
+%
+%  Tot el que el document necessita (colors, \newtheorem, prova,
+%  solucio, indicacio, nota, format de títols) queda definit aquí.
+% ============================================================
+
+\RequirePackage{xcolor}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\RequirePackage{titlesec}
+\RequirePackage{amsthm}
+\RequirePackage{amssymb}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{iftex}
+
+% ------------------------------------------------------------
+%  Opcions d'estil
+% ------------------------------------------------------------
+\newif\ifaprendes@modern   \aprendes@modernfalse
+\newif\ifaprendes@classic  \aprendes@classicfalse
+\DeclareOption{sobri}{\aprendes@modernfalse\aprendes@classicfalse}
+\DeclareOption{modern}{\aprendes@moderntrue\aprendes@classicfalse}
+\DeclareOption{classic}{\aprendes@classictrue\aprendes@modernfalse}
+\ProcessOptions\relax
+
+% ============================================================
+%  1. PALETA
+% ============================================================
+% ---- Paleta base compartida (abans a common/environments.tex) ----
+% Aquests colors vius s'usen per als encapçalaments amstheorem del
+% mode «classic», per a la indicació, i com a llavor dels colors
+% derivats dels modes «sobri» i «modern».
+\definecolor{fons}{RGB}{243,231,220}
+\definecolor{apren}{RGB}{255,64,87}   % vermell corporatiu
+\definecolor{cdefn}{RGB}{101,255,205}
+\definecolor{cexem}{RGB}{23,205,255}
+\definecolor{cexer}{RGB}{137,255,133}
+\definecolor{cobs}{RGB}{250,163,92}
+\definecolor{cdemo}{RGB}{255,115,100}
+\definecolor{csolu}{RGB}{110,132,169}
+
+% ---- Paleta «sobri»: variants fosques, dues famílies + neutres ----
+%   AprenFosc    : vermell corporatiu fosc (seccions i definicions)
+%   ResultatBlau : blau pissarra fosc (teorema/lema/proposició/corol·lari)
+%   NeutreFosc/Clar : grisos per a demostracions i solucions
+\definecolor{AprenFosc}{HTML}{B02438}
+\definecolor{ResultatBlau}{HTML}{27476E}
+\definecolor{NeutreFosc}{HTML}{555555}
+\definecolor{NeutreClar}{HTML}{BBBBBB}
+
+% ---- Paleta «modern»: fons pastel, un to per família ----
+\definecolor{AprenSuau}{HTML}{FF8A9A}
+\definecolor{DefinicioSuau}{HTML}{B8FFE6}
+\definecolor{ExempleSuau}{HTML}{A7E9FF}
+\definecolor{ExerciciSuau}{HTML}{C9FFC7}
+\definecolor{ObservacioSuau}{HTML}{FFD6B3}
+\definecolor{DemostracioSuau}{HTML}{FFB3A9}
+\definecolor{SolucioSuau}{HTML}{C3D0E1}
+\definecolor{TeoremaSuau}{HTML}{D4C4FF}
+\definecolor{LemaSuau}{HTML}{E8DFFF}
+\definecolor{ProposicioSuau}{HTML}{FFD6EA}
+\definecolor{CorollariSuau}{HTML}{FFF2CC}
+
+% ============================================================
+%  2. COMPTADORS I ENTORNS DE TEOREMA (base amsthm)
+%     (abans a common/environments.tex)
+%     Els modes sobri/modern es limiten a re-vestir aquests entorns.
+% ============================================================
+% En mode «classic» cal que l'estil estigui seleccionat ABANS dels
+% \newtheorem, perquè amsthm associa l'estil en el moment de declarar
+% cada entorn. Per això definim aquí l'estil classic i el seleccionem
+% condicionalment; en els altres modes fem servir l'estil «definition».
+\ifaprendes@classic
+  \newtheoremstyle{aprendesclassic}
+    {0.8em}{0.8em}{}{}{\bfseries\color{AprenFosc}}{.}{0.5em}{}
+  \theoremstyle{aprendesclassic}
+\else
+  \theoremstyle{definition}
+\fi
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{lema}[teorema]{Lema}
+\newtheorem{corollari}[teorema]{Coro\l.lari}
+% «Proposició» i «Resultat» són entorns independents que comparteixen
+% el comptador dels teoremes. Cada projecte pot fer servir el terme que
+% li convingui sense redefinir ni aliasar l'altre entorn.
+\newtheorem{proposicio}[teorema]{Proposició}
+\newtheorem{resultat}[teorema]{Resultat}
+\newtheorem{axioma}{Axioma}               % numeració contínua a tot el llibre
+\newtheorem{definicio}{Definici\'{o}}[chapter]
+\newtheorem{exemple}{Exemple}[chapter]
+\newtheorem{exercici}{Exercici}[chapter]
+\ifaprendes@classic\else\theoremstyle{remark}\fi
+\newtheorem{observacio}{Observaci\'{o}}[chapter]
+\newtheorem{notacio}{Notaci\'{o}}[chapter]
+\newtheorem*{nota}{Nota}
+
+% ---- Entorns de discurs sempre disponibles (poden ser re-vestits) ----
+\newenvironment{prova}
+  {\par\noindent{\color{apren}\textbf{Demostraci\'{o}:}\ }}
+  {\quad\hfill$\blacksquare$\par}
+\newenvironment{solucio}
+  {\par\noindent{\color{apren}\textbf{Soluci\'{o}:}\ }}
+  {\quad\hfill$\square$\par}
+
+% ---- Indicació breu per als exercicis (comuna a tots els modes) ----
+\newenvironment{indicacio}
+  {\par\smallskip\begingroup\footnotesize
+   \noindent{\color{csolu}\textbf{Indicaci\'{o}:}\ }}
+  {\par\smallskip\endgroup}
+
+% ============================================================
+%  3. ESTIL «CLASSIC»: amsthm pur, encapçalaments en vermell
+% ============================================================
+% L'estil «aprendesclassic» i la seva selecció es fan a la secció 2,
+% abans dels \newtheorem, perquè amsthm associa l'estil en declarar
+% cada entorn. En mode classic no es carrega cap bloc tcolorbox: els
+% entorns es fan servir tal com s'han declarat, amb les etiquetes en
+% vermell corporatiu.
+
+% ============================================================
+%  4. ESTIL «SOBRI» (per defecte): filets, fons tènue, taronja
+% ============================================================
+\ifaprendes@classic\else\ifaprendes@modern\else
+  % ----- Estils de bloc -----
+  \tcbset{
+    blocenunciat/.style={
+      enhanced, breakable, sharp corners,
+      frame hidden, boxrule=0pt,
+      colback=#1!4,
+      borderline west={2.2pt}{0pt}{#1},
+      left=8pt, right=4pt, top=5pt, bottom=5pt,
+      before skip=0.9em, after skip=0.9em,
+    },
+    blocdiscurs/.style={
+      enhanced, breakable, sharp corners,
+      frame hidden, boxrule=0pt,
+      colback=white, opacityback=0,
+      borderline west={1pt}{0pt}{NeutreClar},
+      left=8pt, right=0pt, top=2pt, bottom=2pt,
+      before skip=0.7em, after skip=0.7em,
+    },
+    blocobservacio/.style={
+      enhanced, breakable, sharp corners,
+      frame hidden, boxrule=0pt,
+      colback=#1!5,
+      borderline west={1.6pt}{0pt}{#1},
+      left=8pt, right=4pt, top=4pt, bottom=4pt,
+      before skip=0.8em, after skip=0.8em,
+    },
+  }
+
+  % Etiqueta. Amb pdfLaTeX usem versaletes de Latin Modern;
+  % amb XeLaTeX/LuaLaTeX evitem demanar una forma small-caps que
+  % algunes instal·lacions de Latin Modern no exposen a fontspec.
+  \newcommand{\etiqueta}[2]{{\color{#1}\ifpdftex\scshape\else\sffamily\bfseries\fi #2.}\hspace{0.6em}}
+
+  \AtBeginDocument{%
+    \colorlet{AxiomaVerd}{cexer!45!black}%
+    \colorlet{ObservacioTaronja}{cobs!70!black}%
+    % ---------- Enunciats amb bloc ----------
+    \renewenvironment{axioma}[1][]{%
+      \refstepcounter{axioma}%
+      \begin{tcolorbox}[blocenunciat=AxiomaVerd]%
+      \etiqueta{AxiomaVerd}{Axioma~\theaxioma\ifstrempty{#1}{}{ (#1)}}%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{definicio}[1][]{%
+      \refstepcounter{definicio}%
+      \begin{tcolorbox}[blocenunciat=AprenFosc]%
+      \etiqueta{AprenFosc}{Definici\'{o}~\thedefinicio\ifstrempty{#1}{}{ (#1)}}%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{teorema}[1][]{%
+      \refstepcounter{teorema}%
+      \begin{tcolorbox}[blocenunciat=ResultatBlau]%
+      \etiqueta{ResultatBlau}{Teorema~\theteorema\ifstrempty{#1}{}{ (#1)}}%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{lema}[1][]{%
+      \refstepcounter{teorema}%
+      \begin{tcolorbox}[blocenunciat=ResultatBlau]%
+      \etiqueta{ResultatBlau}{Lema~\theteorema\ifstrempty{#1}{}{ (#1)}}%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{proposicio}[1][]{%
+      \refstepcounter{teorema}%
+      \begin{tcolorbox}[blocenunciat=ResultatBlau]%
+      \etiqueta{ResultatBlau}{Proposici\'{o}~\theteorema\ifstrempty{#1}{}{ (#1)}}%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{resultat}[1][]{%
+      \refstepcounter{teorema}%
+      \begin{tcolorbox}[blocenunciat=ResultatBlau]%
+      \etiqueta{ResultatBlau}{Resultat~\theteorema\ifstrempty{#1}{}{ (#1)}}%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{corollari}[1][]{%
+      \refstepcounter{teorema}%
+      \begin{tcolorbox}[blocenunciat=ResultatBlau]%
+      \etiqueta{ResultatBlau}{Corol\textperiodcentered lari~\theteorema\ifstrempty{#1}{}{ (#1)}}%
+    }{\end{tcolorbox}}%
+    %
+    % ---------- Discurs: sense fons, filet gris ----------
+    \renewenvironment{prova}{%
+      \begin{tcolorbox}[blocdiscurs]%
+      {\color{NeutreFosc}\bfseries\itshape Demostraci\'{o}.}\hspace{0.6em}%
+    }{\par\nobreak\hfill$\blacksquare$\end{tcolorbox}}%
+    %
+    \renewenvironment{solucio}{%
+      \begin{tcolorbox}[blocdiscurs]%
+      {\color{NeutreFosc}\bfseries\itshape Soluci\'{o}.}\hspace{0.6em}%
+    }{\par\nobreak\hfill$\square$\end{tcolorbox}}%
+    %
+    % ---------- Exemples i exercicis: text pla ----------
+    \renewenvironment{exemple}[1][]{%
+      \refstepcounter{exemple}%
+      \par\addvspace{0.9em}\noindent
+      \etiqueta{AprenFosc}{Exemple~\theexemple\ifstrempty{#1}{}{ (#1)}}%
+      \ignorespaces
+    }{\par\addvspace{0.9em}}%
+    %
+    \renewenvironment{exercici}[1][]{%
+      \refstepcounter{exercici}%
+      \par\addvspace{0.9em}\noindent
+      \etiqueta{AprenFosc}{Exercici~\theexercici\ifstrempty{#1}{}{ (#1)}}%
+      \ignorespaces
+    }{\par\addvspace{0.9em}}%
+    %
+    % ---------- Observacions: bloc propi en taronja ----------
+    \renewenvironment{observacio}[1][]{%
+      \refstepcounter{observacio}%
+      \begin{tcolorbox}[blocobservacio=ObservacioTaronja]%
+      \etiqueta{ObservacioTaronja}{Observaci\'{o}~\theobservacio\ifstrempty{#1}{}{ (#1)}}%
+    }{\end{tcolorbox}}%
+  }
+\fi\fi
+
+% ============================================================
+%  5. ESTIL «MODERN»: blocs pastel amb títol, un to per família
+% ============================================================
+\ifaprendes@modern
+  \tcbset{
+    aprendesbox/.style={
+      sharp corners, boxrule=0.8pt,
+      colback=#1!20, colframe=#1!60,
+      coltitle=black, fonttitle=\bfseries,
+      left=6pt, right=6pt, top=6pt, bottom=6pt,
+      before skip=0.8em, after skip=0.8em, breakable,
+    }
+  }
+  \AtBeginDocument{%
+    \renewenvironment{definicio}[1][]{%
+      \refstepcounter{definicio}%
+      \begin{tcolorbox}[aprendesbox=DefinicioSuau,
+        title={Definici\'{o}~\thedefinicio\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{exemple}[1][]{%
+      \refstepcounter{exemple}%
+      \begin{tcolorbox}[aprendesbox=ExempleSuau,
+        title={Exemple~\theexemple\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{exercici}[1][]{%
+      \refstepcounter{exercici}%
+      \begin{tcolorbox}[aprendesbox=ExerciciSuau,
+        title={Exercici~\theexercici\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{observacio}[1][]{%
+      \refstepcounter{observacio}%
+      \begin{tcolorbox}[aprendesbox=ObservacioSuau,
+        title={Observaci\'{o}~\theobservacio\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{axioma}[1][]{%
+      \refstepcounter{axioma}%
+      \begin{tcolorbox}[aprendesbox=ExerciciSuau,
+        title={Axioma~\theaxioma\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{solucio}{%
+      \begin{tcolorbox}[aprendesbox=SolucioSuau,title={Soluci\'{o}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{prova}{%
+      \begin{tcolorbox}[aprendesbox=DemostracioSuau,title={Demostraci\'{o}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{teorema}[1][]{%
+      \refstepcounter{teorema}%
+      \begin{tcolorbox}[aprendesbox=TeoremaSuau,
+        title={Teorema~\theteorema\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{lema}[1][]{%
+      \refstepcounter{teorema}%
+      \begin{tcolorbox}[aprendesbox=LemaSuau,
+        title={Lema~\theteorema\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{proposicio}[1][]{%
+      \refstepcounter{teorema}%
+      \begin{tcolorbox}[aprendesbox=ProposicioSuau,
+        title={Proposici\'{o}~\theteorema\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{resultat}[1][]{%
+      \refstepcounter{teorema}%
+      \begin{tcolorbox}[aprendesbox=ProposicioSuau,
+        title={Resultat~\theteorema\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{corollari}[1][]{%
+      \refstepcounter{teorema}%
+      \begin{tcolorbox}[aprendesbox=CorollariSuau,
+        title={Corol\textperiodcentered lari~\theteorema\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+  }
+\fi
+
+% ============================================================
+%  6. ENLLAÇOS
+%     hyperref NO es carrega aquí: ha de ser l'últim paquet del
+%     document. Es carrega al final de common/preamble.tex, on
+%     també es fixen els colors dels enllaços.
+% ============================================================
+
+% ============================================================
+%  7. TÍTOLS (comuns a tots els modes)
+%     Negre amb numeració en el vermell corporatiu fosc.
+% ============================================================
+\titleformat{\chapter}
+  {\Huge\bfseries}{{\color{AprenFosc}\thechapter}}{1em}{}
+
+\newcommand{\secformat}[1]{{\color{AprenFosc}\thesection}\quad #1}
+\titleformat{\section}{\Large\bfseries}{}{0pt}{\secformat}
+
+\newcommand{\subsecformat}[1]{{\color{AprenFosc}\thesubsection}\quad #1}
+\titleformat{\subsection}{\large\bfseries}{}{0pt}{\subsecformat}
+
+\newcommand{\subsubsecformat}[1]{{\color{AprenFosc}\thesubsubsection}\quad #1}
+\titleformat{\subsubsection}{\bfseries}{}{0pt}{\subsubsecformat}
+
+\setlist{itemsep=0.25em,topsep=0.25em}
+
+\endinput

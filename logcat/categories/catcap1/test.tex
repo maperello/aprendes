@@ -1,0 +1,157 @@
+\chapter[Categories]{Categories i morfismes especials}
+
+Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta. Els camps interactius funcionen en lectors de PDF compatibles amb formularis i JavaScript.
+
+\begin{Form}
+\iniciTest{cat}{b,c,b,b,c,c,d,b,a,a,c,d,b,c,a}
+
+\begin{enumerate}
+
+\pregunta Quines dades formen una categoria?
+\begin{enumerate}
+  \opcio{a}{Només una col·lecció d'objectes i una relació d'ordre.}
+  \opcio{b}{Objectes, morfismes, identitats i composició, subjectes als axiomes d'associativitat i identitat.}
+  \opcio{c}{Objectes, elements i una operació interna en cada objecte.}
+  \opcio{d}{Únicament morfismes i una operació de composició total.}
+\end{enumerate}
+\feedback
+
+\pregunta Si $f\colon A\to B$ i $g\colon B\to C$, com s'interpreta $g\comp f$?
+\begin{enumerate}
+  \opcio{a}{Primer actua $g$ i després $f$.}
+  \opcio{b}{Només està definit quan $A=C$.}
+  \opcio{c}{Primer actua $f$ i després $g$.}
+  \opcio{d}{És sempre igual a $f\comp g$.}
+\end{enumerate}
+\feedback
+
+\pregunta En un quadrat amb $f\colon A\to B$, $u\colon A\to C$, $v\colon B\to D$ i $g\colon C\to D$, què significa que el quadrat commuti?
+\begin{enumerate}
+  \opcio{a}{$f\comp v=u\comp g$.}
+  \opcio{b}{$v\comp f=g\comp u$.}
+  \opcio{c}{$v\comp g=f\comp u$.}
+  \opcio{d}{Que totes quatre fletxes siguin isomorfismes.}
+\end{enumerate}
+\feedback
+
+\pregunta Com es veu un monoide com una categoria?
+\begin{enumerate}
+  \opcio{a}{Com una categoria sense objectes.}
+  \opcio{b}{Com una categoria amb un sol objecte, on els elements del monoide són els morfismes.}
+  \opcio{c}{Com una categoria amb un objecte per a cada element del monoide i sense fletxes.}
+  \opcio{d}{Només els grups es poden interpretar com a categories.}
+\end{enumerate}
+\feedback
+
+\pregunta En la categoria associada a un preordre $(P,\leq)$, quan hi ha una fletxa $x\to y$?
+\begin{enumerate}
+  \opcio{a}{Quan $x=y$ i només en aquest cas.}
+  \opcio{b}{Quan $y\leq x$.}
+  \opcio{c}{Exactament quan $x\leq y$; entre dos objectes hi ha com a màxim una fletxa.}
+  \opcio{d}{Sempre hi ha dues fletxes entre dos objectes comparables.}
+\end{enumerate}
+\feedback
+
+\pregunta Què conserva la categoria prima $\cat{Prov}_T$ associada a una relació de deduïbilitat?
+\begin{enumerate}
+  \opcio{a}{La forma interna completa de cada demostració.}
+  \opcio{b}{El nombre de demostracions diferents entre dues fórmules.}
+  \opcio{c}{Només si existeix una deducció $A\vdash_T B$, mitjançant una única fletxa $A\to B$.}
+  \opcio{d}{Només les fórmules que no són demostrables.}
+\end{enumerate}
+\feedback
+
+\pregunta Quina condició ha de satisfer un morfisme de grafs $F\colon G\to H$?
+\begin{enumerate}
+  \opcio{a}{Ha d'enviar tots els vèrtexs al mateix vèrtex.}
+  \opcio{b}{Només ha de ser una aplicació entre conjunts d'arestes.}
+  \opcio{c}{Ha de convertir totes les arestes en identitats.}
+  \opcio{d}{Les aplicacions sobre vèrtexs i arestes han de preservar origen i destí, és a dir, fer commutar els dos quadrats corresponents.}
+\end{enumerate}
+\feedback
+
+\pregunta Quins són els isomorfismes a $\cat{Set}$?
+\begin{enumerate}
+  \opcio{a}{Les aplicacions injectives.}
+  \opcio{b}{Les aplicacions bijectives.}
+  \opcio{c}{Les aplicacions exhaustives.}
+  \opcio{d}{Totes les aplicacions.}
+\end{enumerate}
+\feedback
+
+\pregunta Quan són isomorfes dues fórmules $A$ i $B$ a $\cat{Prov}_T$?
+\begin{enumerate}
+  \opcio{a}{Exactament quan $A\vdash_T B$ i $B\vdash_T A$.}
+  \opcio{b}{Només quan són literalment la mateixa cadena de símbols.}
+  \opcio{c}{Quan no hi ha cap deducció entre elles.}
+  \opcio{d}{Quan hi ha exactament una prova concreta de $B$ a partir d'$A$.}
+\end{enumerate}
+\feedback
+
+\pregunta Què fa la construcció de la categoria oposada $\cat{C}\op$?
+\begin{enumerate}
+  \opcio{a}{Conserva els objectes i inverteix el sentit de totes les fletxes.}
+  \opcio{b}{Intercanvia objectes per morfismes.}
+  \opcio{c}{Elimina tots els morfismes no invertibles.}
+  \opcio{d}{Conserva les fletxes i canvia només les identitats.}
+\end{enumerate}
+\feedback
+
+\pregunta Què és un objecte de la categoria producte $\cat{C}\times\cat{D}$?
+\begin{enumerate}
+  \opcio{a}{Un morfisme de $\cat{C}$ a $\cat{D}$.}
+  \opcio{b}{Un objecte que pertany simultàniament a $\cat{C}$ i a $\cat{D}$.}
+  \opcio{c}{Una parella $(A,X)$ amb $A$ objecte de $\cat{C}$ i $X$ objecte de $\cat{D}$.}
+  \opcio{d}{Un subconjunt del producte cartesià dels objectes.}
+\end{enumerate}
+\feedback
+
+\pregunta Quina és la identitat d'un vèrtex en la categoria lliure sobre un graf dirigit?
+\begin{enumerate}
+  \opcio{a}{Qualsevol bucle del graf.}
+  \opcio{b}{La primera aresta que surt del vèrtex.}
+  \opcio{c}{No hi ha identitats si el graf no les dibuixa.}
+  \opcio{d}{El camí buit de longitud zero en aquell vèrtex.}
+\end{enumerate}
+\feedback
+
+\pregunta Què significa que una categoria sigui localment petita?
+\begin{enumerate}
+  \opcio{a}{Que tingui un nombre finit d'objectes.}
+  \opcio{b}{Que, per a cada parella d'objectes $A,B$, la col·lecció $\Hom(A,B)$ sigui un conjunt.}
+  \opcio{c}{Que la col·lecció de tots els objectes sigui un conjunt.}
+  \opcio{d}{Que tots els seus morfismes siguin isomorfismes.}
+\end{enumerate}
+\feedback
+
+\pregunta Què passa si un graf finit conté un cicle i en prenem la categoria lliure?
+\begin{enumerate}
+  \opcio{a}{La categoria lliure continua tenint necessàriament un nombre finit de morfismes.}
+  \opcio{b}{El cicle es converteix automàticament en una identitat.}
+  \opcio{c}{El cicle es pot repetir arbitràriament i genera infinits camins, per tant infinits morfismes.}
+  \opcio{d}{La construcció deixa de ser una categoria.}
+\end{enumerate}
+\feedback
+
+\pregunta Quina equació expressa que el triangle següent \textbf{commuta}?
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=3em]
+    { A & B \\ & C \\ };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$g$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$h$} (m-2-2);
+\end{tikzpicture}
+\]
+\begin{enumerate}
+  \opcio{a}{$h=g\comp f$.}
+  \opcio{b}{$f=g\comp h$.}
+  \opcio{c}{$g=f\comp h$.}
+  \opcio{d}{$f\comp g\comp h=\id$.}
+\end{enumerate}
+\feedback
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest
+\end{Form}

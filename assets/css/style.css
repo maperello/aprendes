@@ -230,3 +230,8 @@ nav a:hover {
 .material-card .card-actions {
   margin-top: 28px;
 }
+.empty-note {
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 8px;
+}

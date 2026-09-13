@@ -1,0 +1,103 @@
+\chapter{Categories}
+
+Aquest test no busca que recordis definicions, sinó que \emph{raonis} amb elles: decidir casos concrets, trobar l'error d'un argument i distingir nocions properes (mono/epi/iso, secció/retracció, petita/localment petita). Cada pregunta té una única resposta correcta; abans de triar, intenta justificar-la tu mateix.
+
+\begin{Form}
+\iniciTest{cat}{c,b,c,c,b,c,d,b,c,b}
+
+\begin{enumerate}
+
+\pregunta Un lector afirma: \enquote{Com que la composició d'una categoria és associativa, l'expressió $h\comp g\comp f$ està ben definida per a qualssevol tres morfismes $f,g,h$.} On falla?
+\begin{enumerate}
+  \opcio{a}{No falla: l'associativitat garanteix que sempre es pot compondre.}
+  \opcio{b}{Falla perquè l'associativitat només val en categories petites.}
+  \opcio{c}{Falla perquè la composició és \emph{parcial}: $h\comp g\comp f$ només té sentit si $\cod(f)=\dom(g)$ i $\cod(g)=\dom(h)$; l'associativitat només diu que, quan les dues agrupacions existeixen, coincideixen.}
+  \opcio{d}{Falla perquè $h\comp g\comp f$ mai no està definit sense parèntesis.}
+\end{enumerate}
+\feedback
+
+\pregunta A la categoria d'un sol objecte $\cat{B}M$ associada al monoide $M=\{1,e\}$ amb $e\comp e=e$ (i $1$ neutre), és $e$ un monomorfisme?
+\begin{enumerate}
+  \opcio{a}{Sí, perquè tot element d'un monoide és cancel·lable.}
+  \opcio{b}{No: $e\comp 1=e=e\comp e$ amb $1\neq e$, de manera que $e$ no es pot cancel·lar per l'esquerra.}
+  \opcio{c}{Sí, perquè $e$ és idempotent.}
+  \opcio{d}{La pregunta no té sentit: en un monoide no hi ha monomorfismes.}
+\end{enumerate}
+\feedback
+
+\pregunta A $\cat{Top}$, una bijecció contínua $f\colon X\to Y$ la inversa de la qual \emph{no} és contínua. Què n'és, $f$?
+\begin{enumerate}
+  \opcio{a}{Un isomorfisme, perquè és bijectiva.}
+  \opcio{b}{Ni mono ni epi.}
+  \opcio{c}{Un bimorfisme (mono i epi) que \emph{no} és un isomorfisme: la definició categòrica d'isomorfisme exigeix un invers en la categoria, i aquí la inversa no és un morfisme de $\cat{Top}$.}
+  \opcio{d}{Un monomorfisme però no un epimorfisme.}
+\end{enumerate}
+\feedback
+
+\pregunta Un lector escriu: \enquote{A $\cat{Set}$, tota aplicació exhaustiva és un epimorfisme; per tant, per demostrar que és epi, cal triar-ne una secció.} On és l'error?
+\begin{enumerate}
+  \opcio{a}{No hi ha error: cal la secció per força.}
+  \opcio{b}{L'error és que les aplicacions exhaustives no són epimorfismes.}
+  \opcio{c}{L'error és confondre dues coses: \enquote{epi $=$ exhaustiva} es prova amb dues aplicacions cap a $\{0,1\}$, sense triar cap secció; que tota exhaustiva \emph{admeti} una secció és un enunciat diferent, equivalent a l'axioma de l'elecció.}
+  \opcio{d}{L'error és que a $\cat{Set}$ no hi ha epimorfismes.}
+\end{enumerate}
+\feedback
+
+\pregunta Sabem que tot isomorfisme és alhora mono i epi. Un lector conclou: \enquote{Per tant, a qualsevol categoria, tot bimorfisme és un isomorfisme.} Com el refutaries amb un exemple mínim?
+\begin{enumerate}
+  \opcio{a}{No es pot refutar: és cert a totes les categories.}
+  \opcio{b}{Amb la categoria $\cat{2}=(0\to 1)$: l'única fletxa no trivial és mono i epi ---gairebé no hi ha fletxes amb què fer les cancel·lacions--- però no té invers, de manera que no és un isomorfisme.}
+  \opcio{c}{Amb qualsevol isomorfisme de $\cat{Set}$.}
+  \opcio{d}{Amb la categoria buida.}
+\end{enumerate}
+\feedback
+
+\pregunta Un morfisme $f\colon A\to B$ té una \emph{retracció} $r$ (amb $r\comp f=\id_A$). Quina conclusió és correcta i per què?
+\begin{enumerate}
+  \opcio{a}{$f$ és un epimorfisme, perquè $r$ el cancel·la per la dreta.}
+  \opcio{b}{$f$ és un isomorfisme, perquè té invers per un costat.}
+  \opcio{c}{$f$ és un monomorfisme: si $f\comp g=f\comp h$, component amb $r$ per l'esquerra dona $g=h$.}
+  \opcio{d}{No se'n pot dir res sense saber la categoria.}
+\end{enumerate}
+\feedback
+
+\pregunta A la categoria associada a un preordre $(P,\leq)$, es compleix sempre que \emph{tota} fletxa és alhora mono i epi. Per què?
+\begin{enumerate}
+  \opcio{a}{Perquè tot preordre és un grup.}
+  \opcio{b}{Perquè les fletxes són bijeccions.}
+  \opcio{c}{Perquè els preordres no tenen composició.}
+  \opcio{d}{Perquè entre dos objectes hi ha com a màxim una fletxa: les igualtats $f\comp g=f\comp h$ o $g\comp f=h\comp f$ es compleixen trivialment, ja que $g$ i $h$ no poden ser diferents si tenen el mateix domini i codomini.}
+\end{enumerate}
+\feedback
+
+\pregunta Considera la categoria oposada $\cat{C}\op$. Un lector diu: \enquote{Si $f$ és un monomorfisme a $\cat{C}$, aleshores $f$ és un monomorfisme a $\cat{C}\op$.} És correcte?
+\begin{enumerate}
+  \opcio{a}{Sí, perquè $\cat{C}$ i $\cat{C}\op$ tenen els mateixos morfismes.}
+  \opcio{b}{No: en passar a l'oposada, la cancel·lació per l'esquerra es converteix en cancel·lació per la dreta; un monomorfisme de $\cat{C}$ és un \emph{epimorfisme} de $\cat{C}\op$, no un monomorfisme.}
+  \opcio{c}{No, perquè a $\cat{C}\op$ no hi ha monomorfismes.}
+  \opcio{d}{Sí, perquè els monomorfismes són autoduals.}
+\end{enumerate}
+\feedback
+
+\pregunta Un lector afirma: \enquote{La categoria $\cat{Set}$ és petita, perquè els seus morfismes són simplement aplicacions.} On s'equivoca?
+\begin{enumerate}
+  \opcio{a}{No s'equivoca: $\cat{Set}$ és petita.}
+  \opcio{b}{S'equivoca perquè $\cat{Set}$ no té identitats.}
+  \opcio{c}{S'equivoca: $\cat{Set}$ és \emph{localment petita} (cada $\Hom(A,B)$ és un conjunt) però \emph{no} petita, perquè la col·lecció de tots els conjunts és una classe pròpia, no un conjunt.}
+  \opcio{d}{S'equivoca perquè $\cat{Set}$ ni tan sols és una categoria.}
+\end{enumerate}
+\feedback
+
+\pregunta Vols provar que la composició de dos monomorfismes $f\colon A\rightarrowtail B$ i $g\colon B\rightarrowtail C$ és un monomorfisme. Quin és l'argument correcte?
+\begin{enumerate}
+  \opcio{a}{Que $g\comp f$ té una retracció perquè $f$ i $g$ en tenen.}
+  \opcio{b}{Si $(g\comp f)\comp u=(g\comp f)\comp v$, aleshores $g\comp(f\comp u)=g\comp(f\comp v)$; com que $g$ és mono, $f\comp u=f\comp v$; i com que $f$ és mono, $u=v$.}
+  \opcio{c}{Que la composició de mono és sempre epi.}
+  \opcio{d}{No es pot provar en general.}
+\end{enumerate}
+\feedback
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest
+\end{Form}

@@ -1,0 +1,280 @@
+\chapter[Subobjectes, imatges i factoritzacions]{\texorpdfstring{Subobjectes, imatges\\ i factoritzacions}{Subobjectes, imatges i factoritzacions}}
+\label{cap:subobjectes}
+
+\begin{objectius}
+\apartat{Prerequisits} Monomorfismes (cap.~\ref{cap:categories}); pullbacks, reindexació i límits finits (cap.~\ref{cap:limits}).
+\apartat{Objectius} En acabar el capítol, el lector ha de saber: definir el subobjecte i el preordre $\Sub(A)$; interpretar la reindexació $f^{*}$ com a substitució i la intersecció com a pullback; definir epimorfisme regular, parella nucli i factorització imatge; reconèixer una categoria regular; i demostrar l'adjunció $\exists_f\dashv f^{*}$.
+\end{objectius}
+
+El capítol anterior ens ha donat la semàntica dels tipus i els termes. Ara construïm la peça complementària: la interpretació de les \textbf{proposicions} i la \textbf{substitució}. La idea directriu és senzilla i profunda: un predicat sobre un objecte $A$ ---una propietat que els \enquote{elements} de $A$ poden tenir o no--- es representa categòricament per un \textbf{subobjecte} de $A$, és a dir, per la inclusió del subconjunt on la propietat es compleix. Els subobjectes d'un objecte formen un preordre $\Sub(A)$, i la reindexació per pullback, que ja vam construir, hi actua com la substitució.
+
+A la segona meitat del capítol construïm la \textbf{factorització imatge} d'un morfisme ---la seva descomposició en una part exhaustiva seguida d'una inclusió---, definim les \textbf{categories regulars} com aquelles on aquesta factorització és estable per canvi de base, i n'obtenim una conseqüència notable: l'\textbf{existencial} apareix com a \textbf{adjunt per l'esquerra} de la reindexació. L'universal $\forall_f$ requereix estructura addicional i es tractarà al volum de lògica categòrica. Amb això, el volum tanca la infraestructura categòrica que la lògica farà servir.
+
+\section{Subobjectes}
+
+Volem capturar la idea de \enquote{subconjunt} de manera purament categòrica. A $\cat{Set}$, un subconjunt $S\subseteq A$ es pot presentar per la seva inclusió $S\hookrightarrow A$, que és un monomorfisme. Però dos monomorfismes diferents poden tenir la mateixa imatge: una inclusió i una reparametrització bijectiva del domini defineixen \enquote{el mateix} subconjunt. Cal, doncs, identificar monomorfismes que difereixen per un isomorfisme del domini.
+
+\begin{definicio}[Subobjecte]\index{subobjecte}
+\label{def:subobjecte}
+Sigui $A$ un objecte d'una categoria $\cat{C}$. Considerem els monomorfismes amb codomini $A$. Diem que dos monomorfismes $m\colon S\rightarrowtail A$ i $m'\colon S'\rightarrowtail A$ són \textbf{equivalents}, i escrivim $m\sim m'$, si existeix un isomorfisme $\varphi\colon S\to S'$ amb $m'\comp\varphi=m$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=2.8em, row sep=2.0em] {
+    S & & S' \\
+      & A & \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$\varphi$} node[below] {$\sim$} (m-1-3);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$m$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-3) -- node[below right] {$m'$} (m-2-2);
+\end{tikzpicture}
+\]
+Un \textbf{subobjecte} de $A$ és una classe d'equivalència de monomorfismes per aquesta relació. Escrivim $[m]$ per al subobjecte representat per $m$.
+\end{definicio}
+
+\begin{observacio}
+La relació $\sim$ és d'equivalència: la reflexivitat usa $\varphi=\id$, la simetria usa $\varphi^{-1}$ (que existeix perquè $\varphi$ és isomorfisme), i la transitivitat, la composició d'isomorfismes. Cal notar que l'isomorfisme $\varphi$, si existeix, és \emph{únic}: de $m'\comp\varphi=m=m'\comp\varphi'$ i el fet que $m'$ és mono se segueix $\varphi=\varphi'$. Els subobjectes estan, doncs, ben definits sense ambigüitat.
+\end{observacio}
+
+\begin{exemple}
+A $\cat{Set}$, els subobjectes de $A$ es corresponen exactament amb els \textbf{subconjunts} de $A$. Un monomorfisme $m\colon S\rightarrowtail A$ és una aplicació injectiva, i la seva classe d'equivalència queda determinada per la imatge $m(S)\subseteq A$: dos monos són equivalents si i només si tenen la mateixa imatge. Així, $\Sub(A)\cong\mathcal{P}(A)$, el conjunt de parts de $A$.
+\end{exemple}
+
+\section{El preordre de subobjectes}
+
+Els subobjectes d'un objecte no formen només un conjunt: hi ha una noció natural d'inclusió entre ells.
+
+\begin{definicio}[Ordre entre subobjectes]\index{subobjecte!ordre}\index{Sub@$\Sub(A)$}
+\label{def:ordre-sub}
+Donats dos monomorfismes $m\colon S\rightarrowtail A$ i $n\colon T\rightarrowtail A$, diem que $[m]\leq[n]$ si $m$ \textbf{es factoritza a través de} $n$, és a dir, si existeix un morfisme $h\colon S\to T$ amb $n\comp h=m$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=2.8em, row sep=2.0em] {
+    S & & T \\
+      & A & \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$h$} (m-1-3);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$m$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-3) -- node[below right] {$n$} (m-2-2);
+\end{tikzpicture}
+\]
+\end{definicio}
+
+\begin{proposicio}[$\Sub(A)$ és un preordre]
+\label{prop:sub-preordre}
+La relació $\leq$ de la definició~\ref{def:ordre-sub} està ben definida sobre classes d'equivalència i fa de $\Sub(A)$ un \textbf{preordre}. A més, $[m]\leq[n]$ i $[n]\leq[m]$ impliquen $[m]=[n]$, de manera que $\Sub(A)$ és, de fet, un \textbf{ordre parcial}.
+\end{proposicio}
+
+\begin{prova}
+El morfisme de factorització $h$, si existeix, és únic, perquè $n$ és mono: de $n\comp h=m=n\comp h'$ se segueix $h=h'$. A més, $h$ és automàticament un monomorfisme: si $h\comp u=h\comp v$, aleshores $m\comp u=n\comp h\comp u=n\comp h\comp v=m\comp v$, i com que $m$ és mono, $u=v$. La bona definició sobre classes és immediata: substituir $m$ o $n$ per equivalents compon $h$ amb isomorfismes. La reflexivitat usa $h=\id$; la transitivitat, la composició de factoritzacions.
+
+Per a l'antisimetria, suposem $[m]\leq[n]$ i $[n]\leq[m]$, amb factoritzacions $h\colon S\to T$ i $k\colon T\to S$. Aleshores $n\comp h=m$ i $m\comp k=n$, d'on $n\comp h\comp k=m\comp k=n$; com que $n$ és mono, $h\comp k=\id_T$. Simètricament, $k\comp h=\id_S$. Per tant $h$ és un isomorfisme amb $n\comp h=m$, és a dir, $m\sim n$ i $[m]=[n]$.
+\end{prova}
+
+\begin{observacio}[Categories ben potenciades]\index{categoria!ben potenciada}\index{ben potenciada}
+La petitesa local garanteix que cada $\Hom(A,B)$ és un conjunt, però \emph{no} que la col·lecció $\Sub(A)$ ho sigui: en principi podria ser massa gran. Direm que una categoria és \textbf{ben potenciada} si, per a cada objecte $A$, els subobjectes de $A$ formen un conjunt. Aquesta és la hipòtesi que garanteix que $\Sub(A)$ és un conjunt de debò i que, més endavant, es pugui reunir en un functor
+\[
+\Sub\colon\cat{C}\op\longrightarrow\cat{Set}.
+\]
+Totes les categories que trobarem seran ben potenciades; a $\cat{Set}$, per exemple, $\Sub(A)\cong\mathcal{P}(A)$ és un conjunt. De fet, l'existència d'un classificador de subobjectes en una categoria localment petita ja implica aquesta condició.
+\end{observacio}
+
+\begin{observacio}[Predicats com a subobjectes]
+Aquesta és la lectura lògica fonamental. Pensem un objecte $A$ com un \textbf{tipus} i un subobjecte $[m]\in\Sub(A)$ com un \textbf{predicat} sobre aquell tipus: la propietat \enquote{pertànyer a $S$}. L'ordre $[m]\leq[n]$ és la \textbf{implicació} entre predicats: tot element que satisfà $m$ satisfà $n$. Veurem que $\Sub(A)$ té sovint estructura de reticle ---amb intersecció i unió de subobjectes--- i fins i tot d'àlgebra de Heyting, cosa que en fa l'àlgebra de proposicions sobre $A$.
+\end{observacio}
+
+\section{Reindexació de subobjectes}
+
+Al capítol de límits vam construir, per a un morfisme $f\colon A\to B$ en una categoria amb pullbacks, el functor de reindexació $f^{*}\colon\cat{C}/B\to\cat{C}/A$ (observació~\ref{obs:reindexacio}). La clau ara és que aquesta reindexació \emph{preserva els monomorfismes}, de manera que es restringeix a una operació entre preordres de subobjectes.
+
+\begin{proposicio}[El pullback preserva monomorfismes]
+\label{prop:pullback-mono}
+En un quadrat cartesià
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3em, row sep=2.4em] {
+    P & S \\
+    A & B \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$m'$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$f'$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$m$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$f$} (m-2-2);
+  \node at ([xshift=0.8em,yshift=-0.7em]m-1-1) {$\scriptstyle\lrcorner$};
+\end{tikzpicture}
+\]
+si $m$ és un monomorfisme, aleshores el seu pullback $m'$ també ho és.
+\end{proposicio}
+
+\begin{prova}
+Donem la demostració conceptual, que és curta i completa. En qualsevol categoria, un morfisme $m\colon S\to B$ és un monomorfisme si i només si el quadrat
+\[
+\begin{tikzpicture}[baseline=(q.center)]
+  \matrix (q) [matrix of math nodes, column sep=2.6em, row sep=1.9em] {
+    S & S \\
+    S & B \\
+  };
+  \draw[-{Stealth[scale=1.0]}] (q-1-1) -- node[above] {$\id_S$} (q-1-2);
+  \draw[-{Stealth[scale=1.0]}] (q-1-1) -- node[left] {$\id_S$} (q-2-1);
+  \draw[-{Stealth[scale=1.0]}] (q-1-2) -- node[right] {$m$} (q-2-2);
+  \draw[-{Stealth[scale=1.0]}] (q-2-1) -- node[below] {$m$} (q-2-2);
+\end{tikzpicture}
+\]
+és cartesià: dir que aquest quadrat és un pullback és, exactament, dir que dos morfismes $u,v\colon Z\to S$ amb $m\comp u=m\comp v$ han de coincidir. Ara, el \enquote{lema del pullback} estableix que si en un rectangle dividit en dos quadrats el quadrat dret i el rectangle sencer són cartesians, aleshores el quadrat esquerre també ho és, i que la composició de dos quadrats cartesians és cartesiana. Componen el quadrat del pullback de l'enunciat amb el quadrat anterior de $m$: s'obté que $P$ és el pullback d'una parella amb els dos costats superiors iguals, cosa que, per la caracterització anterior aplicada a $m'$, equival a dir que $m'$ és mono. Per tant el pullback d'un monomorfisme al llarg de qualsevol morfisme és un monomorfisme.
+\end{prova}
+
+\begin{observacio}
+La conseqüència que ens interessa és immediata: com que la reindexació $f^{*}$ envia monomorfismes a monomorfismes, es restringeix a una operació ben definida entre els preordres de subobjectes, que és la que ara definim. A $\cat{Set}$, aquesta operació és l'antiimatge $S\mapsto f^{-1}(S)$, tal com vam veure en introduir el pullback.
+\end{observacio}
+
+\begin{definicio}[Functor de reindexació sobre subobjectes]\index{reindexació!de subobjectes}\index{substitució}
+\label{def:reindexacio-sub}
+Sigui $f\colon A\to B$ un morfisme en una categoria $\cat{C}$ amb pullbacks. La \textbf{reindexació} indueix una aplicació
+\[
+f^{*}\colon\Sub(B)\longrightarrow\Sub(A)
+\]
+que envia un subobjecte $[m]$, amb $m\colon S\rightarrowtail B$, al subobjecte $[m']$ del seu pullback al llarg de $f$. Per la proposició~\ref{prop:pullback-mono}, $m'$ és mono, de manera que $f^{*}[m]$ és un subobjecte de $A$ ben definit.
+\end{definicio}
+
+\begin{proposicio}[La reindexació és monòtona]
+\label{prop:reindexacio-monotona}
+L'aplicació $f^{*}\colon\Sub(B)\to\Sub(A)$ preserva l'ordre: si $[m]\leq[n]$ a $\Sub(B)$, aleshores $f^{*}[m]\leq f^{*}[n]$ a $\Sub(A)$. És a dir, $f^{*}$ és un morfisme de preordres.
+\end{proposicio}
+
+\begin{prova}
+Suposem $[m]\leq[n]$ amb factorització $h\colon S\to T$, $n\comp h=m$. Formant els pullbacks de $m$ i $n$ al llarg de $f$, la propietat universal proporciona un morfisme entre els pullbacks compatible amb les projeccions cap a $A$, que és la factorització buscada $f^{*}[m]\leq f^{*}[n]$. Concretament, el pullback de $S$ es factoritza a través del pullback de $T$ perquè tota parella que hi encaixa per a $S$ hi encaixa per a $T$ via $h$.
+\end{prova}
+
+\begin{observacio}[La substitució]
+Aquesta és la interpretació que anunciàvem. Si pensem un subobjecte $[m]\in\Sub(B)$ com un predicat $P(y)$ sobre la variable $y:B$, i $f\colon A\to B$ com un \enquote{terme} $f(x)$ amb $x:A$, aleshores $f^{*}[m]\in\Sub(A)$ és el predicat $P(f(x))$: la \textbf{substitució} de $y$ per $f(x)$ dins de $P$. A $\cat{Set}$, on $[m]$ és un subconjunt $S\subseteq B$, la reindexació és l'antiimatge:
+\[
+f^{*}(S)=f^{-1}(S)=\{x\in A\mid f(x)\in S\}.
+\]
+La monotonia de $f^{*}$ diu que la substitució respecta la implicació: si $P\Rightarrow Q$, aleshores $P(f)\Rightarrow Q(f)$.
+\end{observacio}
+
+\section{Intersecció de subobjectes}
+
+El preordre $\Sub(A)$ té més estructura que l'ordre: quan la categoria té pullbacks, admet \textbf{ínfims binaris}, que interpreten la conjunció de predicats.
+
+\begin{proposicio}[La intersecció és un pullback]\index{subobjecte!intersecció}
+\label{prop:interseccio}
+Siguin $m\colon S\rightarrowtail A$ i $n\colon T\rightarrowtail A$ dos subobjectes de $A$. El seu \textbf{pullback} sobre $A$,
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3em, row sep=2.4em] {
+    S\cap T & T \\
+    S & A \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$n$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$m$} (m-2-2);
+  \node at ([xshift=1em,yshift=-0.7em]m-1-1) {$\scriptstyle\lrcorner$};
+\end{tikzpicture}
+\]
+amb la diagonal $S\cap T\rightarrowtail A$ com a monomorfisme cap a $A$, és l'\textbf{ínfim} $[m]\wedge[n]$ a $\Sub(A)$.
+\end{proposicio}
+
+\begin{prova}
+La inclusió $S\cap T\rightarrowtail A$ és mono per ser composició de monos (la projecció del pullback és mono per la proposició~\ref{prop:pullback-mono}, i $m$ és mono). Per construcció $[m\wedge n]\leq[m]$ i $[m\wedge n]\leq[n]$, ja que hi ha les projeccions cap a $S$ i $T$. I si $[k]\leq[m]$ i $[k]\leq[n]$ per a un tercer subobjecte $k\colon R\rightarrowtail A$, les factoritzacions $R\to S$ i $R\to T$ són compatibles sobre $A$, de manera que la propietat universal del pullback dona una única factorització $R\to S\cap T$; per tant $[k]\leq[m]\wedge[n]$. Això caracteritza l'ínfim.
+\end{prova}
+
+\begin{observacio}
+En termes lògics, $[m]\wedge[n]$ és la \textbf{conjunció} dels predicats: l'element pertany a $S\cap T$ si i només si pertany a $S$ \emph{i} a $T$. A $\cat{Set}$ recuperem la intersecció de subconjunts. Si a més $\cat{C}$ té objecte terminal, el subobjecte \textbf{màxim} de $\Sub(A)$ és $\id_A$ (el predicat sempre cert), i quan hi ha objecte inicial estricte, el subobjecte \textbf{mínim} és la inclusió de l'objecte inicial (el predicat sempre fals). Amb intersecció i aquests extrems, $\Sub(A)$ és un \emph{semireticle amb màxim}. Les \textbf{unions} ---la disjunció--- exigeixen estructura addicional: la regularitat proporciona imatges, existencials i interseccions, però no, en general, suprems finits estables a les fibres $\Sub(A)$. Aquests apareixen, per exemple, en les \textbf{categories coherents}, que es tractaran al volum de lògica categòrica.
+\end{observacio}
+
+\section{Epimorfismes regulars i imatges}
+
+Per copsar la imatge d'un morfisme necessitem la classe adequada d'epimorfismes: els que sorgeixen com a quocients.
+
+\begin{definicio}[Epimorfisme regular]\index{epimorfisme!regular}
+\label{def:epi-regular}
+Un morfisme $e\colon A\to B$ és un \textbf{epimorfisme regular} si és el coequalitzador d'alguna parella de morfismes $u,v\colon R\to A$.
+\end{definicio}
+
+\begin{definicio}[Parella nucli]\index{parella nucli}
+\label{def:parella-nucli}
+La \textbf{parella nucli} d'un morfisme $f\colon A\to B$ és el pullback de $f$ amb ell mateix; els seus dos morfismes $p_1,p_2\colon R\to A$ recullen les parelles d'elements que $f$ identifica. A $\cat{Set}$, $R=\{(a,a')\mid f(a)=f(a')\}$.
+\end{definicio}
+
+\begin{definicio}[Factorització imatge]\index{imatge}\index{factorització!imatge}
+\label{def:imatge}
+Una \textbf{factorització imatge} de $f\colon A\to B$ és una descomposició $f=m\comp e$ amb $A\xrightarrow{\,e\,}I\xrightarrow{\,m\,}B$, on $e$ és un epimorfisme regular i $m$ un monomorfisme. El subobjecte $[m]\in\Sub(B)$ és la \textbf{imatge} de $f$, denotada $\Imatge(f)$.
+\end{definicio}
+
+\begin{proposicio}[La imatge és el mínim subobjecte]
+\label{prop:imatge-unica}
+Quan existeix, la factorització imatge és única llevat d'isomorfisme canònic, i $\Imatge(f)$ és el \emph{menor} subobjecte de $B$ a través del qual $f$ es factoritza: si $f$ es factoritza per un mono $n\colon T\rightarrowtail B$, aleshores $\Imatge(f)\leq[n]$.
+\end{proposicio}
+
+\begin{prova}
+Com que $e$ és el coequalitzador de la seva parella nucli i $m'$ és mono, tota altra factorització $f=m'\comp e'$ iguala les branques de la parella nucli, de manera que $e'$ es factoritza per $e$ mitjançant un únic morfisme; simètricament s'obté l'invers, i les dues composicions són identitats perquè $e$ és epi. Això dona l'isomorfisme canònic. La minimalitat en segueix: si $f=n\comp g$ amb $n$ mono, aleshores $g$ iguala la parella nucli i es factoritza per $e$, d'on $\Imatge(f)=[m]\leq[n]$.
+\end{prova}
+
+\begin{observacio}
+A $\cat{Set}$, $\Imatge(f)$ és el subconjunt imatge $f(A)\subseteq B$, amb $e$ l'aplicació exhaustiva $A\to f(A)$ i $m$ la inclusió. Recuperem la noció usual d'imatge.
+\end{observacio}
+
+\section{Categories regulars i estabilitat}
+
+Perquè la teoria d'imatges sigui utilitzable, cal que les imatges es comportin bé sota el canvi de base.
+
+\begin{definicio}[Categoria regular]\index{categoria!regular}
+\label{def:regular}
+Una categoria $\cat{C}$ és \textbf{regular} si té tots els límits finits, tota fletxa admet una factorització imatge (epi regular seguit de mono), i els epimorfismes regulars són \textbf{estables per pullback}.
+\end{definicio}
+
+\begin{exemple}
+Són regulars $\cat{Set}$, tota categoria d'àlgebres d'una teoria algebraica (grups, anells, mòduls\ldots), tota categoria abeliana i tot topos elemental. La categoria $\cat{Top}$ \emph{no} és regular, perquè les imatges no hi són estables per pullback.
+\end{exemple}
+
+\begin{proposicio}[Estabilitat de la imatge]
+\label{prop:imatge-estable}
+En una categoria regular, la formació d'imatges commuta amb el pullback: si es forma el pullback de $f\colon A\to B$ al llarg de $g\colon B'\to B$, aleshores $\Imatge(f')=g^{*}\bigl(\Imatge(f)\bigr)$, on $f'$ és el morfisme reindexat.
+\end{proposicio}
+
+\begin{prova}
+Factoritzem $f=m\comp e$. En prendre el pullback al llarg de $g$, l'epimorfisme regular $e$ dona un epi regular $e'$ (per l'estabilitat) i el mono $m$ dona un mono $m'$ (proposició~\ref{prop:pullback-mono}). Així $f'=m'\comp e'$ és una factorització epi regular\,--\,mono, i per la unicitat de la imatge, $m'$ representa $g^{*}(\Imatge(f))$.
+\end{prova}
+
+\section{L'existencial com a adjunt de la reindexació}
+
+Com a conseqüència de tot això, la reindexació adquireix un adjunt per l'esquerra. És un exemple particularment ric d'adjunció, que reprèn el fil del capítol corresponent.
+
+\begin{teorema}[$\exists_f\dashv f^{*}$]\index{quantificador!existencial}\index{adjunció!existencial}
+\label{teo:existencial-adjunt}
+Sigui $\cat{C}$ una categoria regular i $f\colon A\to B$. L'operació
+\[
+\exists_f[s]:=\Imatge(f\comp s)\in\Sub(B)
+\]
+és adjunta per l'esquerra de la reindexació $f^{*}\colon\Sub(B)\to\Sub(A)$; és a dir,
+\[
+\exists_f[s]\leq[t]\quad\Longleftrightarrow\quad[s]\leq f^{*}[t].
+\]
+\end{teorema}
+
+\begin{prova}
+Si $[s]\leq f^{*}[t]$, aleshores $S$ es factoritza a través del pullback $f^{*}T$, i component-lo amb la projecció cap a $T$ s'obté que $f\comp s$ es factoritza per $t$; com que $\Imatge(f\comp s)$ és el mínim subobjecte amb aquesta propietat, $\exists_f[s]\leq[t]$. Recíprocament, si $\exists_f[s]\leq[t]$, aleshores $f\comp s=t\comp k$ per a algun $k$, i aquesta igualtat exhibeix $S$ com un con sobre el diagrama del pullback $f^{*}T$, de manera que $[s]\leq f^{*}[t]$.
+\end{prova}
+
+\begin{observacio}[L'universal com a estructura addicional]\index{quantificador!universal}\index{adjunció!quantificadors}
+En una categoria regular, la reindexació $f^{*}$ té sempre l'adjunt per l'esquerra $\exists_f$ que acabem de construir, però \emph{no} té necessàriament un adjunt per la dreta. Quan cada $f^{*}$ admet a més un adjunt per la dreta, el denotem $\forall_f$ i queda caracteritzat per
+\[
+f^{*}[t]\leq[s]\quad\Longleftrightarrow\quad[t]\leq\forall_f[s].
+\]
+Aquesta és estructura addicional: apareix, per exemple, en les categories localment cartesianes tancades amb les hipòtesis de mida adequades i, en particular, en tot topos elemental. La construcció de $\forall_f$ i el seu paper lògic es tracten al volum de lògica categòrica; no s'obté simplement dualitzant la construcció de la imatge dins de la mateixa fibra de subobjectes.
+\end{observacio}
+
+\begin{observacio}[Lectura lògica]
+Aquesta adjunció té una lectura lògica il·lustrativa. Si $f$ és la projecció $\pi\colon X\times Y\to X$ que oblida la variable $Y$, i pensem un subobjecte de $X\times Y$ com un predicat $s(x,y)$, aleshores
+\[
+\exists_\pi[s]=\{x\mid\exists y,\ s(x,y)\}.
+\]
+L'existencial apareix, doncs, com a adjunt per l'esquerra de la substitució. Quan la categoria té també els adjunts per la dreta, l'universal es llegeix anàlogament com $\forall_\pi[s]=\{x\mid\forall y,\ s(x,y)\}$. El desenvolupament d'aquesta idea com a \emph{sistema lògic} ---amb el seu càlcul, la interpretació de l'existencial per la factorització imatge i les condicions de coherència pertinents--- és objecte de l'estudi de la lògica categòrica, i queda fora de l'abast d'aquest volum.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Cinc idees} (1)~Un subobjecte és una classe de monomorfismes amb el mateix codomini; $\Sub(A)$ és un preordre, l'àlgebra de predicats sobre $A$. (2)~La reindexació $f^{*}$ (pullback) interpreta la substitució i és monòtona. (3)~La intersecció de subobjectes és el seu pullback; dona la conjunció. (4)~La factorització imatge (epi regular seguit de mono) existeix i és estable en una categoria regular. (5)~En una categoria regular, $f^{*}$ té adjunt per l'esquerra $\exists_f$; l'universal $\forall_f$ és estructura addicional.
+\apartat{Errors típics} Creure que la regularitat dona unions de subobjectes (calen categories coherents) o l'adjunt dret $\forall_f$; confondre els epimorfismes amb els epimorfismes regulars (a $\cat{Top}$ són coses distintes); i usar \enquote{imatge}, \enquote{buit} o \enquote{elements} en una categoria arbitrària sense declarar les hipòtesis.
+\apartat{Lectura recomanada} \cite[cap.~5 i~\S9.5]{awodey} per a subobjectes, imatges i l'adjunció existencial; \cite[A1.3]{johnstone} i \cite{borceux} per a categories regulars; \cite{jacobs} per a la lectura fibracional de la reindexació.
+\end{resumcap}

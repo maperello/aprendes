@@ -1,0 +1,135 @@
+\documentclass[12pt,a4paper,oneside]{book}
+
+% Metadades pròpies del llibre: una única font de veritat.
+\input{metadata.tex}
+
+% ============================================================
+% INTERRUPTOR DE COMPILACIÓ
+% ------------------------------------------------------------
+% \publicaciotresprimerstrue  -> genera NOMÉS la versió parcial
+%     (prefaci, introducció, capítols 1-3 en les quatre parts,
+%      apèndixs, glossari, bibliografia, taula de notació i índex).
+% \publicaciotresprimersfalse -> genera el LLIBRE COMPLET (per defecte).
+%
+% Per publicar la versió 1.5 (capítols 1-3), canvieu la línia següent
+% a \publicaciotresprimerstrue i recompileu (XeLaTeX + makeindex + XeLaTeX x2).
+% ============================================================
+\newif\ifpublicaciotresprimers
+\publicaciotresprimersfalse
+
+% Els fitxers compartits viuen ara a la subcarpeta common/ d'aquest mateix
+% projecte, de manera que es troben amb ruta explícita, sense dependre de
+% TEXINPUTS ni de cap configuració del sistema de compilació.
+\usepackage[sobri]{common/aprendes}
+\input{common/preamble.tex}
+\input{common/macros.tex}
+\input{caps/categories-macros.tex}
+\input{caps/tikz-estils.tex}
+\input{common/interactive-tests.tex}
+\input{caps/tests-estatics.tex}
+\input{caps/didactica.tex}
+
+\makeindex[title={Índex alfabètic},columns=2,intoc]
+
+\begin{document}
+\pagecolor{fons!20}
+\hypermetadata
+
+\frontmatter
+\maketitle
+\tableofcontents
+\let\cleardoublepage\clearpage
+
+\input{caps/prefaci}
+
+\mainmatter
+\input{caps/introduccio}
+
+% ============================================================
+% PART I — TEORIA
+% ============================================================
+\part{Teoria}
+\setcounter{chapter}{0}
+\input{caps/teoria/categories}
+\input{caps/teoria/functors}
+\input{caps/teoria/transformacions}
+\ifpublicaciotresprimers\else
+\input{caps/teoria/yoneda}
+\input{caps/teoria/limits}
+\input{caps/teoria/adjuncions}
+\input{caps/teoria/cartesianes}
+\input{caps/teoria/subobjectes}
+\input{caps/teoria/topos}
+\input{caps/teoria/pont}
+\fi
+
+% ============================================================
+% PART II — PRÀCTICA
+% Els capítols reprodueixen els noms i l'ordre de la part teòrica.
+% ============================================================
+\part{Pràctica}
+\setcounter{chapter}{0}
+\input{caps/practica/categories}
+\input{caps/practica/functors}
+\input{caps/practica/transformacions}
+\ifpublicaciotresprimers\else
+\input{caps/practica/yoneda}
+\input{caps/practica/limits}
+\input{caps/practica/adjuncions}
+\input{caps/practica/cartesianes}
+\input{caps/practica/subobjectes}
+\input{caps/practica/topos}
+\fi
+
+% ============================================================
+% PART III — EXERCICIS PROPOSATS
+% ============================================================
+\part{Exercicis proposats}
+\setcounter{chapter}{0}
+\input{caps/exercicis/categories}
+\input{caps/exercicis/functors}
+\input{caps/exercicis/transformacions}
+\ifpublicaciotresprimers\else
+\input{caps/exercicis/yoneda}
+\input{caps/exercicis/limits}
+\input{caps/exercicis/adjuncions}
+\input{caps/exercicis/cartesianes}
+\input{caps/exercicis/subobjectes}
+\input{caps/exercicis/topos}
+\fi
+
+% ============================================================
+% PART IV — TESTS INTERACTIUS
+% ============================================================
+\part{Tests interactius}
+\setcounter{chapter}{0}
+\input{caps/tests/categories}
+\input{caps/tests/functors}
+\input{caps/tests/transformacions}
+\ifpublicaciotresprimers\else
+\input{caps/tests/yoneda}
+\input{caps/tests/limits}
+\input{caps/tests/adjuncions}
+\input{caps/tests/cartesianes}
+\input{caps/tests/subobjectes}
+\input{caps/tests/topos}
+\fi
+
+% ============================================================
+% APÈNDIXS NUMERATS
+% \appendix ha d'anar dins \mainmatter (abans de \backmatter):
+% a la classe book, \backmatter desactiva la numeració de capítols,
+% de manera que els capítols d'apèndix es numeren A, B, ... aquí.
+% ============================================================
+\appendix
+\part{Apèndixs}
+\input{caps/apendix-axiomatica-relacional}
+\input{caps/apendix-grafs}
+
+\backmatter
+\input{caps/bibliografia}
+\input{caps/glossari}
+\input{caps/notacio-mida}
+\printindex
+
+\end{document}

@@ -1,0 +1,278 @@
+\chapter[Transformacions naturals]{\texorpdfstring{Transformacions naturals\\ i equivalències}{Transformacions naturals i equivalències}}
+
+En aquest capítol resolem amb detall exercicis sobre \emph{transformacions naturals}, \emph{isomorfismes naturals} i \emph{equivalències de categories}. L'èmfasi és a comprovar la condició de naturalitat en casos concrets, a distingir un isomorfisme d'un isomorfisme natural, i a reconèixer una equivalència mitjançant les tres propietats que la caracteritzen. Convé intentar cada exercici abans de llegir-ne la solució.
+
+\section{Definició de transformació natural}
+
+\begin{exercici}
+Siguin $F,G\colon\cat{C}\to\cat{D}$ dos functors i suposem que, per a cada objecte $A$, tenim un morfisme $\eta_A\colon F(A)\to G(A)$. Comprova que, per verificar que $\eta$ és una transformació natural, n'hi ha prou de comprovar la condició de naturalitat sobre un conjunt de morfismes que \emph{generi} $\cat{C}$ per composició, i que en el cas d'una categoria lliure $\Free(G_0)$ això vol dir comprovar-la només sobre les arestes del graf $G_0$.
+\end{exercici}
+
+\begin{solucio}
+La condició de naturalitat per a un morfisme componible diu $G(f)\comp\eta_A=\eta_B\comp F(f)$. Suposem que val per a dos morfismes componibles $f\colon A\to B$ i $g\colon B\to C$. Aleshores, per a la composició $g\comp f$,
+\[
+G(g\comp f)\comp\eta_A=G(g)\comp G(f)\comp\eta_A=G(g)\comp\eta_B\comp F(f)=\eta_C\comp F(g)\comp F(f)=\eta_C\comp F(g\comp f),
+\]
+on hem fet servir la functorialitat de $G$ i $F$ i les condicions de naturalitat per a $f$ i per a $g$. Per tant, si la naturalitat val per a un conjunt de morfismes, val per a totes les seves composicions. També val trivialment per a les identitats, perquè $G(\id_A)\comp\eta_A=\eta_A=\eta_A\comp F(\id_A)$.
+
+En una categoria lliure $\Free(G_0)$, tot morfisme és un camí, és a dir, una composició d'arestes del graf $G_0$. Per l'argument anterior, doncs, la naturalitat sobre tots els morfismes es dedueix de la naturalitat sobre les arestes. Això redueix molt la feina de comprovació.
+\end{solucio}
+
+\begin{exercici}
+Considera la categoria $\cat{2}=(0\to 1)$ i dos functors $F,G\colon\cat{2}\to\cat{D}$. Descriu explícitament què és una transformació natural $\eta\colon F\Rightarrow G$.
+\end{exercici}
+
+\begin{solucio}
+Un functor $F\colon\cat{2}\to\cat{D}$ és el mateix que un morfisme de $\cat{D}$: tria dos objectes $F(0),F(1)$ i un morfisme $F(u)\colon F(0)\to F(1)$, on $u\colon 0\to 1$ és l'única fletxa no trivial. Igualment $G$ dona un morfisme $G(u)\colon G(0)\to G(1)$.
+
+Una transformació natural $\eta\colon F\Rightarrow G$ consisteix en dos components $\eta_0\colon F(0)\to G(0)$ i $\eta_1\colon F(1)\to G(1)$, subjectes a la condició de naturalitat per a $u$:
+\[
+G(u)\comp\eta_0=\eta_1\comp F(u).
+\]
+És a dir, una transformació natural entre dos morfismes de $\cat{D}$ és exactament un \textbf{quadrat commutatiu}
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=3.2em] {
+    F(0) & G(0) \\
+    F(1) & G(1) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$\eta_0$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$F(u)$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$G(u)$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$\eta_1$} (m-2-2);
+\end{tikzpicture}
+\]
+Aquest exemple explica per què els quadrats commutatius apareixen tan sovint: són les transformacions naturals més simples possibles.
+\end{solucio}
+
+\section{Exemples de transformacions naturals}
+
+\begin{exercici}
+Comprova en detall que l'avaluació $\eta_V\colon V\to V^{**}$, $\eta_V(v)(\varphi)=\varphi(v)$, és una transformació natural de la identitat cap al functor doble dual, sobre la categoria dels espais vectorials sobre un cos $\mathbb K$ i les aplicacions lineals.
+\end{exercici}
+
+\begin{solucio}
+Recordem primer com actua el doble dual sobre morfismes. Donada una aplicació lineal $T\colon V\to W$, el seu dual $T^*\colon W^*\to V^*$ envia $\psi\mapsto\psi\comp T$, i el doble dual $T^{**}\colon V^{**}\to W^{**}$ envia $\Phi\mapsto\Phi\comp T^*$.
+
+La condició de naturalitat per a $T\colon V\to W$ és el quadrat
+\[
+T^{**}\comp\eta_V=\eta_W\comp T.
+\]
+Comprovem que tots dos costats coincideixen aplicats a un vector $v\in V$ i avaluats en una forma $\psi\in W^*$. D'una banda,
+\[
+\begin{aligned}
+\big(T^{**}(\eta_V(v))\big)(\psi)
+&=\big(\eta_V(v)\comp T^*\big)(\psi)
+=\eta_V(v)\big(T^*(\psi)\big)\\
+&=\eta_V(v)(\psi\comp T)
+=(\psi\comp T)(v)
+=\psi(T(v)).
+\end{aligned}
+\]
+De l'altra,
+\[
+\big(\eta_W(T(v))\big)(\psi)=\psi\big(T(v)\big).
+\]
+Els dos resultats coincideixen per a tot $v$ i tot $\psi$, de manera que $T^{**}\comp\eta_V=\eta_W\comp T$. Per tant $\eta$ és natural. Cap pas no ha requerit triar una base: aquesta és la manifestació concreta de la naturalitat.
+\end{solucio}
+
+\begin{exercici}
+Siguin $P$ i $Q$ preordres i $F,G,H\colon P\to Q$ aplicacions monòtones. Interpreta les transformacions naturals $F\Rightarrow G$ i comprova que la composició vertical correspon a la transitivitat de la desigualtat puntual.
+\end{exercici}
+
+\begin{solucio}
+Com hem vist a la teoria, hi ha una transformació natural $F\Rightarrow G$ si i només si $F(x)\leq G(x)$ per a tot $x\in P$; i quan existeix, és única, perquè entre dos objectes d'un preordre hi ha com a màxim una fletxa.
+
+Si tenim $\eta\colon F\Rightarrow G$ i $\theta\colon G\Rightarrow H$, això vol dir $F(x)\leq G(x)$ i $G(x)\leq H(x)$ per a tot $x$. La composició vertical $\theta\comp\eta\colon F\Rightarrow H$ existeix perquè, per transitivitat, $F(x)\leq H(x)$. Així, la composició vertical de transformacions naturals entre aplicacions monòtones és exactament la transitivitat de la relació \enquote{puntualment menor o igual}. La categoria de functors $Q^{P}$ resulta ser, en aquest cas, un preordre: el preordre de les aplicacions monòtones $P\to Q$ amb l'ordre puntual.
+\end{solucio}
+
+\section{Isomorfismes naturals}
+
+\begin{exercici}\label{ex:dual-no-natural}
+Comprova que tot espai vectorial real $V$ de dimensió finita és isomorf al seu dual $V^*$, però que aquesta identificació no és \emph{canònica}: no existeix cap família d'isomorfismes $\eta_V\colon V\to V^*$ (per a $V$ espai vectorial real de dimensió finita) que sigui invariant sota tots els isomorfismes lineals, en el sentit que, per a tot isomorfisme $T\colon V\to W$, es compleixi $\eta_W\comp T=(T^{-1})^*\comp\eta_V$.
+\end{exercici}
+
+\begin{solucio}
+Si $V$ té dimensió finita $n$, aleshores $V^*$ també té dimensió $n$, i dos espais reals de la mateixa dimensió finita són isomorfs. Un isomorfisme concret s'obté triant una base $\{e_1,\dots,e_n\}$ de $V$ i enviant $e_i$ a la base dual $\{e_i^*\}$. L'isomorfisme depèn de la base triada.
+
+Cal notar primer que la comparació s'ha de plantejar amb cura, perquè la identitat és un functor covariant $\cat{Vect}_{\mathbb R}\to\cat{Vect}_{\mathbb R}$ i el dual és \emph{contravariant}, és a dir, un functor $\cat{Vect}_{\mathbb R}\op\to\cat{Vect}_{\mathbb R}$; entre functors de variància diferent no té sentit la noció de quadrat de naturalitat que hem definit. Per això formulem la invariància com a compatibilitat amb els \emph{isomorfismes} lineals, on el dual $(T^{-1})^*$ i $T$ van en el mateix sentit.
+
+Que no existeixi una tal família es pot veure amb l'escalament. Sigui $V\neq 0$ i prenem l'homotècia $T=2\,\id_V$, que és un isomorfisme lineal (aquí fem servir que treballem sobre $\mathbb R$, on $2\neq 0$). Aleshores $T^{-1}=\tfrac12\,\id_V$ i $(T^{-1})^*=\tfrac12\,\id_{V^*}$. La condició d'invariància demanaria
+\[
+\eta_V\comp(2\,\id_V)=\bigl(\tfrac12\,\id_{V^*}\bigr)\comp\eta_V,
+\]
+és a dir, $2\,\eta_V=\tfrac12\,\eta_V$, o equivalentment $\tfrac32\,\eta_V=0$. Com que $\tfrac32\neq 0$, això força $\eta_V=0$, que no és un isomorfisme. Per tant no hi ha cap identificació $V\cong V^*$ invariant sota tots els isomorfismes lineals.
+
+\begin{observacio}
+El punt clau de l'argument és triar un escalar $\lambda$ amb $\lambda\neq\lambda^{-1}$, és a dir $\lambda^2\neq 1$: de la igualtat $\lambda\,\eta_V=\lambda^{-1}\eta_V$ només se'n dedueix $\eta_V=0$ quan $\lambda-\lambda^{-1}\neq 0$. No n'hi ha prou, doncs, amb $\lambda\neq 0,1$: sobre $\mathbb R$ l'escalar $\lambda=-1$ compliria $\lambda\neq 0,1$ però $\lambda^2=1$, i no serviria. Per això prenem $\lambda=2$, amb $\lambda^2=4\neq 1$. Sobre cossos petits pot no existir cap escalar amb $\lambda^2\neq 1$ (per exemple a $\mathbb F_2$ i $\mathbb F_3$ tots els no nuls compleixen $\lambda^2=1$), i l'argument de l'escalament s'ha d'ajustar; per això aquí ens restringim a $\mathbb R$.
+\end{observacio}
+
+Aquest contrast amb el doble dual ---que, restringit als espais de dimensió finita, sí que és naturalment isomorf a la identitat--- és l'exemple canònic de la diferència entre \enquote{isomorf} i \enquote{naturalment isomorf}.
+\end{solucio}
+
+\begin{exercici}
+Comprova que la relació \enquote{ser naturalment isomorf} és una relació d'equivalència sobre els functors $\cat{C}\to\cat{D}$.
+\end{exercici}
+
+\begin{solucio}
+Cal veure reflexivitat, simetria i transitivitat.
+
+\textbf{Reflexivitat}: la transformació identitat $\id_F\colon F\Rightarrow F$ té components $\id_{F(A)}$, que són isomorfismes; per tant $F\cong F$.
+
+\textbf{Simetria}: si $\eta\colon F\Rightarrow G$ és un isomorfisme natural, hem vist a la teoria que els inversos $\eta_A^{-1}$ formen una transformació natural $\eta^{-1}\colon G\Rightarrow F$, també amb components isomorfismes; per tant $G\cong F$.
+
+\textbf{Transitivitat}: si $\eta\colon F\Rightarrow G$ i $\theta\colon G\Rightarrow H$ són isomorfismes naturals, la composició vertical $\theta\comp\eta$ té components $\theta_A\comp\eta_A$, composició de dos isomorfismes, que és un isomorfisme. Per tant $F\cong H$.
+
+De fet, aquesta és simplement la relació d'isomorfisme entre objectes de la categoria de functors $\cat{D}^{\cat{C}}$, que ja sabem que és una relació d'equivalència.
+\end{solucio}
+
+\section{La categoria de functors}
+
+\begin{exercici}
+Descriu la categoria de functors $\cat{D}^{\cat{1}}$, on $\cat{1}$ és la categoria amb un sol objecte i només la identitat.
+\end{exercici}
+
+\begin{solucio}
+Un functor $F\colon\cat{1}\to\cat{D}$ tria un únic objecte $F(\ast)=D$ de $\cat{D}$ (i envia l'única identitat a $\id_D$). Per tant, els objectes de $\cat{D}^{\cat{1}}$ es corresponen amb els objectes de $\cat{D}$.
+
+Una transformació natural $\eta\colon F\Rightarrow G$ entre dos tals functors té un únic component $\eta_\ast\colon F(\ast)\to G(\ast)$, és a dir, un morfisme $D\to D'$ de $\cat{D}$; la condició de naturalitat per a l'única fletxa (la identitat) es compleix trivialment. Per tant, els morfismes de $\cat{D}^{\cat{1}}$ es corresponen amb els morfismes de $\cat{D}$.
+
+Concloem que $\cat{D}^{\cat{1}}$ és \emph{isomorfa} a $\cat{D}$: prendre functors des de la categoria terminal $\cat{1}$ recupera la categoria original.
+\end{solucio}
+
+\begin{exercici}
+Comprova que un functor $F\colon\cat{2}\to\cat{D}$ és un objecte de la categoria de functors $\cat{D}^{\cat{2}}$, i que aquesta categoria és la \textbf{categoria de fletxes} de $\cat{D}$: els seus objectes són els morfismes de $\cat{D}$ i els seus morfismes són els quadrats commutatius.
+\end{exercici}
+
+\begin{solucio}
+Ja hem vist que un functor $\cat{2}\to\cat{D}$ és un morfisme de $\cat{D}$, i que una transformació natural entre dos d'aquests functors és un quadrat commutatiu. Per tant, els objectes de $\cat{D}^{\cat{2}}$ són els morfismes de $\cat{D}$, i els morfismes de $\cat{D}^{\cat{2}}$ són els quadrats commutatius, amb la composició vertical corresponent a apilar quadrats. Aquesta categoria s'anomena \textbf{categoria de fletxes} de $\cat{D}$ i es denota sovint $\cat{D}^{\to}$. És un primer exemple de com les categories de functors produeixen construccions útils a partir de categories índex molt simples.
+\end{solucio}
+
+\begin{exercici}
+Sigui $\cat{P}$ la categoria amb dos objectes $E,V$ i dues fletxes paral·leles $s,t\colon E\to V$. Comprova en detall que una transformació natural entre dos functors $G,H\colon\cat{P}\to\cat{Set}$ és exactament un morfisme de grafs, i identifica per tant $\cat{Set}^{\cat{P}}$ amb $\cat{Graph}$.
+\end{exercici}
+
+\begin{solucio}
+Un functor $G\colon\cat{P}\to\cat{Set}$ són dos conjunts $G(E),G(V)$ i dues aplicacions $G(s),G(t)\colon G(E)\to G(V)$: un graf, amb $G(E)$ les arestes, $G(V)$ els vèrtexs, i $G(s),G(t)$ l'origen i el destí.
+
+Una transformació natural $\varphi\colon G\Rightarrow H$ té components $\varphi_E\colon G(E)\to H(E)$ i $\varphi_V\colon G(V)\to H(V)$. La naturalitat s'ha de complir per a cada morfisme de $\cat{P}$; sobre les identitats és automàtica, i sobre $s$ i $t$ dona
+\[
+H(s)\comp\varphi_E=\varphi_V\comp G(s),
+\qquad
+H(t)\comp\varphi_E=\varphi_V\comp G(t).
+\]
+La primera igualtat diu que $\varphi$ envia l'origen de cada aresta a l'origen de la seva imatge; la segona, el mateix amb el destí. Això és exactament la definició de morfisme de grafs. Per tant els morfismes de $\cat{Set}^{\cat{P}}$ són els morfismes de grafs, i $\cat{Set}^{\cat{P}}\cong\cat{Graph}$. Observem que n'hi ha prou de comprovar la naturalitat sobre $s$ i $t$: com que tota fletxa no trivial de $\cat{P}$ és una d'elles, no cal res més.
+\end{solucio}
+
+\section{Equivalència de categories}
+
+\begin{exercici}
+Comprova que la categoria dels conjunts finits és equivalent a la seva subcategoria plena formada pels conjunts $\underline{n}=\{1,2,\dots,n\}$ per a $n\geq 0$ (amb $\underline{0}=\varnothing$).
+\end{exercici}
+
+\begin{solucio}
+Sigui $\cat{FinSet}$ la categoria dels conjunts finits i aplicacions, i $\cat{S}$ la subcategoria plena amb objectes els $\underline{n}$. La inclusió $\iota\colon\cat{S}\hookrightarrow\cat{FinSet}$ és:
+\begin{itemize}
+\item \textbf{plena i fidel}, per ser $\cat{S}$ una subcategoria plena: entre dos objectes $\underline{m},\underline{n}$, els morfismes a $\cat{S}$ són \emph{tots} els de $\cat{FinSet}$, és a dir, totes les aplicacions $\underline{m}\to\underline{n}$;
+\item \textbf{essencialment exhaustiva}: tot conjunt finit $X$ té alguna cardinalitat $n$, i llavors és isomorf (mitjançant una bijecció) a $\underline{n}$, que és un objecte de $\cat{S}$.
+\end{itemize}
+Pel teorema de caracterització, $\iota$ forma part d'una equivalència, i per tant $\cat{FinSet}\simeq\cat{S}$. Intuïtivament: per fer teoria de categories amb conjunts finits, n'hi ha prou de considerar un conjunt de cada mida, en lloc de tots els conjunts finits possibles.
+\end{solucio}
+
+\begin{exercici}
+Comprova que tota equivalència de categories preserva els monomorfismes, els isomorfismes i els objectes terminals. Explica per què, en canvi, \emph{no} preserva propietats estrictes com \enquote{tenir exactament un objecte}.
+\end{exercici}
+
+\begin{solucio}
+Sigui $F\colon\cat{C}\to\cat{D}$ part d'una equivalència, amb functor invers $G$ i isomorfismes naturals $G\comp F\cong\id_{\cat{C}}$ i $F\comp G\cong\id_{\cat{D}}$.
+
+Fixem la notació: siguin $\eta\colon G\comp F\Rightarrow\id_{\cat{C}}$ i $\varepsilon\colon F\comp G\Rightarrow\id_{\cat{D}}$ els isomorfismes naturals de l'equivalència. Tots dos són isomorfismes component a component, amb inversos $\eta^{-1}$ i $\varepsilon^{-1}$.
+
+\textbf{Isomorfismes}: com que $F$ és un functor, preserva isomorfismes (vegeu la definició~\ref{def:mono-epi} i l'observació que un functor respecta composicions i identitats); i com que és ple i fidel ---per ser part d'una equivalència---, també els reflecteix. Així, $f$ és un isomorfisme a $\cat{C}$ si i només si $F(f)$ ho és a $\cat{D}$.
+
+\textbf{Monomorfismes}: sigui $f\colon A\to B$ mono a $\cat{C}$; vegem que $F(f)\colon F(A)\to F(B)$ és mono a $\cat{D}$. Siguin $u,v\colon Z\to F(A)$ dos morfismes de $\cat{D}$ amb
+\[
+F(f)\comp u=F(f)\comp v.
+\]
+Apliquem el functor invers $G$ i fem servir la seva functorialitat:
+\[
+G(F(f))\comp G(u)=G\bigl(F(f)\comp u\bigr)=G\bigl(F(f)\comp v\bigr)=G(F(f))\comp G(v).
+\]
+Ara traslladem aquesta igualtat de $G(F(A))$ a $A$ mitjançant la naturalitat de $\eta$. Per a $f\colon A\to B$, el quadrat de naturalitat de $\eta$ dona
+\[
+\eta_B\comp G(F(f))=f\comp\eta_A,
+\]
+i, en ser $\eta_A,\eta_B$ isomorfismes, $G(F(f))=\eta_B^{-1}\comp f\comp\eta_A$. Substituint a la igualtat anterior i cancel·lant l'isomorfisme $\eta_B^{-1}$ per l'esquerra,
+\[
+f\comp\bigl(\eta_A\comp G(u)\bigr)=f\comp\bigl(\eta_A\comp G(v)\bigr).
+\]
+Com que $f$ és mono a $\cat{C}$, en resulta $\eta_A\comp G(u)=\eta_A\comp G(v)$, i cancel·lant l'isomorfisme $\eta_A$ obtenim $G(u)=G(v)$. Finalment, $G$ és fidel ---per ser part d'una equivalència---, de manera que $u=v$. Per tant $F(f)$ és mono.
+
+\textbf{Objectes terminals}: sigui $1$ terminal a $\cat{C}$; vegem que $F(1)$ és terminal a $\cat{D}$. Sigui $D$ un objecte qualsevol de $\cat{D}$.
+
+\emph{Existència}: com que $1$ és terminal, hi ha un únic morfisme $!\colon G(D)\to 1$ a $\cat{C}$. Aleshores el morfisme
+\[
+D\xrightarrow{\ \varepsilon_D^{-1}\ }F(G(D))\xrightarrow{\ F(!)\ }F(1)
+\]
+és un morfisme $D\to F(1)$, cosa que en garanteix l'existència.
+
+\emph{Unicitat}: siguin $h,h'\colon D\to F(1)$ dos morfismes. Aplicant $G$, obtenim $G(h),G(h')\colon G(D)\to G(F(1))$. Component amb l'isomorfisme $\eta_1\colon G(F(1))\to 1$, els morfismes $\eta_1\comp G(h)$ i $\eta_1\comp G(h')$ van de $G(D)$ a $1$ i, per tant, coincideixen per la unicitat cap a l'objecte terminal $1$. Com que $\eta_1$ és invertible, resulta $G(h)=G(h')$, i la fidelitat de $G$ dona $h=h'$. Per tant $F(1)$ és terminal.
+
+\textbf{Per què no tota propietat}: una equivalència \emph{no} preserva propietats que depenguin de la \emph{igualtat} d'objectes, sinó només les invariants \emph{llevat d'isomorfisme}. Per exemple, \enquote{tenir exactament un objecte} o \enquote{ser esquelètica} no es conserven: la categoria amb un sol objecte i la seva versió amb dos objectes isomorfs són equivalents, però la primera té un objecte i la segona en té dos. La formulació correcta és, doncs, que una equivalència preserva les propietats i construccions \textbf{universals} ---isomorfismes, monos, epis, objectes inicials i terminals, i més endavant límits i colímits---, formulades llevat d'isomorfisme, però no les propietats estrictes sobre la identitat dels objectes.
+\end{solucio}
+
+\begin{exercici}[Caracterització de les equivalències, guiat]\label{ex:caract-equivalencia}
+L'objectiu és demostrar la implicació no trivial del teorema~\ref{teo:caract-equivalencia}: si $F\colon\cat{C}\to\cat{D}$ és \textbf{ple}, \textbf{fidel} i \textbf{essencialment exhaustiu}, aleshores $F$ forma part d'una equivalència. Se segueixen els passos següents.
+\begin{enumerate}
+\item\textbf{Construcció de $G$ sobre objectes.} Per a cada objecte $D$ de $\cat{D}$, tria un objecte $G(D)$ de $\cat{C}$ i un isomorfisme $\varepsilon_D\colon F(G(D))\xrightarrow{\sim}D$. Justifica per què existeixen.
+\item\textbf{Construcció de $G$ sobre morfismes.} Donat $g\colon D\to D'$, considera el morfisme $\varepsilon_{D'}^{-1}\comp g\comp\varepsilon_D\colon F(G(D))\to F(G(D'))$ i defineix $G(g)$ com l'únic morfisme de $\cat{C}$ amb $F(G(g))=\varepsilon_{D'}^{-1}\comp g\comp\varepsilon_D$. Per què existeix i és únic?
+\item\textbf{$G$ és un functor.} Comprova que $G$ preserva identitats i composicions.
+\item\textbf{Les unitats.} Comprova que els $\varepsilon_D$ són els components d'un isomorfisme natural $\varepsilon\colon F\comp G\Rightarrow\id_{\cat{D}}$, i construeix un isomorfisme natural $\eta\colon\id_{\cat{C}}\Rightarrow G\comp F$.
+\item\textbf{La direcció recíproca.} Demostra també la implicació fàcil, que s'utilitza sovint: si $F$ forma part d'una equivalència, aleshores $F$ és ple, fidel i essencialment exhaustiu. Pots partir d'una parella $G\colon\cat{D}\to\cat{C}$ i isomorfismes naturals $\alpha\colon G\comp F\Rightarrow\id_{\cat{C}}$ i $\beta\colon F\comp G\Rightarrow\id_{\cat{D}}$.
+\end{enumerate}
+\end{exercici}
+
+\begin{solucio}
+\textbf{(a)} L'exhaustivitat essencial diu precisament que per a cada $D$ existeix algun objecte $C$ amb $F(C)\cong D$; triem un tal $C$ i l'anomenem $G(D)$, i triem un isomorfisme $\varepsilon_D\colon F(G(D))\to D$. (Aquesta tria simultània per a tots els $D$ fa servir l'axioma de l'elecció; si $\cat{D}$ és gran, la família està indexada per una classe pròpia i cal la forma \emph{global} de l'elecció, tal com s'explica a l'observació que segueix el teorema~\ref{teo:caract-equivalencia}. En categories concretes sovint se'n pot donar una de canònica.)
+
+\textbf{(b)} El morfisme $\varepsilon_{D'}^{-1}\comp g\comp\varepsilon_D$ va de $F(G(D))$ a $F(G(D'))$. Com que $F$ és \emph{ple}, aquest morfisme prové d'almenys un morfisme $G(D)\to G(D')$ de $\cat{C}$; com que $F$ és \emph{fidel}, aquest morfisme és únic. El definim com a $G(g)$. Així, per construcció,
+\[
+F(G(g))=\varepsilon_{D'}^{-1}\comp g\comp\varepsilon_D. \tag{$\ast$}
+\]
+
+\textbf{(c)} Per a la identitat: $F$ aplicat a $G(\id_D)$ dona $\varepsilon_D^{-1}\comp\id_D\comp\varepsilon_D=\id_{F(G(D))}=F(\id_{G(D)})$; per fidelitat, $G(\id_D)=\id_{G(D)}$. Per a la composició, siguin $g\colon D\to D'$ i $g'\colon D'\to D''$. Usant $(\ast)$ dues vegades i cancel·lant $\varepsilon_{D'}\comp\varepsilon_{D'}^{-1}=\id$,
+\[
+F(G(g'))\comp F(G(g))=\bigl(\varepsilon_{D''}^{-1}\comp g'\comp\varepsilon_{D'}\bigr)\comp\bigl(\varepsilon_{D'}^{-1}\comp g\comp\varepsilon_D\bigr)=\varepsilon_{D''}^{-1}\comp(g'\comp g)\comp\varepsilon_D=F(G(g'\comp g)).
+\]
+Com que $F$ és functor, el membre esquerre és $F(G(g')\comp G(g))$; per fidelitat, $G(g')\comp G(g)=G(g'\comp g)$. Per tant $G$ és un functor.
+
+\textbf{(d)} \emph{Naturalitat de $\varepsilon$}: cal veure que per a $g\colon D\to D'$ el quadrat
+\[
+g\comp\varepsilon_D=\varepsilon_{D'}\comp F(G(g))
+\]
+commuta. Però això és exactament $(\ast)$ reescrit: multiplicant $(\ast)$ per $\varepsilon_{D'}$ per l'esquerra s'obté la igualtat. Com que cada $\varepsilon_D$ és un isomorfisme, $\varepsilon\colon F\comp G\Rightarrow\id_{\cat{D}}$ és un isomorfisme natural.
+
+\emph{Construcció de $\eta$}: per a cada objecte $A$ de $\cat{C}$, tenim l'isomorfisme $\varepsilon_{F(A)}\colon F(G(F(A)))\to F(A)$. Com que $F$ és ple i fidel, aquest isomorfisme prové d'un únic morfisme $\eta_A\colon A\to G(F(A))$ amb $F(\eta_A)=\varepsilon_{F(A)}^{-1}$, i com que $F$ reflecteix isomorfismes (per ser ple i fidel), $\eta_A$ és un isomorfisme. La naturalitat de $\eta$ es comprova aplicant $F$: per a $f\colon A\to B$, tant $F(\eta_B\comp f)$ com $F(G(F(f))\comp\eta_A)$ es calculen amb $(\ast)$ i la naturalitat de $\varepsilon$ sobre el morfisme $F(f)$, i coincideixen; la fidelitat de $F$ dona $\eta_B\comp f=G(F(f))\comp\eta_A$. Així $\eta\colon\id_{\cat{C}}\Rightarrow G\comp F$ és un isomorfisme natural, i $(F,G,\eta,\varepsilon)$ és una equivalència.
+
+\textbf{(e)} Suposem ara que $F$ forma part d'una equivalència: hi ha $G\colon\cat{D}\to\cat{C}$ i isomorfismes naturals $\alpha\colon G\comp F\Rightarrow\id_{\cat{C}}$ i $\beta\colon F\comp G\Rightarrow\id_{\cat{D}}$.
+
+\emph{$F$ és fidel.} Siguin $f,g\colon A\to B$ amb $F(f)=F(g)$. Aplicant $G$, tenim $G(F(f))=G(F(g))$. La naturalitat de $\alpha$ sobre $f$ i sobre $g$ dona
+\[
+f\comp\alpha_A=\alpha_B\comp G(F(f))=\alpha_B\comp G(F(g))=g\comp\alpha_A,
+\]
+i com que $\alpha_A$ és un isomorfisme (per tant, cancel·lable per la dreta), $f=g$. El mateix argument amb $\beta$ mostra que $G$ és fidel; ho farem servir tot seguit.
+
+\emph{$F$ és ple.} Sigui $u\colon F(A)\to F(B)$ un morfisme qualsevol de $\cat{D}$. Definim
+\[
+f=\alpha_B\comp G(u)\comp\alpha_A^{-1}\colon A\to B.
+\]
+La naturalitat de $\alpha$ sobre aquest $f$ diu $\alpha_B\comp G(F(f))=f\comp\alpha_A$, d'on
+\[
+G(F(f))=\alpha_B^{-1}\comp f\comp\alpha_A=\alpha_B^{-1}\comp\bigl(\alpha_B\comp G(u)\comp\alpha_A^{-1}\bigr)\comp\alpha_A=G(u).
+\]
+Com que $G$ és fidel, $F(f)=u$. Així tot morfisme $F(A)\to F(B)$ prové d'un morfisme $A\to B$, és a dir, $F$ és ple.
+
+\emph{$F$ és essencialment exhaustiu.} Per a cada objecte $D$ de $\cat{D}$, la component $\beta_D\colon F(G(D))\xrightarrow{\sim}D$ és un isomorfisme, de manera que $D$ és isomorf a la imatge $F(G(D))$. Per tant tot objecte de $\cat{D}$ és isomorf a un objecte de la imatge de $F$.
+
+Observem que aquesta direcció no fa servir cap identitat triangular entre $\alpha$ i $\beta$: només la naturalitat i el fet que siguin isomorfismes.
+\end{solucio}

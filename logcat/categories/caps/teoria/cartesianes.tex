@@ -1,0 +1,172 @@
+\chapter[Cartesianes tancades]{\texorpdfstring{Categories cartesianes\\ tancades}{Categories cartesianes tancades}}
+\label{cap:cartesianes}
+
+\begin{objectius}
+\apartat{Prerequisits} Productes i límits finits (cap.~\ref{cap:limits}); adjuncions i currificació (cap.~\ref{cap:adjuncions}).
+\apartat{Objectius} En acabar el capítol, el lector ha de saber: definir objecte exponencial per la seva propietat universal; reconèixer una categoria cartesiana tancada; interpretar el càlcul lambda simplement tipat en una CCC (correspondència de Curry--Howard--Lambek); i situar $\cat{Set}$, els preordres, els prefeixos i $\cat{Top}$ respecte del tancament cartesià.
+\end{objectius}
+
+En tractar les adjuncions vam trobar, al final del capítol, l'adjunció entre el producte i l'exponencial a $\cat{Cat}$: $-\times\cat{B}\dashv(-)^{\cat{B}}$. Aquella era una manifestació externa d'un fenomen que ara volem fer \emph{intern} a una categoria qualsevol. Una categoria on cada functor \enquote{multiplicar per un objecte fix} té adjunt per la dreta s'anomena \textbf{cartesiana tancada}, i és, exactament, el marc on es pot interpretar el \textbf{càlcul lambda simplement tipat}. Aquest capítol construeix aquesta noció pas a pas, la il·lustra en els exemples fonamentals i n'explica la lectura com a semàntica de tipus i termes. És el primer pont explícit del llibre cap a la lògica categòrica.
+
+\section{Categories cartesianes}
+
+Recordem que un \textbf{producte finit} és el límit d'un diagrama amb un nombre finit d'objectes i cap morfisme no trivial. El cas de zero objectes és l'objecte terminal; el de dos, el producte binari. Una categoria té \textbf{tots els productes finits} si té objecte terminal i producte binari de qualsevol parella, ja que els productes de tres o més objectes s'obtenen iterant.
+
+\begin{definicio}[Categoria cartesiana]\index{categoria!cartesiana}
+\label{def:cartesiana}
+Una categoria $\cat{C}$ és \textbf{cartesiana} si té objecte terminal $1$ i producte binari $A\times B$ de qualsevol parella d'objectes. Equivalentment, si té tots els productes finits.
+\end{definicio}
+
+En una categoria cartesiana disposem, per a cada objecte $A$, del \textbf{morfisme diagonal}
+\[
+\Delta_A=\langle\id_A,\id_A\rangle\colon A\to A\times A,
+\]
+l'únic morfisme les dues projeccions del qual són la identitat, i del morfisme únic $!_A\colon A\to 1$. Aquestes dades no són estructura addicional: queden \emph{determinades} per les propietats universals. La diagonal fa de $A\times-$ un functor amb bones propietats, tal com precisem ara.
+
+\begin{proposicio}[El producte per un objecte és functorial]\index{producte!functorialitat}
+\label{prop:producte-functor}
+Sigui $\cat{C}$ cartesiana i $B$ un objecte fix. L'assignació $A\mapsto A\times B$ s'estén a un functor
+\[
+-\times B\colon\cat{C}\to\cat{C},
+\]
+que envia $f\colon A\to A'$ al morfisme $f\times\id_B=\langle f\comp\pi_1,\pi_2\rangle\colon A\times B\to A'\times B$.
+\end{proposicio}
+
+\begin{prova}
+Cal comprovar que $-\times B$ respecta identitats i composicions. Per a la identitat, $\id_A\times\id_B=\langle\pi_1,\pi_2\rangle=\id_{A\times B}$ per la unicitat de la propietat universal del producte. Per a la composició, siguin $f\colon A\to A'$ i $g\colon A'\to A''$. Tant $(g\comp f)\times\id_B$ com $(g\times\id_B)\comp(f\times\id_B)$ tenen com a projecció primera $g\comp f\comp\pi_1$ i com a projecció segona $\pi_2$; per unicitat, coincideixen.
+\end{prova}
+
+\section{Objectes exponencials}
+
+En una categoria cartesiana, la pregunta clau és si el functor $-\times B$ té adjunt per la dreta. Quan el té, l'objecte que representa \enquote{els morfismes des de $B$} rep un nom.
+
+\begin{definicio}[Objecte exponencial]\index{objecte!exponencial}\index{exponencial}
+\label{def:exponencial}
+Siguin $B,C$ objectes d'una categoria cartesiana $\cat{C}$. Un \textbf{objecte exponencial} $C^{B}$ és un objecte dotat d'un morfisme d'\textbf{avaluació}
+\[
+\ev\colon C^{B}\times B\to C
+\]
+amb la propietat universal següent: per a tot objecte $A$ i tot morfisme $f\colon A\times B\to C$, existeix un únic morfisme $\lambda f\colon A\to C^{B}$, la \textbf{transposada} o \textbf{currificació} de $f$, tal que el triangle
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.4em, row sep=2.6em] {
+    A\times B & C^{B}\times B \\
+              & C \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$\lambda f\times\id_B$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$f$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\ev$} (m-2-2);
+\end{tikzpicture}
+\]
+commuta, és a dir, $\ev\comp(\lambda f\times\id_B)=f$.
+\end{definicio}
+
+L'avaluació formalitza la idea d'\enquote{aplicar una funció al seu argument}, i la currificació, la de \enquote{fixar un paràmetre}. La unicitat de $\lambda f$ diu que aquesta correspondència és una bijecció, i la seva naturalitat la converteix en una adjunció.
+
+\begin{proposicio}[L'exponencial és un adjunt per la dreta]\index{adjunció!producte-exponencial}
+\label{prop:adjuncio-exp}
+Si per a un objecte fix $B$ existeix l'exponencial $C^{B}$ per a tot $C$, aleshores l'assignació $C\mapsto C^{B}$ s'estén a un functor $(-)^{B}\colon\cat{C}\to\cat{C}$ i hi ha un isomorfisme natural
+\[
+\Hom(A\times B,\,C)\;\cong\;\Hom(A,\,C^{B}),
+\]
+natural en $A$ i en $C$. És a dir, $-\times B\dashv(-)^{B}$.
+\end{proposicio}
+
+\begin{prova}
+La currificació $f\mapsto\lambda f$ és la bijecció buscada: per la propietat universal de la definició~\ref{def:exponencial}, cada $f\colon A\times B\to C$ té una única transposada $\lambda f\colon A\to C^{B}$, i recíprocament cada $g\colon A\to C^{B}$ prové d'un únic morfisme $\ev\comp(g\times\id_B)\colon A\times B\to C$. Aquestes dues assignacions són inverses. La naturalitat en $A$ es comprova precomponent amb $a\colon A'\to A$ i usant la functorialitat de $-\times B$ (la proposició~\ref{prop:producte-functor}); la naturalitat en $C$ defineix, de fet, l'acció de $(-)^{B}$ sobre morfismes: donat $c\colon C\to C'$, es posa $c^{B}=\lambda\bigl(c\comp\ev\bigr)\colon C^{B}\to C'^{B}$. Que això respecta identitats i composicions se segueix, un cop més, de la unicitat de la transposada.
+\end{prova}
+
+\begin{notacio}
+Escrivim indistintament $C^{B}$ o $[B,C]$ per a l'exponencial. La transposada de $f$ es denota $\lambda f$ o $\widehat f$; la seva inversa, $\ev\comp(g\times\id_B)$, es denota $\widetilde g$ i s'anomena \textbf{descurrificació} de $g$.
+\end{notacio}
+
+\section{La definició de categoria cartesiana tancada}
+
+\begin{definicio}[Categoria cartesiana tancada]\index{categoria!cartesiana tancada}\index{CCC}
+\label{def:ccc}
+Una categoria $\cat{C}$ és \textbf{cartesiana tancada} (abreujat \textbf{CCC}, de l'anglès \emph{cartesian closed category}) si és cartesiana i, a més, per a cada objecte $B$, el functor $-\times B\colon\cat{C}\to\cat{C}$ té adjunt per la dreta $(-)^{B}$. Explícitament, $\cat{C}$ té:
+\begin{enumerate}
+\item un objecte terminal $1$;
+\item productes binaris $A\times B$;
+\item exponencials $C^{B}$ amb avaluació i currificació.
+\end{enumerate}
+\end{definicio}
+
+La condició es pot resumir dient que en una CCC les tres operacions \enquote{no fer res} (terminal), \enquote{aparellar} (producte) i \enquote{formar espais de funcions} (exponencial) hi són totes i estan lligades per adjuncions. Aquesta és exactament l'estructura que necessita un llenguatge de tipus amb producte de tipus i tipus funció.
+
+\begin{observacio}
+La tancadura és una propietat \emph{objecte a objecte}: cal l'exponencial per a \emph{cada} base $B$. Una categoria pot tenir alguns exponencials i no ser tancada. La demanda uniforme ---un adjunt per la dreta de $-\times B$ per a tot $B$--- és el que fa que la currificació estigui sempre disponible.
+\end{observacio}
+
+\section{Exemples fonamentals}
+
+\begin{exemple}[$\cat{Set}$]\index{Set@$\cat{Set}$!cartesiana tancada}
+La categoria $\cat{Set}$ és cartesiana tancada. L'objecte terminal és qualsevol conjunt d'un element; el producte és el producte cartesià; i l'exponencial $C^{B}$ és el conjunt de \emph{totes} les aplicacions $B\to C$, amb l'avaluació $\ev(g,b)=g(b)$. La currificació $\lambda f\colon A\to C^{B}$ d'una aplicació $f\colon A\times B\to C$ és $\lambda f(a)=(b\mapsto f(a,b))$: exactament la currificació de la programació funcional. Aquest és el model prototípic i el que dona nom a tota la construcció.
+\end{exemple}
+
+\begin{exemple}[Preordres cartesians tancats]\index{semireticle implicatiu}\index{àlgebra de Heyting}\index{Heyting}
+Un preordre amb ínfims finits, vist com a categoria, és cartesià: el terminal és l'element màxim $\top$ i el producte és l'ínfim $x\wedge y$. Té exponencials si i només si, per a cada $b$, l'operació $-\wedge b$ té adjunt per la dreta; aquest adjunt és la \textbf{implicació} $b\Rightarrow-$, caracteritzada per
+\[
+a\wedge b\leq c\quad\Longleftrightarrow\quad a\leq(b\Rightarrow c).
+\]
+Un preordre cartesià tancat és, doncs, exactament un \textbf{semireticle implicatiu amb màxim}: un $\wedge$-semireticle amb element màxim $\top$ i una operació d'implicació que satisfà l'equivalència anterior (l'estructura que altres autors anomenen \emph{àlgebra de Hilbert amb conjunció}). Captura la part $(\top,\wedge,\Rightarrow)$ de l'estructura lògica.
+
+Convé no confondre aquesta estructura amb una àlgebra de Heyting. Una \textbf{àlgebra de Heyting}\index{àlgebra de Heyting} és un \emph{reticle distributiu acotat} ---amb ínfims finits $\top,\wedge$ i \emph{suprems finits} $\bot,\vee$--- proveït d'una implicació que satisfà l'equivalència anterior. El tancament cartesià per si sol només dona la part multiplicativa: no garanteix ni els joins $\vee$ ni el mínim $\bot$. Reservem, doncs, el nom \emph{àlgebra de Heyting} per al cas amb suprems finits; un semireticle implicatiu amb màxim que a més tingui suprems finits (i sigui distributiu, cosa automàtica en presència de la implicació) és una àlgebra de Heyting. Aquest exemple és decisiu per a la lògica: la implicació intuïcionista \emph{és} l'exponencial, i el tancament cartesià és la traducció algebraica de disposar del connectiu $\to$, mentre que la disjunció $\vee$ correspon als suprems.
+\end{exemple}
+
+\begin{exemple}[Categories de prefeixos]\index{prefeix@prefeix!cartesiana tancada}
+Per a qualsevol categoria petita $\cat{C}$, la categoria de prefeixos $\widehat{\cat{C}}=\cat{Set}^{\cat{C}\op}$ és cartesiana tancada. Els productes i el terminal es calculen \emph{objecte a objecte} a $\cat{Set}$, i l'exponencial es defineix, mitjançant el lema de Yoneda, per $Q^{P}(A)=\Nat(\Hom(-,A)\times P,\,Q)$. Aquestes categories seran el terreny natural dels topos de prefeixos.
+\end{exemple}
+
+\begin{observacio}[Un no-exemple instructiu]
+La categoria $\cat{Top}$ dels espais topològics \emph{no} és cartesiana tancada: no sempre existeix una topologia sobre l'espai de funcions contínues que faci de l'avaluació un morfisme universal. Aquesta mancança va motivar històricament la introducció de categories \enquote{convenients} d'espais (per exemple, els espais generats compactament), que sí que ho són. El tancament cartesià és, doncs, una propietat delicada i valuosa, no automàtica.
+\end{observacio}
+
+\section{Semàntica del càlcul lambda simplement tipat}
+
+El motiu pel qual les CCC són centrals en lògica categòrica és la seva correspondència amb el \textbf{càlcul lambda simplement tipat}. Descrivim la traducció a nivell introductori; és una de les formes de l'anomenada \emph{correspondència de Curry--Howard--Lambek}.
+
+\subsection{Tipus com a objectes}
+
+Fixem un conjunt de tipus base. Els \textbf{tipus} es construeixen amb dues operacions: el \textbf{producte de tipus} $\sigma\times\tau$ i el \textbf{tipus funció} $\sigma\to\tau$, més un tipus unitat $\mathbf{1}$. En una CCC $\cat{C}$, la interpretació $\llbracket-\rrbracket$ assigna:
+\[
+\llbracket\mathbf{1}\rrbracket=1,\qquad
+\llbracket\sigma\times\tau\rrbracket=\llbracket\sigma\rrbracket\times\llbracket\tau\rrbracket,\qquad
+\llbracket\sigma\to\tau\rrbracket=\llbracket\tau\rrbracket^{\llbracket\sigma\rrbracket}.
+\]
+Cada tipus esdevé un objecte; el tipus funció esdevé un exponencial.
+
+\subsection{Termes com a morfismes}
+
+Un \textbf{terme} $x_1:\sigma_1,\dots,x_n:\sigma_n\vdash t:\tau$ amb variables lliures en un context $\Gamma$ s'interpreta com un morfisme
+\[
+\llbracket t\rrbracket\colon\llbracket\sigma_1\rrbracket\times\cdots\times\llbracket\sigma_n\rrbracket\longrightarrow\llbracket\tau\rrbracket.
+\]
+Les regles de formació de termes es corresponen amb les operacions de la CCC:
+\begin{itemize}
+\item una \textbf{variable} $x_i$ s'interpreta amb la projecció $\pi_i$;
+\item una \textbf{parella} $\langle t,u\rangle$, amb el morfisme aparellament $\langle\llbracket t\rrbracket,\llbracket u\rrbracket\rangle$ cap a un producte;
+\item una \textbf{aplicació} $t\,u$, amb la composició de l'avaluació i l'aparellament de $\llbracket t\rrbracket$ i $\llbracket u\rrbracket$;
+\item una \textbf{abstracció} $\lambda x{:}\sigma.\,t$, amb la currificació $\lambda\llbracket t\rrbracket$.
+\end{itemize}
+La correspondència entre abstracció i currificació és el cor de la traducció: lligar una variable és transposar per l'adjunció, i aplicar una funció és avaluar. Les regles de conversió del càlcul es tornen igualtats de morfismes:
+\[
+(\beta)\quad(\lambda x.\,t)\,u = t[u/x]
+\qquad\text{esdevé}\qquad
+\ev\comp\langle\lambda\llbracket t\rrbracket,\llbracket u\rrbracket\rangle=\llbracket t\rrbracket\comp\langle\id,\llbracket u\rrbracket\rangle,
+\]
+que és precisament l'equació de l'avaluació de la definició~\ref{def:exponencial}; i la regla $(\eta)$ es correspon amb la unicitat de la transposada.
+
+\begin{observacio}[Curry--Howard--Lambek]\index{Curry--Howard--Lambek}
+La correspondència es pot fer del tot precisa: hi ha una \emph{equivalència} entre la categoria de les teories del càlcul lambda simplement tipat i la categoria de les CCC (petites, amb functors que en preserven l'estructura). Els tipus es corresponen amb objectes, els termes amb morfismes i les equacions de conversió amb la commutativitat de diagrames. Aquesta és la primera de les grans traduccions \enquote{lògica $=$ categoria} que estructuraran l'estudi posterior de la lògica categòrica; les següents afegiran, sobre aquesta base, els subobjectes per als predicats i la reindexació per a la quantificació.
+\end{observacio}
+
+\section{Cap als subobjectes}
+
+Amb el tancament cartesià disposem de la semàntica dels \emph{tipus} i els \emph{termes}: un llenguatge funcional interpretat en una categoria. El que encara falta per arribar a la lògica de predicats és la interpretació de les \emph{proposicions} i dels \emph{quantificadors}. Aquest és el pas del capítol següent: els \textbf{subobjectes} d'un objecte $A$ formen un preordre $\Sub(A)$ que interpreta els predicats sobre $A$, i la \textbf{reindexació} $f^{*}$ ---que ja vam construir amb pullbacks (observació~\ref{obs:reindexacio})--- interpreta la substitució. Quan aquesta reindexació tingui adjunts per l'esquerra i per la dreta, hi trobarem els quantificadors $\exists$ i $\forall$. El tancament cartesià i els subobjectes són, doncs, les dues meitats complementàries de la semàntica categòrica de la lògica: els tipus i les proposicions.
+
+\begin{resumcap}
+\apartat{Cinc idees} (1)~L'objecte exponencial $C^B$ representa $\Hom(-\times B,C)$; la currificació és la bijecció corresponent. (2)~Una categoria cartesiana tancada té productes finits i tots els exponencials. (3)~Un preordre cartesià tancat és un semireticle implicatiu amb màxim; amb suprems finits és una àlgebra de Heyting. (4)~$\cat{Set}$ i els prefeixos són cartesians tancats; $\cat{Top}$ no ho és en general. (5)~El càlcul lambda simplement tipat s'interpreta en tota CCC.
+\apartat{Errors típics} Identificar tota categoria cartesiana tancada amb una àlgebra de Heyting (falten els joins); atribuir la functorialitat del producte a la diagonal en lloc de a la seva propietat universal; i tractar la correspondència de Curry--Howard--Lambek com una igualtat en lloc d'una equivalència amb estructura triada.
+\apartat{Lectura recomanada} \cite[cap.~6]{awodey} per a exponencials i CCC; \cite{lambekscott} per a la correspondència amb el càlcul lambda; \cite[cap.~1]{maclanemoerdijk} per als exemples de prefeixos.
+\end{resumcap}

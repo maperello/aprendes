@@ -1,0 +1,158 @@
+\chapter[Límits i colímits]{Límits i colímits}
+
+Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
+
+\begin{Form}
+\iniciTest{lim}{b,c,b,c,d,b,c,b,d,c,b,c,b,c,b}
+
+\begin{enumerate}
+
+\pregunta Què és un \textbf{diagrama} de forma $\cat{I}$ en una categoria $\cat{C}$?
+\begin{enumerate}
+  \opcio{a}{Un objecte de $\cat{C}$.}
+  \opcio{b}{Un functor $D\colon\cat{I}\to\cat{C}$, on $\cat{I}$ és una categoria índex petita.}
+  \opcio{c}{Una transformació natural.}
+  \opcio{d}{Un morfisme de $\cat{I}$.}
+\end{enumerate}
+\feedback
+
+\pregunta Un \textbf{con} sobre $D$ amb vèrtex $A$ és el mateix que:
+\begin{enumerate}
+  \opcio{a}{un objecte terminal.}
+  \opcio{b}{un límit.}
+  \opcio{c}{una transformació natural $\Delta_A\Rightarrow D$ des del functor constant.}
+  \opcio{d}{un functor $\cat{C}\to\cat{I}$.}
+\end{enumerate}
+\feedback
+
+\pregunta Un \textbf{límit} de $D$ és:
+\begin{enumerate}
+  \opcio{a}{qualsevol con sobre $D$.}
+  \opcio{b}{un objecte terminal de la categoria de cons $\mathrm{Con}(D)$.}
+  \opcio{c}{un objecte inicial de $\cat{C}$.}
+  \opcio{d}{el producte de tots els objectes.}
+\end{enumerate}
+\feedback
+
+\pregunta Quina categoria índex dona lloc al \textbf{producte} de dos objectes?
+\begin{enumerate}
+  \opcio{a}{La categoria buida.}
+  \opcio{b}{Dues fletxes paral·leles.}
+  \opcio{c}{La categoria discreta amb dos objectes.}
+  \opcio{d}{La forma de racó.}
+\end{enumerate}
+\feedback
+
+\pregunta A $\cat{Set}$, l'\textbf{equalitzador} de $f,g\colon A\to B$ és:
+\begin{enumerate}
+  \opcio{a}{el producte cartesià $A\times B$.}
+  \opcio{b}{la unió disjunta.}
+  \opcio{c}{el quocient de $B$.}
+  \opcio{d}{el subconjunt $\{a\in A\mid f(a)=g(a)\}$.}
+\end{enumerate}
+\feedback
+
+\pregunta El \textbf{pullback} de $f\colon A\to C$ i $g\colon B\to C$ a $\cat{Set}$ és:
+\begin{enumerate}
+  \opcio{a}{$A\times B$ sencer.}
+  \opcio{b}{$\{(a,b)\in A\times B\mid f(a)=g(b)\}$.}
+  \opcio{c}{la unió $A\cup B$.}
+  \opcio{d}{el quocient $A/B$.}
+\end{enumerate}
+\feedback
+
+\pregunta L'\textbf{objecte terminal} és el límit de quin diagrama?
+\begin{enumerate}
+  \opcio{a}{El diagrama de dues fletxes paral·leles.}
+  \opcio{b}{El diagrama d'un sol objecte.}
+  \opcio{c}{El diagrama buit.}
+  \opcio{d}{El diagrama de racó.}
+\end{enumerate}
+\feedback
+
+\pregunta Un \textbf{colímit} d'un diagrama $D$ és:
+\begin{enumerate}
+  \opcio{a}{un altre nom per al límit.}
+  \opcio{b}{un objecte inicial a la categoria de cocons (un límit a la categoria oposada).}
+  \opcio{c}{sempre l'objecte terminal.}
+  \opcio{d}{un con.}
+\end{enumerate}
+\feedback
+
+\pregunta El \textbf{coproducte} a $\cat{Set}$ és:
+\begin{enumerate}
+  \opcio{a}{el producte cartesià.}
+  \opcio{b}{la intersecció.}
+  \opcio{c}{el conjunt buit.}
+  \opcio{d}{la unió disjunta.}
+\end{enumerate}
+\feedback
+
+\pregunta Quina és la caracterització dels \textbf{límits finits}?
+\begin{enumerate}
+  \opcio{a}{N'hi ha prou amb tenir coproductes.}
+  \opcio{b}{Cal tenir tots els límits de forma petita.}
+  \opcio{c}{Equivalen a tenir objecte terminal, productes binaris i equalitzadors (o terminal i pullbacks).}
+  \opcio{d}{No es poden construir a partir de casos més simples.}
+\end{enumerate}
+\feedback
+
+\pregunta Quan \textbf{preserva} un functor $F$ el límit d'un diagrama $D$?
+\begin{enumerate}
+  \opcio{a}{Sempre, per definició de functor.}
+  \opcio{b}{Quan $(F(L),F\lambda)$ és un límit de $F\comp D$.}
+  \opcio{c}{Quan $F$ és constant.}
+  \opcio{d}{Quan $F$ no té adjunts.}
+\end{enumerate}
+\feedback
+
+\pregunta El functor oblit $U\colon\cat{Grp}\to\cat{Set}$:
+\begin{enumerate}
+  \opcio{a}{no preserva ni límits ni colímits.}
+  \opcio{b}{preserva colímits però no límits.}
+  \opcio{c}{preserva límits però no colímits.}
+  \opcio{d}{preserva tot.}
+\end{enumerate}
+\feedback
+
+\pregunta El functor representable $\Hom(A,-)$ sempre:
+\begin{enumerate}
+  \opcio{a}{no és un functor.}
+  \opcio{b}{preserva els límits que existeixen.}
+  \opcio{c}{envia límits a colímits.}
+  \opcio{d}{és constant.}
+\end{enumerate}
+\feedback
+
+\pregunta Per què límits i colímits són tan útils?
+\begin{enumerate}
+  \opcio{a}{Perquè només existeixen a $\cat{Set}$.}
+  \opcio{b}{Perquè no tenen propietats universals.}
+  \opcio{c}{Perquè unifiquen productes, coproductes, equalitzadors, pullbacks i objectes terminal/inicial com a objectes universals d'un diagrama.}
+  \opcio{d}{Perquè eviten els functors.}
+\end{enumerate}
+\feedback
+
+\pregunta En el diagrama següent, quina propietat universal fa de $P$ el \textbf{pullback} de $f$ i $g$?
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=2.6em]
+    { P & A \\ B & C \\ };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$p_1$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$p_2$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$f$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$g$} (m-2-2);
+\end{tikzpicture}
+\]
+\begin{enumerate}
+  \opcio{a}{Que $f\comp p_1=g\comp p_2$ i res més.}
+  \opcio{b}{Que per a tot objecte $X$ amb fletxes $x_1\colon X\to A$, $x_2\colon X\to B$ tals que $f\comp x_1=g\comp x_2$, hi ha un únic $u\colon X\to P$ amb $p_1\comp u=x_1$ i $p_2\comp u=x_2$.}
+  \opcio{c}{Que $P=A\times B$ sempre.}
+  \opcio{d}{Que $f$ i $g$ són isomorfismes.}
+\end{enumerate}
+\feedback
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest
+\end{Form}

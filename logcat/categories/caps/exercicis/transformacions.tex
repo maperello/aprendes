@@ -1,0 +1,133 @@
+\chapter[Transformacions naturals]{\texorpdfstring{Transformacions naturals\\ i equivalències}{Transformacions naturals i equivalències}}
+
+Els exercicis següents completen els resolts a la part de Pràctica. Cada enunciat va acompanyat d'una indicació breu; convé intentar-lo primer sense mirar-la. La marca \enquote{$\star$} assenyala un exercici de consolidació i \enquote{$\star\star$} un d'ampliació.
+
+\section{Definició de transformació natural}
+
+\begin{exercici}
+Siguin $F,G,H\colon\cat{C}\to\cat{D}$ tres functors i $\eta\colon F\Rightarrow G$, $\theta\colon G\Rightarrow H$ dues transformacions naturals. Comprova directament, a partir de la definició, que la composició vertical $\theta\comp\eta$ satisfà la condició de naturalitat. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Encadena els quadrats de naturalitat de $\eta$ i de $\theta$: $H(f)\comp\theta_A\comp\eta_A=\theta_B\comp G(f)\comp\eta_A=\theta_B\comp\eta_B\comp F(f)$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\eta\colon F\Rightarrow G$ una transformació natural i $K\colon\cat{D}\to\cat{E}$ un functor. Comprova que els morfismes $K(\eta_A)$ són els components d'una transformació natural $K\eta\colon K\comp F\Rightarrow K\comp G$ (composició d'una transformació natural amb un functor per l'esquerra). \hfill{\normalfont$\star$}
+\begin{indicacio}
+Aplica $K$ al quadrat de naturalitat de $\eta$ i usa la functorialitat de $K$: de $G(f)\comp\eta_A=\eta_B\comp F(f)$ dedueix $K(G(f))\comp K(\eta_A)=K(\eta_B)\comp K(F(f))$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Siguin $\eta\colon F\Rightarrow G$ (amb $F,G\colon\cat{C}\to\cat{D}$) i $\theta\colon K\Rightarrow L$ (amb $K,L\colon\cat{D}\to\cat{E}$) dues transformacions naturals \enquote{de costat}. Comprova amb detall la composició horitzontal $\theta\ast\eta$:
+\begin{enumerate}
+\item verifica que, per a cada objecte $A$ de $\cat{C}$, els dos morfismes $\theta_{G(A)}\comp K(\eta_A)$ i $L(\eta_A)\comp\theta_{F(A)}$ van tots dos de $K(F(A))$ a $L(G(A))$ i coincideixen;
+\item dedueix que $(\theta\ast\eta)_A$ està ben definit, i comprova que la família $(\theta\ast\eta)_A$ satisfà la condició de naturalitat, de manera que $\theta\ast\eta\colon K\comp F\Rightarrow L\comp G$.
+\end{enumerate}
+\hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Per a (1), els tipus: $K(\eta_A)\colon K(F(A))\to K(G(A))$ i $\theta_{G(A)}\colon K(G(A))\to L(G(A))$, de manera que la primera composició va de $K(F(A))$ a $L(G(A))$; anàlogament $\theta_{F(A)}\colon K(F(A))\to L(F(A))$ i $L(\eta_A)\colon L(F(A))\to L(G(A))$ donen el mateix tipus. La igualtat de les dues expressions és exactament el quadrat de naturalitat de $\theta$ aplicat al morfisme $\eta_A\colon F(A)\to G(A)$: $\theta_{G(A)}\comp K(\eta_A)=L(\eta_A)\comp\theta_{F(A)}$. Per a (2), fes servir que $\theta\ast\eta$ és la composició vertical de dos whiskerings, $\theta\ast\eta=(\theta G)\comp(K\eta)=(L\eta)\comp(\theta F)$, i que tant els whiskerings com la composició vertical ja se sap que són naturals (exercicis anteriors); alternativament, comprova el quadrat directament encadenant la naturalitat de $\eta$ (via $K$ o $L$) i la de $\theta$.
+\end{indicacio}
+\end{exercici}
+
+\section{Exemples de transformacions naturals}
+
+\begin{exercici}
+Sigui $\cat{C}$ una categoria localment petita i siguin $X,Y$ dos objectes seus. Comprova que cada morfisme $h\colon Y\to X$ indueix una transformació natural entre els homfunctors covariants
+\[
+\Hom(X,-)\Rightarrow\Hom(Y,-).
+\]
+\hfill{\normalfont$\star$}
+\begin{indicacio}
+La petitesa local garanteix que cada $\Hom(X,A)$ i $\Hom(Y,A)$ són conjunts, de manera que $\Hom(X,-)$ i $\Hom(Y,-)$ són functors cap a $\cat{Set}$. El component a l'objecte $A$ ha de ser una aplicació $\Hom(X,A)\to\Hom(Y,A)$; pren la precomposició amb $h$, és a dir, $\varphi\mapsto\varphi\comp h$. Observa que això inverteix el sentit ($h\colon Y\to X$ dona $\Hom(X,-)\Rightarrow\Hom(Y,-)$), com correspon a la contravariància de $\Hom(-,A)$ en la primera variable. Per a un morfisme $f\colon A\to B$, el quadrat de naturalitat es redueix a l'associativitat:
+\[
+f\comp(\varphi\comp h)=(f\comp\varphi)\comp h,
+\]
+és a dir, postcomposar amb $f$ i precomposar amb $h$ commuten.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Considera el functor \enquote{llista} $L\colon\cat{Set}\to\cat{Set}$, que envia cada conjunt $X$ al conjunt $L(X)$ de les llistes finites d'elements de $X$. Comprova que l'aplicació que envia cada element $x$ a la llista d'un sol element $[x]$ defineix una transformació natural $\id_{\cat{Set}}\Rightarrow L$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+El component a $X$ és $\eta_X\colon X\to L(X)$, $x\mapsto[x]$. La naturalitat respecte d'una aplicació $f\colon X\to Y$ diu que aplicar $f$ i després formar la llista d'un element coincideix amb formar la llista i després aplicar $f$ terme a terme.
+\end{indicacio}
+\end{exercici}
+
+\section{Isomorfismes naturals}
+
+\begin{exercici}
+Considera el functor d'\textbf{intercanvi} $\sigma_{\cat{C},\cat{D}}\colon\cat{C}\times\cat{D}\to\cat{D}\times\cat{C}$ definit, sobre objectes i sobre morfismes, per
+\[
+\sigma_{\cat{C},\cat{D}}(A,B)=(B,A),
+\qquad
+\sigma_{\cat{C},\cat{D}}(f,g)=(g,f).
+\]
+Comprova que és un functor i que la seva composició amb l'intercanvi en sentit contrari,
+\[
+\sigma_{\cat{D},\cat{C}}\comp\sigma_{\cat{C},\cat{D}}=\id_{\cat{C}\times\cat{D}},
+\]
+és \emph{estrictament} la identitat (i igualment en l'altre sentit). Dedueix que $\sigma_{\cat{C},\cat{D}}$ és un \emph{isomorfisme de categories}, no només una equivalència, i explica per què aquí no cal passar per un isomorfisme natural com $\id\cong\sigma\comp\sigma$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Que $\sigma$ preserva identitats i composicions és immediat de la definició component a component: $\id_{(A,B)}=(\id_A,\id_B)\mapsto(\id_B,\id_A)=\id_{(B,A)}$, i $(f',g')\comp(f,g)=(f'\comp f,\,g'\comp g)\mapsto(g'\comp g,\,f'\comp f)=(g',f')\comp(g,f)$. Aplicant $\sigma$ dues vegades, $(A,B)\mapsto(B,A)\mapsto(A,B)$ i igual sobre morfismes, de manera que $\sigma_{\cat{D},\cat{C}}\comp\sigma_{\cat{C},\cat{D}}$ és \emph{igual} a la identitat, no només naturalment isomorfa. Per això la comparació és un isomorfisme estricte de categories, per a qualssevol $\cat{C}$ i $\cat{D}$: no cal recórrer a un isomorfisme natural, que és el que caldria si la doble composició només retornés cada objecte llevat d'isomorfisme.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\cat{C}$ una categoria amb \emph{almenys un objecte}. Comprova que dos functors constants $\Delta_D,\Delta_{D'}\colon\cat{C}\to\cat{D}$ (amb valors $D$ i $D'$) són naturalment isomorfs si i només si $D\cong D'$ a $\cat{D}$. Explica què falla si $\cat{C}$ és buida. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+($\Rightarrow$) Si $\cat{C}$ té algun objecte $A_0$, un isomorfisme natural $\eta\colon\Delta_D\Rightarrow\Delta_{D'}$ dona, en qualsevol component, un isomorfisme $\eta_{A_0}\colon D\to D'$; per tant $D\cong D'$. N'hi ha prou amb un sol objecte: no cal que $\cat{C}$ sigui connexa.
+
+($\Leftarrow$) Recíprocament, donat un isomorfisme $\gamma\colon D\to D'$, definim la família \emph{constant} $\eta_A=\gamma$ per a tot objecte $A$ de $\cat{C}$. El quadrat de naturalitat per a un morfisme $f\colon A\to B$ és $\Delta_{D'}(f)\comp\eta_A=\eta_B\comp\Delta_D(f)$, és a dir $\id_{D'}\comp\gamma=\gamma\comp\id_D$, que es compleix trivialment; i cada component $\gamma$ és un isomorfisme. Així $\Delta_D\cong\Delta_{D'}$. (De fet la naturalitat entre functors constants només relaciona components d'objectes connectats per un morfisme, de manera que sobre cada component connexa el valor és constant; però per construir l'isomorfisme n'hi ha prou amb la família constant, sense cap hipòtesi de connexió.)
+
+\emph{Cas buit.} Si $\cat{C}$ és buida, hi ha un únic functor $\cat{C}\to\cat{D}$ ---el functor buit--- i una única transformació natural entre functors buits, la transformació buida, que és trivialment invertible. Aleshores $\Delta_D\cong\Delta_{D'}$ per a qualssevol $D,D'$, encara que $D\not\cong D'$: per això cal la hipòtesi que $\cat{C}$ tingui almenys un objecte.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\mathbb{Z}/2\mathbb{Z}=\{1,g\}$ (amb $g^2=1$) vist com a categoria d'un sol objecte $\cat{B}(\mathbb{Z}/2\mathbb{Z})$, i considera dos functors $F,G\colon\cat{B}(\mathbb{Z}/2\mathbb{Z})\to\cat{Set}$ que envien l'únic objecte al mateix conjunt $\{0,1\}$, però on el generador $g$ actua per la identitat en $F$ i per la transposició en $G$. Comprova que $F$ i $G$ són \emph{puntualment} isomorfs (les úniques imatges dels objectes coincideixen) però \emph{no} naturalment isomorfs. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Puntualment no hi ha res a distingir: tots dos functors tenen la mateixa (única) imatge d'objecte $\{0,1\}$, que és isomorfa a ella mateixa. Una transformació natural $\eta\colon F\Rightarrow G$ tindria una única component $\eta_\ast\colon\{0,1\}\to\{0,1\}$, i la naturalitat respecte del morfisme $g$ exigiria $G(g)\comp\eta_\ast=\eta_\ast\comp F(g)$, és a dir $\tau\comp\eta_\ast=\eta_\ast$ (on $\tau$ és la transposició). Com que $\tau$ no té punts fixos, cap $\eta_\ast$ no ho compleix (per a qualsevol $x$ caldria $\tau(\eta_\ast(x))=\eta_\ast(x)$, impossible). Per tant no hi ha cap transformació natural $F\Rightarrow G$, i menys encara un isomorfisme natural. És l'exemple mínim de \enquote{puntualment isomorf} $\not\Rightarrow$ \enquote{naturalment isomorf} (compara-ho amb l'observació~\ref{obs:iso-no-natural} de la teoria).
+\end{indicacio}
+\end{exercici}
+
+\section{La categoria de functors}
+
+\begin{exercici}
+Comprova que si $\cat{C}$ és una categoria petita i $\cat{D}$ és localment petita, aleshores la categoria de functors $\cat{D}^{\cat{C}}$ és localment petita. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Una transformació natural està determinada pels seus components, un per a cada objecte de $\cat{C}$; com que $\cat{C}$ és petita i cada $\Hom_{\cat{D}}(F(A),G(A))$ és un conjunt, la col·lecció de transformacions naturals $F\Rightarrow G$ és un subconjunt d'un producte de conjunts indexat per un conjunt.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Descriu la categoria de functors $\cat{Set}^{\cat{2}}$ i comprova que els seus isomorfismes són els quadrats commutatius amb les dues fletxes horitzontals bijectives. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Un objecte és una aplicació $f\colon A\to B$; un morfisme $(u,v)$ és un quadrat commutatiu. Un isomorfisme a la categoria de fletxes és un quadrat amb $u$ i $v$ bijectives, ja que la inversa s'obté invertint-les.
+\end{indicacio}
+\end{exercici}
+
+\section{Equivalència de categories}
+
+\begin{exercici}
+Comprova que la relació \enquote{ser equivalents} és una relació d'equivalència sobre les categories: tota categoria és equivalent a ella mateixa, l'equivalència és simètrica, i la composició de dues equivalències és una equivalència. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Per a la reflexivitat, pren el functor identitat. Per a la simetria, intercanvia els papers de $F$ i $G$. Per a la transitivitat, comprova que la composició de functors plens, fidels i essencialment exhaustius torna a tenir les tres propietats, o compon directament els functors i els isomorfismes naturals.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\cat{C}$ una categoria en què tot objecte és isomorf a un objecte fix $D_0$ (és a dir, hi ha un sol objecte llevat d'isomorfisme; \emph{no} se suposa que tots els morfismes siguin isomorfismes). Comprova que $\cat{C}$ és equivalent al monoide $\mathrm{End}(D_0)=\Hom(D_0,D_0)$ vist com a categoria d'un sol objecte. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Considera la subcategoria plena amb l'únic objecte $D_0$: existeix sempre, i és una categoria d'un sol objecte, és a dir, el monoide $\mathrm{End}(D_0)=\Hom(D_0,D_0)$ (amb la composició de $\cat{C}$). La seva inclusió és plena i fidel per ser una subcategoria plena, i essencialment exhaustiva per la hipòtesi que tot objecte és isomorf a $D_0$; per tant és una equivalència. Observa que no cal cap suposició sobre la invertibilitat dels morfismes: $\mathrm{End}(D_0)$ és un monoide qualsevol (els seus elements invertibles són els automorfismes de $D_0$, però n'hi pot haver de no invertibles), i l'argument només fa servir que els \emph{objectes} són isomorfs entre si.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Dona un exemple de dues categories que siguin \emph{equivalents} però no \emph{isomorfes}, i explica per què no són isomorfes. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Un primer exemple: pren $\cat{FinSet}$ i la seva subcategoria plena dels $\underline{n}$. Són equivalents (la inclusió és plena, fidel i essencialment exhaustiva), però no isomorfes, perquè un isomorfisme de categories induiria una bijecció entre les col·leccions d'objectes, i aquestes tenen mides incompatibles: $\cat{FinSet}$ té una \emph{classe pròpia} d'objectes (tots els conjunts finits), mentre que els representants $\underline{n}$ formen un conjunt \emph{numerable}; no hi ha cap bijecció entre una classe pròpia i un conjunt.
+
+Un exemple complementari que \emph{evita} les qüestions de mida: pren la categoria terminal $\cat{1}$ (un objecte, una fletxa) i la categoria $\cat{I}$ amb dos objectes i exactament un morfisme entre cada parella ordenada d'objectes (de manera que els dos objectes són isomorfs). Són equivalents ---la inclusió $\cat{1}\to\cat{I}$ és plena, fidel i essencialment exhaustiva---, però no isomorfes, simplement perquè $\cat{1}$ té un objecte i $\cat{I}$ en té dos: cap bijecció d'objectes és possible. Aquí totes dues categories són petites, de manera que la distinció \enquote{equivalent però no isomorf} no depèn de cap subtilesa de mida.
+\end{indicacio}
+\end{exercici}

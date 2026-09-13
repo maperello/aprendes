@@ -1,0 +1,139 @@
+\chapter[Adjuncions]{Adjuncions}
+
+Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
+
+\begin{Form}
+\iniciTest{adj}{b,c,b,d,c,b,c,d,b,c,a,d,c,a}
+
+\begin{enumerate}
+
+\pregunta Què vol dir que $f\dashv g$ entre dos preordres?
+\begin{enumerate}
+  \opcio{a}{Que $f=g$.}
+  \opcio{b}{Que $f(x)\leq y$ si i només si $x\leq g(y)$, per a tot $x,y$.}
+  \opcio{c}{Que $f$ i $g$ són inverses.}
+  \opcio{d}{Que $f$ i $g$ són constants.}
+\end{enumerate}
+\feedback
+
+\pregunta Fixada una fórmula $A$, quina parella forma una adjunció a l'àlgebra de proposicions?
+\begin{enumerate}
+  \opcio{a}{La negació amb ella mateixa.}
+  \opcio{b}{La disjunció amb la conjunció.}
+  \opcio{c}{$A\wedge-$ (esquerra) amb $A\to-$ (dreta).}
+  \opcio{d}{La implicació amb la negació.}
+\end{enumerate}
+\feedback
+
+\pregunta Una \textbf{adjunció} $F\dashv G$ entre categories és:
+\begin{enumerate}
+  \opcio{a}{una igualtat de functors.}
+  \opcio{b}{una bijecció natural $\Hom(F(A),B)\cong\Hom(A,G(B))$.}
+  \opcio{c}{un isomorfisme de categories.}
+  \opcio{d}{una transformació natural qualsevol.}
+\end{enumerate}
+\feedback
+
+\pregunta En una adjunció $F\dashv G$, quin functor és l'adjunt per l'esquerra?
+\begin{enumerate}
+  \opcio{a}{$G$.}
+  \opcio{b}{Tots dos.}
+  \opcio{c}{Cap.}
+  \opcio{d}{$F$.}
+\end{enumerate}
+\feedback
+
+\pregunta La \textbf{unitat} d'una adjunció $F\dashv G$ és una transformació natural:
+\begin{enumerate}
+  \opcio{a}{$F G\Rightarrow\id$.}
+  \opcio{b}{$F\Rightarrow G$.}
+  \opcio{c}{$\id\Rightarrow G F$.}
+  \opcio{d}{$G\Rightarrow F$.}
+\end{enumerate}
+\feedback
+
+\pregunta La \textbf{counitat} d'una adjunció $F\dashv G$ és:
+\begin{enumerate}
+  \opcio{a}{$\id\Rightarrow G F$.}
+  \opcio{b}{$F G\Rightarrow\id$.}
+  \opcio{c}{una igualtat.}
+  \opcio{d}{un objecte terminal.}
+\end{enumerate}
+\feedback
+
+\pregunta El transposat de $\varphi\colon F(A)\to B$ sota l'adjunció és:
+\begin{enumerate}
+  \opcio{a}{$\varepsilon_B\comp F(\varphi)$.}
+  \opcio{b}{$\varphi$ mateix.}
+  \opcio{c}{$G(\varphi)\comp\eta_A$.}
+  \opcio{d}{$\eta_A\comp G(\varphi)$.}
+\end{enumerate}
+\feedback
+
+\pregunta Les \textbf{identitats triangulars} relacionen:
+\begin{enumerate}
+  \opcio{a}{dos objectes terminals.}
+  \opcio{b}{dos límits.}
+  \opcio{c}{dues categories isomorfes.}
+  \opcio{d}{la unitat i la counitat, i caracteritzen l'adjunció.}
+\end{enumerate}
+\feedback
+
+\pregunta L'exemple prototípic d'adjunció \enquote{lliure-oblit} és:
+\begin{enumerate}
+  \opcio{a}{la identitat amb ella mateixa.}
+  \opcio{b}{el functor lliure (esquerra) adjunt al functor oblit (dreta).}
+  \opcio{c}{dos functors oblit.}
+  \opcio{d}{el functor constant.}
+\end{enumerate}
+\feedback
+
+\pregunta Els adjunts són únics:
+\begin{enumerate}
+  \opcio{a}{de manera estricta (igualtat).}
+  \opcio{b}{mai.}
+  \opcio{c}{llevat d'isomorfisme natural.}
+  \opcio{d}{només en preordres.}
+\end{enumerate}
+\feedback
+
+\pregunta Què diu el teorema \enquote{RAPL}?
+\begin{enumerate}
+  \opcio{a}{Que els adjunts per la dreta preserven límits.}
+  \opcio{b}{Que tot functor és adjunt.}
+  \opcio{c}{Que els límits no existeixen.}
+  \opcio{d}{Que els adjunts per l'esquerra preserven límits.}
+\end{enumerate}
+\feedback
+
+\pregunta Per què el functor oblit $U\colon\cat{Grp}\to\cat{Set}$ preserva productes però no coproductes?
+\begin{enumerate}
+  \opcio{a}{Perquè no és un functor.}
+  \opcio{b}{Perquè és adjunt per l'esquerra.}
+  \opcio{c}{Per casualitat.}
+  \opcio{d}{Perquè és adjunt per la dreta, i els adjunts per la dreta preserven límits (no colímits).}
+\end{enumerate}
+\feedback
+
+\pregunta L'adjunció \enquote{producte-exponencial} $-\times B\dashv(-)^B$ correspon a:
+\begin{enumerate}
+  \opcio{a}{la negació.}
+  \opcio{b}{la dualitat.}
+  \opcio{c}{la currificació $\Hom(A\times B,C)\cong\Hom(A,C^B)$.}
+  \opcio{d}{la composició de functors.}
+\end{enumerate}
+\feedback
+
+\pregunta Vistos com a exemple d'adjunció, els \textbf{quantificadors} $\exists$ i $\forall$ són, respectivament:
+\begin{enumerate}
+  \opcio{a}{adjunts per l'esquerra i per la dreta dels functors de reindexació.}
+  \opcio{b}{objectes terminals.}
+  \opcio{c}{functors constants.}
+  \opcio{d}{isomorfismes de categories.}
+\end{enumerate}
+\feedback
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest
+\end{Form}

@@ -1,0 +1,101 @@
+\chapter[Classificadors de subobjectes i topos]{\texorpdfstring{Classificadors de subobjectes\\ i introducció als topos}{Classificadors de subobjectes i introducció als topos}}
+\label{cap:topos}
+
+\begin{objectius}
+\apartat{Prerequisits} Subobjectes i el functor $\Sub$ (cap.~\ref{cap:subobjectes}); representabilitat i Yoneda (cap.~\ref{cap:yoneda}); tancament cartesià (cap.~\ref{cap:cartesianes}).
+\apartat{Objectius} En acabar el capítol, el lector ha de saber: definir el classificador de subobjectes $\Omega$ per la seva propietat universal; relacionar-lo amb la representabilitat del functor $\Sub$; enunciar la definició de topos elemental; i reconèixer els exemples de $\cat{Set}$ i dels prefeixos (amb el classificador de sedassos).
+\end{objectius}
+
+Al llarg del capítol anterior hem vist que els subobjectes d'un objecte $A$ formen un preordre $\Sub(A)$ que es comporta com una àlgebra de predicats sobre $A$. Sorgeix una pregunta natural: hi ha un objecte que \emph{representi} aquesta assignació? És a dir, un objecte $\Omega$ tal que donar un subobjecte de $A$ equivalgui a donar un morfisme $A\to\Omega$? Quan aquest objecte existeix, s'anomena \textbf{classificador de subobjectes}, i les categories que en tenen ---juntament amb límits finits i exponencials--- són els \textbf{topos elementals}. Aquest capítol n'introdueix la definició i els exemples bàsics. No en desenvolupem la lògica interna: aquesta pertany a l'estudi de la lògica categòrica, per al qual aquest volum és la preparació.
+
+\section{El classificador de subobjectes}
+
+A $\cat{Set}$, un subconjunt $U\subseteq E$ es descriu per la seva \textbf{funció característica} $\chi_U\colon E\to\{0,1\}$, que val $1$ als elements de $U$ i $0$ a la resta. El conjunt $\{0,1\}$ actua com un objecte de \enquote{valors de veritat}, i triar un subconjunt equival a triar una funció cap a ell. La noció següent generalitza aquesta idea a una categoria arbitrària.
+
+\begin{definicio}[Classificador de subobjectes]\index{classificador de subobjectes}\index{Omega@$\Omega$}
+\label{def:classificador}
+Sigui $\cat{E}$ una categoria amb tots els límits finits. Un \textbf{classificador de subobjectes} és un objecte $\Omega$ juntament amb un morfisme $\mathsf{true}\colon 1\to\Omega$ des de l'objecte terminal, amb la propietat universal següent: per a cada objecte $E$ i cada subobjecte $m\colon U\rightarrowtail E$, existeix un \emph{únic} morfisme $\chi_m\colon E\to\Omega$, la \textbf{funció característica} de $U$, que fa del quadrat
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3em, row sep=2.4em] {
+    U & 1 \\
+    E & \Omega \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$!$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$m$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\mathsf{true}$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$\chi_m$} (m-2-2);
+  \node at ([xshift=0.8em,yshift=-0.7em]m-1-1) {$\scriptstyle\lrcorner$};
+\end{tikzpicture}
+\]
+un pullback. És a dir, $U$ es recupera com el pullback de $\mathsf{true}$ al llarg de $\chi_m$.
+\end{definicio}
+
+La condició diu que cada subobjecte de $E$ té una i només una funció característica, i que el subobjecte es reconstrueix com l'antiimatge del \enquote{punt vertader} $\mathsf{true}$. A $\cat{Set}$, $\Omega=\{0,1\}$ i $\mathsf{true}\colon 1\to\{0,1\}$ tria l'element $1$; la funció característica és la de sempre, i el pullback de $\mathsf{true}$ al llarg de $\chi_U$ recupera exactament $U$.
+
+\begin{proposicio}[El classificador representa els subobjectes]
+\label{prop:omega-representa}
+Suposem $\cat{E}$ localment petita i ben potenciada, de manera que el functor de subobjectes pren valors a $\cat{Set}$. Si $\cat{E}$ té un classificador de subobjectes $\Omega$, aleshores $\Sub_{\cat{E}}\colon\cat{E}\op\to\cat{Set}$ és \textbf{representable}, amb objecte representant $\Omega$:
+\[
+\Sub_{\cat{E}}(E)\;\cong\;\Hom_{\cat{E}}(E,\Omega),
+\]
+natural en $E$. En conseqüència, el classificador de subobjectes, si existeix, és únic llevat d'isomorfisme.
+\end{proposicio}
+
+\begin{prova}
+La bijecció envia un subobjecte $[m]$ a la seva funció característica $\chi_m$; és exhaustiva i injectiva precisament per la unicitat i l'existència de la definició~\ref{def:classificador}. La naturalitat en $E$ és la compatibilitat amb la reindexació: reindexar un subobjecte al llarg de $g\colon E'\to E$ correspon a precompondre la característica amb $g$, cosa que se segueix del lema del pullback. La unicitat de $\Omega$ és aleshores el principi de Yoneda aplicat a dos objectes representants del mateix functor.
+\end{prova}
+
+\begin{observacio}
+Aquesta proposició connecta el capítol amb la teoria de la representabilitat: el classificador de subobjectes és, exactament, un \emph{objecte representant} del functor de subobjectes. La lògica que se'n deriva ---interpretar $\Omega$ com a objecte de valors de veritat--- és el punt de partida de la teoria de topos com a marc per a la lògica d'ordre superior, que aquí no desenvolupem.
+\end{observacio}
+
+\section{Topos elementals}
+
+\begin{definicio}[Topos elemental]\index{topos}\index{topos!elemental}
+\label{def:topos}
+Un \textbf{topos elemental} és una categoria $\cat{E}$ que compleix:
+\begin{enumerate}
+\item $\cat{E}$ té tots els límits finits;
+\item $\cat{E}$ té un classificador de subobjectes $\Omega$;
+\item $\cat{E}$ és cartesiana tancada (té tots els exponencials).
+\end{enumerate}
+\end{definicio}
+
+Aquesta definició, compacta, resulta ser extraordinàriament rica. Es pot demostrar, per exemple, que tot topos té també tots els colímits finits, i que tota categoria slice d'un topos torna a ser un topos. No demostrem aquí aquestes propietats; les recollim per il·lustrar que la combinació \enquote{límits finits $+$ classificador $+$ exponencials} és molt més potent del que sembla a primera vista.
+
+\begin{observacio}[Objecte de parts]
+En un topos, l'exponencial $\Omega^{E}$ mereix un nom propi: és l'\textbf{objecte de parts} $\mathcal{P}(E)$, l'anàleg categòric del conjunt de parts. En efecte, per la propietat de l'exponencial i la del classificador,
+\[
+\Hom(A,\Omega^{E})\cong\Hom(A\times E,\Omega)\cong\Sub(A\times E),
+\]
+de manera que els morfismes cap a $\Omega^{E}$ classifiquen relacions entre $A$ i $E$. Aquesta és la porta d'entrada a la lògica d'ordre superior interna d'un topos, que és tema de l'estudi posterior.
+\end{observacio}
+
+\section{Exemples}
+
+\begin{exemple}[Conjunts]
+$\cat{Set}$ és un topos. Té límits finits, és cartesià tancat (l'exponencial és el conjunt de funcions) i té classificador $\Omega=\{0,1\}$ amb $\mathsf{true}$ l'element $1$. És el topos prototípic, i tota la teoria es pot llegir com una generalització d'aquest cas.
+\end{exemple}
+
+\begin{exemple}[Préfaixos]\index{prefeix@prefeix!topos de}
+Per a qualsevol categoria petita $\cat{C}$, la categoria de prefeixos $\widehat{\cat{C}}=\cat{Set}^{\cat{C}\op}$ és un topos. Ja sabíem que té límits finits (calculats objecte a objecte) i que és cartesiana tancada; el que hi falta és el classificador. Aquest es construeix amb els \textbf{sedassos}: un sedàs sobre un objecte $C$ és un conjunt de morfismes amb codomini $C$ tancat per composició per la dreta. Es defineix
+\[
+\Omega(C)=\{S\mid S\text{ és un sedàs sobre }C\},
+\]
+i aquest prefeix, amb el punt distingit que a cada $C$ tria el sedàs màxim (tots els morfismes cap a $C$), és un classificador de subobjectes per a $\widehat{\cat{C}}$. Aquest exemple cobreix una quantitat enorme de casos i és el pont cap a la teoria de feixos.
+\end{exemple}
+
+\begin{observacio}
+La noció de topos va aparèixer primer a l'escola de Grothendieck de geometria algebraica, com a generalització de la d'espai topològic. Un dels seus aspectes més fascinants, però, és la relació amb la lògica: el classificador $\Omega$ es pot veure com un objecte de proposicions o valors de veritat, i un morfisme $\varphi\colon E\to\Omega$ com una \enquote{funció proposicional} amb extensió el subobjecte que classifica. Aquesta lectura permet interpretar la lògica ---de primer ordre i d'ordre superior--- dins de qualsevol topos. El seu desenvolupament és, precisament, l'objecte de l'estudi de la lògica categòrica.
+\end{observacio}
+
+\section{Fi del recorregut}
+
+Aquí es tanca el contingut d'aquest volum. Hem recorregut el camí que va de la definició de categoria fins al llindar de la teoria de topos: categories i morfismes, functors, transformacions naturals i equivalències, representabilitat i Yoneda, límits, adjuncions, tancament cartesià, subobjectes, imatges i factoritzacions, i ara els classificadors de subobjectes. El capítol següent, breu, explicita què d'aquest bagatge es prolonga en l'estudi de la lògica categòrica i com.
+
+\begin{resumcap}
+\apartat{Cinc idees} (1)~El classificador $\Omega$ és un objecte amb $\mathsf{true}\colon 1\to\Omega$ tal que cada subobjecte té una única funció característica per pullback. (2)~Tenir classificador equival a la representabilitat del functor $\Sub$; $\Omega$ n'és l'objecte representant. (3)~Un topos elemental té límits finits, exponencials i classificador. (4)~$\cat{Set}$ és el topos prototípic, amb $\Omega=\{0,1\}$. (5)~Tota categoria de prefeixos és un topos, amb $\Omega$ el prefeix de sedassos.
+\apartat{Errors típics} Oblidar la hipòtesi de petitesa local\,/\,bona potenciació en escriure $\Sub\colon\cat{C}\op\to\cat{Set}$; assumir més límits dels necessaris a la definició de classificador; i suposar que tot topos és booleà (el classificador pot tenir més de dos \enquote{valors} locals).
+\apartat{Lectura recomanada} \cite[cap.~1--2]{maclanemoerdijk} per a classificadors i topos de prefeixos; \cite[cap.~5--6]{awodey} per a la connexió amb Yoneda; \cite{johnstone} com a obra de consulta avançada.
+\end{resumcap}

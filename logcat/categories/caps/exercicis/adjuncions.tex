@@ -1,0 +1,107 @@
+\chapter[Adjuncions]{Adjuncions}
+
+Els exercicis següents completen els resolts a la part de Pràctica. Cada enunciat va acompanyat d'una indicació breu. La marca \enquote{$\star$} assenyala un exercici de consolidació i \enquote{$\star\star$} un d'ampliació.
+
+\section{Adjuncions entre preordres}
+
+\begin{exercici}
+Comprova que en una adjunció entre preordres $f\dashv g$, l'aplicació $f$ preserva els suprems que existeixin i $g$ preserva els ínfims. \hfill{\normalfont$\star$}
+\begin{indicacio}
+És el cas particular, per a preordres, que els adjunts per l'esquerra preserven colímits (suprems) i els adjunts per la dreta preserven límits (ínfims). Demostra-ho directament amb la definició $f(x)\leq y\Leftrightarrow x\leq g(y)$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $f\colon P\to Q$ monòtona entre reticles complets. Comprova que $f$ té adjunt per la dreta si i només si preserva tots els suprems. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Si $f$ preserva suprems, defineix $g(y)=\bigvee\{x\mid f(x)\leq y\}$ i comprova $f\dashv g$. El recíproc és la preservació de colímits pels adjunts per l'esquerra.
+\end{indicacio}
+\end{exercici}
+
+\section{Adjuncions entre categories}
+
+\begin{exercici}
+Comprova que si $F\dashv G$, aleshores per a cada objecte $A$ el morfisme $\eta_A\colon A\to G(F(A))$ és universal: tot $\psi\colon A\to G(B)$ factoritza de manera única com $G(\varphi)\comp\eta_A$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+La factorització única és exactament la bijecció $\theta\colon\Hom(F(A),B)\cong\Hom(A,G(B))$: donat $\psi$, pren $\varphi=\theta^{-1}(\psi)$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\Delta\colon\cat{C}\to\cat{C}\times\cat{C}$ el functor diagonal, $A\mapsto(A,A)$. Comprova que té com a adjunt per la dreta el producte i com a adjunt per l'esquerra el coproducte, quan existeixen; és a dir, $(+)\dashv\Delta\dashv(\times)$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+De la propietat universal del producte,
+\[
+\Hom_{\cat{C}\times\cat{C}}(\Delta A,(B,C))=\Hom(A,B)\times\Hom(A,C)\cong\Hom(A,B\times C),
+\]
+d'on $\Delta\dashv(\times)$. Dualitza per al coproducte: $(+)\dashv\Delta$.
+\end{indicacio}
+\end{exercici}
+
+\section{Unitat i counitat}
+
+\begin{exercici}
+Comprova que una adjunció es pot definir donant només un functor $G$ i, per a cada objecte $A$, un morfisme universal $\eta_A\colon A\to G(F(A))$; és a dir, que la unitat amb la seva propietat universal determina l'adjunt per l'esquerra. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Defineix $F$ sobre objectes per la propietat universal, i sobre morfismes usant la unicitat de les factoritzacions. Comprova que $F$ resulta functorial i que $F\dashv G$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que en l'adjunció lliure-oblit dels grups, la counitat
+\[
+\varepsilon_G\colon F(U(G))\to G
+\]
+és exhaustiva per a tot grup $G$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+$\varepsilon_G$ envia una paraula de generadors (elements de $G$) al seu producte a $G$; tot element de $G$ és, en particular, una paraula d'una lletra, de manera que $\varepsilon_G$ és exhaustiva.
+\end{indicacio}
+\end{exercici}
+
+\section{Identitats triangulars}
+
+\begin{exercici}
+Comprova la segona identitat triangular $G(\varepsilon_B)\comp\eta_{G(B)}=\id_{G(B)}$, dualitzant la demostració de la primera. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Usa $\theta(\varphi)=G(\varphi)\comp\eta_A$ amb $A=G(B)$ i $\varphi=\varepsilon_B$, i que $\theta(\varepsilon_B)=\id_{G(B)}$ per definició de la counitat.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que dues transformacions naturals $\eta\colon\id\Rightarrow GF$ i $\varepsilon\colon FG\Rightarrow\id$ que satisfan les identitats triangulars defineixen una adjunció $F\dashv G$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Defineix $\theta(\varphi)=G(\varphi)\comp\eta_A$ i $\theta^{-1}(\psi)=\varepsilon_B\comp F(\psi)$; les identitats triangulars donen que són inverses, i la naturalitat de $\eta,\varepsilon$ dona la de $\theta$.
+\end{indicacio}
+\end{exercici}
+
+\section{Els adjunts i els límits}
+
+\begin{exercici}
+Comprova que el functor \enquote{conjunt de parts contravariant} $\mathcal P\colon\cat{Set}\op\to\cat{Set}$ envia coproductes a productes: $\mathcal P(A+B)\cong\mathcal P(A)\times\mathcal P(B)$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un subconjunt de $A+B$ és una parella (subconjunt de $A$, subconjunt de $B$). Relaciona-ho amb el fet que els representables contravariants envien colímits a límits.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $U\colon\cat{Top}\to\cat{Set}$ el functor oblit. Comprova que té \emph{dos} adjuncts, un per l'esquerra i un per la dreta, i digues quins són. \hfill{\normalfont$\star$}
+\begin{indicacio}
+L'adjunt per l'esquerra dona a cada conjunt la topologia discreta; el de la dreta, la topologia grollera (indiscreta). Per tant $U$ preserva tant límits com colímits.
+\end{indicacio}
+\end{exercici}
+
+\section{Exponencials}
+
+\begin{exercici}
+Comprova que a $\cat{Set}$ es compleix $C^{A+B}\cong C^A\times C^B$ i $(C\times D)^A\cong C^A\times D^A$, i interpreta-ho en termes d'adjuncions. \hfill{\normalfont$\star$}
+\begin{indicacio}
+La primera és que $(-)^{-}$ envia coproductes en la variable de dalt a productes (perquè $-\times B$, el seu adjunt, els hi envia); la segona és que $(-)^A$, adjunt per la dreta, preserva productes.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que la currificació $\Hom(A\times B,C)\cong\Hom(A,C^B)$ és natural en les tres variables $A,B,C$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Comprova la commutativitat amb la precomposició en $A$, la postcomposició en $C$ i l'acció en $B$, aplicant les definicions de $\tilde f$ i $\hat g$.
+\end{indicacio}
+\end{exercici}

@@ -1,0 +1,121 @@
+\chapter[Cartesianes tancades]{\texorpdfstring{Categories cartesianes\\ tancades}{Categories cartesianes tancades}}
+
+Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
+
+\begin{Form}
+\iniciTest{cct}{b,c,d,b,c,b,d,c,b,c,d,b}
+
+\begin{enumerate}
+
+\pregunta Una categoria és \textbf{cartesiana} quan té:
+\begin{enumerate}
+  \opcio{a}{tots els colímits.}
+  \opcio{b}{objecte terminal i productes binaris (és a dir, tots els productes finits).}
+  \opcio{c}{només un objecte inicial.}
+  \opcio{d}{exponencials però no productes.}
+\end{enumerate}
+\feedback
+
+\pregunta El \textbf{morfisme diagonal} $\Delta_A\colon A\to A\times A$ és l'únic morfisme tal que:
+\begin{enumerate}
+  \opcio{a}{$\Delta_A=\id_{A\times A}$.}
+  \opcio{b}{no existeix en general.}
+  \opcio{c}{$\pi_1\comp\Delta_A=\pi_2\comp\Delta_A=\id_A$.}
+  \opcio{d}{$\pi_1\comp\Delta_A=!_A$.}
+\end{enumerate}
+\feedback
+
+\pregunta Un \textbf{objecte exponencial} $C^{B}$ ve equipat amb un morfisme:
+\begin{enumerate}
+  \opcio{a}{de projecció $C^{B}\to B$.}
+  \opcio{b}{terminal $C^{B}\to 1$.}
+  \opcio{c}{diagonal $C^{B}\to C^{B}\times C^{B}$.}
+  \opcio{d}{d'avaluació $\ev\colon C^{B}\times B\to C$.}
+\end{enumerate}
+\feedback
+
+\pregunta La \textbf{currificació} $\lambda f$ d'un morfisme $f\colon A\times B\to C$ és l'únic morfisme que compleix:
+\begin{enumerate}
+  \opcio{a}{$\lambda f\comp\ev=f$.}
+  \opcio{b}{$\ev\comp(\lambda f\times\id_B)=f$.}
+  \opcio{c}{$\lambda f=f$.}
+  \opcio{d}{$\lambda f\comp\pi_1=f$.}
+\end{enumerate}
+\feedback
+
+\pregunta Una categoria és \textbf{cartesiana tancada} quan és cartesiana i, a més, per a cada objecte $B$:
+\begin{enumerate}
+  \opcio{a}{$B$ és terminal.}
+  \opcio{b}{$-\times B$ és un isomorfisme.}
+  \opcio{c}{el functor $-\times B$ té adjunt per la dreta $(-)^{B}$.}
+  \opcio{d}{$-\times B$ té adjunt per l'esquerra.}
+\end{enumerate}
+\feedback
+
+\pregunta A $\cat{Set}$, l'exponencial $C^{B}$ és:
+\begin{enumerate}
+  \opcio{a}{el producte cartesià $C\times B$.}
+  \opcio{b}{el conjunt de \emph{totes} les aplicacions $B\to C$.}
+  \opcio{c}{la unió disjunta $C+B$.}
+  \opcio{d}{el conjunt de bijeccions $B\to C$.}
+\end{enumerate}
+\feedback
+
+\pregunta En una \textbf{àlgebra de Heyting}, l'objecte exponencial $b\Rightarrow c$ és:
+\begin{enumerate}
+  \opcio{a}{el suprem $b\vee c$.}
+  \opcio{b}{la negació $\neg b$.}
+  \opcio{c}{l'ínfim $b\wedge c$.}
+  \opcio{d}{l'adjunt per la dreta de $-\wedge b$, caracteritzat per $a\wedge b\leq c\Leftrightarrow a\leq(b\Rightarrow c)$.}
+\end{enumerate}
+\feedback
+
+\pregunta Quina categoria \emph{no} és, en general, cartesiana tancada?
+\begin{enumerate}
+  \opcio{a}{$\cat{Set}$.}
+  \opcio{b}{una àlgebra de Heyting.}
+  \opcio{c}{$\cat{Top}$, els espais topològics.}
+  \opcio{d}{una categoria de prefeixos $\cat{Set}^{\cat{C}\op}$.}
+\end{enumerate}
+\feedback
+
+\pregunta En la semàntica del càlcul lambda simplement tipat, el \textbf{tipus funció} $\sigma\to\tau$ s'interpreta amb:
+\begin{enumerate}
+  \opcio{a}{el producte $\llbracket\sigma\rrbracket\times\llbracket\tau\rrbracket$.}
+  \opcio{b}{l'exponencial $\llbracket\tau\rrbracket^{\llbracket\sigma\rrbracket}$.}
+  \opcio{c}{l'objecte terminal.}
+  \opcio{d}{el coproducte.}
+\end{enumerate}
+\feedback
+
+\pregunta En aquesta semàntica, l'\textbf{abstracció} $\lambda x.\,t$ es correspon amb:
+\begin{enumerate}
+  \opcio{a}{una projecció.}
+  \opcio{b}{la diagonal.}
+  \opcio{c}{la currificació de la interpretació de $t$.}
+  \opcio{d}{l'objecte terminal.}
+\end{enumerate}
+\feedback
+
+\pregunta La regla de conversió $(\beta)$ del càlcul lambda es correspon categòricament amb:
+\begin{enumerate}
+  \opcio{a}{la unicitat de l'objecte terminal.}
+  \opcio{b}{l'associativitat del producte.}
+  \opcio{c}{la commutativitat del coproducte.}
+  \opcio{d}{l'equació de l'avaluació $\ev\comp(\lambda f\times\id_B)=f$.}
+\end{enumerate}
+\feedback
+
+\pregunta La correspondència de \textbf{Curry--Howard--Lambek} relaciona:
+\begin{enumerate}
+  \opcio{a}{grups amb anells.}
+  \opcio{b}{el càlcul lambda simplement tipat amb les categories cartesianes tancades.}
+  \opcio{c}{límits amb colímits.}
+  \opcio{d}{monoides amb preordres.}
+\end{enumerate}
+\feedback
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest
+\end{Form}

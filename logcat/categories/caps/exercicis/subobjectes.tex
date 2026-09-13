@@ -1,0 +1,116 @@
+\chapter[Subobjectes, imatges i factoritzacions]{\texorpdfstring{Subobjectes, imatges\\ i factoritzacions}{Subobjectes, imatges i factoritzacions}}
+
+Els exercicis següents completen els resolts a la part de Pràctica. Cada enunciat va acompanyat d'una indicació breu. La marca \enquote{$\star$} assenyala un exercici de consolidació i \enquote{$\star\star$} un d'ampliació.
+
+\section{Subobjectes}
+
+\begin{exercici}
+Descriu $\Sub(A)$ quan $A$ és un objecte d'un preordre vist com a categoria. \hfill{\normalfont$\star$}
+\begin{indicacio}
+En un preordre hi ha com a molt un morfisme entre dos objectes, i tots són monos. Quins subobjectes té, doncs, $A$? Compara amb el conjunt d'elements $\leq A$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que en una categoria amb objecte inicial estricte $0$, la inclusió $0\rightarrowtail A$ és el subobjecte mínim de $\Sub(A)$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+\enquote{Estricte} vol dir que tot morfisme cap a $0$ és un isomorfisme. Comprova primer que $0\to A$ és mono, i després que es factoritza a través de qualsevol subobjecte.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Demostra que a $\cat{Grp}$ els subobjectes d'un grup $G$ es corresponen exactament amb els seus \textbf{subgrups}. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Els monomorfismes a $\cat{Grp}$ són els homomorfismes injectius. Comprova que dos monos amb codomini $G$ són equivalents si i només si tenen la mateixa imatge, i que les imatges de monos són exactament els subgrups.
+\end{indicacio}
+\end{exercici}
+
+\section{Reindexació}
+
+\begin{exercici}
+Sigui $f\colon A\to B$. Comprova que $f^{*}$ envia el subobjecte màxim de $\Sub(B)$ al màxim de $\Sub(A)$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+El pullback de $\id_B$ al llarg de $f$ és $\id_A$ (llevat d'isomorfisme). Interpreta-ho: substituir dins del predicat \enquote{sempre cert} torna a donar \enquote{sempre cert}.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Treballa a $\cat{Set}$. Comprova que si $m\colon S\rightarrowtail B$ és un subobjecte (un subconjunt $S\subseteq B$) i $f\colon A\to B$, aleshores $f^{*}[m]$ és el subobjecte \emph{mínim} (buit) de $A$ exactament quan la imatge de $f$ no talla $S$, és a dir, quan $f(A)\cap S=\varnothing$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+A $\cat{Set}$, $f^{-1}(S)=\varnothing$ si i només si cap element de la imatge de $f$ és a $S$. Formula-ho amb pullbacks: el pullback de $m$ al llarg de $f$ és l'objecte inicial exactament en aquest cas.
+\end{indicacio}
+\end{exercici}
+
+\section{Interseccions i estructura}
+
+\begin{exercici}
+Demostra que la reindexació $f^{*}$ preserva interseccions: $f^{*}([m]\wedge[n])=f^{*}[m]\wedge f^{*}[n]$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Tant l'ínfim com la reindexació són pullbacks. Usa que els pullbacks es componen: el pullback d'un pullback sobre $B$ al llarg de $f$ es reorganitza en la intersecció dels pullbacks. És un exercici de manipulació de quadrats cartesians.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que $\Sub$ es pot veure com un functor $\Sub\colon\cat{C}\op\to\cat{Poset}$, que envia cada objecte al seu preordre de subobjectes i cada morfisme a la seva reindexació. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+La contravariància és la de la reindexació: $f\colon A\to B$ dona $f^{*}\colon\Sub(B)\to\Sub(A)$. La functorialitat és l'exercici resolt $(g\comp f)^{*}=f^{*}\comp g^{*}$. Rigorosament, cal fixar una tria de pullbacks o admetre igualtats llevat d'isomorfisme; aquesta és la primera aparició de les \emph{categories indexades}.
+\end{indicacio}
+\end{exercici}
+
+\section{Imatges, factoritzacions i quantificació}
+
+\section{Factorització imatge}
+
+\begin{exercici}
+Comprova que a $\cat{Grp}$ la factorització imatge d'un homomorfisme $f\colon G\to H$ és $G\twoheadrightarrow \Imatge(f)\hookrightarrow H$, on $\Imatge(f)$ és el subgrup imatge. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Els epimorfismes regulars a $\cat{Grp}$ són les projeccions al quocient $G\to G/N$; la primera part de $f$ és $G\to G/\ker f\cong\Imatge(f)$. Fes servir el primer teorema d'isomorfia.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Demostra que en qualsevol categoria amb factoritzacions imatge, la imatge d'una composició satisfà $\Imatge(g\comp f)\leq\Imatge(g)$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+$g\comp f$ es factoritza a través de $\Imatge(g)$ (via la factorització de $g$), i la imatge és el menor subobjecte pel qual això passa.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que un epimorfisme regular que és alhora monomorfisme és un isomorfisme, i dedueix que en una categoria regular la factorització imatge d'un mono és trivial. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un epi regular és el coequalitzador de la seva parella nucli; si a més és mono, la parella nucli és la diagonal, i el coequalitzador d'una parella trivial és una identitat llevat d'isomorfisme.
+\end{indicacio}
+\end{exercici}
+
+\section{Regularitat}
+
+\begin{exercici}
+Demostra que tota categoria abeliana és regular. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+En una categoria abeliana tot morfisme es factoritza com epi (sobre la coimatge) seguit de mono (la imatge), i coimatge i imatge coincideixen. L'estabilitat per pullback se segueix de l'exactitud. Pots limitar-te a esbossar per què cada condició de la definició es compleix.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Exhibeix una aplicació quocient a $\cat{Top}$ el pullback de la qual no és una aplicació quocient, i dedueix-ne que $\cat{Top}$ no és regular. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Els epimorfismes regulars a $\cat{Top}$ són exactament les aplicacions quocient (i cal no confondre'ls amb els epimorfismes de $\cat{Top}$, que són les aplicacions d'imatge densa). Busca una aplicació quocient el pullback de la qual, al llarg d'una inclusió adequada, deixa de ser quocient. És el fenomen que motiva restringir-se a categories \enquote{convenients}.
+\end{indicacio}
+\end{exercici}
+
+\section{Quantificació}
+
+\begin{exercici}
+Demostra que $\exists_f$ és monòtona i que preserva el subobjecte mínim (el \enquote{fals}). \hfill{\normalfont$\star$}
+\begin{indicacio}
+La monotonia se segueix de ser adjunt per l'esquerra (els adjunts per l'esquerra preserven l'ordre). Per al mínim, la imatge de l'objecte inicial és inicial.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Usant que $\exists_f$ és adjunt per l'esquerra, demostra que preserva unions (suprems) de subobjectes quan existeixen. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Els adjunts per l'esquerra preserven tots els colímits que existeixin; en un preordre, els suprems són els colímits. Escriu la cadena de bicondicionals de l'adjunció aplicada a un suprem.
+\end{indicacio}
+\end{exercici}
+

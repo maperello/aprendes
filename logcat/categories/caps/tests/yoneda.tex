@@ -1,0 +1,139 @@
+\chapter[Representabilitat i Yoneda]{\texorpdfstring{Propietats universals,\\ representabilitat i Yoneda}{Propietats universals, representabilitat i Yoneda}}
+
+Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
+
+\begin{Form}
+\iniciTest{yon}{b,c,b,c,b,d,c,b,c,b,d,c,b,c}
+
+\begin{enumerate}
+
+\pregunta Quan és \textbf{terminal} un objecte $1$ d'una categoria?
+\begin{enumerate}
+  \opcio{a}{Quan hi ha exactament un morfisme $1\to X$ per a cada $X$.}
+  \opcio{b}{Quan hi ha exactament un morfisme $X\to 1$ per a cada $X$.}
+  \opcio{c}{Quan no hi ha cap morfisme cap a ell.}
+  \opcio{d}{Quan és isomorf a tots els altres objectes.}
+\end{enumerate}
+\feedback
+
+\pregunta Per què l'objecte terminal és únic llevat d'isomorfisme?
+\begin{enumerate}
+  \opcio{a}{Perquè només n'hi pot haver un literalment.}
+  \opcio{b}{Perquè tots els objectes són terminals.}
+  \opcio{c}{Perquè entre dos terminals els morfismes únics es componen donant les identitats, i per tant són isomorfismes.}
+  \opcio{d}{Perquè l'objecte terminal no existeix mai.}
+\end{enumerate}
+\feedback
+
+\pregunta Una \textbf{propietat universal} caracteritza un objecte...
+\begin{enumerate}
+  \opcio{a}{per la seva constitució interna.}
+  \opcio{b}{per la manera com es relaciona amb tots els altres objectes, via un functor representable.}
+  \opcio{c}{per la seva cardinalitat.}
+  \opcio{d}{només a $\cat{Set}$.}
+\end{enumerate}
+\feedback
+
+\pregunta Que $1$ sigui terminal equival a dir que:
+\begin{enumerate}
+  \opcio{a}{$\Hom(1,-)$ és constant.}
+  \opcio{b}{$\Hom(-,1)$ no és functor.}
+  \opcio{c}{$\Hom(-,1)$ és isomorf al functor constant amb valor un punt.}
+  \opcio{d}{$\Hom(-,1)$ és buit.}
+\end{enumerate}
+\feedback
+
+\pregunta Quan es diu que un functor $P\colon\cat{C}\op\to\cat{Set}$ és \textbf{representable}?
+\begin{enumerate}
+  \opcio{a}{Quan és constant.}
+  \opcio{b}{Quan és isomorf a $\Hom(-,A)$ per a algun objecte $A$.}
+  \opcio{c}{Quan és ple i fidel.}
+  \opcio{d}{Quan té un sol element a cada conjunt.}
+\end{enumerate}
+\feedback
+
+\pregunta Què és el \textbf{plançó de Yoneda}?
+\begin{enumerate}
+  \opcio{a}{Un objecte terminal.}
+  \opcio{b}{Una transformació natural.}
+  \opcio{c}{Un prefeix qualsevol.}
+  \opcio{d}{El functor $\yon\colon\cat{C}\to\cat{Set}^{\cat{C}\op}$ amb $\yon(A)=\Hom(-,A)$.}
+\end{enumerate}
+\feedback
+
+\pregunta Els objectes de $\cat{Set}^{\cat{C}\op}$ s'anomenen:
+\begin{enumerate}
+  \opcio{a}{functors oblit.}
+  \opcio{b}{cons.}
+  \opcio{c}{prefeixos.}
+  \opcio{d}{monoides.}
+\end{enumerate}
+\feedback
+
+\pregunta Què afirma el \textbf{lema de Yoneda}?
+\begin{enumerate}
+  \opcio{a}{Que tota categoria és petita.}
+  \opcio{b}{Que $\Nat(\Hom(-,A),P)\cong P(A)$, naturalment en $A$ i $P$.}
+  \opcio{c}{Que tot functor és representable.}
+  \opcio{d}{Que $\Hom(A,B)$ és sempre buit.}
+\end{enumerate}
+\feedback
+
+\pregunta A la demostració del lema, a quina dada s'envia una transformació natural $\eta\colon\Hom(-,A)\Rightarrow P$?
+\begin{enumerate}
+  \opcio{a}{A $\eta_A$.}
+  \opcio{b}{A tot el functor $P$.}
+  \opcio{c}{A l'element $\eta_A(\id_A)\in P(A)$.}
+  \opcio{d}{A la identitat de $P$.}
+\end{enumerate}
+\feedback
+
+\pregunta Una conseqüència directa del lema de Yoneda és que el plançó $\yon$ és:
+\begin{enumerate}
+  \opcio{a}{constant.}
+  \opcio{b}{ple i fidel.}
+  \opcio{c}{essencialment exhaustiu.}
+  \opcio{d}{un isomorfisme de categories.}
+\end{enumerate}
+\feedback
+
+\pregunta Segons el corol·lari de Yoneda, $A\cong B$ si i només si:
+\begin{enumerate}
+  \opcio{a}{$A$ i $B$ tenen la mateixa cardinalitat.}
+  \opcio{b}{$A=B$.}
+  \opcio{c}{hi ha un functor entre ells.}
+  \opcio{d}{$\Hom(-,A)\cong\Hom(-,B)$ com a prefeixos.}
+\end{enumerate}
+\feedback
+
+\pregunta L'objecte que representa un functor representable és:
+\begin{enumerate}
+  \opcio{a}{sempre $\cat{Set}$.}
+  \opcio{b}{mai únic.}
+  \opcio{c}{únic llevat d'isomorfisme.}
+  \opcio{d}{un objecte inicial.}
+\end{enumerate}
+\feedback
+
+\pregunta El plançó de Yoneda, en general, \emph{no} és:
+\begin{enumerate}
+  \opcio{a}{fidel.}
+  \opcio{b}{essencialment exhaustiu (no tot prefeix és representable).}
+  \opcio{c}{ple.}
+  \opcio{d}{un functor.}
+\end{enumerate}
+\feedback
+
+\pregunta Quina és la lectura intuïtiva del corol·lari de Yoneda?
+\begin{enumerate}
+  \opcio{a}{Que els objectes no es poden distingir.}
+  \opcio{b}{Que tot objecte és terminal.}
+  \opcio{c}{Que un objecte queda determinat, llevat d'isomorfisme, per la xarxa de morfismes que hi arriben.}
+  \opcio{d}{Que els morfismes no importen.}
+\end{enumerate}
+\feedback
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest
+\end{Form}

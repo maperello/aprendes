@@ -1,0 +1,141 @@
+\chapter[Subobjectes, imatges i factoritzacions]{\texorpdfstring{Subobjectes, imatges\\ i factoritzacions}{Subobjectes, imatges i factoritzacions}}
+
+Els exercicis d'aquest capítol fixen les tres idees centrals: els subobjectes com a classes de monomorfismes, l'ordre $\Sub(A)$ com a àlgebra de predicats, i la reindexació $f^{*}$ com a substitució. Molts arguments es fan \enquote{sense elements}, usant només propietats universals; convé acostumar-s'hi, perquè és el que permet traslladar-los a categories arbitràries.
+
+\section{Subobjectes i el seu ordre}
+
+\begin{exercici}
+Comprova que a $\cat{Set}$ dos monomorfismes $m\colon S\rightarrowtail A$ i $n\colon T\rightarrowtail A$ són equivalents si i només si tenen la mateixa imatge, i dedueix que $\Sub(A)\cong\mathcal{P}(A)$.
+\end{exercici}
+
+\begin{solucio}
+Si $m\sim n$, hi ha un isomorfisme $\varphi\colon S\to T$ amb $n\comp\varphi=m$; aleshores $m(S)=n(\varphi(S))=n(T)$, de manera que tenen la mateixa imatge. Recíprocament, si $m(S)=n(T)=:I$, com que $m$ i $n$ són injectives es restringeixen a bijeccions $S\to I$ i $T\to I$; la composició $\varphi=n|^{-1}\comp m|\colon S\to T$ és una bijecció amb $n\comp\varphi=m$, així que $m\sim n$. Per tant la imatge determina la classe, i l'assignació $[m]\mapsto m(S)$ és una bijecció entre $\Sub(A)$ i el conjunt de subconjunts $\mathcal{P}(A)$; a més respecta l'ordre, ja que $[m]\leq[n]$ equival a $m(S)\subseteq n(T)$.
+\end{solucio}
+
+\begin{exercici}
+Demostra que en qualsevol categoria l'objecte $\id_A\colon A\to A$ és el subobjecte \textbf{màxim} de $\Sub(A)$.
+\end{exercici}
+
+\begin{solucio}
+La identitat és un monomorfisme (és un isomorfisme). Per a qualsevol altre subobjecte $m\colon S\rightarrowtail A$, el mateix $m$ és una factorització de $m$ a través de $\id_A$, ja que $\id_A\comp m=m$. Per tant $[m]\leq[\id_A]$ per a tot $m$, cosa que fa de $[\id_A]$ el màxim. Lògicament, és el predicat \enquote{sempre cert}: tot element de $A$ el satisfà.
+\end{solucio}
+
+\begin{exercici}
+Comprova que si $m\colon S\rightarrowtail A$ és un subobjecte i $\varphi\colon S'\to S$ és un isomorfisme, aleshores $m\comp\varphi$ representa el mateix subobjecte. Per què això justifica treballar amb classes i no amb monos concrets?
+\end{exercici}
+
+\begin{solucio}
+Per definició de la relació d'equivalència, $m\comp\varphi\sim m$ mitjançant l'isomorfisme $\varphi$: $m\comp\varphi=m\comp\varphi$ amb $m\comp\varphi$ factoritzant. Formalment, $[m\comp\varphi]=[m]$ perquè $\varphi$ és un isomorfisme del domini que fa commutar el triangle. Això justifica treballar amb classes: la teoria dels subobjectes ha de ser invariant per reparametritzacions del domini, ja que \enquote{el subconjunt} no depèn de com l'indexem. Prendre classes elimina aquesta ambigüitat sense perdre informació geomètrica.
+\end{solucio}
+
+\section{Reindexació}
+
+\begin{exercici}
+Sigui $f\colon A\to B$ a $\cat{Set}$ i $S\subseteq B$. Comprova que $f^{*}(S)=f^{-1}(S)$ i que $f^{*}$ preserva interseccions: $f^{*}(S\cap S')=f^{*}(S)\cap f^{*}(S')$.
+\end{exercici}
+
+\begin{solucio}
+El pullback de la inclusió $S\hookrightarrow B$ al llarg de $f$ és $\{(a,s)\in A\times S\mid f(a)=s\}$, que s'identifica amb $\{a\in A\mid f(a)\in S\}=f^{-1}(S)$, amb la projecció cap a $A$ com a inclusió. Per a les interseccions, $x\in f^{-1}(S\cap S')$ si i només si $f(x)\in S\cap S'$, és a dir, $f(x)\in S$ i $f(x)\in S'$, això és $x\in f^{-1}(S)\cap f^{-1}(S')$. La reindexació preserva, doncs, la conjunció; és una manifestació que la substitució commuta amb $\wedge$.
+\end{solucio}
+
+\begin{exercici}
+Demostra que la reindexació és functorial: $(g\comp f)^{*}=f^{*}\comp g^{*}$ i $(\id_A)^{*}=\id_{\Sub(A)}$, llevat d'isomorfisme canònic.
+\end{exercici}
+
+\begin{solucio}
+Per a la identitat, el pullback d'un mono $m\colon S\rightarrowtail A$ al llarg de $\id_A$ és el mateix $m$ (llevat d'isomorfisme canònic), ja que $\id_A$ no imposa cap restricció; per tant $(\id_A)^{*}[m]=[m]$. Per a la composició, siguin $f\colon A\to B$ i $g\colon B\to C$ i $m\colon S\rightarrowtail C$. El \enquote{lema del pullback} diu que formar el pullback al llarg de $g$ i després al llarg de $f$ és el mateix que formar-lo al llarg de $g\comp f$ d'una sola vegada: el rectangle compost és cartesià si i només si ho són els dos quadrats. Per tant $(g\comp f)^{*}[m]=f^{*}(g^{*}[m])$, llevat d'isomorfisme canònic entre pullbacks. Aquesta functorialitat és la que fa de la família $\{\Sub(A)\}$ una \enquote{categoria indexada}.
+\end{solucio}
+
+\begin{exercici}
+Comprova que si $f\colon A\to B$ és un epimorfisme escindit (té secció $s$ amb $f\comp s=\id_B$), aleshores $f^{*}$ és injectiva sobre subobjectes.
+\end{exercici}
+
+\begin{solucio}
+Si $f\comp s=\id_B$, aplicant la functorialitat de la reindexació, $s^{*}\comp f^{*}=(f\comp s)^{*}=(\id_B)^{*}=\id_{\Sub(B)}$. Per tant $f^{*}$ té inversa per l'esquerra $s^{*}$, cosa que la fa injectiva: si $f^{*}[m]=f^{*}[n]$, aplicant $s^{*}$ obtenim $[m]=[n]$. Intuïtivament, si $f$ no perd informació (té secció), la substitució al llarg de $f$ tampoc no en perd.
+\end{solucio}
+
+\section{Interseccions i lògica}
+
+\begin{exercici}
+Verifica amb detall que el pullback de dos subobjectes $m\colon S\rightarrowtail A$ i $n\colon T\rightarrowtail A$ és el seu ínfim a $\Sub(A)$, escrivint les dues direccions de la propietat universal.
+\end{exercici}
+
+\begin{solucio}
+Sigui $P=S\times_A T$ el pullback, amb projeccions $p\colon P\to S$ i $q\colon P\to T$ i inclusió $m\comp p=n\comp q\colon P\rightarrowtail A$ (mono per ser composició de monos). \emph{Fita inferior}: $[P]\leq[m]$ via $p$, ja que $m\comp p$ és la inclusió i factoritza per $m$; anàlogament $[P]\leq[n]$ via $q$. \emph{Màxima fita inferior}: sigui $k\colon R\rightarrowtail A$ amb $[k]\leq[m]$ i $[k]\leq[n]$, amb factoritzacions $a\colon R\to S$ ($m\comp a=k$) i $b\colon R\to T$ ($n\comp b=k$). Aleshores $m\comp a=k=n\comp b$, de manera que la parella $(a,b)$ és compatible amb el pullback i indueix un únic $u\colon R\to P$ amb $p\comp u=a$ i $q\comp u=b$. Aquest $u$ factoritza $k$ a través de la inclusió de $P$: $(m\comp p)\comp u=m\comp a=k$. Per tant $[k]\leq[P]$, i $[P]$ és l'ínfim $[m]\wedge[n]$.
+\end{solucio}
+
+\section{Imatges i factoritzacions}
+
+\begin{exercici}
+Comprova que a $\cat{Set}$ tota aplicació $f\colon A\to B$ té factorització imatge amb $I=f(A)$, i identifica l'epimorfisme regular i el monomorfisme.
+\end{exercici}
+
+\begin{solucio}
+Prenem $I=f(A)\subseteq B$. L'aplicació $e\colon A\to I$, $e(a)=f(a)$, és exhaustiva, i tota aplicació exhaustiva a $\cat{Set}$ és un epimorfisme regular: és el coequalitzador de la seva parella nucli $\{(a,a')\mid f(a)=f(a')\}$. La inclusió $m\colon I\hookrightarrow B$ és injectiva, per tant un monomorfisme. Aleshores $f=m\comp e$ és la factorització imatge, i $\Imatge(f)=[m]$ és el subconjunt $f(A)$. Recuperem la noció usual d'imatge d'una aplicació.
+\end{solucio}
+
+\begin{exercici}
+Demostra que si $f=m\comp e$ és una factorització imatge i $f$ és ell mateix un monomorfisme, aleshores $e$ és un isomorfisme.
+\end{exercici}
+
+\begin{solucio}
+Si $f=m\comp e$ és mono i $m$ és mono, aleshores $e$ és mono: de $e\comp u=e\comp v$ se segueix $m\comp e\comp u=m\comp e\comp v$, és a dir $f\comp u=f\comp v$, d'on $u=v$. Però $e$ també és un epimorfisme regular, en particular un epimorfisme. Un morfisme que és alhora mono i epi regular és un isomorfisme: essent el coequalitzador d'una parella que ja iguala (perquè $e$ mono força la parella nucli a ser la diagonal), $e$ coequalitza la parella trivial i és, doncs, invertible. Per tant $\Imatge(f)=[f]$: la imatge d'un mono és ell mateix.
+\end{solucio}
+
+\begin{exercici}
+Comprova que la imatge és el menor subobjecte pel qual es factoritza $f$: si $f=n\comp g$ amb $n\colon T\rightarrowtail B$ mono, aleshores $\Imatge(f)\leq[n]$.
+\end{exercici}
+
+\begin{solucio}
+Sigui $f=m\comp e$ la factorització imatge i $f=n\comp g$ una factorització qualsevol a través del mono $n$. Aleshores $n\comp g=m\comp e$. Com que $e$ és el coequalitzador de la parella nucli de $f$ i $n$ és mono, $g$ iguala les dues branques de la parella nucli, de manera que es factoritza per $e$: hi ha $h$ amb $h\comp e=g$. Aleshores $n\comp h\comp e=n\comp g=f=m\comp e$, i com que $e$ és epi, $n\comp h=m$. Aquesta igualtat és precisament una factorització de $m$ a través de $n$, és a dir $\Imatge(f)=[m]\leq[n]$.
+\end{solucio}
+
+\section{Estabilitat i regularitat}
+
+\begin{exercici}
+A $\cat{Set}$, comprova directament que les imatges són estables per pullback: si es reindexà $f\colon A\to B$ al llarg de $g\colon B'\to B$, aleshores $\Imatge(f')=g^{-1}(\Imatge(f))$.
+\end{exercici}
+
+\begin{solucio}
+El pullback de $f$ al llarg de $g$ és $A'=\{(b',a)\mid g(b')=f(a)\}$ amb $f'(b',a)=b'$. La seva imatge és $\{b'\in B'\mid\exists a,\ g(b')=f(a)\}=\{b'\mid g(b')\in f(A)\}=g^{-1}(f(A))=g^{-1}(\Imatge(f))$. Per tant $\Imatge(f')=g^{*}(\Imatge(f))$, que és l'enunciat d'estabilitat. Aquesta comprovació explícita és el model de la propietat abstracta que defineix les categories regulars.
+\end{solucio}
+
+\begin{exercici}
+Demostra que en una categoria regular els epimorfismes regulars són tancats per composició: si $f\colon A\to B$ i $g\colon B\to C$ són epimorfismes regulars, aleshores $g\comp f$ també ho és.
+\end{exercici}
+
+\begin{solucio}
+Farem servir dues propietats de les categories regulars: tota fletxa té una factorització imatge (epi regular seguit de mono), i \emph{un morfisme és epi regular si i només si en la seva factorització imatge la part mono és un isomorfisme}. Aquesta caracterització val perquè, si $h=m\comp e$ amb $e$ epi regular i $m$ mono, i $h$ és ell mateix epi regular, aleshores $h$ és el coequalitzador de la seva parella nucli; com que $m$ és mono, $e$ i $h$ tenen la mateixa parella nucli, i el coequalitzador d'aquesta parella és únic llevat d'isomorfisme, d'on $m$ és un isomorfisme. El recíproc és immediat.
+
+Siguin ara $f,g$ epis regulars i factoritzem la composició $g\comp f=m\comp e$ amb $e$ epi regular i $m\colon I\rightarrowtail C$ mono. Cal veure que $m$ és un isomorfisme. Com que $g\comp f$ es factoritza per $m$ i $g$ és epi regular, la minimalitat de la imatge (proposició~\ref{prop:imatge-unica}) dona $\Imatge(g\comp f)=\Imatge(g)=[\id_C]$, perquè $g$, en ser epi regular, té imatge tot $C$. Per tant $[m]=[\id_C]$ i $m$ és un isomorfisme; així $g\comp f$ és, llevat d'isomorfisme, un epi regular. Alternativament, i sense passar per imatges: com que $f$ és epi regular és coequalitzador d'alguna parella, i tot epi regular és epi; la composició de dos epis és epi, i l'estabilitat per pullback pròpia de la regularitat assegura que la classe d'epis regulars és tancada per composició. A $\cat{Set}$ tot plegat es redueix al fet que la composició d'aplicacions exhaustives és exhaustiva.
+\end{solucio}
+
+\section{L'existencial}
+
+\begin{exercici}
+Verifica les dues direccions de l'adjunció $\exists_f\dashv f^{*}$ a $\cat{Set}$, on $\exists_f(S)=f(S)$ i $f^{*}(T)=f^{-1}(T)$.
+\end{exercici}
+
+\begin{solucio}
+Siguin $S\subseteq A$ i $T\subseteq B$. Cal veure $f(S)\subseteq T\Leftrightarrow S\subseteq f^{-1}(T)$.
+
+\emph{($\Rightarrow$)} Si $f(S)\subseteq T$ i $a\in S$, aleshores $f(a)\in f(S)\subseteq T$, així que $a\in f^{-1}(T)$; per tant $S\subseteq f^{-1}(T)$.
+
+\emph{($\Leftarrow$)} Si $S\subseteq f^{-1}(T)$ i $b\in f(S)$, aleshores $b=f(a)$ amb $a\in S\subseteq f^{-1}(T)$, d'on $b=f(a)\in T$; per tant $f(S)\subseteq T$.
+
+Aquesta és la forma conjuntista de l'adjunció imatge directa\,--\,antiimatge, i és exactament la regla d'introducció/eliminació de l'existencial quan $f$ és una projecció.
+\end{solucio}
+
+\begin{exercici}
+Sigui $\pi\colon X\times Y\to X$ la projecció. Descriu $\exists_\pi[s]$ i $\forall_\pi[s]$ per a un subobjecte $[s]\subseteq X\times Y$ a $\cat{Set}$, i relaciona-ho amb els quantificadors.
+\end{exercici}
+
+\begin{solucio}
+Sigui $S\subseteq X\times Y$ el subconjunt corresponent a $[s]$. Aleshores
+\[
+\exists_\pi(S)=\{x\in X\mid\exists y\in Y,\ (x,y)\in S\},\qquad
+\forall_\pi(S)=\{x\in X\mid\forall y\in Y,\ (x,y)\in S\}.
+\]
+El primer és la imatge de $S$ per $\pi$ (l'existencial); el segon, el conjunt de fibres senceres contingudes en $S$ (l'universal). L'adjunció $\exists_\pi\dashv\pi^{*}$ es comprova com a l'exercici anterior, i $\pi^{*}\dashv\forall_\pi$ dualment. Així, en una categoria regular tenim l'existencial; l'universal requereix, a més, adjunts per la dreta, que apareixen en contextos més rics (categories de Heyting).
+\end{solucio}
+

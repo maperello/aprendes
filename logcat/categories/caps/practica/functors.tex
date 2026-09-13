@@ -1,0 +1,327 @@
+\chapter{Functors}\label{cap:practica-functors}
+
+En aquest capítol resolem amb detall una selecció d'exercicis sobre \emph{functors}. Com al capítol anterior, l'objectiu no és només arribar al resultat, sinó mostrar com es comprova que una assignació és un functor, com es reconeixen els functors coneguts sota formes noves i com es distingeixen les propietats que un functor preserva de les que no. Convé intentar cada exercici abans de llegir-ne la solució.
+
+\section{Definició de functor}
+
+\begin{exercici}\label{prac:functor-quadrat}
+Sigui $F\colon\cat{C}\to\cat{D}$ un functor i suposem que a $\cat{C}$ tenim un quadrat commutatiu, és a dir, quatre morfismes $f\colon A\to B$, $u\colon A\to C$, $v\colon B\to D$ i $g\colon C\to D$ amb
+\[
+v\comp f=g\comp u.
+\]
+Mostra que la seva imatge per $F$ torna a ser un quadrat commutatiu:
+\[
+F(v)\comp F(f)=F(g)\comp F(u).
+\]
+\end{exercici}
+
+\begin{solucio}
+El quadrat de partida i la seva imatge són:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=3em] {
+    A & B \\
+    C & D \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$u$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$v$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$g$} (m-2-2);
+\end{tikzpicture}
+\qquad\stackrel{F}{\longmapsto}\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=3.4em] {
+    F(A) & F(B) \\
+    F(C) & F(D) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$F(f)$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$F(u)$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$F(v)$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$F(g)$} (m-2-2);
+\end{tikzpicture}
+\]
+Partim de la hipòtesi $v\comp f=g\comp u$. Apliquem $F$ a aquesta igualtat; com que $F$ és una aplicació ben definida sobre els morfismes, morfismes iguals tenen imatges iguals:
+\[
+F(v\comp f)=F(g\comp u).
+\]
+Ara fem servir que $F$ preserva la composició a cada costat:
+\[
+F(v)\comp F(f)=F(v\comp f)=F(g\comp u)=F(g)\comp F(u).
+\]
+Per tant el quadrat imatge commuta. Aquest és el contingut de la idea que \emph{els functors envien diagrames commutatius a diagrames commutatius}: n'hi ha prou que ho comprovem sobre les composicions, perquè un diagrama commuta exactament quan certes composicions coincideixen.
+\end{solucio}
+
+\begin{exercici}
+Comprova que l'assignació que envia cada conjunt $X$ al conjunt de parts $\mathcal P(X)$ i cada aplicació $f\colon X\to Y$ a la \textbf{imatge directa}
+\[
+\mathcal P(f)\colon\mathcal P(X)\to\mathcal P(Y),
+\qquad
+A\mapsto f(A)=\{f(a)\mid a\in A\},
+\]
+és un functor covariant $\mathcal P\colon\cat{Set}\to\cat{Set}$.
+\end{exercici}
+
+\begin{solucio}
+Hem de comprovar la preservació d'identitats i de composició.
+
+Per a la \textbf{identitat}, si $f=\id_X$ aleshores per a tot $A\subseteq X$,
+\[
+\mathcal P(\id_X)(A)=\{\id_X(a)\mid a\in A\}=A,
+\]
+de manera que $\mathcal P(\id_X)=\id_{\mathcal P(X)}$.
+
+Per a la \textbf{composició}, siguin $f\colon X\to Y$ i $g\colon Y\to Z$. Per a tot $A\subseteq X$,
+\[
+\mathcal P(g\comp f)(A)=(g\comp f)(A)=g\big(f(A)\big)=\mathcal P(g)\big(\mathcal P(f)(A)\big)=\big(\mathcal P(g)\comp\mathcal P(f)\big)(A).
+\]
+La igualtat central, $(g\comp f)(A)=g(f(A))$, és la propietat coneguda de la imatge directa. Per tant $\mathcal P$ és un functor covariant.
+\end{solucio}
+
+\begin{exercici}
+Sigui $\cat{C}$ una categoria i $A$ un objecte fix. Comprova que l'assignació que envia cada objecte $X$ al conjunt $\Hom(A,X)$ i cada morfisme $f\colon X\to Y$ a l'aplicació
+\[
+f_*\colon\Hom(A,X)\to\Hom(A,Y),
+\qquad
+\varphi\mapsto f\comp\varphi,
+\]
+és un functor covariant $\Hom(A,-)\colon\cat{C}\to\cat{Set}$ (suposant $\cat{C}$ localment petita).
+\end{exercici}
+
+\begin{solucio}
+Primer cal veure que $f_*$ està ben definida: si $\varphi\colon A\to X$, aleshores $f\comp\varphi\colon A\to Y$, de manera que $f_*(\varphi)\in\Hom(A,Y)$.
+
+Per a la \textbf{identitat}, prenent $f=\id_X$,
+\[
+(\id_X)_*(\varphi)=\id_X\comp\varphi=\varphi,
+\]
+de manera que $(\id_X)_*=\id_{\Hom(A,X)}$.
+
+Per a la \textbf{composició}, siguin $f\colon X\to Y$ i $g\colon Y\to Z$. Per a tot $\varphi\in\Hom(A,X)$, usant l'associativitat de $\cat{C}$,
+\[
+(g\comp f)_*(\varphi)=(g\comp f)\comp\varphi=g\comp(f\comp\varphi)=g_*\big(f_*(\varphi)\big).
+\]
+Per tant $(g\comp f)_*=g_*\comp f_*$ i $\Hom(A,-)$ és un functor covariant.
+\end{solucio}
+
+\section{Exemples de functors}
+
+\begin{exercici}
+Siguin $T$ i $T'$ dos sistemes deductius sobre el mateix conjunt de fórmules, amb $T'$ una \textbf{extensió} de $T$ ---és a dir, tot el que és deduïble a $T$ també ho és a $T'$: si $A\vdash_T B$, aleshores $A\vdash_{T'} B$. Comprova que la identitat sobre les fórmules indueix un functor
+\[
+J\colon\cat{Prov}_T\to\cat{Prov}_{T'},
+\]
+i explica en quins termes es podria formular que $J$ sigui ple.
+\end{exercici}
+
+\begin{solucio}
+Recordem que $\cat{Prov}_T$ té les fórmules per objectes i una única fletxa $A\to B$ exactament quan $A\vdash_T B$; és una categoria prima. Definim $J$ com la identitat sobre els objectes, $J(A)=A$.
+
+Sobre els morfismes, una fletxa $A\to B$ de $\cat{Prov}_T$ és una deducció $A\vdash_T B$. Com que $T'$ és una extensió de $T$, tenim $A\vdash_{T'} B$, de manera que hi ha una fletxa $J(A)\to J(B)$ a $\cat{Prov}_{T'}$. Això defineix $J$ sobre morfismes.
+
+Les condicions de functor se satisfan automàticament perquè totes dues categories són primes: entre dos objectes hi ha com a màxim una fletxa, així que la preservació d'identitats i de composicions no imposa res més enllà de l'existència de les fletxes imatge, que ja hem comprovat.
+
+Quant a la \textbf{plenitud}: $J$ seria ple si, per a cada parella de fórmules $A,B$, tota fletxa $J(A)\to J(B)$ a $\cat{Prov}_{T'}$ provingués d'una fletxa $A\to B$ a $\cat{Prov}_T$. És a dir, si
+\[
+A\vdash_{T'} B\quad\Longrightarrow\quad A\vdash_T B.
+\]
+Dit d'una altra manera, $J$ és ple exactament quan l'extensió $T'$ \emph{no afegeix cap conseqüència nova} entre les fórmules considerades. Quan $T'$ demostra estrictament més relacions que $T$, el functor $J$ és fidel ---de fet, totes dues categories són primes, així que $J$ és sempre fidel--- però no ple.
+\end{solucio}
+
+\begin{exercici}
+Comprova amb detall que un functor entre dos preordres $(P,\leq)$ i $(Q,\leq)$, vistos com a categories, és exactament una aplicació monòtona.
+\end{exercici}
+
+\begin{solucio}
+Un functor $F\colon P\to Q$ dona, en primer lloc, una aplicació $x\mapsto F(x)$ dels objectes, és a dir, dels elements de $P$ als de $Q$.
+
+La condició sobre morfismes diu que si hi ha una fletxa $x\to y$ a $P$, aleshores hi ha una fletxa $F(x)\to F(y)$ a $Q$. Com que en un preordre hi ha una fletxa $x\to y$ exactament quan $x\leq y$, això equival a
+\[
+x\leq y
+\quad\Longrightarrow\quad
+F(x)\leq F(y),
+\]
+que és precisament la definició d'aplicació monòtona.
+
+Recíprocament, tota aplicació monòtona defineix un functor: envia l'única fletxa $x\to y$ (quan $x\leq y$) a l'única fletxa $F(x)\to F(y)$. Les condicions de preservació d'identitats i composició es compleixen automàticament, perquè entre dos objectes hi ha com a màxim una fletxa i totes les igualtats entre morfismes són trivials. Així, els functors $P\to Q$ i les aplicacions monòtones $P\to Q$ són el mateix.
+\end{solucio}
+
+\begin{exercici}
+Sigui $M$ un monoide vist com a categoria $\cat{B}M$ amb un sol objecte $\ast$. Comprova que un functor $F\colon\cat{B}M\to\cat{Set}$ és el mateix que una acció de $M$ sobre un conjunt, és a dir, un conjunt $S$ juntament amb una operació
+\[
+M\times S\to S,
+\qquad
+(m,s)\mapsto m\cdot s,
+\]
+tal que $1_M\cdot s=s$ i $(mn)\cdot s=m\cdot(n\cdot s)$.
+\end{exercici}
+\begin{solucio}
+Un functor $F\colon\cat{B}M\to\cat{Set}$ tria un conjunt $S=F(\ast)$ i envia cada element $m\in M$ ---cada morfisme $\ast\to\ast$--- a una aplicació $F(m)\colon S\to S$. Definim l'acció per
+\[
+m\cdot s=F(m)(s).
+\]
+
+La preservació de la identitat diu $F(1_M)=\id_S$, és a dir, $1_M\cdot s=s$ per a tot $s$. La preservació de la composició diu $F(mn)=F(m)\comp F(n)$, és a dir,
+\[
+(mn)\cdot s=F(mn)(s)=F(m)\big(F(n)(s)\big)=m\cdot(n\cdot s).
+\]
+Aquestes són exactament les dues lleis d'una acció per l'esquerra. Recíprocament, tota acció defineix, per la mateixa fórmula, un functor. Per tant els functors $\cat{B}M\to\cat{Set}$ i les accions de $M$ coincideixen.
+\end{solucio}
+
+\begin{exercici}
+Comprova que la construcció de la categoria lliure és functorial sobre les fletxes: donat un morfisme de grafs $\alpha\colon G\to H$, l'assignació que envia cada camí d'arestes de $G$ a la seqüència de les seves imatges és un functor $\Free(\alpha)\colon\Free(G)\to\Free(H)$.
+\end{exercici}
+
+\begin{solucio}
+Un camí a $\Free(G)$ és una seqüència finita d'arestes encadenades $a_1a_2\cdots a_n$. Definim
+\[
+\Free(\alpha)(a_1a_2\cdots a_n)=\alpha_E(a_1)\,\alpha_E(a_2)\cdots\alpha_E(a_n),
+\]
+i sobre els objectes $\Free(\alpha)=\alpha_V$. Cal comprovar que aquesta seqüència és realment un camí a $H$: com que $\alpha$ preserva origen i destí, si $a_i$ acaba on comença $a_{i+1}$, aleshores $\alpha_E(a_i)$ acaba on comença $\alpha_E(a_{i+1})$, de manera que les imatges també s'encadenen.
+
+La \textbf{identitat} de cada vèrtex és el camí buit, que s'envia al camí buit del vèrtex imatge: $\Free(\alpha)$ preserva identitats. La \textbf{composició} és la concatenació. Siguin $p=(a_1,\dots,a_r)$ i $q=(b_1,\dots,b_s)$ dos camins componibles, amb el final de $p$ igual a l'inici de $q$; la seva composició és el camí que recorre primer $p$ i després $q$,
+\[
+q\comp p=(a_1,\dots,a_r,b_1,\dots,b_s).
+\]
+Aplicar $\alpha_E$ terme a terme i després concatenar dona el mateix que concatenar i després aplicar $\alpha_E$ terme a terme, de manera que
+\[
+\Free(\alpha)(q\comp p)=\Free(\alpha)(q)\comp\Free(\alpha)(p).
+\]
+Per tant $\Free(\alpha)$ és un functor.
+\end{solucio}
+
+\section{Composició de functors i la categoria \texorpdfstring{$\cat{Cat}$}{Cat}}
+
+\begin{exercici}
+Comprova que la composició de dos functors $F\colon\cat{C}\to\cat{D}$ i $G\colon\cat{D}\to\cat{E}$, seguida d'un tercer $H\colon\cat{E}\to\cat{F}$, és associativa:
+\[
+H\comp(G\comp F)=(H\comp G)\comp F.
+\]
+\end{exercici}
+
+\begin{solucio}
+Dues igualtats de functors es comproven sobre objectes i sobre morfismes. Sobre un objecte $A$ de $\cat{C}$,
+\[
+\big(H\comp(G\comp F)\big)(A)=H\big(G(F(A))\big)=\big((H\comp G)\comp F\big)(A),
+\]
+i sobre un morfisme $f$,
+\[
+\big(H\comp(G\comp F)\big)(f)=H\big(G(F(f))\big)=\big((H\comp G)\comp F\big)(f).
+\]
+En tots dos casos la igualtat es redueix a l'associativitat de l'aplicació successiva, primer $F$, després $G$, després $H$. Per tant la composició de functors és associativa, i amb els functors identitat com a neutres, això confirma que $\cat{Cat}$ és una categoria.
+\end{solucio}
+
+\begin{exercici}
+Fixat un objecte $A$ d'una categoria $\cat{C}$, descriu el functor oblit $U_A\colon\cat{C}/A\to\cat{C}$ de la categoria de $\cat{C}$ sobre $A$ cap a $\cat{C}$, i comprova que és un functor.
+\end{exercici}
+
+\begin{solucio}
+Recordem que un objecte de $\cat{C}/A$ és un morfisme $x\colon X\to A$ de $\cat{C}$, i un morfisme de $x\colon X\to A$ cap a $y\colon Y\to A$ és un morfisme $h\colon X\to Y$ de $\cat{C}$ tal que $y\comp h=x$ (el triangle commuta). Definim $U_A$ així: sobre objectes, envia $x\colon X\to A$ al seu domini $X$; sobre morfismes, envia el morfisme $h$ del triangle al mateix $h\colon X\to Y$ vist a $\cat{C}$, oblidant la condició $y\comp h=x$.
+
+Comprovem que és un functor. \textbf{Identitats:} la identitat de l'objecte $x\colon X\to A$ a $\cat{C}/A$ és $\id_X$ (que compleix $x\comp\id_X=x$), i $U_A(\id_X)=\id_X=\id_{U_A(x)}$. \textbf{Composició:} si $h\colon x\to y$ i $k\colon y\to z$ són morfismes componibles a $\cat{C}/A$, la seva composició és $k\comp h$ com a morfisme de $\cat{C}$; per tant $U_A(k\comp h)=k\comp h=U_A(k)\comp U_A(h)$. Així $U_A$ preserva identitats i composició, i és un functor. Intuïtivament, $U_A$ \enquote{oblida} el morfisme cap a $A$ i reté només el domini i les fletxes entre dominis.
+\end{solucio}
+
+\section{Functors i isomorfismes}
+
+\begin{exercici}
+Dona un exemple de functor i d'un morfisme \emph{no} isomorf la imatge del qual \emph{sí} que és un isomorfisme. Això mostra que els functors preserven isomorfismes, però no els reflecteixen en general.
+\end{exercici}
+
+\begin{solucio}
+Considerem el functor oblit $U\colon\cat{Top}\to\cat{Set}$. Sigui $X$ un conjunt amb dues topologies diferents, una de més fina $\tau$ i una de menys fina $\tau'$, i sigui
+\[
+f\colon(X,\tau)\to(X,\tau')
+\]
+l'aplicació identitat sobre els punts. Si $\tau$ és estrictament més fina que $\tau'$, aquesta aplicació és contínua però la seva inversa no ho és, de manera que $f$ \textbf{no és un isomorfisme} a $\cat{Top}$.
+
+Ara bé, la seva imatge $U(f)$ és l'aplicació identitat del conjunt $X$, que \textbf{sí que és un isomorfisme} a $\cat{Set}$. Per tant $U$ no reflecteix isomorfismes: la seva imatge pot ser invertible sense que l'original ho sigui. Els functors plens i fidels sí que reflecteixen isomorfismes, encara que aquesta condició no és necessària: hi ha functors que els reflecteixen sense ser plens. Per exemple, el functor oblit $\cat{Grp}\to\cat{Set}$ reflecteix isomorfismes ---un homomorfisme bijectiu de grups és un isomorfisme---, malgrat no ser ple.
+\end{solucio}
+
+\section{Functors covariants i contravariants}
+
+\begin{exercici}
+Comprova que el functor de parts contravariant $\mathcal P\colon\cat{Set}\op\to\cat{Set}$, que envia $f\colon X\to Y$ a l'antiimatge
+\[
+f^{-1}\colon\mathcal P(Y)\to\mathcal P(X),
+\qquad
+B\mapsto f^{-1}(B),
+\]
+és realment un functor contravariant.
+\end{exercici}
+
+\begin{solucio}
+Cal comprovar la preservació d'identitats i la inversió de l'ordre en la composició.
+
+Per a la \textbf{identitat}, $(\id_X)^{-1}(B)=B$ per a tot $B\subseteq X$, de manera que $(\id_X)^{-1}=\id_{\mathcal P(X)}$.
+
+Per a la \textbf{composició}, siguin $f\colon X\to Y$ i $g\colon Y\to Z$. Per a tot $C\subseteq Z$,
+\[
+(g\comp f)^{-1}(C)=\{x\mid g(f(x))\in C\}=\{x\mid f(x)\in g^{-1}(C)\}=f^{-1}\big(g^{-1}(C)\big).
+\]
+Per tant
+\[
+(g\comp f)^{-1}=f^{-1}\comp g^{-1},
+\]
+amb l'ordre invertit. Aquesta és exactament la condició de functor contravariant, és a dir, de functor covariant $\cat{Set}\op\to\cat{Set}$.
+\end{solucio}
+
+\begin{exercici}
+Sigui $B$ un objecte fix d'una categoria localment petita $\cat{C}$. Comprova que $\Hom(-,B)$ és un functor contravariant $\cat{C}\op\to\cat{Set}$.
+\end{exercici}
+
+\begin{solucio}
+A cada objecte $X$ li assignem el conjunt $\Hom(X,B)$. A cada morfisme $f\colon X\to Y$ li assignem l'aplicació de \textbf{precomposició}
+\[
+f^*\colon\Hom(Y,B)\to\Hom(X,B),
+\qquad
+\psi\mapsto\psi\comp f,
+\]
+que està ben definida perquè si $\psi\colon Y\to B$ aleshores $\psi\comp f\colon X\to B$. Observem que $f^*$ inverteix el sentit: parteix dels morfismes des de $Y$ i arriba als morfismes des de $X$.
+
+Per a la \textbf{identitat}, $(\id_X)^*(\psi)=\psi\comp\id_X=\psi$. Per a la \textbf{composició}, siguin $f\colon X\to Y$ i $g\colon Y\to Z$; per a tot $\psi\in\Hom(Z,B)$,
+\[
+(g\comp f)^*(\psi)=\psi\comp(g\comp f)=(\psi\comp g)\comp f=f^*\big(g^*(\psi)\big).
+\]
+Per tant $(g\comp f)^*=f^*\comp g^*$, amb l'ordre invertit, i $\Hom(-,B)$ és contravariant.
+\end{solucio}
+
+\begin{exercici}
+Sigui $\cat{C}$ localment petita. Comprova que el bifunctor $\Hom(\_,\_)\colon\cat{C}\op\times\cat{C}\to\cat{Set}$, definit sobre morfismes per $\Hom(f,g)(h)=g\comp h\comp f$, respecta la composició simultània en les dues variables i les identitats. És a dir, comprova que és realment un functor, no només en cada variable per separat.
+\end{exercici}
+
+\begin{solucio}
+Siguin $f\colon A'\to A$, $f'\colon A''\to A'$, $g\colon B\to B'$ i $g'\colon B'\to B''$ morfismes de $\cat{C}$. Recordem que la composició a $\cat{C}\op\times\cat{C}$ actua component a component, i que a la primera component (la de $\cat{C}\op$) l'ordre és l'invers del de $\cat{C}$. \textbf{Composició.} Per a tot $h\colon A\to B$,
+\[
+\Hom(f',g')\big(\Hom(f,g)(h)\big)
+=g'\comp(g\comp h\comp f)\comp f'
+=(g'\comp g)\comp h\comp(f\comp f')
+=\Hom(f\comp f',\,g'\comp g)(h),
+\]
+on el pas central és només associativitat. El resultat $\Hom(f\comp f',g'\comp g)$ és precisament $\Hom$ aplicat a la composició de la parella $(f',g')$ amb $(f,g)$ a $\cat{C}\op\times\cat{C}$: a la segona component obtenim $g'\comp g$, i a la primera $f\comp f'$ (l'ordre invertit, coherent amb la contravariància). \textbf{Identitats.} Per a la parella identitat $(\id_A,\id_B)$,
+\[
+\Hom(\id_A,\id_B)(h)=\id_B\comp h\comp\id_A=h,
+\]
+és a dir $\Hom(\id_A,\id_B)=\id_{\Hom(A,B)}$. Per tant $\Hom(\_,\_)$ preserva composició i identitats de $\cat{C}\op\times\cat{C}$, i és un functor de ple dret.
+\end{solucio}
+
+\section{Functors fidels i plens}
+
+\begin{exercici}
+Comprova que el functor oblit $U\colon\cat{Grp}\to\cat{Set}$ és fidel però no ple.
+\end{exercici}
+
+\begin{solucio}
+\textbf{Fidel.} Siguin $\varphi,\psi\colon G\to H$ dos homomorfismes amb $U(\varphi)=U(\psi)$. Això vol dir que, com a aplicacions de conjunts, $\varphi$ i $\psi$ coincideixen en tot element de $G$. Però un homomorfisme està completament determinat per la seva acció sobre els elements; per tant $\varphi=\psi$. Així $U$ és injectiu sobre cada $\Hom(G,H)$, és a dir, fidel.
+
+\textbf{No ple.} Prenem $G=H=\mathbb Z$. Entre els conjunts subjacents hi ha moltes aplicacions $\mathbb Z\to\mathbb Z$ que no són homomorfismes; per exemple, $x\mapsto x+1$, que no envia $0$ a $0$. Aquesta aplicació pertany a $\Hom_{\cat{Set}}(U\mathbb Z,U\mathbb Z)$ però no és de la forma $U(\varphi)$ per a cap homomorfisme $\varphi$. Per tant $U_{\mathbb Z,\mathbb Z}$ no és exhaustiva i $U$ no és ple.
+\end{solucio}
+
+\begin{exercici}
+Comprova que el functor oblit $U\colon\cat{Pos}\to\cat{Set}$, que envia cada ordre parcial al seu conjunt subjacent i cada aplicació monòtona a ella mateixa, és fidel però no ple.
+\end{exercici}
+
+\begin{solucio}
+\textbf{Fidel.} Siguin $f,g\colon P\to Q$ dues aplicacions monòtones amb $U(f)=U(g)$. Això vol dir que $f$ i $g$ coincideixen com a aplicacions entre els conjunts subjacents, és a dir, en tot element de $P$. Una aplicació monòtona no és res més que la seva acció sobre els elements (amb la condició afegida de preservar l'ordre), de manera que $f=g$. Així $U$ és injectiu sobre cada $\Hom_{\cat{Pos}}(P,Q)$ i, per tant, fidel.
+
+\textbf{No ple.} Prenem l'ordre parcial $P=\{0,1\}$ amb $0<1$ i el mateix $Q=P$. L'aplicació $\sigma\colon\{0,1\}\to\{0,1\}$ que intercanvia els dos elements ($\sigma(0)=1$, $\sigma(1)=0$) és una aplicació de conjunts perfectament vàlida, i pertany a $\Hom_{\cat{Set}}(U P,U Q)$. Però no és monòtona: de $0<1$ es passaria a $\sigma(0)=1$ i $\sigma(1)=0$, és a dir $1\le 0$, que és fals. Per tant $\sigma$ no és de la forma $U(f)$ per a cap aplicació monòtona $f$, l'aplicació $U_{P,Q}$ no és exhaustiva i $U$ no és ple.
+\end{solucio}
+

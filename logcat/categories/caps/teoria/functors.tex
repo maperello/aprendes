@@ -1,0 +1,614 @@
+\chapter{Functors}
+\label{cap:functors}
+
+\begin{objectius}
+\apartat{Prerequisits} Categories, morfismes especials, categoria oposada i dualitat (cap.~\ref{cap:categories}).
+\apartat{Objectius} En acabar el capítol, el lector ha de saber: definir functor i comprovar la functorialitat; treballar amb $\cat{Cat}$, categories de $\cat{C}$ sobre i sota un objecte; distingir functors covariants de contravariants; reconèixer functors fidels, plens i essencialment exhaustius; i manejar els functors representables i el bifunctor $\Hom$.
+\end{objectius}
+
+\section{Cap al concepte de functor}
+
+Un cop fixada la noció de categoria, la pregunta natural és quina mena de correspondència relaciona dues categories. Igual que entre grups mirem els homomorfismes ---les aplicacions que respecten l'estructura de grup--- i entre espais topològics mirem les aplicacions contínues ---les que respecten l'estructura topològica---, entre categories mirarem les correspondències que respecten l'estructura categòrica: objectes, morfismes, identitats i composició. S'anomenen \emph{functors}.
+
+Fixem-nos que una categoria té dos nivells de dades: els objectes i els morfismes. Un functor haurà d'actuar sobre tots dos alhora, i fer-ho de manera compatible: ha d'enviar cada fletxa de la categoria $\cat{C}$ a una fletxa de la categoria $\cat{D}$ que vagi entre els objectes on van a parar el seu domini i el seu codomini, i ha de preservar la manera com les fletxes es componen i quines fletxes són identitats. Aquesta és exactament la idea que fa que els functors siguin, a la vegada, els morfismes d'una categoria de categories.
+
+Abans de formalitzar-ho, val la pena veure un exemple concret que surt d'una operació ben familiar amb conjunts. Treballem a $\cat{Set}$ i fixem un conjunt $S$. A cada conjunt $A$ li podem associar el conjunt de totes les aplicacions de $S$ cap a $A$,
+\[
+F(A)=A^S=\{\,g\mid g\colon S\to A\,\}.
+\]
+Això assigna un objecte de $\cat{Set}$ a cada objecte de $\cat{Set}$; però un functor també ha d'actuar sobre les fletxes. I, de fet, tota aplicació $f\colon A\to B$ n'indueix una entre les potències,
+\[
+F(f)\colon A^S\longrightarrow B^S,
+\qquad
+F(f)(g)=f\comp g,
+\]
+és a dir, postcomposar amb $f$: si $g\colon S\to A$ és un element de $A^S$, aleshores $f\comp g\colon S\to B$ és un element de $B^S$, tal com mostra el triangle
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.4em, row sep=2.2em] {
+    S & A \\
+      & B \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$g$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$f$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$f\comp g$} (m-2-2);
+\end{tikzpicture}
+\]
+Igual que a la definició, $F$ transporta cada fletxa de $\cat{Set}$ a una fletxa entre les imatges dels seus extrems:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em] {
+    A \\
+    B \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[right] {$f$} (m-2-1);
+\end{tikzpicture}
+\qquad\stackrel{F}{\longmapsto}\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em] {
+    A^S \\
+    B^S \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[right] {$F(f)$} (m-2-1);
+\end{tikzpicture}
+\]
+on cada $g\in A^S$ és una aplicació $g\colon S\to A$ i $F(f)(g)=f\comp g$.
+Aquesta assignació compleix just les dues condicions que esperaríem d'un functor. D'una banda, preserva la composició: si $A\xrightarrow{f}B\xrightarrow{h}C$, aleshores, per a tot $g\in A^S$,
+\[
+F(h\comp f)(g)=(h\comp f)\comp g=h\comp(f\comp g)=F(h)\bigl(F(f)(g)\bigr),
+\]
+de manera que $F(h\comp f)=F(h)\comp F(f)$; l'única cosa que hem fet servir és l'associativitat de la composició. De l'altra, preserva les identitats: $F(\id_A)(g)=\id_A\comp g=g$, és a dir $F(\id_A)=\id_{A^S}$. Tenim, doncs, una manera sistemàtica de transformar objectes \emph{i} fletxes de $\cat{Set}$ que respecta composició i identitats: exactament el que a la secció següent anomenarem un functor. (Aquest exemple reapareixerà: $A^S$ no és res més que $\Hom_{\cat{Set}}(S,A)$, i el retrobarem com a homfunctor covariant a l'exemple~\ref{ex:homfunctors}.)
+
+\section{Definició de functor}
+
+\begin{definicio}\index{functor}
+\label{def:functor}
+Siguin $\cat{C}$ i $\cat{D}$ dues categories. Un \textbf{functor} $F\colon\cat{C}\to\cat{D}$ assigna:
+\begin{itemize}
+\item a cada objecte $A$ de $\cat{C}$, un objecte $F(A)$ de $\cat{D}$;
+\item a cada morfisme $f\colon A\to B$ de $\cat{C}$, un morfisme $F(f)\colon F(A)\to F(B)$ de $\cat{D}$,
+\end{itemize}
+de manera que es compleixin les dues condicions següents:
+\begin{enumerate}
+\item \textbf{Preservació d'identitats.} Per a cada objecte $A$ de $\cat{C}$,
+\[
+F(\id_A)=\id_{F(A)}.
+\]
+\item \textbf{Preservació de la composició.} Per a cada parella de morfismes componibles $f\colon A\to B$ i $g\colon B\to C$ de $\cat{C}$,
+\[
+F(g\comp f)=F(g)\comp F(f).
+\]
+\end{enumerate}
+\end{definicio}
+
+Observem que la condició sobre morfismes ja imposa que $F$ \emph{respecti} dominis i codominis: si $f\colon A\to B$, aleshores $F(f)$ ha d'anar de $F(A)$ a $F(B)$. La preservació de la composició es pot llegir diagramàticament: un triangle commutatiu de $\cat{C}$ es transforma en un triangle commutatiu de $\cat{D}$.
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.2em, row sep=2.6em] {
+    A & B \\
+      & C \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$g$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$g\comp f$} (m-2-2);
+\end{tikzpicture}
+\qquad\stackrel{F}{\longmapsto}\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.6em, row sep=2.6em] {
+    F(A) & F(B) \\
+         & F(C) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$F(f)$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$F(g)$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$F(g\comp f)$} (m-2-2);
+\end{tikzpicture}
+\]
+
+\begin{observacio}[Els functors preserven els diagrames commutatius]\index{diagrama commutatiu!preservat per functors}
+Una conseqüència directa de la preservació de la composició és que un functor envia diagrames commutatius a diagrames commutatius. En efecte, dir que un diagrama commuta és dir que certes composicions de fletxes coincideixen; si dos camins amb el mateix origen i el mateix destí donen la mateixa composició a $\cat{C}$, aleshores, aplicant $F$ i usant que preserva la composició, les seves imatges també coincideixen a $\cat{D}$. Per això podem aplicar un functor a tot un diagrama i seguir raonant amb la seva imatge: les igualtats entre camins es conserven. Ho comprovarem en detall, per al cas d'un quadrat, a l'exercici~\ref{prac:functor-quadrat} del capítol~\ref{cap:practica-functors} de Pràctica.
+\end{observacio}
+
+\subsection{Els functors preserven els isomorfismes}
+
+Com que els functors preserven tota l'estructura categòrica, en particular preserven les equacions entre composicions. Una conseqüència immediata és que preserven els isomorfismes.
+
+\begin{proposicio}\label{prop:functor-preserva-iso}\index{functor!preserva isomorfismes}
+Si $F\colon\cat{C}\to\cat{D}$ és un functor i $f\colon A\to B$ és un isomorfisme a $\cat{C}$, aleshores $F(f)$ és un isomorfisme a $\cat{D}$, i
+\[
+\bigl(F(f)\bigr)^{-1}=F(f^{-1}).
+\]
+\end{proposicio}
+
+\begin{prova}
+Sigui $g=f^{-1}$, de manera que $g\comp f=\id_A$ i $f\comp g=\id_B$. Aplicant $F$ i usant que preserva composició i identitats,
+\[
+F(g)\comp F(f)=F(g\comp f)=F(\id_A)=\id_{F(A)},
+\]
+\[
+F(f)\comp F(g)=F(f\comp g)=F(\id_B)=\id_{F(B)}.
+\]
+Per tant $F(g)$ és un invers de $F(f)$, i pel resultat d'unicitat de l'invers, $\bigl(F(f)\bigr)^{-1}=F(g)=F(f^{-1})$.
+\end{prova}
+
+\begin{observacio}
+Val la pena veure per què és així, més enllà del càlcul de la prova. Dir que $f$ és un isomorfisme és dir que existeix $g$ amb $g\comp f=\id_A$ i $f\comp g=\id_B$: dues equacions entre composicions, és a dir, dos diagrames commutatius. Com que els functors preserven els diagrames commutatius, aquestes dues equacions es transporten a $\cat{D}$ en aplicar-hi $F$, i $F(g)$ resulta ser l'invers de $F(f)$.
+\end{observacio}
+
+\section{Exemples de functors}\label{sec:primers-exemples}
+
+La força de la definició, com en el cas de les categories, es veu en la varietat d'exemples que hi encaixen. Recuperem els exemples de referència del capítol anterior.
+
+\begin{exemple}[Functor identitat]\index{functor!identitat}
+Per a tota categoria $\cat{C}$ hi ha el \textbf{functor identitat} $\id_{\cat{C}}\colon\cat{C}\to\cat{C}$, que deixa fixos tots els objectes i tots els morfismes. Preserva trivialment identitats i composició.
+\end{exemple}
+
+\begin{exemple}[Functors oblit]\index{functor!oblit}
+Moltes categories d'objectes amb estructura $\cat{C}$ tenen un \textbf{functor oblit} $U\colon\cat{C}\to\cat{Set}$, que oblida l'estructura i reté només el conjunt subjacent:
+\[
+\cat{Grp}\to\cat{Set},
+\qquad
+\cat{Top}\to\cat{Set},
+\qquad
+\cat{Vect}_{\mathbb K}\to\cat{Set}.
+\]
+En cada cas, $U$ envia un objecte al seu conjunt subjacent i un morfisme ---un homomorfisme, una aplicació contínua, una aplicació lineal--- a la mateixa aplicació, vista simplement com a aplicació de conjunts. La identitat es preserva perquè l'aplicació identitat continua sent la identitat, i la composició es preserva perquè és la mateixa composició d'aplicacions. El functor oblit \enquote{no fa res} als morfismes; el seu contingut és que oblida l'estructura dels objectes.
+\end{exemple}
+
+\begin{exemple}[Functors des de les categories finites]\index{functor!des d'una categoria finita}
+Les categories finites $\cat{0}$, $\cat{1}$ i $\cat{2}$ (subsecció~\ref{subsec:finites}) donen, com a dominis, functors amb una lectura molt directa. Un functor $\cat{1}\to\cat{D}$, on $\cat{1}$ té un únic objecte i cap morfisme no trivial, no és res més que la tria d'un objecte de $\cat{D}$: la imatge de l'únic objecte. Un functor $\cat{2}\to\cat{D}$, on $\cat{2}=(0\to 1)$, és la tria d'un morfisme de $\cat{D}$: cal dir on van $0$ i $1$ ---dos objectes--- i on va l'única fletxa no trivial ---un morfisme entre les seves imatges---, i la preservació d'identitats i composició no imposa res més. Finalment, des de la categoria buida $\cat{0}$ hi ha un únic functor $\cat{0}\to\cat{D}$, el functor buit, sigui quina sigui $\cat{D}$. Aquests tres fets ---objectes, morfismes i \enquote{res}--- reapareixeran contínuament: seleccionar un objecte o un morfisme d'una categoria és el mateix que donar un functor des de $\cat{1}$ o des de $\cat{2}$.
+\end{exemple}
+
+\begin{exemple}[Functors entre categories discretes]\index{functor!entre categories discretes}\index{categoria!discreta}
+Un conjunt es pot veure com una categoria discreta, en què els únics morfismes són les identitats (subsecció~\ref{subsec:conjunts}). Si $S$ i $T$ són dos conjunts vistos així, un functor $F\colon S\to T$ només ha de dir on va cada objecte, perquè els únics morfismes són les identitats i tot functor les preserva automàticament. Per tant un functor entre categories discretes és exactament una aplicació de conjunts $S\to T$: sense estructura a preservar, la noció de functor es redueix a la d'aplicació.
+\end{exemple}
+
+\begin{exemple}[Functors entre preordres]\index{functor!entre preordres}
+Siguin $(P,\leq)$ i $(Q,\leq)$ dos preordres, vistos com a categories. Un functor $F\colon P\to Q$ assigna a cada element $x\in P$ un element $F(x)\in Q$ i, com que hi ha un morfisme $x\to y$ exactament quan $x\leq y$, la condició sobre morfismes diu que
+\[
+x\leq y
+\quad\Longrightarrow\quad
+F(x)\leq F(y).
+\]
+És a dir, un functor entre preordres és exactament una aplicació monòtona. Les condicions d'identitat i composició es compleixen automàticament, perquè en un preordre entre dos objectes hi ha com a màxim una fletxa i no hi ha res més a comprovar.
+\end{exemple}
+
+\begin{exemple}[Functors des d'un monoide]\label{ex:functors-monoide}\index{functor!des d'un monoide}
+Recordem que un monoide $M$ es pot veure com una categoria d'un sol objecte $\ast$, que escrivim $\cat{B}M$. Un functor $F\colon\cat{B}M\to\cat{D}$ tria un objecte $D=F(\ast)$ de $\cat{D}$ i envia cada element $m\in M$ ---és a dir, cada morfisme $\ast\to\ast$--- a un morfisme $F(m)\colon D\to D$, de manera que
+\[
+F(1_M)=\id_D
+\qquad\text{i}\qquad
+F(m\cdot n)=F(m)\comp F(n).
+\]
+Aquestes són exactament les condicions perquè $F$ sigui un \textbf{homomorfisme de monoides} de $M$ cap al monoide dels endomorfismes de $D$,
+\[
+\mathrm{End}_{\cat{D}}(D)=\Hom_{\cat{D}}(D,D).
+\]
+En particular, quan $\cat{D}=\cat{Set}$, un functor $\cat{B}M\to\cat{Set}$ és una \textbf{acció} del monoide $M$ sobre un conjunt. Vegem per què. Un tal functor queda determinat per un conjunt $F(\ast)=S$ i, per a cada element $m\in M$, una funció $F(m)\colon S\to S$. Les dues condicions de functor ---preservar identitats i composició--- diuen exactament que, per a tot $x\in S$ i tots $m,n\in M$,
+\[
+F(1_M)(x)=x,
+\qquad
+F(m\cdot n)(x)=F(m)\bigl(F(n)(x)\bigr),
+\]
+on $1_M$ és el neutre de $M$. Si escrivim $m\cdot x$ en lloc de $F(m)(x)$, aquestes igualtats esdevenen les condicions habituals d'una \emph{acció per l'esquerra} del monoide sobre $S$:
+\[
+1_M\cdot x=x,
+\qquad
+(m\cdot n)\cdot x=m\cdot(n\cdot x).
+\]
+\end{exemple}
+
+\begin{exemple}[Functors des d'un grup: accions i representacions]\index{functor!des d'un grup}\index{accio@acció!de grup}\index{representacio@representació lineal}
+Quan el monoide és un grup $G$, la categoria $\cat{B}G$ és un grupoide: tot morfisme és un isomorfisme. Un functor $F\colon\cat{B}G\to\cat{D}$ és aleshores un homomorfisme de $G$ cap al grup dels automorfismes de l'objecte $D=F(\ast)$,
+\[
+F\colon G\longrightarrow \Aut_{\cat{D}}(D),
+\]
+perquè un functor preserva isomorfismes (proposició~\ref{prop:functor-preserva-iso}) i, per tant, cada element de $G$ va a parar a un automorfisme de $D$. Dos casos són especialment importants:
+\begin{itemize}
+\item Un functor $\cat{B}G\to\cat{Set}$ és una \textbf{acció} del grup $G$ sobre un conjunt ---un \emph{$G$-conjunt}. El desplegament és el mateix que per a un monoide (exemple~\ref{ex:functors-monoide}), amb una novetat: com que ara cada $a\in G$ té un invers $a^{-1}$, la funció $F(a)\colon S\to S$ és bijectiva, amb inversa $F(a^{-1})$. Cada element del grup actua, doncs, com una \emph{permutació} de $S$. Un exemple típic són les simetries d'una figura, que actuen permutant-ne els vèrtexs.
+\item Un functor $\cat{B}G\to\cat{Vect}_{\mathbb K}$ és una \textbf{representació lineal} de $G$ sobre el cos $\mathbb{K}$. El desplegament torna a ser el mateix, ara amb un espai vectorial $F(\ast)=V$ en lloc d'un conjunt: cada element $a\in G$ dona una aplicació \emph{lineal} invertible $F(a)\colon V\to V$ ---un automorfisme de $V$, amb inversa $F(a^{-1})$---, i el producte del grup es correspon amb la composició. Escrivint $a\cdot v$ per $F(a)(v)$, la novetat respecte d'una acció ordinària és que cada element actua respectant les operacions de l'espai:
+\[
+a\cdot(\lambda v+\mu w)=\lambda\,(a\cdot v)+\mu\,(a\cdot w).
+\]
+En dimensió finita, fixada una base, cada $F(a)$ és una matriu invertible: una representació \enquote{realitza} els elements abstractes del grup com a matrius concretes, cosa que permet estudiar el grup amb les eines de l'àlgebra lineal.
+\end{itemize}
+Així, dues teories aparentment allunyades ---les accions de grup i la teoria de representacions--- són, categòricament, el mateix tipus d'objecte: functors amb domini $\cat{B}G$, que només es distingeixen per la categoria d'arribada.
+\end{exemple}
+
+\begin{exemple}[Deduïbilitat i functors lògics]\index{functor!i deduïbilitat}\index{substitucio@substitució}
+Siguin $T$ i $T'$ dos sistemes deductius, vistos com a categories primes (subsecció~\ref{subsec:elementals}). Una assignació de fórmules $\varphi\colon A\mapsto \varphi(A)$ que preservi la deduïbilitat,
+\[
+A\vdash_T B
+\quad\Longrightarrow\quad
+\varphi(A)\vdash_{T'}\varphi(B),
+\]
+és exactament un functor $F\colon T\to T'$. Com que aquestes categories són primes, no cal comprovar res més: la preservació de la deduïbilitat garanteix automàticament la preservació d'identitats i composicions. Aquest és el reflex categòric del fet que una traducció entre teories que respecti les demostracions indueix un functor entre les categories associades.
+
+Un cas concret i molt natural d'aquesta situació és el d'una \textbf{substitució} de variables proposicionals. Sigui $T_{\mathrm{prop}}$ el sistema deductiu de la lògica proposicional i $\cat{Prov}_{T_{\mathrm{prop}}}$ la seva categoria de deduïbilitat, amb les fórmules per objectes i una fletxa $A\to B$ exactament quan $A\vdash B$. Considerem la substitució
+\[
+\sigma\colon\quad p\mapsto q,\qquad q\mapsto p\lor r,
+\]
+estesa a totes les fórmules respectant els connectors ($\land,\lor,\neg,\to$). Per exemple, $\sigma$ transforma $p\to(q\land p)$ en $q\to((p\lor r)\land q)$. El punt clau és que una substitució no sols transforma fórmules, sinó també \emph{deduccions}: si $A\vdash B$, aleshores $\sigma(A)\vdash\sigma(B)$, perquè qualsevol derivació de $B$ a partir de $A$ es tradueix, aplicant $\sigma$ a cada fórmula, en una derivació de $\sigma(B)$ a partir de $\sigma(A)$. Així, de la fletxa $p\land q\to p$ (car $p\land q\vdash p$) n'obtenim la fletxa $q\land(p\lor r)\to q$. Per tant $\sigma$ indueix un functor
+\[
+F_\sigma\colon\cat{Prov}_{T_{\mathrm{prop}}}\longrightarrow\cat{Prov}_{T_{\mathrm{prop}}},
+\qquad
+A\mapsto\sigma(A),
+\qquad
+(A\vdash B)\mapsto(\sigma(A)\vdash\sigma(B)),
+\]
+que és, precisament, el cas $T=T'=T_{\mathrm{prop}}$ de la construcció anterior (aquí amb la mateixa categoria de sortida i d'arribada).
+\end{exemple}
+
+\begin{observacio}
+Si en comptes de la deduïbilitat considerem la \emph{categoria de proves} de $T$ ---els mateixos objectes, però ara amb les derivacions, mòdul equivalència, com a morfismes i el tall com a composició---, un functor cap a la categoria de proves de $T'$ demana també una traducció de cada derivació que en respecti l'encadenament i les identitats. A diferència del cas anterior, aquestes condicions ja no són automàtiques, perquè la categoria de proves no és prima.
+\end{observacio}
+
+\begin{exemple}[Functors oblit sobre i sota un objecte]\index{functor!oblit}\index{categoria!sobre un objecte}\index{categoria!sota un objecte}
+Les categories de $\cat{C}$ sobre i sota un objecte $A$, $\cat{C}/A$ i $A/\cat{C}$ (secció~\ref{def:slice}), tenen un functor oblit cap a $\cat{C}$, un per a cadascuna. El functor
+\[
+U_A\colon\cat{C}/A\to\cat{C}
+\]
+envia cada objecte $x\colon X\to A$ al seu domini $X$ i cada morfisme (triangle) $h$ a ell mateix; oblida el morfisme distingit cap a $A$ i reté només el domini. Dualment, $A/\cat{C}\to\cat{C}$ envia cada objecte $x\colon A\to X$ al seu codomini $X$ i cada morfisme (triangle) a ell mateix; oblida el morfisme distingit des de $A$ i reté només el codomini.
+
+Vegem-ho en un cas concret. Amb $\cat{2}=(0\to 1)$ i l'objecte $A=1$, els objectes de $\cat{2}/1$ són les fletxes de $\cat{2}$ amb codomini $1$: la identitat $\id_1$ i l'única fletxa no trivial $u\colon 0\to 1$. L'únic morfisme no trivial va de $u$ a $\id_1$, de manera que $\cat{2}/1$ és, de nou, una còpia de $\cat{2}$, i $U_1\colon\cat{2}/1\to\cat{2}$ envia $u\mapsto 0$ i $\id_1\mapsto 1$. Simètricament, sota l'objecte $0$, els objectes de $0/\cat{2}$ són les fletxes amb domini $0$ ---la identitat $\id_0$ i $u\colon 0\to 1$---, i el functor oblit $0/\cat{2}\to\cat{2}$ envia $\id_0\mapsto 0$ i $u\mapsto 1$.
+\end{exemple}
+
+\section{Composició de functors i la categoria \texorpdfstring{$\cat{Cat}$}{Cat}}\index{Cat@$\cat{Cat}$}
+
+Els functors es poden compondre, i la composició torna a ser un functor. Això és el que permet organitzar les categories i els functors en una nova categoria.
+
+\begin{proposicio}
+Siguin $F\colon\cat{C}\to\cat{D}$ i $G\colon\cat{D}\to\cat{E}$ dos functors. La seva \textbf{composició} $G\comp F$, definida per
+\[
+(G\comp F)(A)=G(F(A))
+\qquad\text{i}\qquad
+(G\comp F)(f)=G(F(f)),
+\]
+és un functor $\cat{C}\to\cat{E}$.
+\end{proposicio}
+
+\begin{prova}
+Cal comprovar les dues condicions. Per a les identitats, i usant primer que $F$ i després que $G$ les preserven,
+\[
+(G\comp F)(\id_A)=G(F(\id_A))=G(\id_{F(A)})=\id_{G(F(A))}=\id_{(G\comp F)(A)}.
+\]
+Per a la composició, siguin $f\colon A\to B$ i $g\colon B\to C$ a $\cat{C}$. Aleshores
+\[
+\begin{aligned}
+(G\comp F)(g\comp f)
+&=G\big(F(g\comp f)\big)
+=G\big(F(g)\comp F(f)\big)\\
+&=G(F(g))\comp G(F(f))
+=(G\comp F)(g)\comp(G\comp F)(f).
+\end{aligned}
+\]
+Per tant $G\comp F$ és un functor.
+\end{prova}
+
+La composició de functors és associativa i el functor identitat actua com a element neutre, exactament pels mateixos motius que a $\cat{Set}$. En efecte, un functor $F\colon\cat{C}\to\cat{D}$ consta de dues aplicacions ---una sobre objectes i una sobre morfismes---, i la composició de functors no és res més que la composició d'aquestes aplicacions component a component. Per tant, l'associativitat i les lleis d'identitat es redueixen a les propietats corresponents de la composició d'aplicacions, que ja coneixem. Això ens permet donar la definició següent.
+
+\begin{definicio}\index{Cat@$\cat{Cat}$}
+La categoria $\cat{Cat}$ té per objectes les categories petites i per morfismes els functors entre elles. La composició és la composició de functors i la identitat de cada categoria és el seu functor identitat.
+\end{definicio}
+
+\begin{observacio}[Qüestions de mida]
+Convé precisar què guanya, i què no, la restricció a les categories \emph{petites}. El que \emph{no} guanya és fer petita la mateixa $\cat{Cat}$: la col·lecció de totes les categories petites és, com la de tots els conjunts, massa gran per formar un conjunt ---és una classe pròpia---, de manera que $\cat{Cat}$ segueix sent una categoria \emph{gran}. El que sí que guanya és la \emph{petitesa local}. D'una banda, cada categoria petita es codifica com un conjunt, i per tant és un objecte legítim. De l'altra, entre dues categories petites fixades $\cat{C}$ i $\cat{D}$, els functors formen un conjunt: tot functor està determinat per la seva acció sobre objectes i sobre morfismes, de manera que
+\[
+\Hom_{\cat{Cat}}(\cat{C},\cat{D})\subseteq \Ob(\cat{D})^{\Ob(\cat{C})}\times \operatorname{Mor}(\cat{D})^{\operatorname{Mor}(\cat{C})},
+\]
+i els axiomes de functor només seleccionen un subconjunt d'aquest producte, que és un conjunt perquè $\cat{C}$ i $\cat{D}$ són petites. Així doncs, $\cat{Cat}$ és gran però localment petita, i és aquesta segona propietat ---no una hipotètica petitesa--- la que la fa una categoria ben comportada. Quan calgui parlar de categories grans, ho farem amb la cautela habitual.
+
+Això deixa fora, però, moltes categories d'ús constant ---$\cat{Set}$, $\cat{Grp}$, $\cat{Top}$ o la mateixa $\cat{Cat}$---, que són grans i, per tant, no són objectes de $\cat{Cat}$. Això no ens impedeix treballar amb functors entre categories grans: un functor com l'oblit $\cat{Grp}\to\cat{Set}$, o el functor lliure $\Free\colon\cat{Graph}\to\cat{Cat}$ que trobarem tot seguit, és una construcció perfectament legítima, perquè consta simplement de dues aplicacions ---una sobre objectes i una sobre morfismes--- que compleixen les condicions functorials. La seva legitimitat no depèn que existeixi cap categoria que tingui les categories grans per objectes. De fet, en el marc de classes i conjunts que adoptem (vegeu l'apèndix de convenció de mida), i en el context localment petit que considerem per defecte, una categoria gran té una classe pròpia d'objectes, i una classe pròpia no pot ser element de cap col·lecció; per això no formem cap categoria de \enquote{totes les categories grans}. Quan calgui, doncs, parlarem directament de functors entre categories grans, sense empaquetar-los com a morfismes d'una categoria ambient.
+\end{observacio}
+
+\section{Functors i grafs}\label{sec:functors-grafs}\index{functor!i grafs}\index{morfisme de grafs}
+
+Val la pena comparar els functors amb els \emph{morfismes de grafs}, que vam introduir en definir $\cat{Graph}$ (subsecció~\ref{subsec:grafs}). Un morfisme de grafs $\alpha\colon G\to H$ és una parella d'aplicacions $\alpha_V\colon V_G\to V_H$ i $\alpha_E\colon E_G\to E_H$ compatibles amb l'origen i el destí; res més, perquè un graf no té composició ni identitats. Un functor entre categories petites demana exactament aquestes mateixes dues dades ---una assignació sobre objectes i una sobre morfismes, compatibles amb domini i codomini--- però hi afegeix dues condicions que un graf no pot ni formular: la preservació de la composició i de les identitats. Un morfisme de grafs és, doncs, la part «sense composició» d'un functor. Aquesta relació es concreta en dues construccions oposades entre $\cat{Graph}$ i $\cat{Cat}$, que estudiem tot seguit.
+
+\subsection{El graf subjacent d'una categoria}
+
+Tota categoria petita $\cat{C}$ té un \textbf{graf subjacent}: el graf que té per vèrtexs els objectes de $\cat{C}$ i per arestes \emph{tots} els seus morfismes, amb les aplicacions origen i destí donades pel domini i el codomini. En passar a aquest graf, oblidem quins morfismes són identitats i com es componen, però no eliminem les arestes corresponents: les fletxes identitat hi resten com a arestes, una a cada vèrtex, tot i que ja no marcades com a identitats.
+
+Aquesta assignació és functorial. Donat un functor $F\colon\cat{C}\to\cat{D}$, obtenim un morfisme entre els grafs subjacents que actua, sobre vèrtexs, com $F$ sobre els objectes, i sobre arestes, com $F$ sobre els morfismes. És un morfisme de grafs ben definit precisament perquè $F$ respecta domini i codomini: una aresta $f\colon A\to B$ va a $F(f)\colon F(A)\to F(B)$, una aresta entre les imatges dels extrems. Per construir-lo n'hi ha prou amb això; la preservació de la composició i de les identitats no s'hi fa servir, i per això diem que «se n'oblida». Tenim, així, un functor oblit
+\[
+U\colon\cat{Cat}\to\cat{Graph},
+\]
+que envia cada categoria petita al seu graf subjacent $U(\cat{C})$ i cada functor $F$ al morfisme de grafs $U(F)$ que acabem de descriure. El recíproc del que fa $U$ és fals: un morfisme entre els grafs subjacents no respecta, en general, ni la composició ni les identitats, de manera que un functor és estrictament més que un morfisme de grafs. Vegem-ho amb el cas d'un bucle. Sigui $M=\{1,e\}$ el monoide amb $e\comp e=e$, vist com a categoria d'un sol objecte $\ast$: el seu graf subjacent té un sol vèrtex i dos bucles, la identitat $1$ i l'element $e$. L'assignació que fixa el vèrtex i envia el bucle $1$ a $e$ i el bucle $e$ a $e$ és un morfisme de grafs perfectament vàlid: respecta origen i destí, perquè tots dos bucles van del vèrtex a si mateix. Cap functor, però, pot fer això: un functor està obligat a enviar la identitat a la identitat, i aquí la identitat $1$ va a parar a $e\neq 1$. És, doncs, un morfisme de grafs que no prové de cap functor, i mostra que els morfismes de grafs són més abundants que els functors. Aquest mateix contraexemple, des de l'angle de la definició de functor, es reprèn a l'exercici~\ref{ex:identitat-necessaria}.
+
+\subsection{La categoria lliure sobre un graf}
+
+En sentit contrari, la construcció de la categoria lliure generada per un graf, $\Free(G)$, que vam definir a la secció~\ref{sec:grafs-lliures}, també és functorial. Recordem-ne l'acció sobre objectes: $\Free(G)$ té per objectes els vèrtexs de $G$ i per morfismes els camins d'arestes, amb la concatenació com a composició i el camí buit com a identitat de cada vèrtex.
+
+Vegem l'acció sobre morfismes. Sigui $\alpha\colon G\to H$ un morfisme de grafs, amb components $\alpha_V\colon V_G\to V_H$ i $\alpha_E\colon E_G\to E_H$. Definim un functor $\Free(\alpha)\colon\Free(G)\to\Free(H)$ que, sobre objectes, actua com $\alpha_V$, i sobre morfismes transforma cada camí aresta a aresta: el camí $(f_1,\dots,f_k)$ de $G$ va al camí $(\alpha_E(f_1),\dots,\alpha_E(f_k))$ de $H$, i el camí buit $()_v$ va al camí buit $()_{\alpha_V(v)}$. L'assignació està ben definida ---com que $\alpha$ preserva origen i destí, arestes encadenades van a arestes encadenades, i el resultat és de nou un camí--- i és un functor: transforma concatenacions en concatenacions i camins buits en camins buits, és a dir, composicions en composicions i identitats en identitats.
+
+Finalment, $\Free$ respecta la identitat i la composició de $\cat{Graph}$: $\Free(\id_G)=\id_{\Free(G)}$ i $\Free(\beta\comp\alpha)=\Free(\beta)\comp\Free(\alpha)$, ja que aplicar $\alpha$ i després $\beta$ aresta a aresta és el mateix que aplicar $\beta\comp\alpha$. Tenim, doncs, un functor
+\[
+\Free\colon\cat{Graph}\to\cat{Cat}.
+\]
+
+Cal notar que $\Free$ i $U$ són functors \emph{entre categories grans} ($\cat{Graph}$ i $\cat{Cat}$ no són objectes de la $\cat{Cat}$ de les categories petites); les tractem com a categories localment petites, no com a fletxes de $\cat{Cat}$.
+
+\subsection{La relació entre \texorpdfstring{$\Free$}{Free} i \texorpdfstring{$U$}{U}}
+
+Les dues construccions van en direccions oposades, però no són inverses l'una de l'altra. El functor $U$ oblida quins morfismes són identitats i com es componen; $\Free$ afegeix formalment identitats i composicions al graf, sense imposar cap altra relació. Quan partim del graf subjacent d'una categoria $\cat{C}$, la composició lliure crea camins formals nous, de manera que $\Free(U(\cat{C}))$ no és $\cat{C}$ en general; però hi ha un functor
+\[
+\Free(U(\cat{C}))\to\cat{C}
+\]
+que avalua cada camí formal mitjançant la composició de $\cat{C}$. Aquest functor reflecteix una propietat que caracteritza $\Free(G)$: definir un functor $\Free(G)\to\cat{D}$ equival a triar les imatges dels vèrtexs \emph{i} de les arestes de $G$, respectant origen i destí ---és a dir, a donar un morfisme de grafs $G\to U(\cat{D})$---, i aquesta tria s'estén de manera única a $\Free(G)$. Cal comptar totes dues assignacions: un functor ha d'enviar cada objecte de $\Free(G)$ ---cada vèrtex de $G$--- a un objecte de $\cat{D}$, també els vèrtexs aïllats, que no són extrem de cap aresta. Per exemple, si $G$ té un únic vèrtex i cap aresta, no hi ha cap imatge d'aresta per triar, però un functor $\Free(G)\to\cat{D}$ encara exigeix escollir un objecte de $\cat{D}$; és precisament la component sobre vèrtexs del morfisme de grafs $G\to U(\cat{D})$, que en aquest cas es redueix a triar aquest objecte. La formulació via $G\to U(\cat{D})$ recull sempre les dues dades, perquè un morfisme de grafs consta d'una aplicació sobre vèrtexs i una sobre arestes. Quan $\cat{D}$ és petita, aquesta correspondència és una bijecció
+\[
+\Hom_{\cat{Cat}}\big(\Free(G),\cat{D}\big)\;\cong\;\Hom_{\cat{Graph}}\big(G,U(\cat{D})\big).
+\]
+Aquesta és la formulació precisa de \enquote{lliure}, i és el contingut de l'\emph{adjunció} $\Free\dashv U$ que estudiarem al capítol~\ref{cap:adjuncions}.
+
+\begin{observacio}
+Reconèixer els functors com a fletxes d'una categoria és el primer pas per poder plantejar-nos si són isomorfismes, si es componen o si hi ha dualitat. Dins $\cat{Cat}$, per exemple, una aplicació monòtona $P\to Q$ entre preordres petits és una fletxa; en canvi, $\Free$ i $U$ són functors entre categories grans, i per això no són morfismes de $\cat{Cat}$; això no els fa menys legítims, sinó que simplement no els agrupem com a fletxes de cap categoria de categories.
+\end{observacio}
+
+\section{Functors covariants i contravariants}
+
+Fins ara els functors preserven el sentit de les fletxes. Sovint, però, apareixen assignacions que \emph{inverteixen} el sentit: enviar $f\colon A\to B$ a un morfisme $F(B)\to F(A)$. Parlem aleshores de \textbf{functors contravariants}, que s'expliquen millor mitjançant la categoria oposada.
+
+\begin{definicio}\index{functor!contravariant}\index{functor!covariant}
+Un \textbf{functor contravariant} de $\cat{C}$ a $\cat{D}$ és un functor
+\[
+F\colon\cat{C}\op\to\cat{D}.
+\]
+Per contrast, els functors de la definició original s'anomenen \textbf{covariants}.
+\end{definicio}
+
+Desplegant la definició de functor sobre $\cat{C}\op$, un functor contravariant assigna a cada objecte $A$ un objecte $F(A)$ i a cada morfisme $f\colon A\to B$ de $\cat{C}$ un morfisme en sentit invertit
+\[
+F(f)\colon F(B)\to F(A),
+\]
+de manera que $F(\id_A)=\id_{F(A)}$ i $F(g\comp f)=F(f)\comp F(g)$. La inversió de l'ordre en aquesta última igualtat no és cap condició nova: és la condició de functor covariant sobre $\cat{C}\op$, un cop recordem que compondre a $\cat{C}\op$ és compondre a $\cat{C}$ en l'ordre invers. Aquest és un primer exemple de la potència de la categoria oposada: permet tractar covariància i contravariància amb una sola definició.
+
+Diagramàticament, un triangle commutatiu de $\cat{C}$ es transforma en un triangle commutatiu de $\cat{D}$ amb les fletxes imatge invertides:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.2em, row sep=2.6em] {
+    A & B \\
+      & C \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$g$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$g\comp f$} (m-2-2);
+\end{tikzpicture}
+\qquad\stackrel{F}{\longmapsto}\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.6em, row sep=2.6em] {
+    F(A) & F(B) \\
+         & F(C) \\
+  };
+  \draw[{Stealth[scale=1.1]}-] (m-1-1) -- node[above] {$F(f)$} (m-1-2);
+  \draw[{Stealth[scale=1.1]}-] (m-1-2) -- node[right] {$F(g)$} (m-2-2);
+  \draw[{Stealth[scale=1.1]}-] (m-1-1) -- node[below left] {$F(g\comp f)$} (m-2-2);
+\end{tikzpicture}
+\]
+
+\begin{exemple}[Els homfunctors]\label{ex:homfunctors}\index{functor!Hom}\index{homfunctor}
+Suposem $\cat{C}$ localment petita, de manera que cada $\Hom(A,X)$ és un conjunt. Fixat un objecte $A$ de $\cat{C}$, tenim un functor covariant
+\[
+\Hom(A,\_)\colon\cat{C}\to\cat{Set}
+\]
+que envia cada objecte $X$ al conjunt $\Hom(A,X)$ i cada morfisme $f\colon X\to Y$ a l'aplicació
+\[
+f_*\colon\Hom(A,X)\to\Hom(A,Y),
+\qquad
+\varphi\mapsto f\comp\varphi,
+\]
+la \textbf{postcomposició} amb $f$. Un element $\varphi\colon A\to X$ es perllonga amb $f$ per obtenir $f\comp\varphi\colon A\to Y$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.2em, row sep=2.6em] {
+    A & X \\
+      & Y \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$\varphi$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$f$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$f\comp\varphi$} (m-2-2);
+\end{tikzpicture}
+\]
+En canvi, fixat un objecte $B$, tenim un functor contravariant
+\[
+\Hom(\_,B)\colon\cat{C}\op\to\cat{Set}
+\]
+que envia cada objecte $X$ al conjunt $\Hom(X,B)$ i cada morfisme $f\colon X\to Y$ a l'aplicació
+\[
+f^*\colon\Hom(Y,B)\to\Hom(X,B),
+\qquad
+\psi\mapsto\psi\comp f,
+\]
+la \textbf{precomposició} amb $f$, que inverteix el sentit. Un element $\psi\colon Y\to B$ es precedeix de $f$ per obtenir $\psi\comp f\colon X\to B$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.2em, row sep=2.6em] {
+    X & Y \\
+      & B \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\psi$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$\psi\comp f$} (m-2-2);
+\end{tikzpicture}
+\]
+Observem que, en el cas covariant, $f$ actua sobre el \emph{destí} de les fletxes (les allarga per l'extrem final), mentre que en el contravariant actua sobre l'\emph{origen} (les allarga per l'extrem inicial), i això és el que inverteix el sentit del functor. De fet, la functorialitat es comprova en una línia i és on es veu la diferència. Per a $\Hom(A,\_)$,
+\[
+(g\comp f)_*(\varphi)=(g\comp f)\comp\varphi=g\comp(f\comp\varphi)=g_*\bigl(f_*(\varphi)\bigr),
+\]
+és a dir $(g\comp f)_*=g_*\comp f_*$: l'ordre es conserva, el functor és covariant. Per a $\Hom(\_,B)$,
+\[
+(g\comp f)^*(\psi)=\psi\comp(g\comp f)=(\psi\comp g)\comp f=f^*\bigl(g^*(\psi)\bigr),
+\]
+és a dir $(g\comp f)^*=f^*\comp g^*$: l'ordre s'inverteix, el functor és contravariant. En tots dos casos la identitat va a la identitat, perquè compondre amb $\id$ no fa res. Aquests dos functors, $\Hom(A,\_)$ i $\Hom(\_,B)$, són centrals en teoria de categories i els retrobarem en el lema de Yoneda (capítol~\ref{cap:yoneda}).
+\end{exemple}
+
+\begin{exemple}[El functor de parts]\index{functor!de parts}
+El \textbf{functor de parts} contravariant
+\[
+\mathcal P\colon\cat{Set}\op\to\cat{Set}
+\]
+envia cada conjunt $X$ al conjunt $\mathcal P(X)$ de les seves parts, i cada aplicació $f\colon X\to Y$ a l'aplicació que assigna a cada subconjunt $B\subseteq Y$ la reunió de les antiimatges dels seus elements:
+\[
+f^{-1}\colon\mathcal P(Y)\to\mathcal P(X),
+\qquad
+B\mapsto f^{-1}(B)=\bigcup_{y\in B} f^{-1}(y)=\{x\in X : f(x)\in B\}.
+\]
+La contravariància es comprova igual que abans, ara amb antiimatges. Per a $f\colon X\to Y$ i $g\colon Y\to Z$ i un subconjunt $C\subseteq Z$,
+\[
+(g\comp f)^{-1}(C)=\{x : g(f(x))\in C\}=f^{-1}\bigl(g^{-1}(C)\bigr),
+\]
+és a dir $(g\comp f)^{-1}=f^{-1}\comp g^{-1}$: l'ordre s'inverteix, i per això el functor és contravariant. La identitat es preserva perquè $\id^{-1}$ deixa cada subconjunt igual. Aquí $f^{-1}$ denota l'aplicació d'antiimatge, no l'invers de $f$, que pot no existir. Existeix també una versió covariant que fa servir la imatge directa, però la contravariant, mitjançant l'antiimatge, és la que apareix més sovint.
+\end{exemple}
+
+\begin{definicio}[Functor oposat]\index{functor!oposat}
+Tot functor $F\colon\cat{C}\to\cat{D}$ indueix un \textbf{functor oposat}
+\[
+F\op\colon\cat{C}\op\to\cat{D}\op,
+\]
+que actua igual que $F$ sobre objectes i sobre morfismes, però llegit entre les categories oposades. Com que compondre a $\cat{C}\op$ i a $\cat{D}\op$ és compondre a $\cat{C}$ i a $\cat{D}$ en l'ordre invers, les dues condicions de functor es transporten sense canvis.
+\end{definicio}
+
+\begin{observacio}
+El pas a l'oposat és, de fet, functorial: assigna a cada functor $F$ el functor $F\op$ i respecta composicions i identitats, de manera que $(-)\op\colon\cat{Cat}\to\cat{Cat}$ és un functor. Aplicar-lo dues vegades torna al punt de partida, $(F\op)\op=F$, perquè $(\cat{C}\op)\op=\cat{C}$.
+\end{observacio}
+
+Les dues variables dels homfunctors es poden tractar alhora. Fixem-nos que $\Hom$ pren \emph{dos} objectes i en dona un conjunt, de manera contravariant en el primer i covariant en el segon; això és exactament un functor sobre un producte de categories.
+
+\begin{definicio}[El bifunctor Hom]\index{Hom@$\Hom$!bifunctor}
+Sigui $\cat{C}$ localment petita. El \textbf{bifunctor Hom} és el functor
+\[
+\Hom_{\cat{C}}(\_,\_)\colon\cat{C}\op\times\cat{C}\to\cat{Set}
+\]
+que envia una parella d'objectes $(A,B)$ al conjunt $\Hom(A,B)$, i una parella de morfismes $(f\colon A'\to A,\ g\colon B\to B')$ a l'aplicació
+\[
+\Hom(f,g)\colon\Hom(A,B)\to\Hom(A',B'),\qquad h\mapsto g\comp h\comp f.
+\]
+Un element $h\colon A\to B$ es prolonga per l'origen amb $f$ i pel destí amb $g$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3em] {
+    A' & A & B & B' \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[above] {$h$} (m-1-3);
+  \draw[-{Stealth[scale=1.1]}] (m-1-3) -- node[above] {$g$} (m-1-4);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) to[bend right=22] node[below] {$g\comp h\comp f$} (m-1-4);
+\end{tikzpicture}
+\]
+\end{definicio}
+
+\begin{observacio}
+La fórmula $h\mapsto g\comp h\comp f$ combina la precomposició amb $f$ (contravariant, en la primera variable) i la postcomposició amb $g$ (covariant, en la segona). Fixant la primera variable en $A$ recuperem el functor covariant $\Hom(A,\_)$; fixant la segona en $B$ recuperem el contravariant $\Hom(\_,B)$. Ara bé, la functorialitat en cada variable per separat no basta: cal comprovar que les dues accions són compatibles, és a dir, que $\Hom(\_,\_)$ preserva la composició i les identitats de $\cat{C}\op\times\cat{C}$. Vegem-ho. Siguin
+\[
+f\colon A'\to A,\quad f'\colon A''\to A',\quad g\colon B\to B',\quad g'\colon B'\to B''
+\]
+morfismes de $\cat{C}$. Aleshores, per a tot $h\colon A\to B$,
+\[
+\Hom(f',g')\big(\Hom(f,g)(h)\big)
+= g'\comp(g\comp h\comp f)\comp f'
+= (g'\comp g)\comp h\comp(f\comp f')
+= \Hom(f\comp f',\,g'\comp g)(h),
+\]
+on el segon pas és pura associativitat. Aquesta és exactament la llei functorial en $\cat{C}\op\times\cat{C}$: la composició de la primera component en $\cat{C}\op$ és $f\comp f'$ (l'ordre invertit respecte de $\cat{C}$, coherent amb la contravariància), i la de la segona és $g'\comp g$. Per a les identitats, la parella $(\id_A,\id_B)$ va a
+\[
+\Hom(\id_A,\id_B)(h)=\id_B\comp h\comp\id_A=h,
+\]
+és a dir $\Hom(\id_A,\id_B)=\id_{\Hom(A,B)}$. Per tant $\Hom(\_,\_)$ és un functor de ple dret, i no només en cada variable per separat.
+\end{observacio}
+
+\section{Functors fidels i plens}
+
+Un functor actua sobre els morfismes; és natural preguntar-se com és aquesta acció entre cada parella d'objectes. Fixats $A,B$ a $\cat{C}$, un functor $F\colon\cat{C}\to\cat{D}$ indueix una aplicació
+\[
+F_{A,B}\colon\Hom_{\cat{C}}(A,B)\to\Hom_{\cat{D}}(F(A),F(B)),
+\qquad
+f\mapsto F(f).
+\]
+Les propietats d'aquesta aplicació donen lloc a una classificació bàsica.
+
+\begin{definicio}\index{functor!fidel}\index{functor!ple}
+\label{def:ple-fidel}
+Un functor $F\colon\cat{C}\to\cat{D}$ és:
+\begin{itemize}
+\item \textbf{fidel} si cada aplicació $F_{A,B}$ és injectiva; és a dir, si $F(f)=F(g)$ amb $f,g\colon A\to B$ implica $f=g$;
+\item \textbf{ple} si cada aplicació $F_{A,B}$ és exhaustiva; és a dir, si tot morfisme $F(A)\to F(B)$ de $\cat{D}$ és de la forma $F(f)$ per a algun $f\colon A\to B$ de $\cat{C}$;
+\item \textbf{ple i fidel} si cada $F_{A,B}$ és bijectiva.
+\end{itemize}
+\end{definicio}
+
+\begin{observacio}
+Cal no confondre aquestes condicions amb la injectivitat o l'exhaustivitat \emph{sobre objectes}. Un functor pot ser ple i fidel sense ser injectiu sobre objectes: la fidelitat i la plenitud només afecten els morfismes entre cada parella fixada d'objectes. Un functor ple i fidel identifica $\Hom_{\cat{C}}(A,B)$ amb $\Hom_{\cat{D}}(F(A),F(B))$, però pot enviar objectes diferents a un mateix objecte.
+\end{observacio}
+
+\begin{observacio}
+Aquestes propietats es transporten a l'oposat. Com que $F$ i el seu functor oposat $F\op\colon\cat{C}\op\to\cat{D}\op$ (definit a la secció anterior) actuen igual sobre els morfismes, i els conjunts de morfismes de $\cat{C}\op$ i $\cat{D}\op$ són els mateixos que els de $\cat{C}$ i $\cat{D}$, l'aplicació $F_{A,B}$ i la corresponent per a $F\op$ coincideixen. Per tant, $F$ és fidel (respectivament ple) si i només si $F\op$ ho és.
+\end{observacio}
+
+\begin{exemple}
+El functor oblit $U\colon\cat{Grp}\to\cat{Set}$ és fidel: dos homomorfismes diferents segueixen sent aplicacions diferents, de manera que $U$ no identifica morfismes. En canvi no és ple: entre dos grups hi ha aplicacions de conjunts que no són homomorfismes, i aquestes no provenen de cap morfisme de $\cat{Grp}$. Aquesta és la situació típica dels functors oblit: retenen prou informació per distingir morfismes, però obren la porta a fletxes noves que no respecten l'estructura.
+\end{exemple}
+
+Les subcategories, introduïdes elementalment a la secció~\ref{subsec:subcategories}, tenen una lectura natural en el llenguatge dels functors. Si $\cat{S}$ és una subcategoria de $\cat{C}$, la \textbf{inclusió} $\iota\colon\cat{S}\hookrightarrow\cat{C}$ ---que envia cada objecte i cada morfisme de $\cat{S}$ a ell mateix a $\cat{C}$--- és un functor, i sempre és \textbf{fidel}. La distinció entre les dues menes de subcategoria es tradueix en propietats d'aquesta inclusió: $\cat{S}$ és una \textbf{subcategoria plena} exactament quan $\iota$ és \textbf{ple}, i és una \textbf{subcategoria ampla} exactament quan $\iota$ és exhaustiu sobre $\Ob(\cat{C})$.\index{subcategoria!plena}\index{subcategoria!ampla}
+
+\begin{exemple}
+La inclusió $\cat{FinSet}\hookrightarrow\cat{Set}$ dels conjunts finits és plena i fidel: entre dos conjunts finits hi ha exactament les mateixes aplicacions que a $\cat{Set}$, de manera que un cop triats els objectes no descartem cap morfisme. En canvi, la subcategoria de $\cat{Set}$ que conserva tots els conjunts com a objectes però només les aplicacions \emph{injectives} com a morfismes és ampla i fidel, però \emph{no} plena: entre dos conjunts hi ha aplicacions no injectives, que per tant no provenen de cap morfisme de la subcategoria. El mateix passa amb la subcategoria ampla de les aplicacions \emph{exhaustives}: és fidel però no plena, perquè deixa fora les aplicacions que no són exhaustives.
+\end{exemple}
+
+\begin{proposicio}\index{functor!ple i fidel}
+Sigui $F\colon\cat{C}\to\cat{D}$ un functor ple i fidel. Si $F(f)$ és un isomorfisme a $\cat{D}$, aleshores $f$ ja era un isomorfisme a $\cat{C}$.
+\end{proposicio}
+
+\begin{prova}
+Suposem que $F(f)\colon F(A)\to F(B)$ té un invers $h\colon F(B)\to F(A)$ a $\cat{D}$. Com que $F$ és ple, existeix $g\colon B\to A$ a $\cat{C}$ amb $F(g)=h$. Aleshores
+\[
+F(g\comp f)=F(g)\comp F(f)=h\comp F(f)=\id_{F(A)}=F(\id_A),
+\]
+i com que $F$ és fidel, $g\comp f=\id_A$. Anàlogament $f\comp g=\id_B$. Per tant $f$ és un isomorfisme amb invers $g$.
+\end{prova}
+
+\begin{observacio}
+Aquesta propietat expressa que els functors plens i fidels \enquote{reflecteixen} isomorfismes, no només els preserven. Un functor ple i fidel reprodueix bijectivament els conjunts de morfismes entre els objectes de la seva imatge, però això \emph{no} implica que sigui injectiu sobre objectes: pot enviar objectes diferents a un mateix objecte. Aquesta situació ---morfismes identificats bijectivament, objectes no necessàriament--- conduirà més endavant a la noció d'\emph{equivalència de categories}.
+\end{observacio}
+
+Fidelitat i plenitud descriuen com actua un functor sobre els morfismes. Una tercera condició, sobre els objectes, completa la terna que caracteritzarà les equivalències.
+
+\begin{definicio}[Functor essencialment exhaustiu]\label{def:ess-exhaustiu}\index{functor!essencialment exhaustiu}
+Un functor $F\colon\cat{C}\to\cat{D}$ és \textbf{essencialment exhaustiu} si tot objecte de $\cat{D}$ és isomorf a la imatge d'algun objecte de $\cat{C}$:
+\[
+\forall D\in\cat{D},\ \exists A\in\cat{C}\ \text{tal que}\ F(A)\cong D.
+\]
+\end{definicio}
+
+\begin{observacio}
+La condició demana \emph{isomorfisme}, no igualtat: no cal que tot objecte de $\cat{D}$ sigui exactament una imatge, només que ho sigui llevat d'isomorfisme. Un functor alhora ple, fidel i essencialment exhaustiu recull bijectivament els morfismes i, a més, arriba a tots els objectes llevat d'isomorfisme; aquestes són precisament les condicions que, un cop disposem de les transformacions naturals, caracteritzaran les \emph{equivalències de categories}.
+\end{observacio}
+
+\subsection{Què conserva un functor: un resum}\label{subsec:que-conserva}
+
+Convé aclarir, abans de tancar el capítol, quines propietats respecta un functor \emph{qualsevol} i quines en demanen més. La distinció clau és entre propietats definides per una \emph{equació} entre composicions ---que sempre es transporten, perquè un functor preserva composició i identitats--- i propietats definides per un \emph{quantificador universal sobre totes les fletxes} d'una categoria ---que no es transporten sense hipòtesis addicionals. Ser isomorfisme, tenir secció o tenir retracció són equacions ($g\comp f=\id$); ser monomorfisme o epimorfisme són condicions de cancel·lació \enquote{per a tota parella $g,h$}, i és aquesta quantificació la que un functor no pot garantir.
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{6pt}
+\begin{tabular}{@{}p{4.3cm}p{4.6cm}p{4.3cm}@{}}
+\toprule
+Un functor \emph{qualsevol} preserva & Un functor \emph{ple i fidel} a més reflecteix & Una \emph{equivalència} preserva i reflecteix \\
+\midrule
+composició i identitats; diagrames commutatius; isomorfismes; seccions i retraccions (epis i monos \emph{escindits}) & isomorfismes; monomorfismes i epimorfismes; el fet de ser secció o retracció & totes les nocions categòriques, però llevat d'isomorfisme (no les que depenen de la \emph{igualtat} d'objectes) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+En canvi, un functor qualsevol \emph{no} preserva, en general, ni els monomorfismes ni els epimorfismes ni les propietats universals. Vegem-ho amb els epimorfismes.
+
+\begin{exemple}[Un functor que no preserva epimorfismes]\index{functor!no preserva epimorfismes}
+Prenem el monoide additiu $(\mathbb{N},+,0)$ i el monoide $(\{0,1\},\vee,0)$, on $\vee$ és el màxim (o disjunció), tots dos vistos com a categories d'un sol objecte, $\cat{B}\mathbb{N}$ i $\cat{B}M$. L'aplicació $h\colon\mathbb{N}\to\{0,1\}$ amb $h(0)=0$ i $h(n)=1$ per a $n\geq 1$ és un homomorfisme de monoides, i defineix per tant un functor $F\colon\cat{B}\mathbb{N}\to\cat{B}M$ (exemple~\ref{ex:functors-monoide}).
+
+A $\cat{B}\mathbb{N}$, el morfisme $1$ és un epimorfisme: la cancel·lació per la dreta a $\cat{B}\mathbb{N}$ és la cancel·lació de la suma, i a $(\mathbb{N},+)$ es pot cancel·lar. La seva imatge $F(1)=1$, en canvi, \emph{no} és un epimorfisme a $\cat{B}M$, perquè $1\vee 0=1=1\vee 1$ amb $0\neq 1$: la cancel·lació falla. Així, $F$ envia un epimorfisme a un morfisme que no ho és.
+
+L'arrel del fenomen és la que hem assenyalat: \enquote{ser epi} quantifica sobre totes les parelles $g,h$ del codomini, i el functor no controla les parelles noves que apareixen a $\cat{B}M$. Un epimorfisme \emph{escindit}, en canvi ---definit per l'equació $f\comp s=\id$---, sí que es preservaria, perquè l'equació es transporta.
+\end{exemple}
+
+\begin{resumcap}
+\apartat{Cinc idees} (1)~Un functor preserva dominis, codominis, composició i identitats. (2)~Les categories petites i els functors formen una categoria, $\cat{Cat}$, que és gran però localment petita; els functors entre categories grans són igualment legítims, tot i que no els agrupem com a fletxes de cap categoria. (3)~Un functor contravariant és un functor des de l'oposada. (4)~Plenitud i fidelitat mesuren com actua un functor sobre cada homconjunt; amb l'exhaustivitat essencial donen les equivalències. (5)~Els homfunctors $\Hom(A,\_)$ i $\Hom(\_,B)$, i el bifunctor $\Hom(\_,\_)$, són functors fonamentals que retrobarem al lema de Yoneda.
+\apartat{Errors típics} Confondre \enquote{isomorfisme de categories} amb \enquote{equivalència}; suposar que un functor ple i fidel és exhaustiu sobre objectes; oblidar la inversió de sentit en un functor contravariant; i barrejar $\cat{C}/A$ (sobre $A$) amb $A/\cat{C}$ (sota $A$).
+\apartat{Lectura recomanada} \cite[cap.~1--2]{awodey}; \cite[cap.~1]{leinster} per als functors i les seves propietats; \cite[cap.~1]{riehl} per als homfunctors i el bifunctor $\Hom$.
+\end{resumcap}

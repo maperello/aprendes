@@ -1,0 +1,43 @@
+\chapter[Classificadors de subobjectes i topos]{\texorpdfstring{Classificadors de subobjectes i introducció als topos}{Classificadors de subobjectes i introducció als topos}}
+
+Els exercicis d'aquest capítol són de familiarització amb el classificador de subobjectes i la definició de topos. No entren en la lògica interna, que pertany a l'estudi posterior.
+
+\section{El classificador}
+
+\begin{exercici}
+Comprova amb detall que a $\cat{Set}$ l'objecte $\Omega=\{0,1\}$ amb $\mathsf{true}\colon 1\to\{0,1\}$, $\mathsf{true}(\ast)=1$, és un classificador de subobjectes.
+\end{exercici}
+
+\begin{solucio}
+Sigui $U\subseteq E$ un subconjunt, amb inclusió $m\colon U\hookrightarrow E$. Definim $\chi_U\colon E\to\{0,1\}$ per $\chi_U(x)=1$ si $x\in U$ i $\chi_U(x)=0$ altrament. El pullback de $\mathsf{true}\colon 1\to\{0,1\}$ al llarg de $\chi_U$ és $\{x\in E\mid\chi_U(x)=1\}=U$, amb la inclusió com a projecció; per tant el quadrat és cartesià. Per a la unicitat: si $\chi\colon E\to\{0,1\}$ fa el quadrat cartesià, aleshores $\chi^{-1}(1)=U$, cosa que força $\chi=\chi_U$. Així $\{0,1\}$ classifica els subobjectes de qualsevol conjunt.
+\end{solucio}
+
+\begin{exercici}
+Usant la representabilitat $\Sub(E)\cong\Hom(E,\Omega)$, demostra que el classificador de subobjectes, si existeix, és únic llevat d'isomorfisme.
+\end{exercici}
+
+\begin{solucio}
+Si $\Omega$ i $\Omega'$ són tots dos classificadors, aleshores tots dos representen el mateix functor $\Sub_{\cat{E}}\colon\cat{E}\op\to\cat{Set}$: hi ha isomorfismes naturals $\Hom(-,\Omega)\cong\Sub_{\cat{E}}(-)\cong\Hom(-,\Omega')$. Pel lema de Yoneda, dos objectes que representen el mateix functor són isomorfs mitjançant un únic isomorfisme compatible amb les representacions. Per tant $\Omega\cong\Omega'$. És una aplicació directa de la unicitat dels objectes representants vista al capítol de Yoneda.
+\end{solucio}
+
+\section{Topos}
+
+\begin{exercici}
+Comprova que $\cat{Set}$ satisfà les tres condicions de la definició de topos.
+\end{exercici}
+
+\begin{solucio}
+\emph{Límits finits}: $\cat{Set}$ té terminal (un punt), productes (producte cartesià) i equalitzadors (subconjunts definits per igualtats), i per tant tots els límits finits. \emph{Classificador}: l'exercici anterior mostra que $\{0,1\}$ n'és un. \emph{Exponencials}: l'exponencial $C^{B}$ és el conjunt d'aplicacions $B\to C$, i vam veure al capítol de tancament cartesià que $\cat{Set}$ és cartesiana tancada. Per tant $\cat{Set}$ és un topos.
+\end{solucio}
+
+\begin{exercici}
+Demostra que en un topos l'objecte de parts $\mathcal{P}(E)=\Omega^{E}$ satisfà $\Hom(A,\mathcal{P}(E))\cong\Sub(A\times E)$.
+\end{exercici}
+
+\begin{solucio}
+Component les dues propietats universals disponibles en un topos:
+\[
+\Hom(A,\Omega^{E})\cong\Hom(A\times E,\Omega)\cong\Sub(A\times E),
+\]
+on la primera bijecció és la de l'exponencial (currificació) i la segona és la representabilitat del classificador (\ref{prop:omega-representa}). Totes dues són naturals en $A$. Així, els morfismes cap a $\Omega^{E}$ es corresponen amb subobjectes de $A\times E$, és a dir, amb relacions entre $A$ i $E$. A $\cat{Set}$, això recupera que $\mathcal{P}(E)$ és el conjunt de parts i que una aplicació $A\to\mathcal{P}(E)$ és una relació entre $A$ i $E$.
+\end{solucio}

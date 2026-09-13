@@ -1,0 +1,143 @@
+\chapter{Functors}
+
+Els exercicis següents completen els resolts al capítol corresponent de la part de Pràctica. Cada enunciat va acompanyat d'una indicació breu per si el lector s'encalla; convé, però, intentar-lo primer sense mirar-la. La marca \enquote{$\star$} assenyala un exercici de consolidació i \enquote{$\star\star$} un d'ampliació.
+
+\section{Definició de functor}
+
+\begin{exercici}
+Comprova que el functor identitat $\id_{\cat{C}}\colon\cat{C}\to\cat{C}$ i, per a cada objecte $D$ d'una categoria $\cat{D}$, el \textbf{functor constant} $\Delta_D\colon\cat{C}\to\cat{D}$ ---que envia tot objecte a $D$ i tot morfisme a $\id_D$--- són functors. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Per al functor constant, comprova que $\Delta_D(\id_A)=\id_D$ i que $\Delta_D(g\comp f)=\id_D=\id_D\comp\id_D=\Delta_D(g)\comp\Delta_D(f)$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}\label{ex:identitat-necessaria}
+Considera una assignació que respecti dominis, codominis i composició, però de la qual \emph{no} se suposi que preservi identitats. Comprova, amb un contraexemple senzill, que la preservació de la identitat no se'n dedueix, i conclou que la condició $F(\id_A)=\id_{F(A)}$ és realment necessària a la definició de functor. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Pren el monoide de dos elements $\{1,e\}$ amb $e\comp e=e$ i $e\comp m=m\comp e=e$ per a tot $m$, vist com a categoria d'un sol objecte. L'assignació que envia cada morfisme $m$ a $e$ respecta la composició, perquè $F(m\comp n)=e=e\comp e=F(m)\comp F(n)$, però envia la identitat $1$ a $e\neq 1$. Per tant no preserva identitats malgrat respectar la composició.
+\end{indicacio}
+\end{exercici}
+
+\section{Exemples de functors}
+
+\begin{exercici}
+Comprova que hi ha un functor oblit $U\colon\cat{Top}\to\cat{Set}$ i descriu explícitament què fa sobre objectes i sobre morfismes. Quines propietats de les aplicacions contínues en garanteixen la functorialitat? \hfill{\normalfont$\star$}
+\begin{indicacio}
+$U$ envia cada espai al seu conjunt de punts i cada aplicació contínua a la mateixa aplicació. Cal que la identitat sigui contínua i que la composició de contínues sigui contínua.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $G$ un grup vist com a categoria $\cat{B}G$ amb un sol objecte. Comprova que un functor $\cat{B}G\to\cat{Set}$ és el mateix que una \textbf{acció} de $G$ sobre un conjunt, i que la imatge de cada element del grup és necessàriament una \emph{bijecció}. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Segueix el cas del monoide. La diferència és que en un grup cada element té invers; usa que un functor preserva isomorfismes i que tot morfisme de $\cat{B}G$ és un isomorfisme.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Descriu un functor $\cat{2}\to\cat{C}$, on $\cat{2}$ és la categoria associada a l'ordre $0<1$. Comprova que triar un tal functor equival a triar un morfisme de $\cat{C}$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+El functor ha d'enviar l'única fletxa no trivial $0\to1$ a un morfisme de $\cat{C}$; els dos objectes es determinen com el seu domini i el seu codomini.
+\end{indicacio}
+\end{exercici}
+
+\section{Composició de functors i la categoria \texorpdfstring{$\cat{Cat}$}{Cat}}
+
+\begin{exercici}
+Comprova que un isomorfisme a $\cat{Cat}$ ---és a dir, un functor $F\colon\cat{C}\to\cat{D}$ amb un functor invers $G$ tal que $G\comp F=\id_{\cat{C}}$ i $F\comp G=\id_{\cat{D}}$--- és bijectiu sobre objectes i sobre morfismes. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+De $G\comp F=\id_{\cat{C}}$ i $F\comp G=\id_{\cat{D}}$ dedueix que $F$ té inversa com a aplicació sobre objectes i com a aplicació sobre morfismes.
+\end{indicacio}
+\end{exercici}
+
+\section{Functors i isomorfismes}
+
+\begin{exercici}
+Comprova que si $F\colon\cat{C}\to\cat{D}$ és un functor i $A\cong B$ a $\cat{C}$, aleshores $F(A)\cong F(B)$ a $\cat{D}$. És a dir, els functors preserven la relació d'isomorfisme entre objectes. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Aplica $F$ a un isomorfisme $A\to B$ i usa que la imatge d'un isomorfisme és un isomorfisme.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Dona un exemple de dos objectes no isomorfs que un functor envia a objectes isomorfs. Això mostra que els functors no reflecteixen la relació d'isomorfisme entre objectes. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un functor constant envia tots els objectes al mateix objecte, i per tant tots a objectes isomorfs entre ells.
+\end{indicacio}
+\end{exercici}
+
+\section{Functors covariants i contravariants}
+
+\begin{exercici}
+Donat un functor $F\colon\cat{C}\to\cat{D}$, comprova que la mateixa regla sobre objectes i morfismes defineix un functor
+\[
+F\op\colon\cat{C}\op\to\cat{D}\op,
+\]
+el \textbf{functor oposat} de $F$. Comprova que $F$ és fidel (respectivament ple) si i només si $F\op$ ho és. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Sobre objectes, $F\op=F$; sobre morfismes, $F\op(f)=F(f)$, però ara llegit entre els mateixos objectes a les categories oposades. Compondre a $\cat{C}\op$ i a $\cat{D}\op$ és compondre a $\cat{C}$ i a $\cat{D}$ en l'ordre invers, de manera que les dues condicions de functor es transporten. Els conjunts de morfismes són els mateixos, així que injectivitat i exhaustivitat es conserven.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Fixat un objecte $A$ d'una categoria localment petita, comprova que $\Hom(A,-)$ envia isomorfismes a bijeccions: si $f\colon X\to Y$ és un isomorfisme, aleshores
+\[
+f_*\colon\Hom(A,X)\to\Hom(A,Y)
+\]
+és una bijecció. \hfill{\normalfont$\star$}
+\begin{indicacio}
+$\Hom(A,-)$ és un functor i, per tant, preserva isomorfismes; a $\cat{Set}$ els isomorfismes són les bijeccions. Alternativament, comprova directament que $(f^{-1})_*$ és la inversa de $f_*$.
+\end{indicacio}
+\end{exercici}
+
+\section{Functors fidels i plens}
+
+\begin{exercici}
+Comprova que la composició de dos functors fidels és fidel, i que la composició de dos functors plens és plena. Dedueix que la composició de functors plens i fidels és plena i fidel. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Treballa amb les aplicacions $F_{A,B}$ sobre conjunts de morfismes: la composició de dues injeccions és injectiva, i la de dues exhaustives, exhaustiva.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que el functor oblit $U\colon\cat{Cat}\to\cat{Graph}$, que envia cada categoria petita al seu graf subjacent, és fidel però \emph{no} ple. Mostra també que, per a tot graf $G$, hi ha un morfisme canònic de grafs $G\to U(\Free(G))$, que en general no és un isomorfisme. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Per a la fidelitat, un functor queda determinat per la seva acció sobre objectes i morfismes, que és justament el que reté el graf subjacent. Per veure que no és ple, observa que un morfisme de grafs entre els grafs subjacents no ha de respectar la composició, i per tant no prové necessàriament d'un functor. Per al morfisme canònic $\eta_G\colon G\to U(\Free(G))$, envia cada vèrtex a ell mateix i cada aresta de $G$ al camí de longitud~$1$ corresponent dins $\Free(G)$. La caracterització exacta és: $\eta_G$ és un isomorfisme si i només si $G$ és el graf buit. En efecte, si $G$ té algun vèrtex $v$, el camí buit a $v$ ---la identitat de $v$ a $\Free(G)$--- és una aresta de $U(\Free(G))$ que no és imatge de cap aresta de $G$, perquè les arestes de $G$ es transformen totes en camins de longitud~$1$; per tant $\eta_G$ no és exhaustiu sobre arestes i no és un isomorfisme. En canvi, si $G$ no té vèrtexs, tampoc no té arestes, i aleshores $\Free(G)$ és la categoria buida i $U(\Free(G))$ el graf buit: $\eta_G$ és la identitat entre grafs buits, que sí que és un isomorfisme. Això explica el matís \enquote{en general}.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que un functor ple i fidel \textbf{reflecteix els isomorfismes entre objectes}, en el sentit següent:
+\[
+F(A)\cong F(B)\quad\Longrightarrow\quad A\cong B.
+\]
+Suposant a més que $\cat{C}$ i $\cat{D}$ són petites, dedueix que $F$ indueix una aplicació injectiva entre les classes d'isomorfisme d'objectes de $\cat{C}$ i les de $\cat{D}$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Pren un isomorfisme $F(A)\to F(B)$. Per la plenitud prové d'un morfisme $A\to B$; per la propietat que els functors plens i fidels reflecteixen isomorfismes, aquest morfisme és un isomorfisme, de manera que $A\cong B$. La implicació $F(A)\cong F(B)\Rightarrow A\cong B$ val sempre; la hipòtesi de petitesa només s'usa a la darrera part, per poder parlar del conjunt de classes d'isomorfisme: en una categoria petita els objectes formen un conjunt, i el quocient per la relació $\cong$ també, de manera que \enquote{l'aplicació entre classes d'isomorfisme} té sentit literal. En una categoria gran caldria una convenció addicional per manejar aquestes classes, que aquí evitem.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Considera l'assignació $\cat{C}\to\cat{C}\op$ que deixa fixos els objectes i envia cada morfisme $f$ a ell mateix, vist ara en sentit contrari. Comprova que \emph{no} és, en general, un functor covariant, però sí un functor contravariant ple i fidel. Quin és aquest functor? \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Sobre morfismes, aquesta assignació inverteix l'ordre de la composició; és el functor identitat vist com a functor contravariant $\cat{C}\to\cat{C}\op$. La bijecció sobre cada conjunt de morfismes és evident.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que si $F\colon\cat{C}\to\cat{D}$ és ple i fidel, i $\cat{C}$ és localment petita, aleshores $F$ estableix una bijecció
+\[
+\Hom_{\cat{C}}(A,B)\;\xrightarrow{\;\sim\;}\;\Hom_{\cat{D}}(F(A),F(B))
+\]
+per a cada parella d'objectes. Explica per què això no obliga $F$ a ser injectiu sobre objectes. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+La bijecció és la definició mateixa de ple i fidel. Per veure que no cal injectivitat sobre objectes, pensa en un functor que col·lapsi dos objectes en un de sol però conservi bijectivament els morfismes. Un exemple complet: sigui $\cat{I}$ la categoria amb dos objectes $a,b$ i exactament un morfisme entre cada parella ordenada d'objectes (inclosos $a\to b$ i $b\to a$; és a dir, $a$ i $b$ són isomorfs). El functor únic $F\colon\cat{I}\to\cat{1}$ cap a la categoria terminal és ple i fidel, perquè cada homconjunt de $\cat{I}$ és unitari i $F$ l'envia bijectivament a l'homconjunt unitari $\Hom_{\cat{1}}(\ast,\ast)=\{\id_\ast\}$. Tanmateix, $F$ no és injectiu sobre objectes, ja que $F(a)=F(b)=\ast$. Convé no substituir $\cat{I}$ per la categoria \emph{discreta} de dos objectes: en aquest cas $\Hom_{\cat{I}}(a,b)=\emptyset$, i l'aplicació $\emptyset\to\Hom_{\cat{1}}(\ast,\ast)=\{\id_\ast\}$ no seria exhaustiva, de manera que el functor cap a $\cat{1}$ no seria ple.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Distingeix l'exhaustivitat \emph{estricta} sobre objectes (tot objecte del codomini és exactament una imatge) de l'\emph{essencial} (tot objecte del codomini és isomorf a una imatge). Amb $\cat{I}$ la categoria de dos objectes isomorfs $a,b$ de l'exercici anterior, considera la inclusió $E\colon\cat{1}\to\cat{I}$ que envia l'únic objecte $\ast$ a $a$. Comprova que $E$ és essencialment exhaustiva però no exhaustiva sobre objectes. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+$E$ arriba només a l'objecte $a$, de manera que $b$ no és imatge de cap objecte: $E$ no és exhaustiva sobre objectes en el sentit estricte. Ara bé, a $\cat{I}$ es té $a\cong b$ (hi ha els morfismes $a\to b$ i $b\to a$, inversos l'un de l'altre perquè els homconjunts són unitaris), de manera que $b$ \emph{sí} que és isomorf a la imatge $E(\ast)=a$. Per tant tot objecte de $\cat{I}$ és isomorf a una imatge de $E$, és a dir, $E$ és essencialment exhaustiva. L'exemple mostra que l'exhaustivitat essencial és estrictament més feble que l'estricta, i que és la noció adequada en teoria de categories, on els objectes es distingeixen llevat d'isomorfisme.
+\end{indicacio}
+\end{exercici}

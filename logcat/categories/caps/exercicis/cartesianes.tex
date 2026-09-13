@@ -1,0 +1,65 @@
+\chapter[Cartesianes tancades]{\texorpdfstring{Categories cartesianes\\ tancades}{Categories cartesianes tancades}}
+
+Els exercicis següents completen els resolts a la part de Pràctica. Cada enunciat va acompanyat d'una indicació breu. La marca \enquote{$\star$} assenyala un exercici de consolidació i \enquote{$\star\star$} un d'ampliació, sensiblement més exigent.
+
+\section{Productes finits}
+
+\begin{exercici}
+Comprova que en una categoria cartesiana el producte és associatiu i commutatiu llevat d'isomorfisme: $(A\times B)\times C\cong A\times(B\times C)$ i $A\times B\cong B\times A$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Construeix els morfismes en tots dos sentits amb aparellaments de projeccions i comprova que en són inversos usant la unicitat de la propietat universal. No cal calcular amb elements.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Demostra que si $\cat{C}$ és cartesiana, aleshores $\cat{C}\op$ té coproductes finits, i descriu-los. \hfill{\normalfont$\star$}
+\begin{indicacio}
+El producte a $\cat{C}$ és el coproducte a $\cat{C}\op$ per dualització de la propietat universal; el terminal esdevé inicial.
+\end{indicacio}
+\end{exercici}
+
+\section{Exponencials}
+
+\begin{exercici}
+En una CCC, construeix un morfisme canònic \enquote{composició} $C^{B}\times B^{A}\to C^{A}$ i comprova que és associatiu en el sentit adient. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Currifica el morfisme $C^{B}\times B^{A}\times A\to C$ obtingut avaluant primer sobre $A$ i després sobre $B$. L'associativitat es comprova amb la unicitat de la transposada.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que l'assignació $B\mapsto C^{B}$ és \emph{contravariant}: un morfisme $f\colon B'\to B$ indueix $C^{f}\colon C^{B}\to C^{B'}$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Currifica $C^{B}\times B'\xrightarrow{\id\times f}C^{B}\times B\xrightarrow{\ev}C$. Aquesta contravariància en la base contrasta amb la covariància $(-)^{B}$ en l'exponent.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+En una CCC amb coproductes, demostra la llei $C^{A+B}\cong C^{A}\times C^{B}$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Usa Yoneda: $\Hom(X,C^{A+B})\cong\Hom(X\times(A+B),C)$; distribueix el producte sobre el coproducte (vàlida en una CCC) i aplica la propietat universal del coproducte.
+\end{indicacio}
+\end{exercici}
+
+\section{Models i lògica}
+
+\begin{exercici}
+Comprova que tota àlgebra de Boole és una àlgebra de Heyting en què $b\Rightarrow c=\neg b\vee c$, i per tant un preordre cartesià tancat. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Verifica l'adjunció $a\wedge b\leq c\Leftrightarrow a\leq\neg b\vee c$ usant les lleis booleanes. La lògica clàssica és el cas booleà de la intuïcionista.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\cat{C}$ una CCC. Demostra que el conjunt de morfismes $1\to C^{B}$ està en bijecció amb el de morfismes $B\to C$ (els \enquote{punts} de l'exponencial són les funcions). \hfill{\normalfont$\star$}
+\begin{indicacio}
+És l'adjunció amb $A=1$ i la identificació $1\times B\cong B$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Interpreta el combinador $\mathsf{S}$, de tipus $(\sigma\to\tau\to\rho)\to(\sigma\to\tau)\to\sigma\to\rho$, com a morfisme d'una CCC. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Descurrifica successivament fins a un morfisme amb domini un producte de tres exponencials i $\llbracket\sigma\rrbracket$, i construeix-lo amb avaluacions i la diagonal. Compara'l amb la demostració intuïcionista de l'esquema d'axioma corresponent.
+\end{indicacio}
+\end{exercici}

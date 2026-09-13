@@ -1,0 +1,42 @@
+\chapter[Classificadors de subobjectes i topos]{\texorpdfstring{Classificadors de subobjectes i introducció als topos}{Classificadors de subobjectes i introducció als topos}}
+
+Els exercicis següents completen els resolts a la part de Pràctica. La marca \enquote{$\star$} assenyala un exercici de consolidació i \enquote{$\star\star$} un d'ampliació.
+
+\section{Classificadors}
+
+\begin{exercici}
+Comprova que a $\cat{Set}$ el morfisme característic $\chi_U$ d'un subconjunt determina i és determinat per $U$, de manera que $\Sub(E)\cong\{0,1\}^{E}$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Associa a cada subconjunt la seva funció característica i comprova que l'aplicació és una bijecció amb inversa $\chi\mapsto\chi^{-1}(1)$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Demostra que en una categoria amb classificador de subobjectes, tot monomorfisme és el pullback de $\mathsf{true}\colon 1\to\Omega$ al llarg d'algun morfisme. \hfill{\normalfont$\star$}
+\begin{indicacio}
+És reformular la definició de classificador: la funció característica del subobjecte proporciona justament aquest morfisme.
+\end{indicacio}
+\end{exercici}
+
+\section{Topos}
+
+\begin{exercici}
+Comprova que la categoria $\cat{Set}^{\to}$ de les fletxes de $\cat{Set}$ (functors des de la categoria $\mathbf{2}$) té límits finits i exponencials, i esbrina quin és el seu classificador de subobjectes. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+$\cat{Set}^{\to}$ és una categoria de prefeixos sobre $\mathbf{2}$, per tant un topos. Aplica la construcció amb sedassos a $\mathbf{2}$ per identificar $\Omega$; té tres \enquote{valors de veritat}.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Demostra que tota categoria de prefeixos $\cat{Set}^{\cat{C}\op}$ té límits finits calculats objecte a objecte. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un límit de prefeixos es calcula avaluant a cada objecte de $\cat{C}$ i prenent el límit corresponent a $\cat{Set}$; comprova la functorialitat.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Demostra que en un topos l'objecte de parts dona una bijecció entre subobjectes de $E$ i morfismes $1\to\Omega^{E}$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Aplica $\Hom(1,\Omega^{E})\cong\Hom(1\times E,\Omega)\cong\Sub(E)$, usant $1\times E\cong E$.
+\end{indicacio}
+\end{exercici}

@@ -1,0 +1,105 @@
+\chapter[Cartesianes tancades]{\texorpdfstring{Categories cartesianes\\ tancades}{Categories cartesianes tancades}}
+
+Els exercicis d'aquest capítol treballen el tancament cartesià des dels tres vessants: la manipulació de productes i diagonals, la propietat universal de l'exponencial via currificació, i la lectura dels exemples ---sobretot $\cat{Set}$ i les àlgebres de Heyting--- com a models de tipus i de lògica. Convé tenir sempre present la bijecció fonamental $\Hom(A\times B,C)\cong\Hom(A,C^{B})$.
+
+\section{Productes i diagonals}
+
+\begin{exercici}
+En una categoria cartesiana, comprova que la diagonal $\Delta_A=\langle\id_A,\id_A\rangle$ satisfà $\pi_1\comp\Delta_A=\pi_2\comp\Delta_A=\id_A$ i que és l'únic morfisme amb aquesta propietat.
+\end{exercici}
+
+\begin{solucio}
+Per la propietat universal del producte $A\times A$, un morfisme $A\to A\times A$ està determinat per les seves dues composicions amb les projeccions. Definim $\Delta_A$ com l'únic morfisme amb $\pi_1\comp\Delta_A=\id_A$ i $\pi_2\comp\Delta_A=\id_A$; l'existència i la unicitat són exactament el contingut de la propietat universal aplicada a la parella $(\id_A,\id_A)$. Qualsevol altre morfisme $d\colon A\to A\times A$ amb $\pi_1\comp d=\pi_2\comp d=\id_A$ compleix la mateixa condició universal i, per unicitat, $d=\Delta_A$.
+\end{solucio}
+
+\begin{exercici}
+Comprova que el functor $-\times B$ envia un isomorfisme $f\colon A\to A'$ a un isomorfisme $f\times\id_B$, amb invers $f^{-1}\times\id_B$.
+\end{exercici}
+
+\begin{solucio}
+Pel caràcter functorial de $-\times B$ (proposició~\ref{prop:producte-functor}), $(f\times\id_B)\comp(f^{-1}\times\id_B)=(f\comp f^{-1})\times\id_B=\id_{A'}\times\id_B=\id_{A'\times B}$, i anàlogament en l'altre ordre. Per tant $f\times\id_B$ és un isomorfisme. Aquest és un cas particular del fet general que tot functor preserva isomorfismes.
+\end{solucio}
+
+\section{La propietat universal de l'exponencial}
+
+\begin{exercici}
+A $\cat{Set}$, descriu explícitament l'avaluació, la currificació i la descurrificació per a l'exponencial $C^{B}$, i verifica l'equació $\ev\comp(\lambda f\times\id_B)=f$.
+\end{exercici}
+
+\begin{solucio}
+A $\cat{Set}$, $C^{B}$ és el conjunt d'aplicacions $B\to C$. L'avaluació és $\ev\colon C^{B}\times B\to C$, $\ev(g,b)=g(b)$. Donada $f\colon A\times B\to C$, la currificació és $\lambda f\colon A\to C^{B}$ amb $\lambda f(a)=(b\mapsto f(a,b))$. Comprovem l'equació: per a $(a,b)\in A\times B$,
+\[
+\bigl(\ev\comp(\lambda f\times\id_B)\bigr)(a,b)=\ev\bigl(\lambda f(a),b\bigr)=\lambda f(a)(b)=f(a,b).
+\]
+Per tant $\ev\comp(\lambda f\times\id_B)=f$. La descurrificació de $g\colon A\to C^{B}$ és $\widetilde g(a,b)=g(a)(b)$, i és inversa de la currificació.
+\end{solucio}
+
+\begin{exercici}
+Demostra que en qualsevol CCC hi ha un isomorfisme natural $C^{1}\cong C$ i que $1^{B}\cong 1$.
+\end{exercici}
+
+\begin{solucio}
+Per a $C^{1}$: per la propietat universal, $\Hom(A,C^{1})\cong\Hom(A\times 1,C)$. Com que $A\times 1\cong A$ (l'objecte terminal és neutre per al producte), $\Hom(A\times 1,C)\cong\Hom(A,C)$, natural en $A$. Pel lema de Yoneda, $C^{1}\cong C$.
+
+Per a $1^{B}$: $\Hom(A,1^{B})\cong\Hom(A\times B,1)$, que té exactament un element per ser $1$ terminal. Per tant $\Hom(A,1^{B})$ és un conjunt d'un punt per a tot $A$, natural en $A$, i pel lema de Yoneda $1^{B}\cong 1$. Aquestes són les versions categòriques de les identitats $c^{1}=c$ i $1^{b}=1$.
+\end{solucio}
+
+\begin{exercici}
+Comprova la \enquote{llei exponencial} $C^{A\times B}\cong(C^{B})^{A}$ en una CCC.
+\end{exercici}
+
+\begin{solucio}
+Fem servir la propietat universal repetidament i el lema de Yoneda. Per a qualsevol $X$,
+\[
+\Hom(X,C^{A\times B})\cong\Hom(X\times(A\times B),C)\cong\Hom((X\times A)\times B,C),
+\]
+usant l'associativitat del producte. Aplicant ara l'adjunció respecte de $B$ i després respecte de $A$,
+\[
+\Hom((X\times A)\times B,C)\cong\Hom(X\times A,C^{B})\cong\Hom(X,(C^{B})^{A}).
+\]
+Totes les bijeccions són naturals en $X$; pel lema de Yoneda, $C^{A\times B}\cong(C^{B})^{A}$. És la llei $c^{a\cdot b}=(c^{b})^{a}$, i correspon, en el càlcul lambda, al fet que una funció de dos arguments és una funció que retorna una funció (currificació iterada).
+\end{solucio}
+
+\section{Heyting i lògica}
+
+\begin{exercici}
+Comprova que en una àlgebra de Heyting l'exponencial $b\Rightarrow c$ satisfà $a\wedge b\leq c\Leftrightarrow a\leq(b\Rightarrow c)$, i deriva-hi que $b\wedge(b\Rightarrow c)\leq c$ (\emph{modus ponens}).
+\end{exercici}
+
+\begin{solucio}
+La condició $a\wedge b\leq c\Leftrightarrow a\leq(b\Rightarrow c)$ és, precisament, l'adjunció $-\wedge b\dashv(b\Rightarrow-)$ escrita en el llenguatge dels preordres: és la definició d'exponencial en un preordre cartesià, on $\Hom$ té com a molt un element i la bijecció d'homconjunts es redueix a una equivalència de desigualtats. Per obtenir el \emph{modus ponens}, prenem $a=(b\Rightarrow c)$. Aleshores el membre dret $a\leq(b\Rightarrow c)$ es compleix trivialment (és $b\Rightarrow c\leq b\Rightarrow c$), de manera que el membre esquerre també: $(b\Rightarrow c)\wedge b\leq c$. Aquesta és la counitat de l'adjunció, i és la forma algebraica de la regla que de $b$ i $b\to c$ se'n segueix $c$.
+\end{solucio}
+
+\begin{exercici}
+En una àlgebra de Heyting, demostra que $a\leq(b\Rightarrow a)$ per a tot $a,b$, i interpreta-ho lògicament.
+\end{exercici}
+
+\begin{solucio}
+Per l'adjunció, $a\leq(b\Rightarrow a)$ equival a $a\wedge b\leq a$, que és cert perquè $a\wedge b$ és un ínfim i, per tant, $a\wedge b\leq a$. Lògicament, correspon a l'axioma $a\to(b\to a)$: una proposició verdadera se segueix de qualsevol hipòtesi. És l'esquelet del combinador $\mathsf{K}$ del càlcul lambda, la funció constant.
+\end{solucio}
+
+\section{Semàntica de termes}
+
+\begin{exercici}
+Interpreta el terme $x:\sigma,\,y:\tau\vdash\langle y,x\rangle:\tau\times\sigma$ com a morfisme en una CCC i identifica'l amb el morfisme de commutació del producte.
+\end{exercici}
+
+\begin{solucio}
+El context $x:\sigma,y:\tau$ s'interpreta com l'objecte $\llbracket\sigma\rrbracket\times\llbracket\tau\rrbracket$. Les variables $x$ i $y$ són les projeccions $\pi_1$ i $\pi_2$. La parella $\langle y,x\rangle$ s'interpreta amb l'aparellament de les interpretacions de $y$ i $x$, és a dir,
+\[
+\llbracket\langle y,x\rangle\rrbracket=\langle\pi_2,\pi_1\rangle\colon\llbracket\sigma\rrbracket\times\llbracket\tau\rrbracket\to\llbracket\tau\rrbracket\times\llbracket\sigma\rrbracket.
+\]
+Aquest és exactament el morfisme de \textbf{commutació} (o \emph{swap}) del producte, que intercanvia els dos factors. La seva inversa és $\langle\pi_2,\pi_1\rangle$ en sentit contrari, cosa que expressa que $\sigma\times\tau\cong\tau\times\sigma$.
+\end{solucio}
+
+\begin{exercici}
+Interpreta l'abstracció $x:\sigma\vdash(\lambda y{:}\tau.\,x):\tau\to\sigma$ i comprova que és la currificació d'una projecció.
+\end{exercici}
+
+\begin{solucio}
+El cos del terme, $x:\sigma,\,y:\tau\vdash x:\sigma$, s'interpreta amb la projecció $\pi_1\colon\llbracket\sigma\rrbracket\times\llbracket\tau\rrbracket\to\llbracket\sigma\rrbracket$. L'abstracció respecte de $y$ es tradueix per la currificació:
+\[
+\llbracket\lambda y.\,x\rrbracket=\lambda(\pi_1)\colon\llbracket\sigma\rrbracket\to\llbracket\sigma\rrbracket^{\llbracket\tau\rrbracket}.
+\]
+És a dir, la funció que a cada $x$ li assigna la funció constant de valor $x$. Reconeixem de nou el combinador $\mathsf{K}$: la interpretació de $\lambda y.\,x$ és la currificació de la primera projecció, coherent amb l'exercici de Heyting anterior, que n'és l'ombra proposicional.
+\end{solucio}

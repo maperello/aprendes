@@ -1,0 +1,137 @@
+\chapter[Límits i colímits]{Límits i colímits}
+
+Els exercicis d'aquest capítol treballen les propietats universals dels límits i colímits concrets, i l'argument ---sempre el mateix--- que dedueix unicitat i factoritzacions. Convé dibuixar cada diagrama abans de començar.
+
+\section{Diagrames i cons}
+
+\begin{exercici}
+Comprova que un con sobre un diagrama $D\colon\cat{I}\to\cat{C}$ amb vèrtex $A$ és el mateix que una transformació natural $\Delta_A\Rightarrow D$, on $\Delta_A$ és el functor constant amb valor $A$.
+\end{exercici}
+
+\begin{solucio}
+El functor constant $\Delta_A$ envia cada objecte $i$ de $\cat{I}$ a $A$ i cada morfisme a $\id_A$. Una transformació natural $\alpha\colon\Delta_A\Rightarrow D$ té components $\alpha_i\colon\Delta_A(i)=A\to D_i$, i la condició de naturalitat per a un morfisme $u\colon i\to j$ diu
+\[
+D_u\comp\alpha_i=\alpha_j\comp\Delta_A(u)=\alpha_j\comp\id_A=\alpha_j.
+\]
+Aquesta és exactament la condició de con. Recíprocament, tota família amb aquesta propietat defineix una transformació natural. Així, els cons sobre $D$ amb vèrtex $A$ i les transformacions naturals $\Delta_A\Rightarrow D$ coincideixen.
+\end{solucio}
+
+\section{Límits}
+
+\begin{exercici}
+Comprova que el límit d'un diagrama, quan existeix, és únic llevat d'isomorfisme únic.
+\end{exercici}
+
+\begin{solucio}
+El límit és, per definició, un objecte terminal de la categoria de cons $\mathrm{Con}(D)$. Al capítol anterior vam demostrar que dos objectes terminals qualssevol són isomorfs mitjançant un únic isomorfisme. Aplicant-ho a $\mathrm{Con}(D)$, dos límits $(L,\lambda)$ i $(L',\lambda')$ són isomorfs per un únic morfisme de cons $f\colon L\to L'$, que a més és compatible amb totes les projeccions: $\lambda'_i\comp f=\lambda_i$. Per tant el límit és únic llevat d'isomorfisme únic.
+\end{solucio}
+
+\section{Productes i equalitzadors}
+
+\begin{exercici}
+Comprova que a $\cat{Set}$ el producte categòric coincideix amb el producte cartesià, verificant la propietat universal.
+\end{exercici}
+
+\begin{solucio}
+Sigui $A\times B=\{(a,b)\mid a\in A,\ b\in B\}$ amb $\pi_1(a,b)=a$ i $\pi_2(a,b)=b$. Donats $f\colon X\to A$ i $g\colon X\to B$, definim $\langle f,g\rangle\colon X\to A\times B$ per $\langle f,g\rangle(x)=(f(x),g(x))$. Aleshores $\pi_1\comp\langle f,g\rangle=f$ i $\pi_2\comp\langle f,g\rangle=g$. I és l'únic possible: si $h\colon X\to A\times B$ compleix $\pi_1\comp h=f$ i $\pi_2\comp h=g$, aleshores $h(x)=(\pi_1(h(x)),\pi_2(h(x)))=(f(x),g(x))=\langle f,g\rangle(x)$. Per tant el producte cartesià satisfà la propietat universal del producte.
+\end{solucio}
+
+\begin{exercici}
+Comprova que tot equalitzador és un monomorfisme.
+\end{exercici}
+
+\begin{solucio}
+Sigui $e\colon E\to A$ l'equalitzador de $f,g\colon A\to B$, i siguin $r,s\colon Z\to E$ amb $e\comp r=e\comp s$. Volem $r=s$. Sigui $h=e\comp r=e\comp s\colon Z\to A$. Aleshores $f\comp h=f\comp e\comp r=g\comp e\comp r=g\comp h$, de manera que $h$ satisfà la condició que defineix els cons de l'equalitzador. Per la propietat universal, hi ha un \emph{únic} $k\colon Z\to E$ amb $e\comp k=h$. Però tant $r$ com $s$ compleixen aquesta equació; per unicitat, $r=s$. Així $e$ és un monomorfisme.
+\end{solucio}
+
+\section{Pullbacks}
+
+\begin{exercici}
+Comprova que a $\cat{Set}$ el pullback de $f\colon A\to C$ i $g\colon B\to C$ és $P=\{(a,b)\in A\times B\mid f(a)=g(b)\}$, i que quan $g$ és la inclusió d'un subconjunt $B\subseteq C$ el pullback recupera l'antiimatge $f^{-1}(B)$.
+\end{exercici}
+
+\begin{solucio}
+Amb $P=\{(a,b)\mid f(a)=g(b)\}$ i les projeccions $p_1,p_2$, es compleix $f\comp p_1=g\comp p_2$ per construcció. Donats $r_1\colon X\to A$ i $r_2\colon X\to B$ amb $f\comp r_1=g\comp r_2$, l'aplicació $h(x)=(r_1(x),r_2(x))$ té imatge dins $P$ (perquè $f(r_1(x))=g(r_2(x))$) i és l'únic morfisme amb $p_1\comp h=r_1$, $p_2\comp h=r_2$. Això és la propietat universal.
+
+Si $B\subseteq C$ i $g$ és la inclusió, la condició $f(a)=g(b)=b$ força $b=f(a)$ amb $f(a)\in B$; per tant $P\cong\{a\in A\mid f(a)\in B\}=f^{-1}(B)$. El pullback recupera l'antiimatge.
+\end{solucio}
+
+\begin{exercici}[Lema d'enganxament de pullbacks]
+Considera el diagrama de dos quadrats adossats en una categoria arbitrària:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.2em, row sep=2.6em] {
+    A & B & C \\
+    A' & B' & C' \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$u$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[above] {$v$} (m-1-3);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$u'$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-2) -- node[below] {$v'$} (m-2-3);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$a$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[left] {$b$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-3) -- node[right] {$c$} (m-2-3);
+\end{tikzpicture}
+\]
+amb tots dos quadrats commutatius. Suposem que el \textbf{quadrat dret} (sobre $B,C,B',C'$) és un pullback. Comprova que el \textbf{quadrat esquerre} és un pullback si i només si el \textbf{rectangle exterior} (sobre $A,C,A',C'$) ho és.
+\end{exercici}
+
+\begin{solucio}
+Treballem en una categoria arbitrària, usant només la propietat universal.
+
+\textbf{($\Rightarrow$) Si el quadrat esquerre és pullback, l'exterior ho és.} Sigui $T$ un objecte amb morfismes $p\colon T\to A'$ i $q\colon T\to C$ compatibles per al rectangle exterior, és a dir amb $c\comp q=v'\comp u'\comp p$. Com que el quadrat dret és un pullback i els morfismes $q\colon T\to C$ i $u'\comp p\colon T\to B'$ satisfan $v'\comp(u'\comp p)=c\comp q$, hi ha un únic $r\colon T\to B$ amb $v\comp r=q$ i $b\comp r=u'\comp p$. Ara $r$ i $p$ són compatibles per al quadrat esquerre, perquè $b\comp r=u'\comp p$; com que aquest és un pullback, hi ha un únic $t\colon T\to A$ amb $u\comp t=r$ i $a\comp t=p$. Aleshores $(v\comp u)\comp t=v\comp r=q$ i $a\comp t=p$, de manera que $t$ factoritza el con exterior, i és únic per les unicitats successives.
+
+\textbf{($\Leftarrow$) Si el rectangle exterior és pullback, l'esquerre ho és.} Sigui $T$ amb $p\colon T\to A'$ i $r\colon T\to B$ compatibles per al quadrat esquerre, és a dir amb $b\comp r=u'\comp p$. Posem $q=v\comp r\colon T\to C$. Aleshores $p$ i $q$ són compatibles per a l'exterior, perquè
+\[
+c\comp q=c\comp v\comp r=v'\comp b\comp r=v'\comp u'\comp p.
+\]
+Com que l'exterior és un pullback, hi ha un únic $t\colon T\to A$ amb $(v\comp u)\comp t=q$ i $a\comp t=p$. Queda veure que $u\comp t=r$: component amb $v$ i amb $b$,
+\[
+v\comp(u\comp t)=q=v\comp r,\qquad b\comp(u\comp t)=u'\comp a\comp t=u'\comp p=b\comp r,
+\]
+i com que el quadrat dret és un pullback, aquestes dues igualtats forcen $u\comp t=r$. Així $t$ és la factorització única per al quadrat esquerre.
+
+En tots dos sentits, l'ingredient és la propietat universal del quadrat dret, que transfereix les factoritzacions entre el rectangle i el quadrat esquerre. Aquest \emph{lema d'enganxament} és una de les eines més usades per raonar amb pullbacks, i el retrobarem en tractar la reindexació entre subobjectes.
+\end{solucio}
+
+\section{Colímits}
+
+\begin{exercici}
+Descriu el coproducte a $\cat{Set}$ i comprova'n la propietat universal.
+\end{exercici}
+
+\begin{solucio}
+El coproducte de $A$ i $B$ a $\cat{Set}$ és la unió disjunta $A+B=(\{1\}\times A)\cup(\{2\}\times B)$, amb les injeccions $\iota_1(a)=(1,a)$ i $\iota_2(b)=(2,b)$. Donats $f\colon A\to X$ i $g\colon B\to X$, l'aplicació $[f,g]\colon A+B\to X$ definida per $[f,g](1,a)=f(a)$ i $[f,g](2,b)=g(b)$ és l'únic morfisme amb $[f,g]\comp\iota_1=f$ i $[f,g]\comp\iota_2=g$. Aquesta és la definició per casos, i és exactament la propietat universal del coproducte, dual de la del producte.
+\end{solucio}
+
+\begin{exercici}
+Comprova que a $\cat{Set}$ el coequalitzador de $f,g\colon A\to B$ és el quocient $B/{\sim}$ per la relació d'equivalència generada per $f(a)\sim g(a)$.
+\end{exercici}
+
+\begin{solucio}
+Sigui $\sim$ la menor relació d'equivalència amb $f(a)\sim g(a)$ per a tot $a$, i $q\colon B\to B/{\sim}$ la projecció al quocient. Aleshores $q\comp f=q\comp g$, perquè $f(a)$ i $g(a)$ tenen la mateixa classe. Si $s\colon B\to S$ compleix $s\comp f=s\comp g$, aleshores $s$ és constant sobre cada classe d'equivalència, de manera que factoritza de manera única com $s=r\comp q$ amb $r([b])=s(b)$ ben definida. Aquesta és la propietat universal del coequalitzador; el quocient hi encaixa exactament.
+\end{solucio}
+
+\section{Preservació i reflexió}
+
+\begin{exercici}
+Comprova que el functor oblit $U\colon\cat{Grp}\to\cat{Set}$ preserva productes, però no coproductes.
+\end{exercici}
+
+\begin{solucio}
+Per als productes: el grup producte $G\times H$ té com a conjunt subjacent el producte cartesià dels conjunts subjacents, i les projeccions són les aplicacions projecció; per tant $U(G\times H)=U(G)\times U(H)$ amb les projeccions correctes, i $U$ preserva el producte.
+
+Per als coproductes: el coproducte a $\cat{Grp}$ és el \emph{producte lliure} $G*H$, que conté totes les paraules alternades en elements de $G$ i $H$; el seu conjunt subjacent és molt més gran que la unió disjunta $U(G)+U(H)$. Per tant $U(G*H)\neq U(G)+U(H)$ i $U$ no preserva coproductes. Aquesta asimetria anticipa que $U$ és un adjunt per la dreta: preserva límits, no colímits.
+\end{solucio}
+
+\begin{exercici}
+Comprova que el functor representable $\Hom(A,-)\colon\cat{Set}\to\cat{Set}$ preserva productes, és a dir, $\Hom(A,X\times Y)\cong\Hom(A,X)\times\Hom(A,Y)$.
+\end{exercici}
+
+\begin{solucio}
+Un morfisme $A\to X\times Y$ és, per la propietat universal del producte, exactament una parella de morfismes $(A\to X,\ A\to Y)$. Això dona una bijecció
+\[
+\Hom(A,X\times Y)\cong\Hom(A,X)\times\Hom(A,Y),
+\]
+que és natural en totes les variables. Per tant $\Hom(A,-)$ preserva el producte binari. El mateix argument, amb la propietat universal general del límit, mostra que $\Hom(A,-)$ preserva tots els límits.
+\end{solucio}

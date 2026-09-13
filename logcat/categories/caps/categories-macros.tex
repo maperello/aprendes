@@ -1,0 +1,47 @@
+% ============================================================
+%  Macros pròpies de la teoria de categories, locals al volum.
+%
+%  El fitxer compartit ../common/macros.tex barreja notació
+%  genèrica (\R, \N, \mcd, decimals periòdics...) amb la de
+%  categories. Aquest fitxer recull, en un sol lloc i documentada,
+%  només la notació que aquest llibre fa servir, de manera que el
+%  volum no depèn de l'organització del fitxer compartit.
+%
+%  S'usa \providecommand perquè, si macros.tex ja ha definit una
+%  macro, no es produeixi cap col·lisió: la definició compartida i
+%  la local són idèntiques. Si algun dia es depura macros.tex
+%  traient-ne la part de categories, aquest fitxer la garanteix.
+% ============================================================
+
+\providecommand{\cat}[1]{\mathbf{#1}}          % noms de categories: \cat{Set}
+\providecommand{\id}{\operatorname{id}}         % identitat
+\providecommand{\Hom}{\operatorname{Hom}}       % conjunts de morfismes
+\providecommand{\op}{^{\mathrm{op}}}            % categoria oposada
+\providecommand{\Obj}{\operatorname{Obj}}       % col·lecció d'objectes
+\providecommand{\comp}{\circ}                    % composició
+\providecommand{\yon}{\mathrm{y}}                % plançó de Yoneda
+
+\providecommand{\dom}{\operatorname{dom}}
+\providecommand{\cod}{\operatorname{cod}}
+
+% Predicats relacionals de l'apèndix d'axiomàtica relacional (Dom, Cod, Com,
+% Id). S'escriuen amb versaletes matemàtiques per distingir-los clarament dels
+% operadors funcionals \dom, \cod: aquí són relacions primitives, no funcions.
+\providecommand{\Dom}{\mathsf{Dom}}
+\providecommand{\Cod}{\mathsf{Cod}}
+\providecommand{\Com}{\mathsf{Com}}
+\providecommand{\Id}{\mathsf{Id}}
+\providecommand{\Free}{\operatorname{Free}}
+\providecommand{\Nat}{\operatorname{Nat}}        % transformacions naturals com a homconjunt
+\providecommand{\Sub}{\operatorname{Sub}}        % preordre de subobjectes
+\providecommand{\ev}{\operatorname{ev}}          % morfisme d'avaluació (exponencials)
+\providecommand{\Imatge}{\operatorname{Im}}      % imatge d'un morfisme
+
+% Claudàtors semàntics [[-]] sense dependre de stmaryrd:
+\providecommand{\llbracket}{\mathopen{[\![}}
+\providecommand{\rrbracket}{\mathclose{]\!]}}
+
+% colimit amb subíndex a sota (com \lim), només si encara no existeix:
+\makeatletter
+\@ifundefined{colimop}{\DeclareMathOperator*{\colimop}{colim}}{}
+\makeatother

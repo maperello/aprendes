@@ -1,0 +1,34 @@
+% ============================================================
+%  Graella de respostes estàtica per als tests.
+%
+%  Els tests del llibre es corregeixen amb JavaScript d'AcroForm,
+%  que no funciona en molts visors integrats, navegadors ni
+%  aplicacions mòbils. Aquesta macro imprimeix la clau de respostes
+%  ---la mateixa que es passa a \iniciTest--- en una graella
+%  llegible, de manera que el test continua sent usable en paper i
+%  amb lectors sense JavaScript.
+%
+%  Ús: cridar \clauestatica just abans de \finalitzaTest, quan
+%  \testkeys encara conté la clau del test en curs.
+% ============================================================
+
+\makeatletter
+\newcounter{clauestindex}
+\newcommand{\clauestatica}{%
+  \par\bigskip
+  \begin{center}
+  \fbox{\begin{minipage}{0.9\textwidth}
+  \textbf{Respostes.} (Per si el vostre lector de PDF no admet la correcció automàtica.)
+  \par\medskip
+  \setcounter{clauestindex}{0}%
+  \renewcommand{\arraystretch}{1.2}%
+  \noindent
+  \@for\next:=\testkeys\do{%
+    \stepcounter{clauestindex}%
+    \mbox{\textbf{\theclauestindex.}~\next}\hspace{1.2em plus 0.4em}%
+  }%
+  \end{minipage}}
+  \end{center}
+  \par\medskip
+}
+\makeatother

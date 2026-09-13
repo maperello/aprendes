@@ -1,0 +1,17 @@
+# Fitxers auxiliars de LaTeX
+*.aux
+*.bcf
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk

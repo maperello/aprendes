@@ -1,0 +1,137 @@
+\chapter[Límits i colímits]{Límits i colímits}
+
+Els exercicis següents completen els resolts a la part de Pràctica. Cada enunciat va acompanyat d'una indicació breu. La marca \enquote{$\star$} assenyala un exercici de consolidació i \enquote{$\star\star$} un d'ampliació.
+
+\section{Diagrames i cons}
+
+\begin{exercici}
+Descriu la categoria índex $\cat{I}$ i el diagrama corresponent per a cadascun d'aquests límits: producte binari, equalitzador, pullback i objecte terminal. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Producte: $\cat{I}$ discreta amb dos objectes. Equalitzador: dues fletxes paral·leles. Pullback: forma de racó $\bullet\to\bullet\leftarrow\bullet$. Terminal: la categoria buida.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que un morfisme de cons és un cas particular de morfisme a la categoria $\mathrm{Con}(D)$, i que la composició de morfismes de cons torna a ser-ne un. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Si $f\colon A\to B$ i $g\colon B\to C$ satisfan $\beta_i\comp f=\alpha_i$ i $\gamma_i\comp g=\beta_i$, aleshores $\gamma_i\comp(g\comp f)=\alpha_i$.
+\end{indicacio}
+\end{exercici}
+
+\section{Límits}
+
+\begin{exercici}
+Comprova que en un preordre vist com a categoria, el producte de dos elements és el seu ínfim i el coproducte és el seu suprem, quan existeixen. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un con sobre dos objectes $a,b$ amb vèrtex $x$ és una parella $x\leq a$, $x\leq b$; el límit és el més gran d'aquests $x$, és a dir, l'ínfim $a\wedge b$. Dualitza per al suprem.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que si un diagrama té dos límits, l'únic isomorfisme entre ells commuta amb totes les projeccions. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Els límits són objectes terminals de $\mathrm{Con}(D)$; l'isomorfisme és un morfisme de cons, i per tant compatible amb les projeccions per definició.
+\end{indicacio}
+\end{exercici}
+
+\section{Productes i equalitzadors}
+
+\begin{exercici}
+Comprova, llevat d'isomorfisme, la commutativitat i l'associativitat del producte:
+\[
+A\times B\cong B\times A,\quad (A\times B)\times C\cong A\times(B\times C).
+\] \hfill{\normalfont$\star$}
+\begin{indicacio}
+Comprova que tots dos costats satisfan la mateixa propietat universal (la de producte de tres objectes, per al segon cas), i aplica la unicitat del límit.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que si $\cat{C}$ té objecte terminal $1$, aleshores $A\times 1\cong A$ per a tot objecte $A$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un morfisme $X\to A\times 1$ és una parella $(X\to A,\ X\to 1)$; però $X\to 1$ és únic, de manera que equival a un morfisme $X\to A$. Per tant $A\times 1$ i $A$ representen el mateix functor.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que a $\cat{Grp}$ l'equalitzador de $f,g\colon G\to H$ és el subgrup $\{x\in G\mid f(x)=g(x)\}$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Comprova que aquest subconjunt és un subgrup i que la inclusió satisfà la propietat universal de l'equalitzador; el functor oblit cap a $\cat{Set}$ ajuda a veure-ho.
+\end{indicacio}
+\end{exercici}
+
+\section{Pullbacks}
+
+\begin{exercici}
+Comprova que en un pullback, si $g\colon B\to C$ és un monomorfisme, aleshores $p_1\colon P\to A$ també ho és. (Es diu que els monomorfismes són \emph{estables per pullback}.) \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Usa la propietat universal del pullback i la cancel·lació de $g$. Aquesta estabilitat serà essencial per a la teoria de subobjectes.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que un quadrat amb $\id$ als dos costats,
+\[
+\begin{array}{ccc}
+A & \xrightarrow{\;\id\;} & A\\[-2pt]
+\downarrow{\scriptstyle\id} & & \downarrow{\scriptstyle f}\\[-2pt]
+A & \xrightarrow{\;f\;} & B
+\end{array}
+\]
+és un pullback si i només si $f$ és un monomorfisme. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+El pullback d'aquest quadrat a $\cat{Set}$ és $\{(a,a')\mid f(a)=f(a')\}$; que la projecció sigui iso equival a la injectivitat de $f$. En general, tradueix-ho amb la propietat universal.
+\end{indicacio}
+\end{exercici}
+
+\section{Colímits}
+
+\begin{exercici}
+Comprova que tot coequalitzador és un epimorfisme, dualitzant la demostració que tot equalitzador és un monomorfisme. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Aplica l'argument de l'equalitzador a la categoria oposada, o repeteix-lo amb les fletxes girades: si $r\comp q=s\comp q$, la propietat universal del coequalitzador força $r=s$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que el pushout de $f\colon C\to A$ i $g\colon C\to B$ a $\cat{Set}$ és $(A+B)/{\sim}$, on $\sim$ enganxa $f(c)$ amb $g(c)$ per a cada $c\in C$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+És el dual del pullback. Pren la unió disjunta $A+B$ i quocienta per la relació generada per $\iota_1(f(c))\sim\iota_2(g(c))$; comprova la propietat universal.
+\end{indicacio}
+\end{exercici}
+
+\section{Límits finits}
+
+\begin{exercici}
+Comprova que una categoria amb objecte terminal i pullbacks té productes binaris. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+El producte $A\times B$ és el pullback de $A\to 1\leftarrow B$, on les fletxes són les úniques cap a l'objecte terminal.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que una categoria amb productes binaris i equalitzadors té tots els pullbacks. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+El pullback de $f\colon A\to C$ i $g\colon B\to C$ és l'equalitzador de les dues composicions $A\times B\rightrightarrows C$ donades per $f\comp\pi_1$ i $g\comp\pi_2$.
+\end{indicacio}
+\end{exercici}
+
+\section{Preservació i reflexió}
+
+\begin{exercici}
+Comprova que un functor ple i fidel reflecteix tots els límits que preserva. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Si $F$ envia un con $(L,\lambda)$ a un límit i $F$ és ple i fidel, les factoritzacions úniques a $\cat{D}$ provenen de factoritzacions úniques a $\cat{C}$ per la bijecció sobre homconjunts.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que el functor representable contravariant
+\[
+\Hom(-,B)\colon\cat{C}\op\to\cat{Set}
+\]
+envia colímits de $\cat{C}$ a límits de $\cat{Set}$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+És el dual del fet que $\Hom(A,-)$ preserva límits: un cocon amb vèrtex $B$ sobre $D$ és un con sobre $\Hom(D_-,B)$, i la universalitat es correspon.
+\end{indicacio}
+\end{exercici}

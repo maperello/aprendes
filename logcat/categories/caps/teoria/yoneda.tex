@@ -1,0 +1,231 @@
+\chapter[Representabilitat i Yoneda]{\texorpdfstring{Propietats universals,\\ representabilitat i Yoneda}{Propietats universals, representabilitat i Yoneda}}
+\label{cap:yoneda}
+
+\begin{objectius}
+\apartat{Prerequisits} El bifunctor $\Hom$ (cap.~\ref{cap:functors}) i les transformacions naturals (cap.~\ref{cap:transformacions}); els functors representables s'introdueixen en aquest capítol.
+\apartat{Objectius} En acabar el capítol, el lector ha de saber: reconèixer una propietat universal com la representabilitat d'un functor; distingir l'objecte representant de la representació completa; enunciar i demostrar el lema de Yoneda; i deduir-ne que un objecte queda determinat, llevat d'isomorfisme, pels morfismes que hi arriben.
+\end{objectius}
+
+\section{Cap a les propietats universals}
+
+Al llarg dels capítols anteriors hem trobat, de passada, objectes caracteritzats no per la seva constitució interna sinó per la manera com es relacionen amb tots els altres: l'objecte terminal, cap al qual hi ha exactament una fletxa des de qualsevol objecte; l'objecte inicial, dual d'aquell; o el producte de dos objectes. En cada cas, l'objecte queda determinat \emph{llevat d'isomorfisme} per una condició que involucra tots els morfismes ---i, de fet, llevat d'un \emph{únic} isomorfisme compatible amb la dada universal, com precisarem tot seguit. Aquesta mena de condicions s'anomenen \textbf{propietats universals}, i són, potser, la contribució més característica de la teoria de categories.
+
+En aquest capítol precisem què és una propietat universal, la lliguem amb els homfunctors $\Hom(A,-)$ i $\Hom(\_,B)$ que vam introduir, i culminem amb el \emph{lema de Yoneda}, que fa explícita la idea que un objecte queda determinat pels morfismes que hi arriben o que en surten.
+
+\section{Objectes inicials i terminals}
+
+\begin{definicio}\index{objecte!inicial}\index{objecte!terminal}
+En una categoria $\cat{C}$:
+\begin{itemize}
+\item un objecte $0$ és \textbf{inicial} si per a cada objecte $X$ hi ha \emph{exactament un} morfisme $0\to X$;
+\item un objecte $1$ és \textbf{terminal} si per a cada objecte $X$ hi ha \emph{exactament un} morfisme $X\to 1$.
+\end{itemize}
+Les dues nocions són duals: un objecte inicial a $\cat{C}$ és un objecte terminal a $\cat{C}\op$.
+\end{definicio}
+
+\begin{exemple}
+A $\cat{Set}$, l'objecte inicial és el conjunt buit $\varnothing$ ---hi ha una única aplicació $\varnothing\to X$, la buida--- i l'objecte terminal és qualsevol conjunt d'un sol element $\{\ast\}$ ---hi ha una única aplicació $X\to\{\ast\}$. A $\cat{Grp}$, en canvi, el grup trivial és alhora inicial i terminal (un tal objecte s'anomena \emph{zero}). En un preordre vist com a categoria, un objecte inicial és un element mínim i un de terminal, un element màxim.
+\end{exemple}
+
+La propietat clau, model de totes les propietats universals, és la unicitat.
+
+\begin{proposicio}\label{prop:unicitat-terminal}\index{objecte!unicitat llevat d'isomorfisme}
+Si una categoria té dos objectes terminals, aleshores són isomorfs, i l'isomorfisme entre ells és únic. El mateix val per als objectes inicials.
+\end{proposicio}
+
+\begin{prova}
+Siguin $1$ i $1'$ dos objectes terminals. Com que $1'$ és terminal, hi ha un únic morfisme $f\colon 1\to 1'$; com que $1$ és terminal, hi ha un únic morfisme $g\colon 1'\to 1$. La composició $g\comp f\colon 1\to 1$ és un morfisme de $1$ a $1$; però $1$ és terminal, de manera que l'únic morfisme $1\to 1$ és $\id_1$, i per tant $g\comp f=\id_1$. Anàlogament $f\comp g=\id_{1'}$. Així $f$ és un isomorfisme, i és únic perquè ho és el morfisme $1\to 1'$. El cas inicial és dual.
+\end{prova}
+
+\begin{observacio}
+Aquesta demostració és el patró que retrobarem sempre: quan un objecte es defineix per una propietat universal ---\enquote{hi ha un únic morfisme tal que…}---, dos objectes qualssevol que la satisfacin són isomorfs de manera única. Per això parlem de \enquote{l'} objecte terminal, \enquote{el} producte, etc., encara que n'hi pugui haver molts: tots són canònicament el mateix. Aquesta unicitat és el que dona sentit a caracteritzar objectes per la seva propietat universal en lloc de per una construcció concreta.
+\end{observacio}
+
+\section{Categories coma}\label{sec:coma}\index{categoria!coma}
+
+Abans de continuar val la pena introduir una construcció que unifica diverses coses que hem trobat de passada ---les categories slice, i ben aviat els cons sobre un diagrama--- i que permet dir amb precisió què vol dir que un objecte és \enquote{universal}: n'hi haurà prou que sigui \emph{inicial} o \emph{terminal} en una categoria adequada.
+
+\begin{definicio}[Categoria coma]\index{categoria!coma}
+\label{def:coma}
+Siguin $S\colon\cat{A}\to\cat{C}$ i $T\colon\cat{B}\to\cat{C}$ dos functors amb el mateix codomini. La \textbf{categoria coma} $(S\downarrow T)$ té:
+\begin{itemize}
+  \item per \textbf{objectes}, les ternes $(A,B,f)$ amb $A$ objecte de $\cat{A}$, $B$ objecte de $\cat{B}$ i $f\colon S(A)\to T(B)$ un morfisme de $\cat{C}$;
+  \item per \textbf{morfismes} $(A,B,f)\to(A',B',f')$, les parelles $(a,b)$ amb $a\colon A\to A'$ a $\cat{A}$ i $b\colon B\to B'$ a $\cat{B}$ tals que el quadrat
+  \[
+  \begin{tikzpicture}[baseline=(m.center)]
+    \matrix (m) [matrix of math nodes, column sep=3em, row sep=2.4em] {
+      S(A) & T(B) \\
+      S(A') & T(B') \\
+    };
+    \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+    \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$S(a)$} (m-2-1);
+    \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$T(b)$} (m-2-2);
+    \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$f'$} (m-2-2);
+  \end{tikzpicture}
+  \]
+  commuta a $\cat{C}$, és a dir, $T(b)\comp f=f'\comp S(a)$.
+\end{itemize}
+La composició i les identitats es fan component a component.
+\end{definicio}
+
+La notació més freqüent fixa un dels functors en un objecte. Si $\cat{1}$ és la categoria terminal (un objecte i la seva identitat) i $C$ és un objecte de $\cat{C}$, escrivim $C$ també per al functor $\cat{1}\to\cat{C}$ que el tria. Aleshores:
+
+\begin{exemple}[Slices i coslices com a categories coma]\index{categoria!slice}\index{categoria!coslice}
+Prenem $S=\id_{\cat{C}}$ i $T=C\colon\cat{1}\to\cat{C}$. Un objecte de $(\id_{\cat{C}}\downarrow C)$ és una terna $(A,\ast,f)$ amb $f\colon A\to C$, és a dir, simplement un morfisme cap a $C$; un morfisme és un triangle commutatiu sobre $C$. Recuperem exactament la categoria slice $\cat{C}/C$. Dualment, $(C\downarrow\id_{\cat{C}})$ és la categoria coslice $C/\cat{C}$ dels morfismes que \emph{surten} de $C$. Les slices i coslices són, doncs, els casos més simples de categoria coma.
+\end{exemple}
+
+\begin{exemple}[Objectes universals com a inicials o terminals]
+Molts dels objectes que hem caracteritzat per una propietat universal són, precisament, objectes inicials o terminals d'una categoria coma adient. Per exemple, un objecte terminal de la slice $\cat{C}/C$ és un objecte final entre tots els morfismes cap a $C$; i, dualment, un objecte inicial de la coslice $C/\cat{C}$ és l'objecte òptim entre els morfismes que surten de $C$. Aquesta és la lectura que unifica les propietats universals: \emph{ser universal és ser inicial o terminal en una categoria coma}. Ho retrobarem tot seguit en definir les propietats universals com a representabilitat, i al capítol següent en veure un límit com un objecte terminal a la categoria dels cons.
+\end{exemple}
+
+\begin{observacio}[Els cons són objectes d'una categoria coma]\index{con}
+Anticipem una idea del capítol de límits. Donat un diagrama $D\colon\cat{I}\to\cat{C}$, un \textbf{con} sobre $D$ amb vèrtex $A$ és una família compatible de morfismes $A\to D_i$; això és exactament un objecte de la categoria coma $(\Delta\downarrow D)$, on $\Delta\colon\cat{C}\to\cat{C}^{\cat{I}}$ és el functor diagonal que envia $A$ al diagrama constant. El \emph{límit} de $D$ serà l'objecte terminal d'aquesta categoria de cons, i el colímit, l'objecte inicial de la categoria de cocons. La categoria coma dona, doncs, el llenguatge comú per a slices, cons i objectes universals.
+\end{observacio}
+
+\section{Propietats universals com a representabilitat}
+
+Podem reformular aquestes idees amb el llenguatge dels functors representables. Recordem que, en una categoria localment petita, cada objecte $A$ determina el functor $\Hom(-,A)\colon\cat{C}\op\to\cat{Set}$ i el functor $\Hom(A,-)\colon\cat{C}\to\cat{Set}$.
+
+Observem primer com es llegeixen les nocions anteriors. Que $1$ sigui terminal vol dir que $\Hom(X,1)$ té exactament un element per a cada $X$; és a dir, que el functor $\Hom(-,1)$ és isomorf al functor constant amb valor un conjunt d'un sol element. Dualment, $0$ és inicial quan $\Hom(0,-)$ és el functor constant amb valor un punt.
+
+Aquesta és la forma general d'una propietat universal: un objecte satisfà una propietat universal quan un cert functor cap a $\cat{Set}$ \emph{el representa}.
+
+\begin{definicio}\index{propietat universal}\index{functor!representable}\index{element universal}
+\label{def:representable}
+Sigui $P\colon\cat{C}\op\to\cat{Set}$ un functor. Una \textbf{representació} de $P$ és una parella $(A,u)$ formada per un objecte $A$ de $\cat{C}$ i un element $u\in P(A)$, l'\textbf{element universal}, tal que per a cada objecte $X$ i cada $x\in P(X)$ existeix un únic morfisme $f\colon X\to A$ amb
+\[
+P(f)(u)=x.
+\]
+Equivalentment, la transformació natural $\alpha\colon\Hom(-,A)\to P$ de components $\alpha_X(f)=P(f)(u)$ és un isomorfisme natural. Es diu aleshores que $P$ és \textbf{representable}, que $A$ n'és l'objecte representant i que $(A,u)$ n'és una representació. Anàlogament per a functors covariants $\cat{C}\to\cat{Set}$ i el functor $\Hom(A,-)$.
+\end{definicio}
+
+\begin{observacio}
+Cal distingir dos nivells d'unicitat. L'\textbf{objecte} representant $A$ és únic llevat d'isomorfisme, però no necessàriament d'un únic isomorfisme. En canvi, la \textbf{representació} $(A,u)$ ---amb la dada de l'element universal--- és única llevat d'un \emph{únic} isomorfisme compatible amb els elements universals: si $(A,u)$ i $(B,v)$ representen $P$, hi ha un únic isomorfisme $\varphi\colon A\to B$ amb $P(\varphi)(v)=u$. Aquesta distinció, entre la unicitat de l'objecte i la de la dada universal, és essencial i la retrobarem en tractar límits, adjuncions i objectes classificadors. Que dos functors representables $\Hom(-,A)$ i $\Hom(-,B)$ siguin naturalment isomorfs equivaldrà, pel lema de Yoneda, a $A\cong B$; la resta del capítol ho fa precís.
+\end{observacio}
+
+\section{El plançó de Yoneda}
+
+Fixem una categoria \textbf{petita} $\cat{C}$ (perquè la categoria de prefeixos i els seus homconjunts quedin ben definits sense recórrer a universos; per a $\cat{C}$ només localment petita, tot el que segueix val amb la cautela habitual sobre la mida de $\cat{Set}^{\cat{C}\op}$). A cada objecte $A$ li hem associat el functor contravariant representable $\Hom(-,A)\colon\cat{C}\op\to\cat{Set}$. Aquesta assignació és, ella mateixa, functorial: dona un functor de $\cat{C}$ cap a la categoria de functors $\cat{Set}^{\cat{C}\op}$, anomenada categoria de \emph{prefeixos} sobre $\cat{C}$.
+
+\begin{definicio}[Plançó de Yoneda]\index{Yoneda!plançó}\index{prefeix@prefeix}
+\label{def:planco-yoneda}
+El \textbf{plançó de Yoneda} (en anglès, \emph{Yoneda embedding}) és el functor
+\[
+\yon\colon\cat{C}\to\cat{Set}^{\cat{C}\op},
+\qquad
+\yon(A)=\Hom(-,A),
+\]
+que envia cada objecte $A$ al functor representable $\Hom(-,A)$, i cada morfisme $f\colon A\to B$ a la transformació natural $\yon(f)\colon\Hom(-,A)\Rightarrow\Hom(-,B)$ de components la postcomposició amb $f$,
+\[
+\yon(f)_X\colon\Hom(X,A)\to\Hom(X,B),
+\qquad
+\varphi\mapsto f\comp\varphi.
+\]
+Els objectes de $\cat{Set}^{\cat{C}\op}$ s'anomenen \textbf{prefeixos} sobre $\cat{C}$.
+\end{definicio}
+
+\begin{observacio}
+Cal comprovar que $\yon(f)$ és realment natural i que $\yon$ preserva composició i identitats, però tot es redueix, un cop més, a l'associativitat i a les lleis de la identitat de $\cat{C}$. El contingut del plançó de Yoneda és que \emph{tota} categoria localment petita s'incrusta en una categoria de prefeixos, que és una categoria molt rica (té tots els límits i colímits, per exemple). El teorema següent en justifica el nom: $\yon$ és una incrustació plena i fidel.
+\end{observacio}
+
+\section{El lema de Yoneda}
+
+El resultat central relaciona les transformacions naturals que surten d'un functor representable amb els elements del functor de destí.
+
+\begin{teorema}[Lema de Yoneda]\index{Yoneda!lema}
+\label{teo:yoneda}
+Sigui $\cat{C}$ una categoria localment petita, $A$ un objecte de $\cat{C}$ i $P\colon\cat{C}\op\to\cat{Set}$ un prefeix. Aleshores hi ha una bijecció
+\[
+\Nat\big(\Hom(-,A),\,P\big)\;\cong\;P(A),
+\]
+natural en $A$ i en $P$. Explícitament, la bijecció envia una transformació natural $\eta$ a l'element $\eta_A(\id_A)\in P(A)$.
+\end{teorema}
+
+\begin{prova}
+Descrivim les dues aplicacions inverses.
+
+\textbf{De transformacions a elements.} A cada $\eta\colon\Hom(-,A)\Rightarrow P$ li assignem
+\[
+\Phi(\eta)=\eta_A(\id_A)\in P(A).
+\]
+Té sentit perquè $\id_A\in\Hom(A,A)$ i $\eta_A\colon\Hom(A,A)\to P(A)$.
+
+\textbf{D'elements a transformacions.} A cada $x\in P(A)$ li assignem la transformació $\Psi(x)$ de components
+\[
+\Psi(x)_X\colon\Hom(X,A)\to P(X),
+\qquad
+\varphi\mapsto P(\varphi)(x).
+\]
+Té sentit perquè $\varphi\colon X\to A$ dona, per contravariància, $P(\varphi)\colon P(A)\to P(X)$, i $x\in P(A)$. Cal veure que $\Psi(x)$ és natural: per a un morfisme $g\colon Y\to X$, el quadrat de naturalitat és $P(g)\comp\Psi(x)_X=\Psi(x)_Y\comp g^*$, que sobre $\varphi\in\Hom(X,A)$ dona
+\[
+P(g)\big(P(\varphi)(x)\big)=P(\varphi\comp g)(x)=\Psi(x)_Y(\varphi\comp g)=\Psi(x)_Y\big(g^*(\varphi)\big),
+\]
+on hem usat la functorialitat $P(g)\comp P(\varphi)=P(\varphi\comp g)$.
+
+\textbf{Són inverses.} D'una banda,
+\[
+\Phi(\Psi(x))=\Psi(x)_A(\id_A)=P(\id_A)(x)=x.
+\]
+De l'altra, donada $\eta$, cal veure que $\Psi(\eta_A(\id_A))=\eta$; és a dir, que per a tot $X$ i tot $\varphi\colon X\to A$,
+\[
+P(\varphi)\big(\eta_A(\id_A)\big)=\eta_X(\varphi).
+\]
+Això és exactament el quadrat de naturalitat de $\eta$ per al morfisme $\varphi\colon X\to A$, aplicat a $\id_A\in\Hom(A,A)$: en efecte, $\varphi^*(\id_A)=\id_A\comp\varphi=\varphi$, de manera que
+\[
+\eta_X(\varphi)=\eta_X(\varphi^*(\id_A))=P(\varphi)(\eta_A(\id_A)).
+\]
+Les dues assignacions són, doncs, inverses, i la naturalitat en $A$ i en $P$ es comprova de manera anàloga.
+\end{prova}
+
+\section{Conseqüències}
+
+La primera conseqüència és que el plançó de Yoneda mereix el seu nom.
+
+\begin{corollari}[El plançó de Yoneda és ple i fidel]\index{Yoneda!plançó ple i fidel}
+Per a tota parella d'objectes $A,B$ de $\cat{C}$, el plançó $\yon$ dona una bijecció
+\[
+\Hom(A,B)\;\cong\;\Nat\big(\Hom(-,A),\,\Hom(-,B)\big).
+\]
+En particular, $\yon\colon\cat{C}\to\cat{Set}^{\cat{C}\op}$ és ple i fidel.
+\end{corollari}
+
+\begin{prova}
+Apliquem el lema de Yoneda amb $P=\Hom(-,B)$. Aleshores
+\[
+\Nat\big(\Hom(-,A),\,\Hom(-,B)\big)\cong \Hom(-,B)(A)=\Hom(A,B),
+\]
+i seguint la bijecció es comprova que és precisament $f\mapsto\yon(f)$. Per tant $\yon$ és bijectiu sobre cada conjunt de morfismes, és a dir, ple i fidel.
+\end{prova}
+
+\begin{corollari}\index{Yoneda!objectes determinats per morfismes}
+Dos objectes $A$ i $B$ de $\cat{C}$ són isomorfs si i només si els seus functors representables ho són:
+\[
+A\cong B
+\quad\Longleftrightarrow\quad
+\Hom(-,A)\cong\Hom(-,B).
+\]
+\end{corollari}
+
+\begin{prova}
+Un functor ple i fidel reflecteix els isomorfismes (capítol dels functors): si $\yon(A)\cong\yon(B)$, aleshores $A\cong B$. El recíproc és que tot functor preserva isomorfismes. Aplicat a $\yon$, dona l'equivalència.
+\end{prova}
+
+\begin{observacio}
+Aquest darrer corol·lari és la formulació precisa de l'eslògan del primer capítol: \emph{un objecte queda determinat, llevat d'isomorfisme, per la xarxa de morfismes que hi arriben}. Conèixer $\Hom(-,A)$ ---és a dir, saber com és el conjunt de morfismes $X\to A$ per a cada $X$, de manera compatible amb la composició--- equival a conèixer $A$ llevat d'isomorfisme. En particular, l'objecte que representa un functor representable és únic llevat d'isomorfisme, cosa que unifica totes les unicitats de les propietats universals que hem trobat.
+\end{observacio}
+
+\begin{observacio}
+Hi ha una versió covariant de tot plegat, obtinguda treballant amb $\cat{C}\op$ en lloc de $\cat{C}$: dona un plançó $\cat{C}\op\to\cat{Set}^{\cat{C}}$, també ple i fidel, i el lema $\Nat(\Hom(A,-),Q)\cong Q(A)$ per a functors covariants $Q\colon\cat{C}\to\cat{Set}$. Totes dues versions s'usen contínuament; la contravariant, amb prefeixos, és la que enllaça amb la teoria de feixos i la lògica categòrica que estudiarem més endavant.
+\end{observacio}
+
+\section{Cap als límits}
+
+Amb les propietats universals i el lema de Yoneda disposem ja del vocabulari per tractar de manera uniforme les construccions que caracteritzen objectes per la seva relació amb tots els altres. Els objectes inicial i terminal n'han estat els primers exemples; el producte i el coproducte, que hem trobat de passada, en són d'altres.
+
+Al capítol~\ref{cap:limits}, de \textbf{límits i colímits}, introduirem la noció general, que engloba productes, coproductes, equalitzadors, pullbacks i molts altres, tots com a objectes universals associats a un diagrama. El lema de Yoneda i la representabilitat en seran l'eina conceptual: un límit és, precisament, un objecte que representa el functor dels cons sobre un diagrama.
+
+\begin{resumcap}
+\apartat{Cinc idees} (1)~Una propietat universal és la representabilitat d'un functor cap a $\cat{Set}$. (2)~L'objecte representant és únic llevat d'isomorfisme; la representació sencera, llevat d'un únic isomorfisme compatible. (3)~El plançó de Yoneda encasta $\cat{C}$ dins dels prefeixos de manera plena i fidel. (4)~El lema de Yoneda identifica $\Nat(\Hom(-,A),P)$ amb $P(A)$. (5)~Objectes inicials, terminals, productes i coproductes són casos de propietat universal.
+\apartat{Errors típics} Dir \enquote{únic llevat d'isomorfisme únic} de l'objecte nu quan això només val per a la representació amb la dada universal; usar la propietat universal del producte abans d'haver-la definit; i confondre el functor representat amb l'objecte representant.
+\apartat{Lectura recomanada} \cite[cap.~2 i~4]{awodey}; \cite[cap.~4]{leinster} per al lema de Yoneda; \cite[III.2]{maclane} per a la versió clàssica.
+\end{resumcap}

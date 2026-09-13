@@ -1,0 +1,157 @@
+\chapter[Subobjectes, imatges i factoritzacions]{\texorpdfstring{Subobjectes, imatges\\ i factoritzacions}{Subobjectes, imatges i factoritzacions}}
+
+Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
+
+\begin{Form}
+\iniciTest{sub}{c,b,d,b,c,d,b,c,b,d,c,b,d,b,b,a}
+
+\begin{enumerate}
+
+\pregunta Un \textbf{subobjecte} d'un objecte $A$ és:
+\begin{enumerate}
+  \opcio{a}{qualsevol morfisme cap a $A$.}
+  \opcio{b}{un element de $A$.}
+  \opcio{c}{una classe d'equivalència de monomorfismes amb codomini $A$.}
+  \opcio{d}{un epimorfisme des de $A$.}
+\end{enumerate}
+\feedback
+
+\pregunta Dos monomorfismes $m\colon S\rightarrowtail A$ i $m'\colon S'\rightarrowtail A$ representen el mateix subobjecte quan:
+\begin{enumerate}
+  \opcio{a}{$S=S'$ com a conjunts.}
+  \opcio{b}{existeix un isomorfisme $\varphi\colon S\to S'$ amb $m'\comp\varphi=m$.}
+  \opcio{c}{$m=m'$.}
+  \opcio{d}{tenen dominis de la mateixa mida.}
+\end{enumerate}
+\feedback
+
+\pregunta A $\cat{Set}$, el preordre $\Sub(A)$ és isomorf a:
+\begin{enumerate}
+  \opcio{a}{el conjunt $A$.}
+  \opcio{b}{el monoide de les aplicacions $A\to A$.}
+  \opcio{c}{el grup de permutacions de $A$.}
+  \opcio{d}{el conjunt de parts $\mathcal{P}(A)$, ordenat per inclusió.}
+\end{enumerate}
+\feedback
+
+\pregunta L'ordre $[m]\leq[n]$ entre subobjectes significa que:
+\begin{enumerate}
+  \opcio{a}{$m$ i $n$ són iguals.}
+  \opcio{b}{$m$ es factoritza a través de $n$ (existeix $h$ amb $n\comp h=m$).}
+  \opcio{c}{$n$ es factoritza a través de $m$.}
+  \opcio{d}{els dominis són isomorfs.}
+\end{enumerate}
+\feedback
+
+\pregunta Lògicament, l'ordre $[m]\leq[n]$ a $\Sub(A)$ s'interpreta com:
+\begin{enumerate}
+  \opcio{a}{la negació del predicat.}
+  \opcio{b}{la igualtat de predicats.}
+  \opcio{c}{la implicació entre predicats sobre $A$.}
+  \opcio{d}{la disjunció de predicats.}
+\end{enumerate}
+\feedback
+
+\pregunta El \textbf{pullback} d'un monomorfisme al llarg de qualsevol morfisme és:
+\begin{enumerate}
+  \opcio{a}{un epimorfisme.}
+  \opcio{b}{un isomorfisme.}
+  \opcio{c}{mai un monomorfisme.}
+  \opcio{d}{sempre un monomorfisme.}
+\end{enumerate}
+\feedback
+
+\pregunta El \textbf{functor de reindexació} $f^{*}\colon\Sub(B)\to\Sub(A)$ associat a $f\colon A\to B$ envia un subobjecte al seu:
+\begin{enumerate}
+  \opcio{a}{coproducte amb $A$.}
+  \opcio{b}{pullback al llarg de $f$.}
+  \opcio{c}{producte amb $B$.}
+  \opcio{d}{imatge directa.}
+\end{enumerate}
+\feedback
+
+\pregunta A $\cat{Set}$, la reindexació $f^{*}(S)$ d'un subconjunt $S\subseteq B$ és:
+\begin{enumerate}
+  \opcio{a}{la imatge directa $f(S)$.}
+  \opcio{b}{el complement de $S$.}
+  \opcio{c}{l'antiimatge $f^{-1}(S)$.}
+  \opcio{d}{el producte $S\times A$.}
+\end{enumerate}
+\feedback
+
+\pregunta Lògicament, la reindexació $f^{*}$ interpreta:
+\begin{enumerate}
+  \opcio{a}{la quantificació existencial.}
+  \opcio{b}{la substitució d'una variable per un terme.}
+  \opcio{c}{la negació.}
+  \opcio{d}{la conjunció.}
+\end{enumerate}
+\feedback
+
+\pregunta La \textbf{intersecció} de dos subobjectes $[m]\wedge[n]$ a $\Sub(A)$ es calcula com:
+\begin{enumerate}
+  \opcio{a}{el coproducte de $S$ i $T$.}
+  \opcio{b}{la unió de les imatges.}
+  \opcio{c}{l'exponencial $T^{S}$.}
+  \opcio{d}{el pullback de $m$ i $n$ sobre $A$.}
+\end{enumerate}
+\feedback
+
+\pregunta El subobjecte \textbf{màxim} de $\Sub(A)$ és:
+\begin{enumerate}
+  \opcio{a}{la inclusió de l'objecte inicial.}
+  \opcio{b}{no existeix en general.}
+  \opcio{c}{la identitat $\id_A$ (el predicat sempre cert).}
+  \opcio{d}{la diagonal $\Delta_A$.}
+\end{enumerate}
+\feedback
+
+\pregunta Segons el capítol, en una categoria \textbf{regular} la reindexació $f^{*}$ té garantit:
+\begin{enumerate}
+  \opcio{a}{cap adjunt.}
+  \opcio{b}{un adjunt per l'esquerra $\exists_f$ (l'universal $\forall_f$ requereix estructura addicional).}
+  \opcio{c}{un adjunt per la dreta $\forall_f$, però no per l'esquerra.}
+  \opcio{d}{adjunts per tots dos costats, sempre.}
+\end{enumerate}
+\feedback
+
+\pregunta Una \textbf{factorització imatge} de $f$ descompon $f$ com:
+\begin{enumerate}
+  \opcio{a}{un mono seguit d'un epi qualsevol.}
+  \opcio{b}{dos isomorfismes.}
+  \opcio{c}{dos monomorfismes.}
+  \opcio{d}{un epimorfisme regular seguit d'un monomorfisme.}
+\end{enumerate}
+\feedback
+
+\pregunta La \textbf{imatge} $\Imatge(f)$ es caracteritza com:
+\begin{enumerate}
+  \opcio{a}{el major subobjecte del domini.}
+  \opcio{b}{el menor subobjecte del codomini a través del qual $f$ es factoritza.}
+  \opcio{c}{el nucli de $f$.}
+  \opcio{d}{el coproducte de domini i codomini.}
+\end{enumerate}
+\feedback
+
+\pregunta Una categoria és \textbf{regular} si té límits finits, factoritzacions imatge i, a més:
+\begin{enumerate}
+  \opcio{a}{tots els colímits.}
+  \opcio{b}{els epimorfismes regulars són estables per pullback.}
+  \opcio{c}{és cartesiana tancada.}
+  \opcio{d}{tots els objectes són projectius.}
+\end{enumerate}
+\feedback
+
+\pregunta En una categoria regular, la \textbf{quantificació existencial} $\exists_f[s]$ es defineix com:
+\begin{enumerate}
+  \opcio{a}{la imatge $\Imatge(f\comp s)$.}
+  \opcio{b}{el pullback de $[s]$.}
+  \opcio{c}{el complement de $[s]$.}
+  \opcio{d}{l'exponencial de $[s]$.}
+\end{enumerate}
+\feedback
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest
+\end{Form}

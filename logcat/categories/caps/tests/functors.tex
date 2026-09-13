@@ -1,0 +1,103 @@
+\chapter{Functors}
+
+Aquest test no busca que recordis definicions, sinó que \emph{raonis} amb elles: decidir què preserva o reflecteix un functor, trobar l'error d'un argument i aplicar les nocions de ple, fidel i essencialment exhaustiu a casos concrets. Cada pregunta té una única resposta correcta; abans de triar, intenta justificar-la tu mateix.
+
+\begin{Form}
+\iniciTest{fun}{c,b,c,d,c,b,c,c,b,c}
+
+\begin{enumerate}
+
+\pregunta Un lector afirma: \enquote{Per definir un functor $F$ n'hi ha prou de dir on va cada objecte; l'acció sobre els morfismes queda determinada.} On falla?
+\begin{enumerate}
+  \opcio{a}{No falla: els objectes determinen el functor.}
+  \opcio{b}{Falla només quan $\cat{C}$ és gran.}
+  \opcio{c}{Falla: un functor és \emph{dues} assignacions ---sobre objectes i sobre morfismes--- que han de respectar dominis, codominis, composició i identitats; l'acció sobre morfismes no queda determinada per la dels objectes.}
+  \opcio{d}{Falla perquè els functors no actuen sobre objectes.}
+\end{enumerate}
+\feedback
+
+\pregunta Un lector proposa un \enquote{functor} $\cat{B}M\to\cat{B}M$ (amb $M=\{1,e\}$, $e\comp e=e$) que fixa l'objecte i envia el bucle $1$ a $e$ i el bucle $e$ a $e$. És un functor?
+\begin{enumerate}
+  \opcio{a}{Sí, perquè respecta dominis i codominis.}
+  \opcio{b}{No: un functor ha d'enviar la identitat a la identitat, i aquí $1$ (la identitat) va a parar a $e\neq 1$; és un morfisme de grafs, però no un functor.}
+  \opcio{c}{Sí, perquè $e$ és idempotent.}
+  \opcio{d}{No, perquè cap assignació entre monoides és functorial.}
+\end{enumerate}
+\feedback
+
+\pregunta Es pot afirmar que \emph{tot} functor preserva els monomorfismes?
+\begin{enumerate}
+  \opcio{a}{Sí, perquè preserva tota l'estructura categòrica.}
+  \opcio{b}{Sí, perquè preserva la composició.}
+  \opcio{c}{No: un functor preserva el que es defineix per \emph{equacions} (isomorfismes, seccions, retraccions), però no necessàriament els monomorfismes o epimorfismes, que es defineixen per cancel·lació sobre \emph{totes} les fletxes del codomini.}
+  \opcio{d}{No, perquè cap functor preserva mai els monomorfismes.}
+\end{enumerate}
+\feedback
+
+\pregunta Sigui $h\colon(\mathbb{N},+,0)\to(\{0,1\},\vee,0)$ l'homomorfisme amb $h(n)=1$ per a $n\geq 1$, i $F\colon\cat{B}\mathbb{N}\to\cat{B}M$ el functor induït. El morfisme $1$ és epi a $\cat{B}\mathbb{N}$. Què il·lustra aquest exemple?
+\begin{enumerate}
+  \opcio{a}{Que tot functor preserva epimorfismes.}
+  \opcio{b}{Que $F$ no és un functor.}
+  \opcio{c}{Que $1$ no és epi a $\cat{B}\mathbb{N}$.}
+  \opcio{d}{Que un functor pot enviar un epimorfisme a un morfisme que no ho és: $F(1)$ compleix $1\vee 0=1=1\vee 1$ amb $0\neq 1$, i per tant no és epi.}
+\end{enumerate}
+\feedback
+
+\pregunta Sigui $F$ un functor \emph{ple i fidel} i suposem que $F(f)$ és un isomorfisme a $\cat{D}$. Quina conclusió és correcta, i sobre quin fet reposa?
+\begin{enumerate}
+  \opcio{a}{Res: la plenitud i fidelitat no diuen res sobre isomorfismes.}
+  \opcio{b}{Que $f$ és un isomorfisme sempre que $F$ sigui a més exhaustiu sobre objectes.}
+  \opcio{c}{Que $f$ ja era un isomorfisme a $\cat{C}$: com que $F$ és ple, l'invers de $F(f)$ prové d'algun $g$; i com que $F$ és fidel, les identitats $g\comp f=\id$ i $f\comp g=\id$ es dedueixen de les seves imatges. (Els functors plens i fidels \emph{reflecteixen} isomorfismes.)}
+  \opcio{d}{Que $F$ és una equivalència.}
+\end{enumerate}
+\feedback
+
+\pregunta L'assignació $X\mapsto\Hom(X,B)$, per a un objecte fix $B$, amb l'acció $\Hom(f,B)(h)=h\comp f$ sobre un morfisme $f\colon X\to Y$, és un functor:
+\begin{enumerate}
+  \opcio{a}{covariant, perquè $B$ està fix.}
+  \opcio{b}{contravariant: $f\colon X\to Y$ indueix $\Hom(Y,B)\to\Hom(X,B)$ per precomposició, invertint el sentit de la fletxa.}
+  \opcio{c}{no functorial, perquè depèn de $B$.}
+  \opcio{d}{covariant i contravariant alhora.}
+\end{enumerate}
+\feedback
+
+\pregunta Un lector diu: \enquote{El functor oblit $U\colon\cat{Grp}\to\cat{Set}$ és ple, perquè envia cada homomorfisme a la seva aplicació subjacent.} On s'equivoca?
+\begin{enumerate}
+  \opcio{a}{No s'equivoca: $U$ és ple.}
+  \opcio{b}{S'equivoca perquè $U$ no és ni tan sols un functor.}
+  \opcio{c}{S'equivoca: $U$ és \emph{fidel} (homomorfismes diferents donen aplicacions diferents), però \emph{no ple}, perquè entre dos grups hi ha aplicacions de conjunts que no són homomorfismes i que, per tant, no provenen de cap morfisme de $\cat{Grp}$.}
+  \opcio{d}{S'equivoca perquè $U$ no actua sobre morfismes.}
+\end{enumerate}
+\feedback
+
+\pregunta Un lector afirma: \enquote{Com que $\cat{Cat}$ té totes les categories petites per objectes, $\cat{Cat}$ és ella mateixa una categoria petita.} És correcte?
+\begin{enumerate}
+  \opcio{a}{Sí: una categoria de categories petites és petita.}
+  \opcio{b}{Sí, perquè els functors formen conjunts.}
+  \opcio{c}{No: la col·lecció de totes les categories petites és una classe pròpia (com la de tots els conjunts), de manera que $\cat{Cat}$ és \emph{gran}, encara que localment petita.}
+  \opcio{d}{No, perquè $\cat{Cat}$ no té identitats.}
+\end{enumerate}
+\feedback
+
+\pregunta Definir un functor $\Free(G)\to\cat{D}$ des de la categoria lliure d'un graf $G$ equival a:
+\begin{enumerate}
+  \opcio{a}{triar només les imatges de les arestes de $G$.}
+  \opcio{b}{donar un morfisme de grafs $G\to U(\cat{D})$ ---triar les imatges dels vèrtexs \emph{i} de les arestes, respectant origen i destí---, i aquesta tria s'estén de manera única als camins.}
+  \opcio{c}{triar un objecte de $\cat{D}$ per a cada camí de $G$ de manera independent.}
+  \opcio{d}{donar una equivalència entre $\Free(G)$ i $\cat{D}$.}
+\end{enumerate}
+\feedback
+
+\pregunta Sobre el bifunctor $\Hom(\_,\_)\colon\cat{C}\op\times\cat{C}\to\cat{Set}$, amb $\Hom(f,g)(h)=g\comp h\comp f$, quina descripció de la variància és correcta?
+\begin{enumerate}
+  \opcio{a}{Covariant en totes dues variables.}
+  \opcio{b}{Contravariant en totes dues variables.}
+  \opcio{c}{Contravariant en la primera variable (precomposició amb $f$) i covariant en la segona (postcomposició amb $g$).}
+  \opcio{d}{Covariant en la primera i contravariant en la segona.}
+\end{enumerate}
+\feedback
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest
+\end{Form}

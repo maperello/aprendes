@@ -1,0 +1,297 @@
+\chapter*{Per què aprendre categories}
+\addcontentsline{toc}{chapter}{Introducció}
+\markboth{Introducció}{Introducció}
+
+\begingroup
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{section}{0}
+
+La teoria de categories va néixer en un context matemàtic molt concret,
+però el seu vocabulari apareix avui en camps molt diversos com ara l'àlgebra, la topologia, la informàtica
+teòrica o la lògica. Aquesta amplitud pot fer una primera impressió equivocada: pot semblar que una categoria és només una nova entitat abstracta, allunyada dels objectes que realment ens interessen. La idea d'aquest llibre és justament la contrària. Les categories serveixen per veure amb més claredat què tenen en comú construccions conegudes, per formular-les sense dependre de la seva representació concreta i per transportar arguments d'un àmbit a un altre.
+
+El punt de partida és modest. En molts contextos trobem una col·lecció
+d'\emph{objectes} i, entre aquests objectes, unes \emph{fletxes} que es
+poden compondre. Hi ha conjunts i aplicacions, ordres i desigualtats,
+proposicions i deduccions, grafs i camins. En tots aquests casos podem
+parlar d'identitats i de composició associativa. Quan retenim aquest
+esquelet comú obtenim la noció de categoria.
+
+Tanmateix, aprendre teoria de categories no consisteix únicament a
+memoritzar aquesta definició. El que importa és adquirir una manera de
+mirar. En aquest capítol presentarem sis motius per adoptar-la, amb una
+atenció especial a la lògica.
+
+\section{Mirar els objectes des de fora}\label{sec:mirar-fora}
+
+En matemàtiques és habitual descriure un objecte enumerant els elements
+que conté o analitzant-ne l'estructura interna. La perspectiva categòrica
+proposa complementar aquesta mirada: un objecte també es coneix per les
+fletxes que hi arriben, per les que en surten i per la manera com aquestes
+fletxes es componen. No preguntem solament «què hi ha dins?», sinó també
+«com es relaciona amb tota la resta?».
+
+La paraula \emph{fletxa} és deliberadament més general que la paraula
+\emph{funció}. En la categoria $\mathbf{Set}$, els objectes són conjunts i
+les fletxes són aplicacions. Però hi ha moltes altres possibilitats. Si
+partim d'un graf dirigit, podem considerar-ne els vèrtexs com a objectes i
+els camins com a fletxes. La composició consisteix a concatenar camins, i
+el camí de longitud zero fa d'identitat. Una fletxa és aquí un recorregut,
+no pas una funció.
+
+Un exemple encara més sorprenent és el d'un monoide $M$. Podem interpretar
+$M$ com una categoria amb un sol objecte, que denotarem per $*$. Cada
+element $m\in M$ és una fletxa $m\colon *\to *$; la multiplicació del
+monoide és la composició, i l'element neutre és la fletxa identitat. Com
+que només hi ha un objecte, tota la informació és a les fletxes i a la
+seva composició. Aquest exemple mostra que, categòricament, l'estructura
+pot residir íntegrament en les relacions entre objectes.
+
+També podem formar la categoria $\mathbf{Rel}$: els objectes són conjunts
+i una fletxa $R\colon X\to Y$ és una relació $R\subseteq X\times Y$.
+Aquestes fletxes tampoc no han de ser funcions. La relació identitat és la
+igualtat, i la composició de $R\colon X\to Y$ i $S\colon Y\to Z$ ve donada
+per
+\[
+  x\,(S\circ R)\,z
+  \quad\Longleftrightarrow\quad
+  \exists y\in Y\,\bigl(xRy\land ySz\bigr).
+\]
+Ja apareix aquí un primer pont amb la lògica: compondre relacions és
+quantificar existencialment sobre un terme intermedi.
+
+Els ordres ofereixen un contrast útil. Un preordre $(P,\leq)$ determina
+una categoria amb una fletxa $p\to q$ exactament quan $p\leq q$. Entre dos
+objectes hi ha, doncs, com a màxim una fletxa. En $\mathbf{Set}$,
+$\mathbf{Rel}$ o la categoria dels camins d'un graf, en canvi, n'hi pot
+haver moltes. Aquesta diferència separa dues coses: que \emph{existeixi} una transformació i \emph{de quantes maneres} es pot realitzar. 
+En lògica, anticipa dues perspectives: podem retenir només si $q$ és deduïble de $p$, o bé conservar les diferents proves que porten de la hipòtesi $p$ a la conclusió $q$.
+
+\section{Una construcció en molts contextos}
+
+Una de les forces principals del llenguatge categòric és que identifica
+una mateixa construcció darrere de representacions molt diferents.
+Considerem dos objectes $A$ i $B$. Un \emph{producte} d'aquests objectes és
+un objecte $A\times B$ equipat amb fletxes
+\[
+  \pi_1\colon A\times B\longrightarrow A,
+  \qquad
+  \pi_2\colon A\times B\longrightarrow B,
+\]
+amb la propietat següent: per a qualsevol objecte $X$ i qualsevol parell
+de fletxes $f\colon X\to A$ i $g\colon X\to B$, existeix una única fletxa
+$\langle f,g\rangle\colon X\to A\times B$ que satisfà
+\[
+  \pi_1\circ\langle f,g\rangle=f,
+  \qquad
+  \pi_2\circ\langle f,g\rangle=g.
+\]
+
+Aquesta definició no diu de quins elements consta $A\times B$. En descriu
+el comportament respecte de totes les fletxes que hi arriben. Precisament
+per això es pot interpretar en contextos diferents:
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.44\textwidth}
+                >{\raggedright\arraybackslash}p{0.38\textwidth}}
+\toprule
+\textbf{Categoria} & \textbf{Producte} \\
+\midrule
+conjunts i aplicacions & producte cartesià \\
+subconjunts d'un conjunt fix, ordenats per inclusió & intersecció \\
+nombres ordenats per $\leq$ & mínim, o més generalment ínfim \\
+proposicions ordenades per deduïbilitat & conjunció $p\land q$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+No es tracta d'una semblança decorativa. La propietat, anomenada universal, és
+exactament la mateixa en tots quatre casos. Per exemple, dir que una
+proposició $r$ implica $p\land q$ equival a dir alhora que $r$ implica
+$p$ i que $r$ implica $q$. Això és la versió lògica de construir una
+fletxa cap al producte a partir de les seves dues components.
+
+La propietat universal també dona teoremes generals. Dos productes dels
+mateixos objectes són sempre isomorfs d'una manera única compatible amb
+les projeccions. En un preordre, on entre dos objectes hi ha com a màxim
+una fletxa, «isomorf» es redueix essencialment a «igual». Recuperem així
+el resultat familiar que l'ínfim, si existeix, és únic.
+
+Un altre preordre il·lustratiu és el dels enters positius ordenats per
+divisibilitat:
+\[
+  a\preceq b \quad\Longleftrightarrow\quad a\mid b.
+\]
+Un objecte és inferior a $a$ i a $b$ quan divideix tots dos nombres, i el
+més gran d'aquests objectes segons $\preceq$ és el màxim comú divisor.
+Per tant, el producte de $a$ i $b$ en aquesta categoria és
+$\mcd(a,b)$. Una operació elemental de l'aritmètica apareix com una nova
+manifestació de la mateixa propietat universal.
+
+\section{Un llenguatge per a patrons abstractes}
+
+La teoria de categories no solament permet transferir resultats; també
+proporciona noms per a formes estructurals que es repeteixen. Un exemple
+bàsic és el d'\emph{objecte terminal}. Un objecte $\top$ és terminal quan,
+per a cada objecte $X$, hi ha exactament una fletxa $X\to\top$.
+
+La mateixa frase adquireix continguts diferents segons la categoria. En
+$\mathbf{Set}$, els objectes terminals són els conjunts amb un sol
+element. Entre els subconjunts d'un conjunt fix, l'objecte terminal és el
+conjunt total. En un ordre, és un element màxim, si n'hi ha. En la
+categoria de proposicions ordenades per implicació, és una proposició
+sempre certa. El terme \emph{terminal} ens permet reconèixer tots aquests
+casos com a encarnacions d'un únic patró.
+
+Per a un lector interessat en lògica, un exemple més profund és el dels
+quantificadors. Suposem que una aplicació
+$\pi\colon X\times A\to X$ oblida una variable de tipus $A$.
+La substitució al llarg de $\pi$ transforma un predicat sobre $X$ en un
+predicat sobre $X\times A$ i es denota per $\pi^*$. En situacions
+adequades, els quantificadors existencial i universal queden
+caracteritzats per les adjuncions
+\[
+  \exists_{\pi}\dashv \pi^*\dashv\forall_{\pi}.
+\]
+Dit amb paraules: quantificar existencialment i universalment són les
+dues maneres universals, en sentits oposats, de compensar l'operació
+d'introduir una variable que després oblidem. Les regles d'introducció i
+d'eliminació dels quantificadors deixen així de ser una llista de normes
+aïllades i passen a expressar una mateixa configuració estructural.
+
+Aquest punt de vista també explica la fórmula de composició de
+$\mathbf{Rel}$. El testimoni intermedi $y$ queda ocult en el resultat;
+compondre dues relacions és aplicar un quantificador existencial. El pas
+dels conjunts a les relacions i de les relacions a la lògica no és una
+analogia vaga, sinó una cadena de construccions precises.
+
+\section{Raonar amb diagrames}
+
+Les fletxes proporcionen una notació visual per expressar equacions. Un
+diagrama és \emph{commutatiu} quan dos camins amb el mateix origen i el
+mateix destí representen la mateixa fletxa. Per exemple, la igualtat
+$h=g\circ f$ es pot dibuixar així:
+\[
+\begin{tikzpicture}
+  \matrix (m) [matrix of math nodes, column sep=3.5em, row sep=3.5em] {
+    A & B \\
+      & C \\
+  };
+  \draw[-{Stealth}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth}] (m-1-2) -- node[right] {$g$} (m-2-2);
+  \draw[-{Stealth}] (m-1-1) -- node[below left] {$h$} (m-2-2);
+\end{tikzpicture}
+\]
+La commutativitat afirma que anar directament d'$A$ a $C$ mitjançant
+$h$ és el mateix que passar primer per $B$.
+
+Els diagrames no són simples il·lustracions afegides després de
+l'argument. Sovint són l'argument: fan visibles les dades disponibles,
+les fletxes que cal construir i les igualtats que cal demostrar. Aquesta
+notació és especialment natural perquè una categoria té, sota les lleis
+d'identitat i associativitat, la forma d'un graf dirigit. La teoria de
+categories converteix el gest informal de «seguir les fletxes» en un
+mètode rigorós de raonament.
+
+\section{Transportar problemes}
+
+Una traducció ben escollida pot convertir un problema difícil en un altre
+de més manejable. Categòricament, aquestes traduccions es modelitzen
+mitjançant functors: assignacions que envien objectes a objectes i fletxes
+a fletxes, tot preservant identitats i composició. El valor d'un functor
+no és canviar de vocabulari, sinó conservar l'estructura rellevant mentre
+ens porta a un context on disposem de noves eines.
+
+La lògica ofereix un exemple clàssic en les traduccions negatives. En el
+càlcul proposicional, el teorema de Glivenko relaciona demostrabilitat
+clàssica i intuïcionista:
+\[
+  \vdash_{\mathrm{CL}} p
+  \quad\Longleftrightarrow\quad
+  \vdash_{\mathrm{IL}} \neg\neg p.
+\]
+Per a la lògica de primer ordre cal una traducció negativa més acurada,
+com la de Gödel--Gentzen, que insereix negacions dobles dins la fórmula.
+En tots dos casos, la idea és transportar una pregunta sobre proves
+clàssiques a una pregunta formulada en lògica intuïcionista, preservant-ne
+la demostrabilitat d'una manera controlada.
+
+Aquest exemple també mostra per què convé no identificar sempre una
+lògica amb un simple preordre. Si només registrem si $q$ és deduïble de $p$,
+entre $p$ i $q$ hi ha com a màxim una fletxa. Si, en canvi, conservem les
+proves, dues deduccions diferents poden donar fletxes diferents
+$p\to q$, i compondre-les correspon a substituir una prova dins
+d'una altra. Aquesta «lògica rica» és al cor de la correspondència entre
+proves, programes i morfismes. La perspectiva categòrica permet passar de
+la versió extensional, que recorda què és demostrable, a la versió
+intensional, que recorda com es demostra.
+
+\section{Dualitat: dues versions de cada idea}
+
+De qualsevol categoria $\mathcal{C}$ podem formar la categoria oposada
+$\mathcal{C}^{\mathrm{op}}$, que té els mateixos objectes i totes les
+fletxes girades. La composició també s'inverteix. Per tant, qualsevol
+definició expressada únicament amb objectes, fletxes i composició té una
+definició \emph{dual}; qualsevol teorema categòric en produeix un altre en
+invertir sistemàticament les fletxes.
+
+El dual d'un producte és un \emph{coproducte}. Així, la mateixa definició
+abstracta dona lloc a la unió disjunta de conjunts, la unió de
+subconjunts, el suprem en un ordre i la disjunció $p\lor q$ en lògica. El
+dual d'un objecte terminal és un objecte inicial: un objecte $\bot$ del
+qual surt una única fletxa cap a qualsevol altre. En lògica correspon a
+la falsedat, ja que de $\bot$ es dedueix qualsevol proposició. El teorema
+d'unicitat del producte es converteix immediatament en el teorema
+d'unicitat del coproducte; no cal inventar una prova nova.
+
+La categoria $\mathbf{Rel}$ fa tangible aquesta operació. Donada una
+relació $R\subseteq X\times Y$, podem girar-la i obtenir la relació
+conversa $R^{\smallsmile}\subseteq Y\times X$, definida per
+\[
+  y\,R^{\smallsmile}\,x \quad\Longleftrightarrow\quad x\,R\,y.
+\]
+Allò que en abstracte és invertir una fletxa coincideix aquí amb un gest
+elemental. La dualitat ens ensenya a aplicar aquesta operació no només a una
+relació, sinó a definicions, construccions i demostracions senceres.
+
+\section{Una mirada viva}
+
+La teoria de categories no és únicament un sistema per reorganitzar
+matemàtiques ja conegudes. En informàtica teòrica, els tipus es poden
+estudiar com a objectes i els programes com a fletxes; la composició és
+l'encadenament de programes. Els tipus producte i suma reprodueixen
+productes i coproductes categòrics, i els tipus funció condueixen als
+objectes exponencials. En semàntica de llenguatges de programació, les
+mònades permeten descriure de manera uniforme efectes com l'estat, les
+excepcions o el no-determinisme. En lògica categòrica, topoi, fibracions i
+categories de proves proporcionen models en què la sintaxi i la
+semàntica es poden comparar estructuralment.
+
+No cal dominar totes aquestes teories per començar. Al contrari: els
+exemples elementals d'aquest capítol ---conjunts, ordres, proposicions,
+relacions, grafs i monoides--- contenen ja les idees fonamentals. La
+dificultat inicial no és tècnica, sinó perceptiva: aprendre a reconèixer
+una propietat universal, a preguntar què preserva una traducció i a girar
+una afirmació per descobrir-ne la dual.
+
+\section*{El camí que seguirem}
+\addcontentsline{toc}{section}{El camí que seguirem}
+
+Al llarg del llibre desenvoluparem gradualment aquesta mirada. Primer
+definirem categories, functors i transformacions naturals. Després
+estudiarem propietats universals, límits, colímits i adjuncions. Els
+exemples lògics no apareixeran com una aplicació tardana, sinó com un fil
+conductor: la implicació com a ordre, les proves com a morfismes, la
+conjunció i la disjunció com a construccions universals, els
+quantificadors com a adjunts i les traduccions lògiques com a
+transformacions que preserven estructura.
+
+Aprendre categories és, en definitiva, aprendre a reconèixer una mateixa
+forma en fenòmens diferents. Aquesta forma no esborra les particularitats
+de cada context; les ordena. Ens permet veure per què una construcció és
+la correcta, quins arguments depenen només de l'estructura i quines idees
+es poden transportar. Per a la lògica, això significa disposar d'un
+llenguatge en què deducció, semàntica i computació poden trobar-se sense
+deixar de ser disciplines distintes.
+
+\endgroup

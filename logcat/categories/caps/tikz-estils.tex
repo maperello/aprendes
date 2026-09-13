@@ -1,0 +1,31 @@
+% ============================================================
+%  Estils TikZ comuns per als diagrames del llibre.
+%
+%  Els diagrames de teoria de categories repeteixen molt codi de
+%  puntes de fletxa i de matrius de nodes. Aquests estils permeten
+%  escriure els diagrames nous de manera compacta i canviar
+%  l'estètica de tots des d'un sol lloc:
+%
+%     \begin{tikzpicture}
+%       \matrix (m) [cat matrix] { A & B \\ C & D \\ };
+%       \draw[cat] (m-1-1) -- node[above] {$f$} (m-1-2);
+%     \end{tikzpicture}
+%
+%  Els diagrames antics, escrits amb -{Stealth[scale=1.1]} i amb
+%  els paràmetres de matriu explícits, continuen funcionant sense
+%  canvis; aquests estils són per a diagrames nous i per a una
+%  homogeneïtzació progressiva.
+% ============================================================
+
+\tikzset{
+  % Fletxa estàndard d'un morfisme.
+  cat/.style={-{Stealth[scale=1.1]}},
+  % Fletxa de monomorfisme (cua d'ham).
+  cat mono/.style={{Hooks[right]}-{Stealth[scale=1.1]}},
+  % Fletxa d'epimorfisme (doble punta).
+  cat epi/.style={-{Stealth[scale=1.1]Stealth[scale=1.1]}},
+  % Fletxa de transformació natural (doble).
+  cat nat/.style={-{Implies},double,double distance=1.5pt},
+  % Matriu de nodes amb la separació habitual del llibre.
+  cat matrix/.style={matrix of math nodes, row sep=2.6em, column sep=3.2em},
+}

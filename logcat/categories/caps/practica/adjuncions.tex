@@ -1,0 +1,113 @@
+\chapter[Adjuncions]{Adjuncions}
+
+Els exercicis d'aquest capítol treballen les adjuncions des dels tres punts de vista equivalents ---bijecció d'homconjunts, unitat/counitat, identitats triangulars--- i n'apliquen les conseqüències sobre límits. Convé identificar sempre qui és l'adjunt per l'esquerra i qui per la dreta.
+
+\section{Adjuncions entre preordres}
+
+\begin{exercici}
+Comprova que a l'àlgebra de proposicions, fixada una fórmula $A$, l'operació $B\mapsto A\wedge B$ és adjunta per l'esquerra de $B\mapsto A\to B$.
+\end{exercici}
+
+\begin{solucio}
+Hem de veure que $A\wedge B\vdash C$ si i només si $B\vdash A\to C$. 
+
+Suposem $A\wedge B\vdash C$. Aleshores, assumint $B$, volem deduir $A\to C$: assumim també $A$; tenim $A$ i $B$, per tant $A\wedge B$, d'on $C$; descarregant la hipòtesi $A$ obtenim $A\to C$. Així $B\vdash A\to C$.
+
+Recíprocament, suposem $B\vdash A\to C$. Assumint $A\wedge B$, en tenim $A$ i $B$; de $B$ obtenim $A\to C$, i amb $A$, per modus ponens, $C$. Així $A\wedge B\vdash C$.
+
+Les dues implicacions donen l'equivalència, és a dir, $(A\wedge-)\dashv(A\to-)$. Aquesta adjunció és la lectura categòrica de la regla de la implicació.
+\end{solucio}
+
+\begin{exercici}
+Comprova que la inclusió dels oberts $i\colon\mathcal O(X)\to\mathcal P(X)$ té com a adjunt per la dreta l'interior, i digues quina propietat universal expressa.
+\end{exercici}
+
+\begin{solucio}
+Cal veure que, per a tot obert $U$ i tota part $S$, $U\subseteq S$ si i només si $U\subseteq\mathrm{int}(S)$ (identificant $i(U)=U$).
+
+Si $U\subseteq\mathrm{int}(S)$, aleshores $U\subseteq\mathrm{int}(S)\subseteq S$. Recíprocament, si $U\subseteq S$ amb $U$ obert, aleshores $U$ és un obert contingut en $S$; com que $\mathrm{int}(S)$ és la unió de tots els oberts continguts en $S$, tenim $U\subseteq\mathrm{int}(S)$.
+
+Per tant $i\dashv\mathrm{int}$. La propietat universal que expressa és que $\mathrm{int}(S)$ és el \emph{més gran} obert contingut en $S$: el millor obert que aproxima $S$ per dins.
+\end{solucio}
+
+\section{Adjuncions entre categories}
+
+\begin{exercici}
+Comprova que el functor lliure $F\colon\cat{Set}\to\cat{Mon}$, $X\mapsto X^*$, és adjunt per l'esquerra del functor oblit $U\colon\cat{Mon}\to\cat{Set}$.
+\end{exercici}
+
+\begin{solucio}
+Cal una bijecció natural $\Hom_{\cat{Mon}}(X^*,M)\cong\Hom_{\cat{Set}}(X,U(M))$.
+
+Donat un homomorfisme $h\colon X^*\to M$, la seva restricció a les paraules d'una lletra dona una aplicació $\bar h\colon X\to U(M)$. Recíprocament, donada $\varphi\colon X\to U(M)$, definim $h_\varphi\colon X^*\to M$ per $h_\varphi(x_1\cdots x_n)=\varphi(x_1)\cdots\varphi(x_n)$ (i la paraula buida a l'element neutre); és un homomorfisme perquè respecta la concatenació. Aquestes dues assignacions són inverses: un homomorfisme des de $X^*$ està determinat pels valors sobre les lletres, ja que tota paraula és un producte de lletres. La naturalitat en $X$ i $M$ és immediata. Per tant $F\dashv U$.
+\end{solucio}
+
+\section{Unitat i counitat}
+
+\begin{exercici}
+Per a l'adjunció lliure-oblit $F\dashv U$ dels monoides, descriu la unitat $\eta_X\colon X\to U(X^*)$ i la counitat $\varepsilon_M\colon (U(M))^*\to M$, i comprova que la unitat és la propietat universal del monoide lliure.
+\end{exercici}
+
+\begin{solucio}
+La unitat $\eta_X\colon X\to U(X^*)$ envia cada element $x$ a la paraula d'una sola lletra $x$. La counitat $\varepsilon_M\colon (U(M))^*\to M$ envia una paraula d'elements de $M$ al seu producte a $M$: $\varepsilon_M(m_1\cdots m_n)=m_1\cdots m_n$ (producte calculat a $M$).
+
+La propietat universal de la unitat diu que per a tota aplicació $\varphi\colon X\to U(M)$ hi ha un únic homomorfisme $\bar\varphi\colon X^*\to M$ amb $U(\bar\varphi)\comp\eta_X=\varphi$. Això és exactament la definició del monoide lliure: un homomorfisme des de $X^*$ queda determinat, de manera única, pels valors sobre els generadors $X$.
+\end{solucio}
+
+\begin{exercici}
+Comprova que, en una adjunció $F\dashv G$, el transposat de $\varphi\colon F(A)\to B$ és $G(\varphi)\comp\eta_A$, i el transposat invers de $\psi\colon A\to G(B)$ és $\varepsilon_B\comp F(\psi)$.
+\end{exercici}
+
+\begin{solucio}
+Per naturalitat de la bijecció $\theta$ en la segona variable, aplicada al morfisme $\varphi\colon F(A)\to B$ i partint de $\id_{F(A)}$,
+\[
+\theta(\varphi)=\theta(\varphi\comp\id_{F(A)})=G(\varphi)\comp\theta(\id_{F(A)})=G(\varphi)\comp\eta_A,
+\]
+on hem usat que $\theta(\id_{F(A)})=\eta_A$ per definició de la unitat. Dualment, per naturalitat en la primera variable i la definició de la counitat $\varepsilon_B=\theta^{-1}(\id_{G(B)})$,
+\[
+\theta^{-1}(\psi)=\theta^{-1}(\id_{G(B)}\comp\psi)=\theta^{-1}(\id_{G(B)})\comp F(\psi)=\varepsilon_B\comp F(\psi).
+\]
+Aquestes fórmules permeten passar de la bijecció a la unitat/counitat i viceversa.
+\end{solucio}
+
+\section{Identitats triangulars}
+
+\begin{exercici}
+Comprova la primera identitat triangular $\varepsilon_{F(A)}\comp F(\eta_A)=\id_{F(A)}$ a partir de les fórmules dels transposats.
+\end{exercici}
+
+\begin{solucio}
+La fórmula del transposat invers diu $\theta^{-1}(\psi)=\varepsilon_B\comp F(\psi)$ per a $\psi\colon A\to G(B)$. Prenem $B=F(A)$ i $\psi=\eta_A\colon A\to G(F(A))$. Aleshores
+\[
+\varepsilon_{F(A)}\comp F(\eta_A)=\theta^{-1}(\eta_A).
+\]
+Però $\eta_A=\theta(\id_{F(A)})$ per definició de la unitat, de manera que $\theta^{-1}(\eta_A)=\theta^{-1}(\theta(\id_{F(A)}))=\id_{F(A)}$. Per tant $\varepsilon_{F(A)}\comp F(\eta_A)=\id_{F(A)}$, com volíem. La segona identitat és dual.
+\end{solucio}
+
+\section{Els adjunts i els límits}
+
+\begin{exercici}
+Comprova, usant que els adjunts per la dreta preserven límits, que el functor oblit $U\colon\cat{Grp}\to\cat{Set}$ preserva productes, i explica per què això és coherent amb el fet que $U$ té un adjunt per l'esquerra.
+\end{exercici}
+
+\begin{solucio}
+El functor lliure $F\colon\cat{Set}\to\cat{Grp}$, que envia un conjunt al grup lliure que genera, és adjunt per l'esquerra de $U$: $\Hom_{\cat{Grp}}(F(X),G)\cong\Hom_{\cat{Set}}(X,U(G))$. Per tant $U$ és un adjunt per la dreta, i pel teorema \enquote{els adjunts per la dreta preserven límits}, $U$ preserva tots els límits, en particular els productes. Concretament, el conjunt subjacent d'un producte de grups és el producte dels conjunts subjacents, cosa que ja havíem comprovat directament. En canvi, $U$ no preserva colímits ---per exemple, coproductes---, cosa també coherent: $U$ no és, en general, un adjunt per l'esquerra.
+\end{solucio}
+
+\begin{exercici}
+Comprova que si un functor $G$ \emph{no} preserva algun límit, aleshores $G$ no pot tenir cap adjunt per l'esquerra.
+\end{exercici}
+
+\begin{solucio}
+És el contrarecíproc del teorema. Si $G$ tingués un adjunt per l'esquerra $F$, amb $F\dashv G$, aleshores $G$ seria un adjunt per la dreta i, pel teorema, preservaria tots els límits que existeixen. Com que per hipòtesi $G$ no en preserva algun, no pot tenir adjunt per l'esquerra. Aquest és un criteri negatiu molt pràctic: per exemple, un functor oblit que no preserva coproductes no pot ser adjunt per l'esquerra, però sí que pot ser-ho per la dreta.
+\end{solucio}
+
+\section{Exponencials}
+
+\begin{exercici}
+Comprova la bijecció $\Hom_{\cat{Set}}(A\times B,C)\cong\Hom_{\cat{Set}}(A,C^B)$ i identifica-la amb la currificació.
+\end{exercici}
+
+\begin{solucio}
+A $\cat{Set}$, $C^B$ és el conjunt de les aplicacions $B\to C$. Donada $f\colon A\times B\to C$, definim $\tilde f\colon A\to C^B$ per $\tilde f(a)=(b\mapsto f(a,b))$; és a dir, $\tilde f(a)$ és la funció que fixa la primera coordenada en $a$. Recíprocament, donada $g\colon A\to C^B$, definim $\hat g\colon A\times B\to C$ per $\hat g(a,b)=g(a)(b)$. Aquestes assignacions són inverses l'una de l'altra i naturals en totes les variables. La correspondència $f\mapsto\tilde f$ és exactament la \textbf{currificació}: transformar una funció de dues variables en una funció d'una variable que retorna funcions. Aquesta bijecció expressa l'adjunció $-\times B\dashv(-)^B$.
+\end{solucio}

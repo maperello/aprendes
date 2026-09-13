@@ -1,0 +1,93 @@
+\chapter[Representabilitat i Yoneda]{\texorpdfstring{Propietats universals,\\ representabilitat i Yoneda}{Propietats universals, representabilitat i Yoneda}}
+
+Els exercicis d'aquest capítol treballen les propietats universals a través de la representabilitat i el lema de Yoneda. L'objectiu és guanyar fluïdesa amb els functors representables, amb el càlcul de transformacions naturals que en surten, i amb l'argument ---repetitiu, un cop entès--- que dedueix unicitat llevat d'isomorfisme.
+
+\section{Objectes inicials i terminals}
+
+\begin{exercici}
+Comprova que a la categoria slice $\cat{C}/A$ l'objecte $\id_A\colon A\to A$ és terminal.
+\end{exercici}
+
+\begin{solucio}
+Un objecte de $\cat{C}/A$ és un morfisme $x\colon X\to A$. Un morfisme de $x$ cap a $\id_A$ a la categoria slice és un $h\colon X\to A$ de $\cat{C}$ que fa commutar el triangle sobre $A$, és a dir, amb $\id_A\comp h=x$. Aquesta condició diu simplement $h=x$. Per tant hi ha \emph{exactament un} morfisme de qualsevol objecte $x$ cap a $\id_A$, a saber, el mateix $x$ vist com a morfisme de la slice. Això és precisament la definició d'objecte terminal. Dualment, a la coslice $A/\cat{C}$ l'objecte $\id_A$ és inicial.
+\end{solucio}
+
+\begin{exercici}
+Comprova que un objecte $Z$ és alhora inicial i terminal en una categoria si i només si, per a cada objecte $X$, hi ha exactament un morfisme $Z\to X$ i exactament un morfisme $X\to Z$. Un tal objecte s'anomena \emph{objecte zero}. Comprova que a $\cat{Grp}$ el grup trivial n'és un.
+\end{exercici}
+
+\begin{solucio}
+La primera afirmació és la conjunció literal de les dues definicions: $Z$ inicial dona el morfisme únic $Z\to X$, i $Z$ terminal, el morfisme únic $X\to Z$. Per al grup trivial $1=\{e\}$: donat un grup $G$, hi ha un únic homomorfisme $1\to G$ (l'element neutre ha d'anar al neutre), i un únic homomorfisme $G\to 1$ (tot va al neutre). Per tant $1$ és inicial i terminal a $\cat{Grp}$, és a dir, un objecte zero.
+\end{solucio}
+
+\section{Propietats universals com a representabilitat}
+
+\begin{exercici}
+Comprova que un objecte $1$ és terminal si i només si el functor $\Hom(-,1)$ és isomorf al functor constant amb valor un conjunt d'un sol element.
+\end{exercici}
+
+\begin{solucio}
+Suposem $1$ terminal. Aleshores, per a cada objecte $X$, el conjunt $\Hom(X,1)$ té exactament un element, de manera que hi ha una bijecció $\Hom(X,1)\cong\{\ast\}$. Aquestes bijeccions són automàticament naturals: l'única aplicació possible cap a un conjunt d'un punt fa commutar qualsevol quadrat. Per tant $\Hom(-,1)$ és naturalment isomorf al functor constant $\ast$.
+
+Recíprocament, si $\Hom(-,1)\cong\ast$, aleshores cada $\Hom(X,1)$ té exactament un element, és a dir, hi ha exactament un morfisme $X\to 1$ per a cada $X$, i $1$ és terminal.
+\end{solucio}
+
+\begin{exercici}
+Sigui $\cat{C}$ una categoria localment petita. Comprova que el functor \enquote{oblit d'un punt} $\Hom(1,-)\colon\cat{C}\to\cat{Set}$, quan $1$ és terminal, envia cada objecte $X$ al conjunt dels seus \enquote{punts globals} $\Hom(1,X)$. Calcula aquest conjunt a $\cat{Set}$.
+\end{exercici}
+
+\begin{solucio}
+Per definició, $\Hom(1,-)$ envia $X$ a $\Hom(1,X)$, el conjunt de morfismes des de l'objecte terminal; aquests morfismes s'anomenen \emph{punts globals} de $X$. A $\cat{Set}$, l'objecte terminal és un conjunt d'un sol element $\{\ast\}$, i una aplicació $\{\ast\}\to X$ equival a triar un element de $X$: la imatge de $\ast$. Per tant $\Hom(1,X)\cong X$ de manera natural, i a $\cat{Set}$ els punts globals recuperen exactament els elements. En general, però, $\Hom(1,-)$ pot perdre informació: hi ha categories on objectes diferents tenen els mateixos punts globals.
+\end{solucio}
+
+\section{El lema de Yoneda}
+
+\begin{exercici}
+Sigui $\cat{C}$ localment petita i $A$ un objecte. Aplicant el lema de Yoneda amb $P=\Hom(-,A)$, comprova que les úniques transformacions naturals $\Hom(-,A)\Rightarrow\Hom(-,A)$ que hi ha es corresponen amb els endomorfismes de $A$, i que la identitat correspon a $\id_A$.
+\end{exercici}
+
+\begin{solucio}
+El lema de Yoneda dona una bijecció
+\[
+\Nat\big(\Hom(-,A),\Hom(-,A)\big)\cong\Hom(-,A)(A)=\Hom(A,A),
+\]
+que envia $\eta$ a $\eta_A(\id_A)$. Així, cada transformació natural de $\Hom(-,A)$ en ell mateix correspon a un endomorfisme de $A$. La transformació identitat $\id_{\Hom(-,A)}$ té components la identitat de cada $\Hom(X,A)$; el seu valor a $\id_A$ és $\id_A$, de manera que correspon a l'endomorfisme identitat. Aquest càlcul és el nucli de la demostració que el plançó de Yoneda és ple i fidel.
+\end{solucio}
+
+\begin{exercici}
+Comprova amb detall la naturalitat de la transformació $\Psi(x)$ construïda a la demostració del lema de Yoneda: donat $x\in P(A)$, els components $\Psi(x)_X\colon\varphi\mapsto P(\varphi)(x)$ formen una transformació natural $\Hom(-,A)\Rightarrow P$.
+\end{exercici}
+
+\begin{solucio}
+Cal veure que, per a cada morfisme $g\colon Y\to X$, el quadrat de naturalitat commuta:
+\[
+P(g)\comp\Psi(x)_X=\Psi(x)_Y\comp\Hom(g,A),
+\]
+on $\Hom(g,A)=g^*\colon\Hom(X,A)\to\Hom(Y,A)$ és la precomposició amb $g$. Avaluem els dos costats sobre un $\varphi\in\Hom(X,A)$. El costat esquerre dona
+\[
+P(g)\big(\Psi(x)_X(\varphi)\big)=P(g)\big(P(\varphi)(x)\big)=P(\varphi\comp g)(x),
+\]
+usant la functorialitat contravariant $P(g)\comp P(\varphi)=P(\varphi\comp g)$. El costat dret dona
+\[
+\Psi(x)_Y\big(g^*(\varphi)\big)=\Psi(x)_Y(\varphi\comp g)=P(\varphi\comp g)(x).
+\]
+Els dos coincideixen, de manera que $\Psi(x)$ és natural.
+\end{solucio}
+
+\section{Conseqüències}
+
+\begin{exercici}
+Dedueix del lema de Yoneda que dos objectes $A$ i $B$ són isomorfs si i només si $\Hom(-,A)\cong\Hom(-,B)$ com a prefeixos.
+\end{exercici}
+
+\begin{solucio}
+El plançó de Yoneda $\yon(X)=\Hom(-,X)$ és ple i fidel (corol·lari del lema). Un functor ple i fidel preserva i reflecteix isomorfismes. Preserva: si $A\cong B$, aplicant $\yon$ obtenim $\Hom(-,A)\cong\Hom(-,B)$. Reflecteix: si $\Hom(-,A)\cong\Hom(-,B)$, és a dir, $\yon(A)\cong\yon(B)$, aleshores $A\cong B$. Per tant les dues condicions són equivalents. En altres paraules, la família de conjunts $\Hom(X,A)$, amb la seva acció sobre els morfismes, determina $A$ llevat d'isomorfisme.
+\end{solucio}
+
+\begin{exercici}
+Comprova que l'objecte que representa un functor representable és únic llevat d'isomorfisme: si $\Hom(-,A)\cong P$ i $\Hom(-,B)\cong P$, aleshores $A\cong B$.
+\end{exercici}
+
+\begin{solucio}
+De $\Hom(-,A)\cong P$ i $\Hom(-,B)\cong P$ es dedueix, per transitivitat de l'isomorfisme natural, que $\Hom(-,A)\cong\Hom(-,B)$. Pel corol·lari anterior, això equival a $A\cong B$. Aquesta és la unicitat que subjeu a totes les propietats universals: l'objecte terminal, el producte, el coproducte i qualsevol altre objecte universal tenen l'objecte representant únic llevat d'isomorfisme, i la \emph{representació} sencera ---objecte més element universal--- única llevat d'un únic isomorfisme compatible amb la dada universal.
+\end{solucio}

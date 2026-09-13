@@ -1,0 +1,88 @@
+\chapter[Representabilitat i Yoneda]{\texorpdfstring{Propietats universals,\\ representabilitat i Yoneda}{Propietats universals, representabilitat i Yoneda}}
+
+Els exercicis següents completen els resolts a la part de Pràctica. Cada enunciat va acompanyat d'una indicació breu. La marca \enquote{$\star$} assenyala un exercici de consolidació i \enquote{$\star\star$} un d'ampliació.
+
+\section{Objectes inicials i terminals}
+
+\begin{exercici}
+Comprova que si una categoria té objecte inicial, aquest és únic llevat d'isomorfisme únic, repetint l'argument fet per als objectes terminals. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Siguin $0$ i $0'$ inicials. Hi ha un únic $0\to 0'$ i un únic $0'\to 0$; les composicions són endomorfismes de $0$ i de $0'$, que han de ser les identitats per unicitat.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Determina els objectes inicial i terminal a $\cat{Set}$, a $\cat{Top}$ i en un preordre $(P,\leq)$ vist com a categoria. \hfill{\normalfont$\star$}
+\begin{indicacio}
+A $\cat{Set}$ i $\cat{Top}$, el buit és inicial i el punt és terminal. En un preordre, un objecte inicial és un mínim i un de terminal, un màxim; poden no existir.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que la categoria $\cat{Field}$ dels cossos i homomorfismes de cossos \emph{no} té objecte inicial ni terminal. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un homomorfisme de cossos preserva $0$, $1$ i les operacions, i és sempre injectiu. No hi ha cap cos que rebi un morfisme de tots els altres (pensa en característiques diferents), ni cap que n'enviï a tots.
+\end{indicacio}
+\end{exercici}
+
+\section{Propietats universals com a representabilitat}
+
+\begin{exercici}
+Comprova que un objecte $0$ és inicial si i només si el functor covariant $\Hom(0,-)$ és isomorf al functor constant amb valor un conjunt d'un sol element. \hfill{\normalfont$\star$}
+\begin{indicacio}
+$\Hom(0,X)$ té exactament un element per a cada $X$ si i només si hi ha exactament un morfisme $0\to X$; l'isomorfisme natural amb el functor constant $\ast$ és automàtic.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\cat{C}$ localment petita amb objecte terminal $1$. Comprova que $\Hom(1,-)\colon\cat{C}\to\cat{Set}$ és un functor, i determina quan preserva l'objecte terminal. \hfill{\normalfont$\star$}
+\begin{indicacio}
+$\Hom(1,-)$ envia $1$ a $\Hom(1,1)$, que té un sol element; per tant preserva l'objecte terminal. Els seus valors són els \enquote{punts globals}.
+\end{indicacio}
+\end{exercici}
+
+\section{El lema de Yoneda}
+
+\begin{exercici}
+Escriu l'enunciat covariant del lema de Yoneda: per a un functor covariant $Q\colon\cat{C}\to\cat{Set}$ i un objecte $A$, hi ha una bijecció natural $\Nat(\Hom(A,-),Q)\cong Q(A)$. Identifica la bijecció. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+La bijecció envia $\eta$ a $\eta_A(\id_A)$, igual que en el cas contravariant; la inversa envia $x\in Q(A)$ a la transformació de components $\varphi\mapsto Q(\varphi)(x)$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Fes servir el lema de Yoneda per calcular $\Nat(\Hom(-,A),\Hom(-,B))$ i comprova que la bijecció resultant és precisament l'acció del plançó de Yoneda sobre els morfismes $A\to B$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Pren $P=\Hom(-,B)$ al lema: $\Nat(\Hom(-,A),\Hom(-,B))\cong\Hom(A,B)$. Seguint la bijecció, un morfisme $f\colon A\to B$ correspon a la postcomposició amb $f$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que si un prefeix $P$ és representable, aleshores l'element $x\in P(A)$ que correspon a la identitat sota l'isomorfisme $\Hom(-,A)\cong P$ té la propietat universal següent: per a cada objecte $X$ i cada $y\in P(X)$, hi ha un únic morfisme $\varphi\colon X\to A$ amb $P(\varphi)(x)=y$. (Aquest $x$ s'anomena \emph{element universal}.) \hfill{\normalfont$\star$}
+\begin{indicacio}
+L'isomorfisme $\Hom(-,A)\cong P$ diu que $\Hom(X,A)\cong P(X)$ naturalment; l'element $y\in P(X)$ correspon a un únic $\varphi\in\Hom(X,A)$, i la naturalitat tradueix $y=P(\varphi)(x)$.
+\end{indicacio}
+\end{exercici}
+
+\section{Conseqüències}
+
+\begin{exercici}
+Comprova que el plançó de Yoneda $\yon\colon\cat{C}\to\cat{Set}^{\cat{C}\op}$ \emph{no} és, en general, essencialment exhaustiu, tot i ser ple i fidel. Quins prefeixos són de la forma $\Hom(-,A)$? \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Els prefeixos de la forma $\Hom(-,A)$ s'anomenen \emph{representables}; no tot prefeix ho és. Per tant $\yon$ identifica $\cat{C}$ amb la subcategoria plena dels prefeixos representables, que en general és una part pròpia de $\cat{Set}^{\cat{C}\op}$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Dedueix del corol·lari de Yoneda que si dos objectes tenen conjunts de morfismes \enquote{naturalment iguals} des de tot objecte, aleshores són isomorfs; i explica per què això formalitza l'eslògan \enquote{un objecte es coneix per les fletxes que hi arriben}. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+\enquote{Naturalment iguals des de tot objecte} vol dir $\Hom(-,A)\cong\Hom(-,B)$; pel corol·lari, això equival a $A\cong B$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Enuncia i comprova la versió dual del corol·lari: $A\cong B$ si i només si $\Hom(A,-)\cong\Hom(B,-)$ com a functors covariants. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Aplica el corol·lari a $\cat{C}\op$, o repeteix l'argument amb el plançó covariant $\cat{C}\op\to\cat{Set}^{\cat{C}}$, que també és ple i fidel.
+\end{indicacio}
+\end{exercici}

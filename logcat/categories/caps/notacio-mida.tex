@@ -1,0 +1,63 @@
+\chapter*{Taula de notació}
+\addcontentsline{toc}{chapter}{Taula de notació}
+\markboth{Taula de notació}{Taula de notació}
+
+Recollim la notació principal del llibre, amb el seu significat i el lloc de la primera aparició o definició. Les referències remeten al capítol o a la secció corresponent.
+
+\medskip
+\renewcommand{\arraystretch}{1.25}
+\noindent\begin{tabularx}{\linewidth}{@{}l >{\raggedright\arraybackslash}X l@{}}
+\hline
+\textbf{Símbol} & \textbf{Significat} & \textbf{Primera aparició}\\
+\hline
+$\cat{C},\cat{D},\dots$ & categories & cap.~\ref{cap:categories}\\
+$\Hom(A,B)$, $\cat{C}(A,B)$ & homconjunt de morfismes $A\to B$ & cap.~\ref{cap:categories}\\
+$\id_A$ & morfisme identitat de $A$ & cap.~\ref{cap:categories}\\
+$g\comp f$ & composició ($f$ seguit de $g$) & cap.~\ref{cap:categories}\\
+$\cat{C}\op$ & categoria oposada & cap.~\ref{cap:categories}\\
+$f\op$ & morfisme dual de $f$ a $\cat{C}\op$ & \S\ref{sec:dualitat}\\
+$\cat{Set},\cat{Grp},\cat{Top},\cat{Graph}$ & categories concretes habituals & cap.~\ref{cap:categories}\\
+$\cat{Cat}$ & categoria de les categories petites & cap.~\ref{cap:functors}\\
+$\cat{C}/A$, $A/\cat{C}$ & categoria slice, coslice & cap.~\ref{cap:functors}\\
+$(S\downarrow T)$ & categoria coma & \S\ref{sec:coma}\\
+$F,G\colon\cat{C}\to\cat{D}$ & functors & cap.~\ref{cap:functors}\\
+$\alpha\colon F\Rightarrow G$ & transformació natural & cap.~\ref{cap:transformacions}\\
+$\cat{D}^{\cat{C}}$, $[\cat{C},\cat{D}]$ & categoria de functors & cap.~\ref{cap:transformacions}\\
+$\Hom(-,A)$ & exemple de functor representable (contravariant) & cap.~\ref{cap:yoneda}\\
+$\Delta$ & functor diagonal / constant & cap.~\ref{cap:limits}\\
+$\varprojlim D$, $\colimop D$ & límit, colímit d'un diagrama & cap.~\ref{cap:limits}\\
+$A\times B$, $A+B$ & producte, coproducte & cap.~\ref{cap:limits}\\
+$F\dashv G$ & $F$ és adjunt per l'esquerra de $G$ & cap.~\ref{cap:adjuncions}\\
+$\eta$, $\varepsilon$ & unitat, counitat d'una adjunció & cap.~\ref{cap:adjuncions}\\
+$C^{B}$, $\lambda f$ & exponencial, currificació & cap.~\ref{cap:cartesianes}\\
+$\Sub(A)$ & preordre de subobjectes de $A$ & cap.~\ref{cap:subobjectes}\\
+$f^{*}$ & reindexació (substitució) & cap.~\ref{cap:subobjectes}\\
+$\Imatge(f)$ & imatge d'un morfisme & cap.~\ref{cap:subobjectes}\\
+$\exists_f$, $\forall_f$ & quantificadors com a adjunts de $f^{*}$ & cap.~\ref{cap:subobjectes}\\
+$\Omega$, $\mathsf{true}$ & classificador de subobjectes & cap.~\ref{cap:topos}\\
+\hline
+\end{tabularx}
+\renewcommand{\arraystretch}{1.0}
+
+\chapter*{Apèndix: convenció de mida}
+\addcontentsline{toc}{chapter}{Apèndix: convenció de mida}
+\markboth{Apèndix: convenció de mida}{Apèndix: convenció de mida}
+
+Al llarg del llibre hem parlat de categories \emph{petites}, \emph{localment petites} i de \emph{classes pròpies} sense fixar del tot el marc conjuntista. Aquest apèndix el fa explícit, perquè el volum de lògica categòrica ---on apareixen categories de models, doctrines i fibracions--- l'exigirà.
+
+\medskip
+\noindent\textbf{Marc adoptat: classes i conjunts.} Treballem en una teoria de conjunts amb \textbf{classes pròpies}, a l'estil de von Neumann--Bernays--Gödel (NBG). Hi ha dos nivells de col·leccions: els \emph{conjunts}, que poden ser elements d'altres col·leccions, i les \emph{classes pròpies}, que no. Amb això:
+\begin{itemize}
+  \item una categoria és \textbf{petita} si la seva col·lecció d'objectes i la de morfismes són totes dues \emph{conjunts};
+  \item és \textbf{localment petita} si cada $\Hom(A,B)$ és un conjunt, encara que la col·lecció d'objectes pugui ser una classe pròpia;
+  \item és \textbf{ben potenciada} si els subobjectes de cada objecte formen un conjunt. Aquí un \emph{subobjecte} de $A$ no és un monomorfisme literal cap a $A$, sinó una classe d'equivalència de monomorfismes $m\colon S\rightarrowtail A$ mòdul isomorfisme sobre $A$ (dos monomorfismes són equivalents quan es factoren l'un per l'altre mitjançant un isomorfisme del domini). La distinció és essencial: a $\cat{Set}$ hi ha una classe pròpia de monomorfismes cap a un conjunt donat ---moltes còpies isomorfes del mateix subconjunt---, però només un conjunt de subobjectes. \enquote{Ben potenciada} demana, doncs, que aquesta col·lecció de classes admeti un conjunt de representants.
+\end{itemize}
+Les categories $\cat{Set}$, $\cat{Grp}$, $\cat{Top}$, $\cat{Graph}$ i $\cat{Cat}$ són localment petites però no petites; els preordres sobre un conjunt i les categories finites són petites.
+
+Quan alguna construcció demani triar simultàniament un objecte (o un morfisme) per a cada objecte d'una categoria \emph{gran} ---per exemple, en construir un invers d'una equivalència---, la família de tries està indexada per una classe pròpia, i l'axioma de l'elecció ordinari, que val per a famílies indexades per un conjunt, no hi arriba. En aquests casos assumim la forma \textbf{global} de l'elecció (disponible, per exemple, a NBG amb l'axioma d'elecció global). Ho indicarem allà on calgui.
+
+\medskip
+\noindent\textbf{L'alternativa dels universos.} Una segona opció, molt usada en geometria algebraica i teoria de topos, fixa un o més \textbf{universos de Grothendieck} $\mathcal{U}$ ---conjunts prou grans i tancats per les operacions habituals--- i parla de categories $\mathcal{U}$-petites i $\mathcal{U}$-grans de manera \emph{relativa} a $\mathcal{U}$. Aquesta convenció té l'avantatge que \enquote{la categoria de tots els $\mathcal{U}$-conjunts} és, ella mateixa, un objecte d'un univers més gran, cosa que simplifica certes construccions. En aquest volum \emph{no} l'adoptem, per no carregar una introducció amb la teoria d'universos; però el lector que continuï cap a la teoria de feixos la retrobarà. Les dues opcions són maneres alternatives de \emph{gestionar la mida} més que no pas fonaments idèntics: a grans trets, el paper de les \enquote{classes pròpies} de NBG el fa aquí la distinció entre $\mathcal{U}$-petit i $\mathcal{U}$-gran relativa a un univers $\mathcal{U}$ fixat. Fer precisa aquesta correspondència exigeix especificar l'univers i les hipòtesis pertinents; no cal, però, que això sigui un obstacle per a una primera lectura.
+
+\medskip
+\noindent Fixar aquesta convenció des d'ara evita l'ambigüitat que, altrament, es faria notar quan apareguin categories de models i functors classificadors: en tot moment, cada construcció d'aquest llibre declara si viu en un conjunt o en una classe pròpia.

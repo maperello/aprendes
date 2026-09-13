@@ -1,0 +1,417 @@
+\chapter{Grafs}\label{cap:grafs}
+
+Aquest apèndix desenvolupa amb detall la noció de graf dirigit, els seus homomorfismes i els camins, i mostra com generar una categoria a partir d'un graf. El material amplia, amb molts exemples concrets, la subsecció~\ref{subsec:grafs} del capítol de categories.
+
+\section{Grafs}
+
+Qualsevol sistema de relacions, com les rutes de transport o les connexions d'aerolínies, es pot dibuixar com una col·lecció de punts i fletxes. En aquesta etapa no ens importa què són els punts, sinó com estan connectats. Aquesta idea es modela amb el concepte de graf. En general, un graf consta de punts (o objectes), anomenats \emph{vèrtexs}, alguns dels quals estan units per \emph{arestes}; aquí considerarem que els grafs són \emph{dirigits}, és a dir, que cada aresta apunta en una direcció, d'un punt a un altre, i per això fem servir fletxes per connectar punts. Entre dos punts hi pot haver moltes fletxes, o cap, i fins i tot pot haver-hi fletxes d'un punt a si mateix. Sovint la manera més fàcil de descriure un graf petit és dibuixar-lo, com a la figura següent.
+\begin{equation}\label{graf:1}
+\xymatrix{
+1 \ar@(ul,ur)[]^a \ar@/^/[dr]^b
+& & 2 \ar@/^/[dl]_c \ar@/_/[dr]^d \ar[ll]_e
+& & 3 \ar[ll]_f \ar@(ur,dr)[]^g \\
+& 4 \ar@/^/[ul]^h \ar[rr]^k
+& & 5 \ar[ur]_l & 6
+}
+\end{equation}
+El tipus de graf que tractem aquí és una versió del graf dirigit que sovint s'anomena \emph{multigraf dirigit amb bucles}, encara que farem servir la paraula \enquote{graf} per abreujar. En donem la definició formal.
+
+\begin{definicio}\index{graf dirigit}
+Un \textbf{graf} $G$ comprèn:
+\begin{itemize}
+\item una col·lecció $V_G$ d'objectes anomenats \textbf{vèrtexs};
+\item una col·lecció $E_G$ de \textbf{fletxes};
+\item dues aplicacions $s_G\colon E_G\to V_G$ i $t_G\colon E_G\to V_G$, anomenades \textbf{origen} i \textbf{destí}. Si $s_G(f)=a$ i $t_G(f)=b$, escrivim $a\xrightarrow{f}b$ o $f\colon a\to b$, i diem que $a$ és el vèrtex d'origen i $b$ el de destí.
+\end{itemize}
+La notació
+\[
+G=\xymatrix{
+E_G \ar@<0.6ex>[r]^{s_G} \ar@<-0.6ex>[r]_{t_G} & V_G
+}
+\]
+indica que $G$ és un graf amb vèrtexs a $V_G$ i fletxes a $E_G$.
+\end{definicio}
+
+Quan $V_G$ i $E_G$ són conjunts, $s_G$ i $t_G$ són aplicacions de conjunts. Les qüestions de mida es tracten al seu lloc; aquí n'hi ha prou de treballar amb grafs els vèrtexs i fletxes dels quals formen conjunts.
+
+\begin{exemple}
+Considerem el graf $G$ de la figura següent:
+\[
+\xymatrix{
+	& \bullet_{a} \ar@<1ex>[dl]^f \ar@<1ex>[dr]^g &  \\
+	\bullet_{b} \ar@(ul,dl)_l \ar@<1ex>[ur]^h & & \bullet_{c}  \ar@<1ex>[ll]^k \ar@(ur,dr)^m \\
+}
+\]
+Especifica quins són els seus elements.
+\end{exemple}
+\begin{solucio}
+Es té $V_G=\{a,b,c\}$ i $E_G=\{f,g,h,k,l,m\}$, i les dues aplicacions són
+\[
+    \begin{array}{c|c|c}
+        E_G & s_G & t_G \\ \hline
+        f & a & b  \\
+        g & a & c \\
+        h & b & a \\
+        k & c & b \\
+        l & b & b \\
+        m & c & c
+    \end{array}
+\]
+\end{solucio}
+
+\begin{exemple}
+Defineix el graf $G$ perquè la seva representació gràfica sigui \eqref{graf:1}.
+\end{exemple}
+\begin{solucio}
+Prenem $V_G=\{1,2,3,4,5,6\}$, $E_G=\{a,b,c,d,e,f,g,h,k,l\}$ i les aplicacions
+\[
+    \begin{array}{c|c|c}
+        E_G & s_G & t_G \\ \hline
+        a & 1 & 1  \\
+        b & 1 & 4 \\
+        c & 2 & 4 \\
+        d & 2 & 5 \\
+        e & 2 & 1 \\
+        f & 3 & 2 \\
+        g & 3 & 3 \\
+        h & 4 & 1 \\
+        k & 4 & 5 \\
+        l & 5 & 3
+    \end{array}
+\]
+que reprodueixen la figura \eqref{graf:1}.
+\end{solucio}
+
+\begin{exemple}\leavevmode
+\begin{enumerate}
+\item Dibuixa el graf corresponent a les dades següents:
+\[
+    \begin{array}{c|c|c}
+        E_G & s_G & t_G \\ \hline
+        f & 2 & 3 \\
+        g & 2 & 3 \\
+        h & 2 & 3 \\
+        k & 4 & 3 \\
+        l & 6 & 3 \\
+        m & 6 & 6
+    \end{array}
+    \hspace{2cm} V_G=\{1,2,3,4,5,6\}
+\]
+\item Escriu la taula corresponent al graf $H$ següent:
+\[
+\xymatrix{
+	1 \ar[r]^{a} & 2 \ar[d]_{g} \ar@/^2ex/[r]^-{b} \ar[r]^-{c} & 3 \ar[r]^-{e} \ar@/^2ex/[l]^-{d} & 4 \\
+	5 \ar@(ul,dl)_l & 6 \ar[l]_-{h} \ar[r]^-{k} & 7 \ar[ur]^-{f}
+}
+\]
+\end{enumerate}
+\end{exemple}
+\begin{solucio}\leavevmode
+\begin{enumerate}
+\item
+\[
+\xymatrix{
+	4 \ar[r]^-{k} & 3 & 6 \ar[l]_-{l} \ar@(ur,dr)\\
+	1 & 2 \ar@/^2ex/[u]^-{f} \ar[u]^-{g} \ar@/_2ex/[u]_{h} & 5
+}
+\]
+\item
+\[
+    \begin{array}{c|c|c}
+        E_H & s_H & t_H \\ \hline
+        a & 1 & 2 \\
+        b & 2 & 3 \\
+        c & 2 & 3 \\
+        d & 3 & 2 \\
+        e & 3 & 4 \\
+        f & 7 & 4 \\
+        g & 2 & 6 \\
+        h & 6 & 5 \\
+        k & 6 & 7 \\
+        l & 5 & 5
+    \end{array}
+    \hspace{2cm} V_H=\{1,2,3,4,5,6,7\}
+\]
+\end{enumerate}
+\end{solucio}
+
+\begin{exemple}
+En una empresa petita hi ha tres departaments: Administració, Comptabilitat i Atenció al client. Durant el funcionament diari, els documents poden circular diverses vegades entre els mateixos departaments, i alguns departaments processen documents interns sense enviar-los enlloc. En un dia es donen les situacions següents:
+\begin{itemize}
+\item Dos documents passen d'Administració a Comptabilitat.
+\item Un document passa de Comptabilitat a Administració.
+\item Tres documents passen de Comptabilitat a Atenció al client.
+\item Un document passa d'Atenció al client a Comptabilitat.
+\item Dos documents són processats internament a Administració.
+\item Un document és processat internament a Comptabilitat.
+\item Un document és processat internament a Atenció al client.
+\end{itemize}
+Modela aquesta situació com un graf $G$, especificant-ne els elements, interpretant-ne les fletxes i representant-lo gràficament.
+\end{exemple}
+\begin{solucio}
+El graf $G$ té com a conjunt de vèrtexs $V_G=\{a,b,c\}$, on $a,b,c$ representen Administració, Comptabilitat i Atenció al client, respectivament. El conjunt de fletxes és
+\[
+\begin{aligned}
+E_G = \{
+& a\xrightarrow{f_1}b,\ a\xrightarrow{f_2}b, \\
+& b\xrightarrow{g}a, \\
+& b\xrightarrow{h_1}c,\ b\xrightarrow{h_2}c,\ b\xrightarrow{h_3}c, \\
+& c\xrightarrow{k}b, \\
+& a\xrightarrow{j_1}a,\ a\xrightarrow{j_2}a, \\
+& b\xrightarrow{i}b, \\
+& c\xrightarrow{l}c
+\},
+\end{aligned}
+\]
+on els subíndexs indiquen fletxes diferents entre els mateixos vèrtexs (diversos documents amb el mateix recorregut) i els bucles $a\xrightarrow{j}a$, $b\xrightarrow{i}b$ i $c\xrightarrow{l}c$ representen processament intern. La representació gràfica de $G$ és
+\[
+\xymatrix@R=7ex@C=8ex{
+	c \ar@(ul,dl)_l \ar[r]^-{k} & b \ar@/^1.5ex/[l]^-{h_2} \ar@/_2.5ex/[l]_{h_1} \ar@/_5ex/[l]_{h_3}  \ar@(dr,ur)_i \ar@/^4ex/[d]^-{g} \\
+	& a \ar@/^4ex/[u]^-{f_1} \ar@/^1ex/[u]_(.45){f_2}  \ar@(dl,dr)_{j_{1}}  \ar@(dr,ur)_{j_{2}}
+}
+\]
+Aquest graf modela el flux real de documents dins l'empresa en un dia: les direccions indiquen el sentit del flux, el nombre de fletxes entre dos departaments indica la quantitat de documents, i els bucles indiquen activitat interna.
+\end{solucio}
+
+\begin{exercici}
+Defineix el graf $G$ perquè la seva representació gràfica sigui la següent:
+\[
+\xymatrix{
+	\bullet \ar@<1ex>[r]  & \bullet \ar@<1ex>[l] \ar@(ul,ur)  & \bullet \ar[l] \ar@(ur,dr) \ar[dl] & \\
+	\bullet \ar[ur] \ar[r]  & \bullet  & \bullet
+}
+\]
+\end{exercici}
+
+\begin{exercici}
+Dibuixa el graf corresponent a les dades següents:
+\[
+    \begin{array}{c|c|c}
+        E_G & s_G & t_G \\ \hline
+        f & v & w \\
+        g & w & x \\
+        h & w & x \\
+        i & y & y \\
+        j & y & z \\
+        k & z & y
+    \end{array}
+    \hspace{2cm} V_G=\{v,w,x,y,z\}
+\]
+\end{exercici}
+
+\begin{exercici}
+En un centre logístic hi ha quatre seccions: Recepció, Magatzem, Preparació de comandes i Expedició. Els paquets es mouen entre les seccions al llarg del dia, i alguns processos es fan dins d'una mateixa secció. En una jornada s'observen els fluxos següents:
+\begin{itemize}
+\item Dos paquets passen de Recepció a Magatzem.
+\item Un paquet passa de Magatzem a Recepció.
+\item Tres paquets passen de Magatzem a Preparació de comandes.
+\item Dos paquets passen de Preparació de comandes a Expedició.
+\item Un paquet passa d'Expedició a Magatzem.
+\item Dos paquets són reprocessats dins de Magatzem.
+\item Un paquet és revisat dins de Preparació de comandes.
+\item Un paquet és verificat dins d'Expedició.
+\end{itemize}
+Modela aquesta situació mitjançant un graf. Especifica'n els elements i representa'l gràficament.
+\end{exercici}
+
+\section{Homomorfismes de grafs}
+
+L'estructura d'un graf
+\[
+G=\xymatrix{
+E_G \ar@<0.6ex>[r]^{s_G} \ar@<-0.6ex>[r]_{t_G} & V_G
+}
+\]
+consisteix en dos conjunts $V_G$ i $E_G$ i dues aplicacions $s_G$ i $t_G$. Per relacionar dos grafs, hem de poder relacionar adequadament els seus conjunts i les seves aplicacions.
+
+\begin{definicio}\index{morfisme de grafs}
+Considerem dos grafs
+\[
+G=\xymatrix{
+E_G \ar@<0.6ex>[r]^{s_G} \ar@<-0.6ex>[r]_{t_G} & V_G
+}
+\qquad\text{i}\qquad
+H=\xymatrix{
+E_H \ar@<0.6ex>[r]^{s_H} \ar@<-0.6ex>[r]_{t_H} & V_H
+}
+\]
+Un \textbf{homomorfisme} $F$ de $G$ a $H$, que escrivim $F\colon G\to H$, és un parell d'aplicacions $F_V\colon V_G\to V_H$ i $F_E\colon E_G\to E_H$ tals que els diagrames següents commuten:
+\begin{equation}\label{grafs:hom}
+\xymatrix{
+	E_G \ar[d]_-{s_G} \ar[r]^-{F_E} & E_H \ar[d]^-{s_H}\\
+	V_G \ar[r]_-{F_V} & V_H
+}
+\hspace{2cm}
+\xymatrix{
+	E_G \ar[d]_-{t_G} \ar[r]^-{F_E} & E_H \ar[d]^-{t_H}\\
+	V_G \ar[r]_-{F_V} & V_H
+}
+\end{equation}
+\end{definicio}
+
+Dit breument, un homomorfisme \emph{preserva} l'origen (diagrama de l'esquerra),
+\[
+F_V\comp s_G=s_H\comp F_E,
+\]
+i el destí (diagrama de la dreta),
+\[
+F_V\comp t_G=t_H\comp F_E.
+\]
+
+\begin{exemple}
+Considerem els dos grafs següents:
+\[
+G:\ 
+\xymatrix{
+	1 \ar[d]_{h} \ar[r]^{f} & 2 \ar[d]^{g} \ar@(ur,ul)_{k} \\
+	4 & 3
+}
+\qquad\text{i}\qquad
+H:\ 
+\xymatrix{
+	b \ar@(ur,ul)_{y} \ar@(dr,ur)_{z} \\
+	a \ar[u]_{x} \ar[r]_{v} & c
+}
+\]
+Defineix un homomorfisme $F$ entre ells.
+\end{exemple}
+\begin{solucio}
+Com que $k$ és un bucle i l'únic vèrtex de $H$ amb bucles és $b$, necessàriament $F_V(2)=b$. Com que $g$ surt de $2$, la seva imatge ha de sortir de $b$, i les úniques fletxes que surten de $b$ són els bucles $y,z$; per tant $g$ també ha d'anar a un bucle i $F_V(3)=b$. Aquesta part és forçada; la resta és una elecció. Per construir un exemple concret, triem $F_V(1)=a$ i $F_V(4)=c$, i posem $F_E(k)=F_E(g)=y$, $F_E(f)=x$ i $F_E(h)=v$. Les taules següents comproven que aquesta tria preserva origen i destí.
+
+La distinció entre una condició necessària i una elecció és important: que $F_V(2)=F_V(3)=b$ estigui forçat no vol dir que l'homomorfisme sigui únic. De fet, una enumeració finita directa de les aplicacions compatibles dona $24$ homomorfismes entre aquests dos grafs, dels quals $8$ tenen $F_V(1)=a$ i $16$ tenen $F_V(1)=b$.
+
+Comprovem que les condicions \eqref{grafs:hom} es compleixen. Les taules dels dos grafs són
+\[
+    \begin{array}{c|c|c}
+        E_G & s_G & t_G \\ \hline
+        f & 1 & 2  \\
+        g & 2 & 3 \\
+        h & 1 & 4 \\
+        k & 2 & 2 
+    \end{array}
+    \hspace{2cm}
+    \begin{array}{c|c|c}
+        E_H & s_H & t_H \\ \hline
+        v & a & c  \\
+        x & a & b \\
+        y & b & b \\
+        z & b & b 
+    \end{array}
+\]
+i les dues aplicacions de l'homomorfisme són
+\[
+F_V =
+\begin{array}{c|c}
+    V_G & V_H \\ \hline
+     1 & a \\
+     2 & b \\
+     3 & b \\
+     4 & c
+\end{array}
+\hspace{2cm}
+F_E =
+\begin{array}{c|c}
+   E_G  & E_H \\ \hline
+   f & x \\
+   g & y \\
+   h & v \\
+   k & y
+\end{array}
+\]
+Per exemple,
+\[
+(F_V\comp s_G)(f)=F_V(s_G(f))=F_V(1)=a,
+\qquad
+(s_H\comp F_E)(f)=s_H(F_E(f))=s_H(x)=a,
+\]
+de manera que $(F_V\comp s_G)(f)=(s_H\comp F_E)(f)$; deixem la resta de fletxes com a exercici. Anàlogament,
+\[
+(F_V\comp t_G)(h)=F_V(t_G(h))=F_V(4)=c,
+\qquad
+(t_H\comp F_E)(h)=t_H(F_E(h))=t_H(v)=c,
+\]
+i per tant $(F_V\comp t_G)(h)=(t_H\comp F_E)(h)$.
+\end{solucio}
+
+\begin{exercici}
+Considerem els grafs
+\[
+G:\ 
+\xymatrix{
+    1 \ar[r]^-{a} & 2 \ar[r]^-{b}& 3
+}
+\qquad
+H:\ 
+\xymatrix{
+    4 \ar@<0.6ex>[r]^{d} \ar@<-0.6ex>[r]_{c} & 5 \ar@(ur,dr)^{e}
+}
+\]
+Troba un homomorfisme $F$ de $G$ a $H$ i comprova les igualtats \eqref{grafs:hom}.
+\end{exercici}
+
+\begin{exercici}
+Considerem el graf $G$ definit per
+\[
+    \begin{array}{c|c|c}
+        E_G & s_G & t_G \\ \hline
+        a & 1 & 2 \\
+        b & 2 & 3 \\
+        c & 1 & 4 \\
+        d & 1 & 4 \\
+        e & 5 & 6 
+    \end{array}
+    \hspace{2cm} V_G=\{1,2,3,4,5,6\}
+\]
+i el graf $H$ representat per
+\[
+\xymatrix{
+	m \ar[d]_{y} \ar@<0.6ex>[r]^{w} & n \ar[l]^{x} \\
+	p  & q \ar@(dr,ur)_{z}
+}
+\]
+Es demana:
+\begin{enumerate}
+\item representar gràficament el graf $G$;
+\item trobar un homomorfisme $F$ de $G$ a $H$ i comprovar les igualtats \eqref{grafs:hom}.
+\end{enumerate}
+\end{exercici}
+
+\section{Camins en un graf}
+
+Sigui $G$ un graf. Un \emph{camí} a $G$ és qualsevol successió de fletxes tal que el destí d'una fletxa sigui l'origen de la següent. Això inclou successions de longitud~1, que són elements de $E_G$, i successions de longitud~0, que comencen i acaben al mateix vèrtex sense seguir cap fletxa.
+
+\begin{definicio}
+Sigui $n\geq 1$. En un graf
+\[
+G=\xymatrix{
+E_G \ar@<0.6ex>[r]^{s_G} \ar@<-0.6ex>[r]_{t_G} & V_G
+}
+\]
+un \textbf{camí de longitud} $n$ del vèrtex $a$ al vèrtex $b$ és una successió de fletxes $(f_1,f_2,\dots,f_n)$, escrita en \emph{ordre de recorregut} ---primer es recorre $f_1$---, tal que
+\begin{enumerate}
+\item[(i)] $s_G(f_1)=a$;
+\item[(ii)] $t_G(f_i)=s_G(f_{i+1})$ per a $i=1,\dots,n-1$;
+\item[(iii)] $t_G(f_n)=b$.
+\end{enumerate}
+El conjunt de camins de longitud $n$ s'escriu $C_n$. En particular, $C_2$ és el conjunt de parells de fletxes $(f,g)$ amb $t_G(f)=s_G(g)$, anomenats parells de \emph{fletxes componibles}.
+\end{definicio}
+
+Per conveni, per a cada vèrtex $a\in V_G$ hi ha un únic camí de longitud~0 d'$a$ a si mateix, que denotem $()_a$ i anomenem \emph{camí buit} d'$a$; és el cas $n=0$, exclòs de la definició anterior perquè aleshores no hi ha cap fletxa $f_1,\dots,f_n$. Si dibuixem un camí
+\[
+\xymatrix{
+\cdot \ar[r]^{f_{1}} & \cdot \ar[r]^-{f_{2}} & \cdots \ar[r]^{f_{n-1}} & \cdot \ar[r]^{f_{n}} & \cdot
+}
+\]
+la fletxa $f_1$ queda a l'esquerra i es recorre primer; $f_n$ queda a la dreta i es recorre última. Si $f\in E_G$, aleshores $(f)$ és un camí de longitud~1, és a dir, $(f)\in C_1$.
+
+\section{De grafs a categories}
+
+Podem passar d'un graf a una categoria afegint-hi composició i identitats. La construcció següent és fonamental: mostra que tot graf genera una categoria de manera lliure.
+
+Per a qualsevol graf $G$ hi ha una categoria $\Free(G)$ els objectes de la qual són els vèrtexs de $G$ i els morfismes de la qual són els camins de $G$. Un camí d'$a$ a $b$ és un morfisme $a\to b$. La composició s'obté concatenant camins, en \emph{ordre de recorregut}: si $p=(a_1,\dots,a_r)$ és un camí d'$A$ a $B$ i $q=(b_1,\dots,b_s)$ un camí de $B$ a $C$, la seva composició és el camí d'$A$ a $C$
+\[
+q\comp p=(a_1,\dots,a_r,b_1,\dots,b_s),
+\]
+on, d'acord amb la convenció categòrica $q\comp p$, el camí $p$ ---el que surt d'$A$--- es recorre primer. Per a cada vèrtex $A$, la identitat $\id_A$ és el camí buit $()_A$.
+
+Comprovem que $\Free(G)$ és una categoria. La composició és associativa perquè la concatenació de successions ho és: en concatenar tres camins componibles, el resultat és la successió de totes les seves fletxes en ordre, amb independència de l'ordre en què s'agrupin. El camí buit és neutre, ja que concatenar-lo no afegeix cap fletxa: $(a_1,\dots,a_r)\comp()_A=(a_1,\dots,a_r)=()_B\comp(a_1,\dots,a_r)$ per a tot camí d'$A$ a $B$. Per tant, $\Free(G)$ satisfà els axiomes de categoria. S'anomena \textbf{categoria lliure generada pel graf} $G$, o també \textbf{categoria de camins} de $G$.\index{categoria!lliure}\index{categoria!de camins}

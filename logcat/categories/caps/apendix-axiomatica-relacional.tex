@@ -1,0 +1,401 @@
+\chapter{Una axiomàtica relacional de les categories petites}
+\label{cap:axiomatica-relacional}
+
+\begin{objectius}
+\apartat{Prerequisits} La definició de categoria (capítol~\ref{cap:categories}) i nocions bàsiques de lògica de primer ordre amb igualtat.
+\apartat{Objectius} En acabar l'apèndix, el lector ha de saber: presentar una categoria petita en un llenguatge de primer ordre \emph{amb una sola mena d'individus}, on tot individu és una fletxa; reconèixer els objectes com les fletxes identitat; i entendre en quin sentit aquesta presentació relacional és equivalent a la definició usual.
+\end{objectius}
+
+La definició habitual d'una categoria (definició~\ref{def:categoria}) introdueix objectes, fletxes, identitats i composició. En aquest apèndix adoptem un punt de vista més auster: el llenguatge categòric primitiu només parla de fletxes. Allò que habitualment anomenem objectes es reconstrueix després com una propietat especial d'algunes fletxes. És, en un sentit ben literal, el programa de la introducció ---\emph{relaciona, no individualitza} (secció~\ref{sec:mirar-fora})--- dut fins a la seva conclusió sintàctica: si el que compta d'un objecte és el seu paper dins el sistema de fletxes, aleshores no cal introduir-lo com a dada primitiva.
+
+L'objectiu no és substituir la presentació usual, que és molt més còmoda per al treball matemàtic ordinari. L'objectiu és separar amb precisió tres nivells: el \emph{llenguatge formal} de la teoria; els \emph{axiomes} formulats en aquest llenguatge; i el \emph{metallenguatge}, on interpretem les fórmules i introduïm notació derivada. Aquesta separació permet veure quines nocions són primitives i quines són conseqüència dels axiomes. En particular, la funcionalitat de la composició no s'incorpora a la sintaxi: es demostrarà com un teorema.
+
+\begin{nota}
+La idea de descriure una categoria \enquote{només amb fletxes}, amb els objectes identificats amb les identitats, és clàssica: apareix ja en Mac~Lane~\cite{maclane}, es formula amb una relació ternària de composició en la teoria elemental de categories de Lawvere~\cite{lawvere-ccfm}, i s'estudia sistemàticament, amb operacions parcials, en Scott~\cite{scott-identity} i en Freyd i Scedrov~\cite{freydscedrov}. Diversos d'aquests sistemes han estat comparats i verificats formalment per Benzmüller i Scott~\cite{BS2020,BSAFP}. La contribució d'aquest apèndix no és, doncs, la idea, sinó una presentació concreta: una axiomàtica de primer ordre \emph{purament relacional} ---fins i tot el domini i el codomini són relacions--- en què la funcionalitat de la composició i el comportament dels seus extrems esdevenen \emph{teoremes}.
+\end{nota}
+
+\section{El llenguatge formal}
+\label{sec:ar-llenguatge}
+
+Treballarem en lògica clàssica de primer ordre amb igualtat i amb una sola mena d'individus. La signatura no lògica és
+\[
+\mathcal L_{\mathrm{Cat}}
+=
+\{\Dom^{2},\Cod^{2},\Com^{3}\}.
+\]
+No hi ha constants ni símbols de funció. Per tant, els termes del llenguatge són només variables individuals $f,g,h,d,c,e,\dots$, i totes recorren un mateix univers.
+
+Les fórmules atòmiques no lògiques són de les formes $\Dom(f,d)$, $\Cod(f,c)$ i $\Com(f,g,h)$. La seva lectura metalingüística serà:
+\begin{align*}
+\Dom(f,d)&:\quad \text{\enquote{el domini de $f$ és $d$}},\\
+\Cod(f,c)&:\quad \text{\enquote{el codomini de $f$ és $c$}},\\
+\Com(f,g,h)&:\quad \text{\enquote{primer $f$, després $g$, i la composta és $h$}}.
+\end{align*}
+Així, quan la notació funcional ja estigui justificada, $\Com(f,g,h)$ correspondrà metalingüísticament a $h=g\comp f$.
+
+La paraula \emph{fletxa} pertany, en aquest punt, al metallenguatge: no hi ha cap predicat primitiu $\operatorname{Fletxa}(f)$. Tots els individus del model s'interpreten com a fletxes. Una estructura per a $\mathcal L_{\mathrm{Cat}}$ és, doncs,
+\[
+\mathfrak M=(M,\Dom^{\mathfrak M},\Cod^{\mathfrak M},\Com^{\mathfrak M}),
+\]
+on $M$ és l'univers, $\Dom^{\mathfrak M},\Cod^{\mathfrak M}\subseteq M^2$ i $\Com^{\mathfrak M}\subseteq M^3$.
+
+\begin{observacio}[metateòrica]
+\label{obs:ar-metateorica}
+Amb la semàntica estàndard de primer ordre, $M$ és un conjunt \emph{no buit}; per tant, els models en sentit estricte corresponen a categories petites no buides. La categoria buida queda exclosa per la convenció habitual que l'univers d'una estructura de primer ordre no és buit; si es vol incloure-la, cal permetre explícitament estructures amb univers buit. Les categories grans, d'altra banda, exigeixen una convenció metateòrica addicional ---classes pròpies o universos de Grothendieck, en la línia de l'apèndix sobre la convenció de mida---, però això no modifica el llenguatge categòric primitiu anterior.
+\end{observacio}
+
+\section{Els axiomes}
+\label{sec:ar-axiomes}
+
+Presentem primer el sistema en cinc blocs conceptuals. A la secció~\ref{sec:ar-redundancia} veurem que, amb una formulació prou forta de l'associativitat, el tercer bloc és derivable dels altres; la base final del sistema és, doncs, \eqref{ax:A1D}--\eqref{ax:A1C}, \eqref{ax:A2}, \eqref{ax:A4E}--\eqref{ax:A4U} i \eqref{ax:A5D}--\eqref{ax:A5C}.
+
+\paragraph{Axioma 1: existència i unicitat de domini i codomini.}
+Tota fletxa té exactament un domini i exactament un codomini:
+\begin{align}
+\forall f\,\exists!d\,\Dom(f,d),
+\tag{A1D}\label{ax:A1D}\\
+\forall f\,\exists!c\,\Cod(f,c).
+\tag{A1C}\label{ax:A1C}
+\end{align}
+Com és habitual, $\exists!$ és només una abreviació de la lògica de primer ordre amb igualtat.
+
+\paragraph{Axioma 2: existència de la composició.}
+Dues fletxes es poden compondre exactament quan el codomini de la primera coincideix amb el domini de la segona:
+\begin{equation}
+\forall f\,\forall g\,
+\left[
+\exists e\bigl(\Cod(f,e)\land\Dom(g,e)\bigr)
+\leftrightarrow
+\exists h\,\Com(f,g,h)
+\right].
+\tag{A2}\label{ax:A2}
+\end{equation}
+Aquest axioma afirma existència, però no unicitat. La unicitat de la composta serà un teorema (secció~\ref{sec:ar-unicitat}).
+
+\paragraph{Axioma 3: extrems de la composta.}
+Si $h$ és una composta de $f$ amb $g$, el domini de $h$ és el de $f$ i el codomini de $h$ és el de $g$:
+\begin{equation}
+\begin{split}
+\forall f,g,h,d,c\,\bigl[
+&\Com(f,g,h)\land\Dom(f,d)\land\Cod(g,c)\\
+&\longrightarrow
+\Dom(h,d)\land\Cod(h,c)
+\bigr].
+\end{split}
+\tag{A3}\label{ax:A3}
+\end{equation}
+
+\paragraph{Axioma 4: associativitat forta.}
+Com que $\Com$ és una relació i la composició és parcial, la mera igualtat de dues composicions iterades ja existents no expressa tota la força de l'associativitat usual. Adoptarem una formulació en dues parts. Primer, si existeixen les dues composicions consecutives $g\comp f$ i $h\comp g$, existeixen també les dues composicions iterades:
+\begin{equation}
+\begin{split}
+\forall f,g,h,u,v\,\bigl[
+&\Com(f,g,u)\land\Com(g,h,v)\\
+&\longrightarrow
+\exists p\,\exists q\,
+\bigl(\Com(u,h,p)\land\Com(f,v,q)\bigr)
+\bigr].
+\end{split}
+\tag{A4E}\label{ax:A4E}
+\end{equation}
+Segon, qualssevol resultats obtinguts per les dues associacions coincideixen:
+\begin{equation}
+\begin{split}
+\forall f,g,h,u,v,p,q\,\bigl[
+&\Com(f,g,u)\land\Com(g,h,v)\land\\
+&\Com(u,h,p)\land\Com(f,v,q)
+\longrightarrow p=q
+\bigr].
+\end{split}
+\tag{A4U}\label{ax:A4U}
+\end{equation}
+Els dos enunciats, \eqref{ax:A4E} i \eqref{ax:A4U}, formen el bloc d'associativitat (A4). El primer controla l'existència de les composicions iterades; el segon n'expressa la coherència. Un cop demostrada la funcionalitat de $\Com$ (secció~\ref{sec:ar-unicitat}), aquest bloc es llegeix com la llei usual d'un semigrup parcial: si $g\comp f$ i $h\comp g$ existeixen, aleshores existeixen $h\comp(g\comp f)$ i $(h\comp g)\comp f$, i són iguals.
+
+\paragraph{Axioma 5: neutralitat.}
+El domini és neutre per la dreta i el codomini és neutre per l'esquerra:
+\begin{align}
+\forall f\,\forall d\,
+\bigl(\Dom(f,d)\rightarrow\Com(d,f,f)\bigr),
+\tag{A5D}\label{ax:A5D}\\
+\forall f\,\forall c\,
+\bigl(\Cod(f,c)\rightarrow\Com(f,c,f)\bigr).
+\tag{A5C}\label{ax:A5C}
+\end{align}
+Metalingüísticament, un cop recuperada la notació funcional, aquestes fórmules diran $f\comp d=f$ i $c\comp f=f$.
+
+\section{Estabilitat dels extrems}
+\label{sec:ar-estabilitat}
+
+El primer fet rellevant és que qualsevol fletxa que apareix com a domini o codomini és estable sota les dues relacions d'extrem.
+
+\begin{proposicio}[estabilitat dels extrems]
+\label{prop:ar-estabilitat}
+Si $\Dom(f,d)$, aleshores $\Dom(d,d)\land\Cod(d,d)$. Si $\Cod(f,c)$, aleshores $\Dom(c,c)\land\Cod(c,c)$.
+\end{proposicio}
+
+\begin{prova}
+Suposem $\Dom(f,d)$. Per \eqref{ax:A5D}, $\Com(d,f,f)$. Per la direcció de dreta a esquerra de \eqref{ax:A2}, l'existència d'aquesta composició implica que existeix $e$ tal que $\Cod(d,e)\land\Dom(f,e)$. Com que també $\Dom(f,d)$, la unicitat del domini de $f$, donada per \eqref{ax:A1D}, implica $e=d$; per tant $\Cod(d,d)$.
+
+Ara \eqref{ax:A5C}, aplicada a $d$, dona $\Com(d,d,d)$. Novament per \eqref{ax:A2}, existeix $e$ tal que $\Cod(d,e)\land\Dom(d,e)$. Ja sabem que $\Cod(d,d)$; per unicitat del codomini de $d$, $e=d$, i per tant $\Dom(d,d)$. Així, $\Dom(f,d)\longrightarrow \Dom(d,d)\land\Cod(d,d)$.
+
+El cas del codomini és dual. Si $\Cod(f,c)$, llavors \eqref{ax:A5C} dona $\Com(f,c,f)$. Per \eqref{ax:A2} existeix $e$ amb $\Cod(f,e)\land\Dom(c,e)$; la unicitat del codomini de $f$ força $e=c$, de manera que $\Dom(c,c)$. Aleshores \eqref{ax:A5D} dona $\Com(c,c,c)$, i un nou ús de \eqref{ax:A2} i de la unicitat del domini de $c$ proporciona $\Cod(c,c)$.
+\end{prova}
+
+\begin{observacio}
+La demostració només utilitza (A1), (A2) i (A5). No utilitza ni l'axioma dels extrems de la composta (A3) ni l'associativitat (A4).
+\end{observacio}
+
+\section{Unicitat de la composició}
+\label{sec:ar-unicitat}
+
+La relació $\Com$ no s'ha postulat com a funcional en el tercer argument. Aquesta funcionalitat es dedueix de la componibilitat, la neutralitat i l'associativitat.
+
+\begin{proposicio}[funcionalitat de la composició]
+\label{prop:ar-unicitat}
+Per a totes les fletxes $f,g,h,k$,
+\[
+\Com(f,g,h)\land\Com(f,g,k)\longrightarrow h=k.
+\]
+\end{proposicio}
+
+\begin{prova}
+Suposem $\Com(f,g,h)$ i $\Com(f,g,k)$. Per \eqref{ax:A2}, existeix $e$ tal que $\Cod(f,e)\land\Dom(g,e)$. Per neutralitat, $\Com(f,e,f)$ i $\Com(e,g,g)$. Apliquem ara \eqref{ax:A4U} a la terna $f,e,g$. Prenent $u=f$, $v=g$, $p=h$, $q=k$, les quatre premisses de \eqref{ax:A4U} són precisament $\Com(f,e,f)$, $\Com(e,g,g)$, $\Com(f,g,h)$ i $\Com(f,g,k)$. Per tant, $h=k$.
+\end{prova}
+
+Així, $\Com$ és el graf d'una operació binària parcial: per a cada parella $(f,g)$ hi ha com a màxim una fletxa $h$ tal que $\Com(f,g,h)$, i (A2) determina exactament quan aquesta fletxa existeix.
+
+\section{Identitats i objectes com a nocions derivades}
+\label{sec:ar-identitats}
+
+Definim, com a abreviació del llenguatge,
+\begin{equation}
+\Id(e)
+\;:\Longleftrightarrow\;
+\Dom(e,e)\land\Cod(e,e).
+\label{def:ar-Id}
+\end{equation}
+El símbol $\Id$ no s'afegeix a la signatura primitiva: és només una abreviació definicional. La proposició d'estabilitat dona immediatament $\Dom(f,d)\rightarrow\Id(d)$ i $\Cod(f,c)\rightarrow\Id(c)$: tot domini i tot codomini és una fletxa identitària.
+
+També podem introduir $\Obj(e):\Longleftrightarrow\Id(e)$. Així, un \emph{objecte} no és una segona mena d'individu: és una fletxa que té per domini i codomini ella mateixa. En particular, sota els axiomes anteriors,
+\[
+\Dom(e,e)
+\;\Longleftrightarrow\;
+\Cod(e,e)
+\;\Longleftrightarrow\;
+\Id(e),
+\]
+perquè qualsevol de les dues primeres propietats, aplicada a la proposició~\ref{prop:ar-estabilitat}, implica l'altra.
+
+\section{El tercer axioma és derivable}
+\label{sec:ar-redundancia}
+
+La forma forta de l'associativitat permet demostrar l'axioma (A3) a partir de (A1), (A2), (A4) i (A5).
+
+\begin{proposicio}[redundància de (A3)]
+\label{prop:ar-redundancia}
+Suposem (A1), (A2), (A4) i (A5). Si $\Com(f,g,h)$, $\Dom(f,d)$ i $\Cod(g,c)$, aleshores $\Dom(h,d)$ i $\Cod(h,c)$.
+\end{proposicio}
+
+\begin{prova}
+Comencem pel domini. De $\Dom(f,d)$ i \eqref{ax:A5D} obtenim $\Com(d,f,f)$. Juntament amb $\Com(f,g,h)$, l'axioma d'existència associativa \eqref{ax:A4E}, aplicat a la terna $d,f,g$, proporciona $p,q$ tals que $\Com(f,g,p)$ i $\Com(d,h,q)$. Per \eqref{ax:A4U}, aquestes dues composicions iterades tenen el mateix resultat, és a dir, $p=q$. D'altra banda, per la unicitat de la composició (proposició~\ref{prop:ar-unicitat}), $\Com(f,g,h)$ i $\Com(f,g,p)$ impliquen $p=h$. Per tant $q=h$, i tenim $\Com(d,h,h)$. Per \eqref{ax:A2}, existeix $e$ amb $\Cod(d,e)\land\Dom(h,e)$. Com que $d$ és domini de $f$, la proposició~\ref{prop:ar-estabilitat} dona $\Cod(d,d)$. La unicitat del codomini de $d$ implica $e=d$, i obtenim $\Dom(h,d)$.
+
+Per al codomini, de $\Cod(g,c)$ i \eqref{ax:A5C} obtenim $\Com(g,c,g)$. Aplicada a $f,g,c$, l'associativitat forta proporciona composicions iterades $\Com(h,c,p)$ i $\Com(f,g,q)$ amb $p=q$. La unicitat de la composició de $f$ amb $g$ dona $q=h$, i per tant $\Com(h,c,h)$. Per \eqref{ax:A2}, existeix $e$ amb $\Cod(h,e)\land\Dom(c,e)$. Com que $c$ és codomini de $g$, l'estabilitat dona $\Dom(c,c)$. Per unicitat del domini de $c$, $e=c$, i així $\Cod(h,c)$.
+\end{prova}
+
+\begin{corollari}
+\label{cor:ar-equivalencia-sistemes}
+Amb l'associativitat forta adoptada aquí, el sistema de cinc blocs $(A1),(A2),(A3),(A4),(A5)$ és equivalent al sistema reduït $(A1),(A2),(A4),(A5)$. El tercer axioma original es pot conservar en una primera presentació per la seva transparència conceptual, però no és necessari com a axioma independent.
+\end{corollari}
+
+% TODO-REVISIÓ [independència del sistema reduït]: COMPROVAT.
+%   El text NO atribueix independència als quatre blocs restants (ho nega explícitament
+%   a continuació: «No afirmem que...»), ni afirma minimalitat. La cautela ja hi és.
+%   Referències BS2020 i BSAFP verificades per internet (13-09-2026):
+%     - BS2020: Benzmüller & Scott, J. Autom. Reasoning 64(1):53-72, 2020,
+%       DOI 10.1007/s10817-018-09507-7 -> sistemes axiomàtics MÚTUAMENT EQUIVALENTS
+%       per a categories en lògica lliure, formalitzats en Isabelle/HOL. OK.
+%     - BSAFP: Archive of Formal Proofs, isa-afp.org/entries/AxiomaticCategoryTheory.html. OK.
+%   Res a corregir aquí. Deixat com a nota per si es vol reforçar amb models finits separadors.
+No afirmem que els quatre blocs restants siguin independents entre si: la redundància de (A3) no estableix la minimalitat del sistema reduït. L'anàlisi d'independència de sistemes funcionals afins ha estat estudiada i formalitzada per Benzmüller i Scott~\cite{BS2020,BSAFP}, però la transferència literal d'aquells resultats al llenguatge purament relacional adoptat aquí requeriria una comparació formal addicional; una via natural seria construir models finits que separessin cadascun dels quatre blocs.
+
+\begin{observacio}[la forma lògica de (A4) és essencial]
+Aquesta reducció depèn de la forma lògica de (A4). Si l'associativitat es formula només com la igualtat de dues composicions iterades \emph{suposant que totes dues ja existeixen}, no es controla l'existència de les composicions iterades i la demostració anterior deixa de funcionar. En una teoria de composició parcial, la forma lògica de l'associativitat és, doncs, part essencial de l'axiomàtica.
+\end{observacio}
+
+\section{Recuperació de la notació funcional}
+\label{sec:ar-notacio-funcional}
+
+L'axioma (A1) permet introduir en el metallenguatge les notacions $d(f)$ i $c(f)$ per a les úniques fletxes que satisfan, respectivament, $\Dom(f,d(f))$ i $\Cod(f,c(f))$. Aquestes expressions no són termes del llenguatge primitiu $\mathcal L_{\mathrm{Cat}}$: són notació derivada, legitimada per un teorema d'existència i unicitat; en termes lògics, passem a una extensió definicional per descripcions úniques. De la mateixa manera, si $f$ i $g$ són componibles, (A2) dona l'existència d'una $h$ tal que $\Com(f,g,h)$, i la proposició~\ref{prop:ar-unicitat} en dona la unicitat; escrivim, doncs, $g\comp f$ per designar aquesta única fletxa.
+
+Amb aquesta notació, (A2) es llegeix
+\[
+g\comp f\ \text{existeix}
+\quad\Longleftrightarrow\quad
+c(f)=d(g),
+\]
+i la proposició~\ref{prop:ar-redundancia} dona $d(g\comp f)=d(f)$ i $c(g\comp f)=c(g)$.
+
+Si $A$ i $B$ són fletxes identitàries, la notació usual $f\colon A\longrightarrow B$ abrevia metalingüísticament $\Dom(f,A)\land\Cod(f,B)$; les condicions $\Id(A)$ i $\Id(B)$ són automàtiques per estabilitat. També podem escriure, metalingüísticament, $\Hom(A,B)=\{f\in M: \Dom(f,A)\land\Cod(f,B)\}$. El símbol $\Hom$ no forma part tampoc del llenguatge primitiu.
+
+\section{Equivalència amb la definició usual}
+\label{sec:ar-equivalencia}
+
+La presentació relacional no defineix una estructura matemàtica nova: recupera la noció usual de categoria petita (definició~\ref{def:categoria}), fins a l'isomorfisme canònic que identifica cada objecte amb la seva identitat.
+
+Abans de les demostracions, val la pena desplegar un model concret i petit, per veure com les relacions $\Dom$, $\Cod$ i $\Com$ codifiquen una categoria familiar i com els objectes hi apareixen com a fletxes identitat.
+
+\begin{exemple}[Un model amb tres objectes i una cadena de morfismes]\label{ex:ar-model-3}
+Considerem la categoria $\cat{3}$ formada per una cadena de dues fletxes, $A\xrightarrow{u}B\xrightarrow{v}C$, amb la seva composta $w=v\comp u\colon A\to C$:
+\[
+\begin{tikzpicture}[baseline=(A.base)]
+  \node (A) at (0,0) {$A$};
+  \node (B) at (2.2,0) {$B$};
+  \node (C) at (4.4,0) {$C$};
+  \draw[-{Stealth[scale=1.1]}] (A) -- node[above] {$u$} (B);
+  \draw[-{Stealth[scale=1.1]}] (B) -- node[above] {$v$} (C);
+  \draw[-{Stealth[scale=1.1]}] (A) to[out=-35,in=-145] node[below] {$w=v\comp u$} (C);
+\end{tikzpicture}
+\]
+El model relacional corresponent té per univers el conjunt de \emph{totes} les fletxes, incloses les tres identitats:
+\[
+M=\{\,A,\ B,\ C,\ u,\ v,\ w\,\},
+\]
+on $A,B,C$ són alhora els objectes i les seves fletxes identitat. Les relacions unàries derivades i els extrems de cada fletxa són:
+\[
+\renewcommand{\arraystretch}{1.2}
+\begin{array}{c|c|c|c}
+f & \Dom(f,-) & \Cod(f,-) & \Id(f) \\ \hline
+A & A & A & \text{sí} \\
+B & B & B & \text{sí} \\
+C & C & C & \text{sí} \\
+u & A & B & \text{no} \\
+v & B & C & \text{no} \\
+w & A & C & \text{no}
+\end{array}
+\]
+Els objectes són exactament les fletxes $e$ amb $\Id(e)$, és a dir $A,B,C$: no calen com a dada primitiva, sinó que es reconeixen per la propietat $\Dom(e,e)\land\Cod(e,e)$. Les úniques parelles componibles $(f,g)$ ---les que compleixen $\Cod(f)=\Dom(g)$--- donen la taula de $\Com$, on recordem que $\Com(f,g,h)$ es llegeix \enquote{primer $f$, després $g$, amb composta $h=g\comp f$}:
+\[
+\renewcommand{\arraystretch}{1.2}
+\begin{array}{ll}
+\Com(A,A,A) & \text{(identitat de }A) \\
+\Com(B,B,B) & \text{(identitat de }B) \\
+\Com(C,C,C) & \text{(identitat de }C) \\
+\Com(A,u,u),\ \Com(u,B,u) & (u\comp\id_A=u=\id_B\comp u) \\
+\Com(B,v,v),\ \Com(v,C,v) & (v\comp\id_B=v=\id_C\comp v) \\
+\Com(A,w,w),\ \Com(w,C,w) & (w\comp\id_A=w=\id_C\comp w) \\
+\Com(u,v,w) & (\text{la composició no trivial }v\comp u=w)
+\end{array}
+\]
+Val la pena llegir l'última línia amb l'ordre de $\Com$ ben present: $\Com(u,v,w)$ diu que en recórrer \emph{primer} $u$ i \emph{després} $v$ s'obté $w$, és a dir $w=v\comp u$. No hi ha cap altra parella componible; en particular, $u$ i $w$ no es componen entre si perquè $\Cod(u)=B\neq A=\Dom(w)$. Es comprova directament que aquestes dades satisfan (A1), (A2), (A4) i (A5): cada fletxa té domini i codomini únics, cada parella componible té una composta única, les identitats actuen com a neutres i l'única terna encadenada ---$A\xrightarrow{u}B\xrightarrow{v}C$, amb $\id_C$ o partint de $\id_A$--- associa trivialment. Reconstruint la categoria a partir d'aquest model (com farà el teorema~\ref{th:ar-model-a-categoria}) es recupera, llevat d'isomorfisme, la categoria $\cat{3}$ de partida.
+\end{exemple}
+
+\begin{teorema}
+\label{th:ar-model-a-categoria}
+Tot model del sistema reduït $(A1),(A2),(A4),(A5)$ amb univers no buit determina una categoria petita no buida en el sentit de la definició~\ref{def:categoria}.
+\end{teorema}
+
+\begin{prova}
+Sigui $\mathfrak M$ un model. Prenem com a fletxes els elements de $M$ i com a objectes $\Obj(\mathfrak M)=\{e\in M:\Id(e)\}$. Per (A1), cada fletxa $f$ té un domini únic $d(f)$ i un codomini únic $c(f)$; per estabilitat, tots dos són objectes. Si $c(f)=d(g)$, (A2) proporciona una composta i la proposició~\ref{prop:ar-unicitat} en proporciona una de sola, que denotem $g\comp f$; la proposició~\ref{prop:ar-redundancia} assegura que $d(g\comp f)=d(f)$ i $c(g\comp f)=c(g)$. Per a un objecte $A$, la seva fletxa identitat és $A$ mateix. Les lleis (A5) donen les dues neutralitats, i (A4), juntament amb la unicitat de la composició, dona l'associativitat usual. Així obtenim una categoria petita.
+\end{prova}
+
+\begin{teorema}[recíproc]
+\label{th:ar-categoria-a-model}
+Tota categoria petita no buida determina un model del sistema relacional.
+\end{teorema}
+
+\begin{prova}
+Sigui $\cat{C}$ una categoria petita no buida. Prenem com a univers $M=\operatorname{Mor}(\cat{C})$. Si $f\colon A\to B$, definim
+\[
+\Dom(f,d)\Longleftrightarrow d=\id_A,
+\qquad
+\Cod(f,c)\Longleftrightarrow c=\id_B,
+\]
+i
+\[
+\Com(f,g,h)\Longleftrightarrow \bigl(c(f)=d(g)\ \text{i}\ h=g\comp f\bigr),
+\]
+on la notació de la dreta pertany ara al metallenguatge de la categoria usual. Les propietats ordinàries de domini, codomini, composició, associativitat i identitats verifiquen immediatament (A1)--(A5), i per tant també el sistema reduït.
+\end{prova}
+
+\begin{observacio}
+En passar d'una categoria usual $\cat{C}$ al model relacional, els individus són els morfismes de $\cat{C}$; en reconstruir després una categoria a partir del model, els seus objectes són les fletxes identitat $\id_A$, no els objectes originals $A$. La categoria reconstruïda és canònicament isomorfa a $\cat{C}$ ---la bijecció d'objectes és $A\mapsto\id_A$--- però en general no n'és literalment la mateixa estructura conjuntista. Per aquest motiu diem que les dues presentacions descriuen la mateixa estructura categòrica \emph{fins a isomorfisme canònic}, no que en siguin idèntiques. Una afirmació metateòrica més forta ---una equivalència definicional o una bi-interpretabilitat--- requeriria definir explícitament les traduccions entre les dues teories i comparar-les; no la formulem aquí.
+
+% TODO-REVISIÓ [equivalència definicional]: COMPROVAT.
+%   El text NO afirma una equivalència definicional/bi-interpretabilitat no demostrada:
+%   parla d'«isomorfisme canònic» i diu explícitament que l'afirmació més forta
+%   «no la formulem aquí». Cautela correcta. Res a corregir.
+%
+% TODO-REVISIÓ [exemple treballat, PENDENT D'AFEGIR]: falta un exemple complet d'un
+%   model del sistema relacional amb 2-3 morfismes (p. ex. la categoria "2": objectes
+%   id_A,id_B i una fletxa u:A->B; univers M={id_A,id_B,u}), mostrant les taules de
+%   Dom, Cod i Com i com es reconstrueixen objectes=identitats. Va ABANS de les proves
+%   (secció ar-equivalencia) perquè el lector interpreti les relacions abans dels teoremes.
+%   Decidir amb l'autor: quina categoria (2 o 3), i si es posa a sec.~ar-llenguatge o
+%   just abans de th:ar-model-a-categoria.
+\end{observacio}
+
+Així, la diferència entre les dues presentacions és una diferència de \emph{llenguatge primitiu}, no de contingut categòric.
+
+\section{Relacional i funcional}
+\label{sec:ar-relacional-funcional}
+
+Els predicats $\Dom$ i $\Cod$, sota (A1), són els grafs de dues funcions unàries totals. La relació $\Com$, sota (A2) i la proposició~\ref{prop:ar-unicitat}, és el graf d'una funció binària parcial. Aquesta observació explica dues maneres naturals de formalitzar les categories.
+
+\paragraph{Presentació relacional.}
+En lògica de primer ordre estàndard podem prendre com a primitives $\Dom(f,d)$, $\Cod(f,c)$ i $\Com(f,g,h)$. L'existència s'expressa mitjançant quantificadors i la funcionalitat s'axiomatitza o es demostra. És la via d'aquest apèndix.
+
+\paragraph{Presentació funcional.}
+Podem prendre $\dom$ i $\cod$ com a operadors unaris. El problema és la composició: com que no tota parella de fletxes és componible, una operació binària de composició no és total sobre $M\times M$. En lògica de primer ordre estàndard, en canvi, els símbols de funció s'interpreten com a funcions totals. Cal, doncs, ampliar el marc lògic o codificar explícitament la parcialitat.
+
+Aquest és el camí seguit, en un formalisme diferent, per Benzmüller i Scott~\cite{BS2020,BSAFP}. Treballen amb una lògica lliure embeguda en Isabelle/HOL, un predicat $E$ d'existència o definició, i tres operacions parcials $\dom$, $\cod$ i composició. En el seu \emph{AxiomsSet5}, atribuït a Scott, els axiomes principals tenen la forma
+\begin{align*}
+E(\dom x)&\to E(x),\\
+E(\cod y)&\to E(y),\\
+E(x\cdot y)&\leftrightarrow \dom x\approx\cod y,\\
+x\cdot(y\cdot z)&\simeq (x\cdot y)\cdot z,\\
+(\cod y)\cdot y&\simeq y,\\
+x\cdot(\dom x)&\simeq x,
+\end{align*}
+on $\simeq$ és la \emph{igualtat de Kleene} (dos termes són iguals si tots dos són indefinits, o bé tots dos definits i iguals) i $\approx$ és la \emph{identitat existent} (tots dos termes definits i iguals). En aquesta presentació, la funcionalitat de $\dom$, $\cod$ i de la composició queda incorporada en els símbols funcionals; la parcialitat es gestiona mitjançant la lògica lliure. Els mateixos autors formalitzen també equivalències entre diversos sistemes axiomàtics i el pas, per Skolemització, de formulacions existencials cap a formulacions funcionals.
+
+\begin{nota}
+Els símbols tipogràfics per a aquestes dues igualtats varien entre fonts; aquí fixem $\simeq$ per a la igualtat de Kleene i $\approx$ per a la identitat existent, que no coincideixen necessàriament amb la notació de l'obra citada.
+\end{nota}
+
+La correspondència conceptual amb la presentació relacional és:
+\[
+\begin{array}{c|c}
+\text{presentació relacional} & \text{presentació funcional lliure}\\
+\hline
+\text{(A1): domini i codomini} & \dom,\cod\ \text{+ condicions de definició}\\
+\text{(A2): componibilitat} & S3\\
+\text{(A3): extrems de la composta} & \text{derivable en sistemes reduïts}\\
+\text{(A4): associativitat} & S4\\
+\text{(A5): neutralitat} & S5,S6
+\end{array}
+\]
+La correspondència no és literal fórmula per fórmula, perquè els dos llenguatges distribueixen la informació de manera diferent.
+
+\begin{observacio}[Dualitat en la presentació relacional]
+La presentació relacional fa transparent el principi de dualitat de la secció~\ref{sec:dualitat}. Com que $\Com(f,g,h)$ es llegeix \enquote{primer $f$, després $g$, amb composta $h$}, dualitzar un enunciat ---invertir l'ordre de composició--- és intercanviar els dos primers arguments de $\Com$:
+\[
+\Com(f,g,h)\ \longmapsto\ \Com(g,f,h),
+\]
+alhora que s'intercanvien $\Dom$ i $\Cod$. Sota aquestes substitucions el conjunt d'axiomes (A1)--(A5) queda invariant: (A1) i (A5) intercanvien les seves meitats de domini i codomini, (A2) transforma la condició de componibilitat $\cod(f)=\dom(g)$ en $\dom(f)=\cod(g)$, i (A4) es dualitza en ella mateixa. Aquesta autodualitat és la forma relacional de la igualtat $\mathrm{CT}\op=\mathrm{CT}$ que sosté el principi de dualitat. Aquí la dualitat no depèn de tractar la composició com un símbol funcional: opera directament sobre la relació ternària, cosa que fa innecessària qualsevol suposició de totalitat.
+\end{observacio}
+
+\section{Una observació computacional}
+\label{sec:ar-computacional}
+
+La presentació relacional és especialment transparent per a l'axiomàtica, però no és necessàriament la més còmoda per a una implementació. Un programa prefereix, habitualment, operacions que retornin valors, $\dom\colon M\to M$ i $\cod\colon M\to M$, i una composició parcial. Aquesta darrera es pot representar, per exemple, com $\operatorname{comp}\colon M\times M\longrightarrow M_{\bot}$ o mitjançant un tipus opcional que distingeixi entre una composta existent i una parella no componible.
+
+No hi ha contradicció entre les dues perspectives. La teoria relacional demostra primer existència i unicitat; aquests resultats justifiquen després el pas a una interfície funcional. El millor llenguatge per axiomatitzar una estructura no ha de coincidir amb el millor llenguatge per implementar-la.
+
+\section{Connexió amb una lectura estructural}
+\label{sec:ar-estructural}
+
+La presentació anterior respon a un criteri estructural molt simple: no introduir com a primitives entitats que poden reconstruir-se a partir de les relacions fonamentals de la teoria. En la presentació usual es parla de dos tipus de dades, objectes i fletxes; en la relacional elemental només hi ha una mena d'individus, i els objectes apareixen com les fletxes que satisfan $\Dom(e,e)\land\Cod(e,e)$. L'objecte no és, doncs, una entitat afegida al costat de les fletxes, sinó una posició estructural determinada per les relacions de domini i codomini ---exactament el gir que la introducció anunciava en preferir \emph{relacionar} a \emph{individualitzar} (secció~\ref{sec:mirar-fora}).
+
+Aquesta perspectiva és compatible amb una lectura estructural de la teoria de conjunts: les realitzacions conjuntistes concretes poden quedar al metallenguatge, mentre que el llenguatge de la teoria categòrica reté només les relacions que expressen l'estructura que volem estudiar. Això no elimina la teoria de conjunts del metallenguatge ---la semàntica estàndard de primer ordre continua sent conjuntista, i el marc de mida el fixa l'apèndix corresponent--- però evita confondre una realització externa amb les nocions primitives de la teoria objecte.
+
+La lliçó metodològica és, doncs, doble. D'una banda, la formulació relacional mostra que una categoria es pot reconstruir a partir d'un univers de fletxes i de tres relacions primitives. De l'altra, un cop feta la reconstrucció, no hi ha cap inconvenient a recuperar la notació funcional i la terminologia usual, que són molt més eficients per desenvolupar la teoria ---i que són, de fet, les que la resta d'aquest llibre empra.

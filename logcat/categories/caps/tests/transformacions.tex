@@ -1,6 +1,6 @@
 \chapter[Transformacions naturals]{\texorpdfstring{Transformacions naturals\\ i equivalències}{Transformacions naturals i equivalències}}
 
-Aquest test no busca que recordis definicions, sinó que \emph{raonis} amb elles: decidir si una família concreta és natural, trobar l'error d'un argument, aplicar el teorema de caracterització a un cas i distingir nocions properes. Cada pregunta té una única resposta correcta; abans de triar, intenta justificar-la tu mateix.
+Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
 
 \begin{Form}
 \iniciTest{trn}{c,b,c,c,d,b,c,b,c,b}
@@ -73,7 +73,7 @@ Aquest test no busca que recordis definicions, sinó que \emph{raonis} amb elles
 \pregunta Un functor $F\colon\cat{C}\to\cat{D}$ és ple, fidel i essencialment exhaustiu. Un lector conclou: \enquote{Aleshores $F$ és bijectiu sobre els objectes.} És correcte?
 \begin{enumerate}
   \opcio{a}{Sí: essencialment exhaustiu vol dir exhaustiu sobre objectes, i ple i fidel vol dir injectiu sobre objectes.}
-  \opcio{b}{No: essencialment exhaustiu només demana que tot objecte de $\cat{D}$ sigui \emph{isomorf} a una imatge, i la plenitud i la fidelitat afecten els morfismes, no la injectivitat sobre objectes; $F$ pot no ser bijectiu sobre objectes (per exemple la inclusió d'un esquelet).}
+  \opcio{b}{No: essencialment exhaustiu només demana que tot objecte de $\cat{D}$ sigui \emph{isomorf} a una imatge, i el fet de ser ple i fidel afecta els morfismes, no la injectivitat sobre objectes; $F$ pot no ser bijectiu sobre objectes (per exemple el functor inclusió d'un esquelet).}
   \opcio{c}{No, perquè cap functor és mai bijectiu sobre objectes.}
   \opcio{d}{Sí, sempre que $\cat{C}$ i $\cat{D}$ siguin petites.}
 \end{enumerate}
@@ -82,8 +82,8 @@ Aquest test no busca que recordis definicions, sinó que \emph{raonis} amb elles
 \pregunta A la construcció del quasiinvers $G$ d'una equivalència, per a cada objecte $D$ es tria un objecte $G(D)$ i un isomorfisme $\varepsilon_D\colon F(G(D))\to D$, i sobre morfismes es defineix $G(v)$ com l'\emph{única} fletxa amb $F(G(v))=\varepsilon_{D'}^{-1}\comp v\comp\varepsilon_D$. Quina propietat de $F$ garanteix aquesta unicitat i existència?
 \begin{enumerate}
   \opcio{a}{L'exhaustivitat essencial.}
-  \opcio{b}{Només la fidelitat.}
-  \opcio{c}{Que $F$ sigui ple i fidel: la plenitud dona l'existència de $G(v)$ i la fidelitat, la unicitat.}
+  \opcio{b}{Només ser fidel.}
+  \opcio{c}{Que $F$ sigui ple i fidel: ser ple dona l'existència de $G(v)$ i ser fidel, la unicitat.}
   \opcio{d}{Que $\cat{D}$ sigui petita.}
 \end{enumerate}
 \feedback

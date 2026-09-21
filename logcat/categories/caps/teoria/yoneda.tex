@@ -38,7 +38,7 @@ Siguin $1$ i $1'$ dos objectes terminals. Com que $1'$ és terminal, hi ha un ú
 \end{prova}
 
 \begin{observacio}
-Aquesta demostració és el patró que retrobarem sempre: quan un objecte es defineix per una propietat universal ---\enquote{hi ha un únic morfisme tal que…}---, dos objectes qualssevol que la satisfacin són isomorfs de manera única. Per això parlem de \enquote{l'} objecte terminal, \enquote{el} producte, etc., encara que n'hi pugui haver molts: tots són canònicament el mateix. Aquesta unicitat és el que dona sentit a caracteritzar objectes per la seva propietat universal en lloc de per una construcció concreta.
+Aquesta demostració és el patró que retrobarem sempre, però convé enunciar-lo amb la precisió justa. Dues \emph{dades universals} del mateix tipus ---dos objectes terminals, dos productes $(P,p_1,p_2)$ i $(Q,q_1,q_2)$, dues representacions--- són isomorfes mitjançant un \emph{únic} isomorfisme compatible amb \emph{tota} la dada universal (les projeccions, la representació, etc.). Els objectes \emph{subjacents} són, per tant, isomorfs; però l'isomorfisme entre els objectes \emph{nus}, un cop oblidada la dada, no ha de ser únic: un producte $P$ pot admetre automorfismes no trivials que no respecten les projeccions. En el cas dels objectes terminals i inicials no hi ha dada addicional a preservar, i per això l'isomorfisme és únic sense més (proposició~\ref{prop:unicitat-terminal}). Amb aquesta cautela parlem de \enquote{l'} objecte terminal, \enquote{el} producte, etc.: la unicitat \emph{compatible amb la dada} és el que dona sentit a caracteritzar objectes per la seva propietat universal en lloc de per una construcció concreta.
 \end{observacio}
 
 \section{Categories coma}\label{sec:coma}\index{categoria!coma}
@@ -86,7 +86,7 @@ Anticipem una idea del capítol de límits. Donat un diagrama $D\colon\cat{I}\to
 
 Podem reformular aquestes idees amb el llenguatge dels functors representables. Recordem que, en una categoria localment petita, cada objecte $A$ determina el functor $\Hom(-,A)\colon\cat{C}\op\to\cat{Set}$ i el functor $\Hom(A,-)\colon\cat{C}\to\cat{Set}$.
 
-Observem primer com es llegeixen les nocions anteriors. Que $1$ sigui terminal vol dir que $\Hom(X,1)$ té exactament un element per a cada $X$; és a dir, que el functor $\Hom(-,1)$ és isomorf al functor constant amb valor un conjunt d'un sol element. Dualment, $0$ és inicial quan $\Hom(0,-)$ és el functor constant amb valor un punt.
+Observem primer com es llegeixen les nocions anteriors. Que $1$ sigui terminal vol dir que $\Hom(X,1)$ té exactament un element per a cada $X$; és a dir, que el functor $\Hom(-,1)$ és isomorf al functor constant amb valor un conjunt d'un sol element. Dualment, $0$ és inicial quan $\Hom(0,-)$ és \emph{naturalment isomorf} al functor constant amb valor un conjunt d'un sol element; no és literalment \emph{igual} si els singletons $\Hom(0,X)$ no s'han identificat per definició amb un mateix singleton.
 
 Aquesta és la forma general d'una propietat universal: un objecte satisfà una propietat universal quan un cert functor cap a $\cat{Set}$ \emph{el representa}.
 
@@ -103,13 +103,13 @@ Equivalentment, la transformació natural $\alpha\colon\Hom(-,A)\to P$ de compon
 Cal distingir dos nivells d'unicitat. L'\textbf{objecte} representant $A$ és únic llevat d'isomorfisme, però no necessàriament d'un únic isomorfisme. En canvi, la \textbf{representació} $(A,u)$ ---amb la dada de l'element universal--- és única llevat d'un \emph{únic} isomorfisme compatible amb els elements universals: si $(A,u)$ i $(B,v)$ representen $P$, hi ha un únic isomorfisme $\varphi\colon A\to B$ amb $P(\varphi)(v)=u$. Aquesta distinció, entre la unicitat de l'objecte i la de la dada universal, és essencial i la retrobarem en tractar límits, adjuncions i objectes classificadors. Que dos functors representables $\Hom(-,A)$ i $\Hom(-,B)$ siguin naturalment isomorfs equivaldrà, pel lema de Yoneda, a $A\cong B$; la resta del capítol ho fa precís.
 \end{observacio}
 
-\section{El plançó de Yoneda}
+\section{La immersió de Yoneda}
 
-Fixem una categoria \textbf{petita} $\cat{C}$ (perquè la categoria de prefeixos i els seus homconjunts quedin ben definits sense recórrer a universos; per a $\cat{C}$ només localment petita, tot el que segueix val amb la cautela habitual sobre la mida de $\cat{Set}^{\cat{C}\op}$). A cada objecte $A$ li hem associat el functor contravariant representable $\Hom(-,A)\colon\cat{C}\op\to\cat{Set}$. Aquesta assignació és, ella mateixa, functorial: dona un functor de $\cat{C}$ cap a la categoria de functors $\cat{Set}^{\cat{C}\op}$, anomenada categoria de \emph{prefeixos} sobre $\cat{C}$.
+Fixem una categoria \textbf{petita} $\cat{C}$. La restricció és essencial en el marc elemental que hem adoptat: si $\cat{C}$ fos gran, un prefeix $P\colon\cat{C}\op\to\cat{Set}$ seria una dada de classe pròpia i les transformacions naturals entre dos prefeixos podrien formar també una família de classe pròpia, que no es reuneix automàticament en un homconjunt; aleshores $\cat{Set}^{\cat{C}\op}$ no quedaria definida com a categoria del nivell de mida que hem fixat. Amb $\cat{C}$ petita, en canvi, la categoria de prefeixos i tots els seus homconjunts queden ben definits. (La versió per a $\cat{C}$ només localment petita és vàlida dins una jerarquia d'universos adient, en la línia de l'apèndix de convenció de mida.) A cada objecte $A$ li hem associat el functor contravariant representable $\Hom(-,A)\colon\cat{C}\op\to\cat{Set}$. Aquesta assignació és, ella mateixa, functorial: dona un functor de $\cat{C}$ cap a la categoria de functors $\cat{Set}^{\cat{C}\op}$, anomenada categoria de \emph{prefeixos} sobre $\cat{C}$.
 
-\begin{definicio}[Plançó de Yoneda]\index{Yoneda!plançó}\index{prefeix@prefeix}
-\label{def:planco-yoneda}
-El \textbf{plançó de Yoneda} (en anglès, \emph{Yoneda embedding}) és el functor
+\begin{definicio}[Immersió de Yoneda]\index{Yoneda!immersió}\index{prefeix@prefeix}
+\label{def:immersio-yoneda}
+La \textbf{immersió de Yoneda} (en anglès, \emph{Yoneda embedding}) és el functor
 \[
 \yon\colon\cat{C}\to\cat{Set}^{\cat{C}\op},
 \qquad
@@ -125,7 +125,7 @@ Els objectes de $\cat{Set}^{\cat{C}\op}$ s'anomenen \textbf{prefeixos} sobre $\c
 \end{definicio}
 
 \begin{observacio}
-Cal comprovar que $\yon(f)$ és realment natural i que $\yon$ preserva composició i identitats, però tot es redueix, un cop més, a l'associativitat i a les lleis de la identitat de $\cat{C}$. El contingut del plançó de Yoneda és que \emph{tota} categoria localment petita s'incrusta en una categoria de prefeixos, que és una categoria molt rica (té tots els límits i colímits, per exemple). El teorema següent en justifica el nom: $\yon$ és una incrustació plena i fidel.
+Cal comprovar que $\yon(f)$ és realment natural i que $\yon$ preserva composició i identitats, però tot es redueix, un cop més, a l'associativitat i a les lleis de la identitat de $\cat{C}$. El contingut de la immersió de Yoneda és que \emph{tota} categoria petita s'immergeix en la seva categoria de prefeixos, que és una categoria molt rica ---té tots els límits i colímits \emph{petits}, calculats puntualment a $\cat{Set}$, per exemple. El teorema següent en justifica el nom: $\yon$ és una immersió plena i fidel.
 \end{observacio}
 
 \section{El lema de Yoneda}
@@ -134,11 +134,11 @@ El resultat central relaciona les transformacions naturals que surten d'un funct
 
 \begin{teorema}[Lema de Yoneda]\index{Yoneda!lema}
 \label{teo:yoneda}
-Sigui $\cat{C}$ una categoria localment petita, $A$ un objecte de $\cat{C}$ i $P\colon\cat{C}\op\to\cat{Set}$ un prefeix. Aleshores hi ha una bijecció
+Sigui $\cat{C}$ una categoria \textbf{petita}, $A$ un objecte de $\cat{C}$ i $P\colon\cat{C}\op\to\cat{Set}$ un prefeix. Aleshores hi ha una bijecció
 \[
 \Nat\big(\Hom(-,A),\,P\big)\;\cong\;P(A),
 \]
-natural en $A$ i en $P$. Explícitament, la bijecció envia una transformació natural $\eta$ a l'element $\eta_A(\id_A)\in P(A)$.
+natural \emph{contravariantment} en $A\in\cat{C}$ i \emph{covariantment} en $P\in\cat{Set}^{\cat{C}\op}$. Explícitament, la bijecció envia una transformació natural $\eta$ a l'element $\eta_A(\id_A)\in P(A)$. Si més endavant s'introdueixen universos, es pot substituir \enquote{petita} per la condició relativa de mida que garanteixi que la categoria de prefeixos i els seus homconjunts existeixen al nivell superior escollit.
 \end{teorema}
 
 \begin{prova}
@@ -174,15 +174,27 @@ Això és exactament el quadrat de naturalitat de $\eta$ per al morfisme $\varph
 \[
 \eta_X(\varphi)=\eta_X(\varphi^*(\id_A))=P(\varphi)(\eta_A(\id_A)).
 \]
-Les dues assignacions són, doncs, inverses, i la naturalitat en $A$ i en $P$ es comprova de manera anàloga.
+Les dues assignacions són, doncs, inverses. Queda comprovar que la bijecció és \emph{natural} en les dues variables: és part de l'enunciat, no un afegit, i les dues verificacions són breus. Escrivim $\Phi_{A,P}\colon\Nat(\Hom(-,A),P)\to P(A)$ per exhibir-ne la dependència.
+
+\emph{Naturalitat en $P$} (covariant). Sigui $\sigma\colon P\Rightarrow Q$ una transformació natural de prefeixos, amb postcomposició $(\sigma\comp-)\colon\Nat(\Hom(-,A),P)\to\Nat(\Hom(-,A),Q)$. Per a $\eta\colon\Hom(-,A)\Rightarrow P$,
+\[
+\Phi_{A,Q}(\sigma\comp\eta)=(\sigma\comp\eta)_A(\id_A)=\sigma_A\big(\eta_A(\id_A)\big)=\sigma_A\big(\Phi_{A,P}(\eta)\big),
+\]
+és a dir $\Phi_{A,Q}\comp(\sigma\comp-)=\sigma_A\comp\Phi_{A,P}$.
+
+\emph{Naturalitat en $A$} (contravariant). Sigui $a\colon A'\to A$ un morfisme de $\cat{C}$. La immersió dona $\yon(a)=\Hom(-,a)\colon\Hom(-,A')\Rightarrow\Hom(-,A)$, i la precomposició indueix $(-\comp\yon(a))\colon\Nat(\Hom(-,A),P)\to\Nat(\Hom(-,A'),P)$. Per a $\eta\colon\Hom(-,A)\Rightarrow P$, com que $\yon(a)_{A'}(\id_{A'})=a\comp\id_{A'}=a$,
+\[
+\Phi_{A',P}\big(\eta\comp\yon(a)\big)=\big(\eta\comp\yon(a)\big)_{A'}(\id_{A'})=\eta_{A'}(a)=P(a)\big(\eta_A(\id_A)\big)=P(a)\big(\Phi_{A,P}(\eta)\big),
+\]
+on la penúltima igualtat és la identitat de naturalitat de $\eta$ demostrada més amunt (la que dona $\Psi(\eta_A(\id_A))=\eta$), aplicada amb $X=A'$ i $\varphi=a$; és a dir $\Phi_{A',P}\comp(-\comp\yon(a))=P(a)\comp\Phi_{A,P}$. Aquestes dues identitats completen el lema tal com s'ha enunciat.
 \end{prova}
 
 \section{Conseqüències}
 
-La primera conseqüència és que el plançó de Yoneda mereix el seu nom.
+La primera conseqüència és que la immersió de Yoneda mereix el seu nom.
 
-\begin{corollari}[El plançó de Yoneda és ple i fidel]\index{Yoneda!plançó ple i fidel}
-Per a tota parella d'objectes $A,B$ de $\cat{C}$, el plançó $\yon$ dona una bijecció
+\begin{corollari}[La immersió de Yoneda és plena i fidel]\index{Yoneda!immersió plena i fidel}
+Per a tota parella d'objectes $A,B$ de $\cat{C}$, la immersió $\yon$ dona una bijecció
 \[
 \Hom(A,B)\;\cong\;\Nat\big(\Hom(-,A),\,\Hom(-,B)\big).
 \]
@@ -215,7 +227,7 @@ Aquest darrer corol·lari és la formulació precisa de l'eslògan del primer ca
 \end{observacio}
 
 \begin{observacio}
-Hi ha una versió covariant de tot plegat, obtinguda treballant amb $\cat{C}\op$ en lloc de $\cat{C}$: dona un plançó $\cat{C}\op\to\cat{Set}^{\cat{C}}$, també ple i fidel, i el lema $\Nat(\Hom(A,-),Q)\cong Q(A)$ per a functors covariants $Q\colon\cat{C}\to\cat{Set}$. Totes dues versions s'usen contínuament; la contravariant, amb prefeixos, és la que enllaça amb la teoria de feixos i la lògica categòrica que estudiarem més endavant.
+Hi ha una versió covariant de tot plegat, obtinguda treballant amb $\cat{C}\op$ en lloc de $\cat{C}$: dona una immersió $\cat{C}\op\to\cat{Set}^{\cat{C}}$, també plena i fidel, i el lema $\Nat(\Hom(A,-),Q)\cong Q(A)$ per a functors covariants $Q\colon\cat{C}\to\cat{Set}$. Totes dues versions s'usen contínuament; la contravariant, amb prefeixos, és la que enllaça amb la teoria de feixos i la lògica categòrica que estudiarem més endavant.
 \end{observacio}
 
 \section{Cap als límits}
@@ -225,7 +237,7 @@ Amb les propietats universals i el lema de Yoneda disposem ja del vocabulari per
 Al capítol~\ref{cap:limits}, de \textbf{límits i colímits}, introduirem la noció general, que engloba productes, coproductes, equalitzadors, pullbacks i molts altres, tots com a objectes universals associats a un diagrama. El lema de Yoneda i la representabilitat en seran l'eina conceptual: un límit és, precisament, un objecte que representa el functor dels cons sobre un diagrama.
 
 \begin{resumcap}
-\apartat{Cinc idees} (1)~Una propietat universal és la representabilitat d'un functor cap a $\cat{Set}$. (2)~L'objecte representant és únic llevat d'isomorfisme; la representació sencera, llevat d'un únic isomorfisme compatible. (3)~El plançó de Yoneda encasta $\cat{C}$ dins dels prefeixos de manera plena i fidel. (4)~El lema de Yoneda identifica $\Nat(\Hom(-,A),P)$ amb $P(A)$. (5)~Objectes inicials, terminals, productes i coproductes són casos de propietat universal.
+\apartat{Cinc idees} (1)~Una propietat universal és la representabilitat d'un functor cap a $\cat{Set}$. (2)~L'objecte representant és únic llevat d'isomorfisme; la representació sencera, llevat d'un únic isomorfisme compatible. (3)~La immersió de Yoneda immergeix $\cat{C}$ dins dels prefeixos de manera plena i fidel. (4)~El lema de Yoneda identifica $\Nat(\Hom(-,A),P)$ amb $P(A)$. (5)~Objectes inicials, terminals, productes i coproductes són casos de propietat universal.
 \apartat{Errors típics} Dir \enquote{únic llevat d'isomorfisme únic} de l'objecte nu quan això només val per a la representació amb la dada universal; usar la propietat universal del producte abans d'haver-la definit; i confondre el functor representat amb l'objecte representant.
 \apartat{Lectura recomanada} \cite[cap.~2 i~4]{awodey}; \cite[cap.~4]{leinster} per al lema de Yoneda; \cite[III.2]{maclane} per a la versió clàssica.
 \end{resumcap}

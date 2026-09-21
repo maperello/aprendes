@@ -35,7 +35,7 @@ Sigui $f\colon A\to B$ a $\cat{Set}$ i $S\subseteq B$. Comprova que $f^{*}(S)=f^
 \end{exercici}
 
 \begin{solucio}
-El pullback de la inclusió $S\hookrightarrow B$ al llarg de $f$ és $\{(a,s)\in A\times S\mid f(a)=s\}$, que s'identifica amb $\{a\in A\mid f(a)\in S\}=f^{-1}(S)$, amb la projecció cap a $A$ com a inclusió. Per a les interseccions, $x\in f^{-1}(S\cap S')$ si i només si $f(x)\in S\cap S'$, és a dir, $f(x)\in S$ i $f(x)\in S'$, això és $x\in f^{-1}(S)\cap f^{-1}(S')$. La reindexació preserva, doncs, la conjunció; és una manifestació que la substitució commuta amb $\wedge$.
+El pullback de la injecció $S\hookrightarrow B$ al llarg de $f$ és $\{(a,s)\in A\times S\mid f(a)=s\}$, que s'identifica amb $\{a\in A\mid f(a)\in S\}=f^{-1}(S)$, amb la projecció cap a $A$ com a injecció. Per a les interseccions, $x\in f^{-1}(S\cap S')$ si i només si $f(x)\in S\cap S'$, és a dir, $f(x)\in S$ i $f(x)\in S'$, això és $x\in f^{-1}(S)\cap f^{-1}(S')$. La reindexació preserva, doncs, la conjunció; és una manifestació que la substitució commuta amb $\wedge$.
 \end{solucio}
 
 \begin{exercici}
@@ -61,7 +61,7 @@ Verifica amb detall que el pullback de dos subobjectes $m\colon S\rightarrowtail
 \end{exercici}
 
 \begin{solucio}
-Sigui $P=S\times_A T$ el pullback, amb projeccions $p\colon P\to S$ i $q\colon P\to T$ i inclusió $m\comp p=n\comp q\colon P\rightarrowtail A$ (mono per ser composició de monos). \emph{Fita inferior}: $[P]\leq[m]$ via $p$, ja que $m\comp p$ és la inclusió i factoritza per $m$; anàlogament $[P]\leq[n]$ via $q$. \emph{Màxima fita inferior}: sigui $k\colon R\rightarrowtail A$ amb $[k]\leq[m]$ i $[k]\leq[n]$, amb factoritzacions $a\colon R\to S$ ($m\comp a=k$) i $b\colon R\to T$ ($n\comp b=k$). Aleshores $m\comp a=k=n\comp b$, de manera que la parella $(a,b)$ és compatible amb el pullback i indueix un únic $u\colon R\to P$ amb $p\comp u=a$ i $q\comp u=b$. Aquest $u$ factoritza $k$ a través de la inclusió de $P$: $(m\comp p)\comp u=m\comp a=k$. Per tant $[k]\leq[P]$, i $[P]$ és l'ínfim $[m]\wedge[n]$.
+Sigui $P=S\times_A T$ el pullback, amb projeccions $p\colon P\to S$ i $q\colon P\to T$ i injecció $m\comp p=n\comp q\colon P\rightarrowtail A$ (mono per ser composició de monos). \emph{Fita inferior}: $[P]\leq[m]$ via $p$, ja que $m\comp p$ és la injecció i factoritza per $m$; anàlogament $[P]\leq[n]$ via $q$. \emph{Màxima fita inferior}: sigui $k\colon R\rightarrowtail A$ amb $[k]\leq[m]$ i $[k]\leq[n]$, amb factoritzacions $a\colon R\to S$ ($m\comp a=k$) i $b\colon R\to T$ ($n\comp b=k$). Aleshores $m\comp a=k=n\comp b$, de manera que la parella $(a,b)$ és compatible amb el pullback i indueix un únic $u\colon R\to P$ amb $p\comp u=a$ i $q\comp u=b$. Aquest $u$ factoritza $k$ a través de la injecció de $P$: $(m\comp p)\comp u=m\comp a=k$. Per tant $[k]\leq[P]$, i $[P]$ és l'ínfim $[m]\wedge[n]$.
 \end{solucio}
 
 \section{Imatges i factoritzacions}
@@ -71,7 +71,7 @@ Comprova que a $\cat{Set}$ tota aplicació $f\colon A\to B$ té factorització i
 \end{exercici}
 
 \begin{solucio}
-Prenem $I=f(A)\subseteq B$. L'aplicació $e\colon A\to I$, $e(a)=f(a)$, és exhaustiva, i tota aplicació exhaustiva a $\cat{Set}$ és un epimorfisme regular: és el coequalitzador de la seva parella nucli $\{(a,a')\mid f(a)=f(a')\}$. La inclusió $m\colon I\hookrightarrow B$ és injectiva, per tant un monomorfisme. Aleshores $f=m\comp e$ és la factorització imatge, i $\Imatge(f)=[m]$ és el subconjunt $f(A)$. Recuperem la noció usual d'imatge d'una aplicació.
+Prenem $I=f(A)\subseteq B$. L'aplicació $e\colon A\to I$, $e(a)=f(a)$, és exhaustiva, i tota aplicació exhaustiva a $\cat{Set}$ és un epimorfisme regular: és el coequalitzador de la seva parella nucli $\{(a,a')\mid f(a)=f(a')\}$. La injecció $m\colon I\hookrightarrow B$ és injectiva, per tant un monomorfisme. Aleshores $f=m\comp e$ és la factorització imatge, i $\Imatge(f)=[m]$ és el subconjunt $f(A)$. Recuperem la noció usual d'imatge d'una aplicació.
 \end{solucio}
 
 \begin{exercici}

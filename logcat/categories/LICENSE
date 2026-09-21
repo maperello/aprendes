@@ -1,0 +1,49 @@
+Una introducció a la teoria de categories
+Copyright (c) 2026 Miquel Àngel Perelló
+
+Aquesta obra està subjecta a la llicència
+Creative Commons Reconeixement-CompartirIgual 4.0 Internacional
+(CC BY-SA 4.0).
+
+Text legal complet (versió autoritzada):
+    https://creativecommons.org/licenses/by-sa/4.0/legalcode.ca
+Resum en llenguatge planer:
+    https://creativecommons.org/licenses/by-sa/4.0/deed.ca
+
+--------------------------------------------------------------------
+Resum (no substitueix el text legal)
+--------------------------------------------------------------------
+
+Sou lliure de:
+
+  * Compartir — copiar i redistribuir el material en qualsevol mitjà
+    i format.
+  * Adaptar — remesclar, transformar i crear a partir del material,
+    per a qualsevol finalitat, fins i tot comercial.
+
+Amb les condicions següents:
+
+  * Reconeixement (BY) — Heu de reconèixer-ne l'autoria de manera
+    apropiada, proporcionar un enllaç a la llicència i indicar si
+    s'han fet canvis. Podeu fer-ho de qualsevol manera raonable, però
+    no d'una manera que suggereixi que teniu el suport de l'autor o
+    que el rebeu per l'ús que en feu.
+
+  * CompartirIgual (SA) — Si remescleu, transformeu o creeu a partir
+    del material, heu de difondre les vostres contribucions sota la
+    mateixa llicència que l'original.
+
+  * Sense restriccions addicionals — No podeu aplicar termes legals ni
+    mesures tecnològiques que restringeixin legalment a altres de fer
+    qualsevol cosa que la llicència permeti.
+
+--------------------------------------------------------------------
+
+Aquest resum destaca només algunes de les característiques clau de la
+llicència. No és una llicència i no té valor legal; llegiu-ne amb
+atenció el text legal complet abans de fer servir el material.
+
+Nota sobre el programari: els fitxers d'infraestructura de compilació
+(Makefile, latexmkrc i els paquets d'estil de common/) es poden fer
+servir també sota els termes de la llicència MIT si es prefereix una
+llicència de programari; contacteu amb l'autor per a aquest ús.

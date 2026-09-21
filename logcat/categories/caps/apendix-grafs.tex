@@ -238,13 +238,13 @@ E_H \ar@<0.6ex>[r]^{s_H} \ar@<-0.6ex>[r]_{t_H} & V_H
 Un \textbf{homomorfisme} $F$ de $G$ a $H$, que escrivim $F\colon G\to H$, és un parell d'aplicacions $F_V\colon V_G\to V_H$ i $F_E\colon E_G\to E_H$ tals que els diagrames següents commuten:
 \begin{equation}\label{grafs:hom}
 \xymatrix{
-	E_G \ar[d]_-{s_G} \ar[r]^-{F_E} & E_H \ar[d]^-{s_H}\\
-	V_G \ar[r]_-{F_V} & V_H
+	E_G \ar[d]_-{F_E} \ar[r]^-{s_G} & V_G \ar[d]^-{F_V}\\
+	E_H \ar[r]_-{s_H} & V_H
 }
 \hspace{2cm}
 \xymatrix{
-	E_G \ar[d]_-{t_G} \ar[r]^-{F_E} & E_H \ar[d]^-{t_H}\\
-	V_G \ar[r]_-{F_V} & V_H
+	E_G \ar[d]_-{F_E} \ar[r]^-{t_G} & V_G \ar[d]^-{F_V}\\
+	E_H \ar[r]_-{t_H} & V_H
 }
 \end{equation}
 \end{definicio}

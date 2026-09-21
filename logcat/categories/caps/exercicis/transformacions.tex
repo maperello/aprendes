@@ -26,7 +26,7 @@ Siguin $\eta\colon F\Rightarrow G$ (amb $F,G\colon\cat{C}\to\cat{D}$) i $\theta\
 \end{enumerate}
 \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Per a (1), els tipus: $K(\eta_A)\colon K(F(A))\to K(G(A))$ i $\theta_{G(A)}\colon K(G(A))\to L(G(A))$, de manera que la primera composició va de $K(F(A))$ a $L(G(A))$; anàlogament $\theta_{F(A)}\colon K(F(A))\to L(F(A))$ i $L(\eta_A)\colon L(F(A))\to L(G(A))$ donen el mateix tipus. La igualtat de les dues expressions és exactament el quadrat de naturalitat de $\theta$ aplicat al morfisme $\eta_A\colon F(A)\to G(A)$: $\theta_{G(A)}\comp K(\eta_A)=L(\eta_A)\comp\theta_{F(A)}$. Per a (2), fes servir que $\theta\ast\eta$ és la composició vertical de dos whiskerings, $\theta\ast\eta=(\theta G)\comp(K\eta)=(L\eta)\comp(\theta F)$, i que tant els whiskerings com la composició vertical ja se sap que són naturals (exercicis anteriors); alternativament, comprova el quadrat directament encadenant la naturalitat de $\eta$ (via $K$ o $L$) i la de $\theta$.
+Per a (1), els tipus: $K(\eta_A)\colon K(F(A))\to K(G(A))$ i $\theta_{G(A)}\colon K(G(A))\to L(G(A))$, de manera que la primera composició va de $K(F(A))$ a $L(G(A))$; anàlogament $\theta_{F(A)}\colon K(F(A))\to L(F(A))$ i $L(\eta_A)\colon L(F(A))\to L(G(A))$ donen el mateix tipus. La igualtat de les dues expressions és exactament el quadrat de naturalitat de $\theta$ aplicat al morfisme $\eta_A\colon F(A)\to G(A)$: $\theta_{G(A)}\comp K(\eta_A)=L(\eta_A)\comp\theta_{F(A)}$. Per a (2), fes servir que $\theta\ast\eta$ és la composició vertical de les dues composicions amb un functor, $\theta\ast\eta=(\theta G)\comp(K\eta)=(L\eta)\comp(\theta F)$, i que tant aquestes composicions amb un functor com la composició vertical ja se sap que són naturals (exercicis anteriors); alternativament, comprova el quadrat directament encadenant la naturalitat de $\eta$ (via $K$ o $L$) i la de $\theta$.
 \end{indicacio}
 \end{exercici}
 
@@ -101,7 +101,7 @@ Una transformació natural està determinada pels seus components, un per a cada
 \end{exercici}
 
 \begin{exercici}
-Descriu la categoria de functors $\cat{Set}^{\cat{2}}$ i comprova que els seus isomorfismes són els quadrats commutatius amb les dues fletxes horitzontals bijectives. \hfill{\normalfont$\star\star$}
+Descriu la categoria de functors $\cat{Set}^{\cat{2}}$ i comprova que els seus isomorfismes són els quadrats commutatius amb les dues fletxes verticals bijectives. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
 Un objecte és una aplicació $f\colon A\to B$; un morfisme $(u,v)$ és un quadrat commutatiu. Un isomorfisme a la categoria de fletxes és un quadrat amb $u$ i $v$ bijectives, ja que la inversa s'obté invertint-les.
 \end{indicacio}
@@ -119,15 +119,15 @@ Per a la reflexivitat, pren el functor identitat. Per a la simetria, intercanvia
 \begin{exercici}
 Sigui $\cat{C}$ una categoria en què tot objecte és isomorf a un objecte fix $D_0$ (és a dir, hi ha un sol objecte llevat d'isomorfisme; \emph{no} se suposa que tots els morfismes siguin isomorfismes). Comprova que $\cat{C}$ és equivalent al monoide $\mathrm{End}(D_0)=\Hom(D_0,D_0)$ vist com a categoria d'un sol objecte. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Considera la subcategoria plena amb l'únic objecte $D_0$: existeix sempre, i és una categoria d'un sol objecte, és a dir, el monoide $\mathrm{End}(D_0)=\Hom(D_0,D_0)$ (amb la composició de $\cat{C}$). La seva inclusió és plena i fidel per ser una subcategoria plena, i essencialment exhaustiva per la hipòtesi que tot objecte és isomorf a $D_0$; per tant és una equivalència. Observa que no cal cap suposició sobre la invertibilitat dels morfismes: $\mathrm{End}(D_0)$ és un monoide qualsevol (els seus elements invertibles són els automorfismes de $D_0$, però n'hi pot haver de no invertibles), i l'argument només fa servir que els \emph{objectes} són isomorfs entre si.
+Considera la subcategoria plena amb l'únic objecte $D_0$: existeix sempre, i és una categoria d'un sol objecte, és a dir, el monoide $\mathrm{End}(D_0)=\Hom(D_0,D_0)$ (amb la composició de $\cat{C}$). El seu functor inclusió és ple i fidel per ser una subcategoria plena, i essencialment exhaustiu per la hipòtesi que tot objecte és isomorf a $D_0$; per tant és una equivalència. Observa que no cal cap suposició sobre la invertibilitat dels morfismes: $\mathrm{End}(D_0)$ és un monoide qualsevol (els seus elements invertibles són els automorfismes de $D_0$, però n'hi pot haver de no invertibles), i l'argument només fa servir que els \emph{objectes} són isomorfs entre si.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
 Dona un exemple de dues categories que siguin \emph{equivalents} però no \emph{isomorfes}, i explica per què no són isomorfes. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Un primer exemple: pren $\cat{FinSet}$ i la seva subcategoria plena dels $\underline{n}$. Són equivalents (la inclusió és plena, fidel i essencialment exhaustiva), però no isomorfes, perquè un isomorfisme de categories induiria una bijecció entre les col·leccions d'objectes, i aquestes tenen mides incompatibles: $\cat{FinSet}$ té una \emph{classe pròpia} d'objectes (tots els conjunts finits), mentre que els representants $\underline{n}$ formen un conjunt \emph{numerable}; no hi ha cap bijecció entre una classe pròpia i un conjunt.
+Un primer exemple: pren $\cat{FinSet}$ i la seva subcategoria plena dels $\underline{n}$. Són equivalents (el functor inclusió és ple, fidel i essencialment exhaustiu), però no isomorfes, perquè un isomorfisme de categories induiria una bijecció entre les col·leccions d'objectes, i aquestes tenen mides incompatibles: $\cat{FinSet}$ té una \emph{classe pròpia} d'objectes (tots els conjunts finits), mentre que els representants $\underline{n}$ formen un conjunt \emph{numerable}; no hi ha cap bijecció entre una classe pròpia i un conjunt.
 
-Un exemple complementari que \emph{evita} les qüestions de mida: pren la categoria terminal $\cat{1}$ (un objecte, una fletxa) i la categoria $\cat{I}$ amb dos objectes i exactament un morfisme entre cada parella ordenada d'objectes (de manera que els dos objectes són isomorfs). Són equivalents ---la inclusió $\cat{1}\to\cat{I}$ és plena, fidel i essencialment exhaustiva---, però no isomorfes, simplement perquè $\cat{1}$ té un objecte i $\cat{I}$ en té dos: cap bijecció d'objectes és possible. Aquí totes dues categories són petites, de manera que la distinció \enquote{equivalent però no isomorf} no depèn de cap subtilesa de mida.
+Un exemple complementari que \emph{evita} les qüestions de mida: pren la categoria terminal $\cat{1}$ (un objecte, una fletxa) i la categoria $\cat{I}$ amb dos objectes i exactament un morfisme entre cada parella ordenada d'objectes (de manera que els dos objectes són isomorfs). Són equivalents ---el functor inclusió $\cat{1}\to\cat{I}$ és ple, fidel i essencialment exhaustiu---, però no isomorfes, simplement perquè $\cat{1}$ té un objecte i $\cat{I}$ en té dos: cap bijecció d'objectes és possible. Aquí totes dues categories són petites, de manera que la distinció \enquote{equivalent però no isomorf} no depèn de cap subtilesa de mida.
 \end{indicacio}
 \end{exercici}

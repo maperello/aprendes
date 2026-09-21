@@ -1,3 +1,7 @@
+# ============================================================
+# .gitignore — projecte LaTeX (aprendes / logcat / categories)
+# ============================================================
+
 # Fitxers auxiliars de LaTeX
 *.aux
 *.bcf
@@ -9,9 +13,24 @@
 *.log
 *.out
 *.run.xml
+*.synctex
 *.synctex.gz
 *.toc
 *.lof
 *.lot
 *.fls
 *.fdb_latexmk
+*.xdv
+*.auxlock
+
+# Compilacions temporals amb el jobname per defecte
+texput.*
+
+# Sistema operatiu / editors
+.DS_Store
+Thumbs.db
+*~
+*.swp
+
+# NOTA: main.pdf NO s'ignora expressament: és l'artefacte que es publica
+# (el web serveix logcat/categories/main.pdf des del repositori).

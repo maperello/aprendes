@@ -33,13 +33,13 @@ G(u)\comp\eta_0=\eta_1\comp F(u).
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=3.2em] {
-    F(0) & G(0) \\
-    F(1) & G(1) \\
+    F(0) & F(1) \\
+    G(0) & G(1) \\
   };
-  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$\eta_0$} (m-1-2);
-  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$F(u)$} (m-2-1);
-  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$G(u)$} (m-2-2);
-  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$\eta_1$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$F(u)$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$\eta_0$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\eta_1$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$G(u)$} (m-2-2);
 \end{tikzpicture}
 \]
 Aquest exemple explica per què els quadrats commutatius apareixen tan sovint: són les transformacions naturals més simples possibles.
@@ -48,11 +48,11 @@ Aquest exemple explica per què els quadrats commutatius apareixen tan sovint: s
 \section{Exemples de transformacions naturals}
 
 \begin{exercici}
-Comprova en detall que l'avaluació $\eta_V\colon V\to V^{**}$, $\eta_V(v)(\varphi)=\varphi(v)$, és una transformació natural de la identitat cap al functor doble dual, sobre la categoria dels espais vectorials sobre un cos $\mathbb K$ i les aplicacions lineals.
+Comprova en detall que l'avaluació $\eta_V\colon V\to V^{**}$, $\eta_V(v)(\varphi)=\varphi(v)$, és una transformació natural de la identitat cap al functor bidual (o doble dual), sobre la categoria dels espais vectorials sobre un cos $\mathbb K$ i les aplicacions lineals.
 \end{exercici}
 
 \begin{solucio}
-Recordem primer com actua el doble dual sobre morfismes. Donada una aplicació lineal $T\colon V\to W$, el seu dual $T^*\colon W^*\to V^*$ envia $\psi\mapsto\psi\comp T$, i el doble dual $T^{**}\colon V^{**}\to W^{**}$ envia $\Phi\mapsto\Phi\comp T^*$.
+Recordem primer com actua el bidual sobre morfismes. Donada una aplicació lineal $T\colon V\to W$, el seu dual $T^*\colon W^*\to V^*$ envia $\psi\mapsto\psi\comp T$, i el bidual $T^{**}\colon V^{**}\to W^{**}$ envia $\Phi\mapsto\Phi\comp T^*$.
 
 La condició de naturalitat per a $T\colon V\to W$ és el quadrat
 \[
@@ -107,7 +107,7 @@ Que no existeixi una tal família es pot veure amb l'escalament. Sigui $V\neq 0$
 El punt clau de l'argument és triar un escalar $\lambda$ amb $\lambda\neq\lambda^{-1}$, és a dir $\lambda^2\neq 1$: de la igualtat $\lambda\,\eta_V=\lambda^{-1}\eta_V$ només se'n dedueix $\eta_V=0$ quan $\lambda-\lambda^{-1}\neq 0$. No n'hi ha prou, doncs, amb $\lambda\neq 0,1$: sobre $\mathbb R$ l'escalar $\lambda=-1$ compliria $\lambda\neq 0,1$ però $\lambda^2=1$, i no serviria. Per això prenem $\lambda=2$, amb $\lambda^2=4\neq 1$. Sobre cossos petits pot no existir cap escalar amb $\lambda^2\neq 1$ (per exemple a $\mathbb F_2$ i $\mathbb F_3$ tots els no nuls compleixen $\lambda^2=1$), i l'argument de l'escalament s'ha d'ajustar; per això aquí ens restringim a $\mathbb R$.
 \end{observacio}
 
-Aquest contrast amb el doble dual ---que, restringit als espais de dimensió finita, sí que és naturalment isomorf a la identitat--- és l'exemple canònic de la diferència entre \enquote{isomorf} i \enquote{naturalment isomorf}.
+Aquest contrast amb el bidual ---que, restringit als espais de dimensió finita, sí que és naturalment isomorf a la identitat--- és l'exemple canònic de la diferència entre \enquote{isomorf} i \enquote{naturalment isomorf}.
 \end{solucio}
 
 \begin{exercici}
@@ -171,10 +171,10 @@ Comprova que la categoria dels conjunts finits és equivalent a la seva subcateg
 \end{exercici}
 
 \begin{solucio}
-Sigui $\cat{FinSet}$ la categoria dels conjunts finits i aplicacions, i $\cat{S}$ la subcategoria plena amb objectes els $\underline{n}$. La inclusió $\iota\colon\cat{S}\hookrightarrow\cat{FinSet}$ és:
+Sigui $\cat{FinSet}$ la categoria dels conjunts finits i aplicacions, i $\cat{S}$ la subcategoria plena amb objectes els $\underline{n}$. El functor inclusió $\iota\colon\cat{S}\hookrightarrow\cat{FinSet}$ és:
 \begin{itemize}
-\item \textbf{plena i fidel}, per ser $\cat{S}$ una subcategoria plena: entre dos objectes $\underline{m},\underline{n}$, els morfismes a $\cat{S}$ són \emph{tots} els de $\cat{FinSet}$, és a dir, totes les aplicacions $\underline{m}\to\underline{n}$;
-\item \textbf{essencialment exhaustiva}: tot conjunt finit $X$ té alguna cardinalitat $n$, i llavors és isomorf (mitjançant una bijecció) a $\underline{n}$, que és un objecte de $\cat{S}$.
+\item \textbf{ple i fidel}, per ser $\cat{S}$ una subcategoria plena: entre dos objectes $\underline{m},\underline{n}$, els morfismes a $\cat{S}$ són \emph{tots} els de $\cat{FinSet}$, és a dir, totes les aplicacions $\underline{m}\to\underline{n}$;
+\item \textbf{essencialment exhaustiu}: tot conjunt finit $X$ té alguna cardinalitat $n$, i llavors és isomorf (mitjançant una bijecció) a $\underline{n}$, que és un objecte de $\cat{S}$.
 \end{itemize}
 Pel teorema de caracterització, $\iota$ forma part d'una equivalència, i per tant $\cat{FinSet}\simeq\cat{S}$. Intuïtivament: per fer teoria de categories amb conjunts finits, n'hi ha prou de considerar un conjunt de cada mida, en lloc de tots els conjunts finits possibles.
 \end{solucio}
@@ -216,7 +216,7 @@ D\xrightarrow{\ \varepsilon_D^{-1}\ }F(G(D))\xrightarrow{\ F(!)\ }F(1)
 \]
 és un morfisme $D\to F(1)$, cosa que en garanteix l'existència.
 
-\emph{Unicitat}: siguin $h,h'\colon D\to F(1)$ dos morfismes. Aplicant $G$, obtenim $G(h),G(h')\colon G(D)\to G(F(1))$. Component amb l'isomorfisme $\eta_1\colon G(F(1))\to 1$, els morfismes $\eta_1\comp G(h)$ i $\eta_1\comp G(h')$ van de $G(D)$ a $1$ i, per tant, coincideixen per la unicitat cap a l'objecte terminal $1$. Com que $\eta_1$ és invertible, resulta $G(h)=G(h')$, i la fidelitat de $G$ dona $h=h'$. Per tant $F(1)$ és terminal.
+\emph{Unicitat}: siguin $h,h'\colon D\to F(1)$ dos morfismes. Aplicant $G$, obtenim $G(h),G(h')\colon G(D)\to G(F(1))$. Component amb l'isomorfisme $\eta_1\colon G(F(1))\to 1$, els morfismes $\eta_1\comp G(h)$ i $\eta_1\comp G(h')$ van de $G(D)$ a $1$ i, per tant, coincideixen per la unicitat cap a l'objecte terminal $1$. Com que $\eta_1$ és invertible, resulta $G(h)=G(h')$, i com que $G$ és fidel, $h=h'$. Per tant $F(1)$ és terminal.
 
 \textbf{Per què no tota propietat}: una equivalència \emph{no} preserva propietats que depenguin de la \emph{igualtat} d'objectes, sinó només les invariants \emph{llevat d'isomorfisme}. Per exemple, \enquote{tenir exactament un objecte} o \enquote{ser esquelètica} no es conserven: la categoria amb un sol objecte i la seva versió amb dos objectes isomorfs són equivalents, però la primera té un objecte i la segona en té dos. La formulació correcta és, doncs, que una equivalència preserva les propietats i construccions \textbf{universals} ---isomorfismes, monos, epis, objectes inicials i terminals, i més endavant límits i colímits---, formulades llevat d'isomorfisme, però no les propietats estrictes sobre la identitat dels objectes.
 \end{solucio}
@@ -252,7 +252,7 @@ g\comp\varepsilon_D=\varepsilon_{D'}\comp F(G(g))
 \]
 commuta. Però això és exactament $(\ast)$ reescrit: multiplicant $(\ast)$ per $\varepsilon_{D'}$ per l'esquerra s'obté la igualtat. Com que cada $\varepsilon_D$ és un isomorfisme, $\varepsilon\colon F\comp G\Rightarrow\id_{\cat{D}}$ és un isomorfisme natural.
 
-\emph{Construcció de $\eta$}: per a cada objecte $A$ de $\cat{C}$, tenim l'isomorfisme $\varepsilon_{F(A)}\colon F(G(F(A)))\to F(A)$. Com que $F$ és ple i fidel, aquest isomorfisme prové d'un únic morfisme $\eta_A\colon A\to G(F(A))$ amb $F(\eta_A)=\varepsilon_{F(A)}^{-1}$, i com que $F$ reflecteix isomorfismes (per ser ple i fidel), $\eta_A$ és un isomorfisme. La naturalitat de $\eta$ es comprova aplicant $F$: per a $f\colon A\to B$, tant $F(\eta_B\comp f)$ com $F(G(F(f))\comp\eta_A)$ es calculen amb $(\ast)$ i la naturalitat de $\varepsilon$ sobre el morfisme $F(f)$, i coincideixen; la fidelitat de $F$ dona $\eta_B\comp f=G(F(f))\comp\eta_A$. Així $\eta\colon\id_{\cat{C}}\Rightarrow G\comp F$ és un isomorfisme natural, i $(F,G,\eta,\varepsilon)$ és una equivalència.
+\emph{Construcció de $\eta$}: per a cada objecte $A$ de $\cat{C}$, tenim l'isomorfisme $\varepsilon_{F(A)}\colon F(G(F(A)))\to F(A)$. Com que $F$ és ple i fidel, aquest isomorfisme prové d'un únic morfisme $\eta_A\colon A\to G(F(A))$ amb $F(\eta_A)=\varepsilon_{F(A)}^{-1}$, i com que $F$ reflecteix isomorfismes (per ser ple i fidel), $\eta_A$ és un isomorfisme. La naturalitat de $\eta$ es comprova aplicant $F$: per a $f\colon A\to B$, tant $F(\eta_B\comp f)$ com $F(G(F(f))\comp\eta_A)$ es calculen amb $(\ast)$ i la naturalitat de $\varepsilon$ sobre el morfisme $F(f)$, i coincideixen; com que $F$ és fidel, $\eta_B\comp f=G(F(f))\comp\eta_A$. Així $\eta\colon\id_{\cat{C}}\Rightarrow G\comp F$ és un isomorfisme natural, i $(F,G,\eta,\varepsilon)$ és una equivalència.
 
 \textbf{(e)} Suposem ara que $F$ forma part d'una equivalència: hi ha $G\colon\cat{D}\to\cat{C}$ i isomorfismes naturals $\alpha\colon G\comp F\Rightarrow\id_{\cat{C}}$ i $\beta\colon F\comp G\Rightarrow\id_{\cat{D}}$.
 

@@ -39,7 +39,7 @@ Aquesta és la idea que orientarà tot el que segueix: estudiar un objecte no pe
 \index{categoria}Una \textbf{categoria} $\cat{C}$ consta de les dades següents:
 \begin{enumerate}
 \item una col·lecció d'\textbf{objectes}\index{objecte} $A,B,C,\dots$, que denotem $\Ob(\cat{C})$;
-\item una col·lecció de \textbf{morfismes}\index{morfisme} $f,g,h,\dots$; cada morfisme $f$ té associats un únic \textbf{domini}\index{domini} $A$ i un únic \textbf{codomini}\index{codomini} $B$, i ho escrivim com $A=\dom(f)$ i $B=\cod(f)$; en aquest cas també escrivim $f\colon A\to B$ o com a fletxa $A\xrightarrow{f}B$;
+\item una col·lecció de \textbf{morfismes}\index{morfisme} $f,g,h,\dots$, que denotem $\Mor(\cat{C})$; cada morfisme $f$ té associats un únic \textbf{domini}\index{domini} $A$ i un únic \textbf{codomini}\index{codomini} $B$, i ho escrivim com $A=\dom(f)$ i $B=\cod(f)$; en aquest cas també escrivim $f\colon A\to B$ o com a fletxa $A\xrightarrow{f}B$;
 \item per a cada objecte $A$, un morfisme \textbf{identitat}\index{identitat} $\id_A\colon A\to A$;
 \item per a cada parella de morfismes componibles $f\colon A\to B$ i $g\colon B\to C$, la \textbf{composició}\index{composicio@composició} $g\comp f\colon A\to C$.
 \end{enumerate}
@@ -50,17 +50,17 @@ Aquestes dades han de satisfer els dos axiomes següents, sempre que les composi
 \end{enumerate}
 \end{definicio}
 
-Parlem aquí de \emph{col·leccions} i no de \emph{conjunts}, deliberadament: en alguns exemples els objectes són massa nombrosos per formar un conjunt. Precisarem aquesta qüestió a la secció~\ref{sec:mida}. Quan la col·lecció de morfismes de $A$ a $B$ és un conjunt, se sol denotar
+Parlem aquí de \emph{col·leccions} i no de \emph{conjunts}, deliberadament: en alguns exemples els objectes, o els morfismes, són massa nombrosos per formar un conjunt. Així, tant $\Ob(\cat{C})$ com $\Mor(\cat{C})$ són en general col·leccions, no necessàriament conjunts. Precisarem aquesta qüestió a la secció~\ref{sec:mida}. Sovint és més còmode agrupar els morfismes segons el seu domini i codomini: quan la col·lecció de morfismes de $A$ a $B$ és un conjunt, se sol denotar
 \[
 \Hom_{\cat{C}}(A,B)
 \]
-o simplement $\Hom(A,B)$ quan la categoria és clara i l'anomenem \emph{homconjunt} de $A$ i $B$.
+o simplement $\Hom(A,B)$ quan la categoria és clara i l'anomenem \emph{homconjunt} de $A$ i $B$. Com que cada morfisme té un únic domini i un únic codomini, $\Mor(\cat{C})$ sempre es reparteix segons el parell $(A,B)$ de domini i codomini, en parts disjuntes dos a dos; el que no està garantit és que cada part sigui un \emph{conjunt}. Quan ho és per a tots els parells ---propietat que rep el nom de \emph{petitesa local} (secció~\ref{sec:mida})---, aquestes parts són els homconjunts $\Hom(A,B)$ i $\Mor(\cat{C})$ n'és la unió. Al llarg del llibre totes les categories que fem servir són localment petites, de manera que aquesta subtilesa no ens afectarà.
 
 \begin{observacio}
 Fem algunes precisions sobre la definició.
 \begin{enumerate}
 \item Els morfismes també s'anomenen \textbf{fletxes}, i sovint farem servir les dues paraules indistintament.
-\item Com que cada morfisme té un únic domini i un únic codomini, els homconjunts són \textbf{disjunts dos a dos}: si $(A,B)\neq(A',B')$, aleshores $\Hom(A,B)\cap\Hom(A',B')=\varnothing$. Cada fletxa pertany, doncs, a un únic $\Hom(A,B)$.
+\item Com que cada morfisme té un únic domini i un únic codomini, els homconjunts són \textbf{disjunts dos a dos}: si $(A,B)\neq(A',B')$, aleshores $\Hom(A,B)\cap\Hom(A',B')=\varnothing$. Cada fletxa pertany, doncs, a un únic $\Hom(A,B)$. Aquesta disjunció \emph{és} la condició d'unicitat del domini i el codomini, expressada en termes d'homconjunts: totes dues afirmacions són equivalents, i la conservem sempre ---a l'apèndix~\ref{cap:axiomatica-relacional} n'és, de fet, un axioma. No l'hem de llegir, però, com una restricció sobre \emph{quins} objectes matemàtics poden ser categories, sinó com una conseqüència de la convenció formal adoptada ---una col·lecció global de morfismes amb funcions de domini i codomini. Si es parteix, en canvi, d'una família $\Hom(A,B)$ donada d'entrada, en què un mateix element podria aparèixer en diversos homconjunts, la unicitat es recupera etiquetant cada morfisme pels seus extrems ---és a dir, prenent la unió disjunta $\bigsqcup_{A,B}\Hom(A,B)$---, tal com farem amb la relació buida a $\cat{Rel}$.
 \item L'axioma d'associativitat fa que puguem escriure $h\comp g\comp f$ sense parèntesis, sabent que el resultat no depèn de la manera d'agrupar-los.
 \item Els axiomes d'identitat diuen que $\id_A$ es comporta com un neutre per la composició. Veurem tot seguit que aquesta propietat determina $\id_A$ de manera única.
 \item Aquesta definició axiomàtica pren com a termes no definits els objectes i els morfismes. Una categoria és qualsevol estructura que contingui aquestes dues menes de dades i que satisfaci les condicions i propietats de la definició. De fet, se'n pot prescindir d'una: com que cada objecte queda determinat per la seva identitat, una categoria petita es pot descriure en un llenguatge amb \emph{una sola} mena d'individus ---les fletxes--- i tres relacions primitives de domini, codomini i composició, amb els objectes reconstruïts com les fletxes identitat. L'apèndix~\ref{cap:axiomatica-relacional} desenvolupa aquesta presentació relacional i en demostra l'equivalència amb la definició d'aquí.
@@ -431,24 +431,24 @@ Equivalentment, han de commutar els dos quadrats següents:
 \begin{center}
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, row sep=2.5em, column sep=3.2em] {
-    E_G & E_H \\
-    V_G & V_H \\
+    E_G & V_G \\
+    E_H & V_H \\
   };
-  \draw[-{Stealth[scale=1.0]}] (m-1-1) -- node[above] {$F_E$} (m-1-2);
-  \draw[-{Stealth[scale=1.0]}] (m-1-1) -- node[left] {$s_G$} (m-2-1);
-  \draw[-{Stealth[scale=1.0]}] (m-1-2) -- node[right] {$s_H$} (m-2-2);
-  \draw[-{Stealth[scale=1.0]}] (m-2-1) -- node[below] {$F_V$} (m-2-2);
+  \draw[-{Stealth[scale=1.0]}] (m-1-1) -- node[above] {$s_G$} (m-1-2);
+  \draw[-{Stealth[scale=1.0]}] (m-1-1) -- node[left] {$F_E$} (m-2-1);
+  \draw[-{Stealth[scale=1.0]}] (m-1-2) -- node[right] {$F_V$} (m-2-2);
+  \draw[-{Stealth[scale=1.0]}] (m-2-1) -- node[below] {$s_H$} (m-2-2);
 \end{tikzpicture}
 \hspace{2.2em}
 \begin{tikzpicture}[baseline=(n.center)]
   \matrix (n) [matrix of math nodes, row sep=2.5em, column sep=3.2em] {
-    E_G & E_H \\
-    V_G & V_H \\
+    E_G & V_G \\
+    E_H & V_H \\
   };
-  \draw[-{Stealth[scale=1.0]}] (n-1-1) -- node[above] {$F_E$} (n-1-2);
-  \draw[-{Stealth[scale=1.0]}] (n-1-1) -- node[left] {$t_G$} (n-2-1);
-  \draw[-{Stealth[scale=1.0]}] (n-1-2) -- node[right] {$t_H$} (n-2-2);
-  \draw[-{Stealth[scale=1.0]}] (n-2-1) -- node[below] {$F_V$} (n-2-2);
+  \draw[-{Stealth[scale=1.0]}] (n-1-1) -- node[above] {$t_G$} (n-1-2);
+  \draw[-{Stealth[scale=1.0]}] (n-1-1) -- node[left] {$F_E$} (n-2-1);
+  \draw[-{Stealth[scale=1.0]}] (n-1-2) -- node[right] {$F_V$} (n-2-2);
+  \draw[-{Stealth[scale=1.0]}] (n-2-1) -- node[below] {$t_H$} (n-2-2);
 \end{tikzpicture}
 \end{center}
 \end{definicio}
@@ -577,7 +577,7 @@ Donada una categoria $\cat{C}$, definim sobre $\Ob(\cat{C})$ la relació $\cong_
 \end{prova}
 
 \begin{observacio}
-La relació $\cong_{\cat{C}}$ permet pensar en la \emph{igualtat estructural} dels objectes de $\cat{C}$: dos objectes isomorfs són indistingibles des del punt de vista de la categoria, perquè tota construcció feta amb composició i identitats es transporta d'un a l'altre a través de l'isomorfisme. Des del punt de vista categòric, doncs, dos objectes isomorfs són \emph{la mateixa estructura}, i és per això que la igualtat estricta d'objectes rarament és rellevant: el que importa no és si $A$ i $B$ són iguals, sinó si són isomorfs. Aquesta és una de les idees centrals de la teoria de categories.
+La relació $\cong_{\cat{C}}$ permet pensar en la \emph{igualtat estructural} dels objectes de $\cat{C}$: dos objectes isomorfs són indistingibles per les propietats i construccions invariants per isomorfisme, perquè tota construcció feta amb composició i identitats es transporta d'un a l'altre a través de l'isomorfisme. Des del punt de vista categòric, doncs, dos objectes isomorfs són \emph{la mateixa estructura}, i és per això que la igualtat estricta d'objectes rarament és rellevant: el que importa no és si $A$ i $B$ són iguals, sinó si són isomorfs. Aquesta és una de les idees centrals de la teoria de categories.
 \end{observacio}
 
 \begin{exemple}
@@ -741,7 +741,7 @@ Una conseqüència òbvia d'aquestes dues definicions és que quan es compleix, 
 Un morfisme pot tenir cap, una o diverses seccions, i igualment cap, una o diverses retraccions. Vegem-ne exemples a $\cat{Set}$:
 \begin{itemize}
 \item L'única aplicació $f\colon\emptyset\to\{*\}$ no té cap secció: no existeix cap aplicació $\{*\}\to\emptyset$.
-\item La inclusió $f\colon\{0\}\hookrightarrow\{0,1\}$ té una única retracció, l'única aplicació $\{0,1\}\to\{0\}$; en canvi no té cap secció.
+\item La injecció $f\colon\{0\}\hookrightarrow\{0,1\}$ associada a la inclusió $\{0\}\subseteq\{0,1\}$ té una única retracció, l'única aplicació $\{0,1\}\to\{0\}$; en canvi no té cap secció.
 \item L'aplicació $f\colon\{0,1\}\to\{*\}$ té dues seccions distintes, $*\mapsto 0$ i $*\mapsto 1$: cada tria d'una antiimatge en dona una.
 \end{itemize}
 Tenir secció o retracció és, doncs, una propietat especial de $f$, i quan en té, en general no és única.
@@ -774,7 +774,7 @@ Finalment, un morfisme $f$ és un \textbf{isomorfisme} si i només si té alhora
 r=r\comp\id_B=r\comp(f\comp s)=(r\comp f)\comp s=\id_A\comp s=s.
 \]
 En canvi, la unicitat d’una secció o d’una retracció, considerada
-separadament, no caracteritza els isomorfismes en una categoria general; per exemple, la inclusió
+separadament, no caracteritza els isomorfismes en una categoria general; per exemple, la injecció
 \[
  i\colon\{0\}\hookrightarrow\{0,1\}
 \]
@@ -1183,7 +1183,7 @@ Les implicacions anteriors \emph{no} es reverteixen en general, i és aquí on c
 i cap de les dues fletxes es pot invertir en general:
 \begin{itemize}
 \item[(1)] \textbf{mono $\not\Rightarrow$ mono escindit.} A $\cat{Grp}$, l'homomorfisme $\mathbb{Z}\xrightarrow{\,\cdot 2\,}\mathbb{Z}$ és un monomorfisme, però no té cap retracció: no és escindit.
-\item[(2)] \textbf{mono escindit $\not\Rightarrow$ iso.} Un monomorfisme escindit no ha de ser exhaustiu en cap sentit: a $\cat{Set}$, la inclusió $\{0\}\hookrightarrow\{0,1\}$ té retracció (l'única aplicació $\{0,1\}\to\{0\}$), és per tant un monomorfisme escindit, però no és un isomorfisme.
+\item[(2)] \textbf{mono escindit $\not\Rightarrow$ iso.} Un monomorfisme escindit no ha de ser exhaustiu en cap sentit: a $\cat{Set}$, la injecció $\{0\}\hookrightarrow\{0,1\}$ té retracció (l'única aplicació $\{0,1\}\to\{0\}$), és per tant un monomorfisme escindit, però no és un isomorfisme.
 \end{itemize}
 Dualment, $\text{iso}\Rightarrow\text{epi escindit}\Rightarrow\text{epi}$, amb les mateixes dues fletxes no reversibles. Convé no confondre \enquote{mono escindit $+$ epi} amb \enquote{mono $+$ epi}: un \textbf{bimorfisme} (alhora mono i epi) no és necessàriament un isomorfisme ---l'única fletxa no trivial de $\cat{2}$ ho és sense tenir invers, i a $\cat{Top}$ una bijecció contínua amb inversa no contínua també---, mentre que un morfisme alhora mono escindit i epi sí que ho és, com recull la caracterització següent:
 \[
@@ -1265,14 +1265,14 @@ Convé no llegir aquestes tres nocions com una partició en tres classes disjunt
 \]
 i el recíproc és fals: $\cat{Set}$ és localment petita però no petita. Les tres possibilitats efectives són, doncs, petita (per tant localment petita), gran localment petita i gran no localment petita.
 
-Moltes de les categories habituals que utilitzem ---$\cat{Set}$, $\cat{Grp}$, $\cat{Top}$, $\cat{Graph}$ i altres--- són localment petites però no petites: tenen massa objectes per formar un conjunt, però entre dos objectes qualssevol hi ha només un conjunt de morfismes. Les categories dels preordres sobre conjunts i les categories finites, en canvi, són petites. Al llarg del llibre suposarem, tret que diguem el contrari, que les categories amb què treballem són localment petites; això garanteix que sempre podem parlar del conjunt $\Hom(A,B)$, cosa que serà essencial més endavant.
+Moltes de les categories habituals que utilitzem ---$\cat{Set}$, $\cat{Grp}$, $\cat{Top}$, $\cat{Graph}$ i altres--- són localment petites però no petites: tenen massa objectes per formar un conjunt, però entre dos objectes qualssevol hi ha només un conjunt de morfismes. En canvi, cada preordre concret sobre un conjunt i cada categoria finita concreta són categories petites. No s'ha de confondre aquesta afirmació amb la petitesa de la categoria de \emph{tots} els preordres o de \emph{totes} les categories finites: aquestes col·leccions són grans ---ja hi ha una classe pròpia de conjunts subjacents---, i la seva petitesa requeriria una convenció de mida o la tria de representants canònics. Al llarg del llibre suposarem, tret que diguem el contrari, que les categories amb què treballem són localment petites; això garanteix que sempre podem parlar del conjunt $\Hom(A,B)$, cosa que serà essencial més endavant.
 
 \begin{observacio}[Dues perspectives sobre la mida]
 Hem plantejat la mida des de la teoria clàssica de conjunts: les categories es construeixen \emph{damunt} d'una teoria de conjunts prèvia, i les qüestions de mida ---distingir quines col·leccions són conjunts i quines són massa grans per ser-ho--- són el preu de tenir-hi objectes tan nombrosos com els de $\cat{Set}$. Aquesta és la perspectiva que adoptem al llibre, perquè és la que el lector ja coneix. Hi ha, però, una segona perspectiva: el llenguatge estructural ---de conjunts o de categories--- pot servir ell mateix de \emph{fonament} de les matemàtiques, sense construir-se damunt d'una teoria de conjunts prèvia. Aleshores la mida es planteja amb altres eines. L'apèndix~\ref{cap:axiomatica-relacional} n'ofereix un tast, en presentar les categories petites de manera purament relacional; un desenvolupament complet d'aquesta via pertany a un tractament estructural dels fonaments.
 \end{observacio}
 
 \begin{resumcap}
-\apartat{Idees centrals} (1)~Una categoria són objectes i morfismes amb composició associativa i identitats; el que importa no és què són els objectes, sinó com es relacionen a través de les fletxes. (2)~Moltes nocions es defineixen \emph{categòricament} ---només amb fletxes, sense parlar dels elements dels objectes---: isomorfisme, monomorfisme i epimorfisme en són els primers exemples, i generalitzen \enquote{bijectiu}, \enquote{injectiu} i \enquote{exhaustiu}. (3)~Dos objectes isomorfs són indistingibles des de la categoria: la igualtat rellevant és $\cong$, no la igualtat estricta. (4)~A partir de categories donades se'n construeixen de noves: l'oposada, el producte, les subcategories i les categories sobre i sota un objecte. (5)~El \textbf{principi de dualitat} ---invertir totes les fletxes--- dona, de cada noció i cada teorema, una versió dual gratuïta; és un cas d'un mecanisme més general, comú a la lògica i a la geometria projectiva. (6)~La distinció de mida ---petita o gran, i transversalment localment petita--- controla quan $\Hom(A,B)$ és un conjunt; tota petita és localment petita, i $\cat{Set}$ és gran però localment petita.
+\apartat{Idees centrals} (1)~Una categoria són objectes i morfismes amb composició associativa i identitats; el que importa no és què són els objectes, sinó com es relacionen a través de les fletxes. (2)~Moltes nocions es defineixen \emph{categòricament} ---només amb fletxes, sense parlar dels elements dels objectes---: isomorfisme, monomorfisme i epimorfisme en són els primers exemples, i generalitzen \enquote{bijectiu}, \enquote{injectiu} i \enquote{exhaustiu}. (3)~Dos objectes isomorfs són indistingibles per a tota propietat o construcció invariant per isomorfisme: la igualtat rellevant és $\cong$, no la igualtat estricta. (4)~A partir de categories donades se'n construeixen de noves: l'oposada, el producte, les subcategories i les categories sobre i sota un objecte. (5)~El \textbf{principi de dualitat} ---invertir totes les fletxes--- dona, de cada noció i cada teorema, una versió dual gratuïta; és un cas d'un mecanisme més general, comú a la lògica i a la geometria projectiva. (6)~La distinció de mida ---petita o gran, i transversalment localment petita--- controla quan $\Hom(A,B)$ és un conjunt; tota petita és localment petita, i $\cat{Set}$ és gran però localment petita.
 \apartat{Errors típics} Creure que \enquote{mono $+$ epi $\Rightarrow$ iso} (fals a $\cat{Top}$ i a $\cat{2}$: un bimorfisme no és sempre un isomorfisme); confondre un monomorfisme amb un monomorfisme escindit; confondre la igualtat d'objectes amb l'isomorfisme; escriure la composició en l'ordre equivocat en dualitzar; i oblidar la hipòtesi de petitesa local en parlar d'homconjunts.
 \apartat{Lectura recomanada} \cite[cap.~1]{awodey} per a la introducció paral·lela; \cite[cap.~1]{leinster} per a una presentació breu i moderna; \cite[I]{maclane} per a la formulació clàssica. Per a la presentació relacional de les categories petites, l'apèndix~\ref{cap:axiomatica-relacional}.
 \end{resumcap}

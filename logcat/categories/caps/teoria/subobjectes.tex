@@ -6,13 +6,13 @@
 \apartat{Objectius} En acabar el capítol, el lector ha de saber: definir el subobjecte i el preordre $\Sub(A)$; interpretar la reindexació $f^{*}$ com a substitució i la intersecció com a pullback; definir epimorfisme regular, parella nucli i factorització imatge; reconèixer una categoria regular; i demostrar l'adjunció $\exists_f\dashv f^{*}$.
 \end{objectius}
 
-El capítol anterior ens ha donat la semàntica dels tipus i els termes. Ara construïm la peça complementària: la interpretació de les \textbf{proposicions} i la \textbf{substitució}. La idea directriu és senzilla i profunda: un predicat sobre un objecte $A$ ---una propietat que els \enquote{elements} de $A$ poden tenir o no--- es representa categòricament per un \textbf{subobjecte} de $A$, és a dir, per la inclusió del subconjunt on la propietat es compleix. Els subobjectes d'un objecte formen un preordre $\Sub(A)$, i la reindexació per pullback, que ja vam construir, hi actua com la substitució.
+El capítol anterior ens ha donat la semàntica dels tipus i els termes. Ara construïm la peça complementària: la interpretació de les \textbf{proposicions} i la \textbf{substitució}. La idea directriu és senzilla i profunda: un predicat sobre un objecte $A$ ---una propietat que els \enquote{elements} de $A$ poden tenir o no--- es representa categòricament per un \textbf{subobjecte} de $A$, és a dir, per la injecció del subconjunt on la propietat es compleix. Els subobjectes d'un objecte formen un preordre $\Sub(A)$, i la reindexació per pullback, que ja vam construir, hi actua com la substitució.
 
-A la segona meitat del capítol construïm la \textbf{factorització imatge} d'un morfisme ---la seva descomposició en una part exhaustiva seguida d'una inclusió---, definim les \textbf{categories regulars} com aquelles on aquesta factorització és estable per canvi de base, i n'obtenim una conseqüència notable: l'\textbf{existencial} apareix com a \textbf{adjunt per l'esquerra} de la reindexació. L'universal $\forall_f$ requereix estructura addicional i es tractarà al volum de lògica categòrica. Amb això, el volum tanca la infraestructura categòrica que la lògica farà servir.
+A la segona meitat del capítol construïm la \textbf{factorització imatge} d'un morfisme ---la seva descomposició en una part exhaustiva seguida d'una injecció---, definim les \textbf{categories regulars} com aquelles on aquesta factorització és estable per canvi de base, i n'obtenim una conseqüència notable: l'\textbf{existencial} apareix com a \textbf{adjunt per l'esquerra} de la reindexació. L'universal $\forall_f$ requereix estructura addicional i es tractarà al volum de lògica categòrica. Amb això, el volum tanca la infraestructura categòrica que la lògica farà servir.
 
 \section{Subobjectes}
 
-Volem capturar la idea de \enquote{subconjunt} de manera purament categòrica. A $\cat{Set}$, un subconjunt $S\subseteq A$ es pot presentar per la seva inclusió $S\hookrightarrow A$, que és un monomorfisme. Però dos monomorfismes diferents poden tenir la mateixa imatge: una inclusió i una reparametrització bijectiva del domini defineixen \enquote{el mateix} subconjunt. Cal, doncs, identificar monomorfismes que difereixen per un isomorfisme del domini.
+Volem capturar la idea de \enquote{subconjunt} de manera purament categòrica. A $\cat{Set}$, un subconjunt $S\subseteq A$ es pot presentar per la seva injecció $S\hookrightarrow A$, que és un monomorfisme. Però dos monomorfismes diferents poden tenir la mateixa imatge: una injecció i una reparametrització bijectiva del domini defineixen \enquote{el mateix} subconjunt. Cal, doncs, identificar monomorfismes que difereixen per un isomorfisme del domini.
 
 \begin{definicio}[Subobjecte]\index{subobjecte}
 \label{def:subobjecte}
@@ -176,11 +176,11 @@ amb la diagonal $S\cap T\rightarrowtail A$ com a monomorfisme cap a $A$, és l'\
 \end{proposicio}
 
 \begin{prova}
-La inclusió $S\cap T\rightarrowtail A$ és mono per ser composició de monos (la projecció del pullback és mono per la proposició~\ref{prop:pullback-mono}, i $m$ és mono). Per construcció $[m\wedge n]\leq[m]$ i $[m\wedge n]\leq[n]$, ja que hi ha les projeccions cap a $S$ i $T$. I si $[k]\leq[m]$ i $[k]\leq[n]$ per a un tercer subobjecte $k\colon R\rightarrowtail A$, les factoritzacions $R\to S$ i $R\to T$ són compatibles sobre $A$, de manera que la propietat universal del pullback dona una única factorització $R\to S\cap T$; per tant $[k]\leq[m]\wedge[n]$. Això caracteritza l'ínfim.
+La injecció $S\cap T\rightarrowtail A$ és mono per ser composició de monos (la projecció del pullback és mono per la proposició~\ref{prop:pullback-mono}, i $m$ és mono). Per construcció $[m\wedge n]\leq[m]$ i $[m\wedge n]\leq[n]$, ja que hi ha les projeccions cap a $S$ i $T$. I si $[k]\leq[m]$ i $[k]\leq[n]$ per a un tercer subobjecte $k\colon R\rightarrowtail A$, les factoritzacions $R\to S$ i $R\to T$ són compatibles sobre $A$, de manera que la propietat universal del pullback dona una única factorització $R\to S\cap T$; per tant $[k]\leq[m]\wedge[n]$. Això caracteritza l'ínfim.
 \end{prova}
 
 \begin{observacio}
-En termes lògics, $[m]\wedge[n]$ és la \textbf{conjunció} dels predicats: l'element pertany a $S\cap T$ si i només si pertany a $S$ \emph{i} a $T$. A $\cat{Set}$ recuperem la intersecció de subconjunts. Si a més $\cat{C}$ té objecte terminal, el subobjecte \textbf{màxim} de $\Sub(A)$ és $\id_A$ (el predicat sempre cert), i quan hi ha objecte inicial estricte, el subobjecte \textbf{mínim} és la inclusió de l'objecte inicial (el predicat sempre fals). Amb intersecció i aquests extrems, $\Sub(A)$ és un \emph{semireticle amb màxim}. Les \textbf{unions} ---la disjunció--- exigeixen estructura addicional: la regularitat proporciona imatges, existencials i interseccions, però no, en general, suprems finits estables a les fibres $\Sub(A)$. Aquests apareixen, per exemple, en les \textbf{categories coherents}, que es tractaran al volum de lògica categòrica.
+En termes lògics, $[m]\wedge[n]$ és la \textbf{conjunció} dels predicats: l'element pertany a $S\cap T$ si i només si pertany a $S$ \emph{i} a $T$. A $\cat{Set}$ recuperem la intersecció de subconjunts. Si a més $\cat{C}$ té objecte terminal, el subobjecte \textbf{màxim} de $\Sub(A)$ és $\id_A$ (el predicat sempre cert), i quan hi ha objecte inicial estricte, el subobjecte \textbf{mínim} és la injecció de l'objecte inicial (el predicat sempre fals). Amb intersecció i aquests extrems, $\Sub(A)$ és un \emph{semireticle amb màxim}. Les \textbf{unions} ---la disjunció--- exigeixen estructura addicional: la regularitat proporciona imatges, existencials i interseccions, però no, en general, suprems finits estables a les fibres $\Sub(A)$. Aquests apareixen, per exemple, en les \textbf{categories coherents}, que es tractaran al volum de lògica categòrica.
 \end{observacio}
 
 \section{Epimorfismes regulars i imatges}
@@ -212,7 +212,7 @@ Com que $e$ és el coequalitzador de la seva parella nucli i $m'$ és mono, tota
 \end{prova}
 
 \begin{observacio}
-A $\cat{Set}$, $\Imatge(f)$ és el subconjunt imatge $f(A)\subseteq B$, amb $e$ l'aplicació exhaustiva $A\to f(A)$ i $m$ la inclusió. Recuperem la noció usual d'imatge.
+A $\cat{Set}$, $\Imatge(f)$ és el subconjunt imatge $f(A)\subseteq B$, amb $e$ l'aplicació exhaustiva $A\to f(A)$ i $m$ la injecció. Recuperem la noció usual d'imatge.
 \end{observacio}
 
 \section{Categories regulars i estabilitat}

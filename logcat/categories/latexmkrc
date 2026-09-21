@@ -1,0 +1,16 @@
+# ============================================================
+# latexmkrc — Una introducció a la teoria de categories (aprendes / logcat)
+# Compilació amb XeLaTeX i índex automàtic.
+#
+#   latexmk        compilació completa amb índex (llibre complet)
+#   latexmk -c     neteja els fitxers auxiliars
+#
+# Per al fascicle (capítols 1-4) feu servir el Makefile: `make fascicle`.
+# ============================================================
+
+$pdf_mode  = 5;   # 5 = XeLaTeX
+$xelatex   = 'xelatex -interaction=nonstopmode -halt-on-error %O %S';
+$makeindex = 'makeindex %O -o %D %S';
+
+# Fitxers auxiliars addicionals que `latexmk -c` ha d'esborrar.
+$clean_ext = 'bcf run.xml synctex synctex.gz fls fdb_latexmk xdv auxlock';

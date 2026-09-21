@@ -112,7 +112,7 @@ L'\textbf{equalitzador} de $f,g\colon A\to B$ és un objecte $E$ amb un morfisme
 \end{definicio}
 
 \begin{exemple}
-A $\cat{Set}$, l'equalitzador de $f,g\colon A\to B$ és el subconjunt $E=\{a\in A\mid f(a)=g(a)\}$ amb la inclusió. En general, els equalitzadors representen els subobjectes definits per una equació. Tot equalitzador és un monomorfisme.
+A $\cat{Set}$, l'equalitzador de $f,g\colon A\to B$ és el subconjunt $E=\{a\in A\mid f(a)=g(a)\}$ amb la injecció $E\hookrightarrow A$. En general, els equalitzadors representen els subobjectes definits per una equació. Tot equalitzador és un monomorfisme.
 \end{exemple}
 
 \subsection{Pullback}\index{pullback}
@@ -138,7 +138,7 @@ El \textbf{pullback} de $f\colon A\to C$ i $g\colon B\to C$ és un objecte $P$ a
 \end{definicio}
 
 \begin{exemple}
-A $\cat{Set}$, el pullback és $P=\{(a,b)\in A\times B\mid f(a)=g(b)\}$ amb les projeccions. Quan $g\colon B\hookrightarrow C$ és la inclusió d'un subconjunt, el pullback recupera l'antiimatge $f^{-1}(B)$; per això el pullback també s'anomena \emph{imatge inversa} o \emph{producte fibrat}, i s'escriu $A\times_C B$.
+A $\cat{Set}$, el pullback és $P=\{(a,b)\in A\times B\mid f(a)=g(b)\}$ amb les projeccions. Quan $g\colon B\hookrightarrow C$ és la injecció associada a un subconjunt $B\subseteq C$, el pullback recupera l'antiimatge $f^{-1}(B)$; per això el pullback també s'anomena \emph{imatge inversa} o \emph{producte fibrat}, i s'escriu $A\times_C B$.
 \end{exemple}
 
 \begin{observacio}[Reindexació per pullback]\index{reindexació}\index{functor!de reindexació}

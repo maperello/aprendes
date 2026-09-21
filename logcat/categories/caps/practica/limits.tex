@@ -47,13 +47,13 @@ Sigui $e\colon E\to A$ l'equalitzador de $f,g\colon A\to B$, i siguin $r,s\colon
 \section{Pullbacks}
 
 \begin{exercici}
-Comprova que a $\cat{Set}$ el pullback de $f\colon A\to C$ i $g\colon B\to C$ és $P=\{(a,b)\in A\times B\mid f(a)=g(b)\}$, i que quan $g$ és la inclusió d'un subconjunt $B\subseteq C$ el pullback recupera l'antiimatge $f^{-1}(B)$.
+Comprova que a $\cat{Set}$ el pullback de $f\colon A\to C$ i $g\colon B\to C$ és $P=\{(a,b)\in A\times B\mid f(a)=g(b)\}$, i que quan $g$ és la injecció d'un subconjunt $B\subseteq C$ el pullback recupera l'antiimatge $f^{-1}(B)$.
 \end{exercici}
 
 \begin{solucio}
 Amb $P=\{(a,b)\mid f(a)=g(b)\}$ i les projeccions $p_1,p_2$, es compleix $f\comp p_1=g\comp p_2$ per construcció. Donats $r_1\colon X\to A$ i $r_2\colon X\to B$ amb $f\comp r_1=g\comp r_2$, l'aplicació $h(x)=(r_1(x),r_2(x))$ té imatge dins $P$ (perquè $f(r_1(x))=g(r_2(x))$) i és l'únic morfisme amb $p_1\comp h=r_1$, $p_2\comp h=r_2$. Això és la propietat universal.
 
-Si $B\subseteq C$ i $g$ és la inclusió, la condició $f(a)=g(b)=b$ força $b=f(a)$ amb $f(a)\in B$; per tant $P\cong\{a\in A\mid f(a)\in B\}=f^{-1}(B)$. El pullback recupera l'antiimatge.
+Si $B\subseteq C$ i $g$ és la injecció, la condició $f(a)=g(b)=b$ força $b=f(a)$ amb $f(a)\in B$; per tant $P\cong\{a\in A\mid f(a)\in B\}=f^{-1}(B)$. El pullback recupera l'antiimatge.
 \end{solucio}
 
 \begin{exercici}[Lema d'enganxament de pullbacks]

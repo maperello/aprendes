@@ -65,9 +65,7 @@ sense desenvolupar-ho.
 **Frontera editorial.** La lògica pròpiament dita ---els sistemes lògics amb la
 seva sintaxi, correcció i completesa, i les condicions de coherència
 Beck–Chevalley i Frobenius com a estructura de doctrina--- es reserva per al volum
-de lògica categòrica. El material corresponent que es va esbossar durant la
-redacció es conserva a `_per_al_volum_logica/` per reaprofitar-lo allà (no forma
-part de la compilació).
+de lògica categòrica.
 
 ## Criteris didàctics
 

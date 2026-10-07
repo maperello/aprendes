@@ -5,47 +5,61 @@ Els exercicis d'aquest capítol treballen les adjuncions des dels tres punts de 
 \section{Adjuncions entre preordres}
 
 \begin{exercici}
-Comprova que a l'àlgebra de proposicions, fixada una fórmula $A$, l'operació $B\mapsto A\wedge B$ és adjunta per l'esquerra de $B\mapsto A\to B$.
+Comprova que al preordre $\cat{Prov}_T$ d'un sistema proposicional amb les regles usuals de $\wedge$ i $\to$, fixada una fórmula $A$, l'operació $B\mapsto A\wedge B$ és adjunta per l'esquerra de $B\mapsto A\to B$.
 \end{exercici}
 
 \begin{solucio}
-Hem de veure que $A\wedge B\vdash C$ si i només si $B\vdash A\to C$. 
+Hem de veure que $A\wedge B\vdash_T C$ si i només si $B\vdash_T A\to C$. 
 
-Suposem $A\wedge B\vdash C$. Aleshores, assumint $B$, volem deduir $A\to C$: assumim també $A$; tenim $A$ i $B$, per tant $A\wedge B$, d'on $C$; descarregant la hipòtesi $A$ obtenim $A\to C$. Així $B\vdash A\to C$.
+Suposem $A\wedge B\vdash_T C$. Aleshores, assumint $B$, volem deduir $A\to C$: assumim també $A$; tenim $A$ i $B$, per tant $A\wedge B$, d'on $C$; descarregant la hipòtesi $A$ obtenim $A\to C$. Així $B\vdash_T A\to C$.
 
-Recíprocament, suposem $B\vdash A\to C$. Assumint $A\wedge B$, en tenim $A$ i $B$; de $B$ obtenim $A\to C$, i amb $A$, per modus ponens, $C$. Així $A\wedge B\vdash C$.
+Recíprocament, suposem $B\vdash_T A\to C$. Assumint $A\wedge B$, en tenim $A$ i $B$; de $B$ obtenim $A\to C$, i amb $A$, per modus ponens, $C$. Així $A\wedge B\vdash_T C$.
 
 Les dues implicacions donen l'equivalència, és a dir, $(A\wedge-)\dashv(A\to-)$. Aquesta adjunció és la lectura categòrica de la regla de la implicació.
 \end{solucio}
 
-\begin{exercici}
-Comprova que la injecció dels oberts $i\colon\mathcal O(X)\to\mathcal P(X)$ té com a adjunt per la dreta l'interior, i digues quina propietat universal expressa.
+\begin{exercici}\label{pr-quantificadors-calcul}
+Sigui $f\colon X\to Y$ l'aplicació de $X=\{1,2,3,4\}$ en $Y=\{a,b,c\}$ amb $f(1)=f(2)=a$, $f(3)=b$ i $f(4)=b$, i sigui $S=\{1,2,3\}$. Calcula $\exists_f(S)$ i $\forall_f(S)$ (exemple~\ref{ex:quantificadors-set}). Després, fent servir només la cadena $\exists_f\dashv f^{*}\dashv\forall_f$, justifica que $\exists_f$ preserva unions, $\forall_f$ preserva interseccions i $f^{*}$ preserva totes dues.
 \end{exercici}
 
 \begin{solucio}
-Cal veure que, per a tot obert $U$ i tota part $S$, $U\subseteq S$ si i només si $U\subseteq\mathrm{int}(S)$ (identificant $i(U)=U$).
+\textbf{Càlcul.} La imatge és $\exists_f(S)=\{a,b\}$. Per a $\forall_f(S)$, mirem les fibres: $f^{-1}(\{a\})=\{1,2\}\subseteq S$, de manera que $a\in\forall_f(S)$; $f^{-1}(\{b\})=\{3,4\}\not\subseteq S$, perquè $4\notin S$; i $f^{-1}(\{c\})=\varnothing\subseteq S$. Per tant
+\[
+\forall_f(S)=\{a,c\}.
+\]
+Observem dos fenòmens: $c$ hi és perquè la seva fibra és buida (la quantificació universal sobre un conjunt buit és certa), i $b$ no hi és tot i que $3\in S$.
 
-Si $U\subseteq\mathrm{int}(S)$, aleshores $U\subseteq\mathrm{int}(S)\subseteq S$. Recíprocament, si $U\subseteq S$ amb $U$ obert, aleshores $U$ és un obert contingut en $S$; com que $\mathrm{int}(S)$ és la unió de tots els oberts continguts en $S$, tenim $U\subseteq\mathrm{int}(S)$.
-
-Per tant $i\dashv\mathrm{int}$. La propietat universal que expressa és que $\mathrm{int}(S)$ és el \emph{més gran} obert contingut en $S$: el millor obert que aproxima $S$ per dins.
+\textbf{Preservació.} En un preordre de parts, les unions són els coproductes (suprems) i les interseccions, els productes (ínfims). Pel teorema que els adjunts per l'esquerra preserven colímits i els adjunts per la dreta preserven límits:
+\begin{itemize}
+  \item $\exists_f$, adjunt per l'esquerra de $f^{*}$, preserva unions: $f[S\cup S']=f[S]\cup f[S']$;
+  \item $\forall_f$, adjunt per la dreta de $f^{*}$, preserva interseccions;
+  \item $f^{*}$, que és adjunt per la dreta de $\exists_f$ i adjunt per l'esquerra de $\forall_f$, preserva totes dues.
+\end{itemize}
+En canvi, $\exists_f$ no preserva en general les interseccions: amb l'aplicació de l'enunciat, $\exists_f(\{1\}\cap\{2\})=\varnothing$, però $\exists_f(\{1\})\cap\exists_f(\{2\})=\{a\}$. Lògicament: l'existencial commuta amb la disjunció, però no amb la conjunció.
 \end{solucio}
 
 \section{Adjuncions entre categories}
 
-\begin{exercici}
-Comprova que el functor lliure $F\colon\cat{Set}\to\cat{Mon}$, $X\mapsto X^*$, és adjunt per l'esquerra del functor oblit $U\colon\cat{Mon}\to\cat{Set}$.
+\begin{exercici}\label{pr-disc-ob}
+Sigui $\mathrm{Ob}\colon\cat{Cat}\to\cat{Set}$ el functor que envia cada categoria petita al seu conjunt d'objectes, i $\mathrm{Disc}\colon\cat{Set}\to\cat{Cat}$ el que envia un conjunt $X$ a la categoria discreta amb objectes $X$. Comprova que $\mathrm{Disc}\dashv\mathrm{Ob}$ i descriu-ne la unitat i la counitat.
 \end{exercici}
 
 \begin{solucio}
-Cal una bijecció natural $\Hom_{\cat{Mon}}(X^*,M)\cong\Hom_{\cat{Set}}(X,U(M))$.
+Un functor $H\colon\mathrm{Disc}(X)\to\cat{D}$ ha d'enviar cada identitat a una identitat, i $\mathrm{Disc}(X)$ no té cap altre morfisme; queda, doncs, determinat per una aplicació $X\to\mathrm{Ob}(\cat{D})$ entre els objectes, i qualsevol aplicació dona un functor. Això és una bijecció
+\[
+\Hom_{\cat{Cat}}\bigl(\mathrm{Disc}(X),\cat{D}\bigr)\;\cong\;\Hom_{\cat{Set}}\bigl(X,\mathrm{Ob}(\cat{D})\bigr),
+\]
+natural en $X$ i en $\cat{D}$, perquè les dues bandes es componen de la mateixa manera sobre els objectes. Per tant $\mathrm{Disc}\dashv\mathrm{Ob}$.
 
-Donat un homomorfisme $h\colon X^*\to M$, la seva restricció a les paraules d'una lletra dona una aplicació $\bar h\colon X\to U(M)$. Recíprocament, donada $\varphi\colon X\to U(M)$, definim $h_\varphi\colon X^*\to M$ per $h_\varphi(x_1\cdots x_n)=\varphi(x_1)\cdots\varphi(x_n)$ (i la paraula buida a l'element neutre); és un homomorfisme perquè respecta la concatenació. Aquestes dues assignacions són inverses: un homomorfisme des de $X^*$ està determinat pels valors sobre les lletres, ja que tota paraula és un producte de lletres. La naturalitat en $X$ i $M$ és immediata. Per tant $F\dashv U$.
+La \emph{unitat} $\eta_X\colon X\to\mathrm{Ob}(\mathrm{Disc}(X))=X$ és la identitat: és un isomorfisme. La \emph{counitat} $\varepsilon_{\cat{D}}\colon\mathrm{Disc}(\mathrm{Ob}(\cat{D}))\to\cat{D}$ és el functor que inclou els objectes de $\cat{D}$ amb les seves identitats, i en general no és un isomorfisme, perquè oblida tots els morfismes no identitat.
+
+\emph{Observació.} $\mathrm{Ob}$ té també un adjunt per la dreta: el functor que envia $X$ a la categoria \emph{indiscreta}, amb exactament un morfisme entre cada parella d'objectes. Per tant $\mathrm{Ob}$ preserva límits i colímits, d'acord amb el fet que els límits i colímits de categories petites es calculen, sobre els objectes, com a $\cat{Set}$.
 \end{solucio}
 
 \section{Unitat i counitat}
 
 \begin{exercici}
-Per a l'adjunció lliure-oblit $F\dashv U$ dels monoides, descriu la unitat $\eta_X\colon X\to U(X^*)$ i la counitat $\varepsilon_M\colon (U(M))^*\to M$, i comprova que la unitat és la propietat universal del monoide lliure.
+Per a l'adjunció lliure-oblit $F\dashv U$ dels monoides, descriu la unitat $\eta_X\colon X\to U(X^*)$ i la counitat $\varepsilon_M\colon (U(M))^*\to M$, i comprova que la unitat expressa la propietat universal del monoide lliure.
 \end{exercici}
 
 \begin{solucio}
@@ -72,40 +86,93 @@ Aquestes fórmules permeten passar de la bijecció a la unitat/counitat i viceve
 
 \section{Identitats triangulars}
 
-\begin{exercici}
-Comprova la primera identitat triangular $\varepsilon_{F(A)}\comp F(\eta_A)=\id_{F(A)}$ a partir de les fórmules dels transposats.
+\begin{exercici}\label{pr-diagonal-producte}
+Sigui $\cat{C}$ una categoria amb productes binaris, i siguin $\Delta\colon\cat{C}\to\cat{C}\times\cat{C}$ el functor diagonal, $\Delta(A)=(A,A)$, i $\times\colon\cat{C}\times\cat{C}\to\cat{C}$ el functor producte, $(X,Y)\mapsto X\times Y$. Comprova que $\Delta\dashv\times$, descriu-ne la unitat i la counitat, i verifica directament les dues identitats triangulars.
 \end{exercici}
 
 \begin{solucio}
-La fórmula del transposat invers diu $\theta^{-1}(\psi)=\varepsilon_B\comp F(\psi)$ per a $\psi\colon A\to G(B)$. Prenem $B=F(A)$ i $\psi=\eta_A\colon A\to G(F(A))$. Aleshores
+\textbf{L'adjunció.} Un morfisme $\Delta(A)\to(X,Y)$ a $\cat{C}\times\cat{C}$ és una parella $(f\colon A\to X,\ g\colon A\to Y)$, i la propietat universal del producte la posa en bijecció amb els morfismes $\langle f,g\rangle\colon A\to X\times Y$:
 \[
-\varepsilon_{F(A)}\comp F(\eta_A)=\theta^{-1}(\eta_A).
+\Hom_{\cat{C}\times\cat{C}}\bigl((A,A),(X,Y)\bigr)\;\cong\;\Hom_{\cat{C}}(A,X\times Y).
 \]
-Però $\eta_A=\theta(\id_{F(A)})$ per definició de la unitat, de manera que $\theta^{-1}(\eta_A)=\theta^{-1}(\theta(\id_{F(A)}))=\id_{F(A)}$. Per tant $\varepsilon_{F(A)}\comp F(\eta_A)=\id_{F(A)}$, com volíem. La segona identitat és dual.
+La bijecció és natural en $A$ i en $(X,Y)$, perquè $\langle f,g\rangle\comp a=\langle f\comp a,g\comp a\rangle$ i $(u\times v)\comp\langle f,g\rangle=\langle u\comp f,v\comp g\rangle$. Per tant $\Delta\dashv\times$.
+
+\textbf{Unitat i counitat.} La unitat és el transposat de $\id_{(A,A)}$, és a dir, el morfisme diagonal
+\[
+\eta_A=\delta_A=\langle\id_A,\id_A\rangle\colon A\to A\times A,
+\]
+i la counitat és el transposat invers de $\id_{X\times Y}$, la parella de projeccions
+\[
+\varepsilon_{(X,Y)}=(\pi_1,\pi_2)\colon(X\times Y,\ X\times Y)\to(X,Y).
+\]
+
+\textbf{Primera identitat.} $\varepsilon_{\Delta(A)}\comp\Delta(\eta_A)$ és la parella
+\[
+(\pi_1\comp\delta_A,\ \pi_2\comp\delta_A)=(\id_A,\id_A)=\id_{\Delta(A)}:
+\]
+copiar $A$ i projectar a cada còpia no canvia res.
+
+\textbf{Segona identitat.} $(\pi_1\times\pi_2)\comp\delta_{X\times Y}$ és el morfisme $X\times Y\to X\times Y$ de components $\pi_1$ i $\pi_2$, és a dir,
+\[
+\langle\pi_1,\pi_2\rangle=\id_{X\times Y}:
+\]
+duplicar una parella i quedar-se amb la primera component de la primera còpia i la segona de la segona retorna la parella original.
+
+Observem que la unitat $\delta_A$ no és un isomorfisme (a $\cat{Set}$, només ho és si $A$ té com a màxim un element): les identitats triangulars no demanen que ho sigui.
+\end{solucio}
+
+\begin{exercici}\label{pr-free-u-triangulars}
+Per a l'adjunció $\Free\dashv U$ entre $\cat{Graph}$ i $\cat{Cat}$ (exemple~\ref{ex:free-u-adjuncio}), comprova directament les dues identitats triangulars
+\[
+\varepsilon_{\Free(G)}\comp\Free(\eta_G)=\id_{\Free(G)},
+\qquad
+U(\varepsilon_{\cat{C}})\comp\eta_{U(\cat{C})}=\id_{U(\cat{C})},
+\]
+i explica què diu cadascuna en termes de camins.
+\end{exercici}
+
+\begin{solucio}
+\textbf{Primera identitat.} El functor $\Free(\eta_G)\colon\Free(G)\to\Free(U(\Free(G)))$ envia un camí $(a_1,\dots,a_n)$ de $G$ al camí formal $\bigl((a_1),\dots,(a_n)\bigr)$, les arestes del qual són camins de longitud~$1$ de $\Free(G)$. La counitat $\varepsilon_{\Free(G)}$ avalua aquest camí formal component les seves arestes a $\Free(G)$, és a dir, concatenant:
+\[
+\varepsilon_{\Free(G)}\Bigl(\bigl((a_1),\dots,(a_n)\bigr)\Bigr)=(a_n)\comp\cdots\comp(a_1)=(a_1,\dots,a_n).
+\]
+El camí buit va al camí buit. Per tant, la composta és la identitat de $\Free(G)$: \emph{trencar un camí en arestes i tornar-lo a compondre no canvia res}.
+
+\textbf{Segona identitat.} La unitat $\eta_{U(\cat{C})}$ envia una fletxa $f$ de $\cat{C}$, vista com a aresta del graf $U(\cat{C})$, al camí $(f)$ de longitud~$1$, i cada objecte a ell mateix. El morfisme de grafs $U(\varepsilon_{\cat{C}})$ avalua aquest camí, que té una sola fletxa, i en dona $f$. Per tant, la composta és la identitat de $U(\cat{C})$: \emph{avaluar el camí d'una sola fletxa retorna la fletxa}.
+
+Les dues identitats expressen, doncs, que la inserció dels generadors i l'avaluació de camins són inverses en el sentit precís que demanen les identitats triangulars, sense que $\eta$ ni $\varepsilon$ siguin isomorfismes: $\Free(U(\cat{C}))$ té en general molts més morfismes que $\cat{C}$, perquè hi ha camins diferents amb la mateixa composta.
 \end{solucio}
 
 \section{Els adjunts i els límits}
 
-\begin{exercici}
-Comprova, usant que els adjunts per la dreta preserven límits, que el functor oblit $U\colon\cat{Grp}\to\cat{Set}$ preserva productes, i explica per què això és coherent amb el fet que $U$ té un adjunt per l'esquerra.
+\begin{exercici}\label{pr-rapl-mon}
+Comprova, fent servir que els adjunts per la dreta preserven límits, que el functor oblit $U\colon\cat{Mon}\to\cat{Set}$ preserva productes. Comprova també que $U$ no preserva tots els coproductes, i explica què en dedueixes.
 \end{exercici}
 
 \begin{solucio}
-El functor lliure $F\colon\cat{Set}\to\cat{Grp}$, que envia un conjunt al grup lliure que genera, és adjunt per l'esquerra de $U$: $\Hom_{\cat{Grp}}(F(X),G)\cong\Hom_{\cat{Set}}(X,U(G))$. Per tant $U$ és un adjunt per la dreta, i pel teorema \enquote{els adjunts per la dreta preserven límits}, $U$ preserva tots els límits, en particular els productes. Concretament, el conjunt subjacent d'un producte de grups és el producte dels conjunts subjacents, cosa que ja havíem comprovat directament. En canvi, $U$ no preserva colímits ---per exemple, coproductes---, cosa també coherent: $U$ no és, en general, un adjunt per l'esquerra.
+El functor monoide lliure $F\colon\cat{Set}\to\cat{Mon}$, $X\mapsto X^*$, és adjunt per l'esquerra de $U$ (exemple del monoide lliure de la Teoria). Per tant $U$ és un adjunt per la dreta, i pel teorema \enquote{els adjunts per la dreta preserven límits}, $U$ preserva tots els límits petits, en particular els productes: el conjunt subjacent d'un producte de monoides és el producte dels conjunts subjacents.
+
+El teorema, però, no diu res dels colímits, i de fet $U$ no preserva tots els coproductes. Sigui $1=\{e\}$ el monoide trivial. És un objecte inicial de $\cat{Mon}$, perquè l'únic homomorfisme $1\to M$ envia $e$ al neutre, i el coproducte d'un objecte amb un objecte inicial és l'objecte mateix; per tant, el coproducte $1+1$ a $\cat{Mon}$ és $1$, amb un sol element. En canvi, el coproducte a $\cat{Set}$ dels conjunts subjacents, $U(1)+U(1)$, en té dos, i el cocon imatge no és un coproducte. Com a conseqüència, $U$ no pot ser un adjunt per l'esquerra, perquè els adjunts per l'esquerra preserven colímits.
+
+\emph{Ampliació, per a qui conegui els grups.} El mateix passa amb $U\colon\cat{Grp}\to\cat{Set}$. El seu adjunt per l'esquerra és el functor \emph{grup lliure}, que envia un conjunt $X$ al grup de les paraules reduïdes en les lletres de $X$ i els seus inversos formals; per tant, $U$ preserva tots els límits. El grup trivial també és inicial a $\cat{Grp}$, el coproducte (el \emph{producte lliure}) de dos grups trivials és trivial, $1*1\cong 1$, i $U$ tampoc no preserva aquest coproducte.
 \end{solucio}
 
 \begin{exercici}
-Comprova que si un functor $G$ \emph{no} preserva algun límit, aleshores $G$ no pot tenir cap adjunt per l'esquerra.
+Comprova que si un functor $G$ \emph{no} preserva algun límit petit, aleshores $G$ no pot tenir cap adjunt per l'esquerra.
 \end{exercici}
 
 \begin{solucio}
-És el contrarecíproc del teorema. Si $G$ tingués un adjunt per l'esquerra $F$, amb $F\dashv G$, aleshores $G$ seria un adjunt per la dreta i, pel teorema, preservaria tots els límits que existeixen. Com que per hipòtesi $G$ no en preserva algun, no pot tenir adjunt per l'esquerra. Aquest és un criteri negatiu molt pràctic: per exemple, un functor oblit que no preserva coproductes no pot ser adjunt per l'esquerra, però sí que pot ser-ho per la dreta.
+És el contrarecíproc del teorema. Si $G$ tingués un adjunt per l'esquerra $F$, amb $F\dashv G$, aleshores $G$ seria un adjunt per la dreta i, pel teorema, preservaria tots els límits petits que existeixen. Com que per hipòtesi $G$ no en preserva algun, no pot tenir adjunt per l'esquerra. Aquest és un criteri negatiu molt pràctic: per exemple, si un functor oblit no preserva algun coproducte, això impedeix que sigui adjunt per l'esquerra, però no impedeix que sigui adjunt per la dreta.
 \end{solucio}
 
 \section{Exponencials}
 
 \begin{exercici}
-Comprova la bijecció $\Hom_{\cat{Set}}(A\times B,C)\cong\Hom_{\cat{Set}}(A,C^B)$ i identifica-la amb la currificació.
+Comprova la bijecció
+\[
+\Hom_{\cat{Set}}(A\times B,C)\cong\Hom_{\cat{Set}}(A,C^B)
+\]
+i identifica-la amb la currificació.
 \end{exercici}
 
 \begin{solucio}

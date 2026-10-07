@@ -1,0 +1,624 @@
+\chapter[Quasiexemples i contraexemples]{Quasiexemples\\ i contraexemples}
+\label{cap:contraexemples}
+
+Una definició matemàtica s'entén de veritat quan se'n coneixen tant els exemples com els \emph{quasiexemples}: estructures que s'hi assemblen molt, que apareixen de manera natural, i que tanmateix fallen en un punt precís. Aquest apèndix recull quasiexemples i contraexemples per a les nocions centrals del llibre: categoria, functor, transformació natural i equivalència. Acaba amb models de la lògica que queden fora de l'explicació per topos dels capítols~\ref{cap:subobjectes}--\ref{cap:pont}.
+
+La secció~\ref{sec:igualtat-equivalencia}, sobre igualtat, isomorfisme, isomorfisme natural i equivalència, és la més important. Confondre aquests nivells és un error freqüent, i greu, perquè porta a demostrar coses falses o a formular propietats que no tenen sentit categòric.
+
+El nivell és el del llibre, i els exemples s'han triat perquè només demanin els coneixements que el llibre ja pressuposa. Tota afirmació que es pot justificar amb aquests coneixements es demostra. Quan un comentari remet a teories que el llibre no desenvolupa, es presenta de manera informativa i es diu explícitament.
+
+% =====================================================================
+\section{Què no és una categoria}
+\label{sec:no-categoria}
+% =====================================================================
+
+\subsection{Les condicions que es poden trencar}
+
+La definició~\ref{def:categoria} demana unes dades i dos axiomes. Per poder dir, exemple a exemple, quina condició falla, les desglossem en cinc:
+\begin{enumerate}
+\item[(C1)] \textbf{Extrems.} Cada morfisme $f$ té un \emph{únic} domini i un \emph{únic} codomini.
+\item[(C2)] \textbf{Composició.} Per a cada parella componible $f\colon A\to B$, $g\colon B\to C$ hi ha un morfisme $g\comp f\colon A\to C$, determinat sense ambigüitat.
+\item[(C3)] \textbf{Associativitat.} $h\comp(g\comp f)=(h\comp g)\comp f$.
+\item[(C4)] \textbf{Existència d'identitats.} Per a cada objecte $A$ hi ha un morfisme $\id_A\colon A\to A$.
+\item[(C5)] \textbf{Lleis d'identitat.} $f\comp\id_A=f=\id_B\comp f$ per a tot $f\colon A\to B$.
+\end{enumerate}
+Les igualtats de (C3) i (C5) són \emph{igualtats}: no isomorfismes, ni homotopies, ni cap mena d'equivalència. Gairebé tots els exemples d'aquesta secció fallen exactament aquí. Recordem també que la demostració de la unicitat de la identitat (capítol~\ref{cap:categories}) no fa servir l'associativitat: només les lleis d'identitat. Ho aprofitarem en parlar dels magmes.
+
+\subsection{L'exemple central: els camins en un espai}
+
+Aquest exemple fa servir la noció de continuïtat. Sigui $X$ un espai topològic. Proposem:
+\begin{itemize}
+\item \emph{objectes}: els punts de $X$;
+\item \emph{morfismes}: els camins, és a dir, les aplicacions contínues $\gamma\colon[0,1]\to X$; escrivim $\gamma\colon x\to y$ si $\gamma(0)=x$ i $\gamma(1)=y$;
+\item \emph{composició}: la concatenació. Si $\gamma\colon x\to y$ i $\delta\colon y\to z$, definim $\delta\ast\gamma\colon x\to z$ per
+\[
+(\delta\ast\gamma)(t)=
+\begin{cases}
+\gamma(2t), & 0\le t\le\tfrac12,\\
+\delta(2t-1), & \tfrac12\le t\le1;
+\end{cases}
+\]
+\item \emph{candidats a identitat}: els camins constants $c_x(t)=x$.
+\end{itemize}
+Escrivim $\delta\ast\gamma$ (primer $\gamma$, després $\delta$) per coherència amb $g\comp f$. Les dues branques coincideixen a $t=\frac12$, perquè $\gamma(1)=y=\delta(0)$, i per tant $\delta\ast\gamma$ és contínua. Així (C1) i (C2) es compleixen. El problema és a (C3) i (C5).
+
+\paragraph{Fallada de l'associativitat.} Siguin $\gamma\colon x\to y$, $\delta\colon y\to z$ i $\varepsilon\colon z\to w$. Un càlcul directe dona
+\[
+\bigl((\varepsilon\ast\delta)\ast\gamma\bigr)(t)=
+\begin{cases}
+\gamma(2t), & t\in[0,\frac12],\\
+\delta(4t-2), & t\in[\frac12,\frac34],\\
+\varepsilon(4t-3), & t\in[\frac34,1],
+\end{cases}
+\qquad
+\bigl(\varepsilon\ast(\delta\ast\gamma)\bigr)(t)=
+\begin{cases}
+\gamma(4t), & t\in[0,\frac14],\\
+\delta(4t-1), & t\in[\frac14,\frac12],\\
+\varepsilon(2t-1), & t\in[\frac12,1].
+\end{cases}
+\]
+Tots dos recorren els mateixos tres trams en el mateix ordre, però a velocitats diferents.
+
+\begin{exemple}[Tres segments a la recta]\label{ex:camins-recta}
+A $X=\mathbb R$, prenem $\gamma(t)=t$, $\delta(t)=1+t$ i $\varepsilon(t)=2+t$, de manera que $\gamma\colon0\to1$, $\delta\colon1\to2$ i $\varepsilon\colon2\to3$. Avaluant a $t=\frac12$,
+\[
+\bigl((\varepsilon\ast\delta)\ast\gamma\bigr)(\tfrac12)=\gamma(1)=1,
+\qquad
+\bigl(\varepsilon\ast(\delta\ast\gamma)\bigr)(\tfrac12)=\varepsilon(0)=2.
+\]
+Els dos camins van de $0$ a $3$ i tenen la mateixa imatge, l'interval $[0,3]$, però són diferents: falla (C3).
+\end{exemple}
+
+\paragraph{Fallada de les identitats.} El fracàs és més radical que el de l'associativitat:
+
+\begin{proposicio}\label{prop:camins-sense-identitat}
+Sigui $\gamma\colon x\to y$ un camí injectiu. Aleshores cap camí $e\colon y\to y$ compleix $e\ast\gamma=\gamma$. Anàlogament, si $\gamma\colon y\to z$ és injectiu, cap camí $e\colon y\to y$ compleix $\gamma\ast e=\gamma$.
+\end{proposicio}
+
+\begin{prova}
+Per a qualsevol $e$, $(e\ast\gamma)(\frac14)=\gamma(\frac12)$, que és diferent de $\gamma(\frac14)$ perquè $\gamma$ és injectiu. Per a l'altra afirmació, $(\gamma\ast e)(\frac34)=\gamma(\frac12)\neq\gamma(\frac34)$.
+\end{prova}
+
+A $X=\mathbb R$, entre dos punts diferents qualssevol hi ha camins injectius. Per tant, no és que s'hagin triat malament els camins constants: (C4)--(C5) no es poden satisfer de cap manera amb aquesta composició.
+
+\paragraph{Però fallen de manera controlada.} Les igualtats que fallen valen \emph{llevat d'una reparametrització}, i les reparametritzacions són inofensives llevat d'homotopia. Dos camins $\alpha,\beta\colon x\to y$ són \emph{homòtops relativament als extrems}, i escrivim $\alpha\simeq\beta$, si hi ha una aplicació contínua $H\colon[0,1]\times[0,1]\to X$ amb $H(t,0)=\alpha(t)$, $H(t,1)=\beta(t)$, $H(0,s)=x$ i $H(1,s)=y$.
+
+\begin{lema}[Reparametrització]\label{lema:reparametritzacio}
+Sigui $\alpha\colon[0,1]\to X$ un camí i $\varphi\colon[0,1]\to[0,1]$ contínua amb $\varphi(0)=0$ i $\varphi(1)=1$. Aleshores $\alpha\comp\varphi\simeq\alpha$.
+\end{lema}
+
+\begin{prova}
+L'aplicació $H(t,s)=\alpha\bigl((1-s)\varphi(t)+st\bigr)$ és contínua i ben definida, perquè $(1-s)\varphi(t)+st\in[0,1]$. Val $\alpha\comp\varphi$ per a $s=0$ i $\alpha$ per a $s=1$, i $H(0,s)=\alpha(0)$, $H(1,s)=\alpha(1)$ per a tot $s$.
+\end{prova}
+
+\begin{proposicio}\label{prop:associador-camins}
+\begin{enumerate}
+\item[(a)] $(\varepsilon\ast\delta)\ast\gamma=\bigl(\varepsilon\ast(\delta\ast\gamma)\bigr)\comp\varphi$, on $\varphi(t)=t/2$ a $[0,\frac12]$, $\varphi(t)=t-\frac14$ a $[\frac12,\frac34]$ i $\varphi(t)=2t-1$ a $[\frac34,1]$.
+\item[(b)] $c_y\ast\gamma=\gamma\comp\psi$ amb $\psi(t)=\min(2t,1)$, i $\gamma\ast c_x=\gamma\comp\psi'$ amb $\psi'(t)=\max(2t-1,0)$.
+\end{enumerate}
+En conseqüència, $(\varepsilon\ast\delta)\ast\gamma\simeq\varepsilon\ast(\delta\ast\gamma)$, $c_y\ast\gamma\simeq\gamma$ i $\gamma\ast c_x\simeq\gamma$.
+\end{proposicio}
+
+\begin{prova}
+Les igualtats (a) i (b) es comproven tram a tram amb les fórmules anteriors; per exemple, a $[\frac12,\frac34]$, $\varphi(t)=t-\frac14\in[\frac14,\frac12]$ i $\delta\bigl(4(t-\frac14)-1\bigr)=\delta(4t-2)$. Les funcions $\varphi$, $\psi$ i $\psi'$ són contínues i fixen $0$ i $1$, i el lema~\ref{lema:reparametritzacio} dona les homotopies.
+\end{prova}
+
+\paragraph{Primer remei: passar al quocient.} Si $\gamma\simeq\gamma'$ i $\delta\simeq\delta'$, concatenant les homotopies per a cada $s$ fix s'obté $\delta\ast\gamma\simeq\delta'\ast\gamma'$. Per tant, la concatenació indueix una composició ben definida entre classes, $[\delta]\comp[\gamma]:=[\delta\ast\gamma]$, i la proposició~\ref{prop:associador-camins} esdevé exactament (C3) i (C5) entre classes, amb $\id_x=[c_x]$. S'obté una categoria, el \textbf{grupoide fonamental} $\Pi_1(X)$\index{grupoide fonamental}: els objectes són els punts de $X$ i $\Hom(x,y)$ és el conjunt de classes d'homotopia de camins de $x$ a $y$. És un grupoide perquè el camí recorregut a l'inrevés, $\bar\gamma(t)=\gamma(1-t)$, és un invers de $[\gamma]$ (la comprovació és una homotopia explícita que no reproduïm). L'homconjunt $\Hom(x,x)$ és el que en topologia s'anomena \emph{grup fonamental} de $X$ en el punt $x$ (informatiu).
+
+\paragraph{Segon remei: canviar els morfismes.} L'origen del problema és que tots els camins viuen en l'interval $[0,1]$, i cada concatenació ha de comprimir el temps a la meitat. Si cada camí té la seva durada, el problema desapareix. Un \textbf{camí de Moore}\index{camí de Moore} és un parell $(r,\gamma)$ amb $r\ge0$ i $\gamma\colon[0,r]\to X$ contínua, i es concatena sumant les durades:
+\[
+(s,\delta)\comp(r,\gamma)=(r+s,\ \delta\star\gamma),\qquad
+(\delta\star\gamma)(t)=
+\begin{cases}
+\gamma(t), & t\in[0,r],\\
+\delta(t-r), & t\in[r,r+s].
+\end{cases}
+\]
+
+\begin{proposicio}
+Els punts de $X$ i els camins de Moore formen una categoria, amb identitats $\id_x=(0,c_x)$.
+\end{proposicio}
+
+\begin{prova}
+Les dues maneres d'agrupar tres camins $(r,\gamma)$, $(s,\delta)$ i $(u,\varepsilon)$ donen el camí de durada $r+s+u$ que val $\gamma(t)$ a $[0,r]$, $\delta(t-r)$ a $[r,r+s]$ i $\varepsilon(t-r-s)$ a $[r+s,r+s+u]$: \emph{la mateixa funció}. Les lleis d'identitat també són literals, perquè un camí de durada $0$ no ocupa temps: $(r,\gamma)\comp(0,c_x)$ té durada $r$ i val $\gamma(t-0)=\gamma(t)$.
+\end{prova}
+
+Tenim, doncs, les dues estratègies que reapareixen constantment en matemàtiques: \emph{quocientar}, és a dir, oblidar la informació que impedeix l'estrictesa (com a $\Pi_1(X)$), i \emph{estrictificar}, és a dir, substituir la composició per una altra que conservi la informació que interessa i en la qual les lleis valguin literalment (com amb els camins de Moore). Aquí no es pot parlar d'equivalència de categories, perquè l'estructura de partida no és una categoria. Els camins d'arestes d'un graf es concatenen sense problemes, amb el camí buit com a identitat ---és la categoria lliure de la definició~\ref{def:free}--- per la mateixa raó: la longitud s'hi suma i no es renormalitza mai.
+
+\paragraph{Tercera via: fer teoria de la feblesa (informatiu).} La proposició~\ref{prop:associador-camins} no diu només que les dues associacions són homòtopes: en dona una homotopia \emph{concreta}, l'\emph{associador}. Amb quatre camins hi ha cinc maneres de posar els parèntesis, i els associadors les connecten formant un pentàgon. Si s'exigeix que els dos camins del pentàgon donin \emph{exactament} el mateix resultat, s'obté l'estructura d'una \emph{bicategoria}. Si només es demana que coincideixin llevat d'una nova homotopia, i així successivament a tots els nivells, s'arriba a les $\infty$-categories. Cap de les dues no es tracta en aquest llibre.
+
+\subsection{Un sol objecte: els magmes}
+
+Un \textbf{magma}\index{magma} és un conjunt $M$ amb una operació binària qualsevol, $(a,b)\mapsto ab$; un \emph{semigrup} és un magma associatiu, i un monoide, un semigrup amb element neutre. Com al capítol~\ref{cap:categories} per als monoides, a tot magma li podem associar una estructura $\cat{B}M$ amb un sol objecte $\ast$, un morfisme $\ast\to\ast$ per a cada $a\in M$ i la composició $a\comp b=ab$. Les condicions (C1) i (C2) es compleixen sempre, i $\cat{B}M$ és una categoria si i només si $M$ és un monoide. Cada magma no associatiu, o sense neutre, és un quasiexemple de categoria amb un objecte.
+
+\begin{exemple}[La resta d'enters]
+$M=(\mathbb Z,-)$. No és associatiu: $(1-1)-1=-1$, però $1-(1-1)=1$. Té neutre per la dreta, $a-0=a$, però no per l'esquerra: $e-a=a$ per a tot $a$ obligaria $e=2a$ per a tot $a$. Pel raonament de la unicitat de la identitat, un neutre bilateral hauria de coincidir amb $0$, que no ho és. Així, (C5) es compleix a mitges.
+\end{exemple}
+
+\begin{exemple}[Pedra, paper, tisora]\label{ex:ppt}
+$M=\{\mathrm{Pe},\mathrm{Pa},\mathrm{Ti}\}$, on $xy$ és el guanyador de la partida entre $x$ i $y$, i $xx=x$:
+\[
+\begin{array}{c|ccc}
+ & \mathrm{Pe} & \mathrm{Pa} & \mathrm{Ti}\\\hline
+\mathrm{Pe} & \mathrm{Pe} & \mathrm{Pa} & \mathrm{Pe}\\
+\mathrm{Pa} & \mathrm{Pa} & \mathrm{Pa} & \mathrm{Ti}\\
+\mathrm{Ti} & \mathrm{Pe} & \mathrm{Ti} & \mathrm{Ti}
+\end{array}
+\]
+És commutatiu i idempotent, però $(\mathrm{Pe}\,\mathrm{Pa})\,\mathrm{Ti}=\mathrm{Pa}\,\mathrm{Ti}=\mathrm{Ti}$ i $\mathrm{Pe}\,(\mathrm{Pa}\,\mathrm{Ti})=\mathrm{Pe}\,\mathrm{Ti}=\mathrm{Pe}$. Tampoc no té neutre: $\mathrm{Pe}\,e=\mathrm{Pe}$ exigeix $e\in\{\mathrm{Pe},\mathrm{Ti}\}$, $\mathrm{Pa}\,e=\mathrm{Pa}$ exigeix $e\in\{\mathrm{Pe},\mathrm{Pa}\}$ i $\mathrm{Ti}\,e=\mathrm{Ti}$ exigeix $e\in\{\mathrm{Pa},\mathrm{Ti}\}$, i la intersecció és buida. És un model finit, comprovable a mà, on fallen alhora (C3), (C4) i (C5).
+\end{exemple}
+
+\begin{exemple}[Altres magmes naturals]
+\begin{itemize}
+\item \emph{El punt mitjà}: $\mathbb R$ amb $ab=\frac{a+b}2$. Per exemple, $(0\cdot0)\cdot4=2$ i $0\cdot(0\cdot4)=1$; no hi ha neutre, perquè $a\cdot e=a$ força $e=a$.
+\item \emph{El producte vectorial}: $\mathbb R^3$ amb $a\times b$. $(\mathbf i\times\mathbf i)\times\mathbf j=\mathbf 0$, però $\mathbf i\times(\mathbf i\times\mathbf j)=\mathbf i\times\mathbf k=-\mathbf j$. Satisfà, en lloc de l'associativitat, la identitat de Jacobi: és l'exemple bàsic d'àlgebra de Lie, una estructura perfectament bona que no és una categoria d'un objecte.
+\item \emph{La coma flotant} (com a il·lustració): la suma de l'aritmètica de coma flotant d'un ordinador no és, en general, associativa. En doble precisió, una avaluació típica dona $(0.1+0.2)+0.3=0.6000000000000001$, mentre que $0.1+(0.2+0.3)=0.6$. Per convertir-ho en un magma literal caldria precisar el conjunt de valors i el tractament dels casos excepcionals (desbordaments, zeros amb signe...), cosa que no fem.
+\item \emph{Associativitat sense neutre}: $(2\mathbb Z,\cdot)$ és un semigrup, però l'únic candidat a neutre seria $1\notin2\mathbb Z$. Aquesta fallada es repara de franc, afegint formalment un neutre.
+\end{itemize}
+\end{exemple}
+
+\paragraph{Quocientar no sempre és un bon remei.} Davant d'un magma no associatiu podríem intentar el truc dels camins: quocientar per la relació d'equivalència més petita, compatible amb l'operació, que la faci associativa. Però el resultat pot ser catastròfic.
+
+\begin{proposicio}
+El quocient associatiu del magma pedra-paper-tisora té un sol element.
+\end{proposicio}
+
+\begin{prova}
+En el quocient, $\mathrm{Ti}=(\mathrm{Pe}\,\mathrm{Pa})\,\mathrm{Ti}=\mathrm{Pe}\,(\mathrm{Pa}\,\mathrm{Ti})=\mathrm{Pe}$ i $\mathrm{Pe}=(\mathrm{Pa}\,\mathrm{Ti})\,\mathrm{Pe}=\mathrm{Pa}\,(\mathrm{Ti}\,\mathrm{Pe})=\mathrm{Pa}$.
+\end{prova}
+
+La diferència amb els camins és significativa. Allà la manca d'associativitat era \emph{coherent}, testimoniada per homotopies canòniques, i el quocient conservava la informació essencial. Aquí és arbitrària, i quocientar ho esborra tot. La jerarquia de les estructures que hem vist és aquesta:
+\[
+\renewcommand{\arraystretch}{1.2}
+\begin{array}{lll}
+\text{un sol objecte} & \text{diversos objectes} & \text{condicions}\\\hline
+\text{magma} & \text{magmoide} & \text{(C1), (C2)}\\
+\text{semigrup} & \text{semicategoria} & \text{(C1)--(C3)}\\
+\text{monoide} & \text{categoria} & \text{(C1)--(C5)}\\
+\text{grup} & \text{grupoide} & \text{(C1)--(C5) i inversos}
+\end{array}
+\]
+
+\subsection{Altres maneres de fallar}
+
+\begin{exemple}[Ordre estricte: una semicategoria]
+Objectes: els nombres reals; un únic morfisme $x\to y$ si $x<y$, i cap altrament. La composició existeix per transitivitat i és associativa, perquè entre dos objectes hi ha com a molt un morfisme. Però no hi ha cap morfisme $x\to x$: falla (C4). Substituint $<$ per $\le$ s'obté una categoria.
+\end{exemple}
+
+\begin{exemple}[Grafs: no hi ha composició]
+Un graf dirigit té vèrtexs i arestes, però dues arestes consecutives $x\to y\to z$ no tenen per què donar una aresta $x\to z$: falla (C2). El remei és la categoria lliure del graf (definició~\ref{def:free}).
+\end{exemple}
+
+\begin{exemple}[Aplicacions lineals no nul·les]
+Objectes: els espais vectorials reals no nuls; morfismes: les aplicacions lineals \emph{no nul·les}. Les identitats hi són, i la composició és associativa quan està definida, però no sempre ho està: a $\mathbb R^2$, les projeccions $p(x,y)=(x,0)$ i $q(x,y)=(0,y)$ són no nul·les i $q\comp p=0$. Falla (C2).
+\end{exemple}
+
+\begin{exemple}[Funcions identificades amb el seu graf]
+Si una funció és només el seu graf, $\{(1,1)\}$ és alhora una funció $\{1\}\to\{1\}$ i una funció $\{1\}\to\{1,2\}$: el codomini no queda determinat i falla (C1). En particular, \enquote{ser exhaustiva} deixa de ser una propietat de la funció. És el mateix fenomen que l'observació~\ref{obs:extrems-implicits} assenyala per a $\cat{Rel}$, i el remei és el mateix: el domini i el codomini formen part de les dades del morfisme.
+\end{exemple}
+
+\begin{exemple}[Un quocient que no és compatible amb la composició]
+Al monoide de les funcions contínues $\mathbb R\to\mathbb R$ amb la composició, identifiquem $f\sim g$ si $f(0)=g(0)$, i intentem definir $[g]\comp[f]=[g\comp f]$. Amb $f(x)=x+1$, $g(x)=x$ i $g'(x)=2x$ tenim $g\sim g'$, però $(g\comp f)(0)=1\neq2=(g'\comp f)(0)$. La composició no està ben definida i falla (C2). Per això, en construir $\Pi_1(X)$, calia comprovar que l'homotopia és compatible amb la concatenació: no tot quocient d'una categoria és una categoria.
+\end{exemple}
+
+\subsection{Falsos contraexemples}
+
+Per equilibrar, convé recordar estructures que \emph{semblen} fallar algun axioma però que són categories genuïnes. Ensenyen que els morfismes no han de ser funcions, ni estar definits a tot arreu.
+
+\begin{exemple}[Funcions parcials]
+Objectes: els conjunts; morfismes $f\colon A\rightharpoonup B$: les funcions definides en un subconjunt $D_f\subseteq A$. La composició $g\comp f$ és definida en $\{a\in D_f\mid f(a)\in D_g\}$. Les dues maneres d'agrupar $h$, $g$ i $f$ tenen el mateix domini de definició, $\{a\in D_f\mid f(a)\in D_g,\ g(f(a))\in D_h\}$, i hi prenen el mateix valor; les identitats són les funcions totals identitat. Obtenim la categoria $\cat{Par}$: que un morfisme no estigui definit a tot arreu no impedeix res.
+\end{exemple}
+
+Les relacions (la categoria $\cat{Rel}$ del capítol~\ref{cap:categories}) i les matrius ($\cat{Mat}_{\mathbb K}$, exemple~\ref{ex:mat-finvect}) són dos altres casos: els morfismes no són funcions, i en el segon cas ni tan sols són transformacions de res, sinó taules de nombres.
+
+\subsection{Resum}
+
+\[
+\renewcommand{\arraystretch}{1.15}
+\begin{array}{lccccl}
+\text{Exemple} & \text{(C1)} & \text{(C2)} & \text{(C3)} & \text{(C4--5)} & \text{Remei}\\\hline
+\text{camins sobre }[0,1] & \text{sí} & \text{sí} & \text{no} & \text{no} & \Pi_1(X)\text{ o camins de Moore}\\
+(\mathbb Z,-) & \text{sí} & \text{sí} & \text{no} & \text{a mitges} & \text{---}\\
+\text{pedra-paper-tisora} & \text{sí} & \text{sí} & \text{no} & \text{no} & \text{(el quocient és trivial)}\\
+(2\mathbb Z,\cdot) & \text{sí} & \text{sí} & \text{sí} & \text{no} & \text{afegir un neutre}\\
+(\mathbb R,<) & \text{sí} & \text{sí} & \text{sí} & \text{no} & (\mathbb R,\le)\\
+\text{graf dirigit} & \text{sí} & \text{no} & \text{---} & \text{---} & \text{categoria lliure}\\
+\text{lineals no nul·les} & \text{sí} & \text{no} & \text{sí} & \text{sí} & \text{admetre el }0\\
+\text{funcions com a grafs} & \text{no} & \text{sí} & \text{sí} & \text{sí} & \text{morfismes amb extrems}
+\end{array}
+\]
+Els axiomes de categoria no són convencions arbitràries: n'hi ha prou d'agafar l'estructura més natural possible ---els camins en un espai--- per veure'ls fallar. Quan fallen, hi ha tres actituds possibles: quocientar, estrictificar o acceptar la feblesa i fer-ne teoria.
+
+% =====================================================================
+\section{Què no és un functor}
+\label{sec:no-functor}
+% =====================================================================
+
+Un functor ha de superar dues proves, en aquest ordre (observació~\ref{obs:comprovar-tipus}): els tipus i, després, les equacions $F(\id_A)=\id_{F(A)}$ i $F(g\comp f)=F(g)\comp F(f)$. Els gairebé-functors fallen en una de les dues.
+
+\paragraph{Fallada de tipus.} El capítol~\ref{cap:functors} ja en dona l'exemple bàsic: l'antiimatge $f\mapsto f^{-1}$ no pot ser un functor covariant de $\cat{Set}$ en $\cat{Set}$, perquè va en sentit contrari; sí que ho és com a functor contravariant (exemple~\ref{ex:parts-dues-variancies}). Un altre exemple: l'assignació que envia cada grup $G$ al seu grup d'automorfismes $\mathrm{Aut}(G)$ no té cap manera natural d'actuar sobre els homomorfismes. Un homomorfisme $f\colon G\to H$ no indueix cap aplicació raonable $\mathrm{Aut}(G)\to\mathrm{Aut}(H)$; només ho fa quan $f$ és un isomorfisme, que és la manera de convertir-la en un functor sobre la subcategoria dels isomorfismes.
+
+\paragraph{Una assignació sobre objectes que no admet cap functor.} El cas més instructiu és el d'un objecte que sembla \enquote{canònic} però no és functorial de cap manera.
+
+\begin{proposicio}[El centre d'un grup no és functorial]\label{prop:centre-no-functor}
+No hi ha cap functor $Z\colon\cat{Grp}\to\cat{Grp}$ que enviï cada grup $G$ al seu centre $Z(G)=\{z\in G\mid zg=gz \text{ per a tot } g\}$, sigui quina sigui la seva acció sobre els homomorfismes.
+\end{proposicio}
+
+\begin{prova}
+Sigui $C_2=\{1,c\}$ el grup de dos elements i $S_3$ el grup de permutacions de tres elements. Considerem la inclusió $i\colon C_2\to S_3$, que envia $c$ a la transposició $(1\,2)$, i el signe $s\colon S_3\to C_2$, que envia les transposicions a $c$. Aleshores $s\comp i=\id_{C_2}$. Com que $C_2$ és commutatiu, $Z(C_2)=C_2$. En canvi, $Z(S_3)=\{1\}$: les tres transposicions no commuten entre si (per exemple, $(1\,2)(1\,3)=(1\,3\,2)$, mentre que $(1\,3)(1\,2)=(1\,2\,3)$), i les dues permutacions cícliques $(1\,2\,3)$ i $(1\,3\,2)$ no commuten amb $(1\,2)$, perquè $(1\,2)(1\,2\,3)(1\,2)=(1\,3\,2)$. Si $Z$ fos un functor,
+\[
+\id_{C_2}=Z(\id_{C_2})=Z(s\comp i)=Z(s)\comp Z(i),
+\]
+amb $Z(i)\colon C_2\to\{1\}$ i $Z(s)\colon\{1\}\to C_2$. Però una composició que passa per un grup d'un element és constant, i no pot ser la identitat d'un grup de dos elements.
+\end{prova}
+
+L'argument és un patró general: si $s\comp i=\id$, aleshores $F(s)\comp F(i)=\id$, de manera que tot functor converteix les retraccions en retraccions. Una assignació que envia un objecte a un de \enquote{massa petit} per factoritzar-hi una identitat no pot ser functorial. En canvi, assignacions semblants que només fan servir propietats preservades pels homomorfismes sí que són functors (vegeu els exercicis).
+
+\paragraph{Fallada de les equacions.} Considerem el monoide de les funcions derivables $\mathbb R\to\mathbb R$ amb la composició, i l'assignació $f\mapsto f'$ cap al mateix monoide. Els tipus són correctes, però les equacions fallen. La identitat va a la funció constant $1$, que no és la identitat. I, amb $f(x)=g(x)=2x$, tenim $(g\comp f)'=4$ (constant), mentre que $g'\comp f'=2$ (constant). La regla de la cadena explica què cal canviar:
+
+\begin{exemple}[La regla de la cadena és una llei functorial]\label{ex:regla-cadena}
+Sigui $\cat{Der}$ la categoria que té per objectes els nombres reals i per morfismes $a\to b$ les funcions derivables $f\colon\mathbb R\to\mathbb R$ amb $f(a)=b$, amb la composició de funcions. Sigui $\cat{B}(\mathbb R,\cdot)$ el monoide multiplicatiu dels reals vist com a categoria d'un objecte. L'assignació
+\[
+D\colon\cat{Der}\to\cat{B}(\mathbb R,\cdot),\qquad (f\colon a\to b)\ \longmapsto\ f'(a)
+\]
+és un functor. Les identitats van a $1$, perquè $\id'(a)=1$, i la regla de la cadena, $(g\comp f)'(a)=g'(f(a))\cdot f'(a)$, diu exactament que $D(g\comp f)=D(g)\comp D(f)$, ja que $f(a)$ és el domini de $g$. El que fallava era el lloc on es mira la derivada: el functor no és $f\mapsto f'$, sinó $f\mapsto f'$ \emph{al punt de partida}.
+\end{exemple}
+
+\paragraph{Functors llevat d'isomorfisme (informatiu).} Hi ha assignacions que són functorials només llevat d'isomorfisme, exactament com els camins eren associatius llevat d'homotopia. L'exemple més important del llibre és la reindexació de l'observació~\ref{obs:reindexacio}. Per a cada $f\colon A\to B$, el pullback dona $f^{*}\colon\cat{C}/B\to\cat{C}/A$, però, un cop triats els pullbacks, $(g\comp f)^{*}$ i $f^{*}\comp g^{*}$ no són iguals, sinó canònicament isomorfs. A $\cat{Set}$, amb els pullbacks triats com a conjunts de parelles, $(g\comp f)^{*}$ envia $p\colon E\to C$ al conjunt de les parelles $(a,e)$ amb $g(f(a))=p(e)$, mentre que $f^{*}g^{*}$ l'envia al conjunt de les parelles $\bigl(a,(b,e)\bigr)$ amb $f(a)=b$ i $g(b)=p(e)$: són conjunts diferents, en bijecció canònica. Una tal assignació s'anomena \emph{pseudofunctor}. Al capítol~\ref{cap:subobjectes} el problema desapareix perquè $\Sub$ treballa amb classes de monomorfismes, i l'isomorfisme canònic queda absorbit (proposició~\ref{prop:functor-sub}): és el primer remei de la secció anterior, el quocient.
+
+% =====================================================================
+\section{Què no és una transformació natural}
+\label{sec:no-natural}
+% =====================================================================
+
+El llibre ja dona els contraexemples essencials, i aquí només els ordenem. Una família de components $\eta_A\colon F(A)\to G(A)$ pot deixar de ser natural per tres motius diferents:
+\begin{enumerate}
+\item \emph{Les components s'han triat objecte per objecte}, sense mirar els morfismes. L'exemple~\ref{ex:no-natural} té totes les components bijectives i, tanmateix, un sol morfisme $\{0,1\}\to\{0,1\}$ trenca el quadrat.
+\item \emph{La naturalitat només val per a una part dels morfismes.} L'isomorfisme entre un espai de dimensió finita i el seu dual depèn d'una base, i ni tan sols es pot plantejar com a transformació natural entre functors paral·lels, perquè la identitat és covariant i el dual contravariant. Només s'hi pot comparar restringint-se als isomorfismes, i fins i tot així no és natural (observació~\ref{obs:iso-no-natural} i exercici resolt~\ref{ex:dual-no-natural} de la Pràctica del capítol~\ref{cap:transformacions}). En canvi, $V\cong V^{**}$ és natural (exemple~\ref{ex:bidual}).
+\item \emph{No hi ha cap component possible.} Amb el grup de dos elements actuant trivialment i per la transposició sobre $\{0,1\}$, no hi ha cap transformació natural entre els dos functors, ni tan sols una que no sigui un isomorfisme (observació~\ref{obs:iso-no-natural}).
+\end{enumerate}
+La lliçó comuna és la de la secció següent: tenir objectes isomorfs \emph{un per un} no és el mateix que tenir functors isomorfs.
+
+% =====================================================================
+\section{Igualtat, isomorfisme, isomorfisme natural i equivalència}
+\label{sec:igualtat-equivalencia}
+% =====================================================================
+
+\subsection{La jerarquia}
+
+Per a cada mena d'entitat hi ha una noció \emph{estricta} de \enquote{ser el mateix}, la igualtat, i una noció \emph{estructural}, que és la que respecta la teoria:
+\[
+\renewcommand{\arraystretch}{1.25}
+\begin{array}{lll}
+\text{Què comparem} & \text{Noció estricta} & \text{Noció estructural}\\\hline
+\text{dos objectes d'una categoria }\cat{C} & A=B & A\cong B\ \text{(isomorfisme a }\cat{C})\\
+\text{dos functors }F,G\colon\cat{C}\to\cat{D} & F=G & F\cong G\ \text{(isomorfisme natural)}\\
+\text{dues categories} & \cat{C}=\cat{D} & \cat{C}\simeq\cat{D}\ \text{(equivalència)}
+\end{array}
+\]
+Entre les categories hi ha, a més, un nivell intermedi: l'isomorfisme de categories $\cat{C}\cong\cat{D}$ (definició~\ref{def:iso-categories}). Les tres files tenen la mateixa forma. Un isomorfisme natural és un isomorfisme a la categoria de functors $\cat{D}^{\cat{C}}$, i per tant la segona fila és un cas de la primera. L'equivalència és el que s'obté quan, a la definició d'isomorfisme de categories, se substitueixen les igualtats $G\comp F=\id$ i $F\comp G=\id$ per isomorfismes naturals $G\comp F\cong\id$ i $F\comp G\cong\id$, perquè la manera correcta de comparar functors és l'isomorfisme natural. Cada nivell fa servir la noció estructural del nivell anterior.
+
+Totes les implicacions possibles entre aquestes nocions van en un sol sentit:
+\[
+\begin{gathered}
+A=B\ \Rightarrow\ A\cong B,\\
+F=G\ \Rightarrow\ F\cong G\ \Rightarrow\ F(A)\cong G(A)\ \text{per a tot }A,\\
+\cat{C}=\cat{D}\ \Rightarrow\ \cat{C}\cong\cat{D}\ \Rightarrow\ \cat{C}\simeq\cat{D},
+\end{gathered}
+\]
+i cap no és reversible. Vegem-ne un contraexemple per a cada pas.
+
+\subsection{Un contraexemple per a cada pas}
+
+\begin{itemize}
+\item \emph{Isomorfs però no iguals.} A $\cat{Set}$, $\{0,1\}\cong\{a,b\}$. A $\cat{Prov}_T$, $p\land q\cong q\land p$, que són fórmules diferents (exemple~\ref{ex:iso-equivalencia-logica}).
+\item \emph{Naturalment isomorfs però no iguals.} A la categoria dels espais vectorials de dimensió finita, la identitat i el bidual són naturalment isomorfs (exemple~\ref{ex:bidual}), però no són iguals: $V^{**}$ no és $V$, sinó un espai format per funcionals sobre $V^{*}$.
+\item \emph{Isomorfs objecte per objecte, però no naturalment isomorfs.} Els dos functors del grup de dos elements en $\cat{Set}$ de l'observació~\ref{obs:iso-no-natural} envien l'únic objecte al mateix conjunt $\{0,1\}$, però no són naturalment isomorfs.
+\item \emph{Isomorfes però no iguals.} Una categoria i una còpia seva amb els objectes reanomenats.
+\item \emph{Equivalents però no isomorfes.} $\cat{Mat}_{\mathbb K}\simeq\cat{FinVect}_{\mathbb K}$ (exemple~\ref{ex:mat-finvect}), o la categoria $\cat{1}$ i la categoria amb dos objectes isomorfs i un sol morfisme entre cada parell d'objectes.
+\end{itemize}
+
+\subsection{La invariància estructural}
+
+El principi que governa tot el llibre és aquest: \emph{una propietat formulada només amb l'estructura ---composició, identitats, propietats universals---, sense afirmar mai que dos objectes són iguals, es transporta per la noció estructural corresponent.} Per als objectes ho diu l'observació~\ref{obs:invariancia}. Per a les categories, la peça clau és que les equivalències conserven les propietats universals.
+
+\begin{teorema}\label{teo:equivalencia-limits}
+Sigui $F\colon\cat{C}\to\cat{D}$ una equivalència. Si $(L,\lambda)$ és un límit d'un diagrama $D\colon\cat{I}\to\cat{C}$, aleshores $(F(L),F\lambda)$ és un límit de $F\comp D$. Dualment, $F$ preserva els colímits.
+\end{teorema}
+
+\begin{prova}
+Pel teorema~\ref{teo:caract-equivalencia}, $F$ és ple, fidel i essencialment exhaustiu. La família $F\lambda=(F(\lambda_i))_i$ és un con sobre $F\comp D$, perquè $F$ preserva la composició. Sigui $(X,\alpha)$ un con sobre $F\comp D$. Com que $F$ és essencialment exhaustiu, hi ha un objecte $C$ de $\cat{C}$ i un isomorfisme $e\colon F(C)\to X$. Com que $F$ és ple i fidel, per a cada $i$ hi ha un únic $\beta_i\colon C\to D_i$ amb $F(\beta_i)=\alpha_i\comp e$. Aquests $\beta_i$ formen un con: per a $u\colon i\to j$,
+\[
+F(D_u\comp\beta_i)=F(D_u)\comp\alpha_i\comp e=\alpha_j\comp e=F(\beta_j),
+\]
+i, com que $F$ és fidel, $D_u\comp\beta_i=\beta_j$. Per la propietat del límit, hi ha un únic $h\colon C\to L$ amb $\lambda_i\comp h=\beta_i$. Posem $k=F(h)\comp e^{-1}\colon X\to F(L)$. Aleshores $F(\lambda_i)\comp k=F(\beta_i)\comp e^{-1}=\alpha_i$: $k$ factoritza el con.
+
+Per a la unicitat, sigui $k'\colon X\to F(L)$ amb $F(\lambda_i)\comp k'=\alpha_i$ per a tot $i$. Com que $F$ és ple, $k'\comp e=F(h')$ per a algun $h'\colon C\to L$, i aleshores $F(\lambda_i\comp h')=\alpha_i\comp e=F(\beta_i)$. Com que $F$ és fidel, $\lambda_i\comp h'=\beta_i$, i per la unicitat del límit, $h'=h$. Per tant, $k'=F(h)\comp e^{-1}=k$. Els colímits es tracten igual, invertint totes les fletxes.
+\end{prova}
+
+D'aquest teorema, de l'exercici resolt~\ref{pr-equivalencia-preserva} de la Pràctica del capítol~\ref{cap:transformacions} (que una equivalència preserva i reflecteix isomorfismes, monomorfismes i epimorfismes) i del fet que el quasiinvers també és una equivalència, se segueix que les propietats de la columna esquerra de la taula següent les té $\cat{C}$ si i només si les té qualsevol categoria equivalent a $\cat{C}$. Per a les dues últimes (cartesiana tancada, topos), el mateix argument s'aplica a les propietats universals de l'exponencial i del classificador; no el reproduïm.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Invariants per equivalència} & \textbf{No invariants per equivalència}\\
+\midrule
+tenir objecte terminal o inicial & el nombre d'objectes\\
+tenir productes, equalitzadors, límits finits & tenir un sol objecte\\
+ser un preordre (com a molt un morfisme entre dos objectes) & ser un ordre parcial\\
+ser un grupoide (tot morfisme és invertible) & ser esquelètica\\
+que tot morfisme mono i epi sigui un isomorfisme & que dos objectes concrets siguin iguals\\
+ser cartesiana tancada; ser un topos & ser petita (\enquote{essencialment petita} sí que és invariant)\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Les propietats de la columna de la dreta fan servir, d'una manera o altra, la igualtat d'objectes, i per això no són categòriques. Per exemple, $\cat{1}$ és un ordre parcial, i la categoria amb dos objectes isomorfs, que li és equivalent, no ho és. Quan una definició depèn de la igualtat d'objectes, convé sospitar-ne.
+
+\subsection{Equivalència i esquelets}
+
+El resultat següent fa veure que l'equivalència és exactament l'isomorfisme \enquote{llevat de les còpies isomorfes}.
+
+\begin{lema}\label{lema:esqueletiques}
+Una equivalència entre dues categories esquelètiques és un isomorfisme de categories.
+\end{lema}
+
+\begin{prova}
+Sigui $F\colon\cat{C}\to\cat{D}$ una equivalència entre categories esquelètiques; és ple, fidel i essencialment exhaustiu. \emph{És injectiu sobre objectes}: si $F(A)=F(B)$, la identitat de $F(A)$ és $F(u)$ per a algun $u\colon A\to B$, perquè $F$ és ple, i $u$ és un isomorfisme, perquè un functor ple i fidel reflecteix els isomorfismes (proposició~\ref{prop:plenfidel-reflecteix-iso}). Com que $\cat{C}$ és esquelètica, $A=B$. \emph{És exhaustiu sobre objectes}: per a cada $D$ hi ha $C$ amb $D\cong F(C)$, i com que $\cat{D}$ és esquelètica, $D=F(C)$. A més, $F$ és bijectiu sobre cada homconjunt, perquè és ple i fidel. Per tant, $F$ és bijectiu sobre objectes i sobre morfismes, i l'assignació inversa és un functor (preserva identitats i composicions perquè $F$ les preserva). És, doncs, un isomorfisme de categories.
+\end{prova}
+
+\begin{corollari}\label{cor:equivalencia-esquelets}
+Dues categories són equivalents si i només si tenen esquelets isomorfs.
+\end{corollari}
+
+\begin{prova}
+En el marc d'elecció del llibre, tota categoria té esquelets (definició~\ref{def:esquelet}), i és equivalent a qualsevol d'ells: la inclusió de l'esquelet és plena i fidel per ser una subcategoria plena, i essencialment exhaustiva perquè l'esquelet conté un objecte de cada classe d'isomorfisme. Les equivalències es componen, perquè la composició de functors plens, fidels i essencialment exhaustius ho torna a ser. Si $\cat{C}\simeq\cat{D}$, els seus esquelets són equivalents, i pel lema~\ref{lema:esqueletiques} són isomorfs. Recíprocament, si els esquelets són isomorfs, $\cat{C}\simeq\mathrm{esquelet}(\cat{C})\cong\mathrm{esquelet}(\cat{D})\simeq\cat{D}$.
+\end{prova}
+
+Per als preordres, l'esquelet és l'ordre parcial que s'obté identificant els elements equivalents ($x\le y$ i $y\le x$): dos preordres són equivalents si i només si aquests ordres parcials són isomorfs.
+
+\subsection{Com es demostra que dues categories no són equivalents}
+
+Per demostrar que $\cat{C}\not\simeq\cat{D}$ no es poden revisar tots els functors possibles. La via és buscar una propietat invariant per equivalència que l'una tingui i l'altra no.
+
+\begin{exemple}[$\cat{Set}\not\simeq\cat{Set}\op$]
+Diem que un objecte inicial $0$ és \emph{estricte} si tot morfisme $X\to0$ és un isomorfisme. Tenir un objecte inicial estricte és invariant per equivalència. Si $F\colon\cat{C}\to\cat{D}$ és una equivalència, $F(0)$ és inicial (teorema~\ref{teo:equivalencia-limits}). Donat un morfisme $k\colon Y\to F(0)$, prenem un isomorfisme $e\colon F(C)\to Y$; com que $F$ és ple, $k\comp e=F(u)$ per a algun $u\colon C\to0$, que és un isomorfisme, i aleshores $F(u)$ i $k=F(u)\comp e^{-1}$ també ho són. A $\cat{Set}$, l'objecte inicial $\varnothing$ és estricte: només hi ha aplicacions $X\to\varnothing$ si $X=\varnothing$, i aleshores és la identitat. A $\cat{Set}\op$, l'objecte inicial és un conjunt d'un element $\{\ast\}$, i un morfisme $X\to\{\ast\}$ de $\cat{Set}\op$ és una aplicació $\{\ast\}\to X$ de $\cat{Set}$. Amb $X=\{0,1\}$ no és bijectiva, i per tant no és un isomorfisme. Així, $\cat{Set}$ no és equivalent a la seva oposada.
+\end{exemple}
+
+\begin{exemple}[$\cat{Grp}\not\simeq\cat{Ab}$]
+La propietat \enquote{per a dos objectes qualssevol, el producte i el coproducte són isomorfs} és invariant per equivalència, perquè una equivalència preserva productes, coproductes i isomorfismes. 
+\emph{A $\cat{Ab}$ es compleix.} Siguin $A$ i $B$ grups abelians, escrits additivament. El producte $A\times B$, amb les inclusions $a\mapsto(a,0)$ i $b\mapsto(0,b)$, és també un coproducte. Donats homomorfismes $f\colon A\to G$ i $g\colon B\to G$ cap a un grup abelià $G$, l'aplicació $(a,b)\mapsto f(a)+g(b)$ és un homomorfisme, precisament perquè $G$ és commutatiu, i restringida a les inclusions dona $f$ i $g$. És l'única, perquè $(a,b)=(a,0)+(0,b)$.
+
+\emph{A $\cat{Grp}$ no es compleix.} Sigui $C_2=\{1,c\}$ i suposem que el coproducte $P=C_2+C_2$ és isomorf al producte $C_2\times C_2$, que és commutatiu. Els homomorfismes $C_2\to S_3$ que envien $c$ a $(1\,2)$ i a $(1\,3)$ indueixen un homomorfisme $P\to S_3$ la imatge del qual conté $(1\,2)$ i $(1\,3)$. Però la imatge d'un grup commutatiu és commutativa, i $(1\,2)$ i $(1\,3)$ no commuten. Per tant, $C_2+C_2\not\cong C_2\times C_2$.
+\end{exemple}
+
+\begin{exemple}[$\cat{FinSet}\not\simeq\cat{Set}$]
+\enquote{Tota família numerable d'objectes té coproducte} és invariant per equivalència. $\cat{Set}$ la compleix i $\cat{FinSet}$ no (observació~\ref{obs:elemental-prefeixos}).
+\end{exemple}
+
+\subsection{Què té a veure tot això amb la lògica}
+
+A la categoria $\cat{Prov}_T$ d'un sistema deductiu, els tres nivells tenen una lectura lògica precisa:
+\begin{itemize}
+\item la \emph{igualtat} de dues fórmules és la igualtat sintàctica: $p\land q$ i $q\land p$ són fórmules diferents;
+\item l'\emph{isomorfisme} és la interdeduïbilitat, $p\vdash_T q$ i $q\vdash_T p$ (exemple~\ref{ex:iso-equivalencia-logica});
+\item l'\emph{esquelet} de $\cat{Prov}_T$ és isomorf a l'ordre parcial de les classes de fórmules interdeduïbles, que en lògica s'anomena \textbf{àlgebra de Lindenbaum--Tarski}\index{àlgebra de Lindenbaum--Tarski} de $T$. Pel corol·lari~\ref{cor:equivalencia-esquelets}, $\cat{Prov}_T$ és equivalent, però en general no isomorf, a aquesta àlgebra.
+\end{itemize}
+En conseqüència, qualsevol propietat categòrica de $\cat{Prov}_T$ és una propietat de l'àlgebra de Lindenbaum--Tarski: tenir productes (la conjunció), ser cartesiana tancada (la implicació), ser una àlgebra de Heyting o de Boole. La lògica estudia les teories \emph{llevat d'interdeduïbilitat}, i la teoria de categories hi aporta el llenguatge que fa aquesta actitud sistemàtica: el que compta d'una teoria és la seva estructura, no la tria particular de fórmules.
+
+\subsection{Errors típics}
+
+\begin{itemize}
+\item Escriure $A=B$ quan només es té $A\cong B$, encara que l'isomorfisme sigui canònic.
+\item Deduir $F\cong G$ de $F(A)\cong G(A)$ per a cada $A$, sense comprovar la naturalitat.
+\item Creure que una equivalència és un isomorfisme de categories, o que $G\comp F$ ha de ser literalment la identitat.
+\item Demostrar que dues categories no són equivalents amb un argument que fa servir la igualtat d'objectes, com comptar-ne el nombre.
+\item Definir una propietat d'una categoria que depèn d'objectes concrets, i després aplicar-la a una categoria equivalent.
+\end{itemize}
+
+% =====================================================================
+\section{La lògica fora dels topos}
+\label{sec:fora-topos}
+% =====================================================================
+
+Al llarg dels capítols~\ref{cap:cartesianes}--\ref{cap:pont}, la lògica s'ha llegit d'una manera determinada, que comença amb el tancament cartesià: una proposició sobre $E$ és un subobjecte de $E$, la conjunció és un pullback, la implicació és l'exponencial (l'adjunt per la dreta de $-\wedge U$), els quantificadors són adjunts de la reindexació, i en un topos tot això és la lògica interna de $\Omega$. Hi ha lògiques i models perfectament legítims que no encaixen en aquest esquema. Els presentem de manera sobretot informativa, però en cada cas diem amb precisió quina condició falla i, quan és fàcil, ho comprovem.
+
+\subsection{Categories que no són cartesianes tancades}
+\label{subsec:no-ccc}
+
+Abans de mirar què hi ha entre les categories cartesianes tancades i els topos, convé veure que moltes categories molt naturals no són ni tan sols cartesianes tancades. Per demostrar-ho, n'hi ha prou de trobar una propietat que tota categoria cartesiana tancada tingui i que la categoria en qüestió no tingui. La més útil és la que dona el teorema de preservació de colímits pels adjunts per l'esquerra (capítol~\ref{cap:adjuncions}): en una categoria cartesiana tancada, $-\times B$ és adjunt per l'esquerra de $(-)^B$, i per tant preserva tots els colímits que existeixin. En particular, si $0$ és inicial, $0\times B$ també ho és.
+
+Un \textbf{objecte zero}\index{objecte zero} és un objecte que és alhora inicial i terminal.
+
+\begin{proposicio}\label{prop:zero-no-ccc}
+Si una categoria cartesiana tancada té un objecte zero $0$, aleshores tots els seus objectes són isomorfs a $0$.
+\end{proposicio}
+
+\begin{prova}
+Sigui $B$ un objecte. Com que $0$ és inicial i $-\times B$ preserva l'objecte inicial, $0\times B$ és inicial, i per tant $0\times B\cong0$. D'altra banda, com que $0$ és terminal, la projecció $\pi_2\colon0\times B\to B$ és un isomorfisme. En efecte, sigui $!_B\colon B\to0$ l'únic morfisme cap al terminal, i $s=\langle !_B,\id_B\rangle\colon B\to0\times B$. Aleshores $\pi_2\comp s=\id_B$, i
+\[
+s\comp\pi_2=\langle !_B\comp\pi_2,\ \pi_2\rangle=\langle\pi_1,\pi_2\rangle=\id_{0\times B},
+\]
+perquè $!_B\comp\pi_2$ i $\pi_1$ són dos morfismes $0\times B\to0$, que han de coincidir perquè $0$ és terminal. Per tant, $B\cong0\times B\cong0$.
+\end{prova}
+
+\begin{corollari}\label{cor:zero-no-ccc}
+Les categories $\cat{Vect}_{\mathbb K}$, $\cat{Ab}$, $\cat{Grp}$, $\cat{Mon}$ i $\cat{Rel}$ no són cartesianes tancades.
+\end{corollari}
+
+\begin{prova}
+Totes tenen un objecte zero: l'espai $\{0\}$; el grup, o el monoide, d'un sol element, perquè de l'element neutre surt un únic homomorfisme cap a qualsevol altre grup o monoide i cap a l'estructura trivial només n'hi ha un; i, a $\cat{Rel}$, el conjunt buit, perquè l'única relació $\varnothing\to X$ i l'única relació $X\to\varnothing$ són la relació buida. Totes tenen, però, objectes que no són isomorfs al zero: $\mathbb K$, el grup $\mathbb Z$, el monoide $(\mathbb N,+)$ o qualsevol conjunt no buit. Per la proposició~\ref{prop:zero-no-ccc}, cap no és cartesiana tancada.
+\end{prova}
+
+\paragraph{Preordres.} En un preordre amb ínfims finits, ser cartesià tancat vol dir tenir una implicació $b\Rightarrow c$ amb $a\wedge b\le c$ si i només si $a\le b\Rightarrow c$ (capítol~\ref{cap:cartesianes}). Si, a més, té suprems binaris, aleshores és distributiu, perquè $-\wedge b$ és adjunt per l'esquerra i preserva els suprems. Per tant, \emph{un reticle no distributiu no és cartesià tancat}. El reticle dels subespais de $\mathbb R^2$ que veurem tot seguit n'és un exemple.
+
+\paragraph{Categories que ni tan sols són cartesianes.} Un monoide $M$ no trivial, vist com a categoria $\cat{B}M$, no té objecte terminal: l'únic objecte $\ast$ ho seria només si $\Hom(\ast,\ast)=M$ tingués un sol element. Un preordre amb dos elements incomparables que no tinguin cap fita inferior comuna no té el producte d'aquests dos elements. Cap d'aquestes categories no pot ser cartesiana tancada, perquè no té productes finits.
+
+\paragraph{Els espais topològics (informatiu).} $\cat{Top}$ tampoc no és cartesiana tancada: hi ha quocients d'espais que el producte amb un espai fix no conserva. La demostració demana més topologia de la que pressuposa el llibre, i no la fem.
+
+\subsection{Cartesianes tancades que no són topos}
+
+La lògica de la implicació necessita només el tancament cartesià, i això és molt menys que un topos.
+
+\begin{exemple}[$\cat{Cat}$ no és un topos]
+La categoria $\cat{Cat}$ és cartesiana tancada (exemple~\ref{ex:cat-ccc}), però no té classificador de subobjectes. Sigui $\cat{2}$ la categoria $0\to1$, i $\cat{I}$ la categoria amb dos objectes i, a més de les identitats, dos morfismes $u\colon0\to1$ i $u^{-1}\colon1\to0$ inversos l'un de l'altre. La inclusió $i\colon\cat{2}\to\cat{I}$ és:
+\begin{itemize}
+\item \emph{mono}: és injectiva sobre objectes i morfismes, de manera que si $i\comp H=i\comp K$, aleshores $H=K$;
+\item \emph{epi}: si $H,K\colon\cat{I}\to\cat{C}$ coincideixen sobre $u$, aleshores també coincideixen sobre $u^{-1}$, perquè un functor envia l'invers de $u$ a l'invers de la imatge de $u$, i l'invers és únic;
+\item \emph{no és un isomorfisme}: $u^{-1}$ no és a la imatge.
+\end{itemize}
+En una categoria amb classificador, tot morfisme mono i epi és un isomorfisme (exercici resolt~\ref{pr-mono-equalitzador} de la Pràctica del capítol~\ref{cap:topos}). Per tant, $\cat{Cat}$ no en té cap.
+\end{exemple}
+
+L'ordre parcial $\mathbb Z\cup\{+\infty\}$ de l'observació~\ref{obs:ccc-no-heyting} és un altre cas: té conjunció i implicació, però no té falsedat.
+
+\subsection{Lògiques on falla la distributivitat}
+
+En una àlgebra de Heyting, $a\wedge(b\vee c)=(a\wedge b)\vee(a\wedge c)$, perquè $a\wedge-$ és adjunt per l'esquerra i preserva els suprems (capítol~\ref{cap:cartesianes}). Com que els subobjectes d'un objecte d'un topos formen una àlgebra de Heyting (nota~\ref{nota:sub-heyting}), cap reticle no distributiu pot ser-ne un.
+
+\begin{exemple}[La lògica quàntica]
+Siguin els subespais vectorials de $\mathbb R^2$, ordenats per inclusió: $\{0\}$, les rectes que passen per l'origen i $\mathbb R^2$. L'ínfim és la intersecció i el suprem és la suma. Si $a$, $b$ i $c$ són tres rectes diferents,
+\[
+a\wedge(b\vee c)=a\wedge\mathbb R^2=a,
+\qquad
+(a\wedge b)\vee(a\wedge c)=\{0\}\vee\{0\}=\{0\}.
+\]
+La distributivitat falla. En mecànica quàntica, les propietats observables d'un sistema es modelen amb reticles d'aquest tipus (de subespais tancats), i la \enquote{lògica quàntica} de Birkhoff i von Neumann és la lògica d'aquests reticles no distributius (informatiu). Amb aquestes operacions, aquest reticle no pot ser el reticle de subobjectes de cap objecte d'un topos.
+\end{exemple}
+
+\subsection{Lògiques amb una altra conjunció}
+
+\begin{exemple}[La lògica de Łukasiewicz]
+Els valors de veritat són els nombres de $[0,1]$, amb la conjunció forta i la implicació
+\[
+x\otimes y=\max(0,\,x+y-1),\qquad y\to z=\min(1,\,1-y+z).
+\]
+La implicació és adjunta d'aquesta conjunció, i no de l'ínfim. En efecte, si $z\ge0$, $\max(0,x+y-1)\le z$ si i només si $x\le1-y+z$, és a dir, $x\le y\to z$. En canvi, amb l'ínfim falla: per a $y=0.5$, $z=0.4$ i $x=0.6$, tenim $\min(x,y)=0.5>0.4$, però $x=0.6\le0.9=y\to z$. A més, $\otimes$ no és idempotent: $0.5\otimes0.5=0\neq0.5$. Lògicament, això vol dir que de $A$ no se'n dedueix $A\otimes A$: una hipòtesi no es pot fer servir dues vegades. Categòricament, $([0,1],\otimes,\to)$ és un preordre \emph{monoidal tancat} que no és cartesià tancat respecte de $\otimes$. Aquesta idea ---hipòtesis que són recursos i no es poden duplicar--- és la de la \emph{lògica lineal} de Girard; els seus fragments més simples es modelen en categories monoidals tancades, i la resta demana estructura addicional (informatiu).
+\end{exemple}
+
+\subsection{Lògiques on la contradicció no és el fals}
+
+\begin{exemple}[Els tancats d'un espai]
+A $\mathbb R$, els subconjunts tancats, ordenats per inclusió, formen un reticle distributiu on el \enquote{complement} natural d'un tancat $A$ és l'adherència del seu complementari, $\neg A=\overline{\mathbb R\setminus A}$. Per a $A=[0,1]$,
+\[
+A\wedge\neg A=[0,1]\cap\bigl((-\infty,0]\cup[1,\infty)\bigr)=\{0,1\}\neq\varnothing:
+\]
+una proposició i la seva negació són certes alhora a la frontera. Aquesta estructura és la duala d'una àlgebra de Heyting (una àlgebra de \emph{co-Heyting}), i serveix de model a lògiques \emph{paraconsistents}, on una contradicció no implica qualsevol cosa. Amb aquestes operacions, no pot ser el reticle de subobjectes de cap objecte d'un topos, perquè hi falla $A\wedge\neg A=\bot$.
+\end{exemple}
+
+\subsection{Lògiques amb modalitats}
+
+Una \emph{lògica modal} afegeix operadors com \enquote{necessàriament} ($\Box$) i \enquote{possiblement} ($\Diamond$). En un model de Kripke, hi ha un conjunt de mons $W$ i una relació d'accessibilitat $R\subseteq W\times W$, i per a $A\subseteq W$ es defineix
+\[
+\Box A=\{x\mid \text{per a tot } y,\ xRy\Rightarrow y\in A\},
+\qquad
+\Diamond A=\{x\mid \text{hi ha } y \text{ amb } xRy \text{ i } y\in A\}.
+\]
+Aquestes modalitats són quantificadors \emph{al llarg de la relació} $R$, com els $\forall_f$ i $\exists_f$ del capítol~\ref{cap:subobjectes} ho eren al llarg d'una aplicació. Per veure-ho, sigui $\exists_R(B)=\{y\mid \text{hi ha } x\in B \text{ amb } xRy\}$, el conjunt dels mons accessibles des de $B$. Aleshores, per a $A,B\subseteq W$,
+\[
+\exists_R(B)\subseteq A\iff B\subseteq\Box A,
+\]
+és a dir, $\exists_R\dashv\Box$ entre els ordres parcials $(\mathcal P(W),\subseteq)$. En efecte, totes dues condicions diuen el mateix: per a tot $x\in B$ i tot $y$ amb $xRy$, es té $y\in A$. La modalitat $\Diamond$ és el mateix tipus de quantificador, però al llarg de la relació inversa: $\Diamond A=\{x\mid\text{hi ha } y\in A \text{ amb } yR^{-1}x\}$. Les modalitats no són, però, connectius de la lògica interna d'un topos, sinó estructura afegida (informatiu).
+
+\subsection{Resum}
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Model} & \textbf{Estructura} & \textbf{Què falla respecte d'un topos}\\
+\midrule
+$\cat{Vect}_{\mathbb K}$, $\cat{Ab}$, $\cat{Grp}$, $\cat{Rel}$ & amb objecte zero & no són cartesianes tancades\\
+$\cat{Cat}$ & cartesiana tancada & no hi ha classificador\\
+$\mathbb Z\cup\{+\infty\}$ & preordre cartesià tancat & no hi ha fals\\
+subespais de $\mathbb R^2$ & reticle & la distributivitat, i per tant el tancament cartesià\\
+Łukasiewicz & preordre monoidal tancat & la implicació no és adjunta de $\wedge$\\
+tancats de $\mathbb R$ & co-Heyting & $A\wedge\neg A\neq\bot$\\
+models de Kripke & àlgebra de Boole amb modalitats & estructura afegida\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Cada fila marca un camí que la lògica categòrica pot seguir més enllà dels topos: les estructures monoidals tancades per a les lògiques de recursos, els reticles no distributius per a la lògica quàntica, els operadors modals com a adjunts al llarg de relacions. El llibre s'ha centrat en l'esquema dels topos perquè és el que unifica més bé la lògica intuïcionista i la teoria de conjunts. Aquestes alternatives mostren que és una tria, no l'únic camí possible.
+
+% =====================================================================
+\section{Exercicis}
+% =====================================================================
+
+\begin{exercici}
+Demostra que $c_y\ast\gamma=\gamma$ si i només si $\gamma$ és constant. \hfill{\normalfont$\star$}
+\begin{indicacio}
+La igualtat a $[\frac12,1]$ força $\gamma=y$ en aquest interval, i a $[0,\frac12]$ diu $\gamma(t)=\gamma(2t)$. Itera-ho i fes servir la continuïtat a $0$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que, a la categoria dels camins de Moore, un camí $(r,\gamma)$ amb $r>0$ no té cap invers: no hi ha cap $(s,\delta)$ amb $(s,\delta)\comp(r,\gamma)=(0,c_x)$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Mira la durada de la composició.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Troba un magma de dos elements que no sigui associatiu, i un altre que sigui associatiu però no tingui neutre. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Hi ha només setze operacions possibles en un conjunt de dos elements. Per al segon, prova amb una operació que no depengui del segon argument.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Considera els nombres reals com a objectes, i com a morfismes $x\to y$ els reals $d\ge|y-x|$, amb la composició $d'\comp d=d+d'$. És una categoria? Què canvia si s'exigeix $d=|y-x|$? \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Per al primer cas, fes servir la desigualtat triangular. Per al segon, mira què passa amb $x<y>z$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $T(G)=\{g\in G\mid g^2=1\}$. Comprova que $G\mapsto T(G)$, amb $f\mapsto f|_{T(G)}$, és un functor $\cat{Grp}\to\cat{Set}$, i explica per què l'argument de la proposició~\ref{prop:centre-no-functor} no s'hi aplica. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Mira primer els tipus: si $g^2=1$, què es pot dir de $f(g)^2$? Per a la segona part, calcula $T(S_3)$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Demostra que un functor bijectiu sobre objectes i sobre morfismes és un isomorfisme de categories. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Defineix l'invers sobre objectes i morfismes, i comprova que preserva la composició aplicant-hi el functor original.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Demostra que \enquote{ser un grupoide} és invariant per equivalència, i que \enquote{ser un ordre parcial} no ho és. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Per a la primera part, fes servir que una equivalència és plena i fidel i que reflecteix els isomorfismes.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+La categoria $\cat{Rel}$ és isomorfa a la seva oposada, enviant cada relació $R$ a la relació inversa. Fes-ho servir, junt amb l'exemple $\cat{Set}\not\simeq\cat{Set}\op$, per demostrar que $\cat{Set}\not\simeq\cat{Rel}$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Si $F\colon\cat{C}\to\cat{D}$ és una equivalència, $F\op\colon\cat{C}\op\to\cat{D}\op$ també ho és.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\cat{Set}_\ast$ la categoria dels conjunts amb un punt distingit, amb les aplicacions que preserven el punt distingit. Comprova que té un objecte zero i dedueix que no és cartesiana tancada. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Pensa en el conjunt d'un sol element. Per a la segona part, aplica la proposició~\ref{prop:zero-no-ccc}.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova la fallada de la distributivitat al reticle dels subespais de $\mathbb R^2$ amb les rectes $y=0$, $x=0$ i $y=x$. Té aquest reticle un \enquote{complement} per a cada recta? \hfill{\normalfont$\star$}
+\begin{indicacio}
+Un complement de $a$ és un $b$ amb $a\wedge b=\{0\}$ i $a\vee b=\mathbb R^2$. És únic?
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+A $\mathbb R$, calcula $A\wedge\neg A$ per al tancat $A=[0,1]\cup\{2\}$, amb $\neg A=\overline{\mathbb R\setminus A}$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+El resultat és la frontera de $A$.
+\end{indicacio}
+\end{exercici}

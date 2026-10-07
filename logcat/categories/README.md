@@ -2,7 +2,7 @@
 
 **Formació prèvia per aprendre lògica categòrica**
 
-Autor: Miquel Àngel Perelló · Versió 1.6 (setembre de 2026) · Projecte [**aprendes / logcat**](https://aprendes.com/logcat/)
+Autor: Miquel Àngel Perelló · Versió 1.7 (octubre de 2026) · Projecte [**aprendes / logcat**](https://aprendes.com/logcat/)
 
 Aquest llibre és una introducció a la teoria de categories **orientada a servir de
 base per a un volum posterior de lògica categòrica**. Segueix el nivell i l'estil
@@ -10,29 +10,42 @@ d'una introducció general (comparable a Awodey, *Category Theory*) i hi afegeix
 detall que constitueix la infraestructura categòrica que la lògica necessita.
 
 Forma part de la col·lecció **logcat** (fonaments de la matemàtica i lògica
-categòrica). Cada llibre es publica per capítols (fascicles) a mesura que es
-revisen; de cada fascicle se'n poden consultar el PDF i les fonts LaTeX.
+categòrica).
 
 - Web del projecte: <https://aprendes.com/logcat/>
 - Repositori: <https://github.com/maperello/aprendes> (aquest llibre és a `logcat/categories/`)
 
 ## Estat de la publicació
 
-El **fascicle actual (versió 1.6) comprèn els capítols 1–4** en les quatre parts (teoria,
-pràctica, exercicis proposats i tests interactius), amb els apèndixs, el glossari,
-la bibliografia i la taula de notació. La resta de capítols (5–10) són al
-repositori i s'incorporaran al fascicle a mesura que es revisin.
+La **versió 1.7 és el llibre complet**: els deu capítols de teoria i els nou
+capítols de pràctica, exercicis proposats i tests interactius, amb els apèndixs,
+el glossari, la bibliografia, la taula de notació i l'índex. Tots els capítols han
+passat una revisió matemàtica, didàctica i bibliogràfica completa. El PDF
+publicat és `main.pdf`.
+
+Novetats respecte de la versió 1.6 (fascicle dels capítols 1–4):
+
+- s'hi incorporen els capítols 5–10 revisats;
+- s'hi afegeixen la **Guia de lectura** i l'apèndix **Convenció de mida**;
+- cada pregunta dels tests té una **justificació** breu; les claus i les
+  justificacions es reuneixen al final del llibre (apèndix **Solucions dels tests**);
+- les remissions bibliogràfiques s'han verificat amb les edicions citades.
 
 ## Estructura del llibre
 
 - Prefaci
 - Introducció
+- Guia de lectura i itineraris d'aprenentatge
 - Part I: Teoria
 - Part II: Pràctica
 - Part III: Exercicis proposats
 - Part IV: Tests interactius
-- Bibliografia
-- Índex alfabètic
+- Apèndixs: A. Axiomàtica relacional de les categories petites · B. Grafs ·
+  C. Convenció de mida · D. Solucions dels tests · E. Quasiexemples i
+  contraexemples (què no és una categoria, un functor o una transformació natural;
+  igualtat, isomorfisme, isomorfisme natural i equivalència; la lògica fora dels
+  topos). L'apèndix E només és al llibre complet.
+- Bibliografia, glossari, taula de notació i índex alfabètic
 
 Els capítols de les quatre parts mantenen el mateix nom i ordre. La part de Teoria
 té deu capítols; les parts de Pràctica, Exercicis i Tests en tenen nou (el capítol
@@ -51,44 +64,37 @@ final és un epíleg sense exercicis):
 
 Els capítols 7–9 estenen el recorregut cap a la lògica categòrica: **categories
 cartesianes tancades** introdueix els objectes exponencials, la currificació i la
-semàntica del càlcul lambda simplement tipat (correspondència de
-Curry–Howard–Lambek); **subobjectes, imatges i factoritzacions** presenta el
-preordre `Sub(A)` com a àlgebra de predicats, la reindexació `f*` com a
-substitució, la factorització imatge i les categories regulars, i realitza
-l'existencial com a adjunt per l'esquerra de la reindexació; **classificadors de
-subobjectes i topos** defineix el classificador `Ω` i el topos elemental amb els
-exemples bàsics. El capítol 10 és un **pont**: explicita què es trasllada al volum
-de lògica (lògica d'equacions, de límits finits, regular, coherent/geomètrica,
-intuïcionista, doctrines i fibracions, teories classificadores i booleanització)
-sense desenvolupar-ho.
+semàntica del càlcul lambda simplement tipat; **subobjectes, imatges i
+factoritzacions** presenta l'ordre parcial `Sub(A)` com a àlgebra de predicats, el
+functor `Sub`, la reindexació `f*` com a substitució, la factorització imatge, les
+categories regulars i l'existencial com a adjunt per l'esquerra de la
+reindexació; **classificadors de subobjectes i topos** defineix el classificador
+`Ω`, en demostra l'equivalència amb la representabilitat de `Sub` i presenta els
+topos elementals amb els exemples de `Set`, els prefeixos i `Graph`. El capítol 10
+és un **epíleg**: sense demostracions ni exercicis, dibuixa el mapa que porta de
+les construccions del volum a la lògica categòrica.
 
-**Frontera editorial.** La lògica pròpiament dita ---els sistemes lògics amb la
-seva sintaxi, correcció i completesa, i les condicions de coherència
-Beck–Chevalley i Frobenius com a estructura de doctrina--- es reserva per al volum
-de lògica categòrica.
+**Frontera editorial.** La lògica pròpiament dita (els sistemes lògics amb la seva
+sintaxi, correcció i completesa, i l'estructura de doctrina) es reserva per al
+volum de lògica categòrica.
 
 ## Criteris didàctics
 
 - Quan una propietat categòrica té una expressió natural amb fletxes, es presenta
-  juntament amb el seu diagrama.
-- Els diagrames es tracten com a part del llenguatge matemàtic: es treballa
-  explícitament el pas entre diagrames i equacions.
+  juntament amb el seu diagrama i la seva equació.
 - Els exemples de **conjunts**, **preordres**, **lògica** i **grafs** reapareixen
-  sempre que aporten una interpretació natural del concepte.
-- La lògica es presenta primer mitjançant la categoria prima de la deduïbilitat;
-  la interpretació més fina de les proves com a morfismes queda assenyalada per
-  desenvolupar-la quan es disposi de més llenguatge categòric.
-- Els grafs es tracten tant com a objectes de la categoria `Graph` com a esquelet
-  combinatori dels diagrames i punt de partida de les categories lliures.
+  al llarg de tot el llibre.
+- La deduïbilitat es presenta mitjançant la categoria prima **Prov**_T, amb `⊢_T`.
+- Teoria i Pràctica no dupliquen demostracions: la Teoria dona l'arquitectura de
+  l'argument i la Pràctica l'executa.
+- Les indicacions dels exercicis orienten sense resoldre; els exercicis que
+  requereixen àlgebra o topologia es marquen com a **ampliació**.
 
 ## Compilació
 
-El motor oficial és **XeLaTeX** (el preàmbul carrega fonts OTF de Latin Modern via
-`fontspec` amb XeLaTeX o LuaLaTeX, i fa un *fallback* a `lmodern` amb pdfLaTeX).
-Els fitxers compartits d'estil i preàmbul viuen a la subcarpeta `common/` i es
-carreguen per camí relatiu, de manera que no cal configurar `TEXINPUTS`.
-
-Des del directori `categories/`:
+El motor oficial és **XeLaTeX**. Els fitxers compartits d'estil i preàmbul viuen
+a la subcarpeta `common/` i es carreguen per camí relatiu, de manera que no cal
+configurar `TEXINPUTS`. Des del directori `categories/`:
 
 ```sh
 xelatex -interaction=nonstopmode main.tex
@@ -97,18 +103,28 @@ xelatex -interaction=nonstopmode main.tex
 xelatex -interaction=nonstopmode main.tex
 ```
 
-També compila amb pdfLaTeX i LuaLaTeX, però XeLaTeX és el motor de referència per a
-les mètriques de composició.
-
 ### Amb Make
 
 ```sh
-make            # llibre complet (capítols 1-10)
-make fascicle   # versió parcial per publicar (capítols 1-4) -> main.pdf
+make            # llibre complet (capítols 1-10) -> main.pdf
+make fascicle   # versió parcial (capítols 1-3) -> fascicle.pdf
+make imprimible # llibre complet per imprimir -> imprimible.pdf
+make fascicle-imprimible # fascicle per imprimir -> fascicle-imprimible.pdf
+make ci         # compilació neta de les quatre modalitats i comprovacions
 make quick      # una sola passada (esborrany)
 make clean      # esborra els fitxers auxiliars
 make help       # llista els objectius
 ```
+
+### Compilació comprovada (`make ci`)
+
+`make ci` esborra tots els fitxers generats, compila el llibre complet i el
+fascicle en mode interactiu i imprimible, i executa `./comprova.sh` sobre cada un. La comprovació falla si hi ha
+errors de LaTeX, referències o citacions no resoltes, objectes de formulari
+duplicats o un nombre de camps de formulari diferent de l'esperat (632 al llibre
+complet, 184 al fascicle i 0 a les dues variants imprimibles). També llista els desbordaments de més de 3 pt. Requereix
+TeX Live amb XeLaTeX i `makeindex`; opcionalment, `pdfinfo` (poppler) i Python amb
+`pypdf` per comptar les pàgines i els camps.
 
 ### Amb latexmk
 
@@ -117,53 +133,81 @@ latexmk         # compilació completa amb índex (llibre complet, XeLaTeX)
 latexmk -c      # neteja els auxiliars
 ```
 
-### Fascicle i llibre complet (interruptor)
+### Fascicle i llibre complet
 
-`main.tex` porta un interruptor per triar entre el **llibre complet** (per
-defecte) i el **fascicle** (capítols 1–4 en les quatre parts, més apèndixs,
-glossari, bibliografia, taula de notació i índex). Hi ha dues maneres equivalents
-d'activar el fascicle:
+Per defecte es genera el **llibre complet**. El **fascicle** (capítols 1–3 en les
+quatre parts, més apèndixs, glossari, bibliografia, taula de notació i índex)
+s'activa amb `make fascicle`, que el genera a `fascicle.pdf` sense tocar `main.pdf`, és a dir, definint `\fascicle` a la línia d'ordres:
 
-- **Automàtica** (la que fa servir `make fascicle`): definir `\fascicle` a la línia
-  d'ordres, sense tocar cap fitxer:
+```sh
+xelatex -jobname=fascicle "\def\fascicle{}\input{main.tex}"
+```
 
-  ```sh
-  xelatex -jobname=main "\def\fascicle{}\input{main.tex}"
-  ```
+o bé descomentant la línia `\publicacioparcialtrue` a l'inici de `main.tex`. En
+mode fascicle, les remissions a capítols posteriors s'escriuen amb el número del
+capítol del volum complet (macros `\refcap` i `\refalt`), de manera que no queda cap
+referència sense resoldre.
 
-- **Manual**: descomentar la línia `\publicacioparcialtrue` a l'inici de `main.tex`.
+### Edició imprimible
 
-En mode fascicle, algunes remissions a capítols posteriors (límits, adjuncions…)
-apareixen sense resoldre, ja que aquells capítols no s'inclouen. Això és esperat.
+`make imprimible` genera `imprimible.pdf` amb fons blanc, enllaços discrets i tests estàtics sense camps de formulari. `make fascicle-imprimible` aplica el mateix criteri al fascicle. Les solucions i justificacions dels tests es mantenen a l'apèndix. Cap d'aquests objectius no modifica `main.pdf`.
 
 ### Tests interactius
 
 Els tests interactius requereixen un lector de PDF compatible amb formularis
-AcroForm i JavaScript per poder utilitzar els botons de correcció. Es recomana
-descarregar el PDF i obrir-lo amb **Adobe Acrobat Reader**; alguns visualitzadors
-integrats als navegadors no executen correctament les funcions interactives.
+AcroForm i JavaScript. Es recomana descarregar el PDF i obrir-lo amb **Adobe
+Acrobat Reader**; alguns visualitzadors integrats als navegadors no executen
+correctament les funcions interactives. Per a aquests casos i per a la lectura
+en paper, les claus de respostes i les justificacions de tots els tests es
+reuneixen a l'apèndix **Solucions dels tests**, al final del llibre; cada test
+hi remet amb un enllaç.
+
+## Organització de la carpeta
+
+- `main.tex`, `metadata.tex`: document principal i metadades.
+- `caps/`: capítols (`teoria/`, `practica/`, `exercicis/`, `tests/`), introducció,
+  guia, apèndixs i materials de consulta.
+- `common/`: estil i preàmbul compartits. `common/legacy/` conté versions antigues
+  que **no s'usen** en la compilació actual.
+- `Makefile`, `latexmkrc`, `comprova.sh`: compilació i comprovacions (`make ci`).
+- `main.pdf`: llibre complet per a pantalla, amb tests interactius.
+- `imprimible.pdf`: llibre complet per imprimir (fons blanc, tests en paper).
+
+Tots dos PDF són els que enllaça la web.
 
 ## Convenció de mida
 
-Per a tot el llibre s'adopta la convenció següent: una categoria és **petita** si
-la seva col·lecció d'objectes *i* la seva col·lecció de morfismes són totes dues
-conjunts, i **localment petita** si entre cada parella d'objectes hi ha un conjunt
-de morfismes (encara que la col·lecció d'objectes pugui ser una classe pròpia). En
-particular, una categoria amb un conjunt d'objectes i localment petita és petita.
-`Set`, `Grp`, `Top`, `Graph` i `Cat` (la categoria de categories petites) són
-localment petites però no petites. Els functors `Free: Graph -> Cat` i
-`U: Cat -> Graph` operen entre categories grans i, per tant, no són morfismes de
-`Cat`.
+Una categoria és **petita** si la seva col·lecció d'objectes i la de morfismes són
+conjunts, i **localment petita** si cada `Hom(A,B)` és un conjunt. El marc
+conjuntista (classes a l'estil NBG, elecció global) es fixa a l'apèndix C.
 
-## Fitxers llegats
+## Errates i col·laboració
 
-El directori `common/legacy/` conté versions antigues de l'estil
-(`aprendes-sobri.sty`, `aprendes-modern.sty`) i dels entorns (`environments.tex`).
-**No s'usen** en la compilació actual, que carrega l'estil unificat
-`common/aprendes.sty`. Es conserven només com a referència històrica i poden tenir
-dependències no declarades.
+Les errates, correccions i suggeriments són benvinguts mitjançant
+[*issues*](https://github.com/maperello/aprendes/issues) (indicant la versió i la
+pàgina) o *pull requests* al repositori
+[maperello/aprendes](https://github.com/maperello/aprendes).
+
+## Com citar-lo
+
+Miquel Àngel Perelló, *Una introducció a la teoria de categories*, versió 1.7,
+2026. Projecte aprendes / logcat, <https://aprendes.com/logcat/>.
+
+```bibtex
+@book{perello2026categories,
+  author    = {Perelló, Miquel Àngel},
+  title     = {Una introducció a la teoria de categories},
+  edition   = {versió 1.7},
+  year      = {2026},
+  month     = oct,
+  publisher = {Projecte aprendes / logcat},
+  url       = {https://aprendes.com/logcat/},
+  note      = {Llicència CC BY-SA 4.0}
+}
+```
 
 ## Llicència
 
-Vegeu el fitxer `LICENSE` a l'arrel del repositori
-[maperello/aprendes](https://github.com/maperello/aprendes).
+Aquesta obra està subjecta a la llicència
+[Creative Commons Reconeixement-CompartirIgual 4.0 Internacional (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.ca).
+Vegeu el fitxer `LICENSE`.

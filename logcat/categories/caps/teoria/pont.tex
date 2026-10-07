@@ -3,10 +3,10 @@
 
 \begin{objectius}
 \apartat{Prerequisits} Tot el volum, especialment subobjectes, reindexació i categories regulars (cap.~\ref{cap:subobjectes}) i els classificadors (cap.~\ref{cap:topos}).
-\apartat{Funció del capítol} Aquest capítol és un epíleg sense matèria nova ni exercicis: recull el fil conductor del llibre i explicita quines construccions es prolonguen en la lògica categòrica i com. Serveix d'orientació per a qui vulgui continuar cap al volum següent.
+\apartat{Funció del capítol} Aquest capítol és un epíleg sense demostracions ni exercicis. No desenvolupa una teoria nova, però introdueix la terminologia mínima necessària per dibuixar el mapa que porta de les construccions d'aquest volum a la lògica categòrica. Serveix d'orientació per a qui vulgui continuar cap al volum següent.
 \end{objectius}
 
-Aquest volum tanca aquí. Els capítols anteriors han construït, pas a pas, el llenguatge categòric bàsic necessari per al programa que anunciem: categories i morfismes, functors, transformacions naturals i equivalències, representabilitat i el lema de Yoneda, límits i colímits, adjuncions, tancament cartesià, subobjectes, imatges i factoritzacions, i els classificadors de subobjectes. Aquest capítol final, breu i sense exercicis, no introdueix matèria nova: explicita què d'aquest bagatge es prolonga en l'estudi de la \textbf{lògica categòrica}, i com. La seva funció és orientar el lector que vulgui continuar, mostrant-li que cada eina que ha après aquí té una contrapartida lògica precisa a l'altra banda del pont.
+Aquest volum tanca aquí. Els capítols anteriors han construït, pas a pas, el llenguatge categòric bàsic necessari per al programa que anunciem: categories i morfismes, functors, transformacions naturals i equivalències, representabilitat i el lema de Yoneda, límits i colímits, adjuncions, tancament cartesià, subobjectes, imatges i factoritzacions, i els classificadors de subobjectes. Aquest epíleg mostra què d'aquest bagatge es prolonga en l'estudi de la \textbf{lògica categòrica}, i com: cada eina apresa aquí té una contrapartida lògica precisa a l'altra banda del pont.
 
 \section{El que aquest volum deixa preparat}
 
@@ -16,7 +16,7 @@ Convé fer inventari del que ja tenim, perquè és exactament la infraestructura
 \item \textbf{La categoria prima de la deduïbilitat}: la primera aparició, al capítol inicial, de la idea que una lògica es pot veure com una categoria.
 \item \textbf{Representabilitat i Yoneda}: la manera d'identificar un objecte per com es relaciona amb tots els altres; el classificador de subobjectes n'és un cas.
 \item \textbf{Límits finits, i molt especialment els pullbacks}: la base per interpretar contextos, substitució i relacions.
-\item \textbf{Adjuncions}: el patró que reapareixerà en cada connectiu i cada quantificador.
+\item \textbf{Adjuncions}: el patró que reapareixerà en operacions lògiques centrals, especialment en la implicació i en els quantificadors existencial i universal.
 \item \textbf{Tancament cartesià i càlcul lambda}: la semàntica dels tipus i els termes.
 \item \textbf{Subobjectes i reindexació}: la interpretació dels predicats i la substitució.
 \item \textbf{Imatges i factoritzacions}: la construcció que, a l'altra banda, interpretarà la quantificació existencial.
@@ -39,9 +39,8 @@ La idea directriu és que cada nivell \emph{afegeix} una peça d'estructura a le
 categoria amb límits finits & $\top$, $\wedge$ (interseccions) & conjunció, veritat\\
 categoria \textbf{regular} & imatges estables: $\exists_f$ & $+\ \exists$\\
 categoria \textbf{coherent} & joins finits estables: $\bot$, $\vee$ & $+\ \vee,\ \bot$\\
-categoria \textbf{de Heyting} & implicació $\Rightarrow$; $\forall_f$ & $+\ \Rightarrow,\ \forall$\\
-loc.\ cartesiana tancada & productes dependents & tipus dependents, $\forall$\\
-\textbf{topos} elemental & classificador $\Omega$, exponencials & lògica intuïcionista d'ordre superior\\
+categoria \textbf{de Heyting} & implicació $\Rightarrow$; $\forall_f$ & $+\ \Rightarrow,\ \forall$: lògica intuïcionista de primer ordre\\
+\textbf{topos} elemental & classificador $\Omega$, objectes de parts, exponencials & lògica intuïcionista d'ordre superior\\
 \hline
 \end{tabularx}
 \renewcommand{\arraystretch}{1.0}
@@ -55,6 +54,8 @@ La lectura de la taula, de dalt a baix, és acumulativa i respon les preguntes q
   \item \textbf{Topos} elemental. El classificador $\Omega$ i els exponencials clouen el quadre amb una lògica intuïcionista d'ordre superior, on fins i tot els predicats sobre predicats tenen extensió.
 \end{itemize}
 
+\index{categoria!localment cartesiana tancada}En paral·lel, la semàntica dels \emph{tipus} segueix una altra línia. Les categories cartesianes tancades interpreten el càlcul lambda simplement tipat (capítol~\ref{cap:cartesianes}), mentre que les categories \textbf{localment cartesianes tancades} proporcionen productes dependents: per a cada $f\colon A\to B$, la reindexació $f^{*}\colon\cat{C}/B\to\cat{C}/A$ admet un adjunt per la dreta $\Pi_f$. Aquesta via és especialment important per a la teoria de tipus dependents. No és un esglaó de la cadena regular--coherent--Heyting, però totes dues vies es troben en els topos elementals, que són localment cartesians tancats i tenen lògica de Heyting als subobjectes.
+
 Aquest mapa no és matèria d'aquest volum (no en demostrem les equivalències), però és la brúixola que orienta tot el que segueix: cada fila és, de fet, un capítol del programa de la lògica categòrica.
 
 \section{El que continua a l'altra banda}
@@ -62,13 +63,13 @@ Aquest mapa no és matèria d'aquest volum (no en demostrem les equivalències),
 L'estudi de la lògica categòrica pren aquestes eines i les fa servir per construir una \textbf{semàntica de la lògica} de complexitat creixent. Sense entrar-hi ---perquè és l'objecte d'un estudi a part---, en dibuixem el recorregut, perquè el lector vegi on desemboca cada cosa que ha après:
 
 \begin{description}
-\item[Lògica d'equacions.] El punt de partida: teories algebraiques a l'estil de Lawvere, on la categoria sintàctica té productes finits i els models són functors que els preserven. És la lògica que ja s'endevina en el tancament cartesià.
+\item[Lògica d'equacions.] El punt de partida: teories algebraiques a l'estil de Lawvere, on la categoria sintàctica té productes finits i els models són functors que els preserven. És la lògica que ja s'endevina en la universalitat dels productes finits: els contextos es combinen per producte i les operacions esdevenen morfismes entre potències finites d'un objecte. El tancament cartesià pertany a una via posterior, la del càlcul lambda i la implicació.
 
 \item[Lògica de límits finits.] El pont immediat: teories amb diverses menes, operacions parcialment definides i axiomes d'existència i unicitat. La categoria sintàctica passa a tenir \emph{límits finits}, no només productes; és el marc de les teories essencialment algebraiques.
 
-\item[Lògica regular.] Fórmules amb igualtat, conjunció i quantificació existencial, escrites com a seqüents en context. Aquí és on les \textbf{imatges regulars} construïdes en aquest volum interpreten l'existencial, i on la factorització imatge interpreta l'eliminació de testimonis. El resultat central és l'equivalència entre models regulars d'una teoria i functors regulars des de la seva categoria sintàctica.
+\item[Lògica regular.] Fórmules amb igualtat, conjunció i quantificació existencial, escrites com a seqüents en context. Aquí és on les \textbf{imatges regulars} construïdes en aquest volum interpreten l'existencial, i on la factorització imatge interpreta l'eliminació de testimonis. El resultat central és que, per a una teoria regular $T$ i una categoria regular $\cat{C}$, els models de $T$ en $\cat{C}$ es descriuen mitjançant functors regulars des de la categoria sintàctica regular $\cat{C}_T$ cap a $\cat{C}$; amb la noció adequada de morfisme de models, aquesta correspondència s'organitza categòricament.
 
-\item[Lògica coherent i geomètrica.] S'hi afegeixen les disjuncions, primer finites (coherent) i després arbitràries (geomètrica). És el marc que condueix als feixos i, de nou, als topos.
+\item[Lògica coherent i geomètrica.] S'hi afegeixen disjuncions finites (coherent) i disjuncions indexades per conjunts (geomètrica). És el marc que condueix als feixos i, de nou, als topos.
 
 \item[Lògica intuïcionista de primer ordre.] Apareixen la implicació i el quantificador universal. La idea organitzadora és que les fibres de subobjectes formen \textbf{àlgebres de Heyting}: la implicació és l'adjunt dret de la conjunció, i $\forall$ és l'adjunt dret de la substitució. Els adjunts de la reindexació que aquí hem vist com a exemple es converteixen allà en els quantificadors del sistema.
 
@@ -76,12 +77,16 @@ L'estudi de la lògica categòrica pren aquestes eines i les fa servir per const
 
 \item[Teories classificadores i llenguatge intern.] El punt culminant: la categoria o el topos classificador d'una teoria, amb la seva propietat universal, i el llenguatge intern que permet raonar dins d'una categoria com si els seus objectes fossin conjunts, sempre que les regles emprades corresponguin a l'estructura disponible.
 
-\item[Lògica clàssica i booleanització.] Com a epíleg, què s'afegeix en imposar el tercer exclòs, quines construccions deixen de ser constructives i com una categoria o un topos es pot booleanitzar. La lògica clàssica apareix així com una especialització, no com el rerefons silenciós de tota la teoria.
+\item[Lògica clàssica i booleanització.] Com a epíleg, què s'afegeix en imposar el tercer exclòs, quines construccions deixen de ser constructives i com, en teoria de topos, es passa a la booleanització d'un topos. La lògica clàssica apareix així com una especialització, no com el rerefons silenciós de tota la teoria.
 \end{description}
+
+\begin{nota}[Ampliació: estructures sense conjunt subjacent]
+Al capítol~\ref{cap:categories} hem partit d'estructures que tenen un conjunt subjacent. No totes les estructures matemàtiques són conjunts amb una estructura afegida, i el programa anterior ho fa visible. A cada teoria geomètrica li correspon un \emph{topos classificador}, la categoria de punts del qual és equivalent a la categoria de models de la teoria a $\cat{Set}$ \cite{caramello}. Però aquest \enquote{espai} pot ser no trivial i no tenir cap punt. Per exemple, la teoria d'una aplicació exhaustiva $\mathbb N\to\mathbb R$ no té cap model a $\cat{Set}$, pel teorema de Cantor; tanmateix, el seu \emph{locale} classificador és no trivial, i el topos de feixos sobre aquest locale, que n'és el topos classificador, no té cap punt \cite{blechschmidt}. Aquestes situacions queden fora d'aquest volum; les esmentem perquè mostren que la perspectiva de les fletxes no depèn de disposar d'elements.
+\end{nota}
 
 \section{Un exemple: la categoria sintàctica d'una teoria}\label{sec:sintactica}\index{categoria!sintàctica}
 
-Fins ara la correspondència lògica--categòrica ha aparegut repartida en exemples solts. Val la pena reunir-la, per acabar, en un únic exemple concret que il·lustra de cop l'eslògan \enquote{una teoria és una categoria}. Prenem la teoria algebraica més simple no trivial: una \textbf{mena} $s$ i una operació binària $m\colon s\times s\to s$, sense cap axioma (la teoria dels \emph{magmes}). Construïm pas a pas la seva categoria sintàctica $\cat{Syn}$.
+Fins ara la correspondència lògica--categòrica ha aparegut repartida en exemples solts. Val la pena reunir-la en un únic exemple pont, complet i concret, que il·lustra de cop l'eslògan \enquote{una teoria es codifica en una categoria sintàctica}. Prenem la teoria algebraica més simple no trivial: una \textbf{mena} $s$ i una operació binària $m\colon s\times s\to s$, sense cap axioma (la teoria dels \emph{magmes}). Construïm pas a pas la seva categoria sintàctica $\cat{Syn}$.
 
 \begin{enumerate}
   \item \textbf{Contextos com a objectes.} Un \emph{context} és una llista finita de variables de la mena $s$, que escrivim $[x_1,\dots,x_n]$ i abreugem $s^n$. Els objectes de $\cat{Syn}$ són els contextos, un per a cada $n\geq 0$; el context buit $s^0$ és l'objecte terminal.
@@ -89,19 +94,59 @@ Fins ara la correspondència lògica--categòrica ha aparegut repartida en exemp
   \item \textbf{Productes com a concatenació de contextos.} El producte $s^n\times s^m$ és el context $s^{n+m}$: juxtaposar dos contextos és formar-ne el producte, i les projeccions obliden les variables sobrants. Així $\cat{Syn}$ té tots els productes finits, i l'operació $m$ del llenguatge és, ara, un morfisme distingit $s\times s\to s$ de la categoria.
   \item \textbf{Equacions com a igualtats de morfismes.} Si la teoria tingués axiomes ---posem l'associativitat de $m$---, s'imposarien identificant els dos morfismes $s^3\to s$ corresponents a $m(m(x_1,x_2),x_3)$ i $m(x_1,m(x_2,x_3))$. Una equació entre termes \emph{és}, literalment, una igualtat entre morfismes de $\cat{Syn}$.
   \item \textbf{Models com a functors.} Un model de la teoria en una categoria $\cat{C}$ amb productes finits ---per exemple, un magma ordinari a $\cat{Set}$--- és exactament un functor $\cat{Syn}\to\cat{C}$ que preserva els productes finits: tria un objecte per a $s$ i un morfisme per a $m$, respectant tota la sintaxi. Els homomorfismes de models són transformacions naturals. Aquesta és la forma precisa de \enquote{els models són functors}.
-  \item \textbf{Fórmules i existencial.} Si ampliem el llenguatge amb predicats, un \textbf{subobjecte} de $s^n$ a $\cat{Syn}$ és una fórmula en el context $[x_1,\dots,x_n]$; la \textbf{reindexació} al llarg d'una projecció $s^{n+1}\to s^n$ és la substitució que afegeix una variable, i la \textbf{imatge} d'aquesta projecció, que aquest volum ha construït, és el quantificador $\exists x_{n+1}$. L'existencial de la lògica és, doncs, la factorització imatge d'aquesta categoria sintàctica.
+  \item \textbf{Fórmules i existencial.} Per passar de la teoria algebraica anterior a la lògica regular cal enriquir també la categoria sintàctica: la categoria $\cat{Syn}$ dels passos anteriors no conté automàticament els subobjectes que representen totes les fórmules. En la \textbf{categoria sintàctica regular} $\cat{C}_T$ d'una teoria amb predicats, una fórmula $\varphi(\bar x)$ en context determina, llevat d'equivalència demostrable, un subobjecte
+  \[
+  [\bar x\mid\varphi]\rightarrowtail[\bar x\mid\top].
+  \]
+  La substitució al llarg d'un morfisme de contextos s'interpreta per \textbf{reindexació}, és a dir, per pullback. En particular, si $\pi\colon s^{n+1}\to s^n$ és la projecció que oblida la darrera variable, $\pi^{*}$ és el debilitament, que considera un predicat sobre $s^n$ en el context ampliat. Si $P\rightarrowtail s^{n+1}$ representa $\varphi(\bar x,y)$, la \textbf{imatge} del compost
+  \[
+  P\rightarrowtail s^{n+1}\xrightarrow{\ \pi\ }s^n
+  \]
+  representa $\exists y\,\varphi(\bar x,y)$. Així, l'existencial és la imatge d'un predicat al llarg d'una projecció o, equivalentment, l'adjunt per l'esquerra de la reindexació (capítol~\ref{cap:subobjectes}).
+  \item \textbf{Un càlcul complet en un model.} Fem concret tot l'anterior en un sol model, el magma $(\mathbb N,+)$, és a dir, el functor $M\colon\cat{Syn}\to\cat{Set}$ amb $M(s)=\mathbb N$ i $M(m)=+$. Prenem la fórmula $\varphi(x,y)$: $m(y,y)=x$, en el context $[x,y]$.
+  \begin{itemize}
+    \item \emph{Una equació és un equalitzador.} Els dos termes $m(y,y)$ i $x$ són morfismes $s^2\to s$, interpretats com les aplicacions $(x,y)\mapsto y+y$ i $(x,y)\mapsto x$ de $\mathbb N^2$ a $\mathbb N$. La fórmula s'interpreta com el seu equalitzador,
+    \[
+    P=\{(x,y)\in\mathbb N^2\mid y+y=x\}\rightarrowtail\mathbb N^2.
+    \]
+    Equivalentment, $P$ és el pullback de la diagonal $\delta_{\mathbb N}\colon\mathbb N\rightarrowtail\mathbb N\times\mathbb N$ al llarg del parell format pels dos termes: la igualtat és la diagonal.
+    \item \emph{L'existencial és una imatge.} La projecció $\pi\colon\mathbb N^2\to\mathbb N$ oblida $y$. La imatge de $P\rightarrowtail\mathbb N^2\to\mathbb N$ és $\{x\mid\exists y\ y+y=x\}$, el conjunt dels nombres parells. Així, $\exists y\,(m(y,y)=x)$ s'interpreta com el predicat \enquote{$x$ és parell}, és a dir, com $\exists_\pi[P]$.
+    \item \emph{El predicat és un morfisme cap a $\Omega$.} El seu morfisme característic $\mathbb N\to\{0,1\}$ val $1$ exactament als parells, com a l'exemple~\ref{ex:caracteristic-set}.
+    \item \emph{La substitució és un pullback.} Substituir $x$ pel terme $m(z,m(z,z))$, en el context $[z]$, dona la fórmula $\exists y\,(m(y,y)=m(z,m(z,z)))$. Categòricament, és reindexar el predicat al llarg del morfisme $s\to s$ definit pel terme, interpretat com $z\mapsto 3z$. Per tant, s'interpreta com $\{z\mid 3z\text{ és parell}\}$, que és el conjunt dels parells. En canvi, substituir pel terme $m(z,z)$ dona $\{z\mid 2z\text{ és parell}\}=\mathbb N$, el subobjecte màxim: la fórmula $\exists y\,(m(y,y)=m(z,z))$ és demostrable, amb el testimoni $y=z$, i el model ho reflecteix.
+  \end{itemize}
+  Un sol exemple recorre així les peces del volum: termes com a morfismes, equacions com a equalitzadors i igualtat com a diagonal (capítols~\ref{cap:limits} i~\ref{cap:cartesianes}), existencial com a imatge (capítol~\ref{cap:subobjectes}), predicats com a morfismes cap a $\Omega$ (capítol~\ref{cap:topos}) i substitució com a pullback.
 \end{enumerate}
 
-Amb aquest exemple, cada peça del llibre troba el seu lloc: els contextos són objectes, els termes són morfismes, la substitució és composició i reindexació, els productes són concatenacions, les equacions són igualtats de fletxes, els models són functors que preserven estructura, i els quantificadors són adjunts. La categoria sintàctica és el punt on la sintaxi lògica i la semàntica categòrica es toquen; construir-la en general, amb l'estructura exacta que cada fragment lògic requereix, és una de les primeres tasques del volum següent.
+Amb aquest exemple, cada peça del llibre troba el seu lloc: els contextos són objectes, els termes són morfismes, la substitució és composició i reindexació, els productes són concatenacions, les equacions són igualtats de fletxes, els models són functors que preserven estructura, i els quantificadors, quan existeixen, són adjunts de la reindexació. La categoria sintàctica és el punt on la sintaxi lògica i la semàntica categòrica es toquen; construir-la en general, amb l'estructura exacta que cada fragment lògic requereix, és una de les primeres tasques del volum següent.
 
 \section{Cloenda}
 
-El fil que recorre tot aquest programa és un de sol, i ja el coneixem: \emph{traduir entre lògica i categories}. Un predicat és un subobjecte; la substitució és un pullback; la conjunció és una intersecció; l'existencial és una imatge; la implicació i l'universal són adjunts; una teoria és una categoria i els seus models són functors. Cadascuna d'aquestes traduccions descansa sobre una construcció que aquest volum ha desenvolupat amb detall.
+El fil que recorre tot aquest programa és un de sol, i ja el coneixem: \emph{traduir entre lògica i categories}. En el marc categòric adequat a cada fragment lògic, un predicat s'interpreta com un subobjecte; la substitució, com un pullback; la conjunció, com una intersecció; l'existencial, com una imatge; la implicació i l'universal, mitjançant adjunts; una teoria es codifica en una categoria sintàctica i els seus models es descriuen per functors que preserven l'estructura pertinent. Les teories algebraiques, regulars, coherents o geomètriques tenen categories sintàctiques amb l'estructura corresponent, i per això teories sintàcticament diferents poden tenir semàntiques categòriques equivalents, o fins i tot el mateix topos classificador. Cadascuna d'aquestes traduccions descansa sobre una construcció que aquest volum ha desenvolupat amb detall.
 
 No hem demostrat cap teorema de la lògica categòrica en aquestes pàgines, i era deliberat: la seva demostració pertany al volum següent. El que sí que hem fet és deixar el terreny preparat, de manera que quan aquells teoremes arribin, cap de les seves peces categòriques resulti desconeguda. Si el lector, en trobar més endavant que \enquote{l'existencial és un adjunt per l'esquerra de la substitució, estable per canvi de base}, reconeix en aquesta frase la factorització imatge, l'adjunció i el pullback que ha estudiat aquí, aleshores aquest volum haurà complert la seva funció.
 
+\section{Mapa del volum següent}\label{sec:mapa-volum-seguent}
+
+La secció~\ref{sec:mapa} ordenava la continuació per fragments lògics. Per acabar, l'ordenem per temes: per a cadascun dels cinc temes centrals del volum de lògica categòrica, què en queda establert aquí i què s'hi afegirà.
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Tema} & \textbf{En aquest volum} & \textbf{Al volum següent}\\
+\midrule
+substitució i reindexació & $f^{*}$ per pullback a $\cat{C}/B$ (capítol~\ref{cap:limits}) i a $\Sub(B)$; el functor $\Sub\colon\cat{C}\op\to\cat{Poset}$ (capítol~\ref{cap:subobjectes}) & la substitució de termes en fórmules com a reindexació en una doctrina; la condició de Beck--Chevalley\\
+connectius sobre subobjectes & $\top$ i $\wedge$ com a pullbacks (capítol~\ref{cap:subobjectes}); $\Rightarrow$ als preordres cartesians tancats (capítol~\ref{cap:cartesianes}); $\wedge$ sobre $\Omega$ (capítol~\ref{cap:topos}) & $\bot$ i $\vee$ estables (categories coherents); $\Rightarrow$ a les fibres (categories de Heyting)\\
+quantificadors com a adjunts & $\exists_f\dashv f^{*}\dashv\forall_f$ a $\cat{Set}$ (capítol~\ref{cap:adjuncions}); $\exists_f$ com a imatge en categories regulars (capítol~\ref{cap:subobjectes}) & $\forall_f$ en categories de Heyting; la condició de Frobenius; la quantificació al llarg de projeccions de contextos\\
+igualtat & la diagonal $\delta_A$ (capítol~\ref{cap:cartesianes}); la parella nucli, que és el pullback de $\delta_B$ al llarg de $f\times f$ (capítol~\ref{cap:subobjectes}); les equacions com a equalitzadors (secció~\ref{sec:sintactica}) & la igualtat com a $\exists_{\delta_A}(\top)$, on $\exists_{\delta_A}$ és l'adjunt per l'esquerra de la contracció $\delta_A^{*}$; les regles de la igualtat com a propietats d'aquesta adjunció\\
+semàntica interna & $\Omega$, la pertinença per elements generalitzats i l'objecte de parts (capítol~\ref{cap:topos}); l'exemple de la secció~\ref{sec:sintactica} & el llenguatge intern d'un topos, la semàntica de Kripke--Joyal, la lògica d'ordre superior, i la correcció i la completesa\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Cap fila de la columna central no demana res que el lector no hagi vist en aquest volum. La columna de la dreta és el programa del volum següent.
+
 \begin{resumcap}
-\apartat{El fil en una frase} Un predicat és un subobjecte; la substitució, un pullback; la conjunció, una intersecció; l'existencial, una imatge; la implicació i l'universal, adjunts; una teoria, una categoria, i els seus models, functors.
-\apartat{Cap on continua} La lògica pròpiament dita ---sintaxi, correcció i completesa, i les condicions de coherència Beck--Chevalley i Frobenius--- es reserva per al volum de lògica categòrica, del qual aquest text és la preparació.
-\apartat{Lectura recomanada} \cite{lambekscott} i \cite{jacobs} per a la lògica categòrica i la teoria de tipus; \cite{maclanemoerdijk} per a la lògica geomètrica i els topos; \cite{johnstone} com a obra de consulta.
+\apartat{El fil en una frase} En el marc categòric adequat a cada fragment lògic, un predicat s'interpreta com un subobjecte; la substitució, com un pullback; la conjunció, com una intersecció; l'existencial, com una imatge; la implicació i l'universal, mitjançant adjunts; una teoria es codifica en una categoria sintàctica i els seus models es descriuen per functors que preserven l'estructura pertinent.
+\apartat{Cap on continua} La lògica pròpiament dita ---sintaxi, correcció i completesa, i les condicions de coherència Beck--Chevalley i Frobenius--- es reserva per al volum de lògica categòrica, del qual aquest text és la preparació. La secció~\ref{sec:mapa-volum-seguent} en dona el mapa per temes: substitució, connectius, quantificadors, igualtat i semàntica interna.
+\apartat{Lectura recomanada} \cite{lambekscott} i \cite{jacobs} per a la lògica categòrica i la teoria de tipus; \cite[§13]{streicher} per a la lògica interna dels topos; \cite{makkaireyes} i \cite{pitts} per a la lògica de primer ordre en categories regulars, coherents i de Heyting, que és el punt de partida del volum de lògica; \cite{maclanemoerdijk} per a la lògica geomètrica i els topos; \cite{johnstone} com a obra de consulta. Com a direccions complementàries: \cite{hott}, per a la teoria homotòpica de tipus, on la igualtat entre dos elements pot tenir estructura pròpia; i l'nLab \cite{nlab-classificador,nlab-locale}, com a recurs de consulta sobre topos classificadors i locales.
 \end{resumcap}

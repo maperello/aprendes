@@ -18,7 +18,7 @@ Els morfismes $A\to A$ es poden compondre entre ells i el resultat torna a anar 
 \end{indicacio}
 \end{exercici}
 
-\begin{exercici}
+\begin{exercici}[Ampliació, per a lectors amb topologia]
 Comprova que els espais topològics amb les aplicacions contínues formen una categoria $\cat{Top}$. Cal usar dues propietats de les aplicacions contínues: quines? \hfill{\normalfont$\star$}
 \begin{indicacio}
 La composició de contínues és contínua, i la identitat és contínua.
@@ -111,6 +111,15 @@ Comprova que la inversa d'un homomorfisme bijectiu de monoides preserva l'operac
 \end{exercici}
 
 \begin{exercici}
+Comprova que si $g\comp f$ és un isomorfisme, no cal que ho siguin ni $f$ ni $g$. Busca'n un exemple senzill a $\cat{Set}$ i representa'l amb fletxes. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Pensa en una injecció seguida d'una projecció entre conjunts de mides diferents.
+\end{indicacio}
+\end{exercici}
+
+\section{Classes especials de morfismes}
+
+\begin{exercici}
 Comprova que tot isomorfisme té secció. Després, prenent $A=\{0,1\}$, $B=\{\ast\}$ i $f$ l'única aplicació $A\to B$, dona una secció $s\colon B\to A$ explícita i comprova que $f$ no és isomorfisme. Observa que en aquest cas $f$ té \emph{dues} seccions distintes: quines? \hfill{\normalfont$\star$}
 \begin{indicacio}
 Tria $s(\ast)=0$ o $s(\ast)=1$. En tots dos casos $f\comp s=\id_B$, però $s\comp f\neq\id_A$. Les dues tries donen les dues seccions.
@@ -120,14 +129,7 @@ Tria $s(\ast)=0$ o $s(\ast)=1$. En tots dos casos $f\comp s=\id_B$, però $s\com
 \begin{exercici}
 A la categoria $\cat{Set}$, exhibeix morfismes que il·lustrin els tres casos possibles pel que fa a l'existència de seccions: un morfisme sense cap secció, un amb una única secció i un amb més d'una. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Per a \emph{cap} secció, cerca un morfisme no exhaustiu, com $\emptyset\to\{\ast\}$ o una injecció no exhaustiva. Per a \emph{una única}, un morfisme exhaustiu on cada element del codomini tingui una sola antiimatge (una bijecció). Per a \emph{diverses}, un morfisme exhaustiu amb alguna fibra de més d'un element: cada elecció d'antiimatges dona una secció distinta. Recorda que a $\cat{Set}$ triar una secció d'una aplicació exhaustiva és triar un element a cada fibra.
-\end{indicacio}
-\end{exercici}
-
-\begin{exercici}
-Comprova que si $g\comp f$ és un isomorfisme, no cal que ho siguin ni $f$ ni $g$. Busca'n un exemple senzill a $\cat{Set}$ i representa'l amb fletxes. \hfill{\normalfont$\star$}
-\begin{indicacio}
-Pensa en una injecció seguida d'una projecció entre conjunts de mides diferents.
+Per a \emph{cap} secció, cerca una aplicació no exhaustiva, com $\emptyset\to\{\ast\}$ o una injecció no exhaustiva. Per a \emph{una única}, una aplicació exhaustiva on cada element del codomini tingui una sola antiimatge (una bijecció). Per a \emph{diverses}, una aplicació exhaustiva amb alguna fibra de més d'un element: cada elecció d'antiimatges dona una secció distinta. Recorda que a $\cat{Set}$ triar una secció d'una aplicació exhaustiva és triar un element a cada fibra.
 \end{indicacio}
 \end{exercici}
 
@@ -139,9 +141,9 @@ Demostra la caracterització dual de l'exercici resolt a la part de pràctica: u
 \end{exercici}
 
 \begin{exercici}
-Considera la categoria $\cat{2}=(0\to 1)$ i la seva única fletxa no trivial $u\colon 0\to 1$. Comprova que $u$ és alhora un monomorfisme i un epimorfisme (un bimorfisme), però que \emph{no} és un isomorfisme. Quin fet elemental de $\cat{2}$ fa que les cancel·lacions siguin trivials? \hfill{\normalfont$\star$}
+Sigui $\cat{C}$ una categoria prima. Per l'exercici resolt~\ref{exr:pr-prima-mono-epi} de la Pràctica, tot morfisme de $\cat{C}$ és un bimorfisme. Demostra que un morfisme $f\colon A\to B$ de $\cat{C}$ és un isomorfisme si i només si existeix algun morfisme $B\to A$. Aplica-ho a la fletxa $u\colon 0\to 1$ de $\cat{2}$ i a dues fórmules interdeduïbles i distintes de $\cat{Prov}_T$. \hfill{\normalfont$\star$}
 \begin{indicacio}
-A $\cat{2}$ els únics morfismes són $\id_0$, $\id_1$ i $u$. Per veure que $u$ és mono i epi, comprova que amb tan pocs morfismes les úniques parelles $g,h$ que compleixen les hipòtesis de cancel·lació ja són iguals de partida. Per veure que no és iso, observa que no hi ha cap fletxa $1\to 0$, de manera que $u$ no pot tenir invers.
+Si $g\colon B\to A$ existeix, $g\comp f$ i $\id_A$ pertanyen tots dos a $\Hom(A,A)$, que té com a màxim un element; raona igual amb $f\comp g$ i $\id_B$. A $\cat{2}$ no hi ha cap fletxa $1\to 0$, de manera que $u$ és un bimorfisme que no és iso. A $\cat{Prov}_T$, en canvi, la fletxa que expressa $p\vdash_T q$ és un isomorfisme que no és una identitat quan també $q\vdash_T p$.
 \end{indicacio}
 \end{exercici}
 
@@ -152,12 +154,33 @@ Per al mono: de $f\comp u=f\comp v$, compon per l'esquerra amb $g$ per obtenir $
 \end{indicacio}
 \end{exercici}
 
+\begin{exercici}
+Sigui $M=\{1,e\}$ el monoide amb $e\cdot e=e$ i $1$ neutre, i sigui $\cat{B}M$ la categoria d'un sol objecte associada. Decideix si $e$ és un monomorfisme, si és un epimorfisme i si té secció o retracció. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Compara $e\comp 1$ amb $e\comp e$, i $1\comp e$ amb $e\comp e$. Per a les inverses unilaterals, només hi ha dos candidats.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+A $\cat{Set}$, demostra que tota aplicació exhaustiva $f\colon A\to B$ és un epimorfisme sense triar cap secció de $f$. Explica després per què l'enunciat \enquote{tota aplicació exhaustiva té una secció} no és una conseqüència d'aquest fet, sinó un enunciat diferent, equivalent a l'axioma de l'elecció. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Si $g\comp f=h\comp f$ i $y\in B$, n'hi ha prou de tenir \emph{algun} $x$ amb $f(x)=y$ per concloure $g(y)=h(y)$; no cal triar-ne un per a cada $y$ alhora. Una secció, en canvi, és precisament una tria simultània d'una antiimatge per a cada element de $B$.
+\end{indicacio}
+\end{exercici}
+
 \section{Construccions sobre categories}
 
 \begin{exercici}
 Descriu la categoria producte $\cat{3}\times\cat{3}$, on $\cat{3}$ és la categoria associada a l'ordre $0<1<2$. Quants objectes i quants morfismes té? Dibuixa les fletxes bàsiques i explica quines altres fletxes apareixen per composició. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
 $\cat{3}$ té tres objectes i sis morfismes. En el producte, els objectes i els morfismes són parelles.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Descriu explícitament la categoria $\cat{3}/2$ sobre l'objecte $2$ de $\cat{3}$, on $\cat{3}$ és la categoria associada a l'ordre $0<1<2$. Enumera'n els objectes i els morfismes i identifica, si pots, una categoria finita isomorfa a aquesta categoria sobre un objecte. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Els objectes de $\cat{3}/2$ són les fletxes de $\cat{3}$ amb codomini $2$, i un morfisme entre dos d'aquests objectes és una fletxa de $\cat{3}$ que fa commutar el triangle corresponent. Com que $\cat{3}$ és prima, tots els triangles commuten. Observa també que de cada objecte de $\cat{3}$ surt exactament una fletxa cap a $2$.
 \end{indicacio}
 \end{exercici}
 
@@ -175,18 +198,25 @@ Recorda que \emph{plena} vol dir que es conserven \emph{tots} els morfismes entr
 \end{indicacio}
 \end{exercici}
 
+\section{Principi de dualitat}
+
+\begin{exercici}
+Escriu el dual de l'afirmació següent i justifica'l sense fer una nova demostració completa:
+\begin{quote}
+Si $f\colon A\to B$ té una retracció, aleshores $f$ és un monomorfisme.
+\end{quote}
+\hfill{\normalfont$\star$}
+\begin{indicacio}
+Passa a la categoria oposada i identifica quina noció és dual de \enquote{retracció} i quina és dual de \enquote{monomorfisme}. Recorda que, en dualitzar, s'inverteixen tant el sentit de les fletxes com l'ordre de les composicions.
+\end{indicacio}
+\end{exercici}
+
 \section{Grafs i categories lliures}
 
 \begin{exercici}
 Classifica, \textbf{fins a isomorfisme}, els grafs dirigits que generen una categoria lliure amb exactament \textbf{quatre} morfismes. Recorda que les identitats compten com a morfismes. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Els morfismes de la categoria lliure són els camins dirigits del graf, inclosos els camins buits ---un per vèrtex--- que fan d'identitats. Un cicle dirigit produiria infinits camins, de manera que el graf ha de ser acíclic; aleshores el nombre total de morfismes és finit. La classificació té exactament tres casos fins a isomorfisme:
-\begin{enumerate}
-  \item quatre vèrtexs i cap aresta;
-  \item tres vèrtexs i una única aresta entre dos vèrtexs diferents, amb el tercer aïllat;
-  \item dos vèrtexs i dues arestes paral·leles en el mateix sentit.
-\end{enumerate}
-En tots tres no hi ha cap camí de longitud superior a $1$, i el total de morfismes és $|V_G|+|E_G|=4$. Per veure que no n'hi ha d'altres: sense cicles, quatre morfismes deixen com a màxim quatre vèrtexs (cada vèrtex ja aporta la seva identitat). Amb un sol vèrtex només hi ha la identitat, i qualsevol aresta hi seria un bucle, que dona infinits morfismes. Amb dos vèrtexs, les dues identitats deixen espai per a dues arestes més, que han de ser paral·leles en el mateix sentit (una en cada sentit formaria un cicle). Amb tres vèrtexs, les tres identitats deixen espai per a una sola aresta. Amb quatre, les quatre identitats ja exhaureixen el compte i no hi cap cap aresta.
+Cada vèrtex aporta una identitat i cada aresta un camí de longitud~$1$: quantes arestes i quants vèrtexs pot tenir, com a màxim, el graf? Què passaria si hi hagués un cicle dirigit? Després, separa els casos segons el nombre de vèrtexs.
 \end{indicacio}
 \end{exercici}
 
@@ -218,9 +248,9 @@ Entre dos objectes hi ha zero o un morfisme; la col·lecció total de morfismes 
 \end{exercici}
 
 \begin{exercici}
-Explica per què $\cat{Set}$ és localment petita. És a dir, per què, donats dos conjunts $A$ i $B$, la col·lecció d'aplicacions $A\to B$ és un conjunt. \hfill{\normalfont$\star$}
+Explica per què el fet que tots els objectes d'una categoria siguin finits no implica que la categoria sigui petita. Aplica-ho a $\cat{FinSet}$, la categoria que té per objectes tots els conjunts finits i per morfismes totes les aplicacions entre ells. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Les aplicacions $A\to B$ es poden identificar amb certs subconjunts de $A\times B$; per tant formen un subconjunt de $\mathcal P(A\times B)$.
+La mida de cada objecte i la mida de la col·lecció de tots els objectes són qüestions diferents. Per a cada conjunt $x$, el conjunt $\{x\}$ és finit: quants objectes té, doncs, $\cat{FinSet}$? Compara-ho amb la paradoxa de Russell.
 \end{indicacio}
 \end{exercici}
 

@@ -2,28 +2,29 @@
 
 Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
 
-\begin{Form}
-\iniciTest{top}{c,b,d,b,c,d,b,c,d,b}
+\iniciTest{top}{c,b,d,a,c,d,b,a,a,b,c,d,b}
 
 \begin{enumerate}
 
-\pregunta A $\cat{Set}$, la funció característica d'un subconjunt $U\subseteq E$ pren valors a:
+\pregunta Sigui $m\colon U\rightarrowtail E$ un subobjecte classificat per $\chi_m\colon E\to\Omega$. Un element generalitzat $x\colon X\to E$ factoritza a través de $m$ exactament quan:
 \begin{enumerate}
-  \opcio{a}{$E$.}
-  \opcio{b}{$U$.}
-  \opcio{c}{el conjunt $\{0,1\}$.}
-  \opcio{d}{els nombres naturals.}
+  \opcio{a}{$\chi_m\comp x$ és un isomorfisme.}
+  \opcio{b}{$x$ és un monomorfisme.}
+  \opcio{c}{$\chi_m\comp x=\mathsf{true}\comp\,!_X$.}
+  \opcio{d}{$X$ és l'objecte terminal.}
 \end{enumerate}
 \feedback
+\justificacio{És la propietat universal del quadrat cartesià de $m$: la pertinença d'un element generalitzat esdevé una igualtat de morfismes cap a $\Omega$.}
 
-\pregunta Un \textbf{classificador de subobjectes} és un objecte $\Omega$ amb un morfisme:
+\pregunta A la categoria de prefeixos sobre $\cat{C}$, siguin $h\colon D\to C$ i $S$ un sedàs sobre $C$. Quin sedàs sobre $D$ és $\Omega(h)(S)$?
 \begin{enumerate}
-  \opcio{a}{$\Omega\to 1$.}
-  \opcio{b}{$\mathsf{true}\colon 1\to\Omega$ amb una propietat universal de pullback.}
-  \opcio{c}{$\Omega\to\Omega\times\Omega$.}
-  \opcio{d}{$0\to\Omega$.}
+  \opcio{a}{$\{h\comp g\mid g\in S\}$.}
+  \opcio{b}{$\{g\colon X\to D\mid h\comp g\in S\}$.}
+  \opcio{c}{$S$ mateix.}
+  \opcio{d}{El sedàs màxim sobre $D$.}
 \end{enumerate}
 \feedback
+\justificacio{$\Omega$ actua per reindexació de sedassos: $\Omega(h)(S)=h^{*}S$, i aquest conjunt torna a ser un sedàs.}
 
 \pregunta La propietat universal del classificador diu que cada subobjecte $U\rightarrowtail E$ determina:
 \begin{enumerate}
@@ -33,24 +34,27 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{un únic morfisme $\chi\colon E\to\Omega$ que fa un quadrat cartesià amb $\mathsf{true}$.}
 \end{enumerate}
 \feedback
+\justificacio{És la definició de classificador: existència i unicitat de $\chi$, amb $U$ com a pullback de $\mathsf{true}$ al llarg de $\chi$. Que el quadrat només commuti no basta per a la unicitat.}
 
 \pregunta L'existència d'un classificador de subobjectes equival a dir que el functor $\Sub(-)$ és:
 \begin{enumerate}
-  \opcio{a}{constant.}
-  \opcio{b}{representable, amb objecte representant $\Omega$.}
+  \opcio{a}{representable, amb objecte representant $\Omega$.}
+  \opcio{b}{constant.}
   \opcio{c}{no functorial.}
   \opcio{d}{un isomorfisme.}
 \end{enumerate}
 \feedback
+\justificacio{La bijecció $\Sub(E)\cong\Hom(E,\Omega)$, natural en $E$, és exactament una representació de $\Sub$, amb element universal $\mathsf{true}$.}
 
 \pregunta El classificador de subobjectes, quan existeix, és únic:
 \begin{enumerate}
   \opcio{a}{només a $\cat{Set}$.}
   \opcio{b}{mai.}
-  \opcio{c}{llevat d'isomorfisme (per Yoneda).}
+  \opcio{c}{llevat d'un únic isomorfisme compatible amb $\mathsf{true}$ (per Yoneda).}
   \opcio{d}{llevat d'homotopia.}
 \end{enumerate}
 \feedback
+\justificacio{Dos objectes que representen el mateix functor són isomorfs per un únic isomorfisme compatible amb els elements universals: és el principi de Yoneda aplicat a $\Sub$.}
 
 \pregunta Un \textbf{topos elemental} és una categoria amb límits finits, exponencials i:
 \begin{enumerate}
@@ -60,6 +64,7 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{un classificador de subobjectes.}
 \end{enumerate}
 \feedback
+\justificacio{Límits finits, exponencials i classificador de subobjectes: no es demanen colímits infinits. $\cat{FinSet}$, que no en té, és un topos.}
 
 \pregunta Quina d'aquestes categories és un topos?
 \begin{enumerate}
@@ -69,35 +74,72 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{un monoide no trivial vist com a categoria.}
 \end{enumerate}
 \feedback
+\justificacio{$\cat{Set}$ té límits finits, exponencials i el classificador $\{0,1\}$. $\cat{Top}$ no és cartesiana tancada, i un monoide no trivial vist com a categoria no té ni tan sols tots els límits finits.}
 
 \pregunta Per a $\cat{C}$ petita, la categoria de prefeixos $\cat{Set}^{\cat{C}\op}$ és:
 \begin{enumerate}
-  \opcio{a}{mai un topos.}
+  \opcio{a}{sempre un topos.}
   \opcio{b}{un topos només si $\cat{C}$ és un grup.}
-  \opcio{c}{sempre un topos.}
+  \opcio{c}{mai un topos.}
   \opcio{d}{cartesiana tancada però sense classificador.}
 \end{enumerate}
 \feedback
+\justificacio{Té límits finits i exponencials (capítols de límits i de cartesianes tancades) i el classificador de sedassos. No cal cap condició sobre $\cat{C}$ més enllà de ser petita.}
 
-\pregunta A la categoria de prefeixos, el classificador $\Omega$ es construeix amb:
+\pregunta A $\cat{Graph}$, sigui $x\colon v\to w$ una aresta d'un graf $G$ i $H$ un subgraf que conté els vèrtexs $v$ i $w$ però no l'aresta $x$. A quina aresta del classificador $\Omega$ envia $\chi_H$ l'aresta $x$?
 \begin{enumerate}
-  \opcio{a}{els objectes terminals.}
-  \opcio{b}{els coproductes.}
-  \opcio{c}{els productes fibrats.}
-  \opcio{d}{els \emph{sedassos} sobre cada objecte.}
+  \opcio{a}{Al bucle $\partial$ del vèrtex $1$, que registra \enquote{extrems sí, aresta no}.}
+  \opcio{b}{Al bucle $\top$ del vèrtex $1$, perquè els dos extrems són a $H$.}
+  \opcio{c}{A l'aresta $\sigma\colon1\to0$.}
+  \opcio{d}{Enlloc: $\chi_H$ només actua sobre els vèrtexs.}
 \end{enumerate}
 \feedback
+\justificacio{Com que $v,w\in H$, la imatge de $x$ ha d'anar de $1$ a $1$, i n'hi ha dues: $\partial$ i $\top$. Si fos $\top$, $x$ seria al pullback de $\mathsf{true}$, que ha de ser exactament $H$; per tant, va a $\partial$. L'opció (c) tindria el destí equivocat, i un morfisme de grafs actua també sobre les arestes.}
 
-\pregunta En un topos, l'exponencial $\Omega^{E}$ s'anomena:
+\pregunta En un topos, l'objecte de parts $\mathcal P(E)=\Omega^{E}$ satisfà, per a tot objecte $A$,
+\[
+\Hom(A,\mathcal P(E))\;\cong\;\Sub(A\times E).
+\]
+Quina interpretació expressa aquesta bijecció?
 \begin{enumerate}
-  \opcio{a}{objecte inicial.}
-  \opcio{b}{objecte de parts $\mathcal{P}(E)$, i classifica subobjectes de $A\times E$.}
-  \opcio{c}{objecte terminal.}
-  \opcio{d}{nucli de $E$.}
+  \opcio{a}{Que tot objecte és isomorf al seu objecte de parts.}
+  \opcio{b}{Que els morfismes cap a $\mathcal P(E)$ classifiquen les relacions entre $A$ i $E$.}
+  \opcio{c}{Que $\mathcal P(E)$ és l'objecte terminal.}
+  \opcio{d}{Que $E$ té exactament dos subobjectes.}
 \end{enumerate}
 \feedback
+\justificacio{Combina la currificació $\Hom(A,\Omega^{E})\cong\Hom(A\times E,\Omega)$ amb la representabilitat de $\Sub$; per a $A=1$ recupera $\Hom(1,\mathcal P(E))\cong\Sub(E)$.}
+
+\pregunta Quina afirmació sobre la categoria $\cat{FinSet}$ dels conjunts finits és correcta?
+\begin{enumerate}
+  \opcio{a}{No és un topos, perquè no té coproductes infinits.}
+  \opcio{b}{És equivalent a $\cat{Set}^{\cat{C}\op}$ per a alguna categoria petita $\cat{C}$.}
+  \opcio{c}{És un topos elemental que no és equivalent a cap categoria de prefeixos.}
+  \opcio{d}{Només és un topos si s'hi afegeixen els conjunts infinits.}
+\end{enumerate}
+\feedback
+\justificacio{Té límits finits, exponencials finits i el classificador $\{0,1\}$, de manera que és un topos. Tota categoria de prefeixos té colímits petits, i $\cat{FinSet}$ no té coproductes infinits; com que una equivalència conserva els colímits, no és equivalent a cap. Un topos elemental no demana colímits infinits.}
+
+\pregunta A $\cat{Graph}$, $\Omega$ té dos vèrtexs i cinc arestes. Quin fet mostra que $\cat{Graph}$ no és un topos booleà?
+\begin{enumerate}
+  \opcio{a}{Que $\Omega$ no és un conjunt.}
+  \opcio{b}{Que $\Omega$ té més de dos vèrtexs.}
+  \opcio{c}{Que $\Hom(\mathbf L,\Omega)$ té exactament dos elements.}
+  \opcio{d}{Que $\{t\}$ és el més gran dels subgrafs de $\mathbf E$ disjunts de $\{s\}$, però $\{s\}\cup\{t\}$ no és tot $\mathbf E$.}
+\end{enumerate}
+\feedback
+\justificacio{Per a $U=\{s\}$, el seu \enquote{complement} $\neg U=\{t\}$ no cobreix, juntament amb $U$, tot $\mathbf E$: hi falta l'aresta. Falla, doncs, $U\vee\neg U=\top$. L'opció (b) és falsa ($\Omega$ té dos vèrtexs), i també la (c) (n'hi ha tres).}
+
+\pregunta Un topos té exactament dos morfismes $1\to\Omega$. Què se'n pot concloure?
+\begin{enumerate}
+  \opcio{a}{Que és booleà, perquè $\Omega$ té exactament dos valors de veritat.}
+  \opcio{b}{Res sobre la booleanitat: els morfismes $1\to\Omega$ només compten $\Sub(1)$, mentre que ser booleà és una condició sobre tots els $\Sub(E)$.}
+  \opcio{c}{Que $\Omega\cong1+1$.}
+  \opcio{d}{Que el topos és equivalent a $\cat{Set}$.}
+\end{enumerate}
+\feedback
+\justificacio{$\Hom(1,\Omega)\cong\Sub(1)$. Els prefeixos sobre el monoide $(\mathbb N,+)$ tenen exactament dos valors globals, però els subobjectes del representable formen una cadena $\mathbb N\cup\{\infty\}$, que no és una àlgebra de Boole, i aquest $\Omega$ no és $1+1$. Tenir dos valors globals i ser booleà són coses diferents.}
 
 \end{enumerate}
 \clauestatica
 \finalitzaTest
-\end{Form}

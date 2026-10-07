@@ -30,14 +30,32 @@ Currifica el morfisme $C^{B}\times B^{A}\times A\to C$ obtingut avaluant primer 
 \begin{exercici}
 Comprova que l'assignació $B\mapsto C^{B}$ és \emph{contravariant}: un morfisme $f\colon B'\to B$ indueix $C^{f}\colon C^{B}\to C^{B'}$. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Currifica $C^{B}\times B'\xrightarrow{\id\times f}C^{B}\times B\xrightarrow{\ev}C$. Aquesta contravariància en la base contrasta amb la covariància $(-)^{B}$ en l'exponent.
+Currifica
+\[
+C^{B}\times B'\xrightarrow{\id\times f}C^{B}\times B\xrightarrow{\ev}C.
+\]
+Això mostra la contravariància en l'exponent $B$; en canvi, per a $B$ fix, el functor $(-)^{B}$ és covariant en $C$.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
 En una CCC amb coproductes, demostra la llei $C^{A+B}\cong C^{A}\times C^{B}$. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Usa Yoneda: $\Hom(X,C^{A+B})\cong\Hom(X\times(A+B),C)$; distribueix el producte sobre el coproducte (vàlida en una CCC) i aplica la propietat universal del coproducte.
+Fes servir que $X\times-$ és un adjunt per l'esquerra i, per tant, preserva coproductes (exercici resolt~\ref{pr-distributivitat} de la Pràctica). Després aplica la propietat universal del coproducte i el lema de Yoneda.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sabem que $\cat{Graph}$ és cartesiana tancada, perquè és una categoria de prefeixos. Fent servir la fórmula de l'exponencial de prefeixos i el lema de Yoneda, demostra que els \emph{vèrtexs} de l'exponencial $H^{G}$ de dos grafs corresponen a totes les aplicacions $V_G\to V_H$ entre els conjunts de vèrtexs, sense cap condició sobre les arestes. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Els vèrtexs de $H^{G}$ es corresponen canònicament amb els morfismes de grafs $\mathbf V\to H^{G}$, on $\mathbf V$ és el graf d'un sol vèrtex. Transposa'ls i calcula el graf $\mathbf V\times G$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\cat{2}=(0\to1)$. Fent servir l'exemple de $\cat{Cat}$ de la Teoria amb $\cat{A}=\cat{2}$, comprova que un functor $\cat{2}\times\cat{2}\to\cat{C}$ és el mateix que un quadrat commutatiu de $\cat{C}$, i que la seva currificació $\cat{2}\to\cat{C}^{\cat{2}}$ és el mateix que un morfisme de la categoria de fletxes. Què fa l'avaluació sobre aquestes dades? \hfill{\normalfont$\star$}
+\begin{indicacio}
+Escriu els quatre objectes i les cinc fletxes no identitat de $\cat{2}\times\cat{2}$. Aplica la lectura \enquote{transformació natural $=$ functor $\cat{A}\times\cat{2}\to\cat{C}$} amb $\cat{A}=\cat{2}$.
 \end{indicacio}
 \end{exercici}
 
@@ -61,5 +79,19 @@ Sigui $\cat{C}$ una CCC. Demostra que el conjunt de morfismes $1\to C^{B}$ està
 Interpreta el combinador $\mathsf{S}$, de tipus $(\sigma\to\tau\to\rho)\to(\sigma\to\tau)\to\sigma\to\rho$, com a morfisme d'una CCC. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
 Descurrifica successivament fins a un morfisme amb domini un producte de tres exponencials i $\llbracket\sigma\rrbracket$, i construeix-lo amb avaluacions i la diagonal. Compara'l amb la demostració intuïcionista de l'esquema d'axioma corresponent.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Al preordre cartesià tancat $\mathbb Z\cup\{+\infty\}$ de la Teoria, comprova el \emph{modus ponens} $b\wedge(b\Rightarrow c)\leq c$ i la llei de currificació $b\Rightarrow(c\Rightarrow d)=(b\wedge c)\Rightarrow d$, calculant els dos costats per casos. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Fes servir la fórmula explícita de la implicació en una cadena, i distingeix els casos segons l'ordre relatiu de $b$, $c$ i $d$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Afegeix a $\mathbb Z\cup\{+\infty\}$ un element mínim $-\infty$. Comprova que s'obté una àlgebra de Heyting, calcula la pseudocomplementació $\neg b=(b\Rightarrow-\infty)$ i decideix si és una àlgebra de Boole. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+En una cadena, els suprems finits són màxims. Per a la segona part, calcula $\neg\neg b$ i $b\vee\neg b$ per a un $b$ que no sigui un dels extrems.
 \end{indicacio}
 \end{exercici}

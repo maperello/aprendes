@@ -19,8 +19,8 @@ El tipus de graf que tractem aquí és una versió del graf dirigit que sovint s
 \begin{definicio}\index{graf dirigit}
 Un \textbf{graf} $G$ comprèn:
 \begin{itemize}
-\item una col·lecció $V_G$ d'objectes anomenats \textbf{vèrtexs};
-\item una col·lecció $E_G$ de \textbf{fletxes};
+\item un conjunt $V_G$ de \textbf{vèrtexs};
+\item un conjunt $E_G$ d'\textbf{arestes};
 \item dues aplicacions $s_G\colon E_G\to V_G$ i $t_G\colon E_G\to V_G$, anomenades \textbf{origen} i \textbf{destí}. Si $s_G(f)=a$ i $t_G(f)=b$, escrivim $a\xrightarrow{f}b$ o $f\colon a\to b$, i diem que $a$ és el vèrtex d'origen i $b$ el de destí.
 \end{itemize}
 La notació
@@ -29,10 +29,8 @@ G=\xymatrix{
 E_G \ar@<0.6ex>[r]^{s_G} \ar@<-0.6ex>[r]_{t_G} & V_G
 }
 \]
-indica que $G$ és un graf amb vèrtexs a $V_G$ i fletxes a $E_G$.
+indica que $G$ és un graf amb vèrtexs a $V_G$ i arestes a $E_G$.
 \end{definicio}
-
-Quan $V_G$ i $E_G$ són conjunts, $s_G$ i $t_G$ són aplicacions de conjunts. Les qüestions de mida es tracten al seu lloc; aquí n'hi ha prou de treballar amb grafs els vèrtexs i fletxes dels quals formen conjunts.
 
 \begin{exemple}
 Considerem el graf $G$ de la figura següent:
@@ -146,10 +144,10 @@ En una empresa petita hi ha tres departaments: Administració, Comptabilitat i A
 \item Un document és processat internament a Comptabilitat.
 \item Un document és processat internament a Atenció al client.
 \end{itemize}
-Modela aquesta situació com un graf $G$, especificant-ne els elements, interpretant-ne les fletxes i representant-lo gràficament.
+Modela aquesta situació com un graf $G$, especificant-ne els elements, interpretant-ne les arestes i representant-lo gràficament.
 \end{exemple}
 \begin{solucio}
-El graf $G$ té com a conjunt de vèrtexs $V_G=\{a,b,c\}$, on $a,b,c$ representen Administració, Comptabilitat i Atenció al client, respectivament. El conjunt de fletxes és
+El graf $G$ té com a conjunt de vèrtexs $V_G=\{a,b,c\}$, on $a,b,c$ representen Administració, Comptabilitat i Atenció al client, respectivament. El conjunt d'arestes és
 \[
 \begin{aligned}
 E_G = \{
@@ -163,14 +161,14 @@ E_G = \{
 \},
 \end{aligned}
 \]
-on els subíndexs indiquen fletxes diferents entre els mateixos vèrtexs (diversos documents amb el mateix recorregut) i els bucles $a\xrightarrow{j}a$, $b\xrightarrow{i}b$ i $c\xrightarrow{l}c$ representen processament intern. La representació gràfica de $G$ és
+on els subíndexs indiquen arestes diferents entre els mateixos vèrtexs (diversos documents amb el mateix recorregut) i els bucles $a\xrightarrow{j}a$, $b\xrightarrow{i}b$ i $c\xrightarrow{l}c$ representen processament intern. La representació gràfica de $G$ és
 \[
 \xymatrix@R=7ex@C=8ex{
 	c \ar@(ul,dl)_l \ar[r]^-{k} & b \ar@/^1.5ex/[l]^-{h_2} \ar@/_2.5ex/[l]_{h_1} \ar@/_5ex/[l]_{h_3}  \ar@(dr,ur)_i \ar@/^4ex/[d]^-{g} \\
 	& a \ar@/^4ex/[u]^-{f_1} \ar@/^1ex/[u]_(.45){f_2}  \ar@(dl,dr)_{j_{1}}  \ar@(dr,ur)_{j_{2}}
 }
 \]
-Aquest graf modela el flux real de documents dins l'empresa en un dia: les direccions indiquen el sentit del flux, el nombre de fletxes entre dos departaments indica la quantitat de documents, i els bucles indiquen activitat interna.
+Aquest graf modela el flux real de documents dins l'empresa en un dia: les direccions indiquen el sentit del flux, el nombre d'arestes entre dos departaments indica la quantitat de documents, i els bucles indiquen activitat interna.
 \end{solucio}
 
 \begin{exercici}
@@ -214,7 +212,7 @@ En un centre logístic hi ha quatre seccions: Recepció, Magatzem, Preparació d
 Modela aquesta situació mitjançant un graf. Especifica'n els elements i representa'l gràficament.
 \end{exercici}
 
-\section{Homomorfismes de grafs}
+\section{Homomorfismes de grafs}\label{sec:grafs-homomorfismes}
 
 L'estructura d'un graf
 \[
@@ -276,7 +274,7 @@ H:\
 Defineix un homomorfisme $F$ entre ells.
 \end{exemple}
 \begin{solucio}
-Com que $k$ és un bucle i l'únic vèrtex de $H$ amb bucles és $b$, necessàriament $F_V(2)=b$. Com que $g$ surt de $2$, la seva imatge ha de sortir de $b$, i les úniques fletxes que surten de $b$ són els bucles $y,z$; per tant $g$ també ha d'anar a un bucle i $F_V(3)=b$. Aquesta part és forçada; la resta és una elecció. Per construir un exemple concret, triem $F_V(1)=a$ i $F_V(4)=c$, i posem $F_E(k)=F_E(g)=y$, $F_E(f)=x$ i $F_E(h)=v$. Les taules següents comproven que aquesta tria preserva origen i destí.
+Com que $k$ és un bucle i l'únic vèrtex de $H$ amb bucles és $b$, necessàriament $F_V(2)=b$. Com que $g$ surt de $2$, la seva imatge ha de sortir de $b$, i les úniques arestes que surten de $b$ són els bucles $y,z$; per tant $g$ també ha d'anar a un bucle i $F_V(3)=b$. Aquesta part és forçada; la resta és una elecció. Per construir un exemple concret, triem $F_V(1)=a$ i $F_V(4)=c$, i posem $F_E(k)=F_E(g)=y$, $F_E(f)=x$ i $F_E(h)=v$. Les taules següents comproven que aquesta tria preserva origen i destí.
 
 La distinció entre una condició necessària i una elecció és important: que $F_V(2)=F_V(3)=b$ estigui forçat no vol dir que l'homomorfisme sigui únic. De fet, una enumeració finita directa de les aplicacions compatibles dona $24$ homomorfismes entre aquests dos grafs, dels quals $8$ tenen $F_V(1)=a$ i $16$ tenen $F_V(1)=b$.
 
@@ -289,7 +287,7 @@ Comprovem que les condicions \eqref{grafs:hom} es compleixen. Les taules dels do
         h & 1 & 4 \\
         k & 2 & 2 
     \end{array}
-    \hspace{2cm}
+    \qquad
     \begin{array}{c|c|c}
         E_H & s_H & t_H \\ \hline
         v & a & c  \\
@@ -308,7 +306,7 @@ F_V =
      3 & b \\
      4 & c
 \end{array}
-\hspace{2cm}
+\qquad
 F_E =
 \begin{array}{c|c}
    E_G  & E_H \\ \hline
@@ -320,15 +318,21 @@ F_E =
 \]
 Per exemple,
 \[
-(F_V\comp s_G)(f)=F_V(s_G(f))=F_V(1)=a,
-\qquad
-(s_H\comp F_E)(f)=s_H(F_E(f))=s_H(x)=a,
+\begin{aligned}
+(F_V\comp s_G)(f)&=F_V(s_G(f))\\
+&=F_V(1)=a,\\
+(s_H\comp F_E)(f)&=s_H(F_E(f))\\
+&=s_H(x)=a,
+\end{aligned}
 \]
-de manera que $(F_V\comp s_G)(f)=(s_H\comp F_E)(f)$; deixem la resta de fletxes com a exercici. Anàlogament,
+de manera que $(F_V\comp s_G)(f)=(s_H\comp F_E)(f)$; deixem la resta d'arestes com a exercici. Anàlogament,
 \[
-(F_V\comp t_G)(h)=F_V(t_G(h))=F_V(4)=c,
-\qquad
-(t_H\comp F_E)(h)=t_H(F_E(h))=t_H(v)=c,
+\begin{aligned}
+(F_V\comp t_G)(h)&=F_V(t_G(h))\\
+&=F_V(4)=c,\\
+(t_H\comp F_E)(h)&=t_H(F_E(h))\\
+&=t_H(v)=c,
+\end{aligned}
 \]
 i per tant $(F_V\comp t_G)(h)=(t_H\comp F_E)(h)$.
 \end{solucio}
@@ -378,7 +382,7 @@ Es demana:
 
 \section{Camins en un graf}
 
-Sigui $G$ un graf. Un \emph{camí} a $G$ és qualsevol successió de fletxes tal que el destí d'una fletxa sigui l'origen de la següent. Això inclou successions de longitud~1, que són elements de $E_G$, i successions de longitud~0, que comencen i acaben al mateix vèrtex sense seguir cap fletxa.
+Sigui $G$ un graf. Un \emph{camí} a $G$ és qualsevol successió d'arestes tal que el destí d'una aresta sigui l'origen de la següent. Això inclou successions de longitud~1, que són elements de $E_G$, i successions de longitud~0, que comencen i acaben al mateix vèrtex sense seguir cap aresta.
 
 \begin{definicio}
 Sigui $n\geq 1$. En un graf
@@ -387,22 +391,95 @@ G=\xymatrix{
 E_G \ar@<0.6ex>[r]^{s_G} \ar@<-0.6ex>[r]_{t_G} & V_G
 }
 \]
-un \textbf{camí de longitud} $n$ del vèrtex $a$ al vèrtex $b$ és una successió de fletxes $(f_1,f_2,\dots,f_n)$, escrita en \emph{ordre de recorregut} ---primer es recorre $f_1$---, tal que
+un \textbf{camí de longitud} $n$ del vèrtex $a$ al vèrtex $b$ és una successió d'arestes $(f_1,f_2,\dots,f_n)$, escrita en \emph{ordre de recorregut} ---primer es recorre $f_1$---, tal que
 \begin{enumerate}
 \item[(i)] $s_G(f_1)=a$;
 \item[(ii)] $t_G(f_i)=s_G(f_{i+1})$ per a $i=1,\dots,n-1$;
 \item[(iii)] $t_G(f_n)=b$.
 \end{enumerate}
-El conjunt de camins de longitud $n$ s'escriu $C_n$. En particular, $C_2$ és el conjunt de parells de fletxes $(f,g)$ amb $t_G(f)=s_G(g)$, anomenats parells de \emph{fletxes componibles}.
+El conjunt de camins de longitud $n$ s'escriu $C_n$. En particular, $C_2$ és el conjunt de parells d'arestes $(f,g)$ amb $t_G(f)=s_G(g)$, anomenats parells d'\emph{arestes componibles}.
 \end{definicio}
 
-Per conveni, per a cada vèrtex $a\in V_G$ hi ha un únic camí de longitud~0 d'$a$ a si mateix, que denotem $()_a$ i anomenem \emph{camí buit} d'$a$; és el cas $n=0$, exclòs de la definició anterior perquè aleshores no hi ha cap fletxa $f_1,\dots,f_n$. Si dibuixem un camí
+Per conveni, per a cada vèrtex $a\in V_G$ hi ha un únic camí de longitud~0 d'$a$ a si mateix, que denotem $()_a$ i anomenem \emph{camí buit} d'$a$; és el cas $n=0$, exclòs de la definició anterior perquè aleshores no hi ha cap aresta $f_1,\dots,f_n$. Si dibuixem un camí
 \[
 \xymatrix{
 \cdot \ar[r]^{f_{1}} & \cdot \ar[r]^-{f_{2}} & \cdots \ar[r]^{f_{n-1}} & \cdot \ar[r]^{f_{n}} & \cdot
 }
 \]
-la fletxa $f_1$ queda a l'esquerra i es recorre primer; $f_n$ queda a la dreta i es recorre última. Si $f\in E_G$, aleshores $(f)$ és un camí de longitud~1, és a dir, $(f)\in C_1$.
+l'aresta $f_1$ queda a l'esquerra i es recorre primer; $f_n$ queda a la dreta i es recorre última. Si $f\in E_G$, aleshores $(f)$ és un camí de longitud~1, és a dir, $(f)\in C_1$.
+
+\begin{exemple}\label{ex:grafs-camins-G}
+Considerem el graf $G$ de l'exemple d'homomorfisme de la secció anterior:
+\[
+G:\ 
+\xymatrix{
+	1 \ar[d]_{h} \ar[r]^{f} & 2 \ar[d]^{g} \ar@(ur,ul)_{k} \\
+	4 & 3
+}
+\]
+Escriu els camins de longitud $0$, $1$, $2$ i $3$ de $G$, i descriu tots els camins d'un vèrtex a un altre.
+\end{exemple}
+\begin{solucio}
+Recordem la taula de $G$: $f\colon 1\to 2$, $g\colon 2\to 3$, $h\colon 1\to 4$ i el bucle $k\colon 2\to 2$.
+
+\emph{Longitud $0$.} Hi ha un camí buit per a cada vèrtex: $C_0=\{()_1,\ ()_2,\ ()_3,\ ()_4\}$.
+
+\emph{Longitud $1$.} Són les arestes: $C_1=\{(f),\ (g),\ (h),\ (k)\}$.
+
+\emph{Longitud $2$.} Busquem els parells $(u,v)$ amb $t_G(u)=s_G(v)$. Com que $t_G(f)=t_G(k)=2$ i les arestes que surten de $2$ són $g$ i $k$, mentre que de $3$ i de $4$ no en surt cap,
+\[
+C_2=\{(f,g),\ (f,k),\ (k,g),\ (k,k)\}.
+\]
+
+\emph{Longitud $3$.} Cada camí de longitud $2$ que acaba a $2$ es pot allargar amb $g$ o amb $k$; els que acaben a $3$ no es poden allargar:
+\[
+C_3=\{(f,k,g),\ (f,k,k),\ (k,k,g),\ (k,k,k)\}.
+\]
+
+\emph{Descripció general.} Escrivim $k^n$ per a la successió $(k,\dots,k)$ de $n$ bucles, amb $k^0$ buida. Els camins d'un vèrtex a un altre són exactament:
+\[
+\begin{array}{c|l}
+\text{d'origen a destí} & \text{camins} \\ \hline
+1\to 1,\ 3\to 3,\ 4\to 4 & \text{només el camí buit} \\
+1\to 2 & (f,k^n),\ n\geq 0 \\
+1\to 3 & (f,k^n,g),\ n\geq 0 \\
+1\to 4 & (h) \\
+2\to 2 & k^n,\ n\geq 0 \ (\text{per a } n=0,\ \text{el camí buit } ()_2) \\
+2\to 3 & (k^n,g),\ n\geq 0
+\end{array}
+\]
+i no n'hi ha cap més. El bucle $k$ fa que el nombre de camins sigui infinit, però per a cada longitud $n\geq 2$ n'hi ha exactament quatre.
+\end{solucio}
+
+\begin{exemple}\label{ex:grafs-camins-H}
+Fem el mateix amb el graf $H$ del mateix exemple:
+\[
+H:\ 
+\xymatrix{
+	b \ar@(ur,ul)_{y} \ar@(dr,ur)_{z} \\
+	a \ar[u]_{x} \ar[r]_{v} & c
+}
+\]
+Escriu els camins de longitud $0$, $1$ i $2$ de $H$, i compta quants camins de longitud $n$ hi ha.
+\end{exemple}
+\begin{solucio}
+La taula de $H$ és $x\colon a\to b$, $v\colon a\to c$ i els bucles $y,z\colon b\to b$.
+
+\emph{Longitud $0$ i $1$.} $C_0=\{()_a,\ ()_b,\ ()_c\}$ i $C_1=\{(x),\ (v),\ (y),\ (z)\}$.
+
+\emph{Longitud $2$.} De $c$ no surt cap aresta, de manera que $v$ no es pot allargar. Després de $x$, $y$ o $z$ som a $b$, i podem continuar amb $y$ o amb $z$:
+\[
+C_2=\{(x,y),\ (x,z),\ (y,y),\ (y,z),\ (z,y),\ (z,z)\}.
+\]
+
+\emph{Recompte.} Un camí de longitud $n\geq 1$ de $b$ a $b$ és una successió qualsevol de $n$ bucles, triant a cada pas entre $y$ i $z$: n'hi ha $2^n$. Un camí de longitud $n\geq 2$ que surt d'$a$ ha de començar per $x$ i continuar amb $n-1$ bucles: n'hi ha $2^{n-1}$. L'únic camí que va d'$a$ a $c$ és $(v)$. Per tant, per a $n\geq 2$ hi ha
+\[
+2^n+2^{n-1}=3\cdot 2^{n-1}
+\]
+camins de longitud $n$; per exemple, $6$ de longitud $2$, d'acord amb la llista anterior.
+
+Comparat amb l'exemple anterior, un sol bucle produeix un nombre constant de camins per a cada longitud, mentre que dos bucles al mateix vèrtex en produeixen un nombre que creix exponencialment.
+\end{solucio}
 
 \section{De grafs a categories}
 
@@ -414,4 +491,75 @@ q\comp p=(a_1,\dots,a_r,b_1,\dots,b_s),
 \]
 on, d'acord amb la convenció categòrica $q\comp p$, el camí $p$ ---el que surt d'$A$--- es recorre primer. Per a cada vèrtex $A$, la identitat $\id_A$ és el camí buit $()_A$.
 
-Comprovem que $\Free(G)$ és una categoria. La composició és associativa perquè la concatenació de successions ho és: en concatenar tres camins componibles, el resultat és la successió de totes les seves fletxes en ordre, amb independència de l'ordre en què s'agrupin. El camí buit és neutre, ja que concatenar-lo no afegeix cap fletxa: $(a_1,\dots,a_r)\comp()_A=(a_1,\dots,a_r)=()_B\comp(a_1,\dots,a_r)$ per a tot camí d'$A$ a $B$. Per tant, $\Free(G)$ satisfà els axiomes de categoria. S'anomena \textbf{categoria lliure generada pel graf} $G$, o també \textbf{categoria de camins} de $G$.\index{categoria!lliure}\index{categoria!de camins}
+Comprovem que $\Free(G)$ és una categoria. La composició és associativa perquè la concatenació de successions ho és: en concatenar tres camins componibles, el resultat és la successió de totes les seves arestes en ordre, amb independència de l'ordre en què s'agrupin. El camí buit és neutre, ja que concatenar-lo no afegeix cap aresta: $(a_1,\dots,a_r)\comp()_A=(a_1,\dots,a_r)=()_B\comp(a_1,\dots,a_r)$ per a tot camí d'$A$ a $B$. Per tant, $\Free(G)$ satisfà els axiomes de categoria. S'anomena \textbf{categoria lliure generada pel graf} $G$, o també \textbf{categoria de camins} de $G$.\index{categoria!lliure}\index{categoria!de camins}
+
+\begin{exemple}\label{ex:grafs-free-cadena}
+Especifica la categoria $\Free(G)$ generada pel graf
+\[
+G:\ 
+\xymatrix{
+    1 \ar[r]^-{a} & 2 \ar[r]^-{b}& 3
+}
+\]
+de l'exercici d'homomorfismes de la secció~\ref{sec:grafs-homomorfismes}.
+\end{exemple}
+\begin{solucio}
+Els objectes són els vèrtexs $1$, $2$ i $3$. Els morfismes són els camins, i com que el graf no té cicles, n'hi ha un nombre finit:
+\[
+\begin{array}{c|l}
+\Hom(1,1)=\{()_1\} & \Hom(1,2)=\{(a)\} \\
+\Hom(2,2)=\{()_2\} & \Hom(2,3)=\{(b)\} \\
+\Hom(3,3)=\{()_3\} & \Hom(1,3)=\{(a,b)\}
+\end{array}
+\]
+i tots els altres homconjunts ($\Hom(2,1)$, $\Hom(3,1)$, $\Hom(3,2)$) són buits. En total, sis morfismes: les tres identitats, les dues arestes i el camí de longitud~$2$.
+
+L'única composició que no involucra identitats és la de $(a)$ i $(b)$:
+\[
+\xymatrix{
+1 \ar[r]^-{(a)} \ar[dr]_-{(a,b)} & 2 \ar[d]^-{(b)} \\
+& 3
+}
+\qquad\qquad
+(b)\comp(a)=(a,b).
+\]
+Les composicions amb identitats són les que imposen els axiomes, perquè els camins buits són neutres per a la concatenació.
+
+Com que entre dos objectes hi ha com a màxim un morfisme, $\Free(G)$ és una categoria prima. De fet, és la categoria associada a l'ordre $1<2<3$ ---hi ha un morfisme $i\to j$ exactament quan $i\leq j$---, isomorfa, doncs, a la categoria $\cat{3}$ de l'ordre $0<1<2$ que apareix al capítol~\ref{cap:categories}.
+\end{solucio}
+
+\begin{exemple}\label{ex:grafs-free-bucle}
+Especifica la categoria $\Free(H)$ generada pel graf
+\[
+H:\ 
+\xymatrix{
+    4 \ar@<0.6ex>[r]^{d} \ar@<-0.6ex>[r]_{c} & 5 \ar@(ur,dr)^{e}
+}
+\]
+del mateix exercici.
+\end{exemple}
+\begin{solucio}
+Els objectes són $4$ i $5$. Escrivim $e^n$ per al camí $(e,\dots,e)$ de $n$ bucles, amb $e^0=()_5$. Els camins de $H$ donen els homconjunts següents:
+\[
+\begin{aligned}
+\Hom(4,4)&=\{()_4\},\\
+\Hom(5,5)&=\{e^n : n\geq 0\},\\
+\Hom(4,5)&=\{(c,e^n) : n\geq 0\}\cup\{(d,e^n) : n\geq 0\},\\
+\Hom(5,4)&=\varnothing.
+\end{aligned}
+\]
+De $5$ a $4$ no hi ha cap camí, perquè cap aresta surt de $5$ cap a $4$.
+
+La composició és la concatenació. Per a bucles, $e^m\comp e^n=e^{m+n}$, i per als camins de $4$ a $5$,
+\[
+\xymatrix{
+4 \ar[r]^-{(c,e^n)} \ar[dr]_-{(c,e^{n+m})} & 5 \ar[d]^-{e^m} \\
+& 5
+}
+\qquad\qquad
+e^m\comp(c,e^n)=(c,e^{n+m}),
+\]
+i igual amb $d$ en lloc de $c$.
+
+Hi ha dues observacions a fer. Primera: $\Hom(5,5)$ amb la composició és el monoide $(\mathbb N,+,0)$, via $e^n\mapsto n$; la subcategoria plena sobre l'objecte $5$ és, doncs, la categoria d'un sol objecte d'aquest monoide. Segona: les arestes paral·leles $c$ i $d$ donen morfismes diferents, $(c)\neq(d)$, i també $(c,e^n)\neq(d,e^n)$ per a tot $n$. La categoria lliure no identifica mai dos camins diferents: no imposa cap relació que no vingui forçada pels axiomes.
+\end{solucio}

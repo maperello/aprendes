@@ -2,17 +2,27 @@
 \label{cap:categories}
 
 \begin{objectius}
-\apartat{Prerequisits} Nocions bàsiques de conjunts i aplicacions. Cap coneixement previ de teoria de categories.
-\apartat{Objectius} En acabar el capítol, el lector ha de saber: enunciar la definició de categoria i verificar-la en exemples ($\cat{Set}$, preordres, monoides, grafs); llegir i escriure diagrames commutatius; distingir monomorfismes, epimorfismes, seccions i retraccions; formar la categoria oposada i aplicar el principi de dualitat; i distingir categories petites de localment petites.
+\apartat{Prerequisits} Llenguatge elemental de conjunts i aplicacions: domini, codomini i composició; producte cartesià, subconjunts i relacions. Lectura de quantificadors elementals i distinció entre existència i unicitat. Nocions bàsiques d'implicació, equivalència i contraexemple. Els exemples amb grups, espais vectorials o espais topològics enriqueixen la lectura, però no són imprescindibles. No es pressuposa cap coneixement previ de teoria de categories.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item enunciar la definició de categoria i verificar-ne els axiomes en exemples concrets;
+  \item llegir i escriure diagrames commutatius i traduir-los a igualtats de composicions;
+  \item reconèixer la mateixa estructura categòrica en conjunts, preordres, monoides, grafs, relacions i sistemes deductius;
+  \item definir i utilitzar isomorfismes, monomorfismes, epimorfismes, seccions i retraccions, distingint-los de les nocions conjuntistes corresponents;
+  \item construir i interpretar la categoria oposada, categories producte, subcategories i categories sobre i sota un objecte en casos senzills;
+  \item aplicar el principi de dualitat a definicions i resultats elementals;
+  \item descriure la categoria lliure generada per un graf finit senzill;
+  \item distingir categories petites i localment petites.
+\end{itemize}
 \end{objectius}
 
 \section{Cap al concepte de categoria}
 
 Quan comencem a estudiar matemàtiques, aprenem a treballar amb molts tipus d'\emph{estructures}: ordres, grups, espais vectorials, espais topològics, etc. Aviat notem que aquestes estructures rarament apareixen soles. Al costat de cadascuna hi ha sempre una classe de transformacions que les relacionen respectant la seva manera de comportar-se: entre ordres, les aplicacions monòtones; entre grups, els homomorfismes; entre espais vectorials, les aplicacions lineals; entre espais topològics, les aplicacions contínues. Aquestes transformacions admissibles les anomenarem, en general, \emph{morfismes} o \emph{fletxes}.
 
-La noció general de categoria proporciona una caracterització de la idea de \enquote{transformació que preserva l'estructura} i, per tant, d'una mena d'estructures que admeten aquestes transformacions.
+La noció de categoria no decideix per si sola quins morfismes són admissibles: ho fixem nosaltres en cada context, d'acord amb l'estructura que volem respectar. El que fa la teoria de categories és abstreure el patró comú a tots aquests contextos: treballar amb objectes, amb transformacions admissibles entre ells i amb la manera com aquestes transformacions es componen. Cada categoria concreta enregistra aquesta tria de morfismes i, a partir d'aquí, només en reté la composició i les identitats.
 
-A aquesta idea s'hi afegeix una observació cabdal: totes aquestes estructures concretes tenen un conjunt subjacent. Per això, si volem preservar l'estructura, primer haurem de fer compatible aquesta noció amb les aplicacions de conjunts. Com hem dit a la secció~\ref{sec:mirar-fora} de la introducció, la teoria de categories desplaça la visió clàssica, puntual i conjuntista, de les aplicacions cap a una visió abstracta com a fletxes.
+Els exemples concrets que acabem d'esmentar tenen tots un conjunt subjacent. En aquests casos, preservar l'estructura significa començar per una aplicació entre els conjunts subjacents i imposar-hi les condicions adequades. No és, però, un requisit de la noció de categoria: més endavant trobarem categories els objectes de les quals no són conjunts amb estructura. Com hem dit a la secció~\ref{sec:mirar-fora} de la introducció, la teoria de categories desplaça la visió clàssica, puntual i conjuntista, de les aplicacions cap a una visió abstracta com a fletxes.
 
 Recordem breument la notació de fletxa per a les aplicacions entre conjunts. Una aplicació $f$ amb domini $X$ i codomini $Y$ es denota $f\colon X\to Y$, o bé com a fletxa $X\xrightarrow{f}Y$. L'operació fonamental sobre les aplicacions és la \emph{composició}: si $f\colon X\to Y$ i $g\colon Y\to Z$, es defineix $g\comp f\colon X\to Z$ per
 \[
@@ -48,24 +58,25 @@ Aquestes dades han de satisfer els dos axiomes següents, sempre que les composi
 \item \textbf{Associativitat.} $h\comp(g\comp f)=(h\comp g)\comp f$, per a $f\colon A\to B$, $g\colon B\to C$, $h\colon C\to D$.
 \item \textbf{Identitats.} $\id_B\comp f=f$ i $f\comp\id_A=f$, per a tot $f\colon A\to B$.
 \end{enumerate}
+La secció~\ref{sec:diagrames} dona la lectura diagramàtica d'aquests axiomes.
 \end{definicio}
 
 Parlem aquí de \emph{col·leccions} i no de \emph{conjunts}, deliberadament: en alguns exemples els objectes, o els morfismes, són massa nombrosos per formar un conjunt. Així, tant $\Ob(\cat{C})$ com $\Mor(\cat{C})$ són en general col·leccions, no necessàriament conjunts. Precisarem aquesta qüestió a la secció~\ref{sec:mida}. Sovint és més còmode agrupar els morfismes segons el seu domini i codomini: quan la col·lecció de morfismes de $A$ a $B$ és un conjunt, se sol denotar
 \[
 \Hom_{\cat{C}}(A,B)
 \]
-o simplement $\Hom(A,B)$ quan la categoria és clara i l'anomenem \emph{homconjunt} de $A$ i $B$. Com que cada morfisme té un únic domini i un únic codomini, $\Mor(\cat{C})$ sempre es reparteix segons el parell $(A,B)$ de domini i codomini, en parts disjuntes dos a dos; el que no està garantit és que cada part sigui un \emph{conjunt}. Quan ho és per a tots els parells ---propietat que rep el nom de \emph{petitesa local} (secció~\ref{sec:mida})---, aquestes parts són els homconjunts $\Hom(A,B)$ i $\Mor(\cat{C})$ n'és la unió. Al llarg del llibre totes les categories que fem servir són localment petites, de manera que aquesta subtilesa no ens afectarà.
+o simplement $\Hom(A,B)$ quan la categoria és clara i l'anomenem \emph{homconjunt} de $A$ i $B$. Com que cada morfisme té un únic domini i un únic codomini, $\Mor(\cat{C})$ sempre es reparteix segons el parell $(A,B)$ de domini i codomini, en parts disjuntes dos a dos;\footnote{Aquesta disjunció és, de fet, equivalent a la unicitat del domini i el codomini. A l'axiomàtica relacional de l'apèndix~\ref{cap:axiomatica-relacional} en fa el paper d'un axioma.} el que no està garantit és que cada part sigui un \emph{conjunt}. Quan ho és per a tots els parells ---propietat que rep el nom de \emph{petitesa local} (secció~\ref{sec:mida})---, aquestes parts són els homconjunts $\Hom(A,B)$ i $\Mor(\cat{C})$ n'és la unió. Al llarg del llibre totes les categories que fem servir són localment petites, de manera que aquesta subtilesa no ens afectarà.
 
 \begin{observacio}
 Fem algunes precisions sobre la definició.
 \begin{enumerate}
 \item Els morfismes també s'anomenen \textbf{fletxes}, i sovint farem servir les dues paraules indistintament.
-\item Com que cada morfisme té un únic domini i un únic codomini, els homconjunts són \textbf{disjunts dos a dos}: si $(A,B)\neq(A',B')$, aleshores $\Hom(A,B)\cap\Hom(A',B')=\varnothing$. Cada fletxa pertany, doncs, a un únic $\Hom(A,B)$. Aquesta disjunció \emph{és} la condició d'unicitat del domini i el codomini, expressada en termes d'homconjunts: totes dues afirmacions són equivalents, i la conservem sempre ---a l'apèndix~\ref{cap:axiomatica-relacional} n'és, de fet, un axioma. No l'hem de llegir, però, com una restricció sobre \emph{quins} objectes matemàtics poden ser categories, sinó com una conseqüència de la convenció formal adoptada ---una col·lecció global de morfismes amb funcions de domini i codomini. Si es parteix, en canvi, d'una família $\Hom(A,B)$ donada d'entrada, en què un mateix element podria aparèixer en diversos homconjunts, la unicitat es recupera etiquetant cada morfisme pels seus extrems ---és a dir, prenent la unió disjunta $\bigsqcup_{A,B}\Hom(A,B)$---, tal com farem amb la relació buida a $\cat{Rel}$.
 \item L'axioma d'associativitat fa que puguem escriure $h\comp g\comp f$ sense parèntesis, sabent que el resultat no depèn de la manera d'agrupar-los.
 \item Els axiomes d'identitat diuen que $\id_A$ es comporta com un neutre per la composició. Veurem tot seguit que aquesta propietat determina $\id_A$ de manera única.
-\item Aquesta definició axiomàtica pren com a termes no definits els objectes i els morfismes. Una categoria és qualsevol estructura que contingui aquestes dues menes de dades i que satisfaci les condicions i propietats de la definició. De fet, se'n pot prescindir d'una: com que cada objecte queda determinat per la seva identitat, una categoria petita es pot descriure en un llenguatge amb \emph{una sola} mena d'individus ---les fletxes--- i tres relacions primitives de domini, codomini i composició, amb els objectes reconstruïts com les fletxes identitat. L'apèndix~\ref{cap:axiomatica-relacional} desenvolupa aquesta presentació relacional i en demostra l'equivalència amb la definició d'aquí.
+\item Aquesta definició axiomàtica pren com a termes no definits els objectes i els morfismes. Una categoria és qualsevol estructura que contingui aquestes dues menes de dades i que satisfaci les condicions i propietats de la definició.\footnotemark
 \end{enumerate}
 \end{observacio}
+\footnotetext{De fet, es pot prescindir d'una de les dues menes de dades: com que cada objecte queda determinat per la seva identitat, una categoria petita es pot descriure en un llenguatge amb una sola mena d'individus ---les fletxes--- i tres relacions primitives de domini, codomini i composició, amb els objectes reconstruïts com les fletxes identitat. L'apèndix~\ref{cap:axiomatica-relacional} desenvolupa aquesta presentació relacional i en demostra l'equivalència amb la definició d'aquí.}
 
 \begin{proposicio}
 La fletxa identitat d'un objecte és única.
@@ -83,7 +94,7 @@ e_A\comp e'_A=e_A.
 Per tant $e_A=e'_A$.
 \end{prova}
 
-\section{Fletxes, camins i diagrames commutatius}\index{diagrama commutatiu}
+\section{Fletxes, camins i diagrames commutatius}\label{sec:diagrames}\index{diagrama commutatiu}
 
 La definició anterior es pot llegir algebraicament, mitjançant equacions, però també gràficament. Aquesta segona lectura serà una part essencial del llenguatge categòric.
 
@@ -176,52 +187,76 @@ Les identitats també tenen una lectura diagramàtica. Si $f\colon A\to B$, inse
   \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {\(f\)} (m-2-2);
 \end{tikzpicture}
 \]
-A partir d'ara, quan una propietat categòrica tingui una expressió diagramàtica natural, la farem visible al mateix lloc on aparegui.
+Els dos triangles commutatius expressen exactament els axiomes d'identitat:
+\[
+f\comp\id_A=f,\qquad \id_B\comp f=f.
+\]
+A partir d'ara seguirem aquesta norma: quan una propietat categòrica tingui una expressió diagramàtica natural, en donarem alhora, al mateix lloc, l'equació i el diagrama. Llegir l'una i dibuixar l'altre, i a l'inrevés, és una destresa que el llibre demana constantment.
 
 \section{Exemples de categories}
 
-La força de la definició es veu de seguida en la varietat d'exemples que hi encaixen. En cadascun cal identificar els objectes, els morfismes, les identitats i la composició. Comencem pels exemples més petits, que malgrat la seva simplicitat apareixeran sovint com a \emph{categories índex} (la definició~\ref{def:diagrama}) per construir diagrames.
+La força de la definició es veu de seguida en la varietat d'exemples que hi encaixen. En cadascun cal identificar els objectes, els morfismes, les identitats i la composició. Comencem pels exemples més petits, que malgrat la seva simplicitat apareixeran sovint com a \emph{categories índex} (la definició~\refalt{def:diagrama}{de diagrama del capítol~5}) per construir diagrames.
 
 \subsection{Categories finites}\label{subsec:finites}\index{categoria!buida}\index{categoria!unitat}\index{categoria!finita}
 
 Per descomptat, els objectes d'una categoria no cal que siguin conjunts. Considerem alguns exemples molt senzills que es poden descriure per complet. En cada cas identifiquem els objectes, els morfismes, la composició i les identitats; l'associativitat i les lleis d'identitat es comproven directament, ja que hi ha molt poques composicions a considerar.
 \begin{enumerate}
-\item La \emph{categoria buida} $\cat{0}$ no té cap objecte ni cap morfisme. No hi ha composició ni identitats que definir, i els axiomes es compleixen trivialment perquè no hi ha res a comprovar; és la categoria \enquote{sense res}.
-\item La \emph{categoria unitat} $\cat{1}$, també anomenada categoria \emph{terminal}, té un únic objecte $\ast$ i un únic morfisme, la identitat $\id_\ast$. La composició és $\id_\ast\comp\id_\ast=\id_\ast$, i els axiomes es redueixen a aquesta igualtat:
+\item La \emph{categoria buida} $\cat{0}$ té $\Ob(\cat{0})=\varnothing$ i cap morfisme. No hi ha composició ni identitats que definir, i els axiomes es compleixen trivialment perquè no hi ha res a comprovar; és la categoria \enquote{sense res}.
+\item La \emph{categoria unitat} $\cat{1}$, també anomenada categoria \emph{terminal}, té $\Ob(\cat{1})=\{\ast\}$ i $\Hom(\ast,\ast)=\{\id_\ast\}$. L'única composició és $\id_\ast\comp\id_\ast=\id_\ast$, i els axiomes es redueixen a aquesta igualtat:
 \[
 \begin{tikzpicture}[baseline=(a.base)]
   \node (a) {$\ast$};
   \draw[-{Stealth[scale=1.1]}] (a) to[out=40,in=-40,looseness=8] node[right] {$\id_\ast$} (a);
 \end{tikzpicture}
 \]
-\item La categoria $\cat{2}$ té dos objectes, $\ast$ i $\star$, i una única fletxa no trivial entre ells, a més de les dues identitats. Les úniques composicions són les que involucren identitats, de manera que els axiomes es compleixen automàticament. A partir d'ara, com és costum, no dibuixem les identitats:
+\item La categoria $\cat{2}$ té $\Ob(\cat{2})=\{\ast,\star\}$ i una única fletxa no trivial $u\colon\ast\to\star$, a més de les dues identitats:
+\[
+\begin{aligned}
+\Hom(\ast,\ast)&=\{\id_\ast\}, &
+\Hom(\star,\star)&=\{\id_\star\},\\
+\Hom(\ast,\star)&=\{u\}, &
+\Hom(\star,\ast)&=\varnothing.
+\end{aligned}
+\]
+Les úniques composicions són les que involucren identitats, $u\comp\id_\ast=u=\id_\star\comp u$, de manera que els axiomes es compleixen automàticament. A partir d'ara, com és costum, no dibuixem les identitats:
 \[
 \begin{tikzpicture}[baseline=(a.base)]
   \node (a) at (0,0) {$\ast$};
   \node (b) at (1.8,0) {$\star$};
-  \draw[-{Stealth[scale=1.1]}] (a) -- (b);
+  \draw[-{Stealth[scale=1.1]}] (a) -- node[above] {$u$} (b);
 \end{tikzpicture}
 \]
-\item La categoria amb \textbf{dues fletxes paral·leles} té dos objectes i dues fletxes no trivials $f,g$ amb el mateix domini i el mateix codomini. Com que cap parell d'aquestes fletxes no és componible, de nou les úniques composicions són amb identitats:
+\item La categoria amb \textbf{dues fletxes paral·leles} té $\Ob=\{\ast,\star\}$ i dues fletxes no trivials $f,g\colon\ast\to\star$ amb el mateix domini i el mateix codomini:
+\[
+\Hom(\ast,\star)=\{f,g\},\qquad
+\Hom(\star,\ast)=\varnothing,
+\]
+i als homconjunts $\Hom(\ast,\ast)$ i $\Hom(\star,\star)$ només hi ha les identitats. Com que cap parell d'aquestes fletxes no és componible, de nou les úniques composicions són amb identitats:
 \[
 \begin{tikzpicture}[baseline=(a.base)]
   \node (a) at (0,0) {$\ast$};
   \node (b) at (1.8,0) {$\star$};
-  \draw[-{Stealth[scale=1.1]}] ([yshift=2.2pt]a.east) -- ([yshift=2.2pt]b.west);
-  \draw[-{Stealth[scale=1.1]}] ([yshift=-2.2pt]a.east) -- ([yshift=-2.2pt]b.west);
+  \draw[-{Stealth[scale=1.1]}] ([yshift=2.2pt]a.east) -- node[above] {$f$} ([yshift=2.2pt]b.west);
+  \draw[-{Stealth[scale=1.1]}] ([yshift=-2.2pt]a.east) -- node[below] {$g$} ([yshift=-2.2pt]b.west);
 \end{tikzpicture}
 \]
-Aquesta darrera reapareixerà com a categoria índex dels \emph{equalitzadors} (la definició~\ref{def:equalitzador}).
-\item La categoria $\cat{3}$ té tres objectes i dues fletxes consecutives; la composició obliga a incloure també la seva composició. Amb aquesta composició (i les identitats) els axiomes se satisfan:
+Aquesta darrera reapareixerà com a categoria índex dels \emph{equalitzadors} (la definició~\refalt{def:equalitzador}{d'equalitzador del capítol~5}).
+\item La categoria $\cat{3}$ té $\Ob(\cat{3})=\{\ast,\star,\bullet\}$ i tres fletxes no trivials, $f\colon\ast\to\star$, $g\colon\star\to\bullet$ i $h\colon\ast\to\bullet$:
+\[
+\Hom(\ast,\star)=\{f\},\qquad
+\Hom(\star,\bullet)=\{g\},\qquad
+\Hom(\ast,\bullet)=\{h\};
+\]
+els homconjunts d'un objecte a si mateix contenen només la identitat, i els homconjunts en sentit contrari són buits. La composició obliga a incloure la composició de les dues fletxes consecutives: l'única composició no trivial és $g\comp f=h$. Amb aquesta composició (i les identitats) els axiomes se satisfan:
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=2.6em] {
     \ast & \star \\
          & \bullet \\
   };
-  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- (m-1-2);
-  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- (m-2-2);
-  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$g$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$h=g\comp f$} (m-2-2);
 \end{tikzpicture}
 \]
 \end{enumerate}
@@ -241,11 +276,22 @@ generen $g\comp f$, $f\comp g$, $g\comp f\comp g$, i així indefinidament; la ca
 
 \subsection{Categories de conjunts}\label{subsec:conjunts}
 
-A la categoria $\cat{Set}$, els objectes són els conjunts i els morfismes són les aplicacions entre conjunts. La composició és la composició habitual d'aplicacions i la identitat de cada conjunt $A$ és l'aplicació identitat $\id_A(x)=x$. L'associativitat i les lleis d'identitat són propietats ben conegudes de les aplicacions, de manera que $\cat{Set}$ és una categoria. Serà una categoria de referència: quan un concepte categòric nou ens desconcerti, mirar què vol dir a $\cat{Set}$ sol ser un bon primer pas.
+La categoria $\cat{Set}$ té:
+\begin{itemize}
+\item objectes: $\Ob(\cat{Set})$ és la col·lecció de tots els conjunts;
+\item morfismes: $\Hom_{\cat{Set}}(A,B)$ és el conjunt de totes les aplicacions $A\to B$;
+\item composició: la composició habitual d'aplicacions, $(g\comp f)(x)=g(f(x))$;
+\item identitats: l'aplicació identitat, $\id_A(x)=x$.
+\end{itemize}
+L'associativitat i les lleis d'identitat són propietats ben conegudes de les aplicacions, de manera que $\cat{Set}$ és una categoria. Serà una categoria de referència: quan un concepte categòric nou ens desconcerti, mirar què vol dir a $\cat{Set}$ sol ser un bon primer pas.
 
-Si ens restringim als conjunts finits i a les aplicacions entre ells, obtenim la categoria $\cat{FinSet}$: els objectes són els conjunts finits, els morfismes són les aplicacions entre ells, i la composició i les identitats són les mateixes que a $\cat{Set}$. Com que la composició d'aplicacions entre conjunts finits torna a ser una aplicació entre conjunts finits, els axiomes se satisfan igual que a $\cat{Set}$.
+Si ens restringim als conjunts finits i a les aplicacions entre ells, obtenim la categoria $\cat{FinSet}$: $\Ob(\cat{FinSet})$ és la col·lecció dels conjunts finits, $\Hom_{\cat{FinSet}}(A,B)=\Hom_{\cat{Set}}(A,B)$, i la composició i les identitats són les mateixes que a $\cat{Set}$. Com que la composició d'aplicacions entre conjunts finits torna a ser una aplicació entre conjunts finits, els axiomes se satisfan igual que a $\cat{Set}$.
 
-Tot conjunt $S$ es pot veure també com una categoria: els objectes són els elements de $S$ i els únics morfismes són les identitats, una per objecte.\index{categoria!discreta} La composició és forçada ($\id_x\comp\id_x=\id_x$) i els axiomes es compleixen trivialment. Una categoria en què els únics morfismes són les identitats s'anomena \textbf{categoria discreta}. En una categoria discreta no hi ha cap informació més enllà de la col·lecció d'objectes.
+Tot conjunt $S$ es pot veure també com una categoria, que continuem escrivint $S$:\index{categoria!discreta} $\Ob(S)=S$ i els únics morfismes són les identitats, una per objecte,
+\[
+\Hom_S(x,y)=\begin{cases}\{\id_x\} & \text{si } x=y,\\[2pt] \varnothing & \text{altrament.}\end{cases}
+\]
+La composició és forçada ($\id_x\comp\id_x=\id_x$) i els axiomes es compleixen trivialment. Una categoria en què els únics morfismes són les identitats s'anomena \textbf{categoria discreta}. En una categoria discreta no hi ha cap informació més enllà de la col·lecció d'objectes.
 
 \begin{observacio}
 Una categoria no queda determinada pels seus objectes: cal dir també quines són les fletxes. Amb només dos objectes, per exemple, hem trobat ja tres categories ben diferents:
@@ -273,11 +319,16 @@ En tots els casos, els objectes i els morfismes deixen de ser conjunts i aplicac
 \paragraph{Preordres.}\index{preordre}
 Un \emph{preordre} és un parell $(P,\le)$ on $P$ és un conjunt i $\le$ una relació binària sobre $P$ reflexiva ($x\le x$) i transitiva (si $x\le y$ i $y\le z$, aleshores $x\le z$). Per exemple, $(\mathbb{R},\le)$, o els subconjunts d'un conjunt ordenats per la inclusió $\subseteq$.
 
-Tot preordre $(P,\le)$ \textbf{és} una categoria. Els objectes són els elements de $P$, i
+Tot preordre $(P,\le)$ \textbf{és} una categoria, que continuem escrivint $P$:
+\begin{itemize}
+\item objectes: $\Ob(P)=P$, els elements del preordre;
+\item morfismes: hi ha exactament una fletxa $x\to y$ quan $x\le y$,
 \[
-\Hom(x,y)=\begin{cases}\{(x,y)\} & \text{si } x\le y,\\[2pt] \varnothing & \text{altrament,}\end{cases}
+\Hom_P(x,y)=\begin{cases}\{(x,y)\} & \text{si } x\le y,\\[2pt] \varnothing & \text{altrament;}\end{cases}
 \]
-és a dir, hi ha exactament una fletxa $x\to y$ quan $x\le y$. La identitat és $\id_x=(x,x)$ (existeix per reflexivitat) i la composició és $(y,z)\comp(x,y)=(x,z)$ (existeix per transitivitat):
+\item composició: $(y,z)\comp(x,y)=(x,z)$, que existeix per transitivitat;
+\item identitats: $\id_x=(x,x)$, que existeix per reflexivitat.
+\end{itemize}
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=2.6em] {
@@ -296,12 +347,19 @@ Si el preordre és a més antisimètric ($x\le y$ i $y\le x$ impliquen $x=y$), �
 \paragraph{Monoides.}\index{monoide}
 Un \emph{monoide} és una terna $(M,\ast,e)$ on $\ast$ és una operació associativa sobre $M$ amb element neutre $e$. Per exemple, $(\mathbb{N},+,0)$, o les paraules sobre un alfabet amb la concatenació i la paraula buida.
 
-Tot monoide \textbf{és} una categoria amb un sol objecte $\ast$, que escrivim $\cat{B}M$.\footnote{La notació $\cat{B}M$ prové de la topologia, on $BM$ designa l'\emph{espai classificador} del monoide (o grup) $M$; la categoria $\cat{B}M$ n'és el model categòric.} L'homconjunt és tot el monoide, $\Hom(\ast,\ast)=M$, de manera que els morfismes són els elements de $M$. La composició és l'operació del monoide (amb la convenció $g\comp f=g\ast f$, on l'element de la dreta actua primer) i la identitat és $\id_\ast=e$. Els axiomes de categoria són exactament els de monoide. Els morfismes, aquí, no són aplicacions: són els elements de $M$.
+Tot monoide \textbf{és} una categoria amb un sol objecte $\ast$, que escrivim $\cat{B}M$.\footnote{La notació $\cat{B}M$ prové de la topologia, on $BM$ designa l'\emph{espai classificador} del monoide (o grup) $M$; la categoria $\cat{B}M$ n'és el model categòric.} Concretament:
+\begin{itemize}
+\item objectes: $\Ob(\cat{B}M)=\{\ast\}$;
+\item morfismes: l'únic homconjunt és tot el monoide, $\Hom_{\cat{B}M}(\ast,\ast)=M$;
+\item composició: l'operació del monoide, $g\comp f=g\ast f$, on l'element de la dreta actua primer;
+\item identitat: $\id_\ast=e$.
+\end{itemize}
+Els axiomes de categoria són exactament els de monoide. Els morfismes, aquí, no són aplicacions: són els elements de $M$.
 
 \paragraph{Grups.}\index{grup}
 Un \emph{grup} és una terna $(G,\ast,e)$ que és un monoide en què, a més, tot element $a$ té un invers $a^{-1}$ amb $a\ast a^{-1}=e=a^{-1}\ast a$. Per exemple, $(\mathbb{Z},+,0)$, o les permutacions d'un conjunt amb la composició.
 
-Un grup \textbf{és} una categoria d'un sol objecte en què tot morfisme és un isomorfisme; és, doncs, un cas particular de monoide-categoria, i l'escrivim igualment $\cat{B}G$. En efecte, l'invers de l'element $a$ és exactament el morfisme invers de la fletxa corresponent. La teoria de grups és, doncs, la part invertible de la teoria de monoides. Cada element del grup és un bucle sobre l'únic objecte, i la identitat $e$ n'és el bucle destacat:
+Un grup \textbf{és} una categoria d'un sol objecte en què tot morfisme és un isomorfisme. Com que un grup és en particular un monoide, la categoria és la de l'apartat anterior, que escrivim igualment $\cat{B}G$: $\Ob(\cat{B}G)=\{\ast\}$, $\Hom_{\cat{B}G}(\ast,\ast)=G$, $g\comp f=g\ast f$ i $\id_\ast=e$. En efecte, l'invers de l'element $a$ és exactament el morfisme invers de la fletxa corresponent. La teoria de grups és, doncs, la part invertible de la teoria de monoides. Cada element del grup és un bucle sobre l'únic objecte, i la identitat $e$ n'és el bucle destacat:
 \[
 \begin{tikzpicture}[baseline=(o.base)]
   \node (o) {$\ast$};
@@ -315,24 +373,29 @@ Un grup \textbf{és} una categoria d'un sol objecte en què tot morfisme és un 
 \end{tikzpicture}
 \]
 
-\paragraph{Sistemes deductius.}\index{deduibilitat@deduïbilitat}
-Fixem un \emph{sistema deductiu} $T$ i considerem la relació de deduïbilitat $\vdash$ entre fórmules, reflexiva ($p\vdash p$) i transitiva (de $p\vdash q$ i $q\vdash r$ se segueix $p\vdash r$). Aquest sistema \textbf{és} una categoria: els objectes són les fórmules $p,q,r,\dots$ i
+\paragraph{Sistemes deductius.}\index{deduibilitat@deduïbilitat}\index{Prov@$\cat{Prov}_T$}
+Fixem un \emph{sistema deductiu} $T$ i considerem la seva relació de deduïbilitat $\vdash_T$ entre fórmules, reflexiva ($p\vdash_T p$) i transitiva (de $p\vdash_T q$ i $q\vdash_T r$ se segueix $p\vdash_T r$). Aquesta relació determina una categoria, que escrivim $\cat{Prov}_T$ per distingir-la del sistema $T$ del qual prové:
+\begin{itemize}
+\item objectes: $\Ob(\cat{Prov}_T)$ és el conjunt de les fórmules $p,q,r,\dots$ de $T$;
+\item morfismes: hi ha exactament una fletxa $p\to q$ quan $p\vdash_T q$,
 \[
-\Hom(p,q)=\begin{cases}\{(p,q)\} & \text{si } p\vdash q,\\[2pt] \varnothing & \text{altrament,}\end{cases}
+\Hom_{\cat{Prov}_T}(p,q)=\begin{cases}\{(p,q)\} & \text{si } p\vdash_T q,\\[2pt] \varnothing & \text{altrament;}\end{cases}
 \]
-és a dir, hi ha exactament una fletxa $p\to q$ quan $p\vdash q$. La identitat és $\id_p=(p,p)$ (existeix per reflexivitat) i la composició és $(q,r)\comp(p,q)=(p,r)$ (existeix per transitivitat):
+\item composició: $(q,r)\comp(p,q)=(p,r)$, que existeix per transitivitat;
+\item identitats: $\id_p=(p,p)$, que existeix per reflexivitat.
+\end{itemize}
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=2.6em] {
     p & q \\
       & r \\
   };
-  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$p\vdash q$} (m-1-2);
-  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$q\vdash r$} (m-2-2);
-  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$p\vdash r$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$p\vdash_T q$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$q\vdash_T r$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$p\vdash_T r$} (m-2-2);
 \end{tikzpicture}
 \]
-Com el preordre, és una categoria prima. Identificarem el sistema deductiu amb la categoria que defineix i escriurem també $T$ per a aquesta categoria. A diferència de l'ordre parcial, però, un sistema deductiu no acostuma a ser antisimètric: dues fórmules diferents poden ser interdeduïbles ($p\vdash q$ i $q\vdash p$ amb $p\neq q$), com $p\land q$ i $q\land p$. Categòricament, això vol dir que hi ha isomorfismes no trivials: fórmules distintes però isomorfes. Registrem només \emph{si} $q$ és deduïble de $p$, no \emph{com}; a la versió que distingeix les proves hi tornem tot seguit.
+Com el preordre, $\cat{Prov}_T$ és una categoria prima. A diferència de l'ordre parcial, però, la deduïbilitat no acostuma a ser antisimètrica: dues fórmules diferents poden ser interdeduïbles ($p\vdash_T q$ i $q\vdash_T p$ amb $p\neq q$), com $p\land q$ i $q\land p$. Categòricament, això vol dir que hi ha isomorfismes no trivials: fórmules distintes però isomorfes. Aquesta categoria només registra \emph{si} $q$ es dedueix de $p$, no \emph{de quina manera} es dedueix; l'observació següent presenta la versió que distingeix les proves.
 
 \begin{observacio}[Les proves mateixes com a fletxes]\index{prova!com a morfisme}
 Hi ha una interpretació lògica més fina en què una prova concreta
@@ -341,7 +404,7 @@ Hi ha una interpretació lògica més fina en què una prova concreta
 \]
 és ella mateixa un morfisme, i dues proves $\pi,\rho\colon p\to q$ poden ser morfismes diferents. La composició representa aleshores l'encadenament de proves i la identitat, la prova trivial d'una fórmula a partir d'ella mateixa. Passem, doncs, d'una sola fletxa (registrar \emph{si} hi ha deducció) a moltes fletxes (registrar \emph{quina} prova).
 
-Per obtenir una categoria de proves completament definida cal fixar el sistema deductiu i precisar també quan dues derivacions es consideren iguals ---per exemple, mitjançant una equivalència adequada entre proves. No necessitem encara aquesta teoria; de moment distingirem entre la categoria prima de la \emph{deduïbilitat} i aquesta interpretació més rica de les \emph{proves com a fletxes}. Hi tornarem quan el llenguatge categòric ens permeti fer-ho amb més precisió.
+Per obtenir una categoria de proves completament definida cal fixar el sistema deductiu i precisar també quan dues derivacions es consideren iguals ---per exemple, mitjançant una equivalència adequada entre proves. No necessitem encara aquesta teoria; de moment distingirem entre la categoria prima $\cat{Prov}_T$ de la \emph{deduïbilitat} i aquesta interpretació més rica de les \emph{proves com a fletxes}. Hi tornarem quan el llenguatge categòric ens permeti fer-ho amb més precisió.
 \end{observacio}
 
 \subsection{Categories de conjunts estructurats}
@@ -349,21 +412,42 @@ Per obtenir una categoria de proves completament definida cal fixar el sistema d
 Ara considerem les categories els objectes de les quals són conjunts amb alguna estructura, i els morfismes, les aplicacions que preserven aquesta estructura. En tots els casos la composició és la d'aplicacions i les identitats són les aplicacions identitat, de manera que l'associativitat i les lleis d'identitat s'hereten de les de $\cat{Set}$; només cal comprovar, en cada cas, que la composició d'aplicacions que respecten l'estructura torna a respectar-la, i que la identitat també ho fa.
 
 \paragraph{Grups.}
-Considerem ara la categoria $\cat{Grp}$, que té per objectes tots els grups i per morfismes els homomorfismes de grups. Un \emph{homomorfisme de grups} $h\colon G\to H$ és una aplicació entre els conjunts subjacents que preserva l'operació: $h(a\ast b)=h(a)\ast h(b)$ per a tot $a,b$ (d'on se segueix que preserva també el neutre i els inversos). Si $h\colon G\to H$ i $k\colon H\to K$ són homomorfismes, la composició també ho és, ja que
+La categoria $\cat{Grp}$ té:
+\begin{itemize}
+\item objectes: $\Ob(\cat{Grp})$ és la col·lecció de tots els grups;
+\item morfismes: $\Hom_{\cat{Grp}}(G,H)$ és el conjunt dels homomorfismes de grups $G\to H$;
+\item composició: la composició d'aplicacions;
+\item identitats: l'aplicació identitat $\id_{G}$.
+\end{itemize}
+Un \emph{homomorfisme de grups} $h\colon G\to H$ és una aplicació entre els conjunts subjacents que preserva l'operació: $h(a\ast b)=h(a)\ast h(b)$ per a tot $a,b$ (d'on se segueix que preserva també el neutre i els inversos). Si $h\colon G\to H$ i $k\colon H\to K$ són homomorfismes, la composició també ho és, ja que
 \[
 k(h(a\ast b))=k(h(a)\ast h(b))=k(h(a))\ast k(h(b));
 \]
 i l'aplicació identitat preserva trivialment l'operació. Com que la composició i les identitats són les d'aplicacions entre conjunts, l'associativitat i les lleis d'identitat s'hereten de $\cat{Set}$.
 
 \paragraph{Espais vectorials.}\index{espai vectorial}
-Fixem un cos $\mathbb{K}$ i considerem la categoria $\cat{Vect}_{\mathbb K}$, que té per objectes els espais vectorials sobre $\mathbb{K}$ i per morfismes les aplicacions lineals. Un \emph{espai vectorial} sobre $\mathbb{K}$ és un conjunt $V$ amb una suma commutativa i associativa $V\times V\to V$ ---amb element neutre i oposats--- i una multiplicació per escalars $\mathbb{K}\times V\to V$ compatible amb les operacions. Una \emph{aplicació lineal} $f\colon V\to W$ és una aplicació entre els conjunts subjacents que preserva l'estructura: $f(u+v)=f(u)+f(v)$ i $f(\lambda v)=\lambda f(v)$. Si $f\colon V\to W$ i $g\colon W\to U$ són lineals, la composició també ho és, ja que
+Fixem un cos $\mathbb{K}$. La categoria $\cat{Vect}_{\mathbb K}$ té:
+\begin{itemize}
+\item objectes: $\Ob(\cat{Vect}_{\mathbb K})$ és la col·lecció dels espais vectorials sobre $\mathbb{K}$;
+\item morfismes: $\Hom_{\mathbb K}(V,W)$ és el conjunt de les aplicacions lineals $V\to W$;
+\item composició: la composició d'aplicacions;
+\item identitats: l'aplicació identitat $\id_V$.
+\end{itemize}
+Un \emph{espai vectorial} sobre $\mathbb{K}$ és un conjunt $V$ amb una suma commutativa i associativa $V\times V\to V$ ---amb element neutre i oposats--- i una multiplicació per escalars $\mathbb{K}\times V\to V$ compatible amb les operacions. Una \emph{aplicació lineal} $f\colon V\to W$ és una aplicació entre els conjunts subjacents que preserva l'estructura: $f(u+v)=f(u)+f(v)$ i $f(\lambda v)=\lambda f(v)$. Si $f\colon V\to W$ i $g\colon W\to U$ són lineals, la composició també ho és, ja que
 \[
 g(f(u+v))=g(f(u))+g(f(v))\qquad\text{i}\qquad g(f(\lambda v))=\lambda\,g(f(v));
 \]
 i la identitat és lineal. Per tant la composició i les identitats són les d'aplicacions entre conjunts, i l'associativitat i les lleis d'identitat s'hereten de $\cat{Set}$.
 
 \paragraph{Espais topològics.}\index{espai topològic}
-Considerem ara la categoria $\cat{Top}$, que té per objectes els espais topològics i per morfismes les aplicacions contínues. Un \emph{espai topològic} és un parell $(X,\mathcal{T}_X)$ on $X$ és un conjunt i $\mathcal{T}_X$ una família de subconjunts de $X$ (els \emph{oberts}) tal que:
+La categoria $\cat{Top}$ té:
+\begin{itemize}
+\item objectes: $\Ob(\cat{Top})$ és la col·lecció de tots els espais topològics;
+\item morfismes: $\Hom_{\cat{Top}}(X,Y)$ és el conjunt de les aplicacions contínues $X\to Y$;
+\item composició: la composició d'aplicacions;
+\item identitats: l'aplicació identitat $\id_{X}$.
+\end{itemize}
+Un \emph{espai topològic} és un parell $(X,\mathcal{T}_X)$ on $X$ és un conjunt i $\mathcal{T}_X$ una família de subconjunts de $X$ (els \emph{oberts}) tal que:
 \begin{itemize}
 \item $\varnothing, X\in\mathcal{T}_X$;
 \item si $U,V\in\mathcal{T}_X$, aleshores $U\cap V\in\mathcal{T}_X$;
@@ -372,14 +456,28 @@ Considerem ara la categoria $\cat{Top}$, que té per objectes els espais topolò
 Una \emph{aplicació contínua} $f\colon(X,\mathcal{T}_X)\to(Y,\mathcal{T}_Y)$ és una aplicació $f\colon X\to Y$ que preserva l'estructura en el sentit següent: $f^{-1}(U)\in\mathcal{T}_X$ per a tot $U\in\mathcal{T}_Y$. Si $f\colon X\to Y$ i $g\colon Y\to Z$ són contínues, la composició també ho és, ja que $(g\comp f)^{-1}(U)=f^{-1}(g^{-1}(U))$ és obert quan $U$ ho és; i la identitat és contínua, perquè $\id^{-1}(U)=U$. Per tant, un cop més, la composició i les identitats són les d'aplicacions entre conjunts, i l'associativitat i les lleis d'identitat s'hereten de $\cat{Set}$.
 
 \paragraph{Monoides.}
-Considerem ara la categoria $\cat{Mon}$, que té per objectes els monoides i per morfismes els homomorfismes de monoides. Un \emph{homomorfisme de monoides} $h\colon M\to N$ és una aplicació entre els conjunts subjacents que preserva l'operació i el neutre: $h(a\ast b)=h(a)\ast h(b)$ i $h(e_M)=e_N$. Si $h\colon M\to N$ i $k\colon N\to P$ són homomorfismes, la composició també ho és, ja que
+La categoria $\cat{Mon}$ té:
+\begin{itemize}
+\item objectes: $\Ob(\cat{Mon})$ és la col·lecció de tots els monoides;
+\item morfismes: $\Hom_{\cat{Mon}}(M,N)$ és el conjunt dels homomorfismes de monoides $M\to N$;
+\item composició: la composició d'aplicacions;
+\item identitats: l'aplicació identitat $\id_{M}$.
+\end{itemize}
+Un \emph{homomorfisme de monoides} $h\colon M\to N$ és una aplicació entre els conjunts subjacents que preserva l'operació i el neutre: $h(a\ast b)=h(a)\ast h(b)$ i $h(e_M)=e_N$. Si $h\colon M\to N$ i $k\colon N\to P$ són homomorfismes, la composició també ho és, ja que
 \[
 k(h(a\ast b))=k(h(a)\ast h(b))=k(h(a))\ast k(h(b))\qquad\text{i}\qquad k(h(e_M))=k(e_N)=e_P;
 \]
 i la identitat preserva trivialment l'operació i el neutre. Com que la composició i les identitats són les d'aplicacions entre conjunts, l'associativitat i les lleis d'identitat s'hereten de $\cat{Set}$.
 
 \paragraph{Ordres parcials.}
-Considerem ara la categoria $\cat{Pos}$, que té per objectes els ordres parcials i per morfismes les aplicacions monòtones. Una \emph{aplicació monòtona} $f\colon P\to Q$ és una aplicació entre els conjunts subjacents que preserva l'ordre: si $x\le y$, aleshores $f(x)\le f(y)$. Si $f\colon P\to Q$ i $g\colon Q\to R$ són monòtones, la composició també ho és, ja que
+La categoria $\cat{Pos}$ té:
+\begin{itemize}
+\item objectes: $\Ob(\cat{Pos})$ és la col·lecció de tots els ordres parcials;
+\item morfismes: $\Hom_{\cat{Pos}}(P,Q)$ és el conjunt de les aplicacions monòtones $P\to Q$;
+\item composició: la composició d'aplicacions;
+\item identitats: l'aplicació identitat $\id_{P}$.
+\end{itemize}
+Una \emph{aplicació monòtona} $f\colon P\to Q$ és una aplicació entre els conjunts subjacents que preserva l'ordre: si $x\le y$, aleshores $f(x)\le f(y)$. Si $f\colon P\to Q$ i $g\colon Q\to R$ són monòtones, la composició també ho és, ja que
 \[
 x\le y \ \Longrightarrow\ f(x)\le f(y) \ \Longrightarrow\ g(f(x))\le g(f(y));
 \]
@@ -388,19 +486,25 @@ i la identitat preserva trivialment l'ordre. Un cop més, la composició i les i
 Convé no confondre les dues mirades: un monoide concret \emph{és} una categoria (d'un sol objecte) i un ordre parcial concret \emph{és} una categoria (prima), mentre que $\cat{Mon}$ i $\cat{Pos}$ tenen \emph{tots} els monoides i \emph{tots} els ordres parcials per objectes, respectivament.
 
 \begin{observacio}[Categories com a contextos matemàtics]
-Cada una d'aquestes categories és l'\emph{àmbit} on es desenvolupa una teoria matemàtica: $\cat{Top}$ és el context de la topologia general, $\cat{Grp}$ el de la teoria de grups, $\cat{Vect}_{\mathbb K}$ el de l'àlgebra lineal, i així successivament. Aquí, la categoria la formen tots els objectes d'una mena; a les estructures elementals, en canvi, un sol objecte estructurat ja és una categoria.
+Cadascuna d'aquestes categories és l'\emph{àmbit} on es desenvolupa una teoria matemàtica: $\cat{Top}$ és el context de la topologia general, $\cat{Grp}$ el de la teoria de grups, $\cat{Vect}_{\mathbb K}$ el de l'àlgebra lineal, i així successivament. Aquí, la categoria la formen tots els objectes d'una mena; a les estructures elementals, en canvi, un sol objecte estructurat ja és una categoria.
 \end{observacio}
 
 \subsection{Conjunts i relacions}\index{Rel@$\cat{Rel}$}
 
-Com hem avançat a la introducció (secció~\ref{sec:mirar-fora}), els conjunts admeten una segona categoria, on els morfismes no són aplicacions sinó \emph{relacions}. La categoria $\cat{Rel}$ té per objectes els conjunts i, per morfismes $X\to Y$, les relacions $R\subseteq X\times Y$. La identitat de $X$ és la relació diagonal $\Delta_X=\{(x,x)\mid x\in X\}$, i la composició de $R\subseteq X\times Y$ amb $S\subseteq Y\times Z$ és
+Com hem avançat a la introducció (secció~\ref{sec:mirar-fora}), els conjunts admeten una segona categoria, on els morfismes no són aplicacions sinó \emph{relacions}. La categoria $\cat{Rel}$ té:
+\begin{itemize}
+\item objectes: $\Ob(\cat{Rel})$ és la col·lecció de tots els conjunts;
+\item morfismes: $\Hom_{\cat{Rel}}(X,Y)$ és el conjunt de les relacions $R\subseteq X\times Y$ (amb la precisió sobre els extrems de l'observació~\ref{obs:extrems-implicits});
+\item composició: per a $R\subseteq X\times Y$ i $S\subseteq Y\times Z$,
 \[
-S\comp R=\{(x,z)\mid \exists y\in Y.\ (x,y)\in R \ \text{i}\ (y,z)\in S\}\subseteq X\times Z.
+S\comp R=\{(x,z)\mid \exists y\in Y.\ (x,y)\in R \ \text{i}\ (y,z)\in S\}\subseteq X\times Z;
 \]
-Comprovem que $\cat{Rel}$ és una categoria. Per a l'associativitat, siguin $R\subseteq X\times Y$, $S\subseteq Y\times Z$ i $T\subseteq Z\times W$. Aleshores $(x,w)\in T\comp(S\comp R)$ si i només si existeixen $y\in Y$ i $z\in Z$ amb $(x,y)\in R$, $(y,z)\in S$ i $(z,w)\in T$, i aquesta mateixa condició caracteritza $(x,w)\in(T\comp S)\comp R$; per tant $T\comp(S\comp R)=(T\comp S)\comp R$. Per a la identitat, $(x,y)\in R\comp\Delta_X$ si i només si existeix $x'$ amb $(x,x')\in\Delta_X$ i $(x',y)\in R$, és a dir $x'=x$ i $(x,y)\in R$; per tant $R\comp\Delta_X=R$, i anàlogament $\Delta_Y\comp R=R$. Compondre relacions equival a aplicar un quantificador existencial sobre el terme intermedi: aquest és el primer pont amb la lògica que assenyalàvem a la introducció. A diferència de $\cat{Set}$, aquí un morfisme $X\to Y$ no assigna a cada element de $X$ un únic element de $Y$; pot relacionar-lo amb diversos, o amb cap.
+\item identitats: la relació diagonal $\id_X=\{(x,x)\mid x\in X\}$.
+\end{itemize}
+Els axiomes es comproven directament a partir de la definició. Per a l'associativitat, un parell $(x,w)$ pertany a les dues maneres d'agrupar tres relacions encadenades exactament quan hi ha termes intermedis que connecten $x$ amb $w$ passant per les tres relacions; com que la condició no depèn de l'agrupament, les dues composicions coincideixen. Per a les identitats, compondre amb la diagonal no afegeix cap pas efectiu, perquè obliga el terme intermedi a coincidir amb l'extrem. La verificació completa és el primer exercici resolt del capítol~1 de la part de Pràctica (exercici~\ref{exr:pr-rel}). Compondre relacions equival a aplicar un quantificador existencial sobre el terme intermedi: aquest és el primer pont amb la lògica que assenyalàvem a la introducció. A diferència del que passa a $\cat{Set}$, un morfisme $X\to Y$ de $\cat{Rel}$ no ha d'assignar necessàriament a cada element de $X$ un únic element de $Y$: pot relacionar-lo amb diversos elements de $Y$, o amb cap.
 
 \begin{observacio}[Extrems implícits]\label{obs:extrems-implicits}
-En rigor, un morfisme $X\to Y$ de $\cat{Rel}$ no és una relació $R$ tota sola, sinó la relació \emph{junt amb} els seus extrems: la terna $(X,Y,R)$ amb $R\subseteq X\times Y$. Aquesta precisió és necessària perquè els homconjunts siguin disjunts, tal com exigeix la definició de categoria. Per exemple, la relació buida $R=\varnothing$ està continguda en $X\times Y$ per a qualsevol parell $(X,Y)$; si no registréssim els extrems, un mateix objecte $\varnothing$ seria alhora morfisme entre infinites parelles d'objectes, amb domini i codomini indeterminats. Registrant $(X,Y,R)$, cada morfisme té un únic domini $X$ i un únic codomini $Y$. Escriurem simplement $R$ quan els extrems se sobreentenguin; és la mateixa convenció d'\emph{extrems implícits} que ja hem fet servir en codificar la fletxa d'un preordre o d'un sistema deductiu com el parell $(x,y)$, i que retrobarem tot seguit a les categories sobre i sota un objecte. No canvia cap de les construccions: només n'explicita la compatibilitat amb la definició inicial de categoria.
+En rigor, un morfisme $X\to Y$ de $\cat{Rel}$ no és una relació $R$ tota sola, sinó la relació \emph{junt amb} els seus extrems: la terna $(X,Y,R)$ amb $R\subseteq X\times Y$. Aquesta precisió és necessària perquè els homconjunts siguin disjunts, tal com exigeix la definició de categoria. Per exemple, la relació buida $R=\varnothing$ està continguda en $X\times Y$ per a qualsevol parell $(X,Y)$; si no registréssim els extrems, un mateix objecte $\varnothing$ seria alhora morfisme entre infinites parelles d'objectes, amb domini i codomini indeterminats. Registrant $(X,Y,R)$, cada morfisme té un únic domini $X$ i un únic codomini $Y$. Escriurem simplement $R$ quan els extrems se sobreentenguin; és la mateixa convenció d'\emph{extrems implícits} que ja hem fet servir en codificar la fletxa d'un preordre o de $\cat{Prov}_T$ com el parell $(x,y)$, i que retrobarem tot seguit a les categories sobre i sota un objecte. No canvia cap de les construccions: només n'explicita la compatibilitat amb la definició inicial de categoria.
 \end{observacio}
 
 \subsection{Categories de grafs}\label{subsec:grafs}
@@ -453,7 +557,21 @@ Equivalentment, han de commutar els dos quadrats següents:
 \end{center}
 \end{definicio}
 
-Els grafs dirigits i els morfismes de grafs formen una categoria, que denotarem $\cat{Graph}$.\index{Graph@$\cat{Graph}$} La identitat d'un graf és la parella d'identitats sobre vèrtexs i arestes, i la composició es fa component a component. Les equacions que expressen la preservació de l'origen i el destí es conserven sota composició.
+Els grafs dirigits i els morfismes de grafs formen una categoria, que denotarem $\cat{Graph}$:\index{Graph@$\cat{Graph}$}
+\begin{itemize}
+\item objectes: $\Ob(\cat{Graph})$ és la col·lecció de tots els grafs dirigits;
+\item morfismes: $\Hom_{\cat{Graph}}(G,H)$ és el conjunt dels morfismes de grafs $G\to H$;
+\item composició: component a component; per a $F\colon G\to H$ i $F'\colon H\to K$,
+\[
+F'\comp F=(F'_V\comp F_V,\ F'_E\comp F_E);
+\]
+\item identitats: $\id_G=(\id_{V_G},\id_{E_G})$.
+\end{itemize}
+La composició torna a ser un morfisme de grafs, perquè les equacions es conserven:
+\[
+(F'_V\comp F_V)\comp s_G=F'_V\comp s_H\comp F_E=s_K\comp(F'_E\comp F_E),
+\]
+i anàlogament per a $t$. L'associativitat i les lleis d'identitat es compleixen component a component, perquè són les de $\cat{Set}$.
 
 Aquest exemple és especialment rellevant perquè els grafs són l'esquelet combinatori dels diagrames: tenen vèrtexs i arestes dirigides, però encara no incorporen per si sols identitats, composicions ni axiomes categòrics.
 
@@ -478,7 +596,7 @@ La taula següent recull, per a cada exemple d'aquesta secció, quines dades con
 \begin{center}
 \footnotesize
 \setlength{\tabcolsep}{6pt}
-\begin{tabular}{@{}p{4.6cm}p{4.4cm}p{4.4cm}@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
 \toprule
 Categoria & Objectes & Morfismes \\
 \midrule
@@ -487,11 +605,11 @@ $\cat{Set}$, $\cat{FinSet}$ & conjunts & aplicacions \\
 categoria discreta & marcadors abstractes & només identitats \\
 $\cat{Grp}$, $\cat{Vect}_{\mathbb K}$, $\cat{Top}$, $\cat{Mon}$, $\cat{Pos}$ & conjunts amb estructura & aplicacions que preserven l'estructura \\
 $\cat{B}M$ (un monoide) & un únic objecte $\ast$ & elements de $M$ \\
-un preordre, un sistema deductiu & elements de l'estructura & relacions ($x\le y$; deduccions) \\
+un preordre $P$; $\cat{Prov}_T$ & elements de $P$; fórmules de $T$ & $x\le y$; $p\vdash_T q$ \\
 $\cat{Rel}$ & conjunts & relacions \\
 $\cat{Graph}$ & grafs $(V,E,s,t)$ & parelles compatibles d'aplicacions \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{center}
 
 Aquesta taula fa visible que la definició de categoria no pressuposa res sobre la naturalesa dels objectes ni dels morfismes: no cal que els objectes siguin conjunts, ni que els morfismes siguin aplicacions. En una categoria discreta, per exemple, les identitats són morfismes \emph{formals}: presentar-les com a aplicacions pressuposaria una realització concreta que no forma part de la definició. I a $\cat{B}M$ els morfismes són els elements de $M$, que en general tampoc no són aplicacions. La categoria $\cat{Rel}$ ho remarca des de l'altre costat: els seus objectes són conjunts, però els seus morfismes ---les relacions--- no són funcions.
@@ -576,16 +694,21 @@ Donada una categoria $\cat{C}$, definim sobre $\Ob(\cat{C})$ la relació $\cong_
 És reflexiva: $\id_A$ és un isomorfisme per (1), de manera que $A\cong_{\cat{C}}A$. És simètrica: si $f$ és un isomorfisme de $A$ a $B$, aleshores $f^{-1}$ ho és de $B$ a $A$ per (2), de manera que $B\cong_{\cat{C}}A$. És transitiva: si $f\colon A\to B$ i $g\colon B\to C$ són isomorfismes, aleshores $g\comp f$ també ho és per (3), de manera que $A\cong_{\cat{C}}C$.
 \end{prova}
 
-\begin{observacio}
-La relació $\cong_{\cat{C}}$ permet pensar en la \emph{igualtat estructural} dels objectes de $\cat{C}$: dos objectes isomorfs són indistingibles per les propietats i construccions invariants per isomorfisme, perquè tota construcció feta amb composició i identitats es transporta d'un a l'altre a través de l'isomorfisme. Des del punt de vista categòric, doncs, dos objectes isomorfs són \emph{la mateixa estructura}, i és per això que la igualtat estricta d'objectes rarament és rellevant: el que importa no és si $A$ i $B$ són iguals, sinó si són isomorfs. Aquesta és una de les idees centrals de la teoria de categories.
+\begin{observacio}[Igualtat i isomorfisme]\label{obs:igualtat-isomorfisme}\index{isomorfisme!i igualtat}
+Convé fixar des d'ara una convenció que el llibre manté sempre. Escrivim $A=B$ només quan $A$ i $B$ són \emph{el mateix} objecte, i $A\cong B$ quan hi ha un isomorfisme entre ells. Quan un isomorfisme és distingit ---no depèn de cap tria---, l'anomenem \textbf{canònic}, però continua sent un isomorfisme i no una igualtat (en veurem un primer cas en el monoide lliure, exemple~\ref{ex:monoide-lliure-cat}).
+
+La relació $\cong_{\cat{C}}$ permet parlar d'una \emph{igualtat estructural relativa a $\cat{C}$}: dos objectes isomorfs a $\cat{C}$ no es poden distingir per cap propietat formulada només amb els morfismes, la composició i les identitats de $\cat{C}$, perquè l'isomorfisme la transporta d'un a l'altre (ho precisarem a l'observació~\ref{obs:invariancia}). Diem, doncs, que tenen la mateixa estructura \emph{des del punt de vista de $\cat{C}$}, i per això sovint la pregunta rellevant no és si $A$ i $B$ són iguals, sinó si són isomorfs a $\cat{C}$.
+
+Aquesta igualtat no és absoluta: depèn dels morfismes que la categoria considera admissibles. Per exemple, el conjunt $\{0,1\}$ amb l'ordre discret i el mateix conjunt amb l'ordre $0<1$ no són isomorfs a $\cat{Pos}$, perquè cap bijecció monòtona no té inversa monòtona, però els seus conjunts subjacents sí que són isomorfs a $\cat{Set}$. Canviar de categoria canvia, doncs, quins objectes compten com a estructuralment iguals. Aquesta és una de les idees centrals de la teoria de categories: la forma d'un objecte sempre es mira dins d'una categoria determinada.
+La jerarquia completa ---igualtat, isomorfisme, isomorfisme natural i equivalència---, amb un contraexemple per a cada pas, es tracta a l'apèndix~\refalt{cap:contraexemples}{de contraexemples del llibre complet}.
 \end{observacio}
 
 \begin{exemple}
-A $\cat{Set}$, els isomorfismes són exactament les aplicacions \textbf{bijectives}. En efecte, una aplicació té inversa per la composició si i només si és injectiva i exhaustiva.
+A $\cat{Set}$, els isomorfismes són exactament les aplicacions bijectives. En efecte, una aplicació té inversa per la composició si i només si és injectiva i exhaustiva.
 \end{exemple}
 
 \begin{exemple}[Isomorfismes en les categories de conjunts estructurats]
-A $\cat{Grp}$, $\cat{Vect}_{\mathbb K}$ i $\cat{Mon}$, els isomorfismes són les aplicacions bijectives que preserven l'estructura i la inversa de les quals també la preserva; recuperem així les nocions habituals d'isomorfisme de grups, d'espais vectorials i de monoides. A $\cat{Top}$, en canvi, un isomorfisme és un \textbf{homeomorfisme}\index{homeomorfisme}: una aplicació contínua i bijectiva amb inversa contínua. Aquí es veu que la bijectivitat no basta: hi ha aplicacions contínues i bijectives que no són isomorfismes, perquè la seva inversa no és contínua. La definició categòrica capta la noció correcta sense haver-la d'enunciar cas per cas.
+A $\cat{Grp}$, $\cat{Vect}_{\mathbb K}$ i $\cat{Mon}$, els isomorfismes són les aplicacions bijectives que preserven l'estructura i la inversa de les quals també la preserva; recuperem així les nocions habituals d'isomorfisme de grups, d'espais vectorials i de monoides. A $\cat{Top}$, en canvi, un isomorfisme és un homeomorfisme\index{homeomorfisme}: una aplicació contínua i bijectiva amb inversa contínua. Aquí es veu que la bijectivitat no basta: hi ha aplicacions contínues i bijectives que no són isomorfismes, perquè la seva inversa no és contínua. La definició categòrica capta la noció correcta sense haver-la d'enunciar cas per cas.
 \end{exemple}
 
 \begin{exemple}
@@ -598,12 +721,12 @@ y\le x.
 En un ordre parcial això obliga $x=y$. En un preordre general, en canvi, poden existir objectes isomorfs diferents: són exactament els elements equivalents per la relació $x\sim y$ si $x\le y$ i $y\le x$.
 \end{exemple}
 
-\begin{exemple}[Isomorfisme i equivalència lògica]
-A la categoria prima d'un sistema deductiu, dues fórmules $p$ i $q$ són isomorfes exactament quan
+\begin{exemple}[Isomorfisme i equivalència lògica]\label{ex:iso-equivalencia-logica}
+A la categoria prima $\cat{Prov}_T$ d'un sistema deductiu $T$, dues fórmules $p$ i $q$ són isomorfes exactament quan
 \[
-p\vdash q
+p\vdash_T q
 \qquad\text{i}\qquad
-q\vdash p.
+q\vdash_T p.
 \]
 Per tant, l'isomorfisme categòric es tradueix aquí en \textbf{interdeduïbilitat}. Aquest és un primer exemple de com una noció categòrica adquireix una lectura lògica natural.
 \end{exemple}
@@ -612,10 +735,12 @@ Per tant, l'isomorfisme categòric es tradueix aquí en \textbf{interdeduïbilit
 L'exemple dels preordres mostra per què la definició categòrica és la bona. Es podria pensar a definir un isomorfisme com un morfisme \enquote{bijectiu}, però això requeriria parlar dels elements dels objectes, i no sempre té sentit. A més, fins i tot quan en té, pot donar la noció equivocada: a $\cat{Pos}$ existeixen aplicacions monòtones bijectives que no són isomorfismes perquè la seva inversa no és monòtona. La definició mitjançant composició i identitats evita aquest parany.
 \end{observacio}
 
-\begin{observacio}[Propietats invariants per isomorfisme]
-Una propietat dels objectes d'una categoria és \textbf{invariant per isomorfisme} si, sempre que un objecte la té, tot objecte isomorf a ell també la té. Aquestes són les propietats genuïnament categòriques: no depenen de la identitat concreta de l'objecte, sinó només de com es relaciona amb els altres, llevat d'isomorfisme.
+\begin{observacio}[Propietats invariants per isomorfisme]\label{obs:invariancia}
+Sigui $\cat{C}$ una categoria. Una propietat dels objectes de $\cat{C}$ és \textbf{invariant per isomorfisme} a $\cat{C}$ si, sempre que un objecte la té, tot objecte isomorf a ell a $\cat{C}$ també la té. Com la relació $\cong_{\cat{C}}$ de l'observació anterior, aquesta noció és sempre relativa a una categoria determinada. Una propietat definida només a partir de l'estructura categòrica de $\cat{C}$ ---els seus objectes, morfismes, composició i identitats, sense fer servir la igualtat entre objectes--- ha de ser invariant per isomorfisme a $\cat{C}$, perquè un isomorfisme transporta qualsevol afirmació d'aquesta mena d'un objecte a l'altre. Per això la invariància per isomorfisme és un criteri bàsic per reconèixer quan una propietat depèn de la forma de l'objecte en la categoria i no de la seva presentació concreta.
 
-Aquesta noció dona un mètode útil. Per provar que dos objectes \emph{són} isomorfs, n'hi ha prou d'exhibir un isomorfisme entre ells. Provar que \emph{no} ho són sol ser més difícil, perquè caldria descartar tots els isomorfismes possibles; la via pràctica és trobar una propietat invariant per isomorfisme que un dels objectes tingui i l'altre no. Per exemple, a $\cat{Pos}$, siguin $A$ la cadena $a<b<c$ i $B$ l'ordre amb $x<y$ i $x<z$ però $y,z$ incomparables. Comprovar directament que no són isomorfs exigiria descartar totes les bijeccions monòtones amb inversa monòtona; en canvi, n'hi ha prou d'observar que \emph{estar totalment ordenat} és una propietat invariant per isomorfisme, que $A$ té i $B$ no. Per tant $A$ i $B$ no són isomorfs.
+Aquesta noció dona un mètode útil. Per provar que dos objectes \emph{són} isomorfs, n'hi ha prou d'exhibir un isomorfisme entre ells. Provar que \emph{no} ho són sol ser més difícil, perquè caldria descartar tots els isomorfismes possibles; la via pràctica és trobar una propietat invariant per isomorfisme a la categoria en qüestió que un dels objectes tingui i l'altre no. Per exemple, a $\cat{Pos}$, siguin $A$ la cadena $a<b<c$ i $B$ l'ordre amb $x<y$ i $x<z$ però $y,z$ incomparables. Comprovar directament que no són isomorfs exigiria descartar totes les bijeccions monòtones amb inversa monòtona; en canvi, n'hi ha prou d'observar que \emph{estar totalment ordenat} és una propietat invariant per isomorfisme, que $A$ té i $B$ no. Per tant $A$ i $B$ no són isomorfs.
+
+La implicació inversa no és automàtica: una propietat pot ser invariant per isomorfisme sense haver estat formulada internament en el llenguatge categòric. L'exemple anterior n'és una mostra: \emph{estar totalment ordenat} és invariant per isomorfisme a $\cat{Pos}$, però l'hem definit parlant dels elements de l'ordre, no de fletxes.
 \end{observacio}
 
 \begin{observacio}
@@ -634,7 +759,7 @@ Els automorfismes d'un objecte $A$, amb la composició, formen un grup, el \text
 
 \section{Classes especials de morfismes}
 
-Els isomorfismes són els morfismes invertibles: tenen un invers per tots dos costats. Sovint, però, un morfisme té invers només per un costat, o satisfà una propietat de cancel·lació més feble que la invertibilitat. Aquestes nocions ---monomorfismes, epimorfismes, seccions i retraccions--- són bàsiques i, com veurem, generalitzen categòricament la injectivitat i l'exhaustivitat de les aplicacions.
+Els isomorfismes són els morfismes invertibles: tenen un invers per tots dos costats. Sovint, però, un morfisme té invers només per un costat, o satisfà una propietat de cancel·lació més feble que la invertibilitat. Aquestes nocions ---monomorfismes, epimorfismes, seccions i retraccions--- són bàsiques. A $\cat{Set}$, els monomorfismes i els epimorfismes coincideixen amb les aplicacions injectives i exhaustives; com veurem, però, aquesta coincidència és pròpia de $\cat{Set}$ i d'algunes categories concretes, no una propietat de les categories en general.
 
 Recordem que, a $\cat{Set}$, una aplicació $f$ és \emph{injectiva} si $f(a)=f(a')$ implica $a=a'$, i \emph{exhaustiva} si tot element del codomini té alguna antiimatge. Aquestes definicions parlen d'elements; les versions categòriques que segueixen les reformulen només amb fletxes.
 
@@ -665,6 +790,19 @@ Un morfisme $f\colon A\to B$ és un \textbf{epimorfisme} (o \textbf{epi}), i esc
 g\comp f=h\comp f\ \Longrightarrow\ g=h.
 \]
 \end{definicio}
+
+\begin{observacio}[Com cal llegir aquests diagrames]\label{obs:llegir-mono-epi}
+Els diagrames de la definició~\ref{def:mono-epi} \emph{no} afirmen que res commuti: són esquemes de prova, i s'han de llegir per a cada parella possible de fletxes $g,h$. Al diagrama del monomorfisme hi ha dos camins de $C$ a $B$, \enquote{primer $g$, després $f$} i \enquote{primer $h$, després $f$}, i hi ha també les dues fletxes paral·leles $g,h$ de $C$ a $A$. Recordem que un diagrama amb dues fletxes paral·leles commuta exactament quan són iguals. La definició diu, doncs:
+\begin{quote}
+si els dos camins de $C$ a $B$ coincideixen, aleshores les fletxes paral·leles ja coincideixen.
+\end{quote}
+Amb el vocabulari de la secció~\ref{sec:diagrames}: l'antecedent no és que el diagrama commuti, sinó només que commutin els camins que acaben a $B$; la conclusió és que el diagrama commuta del tot. Un monomorfisme és, doncs, una fletxa per a la qual \emph{commutar després de $f$ implica commutar}.
+Llegit en sentit contrari: si $g\neq h$, aleshores $f\comp g\neq f\comp h$. Un monomorfisme \emph{no confon} mai dues fletxes diferents que arriben a $A$; després de compondre-les amb $f$, continuen sent diferents.
+
+Cal anar amb compte amb una lectura massa ràpida. Que $f$ sigui mono no impedeix que hi hagi parelles $g\neq h\colon C\to A$; el diagrama amb dues fletxes paral·leles diferents existeix perfectament. El que exclou és que, sent diferents, es facin iguals en compondre-les amb $f$.
+
+El diagrama de l'epimorfisme es llegeix de la mateixa manera, amb les fletxes de prova a l'altre costat: si $g\neq h\colon B\to C$, aleshores $g\comp f\neq h\comp f$. Dues fletxes que surten de $B$ i coincideixen després de $f$ ja eren iguals; $f$ arriba prou a $B$ perquè cap diferència entre $g$ i $h$ no se li escapi. A $\cat{Set}$, prenent com a fletxes de prova les aplicacions des d'un conjunt d'un sol element, que són els elements de $A$, la lectura del monomorfisme es converteix exactament en la injectivitat, com veurem tot seguit.
+\end{observacio}
 
 \begin{definicio}\index{bimorfisme}
 Un morfisme que és alhora un monomorfisme i un epimorfisme s'anomena \textbf{bimorfisme}.
@@ -701,10 +839,20 @@ de manera que $f$ és epi.
 \end{prova}
 
 \begin{observacio}
-A $\cat{Set}$, un morfisme és un isomorfisme si i només si és alhora mono i epi ---és a dir, injectiu i exhaustiu, o sigui \textbf{bijectiu}. Dit d'una altra manera, a $\cat{Set}$ els bimorfismes són exactament els isomorfismes. El recíproc de la proposició anterior, però, no és cert: en general un bimorfisme no és un isomorfisme. L'única fletxa no trivial de la categoria $\cat{2}$ és un bimorfisme ---per la simple raó que gairebé no hi ha morfismes amb què fer les cancel·lacions---, però no té invers, de manera que no és un isomorfisme. Un exemple més substancial es dona a $\cat{Top}$: una bijecció contínua és un bimorfisme, però no és un isomorfisme si la seva inversa no és contínua.
+A $\cat{Set}$, un morfisme és un isomorfisme si i només si és alhora mono i epi, és a dir, si i només si, com a aplicació, és injectiu i exhaustiu, o sigui \textbf{bijectiu}. Dit d'una altra manera, a $\cat{Set}$ els bimorfismes són exactament els isomorfismes. El recíproc de la proposició anterior, però, no és cert: en general un bimorfisme no és un isomorfisme. L'única fletxa no trivial de la categoria $\cat{2}$ és un bimorfisme ---per la simple raó que gairebé no hi ha morfismes amb què fer les cancel·lacions---, però no té invers, de manera que no és un isomorfisme. Un exemple més substancial es dona a $\cat{Top}$: una bijecció contínua és un bimorfisme, però no és un isomorfisme si la seva inversa no és contínua.
 \end{observacio}
 
-\subsection{Seccions i retraccions}
+\begin{observacio}[Atenció: raonar amb elements]\label{obs:raonar-elements}\index{element!perill de raonar amb}
+A $\cat{Set}$ podem raonar amb elements per dos motius: cada element $a\in A$ és una fletxa $\{\ast\}\to A$, i dues aplicacions $A\to B$ són iguals si coincideixen sobre tots els elements. En una categoria qualsevol, cap d'aquestes dues coses no està garantida.
+\begin{itemize}
+\item \emph{Pot ser que no hi hagi elements.} En un preordre o en un monoide vist com a categoria, una fletxa no envia res enlloc, i preguntar si és \enquote{injectiva} no té sentit. Mono i epi, en canvi, sempre tenen sentit, perquè es defineixen per composició (exercici~\ref{exr:pr-prima-mono-epi} de la Pràctica).
+\item \emph{L'aplicació subjacent pot enganyar.} A $\cat{Top}$, una bijecció contínua és mono i epi sense ser un isomorfisme (observació anterior). A $\cat{Mon}$, la inclusió $\iota\colon(\mathbb N,+,0)\hookrightarrow(\mathbb Z,+,0)$ és un epimorfisme, tot i que no és exhaustiva. Si dos homomorfismes $g,h\colon\mathbb Z\to M$ coincideixen sobre $\mathbb N$, aleshores $g(-1)$ i $h(-1)$ són tots dos inversos de $g(1)=h(1)$, i en un monoide l'invers d'un element, si existeix, és únic. Per tant, $g(-1)=h(-1)$ i, com que tot enter és suma d'un natural i de còpies de $-1$, $g=h$.
+\item \emph{Els \enquote{punts} poden no separar fletxes.} A $\cat{Grp}$, el grup trivial $1$ fa el paper de $\{\ast\}$, però de $1$ a qualsevol grup només hi ha un homomorfisme. Les fletxes $1\to G$ no distingeixen, doncs, cap parell d'homomorfismes diferents.
+\end{itemize}
+Per això, en una categoria general els arguments es fan amb fletxes i composicions, i reservem els adjectius \emph{injectiu}, \emph{exhaustiu} i \emph{bijectiu} per a les aplicacions, incloses les aplicacions subjacents dels morfismes d'una categoria concreta. La definició de monomorfisme és, de fet, una \enquote{injectivitat} respecte de \emph{totes} les fletxes de prova $C\to A$, i no només respecte dels elements.
+\end{observacio}
+
+\subsection{Seccions i retraccions}\label{subsec:seccions-retraccions}
 
 \begin{definicio}\index{secció}\index{retracció}\index{invers!per un costat}
 Considerem un morfisme $f\colon A\to B$. Diem que un morfisme $s\colon B\to A$ és una \textbf{secció} de $f$ quan es compleix $f\comp s=\id_B$. Això equival a dir que el diagrama següent és commutatiu:
@@ -751,7 +899,7 @@ Sigui $f\colon A\to B$. Si $f$ té alguna secció, aleshores $f$ és un epimorfi
 \end{proposicio}
 
 \begin{prova}
-Suposem que $f$ té una retracció $r$, amb $r\comp f=\id_A$, i siguin $g,h\colon C\to A$ amb $f\comp g=f\comp h$. Composant per l'esquerra amb $r$,
+Suposem que $f$ té una retracció $r$, amb $r\comp f=\id_A$, i siguin $g,h\colon C\to A$ amb $f\comp g=f\comp h$. Component per l'esquerra amb $r$,
 \[
 g=\id_A\comp g=(r\comp f)\comp g=r\comp(f\comp g)=r\comp(f\comp h)=(r\comp f)\comp h=h,
 \]
@@ -788,16 +936,20 @@ A partir de categories donades se'n poden construir de noves. Aquestes construcc
 \subsection{La categoria oposada}\index{categoria!oposada}
 
 \begin{definicio}
-Donada una categoria $\cat{C}$, la seva \textbf{categoria oposada} $\cat{C}\op$ té els mateixos objectes, $\Ob(\cat{C}\op)=\Ob(\cat{C})$, i intercanvia domini i codomini dels morfismes:
+Donada una categoria $\cat{C}$, la seva \textbf{categoria oposada} $\cat{C}\op$ té:
+\begin{itemize}
+\item objectes: els mateixos que $\cat{C}$, $\Ob(\cat{C}\op)=\Ob(\cat{C})$;
+\item morfismes: per a cada morfisme $f\colon A\to B$ de $\cat{C}$, un morfisme $f\op\colon B\to A$ de $\cat{C}\op$, de manera que
 \[
-\Hom_{\cat{C}\op}(A,B)=\Hom_{\cat{C}}(B,A).
+\Hom_{\cat{C}\op}(B,A)=\{f\op\mid f\in\Hom_{\cat{C}}(A,B)\};
 \]
-És a dir, $\cat{C}\op$ s'obté invertint el sentit de totes les fletxes. Escrivim $f\op\colon B\to A$ per al morfisme de $\cat{C}\op$ corresponent a un morfisme $f\colon A\to B$ de $\cat{C}$.
-
-Les identitats de $\cat{C}\op$ són les de $\cat{C}$, i la composició s'obté invertint l'ordre:
+\item composició: s'obté invertint l'ordre; per a $f\colon A\to B$ i $g\colon B\to C$ de $\cat{C}$,
 \[
-g\op\comp f\op=(f\comp g)\op.
+f\op\comp g\op=(g\comp f)\op\colon C\to A;
 \]
+\item identitats: la identitat de $A$ a $\cat{C}\op$ és $(\id_A)\op$.
+\end{itemize}
+És a dir, $\cat{C}\op$ s'obté invertint el sentit de totes les fletxes.
 \end{definicio}
 
 Visualment, la composició a $\cat{C}$ i la corresponent a $\cat{C}\op$ inverteixen l'ordre:
@@ -825,7 +977,7 @@ Visualment, la composició a $\cat{C}$ i la corresponent a $\cat{C}\op$ invertei
 \end{tikzpicture}
 \end{array}
 \]
-L'associativitat a $\cat{C}\op$ es dedueix de la de $\cat{C}$ invertint l'ordre. La categoria oposada és la base de la \textbf{dualitat}\index{dualitat}, que desenvolupem a la secció~\ref{sec:dualitat}: tota afirmació formulada purament en el llenguatge categòric dona, invertint les fletxes, una afirmació dual, i aquesta correspondència es pot fer del tot precisa.
+L'associativitat a $\cat{C}\op$ es dedueix de la de $\cat{C}$ invertint l'ordre, i les lleis d'identitat, de les de $\cat{C}$: per exemple, $f\op\comp(\id_B)\op=(\id_B\comp f)\op=f\op$. La categoria oposada és la base de la \textbf{dualitat}\index{dualitat}, que desenvolupem a la secció~\ref{sec:dualitat}: tota afirmació formulada purament en el llenguatge categòric dona, invertint les fletxes, una afirmació dual, i aquesta correspondència es pot fer del tot precisa.
 
 \begin{observacio}
 Aplicar dues vegades l'oposada retorna la categoria de partida:
@@ -837,14 +989,19 @@ Invertir les fletxes i tornar-les a invertir les deixa com estaven.
 
 Vegem com queda l'oposada en dos casos. Quan un preordre $(P,\le)$ es considera com una categoria ---amb un morfisme $x\to y$ quan $x\le y$---, la seva oposada té un morfisme $x\to y$ exactament quan $y\le x$. I quan un monoide $(M,\ast,e)$ es considera com una categoria, la seva oposada té els mateixos morfismes ---els elements de $M$---, però la composició de $a$ i $b$ és $b\ast a$ en lloc de $a\ast b$.
 
-\subsection{La categoria producte}\index{categoria!producte}
+\subsection{La categoria producte}\label{subsec:categoria-producte}\index{categoria!producte}
 
 \begin{definicio}
-Donades dues categories $\cat{C}$ i $\cat{D}$, la \textbf{categoria producte} $\cat{C}\times\cat{D}$ té per objectes les parelles $(A,X)$ amb $A$ objecte de $\cat{C}$ i $X$ objecte de $\cat{D}$, i per morfismes $(A,X)\to(B,Y)$ les parelles $(f,g)$ amb $f\colon A\to B$ a $\cat{C}$ i $g\colon X\to Y$ a $\cat{D}$. La composició es fa component a component,
+Donades dues categories $\cat{C}$ i $\cat{D}$, la \textbf{categoria producte} $\cat{C}\times\cat{D}$ té:
+\begin{itemize}
+\item objectes: $\Ob(\cat{C}\times\cat{D})$ és la col·lecció de les parelles $(A,X)$ amb $A\in\Ob(\cat{C})$ i $X\in\Ob(\cat{D})$;
+\item morfismes: $\Hom_{\cat{C}\times\cat{D}}\bigl((A,X),(B,Y)\bigr)=\Hom_{\cat{C}}(A,B)\times\Hom_{\cat{D}}(X,Y)$, és a dir, les parelles $(f,g)$ amb $f\colon A\to B$ a $\cat{C}$ i $g\colon X\to Y$ a $\cat{D}$;
+\item composició: component a component,
 \[
-(f',g')\comp(f,g)=(f'\comp f,\ g'\comp g),
+(f',g')\comp(f,g)=(f'\comp f,\ g'\comp g);
 \]
-i la identitat de $(A,X)$ és $(\id_A,\id_X)$. Els axiomes de categoria per a $\cat{C}\times\cat{D}$ se segueixen dels de $\cat{C}$ i $\cat{D}$ aplicats a cada component.
+\item identitats: $\id_{(A,X)}=(\id_A,\id_X)$.
+\end{itemize} Els axiomes de categoria per a $\cat{C}\times\cat{D}$ se segueixen dels de $\cat{C}$ i $\cat{D}$ aplicats a cada component.
 \end{definicio}
 
 \begin{exemple}
@@ -864,6 +1021,10 @@ Prenem la categoria $\cat{2}$ de la subsecció~\ref{subsec:finites} ---dos objec
 \]
 Cada fletxa és una parella de fletxes de $\cat{2}$. Com que $\cat{2}$ és prima, també ho és $\cat{2}\times\cat{2}$: entre dos objectes hi ha com a màxim un morfisme. Per això els dos camins del quadrat de $(0,0)$ a $(1,1)$ tenen necessàriament la mateixa composició, que és la diagonal; el quadrat commuta.
 \end{exemple}
+
+\begin{observacio}[Dos usos de \enquote{producte}]\label{obs:dos-productes}\index{producte!d'objectes i de categories}
+No s'han de confondre dues construccions que porten el mateix nom. La categoria producte $\cat{C}\times\cat{D}$ és una \emph{categoria} nova, construïda a partir de dues categories. En canvi, el producte $A\times B$ de dos objectes ---que la introducció fa servir com a primer exemple de propietat universal i que avançarem a la subsecció~\ref{subsec:producte-coproducte}--- és un \emph{objecte} d'una mateixa categoria, caracteritzat per una propietat universal. Les dues nocions estan relacionades: quan disposem de la categoria $\cat{Cat}$ de les categories petites (capítol~\ref{cap:functors}), si $\cat{C}$ i $\cat{D}$ són petites, la categoria $\cat{C}\times\cat{D}$ es podrà veure com el producte dels objectes $\cat{C}$ i $\cat{D}$ dins de $\cat{Cat}$. Però no són la mateixa construcció: l'una fabrica una categoria a partir de dues, i l'altra viu dins d'una sola categoria.
+\end{observacio}
 
 \subsection{Subcategories}\label{subsec:subcategories}\index{subcategoria}
 
@@ -891,8 +1052,8 @@ Fixat un objecte $A$ d'una categoria $\cat{C}$, se'n pot construir una categoria
 \begin{definicio}\label{def:slice}
 Sigui $\cat{C}$ una categoria i $A$ un objecte. La \textbf{categoria de $\cat{C}$ sobre $A$} (en anglès, \emph{slice category}), que escrivim $\cat{C}/A$, té:
 \begin{itemize}
-\item per objectes, els morfismes $x\colon X\to A$ de $\cat{C}$ amb codomini $A$;
-\item per morfismes de $x\colon X\to A$ a $y\colon Y\to A$, els morfismes $h\colon X\to Y$ de $\cat{C}$ que fan commutar el triangle
+\item objectes: $\Ob(\cat{C}/A)$ és la col·lecció dels morfismes $x\colon X\to A$ de $\cat{C}$ amb codomini $A$;
+\item morfismes: $\Hom_{\cat{C}/A}(x,y)$, per a $x\colon X\to A$ i $y\colon Y\to A$, és el conjunt dels morfismes $h\colon X\to Y$ de $\cat{C}$ que fan commutar el triangle
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, row sep=2.4em, column sep=2.4em] {
@@ -903,13 +1064,21 @@ Sigui $\cat{C}$ una categoria i $A$ un objecte. La \textbf{categoria de $\cat{C}
   \draw[-{Stealth[scale=1.0]}] (m-1-1) -- node[below left] {$x$} (m-2-2);
   \draw[-{Stealth[scale=1.0]}] (m-1-3) -- node[below right] {$y$} (m-2-2);
 \end{tikzpicture}
-\qquad\text{és a dir, } y\comp h=x.
+\qquad\text{és a dir, } y\comp h=x;
 \]
+\item composició: la de $\cat{C}$; si $h\in\Hom_{\cat{C}/A}(x,y)$ i $k\in\Hom_{\cat{C}/A}(y,z)$, aleshores $k\comp h\in\Hom_{\cat{C}/A}(x,z)$, perquè $z\comp(k\comp h)=(z\comp k)\comp h=y\comp h=x$;
+\item identitats: la identitat de $x\colon X\to A$ és $\id_X$, que fa commutar el triangle perquè $x\comp\id_X=x$.
 \end{itemize}
-La composició i les identitats són les de $\cat{C}$: si $h$ va de $x$ a $y$ i $k$ de $y$ a $z$, la composició $k\comp h$ va de $x$ a $z$, i la identitat de $x\colon X\to A$ és $\id_X$.
+Els axiomes s'hereten de $\cat{C}$.
 \end{definicio}
 
-Anàlogament es defineix la \textbf{categoria de $\cat{C}$ sota $A$} (en anglès, \emph{coslice category}), que escrivim $A/\cat{C}$: els seus objectes són els morfismes $x\colon A\to X$ de $\cat{C}$ amb domini $A$, i un morfisme de $x\colon A\to X$ a $y\colon A\to Y$ és un morfisme $h\colon X\to Y$ de $\cat{C}$ amb $h\comp x=y$, és a dir, que fa commutar el triangle sota $A$:
+Anàlogament es defineix la \textbf{categoria de $\cat{C}$ sota $A$} (en anglès, \emph{coslice category}), que escrivim $A/\cat{C}$:
+\begin{itemize}
+\item objectes: $\Ob(A/\cat{C})$ és la col·lecció dels morfismes $x\colon A\to X$ de $\cat{C}$ amb domini $A$;
+\item morfismes: $\Hom_{A/\cat{C}}(x,y)$, per a $x\colon A\to X$ i $y\colon A\to Y$, és el conjunt dels morfismes $h\colon X\to Y$ de $\cat{C}$ amb $h\comp x=y$;
+\item composició i identitats: les de $\cat{C}$, com a $\cat{C}/A$.
+\end{itemize}
+Un morfisme de $A/\cat{C}$ és, doncs, un $h$ que fa commutar el triangle sota $A$:
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, row sep=2.4em, column sep=2.4em] {
@@ -921,12 +1090,10 @@ Anàlogament es defineix la \textbf{categoria de $\cat{C}$ sota $A$} (en anglès
   \draw[-{Stealth[scale=1.0]}] (m-2-1) -- node[below] {$h$} (m-2-3);
 \end{tikzpicture}
 \]
-La composició i les identitats són, un cop més, les de $\cat{C}$.
-
-Aquí també convé fer explícits els extrems, com a l'observació~\ref{obs:extrems-implicits}. Un morfisme de $\cat{C}/A$ de $x$ a $y$ no és el morfisme $h\colon X\to Y$ de $\cat{C}$ tot sol, sinó $h$ \emph{junt amb} els seus extrems $x$ i $y$ a la slice: la terna $(x,y,h)$. La raó és la mateixa: un mateix $h\colon X\to Y$ de $\cat{C}$ pot fer commutar el triangle per a objectes distints de la slice ---per exemple, si $X$ és el domini de dos objectes diferents $x,x'\colon X\to A$---, i sense registrar els extrems tindria dominis i codominis indeterminats a $\cat{C}/A$. Escriurem $h$ quan els extrems se sobreentenguin. Anàlogament per a $A/\cat{C}$.
+Aquí també convé fer explícits els extrems, com a l'observació~\ref{obs:extrems-implicits}. Un morfisme de $\cat{C}/A$ de $x$ a $y$ no és el morfisme $h\colon X\to Y$ de $\cat{C}$ tot sol, sinó $h$ \emph{junt amb} els seus extrems $x$ i $y$ a $\cat{C}/A$: la terna $(x,y,h)$. La raó és la mateixa: un mateix $h\colon X\to Y$ de $\cat{C}$ pot fer commutar el triangle per a objectes distints de $\cat{C}/A$ ---per exemple, si $X$ és el domini de dos objectes diferents $x,x'\colon X\to A$---, i sense registrar els extrems tindria dominis i codominis indeterminats a $\cat{C}/A$. Escriurem $h$ quan els extrems se sobreentenguin. Anàlogament per a $A/\cat{C}$.
 
 \begin{exemple}
-A $\cat{Set}/A$, un objecte és una aplicació $x\colon X\to A$. Mirant les fibres $x^{-1}(a)$ per a cada $a\in A$, un tal objecte és el mateix que una família de conjunts $\{x^{-1}(a)\}_{a\in A}$ indexada per $A$. La categoria de $\cat{Set}$ sobre $A$ és, doncs, la de les famílies de conjunts indexades per $A$.
+A $\cat{Set}/A$, un objecte és una aplicació $x\colon X\to A$. Les fibres $x^{-1}(a)$, per a $a\in A$, permeten interpretar aquest objecte com una família de conjunts $\bigl(x^{-1}(a)\bigr)_{a\in A}$ indexada per $A$. Recíprocament, una família de conjunts indexada per $A$ dona, mitjançant la unió disjunta, una aplicació cap a $A$. Aquestes dues construccions no identifiquen literalment les dades ---la unió disjunta demana triar-ne una representació---, però sí que estableixen la correspondència adequada entre totes dues descripcions. La farem precisa als capítols~\ref{cap:functors} i~\ref{cap:transformacions}, quan disposem del llenguatge dels functors i de les equivalències de categories.
 \end{exemple}
 
 \begin{exemple}\index{conjunt apuntat}
@@ -935,75 +1102,43 @@ Prenem $A=\{\ast\}$, un conjunt d'un sol element. Un objecte de $\{\ast\}/\cat{S
 
 \section{Principi de dualitat}\label{sec:dualitat}\index{dualitat!principi de}
 
-La dualitat no és només una llista de parelles de conceptes. És un principi que transforma definicions, enunciats i demostracions: la categoria oposada permet formular-lo amb precisió. Una afirmació categòrica es dualitza \emph{invertint totes les fletxes} i, per tant, l'ordre de totes les composicions. Aquesta secció fa explícit aquest mecanisme; el retrobarem en tractar objectes inicials i terminals, productes i coproductes, productes fibrats i coproductes fibrats (en anglès, \emph{pullbacks} i \emph{pushouts}), i límits i colímits.
+La dualitat no és només una llista de parelles de conceptes. És un principi que transforma definicions, enunciats i demostracions, i la categoria oposada permet formular-lo amb precisió. Aquesta secció en fa explícit el mecanisme; el retrobarem en tractar objectes inicials i terminals, productes i coproductes, productes fibrats i coproductes fibrats (en anglès, \emph{pullbacks} i \emph{pushouts}), i límits i colímits.
 
-\subsection{Traducció formal d'un enunciat}
+\subsection{Dualitzar un enunciat}\index{dualitat!d'un enunciat}
 
-Formulem els enunciats sobre categories en un llenguatge de primer ordre amb igualtat, amb dues menes de variables ---objectes i morfismes. Els operadors $\dom(\_)$ i $\cod(\_)$ (domini i codomini) i $\id_{(\_)}$ (identitat) són totals i es poden prendre com a símbols funcionals ordinaris. La composició, en canvi, és \emph{parcial}: $g\comp f$ només té sentit quan $\dom(g)=\cod(f)$. En la semàntica estàndard de primer ordre els símbols funcionals s'interpreten com a funcions totals, de manera que la composició no és, en rigor, un símbol funcional binari ordinari. Per formalitzar-la amb precisió la prenem com una \textbf{relació ternària} $\Com(f,g,h)$, amb la lectura \enquote{primer $f$, després $g$, i la composta és $h$}; és a dir, $\Com(f,g,h)$ correspon a $h=g\comp f$. L'existència i la unicitat de la composta se n'obtenen com a conseqüència ---exactament quan $\cod(f)=\dom(g)$---, i això legitima la notació funcional $g\comp f$ com a abreviatura. L'apèndix~\ref{cap:axiomatica-relacional} desenvolupa aquesta presentació relacional, hi demostra la funcionalitat de $\Com$ i n'estableix l'equivalència amb la definició d'aquí; en el que segueix fem servir la notació funcional $g\comp f$, entesa sempre com a abreviatura de la relació ternària.
+El principi s'aplica a afirmacions escrites \emph{exclusivament} en el llenguatge de les categories: hi poden intervenir objectes i morfismes, el domini i el codomini de cada morfisme, identitats, composicions i igualtats entre composicions, combinats amb connectors lògics i amb quantificadors sobre objectes i morfismes. Les definicions de monomorfisme, d'isomorfisme o de secció són d'aquesta mena. En canvi, \enquote{$f$ és injectiva} no ho és, perquè parla dels elements d'un conjunt.
 
-Amb aquest conveni, els axiomes de la teoria de categories, que abreujarem $\mathrm{CT}$, són:
+Donada una afirmació $\varphi$ d'aquest tipus, n'obtenim la \textbf{dual} $\varphi\op$ \emph{invertint totes les fletxes}:
+\begin{itemize}
+  \item cada morfisme $f\colon A\to B$ s'inverteix: a la dual es llegeix com una fletxa $B\to A$; per tant, s'intercanvien domini i codomini;
+  \item cada composició $g\comp f$ passa a ser $f\comp g$, és a dir, s'inverteix l'ordre de composició;
+  \item les identitats, les igualtats, els connectors i els quantificadors es mantenen.
+\end{itemize}
+Dualitzar dues vegades retorna l'afirmació de partida: $(\varphi\op)\op=\varphi$.
+
+La dual té una lectura immediata: $\varphi\op$ diu de $\cat{C}$ exactament el que $\varphi$ diu de $\cat{C}\op$. En efecte, un morfisme $A\to B$ de $\cat{C}\op$ és un morfisme $B\to A$ de $\cat{C}$, les identitats són les mateixes i la composició de $\cat{C}\op$ és la de $\cat{C}$ en l'ordre invers, $g\op\comp f\op=(f\comp g)\op$. Per tant, per a tota categoria $\cat{C}$,
 \[
-\dom(\id_A)=A,\qquad \cod(\id_A)=A;
+\varphi \text{ es compleix a } \cat{C}\op
+\quad\Longleftrightarrow\quad
+\varphi\op \text{ es compleix a } \cat{C}.
 \]
-\[
-f\comp\id_{\dom(f)}=f,\qquad \id_{\cod(f)}\comp f=f;
-\]
-\[
-\dom(g\comp f)=\dom(f),\qquad \cod(g\comp f)=\cod(g);
-\]
-\[
-h\comp(g\comp f)=(h\comp g)\comp f,
-\]
-on cada aparició de $g\comp f$ pressuposa $\dom(g)=\cod(f)$. La semàntica estàndard de models conjuntistes, a més, no cobreix automàticament dos casos límit: la categoria buida (l'univers d'una estructura de primer ordre se sol prendre no buit) i les categories grans (que demanen classes pròpies o universos de Grothendieck). L'apèndix~\ref{cap:axiomatica-relacional} en tracta les convencions necessàries.
+D'aquí surt el principi.
 
-Donat un enunciat $\varphi$ en aquest llenguatge, formem el seu \textbf{dual}\index{dualitat!d'un enunciat} $\varphi\op$ fent les substitucions següents:
-\begin{enumerate}
-  \item $f\comp g$ per $g\comp f$; en la forma relacional, $\Com(f,g,h)$ per $\Com(g,f,h)$;
-  \item $\dom$ per $\cod$;
-  \item $\cod$ per $\dom$.
-\end{enumerate}
-Les variables, els connectors lògics i els quantificadors es mantenen; només s'intercanvien domini i codomini i s'inverteix l'ordre de les composicions. Aquestes tres substitucions són coherents entre si: com que $\Com(f,g,h)$ vol dir $h=g\comp f$, invertir l'ordre de la composició és precisament passar de $\Com(f,g,h)$ a $\Com(g,f,h)$, i la condició de componibilitat $\cod(f)=\dom(g)$ es transforma en $\dom(f)=\cod(g)$, que és la que correspon a la composició en l'ordre invertit. Com que aquestes substitucions transformen un enunciat ben format en un altre enunciat ben format, $\varphi\op$ és sintàcticament correcte.
-
-\begin{observacio}
-Convé no confondre aquests connectors i quantificadors amb la lògica que una categoria pot codificar \emph{internament}. Els $\forall,\exists,\wedge,\vee$ amb què escrivim $\varphi$ pertanyen al llenguatge amb què \emph{parlem} d'una categoria, i sota dualitat es mantenen. Qüestió a part és què passa quan els objectes d'una categoria són ells mateixos proposicions i els morfismes són deduccions, com al sistema deductiu de la subsecció~\ref{subsec:elementals}. Convé aquí distingir tres nivells que no s'han de barrejar.
-
-Primer, la dualitat purament categòrica: en \emph{qualsevol} categoria, el dual d'un producte és un coproducte i el de l'objecte terminal és l'objecte inicial. Això val sempre, sense cap hipòtesi lògica.
-
-Segon, la seva interpretació en el sistema deductiu. El sistema del capítol només pressuposa una relació de deduïbilitat reflexiva i transitiva ---un preordre---, i això \emph{no} garanteix que existeixin conjuncions, disjuncions, cert ni fals amb les propietats universals corresponents. Per exemple, el preordre discret de dos elements (dues fórmules sense cap deducció entre elles) no té ni producte ni coproducte d'aquestes dues. Ara bé, \emph{quan} aquests connectors existeixen i satisfan les regles apropiades, la conjunció és exactament un producte, la disjunció un coproducte, el cert l'objecte terminal i el fals l'inicial; i aleshores la dualitat categòrica del primer nivell els intercanvia: producte$\leftrightarrow$coproducte es llegeix conjunció$\leftrightarrow$disjunció, i terminal$\leftrightarrow$inicial es llegeix cert$\leftrightarrow$fals.
-
-Tercer, el cas booleà clàssic. Que la dualitat de fletxes es projecti \emph{exactament} sobre la dualitat de De~Morgan ---amb una negació que intercanvia cada fórmula amb la seva i fa de la dualitat una autodualitat del sistema--- és una propietat addicional, no una conseqüència del segon nivell: exigeix un complement involutiu, com el de les àlgebres booleanes. Sense aquesta hipòtesi tenim la dualitat producte/coproducte, però no una negació involutiva ni l'autodualitat del sistema deductiu de partida. Tornarem sobre aquesta lògica interna més endavant, amb el llenguatge adequat.
-\end{observacio}
-
-\paragraph{Dualitat sintàctica.}
-Si $\gamma\vdash\varphi$, aleshores $\gamma\op\vdash\varphi\op$: dualitzar una deducció dona una deducció, perquè els termes substituïts ($\dom$, $\cod$, la composició) es comporten com a constants indefinides sotmeses a unes regles, i les regles no distingeixen l'original del dual. Ara bé, el conjunt d'axiomes $\mathrm{CT}$ és \emph{autodual}: en dualitzar cada axioma se n'obté un altre del mateix conjunt (per exemple, $\dom(\id_A)=A$ i $\cod(\id_A)=A$ s'intercanvien, i l'associativitat es dualitza en ella mateixa). És a dir, $\mathrm{CT}\op=\mathrm{CT}$. Se'n segueix el primer principi de dualitat.
-
-\begin{teorema}[Dualitat sintàctica]\label{teo:dualitat-sint}\index{dualitat!principi de}
-Per a qualsevol enunciat $\varphi$ en el llenguatge de la teoria de categories, si $\varphi$ es dedueix dels axiomes $\mathrm{CT}$, també el seu dual:
-\[
-\mathrm{CT}\vdash\varphi \quad\Longrightarrow\quad \mathrm{CT}\vdash\varphi\op.
-\]
+\begin{teorema}[Principi de dualitat]\label{teo:dualitat}\index{dualitat!principi de}
+Sigui $\varphi$ una afirmació expressable en el llenguatge de les categories. Si $\varphi$ és vàlida en totes les categories, la seva dual $\varphi\op$ també és vàlida en totes les categories.
 \end{teorema}
 
 \begin{prova}
-Suposem $\mathrm{CT}\vdash\varphi$. Dualitzant tota la deducció obtenim, per la dualitat sintàctica, $\mathrm{CT}\op\vdash\varphi\op$. Com que $\mathrm{CT}\op=\mathrm{CT}$, això és $\mathrm{CT}\vdash\varphi\op$.
+Sigui $\cat{C}$ una categoria qualsevol. Com que $\cat{C}\op$ també és una categoria, per hipòtesi $\varphi$ es compleix a $\cat{C}\op$; per l'equivalència anterior, $\varphi\op$ es compleix a $\cat{C}$.
 \end{prova}
-
-\paragraph{Dualitat semàntica.}
-La dualitat també té una lectura en termes d'interpretacions. Recordem la categoria oposada $\cat{C}\op$: té els mateixos objectes que $\cat{C}$, els morfismes amb domini i codomini intercanviats, i la composició $g\op\comp f\op=(f\comp g)\op$. Una interpretació d'un enunciat $\varphi$ a $\cat{C}$ dona automàticament una interpretació de $\varphi\op$ a $\cat{C}\op$, i recíprocament. Si $\varphi$ es compleix a \emph{totes} les categories, aleshores es compleix en particular a totes les categories de la forma $\cat{C}\op$; per tant $\varphi\op$ es compleix a totes les categories $(\cat{C}\op)\op$. Com que $(\cat{C}\op)\op=\cat{C}$ per a tota $\cat{C}$, concloem que $\varphi\op$ es compleix a totes les categories.
-
-\begin{teorema}[Dualitat semàntica]\label{teo:dualitat-sem}\index{dualitat!principi de}
-Per a qualsevol afirmació $\varphi$ sobre categories, si $\varphi$ es compleix a totes les categories, també el seu dual:
-\[
-\models\varphi \quad\Longrightarrow\quad \models\varphi\op.
-\]
-Més precisament, $\cat{C}\op\models\varphi$ si i només si $\cat{C}\models\varphi\op$.
-\end{teorema}
 
 La manera habitual d'usar el principi és aquesta: s'aplica un teorema conegut a $\cat{C}\op$ i se'n tradueix la conclusió al llenguatge de $\cat{C}$. No cal repetir la demostració; \textbf{la demostració dual és la demostració original amb totes les fletxes invertides}.
 
+Aquesta formulació operativa és la que farem servir al llarg del llibre. Se'n pot donar també una versió completament formal: fixar un llenguatge de primer ordre per a la teoria de categories, definir la dualització com una transformació de fórmules i comprovar que els axiomes en queden invariants. Aquesta formalització, amb una versió sintàctica (sobre deduccions) i una de semàntica (sobre models), és a l'apèndix~\ref{cap:axiomatica-relacional} (secció~\ref{sec:ar-dualitat}); no és necessària per seguir la resta del llibre.
+
 \subsection{Primer exemple: de monomorfisme a epimorfisme}
 
-Recordem (secció~\ref{subsec:mono-epi}) que $m\colon A\to B$ és un \textbf{monomorfisme} si, per a tot parell $u,v\colon X\to A$,
+Recordem (subsecció~\ref{subsec:mono-epi}) que $m\colon A\to B$ és un \textbf{monomorfisme} si, per a tot parell $u,v\colon X\to A$,
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, column sep=3.2em] { X & A & B \\ };
@@ -1014,7 +1149,7 @@ Recordem (secció~\ref{subsec:mono-epi}) que $m\colon A\to B$ és un \textbf{mon
 \qquad
 m\comp u = m\comp v \implies u=v.
 \]
-Formem-ne el dual amb les substitucions de la subsecció anterior: intercanviem domini i codomini i invertim l'ordre de cada composició. L'enunciat dual diu que, per a tot parell $u,v\colon A\to X$,
+Formem-ne el dual: intercanviem domini i codomini i invertim l'ordre de cada composició. L'enunciat dual diu que, per a tot parell $u,v\colon A\to X$,
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, column sep=3.2em] { B & A & X \\ };
@@ -1027,13 +1162,43 @@ u\comp m = v\comp m \implies u=v,
 \]
 que és exactament la definició d'\textbf{epimorfisme}. El dual de \enquote{ser un monomorfisme} és, doncs, \enquote{ser un epimorfisme}.
 
-Ara podem dualitzar teoremes sense repetir-ne la demostració. Per exemple, en qualsevol categoria, si $A\xrightarrow{f}B\xrightarrow{g}C$ són monomorfismes, la composició $g\comp f$ també ho és. Pel principi de dualitat, l'enunciat dual val igualment:
+Ara podem dualitzar teoremes sense repetir-ne la demostració. Per exemple, en qualsevol categoria, si $A\xrightarrow{f}B\xrightarrow{g}C$ són monomorfismes, la composició $g\comp f$ també ho és. Pel principi de dualitat (teorema~\ref{teo:dualitat}), l'enunciat dual val igualment:
 \begin{quote}
 en qualsevol categoria, la composició de dos epimorfismes és un epimorfisme.
 \end{quote}
-No n'hem hagut de fer cap demostració nova.
+No n'hem hagut de fer cap demostració nova. L'exercici~\ref{exr:pr-dual-mono-epi} de la Pràctica fa aquest pas en detall i assenyala exactament què s'inverteix en passar a $\cat{C}\op$.
 
-\subsection{Segon exemple: del producte al coproducte}
+\subsection{Segon exemple: de secció a retracció}
+
+Recordem (subsecció~\ref{subsec:seccions-retraccions}) que $s\colon B\to A$ és una \textbf{secció} de $f\colon A\to B$ quan $f\comp s=\id_B$. Dualitzem aquest enunciat: $f$ passa a ser una fletxa $B\to A$, $s$ una fletxa $A\to B$, i la igualtat $f\comp s=\id_B$ es converteix en $s\comp f=\id_B$. En diagrames, invertim les tres fletxes del triangle:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=2.6em] {
+    B & A \\
+    B & \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$s$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$f$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$\id_B$} (m-2-1);
+\end{tikzpicture}
+\quad f\comp s=\id_B
+\qquad\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=2.6em] {
+    B & A \\
+    B & \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[above] {$s$} (m-1-1);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[right] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[left] {$\id_B$} (m-1-1);
+\end{tikzpicture}
+\quad s\comp f=\id_B
+\]
+La igualtat de la dreta diu exactament que $s$ és una \textbf{retracció} de $f$. El dual de \enquote{tenir una secció} és, doncs, \enquote{tenir una retracció}, i el d'epimorfisme escindit és monomorfisme escindit.
+
+Amb aquest diccionari es poden dualitzar també els resultats sobre seccions i retraccions; els exercicis proposats del capítol ho apliquen a la proposició~\ref{prop:escindit-mono-epi}.
+
+\subsection{Tercer exemple: del producte al coproducte}\label{subsec:producte-coproducte}
 
 A tall d'avançament ---els definirem en rigor al capítol de límits---, considerem el producte i el coproducte de dos objectes, que il·lustren la dualització d'un enunciat amb un quantificador d'existència única.
 
@@ -1051,6 +1216,8 @@ Un \emph{producte} de $A$ i $B$ és un objecte $A\times B$ amb dos morfismes $\p
   \draw[-{Stealth[scale=1.0]}] (m-2-2) -- node[below] {$\pi_2$} (m-2-3);
 \end{tikzpicture}
 \]
+En el diagrama seguim una convenció que farem servir cada cop que dibuixem una propietat universal: la \textbf{fletxa discontínua} marca el morfisme l'existència del qual afirma la propietat ---aquí el mediador $u$, un cop donades la resta de dades: l'objecte $X$ i les fletxes $f$ i $g$---, mentre que les fletxes contínues són les dades de partida. Igualment, escriurem $\exists!$ per abreujar \enquote{existeix un únic}, com acabem de fer en enunciar la propietat.
+
 Invertint totes les fletxes obtenim un objecte $A+B$ amb dos morfismes $\iota_1\colon A\to A+B$ i $\iota_2\colon B\to A+B$ tals que, per a tot $X$ i tot parell $f\colon A\to X$, $g\colon B\to X$, existeix un únic $u\colon A+B\to X$ amb $u\comp\iota_1=f$ i $u\comp\iota_2=g$:
 \[
 \begin{tikzpicture}[baseline=(m.center)]
@@ -1067,13 +1234,13 @@ Invertint totes les fletxes obtenim un objecte $A+B$ amb dos morfismes $\iota_1\
 \]
 Aquesta és la definició del \emph{coproducte} $A+B$. Els quantificadors $\forall$ i $\exists!$ i la conjunció de les dues equacions es mantenen; el que s'inverteix és el domini i el codomini de cada morfisme i l'ordre de cada composició.
 
-Anàlogament es dualitzen els altres exemples que hem trobat: el dual d'una secció és una retracció (secció~\ref{subsec:mono-epi}), i la construcció \enquote{categoria sobre $A$} es dualitza en la construcció \enquote{categoria sota $A$} (secció~\ref{def:slice}). Ara bé, en dualitzar aquesta construcció cal dualitzar també la categoria ambient. La fórmula precisa és
+\paragraph{Un cas que cal vigilar.} La construcció \enquote{categoria sobre $A$} es dualitza en la construcció \enquote{categoria sota $A$} (definició~\ref{def:slice}). Ara bé, en dualitzar aquesta construcció cal dualitzar també la categoria ambient. La fórmula precisa és
 \[
 (\cat{C}/A)\op\;\cong\;A/(\cat{C}\op),
 \qquad
 (A/\cat{C})\op\;\cong\;(\cat{C}\op)/A.
 \]
-No s'ha de llegir, doncs, que $(\cat{C}/A)\op\cong A/\cat{C}$ mantenint $\cat{C}$ intacta: això és fals en general. Per exemple, amb $\cat{C}=\cat{2}=(0\to 1)$ i $A=\cat{1}$, la categoria $\cat{2}/\cat{1}$ té dos objectes (les dues fletxes amb codomini $1$: la fletxa $0\to 1$ i $\id_1$), mentre que $\cat{1}/\cat{2}$ en té un de sol ($\id_1$, l'única fletxa amb domini $1$); per tant $(\cat{2}/\cat{1})\op$ \emph{no} és isomorfa a $\cat{1}/\cat{2}$. El que sí que val és $(\cat{2}/\cat{1})\op\cong\cat{1}/(\cat{2}\op)$. En tots els casos, la mateixa regla ---invertir les fletxes--- transforma cada noció en la seva dual, però la regla actua sobre \emph{tot} l'enunciat, ambient inclòs.
+No s'ha de llegir, doncs, que $(\cat{C}/A)\op\cong A/\cat{C}$ mantenint $\cat{C}$ intacta: això és fals en general. Per exemple, sigui $\cat{C}=\cat{2}=(0\to 1)$ i prenguem com a $A$ l'\emph{objecte} $1$ de $\cat{2}$ (no la categoria $\cat{1}$). La categoria $\cat{2}/1$ té dos objectes (les dues fletxes amb codomini $1$: la fletxa $0\to 1$ i $\id_1$), mentre que $1/\cat{2}$ en té un de sol ($\id_1$, l'única fletxa amb domini $1$); per tant $(\cat{2}/1)\op$ \emph{no} és isomorfa a $1/\cat{2}$. El que sí que val és $(\cat{2}/1)\op\cong 1/(\cat{2}\op)$: a $\cat{2}\op$ hi ha dues fletxes amb domini $1$, la identitat i la fletxa $1\to 0$. En tots els casos, la mateixa regla ---invertir les fletxes--- transforma cada noció en la seva dual, però la regla actua sobre \emph{tot} l'enunciat, ambient inclòs.
 
 \subsection{Diccionari bàsic de dualitats}
 
@@ -1104,12 +1271,11 @@ La taula recull les parelles duals com a \emph{nocions}: cada concepte i el seu 
 
 \subsection{Abast i precaucions}
 
-El principi s'aplica a enunciats formulats \emph{categòricament}. Una afirmació que faci servir informació externa ---elements d'un conjunt, oberts d'un espai o una construcció concreta--- no té necessàriament un dual fins que no es reformula amb objectes i morfismes.
+El principi només s'aplica a afirmacions expressables en el llenguatge de les categories. Una afirmació que faci servir informació externa ---elements d'un conjunt, oberts d'un espai o una construcció concreta--- no té dual fins que no es reformula exclusivament amb objectes i morfismes. I quan l'afirmació es refereix a construccions fetes a partir d'una categoria, cal dualitzar també la categoria ambient, com acabem de veure amb les categories sobre i sota un objecte.
 
-No s'ha de concloure que una categoria concreta sigui equivalent a la seva oposada. El principi relaciona teoremes sobre $\cat{C}$ amb teoremes sobre $\cat{C}\op$; no afirma que $\cat{C}$ i $\cat{C}\op$ siguin la mateixa categoria. Per exemple, $\cat{Set}$ no s'identifica amb $\cat{Set}\op$, encara que els teoremes generals sobre productes tinguin teoremes duals sobre coproductes.
+El principi de dualitat no permet concloure, per si sol, que una categoria concreta sigui equivalent a la seva oposada. El principi relaciona afirmacions sobre $\cat{C}$ amb les afirmacions duals sobre $\cat{C}\op$; no proporciona en general cap equivalència $\cat{C}\simeq\cat{C}\op$. Algunes categories sí que ho són ---per exemple, $\cat{2}=(0\to 1)$ és isomorfa a $\cat{2}\op$ intercanviant-ne els dos objectes---, però això s'ha de comprovar en cada cas. En canvi, $\cat{Set}$ no s'identifica amb $\cat{Set}\op$, encara que els teoremes generals sobre productes tinguin teoremes duals sobre coproductes.
 
-Finalment, convé situar bé l'abast del principi. El mecanisme que hem descrit ---dualitzar les fórmules d'un llenguatge de manera que els axiomes quedin invariants--- no és exclusiu del llenguatge de categories. La lògica clàssica en dona una altra instància: al llenguatge de les àlgebres booleanes, la involució que intercanvia $\wedge$ amb $\vee$ i el cert amb el fals deixa els axiomes invariants, i produeix la dualitat de De~Morgan. Un exemple encara més antic és la \textbf{dualitat projectiva}\index{dualitat!projectiva}: al pla projectiu, intercanviar \emph{punt} per \emph{recta} ---i \enquote{passar per} per \enquote{tallar-se en}--- deixa els axiomes invariants, de manera que cada teorema té un teorema dual, com el de Desargues o la parella Pascal--Brianchon. En tots els casos actua el mateix mecanisme: una involució del llenguatge que preserva els axiomes. Són, doncs, instàncies d'un mateix principi de dualitat, aplicat a llenguatges diferents; no dualitats de naturalesa distinta. Quan una categoria codifica lògica ---com el sistema deductiu de la subsecció~\ref{subsec:elementals}, on, \emph{si existeixen}, la conjunció és el producte i la disjunció el coproducte---, la dualitat de fletxes intercanvia conjunció i disjunció. Que aquesta dualitat es projecti \emph{exactament} sobre la dualitat de De~Morgan requereix, a més, un complement involutiu com el de les àlgebres booleanes; és una hipòtesi addicional sobre la categoria, no una conseqüència automàtica de la dualitat categòrica.
-
+Finalment, una precaució sobre la lògica. Els connectors i els quantificadors amb què escrivim una afirmació $\varphi$ pertanyen al llenguatge amb què \emph{parlem} de la categoria, i la dualitat els deixa intactes. Una altra cosa és el que passa quan els objectes de la categoria són ells mateixos fórmules, com a la categoria $\cat{Prov}_T$ de la subsecció~\ref{subsec:elementals}. Allà, \emph{quan existeixen}, la conjunció és un producte, la disjunció un coproducte, el cert un objecte terminal i el fals un objecte inicial, i la dualitat de fletxes els intercanvia. Però un preordre de deduïbilitat qualsevol no garanteix que aquests connectors existeixin: en el preordre discret de dues fórmules sense cap deducció entre elles, aquestes dues fórmules no tenen ni producte ni coproducte. I que la dualitat de fletxes coincideixi exactament amb la dualitat de De~Morgan exigeix, a més, un complement involutiu com el de les àlgebres booleanes. Tornarem sobre aquesta lògica interna més endavant, amb el llenguatge adequat.
 
 \section{Propietats duals dels morfismes}\label{sec:propietats-duals}
 
@@ -1139,7 +1305,7 @@ Si la composició $g\comp f$ és un monomorfisme, aleshores $f$ és un monomorfi
 \end{proposicio}
 
 \begin{prova}
-Siguin $u,v\colon X\to A$ amb $f\comp u=f\comp v$. Composant amb $g$, $(g\comp f)\comp u=(g\comp f)\comp v$; com que $g\comp f$ és mono, $u=v$. (No cal cap hipòtesi sobre $g$.)
+Siguin $u,v\colon X\to A$ amb $f\comp u=f\comp v$. Component amb $g$, $(g\comp f)\comp u=(g\comp f)\comp v$; com que $g\comp f$ és mono, $u=v$. (No cal cap hipòtesi sobre $g$.)
 \end{prova}
 
 \begin{proposicio}\label{prop:iso-retr-mono}
@@ -1193,29 +1359,27 @@ Les demostracions d'aquestes equivalències, i la de la cadena d'implicacions an
 
 \section{Grafs i categories lliures}\label{sec:grafs-lliures}\index{categoria!lliure}
 
-Els grafs i les categories estan estretament relacionats, però no són el mateix. Un graf dirigit només especifica vèrtexs i arestes. Una categoria, a més, disposa d'identitats, permet compondre fletxes i exigeix que aquestes composicions satisfacin els axiomes. Podem resumir la diferència així:
-\[
-\text{categoria}
-\quad\approx\quad
-\text{graf dirigit}
-+
-\text{identitats}
-+
-\text{composició}
-+
-\text{axiomes}.
-\]
-Aquesta fórmula és una guia conceptual, no una definició formal. De fet, per a una categoria petita, si oblidem la composició i quines fletxes són identitats, els objectes i morfismes formen un graf dirigit: és el seu \emph{graf subjacent}. Les fletxes identitat no desapareixen ---continuen sent arestes del graf, un bucle a cada vèrtex---, només que ja no estan marcades com a identitats; per a categories grans, a més, cal tenir en compte les qüestions de mida.
+Els grafs i les categories estan estretament relacionats, però no són el mateix. Un graf dirigit només especifica vèrtexs i arestes. Una categoria, a més, disposa d'identitats, permet compondre fletxes i exigeix que aquestes composicions satisfacin els axiomes. De fet, per a una categoria petita, si oblidem la composició i quines fletxes són identitats, els objectes i morfismes formen un graf dirigit: és el seu \emph{graf subjacent}. Les fletxes identitat no desapareixen ---continuen sent arestes del graf, un bucle a cada vèrtex---, només que ja no estan marcades com a identitats. Cal que la categoria sigui petita, perquè els vèrtexs i les arestes d'un graf formen conjunts.
 
 Hi ha una manera natural de fer el camí contrari: generar una categoria a partir d'un graf dirigit prenent com a morfismes tots els camins possibles.
 
-\begin{definicio}
-Donat un graf dirigit $G$, la \textbf{categoria lliure generada pel graf} $G$, que escrivim $\Free(G)$,\index{Free@$\Free$}\index{categoria!lliure} té:
+\begin{definicio}\label{def:free}
+Sigui $G$ un graf dirigit, amb conjunt de vèrtexs $V_G$, conjunt d'arestes $E_G$ i aplicacions origen i destí $s_G,t_G\colon E_G\to V_G$. Per a $A,B\in V_G$, un \textbf{camí}\index{camí} de $A$ a $B$ de longitud $n\ge 1$ és una successió $(e_1,\dots,e_n)$ d'arestes amb
+\[
+s_G(e_1)=A,\qquad t_G(e_i)=s_G(e_{i+1})\ \ (1\le i<n),\qquad t_G(e_n)=B.
+\]
+Per a cada vèrtex $A$ hi ha, a més, el \textbf{camí buit} $()_A$ de $A$ a $A$, de longitud zero.
+
+La \textbf{categoria lliure generada pel graf} $G$, que escrivim $\Free(G)$,\index{Free@$\Free$}\index{categoria!lliure} té:
 \begin{itemize}
-\item per objectes, els vèrtexs de $G$;
-\item per morfismes $A\to B$, els \textbf{camins} de $A$ a $B$, és a dir, les seqüències finites d'arestes encadenades que van d'$A$ a $B$;
-\item per composició, la \textbf{concatenació} de camins;
-\item per identitat de cada vèrtex, el \textbf{camí buit} de longitud zero en aquell vèrtex.
+\item objectes: $\Ob(\Free(G))=V_G$, els vèrtexs de $G$;
+\item morfismes: $\Hom_{\Free(G)}(A,B)$ és el conjunt dels camins de $A$ a $B$;
+\item composició: la \textbf{concatenació} en ordre de recorregut; per a $p=(a_1,\dots,a_r)\in\Hom(A,B)$ i $q=(b_1,\dots,b_s)\in\Hom(B,C)$,
+\[
+q\comp p=(a_1,\dots,a_r,b_1,\dots,b_s),
+\]
+on $p$, que surt de $A$, es recorre primer, d'acord amb la convenció $q\comp p$; concatenar amb un camí buit deixa el camí igual;
+\item identitats: $\id_A=()_A$.
 \end{itemize}
 \end{definicio}
 
@@ -1223,7 +1387,7 @@ Per exemple, a partir del graf
 \[
 A\xrightarrow{f}B\xrightarrow{g}C
 \]
-la categoria lliure conté, a més de les identitats, la fletxa composta $g\comp f\colon A\to C$:
+la categoria lliure conté, a més de les identitats i dels camins $(f)$ i $(g)$ de longitud~1, que escrivim simplement $f$ i $g$, la fletxa composta $g\comp f=(f,g)\colon A\to C$:
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, column sep=3.5em] { A & B & C \\ };
@@ -1232,17 +1396,40 @@ la categoria lliure conté, a més de les identitats, la fletxa composta $g\comp
   \draw[-{Stealth[scale=1.0]}] (m-1-1) to[bend right=25] node[below] {$g\comp f$} (m-1-3);
 \end{tikzpicture}
 \]
-La concatenació de camins és associativa, i el camí buit actua com a neutre; per això els axiomes de categoria se satisfan automàticament. La comprovació detallada, amb la fórmula explícita de la concatenació i la convenció d'ordre, es troba a l'apèndix~\ref{cap:grafs}. El nom \emph{lliure} quedarà justificat més endavant, quan disposem del llenguatge dels functors i puguem formular la propietat universal d'aquesta construcció.
+Els axiomes de categoria se satisfan. La composició és associativa, perquè $r\comp(q\comp p)$ i $(r\comp q)\comp p$ són totes dues la successió de totes les arestes de $p$, $q$ i $r$, en aquest ordre; i el camí buit és neutre, perquè concatenar-lo no afegeix cap aresta: $p\comp()_A=p=()_B\comp p$ per a tot camí $p$ de $A$ a $B$. Com que $V_G$ i $E_G$ són conjunts, també ho són els conjunts de camins, i $\Free(G)$ és una categoria petita. L'apèndix~\ref{cap:grafs} desenvolupa aquesta construcció amb més exemples. El nom \emph{lliure} quedarà justificat més endavant, quan disposem del llenguatge dels functors i puguem formular la propietat universal d'aquesta construcció.
 
-\begin{exemple}
-Prenem el cas d'un graf amb \textbf{un sol vèrtex}. Aleshores totes les arestes són bucles ---comencen i acaben a l'únic vèrtex--- i cap parell no deixa d'estar encadenat, de manera que un camí és simplement una seqüència finita d'arestes $a_1 a_2\cdots a_n$, és a dir, una \emph{paraula} sobre el conjunt $E$ de les arestes. La composició és la concatenació de paraules i la identitat és la \emph{paraula buida} $\varepsilon$, de longitud zero. Comprovem que $(E^*,\text{concatenació},\varepsilon)$ és un monoide: la concatenació és associativa, ja que $(uv)w$ i $u(vw)$ són totes dues la paraula que juxtaposa $u$, $v$ i $w$ en aquest ordre; i la paraula buida és neutra, perquè $\varepsilon u=u=u\varepsilon$ per a tota paraula $u$. Així, $\Free(G)$ té un únic objecte, i el seu conjunt de morfismes és el \textbf{monoide lliure}\index{monoide!lliure} $E^*$ sobre $E$. El monoide lliure és, doncs, el cas particular de la categoria lliure per a un graf amb un sol vèrtex.
+\begin{exemple}[El monoide lliure i la convenció de composició]\label{ex:monoide-lliure-cat}
+Prenem el cas d'un graf amb \textbf{un sol vèrtex} $\ast$ i conjunt d'arestes $E$. Aleshores totes les arestes són bucles ---comencen i acaben a $\ast$--- i cap parell no deixa d'estar encadenat, de manera que un camí és simplement una seqüència finita d'arestes, és a dir, una \emph{paraula} sobre $E$. Escrivim $E^*$ per al conjunt de totes aquestes paraules, incloent-hi la \emph{paraula buida} $\varepsilon$, de longitud zero.
+
+Fixem tres convencions, que s'han de llegir juntes.
+\begin{itemize}
+\item \emph{Lectura de les paraules.} Escrivim les lletres en l'\emph{ordre de recorregut}: la paraula $a_1a_2\cdots a_n$ és el camí $(a_1,a_2,\dots,a_n)$, que recorre primer $a_1$, després $a_2$, i així successivament.
+\item \emph{Concatenació.} Per a $u=a_1\cdots a_m$ i $v=b_1\cdots b_n$, la concatenació és la juxtaposició $uv=a_1\cdots a_m b_1\cdots b_n$: primer les lletres de $u$ i després les de $v$. Amb aquesta operació i la paraula buida, $(E^*,\text{concatenació},\varepsilon)$ és un monoide, el \textbf{monoide lliure}\index{monoide!lliure} sobre $E$: $(uv)w$ i $u(vw)$ són totes dues la paraula que juxtaposa $u$, $v$ i $w$ en aquest ordre, i $\varepsilon u=u=u\varepsilon$.
+\item \emph{Composició.} A $\Free(G)$, la composició és la de la definició: $v\comp u$ vol dir \enquote{primer $u$, després $v$}, i el camí que en resulta recorre primer les lletres de $u$. Per tant,
+\[
+v\comp u=uv.
+\]
+\end{itemize}
+Amb dues lletres $a,b\in E$, tot cap en una línia:
+\[
+b\comp a=ab\quad(\text{primer }a,\text{ després }b),
+\qquad\qquad
+a\comp b=ba\quad(\text{primer }b,\text{ després }a).
+\]
+L'ordre de la composició és, doncs, el \emph{contrari} del de la juxtaposició: el símbol de la dreta a $b\comp a$ és el que s'escriu primer a la paraula.
+
+Quina categoria hem obtingut? Té un sol objecte, $\Hom_{\Free(G)}(\ast,\ast)=E^*$ i $\id_\ast=\varepsilon$. Però, amb la convenció de $\cat{B}M$, en què $g\comp f=g\cdot f$, la composició $v\comp u=uv$ correspon al producte \emph{invertit}. Si anomenem \textbf{monoide oposat}\index{monoide!oposat} $M\op$ d'un monoide $M$ el que té els mateixos elements i el mateix neutre i l'operació $m\cdot_{\mathrm{op}} n=n\cdot m$ ---de manera que $\cat{B}(M\op)=(\cat{B}M)\op$---, el que tenim és la \emph{igualtat}
+\[
+\Free(G)=\cat{B}\bigl((E^*)\op\bigr)=\bigl(\cat{B}(E^*)\bigr)\op,
+\]
+i no $\cat{B}(E^*)$. La diferència és només d'ordre d'escriptura. L'aplicació que inverteix l'ordre de les lletres, $a_1\cdots a_n\mapsto a_n\cdots a_1$, compleix $(uv)^{\mathrm{rev}}=v^{\mathrm{rev}}u^{\mathrm{rev}}$, i és per tant un isomorfisme de monoides $E^*\cong(E^*)\op$. Dona, doncs, un isomorfisme canònic de categories $\cat{B}(E^*)\cong\Free(G)$. Si haguéssim escrit les paraules en l'ordre de la composició ($a_n\cdots a_1$ per al camí que comença per $a_1$), hauríem obtingut literalment $\cat{B}(E^*)$. Hem preferit l'ordre de recorregut, que és el natural per als camins. En aquest sentit, i llevat d'aquest isomorfisme, el monoide lliure és el cas particular de la categoria lliure per a un graf amb un sol vèrtex.
 \end{exemple}
 
 \begin{exemple}
 La categoria lliure sobre el graf amb dos vèrtexs $A,B$ i una sola aresta $A\to B$ és la categoria finita $\mathbf{2}$. Si, en canvi, el graf té dues arestes en sentits oposats, $e\colon A\to B$ i $f\colon B\to A$, la categoria lliure té infinits morfismes: $e$, $f$, $f\comp e$, $e\comp f$, $e\comp f\comp e$, i així successivament, perquè cap relació no identifica camins diferents. Així, \emph{un graf finit no genera necessàriament una categoria lliure finita}.
 \end{exemple}
 
-Aquesta construcció ---generar l'estructura més econòmica a partir d'unes dades, sense imposar cap relació que no hi vingui forçada--- és un exemple del patró \emph{lliure}, que reapareix per a monoides, grups i moltes altres estructures i que es formalitza al capítol~\ref{cap:adjuncions} com una \emph{adjunció} entre un functor lliure i un functor oblit.
+Aquesta construcció, que genera l'estructura més econòmica a partir d'unes dades sense imposar cap relació que no hi vingui forçada, és un exemple del patró \emph{lliure}, que reapareix per a monoides, grups i moltes altres estructures i que, al capítol~\refcap{cap:adjuncions}{6}, es formalitza com una \emph{adjunció} entre un functor lliure i un functor oblit.
 
 \section{Categories segons la mida}\index{categoria!petita}\index{categoria!localment petita}
 \label{sec:mida}
@@ -1263,16 +1450,27 @@ Convé no llegir aquestes tres nocions com una partició en tres classes disjunt
 \[
 \text{petita}\;\Longrightarrow\;\text{localment petita},
 \]
-i el recíproc és fals: $\cat{Set}$ és localment petita però no petita. Les tres possibilitats efectives són, doncs, petita (per tant localment petita), gran localment petita i gran no localment petita.
+i el recíproc és fals: $\cat{Set}$ és localment petita però no petita. Que no és petita ho mostra la paradoxa de Russell; que és localment petita es comprova identificant cada aplicació amb el seu graf (exercici~\ref{exr:pr-set-localment-petita} de la Pràctica). Les tres possibilitats efectives són, doncs, petita (per tant localment petita), gran localment petita i gran no localment petita.
 
-Moltes de les categories habituals que utilitzem ---$\cat{Set}$, $\cat{Grp}$, $\cat{Top}$, $\cat{Graph}$ i altres--- són localment petites però no petites: tenen massa objectes per formar un conjunt, però entre dos objectes qualssevol hi ha només un conjunt de morfismes. En canvi, cada preordre concret sobre un conjunt i cada categoria finita concreta són categories petites. No s'ha de confondre aquesta afirmació amb la petitesa de la categoria de \emph{tots} els preordres o de \emph{totes} les categories finites: aquestes col·leccions són grans ---ja hi ha una classe pròpia de conjunts subjacents---, i la seva petitesa requeriria una convenció de mida o la tria de representants canònics. Al llarg del llibre suposarem, tret que diguem el contrari, que les categories amb què treballem són localment petites; això garanteix que sempre podem parlar del conjunt $\Hom(A,B)$, cosa que serà essencial més endavant.
-
-\begin{observacio}[Dues perspectives sobre la mida]
-Hem plantejat la mida des de la teoria clàssica de conjunts: les categories es construeixen \emph{damunt} d'una teoria de conjunts prèvia, i les qüestions de mida ---distingir quines col·leccions són conjunts i quines són massa grans per ser-ho--- són el preu de tenir-hi objectes tan nombrosos com els de $\cat{Set}$. Aquesta és la perspectiva que adoptem al llibre, perquè és la que el lector ja coneix. Hi ha, però, una segona perspectiva: el llenguatge estructural ---de conjunts o de categories--- pot servir ell mateix de \emph{fonament} de les matemàtiques, sense construir-se damunt d'una teoria de conjunts prèvia. Aleshores la mida es planteja amb altres eines. L'apèndix~\ref{cap:axiomatica-relacional} n'ofereix un tast, en presentar les categories petites de manera purament relacional; un desenvolupament complet d'aquesta via pertany a un tractament estructural dels fonaments.
-\end{observacio}
+Moltes de les categories habituals que utilitzem ---$\cat{Set}$, $\cat{Grp}$, $\cat{Top}$, $\cat{Graph}$ i altres--- són localment petites però no petites: tenen massa objectes per formar un conjunt, però entre dos objectes qualssevol hi ha només un conjunt de morfismes. En canvi, cada preordre concret sobre un conjunt i cada categoria finita concreta són categories petites. És important no confondre aquestes categories petites amb les categories grans que les apleguen, com $\cat{Pos}$, la categoria de tots els ordres parcials, o la categoria de totes les categories finites: en tots dos casos hi ha una classe pròpia de conjunts subjacents. Per la mateixa raó és gran $\cat{FinSet}$, tot i que cadascun dels seus objectes és un conjunt finit. Al llarg del llibre suposarem, tret que diguem el contrari, que les categories amb què treballem són localment petites; això garanteix que sempre podem parlar del conjunt $\Hom(A,B)$, cosa que serà essencial més endavant.\footnote{Aquí prenem com a base la teoria de conjunts clàssica, amb classes pròpies; l'apèndix~\ref{cap:mida} fixa aquest marc, i \cite[§1.8]{awodey}, \cite[§1.1]{riehl}, \cite[§3.2]{leinster} i \cite[cap.~1]{perrone} en donen presentacions introductòries. També és possible prendre el mateix llenguatge estructural com a fonament, sense una teoria de conjunts prèvia: l'apèndix~\ref{cap:axiomatica-relacional} n'ofereix un tast, i \cite[cap.~3]{leinster} en fa una introducció.}
 
 \begin{resumcap}
-\apartat{Idees centrals} (1)~Una categoria són objectes i morfismes amb composició associativa i identitats; el que importa no és què són els objectes, sinó com es relacionen a través de les fletxes. (2)~Moltes nocions es defineixen \emph{categòricament} ---només amb fletxes, sense parlar dels elements dels objectes---: isomorfisme, monomorfisme i epimorfisme en són els primers exemples, i generalitzen \enquote{bijectiu}, \enquote{injectiu} i \enquote{exhaustiu}. (3)~Dos objectes isomorfs són indistingibles per a tota propietat o construcció invariant per isomorfisme: la igualtat rellevant és $\cong$, no la igualtat estricta. (4)~A partir de categories donades se'n construeixen de noves: l'oposada, el producte, les subcategories i les categories sobre i sota un objecte. (5)~El \textbf{principi de dualitat} ---invertir totes les fletxes--- dona, de cada noció i cada teorema, una versió dual gratuïta; és un cas d'un mecanisme més general, comú a la lògica i a la geometria projectiva. (6)~La distinció de mida ---petita o gran, i transversalment localment petita--- controla quan $\Hom(A,B)$ és un conjunt; tota petita és localment petita, i $\cat{Set}$ és gran però localment petita.
-\apartat{Errors típics} Creure que \enquote{mono $+$ epi $\Rightarrow$ iso} (fals a $\cat{Top}$ i a $\cat{2}$: un bimorfisme no és sempre un isomorfisme); confondre un monomorfisme amb un monomorfisme escindit; confondre la igualtat d'objectes amb l'isomorfisme; escriure la composició en l'ordre equivocat en dualitzar; i oblidar la hipòtesi de petitesa local en parlar d'homconjunts.
-\apartat{Lectura recomanada} \cite[cap.~1]{awodey} per a la introducció paral·lela; \cite[cap.~1]{leinster} per a una presentació breu i moderna; \cite[I]{maclane} per a la formulació clàssica. Per a la presentació relacional de les categories petites, l'apèndix~\ref{cap:axiomatica-relacional}.
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Una categoria organitza objectes i morfismes mitjançant identitats i una composició associativa. El que importa no és què són els objectes, sinó com es relacionen a través de les fletxes. Els diagrames commutatius representen igualtats entre composicions.
+  \item Una mateixa forma categòrica apareix en contextos molt diferents: conjunts i aplicacions, preordres, monoides, grafs, relacions i sistemes deductius.
+  \item Els isomorfismes expressen quan dos objectes tenen la mateixa estructura dins la categoria; sovint, la noció estructuralment rellevant és l'isomorfisme més que no pas la igualtat estricta. Monomorfismes i epimorfismes es defineixen per cancel·lació. A $\cat{Set}$, i en algunes categories concretes, coincideixen amb les aplicacions injectives i exhaustives, però aquesta coincidència no és vàlida en general: en una categoria prima, per exemple, tot morfisme és mono i epi.
+  \item Seccions i retraccions són inverses unilaterals. Un morfisme és un monomorfisme escindit si i només si té una retracció, i és un epimorfisme escindit si i només si té una secció. Tot monomorfisme escindit és mono i tot epimorfisme escindit és epi, però les implicacions inverses no valen en general:
+  \[
+  \text{iso}\Longrightarrow\text{mono escindit}\Longrightarrow\text{mono},
+  \qquad
+  \text{iso}\Longrightarrow\text{epi escindit}\Longrightarrow\text{epi}.
+  \]
+  \item A partir d'una categoria en podem construir d'altres: l'oposada, productes de categories, subcategories i categories sobre i sota un objecte.
+  \item El \textbf{principi de dualitat} ---invertir totes les fletxes--- converteix sistemàticament cada definició i cada resultat en el seu dual, amb la composició en l'ordre invers.
+  \item Un graf dirigit no té, per si sol, composició ni identitats; la categoria lliure hi afegeix formalment tots els camins i les identitats necessàries.
+  \item Les qüestions de mida obliguen a distingir categories petites de categories localment petites. Tota categoria petita és localment petita, però moltes categories habituals, com $\cat{Set}$, són localment petites sense ser petites.
+\end{enumerate}
+\apartat{Errors típics} Creure que \enquote{mono $+$ epi $\Rightarrow$ iso} (fals a $\cat{Top}$ i a $\cat{2}$: un bimorfisme no és sempre un isomorfisme); confondre un monomorfisme amb un monomorfisme escindit; confondre la igualtat d'objectes amb l'isomorfisme, encara que sigui canònic; aplicar els adjectius \enquote{injectiu} i \enquote{exhaustiu} a morfismes d'una categoria general, en lloc de reservar-los per a aplicacions; raonar amb elements en una categoria on els objectes no en tenen o on no separen les fletxes; escriure la composició en l'ordre equivocat en dualitzar; i oblidar la hipòtesi de petitesa local en parlar d'homconjunts.
+\apartat{Lectura recomanada} \cite[cap.~1, §2.1 i §3.1]{awodey} per a la introducció paral·lela, els monomorfismes i epimorfismes i el principi de dualitat; \cite[§1.1]{leinster} per a una presentació breu i moderna; \cite[cap.~I i II.1--II.3, II.7]{maclane} per a la formulació clàssica, inclosos la dualitat, les categories producte i les categories lliures; \cite[§1.3]{barrwells} per als grafs, en una presentació orientada a la informàtica; \cite[parts~I--II, sessions~2--10]{lawvereschanuel} per a una introducció encara més elemental als morfismes, els isomorfismes i les seccions i retraccions; i \cite[§1.1.5 i §1.2]{perrone-notes} per a contraexemples elementals d'isomorfismes, monomorfismes i epimorfismes, escindits o no. Per a la presentació relacional de les categories petites, l'apèndix~\ref{cap:axiomatica-relacional}.
 \end{resumcap}

@@ -7,18 +7,18 @@ Els exercicis següents completen els resolts a la part de Pràctica. Cada enunc
 \begin{exercici}
 Comprova que si una categoria té objecte inicial, aquest és únic llevat d'isomorfisme únic, repetint l'argument fet per als objectes terminals. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Siguin $0$ i $0'$ inicials. Hi ha un únic $0\to 0'$ i un únic $0'\to 0$; les composicions són endomorfismes de $0$ i de $0'$, que han de ser les identitats per unicitat.
+Dualitza l'argument dels objectes terminals: compara les composicions de les úniques fletxes entre dos objectes inicials amb les identitats.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Determina els objectes inicial i terminal a $\cat{Set}$, a $\cat{Top}$ i en un preordre $(P,\leq)$ vist com a categoria. \hfill{\normalfont$\star$}
+Determina els objectes inicial i terminal a $\cat{Set}$, a $\cat{Pos}$ i en un preordre $(P,\leq)$ vist com a categoria. \hfill{\normalfont$\star$}
 \begin{indicacio}
-A $\cat{Set}$ i $\cat{Top}$, el buit és inicial i el punt és terminal. En un preordre, un objecte inicial és un mínim i un de terminal, un màxim; poden no existir.
+Per a cada categoria, pregunta't quins objectes reben exactament una fletxa des de cada objecte, i quins n'envien exactament una cap a cada objecte. En un preordre, tradueix-ho en termes de l'ordre.
 \end{indicacio}
 \end{exercici}
 
-\begin{exercici}
+\begin{exercici}[Ampliació, per a lectors amb àlgebra]
 Comprova que la categoria $\cat{Field}$ dels cossos i homomorfismes de cossos \emph{no} té objecte inicial ni terminal. \hfill{\normalfont$\star$}
 \begin{indicacio}
 Un homomorfisme de cossos preserva $0$, $1$ i les operacions, i és sempre injectiu. No hi ha cap cos que rebi un morfisme de tots els altres (pensa en característiques diferents), ni cap que n'enviï a tots.
@@ -28,55 +28,77 @@ Un homomorfisme de cossos preserva $0$, $1$ i les operacions, i és sempre injec
 \section{Propietats universals com a representabilitat}
 
 \begin{exercici}
-Comprova que un objecte $0$ és inicial si i només si el functor covariant $\Hom(0,-)$ és isomorf al functor constant amb valor un conjunt d'un sol element. \hfill{\normalfont$\star$}
+Comprova que un objecte $0$ és inicial si i només si el functor covariant $\Hom(0,-)$ és naturalment isomorf al functor constant $\Delta_{\{\ast\}}\colon\cat{C}\to\cat{Set}$ (exemple~\ref{ex:functor-constant}). \hfill{\normalfont$\star$}
 \begin{indicacio}
-$\Hom(0,X)$ té exactament un element per a cada $X$ si i només si hi ha exactament un morfisme $0\to X$; l'isomorfisme natural amb el functor constant $\ast$ és automàtic.
+Compara el nombre d'elements de cada $\Hom(0,X)$ amb el de $\{\ast\}$, i pregunta't quines condicions de naturalitat queden per comprovar.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Sigui $\cat{C}$ localment petita amb objecte terminal $1$. Comprova que $\Hom(1,-)\colon\cat{C}\to\cat{Set}$ és un functor, i determina quan preserva l'objecte terminal. \hfill{\normalfont$\star$}
+Sigui $\cat{C}$ localment petita amb objecte terminal $1$. Comprova que $\Hom(1,-)\colon\cat{C}\to\cat{Set}$ és un functor i demostra que envia l'objecte terminal a un conjunt terminal. Mostra amb un exemple que, tot i això, $\Hom(1,-)$ pot no distingir objectes no isomorfs: pot enviar-los a conjunts amb el mateix nombre d'elements, o fins i tot al mateix conjunt. \hfill{\normalfont$\star$}
 \begin{indicacio}
-$\Hom(1,-)$ envia $1$ a $\Hom(1,1)$, que té un sol element; per tant preserva l'objecte terminal. Els seus valors són els \enquote{punts globals}.
+Calcula $\Hom(1,1)$. Per a l'exemple, pensa en un preordre amb un element màxim i dos elements incomparables per sota.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Considera el prefeix de parts $\mathcal P\colon\cat{Set}\op\to\cat{Set}$ i les dues parelles candidates $(\{0,1\},\{1\})$ i $(\{0,1\},\varnothing)$. Quina de les dues és una representació de $\mathcal P$? Justifica per què l'altra no ho és. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Per a la segona parella, intenta obtenir el subconjunt $\{\ast\}$ d'un conjunt d'un sol element com una antiimatge de $\varnothing$.
 \end{indicacio}
 \end{exercici}
 
 \section{El lema de Yoneda}
 
 \begin{exercici}
-Escriu l'enunciat covariant del lema de Yoneda: per a un functor covariant $Q\colon\cat{C}\to\cat{Set}$ i un objecte $A$, hi ha una bijecció natural $\Nat(\Hom(A,-),Q)\cong Q(A)$. Identifica la bijecció. \hfill{\normalfont$\star\star$}
+Escriu l'enunciat covariant del lema de Yoneda: per a un functor covariant $Q\colon\cat{C}\to\cat{Set}$ i un objecte $A$, hi ha una bijecció natural
+\[
+\Nat\bigl(\Hom(A,-),Q\bigr)\;\cong\;Q(A).
+\]
+Identifica la bijecció. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-La bijecció envia $\eta$ a $\eta_A(\id_A)$, igual que en el cas contravariant; la inversa envia $x\in Q(A)$ a la transformació de components $\varphi\mapsto Q(\varphi)(x)$.
+Reprodueix la demostració del cas contravariant a $\cat{C}\op$ i avalua la transformació en $\id_A$.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Fes servir el lema de Yoneda per calcular $\Nat(\Hom(-,A),\Hom(-,B))$ i comprova que la bijecció resultant és precisament l'acció de la immersió de Yoneda sobre els morfismes $A\to B$. \hfill{\normalfont$\star\star$}
+Fes servir el lema de Yoneda per calcular
+\[
+\Nat\bigl(\Hom(-,A),\Hom(-,B)\bigr).
+\]
+Comprova que la bijecció resultant és precisament l'acció de la immersió de Yoneda sobre els morfismes $A\to B$. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Pren $P=\Hom(-,B)$ al lema: $\Nat(\Hom(-,A),\Hom(-,B))\cong\Hom(A,B)$. Seguint la bijecció, un morfisme $f\colon A\to B$ correspon a la postcomposició amb $f$.
+Aplica Yoneda al prefeix representable $P=\Hom(-,B)$ i identifica què correspon a un morfisme $A\to B$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Siguin $(A,u)$ i $(B,v)$ dues representacions d'un mateix prefeix $P$. Demostra que hi ha un únic isomorfisme $f\colon A\to B$ amb $P(f)(v)=u$. Explica per què això no diu que $A$ tingui un únic automorfisme. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Fes servir la universalitat de $v$ per obtenir $f$, i la de $u$ per obtenir $g\colon B\to A$ amb $P(g)(u)=v$. Aplica després la unicitat a $g\comp f$ i a $\id_A$.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
 Comprova que si un prefeix $P$ és representable, aleshores l'element $x\in P(A)$ que correspon a la identitat sota l'isomorfisme $\Hom(-,A)\cong P$ té la propietat universal següent: per a cada objecte $X$ i cada $y\in P(X)$, hi ha un únic morfisme $\varphi\colon X\to A$ amb $P(\varphi)(x)=y$. (Aquest $x$ s'anomena \emph{element universal}.) \hfill{\normalfont$\star$}
 \begin{indicacio}
-L'isomorfisme $\Hom(-,A)\cong P$ diu que $\Hom(X,A)\cong P(X)$ naturalment; l'element $y\in P(X)$ correspon a un únic $\varphi\in\Hom(X,A)$, i la naturalitat tradueix $y=P(\varphi)(x)$.
+Escriu la naturalitat de l'isomorfisme $\Hom(-,A)\cong P$ per a un morfisme $\varphi\colon X\to A$, avaluada en $\id_A$.
 \end{indicacio}
 \end{exercici}
 
 \section{Conseqüències}
 
 \begin{exercici}
-Comprova que la immersió de Yoneda $\yon\colon\cat{C}\to\cat{Set}^{\cat{C}\op}$ \emph{no} és, en general, essencialment exhaustiva, tot i ser plena i fidel. Quins prefeixos són de la forma $\Hom(-,A)$? \hfill{\normalfont$\star\star$}
+Sigui $\cat{C}$ una categoria petita. Comprova que la immersió de Yoneda $\yon\colon\cat{C}\to\cat{Set}^{\cat{C}\op}$ \emph{no} és, en general, essencialment exhaustiva, tot i ser plena i fidel. Quins prefeixos són de la forma $\Hom(-,A)$? \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Els prefeixos de la forma $\Hom(-,A)$ s'anomenen \emph{representables}; no tot prefeix ho és. Per tant $\yon$ identifica $\cat{C}$ amb la subcategoria plena dels prefeixos representables, que en general és una part pròpia de $\cat{Set}^{\cat{C}\op}$.
+Busca una propietat que tot prefeix representable $\Hom(-,A)$ compleix necessàriament en l'objecte $A$, i un prefeix que no la compleixi.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
 Dedueix del corol·lari de Yoneda que si dos objectes tenen conjunts de morfismes \enquote{naturalment iguals} des de tot objecte, aleshores són isomorfs; i explica per què això formalitza l'eslògan \enquote{un objecte es coneix per les fletxes que hi arriben}. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-\enquote{Naturalment iguals des de tot objecte} vol dir $\Hom(-,A)\cong\Hom(-,B)$; pel corol·lari, això equival a $A\cong B$.
+Tradueix \enquote{naturalment iguals des de tot objecte} en termes de prefeixos representables.
 \end{indicacio}
 \end{exercici}
 

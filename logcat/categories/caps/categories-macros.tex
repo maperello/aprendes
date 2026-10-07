@@ -45,3 +45,9 @@
 \makeatletter
 \@ifundefined{colimop}{\DeclareMathOperator*{\colimop}{colim}}{}
 \makeatother
+
+% Remissions a capítols i elements que no són a l'edició parcial (capítols 1--3).
+% A l'edició completa fan servir \ref; a la parcial escriuen el número o un text
+% alternatiu, per no deixar referències «??».
+\newcommand{\refcap}[2]{\ifpublicacioparcial #2\else\ref{#1}\fi}
+\newcommand{\refalt}[2]{\ifpublicacioparcial #2\else\ref{#1}\fi}

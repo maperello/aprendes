@@ -12,12 +12,34 @@ Comprova amb detall que a $\cat{Set}$ l'objecte $\Omega=\{0,1\}$ amb $\mathsf{tr
 Sigui $U\subseteq E$ un subconjunt, amb injecció $m\colon U\hookrightarrow E$. Definim $\chi_U\colon E\to\{0,1\}$ per $\chi_U(x)=1$ si $x\in U$ i $\chi_U(x)=0$ altrament. El pullback de $\mathsf{true}\colon 1\to\{0,1\}$ al llarg de $\chi_U$ és $\{x\in E\mid\chi_U(x)=1\}=U$, amb la injecció com a projecció; per tant el quadrat és cartesià. Per a la unicitat: si $\chi\colon E\to\{0,1\}$ fa el quadrat cartesià, aleshores $\chi^{-1}(1)=U$, cosa que força $\chi=\chi_U$. Així $\{0,1\}$ classifica els subobjectes de qualsevol conjunt.
 \end{solucio}
 
-\begin{exercici}
-Usant la representabilitat $\Sub(E)\cong\Hom(E,\Omega)$, demostra que el classificador de subobjectes, si existeix, és únic llevat d'isomorfisme.
+\begin{exercici}\label{pr-ordre-pertinenca}
+En una categoria amb classificador de subobjectes, siguin $m\colon U\rightarrowtail E$ i $n\colon V\rightarrowtail E$ dos subobjectes, amb morfismes característics $\chi_m$ i $\chi_n$. Demostra que
+\[
+[m]\leq[n]
+\quad\Longleftrightarrow\quad
+\chi_n\comp m=\mathsf{true}\comp\,!_U,
+\]
+és a dir, que $U$ està contingut en $V$ si i només si tots els \enquote{elements} de $U$ pertanyen a $V$. Dedueix que $\chi_m=\chi_n$ si i només si $[m]=[n]$.
 \end{exercici}
 
 \begin{solucio}
-Si $\Omega$ i $\Omega'$ són tots dos classificadors, aleshores tots dos representen el mateix functor $\Sub_{\cat{E}}\colon\cat{E}\op\to\cat{Set}$: hi ha isomorfismes naturals $\Hom(-,\Omega)\cong\Sub_{\cat{E}}(-)\cong\Hom(-,\Omega')$. Pel lema de Yoneda, dos objectes que representen el mateix functor són isomorfs mitjançant un únic isomorfisme compatible amb les representacions. Per tant $\Omega\cong\Omega'$. És una aplicació directa de la unicitat dels objectes representants vista al capítol de Yoneda.
+Per definició de l'ordre, $[m]\leq[n]$ vol dir que $m$ factoritza a través de $n$. Aplicant la caracterització de la pertinença per elements generalitzats de la Teoria a l'element generalitzat $m\colon U\to E$, això passa si i només si $\chi_n\comp m=\mathsf{true}\comp\,!_U$.
+
+Per a la segona part, si $[m]=[n]$, els dos subobjectes són el mateix i tenen el mateix morfisme característic, per la unicitat de la definició. Recíprocament, si $\chi_m=\chi_n$, aleshores $\chi_n\comp m=\chi_m\comp m=\mathsf{true}\comp\,!_U$, perquè el quadrat de $m$ commuta, i per la primera part $[m]\leq[n]$; simètricament, $[n]\leq[m]$, i per l'antisimetria de $\Sub(E)$, $[m]=[n]$. Així, el morfisme característic determina el subobjecte, que és la injectivitat de la bijecció $\Sub(E)\cong\Hom(E,\Omega)$ vista ara en termes de pertinença.
+\end{solucio}
+
+\begin{exercici}\label{pr-mono-equalitzador}
+En una categoria amb classificador de subobjectes, sigui $m\colon U\rightarrowtail E$ un subobjecte amb morfisme característic $\chi_m$. Demostra que $m$ és un equalitzador de $\chi_m$ i $\mathsf{true}\comp\,!_E$. Dedueix que un morfisme que és alhora mono i epi és un isomorfisme.
+\end{exercici}
+
+\begin{solucio}
+\textbf{Equalitza.} Pel quadrat del classificador, $\chi_m\comp m=\mathsf{true}\comp\,!_U=\mathsf{true}\comp\,!_E\comp m$, perquè $!_E\comp m$ i $!_U$ són fletxes cap al terminal i, per tant, coincideixen.
+
+\textbf{És universal.} Sigui $x\colon X\to E$ amb $\chi_m\comp x=\mathsf{true}\comp\,!_E\comp x$. El membre dret és $\mathsf{true}\comp\,!_X$, de manera que, per la pertinença per elements generalitzats de la Teoria, $x$ factoritza a través de $m$. La factorització és única perquè $m$ és mono. Així $m$ és un equalitzador.
+
+\textbf{Mono i epi implica iso.} Suposem, a més, que $m$ és epi. De $\chi_m\comp m=(\mathsf{true}\comp\,!_E)\comp m$ i la cancel·lació per la dreta, $\chi_m=\mathsf{true}\comp\,!_E$. Aleshores $\id_E$ també equalitza les dues fletxes, i per la propietat de l'equalitzador hi ha $h\colon E\to U$ amb $m\comp h=\id_E$. A més, $m\comp(h\comp m)=m=m\comp\id_U$, i com que $m$ és mono, $h\comp m=\id_U$. Per tant $m$ és un isomorfisme.
+
+Al capítol~\ref{cap:categories} vam veure que, en general, un bimorfisme no és un isomorfisme: a $\cat{Top}$, per exemple, una bijecció contínua pot no ser un homeomorfisme. Una categoria amb classificador no admet aquest fenomen. Als Exercicis es proposa treure'n la conseqüència per a $\cat{Top}$.
 \end{solucio}
 
 \section{Topos}
@@ -40,4 +62,105 @@ Component les dues propietats universals disponibles en un topos:
 \Hom(A,\Omega^{E})\cong\Hom(A\times E,\Omega)\cong\Sub(A\times E),
 \]
 on la primera bijecció és la de l'exponencial (currificació) i la segona és la representabilitat del classificador (\ref{prop:omega-representa}). Totes dues són naturals en $A$. Així, els morfismes cap a $\Omega^{E}$ es corresponen amb subobjectes de $A\times E$, és a dir, amb relacions entre $A$ i $E$. A $\cat{Set}$, això recupera que $\mathcal{P}(E)$ és el conjunt de parts i que una aplicació $A\to\mathcal{P}(E)$ és una relació entre $A$ i $E$.
+\end{solucio}
+
+\section{Prefeixos}
+
+\begin{exercici}\label{pr-sedassos}
+Sigui $\cat{C}$ una categoria petita, $F$ un prefeix sobre $\cat{C}$ i $U\rightarrowtail F$ un subprefeix, és a dir, $U(C)\subseteq F(C)$ per a cada $C$, amb $F(f)$ enviant $U(C)$ dins de $U(D)$ per a cada $f\colon D\to C$. Per a $x\in F(C)$, posem
+\[
+\chi_U(C)(x)=\{f\colon D\to C\mid F(f)(x)\in U(D)\}.
+\]
+Comprova que $\chi_U(C)(x)$ és un sedàs sobre $C$, que les aplicacions $\chi_U(C)$ formen una transformació natural $\chi_U\colon F\Rightarrow\Omega$, i que $U$ és el pullback de $\mathsf{true}$ al llarg de $\chi_U$.
+\end{exercici}
+
+\begin{solucio}
+\textbf{És un sedàs.} Si $f\colon D\to C$ pertany a $\chi_U(C)(x)$ i $g\colon X\to D$, aleshores $F(f\comp g)(x)=F(g)\bigl(F(f)(x)\bigr)$, i com que $F(f)(x)\in U(D)$ i $U$ és un subprefeix, $F(g)$ l'envia dins de $U(X)$. Per tant $f\comp g$ pertany a $\chi_U(C)(x)$.
+
+\textbf{Naturalitat.} Per a $h\colon D\to C$ i $x\in F(C)$, cal veure que $\chi_U(D)(F(h)(x))=h^{*}\bigl(\chi_U(C)(x)\bigr)$. Per a $g\colon X\to D$,
+\[
+\begin{aligned}
+g\in\chi_U(D)\bigl(F(h)(x)\bigr)
+&\iff F(g)\bigl(F(h)(x)\bigr)\in U(X)\\
+&\iff F(h\comp g)(x)\in U(X)\\
+&\iff h\comp g\in\chi_U(C)(x),
+\end{aligned}
+\]
+i l'última condició és la definició de $g\in h^{*}\bigl(\chi_U(C)(x)\bigr)$.
+
+\textbf{Pullback.} Com que els límits de prefeixos es calculen objecte a objecte, n'hi ha prou de veure que, per a cada $C$, $U(C)$ és el conjunt dels $x\in F(C)$ amb $\chi_U(C)(x)$ igual al sedàs màxim. Si $x\in U(C)$, tot $f\colon D\to C$ compleix $F(f)(x)\in U(D)$, de manera que el sedàs és màxim. Recíprocament, si el sedàs és màxim, conté $\id_C$, i aleshores $x=F(\id_C)(x)\in U(C)$. La unicitat de $\chi_U$ es comprova de la mateixa manera, mirant quins morfismes porten $x$ dins de $U$.
+
+A $\cat{Set}$, vist com a prefeixos sobre la categoria d'un sol objecte i només la identitat, els sedassos sobre l'únic objecte són $\varnothing$ i $\{\id\}$, i es recupera $\Omega=\{0,1\}$.
+\end{solucio}
+
+\begin{exercici}\label{pr-conjuncio-omega}
+En un topos, sigui $\wedge\colon\Omega\times\Omega\to\Omega$ el morfisme característic del subobjecte $\langle\mathsf{true},\mathsf{true}\rangle\colon 1\rightarrowtail\Omega\times\Omega$. Demostra que, per a dos subobjectes $U,V$ de $E$,
+\[
+\chi_{U\wedge V}=\wedge\comp\langle\chi_U,\chi_V\rangle,
+\]
+on $U\wedge V$ és la intersecció. Interpreta-ho a $\cat{Set}$.
+\end{exercici}
+
+\begin{solucio}
+Per l'exercici~\ref{pr-ordre-pertinenca}, n'hi ha prou de veure que tots dos morfismes classifiquen el mateix subobjecte, és a dir, que un element generalitzat $x\colon X\to E$ hi pertany en un cas si i només si hi pertany en l'altre. Per la pertinença per elements generalitzats:
+\begin{itemize}
+  \item $x$ factoritza a través de $U\wedge V$ si i només si factoritza a través de $U$ i de $V$, perquè la intersecció és el pullback;
+  \item és a dir, si i només si $\chi_U\comp x=\mathsf{true}\comp\,!_X$ i $\chi_V\comp x=\mathsf{true}\comp\,!_X$;
+  \item és a dir, si i només si $\langle\chi_U,\chi_V\rangle\comp x=\langle\mathsf{true},\mathsf{true}\rangle\comp\,!_X$, que és la pertinença de $\langle\chi_U,\chi_V\rangle\comp x$ al subobjecte $\langle\mathsf{true},\mathsf{true}\rangle$;
+  \item és a dir, si i només si $\wedge\comp\langle\chi_U,\chi_V\rangle\comp x=\mathsf{true}\comp\,!_X$.
+\end{itemize}
+Sigui $W$ el subobjecte classificat per $\wedge\comp\langle\chi_U,\chi_V\rangle$. Els dos subobjectes $U\wedge V$ i $W$ tenen, doncs, els mateixos elements generalitzats. Prenent com a $x$ un representant de $U\wedge V$, obtenim $U\wedge V\leq W$, i prenent-ne un de $W$, $W\leq U\wedge V$. Per tant són iguals, i per la unicitat del morfisme característic, $\chi_{U\wedge V}=\wedge\comp\langle\chi_U,\chi_V\rangle$.
+
+A $\cat{Set}$, $\wedge\colon\{0,1\}\times\{0,1\}\to\{0,1\}$ val $1$ exactament en $(1,1)$: és la taula de veritat de la conjunció, i la fórmula diu que la funció característica d'una intersecció és el producte, o el mínim, de les funcions característiques.
+\end{solucio}
+
+\begin{exercici}\label{pr-reindexacio-graph}
+Sigui $G$ el cicle de l'exemple~\ref{ex:omega-graph} de la Teoria, amb vèrtexs $a,b,c$, arestes $e\colon a\to b$, $f\colon b\to c$, $k\colon c\to a$, i el subgraf $H$ de vèrtexs $a,b$ i aresta $e$. Sigui $G'$ el cicle de longitud sis, amb vèrtexs $p_0,\dots,p_5$ i arestes $u_i\colon p_i\to p_{i+1}$ (índexs mòdul $6$), i sigui $F\colon G'\to G$ el morfisme que \enquote{dona dues voltes}: $p_i\mapsto a,b,c$ i $u_i\mapsto e,f,k$ segons que $i$ sigui $0,1,2$ mòdul $3$. Calcula $F^{*}H$ i comprova que $\chi_{F^{*}H}=\chi_H\comp F$.
+\end{exercici}
+
+\begin{solucio}
+\textbf{La reindexació.} Es calcula per antiimatge, component a component (exemple de subgrafs del capítol~\ref{cap:subobjectes}). Els vèrtexs de $F^{*}H$ són els que van a $a$ o a $b$, és a dir, $p_0,p_1,p_3,p_4$. Les arestes són les que van a $e$, és a dir, $u_0$ i $u_3$.
+
+\textbf{La precomposició.} Amb la taula de $\chi_H$ de la Teoria ($a,b\mapsto1$, $c\mapsto0$, $e\mapsto\top$, $f\mapsto\sigma$, $k\mapsto\tau$), el morfisme $\chi_H\comp F$ envia $p_0,p_1,p_3,p_4\mapsto1$ i $p_2,p_5\mapsto0$, i
+\[
+u_0,u_3\mapsto\top,\qquad u_1,u_4\mapsto\sigma,\qquad u_2,u_5\mapsto\tau.
+\]
+
+\textbf{El morfisme característic de $F^{*}H$.} Apliquem directament la regla de la Teoria a $F^{*}H\subseteq G'$. Les arestes $u_0$ i $u_3$ són al subgraf, i van a $\top$. Les arestes $u_1\colon p_1\to p_2$ i $u_4\colon p_4\to p_5$ tenen l'origen dins i el destí fora, i van a $\sigma$. Les arestes $u_2\colon p_2\to p_3$ i $u_5\colon p_5\to p_0$ tenen l'origen fora i el destí dins, i van a $\tau$. Sobre els vèrtexs coincideix també amb $\chi_H\comp F$. Així $\chi_{F^{*}H}=\chi_H\comp F$: substituir és precompondre, ara en un topos que no és $\cat{Set}$, i al llarg d'un morfisme que no és injectiu.
+\end{solucio}
+
+\section{Connectius i igualtat}
+
+\begin{exercici}\label{pr-igualtat-omega}
+En una categoria amb productes binaris i classificador, sigui $\delta_A=\langle\id_A,\id_A\rangle\colon A\to A\times A$. Comprova que $\delta_A$ és un monomorfisme i que, per a dos elements generalitzats $x,y\colon X\to A$,
+\[
+\chi_{\delta_A}\comp\langle x,y\rangle=\mathsf{true}\comp\,!_X
+\quad\Longleftrightarrow\quad
+x=y.
+\]
+Descriu $\chi_{\delta_A}$ a $\cat{Set}$.
+\end{exercici}
+
+\begin{solucio}
+\textbf{És mono.} La projecció $\pi_1$ compleix $\pi_1\comp\delta_A=\id_A$, de manera que $\delta_A$ té una retracció i és un monomorfisme escindit.
+
+\textbf{Pertinença a la diagonal.} Per la pertinença per elements generalitzats de la Teoria, la igualtat de l'esquerra equival a dir que $\langle x,y\rangle$ factoritza a través de $\delta_A$, és a dir, que hi ha $z\colon X\to A$ amb $\langle z,z\rangle=\langle x,y\rangle$. Component amb les projeccions, això vol dir $x=z=y$. Recíprocament, si $x=y$, n'hi ha prou de prendre $z=x$.
+
+\textbf{A $\cat{Set}$.} $\chi_{\delta_A}(a,b)=1$ si $a=b$ i $0$ altrament: és la delta de Kronecker. En termes lògics, $\chi_{\delta_A}$ és el predicat d'igualtat \enquote{$x=y$} sobre $A$, i la diagonal n'és l'extensió. És la fila \enquote{igualtat} del mapa del capítol~\ref{cap:pont}.
+\end{solucio}
+
+\begin{exercici}\label{pr-disjuncio-negacio-set}
+A $\cat{Set}$, amb $\Omega=\{0,1\}$, sigui ${\vee}\colon\Omega\times\Omega\to\Omega$ el morfisme característic del subconjunt $\{(0,1),(1,0),(1,1)\}$, i sigui $\neg\colon\Omega\to\Omega$ el del subconjunt $\{0\}$. Comprova que, per a subconjunts $U,V\subseteq E$,
+\[
+\chi_{U\cup V}={\vee}\comp\langle\chi_U,\chi_V\rangle,
+\qquad
+\chi_{E\setminus U}=\neg\comp\chi_U.
+\]
+Explica per què la segona igualtat no té un anàleg directe a $\cat{Graph}$.
+\end{exercici}
+
+\begin{solucio}
+Per a $x\in E$, $({\vee}\comp\langle\chi_U,\chi_V\rangle)(x)=1$ si i només si $(\chi_U(x),\chi_V(x))$ és en $\{(0,1),(1,0),(1,1)\}$, és a dir, si i només si $x\in U$ o $x\in V$. Les dues aplicacions valen, doncs, $1$ exactament a $U\cup V$, i coincideixen. Anàlogament, $(\neg\comp\chi_U)(x)=1$ si i només si $\chi_U(x)=0$, és a dir, si i només si $x\notin U$. Els morfismes $\vee$ i $\neg$ són les taules de veritat de la disjunció i de la negació, i les dues fórmules diuen que la unió i el complement es calculen \enquote{punt a punt} sobre els valors de veritat, com la intersecció a l'exercici~\ref{pr-conjuncio-omega}.
+
+A $\cat{Graph}$, el complement de vèrtexs i d'arestes d'un subgraf no és, en general, un subgraf: pot contenir una aresta sense un dels seus extrems. El millor substitut és el subgraf més gran disjunt de $U$, però, com hem vist a l'exemple~\ref{ex:omega-graph} de la Teoria, la seva unió amb $U$ pot no ser tot el graf. No hi ha, doncs, cap morfisme $\Omega\to\Omega$ que faci el paper de $\neg$ amb la propietat $U\cup\neg U=E$.
 \end{solucio}

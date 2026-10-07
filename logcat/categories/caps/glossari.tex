@@ -2,25 +2,46 @@
 \addcontentsline{toc}{chapter}{Glossari català--anglès}
 \markboth{Glossari català--anglès}{Glossari català--anglès}
 
-Aquest glossari recull la terminologia menys estandarditzada del llibre, amb la seva forma anglesa i, quan escau, la notació emprada. La lectura de bibliografia internacional ---gairebé sempre en anglès--- fa útil tenir a mà aquesta correspondència.
+Aquest glossari recull sobretot termes conflictius, no transparents o especialment útils per llegir bibliografia internacional, i no pretén ser un vocabulari exhaustiu de teoria de categories. S'hi dona la forma anglesa i, quan escau, la notació emprada.
 
 \medskip
-\noindent\textbf{Criteri d'anglicismes.} Diversos termes s'han manllevat de l'anglès per manca d'una forma catalana establerta o per fidelitat a la bibliografia (\emph{pullback}, \emph{pushout}, \emph{slice}). En la seva primera aparició es dona, quan existeix, el terme català al costat de l'anglès i de la notació; després se n'usa una sola forma. La terminologia general segueix el \emph{Diccionari de la llengua catalana} de l'Institut d'Estudis Catalans \cite{diec}, i la matemàtica, el \emph{Diccionari de matemàtiques i estadística} del TERMCAT \cite{termcat}.
+\noindent\textbf{Criteri d'anglicismes.} Diversos termes s'han manllevat de l'anglès per manca d'una forma catalana establerta o per fidelitat a la bibliografia (\emph{pullback}, \emph{pushout}). En la seva primera aparició es dona, quan existeix, el terme català al costat de l'anglès i de la notació; després se n'usa una sola forma. La terminologia general segueix el \emph{Diccionari de la llengua catalana} de l'Institut d'Estudis Catalans \cite{diec}, i la matemàtica, el \emph{Diccionari de matemàtiques i estadística} del TERMCAT \cite{termcat}.
 
 \medskip
 
 \renewcommand{\arraystretch}{1.25}
-\noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X l@{}}
+\begin{xltabular}{\linewidth}{@{}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X l@{}}
 \hline
 \textbf{Català} & \textbf{Anglès} & \textbf{Notació}\\
 \hline
+\endfirsthead
+\hline
+\textbf{Català} & \textbf{Anglès} & \textbf{Notació}\\
+\hline
+\endhead
+\hline
+\endfoot
+\endlastfoot
 categoria oposada & opposite category & $\cat{C}\op$\\
 categoria prima & thin category & \\
-categoria slice (o llesca) & slice category & $\cat{C}/A$\\
-categoria coslice & coslice category & $A/\cat{C}$\\
+categoria sobre un objecte & slice category & $\cat{C}/A$\\
+categoria sota un objecte & coslice category & $A/\cat{C}$\\
 homconjunt & hom-set & $\Hom(A,B)$\\
 functor representable & representable functor & p.\,ex.\ $\Hom(-,A)$\\
 immersió de Yoneda & Yoneda embedding & \\
+bihomfunctor (o bifunctor Hom) & hom functor, Hom bifunctor & $\Hom(-,-)$\\
+component (d'una transformació natural; femení) & component & $\eta_A$\\
+antiimatge & preimage, inverse image & $f^{-1}(B)$\\
+exhaustiu / essencialment exhaustiu & surjective / essentially surjective & \\
+\multicolumn{3}{@{}p{\linewidth}@{}}{\footnotesize En aquest llibre, \emph{exhaustiu} és el terme sistemàtic per a \emph{surjective}; \emph{essencialment exhaustiu} tradueix \emph{essentially surjective}.}\\[0.35em]
+transformació natural & natural transformation & $\eta\colon F\Rightarrow G$\\
+equivalència de categories & equivalence of categories & $\cat{C}\simeq\cat{D}$\\
+monomorfisme / epimorfisme & monomorphism / epimorphism & mono / epi\\
+objecte inicial / terminal & initial / terminal object & $0$ / $1$ (quan s'adopta aquesta notació)\\
+functor ple / fidel & full / faithful functor & \\
+imatge essencial & essential image & \\
+categoria d'elements & category of elements & $\textstyle\int P$\\
+categoria essencialment petita & essentially small category & \\
 quasiinvers (d'una equivalència) & quasi-inverse / pseudo-inverse & \\
 prefeix & presheaf & $\cat{Set}^{\cat{C}\op}$\\
 producte fibrat (pullback) & pullback & \\
@@ -43,5 +64,5 @@ semireticle implicatiu & implicative meet-semilattice & \\
 categoria cartesiana tancada & cartesian closed category & \\
 categoria regular & regular category & \\
 \hline
-\end{tabularx}
+\end{xltabular}
 \renewcommand{\arraystretch}{1.0}

@@ -1,14 +1,29 @@
 % Dades pròpies del llibre. Es carrega abans del preàmbul compartit.
-\title{Una introducció a la teoria de categories\texorpdfstring{\\[0.45em]{\large\normalfont Formació prèvia per aprendre lògica categòrica}}{}}
-\author{Miquel Àngel Perelló}
-% Data editorial fixa (reproduïble). Actualitzeu-la a cada versió publicada
-% en lloc de fer servir \today, que canvia a cada compilació.
-\date{Setembre de 2026 \textperiodcentered\ versió 1.6}
+% Una sola font de veritat per a la portada, la pàgina de crèdits i les
+% metadades del PDF. Actualitzeu versió i data a cada versió publicada.
+\newcommand{\llibretitol}{Una introducció a la teoria de categories}
+% El subtítol només surt a la portada; a la resta de llocs n'hi ha prou amb el títol.
+\newcommand{\llibresubtitol}{Formació prèvia per aprendre lògica categòrica}
+\newcommand{\llibreautor}{Miquel Àngel Perelló}
+\newcommand{\llibreversio}{1.7}
+% Els enllaços ja inclouen \url (no s'han d'embolcallar de nou).
+% Data editorial fixa (reproduïble), en lloc de \today.
+\newcommand{\llibredata}{Octubre de 2026}
+\newcommand{\llibreany}{2026}
+\newcommand{\llibreweb}{\url{https://aprendes.com/logcat/}}
+\newcommand{\llibrerepositori}{\url{https://github.com/maperello/aprendes}}
+\newcommand{\llibreerrates}{\url{https://github.com/maperello/aprendes/issues}}
+
+\title{\llibretitol\\[0.8em]\large\llibresubtitol}
+\author{\llibreautor}
+\date{\llibredata}
 
 % S'ha de cridar després de carregar hyperref (és a preamble.tex).
 \newcommand{\hypermetadata}{%
   \hypersetup{%
-    pdftitle={Una introducció a la teoria de categories. Formació prèvia per aprendre lògica categòrica},
-    pdfauthor={Miquel Àngel Perelló}%
+    pdftitle={\llibretitol},
+    pdfauthor={\llibreautor},
+    pdfsubject={Introducció a la teoria de categories orientada cap a la lògica categòrica. Versió \llibreversio\ (\llibredata). Llicència CC BY-SA 4.0},
+    pdfkeywords={teoria de categories, lògica categòrica, topos, Yoneda, adjuncions}%
   }%
 }

@@ -2,29 +2,178 @@
 \label{cap:yoneda}
 
 \begin{objectius}
-\apartat{Prerequisits} El bifunctor $\Hom$ (cap.~\ref{cap:functors}) i les transformacions naturals (cap.~\ref{cap:transformacions}); els functors representables s'introdueixen en aquest capítol.
-\apartat{Objectius} En acabar el capítol, el lector ha de saber: reconèixer una propietat universal com la representabilitat d'un functor; distingir l'objecte representant de la representació completa; enunciar i demostrar el lema de Yoneda; i deduir-ne que un objecte queda determinat, llevat d'isomorfisme, pels morfismes que hi arriben.
+\apartat{Prerequisits} Categories sobre i sota un objecte i dualitat (cap.~\ref{cap:categories}); homfunctors, bifunctor $\Hom$, prefeixos i la parella $\Free$, $U$ (cap.~\ref{cap:functors}); transformacions i isomorfismes naturals, i categories de functors, en particular la categoria de prefeixos (cap.~\ref{cap:transformacions}). No es pressuposa cap coneixement previ de representabilitat ni del lema de Yoneda.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item definir objectes inicials i terminals i demostrar-ne la unicitat corresponent;
+  \item construir i llegir categories coma en exemples senzills, i interpretar-hi dades universals com a objectes inicials o terminals;
+  \item definir una representació mitjançant un element universal i traduir-la a un isomorfisme natural amb un homfunctor;
+  \item distingir el functor representat, l'objecte representant, l'element universal i la representació completa;
+  \item definir la immersió de Yoneda, enunciar i demostrar el lema de Yoneda i seguir-ne explícitament la bijecció;
+  \item deduir que la immersió de Yoneda és plena i fidel i que un objecte queda determinat, llevat d'isomorfisme, pel seu functor representable.
+\end{itemize}
 \end{objectius}
 
 \section{Cap a les propietats universals}
 
-Al llarg dels capítols anteriors hem trobat, de passada, objectes caracteritzats no per la seva constitució interna sinó per la manera com es relacionen amb tots els altres: l'objecte terminal, cap al qual hi ha exactament una fletxa des de qualsevol objecte; l'objecte inicial, dual d'aquell; o el producte de dos objectes. En cada cas, l'objecte queda determinat \emph{llevat d'isomorfisme} per una condició que involucra tots els morfismes ---i, de fet, llevat d'un \emph{únic} isomorfisme compatible amb la dada universal, com precisarem tot seguit. Aquesta mena de condicions s'anomenen \textbf{propietats universals}, i són, potser, la contribució més característica de la teoria de categories.
+Amb les transformacions naturals vam completar, al capítol~\ref{cap:transformacions}, una torre de tres nivells: objectes i morfismes dins d'una categoria, functors entre categories, i transformacions naturals entre functors ---l'estructura que, amb les composicions vertical i horitzontal, fa de $\cat{Cat}$ una 2-categoria. És el marc en què es formulen les construccions més potents de la teoria, i les primeres construccions que estudiarem són les propietats universals.
 
-En aquest capítol precisem què és una propietat universal, la lliguem amb els homfunctors $\Hom(A,-)$ i $\Hom(\_,B)$ que vam introduir, i culminem amb el \emph{lema de Yoneda}, que fa explícita la idea que un objecte queda determinat pels morfismes que hi arriben o que en surten.
+Als capítols anteriors han aparegut, sempre com a exemples i sense tractar-los en
+detall, objectes i construccions definits no per la seva constitució interna sinó
+per la manera com es relacionen amb tots els altres. El producte de dos objectes
+$A$ i $B$ (subsecció~\ref{subsec:producte-coproducte}) es defineix per una condició
+d'aquest tipus: per a cada objecte $X$ i cada parell de morfismes $f\colon X\to A$
+i $g\colon X\to B$ existeix un \emph{únic} morfisme $u\colon X\to A\times B$ amb
+$\pi_1\comp u=f$ i $\pi_2\comp u=g$, és a dir, que fa commutar el diagrama
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=2.8em] {
+     & X & \\
+    A & A\times B & B \\
+  };
+  \draw[-{Stealth[scale=1.0]}] (m-1-2) -- node[above left] {$f$} (m-2-1);
+  \draw[-{Stealth[scale=1.0]}] (m-1-2) -- node[above right] {$g$} (m-2-3);
+  \draw[-{Stealth[scale=1.0]},dashed] (m-1-2) -- node[right] {$u$} (m-2-2);
+  \draw[-{Stealth[scale=1.0]}] (m-2-2) -- node[below] {$\pi_1$} (m-2-1);
+  \draw[-{Stealth[scale=1.0]}] (m-2-2) -- node[below] {$\pi_2$} (m-2-3);
+\end{tikzpicture}
+\]
+El coproducte es defineix per la condició dual, amb les fletxes girades. La categoria lliure $\Free(G)$ la satisfà també: un functor
+$\Free(G)\to\cat{D}$ queda determinat, de manera única, per un morfisme de grafs
+$G\to U(\cat{D})$ (subsecció~\ref{subsec:free-u}). I els objectes inicial i
+terminal, que fins ara només hem anomenat (secció~\ref{sec:dualitat}), en són el
+cas més senzill. Aquestes condicions, que quantifiquen sobre \emph{totes} les
+fletxes d'una categoria, s'anomenen \textbf{propietats
+universals}\index{propietat universal}, i són, potser, la contribució més
+característica de la teoria de categories. La seva virtut, que encara no hem demostrat en cap cas, és que determinen la \emph{dada universal} ---l'objecte juntament amb les fletxes que intervenen en la condició--- llevat d'un únic isomorfisme compatible. En particular, l'objecte subjacent queda determinat llevat d'isomorfisme, però pot admetre altres isomorfismes que no respectin la dada universal. Abans de donar-ne la forma general, les estudiem amb detall en dos
+casos: el més simple, el dels objectes terminals i inicials, que definim ara, i el
+de la construcció lliure, que ja coneixem.
+
+\subsection{El cas més simple: objectes terminals i inicials}
+
+El cas extrem, i el més fàcil de dibuixar, és el d'un objecte al qual s'arriba d'una
+\emph{única} manera des de qualsevol altre, o del qual es \emph{surt} d'una única
+manera cap a qualsevol altre. Diem que un objecte $T$ és \textbf{terminal} si per a
+cada objecte $X$ hi ha exactament una fletxa $X\to T$, i que un objecte $I$ és
+\textbf{inicial} si per a cada $X$ n'hi ha exactament una $I\to X$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.2em] { X & T \\ };
+  \draw[-{Stealth[scale=1.1]}, dashed] (m-1-1) -- node[above] {$\exists!$} (m-1-2);
+\end{tikzpicture}
+\qquad\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.2em] { I & X \\ };
+  \draw[-{Stealth[scale=1.1]}, dashed] (m-1-1) -- node[above] {$\exists!$} (m-1-2);
+\end{tikzpicture}
+\]
+En aquests diagrames seguim la convenció que ja vam introduir en presentar el producte
+(subsecció~\ref{subsec:producte-coproducte}): la \textbf{fletxa discontínua} assenyala
+el morfisme l'existència del qual afirma la propietat universal, i $\exists!$ abreuja
+\enquote{existeix un únic}; com que aquí el morfisme encara no té nom, hi escrivim
+directament $\exists!$. Cada diagrama es llegeix, doncs: per a tot $X$ existeix un únic
+morfisme cap a $T$ (respectivament, des de $I$).
+
+A $\cat{Set}$, per exemple, un objecte terminal és qualsevol conjunt d'un sol element i
+un objecte inicial és el conjunt buit. El que distingeix aquests objectes no és cap
+propietat dels seus elements, sinó la fletxa: la condició els fixa completament, fins
+al punt que dos objectes terminals qualssevol són isomorfs \emph{d'una única manera},
+com demostrarem tot seguit (proposició~\ref{prop:unicitat-terminal}). Aquesta és, en
+miniatura, una propietat universal: una condició sobre \emph{totes} les fletxes cap a
+un objecte ---o des d'ell--- que el determina llevat d'un únic isomorfisme. En aquest cas, l'isomorfisme és únic fins i tot com a isomorfisme d'objectes, perquè no hi ha cap dada addicional a preservar: entre dos objectes terminals només hi ha una fletxa en cada sentit. Escrivim
+encara $T$ i $I$, i no $1$ i $0$, a propòsit: la notació numèrica dona per fet que
+\enquote{l'} objecte terminal està ben determinat, cosa que només ens autoritzem a
+afirmar un cop provada aquesta unicitat. A la secció següent la demostrem i, aleshores
+sí, batejarem $T$ com a $1$ i $I$ com a $0$.
+
+\subsection{Un exemple ja conegut: la construcció lliure}\label{subsec:construccio-lliure}
+
+Un exemple menys trivial ja ha aparegut: la categoria lliure\index{categoria!lliure}
+$\Free(G)$ generada per un graf (seccions~\ref{sec:grafs-lliures}
+i~\ref{sec:functors-grafs}), i el seu cas d'un sol vèrtex, el monoide
+lliure\index{monoide!lliure}. Allà vam deixar pendent de justificar el nom
+\enquote{lliure}; ara podem llegir-lo com una propietat universal.
+
+La propietat posa en joc dues categories diferents, i convé tenir present en
+quina treballem a cada moment. D'una banda hi ha $\cat{Graph}$, on viuen els
+grafs i els morfismes de grafs; de l'altra, $\cat{Cat}$, on viuen les categories
+petites i els functors entre elles. Els functors del
+capítol~\ref{cap:functors}, $\Free\colon\cat{Graph}\to\cat{Cat}$ i
+$U\colon\cat{Cat}\to\cat{Graph}$, fan de pont entre tots dos nivells; no són
+fletxes de cap d'aquestes categories ---són functors entre categories grans---,
+sinó la manera de passar de l'una a l'altra. Així, $\Free(G)$ és un objecte de
+$\cat{Cat}$, mentre que $U(\Free(G))$, el seu graf subjacent, és un objecte de
+$\cat{Graph}$.
+
+La clau és una \textbf{inserció dels generadors}, el morfisme de grafs
+\[
+\eta_G\colon G\to U(\Free(G)),
+\]
+que deixa fixos els vèrtexs i envia cada aresta al camí de longitud~1
+corresponent. Aquesta inserció té la propietat següent: per a tota categoria
+petita $\cat{D}$ i tot morfisme de grafs $f\colon G\to U(\cat{D})$ ---una fletxa
+de $\cat{Graph}$, que tria un objecte de $\cat{D}$ per a cada vèrtex i un
+morfisme de $\cat{D}$ per a cada aresta, sense cap exigència sobre
+composicions---, existeix un \emph{únic} functor $\bar f\colon\Free(G)\to\cat{D}$
+---una fletxa de $\cat{Cat}$--- que estén $f$. Com que $f$ i $\bar f$ no viuen a
+la mateixa categoria, \enquote{estendre} no es pot expressar comparant-los
+directament: primer apliquem $U$ a $\bar f$, cosa que en dona el morfisme de
+grafs $U(\bar f)\colon U(\Free(G))\to U(\cat{D})$, i aleshores la condició és la
+igualtat $U(\bar f)\comp\eta_G=f$ entre morfismes de $\cat{Graph}$.
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.4em, row sep=2.8em] {
+    G & U(\Free(G)) \\
+      & U(\cat{D}) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$\eta_G$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$f$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$U(\bar f)$} (m-2-2);
+  \node[anchor=south, font=\small] at ([yshift=0.6em]m.north) {a $\cat{Graph}$};
+\end{tikzpicture}
+\qquad\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em] {
+    \Free(G) \\
+    \cat{D} \\
+  };
+  \draw[-{Stealth[scale=1.1]}, dashed] (m-1-1) -- node[right] {$\exists!\,\bar f$} (m-2-1);
+  \node[anchor=south, font=\small] at ([yshift=0.6em]m.north) {a $\cat{Cat}$};
+\end{tikzpicture}
+\]
+El triangle de l'esquerra commuta a $\cat{Graph}$. La fletxa discontínua, la
+que la propietat afirma que existeix i és única, és $\bar f$, i viu a $\cat{Cat}$;
+la seva imatge per $U$ és la que tanca el triangle.
+Aquesta és, precisament, la correspondència que vam establir al
+capítol~\ref{cap:functors}: definir un functor \emph{des de} $\Free(G)$ no demana res
+més que dir on van els generadors. La construcció $\Free(G)$ no s'ha \emph{definit} per
+aquesta propietat ---s'ha bastit amb camins---, però la propietat la
+\emph{caracteritza}: qualsevol altra categoria petita $\cat{F}$ dotada d'un morfisme de grafs
+$G\to U(\cat{F})$ amb la mateixa condició seria isomorfa a $\Free(G)$, i d'una única manera compatible amb la
+inserció. En això consisteix una propietat universal. Dit en el llenguatge que introduirem a la secció de representabilitat, $\Free(G)$ representa el functor
+\[
+\cat{D}\longmapsto\Hom_{\cat{Graph}}\bigl(G,U(\cat{D})\bigr),
+\]
+i $\eta_G\in\Hom_{\cat{Graph}}\bigl(G,U(\Free(G))\bigr)$ n'és l'\emph{element universal}. La formulació completa d'aquesta correspondència com a adjunció $\Free\dashv U$ arribarà al capítol d'adjuncions.
+
+En aquest capítol precisem què és una propietat universal, la lliguem amb els
+homfunctors $\Hom(A,-)$ i $\Hom(-,B)$ que vam introduir, i culminem amb el
+\emph{lema de Yoneda}, que fa explícita la idea que un objecte queda determinat pels
+morfismes que hi arriben o que en surten.
 
 \section{Objectes inicials i terminals}
 
 \begin{definicio}\index{objecte!inicial}\index{objecte!terminal}
 En una categoria $\cat{C}$:
 \begin{itemize}
-\item un objecte $0$ és \textbf{inicial} si per a cada objecte $X$ hi ha \emph{exactament un} morfisme $0\to X$;
-\item un objecte $1$ és \textbf{terminal} si per a cada objecte $X$ hi ha \emph{exactament un} morfisme $X\to 1$.
+\item un objecte $I$ és \textbf{inicial} si per a cada objecte $X$ hi ha \emph{exactament un} morfisme $I\to X$;
+\item un objecte $T$ és \textbf{terminal} si per a cada objecte $X$ hi ha \emph{exactament un} morfisme $X\to T$.
 \end{itemize}
 Les dues nocions són duals: un objecte inicial a $\cat{C}$ és un objecte terminal a $\cat{C}\op$.
 \end{definicio}
 
 \begin{exemple}
-A $\cat{Set}$, l'objecte inicial és el conjunt buit $\varnothing$ ---hi ha una única aplicació $\varnothing\to X$, la buida--- i l'objecte terminal és qualsevol conjunt d'un sol element $\{\ast\}$ ---hi ha una única aplicació $X\to\{\ast\}$. A $\cat{Grp}$, en canvi, el grup trivial és alhora inicial i terminal (un tal objecte s'anomena \emph{zero}). En un preordre vist com a categoria, un objecte inicial és un element mínim i un de terminal, un element màxim.
+A $\cat{Set}$, l'objecte inicial és el conjunt buit $\varnothing$ ---hi ha una única aplicació $\varnothing\to X$, la buida--- i l'objecte terminal és qualsevol conjunt d'un sol element $\{\ast\}$ ---hi ha una única aplicació $X\to\{\ast\}$. A $\cat{Grp}$, en canvi, el grup trivial és alhora inicial i terminal (un tal objecte s'anomena \emph{zero}). En un preordre vist com a categoria, un objecte inicial és un \emph{mínim global}, un element $m$ amb $m\le x$ per a tot $x$, i un de terminal, un \emph{màxim global}. No s'han de confondre amb els elements minimals o maximals, que només demanen que no hi hagi cap element estrictament per sota o per sobre.
 \end{exemple}
 
 La propietat clau, model de totes les propietats universals, és la unicitat.
@@ -34,8 +183,10 @@ Si una categoria té dos objectes terminals, aleshores són isomorfs, i l'isomor
 \end{proposicio}
 
 \begin{prova}
-Siguin $1$ i $1'$ dos objectes terminals. Com que $1'$ és terminal, hi ha un únic morfisme $f\colon 1\to 1'$; com que $1$ és terminal, hi ha un únic morfisme $g\colon 1'\to 1$. La composició $g\comp f\colon 1\to 1$ és un morfisme de $1$ a $1$; però $1$ és terminal, de manera que l'únic morfisme $1\to 1$ és $\id_1$, i per tant $g\comp f=\id_1$. Anàlogament $f\comp g=\id_{1'}$. Així $f$ és un isomorfisme, i és únic perquè ho és el morfisme $1\to 1'$. El cas inicial és dual.
+Siguin $T$ i $T'$ dos objectes terminals. Com que $T'$ és terminal, hi ha un únic morfisme $f\colon T\to T'$; com que $T$ és terminal, hi ha un únic morfisme $g\colon T'\to T$. La composició $g\comp f\colon T\to T$ és un morfisme de $T$ a $T$; però $T$ és terminal, de manera que l'únic morfisme $T\to T$ és $\id_T$, i per tant $g\comp f=\id_T$. Anàlogament $f\comp g=\id_{T'}$. Així $f$ és un isomorfisme, i és únic perquè ho és el morfisme $T\to T'$. El cas inicial és dual.
 \end{prova}
+
+Provada la unicitat llevat d'un únic isomorfisme, ja té sentit parlar de \enquote{l'} objecte terminal i \enquote{l'} objecte inicial. D'ara endavant els escrivim, respectivament, $1$ i $0$. Aquesta notació és estàndard i no pressuposa cap finitud: prové del fet que l'objecte terminal és el producte buit ---la unitat de $\times$--- i l'inicial el coproducte buit ---el zero de $+$---, com veurem al capítol~\ref{cap:limits}.
 
 \begin{observacio}
 Aquesta demostració és el patró que retrobarem sempre, però convé enunciar-lo amb la precisió justa. Dues \emph{dades universals} del mateix tipus ---dos objectes terminals, dos productes $(P,p_1,p_2)$ i $(Q,q_1,q_2)$, dues representacions--- són isomorfes mitjançant un \emph{únic} isomorfisme compatible amb \emph{tota} la dada universal (les projeccions, la representació, etc.). Els objectes \emph{subjacents} són, per tant, isomorfs; però l'isomorfisme entre els objectes \emph{nus}, un cop oblidada la dada, no ha de ser únic: un producte $P$ pot admetre automorfismes no trivials que no respecten les projeccions. En el cas dels objectes terminals i inicials no hi ha dada addicional a preservar, i per això l'isomorfisme és únic sense més (proposició~\ref{prop:unicitat-terminal}). Amb aquesta cautela parlem de \enquote{l'} objecte terminal, \enquote{el} producte, etc.: la unicitat \emph{compatible amb la dada} és el que dona sentit a caracteritzar objectes per la seva propietat universal en lloc de per una construcció concreta.
@@ -43,7 +194,7 @@ Aquesta demostració és el patró que retrobarem sempre, però convé enunciar-
 
 \section{Categories coma}\label{sec:coma}\index{categoria!coma}
 
-Abans de continuar val la pena introduir una construcció que unifica diverses coses que hem trobat de passada ---les categories slice, i ben aviat els cons sobre un diagrama--- i que permet dir amb precisió què vol dir que un objecte és \enquote{universal}: n'hi haurà prou que sigui \emph{inicial} o \emph{terminal} en una categoria adequada.
+Abans de continuar val la pena introduir una construcció que unifica diverses coses que hem trobat de passada ---les categories sobre i sota un objecte, i ben aviat els cons sobre un diagrama--- i que permet dir amb precisió què vol dir que un objecte és \enquote{universal}: n'hi haurà prou que sigui \emph{inicial} o \emph{terminal} en una categoria adequada.
 
 \begin{definicio}[Categoria coma]\index{categoria!coma}
 \label{def:coma}
@@ -54,13 +205,13 @@ Siguin $S\colon\cat{A}\to\cat{C}$ i $T\colon\cat{B}\to\cat{C}$ dos functors amb 
   \[
   \begin{tikzpicture}[baseline=(m.center)]
     \matrix (m) [matrix of math nodes, column sep=3em, row sep=2.4em] {
-      S(A) & T(B) \\
-      S(A') & T(B') \\
+      S(A) & S(A') \\
+      T(B) & T(B') \\
     };
-    \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
-    \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$S(a)$} (m-2-1);
-    \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$T(b)$} (m-2-2);
-    \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$f'$} (m-2-2);
+    \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$S(a)$} (m-1-2);
+    \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$f$} (m-2-1);
+    \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$f'$} (m-2-2);
+    \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$T(b)$} (m-2-2);
   \end{tikzpicture}
   \]
   commuta a $\cat{C}$, és a dir, $T(b)\comp f=f'\comp S(a)$.
@@ -68,36 +219,344 @@ Siguin $S\colon\cat{A}\to\cat{C}$ i $T\colon\cat{B}\to\cat{C}$ dos functors amb 
 La composició i les identitats es fan component a component.
 \end{definicio}
 
+\begin{observacio}[Sobre el nom i la notació]\index{categoria!coma!notació}
+El concepte i el nom es deuen a Lawvere, que a la seva tesi doctoral (1963)
+escrivia aquesta categoria $(S,T)$, per analogia amb la notació $(A,B)$ dels
+homconjunts: els objectes de la categoria coma són, en efecte, morfismes de
+$S(A)$ a $T(B)$, una mena d'\enquote{homconjunt entre functors}. D'aquí ve el
+nom de \emph{categoria coma}, que ha sobreviscut tot i que la coma, usada com a
+operador, es prestava a confusió i ha estat substituïda. La notació
+$(S\downarrow T)$, que és la de Mac Lane~\cite{maclane} i la que seguim, conserva
+els parèntesis de l'original, que a més delimiten els operands quan són
+expressions compostes. La fletxa es pot llegir com un dibuix dels objectes: al
+quadrat anterior, cada objecte $f$ és una fletxa que \emph{baixa} de la fila de
+$S$ a la fila de $T$. També es troben les notacions $S\downarrow T$, sense
+parèntesis, i $(S/T)$, que generalitza la notació $\cat{C}/A$ de les categories
+sobre un objecte (exemple següent).
+\end{observacio}
+
 La notació més freqüent fixa un dels functors en un objecte. Si $\cat{1}$ és la categoria terminal (un objecte i la seva identitat) i $C$ és un objecte de $\cat{C}$, escrivim $C$ també per al functor $\cat{1}\to\cat{C}$ que el tria. Aleshores:
 
-\begin{exemple}[Slices i coslices com a categories coma]\index{categoria!slice}\index{categoria!coslice}
-Prenem $S=\id_{\cat{C}}$ i $T=C\colon\cat{1}\to\cat{C}$. Un objecte de $(\id_{\cat{C}}\downarrow C)$ és una terna $(A,\ast,f)$ amb $f\colon A\to C$, és a dir, simplement un morfisme cap a $C$; un morfisme és un triangle commutatiu sobre $C$. Recuperem exactament la categoria slice $\cat{C}/C$. Dualment, $(C\downarrow\id_{\cat{C}})$ és la categoria coslice $C/\cat{C}$ dels morfismes que \emph{surten} de $C$. Les slices i coslices són, doncs, els casos més simples de categoria coma.
+\begin{exemple}[Categories sobre i sota un objecte com a categories coma]\index{categoria!sobre un objecte}\index{categoria!sota un objecte}\label{ex:slice-coma}
+Prenem $S=\id_{\cat{C}}$ i $T=C\colon\cat{1}\to\cat{C}$. Un objecte de $(\id_{\cat{C}}\downarrow C)$ és una terna $(A,\ast,f)$ amb $f\colon A\to C$, és a dir, simplement un morfisme cap a $C$. Un morfisme $(A,\ast,f)\to(A',\ast,f')$ és una parella $(a,\id_\ast)$ amb $a\colon A\to A'$ tal que $f'\comp a=f$ (el quadrat de la definició, amb $T(\id_\ast)=\id_C$), és a dir, un triangle commutatiu sobre $C$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=1.6em, row sep=2.6em] {
+    A & & A' \\
+      & C &  \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$a$} (m-1-3);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$f$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-3) -- node[below right] {$f'$} (m-2-2);
+\end{tikzpicture}
+\]
+Recuperem exactament la categoria $\cat{C}/C$ de $\cat{C}$ sobre $C$. Dualment, $(C\downarrow\id_{\cat{C}})$ és la categoria $C/\cat{C}$ de $\cat{C}$ sota $C$, la dels morfismes que \emph{surten} de $C$. Les categories sobre i sota un objecte són, doncs, els casos més simples de categoria coma.
 \end{exemple}
 
-\begin{exemple}[Objectes universals com a inicials o terminals]
-Molts dels objectes que hem caracteritzat per una propietat universal són, precisament, objectes inicials o terminals d'una categoria coma adient. Per exemple, un objecte terminal de la slice $\cat{C}/C$ és un objecte final entre tots els morfismes cap a $C$; i, dualment, un objecte inicial de la coslice $C/\cat{C}$ és l'objecte òptim entre els morfismes que surten de $C$. Aquesta és la lectura que unifica les propietats universals: \emph{ser universal és ser inicial o terminal en una categoria coma}. Ho retrobarem tot seguit en definir les propietats universals com a representabilitat, i al capítol següent en veure un límit com un objecte terminal a la categoria dels cons.
-\end{exemple}
+\begin{exemple}[Objectes universals com a inicials o terminals]\label{ex:universal-coma}
+Fem precís, en el cas més senzill, l'eslògan que motiva aquesta secció. Fixem
+un objecte $C$ d'una categoria localment petita $\cat{C}$ i considerem el
+prefeix $\Hom(-,C)\colon\cat{C}\op\to\cat{Set}$ (definició~\ref{def:homfunctors}),
+que envia cada objecte $A$ a $\Hom(A,C)$ i cada morfisme $h\colon A\to A'$ a la
+precomposició, que amb la notació~\ref{not:hom-morfismes} escrivim
+$\Hom(h,C)=h^*$:
+\[
+\Hom(h,C)\colon\Hom(A',C)\to\Hom(A,C),\qquad x'\mapsto x'\comp h.
+\]
+La categoria $\cat{C}/C=(\id_{\cat{C}}\downarrow C)$ de l'exemple anterior es
+descriu només amb aquest functor. Identificant cada terna $(A,\ast,x)$ amb la
+parella $(A,x)$:
+\begin{itemize}
+  \item un \textbf{objecte} és una parella $(A,x)$ amb $A$ objecte de $\cat{C}$ i
+  $x\in\Hom(A,C)$;
+  \item un \textbf{morfisme} $(A,x)\to(A',x')$ és un morfisme $h\colon A\to A'$
+  de $\cat{C}$ tal que
+  \[
+    \Hom(h,C)(x')=x,
+    \qquad\text{és a dir,}\qquad
+    x'\comp h=x,
+  \]
+  que és el triangle commutatiu sobre $C$:
+  \[
+  \begin{tikzpicture}[baseline=(m.center)]
+    \matrix (m) [matrix of math nodes, column sep=1.6em, row sep=2.6em] {
+      A & & A' \\
+        & C &  \\
+    };
+    \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$h$} (m-1-3);
+    \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$x$} (m-2-2);
+    \draw[-{Stealth[scale=1.1]}] (m-1-3) -- node[below right] {$x'$} (m-2-2);
+  \end{tikzpicture}
+  \]
+\end{itemize}
 
-\begin{observacio}[Els cons són objectes d'una categoria coma]\index{con}
-Anticipem una idea del capítol de límits. Donat un diagrama $D\colon\cat{I}\to\cat{C}$, un \textbf{con} sobre $D$ amb vèrtex $A$ és una família compatible de morfismes $A\to D_i$; això és exactament un objecte de la categoria coma $(\Delta\downarrow D)$, on $\Delta\colon\cat{C}\to\cat{C}^{\cat{I}}$ és el functor diagonal que envia $A$ al diagrama constant. El \emph{límit} de $D$ serà l'objecte terminal d'aquesta categoria de cons, i el colímit, l'objecte inicial de la categoria de cocons. La categoria coma dona, doncs, el llenguatge comú per a slices, cons i objectes universals.
-\end{observacio}
+\emph{Afirmació: $(C,\id_C)$ és un objecte terminal de $\cat{C}/C$.} Sigui
+$(A,x)$ un objecte qualsevol. Un morfisme $(A,x)\to(C,\id_C)$ és un
+$h\colon A\to C$ amb $\Hom(h,C)(\id_C)=x$. Com que
+$\Hom(h,C)(\id_C)=\id_C\comp h=h$, la condició diu exactament $h=x$. Per tant
+existeix un morfisme $(A,x)\to(C,\id_C)$, i només un: $h=x$.
+
+Llegit en termes del functor, això diu que per a cada objecte $A$ l'aplicació
+\[
+\Hom(A,C)\longrightarrow\Hom(A,C),\qquad h\longmapsto\Hom(h,C)(\id_C),
+\]
+és bijectiva (de fet, és la identitat): tot element $x$ de qualsevol $\Hom(A,C)$
+s'obté d'un \emph{únic} element distingit, $\id_C\in\Hom(C,C)$, aplicant-hi
+$\Hom(h,C)$ per a un \emph{únic} $h$. Aquesta és precisament la forma de la
+definició~\ref{def:representable} de la secció següent: $(C,\id_C)$ és una
+representació de $\Hom(-,C)$, amb element universal $\id_C$. Allà veurem
+(observació~\ref{obs:representacio-inicial}) que, per a qualsevol prefeix $P$
+sobre $\cat{C}$ (definició~\ref{def:prefeix}), ser una representació de $P$ equival a ser un
+objecte inicial d'una certa categoria coma construïda a partir de $P$; per a
+$P=\Hom(-,C)$ aquesta categoria és $(\cat{C}/C)\op$, i ser-hi inicial és ser
+terminal a $\cat{C}/C$.
+
+Dualment, amb el homfunctor covariant $\Hom(C,-)$, $(C,\id_C)$ és un objecte
+inicial de $C/\cat{C}$: un morfisme $(C,\id_C)\to(A,x)$ és un $h\colon C\to A$
+amb $\Hom(C,h)(\id_C)=h\comp\id_C=x$, és a dir, $h=x$.
+
+Un cas menys trivial és la construcció lliure de la
+subsecció~\ref{subsec:construccio-lliure}. Sigui $G$ un graf, vist com a functor
+$G\colon\cat{1}\to\cat{Graph}$, i sigui $U\colon\cat{Cat}\to\cat{Graph}$ el
+functor oblit. Un objecte de la categoria coma $(G\downarrow U)$ és una parella
+$(\cat{D},f)$ formada per una categoria petita $\cat{D}$ i un morfisme de grafs
+$f\colon G\to U(\cat{D})$; un morfisme $(\cat{D},f)\to(\cat{D}',f')$ és un
+functor $F\colon\cat{D}\to\cat{D}'$ amb $U(F)\comp f=f'$. Que
+$(\Free(G),\eta_G)$ sigui un objecte inicial de $(G\downarrow U)$ vol dir que
+per a cada $(\cat{D},f)$ hi ha un únic functor $\bar f\colon\Free(G)\to\cat{D}$
+amb $U(\bar f)\comp\eta_G=f$: és, literalment, la propietat universal que hi
+vam enunciar.
+
+Aquests casos fan precís l'eslògan que unifica les propietats universals:
+\emph{ser universal és ser inicial o terminal en una categoria coma adient}. Ho
+retrobarem al capítol següent: un límit és un objecte terminal de la categoria dels
+cons, que és una categoria coma, i un colímit, un objecte inicial de la dels cocons
+(observació~\ref{obs:cons-coma}).
+\end{exemple}
 
 \section{Propietats universals com a representabilitat}
 
-Podem reformular aquestes idees amb el llenguatge dels functors representables. Recordem que, en una categoria localment petita, cada objecte $A$ determina el functor $\Hom(-,A)\colon\cat{C}\op\to\cat{Set}$ i el functor $\Hom(A,-)\colon\cat{C}\to\cat{Set}$.
+Podem reformular aquestes idees amb el llenguatge dels functors representables. Recordem que, en una categoria localment petita, cada objecte $A$ determina el prefeix $\Hom(-,A)\colon\cat{C}\op\to\cat{Set}$ i el functor covariant $\Hom(A,-)\colon\cat{C}\to\cat{Set}$.
 
-Observem primer com es llegeixen les nocions anteriors. Que $1$ sigui terminal vol dir que $\Hom(X,1)$ té exactament un element per a cada $X$; és a dir, que el functor $\Hom(-,1)$ és isomorf al functor constant amb valor un conjunt d'un sol element. Dualment, $0$ és inicial quan $\Hom(0,-)$ és \emph{naturalment isomorf} al functor constant amb valor un conjunt d'un sol element; no és literalment \emph{igual} si els singletons $\Hom(0,X)$ no s'han identificat per definició amb un mateix singleton.
+Observem primer com es llegeixen les nocions anteriors. Que $1$ sigui terminal vol dir que $\Hom(X,1)$ té exactament un element per a cada $X$; és a dir, que el functor $\Hom(-,1)$ és \emph{naturalment isomorf} al prefeix constant $\Delta_{\{\ast\}}\colon\cat{C}\op\to\cat{Set}$ (exemple~\ref{ex:functor-constant}). Les components de l'isomorfisme són les úniques bijeccions $\Hom(X,1)\to\{\ast\}$, i la naturalitat és automàtica, perquè tots els quadrats acaben en un conjunt d'un sol element. Dualment, $0$ és inicial quan $\Hom(0,-)$ és naturalment isomorf al functor constant $\Delta_{\{\ast\}}\colon\cat{C}\to\cat{Set}$. En cap dels dos casos no és una igualtat literal: els conjunts d'un sol element $\Hom(X,1)$, i també els $\Hom(0,X)$, són conjunts diferents per a objectes $X$ diferents, i no s'han identificat per definició amb $\{\ast\}$.
 
-Aquesta és la forma general d'una propietat universal: un objecte satisfà una propietat universal quan un cert functor cap a $\cat{Set}$ \emph{el representa}.
+Una forma general de les propietats universals que estudiarem és la representabilitat d'un functor cap a $\cat{Set}$: un objecte, juntament amb una dada universal, satisfà una propietat d'aquesta mena quan \emph{representa} el functor que recull les dades del problema.
 
-\begin{definicio}\index{propietat universal}\index{functor!representable}\index{element universal}
+\begin{definicio}[Representació]\index{propietat universal}\index{functor!representable}\index{element universal}
 \label{def:representable}
-Sigui $P\colon\cat{C}\op\to\cat{Set}$ un functor. Una \textbf{representació} de $P$ és una parella $(A,u)$ formada per un objecte $A$ de $\cat{C}$ i un element $u\in P(A)$, l'\textbf{element universal}, tal que per a cada objecte $X$ i cada $x\in P(X)$ existeix un únic morfisme $f\colon X\to A$ amb
+Sigui $\cat{C}$ una categoria localment petita.
+\begin{enumerate}
+\item Sigui $F\colon\cat{C}\to\cat{Set}$ un functor covariant. Una \textbf{representació} de $F$ és una parella $(A,u)$ formada per un objecte $A$ de $\cat{C}$ i un element $u\in F(A)$, l'\textbf{element universal}, tal que per a cada objecte $X$ i cada $x\in F(X)$ existeix un únic morfisme $f\colon A\to X$ amb
+\[
+F(f)(u)=x.
+\]
+\item Sigui $P$ un prefeix sobre $\cat{C}$ (definició~\ref{def:prefeix}). Una \textbf{representació} de $P$ és una parella $(A,u)$ formada per un objecte $A$ de $\cat{C}$ i un element $u\in P(A)$, l'\textbf{element universal}, tal que per a cada objecte $X$ i cada $x\in P(X)$ existeix un únic morfisme $f\colon X\to A$ amb
 \[
 P(f)(u)=x.
 \]
-Equivalentment, la transformació natural $\alpha\colon\Hom(-,A)\to P$ de components $\alpha_X(f)=P(f)(u)$ és un isomorfisme natural. Es diu aleshores que $P$ és \textbf{representable}, que $A$ n'és l'objecte representant i que $(A,u)$ n'és una representació. Anàlogament per a functors covariants $\cat{C}\to\cat{Set}$ i el functor $\Hom(A,-)$.
+\end{enumerate}
+En tots dos casos es diu que el functor és \textbf{representable}, que $A$ n'és l'\textbf{objecte representant} i que $(A,u)$ n'és una representació.
 \end{definicio}
+
+Amb la noció d'isomorfisme natural (capítol~\ref{cap:transformacions}), la representabilitat es pot formular sense esmentar l'element universal.
+
+\begin{proposicio}[Representabilitat com a isomorfisme natural]\label{prop:representable-iso}\index{functor!representable}
+Sigui $\cat{C}$ una categoria localment petita.
+\begin{enumerate}
+\item Un functor $F\colon\cat{C}\to\cat{Set}$ és representable si i només si és naturalment isomorf al functor $\Hom_{\cat{C}}(S,-)\colon\cat{C}\to\cat{Set}$ per a algun objecte $S$ de $\cat{C}$. En aquest cas, $S$ és un objecte representant de $F$.
+\item Un prefeix $P\colon\cat{C}\op\to\cat{Set}$ és representable si i només si és naturalment isomorf al prefeix $\Hom_{\cat{C}}(-,S)\colon\cat{C}\op\to\cat{Set}$ per a algun objecte $S$ de $\cat{C}$. De nou, en aquest cas $S$ és un objecte representant de $P$.
+\end{enumerate}
+Més precisament, les representacions $(S,u)$ es corresponen amb els isomorfismes naturals
+\[
+\alpha\colon\Hom(S,-)\Rightarrow F
+\qquad\text{o bé}\qquad
+\alpha\colon\Hom(-,S)\Rightarrow P,
+\]
+segons el cas, mitjançant $u=\alpha_S(\id_S)$ i $\alpha_X(f)=F(f)(u)$, respectivament $\alpha_X(f)=P(f)(u)$.
+\end{proposicio}
+
+\begin{prova}
+Fem primer el cas~(1). Els quadrats de naturalitat segueixen el criteri del capítol~\ref{cap:transformacions}: l'acció dels functors sobre un morfisme, en horitzontal (a dalt l'homfunctor, a baix $F$), i les components de la transformació, en vertical. Al costat de cada quadrat hi ha el camí que hi fa un element: les fletxes $\mapsto$ indiquen on va a parar cada element.
+
+\emph{D'una representació a un isomorfisme natural.} Sigui $(S,u)$ una representació de $F$ i definim $\alpha_X\colon\Hom(S,X)\to F(X)$ per $\alpha_X(f)=F(f)(u)$. Per veure que $\alpha\colon\Hom(S,-)\Rightarrow F$ és natural, cal que per a cada $g\colon X\to Y$ commuti el quadrat següent, on l'acció de l'homfunctor sobre $g$ és la postcomposició $g_*=\Hom(S,g)$ (notació~\ref{not:hom-morfismes}):
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=3.6em] {
+    \Hom(S,X) & \Hom(S,Y) \\
+    F(X) & F(Y) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$g_*$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$\alpha_X$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\alpha_Y$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$F(g)$} (m-2-2);
+\end{tikzpicture}
+\qquad\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=2.4em] {
+    f & g\comp f \\
+    F(f)(u) & F(g)\bigl(F(f)(u)\bigr) \\
+  };
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-1-1) -- (m-1-2);
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-1-1) -- (m-2-1);
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-1-2) -- (m-2-2);
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-2-1) -- (m-2-2);
+\end{tikzpicture}
+\]
+Seguint un element $f$ pels dos camins, per dalt i després avall s'obté $\alpha_Y(g\comp f)=F(g\comp f)(u)$, i avall i després per baix s'obté $F(g)\bigl(F(f)(u)\bigr)$. Totes dues coincideixen perquè $F$ preserva la composició:
+\[
+\alpha_Y(g\comp f)=F(g\comp f)(u)=F(g)\bigl(F(f)(u)\bigr)=F(g)\bigl(\alpha_X(f)\bigr).
+\]
+La condició de representació diu exactament que cada $\alpha_X$ és bijectiva, i per la proposició~\ref{prop:iso-natural-components} $\alpha$ és un isomorfisme natural.
+
+\emph{D'un isomorfisme natural a una representació.} Recíprocament, sigui $\alpha\colon\Hom(S,-)\Rightarrow F$ un isomorfisme natural i posem $u=\alpha_S(\id_S)\in F(S)$. Per a cada $f\colon S\to X$, escrivim el quadrat de naturalitat de $\alpha$ respecte de $f$ i hi seguim l'element $\id_S$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=3.6em] {
+    \Hom(S,S) & \Hom(S,X) \\
+    F(S) & F(X) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f_*$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$\alpha_S$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\alpha_X$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$F(f)$} (m-2-2);
+\end{tikzpicture}
+\qquad\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=2.4em] {
+    \id_S & f \\
+    u & F(f)(u) \\
+  };
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-1-1) -- (m-1-2);
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-1-1) -- (m-2-1);
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-1-2) -- (m-2-2);
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-2-1) -- (m-2-2);
+\end{tikzpicture}
+\]
+Per dalt, $\id_S$ va a $f\comp\id_S=f$ i després a $\alpha_X(f)$; avall, va a $u$ i després a $F(f)(u)$. La commutativitat del quadrat dona, doncs,
+\[
+\alpha_X(f)=\alpha_X(f\comp\id_S)=F(f)\bigl(\alpha_S(\id_S)\bigr)=F(f)(u).
+\]
+Això diu que tota la transformació $\alpha$ queda determinada pel sol element $u$. Com que $\alpha_X$ és bijectiva (proposició~\ref{prop:iso-natural-components}), per a cada $x\in F(X)$ hi ha un únic $f\colon S\to X$ amb $F(f)(u)=x$: $(S,u)$ és una representació de $F$.
+
+Les dues construccions són inverses l'una de l'altra. Partint de $u$, la transformació $\alpha$ torna $\alpha_S(\id_S)=F(\id_S)(u)=u$; i partint de $\alpha$, la igualtat anterior diu que $\alpha$ és precisament la transformació $f\mapsto F(f)(u)$ construïda a partir de $u=\alpha_S(\id_S)$.
+
+El cas~(2) és el cas~(1) aplicat a $\cat{C}\op$, però val la pena veure com canvia el diagrama clau. Ara $\alpha\colon\Hom(-,S)\Rightarrow P$, els morfismes arriben a $S$ en lloc de sortir-ne, i l'acció de l'homfunctor sobre un morfisme és la precomposició $f^*=\Hom(f,S)$. Per a cada $f\colon X\to S$, el quadrat de naturalitat respecte de $f$, amb l'element $\id_S$, és
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=3.6em] {
+    \Hom(S,S) & \Hom(X,S) \\
+    P(S) & P(X) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f^*$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$\alpha_S$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\alpha_X$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$P(f)$} (m-2-2);
+\end{tikzpicture}
+\qquad\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=2.4em] {
+    \id_S & f \\
+    u & P(f)(u) \\
+  };
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-1-1) -- (m-1-2);
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-1-1) -- (m-2-1);
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-1-2) -- (m-2-2);
+  \draw[{Bar[width=4pt]}-{Stealth[scale=1.1]}] (m-2-1) -- (m-2-2);
+\end{tikzpicture}
+\]
+on ara, per dalt, $\id_S$ va a $\id_S\comp f=f$. Com que els functors són contravariants, les fletxes horitzontals van de l'objecte $S$ a l'objecte $X$, en sentit contrari a $f\colon X\to S$. Se'n dedueix $\alpha_X(f)=P(f)(u)$, i la resta de l'argument és el mateix.
+\end{prova}
+
+Les dues nocions són duals l'una de l'altra. Un prefeix sobre $\cat{C}$ és un functor covariant $\cat{C}\op\to\cat{Set}$, i com que un morfisme $X\to A$ de $\cat{C}$ és un morfisme $A\to X$ de $\cat{C}\op$, una representació d'un prefeix en el sentit~(2) és exactament una representació en el sentit~(1) del functor covariant corresponent sobre $\cat{C}\op$. Per això, tot el que demostrem per a un dels dos casos val, per dualitat, per a l'altre. Per exemple, $0$ és inicial si i només si $(0,\ast)$ és una representació del functor covariant $\Delta_{\{\ast\}}$, i $1$ és terminal si i només si $(1,\ast)$ és una representació del prefeix $\Delta_{\{\ast\}}$.
+
+\begin{observacio}[Sondes i pantalles]\label{obs:sondes-pantalles}\index{functor!representable!interpretació}
+Els functors representables admeten una lectura intuïtiva. El functor representable $\Hom_{\cat{C}}(S,-)\colon\cat{C}\to\cat{Set}$ pren un objecte $X$ i en dona el conjunt $\Hom_{\cat{C}}(S,X)$ de fletxes de $S$ a $X$. Les característiques de $X$ que extreu són exactament totes les maneres possibles de fer arribar $S$ dins de $X$, com si $S$ fos una \emph{sonda} amb què explorem l'estructura de $X$. Dir que un functor $F$ és representable per $S$ és dir que el que $F$ mesura de cada objecte és precisament el que en veu aquesta sonda.
+
+Dualment, el prefeix representable $\Hom_{\cat{C}}(-,S)\colon\cat{C}\op\to\cat{Set}$ pren un objecte $X$ i en dona el conjunt $\Hom_{\cat{C}}(X,S)$ de fletxes de $X$ a $S$. Les característiques de $X$ que extreu són totes les maneres possibles d'enviar $X$ a $S$, o totes les observacions de $X$ amb valors a $S$: podem pensar $S$ com una \emph{pantalla} sobre la qual $X$ es projecta de moltes maneres diferents.
+\end{observacio}
+
+Vegem-ne exemples. En tots, l'isomorfisme natural es pot comprovar directament o, equivalentment, n'hi ha prou de donar l'element universal (proposició~\ref{prop:representable-iso}).
+
+\begin{exemple}[Vèrtexs i arestes d'un graf]\label{ex:rep-grafs}\index{functor!representable!a Graph}
+A l'exemple~\ref{ex:homfunctor-grafs} vam veure que els functors $\cat{Graph}\to\cat{Set}$ \enquote{conjunt de vèrtexs} i \enquote{conjunt d'arestes} són naturalment isomorfs a $\Hom_{\cat{Graph}}(\mathbf V,-)$ i a $\Hom_{\cat{Graph}}(\mathbf E,-)$. Són, doncs, representables, amb objectes representants el graf $\mathbf V$ d'un sol vèrtex i el graf $\mathbf E$ d'una sola aresta. Els elements universals són l'únic vèrtex $\ast$ de $\mathbf V$ i l'única aresta $e$ de $\mathbf E$: tot vèrtex d'un graf $G$ és la imatge de $\ast$ per un únic morfisme $\mathbf V\to G$, i tota aresta és la imatge de $e$ per un únic morfisme $\mathbf E\to G$. Són sondes en el sentit literal: $\mathbf V$ detecta els vèrtexs i $\mathbf E$ detecta les arestes.
+\end{exemple}
+
+\begin{exemple}[Functors oblit de $\cat{Grp}$, $\cat{Mon}$ i $\cat{Vect}_{\mathbb K}$]\label{ex:rep-grp}\index{functor!representable!oblit}
+El functor oblit $U\colon\cat{Grp}\to\cat{Set}$ és representable, amb objecte representant el grup additiu $\mathbb Z$ i element universal $1\in U(\mathbb Z)$. En efecte, un homomorfisme $\varphi\colon\mathbb Z\to G$ queda determinat per $g=\varphi(1)$, perquè
+\[
+\varphi(n)=g^n\qquad\text{per a tot } n\in\mathbb Z;
+\]
+i, recíprocament, per a cada $g\in G$ l'aplicació $n\mapsto g^n$ és un homomorfisme. Per tant, $\varphi\mapsto\varphi(1)$ és una bijecció
+\[
+\Hom_{\cat{Grp}}(\mathbb Z,G)\;\cong\;U(G),
+\]
+natural en $G$, perquè per a un homomorfisme $\psi\colon G\to H$ es té $(\psi\comp\varphi)(1)=\psi(\varphi(1))$.
+
+El mateix argument val per als altres dos models algebraics del capítol~\ref{cap:categories}. El functor oblit $\cat{Mon}\to\cat{Set}$ és representable pel monoide $(\mathbb N,+,0)$ amb element universal $1$: un homomorfisme de monoides $h\colon\mathbb N\to M$ queda determinat per $m=h(1)$, perquè $h(n)=m\ast\cdots\ast m$ ($n$ vegades, i $h(0)$ el neutre), i per a cada $m$ aquesta fórmula defineix un homomorfisme. El functor oblit $\cat{Vect}_{\mathbb K}\to\cat{Set}$ és representable per $\mathbb K$, vist com a espai vectorial sobre si mateix, amb element universal $1$: una aplicació lineal $T\colon\mathbb K\to V$ queda determinada per $v=T(1)$, perquè $T(\lambda)=\lambda v$, i per a cada $v\in V$ l'aplicació $\lambda\mapsto\lambda v$ és lineal.
+
+En els tres casos l'objecte representant és l'estructura \enquote{generada lliurement per un sol element}, i com a sonda veu exactament els elements de cada objecte.
+\end{exemple}
+
+\begin{exemple}[El punt a $\cat{Set}$]\label{ex:rep-punt}
+El functor identitat de $\cat{Set}$ és representable per un conjunt d'un sol element $\{\ast\}$, amb element universal $\ast$: una aplicació $\{\ast\}\to X$ és el mateix que un element de $X$, i $\Hom_{\cat{Set}}(\{\ast\},X)\cong X$ naturalment en $X$. El punt és la sonda que veu els elements d'un conjunt.
+\end{exemple}
+
+\begin{exemple}[Subconjunts i valors de veritat]\label{ex:rep-parts}\index{functor!representable!de parts}
+El functor de parts $\mathcal P\colon\cat{Set}\op\to\cat{Set}$ és un prefeix representable: a l'exemple~\ref{ex:functor-parts} vam veure que les funcions característiques donen bijeccions canòniques $\mathcal P(X)\cong\Hom_{\cat{Set}}(X,\{0,1\})$ sota les quals l'antiimatge correspon a la precomposició. En el llenguatge del capítol~\ref{cap:transformacions}, això diu exactament que $\mathcal P\cong\Hom_{\cat{Set}}(-,\{0,1\})$ naturalment: el quadrat de naturalitat és la igualtat $\chi_B\comp f=\chi_{f^{-1}(B)}$ (exemple~\ref{ex:isos-naturals-cap2}). L'objecte representant és el conjunt $\{0,1\}$ de valors de veritat, i l'element universal és $\{1\}\in\mathcal P(\{0,1\})$, el subconjunt dels valors \enquote{cert}: per a cada $B\subseteq X$, l'única aplicació $\chi\colon X\to\{0,1\}$ amb $\chi^{-1}(\{1\})=B$ és la funció característica $\chi_B$.
+
+Aquí $\{0,1\}$ és la pantalla. Un subconjunt $B\subseteq X$ és el mateix que un predicat sobre $X$, i el predicat és una observació de $X$ amb valors de veritat: $\chi_B(x)=1$ vol dir que $x$ compleix el predicat. Que els subconjunts es puguin classificar així, per morfismes cap a un objecte fix de valors de veritat, és una idea que tornarà amb força al capítol~\ref{cap:topos}, on l'objecte $\{0,1\}$ es generalitza en el \emph{classificador de subobjectes} $\Omega$ (definició~\ref{def:classificador}).
+\end{exemple}
+
+\begin{exemple}[El producte com a representació]\label{ex:rep-producte}\index{producte!com a representació}
+Siguin $A$ i $B$ objectes d'una categoria localment petita $\cat{C}$. L'assignació
+\[
+X\longmapsto\Hom(X,A)\times\Hom(X,B),
+\qquad
+f\longmapsto\bigl((a,b)\mapsto(a\comp f,\,b\comp f)\bigr),
+\]
+és un prefeix sobre $\cat{C}$: preserva identitats i, per a $f\colon X\to Y$ i $g\colon Y\to Z$, $(a\comp g\comp f,\,b\comp g\comp f)$ s'obté aplicant primer $g$ i després $f$. Una representació d'aquest prefeix és un objecte $Q$ amb un element universal $(p_1,p_2)\in\Hom(Q,A)\times\Hom(Q,B)$ tal que, per a cada $X$ i cada parella $(a,b)$, hi ha un únic $u\colon X\to Q$ amb $p_1\comp u=a$ i $p_2\comp u=b$. És exactament la definició de producte de la subsecció~\ref{subsec:producte-coproducte}: el producte de $A$ i $B$ existeix si i només si aquest prefeix és representable, i un producte és una representació seva.
+
+Aquest exemple té també una lectura lògica. A la categoria prima $\cat{Prov}_T$ associada a un sistema deductiu $T$ (capítol~\ref{cap:categories}), entre dues fórmules hi ha com a màxim un morfisme, i n'hi ha un exactament quan hi ha deduïbilitat $p\vdash_T q$. Per a dues fórmules $p$ i $q$, el prefeix
+\[
+r\longmapsto\Hom_{\cat{Prov}_T}(r,p)\times\Hom_{\cat{Prov}_T}(r,q)
+\]
+és, doncs, no buit exactament quan $r\vdash_T p$ i $r\vdash_T q$. Una representació és una fórmula $c$ amb $c\vdash_T p$ i $c\vdash_T q$ (l'element universal) tal que tota fórmula $r$ que dedueix $p$ i $q$ dedueix $c$; la unicitat del morfisme és automàtica. Per transitivitat, això equival a
+\[
+r\vdash_T c
+\quad\Longleftrightarrow\quad
+r\vdash_T p\ \text{i}\ r\vdash_T q,
+\]
+que són les regles d'introducció i d'eliminació de la conjunció. La conjunció $p\wedge q$, quan existeix, és doncs una representació d'aquest prefeix: satisfà la propietat universal del producte, llegida en lògica, tal com anunciava la secció~\ref{sec:dualitat}.
+\end{exemple}
+
+\begin{exemple}[Functors que no són representables]\label{ex:no-representable}
+Si $\cat{C}$ té algun objecte, el functor constant $\Delta_\varnothing\colon\cat{C}\to\cat{Set}$ no és representable: per a tot objecte $S$, el conjunt $\Hom(S,S)$ conté $\id_S$ i no és buit, mentre que $\Delta_\varnothing(S)=\varnothing$, de manera que no hi pot haver cap bijecció $\Hom(S,S)\to\Delta_\varnothing(S)$. El mateix argument val per al prefeix $\Delta_\varnothing$. Això explica, per exemple, que en una categoria discreta amb dos objectes $A\neq B$ (només hi ha identitats) no hi hagi producte de $A$ i $B$: el prefeix de l'exemple~\ref{ex:rep-producte} hi val $\Hom(X,A)\times\Hom(X,B)=\varnothing$ per a tot $X$, perquè cap objecte té fletxes cap a tots dos, i és, doncs, el prefeix $\Delta_\varnothing$.
+\end{exemple}
+
+\begin{observacio}[Representacions com a objectes inicials]\label{obs:representacio-inicial}
+Això fa precís l'eslògan de la secció~\ref{sec:coma}. Sigui
+$P$ un prefeix sobre $\cat{C}$ i sigui
+$\{\ast\}\colon\cat{1}\to\cat{Set}$ el functor que tria un conjunt d'un sol
+element. Un objecte de la categoria coma $(\{\ast\}\downarrow P)$ és una terna
+$(\ast,A,x)$ amb $x\colon\{\ast\}\to P(A)$, és a dir, un objecte $A$ de
+$\cat{C}$ junt amb un element $x\in P(A)$; l'escrivim $(A,x)$. Un morfisme
+$(A,x)\to(A',x')$ és un morfisme $A\to A'$ de $\cat{C}\op$ ---és a dir, un
+$h\colon A'\to A$ de $\cat{C}$--- que fa commutar el quadrat de la
+definició~\ref{def:coma}, condició que aquí diu $P(h)(x)=x'$. Per tant,
+$(A,u)$ és un objecte inicial de $(\{\ast\}\downarrow P)$ si i només si per a
+cada $(X,x)$ hi ha un únic $h\colon X\to A$ amb $P(h)(u)=x$: exactament la
+condició de representació. Per a $P=\Hom(-,C)$, la categoria
+$(\{\ast\}\downarrow P)$ és $(\cat{C}/C)\op$, i retrobem
+l'exemple~\ref{ex:universal-coma}.
+\end{observacio}
+
+\begin{observacio}[La categoria d'elements]\label{obs:categoria-elements}\index{categoria!d'elements}
+A la bibliografia és habitual presentar la mateixa construcció amb les fletxes en el sentit de $\cat{C}$. Per a un prefeix $P\colon\cat{C}\op\to\cat{Set}$, la \textbf{categoria d'elements} $\textstyle\int P$ té per objectes les parelles $(A,x)$ amb $x\in P(A)$, i per morfismes $f\colon(A,x)\to(B,y)$ els morfismes $f\colon A\to B$ de $\cat{C}$ amb $P(f)(y)=x$. Té, doncs, les mateixes dades que la categoria coma de l'observació anterior, amb les fletxes girades:
+\[
+\textstyle\int P\;\cong\;(\{\ast\}\downarrow P)\op.
+\]
+Per tant, una representació $(C,u)$ de $P$ correspon a un objecte \emph{terminal} de $\int P$: per a cada $(A,x)$ hi ha un únic $f\colon A\to C$ amb $P(f)(u)=x$. És la formulació que fa servir, per exemple, \cite[cap.~2]{riehl}.
+\end{observacio}
 
 \begin{observacio}
 Cal distingir dos nivells d'unicitat. L'\textbf{objecte} representant $A$ és únic llevat d'isomorfisme, però no necessàriament d'un únic isomorfisme. En canvi, la \textbf{representació} $(A,u)$ ---amb la dada de l'element universal--- és única llevat d'un \emph{únic} isomorfisme compatible amb els elements universals: si $(A,u)$ i $(B,v)$ representen $P$, hi ha un únic isomorfisme $\varphi\colon A\to B$ amb $P(\varphi)(v)=u$. Aquesta distinció, entre la unicitat de l'objecte i la de la dada universal, és essencial i la retrobarem en tractar límits, adjuncions i objectes classificadors. Que dos functors representables $\Hom(-,A)$ i $\Hom(-,B)$ siguin naturalment isomorfs equivaldrà, pel lema de Yoneda, a $A\cong B$; la resta del capítol ho fa precís.
@@ -105,9 +564,9 @@ Cal distingir dos nivells d'unicitat. L'\textbf{objecte} representant $A$ és ú
 
 \section{La immersió de Yoneda}
 
-Fixem una categoria \textbf{petita} $\cat{C}$. La restricció és essencial en el marc elemental que hem adoptat: si $\cat{C}$ fos gran, un prefeix $P\colon\cat{C}\op\to\cat{Set}$ seria una dada de classe pròpia i les transformacions naturals entre dos prefeixos podrien formar també una família de classe pròpia, que no es reuneix automàticament en un homconjunt; aleshores $\cat{Set}^{\cat{C}\op}$ no quedaria definida com a categoria del nivell de mida que hem fixat. Amb $\cat{C}$ petita, en canvi, la categoria de prefeixos i tots els seus homconjunts queden ben definits. (La versió per a $\cat{C}$ només localment petita és vàlida dins una jerarquia d'universos adient, en la línia de l'apèndix de convenció de mida.) A cada objecte $A$ li hem associat el functor contravariant representable $\Hom(-,A)\colon\cat{C}\op\to\cat{Set}$. Aquesta assignació és, ella mateixa, functorial: dona un functor de $\cat{C}$ cap a la categoria de functors $\cat{Set}^{\cat{C}\op}$, anomenada categoria de \emph{prefeixos} sobre $\cat{C}$.
+Fixem una categoria \textbf{petita} $\cat{C}$. La noció de prefeix, i la de transformació natural entre prefeixos, té sentit sobre qualsevol categoria (definició~\ref{def:prefeix}). Els prefeixos representables $\Hom(-,A)$, en canvi, només són prefeixos si cada $\Hom(X,A)$ és un conjunt, és a dir, si $\cat{C}$ és localment petita, que és la hipòtesi amb què els hem fet servir a la secció de representabilitat. Aquí demanem més: que $\cat{C}$ sigui petita. Aquesta restricció afecta la categoria que aplega els prefeixos. Si $\cat{C}$ no és petita, encara que sigui localment petita, cada prefeix recorre una classe pròpia d'objectes i les transformacions naturals entre dos prefeixos poden formar també una classe pròpia. Aleshores no es pot formar $\cat{Set}^{\cat{C}\op}$ com a categoria (observació~\ref{obs:mida-functors}). Amb $\cat{C}$ petita, en canvi, la categoria de prefeixos $\widehat{\cat{C}}$ i tots els seus homconjunts queden ben definits (exemple~\ref{ex:categoria-prefeixos}).\footnote{Amb universos de Grothendieck, la construcció es pot fer també per a $\cat{C}$ només localment petita, formant $\widehat{\cat{C}}$ en un univers superior; vegeu l'apèndix~\ref{cap:mida} i \cite[§1.1]{riehl}.} A cada objecte $A$ li hem associat el prefeix representable $\Hom(-,A)\colon\cat{C}\op\to\cat{Set}$. Aquesta assignació és, ella mateixa, functorial: dona un functor de $\cat{C}$ cap a la categoria de prefeixos $\widehat{\cat{C}}=\cat{Set}^{\cat{C}\op}$.
 
-\begin{definicio}[Immersió de Yoneda]\index{Yoneda!immersió}\index{prefeix@prefeix}
+\begin{definicio}[Immersió de Yoneda]\index{Yoneda!immersió}
 \label{def:immersio-yoneda}
 La \textbf{immersió de Yoneda} (en anglès, \emph{Yoneda embedding}) és el functor
 \[
@@ -117,15 +576,15 @@ La \textbf{immersió de Yoneda} (en anglès, \emph{Yoneda embedding}) és el fun
 \]
 que envia cada objecte $A$ al functor representable $\Hom(-,A)$, i cada morfisme $f\colon A\to B$ a la transformació natural $\yon(f)\colon\Hom(-,A)\Rightarrow\Hom(-,B)$ de components la postcomposició amb $f$,
 \[
-\yon(f)_X\colon\Hom(X,A)\to\Hom(X,B),
+\yon(f)_X=\Hom(X,f)\colon\Hom(X,A)\to\Hom(X,B),
 \qquad
 \varphi\mapsto f\comp\varphi.
 \]
-Els objectes de $\cat{Set}^{\cat{C}\op}$ s'anomenen \textbf{prefeixos} sobre $\cat{C}$.
+D'acord amb la notació dels homfunctors, escriurem també $\Hom(-,f)$\index{Hom@$\Hom$!$\Hom(-,f)$} per a aquesta transformació natural $\yon(f)$.
 \end{definicio}
 
 \begin{observacio}
-Cal comprovar que $\yon(f)$ és realment natural i que $\yon$ preserva composició i identitats, però tot es redueix, un cop més, a l'associativitat i a les lleis de la identitat de $\cat{C}$. El contingut de la immersió de Yoneda és que \emph{tota} categoria petita s'immergeix en la seva categoria de prefeixos, que és una categoria molt rica ---té tots els límits i colímits \emph{petits}, calculats puntualment a $\cat{Set}$, per exemple. El teorema següent en justifica el nom: $\yon$ és una immersió plena i fidel.
+Cal comprovar que $\yon(f)$ és realment natural i que $\yon$ preserva composició i identitats, però tot es redueix, un cop més, a l'associativitat i a les lleis de la identitat de $\cat{C}$. El contingut de la immersió de Yoneda és que \emph{tota} categoria petita s'immergeix en la seva categoria de prefeixos, que és una categoria molt rica: com veurem al capítol següent, té tots els límits i colímits \emph{petits}, calculats puntualment. El teorema següent en justifica el nom: $\yon$ és una immersió plena i fidel.
 \end{observacio}
 
 \section{El lema de Yoneda}
@@ -134,12 +593,13 @@ El resultat central relaciona les transformacions naturals que surten d'un funct
 
 \begin{teorema}[Lema de Yoneda]\index{Yoneda!lema}
 \label{teo:yoneda}
-Sigui $\cat{C}$ una categoria \textbf{petita}, $A$ un objecte de $\cat{C}$ i $P\colon\cat{C}\op\to\cat{Set}$ un prefeix. Aleshores hi ha una bijecció
+Sigui $\cat{C}$ una categoria \textbf{petita}, $A$ un objecte de $\cat{C}$ i $P$ un prefeix sobre $\cat{C}$. Aleshores hi ha una bijecció
 \[
 \Nat\big(\Hom(-,A),\,P\big)\;\cong\;P(A),
 \]
-natural \emph{contravariantment} en $A\in\cat{C}$ i \emph{covariantment} en $P\in\cat{Set}^{\cat{C}\op}$. Explícitament, la bijecció envia una transformació natural $\eta$ a l'element $\eta_A(\id_A)\in P(A)$. Si més endavant s'introdueixen universos, es pot substituir \enquote{petita} per la condició relativa de mida que garanteixi que la categoria de prefeixos i els seus homconjunts existeixen al nivell superior escollit.
+natural \emph{contravariantment} en $A\in\cat{C}$ i \emph{covariantment} en $P\in\widehat{\cat{C}}$. Explícitament, la bijecció envia una transformació natural $\eta$ a l'element $\eta_A(\id_A)\in P(A)$.\footnotemark
 \end{teorema}
+\footnotetext{Si $\cat{C}$ és només localment petita, la mateixa construcció classifica les transformacions naturals que surten del representable mitjançant els elements de $P(A)$, sense haver de formar la categoria $\widehat{\cat{C}}$ de tots els prefeixos. En aquest cas, $\Nat(\Hom(-,A),P)$ s'ha d'entendre com aquesta col·lecció parametritzada pels elements de $P(A)$: en el marc de classes de l'apèndix~\ref{cap:mida}, una transformació amb domini gran és una família indexada per una classe, i no esdevé per això element d'un conjunt. Per parlar-ne literalment com d'un homconjunt dins d'una categoria de prefeixos cal fixar una convenció de mida addicional, per exemple amb universos; vegeu \cite[§1.1]{riehl}.}%
 
 \begin{prova}
 Descrivim les dues aplicacions inverses.
@@ -189,6 +649,31 @@ Les dues assignacions són, doncs, inverses. Queda comprovar que la bijecció é
 on la penúltima igualtat és la identitat de naturalitat de $\eta$ demostrada més amunt (la que dona $\Psi(\eta_A(\id_A))=\eta$), aplicada amb $X=A'$ i $\varphi=a$; és a dir $\Phi_{A',P}\comp(-\comp\yon(a))=P(a)\comp\Phi_{A,P}$. Aquestes dues identitats completen el lema tal com s'ha enunciat.
 \end{prova}
 
+\begin{observacio}[Taula de control: variància i tipus]\label{obs:taula-yoneda}\index{Yoneda!taula de variància i tipus}
+Els errors més freqüents d'aquest capítol són errors de tipus: una fletxa que va en el sentit equivocat o una composició que no existeix. Abans de qualsevol càlcul convé escriure el domini i el codomini de cada component, com al capítol~\ref{cap:functors} (observació~\ref{obs:comprovar-tipus}). La taula recull els casos que hem fet servir, amb $f\colon A\to B$, $u\colon X'\to X$, $v\colon X\to Y$, $a\colon A'\to A$ i $\sigma\colon P\Rightarrow Q$.
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.24\linewidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Expressió} & \textbf{Què és i variància} & \textbf{Tipus i acció}\\
+\midrule
+$\Hom(-,A)$ & prefeix $\cat{C}\op\to\cat{Set}$ (contravariant) & $X\mapsto\Hom(X,A)$; \ $\Hom(u,A)=u^*\colon\Hom(X,A)\to\Hom(X',A)$, $\psi\mapsto\psi\comp u$\\
+$\Hom(A,-)$ & functor $\cat{C}\to\cat{Set}$ (covariant) & $X\mapsto\Hom(A,X)$; \ $\Hom(A,v)=v_*\colon\Hom(A,X)\to\Hom(A,Y)$, $\varphi\mapsto v\comp\varphi$\\
+$\Hom(-,f)=\yon(f)$ & transformació natural $\Hom(-,A)\Rightarrow\Hom(-,B)$, en el sentit de $f$ (no és un functor) & component en $X$: $\Hom(X,f)\colon\Hom(X,A)\to\Hom(X,B)$, $\varphi\mapsto f\comp\varphi$\\
+$\Hom(f,-)$ & transformació natural $\Hom(B,-)\Rightarrow\Hom(A,-)$, en sentit \emph{contrari} a $f$ & component en $X$: $\Hom(f,X)\colon\Hom(B,X)\to\Hom(A,X)$, $\psi\mapsto\psi\comp f$\\
+$\yon$ & functor $\cat{C}\to\cat{Set}^{\cat{C}\op}$ (covariant) & $A\mapsto\Hom(-,A)$; \ $f\mapsto\Hom(-,f)\colon\yon(A)\Rightarrow\yon(B)$\\
+\midrule
+naturalitat de $\Hom(-,f)$ en $X$ & quadrat per a $u\colon X'\to X$ & $\Hom(X',f)\comp\Hom(u,A)=\Hom(u,B)\comp\Hom(X,f)\colon\Hom(X,A)\to\Hom(X',B)$; \ tots dos envien $\varphi$ a $f\comp\varphi\comp u$\\
+lema de Yoneda, naturalitat en $P$ & covariant, per a $\sigma\colon P\Rightarrow Q$ & $\Phi_{A,Q}\comp(\sigma\comp-)=\sigma_A\comp\Phi_{A,P}\colon\Nat(\yon(A),P)\to Q(A)$\\
+lema de Yoneda, naturalitat en $A$ & contravariant, per a $a\colon A'\to A$ & $\Phi_{A',P}\comp(-\comp\yon(a))=P(a)\comp\Phi_{A,P}\colon\Nat(\yon(A),P)\to P(A')$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+La regla que hi ha darrere és sempre la mateixa. A $\Hom(X,Y)$, un morfisme que actua sobre la \emph{segona} variable ho fa per postcomposició i conserva el sentit; un que actua sobre la \emph{primera} ho fa per precomposició i l'inverteix. Per això $\Hom(-,f)$ va en el sentit de $f$ i $\Hom(f,-)$ en el contrari, i per això la naturalitat del lema és covariant en $P$ i contravariant en $A$.
+\end{observacio}
+
 \section{Conseqüències}
 
 La primera conseqüència és que la immersió de Yoneda mereix el seu nom.
@@ -230,14 +715,25 @@ Aquest darrer corol·lari és la formulació precisa de l'eslògan del primer ca
 Hi ha una versió covariant de tot plegat, obtinguda treballant amb $\cat{C}\op$ en lloc de $\cat{C}$: dona una immersió $\cat{C}\op\to\cat{Set}^{\cat{C}}$, també plena i fidel, i el lema $\Nat(\Hom(A,-),Q)\cong Q(A)$ per a functors covariants $Q\colon\cat{C}\to\cat{Set}$. Totes dues versions s'usen contínuament; la contravariant, amb prefeixos, és la que enllaça amb la teoria de feixos i la lògica categòrica que estudiarem més endavant.
 \end{observacio}
 
-\section{Cap als límits}
-
-Amb les propietats universals i el lema de Yoneda disposem ja del vocabulari per tractar de manera uniforme les construccions que caracteritzen objectes per la seva relació amb tots els altres. Els objectes inicial i terminal n'han estat els primers exemples; el producte i el coproducte, que hem trobat de passada, en són d'altres.
-
-Al capítol~\ref{cap:limits}, de \textbf{límits i colímits}, introduirem la noció general, que engloba productes, coproductes, equalitzadors, pullbacks i molts altres, tots com a objectes universals associats a un diagrama. El lema de Yoneda i la representabilitat en seran l'eina conceptual: un límit és, precisament, un objecte que representa el functor dels cons sobre un diagrama.
-
 \begin{resumcap}
-\apartat{Cinc idees} (1)~Una propietat universal és la representabilitat d'un functor cap a $\cat{Set}$. (2)~L'objecte representant és únic llevat d'isomorfisme; la representació sencera, llevat d'un únic isomorfisme compatible. (3)~La immersió de Yoneda immergeix $\cat{C}$ dins dels prefeixos de manera plena i fidel. (4)~El lema de Yoneda identifica $\Nat(\Hom(-,A),P)$ amb $P(A)$. (5)~Objectes inicials, terminals, productes i coproductes són casos de propietat universal.
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Les dades universals es caracteritzen per l'existència i la unicitat de morfismes; sovint es poden veure com a objectes inicials o terminals en una categoria coma adequada.
+  \item Una representació d'un functor és un objecte representant juntament amb un element universal; equivalentment, és un isomorfisme natural amb un homfunctor.
+  \item El lema de Yoneda dona una bijecció natural
+  \[
+  \Nat\bigl(\Hom(-,A),P\bigr)\;\cong\;P(A),
+  \]
+  determinada per l'avaluació a $\id_A$.
+  \item La immersió de Yoneda és plena i fidel; per tant, els morfismes entre objectes es recuperen exactament com a transformacions naturals entre els seus prefeixos representables.
+  \item En particular, un objecte queda determinat, llevat d'isomorfisme, pel sistema de morfismes que hi arriben; la representació completa és única llevat d'un únic isomorfisme compatible amb la dada universal.
+\end{enumerate}
+\apartat{Recordatori operatiu} Les dues direccions de la bijecció de Yoneda són
+\[
+\eta\longmapsto\eta_A(\id_A),
+\qquad\qquad
+x\longmapsto\bigl(f\mapsto P(f)(x)\bigr).
+\]
 \apartat{Errors típics} Dir \enquote{únic llevat d'isomorfisme únic} de l'objecte nu quan això només val per a la representació amb la dada universal; usar la propietat universal del producte abans d'haver-la definit; i confondre el functor representat amb l'objecte representant.
-\apartat{Lectura recomanada} \cite[cap.~2 i~4]{awodey}; \cite[cap.~4]{leinster} per al lema de Yoneda; \cite[III.2]{maclane} per a la versió clàssica.
+\apartat{Lectura recomanada} \cite[§2.2 i §§8.1--8.4]{awodey} per als objectes inicials i terminals i per a la immersió, el lema i les aplicacions de Yoneda; \cite[§§4.1--4.3]{leinster}; \cite[cap.~2]{riehl}, d'arquitectura molt propera a la d'aquest capítol; \cite[II.6 i III.1--III.2]{maclane} per a les categories coma, les fletxes universals i el lema de Yoneda; i \cite[cap.~2]{perrone-notes}, per a una segona explicació del lema de Yoneda, amb molts casos particulars i exemples de matemàtica elemental.
 \end{resumcap}

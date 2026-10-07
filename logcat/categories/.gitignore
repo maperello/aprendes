@@ -1,8 +1,4 @@
-# ============================================================
-# .gitignore — projecte LaTeX (aprendes / logcat / categories)
-# ============================================================
-
-# Fitxers auxiliars de LaTeX
+# Fitxers auxiliars de LaTeX (el main.pdf es versiona: és el que enllaça la web)
 *.aux
 *.bcf
 *.bbl
@@ -22,15 +18,10 @@
 *.fdb_latexmk
 *.xdv
 *.auxlock
+*.xdvlog
+# PDF derivats: es versionen main.pdf i imprimible.pdf (els que enllaça la web).
+fascicle.pdf
+fascicle-imprimible.pdf
 
-# Compilacions temporals amb el jobname per defecte
-texput.*
-
-# Sistema operatiu / editors
-.DS_Store
-Thumbs.db
-*~
-*.swp
-
-# NOTA: main.pdf NO s'ignora expressament: és l'artefacte que es publica
-# (el web serveix logcat/categories/main.pdf des del repositori).
+# Documentaci� interna de desenvolupament: no es publica.
+docs/

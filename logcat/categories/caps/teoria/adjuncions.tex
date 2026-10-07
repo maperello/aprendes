@@ -2,13 +2,25 @@
 \label{cap:adjuncions}
 
 \begin{objectius}
-\apartat{Prerequisits} Functors i representabilitat (cap.~\ref{cap:functors},~\ref{cap:yoneda}); límits i colímits (cap.~\ref{cap:limits}).
-\apartat{Objectius} En acabar el capítol, el lector ha de saber: definir una adjunció mitjançant la bijecció d'homconjunts i mitjançant unitat i counitat; verificar les identitats triangulars; demostrar que els adjunts són únics llevat d'isomorfisme; i aplicar que els adjunts per la dreta preserven límits i els adjunts per l'esquerra, colímits.
+\apartat{Prerequisits} Functors, preordres vistos com a categories i la categoria lliure d'un graf (cap.~\ref{cap:functors}); transformacions i isomorfismes naturals, i equivalències de categories (cap.~\ref{cap:transformacions}); representabilitat i propietats universals (cap.~\ref{cap:yoneda}); límits i colímits, i la reindexació per pullback (cap.~\ref{cap:limits}).
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item definir una adjunció mitjançant una bijecció natural d'homconjunts i mitjançant unitat i counitat;
+  \item calcular transposats i reconèixer la propietat universal de la unitat;
+  \item verificar les identitats triangulars;
+  \item reconèixer adjuncions en preordres i en construccions lliure--oblit;
+  \item interpretar $\colimop_{\cat{I}}\dashv\Delta\dashv\varprojlim_{\cat{I}}$ i la currificació com a adjuncions;
+  \item interpretar a $\cat{Set}$ la cadena $\exists_f\dashv f^{*}\dashv\forall_f$ com a prototip de la quantificació;
+  \item demostrar la unicitat dels adjunts llevat d'isomorfisme natural;
+  \item aplicar que els adjunts per la dreta preserven límits i els adjunts per l'esquerra, colímits.
+\end{itemize}
 \end{objectius}
 
 \section{Cap a la noció d'adjunció}
 
-Al llarg del llibre hem trobat parelles de functors que apareixen sempre juntes: el functor lliure $\Free\colon\cat{Graph}\to\cat{Cat}$ i el functor oblit $U\colon\cat{Cat}\to\cat{Graph}$; el functor que oblida l'estructura d'un grup i el que construeix el grup lliure sobre un conjunt. En cada cas, un dels functors \enquote{afegeix estructura de la manera més econòmica possible} i l'altre \enquote{l'oblida}, i tots dos estan lligats per una correspondència precisa. Aquesta relació s'anomena \textbf{adjunció}, i és un dels conceptes centrals de la teoria de categories.
+Al llarg del llibre hem trobat ja la parella formada pel functor categoria lliure $\Free\colon\cat{Graph}\to\cat{Cat}$ i el functor graf subjacent $U\colon\cat{Cat}\to\cat{Graph}$. Un altre patró clàssic, que veurem ara en una versió elemental, és el del monoide lliure i el functor oblit $U\colon\cat{Mon}\to\cat{Set}$. En tots dos casos, un functor afegeix estructura de la manera més lliure possible i l'altre l'oblida, i tots dos estan lligats per una correspondència precisa. Aquesta relació s'anomena \textbf{adjunció}, i és un dels conceptes centrals de la teoria de categories.
+
+Les adjuncions explicaran també un patró que vam observar en estudiar els límits: els representables i molts functors oblit preserven límits de manera sistemàtica, mentre que moltes construccions lliures preserven colímits. El teorema d'aquest capítol explicarà aquests fenòmens quan els functors en qüestió siguin adjunts. I seran un pont directe cap a la lògica: els quantificadors existencial i universal es revelaran com a adjunts.
 
 La idea es pot copsar primer en el cas més simple, el dels preordres, on una adjunció és una parella d'aplicacions monòtones lligades per una equivalència de desigualtats. Després la generalitzarem a categories qualssevol, substituint les desigualtats per bijeccions entre conjunts de morfismes.
 
@@ -25,18 +37,64 @@ x\leq g(y).
 \]
 \end{definicio}
 
+\begin{observacio}[Unitat i counitat en un preordre]\index{connexió de Galois}
+Si $f\dashv g$, prenent $y=f(x)$ i $x=g(y)$ a la definició s'obté
+\[
+x\leq g(f(x)),
+\qquad
+f(g(y))\leq y
+\]
+per a tot $x\in P$ i tot $y\in Q$. Recíprocament, si $f$ i $g$ són monòtones i compleixen aquestes dues desigualtats, aleshores $f\dashv g$: si $f(x)\leq y$, aleshores $x\leq g(f(x))\leq g(y)$, i si $x\leq g(y)$, aleshores $f(x)\leq f(g(y))\leq y$. Aquestes dues desigualtats són exactament la \emph{unitat} i la \emph{counitat} de l'adjunció, que veurem en general més endavant; en una categoria prima, les identitats triangulars no aporten cap igualtat nova, perquè entre dos objectes hi ha com a màxim una fletxa. Una adjunció entre preordres s'anomena sovint \textbf{connexió de Galois}.
+\end{observacio}
+
 \begin{exemple}[Conjunció i implicació]\index{adjunció!conjunció i implicació}
-Sigui $P$ l'àlgebra de proposicions amb la relació de deduïbilitat, i fixem una fórmula $A$. Considerem les operacions
+Sigui $\cat{Prov}_T$ el preordre de fórmules d'un sistema proposicional $T$ amb les regles usuals de $\wedge$ i $\to$, i fixem una fórmula $A$. Les operacions $A\wedge-$ i $A\to-$ són monòtones, i per a totes les fórmules $B$ i $C$
 \[
-f(B)=A\wedge B,\qquad g(B)=A\to B.
-\]
-Totes dues són monòtones. A més, $f\dashv g$, perquè
-\[
-A\wedge B\vdash C
+A\wedge B\vdash_T C
 \quad\Longleftrightarrow\quad
-B\vdash A\to C.
+B\vdash_T A\to C,
 \]
-Aquesta equivalència és exactament la regla d'introducció i eliminació de la implicació: \emph{la conjunció amb $A$ és adjunta per l'esquerra de la implicació des de $A$}. És el primer indici que els connectius lògics són adjunts, idea que dominarà la lògica categòrica.
+de manera que
+\[
+A\wedge-\;\dashv\;A\to-.
+\]
+Aquesta adjunció codifica les regles de la implicació; és la forma categòrica del teorema de deducció. És un primer indici que alguns connectius lògics es caracteritzen mitjançant adjuncions, idea que reapareixerà de manera sistemàtica en la lògica categòrica.
+\end{exemple}
+
+\begin{exemple}[Imatge, antiimatge i quantificadors]\label{ex:quantificadors-set}\index{adjunció!quantificadors}\index{quantificador!com a adjunt}
+Sigui $f\colon X\to Y$ una aplicació, i considerem els preordres $\mathcal P(X)$ i $\mathcal P(Y)$ de les parts, ordenats per inclusió. L'antiimatge
+\[
+f^{*}(T)=f^{-1}(T),\qquad T\subseteq Y,
+\]
+és monòtona, i té adjunts a tots dos costats: per a $S\subseteq X$, posem
+\[
+\exists_f(S)=f[S]=\{f(x)\mid x\in S\},
+\qquad
+\forall_f(S)=\{y\in Y\mid f^{-1}(\{y\})\subseteq S\}.
+\]
+Aleshores, per a tot $S\subseteq X$ i tot $T\subseteq Y$,
+\[
+\exists_f(S)\subseteq T
+\quad\Longleftrightarrow\quad
+S\subseteq f^{*}(T),
+\qquad\qquad
+f^{*}(T)\subseteq S
+\quad\Longleftrightarrow\quad
+T\subseteq\forall_f(S).
+\]
+La primera equivalència diu que les imatges dels elements de $S$ són a $T$ exactament quan tots els elements de $S$ van a parar a $T$. Per a la segona: si $f^{-1}(T)\subseteq S$ i $y\in T$, tot $x$ amb $f(x)=y$ és a $f^{-1}(T)$ i, per tant, a $S$, de manera que $y\in\forall_f(S)$; i recíprocament, si $T\subseteq\forall_f(S)$ i $f(x)\in T$, aleshores $x\in f^{-1}(\{f(x)\})\subseteq S$. Per tant,
+\[
+\exists_f\;\dashv\;f^{*}\;\dashv\;\forall_f.
+\]
+
+El nom dels adjunts s'explica quan $f$ és una projecció $\pi\colon X\times A\to X$. Un subconjunt $S\subseteq X\times A$ és un predicat en dues variables, i
+\[
+\begin{aligned}
+\exists_\pi(S)&=\{x\mid \text{existeix }a\in A\text{ amb }(x,a)\in S\},\\
+\forall_\pi(S)&=\{x\mid (x,a)\in S\text{ per a tot }a\in A\}:
+\end{aligned}
+\]
+són exactament les lectures conjuntistes de la quantificació existencial i universal sobre la variable d'$A$, mentre que $\pi^{*}$ afegeix una variable muda. Al capítol de subobjectes veurem en quines categories existeixen aquests dos adjunts; aquí només afirmem el cas de $\cat{Set}$.
 \end{exemple}
 
 \begin{exemple}[Interior topològic]\index{adjunció!interior topològic}
@@ -55,7 +113,7 @@ La definició general substitueix l'equivalència de desigualtats per una \textb
 
 \begin{definicio}[Adjunció]\index{adjunció}
 \label{def:adjuncio}
-Siguin $F\colon\cat{C}\to\cat{D}$ i $G\colon\cat{D}\to\cat{C}$ dos functors. Una \textbf{adjunció} $F\dashv G$ és una bijecció
+Siguin $F\colon\cat{C}\to\cat{D}$ i $G\colon\cat{D}\to\cat{C}$ dos functors entre categories localment petites. Una \textbf{adjunció} $F\dashv G$ és una bijecció
 \[
 \theta_{A,B}\colon\Hom_{\cat{D}}(F(A),B)\;\xrightarrow{\ \cong\ }\;\Hom_{\cat{C}}(A,G(B)),
 \]
@@ -67,7 +125,39 @@ La naturalitat vol dir que $\theta$ és un isomorfisme natural entre els dos fun
 \[
 \Hom_{\cat{D}}(F(-),-)\quad\text{i}\quad\Hom_{\cat{C}}(-,G(-)),
 \]
-tots dos de $\cat{C}\op\times\cat{D}$ cap a $\cat{Set}$. Explícitament, per a $a\colon A'\to A$ a $\cat{C}$ i $b\colon B\to B'$ a $\cat{D}$, el pas per $\theta$ commuta amb la precomposició/postcomposició per $F(a),b$ d'una banda i $a,G(b)$ de l'altra. Els morfismes que es corresponen sota $\theta$ s'anomenen \textbf{transposats} l'un de l'altre: si $\varphi\colon F(A)\to B$, el seu transposat és $\theta(\varphi)\colon A\to G(B)$.
+tots dos de $\cat{C}\op\times\cat{D}$ cap a $\cat{Set}$. Explícitament, per a $a\colon A'\to A$ a $\cat{C}$, $b\colon B\to B'$ a $\cat{D}$ i $\varphi\colon F(A)\to B$, el pas per $\theta$ commuta amb la postcomposició i amb la precomposició:
+\[
+\theta_{A,B'}(b\comp\varphi)=G(b)\comp\theta_{A,B}(\varphi),
+\qquad\qquad
+\theta_{A',B}\bigl(\varphi\comp F(a)\bigr)=\theta_{A,B}(\varphi)\comp a.
+\]
+En paraules: transposar i després compondre amb $G(b)$ o amb $a$ és el mateix que compondre primer amb $b$ o amb $F(a)$ i després transposar. Són els dos quadrats de naturalitat
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=3.6em] {
+    \Hom(F(A),B) & \Hom(A,G(B)) \\
+    \Hom(F(A),B') & \Hom(A,G(B')) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$\theta_{A,B}$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$b\comp-$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$G(b)\comp-$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$\theta_{A,B'}$} (m-2-2);
+\end{tikzpicture}
+\]
+i
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=3.6em] {
+    \Hom(F(A),B) & \Hom(A,G(B)) \\
+    \Hom(F(A'),B) & \Hom(A',G(B)) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$\theta_{A,B}$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$-\comp F(a)$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$-\comp a$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$\theta_{A',B}$} (m-2-2);
+\end{tikzpicture}
+\]
+on els vèrtexs són conjunts de morfismes i les fletxes verticals actuen per composició. Els morfismes que es corresponen sota $\theta$ s'anomenen \textbf{transposats} l'un de l'altre: si $\varphi\colon F(A)\to B$, el seu transposat és $\theta(\varphi)\colon A\to G(B)$.
 \end{observacio}
 
 \begin{observacio}
@@ -93,7 +183,7 @@ Donada una adjunció $F\dashv G$ amb bijecció $\theta$:
 \end{itemize}
 \end{definicio}
 
-\begin{observacio}
+\begin{observacio}[De la unitat i la counitat a la bijecció]\label{obs:adj-transposats}
 La unitat i la counitat permeten recuperar la bijecció. Donat $\varphi\colon F(A)\to B$, el seu transposat és
 \[
 \theta(\varphi)=G(\varphi)\comp\eta_A\colon A\to G(B),
@@ -102,27 +192,80 @@ i dualment, donat $\psi\colon A\to G(B)$, el seu transposat invers és
 \[
 \theta^{-1}(\psi)=\varepsilon_B\comp F(\psi)\colon F(A)\to B.
 \]
-La unitat expressa una \textbf{propietat universal}: per a cada $A$, el morfisme $\eta_A\colon A\to G(F(A))$ és universal des de $A$ cap a $G$, en el sentit que tot $\psi\colon A\to G(B)$ factoritza de manera única com $G(\varphi)\comp\eta_A$. Aquesta és la formulació de l'adjunció que connecta directament amb els objectes lliures.
 \end{observacio}
+
+\begin{definicio}[Fletxa universal]\label{def:fletxa-universal}\index{fletxa universal}\index{adjunció!fletxa universal}
+Sigui $G\colon\cat{D}\to\cat{C}$ un functor i $A$ un objecte de $\cat{C}$. Una \textbf{fletxa universal} de $A$ cap a $G$ és una parella $(R,\eta_A)$ formada per un objecte $R$ de $\cat{D}$ i un morfisme $\eta_A\colon A\to G(R)$ tal que tot $\psi\colon A\to G(B)$ factoritza de manera única com $\psi=G(\varphi)\comp\eta_A$, amb $\varphi\colon R\to B$.
+\end{definicio}
+
+En una adjunció $F\dashv G$, cada component de la unitat és una fletxa universal, amb $R=F(A)$ (exercici~\ref{exr:adj-unitat-universal} dels Exercicis):
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=4em, row sep=2.7em] {
+    A & G(F(A)) \\
+      & G(B) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$\eta_A$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$\psi$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]},dashed] (m-1-2) -- node[right] {$G(\varphi)$} (m-2-2);
+\end{tikzpicture}
+\qquad
+\psi=G(\varphi)\comp\eta_A,\quad\varphi\text{ únic}.
+\]
+Aquesta és la formulació de l'adjunció que connecta directament amb els objectes lliures.
 
 \begin{exemple}[El monoide lliure]\index{adjunció!lliure-oblit}
 Sigui $U\colon\cat{Mon}\to\cat{Set}$ el functor oblit dels monoides i $F\colon\cat{Set}\to\cat{Mon}$ el functor que envia un conjunt $X$ al \textbf{monoide lliure} $X^*$ de les paraules finites en $X$, amb la concatenació. Aleshores $F\dashv U$: un homomorfisme de monoides $X^*\to M$ està determinat de manera única pels valors sobre les lletres, és a dir, per una aplicació $X\to U(M)$. Aquesta és exactament la bijecció
 \[
 \Hom_{\cat{Mon}}(X^*,M)\cong\Hom_{\cat{Set}}(X,U(M)).
 \]
-La unitat $\eta_X\colon X\to U(X^*)$ envia cada element a la paraula d'una lletra; és la propietat universal del monoide lliure. Aquest patró ---\emph{lliure $\dashv$ oblit}--- es repeteix per a grups, espais vectorials, categories i moltes altres estructures.
+La unitat $\eta_X\colon X\to U(X^*)$ envia cada element a la paraula d'una lletra; és la fletxa universal que exhibeix la propietat universal del monoide lliure. Aquest patró ---\emph{lliure $\dashv$ oblit}--- es repeteix per a grups, espais vectorials, categories i moltes altres estructures.
+\end{exemple}
+
+\begin{exemple}[La categoria lliure d'un graf: $\Free\dashv U$]\label{ex:free-u-adjuncio}\index{adjunció!categoria lliure}
+Els capítols anteriors ja han preparat aquest exemple. El functor graf subjacent $U\colon\cat{Cat}\to\cat{Graph}$ i el functor categoria lliure $\Free\colon\cat{Graph}\to\cat{Cat}$ satisfan la bijecció
+\[
+\Hom_{\cat{Cat}}\bigl(\Free(G),\cat{D}\bigr)\;\cong\;\Hom_{\cat{Graph}}\bigl(G,U(\cat{D})\bigr),
+\]
+natural en $G$ i en $\cat{D}$, que el capítol~\ref{cap:yoneda} va obtenir com la representabilitat del functor $\cat{D}\mapsto\Hom_{\cat{Graph}}(G,U(\cat{D}))$. És a dir, $\Free\dashv U$. El que aporta ara el llenguatge de les adjuncions és identificar-ne les dades:
+\begin{itemize}
+  \item la \emph{unitat} $\eta_G\colon G\to U(\Free(G))$ és la inserció dels generadors: cada vèrtex va a ell mateix i cada aresta, al camí de longitud~$1$ que la recorre;
+  \item la \emph{counitat} $\varepsilon_{\cat{C}}\colon\Free(U(\cat{C}))\to\cat{C}$ \emph{avalua} els camins formals: envia un camí $(f_1,\dots,f_n)$ de fletxes de $\cat{C}$, recorregut en aquest ordre, a la composta $f_n\comp\cdots\comp f_1$, i el camí buit en un objecte, a la seva identitat.
+\end{itemize}
 \end{exemple}
 
 \section{Identitats triangulars}
 
 La unitat i la counitat no són independents: satisfan dues equacions que, de fet, caracteritzen les adjuncions.
 
-\begin{proposicio}[Identitats triangulars]\index{adjunció!identitats triangulars}
+\begin{proposicio}[Identitats triangulars]\label{prop:triangulars}\index{adjunció!identitats triangulars}
 Per a una adjunció $F\dashv G$ amb unitat $\eta$ i counitat $\varepsilon$, es compleixen les \textbf{identitats triangulars}:
 \[
 \varepsilon_{F(A)}\comp F(\eta_A)=\id_{F(A)},
 \qquad
-G(\varepsilon_B)\comp\eta_{G(B)}=\id_{G(B)}.
+G(\varepsilon_B)\comp\eta_{G(B)}=\id_{G(B)},
+\]
+és a dir, commuten els dos triangles
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.6em, row sep=2.7em] {
+    F(A) & F(G(F(A))) \\
+         & F(A) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$F(\eta_A)$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$\id_{F(A)}$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\varepsilon_{F(A)}$} (m-2-2);
+\end{tikzpicture}
+\qquad\qquad
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.6em, row sep=2.7em] {
+    G(B) & G(F(G(B))) \\
+         & G(B) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$\eta_{G(B)}$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$\id_{G(B)}$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$G(\varepsilon_B)$} (m-2-2);
+\end{tikzpicture}
 \]
 Recíprocament, dues transformacions naturals $\eta\colon\id\Rightarrow G F$ i $\varepsilon\colon F G\Rightarrow\id$ que les satisfacin defineixen una adjunció $F\dashv G$.
 \end{proposicio}
@@ -137,6 +280,35 @@ La segona identitat és dual, usant $\theta(\varphi)=G(\varphi)\comp\eta_A$ amb 
 
 \begin{observacio}
 Les identitats triangulars reben aquest nom perquè expressen la commutativitat de dos triangles que involucren $F$, $G$, $\eta$ i $\varepsilon$. Donen una definició d'adjunció \emph{purament diagramàtica}, sense referència a conjunts de morfismes, la qual cosa és sovint la més còmoda per treballar i l'única disponible en contextos on no hi ha homconjunts (per exemple, en 2-categories abstractes).
+\end{observacio}
+
+\begin{observacio}[Tres presentacions d'una adjunció]\label{obs:tres-presentacions}\index{adjunció!tres presentacions}
+Hem trobat tres maneres de donar una adjunció entre $\cat{C}$ i $\cat{D}$. Convé no barrejar-les, perquè no parteixen de les mateixes dades.
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.2\linewidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Presentació} & \textbf{Dades} & \textbf{Condicions}\\
+\midrule
+bijecció d'homconjunts (definició~\ref{def:adjuncio}) & functors $F$ i $G$; bijeccions $\theta_{A,B}\colon\Hom(F(A),B)\to\Hom(A,G(B))$ & naturalitat en $A$ i en $B$\\
+unitat i counitat (proposició~\ref{prop:triangulars}) & functors $F$ i $G$; transformacions naturals $\eta\colon\id\Rightarrow GF$ i $\varepsilon\colon FG\Rightarrow\id$ & identitats triangulars\\
+fletxes universals (definició~\ref{def:fletxa-universal}) & només el functor $G$; per a cada $A$, un objecte $F(A)$ i una fletxa $\eta_A\colon A\to G(F(A))$ & cada $\eta_A$ és universal; $F$ no es dona sobre morfismes, sinó que la propietat universal el determina\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Els passos d'una presentació a una altra són aquests:
+\begin{itemize}
+\item De la primera a la segona: $\eta$ i $\varepsilon$ són els transposats de les identitats (definició~\ref{def:unitat-counitat}).
+\item De la segona a la primera: les fórmules de l'observació~\ref{obs:adj-transposats}, que són inverses gràcies a les identitats triangulars (exercici~\ref{exr:adj-triangulars-reciproc} dels Exercicis).
+\item De la primera a la tercera: la unitat és universal (exercici~\ref{exr:adj-unitat-universal}).
+\item De la tercera a la primera: la propietat universal defineix $F$ sobre morfismes i la bijecció $\varphi\mapsto G(\varphi)\comp\eta_A$ (exercici~\ref{exr:adj-fletxes-universals}).
+\end{itemize}
+La tercera presentació és la més econòmica, perquè no cal conèixer $F$ per endavant; per això és la que s'usa per \emph{construir} adjunts, com els objectes lliures. La segona és la més còmoda per calcular, i la primera és la que dona directament els teoremes de preservació de límits de la secció següent.
+\end{observacio}
+
+\begin{observacio}[Adjuncions i equivalències]\index{equivalència de categories!adjunta}
+Al capítol~\ref{cap:transformacions} vam definir una equivalència mitjançant un quasiinvers $G$ i dos isomorfismes naturals orientats com $\eta\colon\id_{\cat{C}}\Rightarrow G\comp F$ i $\varepsilon\colon F\comp G\Rightarrow\id_{\cat{D}}$ (definició~\ref{def:equivalencia}), la mateixa orientació que la unitat i la counitat d'una adjunció $F\dashv G$. La coincidència no és casual. Tota equivalència es pot equipar amb una estructura d'\textbf{equivalència adjunta}: modificant, si cal, un dels dos isomorfismes naturals, es pot aconseguir que $\eta$ i $\varepsilon$ satisfacin les identitats triangulars, i aleshores $F\dashv G$ amb unitat i counitat isomorfismes naturals. Recíprocament, una adjunció en què la unitat i la counitat són isomorfismes naturals és una equivalència. Les equivalències són, doncs, les adjuncions més simètriques possibles.
 \end{observacio}
 
 \section{Unicitat dels adjunts}
@@ -155,23 +327,65 @@ naturalment en $A$. Pel corol·lari del lema de Yoneda ---dos objectes amb funct
 
 \section{Els adjunts i els límits}
 
-El resultat més útil sobre adjuncions diu com interactuen amb límits i colímits. És la raó de fons per la qual els functors oblit preserven productes però no coproductes.
+El resultat més útil sobre adjuncions diu com interactuen amb límits i colímits. És la raó de fons per la qual molts functors oblit preserven els productes i, en general, els límits.
 
 \begin{teorema}[Els adjunts per la dreta preserven límits]\index{adjunció!preservació de límits}
 \label{teo:adjunts-preserven-limits}
-Si $G\colon\cat{D}\to\cat{C}$ és un adjunt per la dreta, aleshores $G$ preserva tots els límits que existeixen a $\cat{D}$. Dualment, un adjunt per l'esquerra preserva tots els colímits.
+Si $G\colon\cat{D}\to\cat{C}$ és un adjunt per la dreta, aleshores $G$ preserva tots els límits petits que existeixen a $\cat{D}$. Dualment, un adjunt per l'esquerra preserva tots els colímits petits que existeixen.
 \end{teorema}
 
-\begin{prova}[Idea]
-Sigui $F\dashv G$ i sigui $(L,\lambda)$ un límit d'un diagrama $D\colon\cat{I}\to\cat{D}$. Per a tot objecte $A$ de $\cat{C}$, usant l'adjunció i que $\Hom(A,-)$ transforma límits,
+\begin{prova}
+Sigui $F\colon\cat{C}\to\cat{D}$ l'adjunt per l'esquerra de $G$, amb bijecció $\theta$ (definició~\ref{def:adjuncio}). Farem servir les dues equacions de naturalitat de $\theta$: per a $b\colon B\to B'$ a $\cat{D}$ i $a\colon A'\to A$ a $\cat{C}$,
 \[
-\Hom(A,G(L))\cong\Hom(F(A),L)\cong\varprojlim\Hom(F(A),D_i)\cong\varprojlim\Hom(A,G(D_i)).
+\theta(b\comp\varphi)=G(b)\comp\theta(\varphi),
+\qquad\qquad
+\theta\bigl(\varphi\comp F(a)\bigr)=\theta(\varphi)\comp a.
 \]
-Això diu que $G(L)$ representa el functor dels cons sobre $G\comp D$, és a dir, que $(G(L),G\lambda)$ n'és el límit. Per tant $G$ preserva el límit. El cas dels colímits és dual.
+
+\emph{Límits.} Sigui $(L,\lambda)$ un límit d'un diagrama $D\colon\cat{I}\to\cat{D}$. La família $G\lambda=(G(\lambda_i))_i$ és un con sobre $G\comp D$, perquè $G(D_u)\comp G(\lambda_i)=G(D_u\comp\lambda_i)=G(\lambda_j)$ per a cada $u\colon i\to j$. Vegem que és universal. Sigui $(A,\alpha)$ un con sobre $G\comp D$, amb $\alpha_i\colon A\to G(D_i)$ i $G(D_u)\comp\alpha_i=\alpha_j$, i siguin $\varphi_i=\theta^{-1}(\alpha_i)\colon F(A)\to D_i$ els transposats. Per la primera equació de naturalitat,
+\[
+\theta(D_u\comp\varphi_i)=G(D_u)\comp\alpha_i=\alpha_j=\theta(\varphi_j),
+\]
+i com que $\theta$ és bijectiva, $D_u\comp\varphi_i=\varphi_j$: les $\varphi_i$ formen un con sobre $D$ amb vèrtex $F(A)$. Per tant hi ha una única $h\colon F(A)\to L$ amb $\lambda_i\comp h=\varphi_i$ per a tot $i$. Posem $k=\theta(h)\colon A\to G(L)$. De nou per la primera equació,
+\[
+G(\lambda_i)\comp k=\theta(\lambda_i\comp h)=\theta(\varphi_i)=\alpha_i,
+\]
+de manera que $k$ factoritza el con $\alpha$. És l'única factorització: si $k'\colon A\to G(L)$ compleix $G(\lambda_i)\comp k'=\alpha_i$ per a tot $i$, aleshores $h'=\theta^{-1}(k')$ compleix $\theta(\lambda_i\comp h')=G(\lambda_i)\comp k'=\alpha_i=\theta(\varphi_i)$, d'on $\lambda_i\comp h'=\varphi_i$; per la unicitat de $h$, $h'=h$, i $k'=\theta(h')=k$. Així $(G(L),G\lambda)$ és un límit de $G\comp D$.
+
+\emph{Colímits.} Sigui ara $(K,\kappa)$ un colímit d'un diagrama $E\colon\cat{I}\to\cat{C}$. La família $F\kappa=(F(\kappa_i))_i$ és un cocon sobre $F\comp E$, perquè $F(\kappa_j)\comp F(E_u)=F(\kappa_j\comp E_u)=F(\kappa_i)$. Sigui $(B,\beta)$ un cocon sobre $F\comp E$, amb $\beta_i\colon F(E_i)\to B$ i $\beta_j\comp F(E_u)=\beta_i$, i siguin $\psi_i=\theta(\beta_i)\colon E_i\to G(B)$. Per la segona equació de naturalitat,
+\[
+\psi_j\comp E_u=\theta\bigl(\beta_j\comp F(E_u)\bigr)=\theta(\beta_i)=\psi_i,
+\]
+de manera que les $\psi_i$ formen un cocon sobre $E$, i hi ha una única $m\colon K\to G(B)$ amb $m\comp\kappa_i=\psi_i$. Posem $n=\theta^{-1}(m)\colon F(K)\to B$. Aleshores $\theta\bigl(n\comp F(\kappa_i)\bigr)=m\comp\kappa_i=\psi_i=\theta(\beta_i)$, és a dir, $n\comp F(\kappa_i)=\beta_i$. Si $n'$ també compleix $n'\comp F(\kappa_i)=\beta_i$, aleshores $\theta(n')\comp\kappa_i=\theta(\beta_i)=\psi_i$, d'on $\theta(n')=m$ i $n'=n$. Així $(F(K),F\kappa)$ és un colímit de $F\comp E$.
 \end{prova}
 
+\begin{observacio}[La demostració en termes de representables]
+La demostració anterior és la versió \enquote{element a element} d'una cadena de bijeccions. Per a tot objecte $A$ de $\cat{C}$, usant l'adjunció i que $\Hom(F(A),-)$ preserva límits (proposició~\ref{prop:representables-limits}),
+\[
+\begin{aligned}
+\Hom(A,G(L))&\cong\Hom(F(A),L) &&\text{(adjunció)}\\
+&\cong\varprojlim\nolimits_i\Hom(F(A),D_i) &&\text{($\Hom(F(A),-)$ preserva límits)}\\
+&\cong\varprojlim\nolimits_i\Hom(A,G(D_i)) &&\text{(adjunció, natural en $D_i$)}\\
+&\cong\mathrm{Con}(A,G\comp D) &&\text{(límits a $\cat{Set}$)},
+\end{aligned}
+\]
+naturalment en $A$; la bijecció composta envia $f\colon A\to G(L)$ a $(G(\lambda_i)\comp f)_i$. Llegida així, l'afirmació diu que $G(L)$ representa el prefeix dels cons sobre $G\comp D$, amb element universal $G\lambda$ (proposició~\ref{prop:limit-representable}).
+\end{observacio}
+
+\begin{observacio}[Què vol dir exactament \enquote{preservar}]\label{obs:preservar-canonic}\index{morfisme de comparació}
+El teorema no afirma cap igualtat $G(\varprojlim D)=\varprojlim(G\comp D)$: els límits només estan determinats llevat d'isomorfisme, i una igualtat no tindria sentit. Tampoc no afirma només que \emph{existeixi} algun isomorfisme entre aquests dos objectes. Afirma el que diu la definició del capítol~\ref{cap:limits}: el con imatge $(G(L),G\lambda)$ \emph{és un con límit} de $G\comp D$.
+
+Si hem triat un límit $\bigl(\varprojlim(G\comp D),\pi\bigr)$ de $G\comp D$, la condició es pot expressar amb un sol morfisme. El con $G\lambda$ factoritza de manera única a través del límit triat, i dona l'únic \textbf{morfisme de comparació}
+\[
+c\colon G(L)\to\varprojlim(G\comp D),\qquad \pi_i\comp c=G(\lambda_i)\ \text{per a tot } i.
+\]
+Aleshores $G$ preserva el límit si i només si $c$ és un isomorfisme. En efecte, si $(G(L),G\lambda)$ és un límit, l'únic isomorfisme compatible amb les projeccions entre els dos límits de $G\comp D$ compleix $\pi_i\comp c=G(\lambda_i)$, i per tant és $c$. Recíprocament, si $c$ és invertible, el con $G\lambda$ és isomorf al con límit $\pi$ per un isomorfisme compatible amb les projeccions, i per tant és un límit. En aquest sentit precís escrivim $G(\varprojlim D)\cong\varprojlim(G\comp D)$: l'isomorfisme és el \emph{canònic} $c$, no un isomorfisme qualsevol. A més, la noció no depèn del límit triat de $D$, perquè dos límits de $D$ són isomorfs per un únic isomorfisme compatible amb les projeccions, i $G$ el transporta.
+
+La diferència importa. El functor $X\mapsto X+X$ de $\cat{Set}$ en si mateix no preserva productes binaris. El morfisme de comparació $(X\times Y)+(X\times Y)\to(X+X)\times(Y+Y)$ envia cada parella de la còpia $k$ a la parella de còpies $(k,k)$, i no arriba als elements en què les dues còpies són diferents. Tanmateix, per a $X=Y=\mathbb N$ tots dos conjunts són numerables, i per tant \emph{hi ha} una bijecció entre ells. Dualment, $F$ preserva el colímit $(K,\kappa)$ de $E$ quan el morfisme de comparació $\colimop(F\comp E)\to F(K)$ és un isomorfisme.
+\end{observacio}
+
 \begin{observacio}
-Aquest teorema es recorda amb les sigles angleses \enquote{RAPL} (\emph{right adjoints preserve limits}) i \enquote{LAPC} (\emph{left adjoints preserve colimits}). Explica de cop molts fets: els functors oblit, que solen ser adjunts per la dreta, preserven productes, equalitzadors i límits en general, però no coproductes; i els functors lliures, adjunts per l'esquerra, preserven coproductes però no productes. És també un criteri negatiu útil: un functor que \emph{no} preserva límits no pot ser un adjunt per la dreta.
+Aquest teorema es recorda amb les sigles angleses \enquote{RAPL} (\emph{right adjoints preserve limits}) i \enquote{LAPC} (\emph{left adjoints preserve colimits}). Explica de cop molts fets. Els functors oblit que són adjunts per la dreta preserven límits, però això no implica que preservin colímits; en molts exemples algebraics no els preserven. Dualment, els functors lliures, com a adjunts per l'esquerra, preserven colímits, però no hi ha cap teorema general que els obligui a preservar límits. El teorema dona una sola direcció i no prohibeix l'altra: un functor amb adjunts a tots dos costats, com l'oblit $\cat{Top}\to\cat{Set}$, preserva tant límits com colímits. És també un criteri negatiu útil: un functor que \emph{no} preserva límits no pot ser un adjunt per la dreta.
 \end{observacio}
 
 \subsection{El límit i el colímit com a adjunts del functor diagonal}\index{límit!com a adjunt}\index{colímit!com a adjunt}
@@ -184,29 +398,51 @@ que envia un objecte $A$ al diagrama constant de valor $A$ (i un morfisme a la t
 
 \begin{teorema}[$\colimop\dashv\Delta\dashv\varprojlim$]\index{adjunció!límit-diagonal}
 \label{teo:lim-adjunt}
-Sigui $\cat{I}$ una categoria petita i suposem que $\cat{C}$ té tots els límits i colímits de forma $\cat{I}$. Aleshores el functor diagonal $\Delta\colon\cat{C}\to\cat{C}^{\cat{I}}$ té adjunt per l'esquerra $\colimop_{\cat{I}}$ i adjunt per la dreta $\varprojlim_{\cat{I}}$:
+Sigui $\cat{I}$ una categoria petita i suposem que $\cat{C}$ té tots els límits i colímits de forma $\cat{I}$. Fixem, per a cada diagrama de forma $\cat{I}$, un límit i un colímit; quan la família de diagrames és pròpiament gran, fem servir la convenció d'elecció global de l'apèndix~\ref{cap:mida}. La propietat universal estén aquestes tries, de manera única, a functors $\varprojlim_{\cat{I}}$ i $\colimop_{\cat{I}}$ (pas~2 de la demostració). Aleshores el functor diagonal $\Delta\colon\cat{C}\to\cat{C}^{\cat{I}}$ té adjunt per l'esquerra $\colimop_{\cat{I}}$ i adjunt per la dreta $\varprojlim_{\cat{I}}$:
 \[
 \colimop_{\cat{I}}\;\dashv\;\Delta\;\dashv\;\varprojlim_{\cat{I}}.
 \]
 \end{teorema}
 
-\begin{prova}[Idea]
-Desplegem l'adjunció de la dreta. Un morfisme $\Delta A\Rightarrow D$ a $\cat{C}^{\cat{I}}$ és, per definició, una família compatible $A\to D_i$, és a dir, un con sobre $D$ amb vèrtex $A$; i la propietat universal del límit diu exactament que aquests cons estan en bijecció natural amb els morfismes $A\to\varprojlim D$:
+\begin{prova}
+Recordem que $\Delta$ envia $A$ al diagrama constant $\Delta A$, amb $(\Delta A)_i=A$ i $(\Delta A)_u=\id_A$, i un morfisme $a\colon A'\to A$ a la transformació natural $\Delta a$ de components $a$. Escrivim $(\varprojlim D,\lambda^D)$ per al límit triat de cada diagrama $D$.
+
+\emph{Pas 1: un morfisme $\Delta A\Rightarrow D$ és un con.} Una transformació natural $\alpha\colon\Delta A\Rightarrow D$ té components $\alpha_i\colon A\to D_i$, i el seu quadrat de naturalitat per a $u\colon i\to j$ diu $D_u\comp\alpha_i=\alpha_j\comp\id_A=\alpha_j$. És exactament la condició de con. Per tant, $\Hom_{\cat{C}^{\cat{I}}}(\Delta A,D)$ és el conjunt dels cons sobre $D$ amb vèrtex $A$.
+
+\emph{Pas 2: $\varprojlim$ és un functor.} Sigui $\beta\colon D\Rightarrow D'$ un morfisme de $\cat{C}^{\cat{I}}$. La família $\beta_i\comp\lambda^D_i$ és un con sobre $D'$, perquè $D'_u\comp\beta_i\comp\lambda^D_i=\beta_j\comp D_u\comp\lambda^D_i=\beta_j\comp\lambda^D_j$. Definim $\varprojlim\beta$ com l'única fletxa amb
 \[
-\Hom_{\cat{C}^{\cat{I}}}(\Delta A, D)\;\cong\;\Hom_{\cat{C}}(A,\varprojlim D),
+\lambda^{D'}_i\comp\varprojlim\beta=\beta_i\comp\lambda^D_i\qquad\text{per a tot } i.
 \]
-naturalment en $A$ i en $D$. Això és precisament $\Delta\dashv\varprojlim$. Dualment, un morfisme $D\Rightarrow\Delta A$ és un cocon, i la propietat universal del colímit dona $\Hom_{\cat{C}}(\colimop D,A)\cong\Hom_{\cat{C}^{\cat{I}}}(D,\Delta A)$, és a dir, $\colimop\dashv\Delta$.
+La identitat i $\varprojlim\id_D$ compleixen totes dues aquesta condició per a $\beta=\id_D$. Per a $\beta'\colon D'\Rightarrow D''$, la composició $\varprojlim\beta'\comp\varprojlim\beta$ la compleix per a $\beta'\comp\beta$. Per la unicitat de la factorització, $\varprojlim$ preserva identitats i composició.
+
+\emph{Pas 3: la bijecció.} Definim $\theta_{A,D}\colon\Hom_{\cat{C}^{\cat{I}}}(\Delta A,D)\to\Hom_{\cat{C}}(A,\varprojlim D)$ enviant cada con $\alpha$ a l'única fletxa $\theta(\alpha)$ amb $\lambda^D_i\comp\theta(\alpha)=\alpha_i$ per a tot $i$. Per la propietat universal del límit, $\theta$ és bijectiva, amb inversa $h\mapsto(\lambda^D_i\comp h)_i=\lambda^D\comp\Delta h$.
+
+\emph{Pas 4: naturalitat.} Per a $a\colon A'\to A$, les fletxes $\theta(\alpha\comp\Delta a)$ i $\theta(\alpha)\comp a$ compleixen totes dues $\lambda^D_i\comp(-)=\alpha_i\comp a$, i per tant coincideixen: és la naturalitat en $A$. Per a $\beta\colon D\Rightarrow D'$,
+\[
+\lambda^{D'}_i\comp\varprojlim\beta\comp\theta(\alpha)=\beta_i\comp\lambda^D_i\comp\theta(\alpha)=\beta_i\comp\alpha_i=\lambda^{D'}_i\comp\theta(\beta\comp\alpha),
+\]
+d'on $\varprojlim\beta\comp\theta(\alpha)=\theta(\beta\comp\alpha)$: és la naturalitat en $D$. Així $\Delta\dashv\varprojlim_{\cat{I}}$.
+
+\emph{L'adjunció de l'esquerra} és la duala, pas per pas. Una transformació natural $\gamma\colon D\Rightarrow\Delta A$ té components $\gamma_i\colon D_i\to A$ amb $\gamma_j\comp D_u=\gamma_i$, és a dir, és un cocon. Si $(\colimop D,\kappa^D)$ és el colímit triat, $\colimop\beta$ és l'única fletxa amb $\colimop\beta\comp\kappa^D_i=\kappa^{D'}_i\comp\beta_i$, i és functorial per la mateixa raó. La bijecció $\Hom_{\cat{C}}(\colimop D,A)\to\Hom_{\cat{C}^{\cat{I}}}(D,\Delta A)$ és $h\mapsto(h\comp\kappa^D_i)_i$, bijectiva per la propietat universal del colímit. És natural en $A$, perquè $(a\comp h)\comp\kappa^D_i=a\comp(h\comp\kappa^D_i)$, i en $D$, perquè $h\comp\colimop\beta\comp\kappa^D_i=(h\comp\kappa^{D'}_i)\comp\beta_i$. Així $\colimop_{\cat{I}}\dashv\Delta$.
 \end{prova}
 
 \begin{observacio}
-Aquesta fórmula és una de les síntesis més netes del llibre: recull en una sola línia tot el capítol de límits. La unitat de $\Delta\dashv\varprojlim$ és la família de projeccions del límit; la counitat de $\colimop\dashv\Delta$, la d'injeccions del colímit. I la lectura és profètica: quan al capítol de subobjectes vegem l'existencial i l'universal com a adjunts de la reindexació $f^{*}$, estarem veient una versió \enquote{fibrada} d'aquesta mateixa idea ---$f^{*}$ fa el paper de $\Delta$, i els quantificadors, el de $\colimop$ i $\varprojlim$.
+Aquesta fórmula és una de les síntesis més netes del llibre: recull en una sola línia tot el capítol de límits. En l'adjunció $\Delta\dashv\varprojlim_{\cat{I}}$, la \emph{counitat} en un diagrama $D$,
+\[
+\varepsilon_D\colon\Delta\bigl(\varprojlim\nolimits_{\cat{I}}D\bigr)\Rightarrow D,
+\]
+és exactament el con límit de $D$, és a dir, la família de projeccions; la \emph{unitat} en un objecte $A$ és el morfisme $A\to\varprojlim_{\cat{I}}\Delta A$. Dualment, en l'adjunció $\colimop_{\cat{I}}\dashv\Delta$, la \emph{unitat}
+\[
+\eta_D\colon D\Rightarrow\Delta\bigl(\colimop\nolimits_{\cat{I}}D\bigr)
+\]
+és el cocon colímit, la família d'injeccions, mentre que la \emph{counitat} és el morfisme $\colimop_{\cat{I}}\Delta A\to A$. Identificar quina de les dues transformacions és el con o el cocon universal és un bon exercici per fixar la diferència entre unitat i counitat. I la lectura és profètica: quan al capítol de subobjectes vegem l'existencial i l'universal com a adjunts de la reindexació $f^{*}$, estarem veient una versió \enquote{fibrada} d'aquesta mateixa idea ---$f^{*}$ fa el paper de $\Delta$, i els quantificadors, el de $\colimop$ i $\varprojlim$.
 \end{observacio}
 
 \section{Exponencials i currificació}
 
 Recuperem ara la relació que vam ajornar en tractar les categories de functors: la que lliga el producte amb els objectes de functors.
 
-\begin{proposicio}\index{adjunció!producte-exponencial}\index{Cat@$\cat{Cat}$!exponencials}
+\begin{proposicio}\label{prop:cat-currificacio}\index{adjunció!producte-exponencial}\index{Cat@$\cat{Cat}$!exponencials}
 Per a categories petites $\cat{A},\cat{B},\cat{C}$, hi ha un isomorfisme natural
 \[
 \Hom_{\cat{Cat}}(\cat{A}\times\cat{B},\cat{C})\;\cong\;\Hom_{\cat{Cat}}(\cat{A},\cat{C}^{\cat{B}}).
@@ -217,22 +453,48 @@ Per a categories petites $\cat{A},\cat{B},\cat{C}$, hi ha un isomorfisme natural
 \]
 \end{proposicio}
 
-\begin{prova}[Idea]
-Un functor $\cat{A}\times\cat{B}\to\cat{C}$ es pot \enquote{currificar}: fixant la primera variable en cada objecte $A$ de $\cat{A}$, s'obté un functor $\cat{B}\to\cat{C}$, i aquesta assignació és functorial en $A$, de manera que dona un functor $\cat{A}\to\cat{C}^{\cat{B}}$. La correspondència inversa \enquote{descurrifica}. Que sigui una bijecció natural es comprova component a component, i és el reflex, a nivell de categories, de la bijecció conjuntista $\Hom(A\times B,C)\cong\Hom(A,C^B)$.
+\begin{prova}
+Primer, els dos costats són functors $\cat{Cat}\to\cat{Cat}$. El functor $-\times\cat{B}$ envia $P\colon\cat{A}'\to\cat{A}$ a $P\times\id_{\cat{B}}$. El functor $(-)^{\cat{B}}$ envia $K\colon\cat{C}\to\cat{C}'$ a la composició amb $K$, $\cat{C}^{\cat{B}}\to\cat{C}'^{\cat{B}}$, que fa $H\mapsto K\comp H$ i $\eta\mapsto K\eta$ (capítol~\ref{cap:transformacions}). Si $\cat{B}$ i $\cat{C}$ són petites, $\cat{C}^{\cat{B}}$ també ho és. A $\cat{A}\times\cat{B}$ escrivim els morfismes com a parelles, que es componen component a component, i fem servir la descomposició
+\[
+(f,g)=(f,\id_{b'})\comp(\id_a,g)=(\id_{a'},g)\comp(f,\id_b)\qquad\text{per a } f\colon a\to a',\ g\colon b\to b'.
+\tag{$\ast$}
+\]
+
+\emph{Currificació.} Sigui $F\colon\cat{A}\times\cat{B}\to\cat{C}$. Per a cada objecte $a$, $\Lambda F(a)=F(a,-)$ és el functor $\cat{B}\to\cat{C}$ que envia $b\mapsto F(a,b)$ i $g\mapsto F(\id_a,g)$. És un functor perquè $F$ ho és i $(\id_a,g')\comp(\id_a,g)=(\id_a,g'\comp g)$. Per a $f\colon a\to a'$, $\Lambda F(f)\colon F(a,-)\Rightarrow F(a',-)$ té components $F(f,\id_b)$. És natural perquè, aplicant $F$ a $(\ast)$, $F(\id_{a'},g)\comp F(f,\id_b)=F(f,g)=F(f,\id_{b'})\comp F(\id_a,g)$. Finalment, $\Lambda F\colon\cat{A}\to\cat{C}^{\cat{B}}$ és un functor: les components de $\Lambda F(\id_a)$ són identitats, i les de $\Lambda F(f'\comp f)$ són $F(f'\comp f,\id_b)=F(f',\id_b)\comp F(f,\id_b)$, que són les de la composició vertical $\Lambda F(f')\comp\Lambda F(f)$.
+
+\emph{Descurrificació.} Sigui $H\colon\cat{A}\to\cat{C}^{\cat{B}}$. Definim $\bar H\colon\cat{A}\times\cat{B}\to\cat{C}$ per
+\[
+\bar H(a,b)=H(a)(b),\qquad \bar H(f,g)=H(f)_{b'}\comp H(a)(g)=H(a')(g)\comp H(f)_b,
+\]
+on la segona igualtat és la naturalitat de $H(f)$. Les identitats es preserven perquè $H(\id_a)$ és la transformació identitat i $H(a)$ és un functor. Per a $(f',g')\colon(a',b')\to(a'',b'')$,
+\[
+\begin{aligned}
+\bar H(f',g')\comp\bar H(f,g)
+&=H(f')_{b''}\comp H(a')(g')\comp H(f)_{b'}\comp H(a)(g)\\
+&=H(f')_{b''}\comp H(f)_{b''}\comp H(a)(g')\comp H(a)(g)\\
+&=H(f'\comp f)_{b''}\comp H(a)(g'\comp g),
+\end{aligned}
+\]
+on hem fet servir la naturalitat de $H(f)$ per a $g'$, que $H$ preserva la composició (vertical, component a component) i que $H(a)$ és un functor. Això és $\bar H\bigl((f',g')\comp(f,g)\bigr)$.
+
+\emph{Són inverses.} Per a $F$: $\overline{\Lambda F}(a,b)=F(a,b)$ i $\overline{\Lambda F}(f,g)=F(f,\id_{b'})\comp F(\id_a,g)=F(f,g)$, per $(\ast)$. Per a $H$: $\Lambda\bar H(a)$ envia $g$ a $\bar H(\id_a,g)=H(a)(g)$, de manera que $\Lambda\bar H(a)=H(a)$; i les components de $\Lambda\bar H(f)$ són $\bar H(f,\id_b)=H(f)_b$, de manera que $\Lambda\bar H(f)=H(f)$.
+
+\emph{Naturalitat.} Per a $P\colon\cat{A}'\to\cat{A}$, el functor $\Lambda\bigl(F\comp(P\times\id_{\cat{B}})\bigr)$ envia $a'$ a $F(P(a'),-)$ i $f'$ a la transformació de components $F(P(f'),\id_b)$; és a dir, és $\Lambda F\comp P$. Per a $K\colon\cat{C}\to\cat{C}'$, $\Lambda(K\comp F)$ envia $a$ a $K\comp F(a,-)$ i $f$ a la transformació de components $K(F(f,\id_b))$, que és $K\,\Lambda F(f)$; és a dir, $\Lambda(K\comp F)=K^{\cat{B}}\comp\Lambda F$, on $K^{\cat{B}}$ és la imatge de $K$ pel functor $(-)^{\cat{B}}$. Aquestes dues igualtats són la naturalitat de $\Lambda$ en $\cat{A}$ i en $\cat{C}$. Per tant, $-\times\cat{B}\dashv(-)^{\cat{B}}$.
 \end{prova}
 
 \begin{observacio}
 Aquesta adjunció ---\emph{producte $\dashv$ exponencial}--- és el prototip de les \textbf{categories cartesianes tancades}, que estudiarem al capítol següent i que són el marc categòric del càlcul lambda simplement tipat. La \enquote{currificació} és exactament la que apareix en programació funcional: transformar una funció de dues variables en una funció que retorna funcions.
 \end{observacio}
 
-\section{Cap al tancament cartesià i la lògica}
-
-Les adjuncions han unificat construccions aparentment diverses: objectes lliures, interiors i clausures, connectius lògics, exponencials. El patró comú ---una bijecció natural d'homconjunts, o equivalentment una unitat i una counitat amb les identitats triangulars--- reapareixerà com a columna vertebral de tot el que segueix.
-
-Al capítol següent, dedicat a les \textbf{categories cartesianes tancades}, l'adjunció entre el producte i l'exponencial es fa interna a la categoria i dona lloc als objectes exponencials i a la interpretació categòrica del càlcul lambda. I més endavant, en entrar de ple a la lògica categòrica, veurem que els \textbf{quantificadors} $\exists$ i $\forall$ són, respectivament, els adjunts per l'esquerra i per la dreta dels functors de reindexació entre subobjectes ---la formulació categòrica precisa de la relació entre quantificació i substitució. Les adjuncions són, doncs, el pont directe cap a la semàntica categòrica de la lògica.
-
 \begin{resumcap}
-\apartat{Cinc idees} (1)~Una adjunció $F\dashv G$ és una bijecció natural $\Hom(F A,B)\cong\Hom(A,G B)$. (2)~Equivale a donar unitat i counitat que satisfan les identitats triangulars. (3)~La unitat expressa una propietat universal (morfisme universal cap a $G$). (4)~Els adjunts són únics llevat d'isomorfisme. (5)~Els adjunts per la dreta preserven límits; els adjunts per l'esquerra, colímits.
-\apartat{Errors típics} Intercanviar quin adjunt preserva límits i quin colímits; oblidar la naturalitat de la bijecció d'homconjunts; confondre unitat i counitat; i tractar les mnemotècniques (\enquote{RAPL\,/\,LAPC}) com a terminologia establerta en lloc d'ajudes informals.
-\apartat{Lectura recomanada} \cite[cap.~9]{awodey}; \cite[cap.~2]{leinster} per a una exposició centrada en adjuncions; \cite[IV]{maclane} per al tractament clàssic i \cite{borceux} per a més detalls.
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Una adjunció $F\dashv G$ és una bijecció natural $\Hom(F(A),B)\cong\Hom(A,G(B))$, i dona els transposats.
+  \item Equival a donar una unitat i una counitat que satisfan les identitats triangulars; la unitat expressa una propietat universal, i dualment la counitat.
+  \item Exemples clau: les connexions de Galois entre preordres, $\Free\dashv U$ i, a $\cat{Set}$, la cadena $\exists_f\dashv f^{*}\dashv\forall_f$.
+  \item $\colimop_{\cat{I}}\dashv\Delta\dashv\varprojlim_{\cat{I}}$ i $-\times B\dashv(-)^{B}$ mostren que moltes propietats universals són adjuncions.
+  \item Els adjunts són únics llevat d'isomorfisme natural; els adjunts per la dreta preserven límits, i els adjunts per l'esquerra, colímits.
+\end{enumerate}
+\apartat{Errors típics} Intercanviar quin adjunt preserva límits i quin colímits; creure que un adjunt per la dreta \emph{no pot} preservar colímits, quan el teorema només dona una direcció; oblidar la naturalitat de la bijecció d'homconjunts; confondre unitat i counitat (per exemple, a $\Delta\dashv\varprojlim$ el con límit és la counitat, no la unitat); i tractar les mnemotècniques (\enquote{RAPL\,/\,LAPC}) com a terminologia establerta en lloc d'ajudes informals.
+\apartat{Lectura recomanada} \cite[cap.~9]{awodey}, especialment §§9.4--9.6, per als adjunts d'ordre, els quantificadors com a adjunts i RAPL; \cite[cap.~2]{leinster} per a la unitat, la counitat i les fletxes universals; \cite[§§4.1--4.5]{riehl} per al càlcul d'adjuncions i la preservació de límits; \cite[cap.~4]{perrone-notes} per als exemples lliure--oblit, les connexions de Galois i l'adjunció entre categories i grafs; \cite[cap.~13]{barrwells} per a una exposició orientada a exemples; i \cite[cap.~IV]{maclane} per al tractament clàssic.
 \end{resumcap}

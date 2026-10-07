@@ -12,31 +12,85 @@ Associa a cada subconjunt la seva funció característica i comprova que l'aplic
 \end{exercici}
 
 \begin{exercici}
-Demostra que en una categoria amb classificador de subobjectes, tot monomorfisme és el pullback de $\mathsf{true}\colon 1\to\Omega$ al llarg d'algun morfisme. \hfill{\normalfont$\star$}
+En un topos, sigui $m\colon U\rightarrowtail E$ un subobjecte i $g\colon E'\to E$ un morfisme. Demostra que el morfisme característic de la reindexació $g^{*}m$ és
+\[
+\chi_{g^{*}m}=\chi_m\comp g.
+\]
+Interpreta-ho com la compatibilitat entre la representació $\Sub\cong\Hom(-,\Omega)$ i la substitució. \hfill{\normalfont$\star$}
 \begin{indicacio}
-És reformular la definició de classificador: la funció característica del subobjecte proporciona justament aquest morfisme.
+Compara els dos pullbacks de $\mathsf{true}$ i fes servir el lema d'enganxament de pullbacks.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $E=\{1,\dots,6\}$ i $U=\{3,6\}$, el predicat \enquote{$x$ és múltiple de $3$}. Calcula $\chi_U\colon E\to\{0,1\}$. Sigui $g\colon\{a,b,c,d\}\to E$ l'aplicació amb $g(a)=3$, $g(b)=4$, $g(c)=6$ i $g(d)=3$. Calcula $\chi_U\comp g$ i identifica el subconjunt que classifica. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Segueix l'exemple de la Teoria. Com que $g$ no és injectiva, fixa't que dos elements diferents poden tenir la mateixa imatge i que això no afecta la reindexació.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que $\mathsf{true}\colon1\to\Omega$ és sempre un monomorfisme, i que $\Hom(1,\Omega)\cong\Sub(1)$. Quants valors de veritat globals té $\cat{Set}$? \hfill{\normalfont$\star$}
+\begin{indicacio}
+Per a la primera part, compara dues fletxes qualssevol $X\to1$. Per a la segona, particularitza la representabilitat de $\Sub$.
 \end{indicacio}
 \end{exercici}
 
 \section{Topos}
 
 \begin{exercici}
-Comprova que la categoria $\cat{Set}^{\to}$ de les fletxes de $\cat{Set}$ (functors des de la categoria $\mathbf{2}$) té límits finits i exponencials, i esbrina quin és el seu classificador de subobjectes. \hfill{\normalfont$\star\star$}
+Sigui $\mathbf 2=(0\to 1)$. La categoria de fletxes $\cat{Set}^{\mathbf 2}$ té per objectes les aplicacions $X_0\to X_1$, i és una categoria de prefeixos sobre $\mathbf 2\op$, per tant un topos. Fent servir la construcció amb sedassos:
+\begin{enumerate}
+  \item calcula els conjunts $\Omega(0)$ i $\Omega(1)$;
+  \item calcula l'aplicació de restricció entre ells, de manera que $\Omega$ és un objecte de $\cat{Set}^{\mathbf 2}$, és a dir, una fletxa;
+  \item determina els elements globals $1\to\Omega$, que són els \enquote{valors de veritat globals}.
+\end{enumerate}
+\hfill{\normalfont$\star\star$}
 \begin{indicacio}
-$\cat{Set}^{\to}$ és una categoria de prefeixos sobre $\mathbf{2}$, per tant un topos. Aplica la construcció amb sedassos a $\mathbf{2}$ per identificar $\Omega$; té tres \enquote{valors de veritat}.
+Compta els sedassos sobre cada objecte de $\mathbf 2\op$. Observa que $\Omega$ no és un conjunt de valors, sinó una fletxa entre dos conjunts.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Demostra que tota categoria de prefeixos $\cat{Set}^{\cat{C}\op}$ té límits finits calculats objecte a objecte. \hfill{\normalfont$\star$}
+Demostra que un topos que és alhora una categoria prima és equivalent a la categoria terminal $\cat{1}$. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Un límit de prefeixos es calcula avaluant a cada objecte de $\cat{C}$ i prenent el límit corresponent a $\cat{Set}$; comprova la functorialitat.
+En una categoria prima, tot morfisme és mono. Aplica-ho al morfisme $A\to 1$ i fes servir que $\Sub(1)\cong\Hom(1,\Omega)$ té com a màxim un element.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}[Ampliació]
+Fent servir el classificador de $\cat{Graph}$ calculat a la Teoria, determina els valors de veritat globals, és a dir, els morfismes $\mathbf L\to\Omega$ des del graf terminal d'un bucle. Comprova que n'hi ha tres, identifica cadascun amb un subgraf de $\mathbf L$ i dedueix que $\Omega$ no és isomorf a $1+1$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Un morfisme $\mathbf L\to\Omega$ tria un bucle de $\Omega$. Contrasta el resultat amb $\Sub(\mathbf L)\cong\Hom(\mathbf L,\Omega)$ i compta els morfismes $\mathbf L\to\mathbf L+\mathbf L$.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Demostra que en un topos l'objecte de parts dona una bijecció entre subobjectes de $E$ i morfismes $1\to\Omega^{E}$. \hfill{\normalfont$\star\star$}
+Dedueix de l'exercici resolt~\ref{pr-mono-equalitzador} de la Pràctica que $\cat{Top}$ no té classificador de subobjectes, i per tant no és un topos. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Aplica $\Hom(1,\Omega^{E})\cong\Hom(1\times E,\Omega)\cong\Sub(E)$, usant $1\times E\cong E$.
+A $\cat{Top}$, els monomorfismes són les aplicacions contínues injectives i els epimorfismes, les exhaustives. Busca una bijecció contínua entre dos espais de dos punts que no sigui un homeomorfisme.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\cat{B}\mathbb N$ el monoide additiu $(\mathbb N,+,0)$ vist com a categoria d'un sol objecte $\ast$. Descriu tots els sedassos sobre $\ast$ i dedueix que $\Omega(\ast)$ està en bijecció amb $\mathbb N\cup\{\infty\}$. Descriu l'acció $\Omega(h)$ de cada $h\in\mathbb N$. Comprova que només hi ha dos valors de veritat globals, però que $\Sub(\yon(\ast))$ no és una àlgebra de Boole. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Un sedàs no buit és tancat per sumar qualsevol natural; mira'n l'element mínim. Un valor global és un sedàs fix per totes les accions. Per a la darrera part, fes servir que $\Sub(\yon(\ast))\cong\Omega(\ast)$ i busca un sedàs $S$ tal que el més gran dels sedassos disjunts de $S$, unit amb $S$, no doni el sedàs màxim.
+\end{indicacio}
+\end{exercici}
+
+\section{Grafs i lògica}
+
+\begin{exercici}
+Sigui $G$ el graf amb vèrtexs $a,b$ i arestes $\ell\colon a\to a$, $e\colon a\to b$ i $d\colon b\to a$, i sigui $H$ el subgraf format pel vèrtex $a$ i el bucle $\ell$. Fent servir la descripció de $\Omega$ de la Teoria, calcula $\chi_H\colon G\to\Omega$ i comprova que el pullback de $\mathsf{true}$ al llarg de $\chi_H$ és $H$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Per a cada aresta, mira quins dels seus dos extrems són a $H$ i si ella mateixa hi és, i tria l'aresta de $\Omega$ que registra aquesta informació.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+A $\Sub(\mathbf E)$, on $\mathbf E$ és el graf d'una sola aresta $e\colon s\to t$, sigui $\neg K$ el més gran dels subgrafs disjunts de $K$. Comprova que existeix, calcula $\neg K$ per als cinc subgrafs de $\mathbf E$ i determina per a quins es compleix $\neg\neg K=K$. Què en dedueixes sobre la doble negació? \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Un subgraf que conté l'aresta ha de contenir els seus dos extrems. Fes una taula amb $K$, $\neg K$ i $\neg\neg K$.
 \end{indicacio}
 \end{exercici}

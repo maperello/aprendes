@@ -7,7 +7,7 @@ Els exercicis següents completen els resolts a la part de Pràctica. Cada enunc
 \begin{exercici}
 Descriu la categoria índex $\cat{I}$ i el diagrama corresponent per a cadascun d'aquests límits: producte binari, equalitzador, pullback i objecte terminal. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Producte: $\cat{I}$ discreta amb dos objectes. Equalitzador: dues fletxes paral·leles. Pullback: forma de racó $\bullet\to\bullet\leftarrow\bullet$. Terminal: la categoria buida.
+Identifica, per a cada propietat universal, la forma mínima de diagrama que la descriu: quants objectes hi intervenen i quines fletxes cal que commutin.
 \end{indicacio}
 \end{exercici}
 
@@ -23,14 +23,14 @@ Si $f\colon A\to B$ i $g\colon B\to C$ satisfan $\beta_i\comp f=\alpha_i$ i $\ga
 \begin{exercici}
 Comprova que en un preordre vist com a categoria, el producte de dos elements és el seu ínfim i el coproducte és el seu suprem, quan existeixen. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Un con sobre dos objectes $a,b$ amb vèrtex $x$ és una parella $x\leq a$, $x\leq b$; el límit és el més gran d'aquests $x$, és a dir, l'ínfim $a\wedge b$. Dualitza per al suprem.
+Tradueix la propietat universal del producte a desigualtats.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Comprova que si un diagrama té dos límits, l'únic isomorfisme entre ells commuta amb totes les projeccions. \hfill{\normalfont$\star$}
+Comprova que dos límits d'un mateix diagrama són isomorfs per un únic isomorfisme compatible amb totes les projeccions. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Els límits són objectes terminals de $\mathrm{Con}(D)$; l'isomorfisme és un morfisme de cons, i per tant compatible amb les projeccions per definició.
+Treballa a la categoria $\mathrm{Con}(D)$ i fes servir la unicitat dels objectes terminals.
 \end{indicacio}
 \end{exercici}
 
@@ -42,14 +42,14 @@ Comprova, llevat d'isomorfisme, la commutativitat i l'associativitat del product
 A\times B\cong B\times A,\quad (A\times B)\times C\cong A\times(B\times C).
 \] \hfill{\normalfont$\star$}
 \begin{indicacio}
-Comprova que tots dos costats satisfan la mateixa propietat universal (la de producte de tres objectes, per al segon cas), i aplica la unicitat del límit.
+Fes servir la unicitat d'un objecte definit per una mateixa propietat universal.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
 Comprova que si $\cat{C}$ té objecte terminal $1$, aleshores $A\times 1\cong A$ per a tot objecte $A$. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Un morfisme $X\to A\times 1$ és una parella $(X\to A,\ X\to 1)$; però $X\to 1$ és únic, de manera que equival a un morfisme $X\to A$. Per tant $A\times 1$ i $A$ representen el mateix functor.
+Compara les propietats universals de $A\times 1$ i de $A$.
 \end{indicacio}
 \end{exercici}
 
@@ -89,7 +89,7 @@ El pullback d'aquest quadrat a $\cat{Set}$ és $\{(a,a')\mid f(a)=f(a')\}$; que 
 \begin{exercici}
 Comprova que tot coequalitzador és un epimorfisme, dualitzant la demostració que tot equalitzador és un monomorfisme. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Aplica l'argument de l'equalitzador a la categoria oposada, o repeteix-lo amb les fletxes girades: si $r\comp q=s\comp q$, la propietat universal del coequalitzador força $r=s$.
+Dualitza l'argument de la Pràctica que prova que tot equalitzador és mono.
 \end{indicacio}
 \end{exercici}
 
@@ -103,30 +103,39 @@ Comprova que el pushout de $f\colon C\to A$ i $g\colon C\to B$ a $\cat{Set}$ és
 \section{Límits finits}
 
 \begin{exercici}
-Comprova que una categoria amb objecte terminal i pullbacks té productes binaris. \hfill{\normalfont$\star\star$}
+Sigui $\cat{C}$ una categoria amb productes binaris i pullbacks, i siguin $f,g\colon A\to B$. La demostració del teorema~\ref{teo:limits-finits} obté l'equalitzador de $f$ i $g$ com un pullback de dues fletxes $A\to A\times B$. Comprova que també és un pullback de la diagonal $\langle\id_B,\id_B\rangle\colon B\to B\times B$ al llarg de $\langle f,g\rangle\colon A\to B\times B$. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-El producte $A\times B$ és el pullback de $A\to 1\leftarrow B$, on les fletxes són les úniques cap a l'objecte terminal.
+Escriu què és un con sobre aquest pullback i tradueix la condició de con component a component, amb les dues projeccions de $B\times B$.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Comprova que una categoria amb productes binaris i equalitzadors té tots els pullbacks. \hfill{\normalfont$\star\star$}
+Comprova directament que una categoria amb productes binaris i equalitzadors té tots els pullbacks, amb una construcció més econòmica que la general de la demostració del teorema~\ref{teo:limits-finits}. \hfill{\normalfont$\star$}
 \begin{indicacio}
-El pullback de $f\colon A\to C$ i $g\colon B\to C$ és l'equalitzador de les dues composicions $A\times B\rightrightarrows C$ donades per $f\comp\pi_1$ i $g\comp\pi_2$.
+Expressa el pullback com un equalitzador de dues fletxes que surten d'un producte.
+\end{indicacio}
+\end{exercici}
+
+\section{Límits en categories de functors}
+
+\begin{exercici}
+Sigui $\mathbf E$ el graf amb dos vèrtexs $0,1$ i una sola aresta $e\colon 0\to 1$. Fent servir que $\cat{Graph}\cong\cat{Set}^{\cat{P}}$ i que els límits i colímits s'hi calculen punt a punt (proposició~\ref{prop:limits-punt-a-punt}), descriu el producte $\mathbf E\times\mathbf E$ i el coproducte $\mathbf E+\mathbf E$: els seus vèrtexs, les seves arestes, i l'origen i el destí de cada aresta. Dibuixa'ls. És $\mathbf E\times\mathbf E$ un quadrat? \hfill{\normalfont$\star$}
+\begin{indicacio}
+Calcula per separat el conjunt de vèrtexs i el d'arestes, i defineix origen i destí component a component.
 \end{indicacio}
 \end{exercici}
 
 \section{Preservació i reflexió}
 
 \begin{exercici}
-Comprova que un functor ple i fidel reflecteix tots els límits que preserva. \hfill{\normalfont$\star\star$}
+Comprova que tot functor ple i fidel reflecteix límits. Dualment, reflecteix colímits. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Si $F$ envia un con $(L,\lambda)$ a un límit i $F$ és ple i fidel, les factoritzacions úniques a $\cat{D}$ provenen de factoritzacions úniques a $\cat{C}$ per la bijecció sobre homconjunts.
+Aixeca l'existència de la factorització amb la plenitud i prova'n la unicitat amb la fidelitat.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Comprova que el functor representable contravariant
+Comprova que el prefeix representable
 \[
 \Hom(-,B)\colon\cat{C}\op\to\cat{Set}
 \]

@@ -50,6 +50,7 @@
 \usepackage{import}
 \usepackage{graphicx}
 \usepackage{tabularx}
+\usepackage{xltabular}% tabularx que pagina (taula de notació)
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,matrix}
 \usepackage[all]{xy}% diagrames de grafs (llaços i arestes múltiples) a l'apèndix de grafs
@@ -84,18 +85,31 @@
 %  pròpies del llibre ja s'han definit abans en metadata.tex;
 %  la macro \hypermetadata s'executa després de carregar aquest fitxer.
 % ============================================================
-\usepackage{hyperref}
+\usepackage[pdflang=ca-ES,pdfdisplaydoctitle=true]{hyperref}
 % Color dels enllaços: el blau pissarra de la paleta d'aprendes,
 % una mica enfosquit. Prou distint del vermell corporatiu dels
 % títols, exemples i exercicis, i coherent amb la resta de colors.
 \colorlet{EnllacBlau}{ResultatBlau!90!black}
-\hypersetup{
-  colorlinks=true,
-  linktoc=page,
-  linkcolor=EnllacBlau,
-  urlcolor=EnllacBlau,
-  citecolor=EnllacBlau,
-  filecolor=EnllacBlau,
-  hypertexnames=false,
-}
+\ifimprimible
+  \hypersetup{
+    colorlinks=true,
+    linktoc=page,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black,
+    filecolor=black,
+    pdfborder={0 0 0},
+    hypertexnames=false,
+  }
+\else
+  \hypersetup{
+    colorlinks=true,
+    linktoc=page,
+    linkcolor=EnllacBlau,
+    urlcolor=EnllacBlau,
+    citecolor=EnllacBlau,
+    filecolor=EnllacBlau,
+    hypertexnames=false,
+  }
+\fi
 \usepackage{bookmark}% millora els marcadors del PDF; ha d'anar després d'hyperref

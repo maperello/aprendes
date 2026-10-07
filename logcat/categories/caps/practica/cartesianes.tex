@@ -1,23 +1,22 @@
 \chapter[Cartesianes tancades]{\texorpdfstring{Categories cartesianes\\ tancades}{Categories cartesianes tancades}}
 
-Els exercicis d'aquest capítol treballen el tancament cartesià des dels tres vessants: la manipulació de productes i diagonals, la propietat universal de l'exponencial via currificació, i la lectura dels exemples ---sobretot $\cat{Set}$ i les àlgebres de Heyting--- com a models de tipus i de lògica. Convé tenir sempre present la bijecció fonamental $\Hom(A\times B,C)\cong\Hom(A,C^{B})$.
+Els exercicis treballen tres aspectes del tancament cartesià: productes i diagonals, la propietat universal de l'exponencial i la interpretació de tipus i lògica. Convé tenir sempre present la bijecció
+\[
+\Hom(A\times B,C)\cong\Hom(A,C^{B}).
+\]
 
 \section{Productes i diagonals}
 
 \begin{exercici}
-En una categoria cartesiana, comprova que la diagonal $\Delta_A=\langle\id_A,\id_A\rangle$ satisfà $\pi_1\comp\Delta_A=\pi_2\comp\Delta_A=\id_A$ i que és l'únic morfisme amb aquesta propietat.
+En una categoria cartesiana, comprova que la diagonal $\delta_A\colon A\to A\times A$ satisfà
+\[
+\pi_1\comp\delta_A=\pi_2\comp\delta_A=\id_A
+\]
+i que és l'únic morfisme amb aquesta propietat.
 \end{exercici}
 
 \begin{solucio}
-Per la propietat universal del producte $A\times A$, un morfisme $A\to A\times A$ està determinat per les seves dues composicions amb les projeccions. Definim $\Delta_A$ com l'únic morfisme amb $\pi_1\comp\Delta_A=\id_A$ i $\pi_2\comp\Delta_A=\id_A$; l'existència i la unicitat són exactament el contingut de la propietat universal aplicada a la parella $(\id_A,\id_A)$. Qualsevol altre morfisme $d\colon A\to A\times A$ amb $\pi_1\comp d=\pi_2\comp d=\id_A$ compleix la mateixa condició universal i, per unicitat, $d=\Delta_A$.
-\end{solucio}
-
-\begin{exercici}
-Comprova que el functor $-\times B$ envia un isomorfisme $f\colon A\to A'$ a un isomorfisme $f\times\id_B$, amb invers $f^{-1}\times\id_B$.
-\end{exercici}
-
-\begin{solucio}
-Pel caràcter functorial de $-\times B$ (proposició~\ref{prop:producte-functor}), $(f\times\id_B)\comp(f^{-1}\times\id_B)=(f\comp f^{-1})\times\id_B=\id_{A'}\times\id_B=\id_{A'\times B}$, i anàlogament en l'altre ordre. Per tant $f\times\id_B$ és un isomorfisme. Aquest és un cas particular del fet general que tot functor preserva isomorfismes.
+Per la propietat universal del producte $A\times A$, un morfisme $A\to A\times A$ està determinat per les seves dues composicions amb les projeccions. Definim $\delta_A$ com l'únic morfisme amb $\pi_1\comp\delta_A=\id_A$ i $\pi_2\comp\delta_A=\id_A$; l'existència i la unicitat són exactament el contingut de la propietat universal aplicada a la parella $(\id_A,\id_A)$. Qualsevol altre morfisme $d\colon A\to A\times A$ amb $\pi_1\comp d=\pi_2\comp d=\id_A$ compleix la mateixa condició universal i, per unicitat, $d=\delta_A$.
 \end{solucio}
 
 \section{La propietat universal de l'exponencial}
@@ -58,6 +57,34 @@ usant l'associativitat del producte. Aplicant ara l'adjunció respecte de $B$ i 
 \Hom((X\times A)\times B,C)\cong\Hom(X\times A,C^{B})\cong\Hom(X,(C^{B})^{A}).
 \]
 Totes les bijeccions són naturals en $X$; pel lema de Yoneda, $C^{A\times B}\cong(C^{B})^{A}$. És la llei $c^{a\cdot b}=(c^{b})^{a}$, i correspon, en el càlcul lambda, al fet que una funció de dos arguments és una funció que retorna una funció (currificació iterada).
+\end{solucio}
+
+\begin{exercici}\label{pr-distributivitat}
+Sigui $\cat{C}$ una CCC amb coproductes binaris i objecte inicial $0$. Demostra que el producte es distribueix sobre el coproducte:
+\[
+A\times(B+C)\;\cong\;(A\times B)+(A\times C),
+\qquad
+A\times 0\;\cong\;0.
+\]
+Interpreta el resultat a $\cat{Set}$ i en una àlgebra de Heyting.
+\end{exercici}
+
+\begin{solucio}
+Pel tancament cartesià, $-\times A\dashv(-)^{A}$, i el producte és commutatiu llevat d'isomorfisme natural; per tant $A\times-$ també és un adjunt per l'esquerra. Els adjunts per l'esquerra preserven colímits, en particular els coproductes binaris i l'objecte inicial, que és el colímit del diagrama buit. Explícitament, el morfisme canònic
+\[
+[\id_A\times\iota_1,\ \id_A\times\iota_2]\colon(A\times B)+(A\times C)\longrightarrow A\times(B+C)
+\]
+és un isomorfisme, i $A\times 0$ és inicial, de manera que $A\times 0\cong 0$.
+
+\emph{A $\cat{Set}$}, la primera bijecció envia una parella $(a,x)$ amb $x$ a la component $B$ o a la component $C$ de la unió disjunta al lloc corresponent; la segona diu que $A\times\varnothing=\varnothing$.
+
+\emph{En una àlgebra de Heyting}, vista com a preordre cartesià tancat amb suprems finits, el coproducte és el suprem i l'inicial és $\bot$. Obtenim
+\[
+a\wedge(b\vee c)=(a\wedge b)\vee(a\wedge c),
+\qquad
+a\wedge\bot=\bot:
+\]
+tota àlgebra de Heyting és un reticle distributiu, i la distributivitat és conseqüència de l'existència de la implicació. Lògicament, la conjunció es distribueix sobre la disjunció.
 \end{solucio}
 
 \section{Heyting i lògica}
@@ -101,5 +128,5 @@ El cos del terme, $x:\sigma,\,y:\tau\vdash x:\sigma$, s'interpreta amb la projec
 \[
 \llbracket\lambda y.\,x\rrbracket=\lambda(\pi_1)\colon\llbracket\sigma\rrbracket\to\llbracket\sigma\rrbracket^{\llbracket\tau\rrbracket}.
 \]
-És a dir, la funció que a cada $x$ li assigna la funció constant de valor $x$. Reconeixem de nou el combinador $\mathsf{K}$: la interpretació de $\lambda y.\,x$ és la currificació de la primera projecció, coherent amb l'exercici de Heyting anterior, que n'és l'ombra proposicional.
+És a dir, la funció que envia cada $x$ a la funció constant de valor $x$: el combinador $\mathsf{K}$, la versió proposicional del qual és la desigualtat $a\leq(b\Rightarrow a)$ de l'exercici de Heyting anterior.
 \end{solucio}

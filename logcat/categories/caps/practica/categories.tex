@@ -4,7 +4,7 @@ En aquest capítol resolem amb detall una selecció d'exercicis corresponents al
 
 \section{Definició de categoria}
 
-\begin{exercici}
+\begin{exercici}\label{exr:pr-rel}
 Comprova que els conjunts amb les relacions formen una categoria $\cat{Rel}$, on un morfisme $A\to B$ és una relació $R\subseteq A\times B$, la identitat de $A$ és la relació d'igualtat, i la composició de $R\subseteq A\times B$ amb $S\subseteq B\times C$ és
 \[
 S\comp R=\{(a,c)\in A\times C\mid \exists\,b\in B\text{ tal que }(a,b)\in R\text{ i }(b,c)\in S\}.
@@ -12,13 +12,13 @@ S\comp R=\{(a,c)\in A\times C\mid \exists\,b\in B\text{ tal que }(a,b)\in R\text
 \end{exercici}
 
 \begin{solucio}
-Hem de comprovar els dos axiomes. Comencem per les \textbf{identitats}. Sigui $\Delta_A=\{(a,a)\mid a\in A\}$ la relació d'igualtat sobre $A$. Per a tota relació $R\subseteq A\times B$,
+Hem de comprovar els dos axiomes. Comencem per les \textbf{identitats}. Sigui $\id_A=\{(a,a)\mid a\in A\}$ la relació d'igualtat sobre $A$. Per a tota relació $R\subseteq A\times B$,
 \[
-R\comp\Delta_A
-=\{(a,b)\mid \exists\,a'\ (a,a')\in\Delta_A\text{ i }(a',b)\in R\}
+R\comp\id_A
+=\{(a,b)\mid \exists\,a'\ (a,a')\in\id_A\text{ i }(a',b)\in R\}
 =R,
 \]
-perquè $(a,a')\in\Delta_A$ obliga $a'=a$. Anàlogament $\Delta_B\comp R=R$.
+perquè $(a,a')\in\id_A$ obliga $a'=a$. Anàlogament $\id_B\comp R=R$.
 
 Per a l'\textbf{associativitat}, siguin $R\subseteq A\times B$, $S\subseteq B\times C$ i $T\subseteq C\times D$. Un parell $(a,d)$ pertany a $T\comp(S\comp R)$ si i només si existeixen $b\in B$ i $c\in C$ tals que
 \[
@@ -249,21 +249,21 @@ Si $f\colon A\to B$ és una bijecció i $R$ és el seu graf, el graf de $f^{-1}$
 
 Recíprocament, suposem que $R$ té un invers $S\colon B\to A$, és a dir,
 \[
-S\comp R=\Delta_A,
+S\comp R=\id_A,
 \qquad
-R\comp S=\Delta_B.
+R\comp S=\id_B.
 \]
 Per a cada $a\in A$, com $(a,a)\in S\comp R$, existeix algun $b\in B$ amb $(a,b)\in R$ i $(b,a)\in S$. Així cada $a$ es relaciona amb almenys un $b$.
 
 Si $(a,b)\in R$ i $(a,b')\in R$, triem $b_0$ amb $(a,b_0)\in R$ i $(b_0,a)\in S$. Llavors
 \[
-(b_0,b)\in R\comp S=\Delta_B,
+(b_0,b)\in R\comp S=\id_B,
 \qquad
-(b_0,b')\in R\comp S=\Delta_B,
+(b_0,b')\in R\comp S=\id_B,
 \]
 i per tant $b=b_0=b'$. Així cada $a$ es relaciona amb un únic $b$, i $R$ és el graf d'una aplicació $f\colon A\to B$.
 
-Aplicat a $S$, el mateix argument dona una aplicació $g\colon B\to A$. Les igualtats $S\comp R=\Delta_A$ i $R\comp S=\Delta_B$ es converteixen en
+Aplicat a $S$, el mateix argument dona una aplicació $g\colon B\to A$. Les igualtats $S\comp R=\id_A$ i $R\comp S=\id_B$ es converteixen en
 \[
 g\comp f=\id_A,
 \qquad
@@ -302,8 +302,10 @@ B\longrightarrow A.
 \]
 A $\cat{Prov}_T$ això significa exactament $A\vdash_T B$ i $B\vdash_T A$.
 
-Recíprocament, si tenim aquestes dues deduccions, existeixen les dues fletxes. Com que $\cat{Prov}_T$ és prima, qualsevol endomorfisme $A\to A$ és necessàriament l'única fletxa $\id_A$, i igualment per a $B$. Per tant les dues composicions són les identitats i les fletxes són inverses. Així $A\cong B$.
+Recíprocament, si es donen aquestes dues deduïbilitats, existeixen les dues fletxes. Com que $\cat{Prov}_T$ és prima, qualsevol endomorfisme $A\to A$ és necessàriament l'única fletxa $\id_A$, i igualment per a $B$. Per tant les dues composicions són les identitats i les fletxes són inverses. Així $A\cong B$.
 \end{solucio}
+
+\section{Classes especials de morfismes}
 
 \begin{exercici}
 Demostra que un morfisme $f$ és un isomorfisme si i només si és un monomorfisme escindit (té retracció) i un epimorfisme.
@@ -330,7 +332,59 @@ Calculem les dues composicions. Per una banda, $f\comp g\colon\{\ast\}\to\{\ast\
 
 Així, l'única igualtat que val és $f\comp g=\id_{\{\ast\}}$. Llegida des de cada morfisme, aquesta equació diu dues coses alhora: $g$ és una \emph{secció} de $f$ (un invers per la dreta de $f$), i $f$ és una \emph{retracció} de $g$ (un invers per l'esquerra de $g$). Convé insistir que \enquote{secció} i \enquote{retracció} són papers relatius a l'altre morfisme, no propietats absolutes: aquí $g$ no és \enquote{una secció} en abstracte, sinó una secció \emph{de $f$}.
 
-Pel que fa a mono i epi: com que $f$ té una secció, $f$ és un epimorfisme (i, a $\cat{Set}$, és exhaustiva). Com que $g$ té una retracció, $g$ és un monomorfisme (i és injectiva). En canvi $f$ no és mono ---no és injectiva, ja que $f(0)=f(1)$--- i $g$ no és epi ---no és exhaustiva, ja que $1\notin g(\{\ast\})$. Cap dels dos és un isomorfisme: ho serien només si $g\comp f$ fos també una identitat, cosa que hem vist que no passa.
+Pel que fa a mono i epi: com que $f$ té una secció, $f$ és un epimorfisme; com a aplicació, és exhaustiva, d'acord amb la caracterització dels epimorfismes de $\cat{Set}$. Com que $g$ té una retracció, $g$ és un monomorfisme; com a aplicació, és injectiva. En canvi, $f$ no és mono, perquè l'aplicació $f$ no és injectiva ($f(0)=f(1)$), i $g$ no és epi, perquè l'aplicació $g$ no és exhaustiva ($1\notin g(\{\ast\})$). Cap dels dos és un isomorfisme: ho serien només si $g\comp f$ fos també una identitat, cosa que hem vist que no passa.
+\end{solucio}
+
+\begin{exercici}\label{exr:pr-prima-mono-epi}
+Sigui $\cat{C}$ una categoria prima, és a dir, una categoria en què entre dos objectes hi ha com a màxim un morfisme. Comprova que tot morfisme de $\cat{C}$ és alhora un monomorfisme i un epimorfisme. Explica per què aquest fet mostra que, en una categoria arbitrària, \enquote{mono} i \enquote{epi} no es poden interpretar com \enquote{injectiu} i \enquote{exhaustiu}.
+\end{exercici}
+
+\begin{solucio}
+Sigui $f\colon A\to B$ un morfisme de $\cat{C}$. Per veure que és un \textbf{monomorfisme}, siguin $g,h\colon X\to A$ amb $f\comp g=f\comp h$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.4em] { X & A & B \\ };
+  \draw[-{Stealth[scale=1.0]}] ([yshift=2.6pt]m-1-1.east) -- node[above] {$g$} ([yshift=2.6pt]m-1-2.west);
+  \draw[-{Stealth[scale=1.0]}] ([yshift=-2.6pt]m-1-1.east) -- node[below] {$h$} ([yshift=-2.6pt]m-1-2.west);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[above] {$f$} (m-1-3);
+\end{tikzpicture}
+\qquad
+f\comp g=f\comp h\ \Longrightarrow\ g=h.
+\]
+Els morfismes $g$ i $h$ tenen el mateix domini $X$ i el mateix codomini $A$: tots dos pertanyen a $\Hom(X,A)$. Com que la categoria és prima, aquest homconjunt té com a màxim un element, i per tant $g=h$. Observem que ni tan sols hem fet servir la hipòtesi $f\comp g=f\comp h$: la cancel·lació es compleix perquè no hi ha res a cancel·lar.
+
+Per veure que és un \textbf{epimorfisme}, siguin $g,h\colon B\to Y$ amb $g\comp f=h\comp f$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.4em] { A & B & Y \\ };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
+  \draw[-{Stealth[scale=1.0]}] ([yshift=2.6pt]m-1-2.east) -- node[above] {$g$} ([yshift=2.6pt]m-1-3.west);
+  \draw[-{Stealth[scale=1.0]}] ([yshift=-2.6pt]m-1-2.east) -- node[below] {$h$} ([yshift=-2.6pt]m-1-3.west);
+\end{tikzpicture}
+\qquad
+g\comp f=h\comp f\ \Longrightarrow\ g=h.
+\]
+Ara $g,h\in\Hom(B,Y)$, i el mateix argument dona $g=h$. També ho podem obtenir per dualitat: la categoria oposada $\cat{C}\op$ també és prima, perquè $\Hom_{\cat{C}\op}(B,A)$ està en bijecció amb $\Hom_{\cat{C}}(A,B)$; per tant $f\op$ és mono a $\cat{C}\op$, és a dir, $f$ és epi a $\cat{C}$ (teorema~\ref{teo:dualitat}).
+
+\emph{Per què això impedeix llegir mono com a injectiu i epi com a exhaustiu.} Hi ha dues raons, una més radical que l'altra.
+
+Primer, en una categoria prima els morfismes no són, en general, aplicacions. En un preordre, la fletxa $x\to y$ només registra que $x\le y$; no envia cap element enlloc, i preguntar si és \enquote{injectiva} no té sentit. Mono i epi, en canvi, sempre en tenen, perquè es defineixen només amb la composició.
+
+Segon, fins i tot si volguéssim mantenir l'analogia, entraria en contradicció. A $\cat{Set}$, una aplicació injectiva i exhaustiva és bijectiva, és a dir, un isomorfisme. Si \enquote{mono $=$ injectiu} i \enquote{epi $=$ exhaustiu} valguessin en general, tot morfisme d'una categoria prima seria un isomorfisme. Però a $\cat{2}=(0\to 1)$ la fletxa $u\colon 0\to 1$ és mono i epi pel que acabem de demostrar, i no té invers, perquè no hi ha cap fletxa $1\to 0$. En un preordre qualsevol passa el mateix: la fletxa $x\to y$ és sempre mono i epi, i només és un isomorfisme quan també $y\le x$.
+
+La conclusió és que \enquote{mono $=$ injectiu} i \enquote{epi $=$ exhaustiu} són teoremes sobre $\cat{Set}$, no definicions. Les definicions són les de cancel·lació, i en una categoria prima es compleixen de la manera més trivial possible.
+\end{solucio}
+
+\begin{exercici}\label{pr-mono-no-escindit}
+Compara les aplicacions injectives $i\colon\varnothing\to\{\ast\}$ i $j\colon\{0\}\hookrightarrow\{0,1\}$ de $\cat{Set}$. Totes dues són monomorfismes? Quina d'elles és un monomorfisme escindit?
+\end{exercici}
+
+\begin{solucio}
+Totes dues són injectives i, per tant, monomorfismes de $\cat{Set}$.
+
+La inclusió $j$ té una retracció: l'aplicació $r\colon\{0,1\}\to\{0\}$ constant compleix $r\comp j=\id_{\{0\}}$. És, doncs, un monomorfisme escindit.
+
+L'aplicació $i$, en canvi, no en té cap: una retracció seria una aplicació $\{\ast\}\to\varnothing$, i no n'hi ha cap, perquè $\ast$ no té on anar. Per tant, $i$ és un monomorfisme que no és escindit. L'exemple mostra que l'afirmació \enquote{tota aplicació injectiva té una inversa per l'esquerra} només és certa per a dominis no buits; i aquest contraexemple no depèn de l'axioma de l'elecció, a diferència del cas dual de les seccions.
 \end{solucio}
 
 \section{Construccions sobre categories}
@@ -405,6 +459,65 @@ Escrivim la fletxa no trivial de $\cat{2}$ com $u\colon 0\to 1$.
 En efecte, $\cat{2}\op$ és la fletxa invertida $1\to 0$; sota l'objecte $1$ a $\cat{2}\op$ hi ha els morfismes amb domini $1$, que són $\id_1$ i la fletxa $1\to 0$: \emph{dos} objectes, com $(\cat{2}/1)\op$. La moral: en dualitzar la construcció \enquote{sobre} en \enquote{sota} cal dualitzar també la categoria ambient, no deixar-la intacta.
 \end{solucio}
 
+\section{Principi de dualitat}
+
+\begin{exercici}\label{exr:pr-dual-mono-epi}
+Demostra que la composició de dos monomorfismes és un monomorfisme. A continuació, sense repetir el càlcul, dedueix per dualitat que la composició de dos epimorfismes és un epimorfisme. Indica exactament què s'inverteix en passar a $\cat{C}\op$ i què es manté.
+\end{exercici}
+
+\begin{solucio}
+\emph{Primera part: el cas dels monomorfismes.} Siguin $f\colon A\to B$ i $g\colon B\to C$ monomorfismes, i siguin $u,v\colon X\to A$ amb $(g\comp f)\comp u=(g\comp f)\comp v$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3em] { X & A & B & C \\ };
+  \draw[-{Stealth[scale=1.0]}] ([yshift=2.6pt]m-1-1.east) -- node[above] {$u$} ([yshift=2.6pt]m-1-2.west);
+  \draw[-{Stealth[scale=1.0]}] ([yshift=-2.6pt]m-1-1.east) -- node[below] {$v$} ([yshift=-2.6pt]m-1-2.west);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[above] {$f$} (m-1-3);
+  \draw[-{Stealth[scale=1.1]}] (m-1-3) -- node[above] {$g$} (m-1-4);
+\end{tikzpicture}
+\qquad
+(g\comp f)\comp u=(g\comp f)\comp v\ \Longrightarrow\ u=v.
+\]
+Per associativitat, la hipòtesi és $g\comp(f\comp u)=g\comp(f\comp v)$. Com que $g$ és mono, en cancel·lem el factor de l'esquerra i obtenim $f\comp u=f\comp v$. Com que $f$ és mono, tornem a cancel·lar i obtenim $u=v$. Per tant $g\comp f$ és mono. Observem l'ordre: primer es cancel·la $g$, el factor \emph{exterior}, i després $f$.
+
+\emph{Segona part: dualització.} Procedim en tres passos.
+
+\textbf{1. L'enunciat és categòric.} \enquote{Si $f\colon A\to B$ i $g\colon B\to C$ són monomorfismes, aleshores $g\comp f$ és un monomorfisme} només parla d'objectes, morfismes, composició i igualtats entre composicions (la definició de mono és d'aquesta mena). Per tant té dual, i com que l'hem demostrat en una categoria qualsevol, el principi de dualitat (teorema~\ref{teo:dualitat}) garanteix que el dual també és vàlid en tota categoria.
+
+\textbf{2. Què s'inverteix.} Recorrem l'enunciat element per element:
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+A $\cat{C}$ & A l'enunciat dual \\
+\midrule
+$f\colon A\to B$, \quad $g\colon B\to C$ & $f\colon B\to A$, \quad $g\colon C\to B$ \\
+la composta $g\comp f\colon A\to C$ & la composta $f\comp g\colon C\to A$ \\
+fletxes de prova $u,v\colon X\to A$ & fletxes de prova $u,v\colon A\to X$ \\
+mono: $m\comp u=m\comp v\Rightarrow u=v$ & epi: $u\comp m=v\comp m\Rightarrow u=v$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+Es mantenen els quantificadors (\enquote{per a tot $u,v$}), la implicació, la igualtat i l'associativitat, que és autodual. L'enunciat dual diu, doncs: si $f\colon B\to A$ i $g\colon C\to B$ són epimorfismes, aleshores $f\comp g\colon C\to A$ és un epimorfisme. Rebatejant les fletxes perquè la cadena es llegeixi d'esquerra a dreta, $p\colon A\to B$ i $q\colon B\to C$, això és: \emph{si $p$ i $q$ són epimorfismes, $q\comp p$ és un epimorfisme.}
+
+\textbf{3. Per què és vàlid.} És l'argument del principi, fet explícit. Siguin $p\colon A\to B$ i $q\colon B\to C$ epimorfismes de $\cat{C}$. A $\cat{C}\op$, les fletxes $p\op\colon B\to A$ i $q\op\colon C\to B$ són monomorfismes, perquè ser epi a $\cat{C}$ és ser mono a $\cat{C}\op$. Per la primera part, aplicada a $\cat{C}\op$, la composta $p\op\comp q\op\colon C\to A$ és mono a $\cat{C}\op$. Però $p\op\comp q\op=(q\comp p)\op$, de manera que $(q\comp p)\op$ és mono a $\cat{C}\op$, és a dir, $q\comp p$ és epi a $\cat{C}$.
+
+\emph{Comprovació: la prova dual.} No l'hem necessitat, però val la pena escriure-la per veure que és la primera llegida a l'inrevés. Siguin $u,v\colon C\to X$ amb $u\comp(q\comp p)=v\comp(q\comp p)$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3em] { A & B & C & X \\ };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$p$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[above] {$q$} (m-1-3);
+  \draw[-{Stealth[scale=1.0]}] ([yshift=2.6pt]m-1-3.east) -- node[above] {$u$} ([yshift=2.6pt]m-1-4.west);
+  \draw[-{Stealth[scale=1.0]}] ([yshift=-2.6pt]m-1-3.east) -- node[below] {$v$} ([yshift=-2.6pt]m-1-4.west);
+\end{tikzpicture}
+\qquad
+u\comp(q\comp p)=v\comp(q\comp p)\ \Longrightarrow\ u=v.
+\]
+Per associativitat, $(u\comp q)\comp p=(v\comp q)\comp p$; com que $p$ és epi, $u\comp q=v\comp q$; com que $q$ és epi, $u=v$. Les mateixes passes, amb cada composició en l'ordre invers: ara es cancel·la primer $p$, el factor de la \emph{dreta}, que és la fletxa per on comença el camí.
+
+\emph{Error típic.} En dualitzar és fàcil invertir les fletxes però oblidar d'invertir l'ordre de la composició, i escriure \enquote{$p\comp q$ és epi}. Si $p\colon A\to B$ i $q\colon B\to C$, aquesta composta ni tan sols està definida, tret que $C=A$. Comprovar els dominis i els codominis de cada composta és la millor manera de detectar l'error.
+\end{solucio}
+
 \section{Grafs i categories lliures}
 
 \begin{exercici}
@@ -424,7 +537,7 @@ La categoria lliure té un sol objecte. Els morfismes són tots els camins finit
 \quad aaa,
 \quad\ldots
 \]
-on $\varepsilon$ és el camí buit i actua com a identitat. La composició és la concatenació de paraules. Com que cap relació no identifica camins diferents, hi ha una infinitat numerable de morfismes: és el monoide lliure sobre l'alfabet $\{a,b\}$.
+on $\varepsilon$ és el camí buit i actua com a identitat. La composició és la concatenació de paraules en ordre de recorregut: $b\comp a=ab$. Com que cap relació no identifica camins diferents, hi ha una infinitat numerable de morfismes. Llevat de l'isomorfisme canònic que inverteix l'ordre de les lletres (exemple~\ref{ex:monoide-lliure-cat}), és el monoide lliure sobre l'alfabet $\{a,b\}$.
 \end{solucio}
 
 \section{Qüestions de mida}
@@ -437,4 +550,26 @@ En una categoria petita, l'oposada $\cat{C}\op$ també és petita. Comprova-ho, 
 Els objectes de $\cat{C}\op$ són els mateixos que els de $\cat{C}$. Cada morfisme $f\colon A\to B$ de $\cat{C}$ correspon al mateix morfisme vist com $f\colon B\to A$ a $\cat{C}\op$. Això dona una bijecció entre les col·leccions de morfismes de totes dues categories.
 
 Per tant, si els objectes i els morfismes de $\cat{C}$ formen conjunts, també ho fan els de $\cat{C}\op$. En particular, $\cat{C}$ és petita si i només si ho és $\cat{C}\op$.
+\end{solucio}
+
+\begin{exercici}\label{exr:pr-set-localment-petita}
+Comprova que $\cat{Set}$ és localment petita: per a conjunts $A$ i $B$, mostra que la col·lecció de les aplicacions $A\to B$ és un conjunt, identificant cada aplicació amb el seu graf, que és un subconjunt d'$A\times B$.
+\end{exercici}
+
+\begin{solucio}
+Una aplicació $f\colon A\to B$ queda determinada pel seu \textbf{graf}
+\[
+\Gamma_f=\{(a,f(a))\mid a\in A\}\subseteq A\times B.
+\]
+Un subconjunt $\Gamma\subseteq A\times B$ és el graf d'alguna aplicació $A\to B$ exactament quan és \emph{funcional}: per a cada $a\in A$ hi ha un únic $b\in B$ amb $(a,b)\in\Gamma$. Així, $f\mapsto\Gamma_f$ és una bijecció entre les aplicacions $A\to B$ i els subconjunts funcionals d'$A\times B$; la inversa envia $\Gamma$ a l'aplicació que assigna a cada $a$ l'únic $b$ amb $(a,b)\in\Gamma$.
+
+Vegem ara que aquests subconjunts funcionals formen un conjunt. Com que $A$ i $B$ són conjunts, el producte $A\times B$ és un conjunt, i també ho és el seu conjunt de parts $\mathcal P(A\times B)$. La condició \enquote{ser funcional} és una propietat ben definida dels elements de $\mathcal P(A\times B)$, de manera que, per l'axioma de separació,
+\[
+\{\Gamma\in\mathcal P(A\times B)\mid \forall a\in A\ \exists!\,b\in B\ (a,b)\in\Gamma\}
+\]
+és un conjunt. Per la bijecció anterior, $\Hom_{\cat{Set}}(A,B)$ és un conjunt.
+
+Una precisió, la mateixa de l'observació~\ref{obs:extrems-implicits} de la Teoria per a $\cat{Rel}$: el graf no determina el codomini, perquè $\Gamma_f\subseteq A\times B$ també és un subconjunt d'$A\times B'$ per a tot $B'\supseteq B$. Per això, en rigor, un morfisme de $\cat{Set}$ és la terna $(A,B,\Gamma_f)$. Això no canvia la conclusió: les ternes $(A,B,\Gamma)$ amb $\Gamma$ funcional formen el conjunt $\{A\}\times\{B\}\times\{\Gamma\in\mathcal P(A\times B)\mid \Gamma\text{ funcional}\}$, que està en bijecció amb l'anterior.
+
+\emph{Abast.} El mateix argument explica per què $\Hom(A,B)$ és un conjunt en els exemples habituals. A $\cat{Rel}$, directament, $\Hom_{\cat{Rel}}(X,Y)$ és, llevat dels extrems, $\mathcal P(X\times Y)$. A les categories de conjunts estructurats ($\cat{Grp}$, $\cat{Top}$, $\cat{Vect}_{\mathbb K}$, $\cat{Mon}$, $\cat{Pos}$), els morfismes són aplicacions entre els conjunts subjacents que compleixen una condició addicional; formen, doncs, un subconjunt de l'homconjunt de $\cat{Set}$ corresponent, de nou per separació. En canvi, la col·lecció de \emph{tots} els objectes de $\cat{Set}$ no és un conjunt (paradoxa de Russell): $\cat{Set}$ és localment petita sense ser petita.
 \end{solucio}

@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{aprendes}[2026/08/17 Estil unificat per a Aprendes Universitat]
+\ProvidesPackage{common/aprendes}[2026/08/17 Estil unificat per a Aprendes Universitat]
 
 % ============================================================
 %  aprendes.sty  --  FULL UNIFICAT
@@ -358,6 +358,14 @@
 
 \newcommand{\subsubsecformat}[1]{{\color{AprenFosc}\thesubsubsection}\quad #1}
 \titleformat{\subsubsection}{\bfseries}{}{0pt}{\subsubsecformat}
+
+% Variants sense número (\section*, \subsection*, \subsubsection*).
+% Com que el número s'imprimeix dins del format del títol (i no a
+% l'etiqueta de titlesec), cal un format propi per a les versions
+% estrellades; altrament mostrarien el comptador, p. ex. «3.0».
+\titleformat{name=\section,numberless}{\Large\bfseries}{}{0pt}{}
+\titleformat{name=\subsection,numberless}{\large\bfseries}{}{0pt}{}
+\titleformat{name=\subsubsection,numberless}{\bfseries}{}{0pt}{}
 
 \setlist{itemsep=0.25em,topsep=0.25em}
 

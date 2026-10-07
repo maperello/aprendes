@@ -1,0 +1,649 @@
+\chapter*{\texorpdfstring{Guia de lectura i itineraris\\ d'aprenentatge}{Guia de lectura i itineraris d'aprenentatge}}
+\addcontentsline{toc}{chapter}{Guia de lectura}
+\markboth{Guia de lectura}{Guia de lectura}
+
+\begingroup
+\renewcommand{\thesection}{\arabic{section}}
+\setcounter{section}{0}
+\setlength{\emergencystretch}{1.5em}
+
+Aquest capítol és un mapa per a la primera lectura. No cal aprendre
+ara els noms de totes les construccions que hi apareixen: les trobarem
+definides al seu lloc. La seva funció és mostrar què aporta cada etapa,
+com es relacionen les quatre parts del llibre i com podem comprovar
+que l'estudi ens està fent avançar.
+
+La introducció explica \emph{per què} val la pena aprendre categories.
+Aquí ens ocuparem de \emph{com} fer-ho. Podeu llegir aquesta guia
+abans de començar i tornar-hi en acabar un bloc de capítols, quan
+els noms del mapa ja s'hagin convertit en construccions familiars.
+
+
+\section{El punt de partida i la destinació}
+
+El llibre no pressuposa coneixements previs de teoria de categories.
+Sí que pressuposa una familiaritat elemental amb el llenguatge
+matemàtic: conjunts, aplicacions, composició, relacions i
+demostracions senzilles. Per començar, convé poder fer quatre coses:
+\begin{itemize}
+  \item distingir el domini i el codomini d'una aplicació i calcular
+        una composició;
+  \item treballar amb productes cartesians, subconjunts i antiimatges;
+  \item llegir quantificadors i separar una afirmació d'existència
+        d'una afirmació d'unicitat;
+  \item distingir una implicació, el seu recíproc i una equivalència,
+        i entendre el paper d'un contraexemple.
+\end{itemize}
+Si alguna d'aquestes operacions és poc familiar, és millor dedicar-hi
+una breu revisió que atribuir-ne la dificultat a l'abstracció categòrica.
+
+No cal dominar prèviament tots els àmbits que proporcionen exemples.
+Els grups, els espais vectorials i la topologia enriqueixen la lectura,
+però, si encara no els coneixeu, podeu començar amb conjunts, preordres
+i grafs. Els exemples del dual i del bidual demanen àlgebra lineal;
+els que utilitzen continuïtat demanen nocions de topologia. Es poden
+reprendre en una segona lectura sense abandonar el fil general.
+La lògica aporta exemples des del començament, però no cal conèixer
+ja la lògica categòrica per seguir-los.
+
+La destinació és una comprensió inicial de les categories, els
+functors i la naturalitat, seguida de les propietats universals,
+Yoneda, els límits i les adjuncions. Aquest bagatge permet arribar
+al tancament cartesià, als subobjectes i a una primera introducció
+als topos. El volum prepara l'estudi posterior de la lògica categòrica;
+no pretén desenvolupar-ne aquí una teoria completa.
+
+\section{Quatre parts per a un mateix aprenentatge}
+
+El llibre separa físicament la \textbf{Teoria}, la \textbf{Pràctica},
+els \textbf{Exercicis proposats} i els \textbf{\NomTests}.
+Aquesta separació facilita la consulta, però no obliga a estudiar
+primer tota la teoria i només després tota la pràctica. Per a una
+primera lectura, és més útil treballar \emph{per temes}: llegir un
+capítol teòric, estudiar els problemes resolts corresponents,
+intentar exercicis i comprovar la comprensió amb el test del mateix
+tema.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.25\linewidth}
+                                  >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Part} & \textbf{La pregunta que ajuda a respondre} \\
+\midrule
+Teoria & Quina és la definició, per què té sentit i què se'n pot deduir? \\
+Pràctica & Com s'utilitza en un problema i com s'escriu l'argument? \\
+Exercicis proposats & Puc reconèixer i aplicar la idea sense una solució completa? \\
+\NomTests & Distingeixo el concepte de les confusions que s'hi assemblen? \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Els nou primers temes tenen capítols corresponents en les quatre
+parts. La numeració torna a començar en cada part; per això, quan
+cerqueu material d'un tema, fixeu-vos tant en el número com en la
+part i el títol. El capítol teòric desè, \emph{Pont cap a la lògica
+categòrica}, és un epíleg d'orientació i no té un capítol paral·lel
+de pràctica, exercicis o tests.
+
+Els blocs d'obertura dels capítols teòrics indiquen prerequisits
+i objectius. Llegiu-los com una invitació a activar coneixements
+anteriors. Els blocs de síntesi del final recullen les idees centrals,
+els errors típics i lectures recomanades. Serveixen per revisar,
+però no substitueixen els exemples i les demostracions del capítol.
+
+\section{El mapa conceptual dels capítols}
+\label{sec:mapa-lectura}
+
+\ifpublicacioparcial
+\noindent\textbf{Nota sobre aquesta edició.} Aquesta versió parcial
+només inclou els capítols 1--3. El mapa descriu, tanmateix, els deu
+capítols del volum complet, perquè pugueu situar el que estudieu
+dins del recorregut sencer.
+\fi
+
+El recorregut es pot agrupar en quatre etapes. Els capítols 1--3
+construeixen el llenguatge i els nivells de comparació; els 4--6
+organitzen les construccions mitjançant propietats universals;
+els 7--9 combinen aquestes eines en estructures amb lectura lògica;
+el 10 mostra la continuació. Aquesta divisió és una ajuda per orientar-se,
+no una frontera rígida: les idees de les primeres etapes reapareixen
+constantment en les següents.
+
+\subsection*{1. Categories: aprendre la gramàtica de les fletxes}
+
+El primer capítol introdueix objectes, morfismes, identitats i
+composició. També ensenya a llegir diagrames, construeix exemples
+i diferencia isomorfismes, monomorfismes, epimorfismes, seccions
+i retraccions. La categoria oposada i la dualitat permeten
+reutilitzar definicions i arguments en l'altra direcció.
+
+És un capítol extens perquè fixa els hàbits que necessitarem després.
+No convé voler memoritzar tots els exemples alhora. Escolliu-ne uns
+quants i pregunteu sempre què són els objectes, què són les fletxes
+i com es componen. Les construccions de categories noves i les
+precaucions de mida amplien aquest vocabulari.
+
+\noindent\textbf{Comprovació de progrés.} Podeu verificar els axiomes
+en un exemple concret i explicar per què una fletxa és, o no és,
+un isomorfisme? Podeu escriure l'equació d'un quadrat commutatiu
+sense invertir l'ordre de la composició?
+
+\subsection*{2. Functors: passar d'un context a un altre}
+
+El segon capítol puja un nivell: no compara només objectes d'una
+categoria, sinó categories entre elles. Els functors actuen sobre
+objectes i morfismes i preserven identitats i composició. El graf
+subjacent i la categoria lliure permeten veure una parella de
+construccions que reapareixerà com a adjunció.
+
+Cal dedicar una atenció especial als homfunctors. $\Hom(A,-)$
+actua per postcomposició; $\Hom(-,B)$, per precomposició i amb
+inversió de sentit. Aquesta variància no és un detall de notació:
+és la base de la representabilitat i de Yoneda. Les nocions de
+functor ple i fidel descriuen l'acció sobre cada homconjunt.
+
+\noindent\textbf{Comprovació de progrés.} Per definir un functor,
+podeu donar-ne l'acció sobre les fletxes, no només sobre els objectes?
+Podeu explicar què fa $\Hom(-,B)$ amb una fletxa $X'\to X$?
+
+\subsection*{3. Transformacions naturals i equivalències: exigir coherència}
+
+El tercer capítol compara functors. La naturalitat exigeix que
+una família de morfismes sigui compatible amb totes les fletxes
+del domini. Els exemples de la interpretació de fórmules i del
+bidual mostren per què aquesta compatibilitat és matemàticament
+significativa, no només una convenció gràfica.
+
+Les categories de functors permeten tractar aquestes comparacions
+com a morfismes. L'equivalència de categories precisa quan dos
+contextos descriuen la mateixa estructura essencial sense tenir
+la mateixa presentació. La composició horitzontal afegeix un
+segon tipus de composició que cal distingir de la vertical.
+
+\noindent\textbf{Comprovació de progrés.} Podeu dibuixar el quadrat
+de naturalitat d'una família proposada i comprovar-lo per a una
+fletxa arbitrària? Podeu distingir un isomorfisme d'objectes,
+un isomorfisme natural i una equivalència de categories?
+
+\subsection*{4. Propietats universals, representabilitat i Yoneda:
+caracteritzar pel paper}
+
+Aquí canvia el centre de gravetat. En lloc de construir un objecte
+i estudiar-ne després les propietats, busquem un objecte que
+resolgui una necessitat expressada amb fletxes. Els objectes
+inicials i terminals ofereixen els primers casos; les categories
+coma ajuden a reunir dades i compatibilitats en un mateix context.
+
+La representabilitat expressa aquestes caracteritzacions amb
+homfunctors. Yoneda fa precisa la idea de conèixer un objecte
+pel sistema de morfismes que hi arriben. És normal que aquesta
+etapa demani més d'una lectura: cal coordinar categories, functors,
+transformacions i elements d'homconjunts.
+
+\noindent\textbf{Comprovació de progrés.} Podeu demostrar que dos
+objectes terminals són isomorfs i indicar on s'utilitza la unicitat?
+En una representació, podeu distingir el functor representat,
+l'objecte representant i la dada universal? Podeu seguir la
+bijecció de Yoneda a partir de l'avaluació en la identitat?
+
+\subsection*{5. Límits i colímits: reunir construccions en un patró}
+
+Un diagrama fixa una configuració d'objectes i morfismes; un con
+és una manera compatible de relacionar-s'hi. El límit és el con
+universal. Segons la forma del diagrama, obtenim productes,
+equalitzadors, pullbacks o l'objecte terminal. Els colímits en
+són la versió dual.
+
+El pullback mereix una atenció especial, perquè reapareixerà
+en la reindexació i els subobjectes. També cal separar dues
+preguntes: si una categoria té un límit i si un functor el
+preserva. No són la mateixa afirmació.
+
+\noindent\textbf{Comprovació de progrés.} Podeu calcular un pullback
+de conjunts i comprovar-ne la propietat universal? Podeu
+distingir el diagrama, el con i el seu vèrtex, i explicar
+què vol dir que un functor preserva aquest límit?
+
+\subsection*{6. Adjuncions: dues descripcions de la mateixa dada}
+
+Les adjuncions relacionen functors mitjançant una bijecció
+natural d'hom\-con\-junts. El capítol comença amb preordres,
+on la correspondència es llegeix com una equivalència de
+desigualtats. Després introdueix unitat, counitat i identitats
+triangulars, i mostra com les adjuncions expliquen la preservació
+de límits i colímits.
+
+Per a una primera aproximació, escolliu una adjunció i seguiu-la
+en les dues descripcions: per bijeccions d'homconjunts i per
+unitat i counitat. Les construccions lliures i la currificació
+connecten aquest capítol amb exemples ja coneguts.
+
+\noindent\textbf{Comprovació de progrés.} Podeu dir quins morfismes
+es corresponen en una adjunció concreta i construir-ne els
+transposats? Podeu recordar, amb una justificació conceptual,
+que els adjunts per la dreta preserven límits i els de
+l'esquerra preserven colímits?
+
+\subsection*{7. Categories cartesianes tancades: funcions dins del context}
+
+Els productes i els exponencials permeten parlar d'aparellament,
+avaluació i currificació dins d'una categoria. El capítol
+caracteritza el tancament cartesià i n'explica la relació
+amb el càlcul lambda simplement tipat: els tipus es llegeixen
+com a objectes i els termes, en context, com a morfismes.
+
+El conjunt de totes les aplicacions $B\to C$ ofereix l'exemple
+més familiar d'exponencial. Els preordres permeten reconèixer
+la implicació com a adjunt de la conjunció. Els contraexemples
+recorden que no tota categoria té aquesta estructura.
+
+\noindent\textbf{Comprovació de progrés.} Podeu passar d'una fletxa
+$A\times B\to C$ a la seva currificació $A\to C^B$ i tornar-ne
+amb l'avaluació? Podeu explicar per què tenir productes no
+garanteix tenir exponencials?
+
+\subsection*{8. Subobjectes, imatges i factoritzacions: de les parts als predicats}
+
+Un subobjecte no és simplement un subconjunt escrit amb un
+altre nom: és una classe de monomorfismes amb un mateix
+codomini, identificats de manera compatible. La reindexació
+per pullback generalitza l'antiimatge i ofereix una lectura
+estructural de la substitució.
+
+Les interseccions expressen conjuncions de predicats; les
+imatges i la regularitat permeten construir un adjunt
+existencial de la reindexació. Aquesta etapa obliga a
+controlar les hipòtesis: la regularitat no garanteix per
+si sola unions de subobjectes ni un quantificador universal.
+
+\noindent\textbf{Comprovació de progrés.} Podeu calcular una
+reindexació a $\cat{Set}$ i interpretar-la com a substitució?
+Podeu descriure la imatge d'un predicat sota una projecció
+i explicar la relació $\exists_f\dashv f^*$?
+
+\subsection*{9. Classificadors de subobjectes i topos: retrobar la representabilitat}
+
+El classificador generalitza la funció característica d'un
+subconjunt. La correspondència entre subobjectes d'$A$ i
+morfismes $A\to\Omega$ recupera la representabilitat del
+capítol quart. El topos elemental combina límits finits,
+exponencials i classificador de subobjectes.
+
+El capítol presenta $\cat{Set}$ i les categories de prefeixos
+com a exemples. L'objectiu és comprendre les definicions
+i la connexió entre les peces, no dominar encara la
+teoria de feixos o la lògica interna dels topos.
+
+\noindent\textbf{Comprovació de progrés.} Podeu reconstruir un
+subconjunt com l'antiimatge del valor vertader per la
+seva funció característica? Podeu enunciar les tres
+condicions d'un topos i explicar què aporta cadascuna?
+
+\subsection*{10. Pont cap a la lògica categòrica: saber què queda preparat}
+
+L'epíleg situa les eines adquirides en un programa més ampli:
+contextos, substitució, predicats, quantificadors, teories
+i models. El mapa de fragments lògics i l'exemple de la
+categoria sintàctica orienten sobre què es prolonga al
+volum següent.
+
+Llegiu-lo com una mirada retrospectiva i una invitació a
+continuar, no com una exigència de dominar de cop tots els
+temes anunciats. La sintaxi general, la correcció, la
+completesa i les condicions de coherència pertanyen a
+l'estudi posterior.
+
+\noindent\textbf{Comprovació de progrés.} Quan l'epíleg parla de
+models com a functors o de quantificadors com a adjunts,
+podeu identificar les construccions d'aquest volum que
+donen sentit a aquestes expressions?
+
+\section{Com treballar un capítol}
+
+Una lectura activa alterna comprensió, reconstrucció i aplicació.
+Podeu utilitzar el cicle següent, adaptant-ne el ritme a la
+dificultat del tema.
+
+\begin{enumerate}
+  \item \textbf{Situar la pregunta.} Llegiu l'obertura i els
+        objectius del capítol. Escriviu en una frase quin
+        problema intenta resoldre i quines idees anteriors
+        necessita.
+  \item \textbf{Desmuntar la definició.} Separeu les dades
+        que s'han de donar, les operacions que s'hi afegeixen
+        i les propietats que han de satisfer. Anoteu el
+        domini i el codomini de cada fletxa.
+  \item \textbf{Ancorar-la en exemples.} Treballeu un cas
+        amb conjunts i un altre amb preordres o grafs.
+        Quan pertoqui, afegiu-hi la lectura lògica. Busqueu
+        també un exemple que no compleixi la definició.
+  \item \textbf{Reconstruir una demostració.} Tanqueu el
+        text i intenteu recuperar un argument curt. Després
+        compareu-lo amb el llibre: on s'usa cada hipòtesi?
+        On apareix l'existència i on la unicitat?
+  \item \textbf{Fer servir la pràctica amb pausa.} Llegiu
+        l'enunciat d'un problema resolt i proveu de fer-ne
+        el primer pas abans de mirar la solució. Un cop
+        llegida, torneu a escriure l'argument sense copiar-lo.
+  \item \textbf{Intentar un exercici nou.} Comenceu pels
+        de consolidació. Si us encalleu, identifiqueu el
+        punt exacte i consulteu la indicació, no només
+        una altra solució que s'hi assembli.
+  \item \textbf{Tancar el cicle.} Feu el test, reviseu els
+        errors i rellegiu la síntesi. Escriviu què podeu
+        fer ara que no podíeu fer abans i què ha de quedar
+        anotat per a una segona lectura.
+\end{enumerate}
+
+No cal reconstruir immediatament totes les proves llargues.
+Però convé entendre'n l'estratègia i ser capaç de reproduir
+arguments curts que reapareixen: provar una naturalitat,
+usar la unicitat d'una propietat universal o construir
+una fletxa amb el domini i el codomini correctes.
+
+\subsection*{Una pauta per llegir diagrames}
+
+Al llarg del llibre, quan una propietat categòrica té una expressió
+natural amb fletxes, la presentem alhora amb un diagrama i amb les
+equacions de composició que aquest expressa. Els diagrames formen
+part del llenguatge matemàtic, no són una il·lustració opcional.
+Aprofiteu aquesta doble presentació: passar del dibuix a les equacions
+i de les equacions al dibuix és una destresa que cal practicar.
+
+Davant d'un diagrama, no comenceu per recordar-ne el nom.
+Seguiu aquesta pauta:
+\begin{enumerate}
+  \item Identifiqueu els objectes i els extrems de cada fletxa.
+  \item Distingiu les dades donades de la fletxa que s'ha de construir.
+  \item Escriviu els camins que tenen el mateix origen i el mateix destí.
+  \item Traduïu-ne la commutativitat en equacions de composició.
+  \item Si hi ha una propietat universal, digueu sobre quines
+        dades es quantifica i què es demana que sigui únic.
+\end{enumerate}
+
+Una fletxa discontínua en un diagrama universal no es construeix
+perquè el dibuix ho suggereixi: l'existència es justifica amb
+una hipòtesi o una propietat. Igualment, un quadrat commutatiu
+no és automàticament un pullback. Cal comprovar-ne també la
+propietat universal.
+
+\section{Els exemples recurrents com a punts de suport}
+
+Canviar d'exemple no ha de significar tornar a començar.
+Les mateixes famílies permeten veure cares diferents d'una idea.
+
+\begin{description}
+  \item[Conjunts.] Permeten calcular explícitament amb elements,
+        productes, antiimatges, funcions i imatges. Són un
+        primer laboratori, però no autoritzen a usar elements
+        dins d'una categoria arbitrària.
+  \item[Preordres.] Simplifiquen els homconjunts: hi ha com a
+        màxim una fletxa entre dos objectes. Això converteix
+        propietats universals en condicions d'ordre i adjuncions
+        en equivalències de desigualtats. La unicitat automàtica
+        és una ajuda, però també pot amagar una dificultat
+        que reapareix en categories no primes.
+  \item[Grafs.] Fan visible la diferència entre tenir fletxes
+        i disposar de composició. Cal distingir la categoria
+        de grafs, on les fletxes són homomorfismes de grafs,
+        de la categoria lliure d'un graf, on són camins.
+        La construcció lliure connecta els primers capítols
+        amb les propietats universals i les adjuncions.
+  \item[Lògica.] Permet interpretar deducció, conjunció,
+        substitució i quantificació en els contextos adequats.
+        Cal separar sempre la categoria prima que registra
+        deduïbilitat de la perspectiva que conserva les proves,
+        i també dels subobjectes que representen predicats.
+\end{description}
+
+Un quadern de correspondències pot ajudar: per a cada nova
+construcció, escriviu què significa en dues d'aquestes famílies,
+quina propietat comparteixen i quines hipòtesis necessita
+cada realització. Si no existeix en un dels exemples, anoteu-ho:
+aquest límit també forma part de la comprensió.
+
+\section{Itineraris possibles}
+
+Els itineraris següents són propostes de treball, no permisos
+per ignorar les dependències. L'ordre del llibre continua sent
+el recorregut més segur per a una primera lectura completa.
+
+\subsection*{Una primera entrada: els tres capítols inicials}
+
+Treballeu categories, functors i transformacions naturals amb
+els seus materials paral·lels de pràctica, exercicis i tests.
+La fita és poder moure-us entre els tres nivells: objectes i
+morfismes, categories i functors, functors i transformacions.
+No cal dominar encara tot el desplegament de la composició
+horitzontal, però sí distingir-la de la vertical.
+
+\ifpublicacioparcial
+Aquesta edició parcial conté precisament aquests tres temes en
+les quatre parts, a més dels materials complementaris. No és una
+introducció completa als límits, les adjuncions o els topos;
+les remissions als capítols absents s'han d'entendre com a
+indicacions per continuar amb el volum complet.
+\fi
+
+\subsection*{Un recorregut complet d'autoaprenentatge}
+
+Seguiu els nou temes amb el cicle de treball per capítols i
+llegiu després el pont final. Cada cop que arribeu a una
+definició general, torneu a un exemple anterior. Després
+de Yoneda, reviseu els homfunctors; després de les adjuncions,
+reviseu la construcció lliure; després del classificador,
+reviseu la representabilitat. Aquestes tornades no són
+repeticions inútils: fan visible la unitat del recorregut.
+
+\subsection*{Un curs semestral}
+
+Per a un curs d'un semestre, una selecció natural és treballar els capítols 1--6 com a nucli obligatori i triar, segons l'orientació del curs, els capítols 7--9. La teoria s'ha de combinar cada setmana amb una selecció de problemes resolts i exercicis proposats; els tests poden servir d'autoavaluació, no de substitut d'una prova escrita. El capítol 10 funciona bé com a sessió final de síntesi i d'obertura cap a la lògica categòrica.
+
+\subsection*{Una lectura per al professorat}
+
+Per preparar docència, convé començar per aquesta guia i pels blocs d'objectius i d'errors típics de cada capítol. Les parts de Pràctica permeten seleccionar exemples per a classe, mentre que els Exercicis proposats ofereixen material de treball autònom. Els quatre fils recurrents ---conjunts, preordres, grafs i lògica--- es poden modular segons el perfil de l'alumnat, però és recomanable conservar-ne almenys dos en paral·lel per evitar que les definicions quedin lligades a una sola categoria concreta.
+
+\subsection*{Una lectura orientada a la lògica}
+
+Manteniu el recorregut general, però doneu més pes a la
+deduïbilitat del capítol 1 i als exemples d'interpretació
+i substitució dels capítols 2 i 3. Als capítols 4--6,
+consolideu representabilitat, pullbacks i adjuncions;
+després, treballeu amb especial cura el tancament cartesià,
+els subobjectes i el classificador.
+
+No convé saltar directament a l'epíleg: expressions com
+\enquote{el quantificador és un adjunt} orienten, però només es
+comprenen quan sabem entre quines categories o preordres
+actua l'adjunció i què afirma la seva correspondència.
+Les equivalències lògiques no substitueixen la comprovació
+de les hipòtesis categòriques.
+
+\subsection*{Una lectura orientada als tipus i a la computació}
+
+Feu servir els grafs i les categories lliures per entendre
+la composició. Després de consolidar functors i naturalitat,
+poseu l'accent en propietats universals, productes,
+adjuncions, exponencials i currificació. El capítol 7
+reuneix aquestes eines en la semàntica de tipus i termes.
+
+Els capítols 8 i 9 poden constituir una segona etapa
+si el primer objectiu és el càlcul lambda simplement tipat.
+Caldrà reprendre'ls per arribar als predicats, els
+classificadors i la perspectiva lògica més àmplia.
+
+\section{Convencions tipogràfiques i de lectura}
+
+Els noms de categories s'escriuen amb tipografia matemàtica, com $\cat{Set}$, $\cat{Graph}$ o $\cat{Cat}$. Els termes definits i les idees que cal retenir apareixen destacats dins dels entorns corresponents; el color reforça la jerarquia visual, però l'etiqueta textual ---\enquote{Definició}, \enquote{Teorema}, \enquote{Exemple}, \enquote{Exercici}, etc.--- n'indica sempre la funció. Les fletxes discontínues dels diagrames assenyalen habitualment el morfisme que una propietat universal afirma que existeix; el text adjacent n'explicita el paper. Els símbols amb més d'un ús, especialment $f^{*}$, es desambigüen pel context i es recullen a la taula de notació.
+
+\section{Exercicis i tests: què comproven i què no}
+
+Els exercicis proposats utilitzen una estrella,
+$\star$, per assenyalar consolidació, i dues,
+$\star\star$, per assenyalar ampliació. Comenceu pels
+primers, però no interpreteu les marques com una mesura
+exacta del temps que necessitareu. Una dificultat breu
+de variància pot resultar més important que un càlcul llarg.
+
+Les indicacions són una ajuda per reprendre el treball.
+Abans de consultar-les, escriviu les dades, la conclusió
+i almenys un intent. Després d'utilitzar una indicació,
+torneu a fer l'exercici sense mirar-la. L'objectiu no és
+haver reconegut una solució, sinó poder construir un argument.
+
+Els tests tenen una única resposta correcta per pregunta.
+\ifimprimible
+En aquesta edició per imprimir, les respostes i les
+justificacions de cada test es reuneixen al final del llibre
+(apèndix \enquote{Solucions dels tests}). L'edició de pantalla
+ofereix, a més, correcció automàtica en els lectors de PDF
+compatibles.
+\else
+La correcció automàtica necessita un lector de PDF compatible
+amb formularis AcroForm i JavaScript. Si el lector no
+l'admet, podeu respondre igualment les preguntes i
+consultar les respostes i les justificacions de cada test,
+reunides al final del llibre (apèndix \enquote{Solucions dels
+tests}), també usables en paper.
+\fi
+Consulteu-les només després d'haver respost tot el test.
+
+Una resposta encertada no demostra per si sola que sapigueu
+resoldre un problema. Per aprofitar el test, justifiqueu
+per què l'opció triada és correcta i per què les altres
+fallen. Si heu dubtat entre dues opcions, convertiu el
+dubte en una pregunta per revisar a la teoria o a la
+pràctica. Aquesta explicació és més útil que la puntuació
+obtinguda sense justificació.
+
+\section{Algunes dificultats que convé reconèixer aviat}
+
+Hi ha errors que travessen diversos capítols. Identificar-los
+permet corregir la manera de treballar, no només una resposta.
+
+\begin{description}
+  \item[Compondre sense comprovar els tipus.]
+        Abans d'escriure $g\comp f$, verifiqueu que el
+        codomini de $f$ és el domini de $g$. L'associativitat
+        no fa componibles fletxes amb extrems incompatibles.
+  \item[Confondre un exemple amb la definició general.]
+        A $\cat{Set}$, mono i epi corresponen a injectivitat
+        i exhaustivitat. En altres categories, les definicions
+        són condicions de cancel·lació. Un mono que també
+        és epi no és sempre un isomorfisme.
+  \item[Tractar la naturalitat com una etiqueta.]
+        Una família de fletxes no és natural només perquè
+        s'hagi definit amb la mateixa fórmula. Cal escriure
+        el quadrat i comprovar-lo per a tots els morfismes.
+  \item[Oblidar les dades universals.]
+        El producte inclou les projeccions; el límit inclou
+        el con; l'exponencial inclou l'avaluació. La unicitat
+        de l'isomorfisme es refereix a les compatibilitats
+        amb aquestes dades, no a l'objecte nu.
+  \item[Canviar l'orientació sense controlar-la.]
+        La contravariància, la dualitat i la reindexació
+        inverteixen direccions de maneres que cal precisar.
+        Escriviu dominis i codominis abans de fer servir
+        una regla recordada de memòria.
+  \item[Afegir estructura que no s'ha suposat.]
+        Tenir productes no implica tenir exponencials;
+        la regularitat no dona per si sola disjuncions
+        ni quantificació universal; un topos no és
+        necessàriament booleà. Rellegiu les hipòtesis.
+\end{description}
+
+Si una demostració sembla bloquejada, pregunteu-vos primer
+si el problema és de definició, de tipus, de variància o
+d'hipòtesis. Moltes dificultats aparentment abstractes
+es resolen quan precisem una d'aquestes quatre coses.
+
+\section{Quan consultar els apèndixs i els materials finals}
+
+Els apèndixs no constitueixen una etapa que s'hagi de
+completar obligatòriament abans de començar la teoria.
+Es poden consultar quan la lectura ho demani.
+
+\begin{description}
+  \item[Apèndix A: axiomàtica relacional.]
+        Ofereix una presentació en què les fletxes són
+        els individus primitius i els objectes es
+        reconstrueixen a partir de les identitats.
+        També hi trobareu la formalització del principi
+        de dualitat, en versió sintàctica i semàntica.
+        És una ampliació adequada després del primer
+        capítol, sobretot per a qui s'interessi per
+        la formalització lògica. Demana familiaritat
+        amb lògica de primer ordre amb igualtat.
+  \item[Apèndix B: grafs.]
+        Aclareix les convencions, els homomorfismes,
+        els camins i el pas a categories. Consulteu-lo
+        quan treballar amb camins, llaços o arestes
+        múltiples us plantegi dubtes en els primers
+        capítols.
+  \item[Apèndix C: convenció de mida.]
+        Explica el marc de conjunts i classes del llibre.
+        És especialment útil quan apareixen
+        $\cat{Cat}$, categories de functors i
+        categories de prefeixos. Cal distingir
+        \enquote{petita} de \enquote{localment petita}: la segona
+        condició garanteix homconjunts, no que tots
+        els objectes formin un conjunt.
+  \item[Apèndix D: solucions dels tests.]
+        Respostes i justificacions. Consulteu-les només
+        després d'haver respost tot el test.
+\ifpublicacioparcial\else
+  \item[Apèndix E: quasiexemples i contraexemples.]
+        Recull estructures que fallen exactament un axioma
+        (categoria, functor, transformació natural), la
+        jerarquia entre igualtat, isomorfisme, isomorfisme
+        natural i equivalència, i models de la lògica que
+        queden fora dels topos. La secció sobre la
+        jerarquia és útil des del capítol~\ref{cap:transformacions};
+        la de la lògica, després del capítol~\ref{cap:topos}.
+\fi
+\end{description}
+
+La taula de notació serveix per recuperar el significat
+i la primera aparició dels símbols. El glossari
+català--anglès ajuda a llegir la bibliografia internacional,
+sobretot en termes com \emph{pullback}, \emph{slice},
+\emph{presheaf} i \emph{whiskering}. L'índex alfabètic
+és una eina per retrobar conceptes quan reapareixen en
+un context nou.
+
+Les lectures recomanades al final dels capítols tenen
+una funció de contrast i ampliació. En una primera
+lectura, és millor consultar una font alternativa per
+aclarir una pregunta concreta que obrir alhora molts
+tractaments generals del mateix tema.
+
+\section{Una manera de mesurar l'aprenentatge}
+
+No mesureu el progrés només pel nombre de pàgines llegides.
+Una fita més fiable és poder fer, sense el text davant,
+quatre operacions amb una idea nova:
+\begin{enumerate}
+  \item enunciar-ne la definició amb les hipòtesis correctes;
+  \item interpretar-la en almenys dos exemples;
+  \item utilitzar-la en un argument o un càlcul senzill;
+  \item explicar què falla en un contraexemple o quan
+        es retira una hipòtesi.
+\end{enumerate}
+
+No cal satisfer aquestes quatre condicions amb la mateixa
+fluïdesa des del primer dia. És raonable avançar amb
+una dificultat ben identificada i tornar-hi després.
+El que convé evitar és substituir la comprensió per
+la familiaritat visual amb els símbols.
+
+En acabar el llibre, el guany més important serà poder
+relacionar les peces: veure una propietat universal
+darrere d'una construcció, una naturalitat darrere
+d'una compatibilitat, una adjunció darrere d'una
+correspondència i una operació sobre subobjectes
+darrere d'una lectura lògica. Aquesta capacitat de
+passar entre exemples i estructura és el criteri
+que dona unitat a tot el recorregut.
+
+\endgroup

@@ -6,21 +6,36 @@
 % ============================================================
 % INTERRUPTOR DE COMPILACIÓ
 % ------------------------------------------------------------
-% Per defecte es genera el LLIBRE COMPLET. El mode fascicle (només els
-% capítols 1-4 en les quatre parts, amb apèndixs, glossari, bibliografia,
-% taula de notació i índex) s'activa de qualsevol d'aquestes dues maneres:
+% Per defecte es genera el LLIBRE COMPLET (capítols 1-10). El mode fascicle
+% (només els capítols 1-3 en les quatre parts, amb apèndixs, glossari,
+% bibliografia, taula de notació i índex) s'activa de qualsevol d'aquestes
+% dues maneres:
 %
-%   (a) definint \fascicle a la línia d'ordres --- ho fan el Makefile
-%       (make fascicle) i el flux de publicació:
+%   (a) definint \fascicle a la línia d'ordres --- ho fa el Makefile
+%       (make fascicle):
 %           xelatex "\def\fascicle{}\input{main.tex}"
 %
-%   (b) descomentant la línia \publicacioparcialtrue de més avall (mode manual).
+%   (b) descomentant la línia \publicacioparcialtrue de més avall.
 %
 % Recordeu recompilar amb XeLaTeX + makeindex + XeLaTeX x2.
 % ============================================================
 \newif\ifpublicacioparcial
 \ifdefined\fascicle\publicacioparcialtrue\else\publicacioparcialfalse\fi
 % \publicacioparcialtrue % <- descomenteu per forçar el fascicle sense \fascicle
+
+% Mode de sortida. Per defecte: pantalla/interactiu. El Makefile defineix
+% \imprimible per generar una còpia pensada per imprimir: fons blanc,
+% enllaços discrets i tests estàtics sense camps AcroForm.
+\newif\ifimprimible
+\ifdefined\imprimible\imprimibletrue\else\imprimiblefalse\fi
+% Nom de la Part IV segons el mode: en paper no hi ha interactivitat.
+\ifimprimible
+  \newcommand{\NomTests}{Tests d'autoavaluació}
+  \newcommand{\nomtests}{tests d'autoavaluació}
+\else
+  \newcommand{\NomTests}{Tests interactius}
+  \newcommand{\nomtests}{tests interactius}
+\fi
 
 % Els fitxers compartits viuen ara a la subcarpeta common/ d'aquest mateix
 % projecte, de manera que es troben amb ruta explícita, sense dependre de
@@ -37,11 +52,12 @@
 \makeindex[title={Índex alfabètic},columns=2,intoc]
 
 \begin{document}
-\pagecolor{fons!20}
+\ifimprimible\pagecolor{white}\else\pagecolor{fons!20}\fi
 \hypermetadata
 
 \frontmatter
 \maketitle
+\input{caps/credits}
 \tableofcontents
 \let\cleardoublepage\clearpage
 
@@ -49,6 +65,7 @@
 
 \mainmatter
 \input{caps/introduccio}
+\input{caps/guia}
 
 % ============================================================
 % PART I — TEORIA
@@ -58,8 +75,8 @@
 \input{caps/teoria/categories}
 \input{caps/teoria/functors}
 \input{caps/teoria/transformacions}
-\input{caps/teoria/yoneda}
 \ifpublicacioparcial\else
+\input{caps/teoria/yoneda}
 \input{caps/teoria/limits}
 \input{caps/teoria/adjuncions}
 \input{caps/teoria/cartesianes}
@@ -77,8 +94,8 @@
 \input{caps/practica/categories}
 \input{caps/practica/functors}
 \input{caps/practica/transformacions}
-\input{caps/practica/yoneda}
 \ifpublicacioparcial\else
+\input{caps/practica/yoneda}
 \input{caps/practica/limits}
 \input{caps/practica/adjuncions}
 \input{caps/practica/cartesianes}
@@ -94,8 +111,8 @@
 \input{caps/exercicis/categories}
 \input{caps/exercicis/functors}
 \input{caps/exercicis/transformacions}
-\input{caps/exercicis/yoneda}
 \ifpublicacioparcial\else
+\input{caps/exercicis/yoneda}
 \input{caps/exercicis/limits}
 \input{caps/exercicis/adjuncions}
 \input{caps/exercicis/cartesianes}
@@ -106,19 +123,24 @@
 % ============================================================
 % PART IV — TESTS INTERACTIUS
 % ============================================================
-\part{Tests interactius}
+\part{\NomTests}
 \setcounter{chapter}{0}
+% En pantalla, un sol entorn Form per a tots els tests: un únic diccionari
+% AcroForm. En mode imprimible les macros dels tests són estàtiques i no es
+% crea cap formulari.
+\ifimprimible\else\begin{Form}\fi
 \input{caps/tests/categories}
 \input{caps/tests/functors}
 \input{caps/tests/transformacions}
-\input{caps/tests/yoneda}
 \ifpublicacioparcial\else
+\input{caps/tests/yoneda}
 \input{caps/tests/limits}
 \input{caps/tests/adjuncions}
 \input{caps/tests/cartesianes}
 \input{caps/tests/subobjectes}
 \input{caps/tests/topos}
 \fi
+\ifimprimible\else\end{Form}\fi
 
 % ============================================================
 % APÈNDIXS NUMERATS
@@ -130,6 +152,11 @@
 \part{Apèndixs}
 \input{caps/apendix-axiomatica-relacional}
 \input{caps/apendix-grafs}
+\input{caps/apendix-mida}
+\input{caps/solucions-tests}
+\ifpublicacioparcial\else
+\input{caps/apendix-contraexemples}
+\fi
 
 \backmatter
 \input{caps/bibliografia}

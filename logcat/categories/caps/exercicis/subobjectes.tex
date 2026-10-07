@@ -7,7 +7,7 @@ Els exercicis següents completen els resolts a la part de Pràctica. Cada enunc
 \begin{exercici}
 Descriu $\Sub(A)$ quan $A$ és un objecte d'un preordre vist com a categoria. \hfill{\normalfont$\star$}
 \begin{indicacio}
-En un preordre hi ha com a molt un morfisme entre dos objectes, i tots són monos. Quins subobjectes té, doncs, $A$? Compara amb el conjunt d'elements $\leq A$.
+En un preordre hi ha com a molt un morfisme entre dos objectes, i tots són monos. Quins subobjectes té, doncs, $A$? Compara amb el conjunt d'elements $x\leq A$: quan donen dos d'aquests elements el mateix subobjecte? Què passa si el preordre és un ordre parcial?
 \end{indicacio}
 \end{exercici}
 
@@ -18,10 +18,17 @@ Comprova que en una categoria amb objecte inicial estricte $0$, la injecció $0\
 \end{indicacio}
 \end{exercici}
 
-\begin{exercici}
+\begin{exercici}[Ampliació, per a lectors amb àlgebra]
 Demostra que a $\cat{Grp}$ els subobjectes d'un grup $G$ es corresponen exactament amb els seus \textbf{subgrups}. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
 Els monomorfismes a $\cat{Grp}$ són els homomorfismes injectius. Comprova que dos monos amb codomini $G$ són equivalents si i només si tenen la mateixa imatge, i que les imatges de monos són exactament els subgrups.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que un morfisme de grafs $F\colon G'\to G$ és un monomorfisme de $\cat{Graph}$ si i només si les aplicacions $F_V$ i $F_E$ són injectives. Dedueix la descripció dels subobjectes d'un graf com a subgrafs de l'exemple~\ref{ex:subgrafs}. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Per a una direcció, prova els morfismes que surten del graf d'un sol vèrtex i del graf d'una sola aresta.
 \end{indicacio}
 \end{exercici}
 
@@ -30,7 +37,7 @@ Els monomorfismes a $\cat{Grp}$ són els homomorfismes injectius. Comprova que d
 \begin{exercici}
 Sigui $f\colon A\to B$. Comprova que $f^{*}$ envia el subobjecte màxim de $\Sub(B)$ al màxim de $\Sub(A)$. \hfill{\normalfont$\star$}
 \begin{indicacio}
-El pullback de $\id_B$ al llarg de $f$ és $\id_A$ (llevat d'isomorfisme). Interpreta-ho: substituir dins del predicat \enquote{sempre cert} torna a donar \enquote{sempre cert}.
+El pullback de $\id_B$ al llarg de $f$ és un mono equivalent a $\id_A$. Interpreta-ho: substituir dins del predicat \enquote{sempre cert} torna a donar \enquote{sempre cert}.
 \end{indicacio}
 \end{exercici}
 
@@ -51,17 +58,16 @@ Tant l'ínfim com la reindexació són pullbacks. Usa que els pullbacks es compo
 \end{exercici}
 
 \begin{exercici}
-Comprova que $\Sub$ es pot veure com un functor $\Sub\colon\cat{C}\op\to\cat{Poset}$, que envia cada objecte al seu preordre de subobjectes i cada morfisme a la seva reindexació. \hfill{\normalfont$\star\star$}
+A $\cat{Set}$, el functor de subobjectes $\Sub\colon\cat{Set}\op\to\cat{Poset}$ (proposició~\ref{prop:functor-sub}) i el functor de parts contravariant $\mathcal P$, amb $\mathcal P(A)$ ordenat per inclusió, envien cada conjunt a ordres parcials isomorfs. Comprova que aquests isomorfismes formen un isomorfisme natural $\Sub\cong\mathcal P$. \hfill{\normalfont$\star$}
 \begin{indicacio}
-La contravariància és la de la reindexació: $f\colon A\to B$ dona $f^{*}\colon\Sub(B)\to\Sub(A)$. La functorialitat és l'exercici resolt $(g\comp f)^{*}=f^{*}\comp g^{*}$. Rigorosament, cal fixar una tria de pullbacks o admetre igualtats llevat d'isomorfisme; aquesta és la primera aparició de les \emph{categories indexades}.
+Fes servir la imatge d'un monomorfisme per definir les components, i compara la reindexació amb l'antiimatge.
 \end{indicacio}
 \end{exercici}
 
-\section{Imatges, factoritzacions i quantificació}
 
 \section{Factorització imatge}
 
-\begin{exercici}
+\begin{exercici}[Ampliació, per a lectors amb àlgebra]
 Comprova que a $\cat{Grp}$ la factorització imatge d'un homomorfisme $f\colon G\to H$ és $G\twoheadrightarrow \Imatge(f)\hookrightarrow H$, on $\Imatge(f)$ és el subgrup imatge. \hfill{\normalfont$\star$}
 \begin{indicacio}
 Els epimorfismes regulars a $\cat{Grp}$ són les projeccions al quocient $G\to G/N$; la primera part de $f$ és $G\to G/\ker f\cong\Imatge(f)$. Fes servir el primer teorema d'isomorfia.
@@ -82,28 +88,35 @@ Un epi regular és el coequalitzador de la seva parella nucli; si a més és mon
 \end{indicacio}
 \end{exercici}
 
+\begin{exercici}
+Siguin $H$ i $K$ dos subgrafs d'un graf $G$, i $F\colon G\to G''$ un morfisme de grafs. Descriu la intersecció $H\wedge K$ a $\Sub(G)$ i la imatge $\exists_F(H)$ a $\Sub(G'')$, i comprova que totes dues es calculen component a component, sobre vèrtexs i sobre arestes. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Fes servir l'exemple~\ref{ex:subgrafs} i comprova que les operacions component a component donen subconjunts tancats per origen i destí.
+\end{indicacio}
+\end{exercici}
+
 \section{Regularitat}
 
-\begin{exercici}
+\begin{exercici}[Ampliació, per a lectors amb àlgebra homològica]
 Demostra que tota categoria abeliana és regular. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
 En una categoria abeliana tot morfisme es factoritza com epi (sobre la coimatge) seguit de mono (la imatge), i coimatge i imatge coincideixen. L'estabilitat per pullback se segueix de l'exactitud. Pots limitar-te a esbossar per què cada condició de la definició es compleix.
 \end{indicacio}
 \end{exercici}
 
-\begin{exercici}
+\begin{exercici}[Ampliació, per a lectors amb topologia]
 Exhibeix una aplicació quocient a $\cat{Top}$ el pullback de la qual no és una aplicació quocient, i dedueix-ne que $\cat{Top}$ no és regular. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Els epimorfismes regulars a $\cat{Top}$ són exactament les aplicacions quocient (i cal no confondre'ls amb els epimorfismes de $\cat{Top}$, que són les aplicacions d'imatge densa). Busca una aplicació quocient el pullback de la qual, al llarg d'una injecció adequada, deixa de ser quocient. És el fenomen que motiva restringir-se a categories \enquote{convenients}.
+A $\cat{Top}$, els epimorfismes regulars són les aplicacions quocient (no s'han de confondre amb els epimorfismes, que són les aplicacions contínues exhaustives). Busca una aplicació quocient el pullback de la qual, al llarg d'una aplicació adequada, deixa de ser quocient.
 \end{indicacio}
 \end{exercici}
 
 \section{Quantificació}
 
 \begin{exercici}
-Demostra que $\exists_f$ és monòtona i que preserva el subobjecte mínim (el \enquote{fals}). \hfill{\normalfont$\star$}
+Demostra que $\exists_f$ és monòtona. Suposa, a més, que $\Sub(A)$ té un mínim $\bot_A$ (el predicat \enquote{fals}); demostra, fent servir l'adjunció $\exists_f\dashv f^{*}$, que $\exists_f(\bot_A)$ és el mínim de $\Sub(B)$. \hfill{\normalfont$\star$}
 \begin{indicacio}
-La monotonia se segueix de ser adjunt per l'esquerra (els adjunts per l'esquerra preserven l'ordre). Per al mínim, la imatge de l'objecte inicial és inicial.
+Per a la monotonia, recorda que els adjunts entre preordres són monòtons. Per al mínim, escriu la condició de l'adjunció per a $\exists_f(\bot_A)\leq[t]$.
 \end{indicacio}
 \end{exercici}
 

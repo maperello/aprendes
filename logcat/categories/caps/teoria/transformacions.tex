@@ -2,8 +2,15 @@
 \label{cap:transformacions}
 
 \begin{objectius}
-\apartat{Prerequisits} Functors, els homfunctors i el bifunctor $\Hom$ (cap.~\ref{cap:functors}). Per a alguns exemples convé, a més, una familiaritat bàsica amb els espais vectorials i, en particular, amb l'espai dual $V^*$ i el bidual $V^{**}$.
-\apartat{Objectius} En acabar el capítol, el lector ha de saber: definir una transformació natural i verificar la naturalitat via quadrats commutatius; reconèixer isomorfismes naturals; treballar amb la categoria de functors $\cat{D}^{\cat{C}}$; compondre transformacions horitzontalment; i caracteritzar una equivalència de categories com un functor ple, fidel i essencialment exhaustiu.
+\apartat{Prerequisits} Categories i diagrames commutatius (cap.~\ref{cap:categories}); functors, composició de functors, functors covariants i contravariants, i les nocions de functor ple, fidel i essencialment exhaustiu (cap.~\ref{cap:functors}). Els homfunctors intervenen en alguns exemples i exercicis, i seran importants en els capítols següents, però no són necessaris per a la definició de naturalitat. Alguns exemples opcionals fan servir una familiaritat bàsica amb espais vectorials, duals i biduals, i l'exemple d'interpretació de fórmules de primer ordre, marcat com a ampliació, pressuposa la semàntica d'aquesta lògica.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item definir una transformació natural i comprovar-ne la naturalitat mitjançant quadrats commutatius;
+  \item compondre transformacions verticalment i interpretar-les com a morfismes de la categoria de functors $\cat{D}^{\cat{C}}$;
+  \item reconèixer un isomorfisme natural i distingir-lo d'una família d'isomorfismes que no sigui natural;
+  \item treballar amb la composició horitzontal i distingir-la de la vertical;
+  \item definir una equivalència de categories mitjançant un quasiinvers, i caracteritzar-la com un functor ple, fidel i essencialment exhaustiu (amb l'axioma de l'elecció per a la implicació recíproca).
+\end{itemize}
 \end{objectius}
 
 \section{Cap al concepte de transformació natural}\label{sec:cap-transformacio}
@@ -24,14 +31,7 @@ F(f)\colon F(X)\longrightarrow F(Y),
 \qquad
 F(f)(\varphi)=\varphi[f],
 \]
-on $\varphi[f]$ és la fórmula obtinguda reemplaçant dins $\varphi$ cada variable $x$ per la variable $f(x)$. Aquesta substitució és la mateixa operació que ja vam trobar a l'exemple~\ref{ex:deduibilitat-functors}, on una substitució de variables proposicionals induïa un functor entre categories de deduïbilitat perquè transformava deduccions; ara la mirem d'una altra manera, com l'acció sobre morfismes d'un functor $F\colon\cat{FinSet}\to\cat{Set}$. Formalment, $F(f)$ es defineix per recursió sobre l'estructura de $\varphi$: sobre una variable, $F(f)(x)=f(x)$; i commuta amb les connectives, $F(f)(\varphi\land\psi)=F(f)(\varphi)\land F(f)(\psi)$, i anàlogament per a $\lor,\lnot,\dots$ Aquesta definició fa evident que $F$ respecta identitats i composició:
-\[
-F(\id_X)=\id_{F(X)},
-\qquad
-F(g\comp f)=F(g)\comp F(f)
-\quad(f\colon X\to Y,\ g\colon Y\to Z),
-\]
-ja que substituir per la variable mateixa no canvia la fórmula, i substituir per $f$ i després per $g$ és substituir per $g\comp f$ (totes dues igualtats es comproven per recursió sobre $\varphi$). Per tant $F\colon\cat{FinSet}\to\cat{Set}$ és un functor \emph{covariant}.
+on $\varphi[f]$ és la fórmula obtinguda reemplaçant dins $\varphi$ cada variable $x$ per la variable $f(x)$. Aquesta substitució és la mateixa operació que ja vam trobar a l'exemple~\ref{ex:deduibilitat-functors}, on una substitució de variables proposicionals induïa un functor entre categories de deduïbilitat perquè transformava deduccions; ara la mirem d'una altra manera, com l'acció sobre morfismes d'un functor $F\colon\cat{FinSet}\to\cat{Set}$. Formalment, $F(f)$ es defineix per recursió sobre l'estructura de $\varphi$: sobre una variable, $F(f)(x)=f(x)$, i $F(f)$ commuta amb les connectives.
 
 El segon functor, el \emph{semàntic}, associa a cada conjunt de variables el conjunt de les funcions de veritat corresponents:
 \[
@@ -47,11 +47,9 @@ G(f)\colon G(X)\longrightarrow G(Y),
 \qquad
 G(f)(\theta)(w)=\theta(w\comp f),
 \]
-és a dir, $G(f)(\theta)=\theta\comp(\_\comp f)$. Aquest functor és covariant: $G(\id_X)(\theta)(v)=\theta(v\comp\id_X)=\theta(v)$, de manera que $G(\id_X)=\id_{G(X)}$, i per a $f\colon X\to Y$, $g\colon Y\to Z$ i tota valoració $u\colon Z\to\{0,1\}$,
-\[
-G(g\comp f)(\theta)(u)=\theta\bigl(u\comp(g\comp f)\bigr)=\theta\bigl((u\comp g)\comp f\bigr)=G(f)(\theta)(u\comp g)=\bigl(G(g)\comp G(f)\bigr)(\theta)(u),
-\]
-és a dir $G(g\comp f)=G(g)\comp G(f)$. Per tant $G\colon\cat{FinSet}\to\cat{Set}$ també és un functor \emph{covariant}.
+és a dir, $G(f)(\theta)=\theta\comp(-\comp f)$.
+
+Tots dos són functors covariants $\cat{FinSet}\to\cat{Set}$. La comprovació és rutinària ---per recursió sobre les fórmules en el cas de $F$, i per l'associativitat de la composició en el de $G$--- i es fa a l'exercici resolt~\ref{pr-sintaxi-semantica} de la Pràctica.
 
 A cada conjunt de variables $X$ li associem l'aplicació que interpreta cada fórmula com la seva funció de veritat (la seva taula de veritat):
 \[
@@ -78,24 +76,17 @@ El fet clau és que aquesta interpretació és \emph{compatible amb el canvi de 
   \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$G(f)$} (m-2-2);
 \end{tikzpicture}
 \]
-commuta, és a dir $G(f)\comp\eta_X=\eta_Y\comp F(f)$. La comprovació reposa en el \emph{lema de substitució} de la lògica proposicional, que relaciona substituir variables amb reanomenar-les en la valoració: per a tota fórmula $\varphi\in F(X)$ i tota valoració $w\colon Y\to\{0,1\}$,
+commuta, és a dir $G(f)\comp\eta_X=\eta_Y\comp F(f)$. Avaluats sobre una fórmula $\varphi\in F(X)$ i una valoració $w\colon Y\to\{0,1\}$, els dos camins del quadrat diuen si $w\models\varphi[f]$ i si $(w\comp f)\models\varphi$, respectivament. Que coincideixin és exactament el \emph{lema de substitució} de la lògica proposicional,
 \[
 (w\comp f)\models\varphi
 \quad\Longleftrightarrow\quad
 w\models\varphi[f],
 \]
-igualtat que es demostra per recursió sobre $\varphi$ (per a una variable $x$ es redueix a $w(f(x))=(w\comp f)(x)$, i les connectives es propaguen). Amb això, avaluant els dos costats del quadrat sobre una fórmula $\varphi\in F(X)$ i una valoració $w\colon Y\to\{0,1\}$ qualssevol:
-\[
-\bigl(\eta_Y(F(f)(\varphi))\bigr)(w)=\eta_Y(\varphi[f])(w)=[\,w\models\varphi[f]\,],
-\]
-\[
-\bigl(G(f)(\eta_X(\varphi))\bigr)(w)=\eta_X(\varphi)(w\comp f)=[\,(w\comp f)\models\varphi\,],
-\]
-on $[\,\cdot\,]$ val $1$ o $0$ segons que la condició sigui certa o falsa. Pel lema de substitució, les dues expressions coincideixen per a tot $w$, de manera que $\eta_Y(F(f)(\varphi))=G(f)(\eta_X(\varphi))$ per a tota $\varphi$, i el quadrat commuta.
+que es demostra per recursió sobre $\varphi$; el càlcul complet és a l'exercici resolt~\ref{pr-sintaxi-semantica}.
 
-En termes informals: substituir primer i interpretar després dona la mateixa funció de veritat que interpretar primer i transportar després. Per exemple, de $\varphi=p\land q$ i el canvi de variables $p\mapsto r,\ q\mapsto s$ obtenim $r\land s$, i tant se val si calculem la taula de veritat abans o després de substituir: el resultat és la mateixa funció (la que val $1$ només quan $r$ i $s$ són totes dues certes). Si el canvi identifica variables, diguem $p\mapsto r,\ q\mapsto r$, aleshores $\varphi$ es transforma en $r\land r$, amb taula de veritat la de $r$; també aquí interpretar i transportar coincideixen. Aquesta compatibilitat, per a tot canvi de variables alhora, és el que a la secció següent anomenarem la \textbf{naturalitat} de la família $(\eta_X)$: \emph{substituir variables i després interpretar una fórmula és el mateix que interpretar i després canviar les variables en la fórmula}.
+En termes informals: substituir primer i interpretar després dona la mateixa funció de veritat que interpretar primer i transportar després. Per exemple, de $\varphi=p\land q$ i el canvi de variables $p\mapsto r,\ q\mapsto s$ obtenim $r\land s$, i tant se val si calculem la taula de veritat abans o després de substituir: el resultat és la mateixa funció (la que val $1$ només quan $r$ i $s$ són totes dues certes). Si el canvi identifica variables, diguem $p\mapsto r,\ q\mapsto r$, aleshores $\varphi$ es transforma en $r\land r$, amb taula de veritat la de $r$; també aquí interpretar i transportar coincideixen. Aquesta compatibilitat, per a tot canvi de variables alhora, és el que a la secció següent anomenarem la \textbf{naturalitat} de la família $(\eta_X)$: \emph{substituir variables i després calcular la funció de veritat és el mateix que calcular-la primer i transportar-la després al llarg del canvi de variables}.
 
-Val la pena notar una diferència amb els exemples \enquote{d'identificació canònica} que veurem després (com el bidual d'un espai vectorial): aquí $\eta_X$ \emph{no} és injectiva ---dues fórmules diferents poden tenir la mateixa taula de veritat, com $p\lor q$ i $q\lor p$---, de manera que no estableix cap isomorfisme entre sintaxi i semàntica. El que expressa la naturalitat no és una identificació, sinó que \emph{el significat d'una fórmula no depèn de com hàgim anomenat les variables}. La mateixa idea s'estén, amb més maquinària, a la lògica de primer ordre, on les fórmules s'interpreten com els predicats que defineixen sobre una estructura fixada; ho veurem desplegat com a exemple formal a l'exemple~\ref{ex:interpretacio-primer-ordre} de la secció~\ref{sec:exemples-transf}.
+Val la pena notar una diferència amb els exemples \enquote{d'identificació canònica} que veurem després (com el bidual d'un espai vectorial): aquí $\eta_X$ \emph{no} és injectiva ---dues fórmules diferents poden tenir la mateixa taula de veritat, com $p\lor q$ i $q\lor p$---, de manera que no estableix cap isomorfisme entre sintaxi i semàntica. El que expressa la naturalitat no és una identificació, sinó que la interpretació és compatible amb \emph{qualsevol} substitució o canvi de variables, incloses les substitucions que identifiquen variables. La mateixa idea s'estén, amb més maquinària, a la lògica de primer ordre, on les fórmules s'interpreten com els predicats que defineixen sobre una estructura fixada; ho veurem desplegat com a exemple formal a l'exemple~\ref{ex:interpretacio-primer-ordre} de la secció~\ref{sec:exemples-transf}.
 
 \begin{observacio}[Per què estudiar lògica categòrica]
 Un lector amb formació lògica pot objectar que, al capdavall, la feina l'ha feta el lema de substitució, i preguntar-se què hi guanya el llenguatge categòric. La resposta assenyala un canvi de punt de vista. Aquí hem hagut de definir la substitució per recursió i comprovar-ne la compatibilitat a mà perquè encara no disposem de cap maquinària; però la lògica categòrica reformula la substitució com una operació \emph{estructural} ---la composició, o més en general la reindexació al llarg d'un morfisme de la categoria de contextos--- i no com una manipulació sintàctica de fórmules. En aquest marc, la interpretació és un functor (o un morfisme entre estructures més riques) que \emph{preserva} aquella operació, i naturalitats com la d'aquest exemple deixen de demostrar-se cas per cas: s'obtenen com a corol·lari que la interpretació respecta l'estructura. La inducció sobre fórmules es fa aleshores una sola vegada i en abstracte, en establir que la categoria sintàctica té la propietat universal que la caracteritza. És el gir que fa que la lògica moderna no es defineixi per les seves peculiaritats sintàctiques, sinó per les estructures que preserva; el nostre lema de substitució n'és el cas visible més senzill.
@@ -145,7 +136,7 @@ El quadrat de naturalitat exhibeix una transformació natural morfisme a morfism
 \]
 És la primera vegada que apareix una fletxa doble entre fletxes: reflecteix que $\eta$ viu \enquote{un nivell més amunt} que els morfismes ordinaris. Aquest punt de vista ---objectes, functors i, damunt, transformacions naturals--- és el que més endavant resumirem dient que les categories formen una \emph{2-categoria}, i és la notació natural per a la composició horitzontal i per a la composició d'una transformació natural amb un functor que veurem al final del capítol.
 
-Convé precisar bé què exigeix la condició de naturalitat i què no: els components $\eta_A$ es trien un per a cada objecte, però no lliurement, ja que han d'encaixar tots alhora amb l'acció dels functors sobre els morfismes. Ara bé, la naturalitat només demana que els components escollits siguin compatibles amb tots els morfismes; no demana que siguin l'única elecció possible. És una condició de compatibilitat, no d'unicitat ni d'absència de paràmetres, com mostra l'exemple següent.
+Convé precisar bé què exigeix la condició de naturalitat i què no: les components $\eta_A$ es trien un per a cada objecte, però no lliurement, ja que han d'encaixar tots alhora amb l'acció dels functors sobre els morfismes. Ara bé, la naturalitat només demana que les components escollides siguin compatibles amb tots els morfismes; no demana que siguin l'única elecció possible. És una condició de compatibilitat, no d'unicitat ni d'absència de paràmetres, com mostra l'exemple següent.
 
 Sobre els espais vectorials reals, prenem com a functors $F=G=\id_{\cat{Vect}_{\mathbb R}}$, el functor identitat de la categoria $\cat{Vect}_{\mathbb R}$, i busquem una transformació natural $\eta\colon\id\Rightarrow\id$. Fixem un escalar $\lambda\in\mathbb{R}$ i prenem, per a cada espai $V$, la component
 \[
@@ -172,44 +163,32 @@ on les dues fletxes horitzontals són $T$ perquè el functor identitat actua sob
 
 
 \begin{exemple}[Una família que \emph{no} és natural]\label{ex:no-natural}\index{transformació natural!contraexemple}
-És igual d'instructiu veure una família de components que \emph{falla} la condició de naturalitat. Treballem a $\cat{Set}$ amb $F=G=\id_{\cat{Set}}$, de manera que una transformació $\id\Rightarrow\id$ hauria de donar, per a cada conjunt $A$, una aplicació $\eta_A\colon A\to A$ que commuti amb \emph{totes} les aplicacions. Provem a triar, a cada conjunt no buit $A$ alhora, un element distingit $a_0\in A$, i posem $\eta_A$ igual a l'aplicació constant de valor $a_0$:
+És igual d'instructiu veure una família de components que \emph{falla} la condició de naturalitat. Treballem a $\cat{Set}$ amb $F=G=\id_{\cat{Set}}$, de manera que una transformació $\id\Rightarrow\id$ hauria de donar, per a cada conjunt $A$, una aplicació $\eta_A\colon A\to A$ que commuti amb \emph{totes} les aplicacions. Definim una família completament explícita, sense cap tria:
 \[
-\eta_A\colon A\to A,\qquad \eta_A(x)=a_0\ \text{ per a tot }x\in A.
+\eta_A=\id_A\quad\text{si } A\neq\{0,1\},
+\qquad\qquad
+\eta_{\{0,1\}}=\tau,\quad \tau(0)=1,\ \tau(1)=0.
 \]
-Aquesta mateixa regla s'aplica a tots els conjunts: a un altre conjunt $B$ li assigna el seu element distingit $b_0\in B$, i la seva component és l'aplicació constant
-\[
-\eta_B\colon B\to B,\qquad \eta_B(y)=b_0\ \text{ per a tot }y\in B.
-\]
+És a dir, totes les components són identitats excepte la del conjunt $\{0,1\}$, que és la transposició dels dos elements. És una família de morfismes $\eta_A\colon A\to A$ indexada per \emph{tots} els conjunts, i cada component és fins i tot una bijecció.
 
-Vegem què demana el quadrat de naturalitat per a una aplicació $f\colon A\to B$. Com que $F=G=\id_{\cat{Set}}$, es té $F(f)=G(f)=f$, i la condició $f\comp\eta_A=\eta_B\comp f$ s'ha de complir avaluada en tot $x\in A$. Ara bé, el costat esquerre val
-\[
-(f\comp\eta_A)(x)=f(\eta_A(x))=f(a_0),
-\]
-perquè $\eta_A$ és constant de valor $a_0$; i el costat dret val
-\[
-(\eta_B\comp f)(x)=\eta_B(f(x))=b_0,
-\]
-perquè $\eta_B$ és constant de valor $b_0$. Igualant-los, la naturalitat equival a demanar que
-\[
-f(a_0)=b_0
-\qquad\text{per a tota aplicació }f\colon A\to B.
-\]
-Aquí $a_0$ i $b_0$ estan \emph{fixats} ---són els elements distingits que la regla ha triat a $A$ i a $B$ abans de mirar cap morfisme---, mentre que $f$ recorre \emph{totes} les aplicacions de $A$ a $B$. La condició diu, doncs, que qualsevol aplicació ha d'enviar $a_0$ precisament a $b_0$; però si $B$ té més d'un element, hi ha aplicacions $A\to B$ que envien $a_0$ a qualsevol element de $B$ (per exemple, les constants), i totes elles la violen tret d'una. La tria d'element distingit només seria natural si cada conjunt no buit tingués un únic element.
-
-Vegem-ho en un cas concret. Prenem $A=B=\{0,1\}$ amb la mateixa tria $a_0=b_0=0$, i l'aplicació constant $f\equiv 1$. El quadrat
+Vegem què demana el quadrat de naturalitat per a una aplicació $f\colon A\to B$. Com que $F=G=\id_{\cat{Set}}$, es té $F(f)=G(f)=f$, i la condició és $f\comp\eta_A=\eta_B\comp f$. Prenem $A=B=\{0,1\}$ i l'aplicació constant de valor $0$, $f(0)=f(1)=0$:
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=3.8em] {
-    A & B \\
-    A & B \\
+    \{0,1\} & \{0,1\} \\
+    \{0,1\} & \{0,1\} \\
   };
   \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f$} (m-1-2);
-  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$\eta_A$} (m-2-1);
-  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\eta_B$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$\tau$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\tau$} (m-2-2);
   \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$f$} (m-2-2);
 \end{tikzpicture}
+\qquad
+f\comp\tau=f,\qquad \tau\comp f=\text{constant de valor }1.
 \]
-no commuta: seguint el camí de dalt i a la dreta, $\eta_B(f(x))=\eta_B(1)=0$; seguint el de l'esquerra i a baix, $f(\eta_A(x))=f(0)=1$. Com que $1\neq 0$, els dos camins difereixen, i la família $(\eta_A)$ \emph{no} és una transformació natural. El problema no és la tria en si ---a l'exemple anterior també triàvem un $\lambda$---, sinó que aquesta tria \emph{no és compatible} amb totes les fletxes: escollir un element distingit a cada conjunt no respecta les aplicacions que no el preserven. La naturalitat és exactament aquesta compatibilitat global, i aquí es trenca.
+El camí de l'esquerra i a baix dona $f\comp\tau$, que continua sent constant de valor $0$; el de dalt i a la dreta dona $\tau\comp f$, que és constant de valor $1$. Els dos camins difereixen, i la família $(\eta_A)$ \emph{no} és una transformació natural.
+
+La lliçó és que tenir una regla objecte a objecte, fins i tot formada per bijeccions, no basta. La component a $\{0,1\}$ s'ha definit sense tenir en compte les aplicacions que entren i surten d'aquest conjunt, i una sola d'aquestes aplicacions n'hi ha prou per trencar la compatibilitat. La naturalitat és exactament aquesta compatibilitat amb \emph{totes} les fletxes.
 \end{exemple}
 
 \section{Exemples de transformacions naturals}\label{sec:exemples-transf}
@@ -228,10 +207,10 @@ F(x)\leq G(x)\ \text{per a tot }x.
 En el llenguatge de l'ordre, una transformació natural entre aplicacions monòtones és exactament la relació \enquote{$F$ és puntualment menor o igual que $G$}.
 \end{exemple}
 
-\begin{exemple}[Interpretació de fórmules de primer ordre]\label{ex:interpretacio-primer-ordre}\index{transformació natural!interpretació lògica}\index{lema de substitució}
-Reprenem el fil de la lògica que hem obert a la secció~\ref{sec:cap-transformacio} (\enquote{Cap al concepte de transformació natural}), ara en primer ordre i amb la naturalitat plantejada com a exemple formal. Fixem un llenguatge de primer ordre i una estructura $M$.
+\begin{exemple}[Ampliació: interpretació de fórmules de primer ordre]\label{ex:interpretacio-primer-ordre}\index{transformació natural!interpretació lògica}\index{lema de substitució}
+Reprenem el fil de la lògica que hem obert a la secció~\ref{sec:cap-transformacio} (\enquote{Cap al concepte de transformació natural}), ara en primer ordre i amb la naturalitat plantejada com a exemple formal. Fixem un llenguatge de primer ordre i una estructura $M$. L'exemple pressuposa la semàntica de la lògica de primer ordre (estructures, satisfacció, variables lliures i lligades) i es pot ometre en una primera lectura.
 
-Convé fixar d'entrada les convencions que fan functorial la construcció sintàctica, en lloc d'adoptar-les a posteriori. Disposem d'una reserva infinita de variables; un \emph{context} és un conjunt finit de variables $X$; treballem amb fórmules \emph{mòdul reanomenament de variables lligades} ($\alpha$-equivalència), i totes les substitucions s'entenen \emph{lliures de captura}. Sense aquestes convencions les lleis functorials de sota no se sostenen: en $\varphi=\exists y\,R(x,y)$, substituir la variable lliure $x$ per $y$ no pot donar ingènuament $\exists y\,R(y,y)$; cal reanomenar abans la variable lligada i obtenir, per exemple, $\exists z\,R(y,z)$.
+Convé fixar d'entrada les convencions que fan functorial la construcció sintàctica, en lloc d'adoptar-les a posteriori. Disposem d'una reserva infinita de variables; un \emph{context} és un conjunt finit $X$ de variables d'aquesta reserva, i escrivim $\cat{Ctx}$ per a la subcategoria plena de $\cat{FinSet}$ que té per objectes els contextos i per morfismes totes les aplicacions entre ells (com que la reserva és infinita, $\cat{Ctx}$ és equivalent a $\cat{FinSet}$, però no farem servir aquesta equivalència); treballem amb fórmules \emph{mòdul reanomenament de variables lligades} ($\alpha$-equivalència), i totes les substitucions s'entenen \emph{lliures de captura}. Sense aquestes convencions les lleis functorials de sota no se sostenen: en $\varphi=\exists y\,R(x,y)$, substituir la variable lliure $x$ per $y$ no pot donar ingènuament $\exists y\,R(y,y)$; cal reanomenar abans la variable lligada i obtenir, per exemple, $\exists z\,R(y,z)$.
 
 Amb aquestes convencions considerem dues construccions. Per una banda,
 \[
@@ -249,7 +228,7 @@ on un \emph{predicat definible} és un subconjunt de $M^X$ (el conjunt d'assigna
 \[
 G(f)(S)=\bigl(M^{f}\bigr)^{-1}(S)=\{\,s\in M^{Y}\mid s\comp f\in S\,\},\qquad S\subseteq M^{X}.
 \]
-Totes dues són functors covariants $\cat{FinSet}\to\cat{Set}$: per a $F$ es comprova que la substitució respecta identitats i composició\footnote{És on es fan servir les convencions anteriors. Quan $f$ no és injectiva, identifica variables lliures, i és la substitució lliure de captura, definida sobre classes d'$\alpha$-equivalència, la que fa que $\varphi[\id]=\varphi$ i $\varphi[g\comp f]=(\varphi[f])[g]$ valguin com a \emph{igualtats}, no només mòdul reanomenament ad hoc.}; per a $G$, la functorialitat és la de la precomposició $M^{(-)}$ seguida de preimatge.
+Totes dues són functors covariants $\cat{Ctx}\to\cat{Set}$: per a $F$ es comprova que la substitució respecta identitats i composició\footnotemark; per a $G$, la functorialitat és la de la precomposició $M^{(-)}$ seguida de preimatge.
 
 A cada context $X$ li associem ara l'aplicació que interpreta cada fórmula com la seva extensió,
 \[
@@ -263,19 +242,20 @@ Aquesta $\eta_X$ està ben definida sobre classes d'$\alpha$-equivalència, perq
 \]
 Aquesta igualtat és exactament el \textbf{lema de substitució} de la teoria de models ---el significat d'una fórmula després de canviar-ne les variables es calcula transportant el significat original--- i fa doble feina: garanteix alhora que $G(f)$ envia predicats definibles a predicats definibles (la preimatge d'un definible és definible) i que el quadrat de naturalitat commuta. Per tant $\eta\colon F\Rightarrow G$ és una transformació natural, i expressa que la interpretació és compatible amb la substitució.
 
-Com en el cas proposicional de la secció~\ref{sec:cap-transformacio}, $\eta_X$ no és injectiva ---dues fórmules lògicament equivalents defineixen el mateix predicat---, de manera que la naturalitat no és aquí una identificació, sinó el principi que \emph{el significat d'una fórmula no depèn de com n'hàgim anomenat les variables}. Convé, finalment, no confondre dues nocions que aquí conviuen: en una estructura $M$ fixada, dues fórmules poden tenir la mateixa extensió sense ser lògicament equivalents en \emph{totes} les estructures; aquesta \emph{equivalència semàntica relativa a $M$} és més grollera que la \emph{validesa lògica} general.
+Com en el cas proposicional de la secció~\ref{sec:cap-transformacio}, $\eta_X$ no és injectiva ---dues fórmules lògicament equivalents defineixen el mateix predicat---, de manera que la naturalitat no és aquí una identificació, sinó que expressa que la interpretació és compatible amb els canvis de variables, inclosos els reanomenaments i les identificacions. Convé, finalment, no confondre dues nocions que aquí conviuen: en una estructura $M$ fixada, dues fórmules poden tenir la mateixa extensió sense ser lògicament equivalents en \emph{totes} les estructures; la relació d'\emph{equivalència semàntica relativa a $M$} és, per tant, més grollera que l'\emph{equivalència lògica} global.
 \end{exemple}
+\footnotetext{És on es fan servir les convencions anteriors. Quan $f$ no és injectiva, identifica variables lliures, i és la substitució lliure de captura, definida sobre classes d'$\alpha$-equivalència, la que fa que $\varphi[\id]=\varphi$ i $\varphi[g\comp f]=(\varphi[f])[g]$ valguin com a \emph{igualtats}, no només mòdul reanomenament ad hoc.}%
 
 \begin{exemple}[Bidual d'espais vectorials]\label{ex:bidual}\index{transformació natural!bidual}
 Reprenem el fil que vam deixar obert a l'exemple~\ref{ex:homfunctor-dual} (\enquote{El dual d'un espai vectorial com a homfunctor}), on vam construir el \textbf{functor dual}
 \[
-(\_)^*=\Hom_{\mathbb K}(\_,\mathbb K)\colon\cat{Vect}_{\mathbb K}\op\to\cat{Vect}_{\mathbb K},\qquad V\mapsto V^*,
+(-)^*=\Hom_{\mathbb K}(-,\mathbb K)\colon\cat{Vect}_{\mathbb K}\op\to\cat{Vect}_{\mathbb K},\qquad V\mapsto V^*,
 \]
 contravariant, que sobre un morfisme $T\colon V\to W$ dona l'aplicació dual $T^*\colon W^*\to V^*$, $\psi\mapsto\psi\comp T$, amb la regla $(g\comp f)^*=f^*\comp g^*$. Vam ajornar deliberadament la comparació de $V$ amb el bidual fins a tenir el llenguatge de les transformacions naturals; ja el tenim.
 
-El \textbf{functor bidual} (o doble dual) s'obté per composició del dual amb ell mateix. Com que $(\_)^*$ és contravariant ---un functor amb domini $\cat{Vect}_{\mathbb K}\op$---, per compondre'l amb ell mateix cal fer encaixar dominis i codominis amb l'oposat, exactament com a la proposició~\ref{prop:variancia-composicio}: es pren el functor oposat $\bigl((\_)^*\bigr)\op\colon\cat{Vect}_{\mathbb K}\to\cat{Vect}_{\mathbb K}\op$ ---que actua igual sobre objectes--- i s'hi torna a aplicar el dual,
+El \textbf{functor bidual} (o doble dual) s'obté per composició del dual amb ell mateix. Com que $(-)^*$ és contravariant ---un functor amb domini $\cat{Vect}_{\mathbb K}\op$---, per compondre'l amb ell mateix cal fer encaixar dominis i codominis amb l'oposat, exactament com a la proposició~\ref{prop:variancia-composicio}: es pren el functor oposat $\bigl((-)^*\bigr)\op\colon\cat{Vect}_{\mathbb K}\to\cat{Vect}_{\mathbb K}\op$ ---que actua igual sobre objectes--- i s'hi torna a aplicar el dual,
 \[
-(\_)^{**}=(\_)^*\comp\bigl((\_)^*\bigr)\op\colon\cat{Vect}_{\mathbb K}\to\cat{Vect}_{\mathbb K}.
+(-)^{**}=(-)^*\comp\bigl((-)^*\bigr)\op\colon\cat{Vect}_{\mathbb K}\to\cat{Vect}_{\mathbb K}.
 \]
 Per la regla dels signes, la composició de dos functors contravariants és \emph{covariant}. Desplegada, actua sobre objectes com
 \[
@@ -298,18 +278,18 @@ L'efecte sobre els morfismes ho resumeix el diagrama següent, on el dual invert
   \draw[cat] (m-1-2) -- node[above] {$T$} (m-1-3);
   \draw[cat] (m-2-3) -- node[above] {$T^*$} (m-2-2);
   \draw[cat] (m-3-2) -- node[above] {$T^{**}$} (m-3-3);
-  \draw[cat,dashed] (m-1-1) -- node[left] {$(\_)^*$} (m-2-1);
-  \draw[cat,dashed] (m-2-1) -- node[left] {$(\_)^*$} (m-3-1);
-  \draw[cat,dashed] (m-1-4) -- node[right] {$(\_)^{**}$} (m-3-4);
+  \draw[cat,dashed] (m-1-1) -- node[left] {$(-)^*$} (m-2-1);
+  \draw[cat,dashed] (m-2-1) -- node[left] {$(-)^*$} (m-3-1);
+  \draw[cat,dashed] (m-1-4) -- node[right] {$(-)^{**}$} (m-3-4);
 \end{tikzpicture}
 \]
-Les fletxes contínues són morfismes de $\cat{Vect}_{\mathbb K}$; les puntejades, l'acció del functor. La fila del mig apunta en sentit contrari ---el dual $(\_)^*$ és contravariant---, i la de baix en recupera el sentit ---dues inversions es cancel·len---: el bidual $(\_)^{**}$, composició del dual amb ell mateix, és covariant, paral·lel a la identitat. Ara sí que té sentit comparar-los amb una transformació natural. Tots dos ---la identitat i el bidual--- són endofunctors covariants de $\cat{Vect}_{\mathbb K}$, de manera que la comparació és una transformació natural $\eta$ entre functors paral·lels:
+Les fletxes contínues són morfismes de $\cat{Vect}_{\mathbb K}$; les puntejades, l'acció del functor. La fila del mig apunta en sentit contrari ---el dual $(-)^*$ és contravariant---, i la de baix en recupera el sentit ---dues inversions es cancel·len---: el bidual $(-)^{**}$, composició del dual amb ell mateix, és covariant, paral·lel a la identitat. Ara sí que té sentit comparar-los amb una transformació natural. Tots dos ---la identitat i el bidual--- són endofunctors covariants de $\cat{Vect}_{\mathbb K}$, de manera que la comparació és una transformació natural $\eta$ entre functors paral·lels:
 \[
 \begin{tikzpicture}[baseline=(A.base)]
   \node (A) at (0,0) {$\cat{Vect}_{\mathbb K}$};
   \node (B) at (3.6,0) {$\cat{Vect}_{\mathbb K}$};
   \draw[cat] (A) to[bend left=26] node[above] {$\id_{\cat{Vect}_{\mathbb K}}$} (B);
-  \draw[cat] (A) to[bend right=26] node[below] {$(\_)^{**}$} (B);
+  \draw[cat] (A) to[bend right=26] node[below] {$(-)^{**}$} (B);
   \draw[cat nat] (1.8,0.2) -- node[right=1.5pt] {$\eta$} (1.8,-0.2);
 \end{tikzpicture}
 \]
@@ -348,7 +328,7 @@ Cada $\eta_V$ és lineal i està ben definida. La condició de naturalitat, per 
 
 Els functors entre dues categories fixes, amb les transformacions naturals com a morfismes, formen al seu torn una categoria. Aquesta secció en desenvolupa la construcció: la composició que la fa possible, la categoria $\cat{D}^{\cat{C}}$ mateixa, un exemple fonamental ---els grafs--- i els seus isomorfismes, que resulten ser els isomorfismes naturals; en tanquem l'estudi amb l'equivalència de categories.
 
-Les transformacions naturals no només relacionen functors: també es poden \emph{compondre} entre elles. La composició bàsica apila una transformació damunt d'una altra, i és la que després convertirà els functors entre dues categories en una categoria, i la que dóna sentit a parlar de la \emph{inversa} d'un isomorfisme natural.
+Les transformacions naturals no només relacionen functors: també es poden \emph{compondre} entre elles. La composició bàsica apila una transformació damunt d'una altra, i és la que després convertirà els functors entre dues categories en una categoria, i la que dona sentit a parlar de la \emph{inversa} d'un isomorfisme natural.
 
 \begin{definicio}[Composició vertical]\index{transformació natural!composició vertical}
 Donades dues transformacions naturals $\eta\colon F\Rightarrow G$ i $\theta\colon G\Rightarrow H$ entre functors $\cat{C}\to\cat{D}$, la seva \textbf{composició vertical} $\theta\comp\eta\colon F\Rightarrow H$ té per components
@@ -368,7 +348,7 @@ El nom \emph{vertical} ve d'aquesta representació: les dues transformacions s'a
   \draw[cat nat] (1.7,-0.27) -- node[right=1.5pt] {$\theta$} (1.7,-0.52);
 \end{tikzpicture}
 \]
-El mateix nom es reconeix a escala de components: fixat un morfisme $f\colon A\to B$, les components de $\eta$ i de $\theta$ són fletxes \emph{verticals}, i els seus quadrats de naturalitat s'apilen l'un damunt de l'altre ---compartint la fila central $G(A)\to G(B)$---, de manera que $\theta\comp\eta$ en composa les columnes:
+El mateix nom es reconeix a escala de components: fixat un morfisme $f\colon A\to B$, les components de $\eta$ i de $\theta$ són fletxes \emph{verticals}, i els seus quadrats de naturalitat s'apilen l'un damunt de l'altre ---compartint la fila central $G(A)\to G(B)$---, de manera que $\theta\comp\eta$ en compon les columnes:
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, row sep=3em, column sep=3.6em] {
@@ -427,8 +407,8 @@ Sigui $\cat{C}$ una categoria petita i $\cat{D}$ una categoria qualsevol. La \te
 \end{itemize}
 \end{definicio}
 
-\begin{observacio}[Qüestions de mida]\index{transformació natural!Nat@$\operatorname{Nat}$}
-Convé dir per què la definició demana $\cat{C}$ petita. La raó de fons és la mateixa de l'observació~\ref{obs:mida-cat}, on vam haver de restringir $\cat{Cat}$ a les categories \emph{petites}. En el marc de classes i conjunts que adoptem (vegeu l'apèndix de convenció de mida), si $\cat{C}$ fos gran, les dades que defineixen un functor $\cat{C}\to\cat{D}$ podrien formar una classe pròpia ---l'assignació recorreria una classe pròpia d'objectes---, i les classes pròpies no poden ser elements de cap col·lecció; aleshores els functors $\cat{C}\to\cat{D}$ no es poden reunir automàticament com els \emph{objectes} d'una categoria ordinària del mateix nivell. Amb $\cat{C}$ petita, en canvi, aquestes dades formen un conjunt i la construcció no té cap problema. Això no impedeix parlar \emph{individualment} de functors i transformacions naturals amb domini gran ---ho fem contínuament, com amb $\cat{Set}\to\cat{Set}$---; el que no fem és agrupar-los tots en una categoria de functors.
+\begin{observacio}[Qüestions de mida]\label{obs:mida-functors}\index{transformació natural!Nat@$\operatorname{Nat}$}
+Convé dir per què la definició demana $\cat{C}$ petita. La raó de fons és la mateixa de l'observació~\ref{obs:mida-cat}, on vam haver de restringir $\cat{Cat}$ a les categories \emph{petites}. Si $\cat{C}$ fos gran, les dades que defineixen un functor $\cat{C}\to\cat{D}$ podrien formar una classe pròpia ---l'assignació recorreria una classe pròpia d'objectes---, i les classes pròpies no poden ser elements de cap col·lecció; aleshores els functors $\cat{C}\to\cat{D}$ no es poden reunir com els \emph{objectes} d'una categoria.\footnotemark Amb $\cat{C}$ petita, en canvi, aquestes dades formen un conjunt i la construcció no té cap problema. Això no impedeix parlar \emph{individualment} de functors i transformacions naturals amb domini gran ---ho fem contínuament, com amb $\cat{Set}\to\cat{Set}$---; el que no fem és agrupar-los tots en una categoria de functors.
 
 Amb $\cat{C}$ petita, $\cat{D}^{\cat{C}}$ pot ser encara gran, però és \textbf{localment petita} tan bon punt $\cat{D}$ ho és: una transformació natural $F\Rightarrow G$ queda determinada pels seus components $\eta_A$, un per a cada objecte $A$ de $\cat{C}$, de manera que la col·lecció de totes les transformacions naturals $F\Rightarrow G$, que denotem $\operatorname{Nat}(F,G)$, és un subconjunt del producte
 \[
@@ -439,6 +419,7 @@ indexat per $\Ob(\cat{C})$ ---un conjunt, precisament perquè $\cat{C}$ és peti
 \operatorname{Nat}(F,G)=\Hom_{\cat{D}^{\cat{C}}}(F,G).
 \]
 \end{observacio}
+\footnotetext{Això depèn del marc de mida, que aquí és el de classes i conjunts de l'apèndix~\ref{cap:mida}. Amb universos de Grothendieck, la categoria de functors d'una categoria gran es pot formar en un univers superior; vegeu \cite[§1.1]{riehl}.}%
 
 \index{graf!com a categoria de functors}\index{categoria!de functors!grafs}
 Un dels exemples més il·luminatius de categoria de functors mostra que un objecte aparentment aliè a les categories ---un graf dirigit--- \emph{és}, en realitat, un functor, i que els seus morfismes són transformacions naturals. Aquest exemple reprèn el fil dels grafs que hem seguit des del primer capítol i és, a més, el primer indici que categories de functors del tipus $\cat{Set}^{\cat{C}}$ codifiquen estructures matemàtiques familiars.
@@ -488,8 +469,20 @@ Aquests quadrats diuen que $\varphi_E$ i $\varphi_V$ respecten l'origen i el des
 \end{prova}
 
 \begin{observacio}
-Aquest exemple té una lectura de fons: un cop decidim representar els grafs com a functors $\cat{P}\to\cat{Set}$, la representació \emph{justifica i recupera canònicament} la definició habitual de morfisme de grafs, perquè els morfismes de $\cat{Set}^{\cat{P}}$ són, per força, les transformacions naturals. És un criteri de coherència que sovint es fa servir en teoria de categories: quan una estructura s'expressa com a categoria de functors, la noció de morfisme que se'n dedueix hauria de coincidir amb la que s'havia adoptat independentment. Les categories del tipus $\cat{Set}^{\cat{C}}$, que codifiquen estructures com els grafs, seran fonamentals quan estudiem els prefeixos i, més endavant, la semàntica categòrica.
+Aquest exemple té una lectura de fons: un cop decidim representar els grafs com a functors $\cat{P}\to\cat{Set}$, la representació \emph{justifica i recupera canònicament} la definició habitual de morfisme de grafs, perquè els morfismes de $\cat{Set}^{\cat{P}}$ són, per força, les transformacions naturals. És un criteri de coherència que sovint es fa servir en teoria de categories: quan una estructura s'expressa com a categoria de functors, la noció de morfisme que se'n dedueix hauria de coincidir amb la que s'havia adoptat independentment. Les categories del tipus $\cat{Set}^{\cat{C}}$, que codifiquen estructures com els grafs, inclouen com a cas particular les categories de prefeixos, que presentem tot seguit i que seran fonamentals per al lema de Yoneda i, més endavant, per a la semàntica categòrica.
 \end{observacio}
+
+\begin{exemple}[La categoria de prefeixos]\label{ex:categoria-prefeixos}\index{prefeix@prefeix!categoria de}\index{prefeix@prefeix!morfisme de}
+Sigui $\cat{C}$ una categoria petita. Els prefeixos sobre $\cat{C}$ (definició~\ref{def:prefeix}) són els objectes de la categoria de functors
+\[
+\widehat{\cat{C}}\coloneqq\cat{Set}^{\cat{C}\op},
+\]
+que anomenem \textbf{categoria de prefeixos} sobre $\cat{C}$. Els seus morfismes, els \textbf{morfismes de prefeixos} $\sigma\colon P\Rightarrow Q$, són les transformacions naturals: famílies d'aplicacions $\sigma_A\colon P(A)\to Q(A)$ tals que, per a cada morfisme $f\colon A\to B$ de $\cat{C}$,
+\[
+\sigma_A\comp P(f)=Q(f)\comp\sigma_B\colon P(B)\to Q(A),
+\]
+que és el quadrat de naturalitat escrit per a prefeixos. Com que $\cat{Set}$ és localment petita, $\widehat{\cat{C}}$ també ho és, per l'observació sobre qüestions de mida. La categoria $\cat{Set}^{\cat{P}}$ dels grafs n'és un exemple: com que un functor $\cat{P}\to\cat{Set}$ és un functor $(\cat{P}\op)\op\to\cat{Set}$, els grafs són els prefeixos sobre $\cat{P}\op$.
+\end{exemple}
 
 \begin{observacio}[La forma dels grafs és, ella mateixa, un graf]\index{categoria!lliure}
 La categoria índex $\cat{P}$ té una lectura circular ben curiosa. El seu \emph{graf subjacent} ---els dos objectes com a vèrtexs i les dues fletxes generadores $s,t$ com a arestes--- és exactament $\bullet\rightrightarrows\bullet$, i $\cat{P}$ n'és la \textbf{categoria lliure} (secció~\ref{sec:grafs-lliures}): com que les dues fletxes paral·leles no es poden encadenar ---de l'objecte d'arribada no en surt cap---, no hi ha camins de longitud $\geq 2$, i els únics morfismes de $\cat{P}$ són $\id$, $\id$, $s$ i $t$. És a dir, $\cat{P}=\Free(\bullet\rightrightarrows\bullet)$. Així, la \enquote{forma} amb què definim els grafs ---el graf subjacent de $\cat{P}$--- és, ella mateixa, un graf, de fet un objecte de $\cat{Graph}=\cat{Set}^{\cat{P}}$: el patró es tanca sobre si mateix.
@@ -512,7 +505,7 @@ Siguin $F,G\colon\cat{C}\to\cat{D}$ dos functors. Una transformació natural $\e
 \begin{prova}
 Si $\eta$ té inversa $\eta^{-1}$, avaluant les igualtats $\eta^{-1}\comp\eta=\id_F$ i $\eta\comp\eta^{-1}=\id_G$ a cada objecte $A$ ---i recordant que la composició vertical és component a component--- obtenim $(\eta^{-1})_A\comp\eta_A=\id_{F(A)}$ i $\eta_A\comp(\eta^{-1})_A=\id_{G(A)}$; per tant $\eta_A$ és un isomorfisme a $\cat{D}$, amb invers $(\eta^{-1})_A$.
 
-Recíprocament, suposem que cada $\eta_A$ és un isomorfisme a $\cat{D}$, amb invers $\eta_A^{-1}$. N'hi ha prou de veure que aquests inversos són els components d'una transformació natural $\eta^{-1}\colon G\Rightarrow F$, perquè aleshores, component a component, és la inversa de $\eta$. Partim del quadrat de naturalitat de $\eta$ per a un morfisme $f\colon A\to B$,
+Recíprocament, suposem que cada $\eta_A$ és un isomorfisme a $\cat{D}$, amb invers $\eta_A^{-1}$. N'hi ha prou de veure que aquests inversos són les components d'una transformació natural $\eta^{-1}\colon G\Rightarrow F$, perquè aleshores, component a component, és la inversa de $\eta$. Partim del quadrat de naturalitat de $\eta$ per a un morfisme $f\colon A\to B$,
 \[
 \begin{tikzpicture}[baseline=(m.center)]
   \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=3.4em] {
@@ -525,7 +518,7 @@ Recíprocament, suposem que cada $\eta_A$ és un isomorfisme a $\cat{D}$, amb in
   \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$G(f)$} (m-2-2);
 \end{tikzpicture}
 \]
-és a dir, $G(f)\comp\eta_A=\eta_B\comp F(f)$, i composant per l'esquerra amb $\eta_B^{-1}$ i per la dreta amb $\eta_A^{-1}$,
+és a dir, $G(f)\comp\eta_A=\eta_B\comp F(f)$, i component per l'esquerra amb $\eta_B^{-1}$ i per la dreta amb $\eta_A^{-1}$,
 \[
 \eta_B^{-1}\comp G(f)=\eta_B^{-1}\comp G(f)\comp\eta_A\comp\eta_A^{-1}=\eta_B^{-1}\comp\eta_B\comp F(f)\comp\eta_A^{-1}=F(f)\comp\eta_A^{-1},
 \]
@@ -533,7 +526,7 @@ que és la condició de naturalitat per a $\eta^{-1}$.
 \end{prova}
 
 \begin{observacio}\label{obs:iso-no-natural}
-La distinció entre isomorfisme i isomorfisme \emph{natural} és fonamental. Que $F(A)$ i $G(A)$ siguin isomorfs per a cada $A$ no basta: cal que els isomorfismes ---un per objecte, els components $\eta_A$--- es puguin triar \emph{alhora} de manera compatible amb tots els morfismes. Aquesta compatibilitat no es refereix a triar més components, sinó a la \emph{naturalitat}: per a cada morfisme $f\colon A\to B$ de $\cat{C}$, el quadrat de $\eta$ ha de commutar ($G(f)\comp\eta_A=\eta_B\comp F(f)$), lligant els components dels dos extrems.
+La distinció entre isomorfisme i isomorfisme \emph{natural} és fonamental. Que $F(A)$ i $G(A)$ siguin isomorfs per a cada $A$ no basta: cal que els isomorfismes ---un per objecte, les components $\eta_A$--- es puguin triar \emph{alhora} de manera compatible amb tots els morfismes. Aquesta compatibilitat no es refereix a triar més components, sinó a la \emph{naturalitat}: per a cada morfisme $f\colon A\to B$ de $\cat{C}$, el quadrat de $\eta$ ha de commutar ($G(f)\comp\eta_A=\eta_B\comp F(f)$), lligant les components dels dos extrems.
 
 Un exemple mínim ho mostra sense cap tecnicisme. Prenem un grup de dos elements, $\{e,g\}$ amb $g^2=e$ (on $e$ és la identitat), vist com a categoria d'un sol objecte $\cat{B}(\{e,g\})$, i dos functors $F,G\colon\cat{B}(\{e,g\})\to\cat{Set}$. Tots dos envien l'únic objecte $\ast$ al mateix conjunt $\{0,1\}$, però l'element $g$ actua de manera diferent: en $F$ actua per la identitat, i en $G$ per la transposició $\tau$ que intercanvia $0$ i $1$. Puntualment no hi ha res a distingir: $F(\ast)=G(\ast)=\{0,1\}$ són el mateix conjunt, i per tant \emph{isomorfs}. Tanmateix, no hi ha cap isomorfisme natural $F\cong G$. Una transformació natural $\eta\colon F\Rightarrow G$ tindria una única component $\eta_\ast\colon\{0,1\}\to\{0,1\}$, i la naturalitat respecte del morfisme $g$ exigiria
 \[
@@ -545,6 +538,49 @@ Però $\tau$ no té punts fixos, de manera que cap aplicació $\eta_\ast$ pot co
 
 El cas clàssic del dual d'un espai vectorial il·lustra la mateixa idea, però demana una precaució addicional. Sovint es diu que un espai de dimensió finita \enquote{és isomorf al seu dual $V\cong V^*$, però no naturalment}. Cal formular-ho amb cura, perquè la identitat és un functor \emph{covariant} $\cat{Vect}_{\mathbb K}\to\cat{Vect}_{\mathbb K}$ mentre que el dual $(-)^*$ és \emph{contravariant}, $\cat{Vect}_{\mathbb K}\op\to\cat{Vect}_{\mathbb K}$: no són dos functors paral·lels als quals es pugui aplicar directament la definició de transformació natural d'aquest capítol. La manera correcta de precisar-ho és restringir-se als \emph{isomorfismes} lineals i comparar la identitat amb l'acció covariant $T\mapsto(T^{-1})^*$; aleshores es comprova que cap família d'isomorfismes $V\cong V^*$ és compatible amb tots els isomorfismes lineals. Aquest desenvolupament es fa amb detall a l'exercici~\ref{ex:dual-no-natural} de la part de pràctica. En canvi, l'isomorfisme $V\cong V^{**}$ amb el bidual sí que està ben plantejat sobre \emph{totes} les aplicacions lineals ---identitat i bidual són tots dos covariants--- i és natural.
 \end{observacio}
+
+\begin{exemple}[Les identificacions canòniques del capítol anterior]\label{ex:isos-naturals-cap2}\index{isomorfisme natural!functor de parts}
+Al capítol~\ref{cap:functors} vam trobar diverses identificacions canòniques entre un functor i un homfunctor, i vam anunciar que les reconeixeríem com a isomorfismes naturals. La proposició~\ref{prop:iso-natural-components} ho fa immediat: en cada cas, les components són bijeccions (o isomorfismes lineals), i només cal comprovar la naturalitat.
+
+\emph{El functor de parts.} Els dos functors contravariants de l'exemple~\ref{ex:functor-parts} són
+\[
+\mathcal P,\ \Hom_{\cat{Set}}(-,\{0,1\})\colon\cat{Set}\op\longrightarrow\cat{Set}.
+\] Les funcions característiques donen, per a cada conjunt $X$, la bijecció
+\[
+\chi_X\colon\mathcal P(X)\to\Hom_{\cat{Set}}(X,\{0,1\}),\qquad B\mapsto\chi_B.
+\]
+Un morfisme de $\cat{Set}\op$ de $Y$ a $X$ és una aplicació $f\colon X\to Y$, que $\mathcal P$ envia a l'antiimatge $f^{-1}$ i l'homfunctor a la precomposició $-\comp f$. El quadrat de naturalitat és
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=4.2em] {
+    \mathcal P(Y) & \mathcal P(X) \\
+    \Hom(Y,\{0,1\}) & \Hom(X,\{0,1\}) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$f^{-1}$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$\chi_Y$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\chi_X$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$-\comp f$} (m-2-2);
+\end{tikzpicture}
+\qquad
+\chi_B\comp f=\chi_{f^{-1}(B)}\quad(B\subseteq Y),
+\]
+i commuta, perquè per a tot $x\in X$ es té $(\chi_B\comp f)(x)=1$ si i només si $f(x)\in B$, és a dir, si i només si $x\in f^{-1}(B)$. Per tant $\chi\colon\mathcal P\Rightarrow\Hom_{\cat{Set}}(-,\{0,1\})$ és un isomorfisme natural, i ara podem escriure amb tota precisió
+\[
+\mathcal P\;\cong\;\Hom_{\cat{Set}}(-,\{0,1\}).
+\]
+
+\emph{Els altres casos.} El mateix esquema val per a les altres identificacions del capítol anterior; n'indiquem les components i l'equació de naturalitat, que es comprova directament.
+\begin{itemize}
+  \item A $\cat{Set}$, $\id_{\cat{Set}}\cong\Hom_{\cat{Set}}(\{\ast\},-)$: la component envia $x\in X$ a l'aplicació $\bar x\colon\ast\mapsto x$, i la naturalitat diu que $f\comp\bar x=\overline{f(x)}$.
+  \item A $\cat{Graph}$, el functor de vèrtexs és naturalment isomorf a $\Hom_{\cat{Graph}}(\mathbf V,-)$ i el d'arestes a $\Hom_{\cat{Graph}}(\mathbf E,-)$ (exemple~\ref{ex:homfunctor-grafs}): la component envia cada vèrtex, o cada aresta, al morfisme que el tria, i la naturalitat diu que compondre aquest morfisme amb un morfisme de grafs $F$ tria la imatge per $F$.
+  \item A $\cat{Vect}_{\mathbb K}$, el functor identitat és naturalment isomorf a l'aixecament
+\[
+\Hom_{\mathbb K}(\mathbb K,-)\colon\cat{Vect}_{\mathbb K}\longrightarrow\cat{Vect}_{\mathbb K}.
+\]
+La component envia $w\in W$ a l'aplicació lineal $\lambda\mapsto\lambda w$, amb inversa $\varphi\mapsto\varphi(1)$, i la naturalitat diu que $T\comp(\lambda\mapsto\lambda w)=(\lambda\mapsto\lambda\,T(w))$ per a tota aplicació lineal $T$.
+\end{itemize}
+Aquests exemples tornaran a aparèixer al capítol del lema de Yoneda, on direm que aquests functors són \emph{representables}.
+\end{exemple}
 
 \subsection{Equivalència de categories}\label{sec:equivalencia}
 
@@ -564,11 +600,16 @@ G\comp F\cong\id_{\cat{C}}
 \qquad\text{i}\qquad
 F\comp G\cong\id_{\cat{D}}.
 \]
-Quan existeix una tal equivalència, diem que $\cat{C}$ i $\cat{D}$ són \textbf{equivalents} i escrivim $\cat{C}\simeq\cat{D}$.
+Quan existeix una tal equivalència, diem que $\cat{C}$ i $\cat{D}$ són \textbf{equivalents} i escrivim $\cat{C}\simeq\cat{D}$. El functor $G$ s'anomena un \textbf{quasiinvers} de $F$. Quan calgui donar nom als isomorfismes naturals, els orientarem sempre així:
+\[
+\eta\colon\id_{\cat{C}}\Rightarrow G\comp F,
+\qquad
+\varepsilon\colon F\comp G\Rightarrow\id_{\cat{D}}.
+\]
 \end{definicio}
 
 \begin{observacio}
-La diferència amb l'isomorfisme de categories és que aquí no demanem $G\comp F=\id_{\cat{C}}$, sinó només $G\comp F\cong\id_{\cat{C}}$: en tornar de $\cat{C}$ a $\cat{C}$ no recuperem exactament cada objecte, sinó un objecte \emph{naturalment isomorf}. Aquesta flexibilitat és la que fa que l'equivalència sigui la noció \enquote{correcta} de comparació entre categories: respecta tota l'estructura categòrica, que només distingeix els objectes llevat d'isomorfisme.
+La diferència amb l'isomorfisme de categories és que aquí no demanem $G\comp F=\id_{\cat{C}}$, sinó només $G\comp F\cong\id_{\cat{C}}$: en tornar de $\cat{C}$ a $\cat{C}$ no recuperem exactament cada objecte, sinó un objecte \emph{naturalment isomorf}. Aquesta flexibilitat és la que fa que l'equivalència sigui la noció adequada de comparació entre categories quan, com passa sovint, només ens interessen els objectes llevat d'isomorfisme.
 \end{observacio}
 
 El resultat central caracteritza les equivalències mitjançant les tres propietats dels functors que vam introduir al capítol anterior: ser ple i fidel (la definició~\ref{def:ple-fidel}) i l'exhaustivitat essencial (la definició~\ref{def:ess-exhaustiu}).
@@ -578,55 +619,110 @@ El resultat central caracteritza les equivalències mitjançant les tres propiet
 Un functor $F\colon\cat{C}\to\cat{D}$ forma part d'una equivalència de categories si i només si és \textbf{ple}, \textbf{fidel} i \textbf{essencialment exhaustiu}.
 \end{teorema}
 
-\begin{prova}[Esquema, amb el nucli de la construcció]
-Suposem primer que $F$ forma part d'una equivalència, amb functor $G\colon\cat{D}\to\cat{C}$ i isomorfismes naturals $\eta\colon G\comp F\cong\id_{\cat{C}}$ i $\varepsilon\colon F\comp G\cong\id_{\cat{D}}$. L'exhaustivitat essencial és immediata: cada $D$ compleix $F(G(D))\cong D$ via $\varepsilon_D$.
-
-\emph{Fidelitat de $F$.} Si $F(f)=F(g)$ amb $f,g\colon A\to B$, aplicant $G$ i la naturalitat de $\eta$ sobre $f$ i sobre $g$ obtenim
+\begin{prova}
+\emph{($\Rightarrow$)} Suposem que $F$ forma part d'una equivalència, amb quasiinvers $G\colon\cat{D}\to\cat{C}$ i isomorfismes naturals $\eta\colon\id_{\cat{C}}\Rightarrow G\comp F$ i $\varepsilon\colon F\comp G\Rightarrow\id_{\cat{D}}$. Com que les components de $\eta$ i de $\varepsilon$ són invertibles, els quadrats de naturalitat es poden llegir com a fórmules: per a $f\colon A\to B$ a $\cat{C}$ i $g\colon D\to D'$ a $\cat{D}$,
 \[
-f\comp\eta_A=\eta_B\comp G(F(f))=\eta_B\comp G(F(g))=g\comp\eta_A,
+G(F(f))=\eta_B\comp f\comp\eta_A^{-1},
+\qquad\qquad
+F(G(g))=\varepsilon_{D'}^{-1}\comp g\comp\varepsilon_D.
+\tag{$\ast$}
 \]
-i, com que $\eta_A$ és un isomorfisme, $f=g$. El mateix argument amb $\varepsilon$ mostra que \emph{$G$ és fidel}: de $G(u)=G(v)$ se'n dedueix $u\comp\varepsilon_D=\varepsilon_{D'}\comp F(G(u))=\varepsilon_{D'}\comp F(G(v))=v\comp\varepsilon_D$, d'on $u=v$.
 
-\emph{Plenitud de $F$.} Donada $u\colon F(A)\to F(B)$, definim
+\emph{$F$ és fidel.} Siguin $f,f'\colon A\to B$ amb $F(f)=F(f')$. Aleshores $G(F(f))=G(F(f'))$ i, per~$(\ast)$, $\eta_B\comp f\comp\eta_A^{-1}=\eta_B\comp f'\comp\eta_A^{-1}$. Component amb $\eta_B^{-1}$ per l'esquerra i amb $\eta_A$ per la dreta, $f=f'$.
+
+\emph{$G$ és fidel.} És el mateix argument amb la segona fórmula de~$(\ast)$: si $G(g)=G(g')$ per a $g,g'\colon D\to D'$, aleshores $\varepsilon_{D'}^{-1}\comp g\comp\varepsilon_D=\varepsilon_{D'}^{-1}\comp g'\comp\varepsilon_D$, i per tant $g=g'$.
+
+\emph{$F$ és ple.} Sigui $u\colon F(A)\to F(B)$ un morfisme qualsevol de $\cat{D}$, i posem
 \[
-v=\eta_B\comp G(u)\comp\eta_A^{-1}\colon A\to B.
+f=\eta_B^{-1}\comp G(u)\comp\eta_A\colon A\to B.
 \]
-La naturalitat de $\eta$ sobre $v$ dona $v\comp\eta_A=\eta_B\comp G(F(v))$, és a dir $G(F(v))=\eta_B^{-1}\comp v\comp\eta_A=G(u)$; i com que $G$ és fidel, $F(v)=u$. Així cada $F_{A,B}$ és bijectiva.
+Per~$(\ast)$, $G(F(f))=\eta_B\comp\bigl(\eta_B^{-1}\comp G(u)\comp\eta_A\bigr)\comp\eta_A^{-1}=G(u)$, i com que $G$ és fidel, $F(f)=u$. Per concloure $F(f)=u$ no es pot fer servir que $F$ és fidel, perquè encara no sabem que $u$ sigui la imatge de cap morfisme; és que $G$ sigui fidel el que ho permet.
 
-Convé remarcar on fallava el pas ingenu. Definir $v$ com acabem de fer és correcte, però \emph{no} se'n segueix directament, per la sola naturalitat de $\eta$, que $F(v)=u$: en aplicar $F$ a la definició de $v$ s'obté $F(v)=F(\eta_B)\comp F(G(u))\comp F(\eta_A^{-1})$, expressió que no té cap motiu de coincidir amb $u$, i la fidelitat de $F$ encara no es pot invocar perquè és una de les propietats que s'estan demostrant. La sortida és comparar les imatges \emph{per $G$} ---que ja hem vist que és fidel---: així el ser ple de $F$ es dedueix del fet, més elemental, que $G$ és fidel. Aquesta és la línia que segueix, amb tots els detalls, l'exercici resolt~\ref{ex:caract-equivalencia} de la Pràctica.
+\emph{$F$ és essencialment exhaustiu.} Per a cada objecte $D$ de $\cat{D}$, la component $\varepsilon_D\colon F(G(D))\to D$ és un isomorfisme, de manera que $D$ és isomorf a l'objecte $F(G(D))$ de la imatge de $F$.
 
-Recíprocament, sigui $F$ ple, fidel i essencialment exhaustiu; construïm un \textbf{quasiinvers} $G$ ---un functor amb $G\comp F\cong\id_{\cat{C}}$ i $F\comp G\cong\id_{\cat{D}}$ (isomorfismes naturals, no igualtats). Per l'exhaustivitat essencial, per a cada objecte $D$ de $\cat{D}$ triem un objecte $G(D)$ de $\cat{C}$ i un isomorfisme $\varepsilon_D\colon F(G(D))\xrightarrow{\cong} D$. Per definir $G$ sobre un morfisme $v\colon D\to D'$, considerem la fletxa $\varepsilon_{D'}^{-1}\comp v\comp\varepsilon_D\colon F(G(D))\to F(G(D'))$; com que $F$ és ple i fidel, hi ha una \emph{única} fletxa $G(v)\colon G(D)\to G(D')$ amb
+\emph{($\Leftarrow$)} Suposem que $F$ és ple, fidel i essencialment exhaustiu. Construïm un quasiinvers en quatre passos.
+
+\emph{Pas 1: $G$ sobre objectes.} Per l'exhaustivitat essencial, per a cada objecte $D$ de $\cat{D}$ hi ha algun objecte $C$ de $\cat{C}$ amb $F(C)\cong D$. Triem, per a cada $D$, un tal objecte, que anomenem $G(D)$, i un isomorfisme $\varepsilon_D\colon F(G(D))\to D$.
+
+\emph{Pas 2: $G$ sobre morfismes.} Sigui $g\colon D\to D'$. El morfisme $\varepsilon_{D'}^{-1}\comp g\comp\varepsilon_D$ va de $F(G(D))$ a $F(G(D'))$. Com que $F$ és ple, prové d'algun morfisme $G(D)\to G(D')$, i com que $F$ és fidel, d'un de sol. Definim $G(g)$ com aquest únic morfisme; és a dir, $G(g)$ queda caracteritzat per
 \[
-F(G(v))=\varepsilon_{D'}^{-1}\comp v\comp\varepsilon_D.
+F(G(g))=\varepsilon_{D'}^{-1}\comp g\comp\varepsilon_D.
+\tag{$\ast\ast$}
 \]
-La unicitat (fidelitat) força $G(\id_D)=\id_{G(D)}$ i $G(v'\comp v)=G(v')\comp G(v)$, de manera que $G$ és un functor. Per construcció, els $\varepsilon_D$ són els components d'un isomorfisme natural $F\comp G\cong\id_{\cat{D}}$; i el fet que $F$ sigui ple i fidel permet construir, dualment, l'isomorfisme natural $G\comp F\cong\id_{\cat{C}}$. Així $F$ i $G$ formen una equivalència.
+
+\emph{Pas 3: $G$ és un functor.} Per a la identitat, $(\ast\ast)$ dona $F(G(\id_D))=\varepsilon_D^{-1}\comp\varepsilon_D=\id_{F(G(D))}=F(\id_{G(D)})$, i, com que $F$ és fidel, $G(\id_D)=\id_{G(D)}$. Per a la composició, siguin $g\colon D\to D'$ i $g'\colon D'\to D''$. Aplicant $(\ast\ast)$ dues vegades,
+\[
+\begin{aligned}
+F\bigl(G(g')\comp G(g)\bigr)&=F(G(g'))\comp F(G(g))
+=\bigl(\varepsilon_{D''}^{-1}\comp g'\comp\varepsilon_{D'}\bigr)\comp\bigl(\varepsilon_{D'}^{-1}\comp g\comp\varepsilon_D\bigr)\\
+&=\varepsilon_{D''}^{-1}\comp(g'\comp g)\comp\varepsilon_D=F\bigl(G(g'\comp g)\bigr),
+\end{aligned}
+\]
+i, com que $F$ és fidel, $G(g')\comp G(g)=G(g'\comp g)$.
+
+\emph{Pas 4: els isomorfismes naturals.} Component $(\ast\ast)$ amb $\varepsilon_{D'}$ per l'esquerra s'obté
+\[
+\varepsilon_{D'}\comp F(G(g))=g\comp\varepsilon_D,
+\]
+que és el quadrat de naturalitat de $\varepsilon\colon F\comp G\Rightarrow\id_{\cat{D}}$ per a $g$. Com que cada $\varepsilon_D$ és un isomorfisme, $\varepsilon$ és un isomorfisme natural.
+
+Per construir $\eta$, sigui $A$ un objecte de $\cat{C}$. Com que $F$ és ple i fidel, hi ha un únic $\eta_A\colon A\to G(F(A))$ amb $F(\eta_A)=\varepsilon_{F(A)}^{-1}$, i un únic $\zeta_A\colon G(F(A))\to A$ amb $F(\zeta_A)=\varepsilon_{F(A)}$. Aleshores
+\[
+F(\zeta_A\comp\eta_A)=\varepsilon_{F(A)}\comp\varepsilon_{F(A)}^{-1}=F(\id_A),
+\qquad
+F(\eta_A\comp\zeta_A)=\varepsilon_{F(A)}^{-1}\comp\varepsilon_{F(A)}=F(\id_{G(F(A))}),
+\]
+i, com que $F$ és fidel, $\zeta_A$ és l'invers de $\eta_A$: cada $\eta_A$ és un isomorfisme. Queda la naturalitat: per a $f\colon A\to B$, cal veure $\eta_B\comp f=G(F(f))\comp\eta_A$. Apliquem $F$ als dos membres. D'una banda, $F(\eta_B\comp f)=\varepsilon_{F(B)}^{-1}\comp F(f)$. De l'altra, aplicant $(\ast\ast)$ al morfisme $g=F(f)$,
+\[
+F\bigl(G(F(f))\comp\eta_A\bigr)=\bigl(\varepsilon_{F(B)}^{-1}\comp F(f)\comp\varepsilon_{F(A)}\bigr)\comp\varepsilon_{F(A)}^{-1}=\varepsilon_{F(B)}^{-1}\comp F(f).
+\]
+Les dues imatges coincideixen, i, com que $F$ és fidel, $\eta_B\comp f=G(F(f))\comp\eta_A$. Així $\eta\colon\id_{\cat{C}}\Rightarrow G\comp F$ és un isomorfisme natural, i $G$ és un quasiinvers de $F$.
 \end{prova}
 
-\begin{observacio}[Sobre l'elecció i la remissió als detalls]
-La tria simultània d'un objecte $G(D)$ i d'un isomorfisme $\varepsilon_D$ per a cada $D$ fa servir una forma de l'\emph{axioma de l'elecció}. Convé precisar de quina forma: la família triada està indexada pels objectes de $\cat{D}$, i si $\cat{D}$ és gran aquest índex és una classe pròpia, de manera que no n'hi ha prou amb l'elecció per a famílies indexades per un conjunt, sinó que cal una forma d'\emph{elecció global} (disponible, per exemple, a NBG amb l'axioma d'elecció global; vegeu l'apèndix de convenció de mida). En casos concrets sovint se'n pot triar un quasiinvers canònic sense recórrer-hi. La verificació completa de les naturalitats ---els dos quadrats que fan de $\eta$ i $\varepsilon$ isomorfismes naturals--- es desplega pas a pas a l'exercici resolt~\ref{ex:caract-equivalencia} de la part de Pràctica (secció de la caracterització d'equivalències).
+\begin{observacio}[Sobre l'elecció]
+A la direcció ($\Leftarrow$), el pas~1 tria simultàniament un objecte $G(D)$ i un isomorfisme $\varepsilon_D$ per a cada $D$, i per tant fa servir l'\emph{axioma de l'elecció}.\footnotemark{} Tota la resta de la construcció és \emph{determinada} per aquesta tria: el pas~2 no tria res, perquè, com que $F$ és ple i fidel, $G(g)$ és únic, i $\eta$ també queda fixat. En casos concrets sovint es pot donar un quasiinvers canònic sense recórrer a l'elecció. La direcció ($\Rightarrow$), en canvi, no tria res, i tampoc no fa servir cap relació entre $\eta$ i $\varepsilon$ més enllà de la naturalitat i la invertibilitat.
 \end{observacio}
+\footnotetext{Si $\cat{D}$ és gran, la família de tries està indexada per una classe pròpia, i cal una forma d'elecció més forta que l'habitual, l'\emph{elecció global}, disponible per exemple a la teoria de classes NBG (apèndix~\ref{cap:mida}). Vegeu \cite[§1.5]{riehl}.}%
 
 \begin{definicio}[Esquelet]\index{categoria!esquelètica}\index{esquelet}\label{def:esquelet}
 Una categoria és \textbf{esquelètica} si dos objectes isomorfs qualssevol són \emph{iguals}; és a dir, si cada classe d'isomorfisme té un únic objecte. Un \textbf{esquelet} d'una categoria $\cat{C}$ és una subcategoria plena que conté \emph{exactament} un objecte de cada classe d'isomorfisme de $\cat{C}$; un esquelet és sempre una categoria esquelètica.
 \end{definicio}
 
 \begin{observacio}
-Convé distingir dues nocions properes. Una subcategoria plena que conté \emph{almenys} un objecte de cada classe d'isomorfisme ja és equivalent a $\cat{C}$ (com veurem tot seguit), però pot tenir diversos representants isomorfs d'una mateixa classe. Un \emph{esquelet} n'és el cas ajustat: en conté \emph{exactament} un, de manera que no queden objectes isomorfs distints. Triar exactament un representant de cada classe d'isomorfisme és, però, una elecció simultània indexada per les classes d'isomorfisme, que en una categoria gran formen una classe pròpia; la petitesa \emph{local} només controla els homconjunts i no resol aquesta selecció. Per això, amb l'\emph{axioma d'elecció global} ---o dins una convenció d'universos adient--- tota categoria admet un esquelet, i tots els seus esquelets són equivalents entre si; sense aquesta hipòtesi no n'afirmem l'existència en general. És exactament la mateixa forma d'elecció que fa servir la construcció d'un quasiinvers (observació anterior).
+Convé distingir dues nocions properes. Una subcategoria plena que conté \emph{almenys} un objecte de cada classe d'isomorfisme ja és equivalent a $\cat{C}$ (com veurem tot seguit), però pot tenir diversos representants isomorfs d'una mateixa classe. Un \emph{esquelet} n'és el cas ajustat: en conté \emph{exactament} un, de manera que no queden objectes isomorfs distints. Triar exactament un representant de cada classe d'isomorfisme és, però, una elecció simultània. Amb l'\emph{axioma de l'elecció}, tota categoria \emph{petita} admet un esquelet, i tots els seus esquelets són equivalents entre si. Per a una categoria gran, seleccionar simultàniament un representant de cada classe d'isomorfisme pot requerir un principi d'elecció global, segons el marc fundacional adoptat.\footnotemark És la mateixa elecció que fa servir la construcció d'un quasiinvers (observació anterior).
 \end{observacio}
+\footnotetext{En una categoria gran, les classes d'isomorfisme formen una classe pròpia, i cal la mateixa forma d'elecció global que a l'observació anterior (apèndix~\ref{cap:mida}); la petitesa local només controla els homconjunts i no resol aquesta selecció.}%
 
 \begin{exemple}
-Tota categoria $\cat{C}$ és equivalent a qualsevol subcategoria plena que contingui almenys un objecte de cada classe d'isomorfisme de $\cat{C}$. En efecte, el functor inclusió d'aquesta subcategoria és ple i fidel per ser una subcategoria plena, i essencialment exhaustiu per contenir un representant de cada classe. Per exemple, la categoria $\cat{FinSet}$ de tots els conjunts finits és equivalent a la seva subcategoria plena formada pels conjunts $\underline{n}=\{1,2,\dots,n\}$ amb $n\geq 0$: no cal treballar amb tots els conjunts finits, sinó només amb un de cada mida. Aquesta subcategoria $\{\underline{n}\mid n\geq 0\}$ és, de fet, un \emph{esquelet} de $\cat{FinSet}$, perquè conté exactament un conjunt de cada cardinalitat finita. Convé notar que $\cat{FinSet}$ és una categoria \emph{gran} ---els seus objectes són massa nombrosos per formar un conjunt, tal com passa amb $\cat{Set}$--- mentre que l'esquelet $\{\underline{n}\mid n\geq 0\}$ és \emph{petit}, ja que té un conjunt (de fet, numerable) d'objectes. L'equivalència mostra, doncs, que $\cat{FinSet}$ és \emph{essencialment petita}.
+Tota categoria $\cat{C}$ és equivalent a qualsevol subcategoria plena que contingui almenys un objecte de cada classe d'isomorfisme de $\cat{C}$. En efecte, el functor inclusió d'aquesta subcategoria és ple i fidel per ser una subcategoria plena, i essencialment exhaustiu per contenir un representant de cada classe. Per exemple, la categoria $\cat{FinSet}$ de tots els conjunts finits és equivalent a la seva subcategoria plena formada pels conjunts $\underline{0}=\varnothing$ i $\underline{n}=\{1,\dots,n\}$ per a $n\geq 1$ (exemple~\ref{ex:ess-exhaustiu-finset}): no cal treballar amb tots els conjunts finits, sinó només amb un de cada mida. Aquesta subcategoria $\{\underline{n}\mid n\geq 0\}$ és, de fet, un \emph{esquelet} de $\cat{FinSet}$, perquè conté exactament un conjunt de cada cardinalitat finita. Convé notar que $\cat{FinSet}$ és una categoria \emph{gran} ---els seus objectes són massa nombrosos per formar un conjunt, tal com passa amb $\cat{Set}$--- mentre que l'esquelet $\{\underline{n}\mid n\geq 0\}$ és \emph{petit}, ja que té un conjunt (de fet, numerable) d'objectes. Una categoria s'anomena \textbf{essencialment petita}\index{categoria!essencialment petita} si és equivalent a una categoria petita. L'equivalència $\cat{FinSet}\simeq\{\underline{n}\mid n\geq 0\}$ mostra, doncs, que $\cat{FinSet}$ és essencialment petita.
 \end{exemple}
 
 \begin{observacio}
 Aquest exemple mostra la utilitat pràctica de l'equivalència: permet substituir una categoria gran i redundant per una de més petita i manejable, sense perdre cap informació categòrica. És el reflex, a nivell de categories, del fet que en teoria de categories els objectes només importen llevat d'isomorfisme.
 \end{observacio}
 
+\begin{exemple}[Matrius i espais vectorials: equivalència sense igualtat ni isomorfisme]\label{ex:mat-finvect}\index{equivalència de categories!matrius i espais vectorials}\index{Mat@$\cat{Mat}_{\mathbb K}$}
+Fixem un cos $\mathbb K$. La categoria $\cat{Mat}_{\mathbb K}$ té per objectes els nombres naturals $n\geq 0$. Els morfismes $m\to n$ són les matrius $n\times m$ amb entrades a $\mathbb K$, la composició és el producte, $B\comp A=BA$, i la identitat de $n$ és la matriu identitat $I_n$; els axiomes són l'associativitat del producte de matrius i la neutralitat de $I_n$. Sigui $\cat{FinVect}_{\mathbb K}$ la subcategoria plena de $\cat{Vect}_{\mathbb K}$ formada pels espais de dimensió finita. El functor
+\[
+F\colon\cat{Mat}_{\mathbb K}\to\cat{FinVect}_{\mathbb K},\qquad n\mapsto\mathbb K^n,\qquad A\mapsto(x\mapsto Ax),
+\]
+té els tipus correctes: una matriu $n\times m$ dona una aplicació lineal $\mathbb K^m\to\mathbb K^n$. A més, $F(BA)=F(B)\comp F(A)$ i $F(I_n)=\id_{\mathbb K^n}$. És fidel i ple, perquè tota aplicació lineal $\mathbb K^m\to\mathbb K^n$ és la multiplicació per una única matriu, la que té per columnes les imatges de la base canònica. És essencialment exhaustiu, perquè tot espai de dimensió $n$ és isomorf a $\mathbb K^n$. Pel teorema~\ref{teo:caract-equivalencia}, $F$ és una equivalència: $\cat{Mat}_{\mathbb K}\simeq\cat{FinVect}_{\mathbb K}$. Aquest exemple permet veure els tres nivells de comparació.
+\begin{itemize}
+\item \emph{No és una igualtat.} Són dues categories diferents: els objectes de l'una són nombres i els de l'altra, espais vectorials.
+\item \emph{No és un isomorfisme de categories.} A $\cat{Mat}_{\mathbb K}$, dos objectes isomorfs són iguals, perquè una matriu invertible és quadrada: la categoria és esquelètica. A $\cat{FinVect}_{\mathbb K}$, en canvi, $\mathbb K^2$ i l'espai dels polinomis de grau $\leq 1$ són objectes diferents i isomorfs. Un isomorfisme de categories és bijectiu sobre objectes i preserva i reflecteix els isomorfismes, de manera que conservaria la propietat de ser esquelètica. Per tant, no hi ha cap isomorfisme de categories entre $\cat{Mat}_{\mathbb K}$ i $\cat{FinVect}_{\mathbb K}$, ni aquest $F$ ni cap altre.
+\item \emph{El quasiinvers només torna llevat d'isomorfisme.} El pas~1 de la demostració del teorema consisteix aquí a \emph{triar una base} de cada espai $V$, és a dir, un isomorfisme $\varepsilon_V\colon\mathbb K^{\dim V}\to V$. Aleshores $G(V)=\dim V$, i $G(g)$ és la matriu de $g$ en les bases triades. Si per als espais $\mathbb K^n$ triem la base canònica, es té literalment $G\comp F=\id_{\cat{Mat}_{\mathbb K}}$. En canvi, $F(G(V))=\mathbb K^{\dim V}$, que no és $V$ tret que $V$ sigui algun $\mathbb K^n$. Així, $F\comp G$ \emph{no} és igual a $\id_{\cat{FinVect}_{\mathbb K}}$, sinó només isomorf a través de $\varepsilon$. La condició de naturalitat $g\comp\varepsilon_V=\varepsilon_W\comp F(G(g))$ és la coneguda fórmula que relaciona una aplicació lineal amb la seva matriu en unes bases.
+\end{itemize}
+Un espai vectorial qualsevol no té cap base privilegiada; per això el quasiinvers depèn d'una tria, i el que s'obté és una equivalència i no un isomorfisme. Per a l'àlgebra lineal, la conclusió és la que ja es fa servir a la pràctica: treballar amb matrius no perd cap informació sobre les aplicacions lineals entre espais de dimensió finita, sempre que es recordi que la identificació depèn de les bases.
+\end{exemple}
+
+Quines propietats es conserven per equivalència i quines no, i com es demostra que dues categories \emph{no} són equivalents, es tracta a l'apèndix~\refalt{cap:contraexemples}{de contraexemples del llibre complet}, junt amb la relació entre equivalència i esquelets.
+
+
 \section{Composició horitzontal}\index{transformació natural!composició horitzontal}
 
 La composició vertical apila transformacions entre functors \emph{amb el mateix domini i codomini}. Hi ha una segona manera de compondre, que combina transformacions naturals amb functors i, més generalment, transformacions naturals \enquote{de costat}.
 
-Comencem pel cas mixt, en què composem una transformació natural amb un functor\footnote{Segons el costat pel qual s'afegeix el functor, es parla de composició \enquote{per l'esquerra} i \enquote{per la dreta}; convé advertir que aquesta assignació d'\enquote{esquerra} i \enquote{dreta} no és uniforme a la bibliografia. Aquí la fixem per la posició del functor en la notació: $K\eta$ (functor a l'esquerra) és la composició per l'esquerra, i $\eta H$ (functor a la dreta), la composició per la dreta.}.
+Comencem pel cas mixt, en què componem una transformació natural amb un functor\footnote{Segons el costat pel qual s'afegeix el functor, es parla de composició \enquote{per l'esquerra} i \enquote{per la dreta}; convé advertir que aquesta assignació d'\enquote{esquerra} i \enquote{dreta} no és uniforme a la bibliografia. Aquí la fixem per la posició del functor en la notació: $K\eta$ (functor a l'esquerra) és la composició per l'esquerra, i $\eta H$ (functor a la dreta), la composició per la dreta.}.
 
 \begin{definicio}[Composició amb un functor]\index{transformació natural!composició amb un functor}
 Sigui $\eta\colon F\Rightarrow G$ una transformació natural entre functors $F,G\colon\cat{C}\to\cat{D}$.
@@ -672,12 +768,30 @@ Diagramàticament, la composició horitzontal juxtaposa les dues transformacions
 \end{tikzpicture}
 \]
 
-\begin{observacio}
-Les dues expressions de $(\theta\ast\eta)_A$ coincideixen precisament pel quadrat de naturalitat de $\theta$ aplicat al morfisme $\eta_A\colon F(A)\to G(A)$. La composició horitzontal es pot llegir, doncs, component una transformació natural amb un functor a cada costat, en qualsevol dels dos ordres:
+\begin{observacio}\label{obs:comp-horitzontal}
+Les dues expressions de $(\theta\ast\eta)_A$ coincideixen precisament pel quadrat de naturalitat de $\theta$ aplicat al morfisme $\eta_A\colon F(A)\to G(A)$ de $\cat{D}$:
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.8em, column sep=4.2em] {
+    K(F(A)) & K(G(A)) \\
+    L(F(A)) & L(G(A)) \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$K(\eta_A)$} (m-1-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[left] {$\theta_{F(A)}$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[right] {$\theta_{G(A)}$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$L(\eta_A)$} (m-2-2);
+\end{tikzpicture}
+\qquad
+\theta_{G(A)}\comp K(\eta_A)=L(\eta_A)\comp\theta_{F(A)}.
+\]
+La composició horitzontal es pot llegir, doncs, component una transformació natural amb un functor a cada costat, en qualsevol dels dos ordres:
 \[
 \theta\ast\eta=(\theta G)\comp(K\eta)=(L\eta)\comp(\theta F).
 \]
-La composició vertical i l'horitzontal, juntes, satisfan una llei d'intercanvi que fa de $\cat{Cat}$ una \emph{2-categoria}: en una graella de transformacions naturals com la següent, composar primer en vertical i després en horitzontal dona el mateix que fer-ho en l'ordre contrari.
+La composició vertical i l'horitzontal, juntes, satisfan una llei d'intercanvi que fa de $\cat{Cat}$ una \emph{2-categoria}: en una graella de transformacions naturals com la següent, compondre primer en vertical i després en horitzontal dona el mateix que fer-ho en l'ordre contrari,
+\[
+(\beta'\comp\alpha')\ast(\beta\comp\alpha)=(\beta'\ast\beta)\comp(\alpha'\ast\alpha).
+\]
 \[
 \begin{tikzpicture}[baseline=(A.base)]
   \node (A) at (0,0) {$\cat{C}$};
@@ -700,14 +814,16 @@ La composició vertical i l'horitzontal, juntes, satisfan una llei d'intercanvi 
 No en necessitarem els detalls, però és el marc en què les transformacions naturals adquireixen tota la seva potència.
 \end{observacio}
 
-\section{Cap a les propietats universals}
-
-Amb les transformacions naturals hem completat una torre de tres nivells: objectes i morfismes dins d'una categoria, functors entre categories, i transformacions naturals entre functors. Aquesta estructura ---sovint resumida dient que les categories, els functors i les transformacions naturals formen una \emph{2-categoria}--- és el marc en què es formulen les construccions més potents de la teoria.
-
-La primera d'aquestes construccions són les \textbf{propietats universals}, que caracteritzen un objecte no per la seva constitució interna, sinó per la representabilitat d'un functor associat ---normalment amb un element universal--- que el determina de manera única llevat d'isomorfisme. El producte i el coproducte que hem trobat de passada, els objectes inicial i terminal, i els límits i colímits en general, en són casos particulars. Els estudiarem als capítols de representabilitat i de límits, on veurem que aquest llenguatge permet expressar-los amb precisió i deduir-ne les propietats de manera uniforme.
-
 \begin{resumcap}
-\apartat{Cinc idees} (1)~Una transformació natural és una família de morfismes que commuta amb l'acció dels dos functors. (2)~Un isomorfisme natural és una transformació natural invertible component a component. (3)~Els functors $\cat{C}\to\cat{D}$ i les seves transformacions formen la categoria $\cat{D}^{\cat{C}}$. (4)~Els grafs són els objectes d'una categoria de functors $\cat{Set}^{\cat{P}}$. (5)~Una equivalència és un functor ple, fidel i essencialment exhaustiu; preserva les nocions definides llevat d'isomorfisme, no les que depenen de la identitat dels objectes.
-\apartat{Errors típics} Oblidar comprovar la naturalitat (que el quadrat commuti per a \emph{tot} morfisme); confondre isomorfisme natural amb igualtat de functors; creure que una equivalència conserva propietats com \enquote{tenir un sol objecte}; i barrejar composició vertical i horitzontal de transformacions.
-\apartat{Lectura recomanada} \cite[cap.~7--8]{awodey} per a transformacions naturals i equivalències; \cite[cap.~1]{leinster}; \cite[I.4 i IV]{maclane} per a la composició horitzontal.
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Una transformació natural és una família de morfismes compatible amb \emph{totes} les fletxes de la categoria de partida: cada quadrat de naturalitat commuta.
+  \item Les transformacions naturals es componen verticalment, component a component; amb aquesta composició, els functors $\cat{C}\to\cat{D}$ i les transformacions naturals formen la categoria de functors $\cat{D}^{\cat{C}}$.
+  \item Un isomorfisme natural és una transformació natural amb totes les components invertibles. La naturalitat no s'hi pot ometre: una família d'isomorfismes, un per a cada objecte, que no sigui natural no és un isomorfisme natural.
+  \item Una equivalència de categories és un functor amb un quasiinvers, llevat d'isomorfismes naturals. En el marc d'elecció adoptat al llibre (apèndix~\ref{cap:mida}), es caracteritza equivalentment per ser un functor ple, fidel i essencialment exhaustiu (teorema~\ref{teo:caract-equivalencia}, amb demostració completa). No és una igualtat ni, en general, un isomorfisme de categories: $\cat{Mat}_{\mathbb K}\simeq\cat{FinVect}_{\mathbb K}$, però no són isomorfes.
+  \item La composició horitzontal és un segon mode de composició de transformacions naturals, compatible amb la vertical a través de la llei d'intercanvi.
+\end{enumerate}
+\apartat{Exemple clau} Els grafs dirigits són els objectes d'una categoria de functors: $\cat{Graph}\cong\cat{Set}^{\cat{P}}$, on els morfismes de grafs són exactament les transformacions naturals. Convé recordar l'orientació: $\cat{P}$ té dues fletxes $s,t\colon E\to V$, de manera que un graf és un functor \emph{covariant} $\cat{P}\to\cat{Set}$; no s'ha de confondre amb un prefeix sobre $\cat{P}$.
+\apartat{Errors típics} Oblidar comprovar la naturalitat (que el quadrat commuti per a \emph{tot} morfisme); confondre isomorfisme natural amb igualtat de functors; creure que una equivalència conserva propietats com \enquote{tenir un sol objecte} o \enquote{ser esquelètica}; confondre una equivalència amb un isomorfisme de categories, o esperar que $F\comp G$ sigui literalment la identitat; i barrejar composició vertical i horitzontal de transformacions.
+\apartat{Lectura recomanada} \cite[§§7.4--7.10]{awodey} per a la naturalitat, les categories de functors i les equivalències; \cite[§§1.4--1.5]{riehl}; \cite[§1.3]{leinster}, que inclou també les equivalències; \cite[I.4, II.4--II.5 i IV.4]{maclane} per a la formulació clàssica de la naturalitat, de les categories de functors amb la composició horitzontal i de les equivalències; \cite[§§4.2--4.4]{barrwells} per a la naturalitat amb exemples de grafs i llistes i per al càlcul de Godement, que és la composició horitzontal; \cite[§1.4 i §1.5.4]{perrone-notes} per a exemples de naturalitat, una secció sobre què \emph{no} és natural i les equivalències.
 \end{resumcap}

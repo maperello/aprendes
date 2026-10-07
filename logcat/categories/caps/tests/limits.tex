@@ -2,8 +2,7 @@
 
 Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
 
-\begin{Form}
-\iniciTest{lim}{b,c,b,c,d,b,c,b,d,c,b,c,b,c,b}
+\iniciTest{lim}{b,c,a,d,d,b,c,a,d,c,a,c,b,b,a}
 
 \begin{enumerate}
 
@@ -15,6 +14,7 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{Un morfisme de $\cat{I}$.}
 \end{enumerate}
 \feedback
+\justificacio{És la definició: un diagrama és un functor, i la categoria índex en dona la forma. Un objecte o un morfisme sols no recullen les compatibilitats entre les fletxes.}
 
 \pregunta Un \textbf{con} sobre $D$ amb vèrtex $A$ és el mateix que:
 \begin{enumerate}
@@ -24,24 +24,27 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{un functor $\cat{C}\to\cat{I}$.}
 \end{enumerate}
 \feedback
+\justificacio{Les components de $\alpha\colon\Delta_A\Rightarrow D$ són fletxes $A\to D_i$, i la naturalitat per a $u\colon i\to j$ diu $D_u\comp\alpha_i=\alpha_j$, que és exactament la condició de con.}
 
 \pregunta Un \textbf{límit} de $D$ és:
 \begin{enumerate}
-  \opcio{a}{qualsevol con sobre $D$.}
-  \opcio{b}{un objecte terminal de la categoria de cons $\mathrm{Con}(D)$.}
+  \opcio{a}{un objecte terminal de la categoria de cons $\mathrm{Con}(D)$.}
+  \opcio{b}{qualsevol con sobre $D$.}
   \opcio{c}{un objecte inicial de $\cat{C}$.}
   \opcio{d}{el producte de tots els objectes.}
 \end{enumerate}
 \feedback
+\justificacio{Un con límit és un con pel qual factoritza de manera única qualsevol altre con: és a dir, un objecte terminal de $\mathrm{Con}(D)$. D'aquí ve la unicitat llevat d'un únic isomorfisme compatible amb les projeccions.}
 
 \pregunta Quina categoria índex dona lloc al \textbf{producte} de dos objectes?
 \begin{enumerate}
   \opcio{a}{La categoria buida.}
   \opcio{b}{Dues fletxes paral·leles.}
-  \opcio{c}{La categoria discreta amb dos objectes.}
-  \opcio{d}{La forma de racó.}
+  \opcio{c}{La forma de racó.}
+  \opcio{d}{La categoria discreta amb dos objectes.}
 \end{enumerate}
 \feedback
+\justificacio{Un con sobre un parell d'objectes, sense cap fletxa entre ells, és una parella de fletxes sense cap condició: la propietat del producte. Dues fletxes paral·leles donen l'equalitzador, i el racó, el pullback.}
 
 \pregunta A $\cat{Set}$, l'\textbf{equalitzador} de $f,g\colon A\to B$ és:
 \begin{enumerate}
@@ -51,6 +54,7 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{el subconjunt $\{a\in A\mid f(a)=g(a)\}$.}
 \end{enumerate}
 \feedback
+\justificacio{Una fletxa $h\colon X\to A$ amb $f\comp h=g\comp h$ pren valors dins d'aquest subconjunt, i hi factoritza de manera única. L'opció (c) és el coequalitzador, el concepte dual.}
 
 \pregunta El \textbf{pullback} de $f\colon A\to C$ i $g\colon B\to C$ a $\cat{Set}$ és:
 \begin{enumerate}
@@ -60,6 +64,7 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{el quocient $A/B$.}
 \end{enumerate}
 \feedback
+\justificacio{Una parella $x_1\colon X\to A$, $x_2\colon X\to B$ amb $f\comp x_1=g\comp x_2$ factoritza de manera única per $x\mapsto(x_1(x),x_2(x))$, que pren valors en aquest subconjunt. Tot $A\times B$ només és el pullback quan $C$ té un sol element.}
 
 \pregunta L'\textbf{objecte terminal} és el límit de quin diagrama?
 \begin{enumerate}
@@ -69,24 +74,27 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{El diagrama de racó.}
 \end{enumerate}
 \feedback
+\justificacio{Un con sobre el diagrama buit és només un vèrtex, sense projeccions. Un con límit és, doncs, un objecte al qual arriba una única fletxa des de cada objecte.}
 
 \pregunta Un \textbf{colímit} d'un diagrama $D$ és:
 \begin{enumerate}
-  \opcio{a}{un altre nom per al límit.}
-  \opcio{b}{un objecte inicial a la categoria de cocons (un límit a la categoria oposada).}
+  \opcio{a}{un objecte inicial a la categoria de cocons (un límit a la categoria oposada).}
+  \opcio{b}{un altre nom per al límit.}
   \opcio{c}{sempre l'objecte terminal.}
   \opcio{d}{un con.}
 \end{enumerate}
 \feedback
+\justificacio{És la noció dual: un cocon universal, és a dir, un objecte inicial de la categoria de cocons, o equivalentment un límit del diagrama corresponent a $\cat{C}\op$. No és un límit de la mateixa categoria.}
 
-\pregunta El \textbf{coproducte} a $\cat{Set}$ és:
+\pregunta Si $\cat{C}$ té límits de forma $\cat{I}$ i $\cat{A}$ és petita, com es calcula el límit d'un diagrama $F\colon\cat{I}\to\cat{C}^{\cat{A}}$?
 \begin{enumerate}
-  \opcio{a}{el producte cartesià.}
-  \opcio{b}{la intersecció.}
-  \opcio{c}{el conjunt buit.}
-  \opcio{d}{la unió disjunta.}
+  \opcio{a}{Prenent el límit només sobre els objectes terminals de $\cat{A}$.}
+  \opcio{b}{Aplicant el functor de parts a cada $F(i)$.}
+  \opcio{c}{No en té: les categories de functors no tenen límits.}
+  \opcio{d}{Punt a punt: $\bigl(\varprojlim F\bigr)(a)\cong\varprojlim_i F(i)(a)$.}
 \end{enumerate}
 \feedback
+\justificacio{Els límits a $\cat{C}^{\cat{A}}$ es calculen objecte per objecte a $\cat{C}$; equivalentment, cada functor d'avaluació $\mathrm{ev}_a$ els preserva.}
 
 \pregunta Quina és la caracterització dels \textbf{límits finits}?
 \begin{enumerate}
@@ -96,26 +104,33 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{No es poden construir a partir de casos més simples.}
 \end{enumerate}
 \feedback
+\justificacio{És el teorema de caracterització: el límit d'un diagrama finit es construeix com un equalitzador de dues fletxes entre productes finits. Amb terminal i pullbacks s'obtenen productes i equalitzadors.}
 
 \pregunta Quan \textbf{preserva} un functor $F$ el límit d'un diagrama $D$?
 \begin{enumerate}
-  \opcio{a}{Sempre, per definició de functor.}
-  \opcio{b}{Quan $(F(L),F\lambda)$ és un límit de $F\comp D$.}
+  \opcio{a}{Quan $(F(L),F\lambda)$ és un límit de $F\comp D$.}
+  \opcio{b}{Sempre, per definició de functor.}
   \opcio{c}{Quan $F$ és constant.}
   \opcio{d}{Quan $F$ no té adjunts.}
 \end{enumerate}
 \feedback
+\justificacio{És la definició de preservació. No tot functor preserva límits: per exemple, l'oblit $\cat{Grp}\to\cat{Set}$ no preserva els coproductes, que són límits a l'oposada.}
 
 \pregunta El functor oblit $U\colon\cat{Grp}\to\cat{Set}$:
 \begin{enumerate}
-  \opcio{a}{no preserva ni límits ni colímits.}
-  \opcio{b}{preserva colímits però no límits.}
-  \opcio{c}{preserva límits però no colímits.}
-  \opcio{d}{preserva tot.}
+  \opcio{a}{no preserva cap límit ni cap colímit.}
+  \opcio{b}{preserva tots els colímits, però no tots els límits.}
+  \opcio{c}{preserva tots els límits, però no tots els colímits; per exemple, no preserva tots els coproductes.}
+  \opcio{d}{preserva tots els límits i tots els colímits.}
 \end{enumerate}
 \feedback
+\justificacio{El conjunt subjacent d'un límit de grups és el límit dels conjunts subjacents (famílies compatibles). En canvi, el coproducte de grups és el producte lliure, que no és la unió disjunta dels conjunts subjacents. Més endavant es veurà que $U$ és un adjunt per la dreta.}
 
-\pregunta El functor representable $\Hom(A,-)$ sempre:
+\pregunta En una categoria localment petita $\cat{C}$, el functor representable
+\[
+\Hom(A,-)\colon\cat{C}\to\cat{Set}
+\]
+sempre:
 \begin{enumerate}
   \opcio{a}{no és un functor.}
   \opcio{b}{preserva els límits que existeixen.}
@@ -123,15 +138,17 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{és constant.}
 \end{enumerate}
 \feedback
+\justificacio{Les fletxes $A\to\varprojlim D$ es corresponen bijectivament amb els cons amb vèrtex $A$, que són les famílies compatibles de $\Hom(A,D_i)$, és a dir, els elements de $\varprojlim\Hom(A,D_i)$. L'opció (c) correspon al representable contravariant: $\Hom(-,B)$ envia colímits a límits.}
 
-\pregunta Per què límits i colímits són tan útils?
+\pregunta A $\cat{Set}$, siguin $f\colon A\to B$ i $y\colon Y\to B$. Què fa la reindexació $f^{*}$?
 \begin{enumerate}
-  \opcio{a}{Perquè només existeixen a $\cat{Set}$.}
-  \opcio{b}{Perquè no tenen propietats universals.}
-  \opcio{c}{Perquè unifiquen productes, coproductes, equalitzadors, pullbacks i objectes terminal/inicial com a objectes universals d'un diagrama.}
-  \opcio{d}{Perquè eviten els functors.}
+  \opcio{a}{Envia $Y\to B$ al coproducte $A+Y$.}
+  \opcio{b}{Envia $Y\to B$ al pullback $A\times_B Y\to A$.}
+  \opcio{c}{Envia $Y\to B$ al coequalitzador de $f$ i $y$.}
+  \opcio{d}{Només està definida quan $f$ és un isomorfisme.}
 \end{enumerate}
 \feedback
+\justificacio{La fibra de $A\times_B Y\to A$ sobre $a$ està en bijecció amb la fibra $y^{-1}(f(a))$: la reindexació és la substitució al llarg de $f$.}
 
 \pregunta En el diagrama següent, quina propietat universal fa de $P$ el \textbf{pullback} de $f$ i $g$?
 \[
@@ -145,14 +162,14 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
 \end{tikzpicture}
 \]
 \begin{enumerate}
-  \opcio{a}{Que $f\comp p_1=g\comp p_2$ i res més.}
-  \opcio{b}{Que per a tot objecte $X$ amb fletxes $x_1\colon X\to A$, $x_2\colon X\to B$ tals que $f\comp x_1=g\comp x_2$, hi ha un únic $u\colon X\to P$ amb $p_1\comp u=x_1$ i $p_2\comp u=x_2$.}
+  \opcio{a}{Que per a tot objecte $X$ amb fletxes $x_1\colon X\to A$, $x_2\colon X\to B$ tals que $f\comp x_1=g\comp x_2$, hi ha un únic $u\colon X\to P$ amb $p_1\comp u=x_1$ i $p_2\comp u=x_2$.}
+  \opcio{b}{Que $f\comp p_1=g\comp p_2$ i res més.}
   \opcio{c}{Que $P=A\times B$ sempre.}
   \opcio{d}{Que $f$ i $g$ són isomorfismes.}
 \end{enumerate}
 \feedback
+\justificacio{És la propietat universal del pullback: el quadrat commuta i qualsevol altre quadrat commutatiu sobre $f$ i $g$ hi factoritza de manera única. L'opció (b) només diu que el quadrat commuta, i això no basta.}
 
 \end{enumerate}
 \clauestatica
 \finalitzaTest
-\end{Form}

@@ -2,37 +2,39 @@
 
 Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
 
-\begin{Form}
-\iniciTest{cct}{b,c,d,b,c,b,d,c,b,c,d,b}
+\iniciTest{cct}{a,c,d,b,c,a,d,a,b,c,d,b}
 
 \begin{enumerate}
 
 \pregunta Una categoria és \textbf{cartesiana} quan té:
 \begin{enumerate}
-  \opcio{a}{tots els colímits.}
-  \opcio{b}{objecte terminal i productes binaris (és a dir, tots els productes finits).}
+  \opcio{a}{objecte terminal i productes binaris (és a dir, tots els productes finits).}
+  \opcio{b}{tots els colímits.}
   \opcio{c}{només un objecte inicial.}
   \opcio{d}{exponencials però no productes.}
 \end{enumerate}
 \feedback
+\justificacio{El terminal és el producte buit, i els productes de qualsevol família finita s'obtenen per inducció a partir dels binaris. Els colímits i els exponencials no formen part de la definició.}
 
-\pregunta El \textbf{morfisme diagonal} $\Delta_A\colon A\to A\times A$ és l'únic morfisme tal que:
+\pregunta Quina bijecció natural expressa la propietat universal de l'exponencial $C^{B}$?
 \begin{enumerate}
-  \opcio{a}{$\Delta_A=\id_{A\times A}$.}
-  \opcio{b}{no existeix en general.}
-  \opcio{c}{$\pi_1\comp\Delta_A=\pi_2\comp\Delta_A=\id_A$.}
-  \opcio{d}{$\pi_1\comp\Delta_A=!_A$.}
+  \opcio{a}{$\Hom(A,C)\cong\Hom(B,C)$.}
+  \opcio{b}{$\Hom(A+B,C)\cong\Hom(A,C)\times\Hom(B,C)$.}
+  \opcio{c}{$\Hom(A\times B,C)\cong\Hom(A,C^{B})$.}
+  \opcio{d}{$\Hom(A,C\times B)\cong\Hom(A,C^{B})$.}
 \end{enumerate}
 \feedback
+\justificacio{És la currificació $f\mapsto\lambda f$, natural en $A$ i en $C$: expressa l'adjunció $-\times B\dashv(-)^{B}$.}
 
-\pregunta Un \textbf{objecte exponencial} $C^{B}$ ve equipat amb un morfisme:
+\pregunta En una CCC, quin morfisme indueix $f\colon B'\to B$ entre exponencials amb el mateix $C$?
 \begin{enumerate}
-  \opcio{a}{de projecció $C^{B}\to B$.}
-  \opcio{b}{terminal $C^{B}\to 1$.}
-  \opcio{c}{diagonal $C^{B}\to C^{B}\times C^{B}$.}
-  \opcio{d}{d'avaluació $\ev\colon C^{B}\times B\to C$.}
+  \opcio{a}{$C^{B'}\to C^{B}$, perquè l'exponencial és covariant en totes dues variables.}
+  \opcio{b}{Cap: l'exponencial no depèn functorialment de $B$.}
+  \opcio{c}{$B^{C}\to B'^{C}$.}
+  \opcio{d}{$C^{B}\to C^{B'}$: l'exponencial és contravariant en l'exponent.}
 \end{enumerate}
 \feedback
+\justificacio{$C^{f}$ és la transposada de $C^{B}\times B'\xrightarrow{\id\times f}C^{B}\times B\xrightarrow{\ev}C$.}
 
 \pregunta La \textbf{currificació} $\lambda f$ d'un morfisme $f\colon A\times B\to C$ és l'únic morfisme que compleix:
 \begin{enumerate}
@@ -42,6 +44,7 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{$\lambda f\comp\pi_1=f$.}
 \end{enumerate}
 \feedback
+\justificacio{És el triangle de la definició: currificar i després avaluar torna $f$. L'opció (a) no és ni tan sols componible, perquè $\ev$ surt de $C^B\times B$ i $\lambda f$ hi arriba només des de $A$.}
 
 \pregunta Una categoria és \textbf{cartesiana tancada} quan és cartesiana i, a més, per a cada objecte $B$:
 \begin{enumerate}
@@ -51,15 +54,17 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{$-\times B$ té adjunt per l'esquerra.}
 \end{enumerate}
 \feedback
+\justificacio{Tancar cartesianament vol dir que la currificació és sempre disponible: per a cada $B$, $-\times B\dashv(-)^B$. Un adjunt per l'esquerra de $-\times B$ seria una altra cosa, i no existeix en general.}
 
 \pregunta A $\cat{Set}$, l'exponencial $C^{B}$ és:
 \begin{enumerate}
-  \opcio{a}{el producte cartesià $C\times B$.}
-  \opcio{b}{el conjunt de \emph{totes} les aplicacions $B\to C$.}
+  \opcio{a}{el conjunt de \emph{totes} les aplicacions $B\to C$.}
+  \opcio{b}{el producte cartesià $C\times B$.}
   \opcio{c}{la unió disjunta $C+B$.}
   \opcio{d}{el conjunt de bijeccions $B\to C$.}
 \end{enumerate}
 \feedback
+\justificacio{L'avaluació és $\ev(g,b)=g(b)$, i la currificació de $f\colon A\times B\to C$ és $a\mapsto(b\mapsto f(a,b))$. Cal prendre totes les aplicacions, no només les bijeccions, perquè $\lambda f(a)$ pot ser qualsevol aplicació.}
 
 \pregunta En una \textbf{àlgebra de Heyting}, l'objecte exponencial $b\Rightarrow c$ és:
 \begin{enumerate}
@@ -69,15 +74,17 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{l'adjunt per la dreta de $-\wedge b$, caracteritzat per $a\wedge b\leq c\Leftrightarrow a\leq(b\Rightarrow c)$.}
 \end{enumerate}
 \feedback
+\justificacio{En un preordre, l'exponencial és l'adjunt per la dreta del producte, que és l'ínfim. En una àlgebra de Boole, a més, $b\Rightarrow c=\neg b\vee c$, però aquesta fórmula no val en una àlgebra de Heyting qualsevol.}
 
 \pregunta Quina categoria \emph{no} és, en general, cartesiana tancada?
 \begin{enumerate}
-  \opcio{a}{$\cat{Set}$.}
+  \opcio{a}{$\cat{Top}$, els espais topològics.}
   \opcio{b}{una àlgebra de Heyting.}
-  \opcio{c}{$\cat{Top}$, els espais topològics.}
+  \opcio{c}{$\cat{Set}$.}
   \opcio{d}{una categoria de prefeixos $\cat{Set}^{\cat{C}\op}$.}
 \end{enumerate}
 \feedback
+\justificacio{A $\cat{Top}$, l'avaluació no sempre té un espai de funcions contínues universal. $\cat{Set}$, les àlgebres de Heyting com a preordres i les categories de prefeixos sí que són cartesianes tancades.}
 
 \pregunta En la semàntica del càlcul lambda simplement tipat, el \textbf{tipus funció} $\sigma\to\tau$ s'interpreta amb:
 \begin{enumerate}
@@ -87,6 +94,7 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{el coproducte.}
 \end{enumerate}
 \feedback
+\justificacio{Un terme de tipus $\sigma\to\tau$ és una funció, i en una CCC les funcions de $\llbracket\sigma\rrbracket$ a $\llbracket\tau\rrbracket$ formen l'exponencial. El producte interpreta, en canvi, el tipus parella $\sigma\times\tau$.}
 
 \pregunta En aquesta semàntica, l'\textbf{abstracció} $\lambda x.\,t$ es correspon amb:
 \begin{enumerate}
@@ -96,15 +104,17 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{l'objecte terminal.}
 \end{enumerate}
 \feedback
+\justificacio{Si $t$ té tipus $\tau$ en el context $\Gamma,x{:}\sigma$, s'interpreta com un morfisme $\llbracket\Gamma\rrbracket\times\llbracket\sigma\rrbracket\to\llbracket\tau\rrbracket$. La seva currificació és un morfisme $\llbracket\Gamma\rrbracket\to\llbracket\tau\rrbracket^{\llbracket\sigma\rrbracket}$, que interpreta $\lambda x.\,t$.}
 
 \pregunta La regla de conversió $(\beta)$ del càlcul lambda es correspon categòricament amb:
 \begin{enumerate}
   \opcio{a}{la unicitat de l'objecte terminal.}
   \opcio{b}{l'associativitat del producte.}
   \opcio{c}{la commutativitat del coproducte.}
-  \opcio{d}{l'equació de l'avaluació $\ev\comp(\lambda f\times\id_B)=f$.}
+  \opcio{d}{l'equació de l'avaluació $\ev\comp(\lambda f\times\id_B)=f$, de la qual es dedueix.}
 \end{enumerate}
 \feedback
+\justificacio{Aplicar una abstracció a un argument és avaluar una currificació, i l'equació $\ev\comp(\lambda f\times\id)=f$ diu que el resultat és $f$, que és el que afirma la regla $(\beta)$. La regla $(\eta)$ correspon a la segona llei, $\lambda(\ev\comp(g\times\id))=g$.}
 
 \pregunta La correspondència de \textbf{Curry--Howard--Lambek} relaciona:
 \begin{enumerate}
@@ -114,8 +124,8 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{monoides amb preordres.}
 \end{enumerate}
 \feedback
+\justificacio{Els tipus s'interpreten com a objectes, els termes com a morfismes i les conversions com a igualtats. En la lectura lògica, les proposicions del fragment $(\top,\wedge,\to)$ són els tipus, i les demostracions, els termes.}
 
 \end{enumerate}
 \clauestatica
 \finalitzaTest
-\end{Form}

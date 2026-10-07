@@ -5,7 +5,7 @@ Els exercicis següents completen els resolts al capítol corresponent de la par
 \section{Definició de functor}
 
 \begin{exercici}
-Comprova que el functor identitat $\id_{\cat{C}}\colon\cat{C}\to\cat{C}$ i, per a cada objecte $D$ d'una categoria $\cat{D}$, el \textbf{functor constant} $\Delta_D\colon\cat{C}\to\cat{D}$ ---que envia tot objecte a $D$ i tot morfisme a $\id_D$--- són functors. \hfill{\normalfont$\star$}
+Comprova que el functor identitat $\id_{\cat{C}}\colon\cat{C}\to\cat{C}$ i, per a cada objecte $D$ d'una categoria $\cat{D}$, el functor constant $\Delta_D\colon\cat{C}\to\cat{D}$ ---que envia tot objecte a $D$ i tot morfisme a $\id_D$ (exemple~\ref{ex:functor-constant})--- són functors. \hfill{\normalfont$\star$}
 \begin{indicacio}
 Per al functor constant, comprova que $\Delta_D(\id_A)=\id_D$ i que $\Delta_D(g\comp f)=\id_D=\id_D\comp\id_D=\Delta_D(g)\comp\Delta_D(f)$.
 \end{indicacio}
@@ -21,13 +21,20 @@ Pren el monoide de dos elements $\{1,e\}$ amb $e\comp e=e$ i $e\comp m=m\comp e=
 \section{Exemples de functors}
 
 \begin{exercici}
+Comprova que hi ha un functor $V\colon\cat{Graph}\to\cat{Set}$ que envia cada graf $G$ al seu conjunt de vèrtexs $V_G$ i cada morfisme de grafs $F=(F_V,F_E)\colon G\to H$ a la seva component sobre vèrtexs $F_V\colon V_G\to V_H$. Quines propietats de la composició i de les identitats de $\cat{Graph}$ en garanteixen la functorialitat? Fes el mateix per al functor d'arestes $E\colon\cat{Graph}\to\cat{Set}$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+La identitat d'un graf té per component sobre vèrtexs la identitat de $V_G$, i la composició de morfismes de grafs es fa component a component: $(F'\comp F)_V=F'_V\comp F_V$. Quan hagis estudiat els homfunctors (subsecció~\ref{subsec:homfunctors}), compara $V$ amb $\Hom_{\cat{Graph}}(\mathbf V,-)$, on $\mathbf V$ és el graf d'un sol vèrtex.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}[Ampliació, per a lectors amb topologia]
 Comprova que hi ha un functor oblit $U\colon\cat{Top}\to\cat{Set}$ i descriu explícitament què fa sobre objectes i sobre morfismes. Quines propietats de les aplicacions contínues en garanteixen la functorialitat? \hfill{\normalfont$\star$}
 \begin{indicacio}
 $U$ envia cada espai al seu conjunt de punts i cada aplicació contínua a la mateixa aplicació. Cal que la identitat sigui contínua i que la composició de contínues sigui contínua.
 \end{indicacio}
 \end{exercici}
 
-\begin{exercici}
+\begin{exercici}[Ampliació, per a lectors amb àlgebra]
 Sigui $G$ un grup vist com a categoria $\cat{B}G$ amb un sol objecte. Comprova que un functor $\cat{B}G\to\cat{Set}$ és el mateix que una \textbf{acció} de $G$ sobre un conjunt, i que la imatge de cada element del grup és necessàriament una \emph{bijecció}. \hfill{\normalfont$\star$}
 \begin{indicacio}
 Segueix el cas del monoide. La diferència és que en un grup cada element té invers; usa que un functor preserva isomorfismes i que tot morfisme de $\cat{B}G$ és un isomorfisme.
@@ -50,6 +57,17 @@ De $G\comp F=\id_{\cat{C}}$ i $F\comp G=\id_{\cat{D}}$ dedueix que $F$ té inver
 \end{indicacio}
 \end{exercici}
 
+\begin{exercici}
+Siguin $F\colon\cat{E}\to\cat{C}$ i $G\colon\cat{E}\to\cat{D}$ dos functors. Defineix un functor $\langle F,G\rangle\colon\cat{E}\to\cat{C}\times\cat{D}$ per $\langle F,G\rangle(E)=(F(E),G(E))$ i $\langle F,G\rangle(h)=(F(h),G(h))$. Comprova que és un functor, que
+\[
+\pi_1\comp\langle F,G\rangle=F,\qquad \pi_2\comp\langle F,G\rangle=G,
+\]
+on $\pi_1,\pi_2$ són les projeccions de l'exemple~\ref{ex:projeccions-diagonal}, i que és l'únic functor $\cat{E}\to\cat{C}\times\cat{D}$ amb aquestes dues propietats. Quin functor s'obté amb $\cat{E}=\cat{C}=\cat{D}$ i $F=G=\id_{\cat{C}}$? \hfill{\normalfont$\star$}
+\begin{indicacio}
+La functorialitat es comprova component a component, com per a $\Delta$. Per a la unicitat, si $H\colon\cat{E}\to\cat{C}\times\cat{D}$ compleix les dues igualtats, escriu $H(E)$ i $H(h)$ com a parelles i mira què en diuen $\pi_1$ i $\pi_2$. És la propietat universal del producte, ara a nivell de categories.
+\end{indicacio}
+\end{exercici}
+
 \section{Functors i isomorfismes}
 
 \begin{exercici}
@@ -60,7 +78,7 @@ Aplica $F$ a un isomorfisme $A\to B$ i usa que la imatge d'un isomorfisme és un
 \end{exercici}
 
 \begin{exercici}
-Dona un exemple de dos objectes no isomorfs que un functor envia a objectes isomorfs. Això mostra que els functors no reflecteixen la relació d'isomorfisme entre objectes. \hfill{\normalfont$\star$}
+Dona un exemple de dos objectes no isomorfs que un functor envia a objectes isomorfs. Això mostra que els functors no reflecteixen, en general, la relació d'isomorfisme entre objectes. \hfill{\normalfont$\star$}
 \begin{indicacio}
 Un functor constant envia tots els objectes al mateix objecte, i per tant tots a objectes isomorfs entre ells.
 \end{indicacio}
@@ -100,9 +118,30 @@ Treballa amb les aplicacions $F_{A,B}$ sobre conjunts de morfismes: la composici
 \end{exercici}
 
 \begin{exercici}
-Comprova que el functor oblit $U\colon\cat{Cat}\to\cat{Graph}$, que envia cada categoria petita al seu graf subjacent, és fidel però \emph{no} ple. Mostra també que, per a tot graf $G$, hi ha un morfisme canònic de grafs $G\to U(\Free(G))$, que en general no és un isomorfisme. \hfill{\normalfont$\star$}
+Demostra que un functor fidel reflecteix monomorfismes i epimorfismes: si $F$ és fidel i $F(f)$ és mono (respectivament epi), aleshores $f$ és mono (respectivament epi). Indica on fas servir que $F$ és fidel, i comprova que no cal que $F$ sigui ple. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Quant a ser fidel, un functor queda determinat per la seva acció sobre objectes i morfismes, que és justament el que reté el graf subjacent. Per veure que no és ple, observa que un morfisme de grafs entre els grafs subjacents no ha de respectar la composició, i per tant no prové necessàriament d'un functor. Per al morfisme canònic $\eta_G\colon G\to U(\Free(G))$, envia cada vèrtex a ell mateix i cada aresta de $G$ al camí de longitud~$1$ corresponent dins $\Free(G)$. La caracterització exacta és: $\eta_G$ és un isomorfisme si i només si $G$ és el graf buit. En efecte, si $G$ té algun vèrtex $v$, el camí buit a $v$ ---la identitat de $v$ a $\Free(G)$--- és una aresta de $U(\Free(G))$ que no és imatge de cap aresta de $G$, perquè les arestes de $G$ es transformen totes en camins de longitud~$1$; per tant $\eta_G$ no és exhaustiu sobre arestes i no és un isomorfisme. En canvi, si $G$ no té vèrtexs, tampoc no té arestes, i aleshores $\Free(G)$ és la categoria buida i $U(\Free(G))$ el graf buit: $\eta_G$ és la identitat entre grafs buits, que sí que és un isomorfisme. Això explica el matís \enquote{en general}.
+Parteix d'una igualtat de composicions a la categoria d'origen, aplica-hi el functor i cancel·la a la d'arribada.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que el functor diagonal $\Delta\colon\cat{C}\to\cat{C}\times\cat{C}$ de l'exemple~\ref{ex:projeccions-diagonal} és sempre fidel, i que és ple si i només si $\cat{C}$ és prima. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Sobre cada homconjunt, $\Delta$ actua com $f\mapsto(f,f)$. Quines parelles $(f,g)$ de $\cat{C}\times\cat{C}$ provenen d'una sola fletxa?
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Comprova que el functor oblit $U\colon\cat{Cat}\to\cat{Graph}$, que envia cada categoria petita al seu graf subjacent, és fidel però \emph{no} ple. Mostra també que, per a tot graf $G$, hi ha un morfisme canònic de grafs $\eta_G\colon G\to U(\Free(G))$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Quant a ser fidel, un functor queda determinat per la seva acció sobre objectes i morfismes, que és justament el que reté el graf subjacent. Per veure que no és ple, observa que un morfisme de grafs entre els grafs subjacents no ha de respectar la composició, i per tant no prové necessàriament d'un functor. Per al morfisme canònic $\eta_G$, envia cada vèrtex a ell mateix i cada aresta de $G$ al camí de longitud~$1$ corresponent dins $\Free(G)$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}[Ampliació]
+Caracteritza exactament per a quins grafs $G$ el morfisme canònic $\eta_G\colon G\to U(\Free(G))$ de l'exercici anterior és un isomorfisme de grafs. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Compara les arestes de $U(\Free(G))$ amb les imatges de les arestes de $G$. Quins camins de $\Free(G)$ existeixen sempre, sigui quin sigui $G$, i no tenen longitud~$1$? Tingues en compte també el cas extrem.
 \end{indicacio}
 \end{exercici}
 
@@ -131,13 +170,24 @@ Comprova que si $F\colon\cat{C}\to\cat{D}$ és ple i fidel, i $\cat{C}$ és loca
 \]
 per a cada parella d'objectes. Explica per què això no obliga $F$ a ser injectiu sobre objectes. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-La bijecció és la definició mateixa de ple i fidel. Per veure que no cal injectivitat sobre objectes, pensa en un functor que col·lapsi dos objectes en un de sol però conservi bijectivament els morfismes. Un exemple complet: sigui $\cat{I}$ la categoria amb dos objectes $a,b$ i exactament un morfisme entre cada parella ordenada d'objectes (inclosos $a\to b$ i $b\to a$; és a dir, $a$ i $b$ són isomorfs). El functor únic $F\colon\cat{I}\to\cat{1}$ cap a la categoria terminal és ple i fidel, perquè cada homconjunt de $\cat{I}$ és unitari i $F$ l'envia bijectivament a l'homconjunt unitari $\Hom_{\cat{1}}(\ast,\ast)=\{\id_\ast\}$. Tanmateix, $F$ no és injectiu sobre objectes, ja que $F(a)=F(b)=\ast$. Convé no substituir $\cat{I}$ per la categoria \emph{discreta} de dos objectes: en aquest cas $\Hom_{\cat{I}}(a,b)=\emptyset$, i l'aplicació $\emptyset\to\Hom_{\cat{1}}(\ast,\ast)=\{\id_\ast\}$ no seria exhaustiva, de manera que el functor cap a $\cat{1}$ no seria ple.
+La bijecció és la definició mateixa de ple i fidel. Per a la segona part, busca una categoria amb dos objectes isomorfs i exactament un morfisme entre cada parella ordenada, i compara-la amb $\cat{1}$.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Distingeix l'exhaustivitat \emph{estricta} sobre objectes (tot objecte del codomini és exactament una imatge) de l'\emph{essencial} (tot objecte del codomini és isomorf a una imatge). Amb $\cat{I}$ la categoria de dos objectes isomorfs $a,b$ de l'exercici anterior, considera el functor $E\colon\cat{1}\to\cat{I}$ que envia l'únic objecte $\ast$ a $a$. Comprova que $E$ és essencialment exhaustiva però no exhaustiva sobre objectes. \hfill{\normalfont$\star\star$}
+Distingeix l'exhaustivitat \emph{estricta} sobre objectes (tot objecte del codomini és exactament una imatge) de l'\emph{essencial} (tot objecte del codomini és isomorf a una imatge). Sigui $\cat{I}$ la categoria amb dos objectes $a,b$ i exactament un morfisme entre cada parella ordenada d'objectes, i considera el functor $E\colon\cat{1}\to\cat{I}$ que envia l'únic objecte $\ast$ a $a$. Comprova que $E$ és essencialment exhaustiu però no exhaustiu sobre objectes. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-$E$ arriba només a l'objecte $a$, de manera que $b$ no és imatge de cap objecte: $E$ no és exhaustiva sobre objectes en el sentit estricte. Ara bé, a $\cat{I}$ es té $a\cong b$ (hi ha els morfismes $a\to b$ i $b\to a$, inversos l'un de l'altre perquè els homconjunts són unitaris), de manera que $b$ \emph{sí} que és isomorf a la imatge $E(\ast)=a$. Per tant tot objecte de $\cat{I}$ és isomorf a una imatge de $E$, és a dir, $E$ és essencialment exhaustiva. L'exemple mostra que l'exhaustivitat essencial és estrictament més feble que l'estricta, i que és la noció adequada en teoria de categories, on els objectes es distingeixen llevat d'isomorfisme.
+Observa que $E$ arriba estrictament només a $a$, però que $b\cong a$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $T$ la lògica proposicional clàssica. Comprova que la negació $A\mapsto\neg A$ defineix un functor contravariant
+\[
+N\colon\cat{Prov}_T\op\to\cat{Prov}_T,
+\]
+i que, per tant, la contraposició ---de $A\vdash_T B$ es dedueix $\neg B\vdash_T\neg A$--- és exactament la functorialitat de $N$. Comprova que $N$ és fidel i que és ple. Explica quina llei lògica cal perquè $N$ sigui ple i per què, en lògica intuïcionista, $N$ continua sent un functor però deixa de ser ple. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Les dues categories són primes, de manera que només cal comprovar que les fletxes imatge existeixen. Que $N$ sigui ple demana que de $\neg B\vdash_T\neg A$ se'n segueixi $A\vdash_T B$. Per veure que pot fallar en lògica intuïcionista, busca una fórmula que no sigui estable per doble negació.
 \end{indicacio}
 \end{exercici}

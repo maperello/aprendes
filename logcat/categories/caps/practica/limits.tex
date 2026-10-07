@@ -16,16 +16,6 @@ D_u\comp\alpha_i=\alpha_j\comp\Delta_A(u)=\alpha_j\comp\id_A=\alpha_j.
 Aquesta és exactament la condició de con. Recíprocament, tota família amb aquesta propietat defineix una transformació natural. Així, els cons sobre $D$ amb vèrtex $A$ i les transformacions naturals $\Delta_A\Rightarrow D$ coincideixen.
 \end{solucio}
 
-\section{Límits}
-
-\begin{exercici}
-Comprova que el límit d'un diagrama, quan existeix, és únic llevat d'isomorfisme únic.
-\end{exercici}
-
-\begin{solucio}
-El límit és, per definició, un objecte terminal de la categoria de cons $\mathrm{Con}(D)$. Al capítol anterior vam demostrar que dos objectes terminals qualssevol són isomorfs mitjançant un únic isomorfisme. Aplicant-ho a $\mathrm{Con}(D)$, dos límits $(L,\lambda)$ i $(L',\lambda')$ són isomorfs per un únic morfisme de cons $f\colon L\to L'$, que a més és compatible amb totes les projeccions: $\lambda'_i\comp f=\lambda_i$. Per tant el límit és únic llevat d'isomorfisme únic.
-\end{solucio}
-
 \section{Productes i equalitzadors}
 
 \begin{exercici}
@@ -94,6 +84,44 @@ i com que el quadrat dret és un pullback, aquestes dues igualtats forcen $u\com
 En tots dos sentits, l'ingredient és la propietat universal del quadrat dret, que transfereix les factoritzacions entre el rectangle i el quadrat esquerre. Aquest \emph{lema d'enganxament} és una de les eines més usades per raonar amb pullbacks, i el retrobarem en tractar la reindexació entre subobjectes.
 \end{solucio}
 
+\begin{exercici}\label{pr-reindexacio-set}
+Sigui $f\colon A\to B$ una aplicació i $y\colon Y\to B$ un objecte de $\cat{Set}/B$. Calcula explícitament la reindexació $f^{*}Y$ (observació~\ref{obs:reindexacio}) i comprova que la fibra de $f^{*}Y\to A$ sobre cada $a\in A$ està en bijecció canònica amb la fibra $y^{-1}(f(a))$.
+\end{exercici}
+
+\begin{solucio}
+Pel càlcul del pullback a $\cat{Set}$ de l'exercici anterior,
+\[
+f^{*}Y=A\times_B Y=\{(a,z)\in A\times Y\mid f(a)=y(z)\},
+\]
+amb la projecció $p_1\colon(a,z)\mapsto a$ com a objecte de $\cat{Set}/A$. La fibra de $p_1$ sobre $a$ és
+\[
+p_1^{-1}(a)=\{(a,z)\mid y(z)=f(a)\},
+\]
+i l'aplicació $(a,z)\mapsto z$ en dona una bijecció canònica amb
+\[
+\{z\in Y\mid y(z)=f(a)\}=y^{-1}(f(a)).
+\]
+Així, si interpretem $y\colon Y\to B$ com la família de fibres $(Y_b)_{b\in B}$, amb $Y_b=y^{-1}(b)$, la reindexació al llarg de $f$ s'interpreta com la família $(Y_{f(a)})_{a\in A}$: cada índex $a$ rep la fibra de l'índex $f(a)$. És la \emph{substitució} al llarg de $f$, que reapareixerà com a operació sobre predicats en el capítol de subobjectes.
+\end{solucio}
+
+\begin{exercici}\label{pr-provt-limits-finits}
+A la categoria prima $\cat{Prov}_T$, suposem que el sistema deductiu $T$ té una fórmula $\top$ i una conjunció $\land$ amb les regles habituals. Comprova que $\top$ és un objecte terminal i que $p\land q$ és un producte de $p$ i $q$. Dedueix que $\cat{Prov}_T$ té tots els límits finits.
+\end{exercici}
+
+\begin{solucio}
+\textbf{Terminal.} Per a tota fórmula $r$ es té $r\vdash_T\top$, i com que $\cat{Prov}_T$ és prima, aquesta fletxa és única. Per tant $\top$ és terminal.
+
+\textbf{Producte.} Les regles d'eliminació de la conjunció donen les projeccions
+\[
+p\land q\vdash_T p,
+\qquad
+p\land q\vdash_T q.
+\]
+Si $r\vdash_T p$ i $r\vdash_T q$, la regla d'introducció dona $r\vdash_T p\land q$, que és la fletxa mediadora; els triangles commuten automàticament i la fletxa és única, perquè la categoria és prima. Per tant $p\land q$, amb les dues eliminacions, és un producte de $p$ i $q$.
+
+\textbf{Límits finits.} En una categoria prima, dues fletxes paral·leles coincideixen, de manera que l'equalitzador de $x\rightrightarrows y$ és $\id_x$ i sempre existeix. Pel teorema de caracterització dels límits finits (teorema~\ref{teo:limits-finits}), objecte terminal, productes binaris i equalitzadors donen tots els límits finits. És la versió resolta de la lectura lògica de l'exemple~\ref{ex:limits-preordre}.
+\end{solucio}
+
 \section{Colímits}
 
 \begin{exercici}
@@ -115,13 +143,15 @@ Sigui $\sim$ la menor relació d'equivalència amb $f(a)\sim g(a)$ per a tot $a$
 \section{Preservació i reflexió}
 
 \begin{exercici}
-Comprova que el functor oblit $U\colon\cat{Grp}\to\cat{Set}$ preserva productes, però no coproductes.
+Comprova que el functor oblit $U\colon\cat{Grp}\to\cat{Set}$ preserva els productes, però no preserva tots els coproductes.
 \end{exercici}
 
 \begin{solucio}
 Per als productes: el grup producte $G\times H$ té com a conjunt subjacent el producte cartesià dels conjunts subjacents, i les projeccions són les aplicacions projecció; per tant $U(G\times H)=U(G)\times U(H)$ amb les projeccions correctes, i $U$ preserva el producte.
 
-Per als coproductes: el coproducte a $\cat{Grp}$ és el \emph{producte lliure} $G*H$, que conté totes les paraules alternades en elements de $G$ i $H$; el seu conjunt subjacent és molt més gran que la unió disjunta $U(G)+U(H)$. Per tant $U(G*H)\neq U(G)+U(H)$ i $U$ no preserva coproductes. Aquesta asimetria anticipa que $U$ és un adjunt per la dreta: preserva límits, no colímits.
+Per als coproductes: el coproducte a $\cat{Grp}$ és el \emph{producte lliure} $G*H$. N'hi ha prou d'un contraexemple, i el més senzill és prendre dos grups trivials $1=\{e\}$. El seu producte lliure és de nou trivial, $1*1\cong 1$, de manera que $U(1*1)$ té un sol element. En canvi, el coproducte a $\cat{Set}$ dels conjunts subjacents, $U(1)+U(1)$, és la unió disjunta de dos conjunts d'un element i en té dos. El cocon imatge, amb vèrtex $U(1*1)$, no pot ser, doncs, un coproducte a $\cat{Set}$, i $U$ no preserva aquest coproducte.
+
+Aquesta asimetria anticipa el teorema del capítol següent: $U$ és un adjunt per la dreta, i els adjunts per la dreta preserven tots els límits; no hi ha cap afirmació anàloga que els obligui a preservar tots els colímits.
 \end{solucio}
 
 \begin{exercici}
@@ -129,9 +159,9 @@ Comprova que el functor representable $\Hom(A,-)\colon\cat{Set}\to\cat{Set}$ pre
 \end{exercici}
 
 \begin{solucio}
-Un morfisme $A\to X\times Y$ és, per la propietat universal del producte, exactament una parella de morfismes $(A\to X,\ A\to Y)$. Això dona una bijecció
+Per la propietat universal del producte, l'aplicació $h\mapsto(\pi_1\comp h,\ \pi_2\comp h)$ és una bijecció
 \[
 \Hom(A,X\times Y)\cong\Hom(A,X)\times\Hom(A,Y),
 \]
-que és natural en totes les variables. Per tant $\Hom(A,-)$ preserva el producte binari. El mateix argument, amb la propietat universal general del límit, mostra que $\Hom(A,-)$ preserva tots els límits.
+natural en $X$ i $Y$ (i també en $A$, si es considera la variació contravariant en aquesta variable). Aquesta bijecció és exactament la induïda pel con imatge $\bigl(\Hom(A,X\times Y),\Hom(A,\pi_1),\Hom(A,\pi_2)\bigr)$, de manera que aquest con és un producte a $\cat{Set}$ i $\Hom(A,-)$ preserva el producte binari. El mateix argument, amb la propietat universal general del límit, mostra que $\Hom(A,-)$ preserva tots els límits (proposició~\ref{prop:representables-limits}).
 \end{solucio}

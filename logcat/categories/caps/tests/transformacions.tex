@@ -2,102 +2,130 @@
 
 Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
 
-\begin{Form}
-\iniciTest{trn}{c,b,c,c,d,b,c,b,c,b}
+\iniciTest{trn}{c,b,c,d,a,b,c,b,a,d,a,d}
 
 \begin{enumerate}
 
-\pregunta A $\cat{Set}$, prenem $F=G=\id_{\cat{Set}}$ i, per a cada conjunt no buit $A$, triem un element $a_0\in A$ i definim $\eta_A\colon A\to A$ com l'aplicació constant de valor $a_0$. Aquesta família, \emph{és} una transformació natural $\id\Rightarrow\id$?
+\pregunta A $\cat{Set}$, prenem $F=G=\id_{\cat{Set}}$ i definim $\eta_A=\id_A$ per a tot conjunt $A\neq\{0,1\}$, i $\eta_{\{0,1\}}=\tau$, la transposició $\tau(0)=1$, $\tau(1)=0$. Aquesta família, \emph{és} una transformació natural $\id\Rightarrow\id$?
 \begin{enumerate}
-  \opcio{a}{Sí, perquè cada $\eta_A$ està ben definida sobre cada conjunt.}
-  \opcio{b}{Sí, perquè triar un element és una operació natural.}
-  \opcio{c}{No: per a una aplicació $f\colon A\to B$ que no envia $a_0$ a $b_0$, el quadrat de naturalitat no commuta ($f(\eta_A(x))=f(a_0)$ però $\eta_B(f(x))=b_0$).}
-  \opcio{d}{No, perquè $\id$ no admet cap transformació natural cap a si mateix a part de la identitat.}
+  \opcio{a}{Sí, perquè cada component $\eta_A$ és una bijecció.}
+  \opcio{b}{Sí, perquè $\eta$ coincideix amb la identitat a tots els conjunts excepte un.}
+  \opcio{c}{No, perquè una aplicació constant trenca el quadrat de naturalitat.}
+  \opcio{d}{No, perquè la transposició $\tau$ no és un morfisme de $\cat{Set}$.}
 \end{enumerate}
 \feedback
+\justificacio{Per a $f\colon\{0,1\}\to\{0,1\}$ constant de valor $0$, es té $f\comp\tau=f$, mentre que $\tau\comp f$ és constant de valor $1$.}
 
 \pregunta Un lector proposa aquest argument: \enquote{Si $F(A)\cong G(A)$ per a cada objecte $A$, aleshores $F$ i $G$ són naturalment isomorfs, perquè n'hi ha prou d'agafar un isomorfisme $\eta_A\colon F(A)\to G(A)$ per a cada $A$.} On falla?
 \begin{enumerate}
   \opcio{a}{No falla: l'argument és correcte.}
-  \opcio{b}{Falla perquè els $\eta_A$ triats poden no complir el quadrat de naturalitat per a tots els morfismes; l'existència d'isomorfismes objecte a objecte no garanteix que siguin \emph{compatibles} amb l'acció dels functors.}
+  \opcio{b}{Falla perquè els $\eta_A$ triats poden no complir el quadrat de naturalitat.}
   \opcio{c}{Falla perquè un isomorfisme natural exigeix que $F=G$.}
   \opcio{d}{Falla perquè $F(A)$ i $G(A)$ no poden ser mai isomorfs si $F\neq G$.}
 \end{enumerate}
 \feedback
+\justificacio{L'existència d'isomorfismes objecte a objecte no garanteix que siguin \emph{compatibles} amb l'acció dels functors sobre els morfismes.}
 
 \pregunta Sigui $\mathbb{Z}/2\mathbb{Z}=\{1,g\}$ vist com a categoria d'un objecte, i $F,G\colon\cat{B}(\mathbb{Z}/2\mathbb{Z})\to\cat{Set}$ que envien l'objecte a $\{0,1\}$, on $g$ actua per la identitat en $F$ i per la transposició $\tau$ en $G$. Quantes transformacions naturals $\eta\colon F\Rightarrow G$ hi ha?
 \begin{enumerate}
   \opcio{a}{Exactament una, l'única component possible $\eta_\ast=\id$.}
   \opcio{b}{Dues: la identitat i la transposició.}
-  \opcio{c}{Cap: la naturalitat respecte de $g$ exigiria $\tau\comp\eta_\ast=\eta_\ast$, impossible perquè $\tau$ no té punts fixos.}
+  \opcio{c}{Cap.}
   \opcio{d}{Infinites, una per cada aplicació $\{0,1\}\to\{0,1\}$.}
 \end{enumerate}
 \feedback
+\justificacio{La naturalitat respecte de $g$ exigiria $\tau\comp\eta_\ast=\eta_\ast$, impossible perquè $\tau$ no té punts fixos.}
 
-\pregunta Considera l'homomorfisme $h\colon(\mathbb{N},+,0)\to(\{0,1\},\vee,0)$ amb $h(n)=1$ si $n\geq 1$, i el functor $F\colon\cat{B}\mathbb{N}\to\cat{B}M$ que en resulta. El morfisme $1$ és un epimorfisme a $\cat{B}\mathbb{N}$. Què li passa a la seva imatge?
+\pregunta Què és un morfisme de $f\colon A\to B$ a $g\colon A'\to B'$ a la categoria de functors $\cat{D}^{\cat{2}}$, on $\cat{2}=(0\to 1)$?
 \begin{enumerate}
-  \opcio{a}{$F(1)$ és també epimorfisme, perquè els functors preserven els epimorfismes.}
-  \opcio{b}{$F(1)$ és epimorfisme perquè és imatge d'un epimorfisme escindit.}
-  \opcio{c}{$F(1)$ \emph{no} és epimorfisme: $1\vee 0=1=1\vee 1$ amb $0\neq 1$, de manera que la cancel·lació falla; aquest functor no preserva epimorfismes.}
-  \opcio{d}{La pregunta no té sentit perquè $F$ no és un functor.}
+  \opcio{a}{Un morfisme qualsevol $A\to A'$.}
+  \opcio{b}{Un functor $\cat{2}\to\cat{D}$.}
+  \opcio{c}{Una parella qualsevol de morfismes $u\colon A\to A'$ i $v\colon B\to B'$.}
+  \opcio{d}{Una parella $u\colon A\to A'$, $v\colon B\to B'$ amb $v\comp f=g\comp u$.}
 \end{enumerate}
 \feedback
+\justificacio{És la condició de naturalitat per a l'única fletxa no trivial de $\cat{2}$.}
 
-\pregunta Quina de les afirmacions següents sobre la preservació per un functor \emph{qualsevol} és correcta?
+\pregunta En l'exemple sintaxi/semàntica, amb el functor sintàctic $F$, el semàntic $G$ i la interpretació $\eta$, què expressa la igualtat $G(f)\comp\eta_X=\eta_Y\comp F(f)$ per a un canvi de variables $f\colon X\to Y$?
 \begin{enumerate}
-  \opcio{a}{Preserva monomorfismes i epimorfismes, perquè preserva tota l'estructura.}
-  \opcio{b}{Preserva les propietats universals, com ara els productes.}
-  \opcio{c}{No preserva res definit per equacions.}
-  \opcio{d}{Preserva isomorfismes, seccions i retraccions (propietats definides per equacions), però no necessàriament monomorfismes o epimorfismes (definits per cancel·lació sobre \emph{totes} les fletxes).}
+  \opcio{a}{Que substituir variables i després interpretar dona la mateixa funció de veritat que interpretar i després transportar la semàntica al llarg del canvi de variables.}
+  \opcio{b}{Que $\eta_X$ és una bijecció entre fórmules i funcions de veritat.}
+  \opcio{c}{Que dues fórmules amb la mateixa taula de veritat són iguals.}
+  \opcio{d}{Que el canvi de variables $f$ ha de ser bijectiu.}
 \end{enumerate}
 \feedback
+\justificacio{És el quadrat de naturalitat de $\eta$ per a $f$: els dos camins de $F(X)$ a $G(Y)$ coincideixen. En termes lògics, la interpretació és compatible amb la substitució. Ni (b) ni (c) són certes, perquè fórmules diferents poden tenir la mateixa taula de veritat.}
 
 \pregunta Un estudiant escriu que la composició vertical de $\eta\colon F\Rightarrow G$ i $\theta\colon G\Rightarrow H$ té components $(\theta\comp\eta)_A=\eta_A\comp\theta_A$. Per què és incorrecte, i quina és la forma bona?
 \begin{enumerate}
   \opcio{a}{És correcte tal com està.}
-  \opcio{b}{L'ordre està invertit: $\eta_A\colon F(A)\to G(A)$ i $\theta_A\colon G(A)\to H(A)$ només es componen com $\theta_A\comp\eta_A$, que va de $F(A)$ a $H(A)$.}
+  \opcio{b}{L'ordre està invertit: la composta és $\theta_A\comp\eta_A$.}
   \opcio{c}{Cap dels dos ordres té sentit; la composició vertical no existeix.}
   \opcio{d}{Tots dos ordres donen el mateix resultat, així que és igual.}
 \end{enumerate}
 \feedback
+\justificacio{$\eta_A\colon F(A)\to G(A)$ i $\theta_A\colon G(A)\to H(A)$ només es componen en aquest ordre, i la composta va de $F(A)$ a $H(A)$.}
 
-\pregunta Volem provar que si $\eta\colon F\Rightarrow G$ és un isomorfisme natural, els inversos $\eta_A^{-1}$ formen una transformació natural $G\Rightarrow F$. Quin és el pas central de l'argument?
+\pregunta Sigui $L\colon\cat{Set}\to\cat{Set}$ el functor de llistes finites, amb $L(f)$ aplicant $f$ a cada entrada, i sigui $\eta_X(x)=[x]$ la llista d'un sol element. Per a $f\colon X\to Y$, quina és l'equació de naturalitat ben tipada?
 \begin{enumerate}
-  \opcio{a}{Que $F=G$, i per tant $\eta^{-1}=\eta$.}
-  \opcio{b}{Que n'hi ha prou de comprovar-ho sobre els objectes, sense mirar els morfismes.}
-  \opcio{c}{Partir del quadrat $G(f)\comp\eta_A=\eta_B\comp F(f)$ i composar amb $\eta_A^{-1}$ i $\eta_B^{-1}$ als costats adequats per obtenir $\eta_B^{-1}\comp G(f)=F(f)\comp\eta_A^{-1}$.}
-  \opcio{d}{Que tota transformació natural és invertible.}
+  \opcio{a}{$f\comp\eta_X=\eta_Y\comp L(f)$.}
+  \opcio{b}{$\eta_X\comp L(f)=f\comp\eta_Y$.}
+  \opcio{c}{$L(f)\comp\eta_X=\eta_Y\comp f$.}
+  \opcio{d}{$\eta_Y=L(f)$.}
 \end{enumerate}
 \feedback
+\justificacio{Tots dos costats envien $x$ a $[f(x)]$.}
 
 \pregunta Un functor $F\colon\cat{C}\to\cat{D}$ és ple, fidel i essencialment exhaustiu. Un lector conclou: \enquote{Aleshores $F$ és bijectiu sobre els objectes.} És correcte?
 \begin{enumerate}
   \opcio{a}{Sí: essencialment exhaustiu vol dir exhaustiu sobre objectes, i ple i fidel vol dir injectiu sobre objectes.}
-  \opcio{b}{No: essencialment exhaustiu només demana que tot objecte de $\cat{D}$ sigui \emph{isomorf} a una imatge, i el fet de ser ple i fidel afecta els morfismes, no la injectivitat sobre objectes; $F$ pot no ser bijectiu sobre objectes (per exemple el functor inclusió d'un esquelet).}
+  \opcio{b}{No: $F$ pot no ser bijectiu sobre objectes.}
   \opcio{c}{No, perquè cap functor és mai bijectiu sobre objectes.}
   \opcio{d}{Sí, sempre que $\cat{C}$ i $\cat{D}$ siguin petites.}
 \end{enumerate}
 \feedback
+\justificacio{Essencialment exhaustiu només demana que tot objecte de $\cat{D}$ sigui \emph{isomorf} a una imatge, i ser ple i fidel afecta els morfismes; per exemple, la inclusió d'un esquelet no és bijectiva sobre objectes.}
 
 \pregunta A la construcció del quasiinvers $G$ d'una equivalència, per a cada objecte $D$ es tria un objecte $G(D)$ i un isomorfisme $\varepsilon_D\colon F(G(D))\to D$, i sobre morfismes es defineix $G(v)$ com l'\emph{única} fletxa amb $F(G(v))=\varepsilon_{D'}^{-1}\comp v\comp\varepsilon_D$. Quina propietat de $F$ garanteix aquesta unicitat i existència?
 \begin{enumerate}
-  \opcio{a}{L'exhaustivitat essencial.}
+  \opcio{a}{Que $F$ sigui ple i fidel.}
   \opcio{b}{Només ser fidel.}
-  \opcio{c}{Que $F$ sigui ple i fidel: ser ple dona l'existència de $G(v)$ i ser fidel, la unicitat.}
+  \opcio{c}{L'exhaustivitat essencial.}
   \opcio{d}{Que $\cat{D}$ sigui petita.}
 \end{enumerate}
 \feedback
+\justificacio{Ser ple dona l'existència de $G(v)$, i ser fidel, la unicitat.}
 
-\pregunta Dues categories tenen el \emph{mateix graf subjacent} (els mateixos objectes i les mateixes fletxes com a dades), però en una la composta $v\comp u$ és $w$ i en l'altra és una fletxa diferent $w'$. Què en podem dir?
+\pregunta Siguin $\eta\colon F\Rightarrow G$, amb $F,G\colon\cat{C}\to\cat{D}$, i $\theta\colon K\Rightarrow L$, amb $K,L\colon\cat{D}\to\cat{E}$. Quina és la component $(\theta\ast\eta)_A$ de la composició horitzontal?
 \begin{enumerate}
-  \opcio{a}{Han de ser la mateixa categoria, perquè tenen el mateix graf.}
-  \opcio{b}{Són categories \emph{diferents}: el graf subjacent no determina la categoria, perquè la composició (i les identitats) són dades addicionals que el functor oblit $U\colon\cat{Cat}\to\cat{Graph}$ precisament oblida.}
-  \opcio{c}{Cap de les dues pot ser una categoria.}
-  \opcio{d}{Només poden diferir si tenen diferents objectes.}
+  \opcio{a}{$\theta_A\comp\eta_A$.}
+  \opcio{b}{$K(\eta_A)\comp\theta_{G(A)}$.}
+  \opcio{c}{$\eta_{K(A)}\comp\theta_A$.}
+  \opcio{d}{$\theta_{G(A)}\comp K(\eta_A)$.}
 \end{enumerate}
 \feedback
+\justificacio{Coincideix amb $L(\eta_A)\comp\theta_{F(A)}$ per la naturalitat de $\theta$ aplicada a $\eta_A$.}
+
+\pregunta Siguin $\cat{1}$ la categoria terminal i $\cat{I}$ la categoria amb dos objectes i exactament un morfisme entre cada parella ordenada d'objectes. Quina afirmació és correcta?
+\begin{enumerate}
+  \opcio{a}{Són equivalents però no isomorfes.}
+  \opcio{b}{Són isomorfes, perquè tots els objectes de $\cat{I}$ són isomorfs entre si.}
+  \opcio{c}{No són equivalents, perquè tenen un nombre diferent d'objectes.}
+  \opcio{d}{Són isomorfes, perquè totes dues són categories primes.}
+\end{enumerate}
+\feedback
+\justificacio{La inclusió $\cat{1}\to\cat{I}$ és plena, fidel i essencialment exhaustiva, però cap functor entre elles no pot ser bijectiu sobre objectes.}
+
+\pregunta Sigui $F\colon\cat{Mat}_{\mathbb K}\to\cat{FinVect}_{\mathbb K}$, $n\mapsto\mathbb K^n$, el functor de l'exemple de la Teoria. Quina afirmació és correcta?
+\begin{enumerate}
+  \opcio{a}{Les dues categories són iguals, perquè tot espai de dimensió $n$ \emph{és} $\mathbb K^n$.}
+  \opcio{b}{Són isomorfes però no iguals: $F$ té un invers estricte.}
+  \opcio{c}{Són equivalents i, per tant, isomorfes.}
+  \opcio{d}{Són equivalents però no isomorfes; amb una tria adequada de bases, $G\comp F=\id$ literalment, però $F\comp G$ només és isomorf a la identitat.}
+\end{enumerate}
+\feedback
+\justificacio{$F$ és ple, fidel i essencialment exhaustiu, i per tant una equivalència. No hi ha cap isomorfisme de categories, perquè $\cat{Mat}_{\mathbb K}$ és esquelètica i $\cat{FinVect}_{\mathbb K}$ no ho és. El quasiinvers tria una base de cada espai: $F(G(V))=\mathbb K^{\dim V}$, que és isomorf a $V$ però en general no hi és igual. Un espai de dimensió $n$ és isomorf a $\mathbb K^n$, no igual.}
 
 \end{enumerate}
 \clauestatica
 \finalitzaTest
-\end{Form}

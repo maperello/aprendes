@@ -12,81 +12,99 @@ Comprova que en una adjunció entre preordres $f\dashv g$, l'aplicació $f$ pres
 \end{exercici}
 
 \begin{exercici}
-Sigui $f\colon P\to Q$ monòtona entre reticles complets. Comprova que $f$ té adjunt per la dreta si i només si preserva tots els suprems. \hfill{\normalfont$\star\star$}
+Sigui $f\colon P\to Q$ monòtona entre \textbf{reticles complets}, és a dir, preordres en què tot subconjunt té suprem i ínfim. Comprova que $f$ té adjunt per la dreta si i només si preserva tots els suprems. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Si $f$ preserva suprems, defineix $g(y)=\bigvee\{x\mid f(x)\leq y\}$ i comprova $f\dashv g$. El recíproc és la preservació de colímits pels adjunts per l'esquerra.
+Si $f$ preserva suprems, defineix $g(y)$ com el suprem d'un conjunt adequat d'elements de $P$.
 \end{indicacio}
 \end{exercici}
 
 \section{Adjuncions entre categories}
 
-\begin{exercici}
+\begin{exercici}\label{exr:adj-unitat-universal}
 Comprova que si $F\dashv G$, aleshores per a cada objecte $A$ el morfisme $\eta_A\colon A\to G(F(A))$ és universal: tot $\psi\colon A\to G(B)$ factoritza de manera única com $G(\varphi)\comp\eta_A$. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-La factorització única és exactament la bijecció $\theta\colon\Hom(F(A),B)\cong\Hom(A,G(B))$: donat $\psi$, pren $\varphi=\theta^{-1}(\psi)$.
+Fes servir la bijecció $\theta$ i la fórmula del transposat en termes de la unitat.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Sigui $\Delta\colon\cat{C}\to\cat{C}\times\cat{C}$ el functor diagonal, $A\mapsto(A,A)$. Comprova que té com a adjunt per la dreta el producte i com a adjunt per l'esquerra el coproducte, quan existeixen; és a dir, $(+)\dashv\Delta\dashv(\times)$. \hfill{\normalfont$\star\star$}
+Sigui $\cat{C}$ una categoria amb coproductes binaris i $\Delta\colon\cat{C}\to\cat{C}\times\cat{C}$ el functor diagonal, $A\mapsto(A,A)$. Dualitzant l'exercici resolt de la Pràctica sobre $\Delta\dashv\times$, comprova que el coproducte és adjunt per l'esquerra de $\Delta$, $(+)\dashv\Delta$, i descriu-ne la unitat i la counitat. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-De la propietat universal del producte,
-\[
-\Hom_{\cat{C}\times\cat{C}}(\Delta A,(B,C))=\Hom(A,B)\times\Hom(A,C)\cong\Hom(A,B\times C),
-\]
-d'on $\Delta\dashv(\times)$. Dualitza per al coproducte: $(+)\dashv\Delta$.
+Fes servir la propietat universal del coproducte; la unitat i la counitat són les duals de la diagonal i les projeccions.
 \end{indicacio}
 \end{exercici}
 
 \section{Unitat i counitat}
 
-\begin{exercici}
-Comprova que una adjunció es pot definir donant només un functor $G$ i, per a cada objecte $A$, un morfisme universal $\eta_A\colon A\to G(F(A))$; és a dir, que la unitat amb la seva propietat universal determina l'adjunt per l'esquerra. \hfill{\normalfont$\star\star$}
+\begin{exercici}\label{exr:adj-fletxes-universals}
+Sigui $G\colon\cat{D}\to\cat{C}$ un functor. Suposem que, per a cada objecte $A$ de $\cat{C}$, hem triat un objecte $F(A)$ de $\cat{D}$ i una fletxa universal $\eta_A\colon A\to G(F(A))$, en el sentit que tot $\psi\colon A\to G(B)$ factoritza de manera única com $G(\varphi)\comp\eta_A$. Demostra que aquestes dades determinen de manera única l'acció de $F$ sobre morfismes i defineixen un adjunt per l'esquerra $F\dashv G$. \hfill{\normalfont$\star\star$}
 \begin{indicacio}
-Defineix $F$ sobre objectes per la propietat universal, i sobre morfismes usant la unicitat de les factoritzacions. Comprova que $F$ resulta functorial i que $F\dashv G$.
+Defineix $F$ sobre objectes i sobre morfismes amb la propietat universal, i fes servir la unicitat per obtenir la functorialitat.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Comprova que en l'adjunció lliure-oblit dels grups, la counitat
+Per a l'adjunció $\Free\dashv U$ entre $\cat{Graph}$ i $\cat{Cat}$ (exemple~\ref{ex:free-u-adjuncio}), comprova que la counitat
 \[
-\varepsilon_G\colon F(U(G))\to G
+\varepsilon_{\cat{C}}\colon\Free(U(\cat{C}))\longrightarrow\cat{C}
 \]
-és exhaustiva per a tot grup $G$. \hfill{\normalfont$\star$}
+és la identitat sobre els objectes i és un functor ple. Mostra amb un exemple que, en general, no és fidel. \hfill{\normalfont$\star$}
 \begin{indicacio}
-$\varepsilon_G$ envia una paraula de generadors (elements de $G$) al seu producte a $G$; tot element de $G$ és, en particular, una paraula d'una lletra, de manera que $\varepsilon_G$ és exhaustiva.
+Per veure que és ple, pensa en els camins de longitud~$1$. Per veure que no és fidel, busca dos camins diferents amb la mateixa composta.
 \end{indicacio}
 \end{exercici}
 
 \section{Identitats triangulars}
 
 \begin{exercici}
-Comprova la segona identitat triangular $G(\varepsilon_B)\comp\eta_{G(B)}=\id_{G(B)}$, dualitzant la demostració de la primera. \hfill{\normalfont$\star$}
+Comprova la segona identitat triangular,
+\[
+G(\varepsilon_B)\comp\eta_{G(B)}=\id_{G(B)},
+\]
+dualitzant la demostració de la primera. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Usa $\theta(\varphi)=G(\varphi)\comp\eta_A$ amb $A=G(B)$ i $\varphi=\varepsilon_B$, i que $\theta(\varepsilon_B)=\id_{G(B)}$ per definició de la counitat.
+Dualitza la demostració de la Teoria, fent servir la fórmula del transposat en termes de la unitat.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}\label{exr:adj-triangulars-reciproc}
+Comprova que dues transformacions naturals $\eta\colon\id\Rightarrow GF$ i $\varepsilon\colon FG\Rightarrow\id$ que satisfan les identitats triangulars defineixen una adjunció $F\dashv G$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Defineix els dos transposats amb $\eta$ i $\varepsilon$, i fes servir les identitats triangulars per veure que són inversos.
 \end{indicacio}
 \end{exercici}
 
 \begin{exercici}
-Comprova que dues transformacions naturals $\eta\colon\id\Rightarrow GF$ i $\varepsilon\colon FG\Rightarrow\id$ que satisfan les identitats triangulars defineixen una adjunció $F\dashv G$. \hfill{\normalfont$\star\star$}
+Siguin $F\colon\cat{C}\to\cat{D}$, $G\colon\cat{D}\to\cat{C}$, $F'\colon\cat{D}\to\cat{E}$ i $G'\colon\cat{E}\to\cat{D}$ functors entre categories localment petites, amb $F\dashv G$ i $F'\dashv G'$. Demostra que les adjuncions es componen:
+\[
+F'\comp F\;\dashv\;G\comp G'.
+\]
+Descriu la unitat de l'adjunció composta en termes de les unitats $\eta$ i $\eta'$. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Defineix $\theta(\varphi)=G(\varphi)\comp\eta_A$ i $\theta^{-1}(\psi)=\varepsilon_B\comp F(\psi)$; les identitats triangulars donen que són inverses, i la naturalitat de $\eta,\varepsilon$ dona la de $\theta$.
+Encadena les dues bijeccions d'homconjunts, passant per $\cat{D}$, i comprova que la composta és natural en les dues variables. Per a la unitat, transposa la identitat de $F'(F(A))$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $F\dashv G$ una adjunció amb unitat $\eta$ i counitat $\varepsilon$. Demostra que, si $\eta$ i $\varepsilon$ són isomorfismes naturals, aleshores $F$ és una equivalència de categories amb quasiinvers $G$ (definició~\ref{def:equivalencia}), i que en aquest cas $G$ també és adjunt per l'esquerra de $F$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Compara les dades amb la definició d'equivalència. Per a la segona part, inverteix $\eta$ i $\varepsilon$ i comprova les identitats triangulars de l'adjunció $G\dashv F$ a partir de les de $F\dashv G$.
 \end{indicacio}
 \end{exercici}
 
 \section{Els adjunts i els límits}
 
 \begin{exercici}
-Comprova que el functor \enquote{conjunt de parts contravariant} $\mathcal P\colon\cat{Set}\op\to\cat{Set}$ envia coproductes a productes: $\mathcal P(A+B)\cong\mathcal P(A)\times\mathcal P(B)$. \hfill{\normalfont$\star$}
+Comprova que el prefeix de parts $\mathcal P\colon\cat{Set}\op\to\cat{Set}$ envia coproductes a productes: $\mathcal P(A+B)\cong\mathcal P(A)\times\mathcal P(B)$. \hfill{\normalfont$\star$}
 \begin{indicacio}
-Un subconjunt de $A+B$ és una parella (subconjunt de $A$, subconjunt de $B$). Relaciona-ho amb el fet que els representables contravariants envien colímits a límits.
+Descriu un subconjunt de $A+B$ a partir de les seves interseccions amb les dues components.
 \end{indicacio}
 \end{exercici}
 
-\begin{exercici}
-Sigui $U\colon\cat{Top}\to\cat{Set}$ el functor oblit. Comprova que té \emph{dos} adjuncts, un per l'esquerra i un per la dreta, i digues quins són. \hfill{\normalfont$\star$}
+\begin{exercici}[Ampliació, per a lectors amb topologia]
+Sigui $U\colon\cat{Top}\to\cat{Set}$ el functor oblit. Comprova que té \emph{dos} adjunts, un per l'esquerra i un per la dreta, i digues quins són. \hfill{\normalfont$\star$}
 \begin{indicacio}
-L'adjunt per l'esquerra dona a cada conjunt la topologia discreta; el de la dreta, la topologia grollera (indiscreta). Per tant $U$ preserva tant límits com colímits.
+Pensa en les dues topologies extremes sobre un conjunt.
 \end{indicacio}
 \end{exercici}
 
@@ -95,7 +113,7 @@ L'adjunt per l'esquerra dona a cada conjunt la topologia discreta; el de la dret
 \begin{exercici}
 Comprova que a $\cat{Set}$ es compleix $C^{A+B}\cong C^A\times C^B$ i $(C\times D)^A\cong C^A\times D^A$, i interpreta-ho en termes d'adjuncions. \hfill{\normalfont$\star$}
 \begin{indicacio}
-La primera és que $(-)^{-}$ envia coproductes en la variable de dalt a productes (perquè $-\times B$, el seu adjunt, els hi envia); la segona és que $(-)^A$, adjunt per la dreta, preserva productes.
+Per a la primera, fes servir que $\Hom(A+B,C)\cong\Hom(A,C)\times\Hom(B,C)$, és a dir, que el representable contravariant $\Hom(-,C)$ envia coproductes a productes. Per a la segona, fes servir que $(-)^A$ és adjunt per la dreta de $-\times A$ i, per tant, preserva productes.
 \end{indicacio}
 \end{exercici}
 

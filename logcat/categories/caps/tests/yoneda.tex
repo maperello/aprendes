@@ -2,82 +2,99 @@
 
 Aquest test recull els conceptes essencials del capítol. Cada pregunta té una única resposta correcta.
 
-\begin{Form}
-\iniciTest{yon}{b,c,b,c,b,d,c,b,c,b,d,c,b,c}
+\iniciTest{yon}{a,c,b,d,a,d,b,c,a,c,b,d,c,d,b}
 
 \begin{enumerate}
 
 \pregunta Quan és \textbf{terminal} un objecte $1$ d'una categoria?
 \begin{enumerate}
-  \opcio{a}{Quan hi ha exactament un morfisme $1\to X$ per a cada $X$.}
-  \opcio{b}{Quan hi ha exactament un morfisme $X\to 1$ per a cada $X$.}
+  \opcio{a}{Quan hi ha exactament un morfisme $X\to 1$ per a cada $X$.}
+  \opcio{b}{Quan hi ha exactament un morfisme $1\to X$ per a cada $X$.}
   \opcio{c}{Quan no hi ha cap morfisme cap a ell.}
   \opcio{d}{Quan és isomorf a tots els altres objectes.}
 \end{enumerate}
 \feedback
+\justificacio{És la definició. L'opció (b) és la d'objecte inicial, i (d) no té per què complir-se: ser terminal és una propietat universal, no un isomorfisme amb tots els objectes.}
 
-\pregunta Per què l'objecte terminal és únic llevat d'isomorfisme?
+\pregunta Siguin $S\colon\cat{A}\to\cat{C}$ i $T\colon\cat{B}\to\cat{C}$. Una parella $a\colon A\to A'$, $b\colon B\to B'$ és un morfisme $(A,B,u)\to(A',B',u')$ de la categoria coma $(S\downarrow T)$ quan:
 \begin{enumerate}
-  \opcio{a}{Perquè només n'hi pot haver un literalment.}
-  \opcio{b}{Perquè tots els objectes són terminals.}
-  \opcio{c}{Perquè entre dos terminals els morfismes únics es componen donant les identitats, i per tant són isomorfismes.}
-  \opcio{d}{Perquè l'objecte terminal no existeix mai.}
+  \opcio{a}{$S(a)\comp u=u'\comp T(b)$.}
+  \opcio{b}{$T(b)\comp u'=u\comp S(a)$.}
+  \opcio{c}{$T(b)\comp u=u'\comp S(a)$.}
+  \opcio{d}{$S(a)=T(b)$.}
 \end{enumerate}
 \feedback
+\justificacio{Comprova els tipus: $u\colon S(A)\to T(B)$ i $u'\colon S(A')\to T(B')$. L'únic quadrat ben tipat de $S(A)$ a $T(B')$ és $T(b)\comp u=u'\comp S(a)$. A (a) i (b) les composicions no existeixen en general.}
 
-\pregunta Una \textbf{propietat universal} caracteritza un objecte...
+\pregunta En la formulació per representabilitat desenvolupada en aquest capítol, una \textbf{propietat universal} caracteritza una dada...
 \begin{enumerate}
   \opcio{a}{per la seva constitució interna.}
-  \opcio{b}{per la manera com es relaciona amb tots els altres objectes, via un functor representable.}
+  \opcio{b}{per la manera com es relaciona amb tots els altres objectes, mitjançant la representabilitat d'un functor cap a $\cat{Set}$.}
   \opcio{c}{per la seva cardinalitat.}
   \opcio{d}{només a $\cat{Set}$.}
 \end{enumerate}
 \feedback
+\justificacio{Una propietat universal no descriu què \emph{és} la dada, sinó com es relaciona amb tota la resta: la dada és un objecte representant, amb el seu element universal.}
 
 \pregunta Que $1$ sigui terminal equival a dir que:
 \begin{enumerate}
   \opcio{a}{$\Hom(1,-)$ és constant.}
   \opcio{b}{$\Hom(-,1)$ no és functor.}
-  \opcio{c}{$\Hom(-,1)$ és isomorf al functor constant amb valor un punt.}
-  \opcio{d}{$\Hom(-,1)$ és buit.}
+  \opcio{c}{$\Hom(-,1)$ és buit.}
+  \opcio{d}{$\Hom(-,1)$ és isomorf al functor constant amb valor un punt.}
 \end{enumerate}
 \feedback
+\justificacio{Ser terminal vol dir que cada $\Hom(X,1)$ té exactament un element. Aquestes bijeccions amb $\{\ast\}$ formen un isomorfisme natural, perquè tots els quadrats acaben en un conjunt d'un element.}
 
-\pregunta Quan es diu que un functor $P\colon\cat{C}\op\to\cat{Set}$ és \textbf{representable}?
+\pregunta Quan es diu que un prefeix $P\colon\cat{C}\op\to\cat{Set}$ és \textbf{representable}?
 \begin{enumerate}
-  \opcio{a}{Quan és constant.}
-  \opcio{b}{Quan és isomorf a $\Hom(-,A)$ per a algun objecte $A$.}
+  \opcio{a}{Quan és isomorf a $\Hom(-,A)$ per a algun objecte $A$.}
+  \opcio{b}{Quan és constant.}
   \opcio{c}{Quan és ple i fidel.}
   \opcio{d}{Quan té un sol element a cada conjunt.}
 \end{enumerate}
 \feedback
+\justificacio{És la definició, en la forma de la proposició sobre representabilitat i isomorfisme natural. Ser constant o tenir un element a cada conjunt són casos molt particulars; \enquote{ple i fidel} és una propietat de functors entre categories, no de prefeixos.}
 
-\pregunta Què és la \textbf{immersió de Yoneda}?
+\pregunta Sigui $P\colon\cat{C}\op\to\cat{Set}$ un prefeix i $x\in P(A)$. Quina és la component en $X$ de la transformació natural $\Hom(-,A)\Rightarrow P$ que el lema de Yoneda associa a $x$, avaluada en $f\colon X\to A$?
 \begin{enumerate}
-  \opcio{a}{Un objecte terminal.}
-  \opcio{b}{Una transformació natural.}
-  \opcio{c}{Un prefeix qualsevol.}
-  \opcio{d}{El functor $\yon\colon\cat{C}\to\cat{Set}^{\cat{C}\op}$ amb $\yon(A)=\Hom(-,A)$.}
+  \opcio{a}{$P(f^{-1})(x)$.}
+  \opcio{b}{$x$, sense canviar de conjunt.}
+  \opcio{c}{$P(\id_A)(f)$.}
+  \opcio{d}{$P(f)(x)$.}
 \end{enumerate}
 \feedback
+\justificacio{Per contravariància, $P(f)\colon P(A)\to P(X)$; no cal que $f$ tingui invers.}
 
-\pregunta Els objectes de $\cat{Set}^{\cat{C}\op}$ s'anomenen:
+\pregunta Sigui $f\colon A\to B$ un morfisme. Les quatre descripcions següents de la component en $X$ de $\yon(f)=\Hom(-,f)$ semblen raonables. Quina és l'única en què el domini, el codomini i la composició tenen els tipus correctes?
 \begin{enumerate}
-  \opcio{a}{functors oblit.}
-  \opcio{b}{cons.}
-  \opcio{c}{prefeixos.}
-  \opcio{d}{monoides.}
+  \opcio{a}{$\Hom(X,A)\to\Hom(X,B)$, $\varphi\mapsto\varphi\comp f$.}
+  \opcio{b}{$\Hom(X,A)\to\Hom(X,B)$, $\varphi\mapsto f\comp\varphi$.}
+  \opcio{c}{$\Hom(A,X)\to\Hom(B,X)$, $\varphi\mapsto\varphi\comp f$.}
+  \opcio{d}{$\Hom(X,B)\to\Hom(X,A)$, $\varphi\mapsto\varphi\comp f$.}
 \end{enumerate}
 \feedback
+\justificacio{Si $\varphi\colon X\to A$, l'única composició possible amb $f\colon A\to B$ és $f\comp\varphi\colon X\to B$. A (a), $\varphi\comp f$ demanaria $B=X$. A (c), amb $\varphi\colon A\to X$, $\varphi\comp f$ demanaria $B=A$: és una versió mal tipada de $\Hom(f,X)$, que va de $\Hom(B,X)$ a $\Hom(A,X)$. A (d), amb $\varphi\colon X\to B$, $\varphi\comp f$ demanaria de nou $B=X$.}
 
-\pregunta Què afirma el \textbf{lema de Yoneda}?
+\pregunta Sigui $\mathcal P$ el prefeix de parts, $A=\{0,1\}$ i $B=\{1\}$. Quin subconjunt assigna la transformació natural $\Hom(-,A)\Rightarrow\mathcal P$ determinada per $B$ a l'aplicació $f\colon\{a,b,c\}\to A$ amb $f(a)=f(c)=1$ i $f(b)=0$?
 \begin{enumerate}
-  \opcio{a}{Que tota categoria és petita.}
-  \opcio{b}{Que $\Nat(\Hom(-,A),P)\cong P(A)$, naturalment en $A$ i $P$.}
-  \opcio{c}{Que tot functor és representable.}
-  \opcio{d}{Que $\Hom(A,B)$ és sempre buit.}
+  \opcio{a}{$\{b\}$.}
+  \opcio{b}{$\{a,b,c\}$.}
+  \opcio{c}{$\{a,c\}$.}
+  \opcio{d}{$\{1\}$.}
 \end{enumerate}
 \feedback
+\justificacio{Pel lema de Yoneda, la transformació determinada per $B\in\mathcal P(A)$ envia $f$ a $\mathcal P(f)(B)=f^{-1}(B)=\{a,c\}$. L'opció (d) és $B$ mateix, que viu a $\mathcal P(A)$ i no a $\mathcal P(\{a,b,c\})$.}
+
+\pregunta Sigui $\Phi_{A,P}\colon\Nat(\yon(A),P)\to P(A)$, $\eta\mapsto\eta_A(\id_A)$, la bijecció del lema de Yoneda, i sigui $a\colon A'\to A$. Quina de les igualtats següents expressa la naturalitat en $A$ amb tots els tipus correctes?
+\begin{enumerate}
+  \opcio{a}{$\Phi_{A',P}\bigl(\eta\comp\yon(a)\bigr)=P(a)\bigl(\Phi_{A,P}(\eta)\bigr)$, com a elements de $P(A')$.}
+  \opcio{b}{$\Phi_{A,P}\bigl(\eta\comp\yon(a)\bigr)=P(a)\bigl(\Phi_{A',P}(\eta)\bigr)$, com a elements de $P(A)$.}
+  \opcio{c}{$\Phi_{A',P}\bigl(\yon(a)\comp\eta\bigr)=P(a)\bigl(\Phi_{A,P}(\eta)\bigr)$, com a elements de $P(A')$.}
+  \opcio{d}{$\Phi_{A',P}\bigl(\eta\comp\yon(a)\bigr)=P(a)^{-1}\bigl(\Phi_{A,P}(\eta)\bigr)$, com a elements de $P(A')$.}
+\end{enumerate}
+\feedback
+\justificacio{Tenim $\eta\colon\yon(A)\Rightarrow P$ i $\yon(a)\colon\yon(A')\Rightarrow\yon(A)$. L'única composició possible és, doncs, $\eta\comp\yon(a)$, que va de $\yon(A')$ a $P$, i s'hi aplica $\Phi_{A',P}$. Per contravariància, $P(a)\colon P(A)\to P(A')$. A (b), $\Phi_{A,P}$ no s'aplica a una transformació que surt de $\yon(A')$. A (c), $\yon(a)\comp\eta$ no és componible. A (d), $P(a)$ no té per què ser invertible.}
 
 \pregunta A la demostració del lema, a quina dada s'envia una transformació natural $\eta\colon\Hom(-,A)\Rightarrow P$?
 \begin{enumerate}
@@ -87,6 +104,7 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{A la identitat de $P$.}
 \end{enumerate}
 \feedback
+\justificacio{L'aplicació del lema és $\eta\mapsto\eta_A(\id_A)$. L'opció (a) és tota la component, no un element de $P(A)$; és l'element el que determina $\eta$.}
 
 \pregunta Una conseqüència directa del lema de Yoneda és que la immersió $\yon$ és:
 \begin{enumerate}
@@ -96,6 +114,7 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{un isomorfisme de categories.}
 \end{enumerate}
 \feedback
+\justificacio{Amb $P=\Hom(-,B)$, el lema dona $\Nat(\Hom(-,A),\Hom(-,B))\cong\Hom(A,B)$, i la bijecció és $f\mapsto\yon(f)$. No és essencialment exhaustiva: hi ha prefeixos que no són representables.}
 
 \pregunta Segons el corol·lari de Yoneda, $A\cong B$ si i només si:
 \begin{enumerate}
@@ -105,35 +124,38 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
   \opcio{d}{$\Hom(-,A)\cong\Hom(-,B)$ com a prefeixos.}
 \end{enumerate}
 \feedback
+\justificacio{Un functor ple i fidel reflecteix isomorfismes, i tot functor els preserva; aplicat a $\yon$, dona l'equivalència. La igualtat (b) és massa forta, i la cardinalitat (a) no té sentit en una categoria general.}
 
-\pregunta L'objecte que representa un functor representable és:
+\pregunta Siguin $(P,p_1,p_2)$ i $(Q,q_1,q_2)$ dos productes dels mateixos objectes. Què és únic?
 \begin{enumerate}
-  \opcio{a}{sempre $\cat{Set}$.}
-  \opcio{b}{mai únic.}
-  \opcio{c}{únic llevat d'isomorfisme.}
-  \opcio{d}{un objecte inicial.}
+  \opcio{a}{Res: poden ser literalment iguals o no.}
+  \opcio{b}{L'isomorfisme entre els objectes $P$ i $Q$, sense cap condició.}
+  \opcio{c}{L'isomorfisme $u\colon P\to Q$ que compleix $q_i\comp u=p_i$ per a $i=1,2$.}
+  \opcio{d}{L'automorfisme de $P$, que només pot ser la identitat.}
 \end{enumerate}
 \feedback
+\justificacio{La propietat universal fa que l'isomorfisme sigui únic \emph{entre els compatibles amb les projeccions}. Sense aquesta condició, pot haver-n'hi molts: a $\cat{Set}$, per exemple, qualsevol bijecció de $P$ en $Q$.}
 
-\pregunta La immersió de Yoneda, en general, \emph{no} és:
+\pregunta Siguin $S\colon\cat{A}\to\cat{C}$ i $T\colon\cat{B}\to\cat{C}$ dos functors. Un objecte de la categoria coma $(S\downarrow T)$ és:
 \begin{enumerate}
-  \opcio{a}{fidel.}
-  \opcio{b}{essencialment exhaustiva (no tot prefeix és representable).}
-  \opcio{c}{plena.}
-  \opcio{d}{un functor.}
+  \opcio{a}{només un objecte de $\cat{C}$.}
+  \opcio{b}{una transformació natural $S\Rightarrow T$.}
+  \opcio{c}{una parella d'objectes isomorfs.}
+  \opcio{d}{una terna $(A,B,f)$ amb $A$ de $\cat{A}$, $B$ de $\cat{B}$ i $f\colon S(A)\to T(B)$.}
 \end{enumerate}
 \feedback
+\justificacio{És la definició: un objecte de $\cat{A}$, un de $\cat{B}$ i una fletxa de $S(A)$ a $T(B)$ a $\cat{C}$. Les categories sobre i sota un objecte en són casos particulars.}
 
-\pregunta Quina és la lectura intuïtiva del corol·lari de Yoneda?
+\pregunta Si $(A,u)$ representa un prefeix $P\colon\cat{C}\op\to\cat{Set}$, què expressa la universalitat de l'element $u\in P(A)$?
 \begin{enumerate}
-  \opcio{a}{Que els objectes no es poden distingir.}
-  \opcio{b}{Que tot objecte és terminal.}
-  \opcio{c}{Que un objecte queda determinat, llevat d'isomorfisme, per la xarxa de morfismes que hi arriben.}
-  \opcio{d}{Que els morfismes no importen.}
+  \opcio{a}{Que $u$ és l'únic element de $P(A)$.}
+  \opcio{b}{Que per a cada objecte $X$ i cada $x\in P(X)$ hi ha un únic $f\colon X\to A$ amb $P(f)(u)=x$.}
+  \opcio{c}{Que $A$ és un objecte terminal.}
+  \opcio{d}{Que $P$ és un functor constant.}
 \end{enumerate}
 \feedback
+\justificacio{És la definició de representació d'un prefeix: cada element de cada $P(X)$ s'obté de $u$ per un únic morfisme $X\to A$. Equival a l'isomorfisme natural $\Hom(-,A)\cong P$ que envia $f$ a $P(f)(u)$.}
 
 \end{enumerate}
 \clauestatica
 \finalitzaTest
-\end{Form}

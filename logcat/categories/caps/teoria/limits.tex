@@ -2,15 +2,26 @@
 \label{cap:limits}
 
 \begin{objectius}
-\apartat{Prerequisits} Functors i categories de functors (cap.~\ref{cap:functors}); transformacions naturals; propietats universals i el lema de Yoneda (cap.~\ref{cap:yoneda}), especialment la unicitat llevat d'isomorfisme.
-\apartat{Objectius} En acabar el capítol, el lector ha de saber: reconèixer un diagrama i un con sobre ell; definir límit i colímit com a objectes universals; calcular productes, equalitzadors i pullbacks (i els seus duals) a $\cat{Set}$ i en preordres; enunciar la caracterització dels límits finits mitjançant productes i equalitzadors; i argumentar que els representables covariants preserven límits.
+\apartat{Prerequisits} Categories oposades i dualitat, i categories sobre un objecte (cap.~\ref{cap:categories}); functors, functors constants i el functor diagonal (cap.~\ref{cap:functors}); transformacions naturals i categories de functors (cap.~\ref{cap:transformacions}); categories coma, propietats universals, representabilitat i lema de Yoneda, especialment la unicitat llevat d'isomorfisme (cap.~\ref{cap:yoneda}).
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item interpretar un diagrama com un functor i un con com una transformació natural;
+  \item definir límit i colímit com a cons i cocons universals;
+  \item reconèixer productes, equalitzadors, pullbacks i l'objecte terminal com a límits, i els seus duals com a colímits;
+  \item calcular aquests casos bàsics a $\cat{Set}$ i interpretar-los en preordres;
+  \item fer servir els pullbacks per descriure la reindexació;
+  \item enunciar la caracterització dels límits finits mitjançant objecte terminal, productes binaris i equalitzadors, o bé objecte terminal i pullbacks;
+  \item descriure els límits i colímits petits a $\cat{Set}$ i explicar com es calculen punt a punt els límits i colímits en categories de functors;
+  \item distingir preservació i reflexió de límits;
+  \item explicar per què els representables covariants preserven límits.
+\end{itemize}
 \end{objectius}
 
 \section{Cap a la noció de límit}
 
-Al capítol anterior vam caracteritzar objectes per propietats universals: l'objecte terminal, l'inicial, i de passada el producte. Tots responen a un mateix patró ---un objecte que es relaciona de manera òptima amb tots els altres--- i tots són únics llevat d'isomorfisme. En aquest capítol unifiquem aquest patró en la noció general de \textbf{límit} d'un diagrama, i la seva dual, el \textbf{colímit}.
+El capítol anterior ha caracteritzat diversos objectes per propietats universals: l'objecte terminal, l'inicial, i de passada el producte i el coproducte. Tots responen a un mateix patró: un objecte que es relaciona de manera òptima amb tots els altres. I tots són únics llevat d'isomorfisme. En aquest capítol unifiquem aquest patró en la noció general de \textbf{límit} d'un diagrama, i la seva dual, el \textbf{colímit}.
 
-La idea és senzilla. Un diagrama és una col·lecció d'objectes i morfismes amb una forma determinada. Un \emph{con} sobre el diagrama és un objecte que projecta cap a tots els seus vèrtexs de manera compatible. El \emph{límit} és el con òptim: aquell pel qual tots els altres factoritzen de manera única. Segons la forma del diagrama, aquesta recepta produeix productes, equalitzadors, pullbacks, objectes terminals i molt més, tots com a casos particulars d'una sola definició.
+La idea és senzilla. Un diagrama és una col·lecció d'objectes i morfismes amb una forma determinada. Un \emph{con} sobre el diagrama és un objecte que projecta cap a tots els seus vèrtexs de manera compatible. El \emph{límit} és el con òptim: aquell pel qual tots els altres factoritzen de manera única. Segons la forma del diagrama, aquesta recepta produeix productes, equalitzadors, pullbacks, objectes terminals i molt més, tots com a casos particulars d'una sola definició. La representabilitat i el lema de Yoneda en seran l'eina conceptual: en el llenguatge del capítol anterior, un límit és un objecte que representa el prefeix que envia cada objecte $X$ al conjunt dels cons de vèrtex $X$ sobre el diagrama.
 
 \section{Diagrames i cons}
 
@@ -31,17 +42,41 @@ Sigui $D\colon\cat{I}\to\cat{C}$ un diagrama. Un \textbf{con} sobre $D$ amb \tex
 \]
 tal que, per a cada morfisme $u\colon i\to j$ de $\cat{I}$, el triangle commuta:
 \[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.4em, column sep=3.0em] {
+     & A & \\
+    D_i & & D_j \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[above left] {$\alpha_i$} (m-2-1);
+  \draw[-{Stealth[scale=1.1]}] (m-1-2) -- node[above right] {$\alpha_j$} (m-2-3);
+  \draw[-{Stealth[scale=1.1]}] (m-2-1) -- node[below] {$D_u$} (m-2-3);
+\end{tikzpicture}
+\qquad
 D_u\comp\alpha_i=\alpha_j.
 \]
 \end{definicio}
 
-\begin{observacio}
-Un con és exactament una transformació natural $\alpha\colon\Delta_A\Rightarrow D$, on $\Delta_A\colon\cat{I}\to\cat{C}$ és el \textbf{functor constant} amb valor $A$. En efecte, els components $\alpha_i\colon A\to D_i$ i la condició de naturalitat $D_u\comp\alpha_i=\alpha_j$ són precisament la definició de con. Aquest és el primer lloc on la maquinària de les transformacions naturals rendeix directament.
+\begin{observacio}\label{obs:con-transformacio}
+Un con és exactament una transformació natural $\alpha\colon\Delta_A\Rightarrow D$, on $\Delta_A\colon\cat{I}\to\cat{C}$ és el functor constant amb valor $A$ (exemple~\ref{ex:functor-constant}). En efecte, els components $\alpha_i\colon A\to D_i$ i la condició de naturalitat $D_u\comp\alpha_i=\alpha_j$ són precisament la definició de con. Aquest és el primer lloc on la maquinària de les transformacions naturals rendeix directament.
 \end{observacio}
 
 \begin{definicio}[Morfisme de cons]
 Un \textbf{morfisme de cons} de $(A,\alpha)$ a $(B,\beta)$, tots dos sobre $D$, és un morfisme $f\colon A\to B$ tal que $\beta_i\comp f=\alpha_i$ per a tot $i$. Els cons sobre $D$ i els seus morfismes formen una categoria, que denotem $\mathrm{Con}(D)$.
 \end{definicio}
+
+\begin{observacio}[Els cons són objectes d'una categoria coma]\label{obs:cons-coma}\index{con}\index{categoria!coma}\index{functor!diagonal}
+Els functors constants $\Delta_A$ s'apleguen en un sol functor, el \textbf{functor diagonal}
+\[
+\Delta\colon\cat{C}\longrightarrow\cat{C}^{\cat{I}},
+\]
+que envia cada objecte $A$ al functor constant $\Delta_A$ i cada morfisme $f\colon A\to B$ a la transformació natural $\Delta_f\colon\Delta_A\Rightarrow\Delta_B$ de components $(\Delta_f)_i=f$; la naturalitat és trivial, perquè $\Delta_A$ i $\Delta_B$ envien tots els morfismes de $\cat{I}$ a identitats, i la functorialitat es comprova component a component. Amb aquest functor, la categoria de cons és una categoria coma (secció~\ref{sec:coma}):
+\[
+\mathrm{Con}(D)=(\Delta\downarrow D).
+\]
+En efecte, prenent $S=\Delta$ i $T=D\colon\cat{1}\to\cat{C}^{\cat{I}}$, un objecte de $(\Delta\downarrow D)$ és una terna $(A,\ast,\alpha)$ amb $A$ objecte de $\cat{C}$ i $\alpha\colon\Delta_A\Rightarrow D$ un morfisme de $\cat{C}^{\cat{I}}$, que identifiquem amb la parella $(A,\alpha)$, com a l'exemple~\ref{ex:slice-coma}; és a dir, un con sobre $D$ amb vèrtex $A$ (observació~\ref{obs:con-transformacio}). Un morfisme $(A,\alpha)\to(B,\beta)$ és una parella $(f,\id_\ast)$ amb $f\colon A\to B$ tal que el quadrat de la definició de categoria coma commuta, és a dir, $\beta\comp\Delta_f=\alpha$; component a component, $\beta_i\comp f=\alpha_i$ per a tot $i$, que és exactament la condició de morfisme de cons.
+
+Dualment, un cocon sobre $D$ amb vèrtex $A$ (definició~\ref{def:cocon}) és una transformació natural $D\Rightarrow\Delta_A$, i els cocons formen la categoria coma $(D\downarrow\Delta)$. Així, el límit és un objecte terminal de $(\Delta\downarrow D)$ i el colímit un objecte inicial de $(D\downarrow\Delta)$: és l'eslògan de l'exemple~\ref{ex:universal-coma}, \emph{ser universal és ser inicial o terminal en una categoria coma adient}. La categoria coma dona, doncs, el llenguatge comú per a les categories sobre i sota un objecte, els objectes universals del capítol~\ref{cap:yoneda} i els límits i colímits.
+\end{observacio}
 
 \section{Límits}
 
@@ -55,8 +90,33 @@ Escrivim $L=\varprojlim D$ o $L=\lim D$.
 \end{definicio}
 
 \begin{observacio}
-Un límit és, doncs, el con \enquote{universal}: tots els altres cons factoritzen a través d'ell de manera única. Com que és un objecte terminal (a $\mathrm{Con}(D)$), el límit és \textbf{únic llevat d'isomorfisme únic}, per la unicitat dels objectes terminals (la proposició~\ref{prop:unicitat-terminal}). Direm que una categoria \textbf{té límits de forma $\cat{I}$} quan tot diagrama de forma $\cat{I}$ hi té límit.
+Un límit és, doncs, el con \enquote{universal}: tots els altres cons factoritzen a través d'ell de manera única. Com que és un objecte terminal de $\mathrm{Con}(D)$, el con límit és \textbf{únic llevat d'un únic isomorfisme} de cons, és a dir, compatible amb les projeccions, per la unicitat dels objectes terminals (proposició~\ref{prop:unicitat-terminal}); el vèrtex sol és únic llevat d'isomorfisme. Direm que una categoria \textbf{té límits de forma $\cat{I}$} quan tot diagrama de forma $\cat{I}$ hi té límit.
 \end{observacio}
+
+La propietat universal del límit es pot formular, en el llenguatge del capítol~\ref{cap:yoneda}, com una representabilitat. Suposem $\cat{I}$ petita i $\cat{C}$ localment petita, de manera que, per a cada objecte $A$, els cons sobre $D$ amb vèrtex $A$ formen un conjunt
+\[
+\mathrm{Con}(A,D)=\Nat(\Delta_A,D).
+\]
+Un morfisme $g\colon A'\to A$ transforma cada con $\alpha$ amb vèrtex $A$ en el con $\alpha\comp\Delta_g$ amb vèrtex $A'$, de components $\alpha_i\comp g$; obtenim així un prefeix
+\[
+\mathrm{Con}(-,D)\colon\cat{C}\op\longrightarrow\cat{Set}.
+\]
+
+\begin{proposicio}[Els límits com a representacions]\label{prop:limit-representable}\index{límit!com a representació}
+Un con $(L,\lambda)$ sobre $D$ és un límit si i només si les aplicacions
+\[
+\Hom(A,L)\longrightarrow\mathrm{Con}(A,D),
+\qquad
+f\longmapsto\lambda\comp\Delta_f=(\lambda_i\comp f)_i,
+\]
+formen un isomorfisme natural $\Hom(-,L)\cong\mathrm{Con}(-,D)$. Dit d'una altra manera, un límit de $D$ és una representació $(L,\lambda)$ del prefeix $\mathrm{Con}(-,D)$, amb element universal $\lambda\in\mathrm{Con}(L,D)$.
+\end{proposicio}
+
+\begin{prova}
+Les aplicacions són naturals en $A$: per a $g\colon A'\to A$, enviar primer $f$ a $(\lambda_i\comp f)_i$ i precompondre després amb $g$ dona $(\lambda_i\comp f\comp g)_i$, que és la imatge de $f\comp g$. Una transformació natural és un isomorfisme natural exactament quan totes les seves components són bijectives, i que l'aplicació corresponent a $A$ sigui bijectiva diu exactament que, per a tot con $\alpha$ amb vèrtex $A$, hi ha un únic $f\colon A\to L$ amb $\lambda_i\comp f=\alpha_i$ per a tot $i$. Això és la definició de límit. L'element universal és la imatge de $\id_L$, que és $\lambda$.
+\end{prova}
+
+Aquesta formulació explica d'un sol cop tres fets del capítol. Un límit és una propietat universal en el sentit del capítol~\ref{cap:yoneda}; és, per tant, únic llevat d'un únic isomorfisme compatible amb la dada universal, que aquí és el con $\lambda$; i la mateixa idea mostrarà que els representables preserven límits (proposició~\ref{prop:representables-limits}).
 
 Recorrem ara les formes particulars, cadascuna amb la seva categoria índex.
 
@@ -138,12 +198,12 @@ El \textbf{pullback} de $f\colon A\to C$ i $g\colon B\to C$ és un objecte $P$ a
 \end{definicio}
 
 \begin{exemple}
-A $\cat{Set}$, el pullback és $P=\{(a,b)\in A\times B\mid f(a)=g(b)\}$ amb les projeccions. Quan $g\colon B\hookrightarrow C$ és la injecció associada a un subconjunt $B\subseteq C$, el pullback recupera l'antiimatge $f^{-1}(B)$; per això el pullback també s'anomena \emph{imatge inversa} o \emph{producte fibrat}, i s'escriu $A\times_C B$.
+A $\cat{Set}$, el pullback és $P=\{(a,b)\in A\times B\mid f(a)=g(b)\}$ amb les projeccions. Quan $g\colon B\hookrightarrow C$ és la inclusió d'un subconjunt $B\subseteq C$, el pullback recupera l'antiimatge $f^{-1}(B)$, mitjançant la bijecció $(a,b)\mapsto a$. En aquest cas, doncs, el pullback categoritza l'operació d'antiimatge. En general, el pullback també s'anomena \emph{producte fibrat} i s'escriu $A\times_C B$.
 \end{exemple}
 
 \begin{observacio}[Reindexació per pullback]\index{reindexació}\index{functor!de reindexació}
 \label{obs:reindexacio}
-Ara que disposem de pullbacks podem definir la reindexació sobre les categories slice. Suposem que $\cat{C}$ té tots els pullbacks i sigui $f\colon A\to B$ un morfisme. Definim un functor
+Ara que disposem de pullbacks podem definir la reindexació entre categories sobre un objecte. Suposem que $\cat{C}$ té tots els pullbacks i sigui $f\colon A\to B$ un morfisme. Definim un functor
 \[
 f^{*}\colon\cat{C}/B\longrightarrow\cat{C}/A
 \]
@@ -161,11 +221,11 @@ de la manera següent: a un objecte $y\colon Y\to B$ de $\cat{C}/B$ li assignem 
   \node at ([xshift=0.9em,yshift=-0.8em]m-1-1) {$\scriptstyle\lrcorner$};
 \end{tikzpicture}
 \]
-Sobre morfismes, la propietat universal del pullback assigna a cada triangle de $\cat{C}/B$ un únic triangle de $\cat{C}/A$. Convé distingir tres nivells per no barrejar-los. \emph{Primer}: un cop s'han \textbf{triat} els pullbacks que defineixen un $f^{*}$ concret, aquest $f^{*}\colon\cat{C}/B\to\cat{C}/A$ és un functor ordinari, que preserva composicions i identitats de manera \emph{estricta}. \emph{Segon}: el que només val \enquote{llevat d'isomorfisme canònic} és l'assignació \emph{global} $A\mapsto\cat{C}/A$, $f\mapsto f^{*}$; sense fixar una tria coherent de pullbacks, aquesta assignació és un \textbf{pseudofunctor}, i les igualtats $(g\comp f)^{*}=f^{*}\comp g^{*}$, $(\id_A)^{*}=\id$ només valen fins a isomorfisme natural. \emph{Tercer}: en restringir-se als \emph{subobjectes} (capítol~\ref{cap:subobjectes}), els isomorfismes canònics queden quocientats, de manera que sobre $\Sub(A)$ les igualtats
+Sobre morfismes, la propietat universal del pullback assigna a cada triangle de $\cat{C}/B$ un únic triangle de $\cat{C}/A$. Un cop \textbf{triats} els pullbacks que defineixen $f^{*}$, obtenim un functor ordinari $f^{*}\colon\cat{C}/B\to\cat{C}/A$. Per a morfismes composables $A\xrightarrow{f}B\xrightarrow{g}C$, els functors $(g\comp f)^{*}$ i $f^{*}\comp g^{*}$ no són literalment iguals per a una tria arbitrària de pullbacks, però són canònicament isomorfs. Aquesta coherència s'organitza, en un llenguatge més avançat, mitjançant la noció de \emph{pseudofunctor}, que no necessitarem aquí. En passar als preordres de subobjectes (capítol~\ref{cap:subobjectes}), aquests isomorfismes queden identificats i la reindexació és estrictament functorial:
 \[
-(g\comp f)^{*}=f^{*}\comp g^{*},\qquad (\id_A)^{*}=\id_{\Sub(A)}
+(g\comp f)^{*}=f^{*}\comp g^{*},\qquad (\id_A)^{*}=\id_{\Sub(A)}.
 \]
-són igualtats estrictes de funcions entre posets. A $\cat{Set}$, si pensem $y\colon Y\to B$ com la família de fibres $\{y^{-1}(b)\}_{b\in B}$, aleshores $f^{*}Y$ és la família reindexada $\{y^{-1}(f(a))\}_{a\in A}$: exactament la \textbf{substitució} al llarg de $f$. Aquesta és la lectura lògica que explotarem en tractar els subobjectes, on $f^{*}$ es restringeix a un morfisme de preordres $\Sub(B)\to\Sub(A)$ i s'interpreta com la substitució en un predicat.
+A $\cat{Set}$, si interpretem $y\colon Y\to B$ com la família de fibres $\{y^{-1}(b)\}_{b\in B}$, aleshores $f^{*}Y$ s'interpreta com la família reindexada $\{y^{-1}(f(a))\}_{a\in A}$: exactament la \textbf{substitució} al llarg de $f$. Aquesta és la lectura lògica que explotarem en tractar els subobjectes, on $f^{*}$ es restringeix a un morfisme de preordres $\Sub(B)\to\Sub(A)$ i s'interpreta com la substitució en un predicat.
 \end{observacio}
 
 \subsection{Objecte terminal com a límit}
@@ -176,8 +236,22 @@ Prenem $\cat{I}=\cat{0}$, la categoria buida. L'únic diagrama de forma $\cat{0}
 
 Tota la teoria anterior es dualitza girant les fletxes. Un \textbf{colímit} d'un diagrama $D\colon\cat{I}\to\cat{C}$ és un límit del diagrama oposat $D\op\colon\cat{I}\op\to\cat{C}\op$; equivalentment, és un objecte inicial a la categoria de \textbf{cocons} sobre $D$.
 
-\begin{definicio}[Cocon i colímit]\index{cocon}\index{colímit}
-Un \textbf{cocon} sobre $D$ amb vèrtex $A$ és una família $\alpha_i\colon D_i\to A$ tal que $\alpha_j\comp D_u=\alpha_i$ per a cada $u\colon i\to j$. Un \textbf{colímit} és un cocon $(L,\lambda)$ universal: per a tot cocon $(A,\alpha)$ hi ha un únic $f\colon L\to A$ amb $f\comp\lambda_i=\alpha_i$. Escrivim $L=\colimop D$ o $L=\varinjlim D$.
+\begin{definicio}[Cocon i colímit]\label{def:cocon}\index{cocon}\index{colímit}
+Un \textbf{cocon} sobre $D$ amb vèrtex $A$ és una família $\alpha_i\colon D_i\to A$ tal que, per a cada $u\colon i\to j$, commuta el triangle dual
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.4em, column sep=3.0em] {
+    D_i & & D_j \\
+     & A & \\
+  };
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[below left] {$\alpha_i$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-3) -- node[below right] {$\alpha_j$} (m-2-2);
+  \draw[-{Stealth[scale=1.1]}] (m-1-1) -- node[above] {$D_u$} (m-1-3);
+\end{tikzpicture}
+\qquad
+\alpha_j\comp D_u=\alpha_i.
+\]
+Un \textbf{colímit} és un cocon $(L,\lambda)$ universal: per a tot cocon $(A,\alpha)$ hi ha un únic $f\colon L\to A$ amb $f\comp\lambda_i=\alpha_i$. Escrivim $L=\colimop D$ o $L=\varinjlim D$.
 \end{definicio}
 
 Dualitzant cada límit obtenim el colímit corresponent:
@@ -201,7 +275,7 @@ Un límit es diu \textbf{finit} quan la seva categoria índex $\cat{I}$ és fini
 
 El resultat clau redueix tots els límits finits a dos casos bàsics: productes finits i equalitzadors. Això és molt útil, perquè per comprovar que una categoria és finitament completa n'hi ha prou de verificar dues coses.
 
-\begin{teorema}\index{límit!finit!construcció}
+\begin{teorema}\index{límit!finit!construcció}\label{teo:limits-finits}
 Per a una categoria $\cat{C}$, són equivalents:
 \begin{enumerate}
 \item $\cat{C}$ té tots els límits finits;
@@ -210,59 +284,225 @@ Per a una categoria $\cat{C}$, són equivalents:
 \end{enumerate}
 \end{teorema}
 
-\begin{prova}[Esquema]
-Que (1) implica (2) i (3) és clar, perquè terminal, productes, equalitzadors i pullbacks són límits finits concrets. Per veure que (2) implica (1), es construeix el límit d'un diagrama finit $D\colon\cat{I}\to\cat{C}$ com un equalitzador de dues fletxes entre productes:
+\begin{prova}
+\emph{(1) implica (2) i (3).} L'objecte terminal, el producte binari, l'equalitzador i el pullback són límits de diagrames de formes finites: la categoria buida, la discreta de dos objectes, $\bullet\rightrightarrows\bullet$ i $\bullet\to\bullet\leftarrow\bullet$.
+
+\emph{(2) implica (1).} Primer, $\cat{C}$ té productes de qualsevol família finita. El de la família buida és l'objecte terminal, i per inducció, si $P_n$ és un producte de $A_1,\dots,A_n$ amb projeccions $\pi_k$, aleshores $P_n\times A_{n+1}$, amb projeccions $\pi_k\comp p_1$ ($k\le n$) i $p_2$, és un producte de $A_1,\dots,A_{n+1}$. En efecte, donades $f_k\colon X\to A_k$, hi ha una única $f\colon X\to P_n$ amb $\pi_k\comp f=f_k$ per a $k\le n$, i una única $X\to P_n\times A_{n+1}$ amb components $f$ i $f_{n+1}$; tota fletxa amb les mateixes composicions amb les $n+1$ projeccions té necessàriament aquestes dues components.
+
+Sigui ara $D\colon\cat{I}\to\cat{C}$ un diagrama finit, i escrivim $\cat{I}_0$ i $\cat{I}_1$ per als conjunts d'objectes i de morfismes de $\cat{I}$. Considerem els productes finits
 \[
-\varprojlim D=\mathrm{Eq}\Big(\textstyle\prod_{i\in\cat{I}_0}D_i\;\rightrightarrows\;\prod_{u\colon i\to j}D_j\Big),
+P=\prod_{i\in\cat{I}_0}D_i
+\qquad\text{i}\qquad
+Q=\prod_{u\in\cat{I}_1}D_{\mathrm{cod}(u)},
 \]
-on una fletxa projecta segons el domini i l'altra aplica $D_u$. L'objecte terminal cobreix el cas del diagrama buit. Finalment, (3) implica (2) perquè un producte binari és el pullback sobre l'objecte terminal, i un equalitzador s'obté també per pullbacks; i recíprocament un pullback es construeix amb un producte i un equalitzador. Els detalls es redueixen a comprovar propietats universals, i es poden consultar a qualsevol text de referència.
+amb projeccions $\pi_i\colon P\to D_i$ i $q_u\colon Q\to D_{\mathrm{cod}(u)}$, i les dues fletxes $s,t\colon P\to Q$ determinades, per a cada $u\colon i\to j$, per
+\[
+q_u\comp s=\pi_j,
+\qquad\qquad
+q_u\comp t=D_u\comp\pi_i.
+\]
+Sigui $e\colon L\to P$ un equalitzador de $s$ i $t$, i posem $\lambda_i=\pi_i\comp e\colon L\to D_i$. Vegem que $(L,\lambda)$ és un límit de $D$.
+
+\emph{És un con.} Per a $u\colon i\to j$,
+\[
+D_u\comp\lambda_i=D_u\comp\pi_i\comp e=q_u\comp t\comp e=q_u\comp s\comp e=\pi_j\comp e=\lambda_j.
+\]
+
+\emph{És universal.} Sigui $(A,\alpha)$ un con sobre $D$, i sigui $a\colon A\to P$ l'única fletxa amb $\pi_i\comp a=\alpha_i$ per a tot $i$. Per a cada $u\colon i\to j$,
+\[
+q_u\comp s\comp a=\pi_j\comp a=\alpha_j,
+\qquad
+q_u\comp t\comp a=D_u\comp\pi_i\comp a=D_u\comp\alpha_i=\alpha_j,
+\]
+de manera que $s\comp a$ i $t\comp a$ tenen les mateixes components i, per la unicitat del producte $Q$, $s\comp a=t\comp a$. Per la propietat de l'equalitzador hi ha una única $h\colon A\to L$ amb $e\comp h=a$, i aleshores $\lambda_i\comp h=\pi_i\comp e\comp h=\alpha_i$. Si $h'\colon A\to L$ també compleix $\lambda_i\comp h'=\alpha_i$ per a tot $i$, aleshores $\pi_i\comp(e\comp h')=\alpha_i$, d'on $e\comp h'=a$ per la unicitat del producte $P$, i $h'=h$ per la de l'equalitzador. El diagrama buit hi queda inclòs: aleshores $P$ i $Q$ són productes buits, és a dir, objectes terminals, i $L$ és terminal.
+
+\emph{(3) implica (2).} Sigui $1$ l'objecte terminal i, per a cada objecte $A$, $!_A\colon A\to 1$ l'única fletxa. \emph{Productes binaris}: un pullback de $!_A$ i $!_B$ és un producte de $A$ i $B$. En efecte, per a qualsevol parell $f\colon X\to A$, $g\colon X\to B$, la condició de con $!_A\comp f=\,!_B\comp g$ es compleix automàticament, perquè totes dues fletxes van a $1$; per tant, la propietat universal del pullback diu exactament la del producte.
+
+\emph{Equalitzadors}: siguin $f,g\colon A\to B$. Ja sabem que hi ha productes binaris; formem el pullback de
+\[
+\langle\id_A,f\rangle,\ \langle\id_A,g\rangle\colon A\to A\times B,
+\]
+amb projeccions $p_1,p_2\colon P\to A$, de manera que $\langle\id_A,f\rangle\comp p_1=\langle\id_A,g\rangle\comp p_2$. Component amb la primera projecció del producte, $p_1=p_2$; anomenem $e$ aquesta fletxa. Component amb la segona, $f\comp e=g\comp e$. Si $h\colon X\to A$ compleix $f\comp h=g\comp h$, aleshores
+\[
+\langle\id_A,f\rangle\comp h=\langle h,f\comp h\rangle=\langle h,g\comp h\rangle=\langle\id_A,g\rangle\comp h,
+\]
+de manera que $(h,h)$ és un con sobre el pullback, i hi ha una única $k\colon X\to P$ amb $p_1\comp k=h=p_2\comp k$, és a dir, amb $e\comp k=h$. Si $k'$ també compleix $e\comp k'=h$, aleshores $p_1\comp k'=p_2\comp k'=h$ i $k'=k$. Per tant $e$ és un equalitzador de $f$ i $g$.
+
+Amb les implicacions (3)$\Rightarrow$(2)$\Rightarrow$(1)$\Rightarrow$(3), les tres condicions són equivalents.
 \end{prova}
 
 \begin{observacio}
 Dualment, una categoria és \textbf{finitament cocompleta} si té objecte inicial, coproductes binaris i coequalitzadors, o equivalentment objecte inicial i pushouts. Per a la lògica categòrica, els límits finits ---i molt especialment els \emph{pullbacks}--- són centrals: serveixen per interpretar la substitució i les operacions sobre subobjectes que veurem més endavant.
 \end{observacio}
 
+\begin{exemple}[Límits en un preordre i en la deduïbilitat]\label{ex:limits-preordre}\index{límit!en un preordre}
+Sigui $P$ un preordre vist com a categoria i $D\colon\cat{I}\to P$ un diagrama. Com que entre dos objectes hi ha com a màxim una fletxa, un con amb vèrtex $x$ diu simplement que $x\le D_i$ per a tot $i$, i totes les condicions de commutativitat es compleixen automàticament. Per tant, quan existeixen,
+\[
+\varprojlim D=\bigwedge_{i\in\cat{I}_0}D_i,
+\qquad\qquad
+\varinjlim D=\bigvee_{i\in\cat{I}_0}D_i:
+\]
+el límit és l'ínfim dels objectes del diagrama, i el colímit, el suprem; les fletxes del diagrama no hi intervenen. En particular, l'equalitzador de dues fletxes paral·leles $x\rightrightarrows y$ és $x$ mateix (les dues fletxes coincideixen), i el pullback de $a\to c\leftarrow b$ és l'ínfim $a\wedge b$, que no depèn de $c$. Així, un preordre té tots els límits finits si i només si té element màxim (l'ínfim de la família buida, que és l'objecte terminal) i ínfims binaris.
+
+A la categoria prima $\cat{Prov}_T$ d'un sistema deductiu $T$, això diu que, quan el sistema disposa de $\top$ i de conjunció, $\top$ és un objecte terminal ($p\vdash_T\top$ per a tota fórmula $p$) i $p\land q$ és un producte de $p$ i $q$ (exemple~\ref{ex:rep-producte}). Aquestes dues operacions donen, doncs, tots els límits finits en el context deductiu: la part \enquote{conjuntiva} de la lògica és exactament la dels límits finits.
+\end{exemple}
+
+\section{Límits a \texorpdfstring{$\cat{Set}$}{Set} i en categories de functors}
+
+\begin{exemple}[Límits a $\cat{Set}$]\label{ex:limits-set}\index{límit!a Set@a $\cat{Set}$}
+Sigui $D\colon\cat{I}\to\cat{Set}$ un diagrama amb $\cat{I}$ petita. El conjunt de les famílies compatibles
+\[
+L=\Bigl\{(x_i)_{i}\in\textstyle\prod_{i\in\cat{I}_0}D_i\ \Bigm|\ D_u(x_i)=x_j\ \text{per a tot } u\colon i\to j\Bigr\},
+\]
+amb les projeccions $\lambda_i\colon L\to D_i$, és un límit de $D$. En efecte, un con $(A,\alpha)$ envia cada $a\in A$ a la família $(\alpha_i(a))_i$, que és compatible per la condició de con; l'aplicació $a\mapsto(\alpha_i(a))_i$ és l'única $f\colon A\to L$ amb $\lambda_i\comp f=\alpha_i$. En particular, $\cat{Set}$ té tots els límits petits. Dualment, el colímit és el quocient de la unió disjunta $\coprod_i D_i$, els elements de la qual són parelles $(i,x)$ amb $x\in D_i$, per la relació d'equivalència generada per
+\[
+(i,x)\sim\bigl(j,D_u(x)\bigr)\qquad(u\colon i\to j);
+\]
+per tant, $\cat{Set}$ té també tots els colímits petits. A $\cat{Set}$, doncs, els límits imposen compatibilitats i els colímits enganxen dades identificant-les.
+\end{exemple}
+
+Els límits en categories de functors es calculen a partir dels límits de la categoria d'arribada, objecte per objecte.
+
+\begin{proposicio}[Límits punt a punt]\label{prop:limits-punt-a-punt}\index{límit!en categories de functors}\index{categoria!de functors!límits}
+Siguin $\cat{A}$ i $\cat{I}$ categories petites. Si $\cat{C}$ té límits de forma $\cat{I}$, aleshores la categoria de functors $\cat{C}^{\cat{A}}$ també en té, i es calculen \emph{punt a punt}: per a un diagrama $F\colon\cat{I}\to\cat{C}^{\cat{A}}$,
+\[
+\Bigl(\varprojlim F\Bigr)(a)\;\cong\;\varprojlim_{i\in\cat{I}}F(i)(a)
+\qquad(a\in\cat{A}).
+\]
+Dualment, si $\cat{C}$ té colímits de forma $\cat{I}$, els colímits a $\cat{C}^{\cat{A}}$ es calculen punt a punt. Equivalentment, per a cada objecte $a$ de $\cat{A}$, el functor d'avaluació
+\[
+\mathrm{ev}_a\colon\cat{C}^{\cat{A}}\longrightarrow\cat{C},\qquad F\longmapsto F(a),
+\]
+preserva aquests límits i colímits.
+\end{proposicio}
+Vegeu també \cite[§3.3]{riehl} i, en el context de les categories de diagrames, \cite[§§8.5--8.6]{awodey}.
+
+\begin{prova}
+Recordem que un objecte de $\cat{C}^{\cat{A}}$ és un functor $\cat{A}\to\cat{C}$, i que un morfisme és una transformació natural, amb la composició calculada component a component. Així, el diagrama $F$ assigna a cada objecte $i$ de $\cat{I}$ un functor $F(i)\colon\cat{A}\to\cat{C}$, i a cada $u\colon i\to j$ una transformació natural $F(u)\colon F(i)\Rightarrow F(j)$, de components $F(u)_a$. Per a cada objecte $a$ de $\cat{A}$, el diagrama avaluat
+\[
+F_a=\mathrm{ev}_a\comp F\colon\cat{I}\to\cat{C},\qquad i\mapsto F(i)(a),\quad u\mapsto F(u)_a,
+\]
+és un functor, perquè la composició i les identitats de $\cat{C}^{\cat{A}}$ es calculen component a component.
+
+\emph{Pas 1: el límit sobre objectes.} Per a cada objecte $a$ de $\cat{A}$, triem un límit $\bigl(L(a),(\lambda_i(a))_i\bigr)$ de $F_a$; per tant, $F(u)_a\comp\lambda_i(a)=\lambda_j(a)$ per a cada $u\colon i\to j$.
+
+\emph{Pas 2: el límit sobre morfismes.} Sigui $v\colon a\to a'$ un morfisme de $\cat{A}$. La família $\bigl(F(i)(v)\comp\lambda_i(a)\bigr)_i$, de fletxes $L(a)\to F(i)(a')$, és un con sobre $F_{a'}$: per a $u\colon i\to j$, la naturalitat de $F(u)$ i la condició de con de $\lambda(a)$ donen
+\[
+F(u)_{a'}\comp F(i)(v)\comp\lambda_i(a)=F(j)(v)\comp F(u)_a\comp\lambda_i(a)=F(j)(v)\comp\lambda_j(a).
+\]
+Per la universalitat de $L(a')$, hi ha una única $L(v)\colon L(a)\to L(a')$ tal que
+\[
+\lambda_i(a')\comp L(v)=F(i)(v)\comp\lambda_i(a)\qquad\text{per a tot } i.
+\tag{$\dagger$}
+\]
+
+\emph{Pas 3: $L$ és un functor.} Fem servir que dues fletxes cap a un límit que tenen les mateixes composicions amb totes les projeccions són iguals, per la unicitat de la factorització. Per a $v=\id_a$, tant $L(\id_a)$ com $\id_{L(a)}$ compleixen $(\dagger)$, perquè $F(i)(\id_a)=\id$; per tant són iguals. Per a $v\colon a\to a'$ i $w\colon a'\to a''$, aplicant $(\dagger)$ dues vegades i la functorialitat de $F(i)$,
+\[
+\begin{aligned}
+\lambda_i(a'')\comp L(w)\comp L(v)&=F(i)(w)\comp\lambda_i(a')\comp L(v)\\
+&=F(i)(w)\comp F(i)(v)\comp\lambda_i(a)=F(i)(w\comp v)\comp\lambda_i(a),
+\end{aligned}
+\]
+de manera que $L(w)\comp L(v)$ compleix la condició $(\dagger)$ que caracteritza $L(w\comp v)$, i $L(w)\comp L(v)=L(w\comp v)$.
+
+\emph{Pas 4: un con a $\cat{C}^{\cat{A}}$.} La condició $(\dagger)$ és exactament el quadrat de naturalitat de la família $\lambda_i=(\lambda_i(a))_a$; per tant, cada $\lambda_i$ és una transformació natural $L\Rightarrow F(i)$. A més, $F(u)\comp\lambda_i=\lambda_j$ a $\cat{C}^{\cat{A}}$, perquè aquesta igualtat de transformacions naturals es comprova component a component i ho diu el pas~1. Així, $(L,\lambda)$ és un con sobre $F$.
+
+\emph{Pas 5: universalitat.} Sigui $(G,\alpha)$ un con sobre $F$, amb $\alpha_i\colon G\Rightarrow F(i)$ i $F(u)\comp\alpha_i=\alpha_j$. Avaluant en $a$, la família $\bigl((\alpha_i)_a\bigr)_i$ és un con sobre $F_a$ amb vèrtex $G(a)$, de manera que hi ha una única $\theta_a\colon G(a)\to L(a)$ amb $\lambda_i(a)\comp\theta_a=(\alpha_i)_a$ per a tot $i$. La família $\theta$ és natural: per a $v\colon a\to a'$, per $(\dagger)$ i per la naturalitat de $\alpha_i$,
+\[
+\lambda_i(a')\comp L(v)\comp\theta_a=F(i)(v)\comp(\alpha_i)_a=(\alpha_i)_{a'}\comp G(v)=\lambda_i(a')\comp\theta_{a'}\comp G(v)
+\]
+per a tot $i$, i per tant $L(v)\comp\theta_a=\theta_{a'}\comp G(v)$. Així $\theta\colon G\Rightarrow L$ és un morfisme de $\cat{C}^{\cat{A}}$ amb $\lambda_i\comp\theta=\alpha_i$. És l'únic: si $\theta'$ també ho compleix, a cada $a$ es té $\lambda_i(a)\comp\theta'_a=(\alpha_i)_a$, i la unicitat de la factorització a través de $L(a)$ dona $\theta'_a=\theta_a$. Per tant $(L,\lambda)$ és un límit de $F$.
+
+\emph{Pas 6: el càlcul punt a punt.} Per construcció, $\mathrm{ev}_a(L,\lambda)=\bigl(L(a),\lambda(a)\bigr)$ és un límit de $F_a$. Si $(L',\lambda')$ és un altre límit de $F$, hi ha un isomorfisme $\varphi\colon L'\Rightarrow L$ amb $\lambda_i\comp\varphi=\lambda'_i$, i la seva component $\varphi_a$ és un isomorfisme amb $\lambda_i(a)\comp\varphi_a=\lambda'_i(a)$. Un con isomorf a un con límit, per un isomorfisme compatible amb les projeccions, també és un límit, perquè les factoritzacions a través de l'un i de l'altre es corresponen component amb $\varphi_a$ o amb $\varphi_a^{-1}$. Per tant $\bigl(L'(a),\lambda'(a)\bigr)$ és un límit de $F_a$: $\mathrm{ev}_a$ preserva els límits de forma $\cat{I}$, i $\bigl(\varprojlim F\bigr)(a)\cong\varprojlim_i F(i)(a)$.
+
+L'argument per als colímits és el mateix amb totes les fletxes invertides: cocons en lloc de cons, i la propietat universal del colímit en lloc de la del límit.
+\end{prova}
+
+\begin{exemple}[Un mateix producte a $\cat{Set}$, a $\cat{Graph}$ i a $\cat{Set}^{\cat{A}}$]\label{ex:producte-tres-contextos}\index{producte!a Set, Graph i categories de functors}\index{objecte terminal!a Graph}
+Fixem un sol diagrama abstracte: la parella d'objectes $(X,T)$, sobre la categoria discreta de dos objectes, juntament amb el diagrama buit, que dona l'objecte terminal. Calculem-ne el límit en tres llocs.
+
+\emph{A $\cat{Set}$.} El producte és $X\times T$, i l'objecte terminal, un conjunt d'un sol element $\{\ast\}$. Amb $T=\{\ast\}$, l'aplicació $(x,\ast)\mapsto x$ és una bijecció $X\times\{\ast\}\cong X$. A més, les fletxes $\{\ast\}\to X$ són exactament els elements de $X$.
+
+\emph{A $\cat{Graph}$.} Recordem que $\cat{Graph}\cong\cat{Set}^{\cat{P}}$, on $\cat{P}$ té dos objectes $E,V$ i dues fletxes $s,t\colon E\to V$. Per la proposició anterior, el producte es calcula component a component,
+\[
+V_{G\times H}=V_G\times V_H,
+\qquad
+E_{G\times H}=E_G\times E_H,
+\]
+amb origen i destí també component a component: l'aresta $(e,e')$ va del vèrtex $(s_G(e),s_H(e'))$ al vèrtex $(t_G(e),t_H(e'))$. Les projeccions són els morfismes de grafs que retenen una de les dues components. Prenem ara com a $T$ el candidat ingenu a \enquote{punt}, el graf $\mathbf V$ d'un sol vèrtex i cap aresta. La fórmula dona
+\[
+V_{G\times\mathbf V}=V_G\times\{\ast\}\cong V_G,
+\qquad
+E_{G\times\mathbf V}=E_G\times\varnothing=\varnothing:
+\]
+el producte amb $\mathbf V$ \emph{esborra totes les arestes}. Per tant, $\mathbf V$ no és l'objecte terminal de $\cat{Graph}$; de fet, d'un graf amb alguna aresta no hi ha cap morfisme cap a $\mathbf V$, perquè l'aresta no té on anar. L'objecte terminal es calcula també punt a punt, com el límit del diagrama buit a cada objecte de $\cat{P}$: un vèrtex \emph{i} una aresta, és a dir, el graf $\mathbf L$ d'un sol \emph{bucle}. Amb $T=\mathbf L$, sí que $G\times\mathbf L\cong G$. I els morfismes $\mathbf L\to G$ ja no són els vèrtexs de $G$, sinó els seus bucles: un graf sense bucles no té cap \enquote{punt} en sentit categòric, encara que tingui molts vèrtexs (compareu-ho amb l'observació~\ref{obs:raonar-elements}).
+
+\emph{A una categoria de functors $\cat{Set}^{\cat{A}}$.} La recepta és la mateixa per a qualsevol categoria petita $\cat{A}$: $(F\times G)(a)=F(a)\times G(a)$ i $(F\times G)(v)=F(v)\times G(v)$, i l'objecte terminal és el functor constant de valor $\{\ast\}$. Els dos casos anteriors en són casos particulars: $\cat{Set}\cong\cat{Set}^{\cat{1}}$, i $\cat{Graph}\cong\cat{Set}^{\cat{P}}$. Ara s'entén la sorpresa del bucle: el terminal de $\cat{Set}^{\cat{P}}$ ha de ser un punt \emph{a cada objecte} de $\cat{P}$, també a $E$, i això obliga a tenir una aresta.
+
+La forma del diagrama i la recepta del càlcul no canvien d'un context a l'altre. El que canvia és quins objectes fan cada paper, i la intuició de $\cat{Set}$ només es pot traslladar si es fa objecte per objecte de la categoria índex.
+\end{exemple}
+
+Com que $\cat{Set}$ té tots els límits i colímits petits (exemple~\ref{ex:limits-set}), la proposició mostra que també els té la categoria de prefeixos $\cat{Set}^{\cat{C}\op}$ de qualsevol categoria petita $\cat{C}$, tal com s'anunciava al capítol~\ref{cap:yoneda}. Aquest fet serà essencial en els capítols de subobjectes i de topos.
+
 \section{Preservació i reflexió de límits}
 
 Quan apliquem un functor a un diagrama i al seu límit, la imatge és un con sobre el diagrama imatge, però no té per què ser-ne el límit. Els functors que respecten límits reben un nom.
 
 \begin{definicio}\index{functor!preserva límits}\index{functor!reflecteix límits}
-Sigui $F\colon\cat{C}\to\cat{D}$ un functor i $D\colon\cat{I}\to\cat{C}$ un diagrama amb límit $(L,\lambda)$.
+Sigui $F\colon\cat{C}\to\cat{D}$ un functor.
 \begin{itemize}
-\item $F$ \textbf{preserva} el límit si $(F(L),F\lambda)$ és un límit de $F\comp D$ a $\cat{D}$.
-\item $F$ \textbf{reflecteix} límits si, sempre que $(F(L),F\lambda)$ sigui un límit de $F\comp D$ i $(L,\lambda)$ sigui un con, aleshores $(L,\lambda)$ ja era un límit.
+\item $F$ \textbf{preserva} el límit $(L,\lambda)$ d'un diagrama $D\colon\cat{I}\to\cat{C}$ si $(F(L),F\lambda)$ és un límit de $F\comp D$ a $\cat{D}$.
+\item $F$ \textbf{reflecteix} límits si, per a tot diagrama $D\colon\cat{I}\to\cat{C}$ i tot con $(L,\lambda)$ sobre $D$, quan $(F(L),F\lambda)$ és un límit de $F\comp D$, aleshores $(L,\lambda)$ ja era un límit de $D$.
 \end{itemize}
-Es diu que $F$ \textbf{preserva els límits finits} si preserva el límit de tot diagrama finit, i anàlogament per a altres classes.
+Es diu que $F$ \textbf{preserva els límits finits} si preserva el límit de tot diagrama finit que en tingui, i anàlogament per a altres classes.
 \end{definicio}
 
 \begin{observacio}
-La reflexió es formula sempre \emph{respecte d'un con i un diagrama concrets}: cal partir d'un con $(L,\lambda)$ sobre $D$ la imatge del qual és limitant. Un functor ple i fidel permet aleshores aixecar i detectar les factoritzacions úniques ---perquè estableix una bijecció sobre els homconjunts---, però això no vol dir que \enquote{creï} límits del no-res: si a $\cat{C}$ no hi ha cap con sobre $D$ que projecti sobre el límit imatge, no hi ha res a reflectir. La distinció entre \emph{reflectir} (comparar un con donat) i \emph{crear} (produir-ne un de nou) és important i convé tenir-la present sempre que un functor interactuï amb els límits.
+La reflexió es formula sempre \emph{respecte d'un con i un diagrama concrets}: cal partir d'un con $(L,\lambda)$ sobre $D$ la imatge del qual és limitant. Un functor ple i fidel permet aleshores aixecar i detectar les factoritzacions úniques ---perquè estableix una bijecció sobre els homconjunts---, però això no vol dir que \enquote{creï} límits del no-res: si a $\cat{C}$ no hi ha cap con sobre $D$ que projecti sobre el límit imatge, no hi ha res a reflectir. La distinció entre \emph{reflectir} (comparar un con donat) i \emph{crear} (produir-ne un de nou) és important i convé tenir-la present sempre que un functor interactuï amb els límits. La noció formal de crear límits, útil sobretot per als functors oblit de categories algebraiques, no serà necessària aquí; n'hi ha prou de retenir que és més forta que la mera reflexió d'un con ja donat.
 \end{observacio}
 
 \begin{exemple}
-El functor oblit $U\colon\cat{Grp}\to\cat{Set}$ preserva els límits: el conjunt subjacent d'un producte de grups és el producte dels conjunts subjacents, i igualment per a equalitzadors. En canvi, $U$ \emph{no} preserva els colímits: el conjunt subjacent d'un coproducte de grups (el producte lliure) no és la unió disjunta dels conjunts subjacents. Aquesta asimetria és típica dels functors oblit, i s'explicarà del tot amb les adjuncions: els functors oblit solen ser adjunts per la dreta, i els adjunts per la dreta preserven límits.
+El functor oblit $U\colon\cat{Grp}\to\cat{Set}$ preserva tots els límits petits. En efecte, si $D\colon\cat{I}\to\cat{Grp}$ és un diagrama petit, el límit dels conjunts subjacents és el conjunt de famílies compatibles $(x_i)_i$ (exemple~\ref{ex:limits-set}). Les operacions de grup, definides component a component, conserven aquestes compatibilitats, perquè cada $D_u$ és un homomorfisme; aquest conjunt adquireix així una estructura de grup per a la qual les projeccions són homomorfismes i que satisfà la propietat universal del límit a $\cat{Grp}$. En particular, això recupera els productes i els equalitzadors habituals. En canvi, $U$ \emph{no} preserva tots els colímits: ja falla per als coproductes, perquè el conjunt subjacent d'un coproducte de grups (el producte lliure) no és, en general, la unió disjunta dels conjunts subjacents. Aquesta asimetria és típica dels functors oblit i anticipa el teorema del capítol següent: els functors oblit solen ser adjunts per la dreta, i els adjunts per la dreta preserven tots els límits; no hi ha cap afirmació anàloga que els obligui a preservar tots els colímits.
 \end{exemple}
 
-\begin{proposicio}\index{functor!representable!preserva límits}
+\begin{proposicio}\label{prop:representables-limits}\index{functor!representable!preserva límits}
 Per a tot objecte $A$ d'una categoria localment petita, el functor representable $\Hom(A,-)\colon\cat{C}\to\cat{Set}$ preserva tots els límits que existeixen a $\cat{C}$.
 \end{proposicio}
 
-\begin{prova}[Idea]
-Un con sobre $D$ amb vèrtex $A$ és exactament un element de $\Hom(A,\varprojlim D)$, per la propietat universal del límit; i és també exactament un element de $\varprojlim\Hom(A,D_-)$, per la definició de límit a $\cat{Set}$. Comparant les dues descripcions s'obté la bijecció natural $\Hom(A,\varprojlim D)\cong\varprojlim\Hom(A,D_-)$, que és el que significa que $\Hom(A,-)$ preserva el límit.
+\begin{prova}
+Sigui $(L,\lambda)$ un límit d'un diagrama $D\colon\cat{I}\to\cat{C}$. Escrivim $H=\Hom(A,-)$, de manera que $H(X)=\Hom(A,X)$ i $H(v)=v_*\colon\varphi\mapsto v\comp\varphi$.
+
+\emph{El con imatge.} La família $H\lambda=\bigl((\lambda_i)_*\bigr)_i$, amb $(\lambda_i)_*\colon\Hom(A,L)\to\Hom(A,D_i)$, és un con sobre $H\comp D$: per a $u\colon i\to j$, la functorialitat de $H$ dona $(D_u)_*\comp(\lambda_i)_*=(D_u\comp\lambda_i)_*=(\lambda_j)_*$.
+
+\emph{Existència de la factorització.} Sigui $(S,\sigma)$ un con sobre $H\comp D$ a $\cat{Set}$. És a dir, $S$ és un conjunt i $\sigma_i\colon S\to\Hom(A,D_i)$ són aplicacions amb $(D_u)_*\comp\sigma_i=\sigma_j$. Avaluada en un element $s\in S$, aquesta condició diu $D_u\comp\sigma_i(s)=\sigma_j(s)$: la família $\bigl(\sigma_i(s)\bigr)_i$ és un con sobre $D$ amb vèrtex $A$. Per la propietat universal de $L$, hi ha una única fletxa $h(s)\colon A\to L$ amb $\lambda_i\comp h(s)=\sigma_i(s)$ per a tot $i$. Això defineix una aplicació $h\colon S\to\Hom(A,L)$ amb $(\lambda_i)_*\comp h=\sigma_i$ per a tot $i$.
+
+\emph{Unicitat.} Si $h'\colon S\to\Hom(A,L)$ també compleix $(\lambda_i)_*\comp h'=\sigma_i$, aleshores, per a cada $s$, $\lambda_i\comp h'(s)=\sigma_i(s)$ per a tot $i$, i la unicitat de la factorització a través de $L$ dona $h'(s)=h(s)$. Per tant $h'=h$.
+
+Així $\bigl(\Hom(A,L),H\lambda\bigr)$ és un límit de $H\comp D$, i $\Hom(A,-)$ preserva el límit $(L,\lambda)$.
 \end{prova}
 
-\begin{observacio}
-Aquest fet ---els representables covariants preserven límits--- és una peça clau que retrobarem: dualment, els representables contravariants $\Hom(-,B)$ envien colímits a límits. Combinat amb el lema de Yoneda, permet raonar sobre límits component a component, i és la base tècnica de molts arguments de la teoria.
+\begin{observacio}[La prova en una línia]
+La demostració anterior és la lectura element a element de la cadena de bijeccions
+\[
+\Hom\bigl(A,\varprojlim D\bigr)\;\cong\;\mathrm{Con}(A,D)\;\cong\;\varprojlim\nolimits_i\Hom(A,D_i).
+\]
+La primera bijecció és la proposició~\ref{prop:limit-representable}. La segona és la descripció dels límits a $\cat{Set}$ com a famílies compatibles (exemple~\ref{ex:limits-set}): un element de $\varprojlim_i\Hom(A,D_i)$ és una família $(\alpha_i)_i$ amb $D_u\comp\alpha_i=\alpha_j$, és a dir, un con. La composta envia $f$ a $(\lambda_i\comp f)_i$, que és l'acció del con imatge.
 \end{observacio}
 
-\section{Cap a les adjuncions}
-
-Hem vist que límits i colímits unifiquen productes, coproductes, equalitzadors, coequalitzadors, pullbacks, pushouts i els objectes terminal i inicial, tots com a objectes universals associats a un diagrama, i tots únics llevat d'isomorfisme. També hem observat un patró recurrent: certs functors ---els oblit, els representables--- preserven límits o colímits de manera sistemàtica.
-
-Aquest patró no és casual. Al capítol~\ref{cap:adjuncions} introduirem les \textbf{adjuncions}, la relació entre functors que explica per què els functors lliures i oblit apareixen sempre en parella, i per què uns preserven límits i els altres colímits. Les adjuncions són un dels conceptes centrals de la teoria de categories, i un pont directe cap a la lògica: els quantificadors existencial i universal es revelaran com a adjunts.
+\begin{observacio}
+Aquest fet ---els representables covariants preserven límits--- és una peça clau que retrobarem. Dualment, els representables contravariants $\Hom(-,B)$ envien colímits a límits: com que $\Hom_{\cat{C}}(-,B)=\Hom_{\cat{C}\op}(B,-)$ i un colímit de $\cat{C}$ és un límit de $\cat{C}\op$, n'hi ha prou d'aplicar la proposició a $\cat{C}\op$. Per exemple, $\Hom(A+A',B)\cong\Hom(A,B)\times\Hom(A',B)$. Combinat amb el lema de Yoneda, permet raonar sobre límits component a component, i és la base tècnica de molts arguments de la teoria.
+\end{observacio}
 
 \begin{resumcap}
-\apartat{Cinc idees} (1)~Un límit és el con universal sobre un diagrama; un colímit, el cocon universal, és a dir el límit a la categoria oposada. (2)~Productes, equalitzadors, pullbacks i l'objecte terminal són límits; els seus duals són colímits. (3)~Tota categoria amb productes finits i equalitzadors té tots els límits finits. (4)~El límit, si existeix, és únic llevat d'isomorfisme únic. (5)~Els representables $\Hom(A,-)$ preserven límits.
-\apartat{Errors típics} Confondre el con (la família de projeccions) amb el seu vèrtex (l'objecte); creure que \enquote{tenir límits} depèn de la tria d'un límit concret, quan la propietat universal el fixa llevat d'isomorfisme; oblidar que un colímit no és un límit \emph{de la mateixa} categoria, sinó de l'oposada; i suposar que tot functor preserva límits (només ho fan certs functors, com els representables covariants).
-\apartat{Lectura recomanada} \cite[cap.~5]{awodey} per a l'exposició paral·lela a aquesta; \cite[cap.~3 i~V]{maclane} per al tractament clàssic de límits com a cons universals; \cite[cap.~5--6]{riehl} per a exemples addicionals.
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Un límit és el con universal sobre un diagrama; un colímit, el cocon universal, és a dir, el límit del diagrama corresponent a la categoria oposada.
+  \item El límit d'un diagrama $D$ representa el prefeix de cons: $\Hom(-,\varprojlim D)\cong\mathrm{Con}(-,D)$. Per tant, el con límit és únic llevat d'un únic isomorfisme compatible amb les projeccions, i el vèrtex sol, llevat d'isomorfisme.
+  \item Productes, equalitzadors, pullbacks i l'objecte terminal són límits; els seus duals són colímits. Tenir tots els límits finits equival a tenir objecte terminal, productes binaris i equalitzadors; equivalentment, objecte terminal i pullbacks.
+  \item $\cat{Set}$ té tots els límits i colímits petits (famílies compatibles i quocients de sumes), i les categories de functors els calculen punt a punt quan existeixen a la categoria d'arribada.
+  \item Els pullbacks indueixen la reindexació $f^{*}\colon\cat{C}/B\to\cat{C}/A$, que a $\cat{Set}$ reindexa fibres i anticipa la substitució de predicats.
+  \item Els representables $\Hom(A,-)$ preserven límits.
+\end{enumerate}
+\apartat{Errors típics} Confondre el con (la família de projeccions) amb el seu vèrtex (l'objecte); creure que \enquote{tenir límits} depèn de la tria d'un límit concret, quan la propietat universal el fixa llevat d'isomorfisme; oblidar que un colímit no és un límit \emph{de la mateixa} categoria, sinó de l'oposada; suposar que tot functor preserva límits (només ho fan certs functors, com els representables covariants); i confondre \enquote{$F$ preserva un límit}, que parteix d'un límit de $\cat{C}$ i en demana la imatge, amb \enquote{$F$ reflecteix límits}, que parteix d'un con de $\cat{C}$ amb imatge limitant i en conclou que ja era un límit.
+\apartat{Lectura recomanada} \cite[cap.~5]{awodey} per a l'exposició paral·lela a aquesta; \cite[III.3--III.4 i cap.~V]{maclane} per al tractament clàssic de límits com a cons universals; \cite[cap.~3]{riehl} per a exemples addicionals, en particular §3.3, sobre preservació, reflexió i creació de límits, i §3.4, sobre la naturalesa representable dels límits; \cite[cap.~9]{barrwells} per a la intuïció del límit com a subconjunt d'un producte tallat per equacions, i del colímit com a quocient d'una suma; \cite[cap.~3]{perrone-notes} per al prefeix de cons i el cas dels preordres; \cite[cap.~5]{leinster} per a una presentació breu, amb la interacció entre functors i límits; i \cite[part~IV, sessions~19--25]{lawvereschanuel}, per a objectes terminals, productes i sumes, amb els productes de grafs, en una presentació molt elemental.
 \end{resumcap}

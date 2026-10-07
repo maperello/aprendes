@@ -4,40 +4,110 @@ Els exercicis d'aquest capítol treballen les propietats universals a través de
 
 \section{Objectes inicials i terminals}
 
-\begin{exercici}
-Comprova que a la categoria slice $\cat{C}/A$ l'objecte $\id_A\colon A\to A$ és terminal.
+\begin{exercici}\label{pr-producte-terminal}
+Siguin $A$ i $B$ dos objectes d'una categoria $\cat{C}$. Un \textbf{con} sobre $A$ i $B$ és una terna $(X,f,g)$ amb $f\colon X\to A$ i $g\colon X\to B$, i un morfisme de cons $(X,f,g)\to(X',f',g')$ és un morfisme $h\colon X\to X'$ de $\cat{C}$ amb $f'\comp h=f$ i $g'\comp h=g$. Comprova que els cons sobre $A$ i $B$ formen una categoria $\mathrm{Con}(A,B)$, i que un con $(P,p_1,p_2)$ és un producte de $A$ i $B$ si i només si és un objecte terminal de $\mathrm{Con}(A,B)$. Interpreta el resultat en la categoria d'un preordre $(Q,\le)$.
 \end{exercici}
 
 \begin{solucio}
-Un objecte de $\cat{C}/A$ és un morfisme $x\colon X\to A$. Un morfisme de $x$ cap a $\id_A$ a la categoria slice és un $h\colon X\to A$ de $\cat{C}$ que fa commutar el triangle sobre $A$, és a dir, amb $\id_A\comp h=x$. Aquesta condició diu simplement $h=x$. Per tant hi ha \emph{exactament un} morfisme de qualsevol objecte $x$ cap a $\id_A$, a saber, el mateix $x$ vist com a morfisme de la slice. Això és precisament la definició d'objecte terminal. Dualment, a la coslice $A/\cat{C}$ l'objecte $\id_A$ és inicial.
+\textbf{És una categoria.} La identitat de $(X,f,g)$ és $\id_X$, que compleix $f\comp\id_X=f$ i $g\comp\id_X=g$. Si $h\colon(X,f,g)\to(X',f',g')$ i $h'\colon(X',f',g')\to(X'',f'',g'')$ són morfismes de cons, la composta $h'\comp h$ també ho és, perquè
+\[
+f''\comp(h'\comp h)=(f''\comp h')\comp h=f'\comp h=f,
+\]
+i igual amb $g$. L'associativitat i les lleis d'identitat s'hereten de $\cat{C}$, perquè la composició és la de $\cat{C}$.
+
+\textbf{Producte i objecte terminal.} Un morfisme de cons $h\colon(X,f,g)\to(P,p_1,p_2)$ és exactament un morfisme $h\colon X\to P$ que fa commutar els dos triangles,
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=2.8em] {
+     & X & \\
+    A & P & B \\
+  };
+  \draw[-{Stealth[scale=1.0]}] (m-1-2) -- node[above left] {$f$} (m-2-1);
+  \draw[-{Stealth[scale=1.0]}] (m-1-2) -- node[above right] {$g$} (m-2-3);
+  \draw[-{Stealth[scale=1.0]},dashed] (m-1-2) -- node[right] {$h$} (m-2-2);
+  \draw[-{Stealth[scale=1.0]}] (m-2-2) -- node[below] {$p_1$} (m-2-1);
+  \draw[-{Stealth[scale=1.0]}] (m-2-2) -- node[below] {$p_2$} (m-2-3);
+\end{tikzpicture}
+\qquad
+p_1\comp h=f,\quad p_2\comp h=g.
+\]
+Que $(P,p_1,p_2)$ sigui terminal a $\mathrm{Con}(A,B)$ diu que, per a cada con $(X,f,g)$, hi ha exactament un morfisme de cons cap a $(P,p_1,p_2)$, és a dir, exactament un $h$ amb $p_1\comp h=f$ i $p_2\comp h=g$. Això és, paraula per paraula, la definició de producte (subsecció~\ref{subsec:producte-coproducte}). Les dues afirmacions són, doncs, la mateixa.
+
+Com a conseqüència, la unicitat dels productes es dedueix de la dels objectes terminals (proposició~\ref{prop:unicitat-terminal}): dos productes de $A$ i $B$ són isomorfs per un únic isomorfisme \emph{de cons}, és a dir, compatible amb les projeccions. L'objecte $P$ tot sol, en canvi, pot tenir altres automorfismes que no respectin $p_1$ i $p_2$; per exemple, a $\cat{Set}$, l'intercanvi $(a,b)\mapsto(b,a)$ de $A\times A$.
+
+\textbf{En un preordre.} A la categoria d'un preordre $(Q,\le)$, un con sobre $a$ i $b$ és un element $x$ amb $x\le a$ i $x\le b$, és a dir, una cota inferior comuna, i entre dos cons hi ha com a màxim un morfisme, que existeix quan $x\le x'$. Un objecte terminal de $\mathrm{Con}(a,b)$ és, doncs, una cota inferior $p$ tal que tota altra cota inferior $x$ compleix $x\le p$: la \emph{màxima cota inferior}, o ínfim, de $a$ i $b$. Els productes en un preordre són els ínfims, i en un ordre parcial són únics; en un preordre, únics llevat de la relació $p\le p'\le p$.
 \end{solucio}
 
 \begin{exercici}
-Comprova que un objecte $Z$ és alhora inicial i terminal en una categoria si i només si, per a cada objecte $X$, hi ha exactament un morfisme $Z\to X$ i exactament un morfisme $X\to Z$. Un tal objecte s'anomena \emph{objecte zero}. Comprova que a $\cat{Grp}$ el grup trivial n'és un.
+Comprova que un objecte $Z$ és alhora inicial i terminal en una categoria si i només si, per a cada objecte $X$, hi ha exactament un morfisme $Z\to X$ i exactament un morfisme $X\to Z$. Un tal objecte s'anomena \emph{objecte zero}. Comprova que a $\cat{Pos}$ no n'hi ha cap i, per a qui conegui els grups, que a $\cat{Grp}$ el grup trivial n'és un.
 \end{exercici}
 
 \begin{solucio}
-La primera afirmació és la conjunció literal de les dues definicions: $Z$ inicial dona el morfisme únic $Z\to X$, i $Z$ terminal, el morfisme únic $X\to Z$. Per al grup trivial $1=\{e\}$: donat un grup $G$, hi ha un únic homomorfisme $1\to G$ (l'element neutre ha d'anar al neutre), i un únic homomorfisme $G\to 1$ (tot va al neutre). Per tant $1$ és inicial i terminal a $\cat{Grp}$, és a dir, un objecte zero.
+La primera afirmació és la conjunció literal de les dues definicions: $Z$ inicial dona el morfisme únic $Z\to X$, i $Z$ terminal, el morfisme únic $X\to Z$.
+
+A $\cat{Pos}$, l'objecte inicial és el conjunt ordenat buit i el terminal és el d'un sol element. Un objecte zero hauria de ser isomorf a tots dos, i aquests dos no són isomorfs, perquè no hi ha cap aplicació $\{\ast\}\to\varnothing$. Per tant, $\cat{Pos}$ no té objecte zero.
+
+Per al grup trivial $1=\{e\}$: donat un grup $G$, hi ha un únic homomorfisme $1\to G$ (l'element neutre ha d'anar al neutre), i un únic homomorfisme $G\to 1$ (tot va al neutre). Per tant $1$ és inicial i terminal a $\cat{Grp}$, és a dir, un objecte zero.
+\end{solucio}
+
+\section{Categories coma}
+
+\begin{exercici}\label{pr-coma-lliure}
+Sigui $G$ un graf, i sigui $U\colon\cat{Cat}\to\cat{Graph}$ el functor graf subjacent, on $\cat{Cat}$ té per objectes les categories petites. Descriu explícitament la categoria coma $(G\downarrow U)$: els seus objectes, els seus morfismes, la composició i les identitats. Demostra que la parella $(\Free(G),\eta_G)$, on $\eta_G\colon G\to U(\Free(G))$ és la inserció dels generadors, és un objecte inicial de $(G\downarrow U)$.
+\end{exercici}
+
+\begin{solucio}
+\textbf{Objectes i morfismes.} Un objecte de $(G\downarrow U)$ és una parella $(\cat{D},\varphi)$ formada per una categoria petita $\cat{D}$ i un morfisme de grafs $\varphi\colon G\to U(\cat{D})$. Un morfisme $(\cat{D},\varphi)\to(\cat{D}',\varphi')$ és un functor $H\colon\cat{D}\to\cat{D}'$ que fa commutar el triangle
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, row sep=2.6em, column sep=2.4em] {
+     & G & \\
+    U(\cat{D}) & & U(\cat{D}') \\
+  };
+  \draw[-{Stealth[scale=1.0]}] (m-1-2) -- node[above left] {$\varphi$} (m-2-1);
+  \draw[-{Stealth[scale=1.0]}] (m-1-2) -- node[above right] {$\varphi'$} (m-2-3);
+  \draw[-{Stealth[scale=1.0]}] (m-2-1) -- node[below] {$U(H)$} (m-2-3);
+\end{tikzpicture}
+\qquad
+U(H)\comp\varphi=\varphi'.
+\]
+
+\textbf{És una categoria.} La identitat de $(\cat{D},\varphi)$ és $\id_{\cat{D}}$, perquè $U(\id_{\cat{D}})\comp\varphi=\varphi$. Si $H\colon(\cat{D},\varphi)\to(\cat{D}',\varphi')$ i $H'\colon(\cat{D}',\varphi')\to(\cat{D}'',\varphi'')$, la composta $H'\comp H$ també és un morfisme, per la functorialitat de $U$:
+\[
+U(H'\comp H)\comp\varphi=U(H')\comp U(H)\comp\varphi=U(H')\comp\varphi'=\varphi''.
+\]
+L'associativitat i les lleis d'identitat s'hereten de $\cat{Cat}$.
+
+\textbf{$(\Free(G),\eta_G)$ és inicial.} Sigui $(\cat{D},\varphi)$ un objecte qualsevol. Un morfisme $(\Free(G),\eta_G)\to(\cat{D},\varphi)$ és un functor $\bar\varphi\colon\Free(G)\to\cat{D}$ amb $U(\bar\varphi)\comp\eta_G=\varphi$, és a dir, que coincideix amb $\varphi$ sobre els vèrtexs i sobre els camins de longitud~$1$.
+\begin{itemize}
+  \item \emph{Existència.} Definim $\bar\varphi$ sobre els objectes com $\varphi$, sobre el camí buit en un vèrtex $x$ com $\id_{\varphi(x)}$, i sobre un camí $(a_1,\dots,a_n)$ recorregut en aquest ordre com la composta $\varphi(a_n)\comp\cdots\comp\varphi(a_1)$. Com que la composició de $\Free(G)$ és la concatenació, $\bar\varphi$ respecta composicions i identitats.
+  \item \emph{Unicitat.} Tot camí és la composta de les seves arestes, i tot camí buit és una identitat. Un functor amb $U(\bar\varphi)\comp\eta_G=\varphi$ queda, per tant, determinat sobre tots els morfismes per la seva acció sobre les arestes, que està fixada per $\varphi$.
+\end{itemize}
+Així, des de $(\Free(G),\eta_G)$ hi ha exactament un morfisme cap a cada objecte de $(G\downarrow U)$: és un objecte inicial. Observem que no ha calgut la noció d'adjunció; és aquesta propietat la que, al capítol d'adjuncions, farà de $\Free$ un adjunt per l'esquerra de $U$.
 \end{solucio}
 
 \section{Propietats universals com a representabilitat}
 
 \begin{exercici}
-Comprova que un objecte $1$ és terminal si i només si el functor $\Hom(-,1)$ és isomorf al functor constant amb valor un conjunt d'un sol element.
+Comprova que un objecte $1$ és terminal si i només si el functor $\Hom(-,1)$ és naturalment isomorf al functor constant $\Delta_{\{\ast\}}\colon\cat{C}\op\to\cat{Set}$ (exemple~\ref{ex:functor-constant}).
 \end{exercici}
 
 \begin{solucio}
-Suposem $1$ terminal. Aleshores, per a cada objecte $X$, el conjunt $\Hom(X,1)$ té exactament un element, de manera que hi ha una bijecció $\Hom(X,1)\cong\{\ast\}$. Aquestes bijeccions són automàticament naturals: l'única aplicació possible cap a un conjunt d'un punt fa commutar qualsevol quadrat. Per tant $\Hom(-,1)$ és naturalment isomorf al functor constant $\ast$.
+Suposem $1$ terminal. Aleshores, per a cada objecte $X$, el conjunt $\Hom(X,1)$ té exactament un element, de manera que hi ha una bijecció $\Hom(X,1)\cong\{\ast\}$. Aquestes bijeccions són automàticament naturals: l'única aplicació possible cap a un conjunt d'un punt fa commutar qualsevol quadrat. Per tant $\Hom(-,1)$ és naturalment isomorf al functor constant $\Delta_{\{\ast\}}$.
 
-Recíprocament, si $\Hom(-,1)\cong\ast$, aleshores cada $\Hom(X,1)$ té exactament un element, és a dir, hi ha exactament un morfisme $X\to 1$ per a cada $X$, i $1$ és terminal.
+Recíprocament, si $\Hom(-,1)\cong\Delta_{\{\ast\}}$, aleshores cada $\Hom(X,1)$ té exactament un element, és a dir, hi ha exactament un morfisme $X\to 1$ per a cada $X$, i $1$ és terminal.
 \end{solucio}
 
 \begin{exercici}
-Sigui $\cat{C}$ una categoria localment petita. Comprova que el functor \enquote{oblit d'un punt} $\Hom(1,-)\colon\cat{C}\to\cat{Set}$, quan $1$ és terminal, envia cada objecte $X$ al conjunt dels seus \enquote{punts globals} $\Hom(1,X)$. Calcula aquest conjunt a $\cat{Set}$.
+Sigui $\cat{C}$ una categoria localment petita amb un objecte terminal $1$. Comprova que el \textbf{functor de punts globals}
+\[
+\Hom(1,-)\colon\cat{C}\longrightarrow\cat{Set}
+\]
+envia cada objecte $X$ a $\Hom(1,X)$. Aquests morfismes s'anomenen \emph{punts globals} de $X$. Calcula aquest conjunt a $\cat{Set}$.
 \end{exercici}
 
 \begin{solucio}
-Per definició, $\Hom(1,-)$ envia $X$ a $\Hom(1,X)$, el conjunt de morfismes des de l'objecte terminal; aquests morfismes s'anomenen \emph{punts globals} de $X$. A $\cat{Set}$, l'objecte terminal és un conjunt d'un sol element $\{\ast\}$, i una aplicació $\{\ast\}\to X$ equival a triar un element de $X$: la imatge de $\ast$. Per tant $\Hom(1,X)\cong X$ de manera natural, i a $\cat{Set}$ els punts globals recuperen exactament els elements. En general, però, $\Hom(1,-)$ pot perdre informació: hi ha categories on objectes diferents tenen els mateixos punts globals.
+Per definició, $\Hom(1,-)$ envia $X$ a $\Hom(1,X)$, el conjunt de morfismes des de l'objecte terminal, és a dir, dels punts globals de $X$. A $\cat{Set}$, l'objecte terminal és un conjunt d'un sol element $\{\ast\}$, i una aplicació $\{\ast\}\to X$ equival a triar un element de $X$: la imatge de $\ast$. Per tant $\Hom(1,X)\cong X$ de manera natural, i a $\cat{Set}$ els punts globals recuperen exactament els elements. En general, però, $\Hom(1,-)$ pot perdre informació: hi ha categories on objectes diferents tenen els mateixos punts globals.
 \end{solucio}
 
 \section{El lema de Yoneda}
@@ -54,40 +124,95 @@ El lema de Yoneda dona una bijecció
 que envia $\eta$ a $\eta_A(\id_A)$. Així, cada transformació natural de $\Hom(-,A)$ en ell mateix correspon a un endomorfisme de $A$. La transformació identitat $\id_{\Hom(-,A)}$ té components la identitat de cada $\Hom(X,A)$; el seu valor a $\id_A$ és $\id_A$, de manera que correspon a l'endomorfisme identitat. Aquest càlcul és el nucli de la demostració que la immersió de Yoneda és plena i fidel.
 \end{solucio}
 
-\begin{exercici}
-Comprova amb detall la naturalitat de la transformació $\Psi(x)$ construïda a la demostració del lema de Yoneda: donat $x\in P(A)$, els components $\Psi(x)_X\colon\varphi\mapsto P(\varphi)(x)$ formen una transformació natural $\Hom(-,A)\Rightarrow P$.
+\begin{exercici}\label{pr-yoneda-parts}
+Sigui $A$ un conjunt i sigui $\mathcal P\colon\cat{Set}\op\to\cat{Set}$ el functor de parts contravariant. Descriu explícitament, mitjançant la bijecció del lema de Yoneda, les transformacions naturals $\Hom_{\cat{Set}}(-,A)\Rightarrow\mathcal P$. Quina transformació correspon a un subconjunt $B\subseteq A$? Comprova directament que la bijecció recupera $B$, i calcula-la en el cas $A=\{0,1\}$, $B=\{1\}$, sobre l'aplicació $\varphi\colon\{a,b,c\}\to A$ amb $\varphi(a)=\varphi(c)=1$ i $\varphi(b)=0$.
 \end{exercici}
 
 \begin{solucio}
-Cal veure que, per a cada morfisme $g\colon Y\to X$, el quadrat de naturalitat commuta:
+El lema de Yoneda dona una bijecció
 \[
-P(g)\comp\Psi(x)_X=\Psi(x)_Y\comp\Hom(g,A),
+\Phi\colon\Nat\bigl(\Hom(-,A),\mathcal P\bigr)\longrightarrow\mathcal P(A),
+\qquad
+\Phi(\alpha)=\alpha_A(\id_A),
 \]
-on $\Hom(g,A)=g^*\colon\Hom(X,A)\to\Hom(Y,A)$ és la precomposició amb $g$. Avaluem els dos costats sobre un $\varphi\in\Hom(X,A)$. El costat esquerre dona
+amb inversa $\Psi$, que envia un element $x\in\mathcal P(A)$ a la transformació $\Psi(x)_X(\varphi)=\mathcal P(\varphi)(x)$. Aquí un element de $\mathcal P(A)$ és un subconjunt $B\subseteq A$, i $\mathcal P(\varphi)$ és l'antiimatge. Per tant, la transformació natural que correspon a $B$ és
 \[
-P(g)\big(\Psi(x)_X(\varphi)\big)=P(g)\big(P(\varphi)(x)\big)=P(\varphi\comp g)(x),
+\Psi(B)_X\colon\Hom(X,A)\to\mathcal P(X),
+\qquad
+\varphi\longmapsto\varphi^{-1}(B).
 \]
-usant la functorialitat contravariant $P(g)\comp P(\varphi)=P(\varphi\comp g)$. El costat dret dona
+És a dir: tota assignació natural d'aquest tipus s'obté per antiimatge d'un únic subconjunt fix de $A$, i subconjunts diferents donen transformacions naturals diferents.
+
+\textbf{La bijecció recupera $B$.} En un sentit, $\Phi(\Psi(B))=\Psi(B)_A(\id_A)=\id_A^{-1}(B)=B$. En l'altre, si $\alpha$ és una transformació natural qualsevol i $B=\alpha_A(\id_A)$, la naturalitat de $\alpha$ aplicada a $\varphi\colon X\to A$ i avaluada sobre $\id_A$ dona
 \[
-\Psi(x)_Y\big(g^*(\varphi)\big)=\Psi(x)_Y(\varphi\comp g)=P(\varphi\comp g)(x).
+\alpha_X(\varphi)=\alpha_X(\id_A\comp\varphi)=\mathcal P(\varphi)\bigl(\alpha_A(\id_A)\bigr)=\varphi^{-1}(B),
 \]
-Els dos coincideixen, de manera que $\Psi(x)$ és natural.
+de manera que $\alpha=\Psi(B)$. La naturalitat de $\Psi(B)$ es veu també directament: per a $g\colon Y\to X$, $(\varphi\comp g)^{-1}(B)=g^{-1}\bigl(\varphi^{-1}(B)\bigr)$.
+
+\textbf{Un càlcul.} Amb $A=\{0,1\}$ i $B=\{1\}$, la component a $X=\{a,b,c\}$ envia $\varphi$ a $\varphi^{-1}(\{1\})=\{a,c\}$. Observem que, sota l'isomorfisme natural $\mathcal P\cong\Hom(-,\{0,1\})$ de l'exemple~\ref{ex:isos-naturals-cap2}, el subconjunt $B$ correspon a la seva funció característica $\chi_B\colon A\to\{0,1\}$, i la transformació $\varphi\mapsto\varphi^{-1}(B)$ correspon a $\varphi\mapsto\chi_B\comp\varphi$: és el cas $P=\Hom(-,\{0,1\})$ del lema, en què les transformacions naturals $\Hom(-,A)\Rightarrow\Hom(-,\{0,1\})$ són les postcomposicions amb morfismes $A\to\{0,1\}$.
+
+\textbf{Lectura lògica.} Un subconjunt $B\subseteq A$ és un \emph{predicat} sobre $A$, i $\varphi^{-1}(B)$ és el predicat sobre $X$ que s'obté substituint $\varphi$: $x\in\varphi^{-1}(B)$ si i només si $\varphi(x)\in B$. El lema de Yoneda diu, doncs, que les maneres naturals de produir predicats a partir d'aplicacions cap a $A$ són exactament les substitucions en un predicat fix sobre $A$. És la mateixa operació de substitució que, al capítol~\ref{cap:transformacions}, feia natural la interpretació de les fórmules.
+\end{solucio}
+
+\begin{exercici}\label{pr-yoneda-grafs}
+Siguin $V,E\colon\cat{Graph}\to\cat{Set}$ els functors de vèrtexs i d'arestes, siguin $\mathbf V$ el graf d'un sol vèrtex sense arestes i $\mathbf E$ el graf $0\xrightarrow{e}1$. Calcula, amb la versió covariant del lema de Yoneda, $\Nat(E,V)$ i $\Nat(V,E)$, i interpreta les transformacions que hi surtin.
+\end{exercici}
+
+\begin{solucio}
+Per l'exemple~\ref{ex:isos-naturals-cap2}, $V\cong\Hom_{\cat{Graph}}(\mathbf V,-)$ i $E\cong\Hom_{\cat{Graph}}(\mathbf E,-)$. La versió covariant del lema dona, per a qualsevol functor $Q\colon\cat{Graph}\to\cat{Set}$, una bijecció entre les transformacions naturals que surten de $\Hom(A,-)$ i els elements de $Q(A)$. Per tant,
+\[
+\Nat(E,V)\;\cong\;V(\mathbf E)=\{0,1\},
+\qquad
+\Nat(V,E)\;\cong\;E(\mathbf V)=\varnothing.
+\]
+Observem la inversió: el primer càlcul avalua el functor d'\emph{arribada}, $V$, en l'objecte que \emph{representa} el functor de sortida, $E$.
+
+\textbf{Les dues transformacions $E\Rightarrow V$.} L'element $0\in V(\mathbf E)$ correspon a la transformació que, a cada graf $G$, envia una aresta a una aplicació $E_G\to V_G$ calculada així: l'aresta $\varepsilon$ correspon al morfisme $\mathbf E\to G$ que la tria, i aquest envia el vèrtex $0$ a l'origen de $\varepsilon$. És, doncs, l'aplicació origen $s_G$. Anàlogament, l'element $1$ dona l'aplicació destí $t_G$. La naturalitat de $s$ i de $t$ és exactament la condició que un morfisme de grafs preservi origen i destí. Encara que en un graf on totes les arestes són bucles $s_G=t_G$, les dues transformacions són diferents, perquè a $\mathbf E$ les components difereixen.
+
+\textbf{Cap transformació $V\Rightarrow E$.} També es veu directament: una transformació natural $V\Rightarrow E$ hauria de tenir una component $V_{\mathbf V}=\{\ast\}\to E_{\mathbf V}=\varnothing$, que no existeix. No hi ha cap manera natural de triar una aresta per a cada vèrtex en tots els grafs alhora.
 \end{solucio}
 
 \section{Conseqüències}
 
-\begin{exercici}
-Dedueix del lema de Yoneda que dos objectes $A$ i $B$ són isomorfs si i només si $\Hom(-,A)\cong\Hom(-,B)$ com a prefeixos.
+\begin{exercici}\label{pr-yoneda-preordre}
+Sigui $(Q,\le)$ un preordre vist com a categoria. Descriu el prefeix representable $\Hom(-,a)$ i calcula, amb el lema de Yoneda, les transformacions naturals $\Hom(-,a)\Rightarrow\Hom(-,b)$. Dedueix que
+\[
+a\le b\quad\Longleftrightarrow\quad{\downarrow}a\subseteq{\downarrow}b,
+\qquad\text{on } {\downarrow}a=\{x\in Q\mid x\le a\},
+\]
+i interpreta el resultat a la categoria $\cat{Prov}_T$ d'un sistema deductiu.
 \end{exercici}
 
 \begin{solucio}
-La immersió de Yoneda $\yon(X)=\Hom(-,X)$ és plena i fidel (corol·lari del lema). Un functor ple i fidel preserva i reflecteix isomorfismes. Preserva: si $A\cong B$, aplicant $\yon$ obtenim $\Hom(-,A)\cong\Hom(-,B)$. Reflecteix: si $\Hom(-,A)\cong\Hom(-,B)$, és a dir, $\yon(A)\cong\yon(B)$, aleshores $A\cong B$. Per tant les dues condicions són equivalents. En altres paraules, la família de conjunts $\Hom(X,A)$, amb la seva acció sobre els morfismes, determina $A$ llevat d'isomorfisme.
+\textbf{El representable.} Com que entre dos objectes hi ha com a màxim una fletxa, $\Hom(x,a)$ és un conjunt d'un sol element si $x\le a$, i és buit altrament. El prefeix $\Hom(-,a)$ és, doncs, la funció característica del conjunt ${\downarrow}a$ dels elements que estan per sota de $a$: \enquote{val} en $x$ exactament quan $x\in{\downarrow}a$.
+
+\textbf{Les transformacions naturals.} Pel lema de Yoneda (o per la immersió plena i fidel),
+\[
+\Nat\bigl(\Hom(-,a),\Hom(-,b)\bigr)\;\cong\;\Hom(a,b),
+\]
+que té un element si $a\le b$ i cap altrament. Ho podem veure també directament: una transformació natural té una component $\Hom(x,a)\to\Hom(x,b)$ per a cada $x$, i una aplicació d'un conjunt d'un sol element en un conjunt buit no existeix. Hi ha, doncs, una transformació natural exactament quan $x\le a$ implica $x\le b$ per a tot $x$, és a dir, quan ${\downarrow}a\subseteq{\downarrow}b$; i aleshores és única, i la naturalitat és automàtica, perquè tots els valors tenen com a màxim un element.
+
+\textbf{La conclusió.} Comparant les dues descripcions, $a\le b$ si i només si ${\downarrow}a\subseteq{\downarrow}b$. La implicació d'esquerra a dreta és la transitivitat; la de dreta a esquerra s'obté prenent $x=a$, que és exactament l'avaluació a $\id_a$ del lema de Yoneda. Com a cas particular, $a\cong b$ si i només si ${\downarrow}a={\downarrow}b$: dos elements són isomorfs quan tenen els mateixos elements per sota.
+
+\textbf{A $\cat{Prov}_T$.} Aquí ${\downarrow}p$ és el conjunt de les fórmules que dedueixen $p$, i el resultat diu que $p\vdash_T q$ si i només si tota fórmula que dedueix $p$ dedueix també $q$. Una fórmula queda determinada, llevat d'interdeduïbilitat, per les fórmules de les quals es dedueix.
 \end{solucio}
 
-\begin{exercici}
-Comprova que l'objecte que representa un functor representable és únic llevat d'isomorfisme: si $\Hom(-,A)\cong P$ i $\Hom(-,B)\cong P$, aleshores $A\cong B$.
+\begin{exercici}\label{pr-yoneda-monoide}
+Sigui $M$ un monoide i $\cat{B}M$ la categoria d'un sol objecte $\ast$ associada, amb composició $g\comp f=g\cdot f$ (escrivim $\cdot$ per a l'operació del monoide i $e$ per al neutre, que és $\id_\ast$). Comprova que un prefeix $X\colon(\cat{B}M)\op\to\cat{Set}$ és el mateix que un conjunt amb una \emph{acció per la dreta} de $M$, i descriu el prefeix representable $\Hom(-,\ast)$. Aplica el lema de Yoneda per calcular $\Nat\bigl(\Hom(-,\ast),X\bigr)$ i, en particular, $\Nat\bigl(\Hom(-,\ast),\Hom(-,\ast)\bigr)$.
 \end{exercici}
 
 \begin{solucio}
-De $\Hom(-,A)\cong P$ i $\Hom(-,B)\cong P$ es dedueix, per transitivitat de l'isomorfisme natural, que $\Hom(-,A)\cong\Hom(-,B)$. Pel corol·lari anterior, això equival a $A\cong B$. Aquesta és la unicitat que subjeu a totes les propietats universals: l'objecte terminal, el producte, el coproducte i qualsevol altre objecte universal tenen l'objecte representant únic llevat d'isomorfisme, i la \emph{representació} sencera ---objecte més element universal--- única llevat d'un únic isomorfisme compatible amb la dada universal.
+\textbf{Prefeixos i accions.} Un prefeix $X$ dona un conjunt $X(\ast)$, que escrivim $X$, i per a cada $g\in M$ una aplicació $X(g)\colon X\to X$. Escrivim $x\cdot g=X(g)(x)$. La functorialitat contravariant, $X(g\comp f)=X(f)\comp X(g)$ i $X(e)=\id$, diu exactament
+\[
+(x\cdot g)\cdot f=x\cdot(g\cdot f),
+\qquad
+x\cdot e=x:
+\]
+és una acció per la dreta. Una transformació natural entre dos prefeixos és una aplicació $\eta\colon X\to Y$ amb $\eta(x\cdot g)=\eta(x)\cdot g$, és a dir, una aplicació \emph{equivariant}.
+
+\textbf{El representable.} $\Hom(\ast,\ast)=M$, i un morfisme $g$ actua per precomposició: $m\mapsto m\comp g=m\cdot g$. El prefeix representable és, doncs, $M$ amb l'acció per la dreta per multiplicació, l'\emph{acció regular}.
+
+\textbf{Yoneda.} El lema dona una bijecció $\Nat\bigl(\Hom(-,\ast),X\bigr)\cong X$: l'aplicació equivariant $\eta\colon M\to X$ correspon a $\eta(e)$, i recíprocament $x\in X$ dona l'aplicació $m\mapsto x\cdot m$. Una aplicació equivariant des de l'acció regular queda determinada pel lloc on envia l'element neutre.
+
+Per a $X=M$ regular, les aplicacions equivariants $M\to M$ són exactament les multiplicacions per l'esquerra $\lambda_a\colon m\mapsto a\cdot m$, una per a cada $a\in M$. Com que $\lambda_a\comp\lambda_b=\lambda_{a\cdot b}$ i $\lambda_e=\id$, la immersió de Yoneda identifica $M$ amb aquest monoide d'aplicacions de $M$ en si mateix, i el fet que sigui fidel diu que $a\mapsto\lambda_a$ és injectiva. Obtenim el \textbf{teorema de Cayley} per a monoides: tot monoide és isomorf a un monoide d'aplicacions d'un conjunt en si mateix, amb la composició.
 \end{solucio}

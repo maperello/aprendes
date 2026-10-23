@@ -35,7 +35,13 @@
 }
 \makeatother
 \newcommand{\justitem}[2]{\item[\textbf{#1.}] #2}
-\long\def\opcio#1#2{\item \ifimprimible$\square$\else\CheckBox[name=\testprefix{}q\thetestquestion#1,width=1.1em,height=1.1em,bordercolor={0 0 0},onclick={var opts=['a','b','c','d'];for(var j=0;j<opts.length;j++){if(opts[j]!='#1'){var q=this.getField('\testprefix{}q\thetestquestion'+opts[j]);if(q)q.value='Off';}}}]{}\fi\quad\textup{#1)}\enspace #2}
+% El controlador XeTeX de hyperref ignora `onclick' a les caselles de
+% verificació (només l'aplica als botons). La clau `alclicar' omple
+% directament l'acció de deixar anar el ratolí (/AA /U), que sí que escriu.
+\makeatletter
+\define@key{Field}{alclicar}{\def\Fld@onmouseup@code{#1}}
+\makeatother
+\long\def\opcio#1#2{\item \ifimprimible$\square$\else\CheckBox[name=\testprefix{}q\thetestquestion#1,width=1.1em,height=1.1em,bordercolor={0 0 0},alclicar={var opts=['a','b','c','d'];for(var j=0;j<opts.length;j++){if(opts[j]!='#1'){var q=this.getField('\testprefix q\thetestquestion'+opts[j]);if(q)q.value='Off';}}}]{}\fi\quad\textup{#1)}\enspace #2}
 \newcommand{\feedback}{\ifimprimible\par\medskip\else\par\smallskip\textbf{Correcci\'{o}: }\TextField[name=\testprefix{}f\thetestquestion,readonly=true,width=9cm,bordercolor={0.6 0.6 0.6}]{}\par\medskip\fi}
 % ---- Validació estructural de la clau (C7) ----
 % \finalitzaTest compara el nombre de preguntes realment plantejades

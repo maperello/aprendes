@@ -1,6 +1,6 @@
 # Teoria de conjunts: una visió categòrica sense categories
 
-Autor: Miquel Àngel Perelló · Versió 1.7 (octubre de 2026) · Projecte [**aprendes / logcat**](https://aprendes.com/logcat/)
+Autor: Miquel Àngel Perelló · Versió 1.7.1 (octubre de 2026) · Projecte [**aprendes / logcat**](https://aprendes.com/logcat/)
 
 Teoria estructural de conjunts (ETCS) exposada en un llenguatge de primer ordre
 sobre aplicacions —els predicats `Dom`, `Cod` i `Com`— sense pressuposar la
@@ -97,6 +97,11 @@ Cada pregunta porta la seva justificació (`\justificacio{...}`, com al volum
 de categories), que l'apèndix recull al costat de la clau.
 
 ## Estat de la publicació
+
+La **versió 1.7.1** incorpora la versió canònica nova de
+`common/interactive-tests.tex`: als tests de la versió de pantalla, marcar una
+opció desmarca les altres de la mateixa pregunta. L'aspecte dels tests i el
+contingut del llibre no canvien.
 
 La **versió 1.7** és el resultat d'una segona lectura independent de totes
 les demostracions dels vint capítols de teoria, feta sobre la 1.6. No s'hi ha

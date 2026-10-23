@@ -10,6 +10,7 @@
   \item reconèixer i construir exemples de functors en conjunts, preordres, lògica i grafs, inclosos el graf subjacent i la categoria lliure, i la relació entre $\Free$ i $U$;
   \item distingir functors covariants i contravariants i controlar-ne la variància;
   \item manejar els homfunctors $\Hom(A,-)$ i $\Hom(-,B)$ i el bihomfunctor $\Hom(-,-)$;
+  \item llegir un morfisme $X\to A$ com un element generalitzat de $A$ de forma $X$, i fer servir els elements generalitzats per separar morfismes i detectar monomorfismes i isomorfismes;
   \item distingir functors fidels, plens i essencialment exhaustius;
   \item separar amb precisió les propietats que un functor preserva de les que reflecteix o pot deixar de preservar.
 \end{itemize}
@@ -822,6 +823,84 @@ Fixant la segona variable en el cos, aquest aixecament dona el functor dual $(-)
 al capítol~\ref{cap:transformacions} la reconeixerem com un isomorfisme natural. Les dues cares del dual i la identitat es reuneixen, així, en un sol functor de dues variables.
 \end{exemple}
 
+\section{Elements generalitzats}\label{sec:elements-generalitzats}\index{element generalitzat}
+
+Els homfunctors permeten mirar un objecte d'una manera nova. A $\cat{Set}$, un element $a\in A$ és el mateix que una aplicació $\{\ast\}\to A$, la que envia $\ast$ a $a$; i dues aplicacions $A\to B$ són iguals si coincideixen sobre tots els elements. L'observació~\ref{obs:raonar-elements} advertia que, en una categoria qualsevol, aquest punt de vista falla: pot no haver-hi cap objecte que faci el paper de $\{\ast\}$, o pot haver-n'hi un que no distingeixi prou. El remei és no limitar-se a un sol objecte de prova, sinó admetre'ls \emph{tots}.
+
+\begin{definicio}[Element generalitzat]\label{def:element-generalitzat}\index{element generalitzat}\index{forma d'un element generalitzat}
+Sigui $\cat{C}$ una categoria i $A$ un objecte de $\cat{C}$. Un \textbf{element generalitzat} de $A$ de \textbf{forma} $X$ (o \emph{definit sobre} $X$) és un morfisme
+\[
+x\colon X\longrightarrow A.
+\]
+Els elements de $A$ de forma $X$ són, doncs, els elements del conjunt $\Hom(X,A)$.
+\end{definicio}
+
+El nom no afegeix res a la definició de morfisme: només en suggereix una lectura. El domini $X$ és el \enquote{patró} amb què observem $A$, i $x$ és el que veiem d'$A$ amb aquest patró. Amb els elements generalitzats es poden fer dues operacions, una per a cada variància dels homfunctors.
+
+\begin{itemize}
+\item \emph{Canviar de forma.} Si $x\colon X\to A$ és un element de forma $X$ i $u\colon Y\to X$ és un morfisme, aleshores $x\comp u\colon Y\to A$ és un element de forma $Y$. És l'acció de l'homfunctor contravariant: $x\comp u=\Hom(u,A)(x)=u^*(x)$.
+\item \emph{Transportar per un morfisme.} Si $f\colon A\to B$ és un morfisme, cada element $x$ de $A$ de forma $X$ dona un element $f\comp x$ de $B$ de la mateixa forma. És l'acció de l'homfunctor covariant: $f\comp x=\Hom(X,f)(x)=f_*(x)$.
+\end{itemize}
+
+Les dues operacions commuten, perquè $f\comp(x\comp u)=(f\comp x)\comp u$ per l'associativitat. Un morfisme $f\colon A\to B$ es pot llegir, doncs, com una manera d'enviar elements de $A$ a elements de $B$, forma a forma, que respecta els canvis de forma. Al capítol~\ref{cap:transformacions} aquesta compatibilitat rebrà el nom de \emph{naturalitat}.
+
+\begin{exemple}[Elements generalitzats a $\cat{Set}$]\index{element generalitzat!a Set@a $\cat{Set}$}
+Els elements d'un conjunt $A$ de forma $\{\ast\}$ són els seus elements ordinaris. Els de forma $\{0,1\}$ són les parelles ordenades d'elements de $A$, perquè $\Hom(\{0,1\},A)\cong A\times A$ (exemple~\ref{ex:functor-parts}). Els de forma $\mathbb N$ són les successions d'elements de $A$, i, en general, els de forma $I$ són les famílies $(a_i)_{i\in I}$ indexades per $I$.
+
+Canviar de forma és \emph{reindexar}. Si $u\colon J\to I$ és una aplicació, la família $(a_i)_{i\in I}$ esdevé la família $(a_{u(j)})_{j\in J}$. Per exemple, prendre una subsuccessió és canviar de forma al llarg d'una aplicació estrictament creixent $u\colon\mathbb N\to\mathbb N$; i, amb $u\colon\{\ast\}\to\{0,1\}$ que tria $0$, una parella $(a_0,a_1)$ dona la seva primera component. Transportar per $f\colon A\to B$ és aplicar $f$ terme a terme: $(a_i)_i\mapsto(f(a_i))_i$.
+\end{exemple}
+
+\begin{exemple}[Elements generalitzats d'un graf]\label{ex:elements-graf}\index{element generalitzat!d'un graf}\index{graf dirigit!elements generalitzats}
+A $\cat{Graph}$ ja coneixem dos patrons (exemple~\ref{ex:homfunctor-grafs}): els elements d'un graf $G$ de forma $\mathbf V$ són els seus vèrtexs, i els de forma $\mathbf E$, les seves arestes. Altres patrons detecten altres configuracions. Si $\mathbf E_2$ és el camí de dues arestes consecutives $0\to1\to2$, els elements de $G$ de forma $\mathbf E_2$ són els camins de longitud $2$ de $G$. Si $\mathbf L$ és el graf d'un sol vèrtex amb un sol bucle, els elements de forma $\mathbf L$ són els bucles de $G$, perquè el bucle de $\mathbf L$ ha d'anar a una aresta que comenci i acabi al mateix vèrtex.
+
+Els canvis de forma recuperen l'estructura del graf. Siguin $\sigma,\tau\colon\mathbf V\to\mathbf E$ els dos morfismes que trien, respectivament, el vèrtex $0$ i el vèrtex $1$ de $\mathbf E$. Si $\varepsilon\colon\mathbf E\to G$ és una aresta de $G$, els canvis de forma
+\[
+\varepsilon\comp\sigma\colon\mathbf V\to G,
+\qquad
+\varepsilon\comp\tau\colon\mathbf V\to G
+\]
+són el seu vèrtex d'origen i el seu vèrtex de destí. Les aplicacions $s_G$ i $t_G$, que formaven part de la definició de graf, apareixen així com a canvis de forma entre els elements de forma $\mathbf E$ i els de forma $\mathbf V$. El capítol~\ref{cap:transformacions} convertirà aquesta observació en una descripció dels grafs com a functors.
+
+El graf $\mathbf L$ té una propietat especial: de cada graf $G$ hi ha \emph{exactament un} morfisme cap a $\mathbf L$, el que envia tots els vèrtexs a l'únic vèrtex i totes les arestes a l'únic bucle. És la mateixa propietat que té $\{\ast\}$ a $\cat{Set}$; al capítol~\refcap{cap:yoneda}{4} en direm \emph{objecte terminal}. Però els elements de forma $\mathbf L$ són els bucles, no els vèrtexs. El graf $\mathbf E$, que té dos vèrtexs i una aresta, no té cap element de forma $\mathbf L$. Els \enquote{punts}, entesos com els elements de forma terminal, no veuen gairebé res d'un graf; cal provar amb les formes $\mathbf V$ i $\mathbf E$.
+\end{exemple}
+
+La proposició següent diu en quin sentit els elements generalitzats substitueixen els elements ordinaris: amb \emph{totes} les formes, separen morfismes i en detecten els monomorfismes i els isomorfismes.
+
+\begin{proposicio}[Els elements generalitzats separen i detecten]\label{prop:elements-generalitzats}\index{element generalitzat!separació i detecció}
+Sigui $\cat{C}$ una categoria localment petita i siguin $f,g\colon A\to B$ dos morfismes.
+\begin{enumerate}
+\item $f=g$ si i només si $f\comp x=g\comp x$ per a tot element generalitzat $x$ de $A$, de qualsevol forma.
+\item $f$ és un monomorfisme si i només si, per a tot objecte $X$, l'aplicació $f_*\colon\Hom(X,A)\to\Hom(X,B)$ és injectiva.
+\item $f$ és un isomorfisme si i només si, per a tot objecte $X$, l'aplicació $f_*\colon\Hom(X,A)\to\Hom(X,B)$ és bijectiva.
+\end{enumerate}
+\end{proposicio}
+
+\begin{prova}
+(1) Una implicació és immediata. Per a l'altra, prenem com a element de prova l'identitat $x=\id_A$, que és un element de $A$ de forma $A$: de $f\comp\id_A=g\comp\id_A$ resulta $f=g$.
+
+(2) És la definició de monomorfisme (definició~\ref{def:mono-epi}) escrita amb la notació dels homfunctors: $f\comp x=f\comp y$ implica $x=y$, per a tota parella $x,y\colon X\to A$.
+
+(3) Si $f$ és un isomorfisme, cada $f_*$ és bijectiva pel corol·lari~\ref{prop:homfunctor-iso}. Recíprocament, suposem que tots els $f_*$ són bijectius. Amb $X=B$, l'exhaustivitat de $f_*\colon\Hom(B,A)\to\Hom(B,B)$ dona un $s\colon B\to A$ amb $f\comp s=\id_B$. Aleshores $s\comp f$ i $\id_A$ són dos elements de $A$ de forma $A$ amb la mateixa imatge per $f_*$:
+\[
+f\comp(s\comp f)=(f\comp s)\comp f=f=f\comp\id_A.
+\]
+Com que $f_*\colon\Hom(A,A)\to\Hom(A,B)$ és injectiva, $s\comp f=\id_A$. Per tant, $s$ és un invers de $f$.
+\end{prova}
+
+L'element $\id_A$ de la prova és l'element \emph{genèric} de $A$: és el més informatiu de tots, perquè qualsevol altre element $x\colon X\to A$ s'obté d'ell canviant de forma, $x=\id_A\comp x$. La proposició és, per això, gairebé trivial. El seu interès és pràctic: en moltes categories basta una família petita de formes per separar morfismes.
+
+\begin{exemple}[Quantes formes calen]\index{element generalitzat!famílies suficients de formes}
+A $\cat{Set}$ n'hi ha prou amb una sola forma, $\{\ast\}$, perquè dues aplicacions que coincideixen sobre tots els elements són iguals. A $\cat{Graph}$ calen dues formes. Dos morfismes de grafs $F,F'\colon G\to H$ són iguals si coincideixen sobre els elements de forma $\mathbf V$ i sobre els de forma $\mathbf E$, perquè això vol dir exactament $F_V=F'_V$ i $F_E=F'_E$. Cap de les dues formes no basta sola. Sigui $H$ el graf amb dos vèrtexs $a,b$ i dues arestes paral·leles $e_1,e_2\colon a\to b$, i siguin $F,F'\colon\mathbf E\to H$ els morfismes que trien $e_1$ i $e_2$. Coincideixen sobre els vèrtexs, però són diferents: la forma $\mathbf V$ no veu les arestes. Tampoc la forma $\mathbf E$ basta sola. Siguin $G$ el graf d'un sol vèrtex sense arestes i $H$ el graf de dos vèrtexs sense arestes. Hi ha dos morfismes diferents $G\to H$, un per a cada vèrtex de $H$, però $G$ no té cap element de forma $\mathbf E$; per tant, els dos morfismes coincideixen, trivialment, sobre tots els elements d'aquesta forma. Amb la forma $\mathbf L$ passa el mateix que amb $\mathbf E$ en l'exemple de les arestes paral·leles: $\mathbf E$ no té cap element de forma $\mathbf L$, i els morfismes $F$ i $F'$ hi coincideixen trivialment.
+
+A $\cat{Grp}$, l'observació~\ref{obs:raonar-elements} mostrava que el grup trivial no separa homomorfismes. El grup $\mathbb Z$, en canvi, sí que ho fa: un homomorfisme $\mathbb Z\to G$ queda determinat per la imatge de $1$, que pot ser qualsevol element de $G$, de manera que els elements de $G$ de forma $\mathbb Z$ són, en essència, els elements del grup subjacent.
+\end{exemple}
+
+\begin{exemple}[Elements generalitzats a $\cat{Prov}_T$]\index{element generalitzat!a Prov@a $\cat{Prov}_T$}\index{Prov@$\cat{Prov}_T$!elements generalitzats}
+A $\cat{Prov}_T$, una fórmula $q$ té un element de forma $p$ ---i només un--- exactament quan $p\vdash_T q$: és a dir, quan $q$ val en el context de la hipòtesi $p$. Canviar de forma al llarg de $r\vdash_T p$ és reforçar la hipòtesi: si $q$ es dedueix de $p$, també es dedueix de $r$. Transportar per $q\vdash_T q'$ és afeblir la conclusió. La part~(3) de la proposició diu, en aquest cas, que $q$ i $q'$ són interdeduïbles si i només si es dedueixen exactament de les mateixes hipòtesis. Si el llenguatge té una constant $\top$ amb les regles usuals, els elements de forma $\top$ són els teoremes, i tornem a trobar el fenomen dels grafs: dues fórmules que no són teoremes no es distingeixen pels seus elements de forma $\top$, tot i que poden ser molt diferents.
+\end{exemple}
+
+Recollim el que hem guanyat. Els elements d'un objecte $A$ de totes les formes, amb els canvis de forma, constitueixen exactament l'homfunctor contravariant $\Hom(-,A)$, i un morfisme $f\colon A\to B$ actua sobre aquests elements de manera compatible amb els canvis de forma. La proposició~\ref{prop:elements-generalitzats} diu que, coneguda $f$, la seva acció sobre els elements generalitzats ja en decideix la igualtat, el caràcter mono i el caràcter iso. El lema de Yoneda (capítol~\refcap{cap:yoneda}{4}) anirà més lluny: el prefeix $\Hom(-,A)$ determina $A$ llevat d'isomorfisme, i tota família d'aplicacions entre elements generalitzats compatible amb els canvis de forma prové d'un únic morfisme. Al capítol~\refcap{cap:topos}{9}, la pertinença d'un element generalitzat a un subobjecte esdevindrà una igualtat de morfismes cap al classificador $\Omega$.
+
 \section{Functors fidels i plens}
 
 % CONVENCIÓ D'ESTIL (aplicada a tot el llibre): s'eviten les nominalitzacions
@@ -952,7 +1031,8 @@ L'arrel del fenomen és la que hem assenyalat: \enquote{ser epi} quantifica sobr
   \item Un functor contravariant és un functor des de l'oposada. Per comprovar qualsevol functor, primer es verifiquen els tipus ($F(f)\colon F(A)\to F(B)$, o $F(B)\to F(A)$ en el cas contravariant) i després les identitats; el functor de parts té una versió de cada variància.
   \item Ser fidel o ser ple és una propietat de les aplicacions $F_{A,B}$ entre homconjunts, i no diu res de l'acció sobre objectes; afegint-hi l'exhaustivitat essencial, que sí que parla dels objectes (llevat d'isomorfisme), s'obtenen les equivalències.
   \item L'homfunctor covariant $\Hom(A,-)$ i el contravariant $\Hom(-,B)$ transformen isos en bijeccions, i el bihomfunctor $\Hom(-,-)$ els unifica en un functor de dues variables; tots tres són fonamentals i els retrobarem al lema de Yoneda.
+  \item Un morfisme $x\colon X\to A$ és un element generalitzat de $A$ de forma $X$. Els elements de totes les formes, amb els canvis de forma, formen el prefeix $\Hom(-,A)$; separen morfismes i en detecten els monomorfismes i els isomorfismes, mentre que els elements d'una sola forma, com els punts, poden no bastar.
 \end{enumerate}
-\apartat{Errors típics} Confondre \enquote{isomorfisme de categories} amb \enquote{equivalència}; creure que \enquote{fidel} vol dir injectiu sobre objectes o que \enquote{ple} vol dir exhaustiu sobre objectes, quan totes dues nocions parlen només dels homconjunts; comprovar les equacions functorials abans d'haver comprovat que $F(f)$ té el tipus correcte; oblidar la inversió de sentit en un functor contravariant; barrejar $\cat{C}/A$ (sobre $A$) amb $A/\cat{C}$ (sota $A$); i confondre \emph{preservar} amb \emph{reflectir} una propietat: tot functor preserva els isomorfismes; els functors plens i fidels també els reflecteixen, tot i que aquesta condició és suficient i no necessària. Un functor qualsevol no preserva, en general, ni els monomorfismes ni els epimorfismes.
-\apartat{Lectura recomanada} \cite[part~III, sessions~11--17]{lawvereschanuel} per a exemples molt elementals d'aplicacions que preserven estructura entre grafs i entre sistemes dinàmics; \cite[§1.3 i §§7.1--7.2]{awodey} per a la definició de functor, la categoria de categories i l'estructura representable; \cite[I.3, II.2 i II.5]{maclane} per a la formulació clàssica, inclosos els functors contravariants; \cite[§1.2]{leinster} per als functors i les seves propietats, inclosos els contravariants i els plens i fidels; \cite[cap.~1]{riehl} per als homfunctors i el bifunctor $\Hom$; \cite[§§3.1--3.3]{barrwells} per a més exemples de functors, en particular les accions de monoides i els functors entre grafs, i per a la classificació dels functors en fidels, plens i altres tipus; \cite[§1.3 i §§1.5.1--1.5.3]{perrone-notes} per a una segona explicació de la functorialitat, amb una secció sobre què \emph{no} és un functor i una altra sobre functors, monos i epis.
+\apartat{Errors típics} Confondre \enquote{isomorfisme de categories} amb \enquote{equivalència}; creure que \enquote{fidel} vol dir injectiu sobre objectes o que \enquote{ple} vol dir exhaustiu sobre objectes, quan totes dues nocions parlen només dels homconjunts; comprovar les equacions functorials abans d'haver comprovat que $F(f)$ té el tipus correcte; oblidar la inversió de sentit en un functor contravariant; barrejar $\cat{C}/A$ (sobre $A$) amb $A/\cat{C}$ (sota $A$); i confondre \emph{preservar} amb \emph{reflectir} una propietat: tot functor preserva els isomorfismes; els functors plens i fidels també els reflecteixen, tot i que aquesta condició és suficient i no necessària. Un functor qualsevol no preserva, en general, ni els monomorfismes ni els epimorfismes. També és un error suposar que els \enquote{punts} d'un objecte n'esgoten la informació: a $\cat{Graph}$, els morfismes des del graf d'un bucle només veuen els bucles.
+\apartat{Lectura recomanada} \cite[part~III, sessions~11--17]{lawvereschanuel} per a exemples molt elementals d'aplicacions que preserven estructura entre grafs i entre sistemes dinàmics; \cite[§1.3 i §§7.1--7.2]{awodey} per a la definició de functor, la categoria de categories i l'estructura representable, i \cite[§2.3]{awodey} per als elements generalitzats; \cite[I.3, II.2 i II.5]{maclane} per a la formulació clàssica, inclosos els functors contravariants; \cite[§1.2]{leinster} per als functors i les seves propietats, inclosos els contravariants i els plens i fidels; \cite[cap.~1]{riehl} per als homfunctors i el bifunctor $\Hom$; \cite[§§3.1--3.3]{barrwells} per a més exemples de functors, en particular les accions de monoides i els functors entre grafs, i per a la classificació dels functors en fidels, plens i altres tipus; \cite[§1.3 i §§1.5.1--1.5.3]{perrone-notes} per a una segona explicació de la functorialitat, amb una secció sobre què \emph{no} és un functor i una altra sobre functors, monos i epis.
 \end{resumcap}

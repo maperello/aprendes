@@ -704,12 +704,38 @@ A\cong B
 \end{corollari}
 
 \begin{prova}
-Un functor ple i fidel reflecteix els isomorfismes (capítol dels functors): si $\yon(A)\cong\yon(B)$, aleshores $A\cong B$. El recíproc és que tot functor preserva isomorfismes. Aplicat a $\yon$, dona l'equivalència.
+Suposem que hi ha un isomorfisme natural $\theta\colon\yon(A)\Rightarrow\yon(B)$. Com que $\yon$ és ple, $\theta=\yon(f)$ per a algun $f\colon A\to B$; i com que és ple i fidel, reflecteix els isomorfismes (subsecció~\ref{subsec:que-conserva}): $\yon(f)$ és un isomorfisme, de manera que $f$ també ho és, i $A\cong B$. El recíproc és que tot functor preserva isomorfismes: si $A\cong B$, aleshores $\yon(A)\cong\yon(B)$.
 \end{prova}
 
 \begin{observacio}
 Aquest darrer corol·lari és la formulació precisa de l'eslògan del primer capítol: \emph{un objecte queda determinat, llevat d'isomorfisme, per la xarxa de morfismes que hi arriben}. Conèixer $\Hom(-,A)$ ---és a dir, saber com és el conjunt de morfismes $X\to A$ per a cada $X$, de manera compatible amb la composició--- equival a conèixer $A$ llevat d'isomorfisme. En particular, l'objecte que representa un functor representable és únic llevat d'isomorfisme, cosa que unifica totes les unicitats de les propietats universals que hem trobat.
 \end{observacio}
+
+En termes de la secció~\ref{sec:elements-generalitzats}, el darrer corol·lari diu que un objecte queda determinat, llevat d'isomorfisme, pels seus elements generalitzats de \emph{totes} les formes, i el primer, que la immersió és plena i fidel, diu que els morfismes $A\to B$ són exactament les maneres d'enviar elements de $A$ a elements de $B$ compatibles amb els canvis de forma. En categories concretes sovint basta una família petita de formes. L'exemple següent ho mostra per als grafs, i hi retroba un resultat del capítol~\ref{cap:transformacions}.
+
+\begin{exemple}[Un graf reconstruït a partir de dues sondes]\label{ex:graf-sondes}\index{graf dirigit!reconstruït pels representables}\index{element generalitzat!d'un graf}
+Sigui $\cat{S}$ la subcategoria plena de $\cat{Graph}$ formada pels dos grafs $\mathbf V$ (un vèrtex) i $\mathbf E$ (una aresta $0\to1$). Calculem-ne els morfismes. Un morfisme $\mathbf E\to\mathbf E$ ha d'enviar l'única aresta a l'única aresta, i amb ella els extrems als extrems: només hi ha la identitat. Igualment, $\Hom(\mathbf V,\mathbf V)=\{\id\}$. No hi ha cap morfisme $\mathbf E\to\mathbf V$, perquè l'aresta no tindria on anar. I hi ha exactament dos morfismes $\mathbf V\to\mathbf E$, els morfismes $\sigma$ i $\tau$ de l'exemple~\ref{ex:elements-graf}, que trien el vèrtex $0$ i el vèrtex $1$. Així, $\cat{S}$ és la categoria
+\[
+\begin{tikzpicture}[baseline=(m.center)]
+  \matrix (m) [matrix of math nodes, column sep=3.6em] {
+    \mathbf V & \mathbf E \\
+  };
+  \draw[-{Stealth[scale=1.1]}] ([yshift=0.35em]m-1-1.east) -- node[above] {$\sigma$} ([yshift=0.35em]m-1-2.west);
+  \draw[-{Stealth[scale=1.1]}] ([yshift=-0.35em]m-1-1.east) -- node[below] {$\tau$} ([yshift=-0.35em]m-1-2.west);
+\end{tikzpicture}
+\]
+amb dos objectes i dues fletxes paral·leles, a més de les identitats. La seva oposada té dues fletxes $\sigma^{\mathrm{op}},\tau^{\mathrm{op}}\colon\mathbf E\to\mathbf V$, i és, doncs, una còpia de la categoria $\cat{P}$ del capítol~\ref{cap:transformacions}, amb $\sigma^{\mathrm{op}}$ en el paper de $s$ i $\tau^{\mathrm{op}}$ en el de $t$.
+
+Restringim ara el prefeix representable $\Hom(-,G)$ d'un graf $G$ als dos objectes de $\cat{S}$. Obtenim un functor $\cat{S}\op\cong\cat{P}\to\cat{Set}$ que envia $\mathbf E$ a $\Hom(\mathbf E,G)\cong E_G$, envia $\mathbf V$ a $\Hom(\mathbf V,G)\cong V_G$ i envia les dues fletxes a les precomposicions
+\[
+\sigma^*,\ \tau^*\colon\Hom(\mathbf E,G)\to\Hom(\mathbf V,G),
+\qquad
+\varepsilon\mapsto\varepsilon\comp\sigma,\quad \varepsilon\mapsto\varepsilon\comp\tau.
+\]
+A través de les bijeccions, $\sigma^*$ és $s_G$ i $\tau^*$ és $t_G$. Per tant, aquesta restricció és, llevat d'isomorfisme natural, el mateix graf $G$ vist com a functor $\cat{P}\to\cat{Set}$. Un morfisme de grafs $F\colon G\to H$ dona per postcomposició una transformació natural entre les restriccions, i la proposició~\ref{prop:graph-functors} diu que tota transformació natural d'aquest tipus és un morfisme de grafs.
+
+L'isomorfisme $\cat{Graph}\cong\cat{Set}^{\cat{P}}$ del capítol~\ref{cap:transformacions} es llegeix, doncs, així: un graf és el sistema dels seus elements generalitzats de forma $\mathbf V$ i de forma $\mathbf E$, amb els dos canvis de forma entre ells. El lema de Yoneda reconstrueix un objecte a partir dels seus elements de \emph{totes} les formes. El que diu aquest exemple és més concret: a $\cat{Graph}$, la família formada per les dues formes $\mathbf V$ i $\mathbf E$ ja basta, perquè tot graf s'obté enganxant vèrtexs i arestes, i la restricció dels representables a aquestes dues formes recupera el graf. Una família de representables amb aquesta propietat s'anomena \emph{densa}, i la teoria general de la densitat queda fora d'aquest volum; aquí només en necessitem el cas dels grafs.
+\end{exemple}
 
 \begin{observacio}
 Hi ha una versió covariant de tot plegat, obtinguda treballant amb $\cat{C}\op$ en lloc de $\cat{C}$: dona una immersió $\cat{C}\op\to\cat{Set}^{\cat{C}}$, també plena i fidel, i el lema $\Nat(\Hom(A,-),Q)\cong Q(A)$ per a functors covariants $Q\colon\cat{C}\to\cat{Set}$. Totes dues versions s'usen contínuament; la contravariant, amb prefeixos, és la que enllaça amb la teoria de feixos i la lògica categòrica que estudiarem més endavant.

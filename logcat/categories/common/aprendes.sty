@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{common/aprendes}[2026/08/17 Estil unificat per a Aprendes Universitat]
+\ProvidesPackage{common/aprendes}[2026/10/14 Estil unificat per a Aprendes Universitat]
 
 % ============================================================
 %  aprendes.sty  --  FULL UNIFICAT
@@ -70,6 +70,7 @@
 \definecolor{DefinicioSuau}{HTML}{B8FFE6}
 \definecolor{ExempleSuau}{HTML}{A7E9FF}
 \definecolor{ExerciciSuau}{HTML}{C9FFC7}
+\definecolor{NotacioSuau}{HTML}{B3E5E0}
 \definecolor{ObservacioSuau}{HTML}{FFD6B3}
 \definecolor{DemostracioSuau}{HTML}{FFB3A9}
 \definecolor{SolucioSuau}{HTML}{C3D0E1}
@@ -103,6 +104,7 @@
 \newtheorem{proposicio}[teorema]{Proposició}
 \newtheorem{resultat}[teorema]{Resultat}
 \newtheorem{axioma}{Axioma}               % numeració contínua a tot el llibre
+\newtheorem{principi}{Principi}           % esquemes (p. ex. SR al volum de conjunts); NO és un axioma
 \newtheorem{definicio}{Definici\'{o}}[chapter]
 \newtheorem{exemple}{Exemple}[chapter]
 \newtheorem{exercici}{Exercici}[chapter]
@@ -173,12 +175,20 @@
 
   \AtBeginDocument{%
     \colorlet{AxiomaVerd}{cexer!45!black}%
+    \colorlet{PrincipiViolat}{blue!38!red!88!black}%
     \colorlet{ObservacioTaronja}{cobs!70!black}%
+    \colorlet{NotacioTeal}{TeoremaSuau!85!black}%
     % ---------- Enunciats amb bloc ----------
     \renewenvironment{axioma}[1][]{%
       \refstepcounter{axioma}%
       \begin{tcolorbox}[blocenunciat=AxiomaVerd]%
       \etiqueta{AxiomaVerd}{Axioma~\theaxioma\ifstrempty{#1}{}{ (#1)}}%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{principi}[1][]{%
+      \refstepcounter{principi}%
+      \begin{tcolorbox}[blocenunciat=PrincipiViolat]%
+      \etiqueta{PrincipiViolat}{Principi~\theprincipi\ifstrempty{#1}{}{ (#1)}}%
     }{\end{tcolorbox}}%
     %
     \renewenvironment{definicio}[1][]{%
@@ -249,6 +259,12 @@
       \begin{tcolorbox}[blocobservacio=ObservacioTaronja]%
       \etiqueta{ObservacioTaronja}{Observaci\'{o}~\theobservacio\ifstrempty{#1}{}{ (#1)}}%
     }{\end{tcolorbox}}%
+    %
+    \renewenvironment{notacio}[1][]{%
+      \refstepcounter{notacio}%
+      \begin{tcolorbox}[blocobservacio=NotacioTeal]%
+      \etiqueta{NotacioTeal}{Notaci\'{o}~\thenotacio\ifstrempty{#1}{}{ (#1)}}%
+    }{\end{tcolorbox}}%
   }
 \fi\fi
 
@@ -294,6 +310,18 @@
       \refstepcounter{axioma}%
       \begin{tcolorbox}[aprendesbox=ExerciciSuau,
         title={Axioma~\theaxioma\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{principi}[1][]{%
+      \refstepcounter{principi}%
+      \begin{tcolorbox}[aprendesbox=ObservacioSuau,
+        title={Principi~\theprincipi\ifstrempty{#1}{}{ (#1)}}]%
+    }{\end{tcolorbox}}%
+    %
+    \renewenvironment{notacio}[1][]{%
+      \refstepcounter{notacio}%
+      \begin{tcolorbox}[aprendesbox=NotacioSuau,
+        title={Notaci\'{o}~\thenotacio\ifstrempty{#1}{}{ (#1)}}]%
     }{\end{tcolorbox}}%
     %
     \renewenvironment{solucio}{%

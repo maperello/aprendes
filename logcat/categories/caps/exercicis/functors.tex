@@ -108,6 +108,36 @@ $\Hom(A,-)$ és un functor i, per tant, preserva isomorfismes; a $\cat{Set}$ els
 \end{indicacio}
 \end{exercici}
 
+\section{Elements generalitzats}
+
+\begin{exercici}
+Formula i demostra la versió dual de la proposició~\ref{prop:elements-generalitzats}: un morfisme $f\colon A\to B$ és un epimorfisme si i només si, per a tot objecte $Y$, la precomposició $f^*\colon\Hom(B,Y)\to\Hom(A,Y)$ és injectiva, i és un isomorfisme si i només si totes aquestes precomposicions són bijectives. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Aplica la proposició a $\cat{C}\op$, on $f$ va de $B$ a $A$ i els elements generalitzats de $B$ a $\cat{C}\op$ són els morfismes $B\to Y$ de $\cat{C}$. Comprova que la postcomposició a $\cat{C}\op$ és la precomposició a $\cat{C}$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+En un preordre $(P,\le)$ vist com a categoria, què és un element generalitzat de $a$ de forma $x$? Dedueix de la proposició~\ref{prop:elements-generalitzats} que $a$ i $b$ són isomorfs si i només si tenen exactament les mateixes cotes inferiors, i interpreta el resultat a $\cat{Prov}_T$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Hi ha com a màxim un element de cada forma. Si $a\le b$, la postcomposició $\Hom(x,a)\to\Hom(x,b)$ és bijectiva exactament quan $x\le b$ implica $x\le a$. Pren $x=b$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+A $\cat{Set}$, quins elements generalitzats té un conjunt $A$ de forma $\varnothing$? Explica per què la forma $\varnothing$ sola no separa aplicacions, mentre que la forma $\{\ast\}$ sola sí. \hfill{\normalfont$\star$}
+\begin{indicacio}
+$\varnothing$ és inicial a $\cat{Set}$: de $\varnothing$ cap a qualsevol conjunt hi ha exactament una aplicació.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}[Troba l'error]
+Considerem l'argument següent. \enquote{Sigui $\mathbf L$ el graf d'un bucle. Un morfisme de grafs $f\colon G\to H$ és un isomorfisme si i només si $f_*\colon\Hom(\mathbf L,G)\to\Hom(\mathbf L,H)$ és bijectiva. En efecte, $\mathbf L$ fa a $\cat{Graph}$ el paper que fa $\{\ast\}$ a $\cat{Set}$, i a $\cat{Set}$ una aplicació és bijectiva si i només si ho és sobre els elements.} Troba un contraexemple a la conclusió i explica quin pas de l'argument falla. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Considera el morfisme $\sigma\colon\mathbf V\to\mathbf E$. Quants elements de forma $\mathbf L$ tenen $\mathbf V$ i $\mathbf E$? L'analogia amb $\{\ast\}$ és correcta en un sentit (la propietat de rebre un únic morfisme de cada objecte) i falsa en un altre (separar morfismes); la proposició~\ref{prop:elements-generalitzats} demana \emph{totes} les formes.
+\end{indicacio}
+\end{exercici}
+
 \section{Functors fidels i plens}
 
 \begin{exercici}

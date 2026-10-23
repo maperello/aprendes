@@ -108,6 +108,20 @@ Pensa en les dues topologies extremes sobre un conjunt.
 \end{indicacio}
 \end{exercici}
 
+\begin{exercici}
+Sigui $E\colon\cat{Graph}\to\cat{Set}$ el functor que envia cada graf al seu conjunt d'arestes. Demostra que té un adjunt per l'esquerra i un per la dreta, i descriu-los: per l'esquerra, el graf format per $S$ còpies disjuntes del graf $\mathbf E$; per la dreta, el graf amb un sol vèrtex i un bucle per a cada element de $S$. Compara-ho amb l'exercici resolt~\ref{pr-adjunts-grafs}. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Un morfisme des de $S$ còpies de $\mathbf E$ tria, independentment, una aresta per a cada còpia. Un morfisme cap al graf d'un vèrtex i $S$ bucles té la part sobre vèrtexs forçada, i cada aresta pot anar a qualsevol bucle.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}[Grafs reflexius]
+Un \emph{graf reflexiu} és un graf $G$ amb una aplicació $\ell_G\colon V_G\to E_G$ que assigna a cada vèrtex $v$ un bucle distingit $\ell_G(v)\colon v\to v$; un morfisme de grafs reflexius és un morfisme de grafs que envia bucles distingits a bucles distingits. Sigui $\pi_0(G)$ el conjunt de \emph{components connexos} de $G$: el quocient de $V_G$ per la relació d'equivalència generada per \enquote{hi ha una aresta de $v$ a $w$}. Sigui $\mathrm{Disc}(S)$ el graf reflexiu amb vèrtexs $S$ i només els bucles distingits. Demostra que $\pi_0\dashv\mathrm{Disc}$, i explica què hi ha canviat respecte de l'exercici resolt~\ref{pr-adjunts-grafs}. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Un morfisme $G\to\mathrm{Disc}(S)$ envia cada aresta $v\to w$ a un bucle distingit, cosa que només és possible si $v$ i $w$ van al mateix vèrtex. Les aplicacions $V_G\to S$ que compleixen aquesta condició són exactament les que són constants sobre cada component connex. Ara $\mathrm{Disc}(\{\ast\})$ és un vèrtex amb el seu bucle, que sí que és terminal.
+\end{indicacio}
+\end{exercici}
+
 \section{Exponencials}
 
 \begin{exercici}

@@ -3,8 +3,9 @@
 # comprova.sh — comprovacions posteriors a la compilació (make ci).
 #   ús: ./comprova.sh JOBNAME [CAMPS_ESPERATS]
 # Falla (codi 1) si hi ha errors, referències o citacions no
-# resoltes, avisos de formulari duplicat o un nombre de camps
-# diferent de l'esperat. Informa dels desbordaments de més de 3 pt.
+# resoltes, etiquetes duplicades, avisos de cadena PDF, avisos de
+# Biber (si n'hi ha), avisos de formulari duplicat o un nombre de
+# camps diferent de l'esperat. Informa dels desbordaments de més de 3 pt.
 # ============================================================
 set -u
 JOB="$1"; ESPERATS="${2:-}"
@@ -14,6 +15,11 @@ echo "== Comprovació de $JOB =="
 n=$(grep -c '^! ' "$LOG"); [ "$n" -eq 0 ] || { echo "ERROR: $n errors de LaTeX"; OK=1; }
 n=$(grep -c -E 'Reference .* undefined|Citation .* undefined|There were undefined references' "$LOG")
 [ "$n" -eq 0 ] || { echo "ERROR: $n referències o citacions no resoltes"; OK=1; }
+n=$(grep -c -E 'multiply[ -]defined' "$LOG"); [ "$n" -eq 0 ] || { echo "ERROR: $n etiquetes definides més d'un cop"; OK=1; }
+n=$(grep -c 'Token not allowed in a PDF string' "$LOG"); [ "$n" -eq 0 ] || { echo "ERROR: $n avisos de cadena PDF (hyperref)"; OK=1; }
+if [ -f "$JOB.blg" ]; then
+  n=$(grep -c -i -E "WARN.*(can't find|not found)|^ERROR" "$JOB.blg"); [ "$n" -eq 0 ] || { echo "ERROR: $n avisos o errors de Biber"; OK=1; }
+fi
 n=$(grep -c 'Label(s) may have changed' "$LOG"); [ "$n" -eq 0 ] || echo "AVÍS: les etiquetes poden haver canviat (cal una passada més)"
 if [ -f "$JOB.xdvlog" ]; then
   n=$(grep -c 'already defined' "$JOB.xdvlog"); [ "$n" -eq 0 ] || { echo "ERROR: $n objectes de formulari duplicats"; OK=1; }

@@ -7,6 +7,7 @@
 \begin{itemize}
   \item definir l'objecte exponencial per la seva propietat universal, com a representació del functor $A\mapsto\Hom(A\times B,C)$, i escriure les dues lleis de la currificació;
   \item reconèixer una categoria cartesiana tancada i l'exponencial com a adjunt per la dreta de $-\times B$;
+  \item demostrar que en una CCC el producte es distribueix sobre els coproductes, i fer servir aquest fet per descartar el tancament cartesià;
   \item caracteritzar els ordres parcials cartesians tancats com a semireticles implicatius amb màxim, i relacionar-los amb les àlgebres de Heyting;
   \item situar $\cat{Set}$, els preordres, les categories de prefeixos, $\cat{Graph}$ i $\cat{Top}$ respecte del tancament cartesià;
   \item interpretar el càlcul lambda simplement tipat en una CCC, incloses les lleis $\beta$ i $\eta$ i les regles estructurals.
@@ -140,6 +141,48 @@ La condició es pot resumir dient que en una CCC les tres operacions \enquote{no
 La tancadura és una propietat \emph{objecte a objecte}: cal l'exponencial per a \emph{cada} base $B$. Una categoria pot tenir alguns exponencials i no ser tancada. La demanda uniforme ---un adjunt per la dreta de $-\times B$ per a tot $B$--- és el que fa que la currificació estigui sempre disponible.
 \end{observacio}
 
+Una conseqüència immediata del tancament, i molt rellevant per a la lògica, és que el producte es distribueix sobre els coproductes que existeixin.
+
+\begin{proposicio}[Distributivitat]\label{prop:distributivitat}\index{distributivitat!en una CCC}\index{categoria!cartesiana tancada!distributivitat}
+Sigui $\cat{C}$ una categoria cartesiana tancada i $A$ un objecte de $\cat{C}$.
+\begin{enumerate}
+\item Si $B$ i $B'$ tenen coproducte $B+B'$, amb injeccions $\iota_1,\iota_2$, aleshores $A\times(B+B')$, amb els morfismes $\id_A\times\iota_1$ i $\id_A\times\iota_2$, és un coproducte de $A\times B$ i $A\times B'$. En particular, si el coproducte $(A\times B)+(A\times B')$ existeix, el morfisme canònic
+\[
+[\id_A\times\iota_1,\ \id_A\times\iota_2]\colon(A\times B)+(A\times B')\longrightarrow A\times(B+B')
+\]
+és un isomorfisme.
+\item Si $\cat{C}$ té objecte inicial $0$, aleshores $A\times 0$ també és inicial; per tant, $A\times 0\cong 0$.
+\end{enumerate}
+\end{proposicio}
+
+\begin{prova}
+L'argument té dos passos. Primer, $A\times-$ és un adjunt per l'esquerra. En efecte, l'isomorfisme de simetria $A\times X\cong X\times A$, natural en $X$, i la currificació (proposició~\ref{prop:adjuncio-exp}) donen bijeccions
+\[
+\Hom(A\times X,\,Y)\;\cong\;\Hom(X\times A,\,Y)\;\cong\;\Hom(X,\,Y^{A}),
+\]
+naturals en $X$ i en $Y$; és a dir, $A\times-\dashv(-)^{A}$. Segon, els adjunts per l'esquerra preserven els colímits que existeixen (teorema~\ref{teo:adjunts-preserven-limits}). El coproducte binari és el colímit d'un diagrama discret de dos objectes, i l'objecte inicial és el colímit del diagrama buit. Per tant, $A\times-$ envia el coproducte $(B+B',\iota_1,\iota_2)$ al coproducte $(A\times(B+B'),\ \id_A\times\iota_1,\ \id_A\times\iota_2)$, i envia $0$ a un objecte inicial. L'afirmació sobre el morfisme canònic és la unicitat del coproducte: dos coproductes dels mateixos objectes són isomorfs per un únic isomorfisme compatible amb les injeccions, i aquest isomorfisme és el morfisme canònic. L'execució detallada, amb la lectura a $\cat{Set}$ i en una àlgebra de Heyting, és l'exercici resolt~\ref{pr-distributivitat} de la Pràctica.
+\end{prova}
+
+\begin{observacio}[La distributivitat no és automàtica]\label{obs:distributivitat-no-automatica}\index{distributivitat!contraexemple}
+En tota categoria amb productes i coproductes binaris hi ha el morfisme canònic $(A\times B)+(A\times B')\to A\times(B+B')$; el que no és automàtic és que sigui un isomorfisme. A $\cat{Vect}_{\mathbb K}$, el producte i el coproducte de dos espais són tots dos la suma directa $V\oplus W$ (amb les projeccions i les injeccions, respectivament). Aleshores
+\[
+\dim\bigl(\mathbb K\times(\mathbb K+\mathbb K)\bigr)=3,
+\qquad
+\dim\bigl((\mathbb K\times\mathbb K)+(\mathbb K\times\mathbb K)\bigr)=4,
+\]
+i els dos espais no són isomorfs. La proposició~\ref{prop:distributivitat} dona, doncs, un criteri negatiu: $\cat{Vect}_{\mathbb K}$, amb el seu producte, \emph{no} és cartesiana tancada, perquè, si ho fos, la distributivitat hi valdria.\footnote{$\cat{Vect}_{\mathbb K}$ té, en canvi, una estructura tancada respecte d'un altre producte, el producte tensorial; és un exemple de categoria monoidal tancada, que aquest volum no tracta.}
+
+Convé no confondre tampoc dues distributivitats diferents. La proposició parla d'\emph{objectes}: del producte i el coproducte de la categoria. Al capítol~\ref{cap:subobjectes} trobarem ordres parcials $\Sub(A)$ de subobjectes, i allà la pregunta serà si la intersecció es distribueix sobre la unió \emph{dins} de $\Sub(A)$. Són enunciats en categories diferents. En un preordre cartesià tancat amb suprems finits coincideixen, perquè el producte és l'ínfim i el coproducte és el suprem (exemple~\ref{ex:preordres-ccc}); en general cal demostrar-los per separat, i en un topos valen tots dos (nota~\ref{nota:sub-heyting}).
+\end{observacio}
+
+\begin{observacio}[Lectura lògica: raonar per casos amb un context]\index{distributivitat!lectura lògica}
+Combinant la proposició amb la propietat universal del coproducte, per a tot objecte $Y$,
+\[
+\Hom\bigl(A\times(B+B'),\,Y\bigr)\;\cong\;\Hom(A\times B,\,Y)\times\Hom(A\times B',\,Y).
+\]
+Si llegim $A$ com un context de dades o d'hipòtesis disponibles, el costat esquerre és una manera d'obtenir $Y$ a partir del context i d'una alternativa $B+B'$, i el costat dret és una parella de maneres d'obtenir-lo, una per a cada cas. La bijecció diu que \emph{raonar per casos es pot fer dins d'un context}: per tractar l'alternativa, n'hi ha prou de tractar cada cas amb el context encara disponible. A $\cat{Prov}_T$ és la regla d'eliminació de la disjunció amb hipòtesis addicionals; en programació, és l'anàlisi de casos sobre un valor d'un tipus suma dins d'una funció que té altres arguments.
+\end{observacio}
+
 \section{Exemples fonamentals}
 
 \begin{exemple}[$\cat{Set}$]\index{Set@$\cat{Set}$!cartesiana tancada}
@@ -174,7 +217,7 @@ Així, $\ev\comp(\Lambda F\times\id_{\cat{B}})=F$: avaluar la currificació torn
 i el pas de la segona a la tercera és la currificació, amb l'avaluació com a inversa.
 \end{exemple}
 
-\begin{exemple}[Preordres cartesians tancats]\index{semireticle implicatiu}\index{àlgebra de Heyting}\index{Heyting}
+\begin{exemple}[Preordres cartesians tancats]\label{ex:preordres-ccc}\index{semireticle implicatiu}\index{àlgebra de Heyting}\index{Heyting}
 Un preordre amb ínfims finits, vist com a categoria, és cartesià: el terminal és l'element màxim $\top$ i el producte és l'ínfim $x\wedge y$. Té exponencials si i només si, per a cada $b$, l'operació $-\wedge b$ té adjunt per la dreta; aquest adjunt és la \textbf{implicació} $b\Rightarrow-$, caracteritzada per
 \[
 a\wedge b\leq c\quad\Longleftrightarrow\quad a\leq(b\Rightarrow c).
@@ -185,7 +228,7 @@ a\sim b\quad\Longleftrightarrow\quad a\leq b\ \text{i}\ b\leq a,
 \]
 perquè en la terminologia algebraica habitual un semireticle és un ordre parcial. Aquesta estructura captura la part $(\top,\wedge,\Rightarrow)$ de la lògica.
 
-Convé no confondre aquesta estructura amb una àlgebra de Heyting. Una \textbf{àlgebra de Heyting}\index{àlgebra de Heyting} és un \emph{reticle distributiu acotat} ---amb ínfims finits $\top,\wedge$ i \emph{suprems finits} $\bot,\vee$--- proveït d'una implicació que satisfà l'equivalència anterior. El tancament cartesià per si sol només dona la part multiplicativa: no garanteix ni els joins $\vee$ ni el mínim $\bot$. Reservem, doncs, el nom \emph{àlgebra de Heyting} per al cas amb suprems finits; un semireticle implicatiu amb màxim que a més tingui suprems finits (i sigui distributiu, cosa automàtica en presència de la implicació) és una àlgebra de Heyting. Aquest exemple és decisiu per a la lògica: la implicació intuïcionista \emph{és} l'exponencial, i el tancament cartesià és la traducció algebraica de disposar del connectiu $\to$, mentre que la disjunció $\vee$ correspon als suprems.
+Convé no confondre aquesta estructura amb una àlgebra de Heyting. Una \textbf{àlgebra de Heyting}\index{àlgebra de Heyting} és un \emph{reticle distributiu acotat} ---amb ínfims finits $\top,\wedge$ i \emph{suprems finits} $\bot,\vee$--- proveït d'una implicació que satisfà l'equivalència anterior. El tancament cartesià per si sol només dona la part multiplicativa: no garanteix ni els joins $\vee$ ni el mínim $\bot$. Reservem, doncs, el nom \emph{àlgebra de Heyting} per al cas amb suprems finits; un semireticle implicatiu amb màxim que a més tingui suprems finits (i sigui distributiu, cosa automàtica en presència de la implicació per la proposició~\ref{prop:distributivitat}) és una àlgebra de Heyting. Aquest exemple és decisiu per a la lògica: la implicació intuïcionista \emph{és} l'exponencial, i el tancament cartesià és la traducció algebraica de disposar del connectiu $\to$, mentre que la disjunció $\vee$ correspon als suprems.
 \end{exemple}
 
 \begin{observacio}[Atenció: cartesià tancat no vol dir àlgebra de Heyting]\label{obs:ccc-no-heyting}\index{àlgebra de Heyting!i preordres cartesians tancats}
@@ -195,7 +238,7 @@ b\Rightarrow c=\begin{cases}+\infty&\text{si } b\leq c,\\ c&\text{si } b>c.\end{
 \]
 En efecte, si $b\leq c$ tenim $a\wedge b\leq c$ per a tot $a$; si $b>c$, tenim $\min(a,b)\leq c$ si i només si $a\leq c$. Per tant és un ordre parcial cartesià tancat. Però no té element mínim, de manera que no és una àlgebra de Heyting. Aquí no existeixen ni $\bot$, ni la negació $\neg b=(b\Rightarrow\bot)$, ni el principi \emph{ex falso}; no hi ha, doncs, cap interpretació de la falsedat. En altres exemples pot faltar el suprem binari $\vee$, i amb ell la disjunció.
 
-La relació exacta és aquesta: una àlgebra de Heyting és un ordre parcial cartesià tancat que, a més, té coproductes finits ($\bot$ i $\vee$). La distributivitat ve aleshores gratis, perquè $-\wedge b$, com a adjunt per l'esquerra, preserva els suprems (capítol~\ref{cap:adjuncions}). L'estructura de Heyting també condiciona els morfismes: un morfisme d'àlgebres de Heyting ha de preservar $\bot$ i $\vee$, cosa que no demana un functor que només preservi l'estructura cartesiana tancada. En lògica, el tancament cartesià modela el fragment $(\top,\wedge,\to)$; la falsedat i la disjunció són estructura addicional.
+La relació exacta és aquesta: una àlgebra de Heyting és un ordre parcial cartesià tancat que, a més, té coproductes finits ($\bot$ i $\vee$). La distributivitat ve aleshores gratis, perquè $-\wedge b$, com a adjunt per l'esquerra, preserva els suprems: és el cas prim de la proposició~\ref{prop:distributivitat}. L'estructura de Heyting també condiciona els morfismes: un morfisme d'àlgebres de Heyting ha de preservar $\bot$ i $\vee$, cosa que no demana un functor que només preservi l'estructura cartesiana tancada. En lògica, el tancament cartesià modela el fragment $(\top,\wedge,\to)$; la falsedat i la disjunció són estructura addicional.
 \end{observacio}
 
 \begin{exemple}[Categories de prefeixos]\index{prefeix@prefeix!cartesiana tancada}
@@ -270,10 +313,11 @@ La correspondència es pot fer precisa: després de fixar una noció adequada de
 \begin{enumerate}
   \item L'objecte exponencial $C^{B}$ representa el functor $A\mapsto\Hom(A\times B,C)$; la currificació és la bijecció corresponent, amb les dues lleis $\ev\comp(\lambda f\times\id_B)=f$ i $\lambda(\ev\comp(g\times\id_B))=g$.
   \item Una categoria cartesiana tancada té productes finits i tots els exponencials; els exponencials s'organitzen en un bifunctor contravariant en l'exponent i covariant en la base.
+  \item En una CCC, $A\times-$ és adjunt per l'esquerra i, per tant, preserva coproductes i l'objecte inicial: $A\times(B+B')\cong(A\times B)+(A\times B')$ i $A\times 0\cong 0$. Lògicament, és el raonament per casos dins d'un context; a $\cat{Vect}_{\mathbb K}$ falla, i per això no és cartesiana tancada.
   \item Un ordre parcial cartesià tancat és un semireticle implicatiu amb màxim; per a un preordre, aquesta descripció val després de passar al quocient per l'equivalència $a\sim b$. Si, a més, hi ha suprems finits, s'obté una àlgebra de Heyting; sense ells, no (per exemple, $\mathbb Z\cup\{+\infty\}$ no té $\bot$).
   \item $\cat{Set}$, $\cat{Cat}$, les categories de prefeixos i, en particular, $\cat{Graph}$ són cartesianes tancades. A $\cat{Cat}$, l'avaluació i la currificació identifiquen les transformacions naturals amb els functors $\cat{A}\times\cat{2}\to\cat{C}$ i $\cat{A}\to\cat{C}^{\cat{2}}$; $\cat{Top}$ no ho és en general.
   \item El càlcul lambda simplement tipat s'interpreta en tota CCC: els contextos com a productes, l'abstracció com a currificació, i les lleis $\beta$ i $\eta$ com a conseqüències de les dues lleis de la currificació.
 \end{enumerate}
 \apartat{Errors típics} Identificar tota categoria cartesiana tancada amb una àlgebra de Heyting, fins i tot quan és un ordre parcial (poden faltar $\bot$ i els joins, i amb ells la negació i la disjunció); atribuir la functorialitat del producte a la diagonal en lloc de a la seva propietat universal; i tractar la correspondència de Curry--Howard--Lambek com una igualtat en lloc d'una equivalència amb estructura triada.
-\apartat{Lectura recomanada} \cite[cap.~6]{awodey} per a exponencials i CCC; \cite{lambekscott} per a la correspondència amb el càlcul lambda; \cite[cap.~1]{maclanemoerdijk} per als exemples de prefeixos; \cite[cap.~6]{barrwells}, que presenta les CCC i el càlcul lambda tipat i calcula explícitament l'exponencial de dos grafs (exemple~6.1.12); i \cite[§4.3]{riehl} per a la formulació de l'exponencial com a adjunt; \cite[§11]{streicher}, per als exponencials en categories de prefeixos (§11.1) i la semàntica del càlcul lambda tipat (§11.2); i \cite[article~V, sessions~30--31]{lawvereschanuel}, per a una introducció molt elemental als objectes de morfismes.
+\apartat{Lectura recomanada} \cite[cap.~6]{awodey} per a exponencials i CCC; \cite{lambekscott} per a la correspondència amb el càlcul lambda; \cite[cap.~1]{maclanemoerdijk} per als exemples de prefeixos; \cite[cap.~6]{barrwells}, que presenta les CCC i el càlcul lambda tipat i calcula explícitament l'exponencial de dos grafs (exemple~6.1.12); i \cite[§4.3]{riehl} per a la formulació de l'exponencial com a adjunt; \cite[§11]{streicher}, per als exponencials en categories de prefeixos (§11.1) i la semàntica del càlcul lambda tipat (§11.2); \cite[part~IV, sessions~25--26]{lawvereschanuel}, per a la llei distributiva i les categories distributives i lineals, amb el contrast entre totes dues; i \cite[article~V, sessions~30--31]{lawvereschanuel}, per a una introducció molt elemental als objectes de morfismes.
 \end{resumcap}

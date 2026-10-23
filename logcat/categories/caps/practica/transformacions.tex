@@ -244,6 +244,18 @@ Convé distingir, a més, dues menes de nocions entre les que hem comprovat. Ser
 \end{solucio}
 
 
+\begin{exercici}\label{pr-lindenbaum}
+Sigui $T$ un sistema deductiu proposicional amb la conjunció $\land$ i les seves regles usuals: $p\land q\vdash_T p$, $p\land q\vdash_T q$, i de $r\vdash_T p$ i $r\vdash_T q$ se segueix $r\vdash_T p\land q$. Fes explícita l'equivalència $\cat{Prov}_T\simeq\mathcal L_T$ de l'exemple~\ref{ex:prov-lindenbaum}: construeix un quasiinvers $G$ del functor $Q\colon p\mapsto[p]$ i els dos isomorfismes naturals. Comprova després que la conjunció passa al quocient i que $[p\land q]$ és l'ínfim de $[p]$ i $[q]$ a $\mathcal L_T$.
+\end{exercici}
+
+\begin{solucio}
+\textbf{El quasiinvers.} Per a cada classe $c\in\mathcal L_T$ triem una fórmula representant $G(c)\in c$. Si $c\leq c'$, els representants compleixen $G(c)\vdash_T G(c')$, perquè la condició no depèn dels representants; definim $G$ sobre aquesta fletxa com l'única fletxa $G(c)\to G(c')$ de $\cat{Prov}_T$. És un functor perquè les dues categories són primes: entre dos objectes hi ha com a màxim una fletxa, i qualsevol equació entre fletxes paral·leles es compleix.
+
+\textbf{Els isomorfismes naturals.} D'una banda, $Q(G(c))=[G(c)]=c$, de manera que $Q\comp G=\id_{\mathcal L_T}$ literalment. De l'altra, $G(Q(p))$ és el representant de la classe de $p$, que és interdeduïble amb $p$; per tant, hi ha una fletxa $\eta_p\colon p\to G([p])$ i una fletxa en sentit contrari, i $\eta_p$ és un isomorfisme. La família $(\eta_p)_p$ és natural, perquè a $\cat{Prov}_T$ els dos camins d'un quadrat de naturalitat són fletxes paral·leles i, per tant, iguals. Així, $G\comp Q\cong\id_{\cat{Prov}_T}$, i no és una igualtat: $G(Q(q\land p))$ és el representant triat de la classe, que pot ser $p\land q$ i no $q\land p$.
+
+\textbf{La conjunció al quocient.} Si $p$ és interdeduïble amb $p'$ i $q$ amb $q'$, de $p\land q\vdash_T p\vdash_T p'$ i $p\land q\vdash_T q\vdash_T q'$ obtenim $p\land q\vdash_T p'\land q'$, i simètricament. Per tant, $[p]\wedge[q]:=[p\land q]$ no depèn dels representants. És una cota inferior de $[p]$ i $[q]$ per les dues primeres regles, i és la més gran per la tercera: si $[r]\leq[p]$ i $[r]\leq[q]$, aleshores $r\vdash_T p\land q$. Les tres regles de la conjunció diuen, doncs, exactament que $[p\land q]$ és l'ínfim, és a dir, el producte de $[p]$ i $[q]$ a la categoria prima $\mathcal L_T$. Aquí sí que cal la hipòtesi sobre els connectius de $T$; l'equivalència, no.
+\end{solucio}
+
 \section{Composició horitzontal}
 
 \begin{exercici}\label{pr-comp-horitzontal}

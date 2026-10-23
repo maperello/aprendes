@@ -142,3 +142,65 @@ Sigui $S\subseteq X\times Y$ el subconjunt corresponent a $[s]$. Aleshores
 El primer és la imatge de $S$ per $\pi$ (l'existencial); el segon, el conjunt de fibres senceres contingudes en $S$ (l'universal). Són els casos particulars, per a una projecció, de la cadena $\exists_f\dashv f^{*}\dashv\forall_f$ de l'exemple~\ref{ex:quantificadors-set} del capítol d'adjuncions: l'adjunció $\exists_\pi\dashv\pi^{*}$ es comprova com a l'exercici anterior, i $\pi^{*}\dashv\forall_\pi$ amb un argument anàleg, no per dualitat. Així, en una categoria regular tenim l'existencial; l'universal requereix, a més, adjunts per la dreta, que apareixen en contextos més rics (categories de Heyting).
 \end{solucio}
 
+\section{Sumes i productes dependents}
+
+\begin{exercici}\label{pr-sigma-pi}
+Siguin $A=\{1,2,3\}$, $B=\{x,y\}$ i $f\colon A\to B$ amb $f(1)=f(2)=x$ i $f(3)=y$. Sigui $X$ l'objecte de $\cat{Set}/A$ amb fibres $X_1=\{p,q\}$, $X_2=\{r\}$ i $X_3=\varnothing$.
+\begin{enumerate}
+\item Calcula les fibres de $\Sigma_f X$ i de $\Pi_f X$.
+\item Sigui $Y$ l'objecte de $\cat{Set}/B$ amb fibres $Y_x=\{u\}$ i $Y_y=\varnothing$. Compta els morfismes $f^{*}Y\to X$ sobre $A$ i els morfismes $Y\to\Pi_f X$ sobre $B$, i comprova que en surten tants com prediu la proposició~\ref{prop:sigma-pi-set}.
+\item Per als subconjunts $S=\{1,2\}$ i $S'=\{1\}$ de $A$, calcula $\Sigma_f$, $\exists_f$ i $\forall_f$.
+\end{enumerate}
+\end{exercici}
+
+\begin{solucio}
+\textbf{(1)} Sobre $x$ hi ha els punts $1$ i $2$, i sobre $y$, el punt $3$. Per tant,
+\[
+(\Sigma_f X)_x=X_1\sqcup X_2=\{p,q,r\},\qquad(\Sigma_f X)_y=X_3=\varnothing,
+\]
+\[
+(\Pi_f X)_x=X_1\times X_2=\{(p,r),(q,r)\},\qquad(\Pi_f X)_y=X_3=\varnothing.
+\]
+La fibra de $\Pi_f X$ sobre $x$ té dos elements: cada un tria un element de $X_1$ i un de $X_2$.
+
+\textbf{(2)} Les fibres de $f^{*}Y$ són $Y_{f(1)}=\{u\}$, $Y_{f(2)}=\{u\}$ i $Y_{f(3)}=\varnothing$. Un morfisme $f^{*}Y\to X$ sobre $A$ és una terna d'aplicacions
+\[
+\{u\}\to\{p,q\},\qquad\{u\}\to\{r\},\qquad\varnothing\to\varnothing,
+\]
+i n'hi ha $2\cdot1\cdot1=2$. Un morfisme $Y\to\Pi_f X$ sobre $B$ és una parella d'aplicacions $\{u\}\to\{(p,r),(q,r)\}$ i $\varnothing\to\varnothing$, i també n'hi ha $2\cdot 1=2$. La bijecció de la proposició és la que hi ha a la prova: les dues aplicacions $\{u\}\to\{p,q\}$ i $\{u\}\to\{r\}$, agrupades perquè $1$ i $2$ són sobre el mateix $x$, donen una sola aplicació $\{u\}\to X_1\times X_2$.
+
+\textbf{(3)} El subconjunt $S=\{1,2\}$ té fibres $S_1=S_2=\{\ast\}$ i $S_3=\varnothing$. Aleshores $(\Sigma_f S)_x=S_1\sqcup S_2$ té \emph{dos} elements: $\Sigma_f S$ no és un subconjunt de $B$, sinó una família que recorda que hi ha dos testimonis sobre $x$. La seva imatge és $\exists_f(S)=\{x\}$. D'altra banda, $(\Pi_f S)_x=S_1\times S_2$ té un element i $(\Pi_f S)_y=S_3$ és buida, de manera que $\forall_f(S)=\{x\}$, d'acord amb $f^{-1}(x)=\{1,2\}\subseteq S$ i $f^{-1}(y)\not\subseteq S$.
+
+Per a $S'=\{1\}$, la fibra $(\Sigma_f S')_x$ té un sol element, i $\exists_f(S')=\{x\}$. Però $(\Pi_f S')_x=S'_1\times S'_2=\{\ast\}\times\varnothing=\varnothing$, i $\forall_f(S')=\varnothing$: no tots els punts sobre $x$ són a $S'$. Les dues situacions mostren la diferència entre els quantificadors. L'existencial mira si la fibra de $\Sigma_f$ és no buida; l'universal, si el producte de les fibres ho és.
+\end{solucio}
+
+\begin{exercici}\label{pr-sigma-pi-naturalitat}
+Completa la prova de la proposició~\ref{prop:sigma-pi-set}: comprova que les dues bijeccions són naturals en les dues variables.
+\end{exercici}
+
+\begin{solucio}
+Escrivim un objecte $x\colon X\to A$ de $\cat{Set}/A$ per les seves fibres $X_a$, i un morfisme $k\colon X'\to X$ sobre $A$ per les seves components $k_a\colon X'_a\to X_a$. Igual sobre $B$.
+
+\textbf{$\Sigma_f\dashv f^{*}$.} La bijecció $\theta$ envia un morfisme $h\colon\Sigma_f X\to Y$ sobre $B$ a la família de les seves restriccions $\theta(h)_a=h|_{X_a}\colon X_a\to Y_{f(a)}$. \emph{Naturalitat en $Y$:} per a $g\colon Y\to Y'$ sobre $B$, $f^{*}g$ té components $g_{f(a)}$, i
+\[
+\theta(g\comp h)_a=(g\comp h)|_{X_a}=g_{f(a)}\comp h|_{X_a}=\bigl(f^{*}g\comp\theta(h)\bigr)_a.
+\]
+\emph{Naturalitat en $X$:} per a $k\colon X'\to X$ sobre $A$, $\Sigma_f k$ és el mateix $k$, i
+\[
+\theta(h\comp k)_a=(h\comp k)|_{X'_a}=h|_{X_a}\comp k_a=\bigl(\theta(h)\comp k\bigr)_a.
+\]
+
+\textbf{$f^{*}\dashv\Pi_f$.} La bijecció $\psi$ envia un morfisme $\varphi\colon f^{*}Y\to X$ sobre $A$, de components $\varphi_a\colon Y_{f(a)}\to X_a$, al morfisme $\psi(\varphi)\colon Y\to\Pi_f X$ de components
+\[
+\psi(\varphi)_b(y)=\bigl(\varphi_a(y)\bigr)_{a\in f^{-1}(b)}\in\prod_{a\in f^{-1}(b)}X_a.
+\]
+\emph{Naturalitat en $Y$:} per a $g\colon Y'\to Y$ sobre $B$ i $y'\in Y'_b$,
+\[
+\psi\bigl(\varphi\comp f^{*}g\bigr)_b(y')=\bigl(\varphi_a(g_b(y'))\bigr)_{a}=\psi(\varphi)_b\bigl(g_b(y')\bigr)=\bigl(\psi(\varphi)\comp g\bigr)_b(y'),
+\]
+on hem fet servir que, per a $a\in f^{-1}(b)$, la component $(f^{*}g)_a$ és $g_{f(a)}=g_b$. \emph{Naturalitat en $X$:} per a $k\colon X\to X'$ sobre $A$, $\Pi_f k$ aplica $k_a$ a cada component, i
+\[
+\psi(k\comp\varphi)_b(y)=\bigl(k_a(\varphi_a(y))\bigr)_{a}=(\Pi_f k)_b\bigl(\psi(\varphi)_b(y)\bigr).
+\]
+En els quatre casos la comprovació es redueix a la mateixa observació: les bijeccions no fan cap tria, només reagrupen components, i compondre abans o després de reagrupar dona el mateix.
+\end{solucio}

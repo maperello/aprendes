@@ -168,6 +168,20 @@ Si $g\comp f=h\comp f$ i $y\in B$, n'hi ha prou de tenir \emph{algun} $x$ amb $f
 \end{indicacio}
 \end{exercici}
 
+\begin{exercici}
+Sigui $e\colon A\to A$ un idempotent amb dues escissions, $(B,r,s)$ i $(B',r',s')$. Demostra que $\varphi=r'\comp s\colon B\to B'$ és un isomorfisme, amb invers $r\comp s'$, i que és l'únic morfisme $B\to B'$ amb $s'\comp\varphi=s$ i $\varphi\comp r=r'$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Calcula $(r\comp s')\comp(r'\comp s)$ inserint $\id_B=r\comp s$ als extrems: s'hi forma $s\comp r=e=s'\comp r'$. Per a la unicitat, compon $s'\comp\varphi=s$ per l'esquerra amb $r'$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $f\colon A\to B$ un morfisme amb una secció $s$, és a dir, $f\comp s=\id_B$. Quin idempotent determina sobre $A$? I si en comptes d'una secció $f$ té una retracció $r$, quin idempotent apareix, i sobre quin objecte? Comprova-ho a $\cat{Set}$ amb $f\colon\{0,1,2\}\to\{0,1\}$, $f(0)=0$, $f(1)=f(2)=1$, i la secció que tria $2$. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Aplica la proposició~\ref{prop:retracte-idempotent} amb els papers adequats de $r$ i $s$. En el cas de $\cat{Set}$, l'idempotent envia cada element al representant triat de la seva fibra.
+\end{indicacio}
+\end{exercici}
+
 \section{Construccions sobre categories}
 
 \begin{exercici}

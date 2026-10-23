@@ -21,7 +21,11 @@
   \setmainfont{lmroman10-regular.otf}[
     BoldFont=lmroman10-bold.otf,
     ItalicFont=lmroman10-italic.otf,
-    BoldItalicFont=lmroman10-bolditalic.otf
+    BoldItalicFont=lmroman10-bolditalic.otf,
+    % Versaleta explícita (\textsc, \scshape): fontspec no la troba sola
+    % quan la font es carrega per nom de fitxer.
+    SmallCapsFont=lmromancaps10-regular.otf,
+    SmallCapsFeatures={Letters=SmallCaps}
   ]
   \setsansfont{lmsans10-regular.otf}[
     BoldFont=lmsans10-bold.otf,

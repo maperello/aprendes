@@ -8,142 +8,142 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
 
 % --- Definició i composició ---
 \pregunta Un lector afirma: \enquote{Com que la composició d'una categoria és associativa, l'expressió $h\comp g\comp f$ està ben definida per a qualssevol tres morfismes $f,g,h$.} On falla?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{No falla: l'associativitat garanteix que sempre es pot compondre.}
   \opcio{b}{Falla perquè l'associativitat només val en categories petites.}
   \opcio{c}{Falla perquè la composició és \emph{parcial}.}
   \opcio{d}{Falla perquè $h\comp g\comp f$ mai no està definit sense parèntesis.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{$h\comp g\comp f$ només té sentit si $\cod(f)=\dom(g)$ i $\cod(g)=\dom(h)$; l'associativitat només diu que, quan les dues agrupacions existeixen, coincideixen.}
 
 % --- Diagrames commutatius ---
 
 \pregunta Considera el quadrat format per $f\colon A\to B$, $u\colon A\to C$, $v\colon B\to D$ i $g\colon C\to D$. Quina equació expressa que el quadrat commuta?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{$f\comp v=u\comp g$, perquè es llegeix en l'ordre en què es recorren les fletxes.}
   \opcio{b}{$v\comp f=g\comp u$.}
   \opcio{c}{$v\comp u=f\comp g$.}
   \opcio{d}{$f=g$ i $u=v$.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Els dos camins de $A$ a $D$ són \enquote{primer $f$, després $v$} i \enquote{primer $u$, després $g$}, i la composició s'escriu de dreta a esquerra.}
 
 % --- Exemples: lògica ---
 
 \pregunta A la categoria $\cat{Prov}_T$ d'un sistema deductiu $T$, siguin $p$ i $q$ dues fórmules \emph{distintes} tals que $p\vdash_T q$ i $q\vdash_T p$. Què en podem dir?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{Són objectes isomorfs però no iguals: $\cat{Prov}_T$ és prima, però la deduïbilitat no és antisimètrica.}
   \opcio{b}{Han de ser iguals, perquè en una categoria prima dos objectes isomorfs coincideixen.}
   \opcio{c}{Hi ha exactament dues fletxes de $p$ a $q$, una per a cada deducció.}
   \opcio{d}{No hi ha cap fletxa entre elles, perquè són fórmules diferents.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Hi ha fletxes en tots dos sentits, i com que la categoria és prima, les composicions són identitats: $p\cong q$. Però $p$ i $q$ són fórmules diferents. Una categoria prima és un preordre, no necessàriament un ordre parcial, i aquí es veu la diferència entre igualtat i isomorfisme.}
 
 % --- Exemples: categories primes ---
 
 \pregunta Quina de les categories següents \emph{no} és prima?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{La categoria d'un preordre $(P,\le)$.}
   \opcio{b}{La categoria $\cat{Prov}_T$ d'un sistema deductiu.}
   \opcio{c}{La categoria $\cat{2}=(0\to 1)$.}
   \opcio{d}{La categoria $\cat{B}M$ del monoide $(\mathbb N,+,0)$.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Té un sol objecte, però $\Hom(\ast,\ast)=\mathbb N$ té més d'un element.}
 
 % --- Isomorfismes ---
 
 \pregunta Sigui $D$ el conjunt $\{0,1\}$ amb l'ordre discret i sigui $C$ el mateix conjunt amb l'ordre $0<1$. L'aplicació identitat subjacent $f\colon D\to C$ és bijectiva i monòtona. És un isomorfisme a $\cat{Pos}$?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{Sí, perquè qualsevol aplicació bijectiva és un isomorfisme.}
   \opcio{b}{Sí, perquè una aplicació monòtona bijectiva té sempre inversa monòtona.}
   \opcio{c}{No, perquè la inversa subjacent $C\to D$ no és monòtona.}
   \opcio{d}{No, perquè $f$ no és monòtona.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Per tant no és un morfisme de $\cat{Pos}$, i $f$ no té invers en la categoria.}
 
 % --- Mono/epi: cancel·lació ---
 
 \pregunta L'aplicació $i\colon\varnothing\to\{\ast\}$ de $\cat{Set}$ és:
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{un isomorfisme.}
   \opcio{b}{un epimorfisme amb secció.}
   \opcio{c}{ni mono ni epi.}
   \opcio{d}{un monomorfisme sense retracció.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{És injectiva i, per tant, un monomorfisme de $\cat{Set}$; però no té retracció, perquè no hi ha cap aplicació $\{\ast\}\to\varnothing$.}
 
 \pregunta Un morfisme $f\colon A\to B$ té una \emph{retracció} $r$ (amb $r\comp f=\id_A$). Quina conclusió és correcta i per què?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{$f$ és un monomorfisme: si $f\comp g=f\comp h$, component amb $r$ per l'esquerra dona $g=h$.}
   \opcio{b}{$f$ és un isomorfisme, perquè té invers per un costat.}
   \opcio{c}{$f$ és un epimorfisme, perquè $r$ el cancel·la per la dreta.}
   \opcio{d}{No se'n pot dir res sense saber la categoria.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Si $f\comp g=f\comp h$, aleshores $g=r\comp f\comp g=r\comp f\comp h=h$. Tenir invers per un costat no fa $f$ isomorfisme: a $\cat{Set}$, la inclusió $\{0\}\hookrightarrow\{0,1\}$ té retracció però no és bijectiva.}
 
 % --- Dualitat i oposada ---
 
 \pregunta Considera la categoria oposada $\cat{C}\op$. Un lector diu: \enquote{Si $f$ és un monomorfisme a $\cat{C}$, aleshores $f$ és un monomorfisme a $\cat{C}\op$.} És correcte?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{Sí, perquè $\cat{C}$ i $\cat{C}\op$ tenen els mateixos morfismes.}
   \opcio{b}{No, perquè un mono de $\cat{C}$ és un epi de $\cat{C}\op$.}
   \opcio{c}{No, perquè a $\cat{C}\op$ no hi ha monomorfismes.}
   \opcio{d}{Sí, perquè els monomorfismes són autoduals.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{En passar a l'oposada, la cancel·lació per l'esquerra es converteix en cancel·lació per la dreta, igual que una retracció passa a ser una secció.}
 
 % --- Construccions de categories ---
 
 \pregunta Sigui $A$ un objecte d'una categoria $\cat{C}$. Què és un morfisme de $x\colon X\to A$ a $y\colon Y\to A$ a la categoria $\cat{C}/A$ sobre $A$?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{Un morfisme $h\colon X\to Y$ de $\cat{C}$ tal que $y\comp h=x$.}
   \opcio{b}{Qualsevol morfisme $h\colon X\to Y$ de $\cat{C}$, sense cap condició.}
   \opcio{c}{Un morfisme $h\colon Y\to X$ tal que $x\comp h=y$.}
   \opcio{d}{Un morfisme $A\to A$.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{És a dir, que fa commutar el triangle sobre $A$.}
 
 % --- Construccions de categories: categoria producte ---
 
 \pregunta Siguin $\cat{C}$ i $\cat{D}$ dues categories. Què és un morfisme de $(A,X)$ a $(B,Y)$ a la categoria producte $\cat{C}\times\cat{D}$?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{Un morfisme $A\times X\to B\times Y$ d'una de les dues categories.}
   \opcio{b}{Un morfisme $A\to B$ de $\cat{C}$ o bé un morfisme $X\to Y$ de $\cat{D}$.}
   \opcio{c}{L'objecte producte $A\times B$, caracteritzat per la seva propietat universal dins de $\cat{C}$.}
   \opcio{d}{Una parella $(f,g)$ amb $f\colon A\to B$ a $\cat{C}$ i $g\colon X\to Y$ a $\cat{D}$.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{La composició es fa component a component. No s'ha de confondre amb el producte d'objectes dins d'una sola categoria.}
 
 % --- Categoria lliure ---
 
 \pregunta Considera el graf amb un sol vèrtex $\ast$ i una sola aresta $a\colon\ast\to\ast$. Quants morfismes té la categoria lliure que genera?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{Dos: la identitat i $a$.}
   \opcio{b}{Infinits, un per a cada longitud de camí.}
   \opcio{c}{Un de sol, perquè el graf té un sol vèrtex.}
   \opcio{d}{Cap, perquè $a$ no es pot compondre amb si mateixa.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Són $\id_\ast,\ a,\ a\comp a,\ a\comp a\comp a,\dots$; és la categoria $\cat{B}M$ del monoide $(\mathbb N,+,0)$.}
 
 % --- Mida ---
 
 \pregunta Un lector afirma: \enquote{La categoria $\cat{Set}$ és petita, perquè els seus morfismes són simplement aplicacions.} On s'equivoca?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{No s'equivoca: $\cat{Set}$ és petita.}
   \opcio{b}{S'equivoca perquè $\cat{Set}$ no té identitats.}
   \opcio{c}{S'equivoca perquè $\cat{Set}$ no és petita.}
   \opcio{d}{S'equivoca perquè $\cat{Set}$ ni tan sols és una categoria.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{És \emph{localment petita} (cada $\Hom(A,B)$ és un conjunt), però la col·lecció de tots els conjunts és una classe pròpia, no un conjunt.}
 

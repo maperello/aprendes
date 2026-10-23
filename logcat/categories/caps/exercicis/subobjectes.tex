@@ -127,3 +127,23 @@ Els adjunts per l'esquerra preserven tots els colímits que existeixin; en un pr
 \end{indicacio}
 \end{exercici}
 
+\begin{exercici}
+En una categoria $\cat{C}$ amb pullbacks, fixem un morfisme $f\colon A\to B$ i definim el functor $\Sigma_f\colon\cat{C}/A\to\cat{C}/B$ per composició amb $f$. Demostra que $\Sigma_f\dashv f^{*}$, i comprova que la bijecció és la propietat universal del pullback que defineix $f^{*}$ (observació~\ref{obs:reindexacio}). \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Un morfisme $\Sigma_f(x)\to y$ sobre $B$ és un $h\colon X\to Y$ amb $y\comp h=f\comp x$. Aquesta igualtat diu exactament que $(x,h)$ és un con sobre el diagrama $A\xrightarrow{f}B\xleftarrow{y}Y$, i el pullback hi dona un únic morfisme $X\to A\times_B Y$ sobre $A$. La naturalitat surt de la unicitat.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
+Sigui $\cat{C}$ una categoria amb pullbacks en què cada $f^{*}\colon\cat{C}/B\to\cat{C}/A$ té adjunt per la dreta $\Pi_f$. Demostra que $\Pi_f$ envia monomorfismes cap a $A$ a monomorfismes cap a $B$, i que es restringeix a un adjunt per la dreta $\forall_f$ de $f^{*}\colon\Sub(B)\to\Sub(A)$. Explica per què el recíproc no és cert en general: d'on vindria $\Pi_f$ d'un objecte de $\cat{C}/A$ que no és un subobjecte? \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Un morfisme $m$ és mono si i només si el quadrat amb dues identitats i dues còpies de $m$ és un pullback. A $\cat{C}/A$, l'objecte $(A,\id_A)$ és terminal, i $x\colon X\to A$ és mono a $\cat{C}$ si i només si l'únic morfisme $(X,x)\to(A,\id_A)$ és mono a $\cat{C}/A$, perquè els pullbacks de $\cat{C}/A$ es calculen a $\cat{C}$. Un adjunt per la dreta preserva pullbacks i l'objecte terminal, i $\Pi_f(A,\id_A)$ és, doncs, terminal a $\cat{C}/B$. Per a la restricció, aplica l'adjunció a objectes que són subobjectes: entre subobjectes, un morfisme sobre $A$ existeix com a màxim un i equival a la desigualtat.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}[Troba l'error]
+L'argument següent pretén demostrar que, en tota categoria amb pullbacks, la reindexació $f^{*}\colon\Sub(B)\to\Sub(A)$ té un adjunt per l'esquerra, sense necessitat d'imatges. \enquote{Sabem que $\Sigma_f\dashv f^{*}$ entre $\cat{C}/A$ i $\cat{C}/B$, i $\Sub(A)$ és una part de $\cat{C}/A$. Restringint l'adjunció als subobjectes, obtenim $\Sigma_f\dashv f^{*}$ entre $\Sub(A)$ i $\Sub(B)$.} Troba l'error, dona un contraexemple a $\cat{Set}$, i explica per què el pas que falta és, precisament, la factorització imatge. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Per restringir una adjunció a parts de les dues categories, els \emph{dos} functors han d'enviar aquelles parts l'una a l'altra. Envia $\Sigma_f$ monomorfismes a monomorfismes? Pren $f\colon\{1,2\}\to\{\ast\}$ i $S=\{1,2\}$ (exercici resolt~\ref{pr-sigma-pi}).
+\end{indicacio}
+\end{exercici}

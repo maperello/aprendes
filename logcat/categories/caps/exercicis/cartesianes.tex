@@ -62,6 +62,20 @@ Escriu els quatre objectes i les cinc fletxes no identitat de $\cat{2}\times\cat
 \section{Models i lògica}
 
 \begin{exercici}
+Sigui $\cat{C}$ una CCC amb objecte inicial $0$. Demostra que tot morfisme $f\colon A\to 0$ és un isomorfisme; és a dir, que l'objecte inicial és \emph{estricte}. Interpreta el resultat a $\cat{Set}$ i a $\cat{Prov}_T$. \hfill{\normalfont$\star\star$}
+\begin{indicacio}
+Per la proposició~\ref{prop:distributivitat}, $A\times 0$ és inicial. El morfisme $\langle\id_A,f\rangle\colon A\to A\times 0$ té la projecció $\pi_1$ com a retracció; en l'altre sentit, $\langle\id_A,f\rangle\comp\pi_1$ és un endomorfisme d'un objecte inicial. A $\cat{Prov}_T$, és la regla \emph{ex falso}: tota fórmula de la qual es dedueix $\bot$ és interdeduïble amb $\bot$.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}[Troba l'error]
+L'argument següent pretén demostrar que $\cat{Vect}_{\mathbb K}$ és cartesiana tancada amb exponencial $\Hom_{\mathbb K}(V,W)$. \enquote{Donada una aplicació lineal $f\colon U\times V\to W$, la currificació $u\mapsto f(u,-)$ és una aplicació lineal $U\to\Hom_{\mathbb K}(V,W)$, i dona una bijecció $\Hom_{\mathbb K}(U\times V,W)\cong\Hom_{\mathbb K}(U,\Hom_{\mathbb K}(V,W))$.} Troba l'error i comprova que la conclusió contradiu l'observació~\ref{obs:distributivitat-no-automatica}. \hfill{\normalfont$\star$}
+\begin{indicacio}
+Si $f$ és lineal sobre $U\times V$, aleshores $f(u,v)=f(u,0)+f(0,v)$. És lineal en $v$ l'aplicació $v\mapsto f(u,v)$ quan $f(u,0)\neq 0$? Les aplicacions que la currificació posa en bijecció amb $\Hom_{\mathbb K}(U,\Hom_{\mathbb K}(V,W))$ són les \emph{bilineals}, que corresponen a un altre producte, el tensorial.
+\end{indicacio}
+\end{exercici}
+
+\begin{exercici}
 Comprova que tota àlgebra de Boole és una àlgebra de Heyting en què $b\Rightarrow c=\neg b\vee c$, i per tant un preordre cartesià tancat. \hfill{\normalfont$\star$}
 \begin{indicacio}
 Verifica l'adjunció $a\wedge b\leq c\Leftrightarrow a\leq\neg b\vee c$ usant les lleis booleanes. La lògica clàssica és el cas booleà de la intuïcionista.

@@ -7,142 +7,142 @@ Aquest test recull els conceptes essencials del capítol. Cada pregunta té una 
 \begin{enumerate}
 
 \pregunta Què vol dir que $f\dashv g$ entre dos preordres?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{Que $f=g$.}
   \opcio{b}{Que $f(x)\leq y$ si i només si $x\leq g(y)$, per a tot $x,y$.}
   \opcio{c}{Que $f$ i $g$ són inverses.}
   \opcio{d}{Que $f$ i $g$ són constants.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{És la definició d'adjunció entre preordres: $f$ és adjunt per l'esquerra de $g$. No cal que siguin inverses: $f(x)\leq y\Leftrightarrow x\leq g(y)$ és més feble que $g\comp f=\id$ i $f\comp g=\id$.}
 
 \pregunta Fixada una fórmula $A$, quina parella d'operacions forma una adjunció al preordre $\cat{Prov}_T$ d'un sistema proposicional?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{La negació amb ella mateixa.}
   \opcio{b}{La disjunció amb la conjunció.}
   \opcio{c}{$A\wedge-$ (esquerra) amb $A\to-$ (dreta).}
   \opcio{d}{La implicació amb la negació.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{$A\wedge B\vdash_T C$ si i només si $B\vdash_T A\to C$: és la regla de la deducció (introducció i eliminació de la implicació). Les altres parelles no satisfan cap equivalència d'aquesta forma.}
 
 \pregunta Una \textbf{adjunció} $F\dashv G$ entre categories és:
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{una igualtat de functors.}
   \opcio{b}{una bijecció natural $\Hom(F(A),B)\cong\Hom(A,G(B))$.}
   \opcio{c}{un isomorfisme de categories.}
   \opcio{d}{una transformació natural qualsevol.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{És la definició: una família de bijeccions $\theta_{A,B}$, natural en $A$ i en $B$. Un isomorfisme de categories és un cas molt particular, i una transformació natural qualsevol no relaciona homconjunts.}
 
 \pregunta Sigui $\cat{I}$ una categoria petita i suposem que $\cat{C}$ té tots els límits i colímits de forma $\cat{I}$. Quina és la relació entre el functor diagonal $\Delta\colon\cat{C}\to\cat{C}^{\cat{I}}$, el límit i el colímit?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{$\varprojlim_{\cat{I}}\dashv\Delta\dashv\colimop_{\cat{I}}$.}
   \opcio{b}{$\Delta\dashv\colimop_{\cat{I}}$ i $\Delta\dashv\varprojlim_{\cat{I}}$.}
   \opcio{c}{El límit i el colímit són tots dos adjunts per l'esquerra de $\Delta$.}
   \opcio{d}{$\colimop_{\cat{I}}\dashv\Delta\dashv\varprojlim_{\cat{I}}$.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Un morfisme $\Delta A\Rightarrow D$ és un con, que correspon a una fletxa $A\to\varprojlim D$; un morfisme $D\Rightarrow\Delta A$ és un cocon, que correspon a una fletxa $\colimop D\to A$.}
 
 \pregunta La \textbf{unitat} d'una adjunció $F\dashv G$ és una transformació natural:
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{$\id\Rightarrow G F$.}
   \opcio{b}{$F\Rightarrow G$.}
   \opcio{c}{$F G\Rightarrow\id$.}
   \opcio{d}{$G\Rightarrow F$.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{$\eta_A=\theta(\id_{F(A)})\colon A\to G(F(A))$. L'opció (c) és la counitat. Les opcions (b) i (d) no tenen sentit en general, perquè $F$ i $G$ van en sentits contraris i no comparteixen domini.}
 
 \pregunta La \textbf{counitat} d'una adjunció $F\dashv G$ és:
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{$\id\Rightarrow G F$.}
   \opcio{b}{$F G\Rightarrow\id$.}
   \opcio{c}{una igualtat.}
   \opcio{d}{un objecte terminal.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{$\varepsilon_B=\theta^{-1}(\id_{G(B)})\colon F(G(B))\to B$. L'opció (a) és la unitat. La counitat és una transformació natural, no una igualtat ni un objecte.}
 
 \pregunta El transposat de $\varphi\colon F(A)\to B$ sota l'adjunció és:
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{$\varepsilon_B\comp F(\varphi)$.}
   \opcio{b}{$\varphi$ mateix.}
   \opcio{c}{$G(\varphi)\comp\eta_A$.}
   \opcio{d}{$\eta_A\comp G(\varphi)$.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Comprova els tipus: amb $\varphi\colon F(A)\to B$, $G(\varphi)\colon G(F(A))\to G(B)$, i compondre amb $\eta_A\colon A\to G(F(A))$ dona $A\to G(B)$. L'opció (a) és la fórmula del transposat \emph{invers}, per a $\psi\colon A\to G(B)$; l'opció (d) no és componible.}
 
 \pregunta Les \textbf{identitats triangulars} relacionen:
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{dos objectes terminals.}
   \opcio{b}{dos límits.}
   \opcio{c}{dues categories isomorfes.}
   \opcio{d}{la unitat i la counitat, i caracteritzen l'adjunció.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Són $\varepsilon_{F(A)}\comp F(\eta_A)=\id_{F(A)}$ i $G(\varepsilon_B)\comp\eta_{G(B)}=\id_{G(B)}$. A més, dues transformacions naturals que les satisfan defineixen una adjunció: és la segona presentació.}
 
 \pregunta Sigui $U\colon\cat{Mon}\to\cat{Set}$ el functor oblit. Quin fet mostra que $U$ no preserva tots els colímits?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{No preserva productes.}
   \opcio{b}{El monoide trivial és inicial a $\cat{Mon}$, però el seu conjunt subjacent no és $\varnothing$.}
   \opcio{c}{$\cat{Mon}$ no té objecte inicial.}
   \opcio{d}{Cap adjunt per la dreta no pot preservar colímits.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{L'objecte inicial és el colímit del diagrama buit. L'objecte inicial de $\cat{Set}$ és $\varnothing$, però $U$ envia l'inicial de $\cat{Mon}$ a un conjunt d'un element; per tant, no preserva aquest colímit.}
 
 \pregunta Els adjunts són únics:
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{de manera estricta (igualtat).}
   \opcio{b}{mai.}
   \opcio{c}{llevat d'isomorfisme natural.}
   \opcio{d}{només en preordres.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Si $F\dashv G$ i $F\dashv G'$, aleshores $\Hom(-,G(B))\cong\Hom(-,G'(B))$ naturalment, i Yoneda dona $G(B)\cong G'(B)$, naturalment en $B$. No hi ha igualtat estricta: qualsevol functor isomorf a un adjunt també ho és.}
 
 \pregunta Què diu el teorema \enquote{RAPL}?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{Que els adjunts per la dreta preserven límits.}
   \opcio{b}{Que tot functor és adjunt.}
   \opcio{c}{Que els límits no existeixen.}
   \opcio{d}{Que els adjunts per l'esquerra preserven límits.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{RAPL abreuja \emph{right adjoints preserve limits}. L'opció (d) confon els costats: els adjunts per l'esquerra preserven colímits.}
 
 \pregunta Per què el functor graf subjacent $U\colon\cat{Cat}\to\cat{Graph}$ preserva límits?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{Perquè és ple.}
   \opcio{b}{Perquè és adjunt per l'esquerra.}
   \opcio{c}{Perquè tots els functors preserven límits.}
   \opcio{d}{Perquè és adjunt per la dreta de $\Free$.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{$\Free\dashv U$, i els adjunts per la dreta preserven límits.}
 
 \pregunta L'adjunció \enquote{producte-exponencial} $-\times B\dashv(-)^B$ correspon a:
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{la currificació $\Hom(A\times B,C)\cong\Hom(A,C^B)$.}
   \opcio{b}{la dualitat.}
   \opcio{c}{la negació.}
   \opcio{d}{la composició de functors.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{Fixat $B$, una fletxa $A\times B\to C$ correspon a una fletxa $A\to C^B$, naturalment en $A$ i en $C$. És exactament la bijecció de l'adjunció $-\times B\dashv(-)^B$.}
 
 \pregunta Si $f^{*}$ admet adjunts a tots dos costats, quin paper tenen $\exists_f$ i $\forall_f$?
-\begin{enumerate}
+\begin{itemize}
   \opcio{a}{Com l'adjunt per l'esquerra i l'adjunt per la dreta de $f^{*}$, respectivament.}
   \opcio{b}{Com objectes terminals.}
   \opcio{c}{Com functors constants.}
   \opcio{d}{Com isomorfismes de categories.}
-\end{enumerate}
+\end{itemize}
 \feedback
 \justificacio{A $\cat{Set}$, $\exists_f$ és la imatge i $\forall_f(S)$ el conjunt dels $y$ amb fibra continguda en $S$; per a una projecció, són la quantificació existencial i la universal.}
 

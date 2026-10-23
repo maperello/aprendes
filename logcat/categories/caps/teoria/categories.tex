@@ -926,7 +926,29 @@ separadament, no caracteritza els isomorfismes en una categoria general; per exe
 \[
  i\colon\{0\}\hookrightarrow\{0,1\}
 \]
-té una única retracció $r\colon\{0,1\}\to\{0\}$, però no és un isomorfisme. No és una subtilesa avançada, sinó una contradicció amb un exemple de la mateixa subsecció.
+té una única retracció $r\colon\{0,1\}\to\{0\}$, però no és un isomorfisme. Aquest exemple mostra que la unicitat d'una retracció no implica que el morfisme sigui un isomorfisme.
+\end{observacio}
+
+Les seccions i les retraccions deixen una empremta dins de l'objecte de partida.
+
+\begin{definicio}[Idempotent]\label{def:idempotent}\index{idempotent}\index{morfisme!idempotent}
+Un endomorfisme $e\colon A\to A$ és \textbf{idempotent} si $e\comp e=e$.
+\end{definicio}
+
+\begin{proposicio}[Retractes i idempotents]\label{prop:retracte-idempotent}\index{retracte}\index{idempotent!escindit}
+Siguin $r\colon A\to B$ i $s\colon B\to A$ amb $r\comp s=\id_B$. Aleshores $e=s\comp r\colon A\to A$ és idempotent.
+\end{proposicio}
+
+\begin{prova}
+Per l'associativitat, $e\comp e=s\comp(r\comp s)\comp r=s\comp\id_B\comp r=s\comp r=e$.
+\end{prova}
+
+En aquesta situació diem que $B$ és un \textbf{retracte} de $A$. L'idempotent $e$ és el rastre que el retracte deixa a $A$: projectar $A$ sobre la còpia de $B$ i tornar a $A$. A $\cat{Set}$, per exemple, si $s$ és la inclusió d'un subconjunt $B\subseteq A$ i $r$ envia cada element de $A$ a un element de $B$ i deixa fixos els de $B$, l'idempotent $e$ fa el mateix però amb valors a $A$.
+
+El problema invers és natural: donat un idempotent $e\colon A\to A$, hi ha un objecte $B$ i morfismes $r\colon A\to B$ i $s\colon B\to A$ amb $s\comp r=e$ i $r\comp s=\id_B$? Si n'hi ha, diem que $e$ és un \textbf{idempotent escindit}\index{idempotent!escindit}, i que $(B,r,s)$ n'és una \emph{escissió}. La resposta depèn de la categoria. A $\cat{Set}$ tot idempotent escindeix: $B$ és el conjunt dels punts fixos de $e$, que coincideix amb la seva imatge. En canvi, a la categoria $\cat{B}M$ d'un sol objecte associada al monoide $M=\{1,e\}$ amb $e\cdot e=e$, l'idempotent $e$ no escindeix, perquè no hi ha prou morfismes per fer-ne una escissió. Les dues comprovacions són l'exercici resolt~\ref{pr-idempotents} de la Pràctica.
+
+\begin{observacio}[Ampliació: la compleció d'idempotents]\index{compleció d'idempotents}
+Quan un idempotent escindeix, l'escissió és única llevat d'un únic isomorfisme compatible amb $r$ i $s$ (vegeu els Exercicis), i tot functor envia escissions a escissions, perquè només hi intervenen morfismes i equacions. Les categories on tot idempotent escindeix s'anomenen \emph{Cauchy completes} (o \emph{Karoubi completes}). Tota categoria es pot submergir, mitjançant un functor ple i fidel, en una d'aquestes, afegint formalment un objecte per a cada idempotent; és la \emph{compleció de Karoubi}. Aquest volum no la necessita i no la desenvolupa; vegeu \cite{borceux}.
 \end{observacio}
 
 \section{Construccions sobre categories}
@@ -1218,6 +1240,18 @@ Un \emph{producte} de $A$ i $B$ és un objecte $A\times B$ amb dos morfismes $\p
 \]
 En el diagrama seguim una convenció que farem servir cada cop que dibuixem una propietat universal: la \textbf{fletxa discontínua} marca el morfisme l'existència del qual afirma la propietat ---aquí el mediador $u$, un cop donades la resta de dades: l'objecte $X$ i les fletxes $f$ i $g$---, mentre que les fletxes contínues són les dades de partida. Igualment, escriurem $\exists!$ per abreujar \enquote{existeix un únic}, com acabem de fer en enunciar la propietat.
 
+La propietat es pot llegir també com una afirmació sobre homconjunts.\index{producte!bijecció d'homconjunts} Per a cada objecte $X$, considerem l'aplicació
+\[
+\Hom(X,A\times B)\longrightarrow\Hom(X,A)\times\Hom(X,B),
+\qquad
+u\longmapsto(\pi_1\comp u,\ \pi_2\comp u),
+\]
+on el producte de la dreta és el producte cartesià de dos conjunts. L'\emph{existència} del mediador diu que aquesta aplicació és exhaustiva: tota parella $(f,g)$ prové d'algun $u$. La \emph{unicitat} diu que és injectiva: dos $u$ amb les mateixes components són iguals. La propietat universal del producte equival, doncs, a demanar que, per a tot $X$,
+\[
+\Hom(X,A\times B)\;\cong\;\Hom(X,A)\times\Hom(X,B)
+\]
+mitjançant la composició amb les projeccions. A $\cat{Set}$ és un fet familiar: una aplicació cap a $A\times B$ és el mateix que una parella d'aplicacions, una cap a cada factor, i la inversa és $(f,g)\mapsto\bigl(x\mapsto(f(x),g(x))\bigr)$. Aquesta lectura, que no fa servir cap element dels objectes, anticipa dues idees posteriors: la de pensar un morfisme $X\to A$ com un \enquote{element d'$A$ de forma $X$} (secció~\ref{sec:elements-generalitzats}) i la de caracteritzar un objecte pels morfismes que hi arriben, que és la representabilitat (exemple~\refalt{ex:rep-producte}{del producte com a representació, al capítol~4}).
+
 Invertint totes les fletxes obtenim un objecte $A+B$ amb dos morfismes $\iota_1\colon A\to A+B$ i $\iota_2\colon B\to A+B$ tals que, per a tot $X$ i tot parell $f\colon A\to X$, $g\colon B\to X$, existeix un únic $u\colon A+B\to X$ amb $u\comp\iota_1=f$ i $u\comp\iota_2=g$:
 \[
 \begin{tikzpicture}[baseline=(m.center)]
@@ -1232,7 +1266,11 @@ Invertint totes les fletxes obtenim un objecte $A+B$ amb dos morfismes $\iota_1\
   \draw[-{Stealth[scale=1.0]},dashed] (m-1-2) -- node[right] {$u$} (m-2-2);
 \end{tikzpicture}
 \]
-Aquesta és la definició del \emph{coproducte} $A+B$. Els quantificadors $\forall$ i $\exists!$ i la conjunció de les dues equacions es mantenen; el que s'inverteix és el domini i el codomini de cada morfisme i l'ordre de cada composició.
+Aquesta és la definició del \emph{coproducte} $A+B$. Els quantificadors $\forall$ i $\exists!$ i la conjunció de les dues equacions es mantenen; el que s'inverteix és el domini i el codomini de cada morfisme i l'ordre de cada composició. La lectura per homconjunts també es dualitza: la propietat universal del coproducte diu que $u\mapsto(u\comp\iota_1,\ u\comp\iota_2)$ és una bijecció
+\[
+\Hom(A+B,X)\;\cong\;\Hom(A,X)\times\Hom(B,X),
+\]
+ara amb $X$ en el lloc del codomini.
 
 \paragraph{Un cas que cal vigilar.} La construcció \enquote{categoria sobre $A$} es dualitza en la construcció \enquote{categoria sota $A$} (definició~\ref{def:slice}). Ara bé, en dualitzar aquesta construcció cal dualitzar també la categoria ambient. La fórmula precisa és
 \[
@@ -1466,11 +1504,12 @@ Moltes de les categories habituals que utilitzem ---$\cat{Set}$, $\cat{Grp}$, $\
   \qquad
   \text{iso}\Longrightarrow\text{epi escindit}\Longrightarrow\text{epi}.
   \]
+  \item Tot retracte $r\comp s=\id_B$ deixa un idempotent $e=s\comp r$ a l'objecte gran. El recíproc, que l'idempotent escindeixi, val a $\cat{Set}$ però no en tota categoria.
   \item A partir d'una categoria en podem construir d'altres: l'oposada, productes de categories, subcategories i categories sobre i sota un objecte.
   \item El \textbf{principi de dualitat} ---invertir totes les fletxes--- converteix sistemàticament cada definició i cada resultat en el seu dual, amb la composició en l'ordre invers.
   \item Un graf dirigit no té, per si sol, composició ni identitats; la categoria lliure hi afegeix formalment tots els camins i les identitats necessàries.
   \item Les qüestions de mida obliguen a distingir categories petites de categories localment petites. Tota categoria petita és localment petita, però moltes categories habituals, com $\cat{Set}$, són localment petites sense ser petites.
 \end{enumerate}
 \apartat{Errors típics} Creure que \enquote{mono $+$ epi $\Rightarrow$ iso} (fals a $\cat{Top}$ i a $\cat{2}$: un bimorfisme no és sempre un isomorfisme); confondre un monomorfisme amb un monomorfisme escindit; confondre la igualtat d'objectes amb l'isomorfisme, encara que sigui canònic; aplicar els adjectius \enquote{injectiu} i \enquote{exhaustiu} a morfismes d'una categoria general, en lloc de reservar-los per a aplicacions; raonar amb elements en una categoria on els objectes no en tenen o on no separen les fletxes; escriure la composició en l'ordre equivocat en dualitzar; i oblidar la hipòtesi de petitesa local en parlar d'homconjunts.
-\apartat{Lectura recomanada} \cite[cap.~1, §2.1 i §3.1]{awodey} per a la introducció paral·lela, els monomorfismes i epimorfismes i el principi de dualitat; \cite[§1.1]{leinster} per a una presentació breu i moderna; \cite[cap.~I i II.1--II.3, II.7]{maclane} per a la formulació clàssica, inclosos la dualitat, les categories producte i les categories lliures; \cite[§1.3]{barrwells} per als grafs, en una presentació orientada a la informàtica; \cite[parts~I--II, sessions~2--10]{lawvereschanuel} per a una introducció encara més elemental als morfismes, els isomorfismes i les seccions i retraccions; i \cite[§1.1.5 i §1.2]{perrone-notes} per a contraexemples elementals d'isomorfismes, monomorfismes i epimorfismes, escindits o no. Per a la presentació relacional de les categories petites, l'apèndix~\ref{cap:axiomatica-relacional}.
+\apartat{Lectura recomanada} \cite[cap.~1, §2.1 i §3.1]{awodey} per a la introducció paral·lela, els monomorfismes i epimorfismes i el principi de dualitat; \cite[§1.1]{leinster} per a una presentació breu i moderna; \cite[cap.~I i II.1--II.3, II.7]{maclane} per a la formulació clàssica, inclosos la dualitat, les categories producte i les categories lliures; \cite[§1.3]{barrwells} per als grafs, en una presentació orientada a la informàtica; \cite[parts~I--II, sessions~2--10]{lawvereschanuel} per a una introducció encara més elemental als morfismes, els isomorfismes i les seccions i retraccions, amb els idempotents com a registre dels retractes (article~II, §3, i sessió~9); i \cite[§1.1.5 i §1.2]{perrone-notes} per a contraexemples elementals d'isomorfismes, monomorfismes i epimorfismes, escindits o no. Per a la presentació relacional de les categories petites, l'apèndix~\ref{cap:axiomatica-relacional}.
 \end{resumcap}

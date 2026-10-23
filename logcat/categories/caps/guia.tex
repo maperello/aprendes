@@ -118,8 +118,11 @@ i diferencia isomorfismes, monomorfismes, epimorfismes, seccions
 i retraccions. La categoria oposada i la dualitat permeten
 reutilitzar definicions i arguments en l'altra direcció.
 
-És un capítol extens perquè fixa els hàbits que necessitarem després.
-No convé voler memoritzar tots els exemples alhora. Escolliu-ne uns
+És un capítol extens perquè fixa els hàbits que necessitarem després,
+i és també el més dens del llibre: el ritme dels capítols següents és
+més pausat. No convé voler memoritzar tots els exemples alhora, i en
+una primera lectura es poden deixar per a més endavant les observacions
+d'ampliació, les precaucions de mida i la compleció d'idempotents. Escolliu-ne uns
 quants i pregunteu sempre què són els objectes, què són les fletxes
 i com es componen. Les construccions de categories noves i les
 precaucions de mida amplien aquest vocabulari.
@@ -127,7 +130,8 @@ precaucions de mida amplien aquest vocabulari.
 \noindent\textbf{Comprovació de progrés.} Podeu verificar els axiomes
 en un exemple concret i explicar per què una fletxa és, o no és,
 un isomorfisme? Podeu escriure l'equació d'un quadrat commutatiu
-sense invertir l'ordre de la composició?
+sense invertir l'ordre de la composició? Podeu explicar quin
+idempotent deixa un retracte?
 
 \subsection*{2. Functors: passar d'un context a un altre}
 
@@ -140,12 +144,19 @@ construccions que reapareixerà com a adjunció.
 Cal dedicar una atenció especial als homfunctors. $\Hom(A,-)$
 actua per postcomposició; $\Hom(-,B)$, per precomposició i amb
 inversió de sentit. Aquesta variància no és un detall de notació:
-és la base de la representabilitat i de Yoneda. Les nocions de
+és la base de la representabilitat i de Yoneda. Els homfunctors també
+permeten llegir un morfisme $X\to A$ com un \emph{element
+generalitzat} de $A$ de forma $X$: una manera d'observar $A$ amb
+un patró. És la idea que Yoneda farà precisa, i convé assajar-la
+aviat amb els grafs, on els \enquote{punts} no basten i calen les
+formes del vèrtex i de l'aresta. Les nocions de
 functor ple i fidel descriuen l'acció sobre cada homconjunt.
 
 \noindent\textbf{Comprovació de progrés.} Per definir un functor,
 podeu donar-ne l'acció sobre les fletxes, no només sobre els objectes?
 Podeu explicar què fa $\Hom(-,B)$ amb una fletxa $X'\to X$?
+Podeu dir quins són els elements d'un graf de forma $\mathbf E$ i
+per què els de forma $\mathbf L$ no n'esgoten l'estructura?
 
 \subsection*{3. Transformacions naturals i equivalències: exigir coherència}
 
@@ -158,7 +169,9 @@ significativa, no només una convenció gràfica.
 Les categories de functors permeten tractar aquestes comparacions
 com a morfismes. L'equivalència de categories precisa quan dos
 contextos descriuen la mateixa estructura essencial sense tenir
-la mateixa presentació. La composició horitzontal afegeix un
+la mateixa presentació; l'exemple lògic és l'equivalència entre
+$\cat{Prov}_T$ i el seu quocient per interdeduïbilitat, que és
+l'àlgebra de Lindenbaum--Tarski quan $T$ té els connectius usuals. La composició horitzontal afegeix un
 segon tipus de composició que cal distingir de la vertical.
 
 \noindent\textbf{Comprovació de progrés.} Podeu dibuixar el quadrat
@@ -177,7 +190,10 @@ coma ajuden a reunir dades i compatibilitats en un mateix context.
 
 La representabilitat expressa aquestes caracteritzacions amb
 homfunctors. Yoneda fa precisa la idea de conèixer un objecte
-pel sistema de morfismes que hi arriben. És normal que aquesta
+pel sistema de morfismes que hi arriben, és a dir, pels seus
+elements generalitzats de totes les formes; en els grafs, la
+família de les dues formes del vèrtex i de l'aresta és densa i
+ja basta per reconstruir-los. És normal que aquesta
 etapa demani més d'una lectura: cal coordinar categories, functors,
 transformacions i elements d'homconjunts.
 
@@ -235,13 +251,16 @@ com a objectes i els termes, en context, com a morfismes.
 
 El conjunt de totes les aplicacions $B\to C$ ofereix l'exemple
 més familiar d'exponencial. Els preordres permeten reconèixer
-la implicació com a adjunt de la conjunció. Els contraexemples
-recorden que no tota categoria té aquesta estructura.
+la implicació com a adjunt de la conjunció. Una conseqüència del
+tancament és la distributivitat del producte sobre el coproducte,
+que és el raonament per casos dins d'un context; com que falla a
+$\cat{Vect}_{\mathbb K}$, també serveix per descartar el tancament.
 
 \noindent\textbf{Comprovació de progrés.} Podeu passar d'una fletxa
 $A\times B\to C$ a la seva currificació $A\to C^B$ i tornar-ne
 amb l'avaluació? Podeu explicar per què tenir productes no
-garanteix tenir exponencials?
+garanteix tenir exponencials, i fer servir la distributivitat
+per demostrar-ho en un exemple?
 
 \subsection*{8. Subobjectes, imatges i factoritzacions: de les parts als predicats}
 
@@ -256,11 +275,21 @@ imatges i la regularitat permeten construir un adjunt
 existencial de la reindexació. Aquesta etapa obliga a
 controlar les hipòtesis: la regularitat no garanteix per
 si sola unions de subobjectes ni un quantificador universal.
+La darrera secció mira la reindexació entre categories sobre
+un objecte, on a $\cat{Set}$ té adjunts a tots dos costats,
+$\Sigma_f\dashv f^*\dashv\Pi_f$, i hi mostra d'on surten els
+dos quantificadors: l'existencial és una suma que en conserva
+només l'existència, i l'universal, un producte. Fora de $\cat{Set}$,
+cal no confondre les dues estructures: els productes dependents
+donen l'universal, però l'universal sobre subobjectes pot existir
+sense ells.
 
 \noindent\textbf{Comprovació de progrés.} Podeu calcular una
 reindexació a $\cat{Set}$ i interpretar-la com a substitució?
 Podeu descriure la imatge d'un predicat sota una projecció
-i explicar la relació $\exists_f\dashv f^*$?
+i explicar la relació $\exists_f\dashv f^*$? Podeu explicar per
+què $\Sigma_f$ no envia subobjectes a subobjectes i $\Pi_f$, sí,
+i per què tenir $\forall_f$ no obliga a tenir $\Pi_f$?
 
 \subsection*{9. Classificadors de subobjectes i topos: retrobar la representabilitat}
 

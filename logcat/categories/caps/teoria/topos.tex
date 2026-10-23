@@ -68,6 +68,8 @@ En efecte, si $x=m\comp y$, aleshores $\chi_m\comp x=\chi_m\comp m\comp y=\maths
 x\in U\quad\Longleftrightarrow\quad\chi_U(x)=\mathsf{true}:
 \]
 el classificador converteix la pertinença a un subobjecte en una igualtat de morfismes cap a $\Omega$.
+
+Cal fer servir elements de \emph{totes} les formes, i no només els elements globals $1\to E$, per la raó que ja vam veure a la secció~\ref{sec:elements-generalitzats}. A $\cat{Graph}$, l'objecte terminal és el graf $\mathbf L$ d'un bucle, i els elements globals d'un graf són els seus bucles. Per decidir si un subgraf conté un vèrtex o una aresta cal provar-lo amb un element de forma $\mathbf V$ o de forma $\mathbf E$.
 \end{observacio}
 
 \begin{proposicio}[Classificador i representabilitat]
@@ -80,7 +82,7 @@ natural en $E$. En conseqüència, el classificador, si existeix, és únic llev
 \end{proposicio}
 
 \begin{prova}
-\emph{Del classificador a la representació.} Enviem un subobjecte $[m]$ al seu morfisme característic $\chi_m$. L'aplicació és injectiva perquè $\chi_m$ determina $[m]$ com el pullback de $\mathsf{true}$ al llarg de $\chi_m$, i és exhaustiva perquè, per a tot $\chi\colon E\to\Omega$, el pullback de $\mathsf{true}$ al llarg de $\chi$ és un subobjecte el morfisme característic del qual és $\chi$, per la unicitat de la definició~\ref{def:classificador}. La naturalitat en $E$ és la compatibilitat amb la reindexació: reindexar un subobjecte al llarg de $g\colon E'\to E$ correspon a precompondre la característica amb $g$, pel lema d'enganxament de pullbacks.
+\emph{Del classificador a la representació.} Enviem un subobjecte $[m]$ al seu morfisme característic $\chi_m$. L'aplicació és injectiva perquè $\chi_m$ determina $[m]$ com el pullback de $\mathsf{true}$ al llarg de $\chi_m$, i és exhaustiva perquè, per a tot $\chi\colon E\to\Omega$, el pullback de $\mathsf{true}$ al llarg de $\chi$ és un subobjecte el morfisme característic del qual és $\chi$, per la unicitat de la definició~\ref{def:classificador}. La naturalitat en $E$ és la compatibilitat amb la reindexació: reindexar un subobjecte al llarg de $g\colon E'\to E$ correspon a precompondre la característica amb $g$, pel lema d'enganxament de pullbacks (exercici resolt~\ref{pr-enganxament} de la Pràctica).
 
 \emph{De la representació al classificador.} Suposem que $\Sub_{\cat{E}}\cong\Hom_{\cat{E}}(-,\Omega)$ naturalment, i sigui $t\colon T\rightarrowtail\Omega$ un representant de l'element universal, és a dir, del subobjecte de $\Omega$ que correspon a $\id_\Omega$. Pel lema de Yoneda, el subobjecte que correspon a un morfisme $\chi\colon E\to\Omega$ és la reindexació $\chi^{*}[t]$: tot subobjecte és el pullback de $t$ al llarg d'un únic morfisme. Vegem que $T$ és terminal. Per a cada objecte $A$, el subobjecte màxim $[\id_A]$ és el pullback de $t$ al llarg d'un únic $\chi\colon A\to\Omega$, i el pullback dona un morfisme $A\to T$. Si $g\colon A\to T$ és un morfisme qualsevol, el pullback de $t$ al llarg de $t\comp g$ és $[\id_A]$, perquè $t$ és mono; per unicitat, $t\comp g=\chi$, i com que $t$ és mono, $g$ queda determinat. Així hi ha exactament un morfisme $A\to T$, i $T\cong 1$. Identificant $T$ amb $1$, el mono $t$ és un morfisme $\mathsf{true}\colon 1\to\Omega$ que satisfà la definició~\ref{def:classificador}.
 
@@ -158,13 +160,13 @@ Es comprova que aquest conjunt és un sedàs, que les aplicacions $\chi_U(C)$ s�
 \begin{exemple}[El topos dels grafs: el classificador calculat]\label{ex:omega-graph}\index{graf dirigit!topos}\index{classificador de subobjectes!a Graph@a $\cat{Graph}$}
 Al capítol~\ref{cap:transformacions} vam veure que $\cat{Graph}\cong\cat{Set}^{\cat{P}}$, i com que $\cat{Set}^{\cat{P}}=\cat{Set}^{(\cat{P}\op)\op}$, és la categoria de prefeixos sobre $\cat{P}\op$. Per l'exemple anterior, $\cat{Graph}$ és, doncs, un topos. Calculem-ne el classificador.
 
-\emph{Els vèrtexs i les arestes de $\Omega$.} Els dos representables són el graf $\mathbf V$ d'un sol vèrtex i el graf $\mathbf E$ d'una sola aresta $e\colon s\to t$ (exemple~\ref{ex:homfunctor-grafs}): els vèrtexs d'un graf $G$ corresponen als morfismes $\mathbf V\to G$, i les arestes, als morfismes $\mathbf E\to G$. Aplicant-ho a $\Omega$ i fent servir $\Hom(-,\Omega)\cong\Sub$, obtenim
+\emph{Els vèrtexs i les arestes de $\Omega$.} Els dos representables són el graf $\mathbf V$ d'un sol vèrtex i el graf $\mathbf E$ d'una sola aresta $e\colon s\to t$ (exemple~\ref{ex:homfunctor-grafs}): els vèrtexs d'un graf $G$ corresponen als morfismes $\mathbf V\to G$, i les arestes, als morfismes $\mathbf E\to G$. Dit amb el llenguatge de la secció~\ref{sec:elements-generalitzats}, els vèrtexs i les arestes de $\Omega$ són els seus elements generalitzats de forma $\mathbf V$ i de forma $\mathbf E$, i l'exemple~\ref{ex:graf-sondes} assegura que aquestes dues formes determinen el graf. Per tant, podem calcular $\Omega$ sense conèixer-lo: n'hi ha prou de saber quins són els seus elements d'aquestes dues formes i com hi actuen els canvis de forma $\sigma$ i $\tau$. Aplicant-ho a $\Omega$ i fent servir $\Hom(-,\Omega)\cong\Sub$, obtenim
 \[
 V_\Omega\cong\Sub(\mathbf V),\qquad E_\Omega\cong\Sub(\mathbf E).
 \]
 El graf $\mathbf V$ té dos subgrafs, el buit i ell mateix; així, $\Omega$ té dos vèrtexs, que anomenem $0$ (\enquote{el vèrtex no hi és}) i $1$ (\enquote{el vèrtex hi és}). El graf $\mathbf E$ té cinc subgrafs (exemple~\ref{ex:subgrafs}): $\varnothing$, $\{s\}$, $\{t\}$, $\{s,t\}$ i $\{s,t,e\}$. Així, $\Omega$ té cinc arestes.
 
-\emph{Origen i destí.} L'origen d'una aresta $K\subseteq\mathbf E$ de $\Omega$ s'obté reindexant $K$ al llarg del morfisme $\mathbf V\to\mathbf E$ que tria $s$; és a dir, val $1$ si $s\in K$ i $0$ altrament. El destí, igual amb $t$. Anomenant les arestes per la informació que codifiquen, queda
+\emph{Origen i destí.} L'origen d'una aresta $K\subseteq\mathbf E$ de $\Omega$ s'obté canviant de forma al llarg de $\sigma\colon\mathbf V\to\mathbf E$, el morfisme que tria $s$; a través de $\Hom(-,\Omega)\cong\Sub$, això vol dir reindexar $K$ al llarg de $\sigma$; és a dir, val $1$ si $s\in K$ i $0$ altrament. El destí, igual amb $t$. Anomenant les arestes per la informació que codifiquen, queda
 \[
 \renewcommand{\arraystretch}{1.2}
 \begin{array}{c|c|l}

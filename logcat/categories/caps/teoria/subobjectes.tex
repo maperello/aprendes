@@ -11,12 +11,13 @@
   \item definir epimorfisme regular, parella nucli i factorització imatge;
   \item reconèixer una categoria regular;
   \item demostrar l'adjunció $\exists_f\dashv f^{*}$.
+  \item descriure, a $\cat{Set}$, la cadena $\Sigma_f\dashv f^{*}\dashv\Pi_f$ entre categories sobre un objecte, i obtenir-ne $\exists_f$ com a imatge de la suma dependent i $\forall_f$ com a restricció del producte dependent.
 \end{itemize}
 \end{objectius}
 
 El capítol anterior ens ha donat la semàntica dels tipus i els termes. Ara construïm la peça complementària: la interpretació de les \textbf{proposicions} i la \textbf{substitució}. La idea directriu és senzilla i profunda: un predicat sobre un objecte $A$ ---una propietat que els \enquote{elements} de $A$ poden tenir o no--- es representa categòricament per un \textbf{subobjecte} de $A$. A $\cat{Set}$, un subconjunt es representa per la seva inclusió, que és injectiva; en una categoria arbitrària, el paper de les injeccions el fan els monomorfismes. Els subobjectes d'un objecte formen un ordre parcial $\Sub(A)$, i la reindexació per pullback, que ja vam construir, hi actua com la substitució.
 
-A la segona meitat del capítol construïm la \textbf{factorització imatge} d'un morfisme. A $\cat{Set}$, tota aplicació es factoritza com una aplicació exhaustiva sobre la seva imatge seguida de la inclusió d'aquesta imatge; en una categoria arbitrària, aquesta idea es reformula mitjançant epimorfismes regulars i monomorfismes. Després definim les \textbf{categories regulars} com aquelles on aquesta factorització és estable per canvi de base, i n'obtenim una conseqüència notable: l'\textbf{existencial} apareix com a \textbf{adjunt per l'esquerra} de la reindexació. L'universal $\forall_f$ requereix estructura addicional i es tractarà al volum de lògica categòrica. Amb això, el volum tanca la infraestructura categòrica que la lògica farà servir.
+A la segona meitat del capítol construïm la \textbf{factorització imatge} d'un morfisme. A $\cat{Set}$, tota aplicació es factoritza com una aplicació exhaustiva sobre la seva imatge seguida de la inclusió d'aquesta imatge; en una categoria arbitrària, aquesta idea es reformula mitjançant epimorfismes regulars i monomorfismes. Després definim les \textbf{categories regulars} com aquelles on aquesta factorització és estable per canvi de base, i n'obtenim una conseqüència notable: l'\textbf{existencial} apareix com a \textbf{adjunt per l'esquerra} de la reindexació. L'universal $\forall_f$ requereix estructura addicional; l'última secció en mostra l'origen a $\cat{Set}$, com a restricció d'un \emph{producte dependent}, i el seu estudi general es tractarà al volum de lògica categòrica. Amb això, el volum tanca la infraestructura categòrica que la lògica farà servir.
 
 \section{Subobjectes}
 
@@ -171,7 +172,7 @@ Com que $\cat{C}$ és ben potenciada, cada $\Sub(A)$ és un conjunt parcialment 
 \item \emph{Existència.} La parella $(f\comp x,\,y)$ és un con per al primer pullback, de manera que hi ha un únic $q\colon Z\to Q$ amb $m_1\comp q=f\comp x$ i $g'\comp q=y$. Aleshores $(x,q)$ és un con per al segon pullback, i hi ha un únic $p\colon Z\to P$ amb $m_2\comp p=x$ i $f'\comp p=q$. Per tant, $m_2\comp p=x$ i $(g'\comp f')\comp p=y$.
 \item \emph{Unicitat.} Si $p'\colon Z\to P$ també compleix $m_2\comp p'=x$ i $g'\comp f'\comp p'=y$, aleshores $f'\comp p'$ compleix $m_1\comp(f'\comp p')=f\comp m_2\comp p'=f\comp x$ i $g'\comp(f'\comp p')=y$. Per la unicitat al primer pullback, $f'\comp p'=q$. Per la unicitat al segon, $p'=p$.
 \end{itemize}
-Aquest argument és el lema d'enganxament de pullbacks, en la direcció que aquí cal (exercici resolt corresponent de la Pràctica del capítol~\ref{cap:limits}). Per tant $(g\comp f)^{*}=f^{*}\comp g^{*}$.
+Aquest argument és el lema d'enganxament de pullbacks, en la direcció que aquí cal (exercici resolt~\ref{pr-enganxament} de la Pràctica). Per tant $(g\comp f)^{*}=f^{*}\comp g^{*}$.
 
 Les dues lleis són \emph{igualtats} d'aplicacions entre ordres parcials, i no només isomorfismes. A nivell de monomorfismes, el pullback al llarg de $g\comp f$ i el pullback iterat només coincideixen llevat d'isomorfisme. En passar a classes, però, aquest isomorfisme queda absorbit.
 \end{prova}
@@ -278,11 +279,15 @@ Una \textbf{factorització imatge} de $f\colon A\to B$ és una descomposició $f
 
 \begin{proposicio}[La imatge és el mínim subobjecte]
 \label{prop:imatge-unica}
-Quan existeix, la factorització imatge és única llevat d'isomorfisme canònic, i $\Imatge(f)$ és el \emph{menor} subobjecte de $B$ a través del qual $f$ es factoritza: si $f$ es factoritza per un mono $n\colon T\rightarrowtail B$, aleshores $\Imatge(f)\leq[n]$.
+En una categoria amb pullbacks, la factorització imatge de $f\colon A\to B$, quan existeix, és única llevat d'isomorfisme canònic, i $\Imatge(f)$ és el \emph{menor} subobjecte de $B$ a través del qual $f$ es factoritza: si $f$ es factoritza per un mono $n\colon T\rightarrowtail B$, aleshores $\Imatge(f)\leq[n]$.
 \end{proposicio}
 
 \begin{prova}
-Sigui $f=m\comp e$ una factorització imatge. Com que $m$ és mono, qualsevol parella nucli de $e$ és també una parella nucli de $f$ (perquè $m\comp e\comp u=m\comp e\comp v$ si i només si $e\comp u=e\comp v$); en particular, les parelles nucli escollides per a $e$ i per a $f$ són canònicament isomorfes. Pel lema~\ref{lema:epi-regular-nucli}, $e$ és el coequalitzador de la seva parella nucli $p_1,p_2$. Si $f=m'\comp e'$ és una altra factorització amb $m'$ mono, aleshores $e'$ iguala les branques d'aquesta parella nucli, perquè $m'\comp e'\comp p_1=f\comp p_1=f\comp p_2=m'\comp e'\comp p_2$ i $m'$ és mono, de manera que $e'$ es factoritza per $e$ mitjançant un únic morfisme; simètricament s'obté l'invers, i les dues composicions són identitats perquè $e$ és epi. Això dona l'isomorfisme canònic. La minimalitat en segueix: si $f=n\comp g$ amb $n$ mono, aleshores $g$ iguala la parella nucli i es factoritza per $e$, d'on $\Imatge(f)=[m]\leq[n]$.
+Sigui $f=m\comp e$ una factorització imatge. Com que $m$ és mono, qualsevol parella nucli de $e$ és també una parella nucli de $f$ (perquè $m\comp e\comp u=m\comp e\comp v$ si i només si $e\comp u=e\comp v$); en particular, les parelles nucli escollides per a $e$ i per a $f$ són canònicament isomorfes. Pel lema~\ref{lema:epi-regular-nucli}, $e$ és el coequalitzador de la seva parella nucli $p_1,p_2$. Comencem per un fet que serveix per a les dues afirmacions. Si $f=n\comp g$ amb $n\colon T\rightarrowtail B$ mono i $g\colon A\to T$ qualsevol, aleshores $g$ iguala les branques de la parella nucli, perquè $n\comp g\comp p_1=f\comp p_1=f\comp p_2=n\comp g\comp p_2$ i $n$ és mono. Com que $e$ n'és el coequalitzador, hi ha un únic $\varphi\colon I\to T$ amb $\varphi\comp e=g$. A més, $n\comp\varphi=m$, perquè $n\comp\varphi\comp e=n\comp g=f=m\comp e$ i $e$ és epi.
+
+\emph{Minimalitat.} El fet anterior diu exactament que $m$ es factoritza per $n$, és a dir, $\Imatge(f)=[m]\leq[n]$.
+
+\emph{Unicitat.} Sigui $f=m'\comp e'$ una altra factorització \emph{imatge}, amb $e'\colon A\to I'$ epi regular i $m'$ mono. Pel fet anterior, hi ha $\varphi\colon I\to I'$ amb $\varphi\comp e=e'$ i $m'\comp\varphi=m$. Com que $e'$ també és un epi regular, el mateix argument amb els papers intercanviats dona $\psi\colon I'\to I$ amb $\psi\comp e'=e$ i $m\comp\psi=m'$. Aleshores $\psi\comp\varphi\comp e=\psi\comp e'=e$, i com que $e$ és epi, $\psi\comp\varphi=\id_I$; simètricament, $\varphi\comp\psi=\id_{I'}$. Per tant, $\varphi$ és un isomorfisme compatible amb les dues factoritzacions, i és l'únic, per la unicitat del morfisme induït pel coequalitzador.
 \end{prova}
 
 \begin{observacio}
@@ -340,7 +345,7 @@ En una categoria regular, la reindexació $f^{*}$ té sempre l'adjunt per l'esqu
 \[
 f^{*}[t]\leq[s]\quad\Longleftrightarrow\quad[t]\leq\forall_f[s].
 \]
-Aquesta és estructura addicional, que la regularitat no garanteix: la regularitat només dona el costat existencial. Apareix, per exemple, en les categories localment cartesianes tancades amb les hipòtesis de mida adequades i, en particular, en tot topos elemental. La construcció de $\forall_f$ i el seu paper lògic es tracten al volum de lògica categòrica; no s'obté simplement dualitzant la construcció de la imatge dins de la mateixa fibra de subobjectes.
+Aquesta és estructura addicional, que la regularitat no garanteix: la regularitat només dona el costat existencial. Apareix, per exemple, en les categories localment cartesianes tancades amb les hipòtesis de mida adequades i, en particular, en tot topos elemental. El paper lògic de $\forall_f$ es tracta al volum de lògica categòrica. La seva construcció no s'obté dualitzant la de la imatge dins de la mateixa fibra de subobjectes: la secció~\ref{sec:sigma-pi} mostra, a $\cat{Set}$, que prové d'un adjunt per la dreta de $f^{*}$ entre categories sobre un objecte.
 \end{observacio}
 
 \begin{observacio}[Compatibilitat amb la substitució]\index{Beck--Chevalley}
@@ -373,6 +378,82 @@ Aquesta adjunció té una lectura lògica il·lustrativa. Si $f$ és la projecci
 L'existencial apareix, doncs, com a adjunt per l'esquerra de la substitució. Quan la categoria té també els adjunts per la dreta, l'universal es llegeix anàlogament com $\forall_\pi[s]=\{x\mid\forall y,\ s(x,y)\}$. El desenvolupament d'aquesta idea com a \emph{sistema lògic} ---amb el seu càlcul, la interpretació de l'existencial per la factorització imatge i les condicions de coherència pertinents--- és objecte de l'estudi de la lògica categòrica, i queda fora de l'abast d'aquest volum.
 \end{observacio}
 
+\section{Sumes i productes dependents}\label{sec:sigma-pi}\index{suma dependent}\index{producte dependent}
+
+Fins ara hem estudiat la reindexació $f^{*}$ sobre els subobjectes. Però el functor $f^{*}$ existeix abans, entre les categories sobre un objecte: al capítol de límits el vam definir com un functor $f^{*}\colon\cat{C}/B\to\cat{C}/A$ (observació~\ref{obs:reindexacio}), i $f^{*}\colon\Sub(B)\to\Sub(A)$ n'és la restricció. En aquesta secció mirem els adjunts de $f^{*}$ en aquest nivell més ampli, en el cas de $\cat{Set}$, on tot es pot calcular. Hi veurem d'on provenen $\exists_f$ i $\forall_f$, i per què el primer existeix en tota categoria regular mentre que el segon demana estructura addicional.
+
+Recordem que un objecte $x\colon X\to A$ de $\cat{Set}/A$ es pot llegir com la família de les seves fibres, $X_a=x^{-1}(a)$ per a $a\in A$, i que un morfisme de $\cat{Set}/A$ envia la fibra sobre cada $a$ a la fibra sobre el mateix $a$. Fixem una aplicació $f\colon A\to B$. Hi ha tres functors entre $\cat{Set}/A$ i $\cat{Set}/B$.
+
+\begin{itemize}
+\item La \textbf{reindexació} $f^{*}\colon\cat{Set}/B\to\cat{Set}/A$, per pullback. Sobre fibres, envia la família $(Y_b)_{b\in B}$ a la família $(Y_{f(a)})_{a\in A}$.
+\item La \textbf{suma dependent} $\Sigma_f\colon\cat{Set}/A\to\cat{Set}/B$, que envia $x\colon X\to A$ a $f\comp x\colon X\to B$ i deixa igual els morfismes. Sobre fibres,
+\[
+(\Sigma_f X)_b=\coprod_{a\in f^{-1}(b)}X_a,
+\]
+la unió disjunta de les fibres de $X$ sobre els punts que $f$ envia a $b$.
+\item El \textbf{producte dependent} $\Pi_f\colon\cat{Set}/A\to\cat{Set}/B$, definit fibra a fibra per
+\[
+(\Pi_f X)_b=\prod_{a\in f^{-1}(b)}X_a,
+\]
+és a dir, el conjunt de les maneres de triar, per a cada $a$ amb $f(a)=b$, un element de $X_a$. Sobre un morfisme $h\colon X\to X'$ de $\cat{Set}/A$, $\Pi_f(h)$ aplica $h$ a cada component triada.
+\end{itemize}
+
+\begin{proposicio}[$\Sigma_f\dashv f^{*}\dashv\Pi_f$ a $\cat{Set}$]\label{prop:sigma-pi-set}\index{adjunció!suma i producte dependents}
+Per a tota aplicació $f\colon A\to B$, hi ha bijeccions
+\begin{align*}
+\Hom_{\cat{Set}/B}(\Sigma_f X,\,Y)&\;\cong\;\Hom_{\cat{Set}/A}(X,\,f^{*}Y),\\
+\Hom_{\cat{Set}/A}(f^{*}Y,\,X)&\;\cong\;\Hom_{\cat{Set}/B}(Y,\,\Pi_f X),
+\end{align*}
+naturals en $X$ de $\cat{Set}/A$ i en $Y$ de $\cat{Set}/B$. És a dir,
+\[
+\Sigma_f\;\dashv\;f^{*}\;\dashv\;\Pi_f.
+\]
+\end{proposicio}
+
+\begin{prova}
+Treballem amb fibres. Un morfisme $\Sigma_f X\to Y$ sobre $B$ envia cada element de la fibra $X_a$ a la fibra $Y_{f(a)}$; és, doncs, una família d'aplicacions $X_a\to Y_{f(a)}$, una per a cada $a\in A$. I això és exactament un morfisme $X\to f^{*}Y$ sobre $A$, perquè la fibra de $f^{*}Y$ sobre $a$ és $Y_{f(a)}$.
+
+Per a la segona bijecció, un morfisme $f^{*}Y\to X$ sobre $A$ és una família d'aplicacions $Y_{f(a)}\to X_a$, una per a cada $a\in A$. Agrupem-les segons el valor $b=f(a)$: per a cada $b\in B$ tenim una família d'aplicacions $Y_b\to X_a$, una per a cada $a\in f^{-1}(b)$. Per la propietat universal del producte a $\cat{Set}$, aquesta família és el mateix que una sola aplicació $Y_b\to\prod_{a\in f^{-1}(b)}X_a=(\Pi_f X)_b$; i una aplicació d'aquest tipus per a cada $b$ és un morfisme $Y\to\Pi_f X$ sobre $B$.
+
+Cap de les dues bijeccions no fa cap tria: només reagrupen les mateixes aplicacions entre fibres. Per això la naturalitat es comprova directament, component a component, precomponent o postcomponent amb morfismes sobre $A$ o sobre $B$; la comprovació detallada és l'exercici resolt~\ref{pr-sigma-pi-naturalitat} de la Pràctica.
+\end{prova}
+
+Quan $B=\{\ast\}$ i $f=!\colon A\to\{\ast\}$, la categoria $\cat{Set}/\{\ast\}$ és, en essència, $\cat{Set}$, i les fórmules es llegeixen sense índexs. El functor $!^{*}$ envia un conjunt $C$ a la família constant $(C)_{a\in A}$, és a dir, a $A\times C\to A$: \enquote{afegeix una variable muda} de tipus $A$. Els seus adjunts són
+\[
+\Sigma_!X=\coprod_{a\in A}X_a,
+\qquad
+\Pi_!X=\prod_{a\in A}X_a,
+\]
+la suma i el producte de la família. Aplicats a una família constant, donen $\Sigma_!\,!^{*}C=A\times C$ i $\Pi_!\,!^{*}C=C^{A}$. Component les dues adjuncions de la proposició s'obté
+\[
+\Hom(A\times C,\,D)\;\cong\;\Hom_{\cat{Set}/A}(!^{*}C,\ !^{*}D)\;\cong\;\Hom(C,\,D^{A}),
+\]
+que és la currificació $A\times-\dashv(-)^{A}$ del capítol~\ref{cap:cartesianes}. El producte i l'exponencial són, doncs, el cas constant de la suma i el producte dependents: quan la família no varia amb $a$, sumar-la és multiplicar per $A$, i fer-ne el producte és elevar a $A$.
+
+\paragraph{D'on surten els quantificadors.} Un subconjunt $S\subseteq A$ és l'objecte de $\cat{Set}/A$ donat per la inclusió, i les seves fibres tenen com a màxim un element: $S_a$ és un singleton si $a\in S$ i és buida altrament. Vegem què fan els tres functors amb aquests objectes.
+
+\begin{itemize}
+\item $f^{*}$ envia subconjunts a subconjunts, perquè el pullback d'un mono és mono (proposició~\ref{prop:pullback-mono}). La restricció és l'antiimatge.
+\item $\Pi_f$ també. Un producte de conjunts amb com a màxim un element té com a màxim un element, i en té un exactament quan tots els factors en tenen un. Per tant, $(\Pi_f S)_b$ és un singleton si $f^{-1}(b)\subseteq S$ i és buit altrament: $\Pi_f S$ és el subconjunt
+\[
+\forall_f(S)=\{b\in B\mid f^{-1}(b)\subseteq S\}
+\]
+de l'exemple~\ref{ex:quantificadors-set}. Com que $f^{*}$ i $\Pi_f$ es restringeixen als subobjectes, l'adjunció $f^{*}\dashv\Pi_f$ es restringeix a l'adjunció $f^{*}\dashv\forall_f$ entre $\Sub(B)$ i $\Sub(A)$.
+\item $\Sigma_f$, en canvi, \emph{no} envia subconjunts a subconjunts. La fibra $(\Sigma_f S)_b$ té tants elements com punts de $S$ hi ha sobre $b$, i pot tenir-ne molts. Per obtenir un subconjunt de $B$ cal quedar-se només amb \emph{si} la fibra és buida o no, és a dir, prendre la imatge de $f\comp s\colon S\to B$:
+\[
+\exists_f(S)=\Imatge(\Sigma_f S)=\{b\in B\mid f^{-1}(b)\cap S\neq\varnothing\},
+\]
+que és exactament la definició del teorema~\ref{teo:existencial-adjunt}.
+\end{itemize}
+
+Les dues fórmules tenen una lectura lògica clara. La suma dependent recorda \emph{quins} testimonis hi ha sobre cada $b$; el quantificador existencial n'oblida la identitat i només en conserva l'existència, i aquest oblit és la factorització imatge. Per això $\exists_f$ existeix en tota categoria regular, on $\Sigma_f$ (la composició amb $f$) sempre existeix i les imatges també. Per al quantificador universal, la regularitat no basta. Una manera d'obtenir-lo és disposar dels productes dependents: si cada $f^{*}\colon\cat{C}/B\to\cat{C}/A$ té adjunt per la dreta $\Pi_f$, aleshores $\Pi_f$, com tot adjunt per la dreta, preserva els límits i, en particular, els monomorfismes, i es restringeix a un adjunt per la dreta $\forall_f$ de $f^{*}\colon\Sub(B)\to\Sub(A)$, exactament com a $\cat{Set}$. En una categoria amb límits finits, es pot demostrar que tenir tots els $\Pi_f$ equival a demanar que cada categoria $\cat{C}/A$ sigui cartesiana tancada. Les categories amb límits finits que compleixen aquesta condició s'anomenen \textbf{localment cartesianes tancades}\index{categoria!localment cartesiana tancada}; com que $\cat{C}\cong\cat{C}/1$, són en particular cartesianes tancades. $\cat{Set}$ n'és una, i també ho són $\cat{Graph}$ i tots els topos elementals (capítol~\ref{cap:pont}).
+
+Aquesta condició és suficient, però \emph{no} necessària. Tenir $\forall_f$ sobre els ordres parcials de subobjectes és una exigència més feble que tenir $\Pi_f$ sobre totes les categories sobre un objecte: la primera només demana un adjunt entre ordres de predicats; la segona, un adjunt entre categories de famílies d'objectes qualssevol. Les categories regulars amb quantificació universal sobre subobjectes, sense cap hipòtesi sobre $\Pi_f$, s'estudien al volum de lògica categòrica amb el nom de \emph{categories de Heyting}\index{categoria!de Heyting}. No s'han de confondre, doncs, les dues estructures: $\forall_f$ és quantificació de predicats, i $\Pi_f$ és producte de famílies.
+
+\begin{observacio}[Abast d'aquesta secció]
+En una categoria $\cat{C}$ amb pullbacks qualsevol, la suma dependent $\Sigma_f\colon\cat{C}/A\to\cat{C}/B$ es defineix igual, per composició amb $f$, i l'adjunció $\Sigma_f\dashv f^{*}$ val sempre; és la propietat universal del pullback escrita com una bijecció. L'adjunt per la dreta $\Pi_f$ és el que no està garantit. La seva construcció en general, la seva relació amb $\forall_f$ fora de $\cat{Set}$ i la seva lectura com a semàntica dels tipus dependents corresponen al volum de lògica categòrica. Aquí ens n'ha bastat el cas de $\cat{Set}$ per veure que els dos quantificadors no són simètrics: un és una suma truncada; l'altre, un producte restringit.
+\end{observacio}
+
 \begin{resumcap}
 \apartat{Idees centrals}
 \begin{enumerate}
@@ -381,7 +462,8 @@ L'existencial apareix, doncs, com a adjunt per l'esquerra de la substitució. Qu
   \item La intersecció de subobjectes és el seu pullback i interpreta la conjunció; el màxim $[\id_A]$ interpreta el predicat cert.
   \item Un epimorfisme regular és el coequalitzador de la seva parella nucli; la factorització imatge (epi regular seguit de mono) és única llevat d'isomorfisme, i en una categoria regular existeix i és estable per pullback.
   \item En una categoria regular, $f^{*}$ té un adjunt per l'esquerra $\exists_f$, que interpreta la quantificació existencial; l'universal $\forall_f$ és estructura addicional que la regularitat no garanteix.
+  \item A $\cat{Set}$, la reindexació entre categories sobre un objecte té adjunts a tots dos costats, $\Sigma_f\dashv f^{*}\dashv\Pi_f$. L'universal $\forall_f$ és la restricció de $\Pi_f$ als subobjectes; l'existencial $\exists_f$ és la imatge de $\Sigma_f$, que per si sola no dona subobjectes. El producte i l'exponencial són el cas $B=1$ amb famílies constants.
 \end{enumerate}
-\apartat{Errors típics} Creure que la regularitat dona unions de subobjectes (calen categories coherents) o l'adjunt dret $\forall_f$; confondre els epimorfismes amb els epimorfismes regulars (a $\cat{Top}$, els primers són les aplicacions contínues exhaustives i els segons, les aplicacions quocient); confondre la reindexació $f^{*}$ amb la imatge $\exists_f$; i usar \enquote{imatge}, \enquote{buit} o \enquote{elements} en una categoria arbitrària sense declarar les hipòtesis.
-\apartat{Lectura recomanada} \cite[cap.~5 i~\S9.5]{awodey} per a subobjectes, imatges i l'adjunció existencial; \cite[§§2.8, 2.10, 9.4 i 9.8]{barrwells} per a subobjectes, epimorfismes regulars, categories regulars i sistemes de factorització; \cite[V.7]{maclane} per al tractament clàssic dels subobjectes; \cite[A1.3]{johnstone} i \cite{borceux} per a categories regulars amb més profunditat; \cite{jacobs} per a la lectura fibracional de la reindexació.
+\apartat{Errors típics} Creure que la regularitat dona unions de subobjectes (calen categories coherents) o l'adjunt dret $\forall_f$; confondre els epimorfismes amb els epimorfismes regulars (a $\cat{Top}$, els primers són les aplicacions contínues exhaustives i els segons, les aplicacions quocient); confondre la reindexació $f^{*}$ amb la imatge $\exists_f$; confondre $\Sigma_f$ amb $\exists_f$, o $\Pi_f$ amb $\forall_f$, que actuen en categories diferents ($\cat{C}/A$ i $\Sub(A)$); i usar \enquote{imatge}, \enquote{buit} o \enquote{elements} en una categoria arbitrària sense declarar les hipòtesis.
+\apartat{Lectura recomanada} \cite[cap.~5 i~\S9.5]{awodey} per a subobjectes, imatges i l'adjunció existencial; \cite[§§2.8, 2.10, 9.4 i 9.8]{barrwells} per a subobjectes, epimorfismes regulars, categories regulars i sistemes de factorització; \cite[V.7]{maclane} per al tractament clàssic dels subobjectes; \cite[A1.3]{johnstone} i \cite{borceux} per a categories regulars amb més profunditat; \cite{jacobs} per a la lectura fibracional de la reindexació; \cite[§9.7]{awodey} per a les categories localment cartesianes tancades i els functors $\Sigma_f$ i $\Pi_f$.
 \end{resumcap}

@@ -216,3 +216,19 @@ x\cdot e=x:
 
 Per a $X=M$ regular, les aplicacions equivariants $M\to M$ són exactament les multiplicacions per l'esquerra $\lambda_a\colon m\mapsto a\cdot m$, una per a cada $a\in M$. Com que $\lambda_a\comp\lambda_b=\lambda_{a\cdot b}$ i $\lambda_e=\id$, la immersió de Yoneda identifica $M$ amb aquest monoide d'aplicacions de $M$ en si mateix, i el fet que sigui fidel diu que $a\mapsto\lambda_a$ és injectiva. Obtenim el \textbf{teorema de Cayley} per a monoides: tot monoide és isomorf a un monoide d'aplicacions d'un conjunt en si mateix, amb la composició.
 \end{solucio}
+
+\begin{exercici}\label{pr-graf-sondes}
+Sigui $G$ el graf amb vèrtexs $a,b$, una aresta $e\colon a\to b$ i un bucle $l\colon b\to b$. Calcula la restricció de $\Hom(-,G)$ a les dues sondes $\mathbf V$ i $\mathbf E$ de l'exemple~\ref{ex:graf-sondes}: els conjunts $\Hom(\mathbf V,G)$ i $\Hom(\mathbf E,G)$ i les aplicacions $\sigma^*,\tau^*$. Reconstrueix després, només a partir d'aquestes dades, un graf isomorf a $G$, i escriu l'isomorfisme.
+\end{exercici}
+
+\begin{solucio}
+\textbf{Les sondes.} Hi ha dos morfismes $\mathbf V\to G$, que anomenem $\hat a$ i $\hat b$ segons el vèrtex que trien, i dos morfismes $\mathbf E\to G$: $\hat e$, que envia l'aresta $0\to1$ a $e$ i els vèrtexs a $a$ i $b$, i $\hat l$, que l'envia a $l$ i tots dos vèrtexs a $b$. Els canvis de forma són
+\[
+\sigma^*(\hat e)=\hat e\comp\sigma=\hat a,\quad \tau^*(\hat e)=\hat b,\qquad \sigma^*(\hat l)=\tau^*(\hat l)=\hat b,
+\]
+perquè $\sigma$ i $\tau$ trien els vèrtexs $0$ i $1$ de $\mathbf E$.
+
+\textbf{La reconstrucció.} Definim un graf $\widetilde G$ amb vèrtexs $\Hom(\mathbf V,G)=\{\hat a,\hat b\}$, arestes $\Hom(\mathbf E,G)=\{\hat e,\hat l\}$, origen $\sigma^*$ i destí $\tau^*$. Té una aresta $\hat e\colon\hat a\to\hat b$ i un bucle $\hat l$ a $\hat b$. L'aplicació $\hat a\mapsto a$, $\hat b\mapsto b$, $\hat e\mapsto e$, $\hat l\mapsto l$ ---avaluar cada sonda en el seu element universal--- és un isomorfisme de grafs $\widetilde G\to G$: és bijectiva sobre vèrtexs i arestes i respecta origen i destí, com mostren les igualtats anteriors.
+
+\emph{Comentari.} Les dades que hem fet servir són exactament un functor $\cat{P}\to\cat{Set}$, i el graf $\widetilde G$ és el que li assigna la proposició~\ref{prop:graph-functors}. Observem que el nombre de vèrtexs i d'arestes no hauria bastat: el graf amb una aresta $a\to b$ i un bucle a $a$ en té els mateixos, i no és isomorf a $G$. El que els distingeix són els canvis de forma $\sigma^*$ i $\tau^*$.
+\end{solucio}

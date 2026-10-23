@@ -165,6 +165,36 @@ Comprova que si un functor $G$ \emph{no} preserva algun límit petit, aleshores 
 És el contrarecíproc del teorema. Si $G$ tingués un adjunt per l'esquerra $F$, amb $F\dashv G$, aleshores $G$ seria un adjunt per la dreta i, pel teorema, preservaria tots els límits petits que existeixen. Com que per hipòtesi $G$ no en preserva algun, no pot tenir adjunt per l'esquerra. Aquest és un criteri negatiu molt pràctic: per exemple, si un functor oblit no preserva algun coproducte, això impedeix que sigui adjunt per l'esquerra, però no impedeix que sigui adjunt per la dreta.
 \end{solucio}
 
+\begin{exercici}\label{pr-adjunts-grafs}
+Siguin $V\colon\cat{Graph}\to\cat{Set}$ el functor de vèrtexs, $\mathrm{Disc}\colon\cat{Set}\to\cat{Graph}$ el functor que envia un conjunt $S$ al graf \emph{discret} amb vèrtexs $S$ i cap aresta, i $\mathrm{Codisc}\colon\cat{Set}\to\cat{Graph}$ el que l'envia al graf \emph{codiscret} amb vèrtexs $S$ i exactament una aresta $(a,b)\colon a\to b$ per a cada parella ordenada $(a,b)\in S\times S$. Demostra que
+\[
+\mathrm{Disc}\;\dashv\;V\;\dashv\;\mathrm{Codisc}.
+\]
+Demostra també que $\mathrm{Disc}$ no té cap adjunt per l'esquerra.
+\end{exercici}
+
+\begin{solucio}
+\textbf{$\mathrm{Disc}\dashv V$.} Un morfisme de grafs $\mathrm{Disc}(S)\to G$ no té cap aresta on decidir res: és una aplicació $S\to V_G$ sobre els vèrtexs, sense cap condició. Per tant,
+\[
+\Hom_{\cat{Graph}}(\mathrm{Disc}(S),\,G)\;\cong\;\Hom_{\cat{Set}}(S,\,V_G).
+\]
+La bijecció és la identitat sobre les aplicacions de vèrtexs, i és natural perquè precompondre amb $\mathrm{Disc}(h)$ o postcompondre amb un morfisme $F\colon G\to G'$ actua, a tots dos costats, sobre la mateixa aplicació de vèrtexs.
+
+\textbf{$V\dashv\mathrm{Codisc}$.} Donada una aplicació $\varphi\colon V_G\to S$, definim $\widehat\varphi\colon G\to\mathrm{Codisc}(S)$ igual que $\varphi$ sobre els vèrtexs i, sobre les arestes,
+\[
+\widehat\varphi(e)=\bigl(\varphi(s_G(e)),\,\varphi(t_G(e))\bigr).
+\]
+És un morfisme de grafs, perquè l'aresta $(\varphi(s_G e),\varphi(t_G e))$ va de $\varphi(s_G e)$ a $\varphi(t_G e)$. I és l'únic morfisme amb aquesta part sobre vèrtexs: entre dos vèrtexs de $\mathrm{Codisc}(S)$ hi ha exactament una aresta, de manera que la imatge de cada aresta queda forçada pels seus extrems. Per tant,
+\[
+\Hom_{\cat{Graph}}(G,\,\mathrm{Codisc}(S))\;\cong\;\Hom_{\cat{Set}}(V_G,\,S),
+\]
+i la naturalitat es comprova igual que abans.
+
+\textbf{$\mathrm{Disc}$ no té adjunt per l'esquerra.} Si en tingués, $\mathrm{Disc}$ seria un adjunt per la dreta i preservaria els límits, en particular l'objecte terminal. Però $\mathrm{Disc}(\{\ast\})$ és el graf $\mathbf V$, i l'objecte terminal de $\cat{Graph}$ és el graf $\mathbf L$ d'un bucle (exemple~\ref{ex:producte-tres-contextos}); $\mathbf V$ no és terminal, perquè de $\mathbf L$ a $\mathbf V$ no hi ha cap morfisme.
+
+\emph{Per què és instructiu.} Seria temptador afirmar que $\mathrm{Disc}$ té per adjunt per l'esquerra el functor $\pi_0$ de \emph{components connexos}, amb l'argument que un morfisme cap a un graf discret és constant sobre cada component. L'argument falla perquè, a $\cat{Graph}$, un graf discret no té arestes i, per tant, de qualsevol graf amb alguna aresta no hi ha cap morfisme cap a un graf discret. La bijecció esperada $\Hom(G,\mathrm{Disc}(S))\cong\Hom(\pi_0G,S)$ ja falla per a $G=\mathbf E$ i $S=\{\ast\}$: el costat esquerre és buit i el dret té un element. L'adjunció $\pi_0\dashv\mathrm{Disc}$ sí que val en la categoria dels grafs \emph{reflexius}, on cada vèrtex porta un bucle distingit que els morfismes han de respectar; allà les arestes poden anar a parar a aquests bucles, i la cadena s'allarga a $\pi_0\dashv\mathrm{Disc}\dashv V\dashv\mathrm{Codisc}$ (vegeu els Exercicis i \cite[apèndix~II]{lawvereschanuel}).
+\end{solucio}
+
 \section{Exponencials}
 
 \begin{exercici}

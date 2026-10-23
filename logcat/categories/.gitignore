@@ -1,4 +1,4 @@
-# Fitxers auxiliars de LaTeX (el main.pdf es versiona: és el que enllaça la web)
+# Fitxers auxiliars de LaTeX (els PDF publicats es versionen: és el que enllaça la web)
 *.aux
 *.bcf
 *.bbl
@@ -23,5 +23,5 @@
 fascicle.pdf
 fascicle-imprimible.pdf
 
-# Documentaci� interna de desenvolupament: no es publica.
+# Documentació interna de desenvolupament: no es publica.
 docs/

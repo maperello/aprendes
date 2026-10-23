@@ -2,7 +2,7 @@
 
 **Formació prèvia per aprendre lògica categòrica**
 
-Autor: Miquel Àngel Perelló · Versió 1.7 (octubre de 2026) · Projecte [**aprendes / logcat**](https://aprendes.com/logcat/)
+Autor: Miquel Àngel Perelló · Versió 1.8 (octubre de 2026) · Projecte [**aprendes / logcat**](https://aprendes.com/logcat/)
 
 Aquest llibre és una introducció a la teoria de categories **orientada a servir de
 base per a un volum posterior de lògica categòrica**. Segueix el nivell i l'estil
@@ -17,19 +17,37 @@ categòrica).
 
 ## Estat de la publicació
 
-La **versió 1.7 és el llibre complet**: els deu capítols de teoria i els nou
-capítols de pràctica, exercicis proposats i tests interactius, amb els apèndixs,
-el glossari, la bibliografia, la taula de notació i l'índex. Tots els capítols han
-passat una revisió matemàtica, didàctica i bibliogràfica completa. El PDF
-publicat és `main.pdf`.
+La **versió 1.8 és el llibre complet**, revisat a partir d'una comparació amb
+Lawvere–Schanuel, Awodey i Riehl: els deu capítols de teoria i els nou capítols
+de pràctica, exercicis proposats i tests interactius, amb els apèndixs, el
+glossari, la bibliografia, la taula de notació i l'índex. El PDF publicat és
+`main.pdf`.
 
-Novetats respecte de la versió 1.6 (fascicle dels capítols 1–4):
+Novetats respecte de la versió 1.7:
 
-- s'hi incorporen els capítols 5–10 revisats;
-- s'hi afegeixen la **Guia de lectura** i l'apèndix **Convenció de mida**;
-- cada pregunta dels tests té una **justificació** breu; les claus i les
-  justificacions es reuneixen al final del llibre (apèndix **Solucions dels tests**);
-- les remissions bibliogràfiques s'han verificat amb les edicions citades.
+- **elements generalitzats** (secció 2.7 nova): lectura dels morfismes X → A com
+  a elements de forma X, amb una proposició de separació i detecció i els
+  exemples de Set, Graph i Prov_T; retorn als capítols 4 (un graf reconstruït a
+  partir de dues sondes) i 9 (càlcul de Ω);
+- el producte del capítol 1 es llegeix també com una bijecció d'homconjunts;
+- **idempotents i retractes** (capítol 1), amb una nota sobre la compleció de
+  Karoubi;
+- Prov_T i l'**àlgebra de Lindenbaum–Tarski** com a exemple d'equivalència
+  (capítol 3);
+- **distributivitat** en les categories cartesianes tancades, amb el
+  contraexemple de Vect i la lectura com a raonament per casos (capítol 7);
+- **sumes i productes dependents** a Set, Σ_f ⊣ f* ⊣ Π_f, i l'origen de ∃_f i
+  ∀_f (secció nova del capítol 8);
+- la cadena d'adjunts Disc ⊣ V ⊣ Codisc dels grafs, i per què π₀ ⊣ Disc només
+  val per a grafs reflexius (Pràctica del capítol 6);
+- pràctica i exercicis nous per a tot el material anterior, inclosos exercicis
+  de **detecció d'errors**;
+- la Guia de lectura, el glossari i la taula de notació s'han actualitzat;
+- les opcions dels tests porten la lletra («☐ a) …»), com les claus de l'apèndix
+  de solucions, i la carpeta `common/` és la mateixa que la dels altres llibres
+  de la col·lecció;
+- `imprimible.tex` permet generar la versió per imprimir des d'un editor sense
+  `make` (WinEdt, TeXstudio…).
 
 ## Estructura del llibre
 
@@ -103,6 +121,11 @@ xelatex -interaction=nonstopmode main.tex
 xelatex -interaction=nonstopmode main.tex
 ```
 
+Aquest llibre no fa servir `biblatex`, i per tant no cal Biber. Des d'un editor
+sense `make` (WinEdt, TeXstudio…), la versió imprimible es genera compilant el
+fitxer `imprimible.tex` amb la mateixa seqüència (XeLaTeX, MakeIndex, XeLaTeX,
+XeLaTeX); el resultat és `imprimible.pdf`.
+
 ### Amb Make
 
 ```sh
@@ -125,6 +148,10 @@ duplicats o un nombre de camps de formulari diferent de l'esperat (632 al llibre
 complet, 184 al fascicle i 0 a les dues variants imprimibles). També llista els desbordaments de més de 3 pt. Requereix
 TeX Live amb XeLaTeX i `makeindex`; opcionalment, `pdfinfo` (poppler) i Python amb
 `pypdf` per comptar les pàgines i els camps.
+
+`comprova.sh` llegeix els fitxers `.log` de la compilació, de manera que només
+es pot executar després de compilar (`make all` o `make ci`); aplicat a una
+còpia acabada de descomprimir, donaria errors per manca dels registres.
 
 ### Amb latexmk
 
@@ -167,8 +194,9 @@ hi remet amb un enllaç.
 - `main.tex`, `metadata.tex`: document principal i metadades.
 - `caps/`: capítols (`teoria/`, `practica/`, `exercicis/`, `tests/`), introducció,
   guia, apèndixs i materials de consulta.
-- `common/`: estil i preàmbul compartits. `common/legacy/` conté versions antigues
-  que **no s'usen** en la compilació actual.
+- `common/`: estil i preàmbul compartits amb la col·lecció. **No s'editen
+  localment**: els canvis es fan a la còpia canònica i es propaguen als tres
+  llibres.
 - `Makefile`, `latexmkrc`, `comprova.sh`: compilació i comprovacions (`make ci`).
 - `main.pdf`: llibre complet per a pantalla, amb tests interactius.
 - `imprimible.pdf`: llibre complet per imprimir (fons blanc, tests en paper).
@@ -190,14 +218,14 @@ pàgina) o *pull requests* al repositori
 
 ## Com citar-lo
 
-Miquel Àngel Perelló, *Una introducció a la teoria de categories*, versió 1.7,
+Miquel Àngel Perelló, *Una introducció a la teoria de categories*, versió 1.8,
 2026. Projecte aprendes / logcat, <https://aprendes.com/logcat/>.
 
 ```bibtex
 @book{perello2026categories,
   author    = {Perelló, Miquel Àngel},
   title     = {Una introducció a la teoria de categories},
-  edition   = {versió 1.7},
+  edition   = {versió 1.8},
   year      = {2026},
   month     = oct,
   publisher = {Projecte aprendes / logcat},

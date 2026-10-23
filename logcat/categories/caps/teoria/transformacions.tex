@@ -434,7 +434,7 @@ La categoria índex $\cat{P}$ no és nova: és la categoria de \textbf{dues flet
 \end{tikzpicture}
 \]
 
-\begin{proposicio}\index{graf!com a categoria de functors}
+\begin{proposicio}\index{graf!com a categoria de functors}\label{prop:graph-functors}
 La categoria de functors $\cat{Set}^{\cat{P}}$ és isomorfa a la categoria $\cat{Graph}$ dels grafs dirigits i els morfismes de grafs.
 \end{proposicio}
 
@@ -713,6 +713,14 @@ té els tipus correctes: una matriu $n\times m$ dona una aplicació lineal $\mat
 \item \emph{El quasiinvers només torna llevat d'isomorfisme.} El pas~1 de la demostració del teorema consisteix aquí a \emph{triar una base} de cada espai $V$, és a dir, un isomorfisme $\varepsilon_V\colon\mathbb K^{\dim V}\to V$. Aleshores $G(V)=\dim V$, i $G(g)$ és la matriu de $g$ en les bases triades. Si per als espais $\mathbb K^n$ triem la base canònica, es té literalment $G\comp F=\id_{\cat{Mat}_{\mathbb K}}$. En canvi, $F(G(V))=\mathbb K^{\dim V}$, que no és $V$ tret que $V$ sigui algun $\mathbb K^n$. Així, $F\comp G$ \emph{no} és igual a $\id_{\cat{FinVect}_{\mathbb K}}$, sinó només isomorf a través de $\varepsilon$. La condició de naturalitat $g\comp\varepsilon_V=\varepsilon_W\comp F(G(g))$ és la coneguda fórmula que relaciona una aplicació lineal amb la seva matriu en unes bases.
 \end{itemize}
 Un espai vectorial qualsevol no té cap base privilegiada; per això el quasiinvers depèn d'una tria, i el que s'obté és una equivalència i no un isomorfisme. Per a l'àlgebra lineal, la conclusió és la que ja es fa servir a la pràctica: treballar amb matrius no perd cap informació sobre les aplicacions lineals entre espais de dimensió finita, sempre que es recordi que la identificació depèn de les bases.
+\end{exemple}
+
+\begin{exemple}[$\cat{Prov}_T$ i l'àlgebra de Lindenbaum--Tarski]\label{ex:prov-lindenbaum}\index{àlgebra de Lindenbaum--Tarski}\index{Prov@$\cat{Prov}_T$!i l'àlgebra de Lindenbaum--Tarski}
+A $\cat{Prov}_T$ dues fórmules són isomorfes quan són interdeduïbles (exemple~\ref{ex:iso-equivalencia-logica}). Identifiquem-les: sigui $[p]$ la classe de les fórmules interdeduïbles amb $p$, i ordenem les classes per $[p]\leq[q]$ si $p\vdash_T q$, condició que no depèn dels representants triats per la transitivitat de $\vdash_T$. El quocient $\mathcal L_T$ que en resulta és sempre un ordre parcial, que veiem, com tot ordre parcial, com una categoria prima. Quan $T$ té connectius amb les regles usuals, la interdeduïbilitat és compatible amb ells ---si $p$ i $p'$ són interdeduïbles, també ho són $p\land q$ i $p'\land q$, i igual per als altres connectius---, de manera que les operacions lògiques passen al quocient. Aleshores $\mathcal L_T$ és una àlgebra, l'\textbf{àlgebra de Lindenbaum--Tarski} de $T$: una àlgebra de Heyting si la lògica és intuïcionista, i una àlgebra de Boole si és clàssica. La construcció de l'equivalència que segueix, però, no depèn de quins connectius hi hagi; només fa servir que $\vdash_T$ és reflexiva i transitiva.
+
+El functor $Q\colon\cat{Prov}_T\to\mathcal L_T$, $p\mapsto[p]$, és una equivalència. És fidel perquè tots dos costats són prims; és ple perquè $[p]\leq[q]$ vol dir exactament $p\vdash_T q$; i és exhaustiu sobre objectes, perquè tota classe és la classe d'alguna fórmula. Pel teorema~\ref{teo:caract-equivalencia}, $\cat{Prov}_T\simeq\mathcal L_T$. No és, en general, un isomorfisme de categories, perquè $\mathcal L_T$ és esquelètica i $\cat{Prov}_T$ no ho és: $p\land q$ i $q\land p$ són objectes diferents i isomorfs. De fet, $\mathcal L_T$ és isomorfa a qualsevol esquelet de $\cat{Prov}_T$.
+
+La conseqüència és la que fa servir la lògica sense dir-ho: les propietats que es conserven per equivalència ---tenir productes, que és tenir conjunció; ser cartesiana tancada, que és tenir implicació--- es poden estudiar indistintament a $\cat{Prov}_T$ o a $\mathcal L_T$. Treballar amb fórmules \enquote{llevat d'interdeduïbilitat} és treballar llevat d'equivalència de categories.
 \end{exemple}
 
 Quines propietats es conserven per equivalència i quines no, i com es demostra que dues categories \emph{no} són equivalents, es tracta a l'apèndix~\refalt{cap:contraexemples}{de contraexemples del llibre complet}, junt amb la relació entre equivalència i esquelets.

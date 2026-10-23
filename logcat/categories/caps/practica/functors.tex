@@ -333,6 +333,44 @@ on el pas central és només associativitat. El resultat $\Hom(f\comp f',g'\comp
 és a dir $\Hom(\id_A,\id_B)=\id_{\Hom(A,B)}$. Per tant $\Hom(-,-)$ preserva composició i identitats de $\cat{C}\op\times\cat{C}$, i és un functor de ple dret.
 \end{solucio}
 
+\section{Elements generalitzats}
+
+\begin{exercici}\label{pr-elements-cicle}
+Sigui $G$ el graf cíclic amb vèrtexs $a,b,c$ i arestes $e\colon a\to b$, $f\colon b\to c$, $k\colon c\to a$. Descriu els elements generalitzats de $G$ de forma $\mathbf V$, $\mathbf E$, $\mathbf E_2$ i $\mathbf L$ (exemple~\ref{ex:elements-graf}). Siguin després $i_1,i_2\colon\mathbf E\to\mathbf E_2$ els morfismes que trien, respectivament, la primera i la segona aresta del camí $0\to1\to2$. Què fan els canvis de forma $i_1^*$ i $i_2^*$ sobre els elements de forma $\mathbf E_2$?
+\end{exercici}
+
+\begin{solucio}
+\textbf{Formes $\mathbf V$ i $\mathbf E$.} Pels càlculs de l'exemple~\ref{ex:homfunctor-grafs}, hi ha un element de forma $\mathbf V$ per a cada vèrtex, tres en total, i un de forma $\mathbf E$ per a cada aresta, també tres.
+
+\textbf{Forma $\mathbf E_2$.} Un morfisme $\mathbf E_2\to G$ envia les dues arestes $0\to1$ i $1\to2$ a dues arestes de $G$, i els vèrtexs a vèrtexs de manera compatible. La condició que imposa el vèrtex $1$, compartit, és que el destí de la primera aresta imatge sigui l'origen de la segona. Els elements de forma $\mathbf E_2$ són, doncs, les parelles d'arestes consecutives de $G$:
+\[
+(e,f),\qquad(f,k),\qquad(k,e).
+\]
+No ho són, per exemple, $(e,k)$, perquè $e$ acaba a $b$ i $k$ comença a $c$; ni $(e,e)$.
+
+\textbf{Forma $\mathbf L$.} Un morfisme $\mathbf L\to G$ envia el bucle a una aresta amb el mateix origen i destí. El graf $G$ no en té cap, de manera que $\Hom(\mathbf L,G)=\varnothing$. Tot i tenir tres vèrtexs, $G$ no té cap element de forma terminal.
+
+\textbf{Canvis de forma.} Si $x\colon\mathbf E_2\to G$ és el camí $(e,f)$, aleshores $x\comp i_1$ és l'aresta $e$ i $x\comp i_2$ és l'aresta $f$. En general, $i_1^*$ i $i_2^*$ envien cada camí de longitud $2$ a la seva primera i a la seva segona aresta. Junt amb $\sigma^*$ i $\tau^*$, que donen l'origen i el destí d'una aresta, aquests canvis de forma expressen també la condició de consecutivitat. La igualtat
+\[
+i_1\comp\tau=i_2\comp\sigma\colon\mathbf V\to\mathbf E_2,
+\]
+que diu que el vèrtex final de la primera aresta de $\mathbf E_2$ és el vèrtex inicial de la segona, dona per precomposició $(x\comp i_1)\comp\tau=(x\comp i_2)\comp\sigma$ per a tot camí $x$: la condició de consecutivitat és ella mateixa una igualtat de canvis de forma.
+\end{solucio}
+
+\begin{exercici}\label{pr-mono-graph}
+Fes servir els elements generalitzats per demostrar que un morfisme de grafs $F=(F_V,F_E)\colon G\to H$ és un monomorfisme de $\cat{Graph}$ si i només si $F_V$ i $F_E$ són injectives. Què passa amb els isomorfismes?
+\end{exercici}
+
+\begin{solucio}
+Per la proposició~\ref{prop:elements-generalitzats}, $F$ és mono si i només si $F_*\colon\Hom(X,G)\to\Hom(X,H)$ és injectiva per a tot graf $X$.
+
+\textbf{Si $F$ és mono.} Prenent $X=\mathbf V$, a través de la bijecció $\Hom(\mathbf V,G)\cong V_G$ la postcomposició $F_*$ és $F_V$ (exemple~\ref{ex:homfunctor-grafs}); per tant, $F_V$ és injectiva. Prenent $X=\mathbf E$, el mateix argument dona que $F_E$ és injectiva.
+
+\textbf{Si $F_V$ i $F_E$ són injectives.} Siguin $u,u'\colon X\to G$ amb $F\comp u=F\comp u'$. Per a cada vèrtex $v$ de $X$, vist com un element $v\colon\mathbf V\to X$, tenim $F\comp(u\comp v)=F\comp(u'\comp v)$; com que $F_*$ és injectiva sobre els elements de forma $\mathbf V$, $u\comp v=u'\comp v$. El mateix val per a cada aresta de $X$, amb la forma $\mathbf E$. Així, $u$ i $u'$ coincideixen sobre tots els elements de forma $\mathbf V$ i $\mathbf E$ de $X$, és a dir, $u_V=u'_V$ i $u_E=u'_E$, i per tant $u=u'$.
+
+L'argument fa servir les dues formes alhora: la injectivitat sobre $\mathbf V$ i $\mathbf E$ dona la injectivitat sobre totes les formes perquè aquestes dues formes separen morfismes. Per als isomorfismes, la part~(3) de la proposició dona el mateix tipus de criteri: $F$ és iso si i només si $F_V$ i $F_E$ són bijectives. Si ho són, les inverses $F_V^{-1}$ i $F_E^{-1}$ respecten l'origen i el destí ---de $s_H(F_E(e))=F_V(s_G(e))$ es dedueix $s_G(F_E^{-1}(e'))=F_V^{-1}(s_H(e'))$--- i formen un morfisme invers. El recíproc és que tot functor, i en particular els functors de vèrtexs i d'arestes, preserva isomorfismes. El resultat per als epimorfismes també és cert ---$F$ és epi si i només si $F_V$ i $F_E$ són exhaustives---, però no surt d'aquest esquema: els elements generalitzats proven $G$ amb morfismes que hi \emph{arriben}, i per als epimorfismes cal provar amb morfismes que en \emph{surten}.
+\end{solucio}
+
 \section{Functors fidels i plens}
 
 \begin{exercici}

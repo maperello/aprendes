@@ -387,6 +387,22 @@ La inclusió $j$ té una retracció: l'aplicació $r\colon\{0,1\}\to\{0\}$ const
 L'aplicació $i$, en canvi, no en té cap: una retracció seria una aplicació $\{\ast\}\to\varnothing$, i no n'hi ha cap, perquè $\ast$ no té on anar. Per tant, $i$ és un monomorfisme que no és escindit. L'exemple mostra que l'afirmació \enquote{tota aplicació injectiva té una inversa per l'esquerra} només és certa per a dominis no buits; i aquest contraexemple no depèn de l'axioma de l'elecció, a diferència del cas dual de les seccions.
 \end{solucio}
 
+\begin{exercici}\label{pr-idempotents}
+Comprova que a $\cat{Set}$ tot idempotent $e\colon A\to A$ escindeix, i descriu-ne l'escissió. Comprova després que, a la categoria $\cat{B}M$ associada al monoide $M=\{1,e\}$ amb $e\cdot e=e$, l'idempotent $e$ no escindeix.
+\end{exercici}
+
+\begin{solucio}
+\textbf{A $\cat{Set}$.} Sigui $B=\{a\in A\mid e(a)=a\}$ el conjunt dels punts fixos de $e$. Coincideix amb la imatge de $e$: si $a=e(x)$, aleshores $e(a)=e(e(x))=e(x)=a$, i recíprocament tot punt fix és la imatge d'ell mateix. Prenem
+\[
+s\colon B\hookrightarrow A\ \text{la inclusió},
+\qquad
+r\colon A\to B,\quad r(x)=e(x),
+\]
+que té sentit perquè $e(x)$ és un punt fix. Aleshores $s\comp r=e$, per construcció, i $r\comp s=\id_B$, perquè per a $a\in B$ es té $r(s(a))=e(a)=a$. Per exemple, si $e\colon\mathbb Z\to\mathbb Z$ és el valor absolut, l'escissió és $\mathbb Z\xrightarrow{\ \lvert\cdot\rvert\ }\mathbb N\hookrightarrow\mathbb Z$.
+
+\textbf{A $\cat{B}M$.} Hi ha un sol objecte $\ast$ i dos morfismes, $1$ i $e$. Una escissió de $e$ hauria de passar per l'únic objecte, amb $r,s\in\{1,e\}$, $s\comp r=e$ i $r\comp s=1$. Però qualsevol composició en què aparegui $e$ val $e$, de manera que $r\comp s=1$ obliga $r=s=1$; i aleshores $s\comp r=1\neq e$. No hi ha, doncs, cap escissió. El problema no és l'idempotent, sinó la categoria: hi falta l'objecte que faria de retracte. Si a la categoria hi afegim un objecte nou $B$ i dos morfismes $r\colon\ast\to B$, $s\colon B\to\ast$ amb aquestes equacions, l'idempotent escindeix; és el primer pas de la compleció de Karoubi.
+\end{solucio}
+
 \section{Construccions sobre categories}
 
 \begin{exercici}

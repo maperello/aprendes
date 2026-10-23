@@ -208,6 +208,38 @@ nav a:hover {
   margin-bottom: 18px;
 }
 
+/* Llibres publicats en paral·lel. Cada bloc ocupa dues files de la graella
+   (capçalera i fitxa), compartides amb el bloc veí, de manera que les fitxes
+   comencen a la mateixa altura encara que un subtítol sigui més llarg. */
+.material-grid {
+  margin-top: 32px;
+  grid-auto-rows: auto;
+  row-gap: 0;
+}
+
+.material-grid > .material-group {
+  display: grid;
+  grid-row: span 2;
+  grid-template-rows: subgrid;
+  margin-top: 0;
+}
+
+/* El text queda a dalt i els botons, a baix: l'espai sobrant va entre tots dos. */
+.material-grid .material-card {
+  justify-content: flex-start;
+}
+
+.material-grid .material-card .card-actions {
+  margin-top: auto;
+  padding-top: 28px;
+}
+
+@media (max-width: 700px) {
+  .material-grid > .material-group + .material-group {
+    margin-top: 32px;
+  }
+}
+
 .material-group-header h3 {
   margin: 0 0 6px;
   font-size: 1.35rem;

@@ -1,0 +1,131 @@
+\chapter{L'objecte dels nombres naturals}\label{test:cap8}
+
+Aquest test correspon al capítol~8 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u8}{b,c,b,a,c,b,c,a,b,c,a,b}
+
+\begin{enumerate}
+
+\pregunta L'objecte dels nombres naturals ve donat per una terna \((\N,0,s)\) amb la propietat universal que, per a tot sistema recursiu \((A,a,t)\),\ldots
+\begin{itemize}
+\opcio{a}{existeixen infinites aplicacions \(\N\to A\) compatibles.}
+\opcio{b}{existeix una única \(u\colon\N\to A\) amb \(u\circ0=a\) i \(u\circ s=t\circ u\).}
+\opcio{c}{\(A\) és isomorf a \(\N\).}
+\opcio{d}{\(t\) ha de ser un isomorfisme.}
+\end{itemize}
+\feedback
+\justificacio{És la propietat universal de recursió: existència i unicitat de l'aplicació que respecta el zero i el successor. \(A\) i \(t\) són arbitraris; no cal cap isomorfisme.}
+
+\pregunta L'objecte dels nombres naturals és únic\ldots
+\begin{itemize}
+\opcio{a}{només si s'admet l'axioma d'elecció.}
+\opcio{b}{de manera absoluta.}
+\opcio{c}{llevat d'un únic isomorfisme compatible amb \(0\) i \(s\).}
+\opcio{d}{no és únic.}
+\end{itemize}
+\feedback
+\justificacio{Dues ternes amb la propietat universal es corresponen per recursores mútues, les composicions de les quals són identitats per unicitat. Com sempre amb les propietats universals, la unicitat és llevat d'un únic isomorfisme compatible.}
+
+\pregunta El principi d'inducció afirma que una part de \(\N\) que conté el zero i és tancada pel successor\ldots
+\begin{itemize}
+\opcio{a}{és inicial.}
+\opcio{b}{és tot \(\N\).}
+\opcio{c}{és un exponencial.}
+\opcio{d}{és terminal.}
+\end{itemize}
+\feedback
+\justificacio{És el principi d'inducció: el morfisme de sistemes recursius \(S\to\N\) té una recursora inversa per l'esquerra, de manera que és retracció i mono, i per tant isomorfisme.}
+
+\pregunta El principi d'inducció es correspon amb quina meitat de la propietat universal de recursió?
+\begin{itemize}
+\opcio{a}{La unicitat de la recursora.}
+\opcio{b}{L'existència de la recursora.}
+\opcio{c}{Cap de les dues.}
+\opcio{d}{Totes dues alhora.}
+\end{itemize}
+\feedback
+\justificacio{Que dues aplicacions amb la mateixa recursió coincideixin és la unicitat de la recursora, i és exactament el que diu la inducció aplicada al seu equalitzador. L'existència és la definició per recursió.}
+
+\pregunta Les equacions de Peano ---que el zero no és cap successor i que el successor és injectiu--- en aquest llibre són\ldots
+\begin{itemize}
+\opcio{a}{axiomes primitius.}
+\opcio{b}{indemostrables.}
+\opcio{c}{teoremes derivats de la propietat universal.}
+\opcio{d}{falsos en general.}
+\end{itemize}
+\feedback
+\justificacio{El zero no és successor es prova amb la recursora cap a \(\mathbf2\) que val \(1\) al zero i \(0\) als successors; la injectivitat, amb el predecessor construït sobre \(\N\times\N\). Totes dues surten de la propietat universal.}
+
+\pregunta La suma \(m+n\) es defineix\ldots
+\begin{itemize}
+\opcio{a}{com un pullback.}
+\opcio{b}{per recursió, com la iterada del successor.}
+\opcio{c}{com un producte d'exponencials.}
+\opcio{d}{com el parell nucli de \(s\).}
+\end{itemize}
+\feedback
+\justificacio{\(m+n:=s^n(m)\), la iterada del successor aplicada \(n\) vegades a \(m\), que és una recursió sobre el segon argument. El producte itera la suma i l'exponenciació itera el producte.}
+
+\pregunta Les lleis de l'aritmètica (associativitat, commutativitat, distributivitat) es demostren\ldots
+\begin{itemize}
+\opcio{a}{postulant-les.}
+\opcio{b}{per l'axioma d'elecció.}
+\opcio{c}{per inducció sobre un dels arguments, amb els altres com a paràmetres.}
+\opcio{d}{només en el model clàssic.}
+\end{itemize}
+\feedback
+\justificacio{Cada llei és una igualtat d'aplicacions \(\N^k\to\N\), i es demostra per inducció sobre un argument amb els altres com a paràmetres (inducció amb paràmetres, via l'exponencial). No cal l'elecció ni postular res.}
+
+\pregunta L'ordre \(m\le n\) es defineix per\ldots
+\begin{itemize}
+\opcio{a}{la imatge de \((m,k)\mapsto(m,m+k)\): sobre punts, l'existència d'un \(k\) amb \(m+k=n\).}
+\opcio{b}{\(m\) i \(n\) tenen el mateix successor.}
+\opcio{c}{\(m\cdot n=0\).}
+\opcio{d}{\(m=n\) exclusivament.}
+\end{itemize}
+\feedback
+\justificacio{\(\operatorname{Leq}\) és la imatge de \((m,k)\mapsto(m,m+k)\): sobre punts, \(m\le n\) si i només si hi ha un increment \(k\) amb \(m+k=n\). És una part de \(\N\times\N\), no una fórmula externa.}
+
+\pregunta El principi del bon ordre afirma que tota part no inicial de \(\N\)\ldots
+\begin{itemize}
+\opcio{a}{és tot \(\N\).}
+\opcio{b}{té un element mínim.}
+\opcio{c}{té un element màxim.}
+\opcio{d}{és un exponencial.}
+\end{itemize}
+\feedback
+\justificacio{És el principi del bon ordre: tota part no inicial té un mínim, únic per antisimetria. Es demostra per inducció sobre la part auxiliar \enquote{cap natural \(\le n\) no és a \(P\)}. No hi ha màxims en general.}
+
+\pregunta La recursió amb paràmetres (dades \(a\colon X\to A\), \(t\colon X\times A\to A\)) es redueix a la recursió amb dades globals\ldots
+\begin{itemize}
+\opcio{a}{prenent el parell nucli.}
+\opcio{b}{amb l'axioma d'elecció.}
+\opcio{c}{transposant respecte de \(X\) cap a l'exponencial \(A^{X}\).}
+\opcio{d}{no es pot reduir.}
+\end{itemize}
+\feedback
+\justificacio{Una aplicació \(X\times\N\to A\) es transposa a \(\N\to A^X\), on les dades amb paràmetre esdevenen un punt \(\ulcorner a\urcorner\) i una autoaplicació \(T\) de \(A^X\); l'axioma s'hi aplica i es descurrifica. Per això els exponencials van abans que \(\N\).}
+
+\pregunta Per què el predecessor \(p\) (amb \(p\circ s=\id_\N\)) no es pot definir com la recursora del sistema \((\N,0,\id_\N)\)?
+\begin{itemize}
+\opcio{a}{Perquè aquesta recursora compleix \(u\circ s=u\), i és la constant \(0\); cal una recursió sobre \(\N\times\N\) que recordi el parell \((n-1,n)\).}
+\opcio{b}{Perquè \(\id_\N\) no és una autoaplicació.}
+\opcio{c}{Perquè el predecessor no existeix sense l'axioma d'elecció.}
+\opcio{d}{Sí que es pot: és exactament així com es fa.}
+\end{itemize}
+\feedback
+\justificacio{La forma de l'axioma és \(u\circ s=t\circ u\); amb \(t=\id\) s'obté \(u\circ s=u\), que amb \(u\circ0=0\) força \(u=0\circ{!}\). El predecessor és la primera projecció de la recursora \(q\) de \((\N\times\N,\langle0,0\rangle,\langle p_2,s\circ p_2\rangle)\), després de veure que \(p_2\circ q=\id\).}
+
+\pregunta La totalitat de l'ordre, \enquote{\(m\le n\) o \(n\le m\)}, s'enuncia per a punts globals. Què diu, com a afirmació sobre parts?
+\begin{itemize}
+\opcio{a}{Que \(\operatorname{Leq}\) és la part total de \(\N\times\N\).}
+\opcio{b}{Que \(\operatorname{Leq}\cup\operatorname{Inv}(\operatorname{Leq})\) és la part total de \(\N\times\N\); un element generalitzat pot caure a la unió sense caure sencer en cap dels dos membres.}
+\opcio{c}{Que \(\operatorname{Leq}\cap\operatorname{Inv}(\operatorname{Leq})\) és la diagonal.}
+\opcio{d}{Que tot element generalitzat \(\langle m,n\rangle\) cau sencer a \(\operatorname{Leq}\) o a \(\operatorname{Inv}(\operatorname{Leq})\).}
+\end{itemize}
+\feedback
+\justificacio{Per la separació global, una part de \(\N\times\N\) és total si conté tots els punts; sobre punts, pertànyer a una unió és \enquote{o}. Sobre un estadi com \(\mathbf2\) un element es pot repartir entre els dos membres, de manera que (d) és fals. L'opció (c) és l'antisimetria.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

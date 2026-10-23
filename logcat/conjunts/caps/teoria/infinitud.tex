@@ -1,0 +1,774 @@
+\chapter{Infinitud, enumerabilitat i seqüències}\label{cap:infinitud}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:finits}: finitud interna, cardinal, principi dels calaixos, l'equivalència mono/epi/iso en cardinal igual i la tècnica de codificar aplicacions entre objectes variables dins un exponencial fix. Del capítol~\ref{cap:naturals}: recursió (simple i amb paràmetres), inducció, aritmètica i bon ordre de \(\N\). Del capítol~\ref{cap:parts-interna}: quantificadors interns, per tallar parts definides per condicions.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item distingir \enquote{infinit} (no finit) d'\enquote{infinit de Dedekind} (endomonomorfisme no exhaustiu), demostrar que \(\N\) és infinit de Dedekind i que Dedekind implica infinit sense cap axioma;
+  \item demostrar que infinit implica Dedekind amb l'elecció numerable, construint primer una família de llistes injectives i després, sense més elecció, una successió injectiva;
+  \item definir enumerable i numerable, i demostrar l'estabilitat per imatge, part, suma i producte sense elecció, amb un aparellament \(\N\cong\N\times\N\) construït per recursió;
+  \item demostrar que tota part de \(\N\) és enumerable (el mínim substitueix l'elecció) i que tot enumerable infinit és isomorf a \(\N\);
+  \item construir \(\operatorname{List}(A)\) com a part d'un exponencial fix i demostrar-ne el principi de recursió amb el truc de la diagonal sobre la llargada;
+  \item situar l'elecció numerable: on cal (unió numerable d'enumerables, dues infinituds) i on no (parts de \(\N\), llistes).
+\end{itemize}
+\end{objectius}
+
+El capítol anterior va internalitzar la finitud: un
+conjunt és finit quan és isomorf a algun segment inicial \(\seg{n}\)
+(definició~\ref{def:conjunt-finit}), i el seu tret distintiu és
+l'equivalència, en cardinal igual, entre injectivitat, exhaustivitat i
+bijectivitat (teorema~\ref{teo:endo-finit}). El present capítol pren
+aquesta darrera equivalència com a frontissa: un conjunt és \emph{infinit}
+quan simplement no és finit (definició~\ref{def:conjunt-infinit}), i el que
+la fa manejable és que en un conjunt infinit aquella equivalència falla, de
+manera que admet un monomorfisme estricte en si mateix. Aquesta darrera
+propietat ---la infinitud de \emph{Dedekind}--- no és la definició
+d'infinit, sinó una noció a priori distinta; la seva equivalència amb «no
+finit» depèn de l'elecció, que explicitarem més endavant
+(teorema~\ref{teo:infinit-implica-dedekind}). A partir d'aquí desenvolupem la
+comparació de cardinals \emph{sense} la restricció de finitud ---els
+conjunts enumerables, els subobjectes de \(\N\), les llistes finites i
+les unions indexades numerablement--- amb un fil conductor constant:
+distingir en cada pas què es demostra amb els axiomes ja assumits i què en
+requereix un de nou. L'axioma nou que reapareixerà és l'\emph{elecció
+numerable}; el senyalarem cada cop que intervingui.
+
+\section{Conjunts infinits i infinitud de Dedekind}\label{sec:infinits}
+
+La manera més directa de dir que un conjunt és infinit és negar que sigui
+finit. Aquesta definició, però, és purament externa a l'estructura del
+conjunt: no exhibeix cap testimoni de la infinitud. Dedekind en va donar
+una de positiva ---un conjunt és infinit si es pot posar en bijecció amb
+una part pròpia--- que sí que n'aporta un, i que resulta molt més
+manejable. Introduïm totes dues i n'estudiem la relació.
+
+\begin{definicio}[Conjunt infinit]\index{Conjunt infinit}\label{def:conjunt-infinit}
+Un conjunt \(A\) és \emph{infinit} si no és finit; és a dir, si
+\(\operatorname{Card}(A)\) és inicial (definició~\ref{def:conjunt-finit}):
+no hi ha cap punt \emph{intern} \(n\colon\mathbf1\to\N\) amb
+\(\seg{n}\approx A\).
+\end{definicio}
+
+\begin{observacio}[Lectura externa amb numerals estàndard]\label{obs:infinit-numeral}
+En particular, si \(A\) és infinit, aleshores no és isomorf a cap ordinal
+\([k]\) associat a un numeral estàndard \(k\): si ho fos, la coincidència
+\(\seg{\bar k}\cong[k]\) (observació~\ref{obs:segment-numeral}) donaria
+\(\bar k\in\operatorname{Card}(A)\), contra la definició. El recíproc, en
+canvi, no val en general: un punt global intern \(n\colon\mathbf1\to\N\)
+no ha de ser necessàriament un numeral estàndard, de manera que
+\(\operatorname{Card}(A)\) pot ser no inicial ---i \(A\) finit en el sentit
+intern--- sense que \(A\) sigui isomorf a cap \([k]\) estàndard. Només es
+pot afirmar el recíproc sota una hipòtesi externa que garanteixi que el
+testimoni intern de finitud és estàndard.
+\end{observacio}
+
+\begin{definicio}[Infinit de Dedekind]\index{Infinit de Dedekind}\label{def:dedekind-infinit}
+Un conjunt \(A\) és \emph{infinit de Dedekind} si existeix un monomorfisme
+\(f\colon A\hookrightarrow A\) que no és exhaustiu; equivalentment, si
+existeix un monomorfisme \(A\hookrightarrow A\) la imatge del qual és una
+part pròpia de \(A\).
+\end{definicio}
+
+\begin{observacio}[Les dues nocions i el cas finit]\label{obs:dues-infinituds}
+Sobre un conjunt finit les dues definicions coincideixen amb la negació
+l'una de l'altra: pel teorema~\ref{teo:endo-finit}, un monomorfisme d'un
+conjunt finit en si mateix és sempre exhaustiu, de manera que cap conjunt
+finit és infinit de Dedekind. La qüestió delicada és la recíproca ---si
+tot conjunt infinit és infinit de Dedekind---, i és precisament on
+apareixerà un axioma addicional. Convé, doncs, mantenir les dues nocions
+separades fins que en tinguem la relació exacta.
+\end{observacio}
+
+El primer fet, i el que justifica tota la teoria, és que \(\N\) mateix és
+infinit de Dedekind, i el testimoni és el successor.
+
+\begin{proposicio}[\(\N\) és infinit de Dedekind]\label{prop:N-dedekind}
+El successor \(s\colon\N\to\N\) és un monomorfisme no exhaustiu. Per tant
+\(\N\) és infinit de Dedekind, i en conseqüència infinit.
+\end{proposicio}
+
+\begin{prova}
+Que \(s\) és un monomorfisme és el teorema~\ref{teo:peano}(1): de
+\(s\circ m=s\circ n\) se segueix \(m=n\). Que no és exhaustiu és el
+teorema~\ref{teo:peano}(2): \(0\) no és de la forma \(s\circ n\)
+per a cap \(n\), de manera que el punt \(0\colon\mathbf1\to\N\) no factoritza
+per \(s\), i la imatge de \(s\) és la part pròpia complementària del zero.
+Així \(s\) exhibeix \(\N\) com a infinit de Dedekind. Que \(\N\) és
+infinit se segueix de l'observació~\ref{obs:dues-infinituds}: si fos
+finit, \(s\) hauria de ser exhaustiu pel teorema~\ref{teo:endo-finit},
+contra el que acabem de veure.
+\end{prova}
+
+Una direcció de l'equivalència entre les dues infinituds no costa res i
+no fa servir cap axioma nou: qui és infinit de Dedekind és infinit.
+
+\begin{proposicio}[Dedekind implica infinit]\label{prop:dedekind-implica-infinit}
+Tot conjunt infinit de Dedekind és infinit. La implicació no usa cap
+axioma més enllà dels ja assumits.
+\end{proposicio}
+
+\begin{prova}
+És el contrarecíproc de la primera part de
+l'observació~\ref{obs:dues-infinituds}. Si \(A\) fos finit i infinit de
+Dedekind alhora, tindríem un monomorfisme \(A\hookrightarrow A\) no
+exhaustiu; però pel teorema~\ref{teo:endo-finit} tot monomorfisme d'un
+conjunt finit en si mateix és exhaustiu, una contradicció. Per tant un
+conjunt infinit de Dedekind no pot ser finit.
+\end{prova}
+
+La direcció oposada ---tot conjunt infinit és infinit de Dedekind--- és
+la que requereix construir, dins d'un conjunt del qual només sabem que no
+és finit, una còpia de \(\N\); i triar-la exigeix una successió d'eleccions.
+
+\begin{teorema}[Infinit implica Dedekind, amb elecció numerable]\label{teo:infinit-implica-dedekind}
+Suposem l'\emph{axioma d'elecció numerable}
+(axioma~\ref{ax:eleccio-numerable}). Aleshores tot conjunt infinit és
+infinit de Dedekind. Equivalentment, sota aquest axioma un conjunt és
+infinit si i només si admet un monomorfisme \(\N\hookrightarrow A\).
+\end{teorema}
+
+\begin{prova}
+Sigui \(A\) infinit. La dificultat és que no podem anar \emph{triant}
+\(a_{n+1}\) dins el complement \(A\setminus\{a_0,\dots,a_n\}\): aquest
+complement depèn de les tries anteriors, de manera que la família de
+conjunts no buits sobre la qual triaríem no està donada per endavant i
+l'axioma~\ref{ax:eleccio-numerable} no s'hi aplica directament. Ho evitem
+fixant \emph{abans} de triar una única família numerable, independent de
+tota elecció.
+
+\emph{La família.} Per a cada \(n\colon\mathbf1\to\N\), sigui
+\[
+I_n\ :=\ \operatorname{Inj}\bigl(\seg{s\circ n},A\bigr)\ \hookrightarrow\
+A^{\seg{s\circ n}}
+\]
+la part de l'exponencial \emph{fix} \(A^{\seg{s\circ n}}\) formada pels
+monomorfismes \(\seg{s\circ n}\hookrightarrow A\) ---les llistes
+injectives de llargada \(n+1\)---, tallada per la condició interna
+d'injectivitat (quantificadors acotats del capítol~\ref{cap:parts-interna}).
+Cada \(I_n\) és \emph{no inicial}, és a dir, per a cada \(n\) existeix un
+monomorfisme \(\seg{s\circ n}\hookrightarrow A\). Ho veiem per inducció
+sobre \(n\), sense elecció. Per a \(n=0\), \(A\) és no inicial ---no és
+finit, en particular no és buit---, de manera que hi ha un punt
+\(\mathbf1\cong\seg{1}\hookrightarrow A\). Suposem un monomorfisme
+\(g\colon\seg{s\circ n}\hookrightarrow A\); la seva imatge és una part
+finita de \(A\) (cardinal \(n+1\)), i com que \(A\) no és finit, aquesta
+imatge no és tot \(A\) (altrament \(\seg{s\circ n}\approx A\) i \(A\) seria
+finit, definició~\ref{def:conjunt-finit}). El seu complement és, doncs, no
+inicial i en conté algun punt \(x\colon\mathbf1\to A\); estenent \(g\) amb
+\(x\) sobre el sumand nou de \(\seg{s\circ(s\circ n)}\cong\seg{s\circ
+n}+\mathbf1\) (proposició~\ref{prop:segment-successor}) s'obté un
+monomorfisme \(\seg{s\circ(s\circ n)}\hookrightarrow A\), perquè \(x\) no
+és a la imatge de \(g\). Això tanca la inducció i prova que
+\(I_n\) és no inicial per a tot \(n\). Noteu que aquesta inducció només
+afirma \emph{existència} fibra a fibra: no proporciona una tria uniforme de
+les \(g\), i és per obtenir-ne una que caldrà l'elecció numerable.
+
+Aquestes parts es reuneixen en una \emph{sola} família interna. Codifiquem
+cada \(f\in I_n\), com a la definició~\ref{def:card-A}, per la seva
+extensió \(\bar f\colon\N\to A+\mathbf1\) que val \(f\) sobre
+\(\seg{s\circ n}\) i el punt afegit fora; així totes les llistes
+injectives, de qualsevol llargada, viuen dins l'exponencial \emph{fix}
+\((A+\mathbf1)^{\N}\). Sigui
+\[
+E\ :=\ \bigl\{\,(n,\bar f)\ \mid\ n\colon\mathbf1\to\N,\ f\in I_n\,\bigr\}\
+\hookrightarrow\ \N\times(A+\mathbf1)^{\N},
+\]
+la part corresponent (tallada per equalitzadors i condicions acotades), i
+\(p\colon E\to\N\) la projecció, la fibra de la qual sobre \(n\) és
+exactament \(I_n\). Com que cada \(I_n\) és no inicial, tot punt \(n\) té preimatge per \(p\),
+i \(p\) és un epimorfisme (exhaustivitat sobre punts,
+proposició~\ref{prop:epi-exhaustiu-global}), regular pel
+corol·lari~\ref{cor:epi-regular-sense-eleccio}.
+Aquesta família \emph{ja existeix} abans de qualsevol tria.
+
+\emph{La tria.} L'axioma d'elecció numerable
+(axioma~\ref{ax:eleccio-numerable}) dona una secció
+\(\sigma\colon\N\to E\) de \(p\); és a dir, per a cada \(n\) un monomorfisme
+\(f_n\colon\seg{s\circ n}\hookrightarrow A\) escollit \emph{d'un sol cop}
+per a tota la família alhora, i no pas un a un. Escrivim
+\(f_n(k)\in A\) per al valor de la \(k\)-èsima component,
+\(k<n+1\).
+
+\emph{El monomorfisme \(\N\hookrightarrow A\).} A partir de la successió
+\((f_n)_n\) construïm \(a\colon\N\to A\) \emph{sense més elecció}. La
+temptació és definir \(a_n\) com el primer valor de \(f_n\) que no és cap
+dels \(a_0,\dots,a_{n-1}\); però això és una recursió que depèn de tota la
+història anterior, i no té la forma de l'axioma~\ref{ax:naturals}. Ho
+evitem fent servir llistes prou llargues perquè els valors ja usats no
+puguin esgotar-les. Per a cada punt \(n\), sigui
+\[
+V_n\ \hookrightarrow\ A
+\]
+la part dels \(x\) tals que \(x=f_{2^m-1}(i)\) per a algun \(m<n\) i algun
+\(i<2^m\): és la imatge de la part de \(\N\times\N\) dels parells
+\((m,i)\) amb \(m<n\), \(i<2^m\) per l'aplicació
+\((m,i)\mapsto f_{2^m-1}(i)\), i la regla \(n\mapsto V_n\) és una
+aplicació \(\N\to P(A)\) (quantificadors interns,
+capítol~\ref{cap:parts-interna}); aquí \(2^m\) és l'exponenciació de
+naturals (definició~\ref{def:producte-exp}) i \(2^m-1\) el seu
+predecessor. La part \(V_n\) és finita i \(|V_n|<2^n\). En efecte, el conjunt
+d'índexs \(J_n:=\{(m,i):m<n,\ i<2^m\}\) és finit amb \(|J_n|+1=2^n\): per
+inducció sobre \(n\), \(|J_0|+1=0+1=2^0\), i
+\(J_{n+1}\cong J_n+\seg{2^n}\) (s'hi afegeix la fila \(m=n\)), de manera que,
+pel recompte de la suma (lema~\ref{lema:recompte-suma}),
+\(|J_{n+1}|+1=(|J_n|+1)+2^n=2^n+2^n=2^{n+1}\). A més, \(V_n\) és imatge de
+\(J_n\): un epimorfisme \(J_n\twoheadrightarrow V_n\) té una secció ---enviant
+cada punt al mínim índex que hi va a parar, ja que \(J_n\) és ben ordenat
+com a part finita de \(\N\times\N\) ordenada lexicogràficament, o bé per
+l'elecció---, que és un monomorfisme \(V_n\hookrightarrow J_n\); pel
+lema~\ref{lema:part-finita}, \(V_n\) és finita amb
+\(|V_n|\le|J_n|<2^n\). En canvi, la llista
+\(f_{2^n-1}\) té \(2^n\) valors distints. Pel principi dels calaixos
+(teorema~\ref{teo:calaixos}) algun valor de \(f_{2^n-1}\) no és a \(V_n\).
+Definim
+\[
+a_n:=f_{2^n-1}(k_n),
+\qquad
+k_n:=\min\{\,k<2^n\ :\ f_{2^n-1}(k)\notin V_n\,\},
+\]
+on el mínim existeix pel bon ordre de \(\N\)
+(teorema~\ref{teo:bon-ordre-N}) i és únic: \(a\) és una aplicació
+\(\N\to A\) definida sense cap tria (internament, el seu graf és la part
+de \(\N\times A\) tallada per la condició, funcional i total). Per
+construcció \(a_n\notin V_n\), mentre que \(a_m\in V_n\) per a tot
+\(m<n\), perquè \(a_m\) és un valor de \(f_{2^m-1}\); per tant
+\(a_n\ne a_m\) per a \(m<n\), i \(a\) és injectiva sobre punts, és a dir,
+un monomorfisme (separació global).
+
+Finalment, sigui \(C\) el complement de la imatge de \(a\). El primer
+isomorfisme de
+\[
+A\;\cong\;\N + C\;\xrightarrow{\;s+\id_C\;}\;\N+C\;\cong\;A
+\]
+descompon \(A\) en aquesta imatge (isomorfa a \(\N\) via \(a\)) i \(C\); la
+composició reprodueix el desplaçament del successor en el sumand \(\N\) i
+omet el punt corresponent a \(0\), de manera que és un monomorfisme
+\(A\hookrightarrow A\) no exhaustiu. Així \(A\) és infinit de Dedekind. La
+reformulació és immediata: \(a\colon\N\hookrightarrow A\) és el testimoni, i
+recíprocament un tal monomorfisme dona, transportant el successor, un
+endomorfisme no exhaustiu de \(A\).
+\end{prova}
+
+\begin{observacio}[Per què cal l'elecció aquí]\label{obs:necessitat-eleccio-dedekind}
+La prova anterior no pot evitar l'elecció numerable amb els axiomes que
+tenim. Fixeu-vos on entra i on no. La família \((I_n)_n\) dels monomorfismes
+\(\seg{s\circ n}\hookrightarrow A\) està definida \emph{abans} de tota
+elecció i cada \(I_n\) és no inicial; això és una afirmació d'existència
+fibra a fibra, provada per inducció sense triar res. El que \emph{no}
+tenim, sense elecció, és una \emph{secció} uniforme d'aquesta família ---una
+tria simultània d'un \(f_n\) a cada fibra---: en cada \(I_n\) hi ha molts
+monomorfismes i res no en distingeix cap de canònic. És exactament aquest
+pas, i només aquest, el que consumeix l'axioma~\ref{ax:eleccio-numerable};
+un cop tenim la successió \((f_n)_n\), la resta de la construcció (el pas al
+mínim índex nou dins una llista prou llarga, el desplaçament del
+successor) torna a ser canònica. Es
+tracta d'un ús genuí i, en el marc habitual, inevitable: sense cap forma
+d'elecció és consistent que existeixin conjunts infinits ---no isomorfs a
+cap \([k]\) estàndard--- que \emph{no} siguin infinits de Dedekind, els
+anomenats conjunts infinits \emph{amb finitud de Dedekind}. La direcció
+fàcil (proposició~\ref{prop:dedekind-implica-infinit}), en canvi, no
+necessita res. Aquesta asimetria és el motiu pel qual mantenim les dues
+nocions d'infinitud amb noms diferents.
+\end{observacio}
+
+Enunciem l'axioma que hem fet servir, en la forma que ens caldrà després.
+
+\begin{axioma}[Elecció numerable]\label{ax:eleccio-numerable}
+Sigui \(p\colon E\twoheadrightarrow\N\) un epimorfisme regular ---una
+família de conjunts no buits indexada per \(\N\), on la fibra sobre cada
+\(n\) és la part no buida corresponent. Aleshores \(p\) admet una secció
+\(\sigma\colon\N\to E\), és a dir, una aplicació amb \(p\circ\sigma=\id_\N\)
+que tria un element de cada fibra.
+\end{axioma}
+
+\begin{observacio}[Elecció, elecció numerable i una nota terminològica]\label{obs:eleccio-global-vs-numerable}
+L'\emph{axioma d'elecció} del llibre (capítol~\ref{cap:relacions}) diu que
+\emph{tot} epimorfisme regular s'escindeix; l'elecció numerable
+(axioma~\ref{ax:eleccio-numerable}) n'és el cas particular en què l'índex
+és \(\N\), i per tant se'n dedueix. Si el llibre assumeix l'elecció plena,
+l'axioma~\ref{ax:eleccio-numerable} no és una hipòtesi nova sinó una
+instància de la que ja hi ha, i el
+teorema~\ref{teo:infinit-implica-dedekind} és un teorema sense reserves.
+L'enunciem a part perquè la major part de la teoria d'aquest capítol només
+en necessita la versió feble, i perquè convé veure exactament on entra
+alguna forma d'elecció: en tot el que segueix, els resultats que no
+l'esmenten no en depenen.
+
+Una advertència de vocabulari, que serà important en els capítols
+transfinits. Anomenem aquest principi simplement \emph{axioma d'elecció};
+evitem el terme «elecció global», que en teoria de conjunts i de classes
+designa un principi més fort ---una funció d'elecció única sobre tota la
+classe dels conjunts--- que aquí ni enunciem ni necessitem. Igualment, cal
+no confondre l'elecció amb cap principi de \emph{substitució} o de reunió de
+famílies: l'elecció tria elements dins les fibres d'una família \emph{que ja
+existeix} (com \(p\colon E\to\N\) a la prova anterior), mentre que la
+substitució serviria per garantir l'existència d'una família d'objectes
+definida uniformement. Són funcions lògiques distintes, i en aquest capítol
+només usem la primera.
+\end{observacio}
+
+\section{Conjunts enumerables i numerables}\label{sec:enumerables}
+
+Un conjunt és enumerable quan els seus elements es poden \emph{llistar}
+amb els naturals, potser amb repeticions. La manera estructural de dir-ho
+és que hi ha una aplicació exhaustiva des de \(\N\).
+
+\begin{definicio}[Conjunt enumerable]\index{Conjunt enumerable}\label{def:enumerable}
+Un conjunt \(A\) és \emph{enumerable} si és inicial o bé existeix un
+epimorfisme regular \(e\colon\N\twoheadrightarrow A\). Una tal \(e\) és una
+\emph{enumeració} de \(A\): l'element \(a_n:=e\circ n\) és el terme
+\(n\)-èsim, i l'exhaustivitat diu que tot element generalitzat de \(A\)
+és, localment, algun \(a_n\).
+\end{definicio}
+
+\begin{definicio}[Conjunt numerable]\index{Conjunt numerable}\label{def:numerable}
+Un conjunt és \emph{numerable} si és finit
+(definició~\ref{def:conjunt-finit}) o enumerable infinit. Un conjunt
+enumerable és, doncs, o bé finit o bé numerable infinit.
+\end{definicio}
+
+\begin{observacio}[Enumerable, sense elecció]\label{obs:enumerable-sense-eleccio}
+La definició~\ref{def:enumerable} \emph{no} amaga cap elecció: demana una
+única aplicació \(e\), no una successió de tries. Per això tota la
+combinatòria d'enumerabilitat que en depèn ---imatges d'enumerables,
+unions de dues enumeracions, producte de dues--- es fa sense cap axioma
+nou. L'elecció numerable només reapareixerà quan calgui triar \emph{una
+enumeració per a cadascun} d'una família infinita de conjunts, no quan en
+tinguem una de sola.
+\end{observacio}
+
+Les operacions bàsiques preserven l'enumerabilitat. Reunim els fets
+elementals, tots demostrables sense elecció.
+
+\begin{proposicio}[Estabilitat de l'enumerabilitat]\label{prop:estabilitat-enumerable}
+Siguin \(A\) i \(B\) enumerables.
+\begin{enumerate}
+\item Tota imatge d'\(A\) és enumerable: si \(g\colon A\to C\) és
+exhaustiva, \(C\) és enumerable.
+\item Tota part d'\(A\) és enumerable.
+\item La suma \(A+B\) és enumerable.
+\item El producte \(A\times B\) és enumerable.
+\end{enumerate}
+Cap dels quatre enunciats no requereix elecció.
+\end{proposicio}
+
+\begin{prova}
+(1) Si \(e\colon\N\twoheadrightarrow A\) és una enumeració i \(g\) és
+exhaustiva, la composició \(g\circ e\colon\N\twoheadrightarrow C\) ho és
+(l'exhaustivitat es preserva per composició, capítol~\ref{cap:imatges}),
+i és una enumeració de \(C\); el cas inicial és trivial.
+
+(2) Sigui \(m\colon P\hookrightarrow A\) una part no inicial. Fixat un punt
+\(p_0\colon\mathbf1\to P\) ---que existeix perquè \(P\) no és inicial---,
+definim \(r\colon A\to P\) enviant els elements de \(P\) en si mateixos i
+la resta a \(p_0\); això és una retracció de \(m\), construïda amb el cas
+finit de decisió del complement (capítol~\ref{cap:valors}) i sense cap
+tria infinita. Aleshores \(r\circ e\colon\N\twoheadrightarrow P\) és una
+enumeració. El cas \(P\) inicial és immediat.
+
+(3) De dues enumeracions \(e\colon\N\twoheadrightarrow A\) i
+\(f\colon\N\twoheadrightarrow B\) i d'un isomorfisme
+\(\N\cong\N+\N\) ---per exemple la partició en parells i senars, obtinguda
+de l'aritmètica del capítol~\ref{cap:naturals}--- s'obté
+\(\N\cong\N+\N\xrightarrow{e+f}A+B\), exhaustiva.
+
+(4) N'hi ha prou amb una bijecció \(\N\cong\N\times\N\) ---un
+\emph{aparellament}--- perquè aleshores
+\(\N\cong\N\times\N\xrightarrow{e\times f}A\times B\) és exhaustiva. Un tal
+aparellament es construeix explícitament dins la teoria \emph{sense divisió},
+enumerant \(\N\times\N\) per diagonals: es recorre primer la diagonal
+\(i+j=0\), després \(i+j=1\), i així successivament, i dins de cada diagonal
+s'ordena per \(j\) creixent. Formalment, sigui \(\nu\colon\N\times\N\to\N\times\N\) l'aplicació
+\enquote{següent parell en l'ordre per diagonals}, definida per casos
+sobre el punt \(i\) (zero o successor, lema~\ref{lema:zero-o-successor}):
+\(\nu(0,j)=(s\circ j,0)\) i \(\nu(s\circ i',j)=(i',s\circ j)\). La recursora
+\(u\colon\N\to\N\times\N\) del sistema \((\N\times\N,\langle0,0\rangle,\nu)\)
+recorre les diagonals, i és bijectiva: injectiva perquè \(\nu\) ho és i
+\((0,0)\) no és a la seva imatge (el mateix argument que a les equacions
+de Peano), i exhaustiva perquè la part dels \((i,j)\) assolits conté
+\((0,0)\) i és tancada per \(\nu\), i tot parell s'obté de \((0,0)\)
+iterant \(\nu\) (inducció sobre \(i+j\) i després sobre \(j\)). Els detalls
+són un exercici de la part pràctica. No cal cap divisió ni la fórmula
+tancada \(\tfrac12(i+j)(i+j+1)+j\), que és correcta però pressuposa
+aritmètica que el llibre no ha desenvolupat. És, en tot cas, una
+aplicació concreta, no una tria.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:enumerable-classica}
+En termes clàssics, un conjunt no buit és enumerable exactament quan els
+seus elements es poden disposar en una successió
+\(a_0,a_1,a_2,\dots\) que els reculli tots ---amb repeticions permeses.
+La proposició~\ref{prop:estabilitat-enumerable} recull els fets habituals:
+la imatge d'un conjunt enumerable, qualsevol dels seus subconjunts, i la
+unió i el producte de dos enumerables són enumerables; en particular
+\(\Z\) i \(\Q\) ho són, com es comprova aparellant-los amb \(\N\). El punt
+que la presentació estructural fa visible, i que sovint queda amagat, és
+que aquests resultats no fan servir cap elecció: totes les enumeracions
+involucrades es construeixen a partir d'una o dues enumeracions donades,
+mitjançant aparellaments explícits.
+\end{observacio}
+
+\section{\texorpdfstring{Subobjectes de \(\N\)}{Subobjectes de N}}\label{sec:subobjectes-N}
+
+Els subobjectes de \(\N\) ---les seves parts--- són l'exemple bàsic i
+mereixen un tractament propi, perquè hi funciona una construcció que en
+general falla: es pot triar sempre el \emph{mínim}. Això fa que tot
+subobjecte de \(\N\) sigui enumerable sense recórrer a cap elecció.
+
+\begin{teorema}[Els subobjectes de \(\N\) són enumerables]\label{teo:subobjectes-N}
+Tota part \(P\hookrightarrow\N\) és enumerable, i la seva enumeració es
+construeix sense elecció. A més, \(P\) és finit o bé isomorf a \(\N\); en
+el segon cas, l'enumeració es pot prendre estrictament creixent i
+bijectiva.
+\end{teorema}
+
+\begin{prova}
+Si \(P\) és inicial, és enumerable per definició. Suposem \(P\) no
+inicial. La clau és el \emph{principi del mínim}: tota part no inicial de
+\(\N\) té un element mínim, la qual cosa és una reformulació de la
+inducció (teorema~\ref{teo:induccio}) i no usa elecció, perquè el mínim,
+quan existeix, és \emph{únic} i per tant canònic. Definim una autoaplicació \(t\colon P\to P\): \(t(x)\) és el mínim dels
+elements de \(P\) estrictament més grans que \(x\) si n'hi ha, i \(x\)
+altrament. És una aplicació genuïna, perquè el seu graf ---la part de
+\(P\times P\) dels \((x,y)\) amb \(y\in P\), \(x<y\) i
+\(\forall z\in P\,(x<z\Rightarrow y\le z)\), unida a la part dels \((x,x)\)
+amb \(\neg\exists z\in P\,(x<z)\)--- és funcional (el mínim és únic) i
+total (o hi ha elements més grans o no), i es talla amb els
+quantificadors interns. La successió \(a\colon\N\to P\) és la recursora
+del sistema \((P,\min P,t)\): \(a_0\) és el mínim de \(P\) i
+\(a_{n+1}=t(a_n)\). És una recursió simple de l'axioma~\ref{ax:naturals},
+sense cap tria.
+
+Dos casos. Si per a algun \(n\) no queda cap element de \(P\) més gran que
+\(a_n\), la successió s'estabilitza i la seva imatge
+\(\{a_0<a_1<\dots<a_n\}\) és exactament \(P\), que és finit. Si en cada pas
+sempre en queda un de més gran, \(a\) és estrictament creixent, per tant
+un monomorfisme, i la seva imatge és tot \(P\) perquè cap element de \(P\)
+pot ser omès. En efecte, \(a_i\ge i\) per a tot \(i\) (inducció: \(a_{i+1}>a_i\)),
+de manera que, donat \(k\in P\), la part dels \(i\) amb \(k<a_i\) és no
+inicial (conté \(s\circ k\)) i té un mínim \(j\); com que \(a_0=\min P\le k\),
+\(j=i+1\) per a algun \(i\), amb \(a_i\le k<a_{i+1}\). Si fos \(a_i<k\), aleshores
+\(k\) seria un element de \(P\) estrictament més gran que \(a_i\) i menor que
+\(a_{i+1}=t(a_i)\), contra la definició de \(t\) com a mínim d'aquests
+elements; per tant \(k=a_i\). Aleshores
+\(a\colon\N\to P\) és una bijecció creixent, i \(P\cong\N\).
+\end{prova}
+
+\begin{corollari}[Caracterització dels enumerables infinits]\label{cor:enumerable-infinit-N}
+Un conjunt és enumerable infinit si i només si és isomorf a \(\N\). En
+conseqüència, tots els conjunts numerables infinits són isomorfs entre si,
+i \(\N\) n'és el representant.
+\end{corollari}
+
+\begin{prova}
+Si \(A\cong\N\), és clarament enumerable (per la identitat) i infinit
+(proposició~\ref{prop:N-dedekind}). Recíprocament, sigui \(A\) enumerable
+infinit i \(e\colon\N\twoheadrightarrow A\) una enumeració. Volem un
+monomorfisme \(A\hookrightarrow\N\); un cop el tinguem, la seva imatge és
+una part de \(\N\) isomorfa a \(A\), que pel teorema~\ref{teo:subobjectes-N}
+és finita o isomorfa a \(\N\), i com que \(A\) és infinit ha de ser el
+segon cas. Per construir el monomorfisme sense elecció, definim
+\(r\colon A\to\N\) enviant cada element \(a\) al \emph{mínim} índex \(n\)
+amb \(e_n=a\); aquest mínim existeix i és únic pel principi del mínim, de
+manera que \(r\) està ben definida i és una secció de \(e\), en particular
+un monomorfisme. Per tant \(A\cong\N\).
+\end{prova}
+
+\begin{observacio}[El mínim substitueix l'elecció]\label{obs:minim-vs-eleccio}
+Els dos resultats anteriors s'obtenen sense elecció \emph{precisament}
+perquè a \(\N\) hi ha una tria canònica ---el mínim--- disponible a cada
+pas. És el mateix fenomen que fa que l'elecció sigui innecessària sobre
+conjunts ben ordenats: quan cada part no buida té un element distingit, no
+cal cap axioma per triar-lo. En un conjunt infinit qualsevol, sense un tal
+ordre, aquesta comoditat desapareix, i és per això que el
+teorema~\ref{teo:infinit-implica-dedekind} sí que necessita l'elecció
+numerable mentre que el teorema~\ref{teo:subobjectes-N} no.
+\end{observacio}
+
+\section{Llistes finites i iteració}\label{sec:llistes}
+
+Una \emph{llista finita} d'elements d'un conjunt \(A\) és una successió
+finita \((a_0,\dots,a_{n-1})\) de llargada arbitrària però determinada.
+Reunir totes les llistes de totes les llargades en un sol conjunt és la
+construcció que fa d'\(A\) el generador d'un monoide lliure, i és el
+prototip d'una unió indexada per \(\N\) que, en aquest cas, es fa sense
+elecció.
+
+\begin{definicio}[Conjunt de llistes finites]\index{Conjunt de llistes finites}\label{def:llistes}
+El \emph{conjunt de les llistes finites} d'\(A\), denotat
+\(\operatorname{List}(A)\), es defineix com una part de l'exponencial
+\emph{fix} \((A+\mathbf1)^{\N}\) de les successions amb un valor de
+terminació. Escrivim \(i_A\colon A\to A+\mathbf1\) i
+\(\ast\colon\mathbf1\to A+\mathbf1\) per a les injeccions. Una successió
+\(u\colon\N\to A+\mathbf1\) és una \emph{llista} quan el conjunt de
+posicions \emph{ocupades} ---les \(k\) amb \(u(k)=i_A(a)\) per a algun
+\(a\)--- és un segment inicial finit; és a dir, quan existeix
+\(n\colon\mathbf1\to\N\) tal que
+\begin{enumerate}
+\item[(l1)] per a tot \(k<n\), \(u(k)=i_A(a)\) per a un únic \(a\in A\);
+\item[(l2)] per a tot \(k\) amb \(k\not<n\), \(u(k)=\ast\).
+\end{enumerate}
+Aquesta \(n\) és única quan existeix (és la \emph{llargada}), i les dues
+condicions es tallen amb quantificadors acotats i igualtats sobre
+l'exponencial fix (capítol~\ref{cap:parts-interna}), de manera que
+\[
+\operatorname{List}(A)\ :=\ \bigl\{\,u\in(A+\mathbf1)^{\N}\ \mid\ u\text{
+satisfà (l1)--(l2) per a algun }n\,\bigr\}\ \hookrightarrow\
+(A+\mathbf1)^{\N}
+\]
+és una part interna ben definida. La successió constant \(\ast\)
+(cas \(n=0\)) és la llista buida
+\(\varepsilon\colon\mathbf1\to\operatorname{List}(A)\).
+\end{definicio}
+
+\begin{observacio}[La condició de segment inicial és essencial]\label{obs:llistes-segment}
+No n'hi ha prou d'exigir que \(u\) sigui \emph{eventualment constant} igual
+a \(\ast\): aquesta condició, més feble, admet successions com
+\(a,\ast,b,\ast,\ast,\dots\), amb una posició de terminació seguida de nous
+elements d'\(A\), que no representen cap llista. La condició (l1)--(l2)
+demana que \emph{totes} les posicions ocupades formin un segment inicial
+\(\seg{n}\): un cop apareix el primer \(\ast\), tots els termes següents
+són \(\ast\). Amb aquesta condició, i només amb ella, la llargada està ben
+definida i la lectura
+\[
+\operatorname{List}(A)\ \cong\ \sum_{n\colon\mathbf1\to\N}A^{\seg{n}}
+\;=\;\coprod_{n\in\N}A^{\seg{n}}
+\]
+és correcta: cada llista de llargada \(n\) es correspon amb la seva
+restricció \(\seg{n}\to A\), i \(A^{\seg{0}}\cong\mathbf1\) és la llista
+buida. Aquesta igualtat és, doncs, un \emph{teorema} sobre la part just
+construïda, no la definició: la suma indexada per \(\N\) del membre dret no
+es pot formar directament, perquè els axiomes només donen sumes finites
+(capítol~\ref{cap:valors}). Vegeu l'observació~\ref{obs:existencia-llistes}.
+\end{observacio}
+
+\begin{observacio}[Sobre l'existència i les dues lectures]\label{obs:existencia-llistes}
+La definició~\ref{def:llistes} construeix \(\operatorname{List}(A)\)
+\emph{directament}, com una part d'un exponencial fix, i per tant la seva
+existència no demana cap suma numerable ni cap principi nou: només
+l'exponencial \((A+\mathbf1)^{\N}\) i els quantificadors interns
+(capítols~\ref{cap:exponencials} i~\ref{cap:parts-interna}). Aquesta és la
+via segura. Les altres dues descripcions habituals ---la suma
+\(\coprod_{n}A^{\seg{n}}\) i l'objecte inicial de les
+\((\mathbf1+A\times{-})\)-àlgebres--- \emph{no} es prenen aquí com a
+definicions: la primera perquè la suma numerable no és una construcció
+finita (observació~\ref{obs:llistes-segment}), i la segona perquè afirmar
+que aquesta àlgebra inicial \emph{existeix} és precisament el que s'ha de
+demostrar. Totes dues es recuperen com a \emph{propietats} de la part ja
+construïda: la lectura com a suma és l'observació~\ref{obs:llistes-segment},
+i la inicialitat és el contingut de la
+proposició~\ref{prop:recursio-llistes}, que provem tot seguit sobre
+\(\operatorname{List}(A)\) equipat amb \(\varepsilon\) i \(\operatorname{cons}\).
+\end{observacio}
+
+\begin{proposicio}[Recursió i iteració sobre llistes]\label{prop:recursio-llistes}
+El conjunt \(\operatorname{List}(A)\) ve equipat amb el punt
+\(\varepsilon\colon\mathbf1\to\operatorname{List}(A)\) de la llista buida i
+amb l'operació de prefixar un element,
+\(\operatorname{cons}\colon A\times\operatorname{List}(A)\to
+\operatorname{List}(A)\), i satisfà el principi de recursió corresponent:
+per a tot conjunt \(B\) amb un punt \(b\colon\mathbf1\to B\) i una aplicació
+\(t\colon A\times B\to B\), existeix una única
+\(h\colon\operatorname{List}(A)\to B\) amb
+\[
+h\circ\varepsilon=b
+\qquad\text{i}\qquad
+h\circ\operatorname{cons}=t\circ(\id_A\times h).
+\]
+En particular, la llargada
+\(\ell\colon\operatorname{List}(A)\to\N\), la concatenació i la iteració
+d'una operació al llarg d'una llista es defineixen totes per aquesta
+recursió, sense cap axioma nou.
+\end{proposicio}
+
+\begin{prova}
+\emph{L'operació \(\operatorname{cons}\).} Sobre la representació de la
+definició~\ref{def:llistes}, prefixar \(a\in A\) a una llista \(u\) de
+llargada \(n\) és la successió \(\operatorname{cons}(a,u)\) de llargada
+\(n+1\) que val \(i_A(a)\) a la posició \(0\) i \(u(k-1)\) ---és a dir, el
+desplaçament de \(u\)--- a la posició \(k\) per a \(1\le k<n+1\), i \(\ast\)
+a la resta. El desplaçament que reindexa el terme de la posició \(k\) cap a
+la posició \(k+1\), i la reassignació de la posició \(0\), són aplicacions
+internes sobre
+\((A+\mathbf1)^{\N}\) (avaluació, predecessor acotat i definició per casos,
+capítols~\ref{cap:exponencials} i~\ref{cap:parts-interna}), i preserven la
+condició (l1)--(l2); per tant
+\(\operatorname{cons}\colon A\times\operatorname{List}(A)\to
+\operatorname{List}(A)\) està ben definida. La llargada compleix
+\(\ell(\varepsilon)=0\) i \(\ell(\operatorname{cons}(a,u))=s(\ell(u))\).
+
+\emph{Existència de \(h\).} Escrivim \(L:=\operatorname{List}(A)\). Les
+aplicacions \(h_m\colon L\to B\) que \enquote{encerten} sobre les llistes
+de llargada \(\le m\) no les construïm amb dominis variables, sinó com a
+punts de l'exponencial fix \(B^{L}\), per recursió simple. Sigui
+\(\Phi\colon B^{L}\to B^{L}\) la transposada de l'aplicació
+\(B^{L}\times L\to B\) definida per casos sobre la descomposició
+\(L\cong\mathbf1+A\times L\) (llista buida, o primer element i cua,
+recuperats internament, amb \(\operatorname{cons}\) com a isomorfisme):
+\[
+(h,\varepsilon)\mapsto b,
+\qquad
+(h,\operatorname{cons}(a,u))\mapsto t\bigl(a,\operatorname{ev}(h,u)\bigr).
+\]
+Sigui \(H\colon\N\to B^{L}\) la recursora del sistema
+\((B^{L},\ulcorner b\circ{!}_L\urcorner,\Phi)\), de manera que
+\(H_{0}\) és la constant \(b\) i \(H_{m+1}=\Phi(H_m)\). Per inducció
+sobre \(m\) (amb la llargada com a paràmetre), \(H_m\) coincideix amb
+\(H_{m'}\) sobre les llistes de llargada \(\le m\) per a tot \(m'\ge m\):
+per a \(m=0\), totes valen \(b\) sobre \(\varepsilon\); i si val per a
+\(m\), aleshores sobre \(\operatorname{cons}(a,u)\) amb \(\ell(u)\le m\)
+es té \(H_{m'+1}(\operatorname{cons}(a,u))=t(a,H_{m'}(u))=t(a,H_m(u))
+=H_{m+1}(\operatorname{cons}(a,u))\). Definim \(h\) per la
+\emph{diagonal}: \(h:=\operatorname{ev}\circ\langle H\circ\ell,\id_L\rangle\),
+és a dir, \(h(u):=H_{\ell(u)}(u)\). Aleshores \(h(\varepsilon)=H_0(\varepsilon)=b\),
+i \(h(\operatorname{cons}(a,u))=H_{\ell(u)+1}(\operatorname{cons}(a,u))
+=t(a,H_{\ell(u)}(u))=t(a,h(u))\), que són les dues equacions.
+
+\emph{Unicitat.} Si \(h'\) compleix les mateixes dues equacions, aleshores
+\(h=h'\) sobre les llistes de llargada \(0\) (totes dues valen \(b\)), i si
+coincideixen sobre les de llargada \(\le m\), l'equació del
+\(\operatorname{cons}\) força la coincidència sobre les de llargada \(m+1\);
+per inducció sobre \(m\) (teorema~\ref{teo:induccio}; la part dels \(m\)
+sobre els quals coincideixen és interna, amb un quantificador acotat per
+\(\ell\)), \(h=h'\) a tot arreu.
+Això estableix la propietat universal ---la inicialitat de
+\((\operatorname{List}(A),\varepsilon,\operatorname{cons})\) entre les
+\((\mathbf1+A\times{-})\)-àlgebres--- \emph{a partir} de la construcció, i
+no a l'inrevés. La llargada s'obté amb \(B=\N\), \(b=0\), \(t=s\circ\pi_2\);
+la concatenació amb una llista fixada iterant \(\operatorname{cons}\); i
+qualsevol plegat (\emph{fold}) d'una operació binària, amb el \(t\)
+corresponent.
+\end{prova}
+
+\begin{observacio}[Enumerabilitat de \(\operatorname{List}(A)\)]\label{obs:llistes-enumerables}
+Si \(A\) és enumerable, també ho és \(\operatorname{List}(A)\), i sense
+elecció. L'argument és en dos passos. Primer, \(\operatorname{List}(\N)\)
+és enumerable: la codificació
+\(c\colon\operatorname{List}(\N)\to\N\) definida per recursió sobre llistes
+(proposició~\ref{prop:recursio-llistes}) amb \(c(\varepsilon)=0\) i
+\(c(\operatorname{cons}(k,u))=s\bigl(\pi(k,c(u))\bigr)\), on
+\(\pi\colon\N\times\N\to\N\) és un aparellament bijectiu
+(proposició~\ref{prop:estabilitat-enumerable}), és bijectiva: injectiva
+perquè \(\pi\) i \(s\) ho són i \(0\) no és successor, i exhaustiva per
+inducció sobre el codi. Segon, una enumeració \(e\colon\N\twoheadrightarrow A\)
+indueix \(\operatorname{List}(e)\colon\operatorname{List}(\N)\to\operatorname{List}(A)\)
+(aplicar \(e\) terme a terme, també per recursió sobre llistes), que és
+exhaustiva sobre punts: tota llista \((a_0,\dots,a_{n-1})\) és la imatge
+de la llista dels mínims índexs \(k_i\) amb \(e(k_i)=a_i\), que es
+defineixen sense cap tria. Així
+\(\operatorname{List}(e)\circ c^{-1}\colon\N\twoheadrightarrow\operatorname{List}(A)\)
+és una enumeració. El que fa possible evitar l'elecció és que les
+enumeracions de totes les llistes deriven \emph{uniformement} d'una sola
+enumeració d'\(A\) i d'un sol aparellament; és l'observació clau que
+separa aquest cas del de la secció següent.
+\end{observacio}
+
+\section{Unions indexades numerablement}\label{sec:unions-numerables}
+
+L'últim tema és el que fa explícit el paper de l'elecció numerable en la
+seva forma més habitual. Es tracta de reunir una família de conjunts
+\((A_n)_{n\in\N}\) en una sola unió i de decidir quan aquesta unió és
+enumerable.
+
+\begin{definicio}[Família i unió numerables]\index{Família i unió numerables}\label{def:familia-numerable}
+Una \emph{família numerable} de conjunts és una aplicació
+\(p\colon E\to\N\); el conjunt \(A_n\) és la fibra
+\(p^{-1}(n)\hookrightarrow E\) sobre el punt \(n\)
+(capítol~\ref{cap:parts}). La \emph{unió} de la família és la imatge de
+\(E\) per una aplicació cap a un conjunt ambient, o simplement \(E\) mateix
+quan es pensa com la reunió disjunta \(\coprod_{n\in\N}A_n\); la
+\emph{unió indexada} \(\bigcup_{n\in\N}A_n\) dins un conjunt \(U\) que
+conté totes les fibres és la imatge (capítol~\ref{cap:imatges}) de \(E\to
+U\).
+\end{definicio}
+
+\begin{teorema}[Unió numerable d'enumerables, amb elecció numerable]\label{teo:unio-numerable}
+Suposem l'axioma d'elecció numerable
+(axioma~\ref{ax:eleccio-numerable}). Sigui \((A_n)_{n\in\N}\) una família
+numerable en què cada \(A_n\) és enumerable. Aleshores la unió disjunta
+\(\coprod_{n\in\N}A_n\) és enumerable, i per tant també ho és qualsevol
+imatge seva ---en particular la unió indexada dins un conjunt ambient.
+\end{teorema}
+
+\begin{prova}
+Per hipòtesi, per a cada \(n\) el conjunt \(A_n=p^{-1}(n)\) és enumerable:
+o bé és inicial, o bé \emph{existeix} un epimorfisme
+\(\N\twoheadrightarrow A_n\). Reunim totes les enumeracions de totes les
+fibres en una sola part d'un objecte fix:
+\[
+E':=\bigl\{\,(n,e)\in\N\times E^{\N}\ :\ p\circ e=n\circ{!}_\N
+\ \text{ i }\ \forall x\in E\,\bigl(p(x)=n\Rightarrow\exists k\,(e(k)=x)\bigr)\bigr\},
+\]
+tallada amb els quantificadors interns (capítol~\ref{cap:parts-interna});
+la fibra de \(E'\to\N\) sobre \(n\) és el conjunt de les enumeracions de
+\(A_n\), no buida exactament quan \(A_n\) no és inicial. Sigui
+\(N'\hookrightarrow\N\) la part dels \(n\) amb \(A_n\) no inicial (la imatge
+de \(p\)). Si \(N'\) és inicial, la unió és inicial i no hi ha res a
+provar. Altrament, \(N'\) és enumerable sense elecció
+(teorema~\ref{teo:subobjectes-N}): sigui \(r\colon\N\twoheadrightarrow N'\)
+una enumeració. La família \(E'\) reindexada per \(r\) és una família
+\(E''\twoheadrightarrow\N\) amb totes les fibres no buides, i l'axioma
+d'elecció numerable en dona una secció: una \emph{tria simultània} d'una
+enumeració \(e_{r(j)}\colon\N\twoheadrightarrow A_{r(j)}\) per a cada
+\(j\). Per a cada \(n\in N'\) prenem \(e_n:=e_{r(j_n)}\), on \(j_n\) és
+el \emph{mínim} índex \(j\) amb \(r(j)=n\), que existeix perquè \(r\) és
+exhaustiva i és únic pel bon ordre de \(\N\): així l'assignació
+\(n\mapsto e_n\) és explícita i no amaga cap elecció addicional. Amb aquesta tria, l'aplicació
+\[
+\N\times\N\longrightarrow\coprod_{n\in\N}A_n,
+\qquad
+(j,k)\longmapsto e_{r(j)}(k),
+\]
+és exhaustiva sobre punts (tot punt de la unió és a alguna fibra
+\(A_{r(j)}\), i allà és algun \(e_{r(j)}(k)\)), per tant epimorfisme, i component-la amb un aparellament
+\(\N\cong\N\times\N\) s'obté una enumeració de la unió disjunta. Tota
+imatge d'aquesta unió és enumerable per la
+proposició~\ref{prop:estabilitat-enumerable}(1).
+\end{prova}
+
+\begin{observacio}[On és l'elecció, i on no]\label{obs:eleccio-unio}
+El pas irreductible és la tria simultània de les \(e_n\). Sabem que
+cada \(A_n\) enumerable \emph{té} alguna enumeració, però la definició
+d'enumerabilitat n'afirma només l'existència; res no en selecciona cap de
+canònica quan els \(A_n\) són conjunts arbitraris. Encadenar aquestes
+infinites eleccions en una sola aplicació \(n\mapsto e_n\) és precisament
+el contingut de l'axioma~\ref{ax:eleccio-numerable}. Contrasta amb dos
+casos ja vistos on l'elecció \emph{no} feia falta: la unió de \emph{dos}
+enumerables (proposició~\ref{prop:estabilitat-enumerable}), on hi ha només
+dues enumeracions donades; i el conjunt de llistes
+(observació~\ref{obs:llistes-enumerables}), on les enumeracions dels
+sumands eren totes derivades \emph{uniformement} d'una de sola. La
+diferència no és la mida de la família ---en tots dos casos infinita en el
+segon--- sinó si les enumeracions vénen donades o s'han de triar. De fet,
+sense cap elecció és consistent que una unió numerable de conjunts de dos
+elements no sigui enumerable: la conclusió del
+teorema~\ref{teo:unio-numerable} pot fallar, i per tant l'axioma hi és
+essencial.
+\end{observacio}
+
+\begin{observacio}[El producte numerable]\label{obs:producte-numerable}
+El producte d'una família numerable, \(\prod_{n\in\N}A_n\), planteja una
+qüestió d'elecció encara més aguda. El producte existeix com a objecte
+---és un límit, i els límits numerables es poden construir a partir dels
+exponencials i de \(\N\)---, però la seva \emph{no-vacuïtat} equival, per a
+famílies de conjunts no buits, a una forma d'elecció: dir que
+\(\prod_{n\in\N}A_n\) té un punt global és exactament triar un element de
+cada \(A_n\). Per aquest producte l'elecció numerable és, doncs, no una
+comoditat de la prova sinó la substància de l'enunciat. És el motiu pel
+qual, en teories sense elecció, s'ha de distingir amb cura entre
+l'existència d'un producte com a objecte i l'existència d'elements seus.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item \emph{Infinit} és la negació d'\emph{finit}; \emph{infinit de Dedekind} és admetre un endomonomorfisme no exhaustiu. \(\N\) ho és pel successor; Dedekind implica infinit pel cas finit del capítol anterior, sense cap axioma.
+  \item Infinit implica Dedekind amb l'elecció numerable, i només per un pas: triar alhora una llista injectiva de cada llargada. La successió injectiva es construeix després sense tria, prenent en llistes de llargada \(2^n\) el primer valor no usat.
+  \item Enumerable és ser imatge de \(\N\); l'estabilitat per imatge, part, suma i producte és sense elecció, amb un aparellament \(\N\cong\N\times\N\) definit per recursió sobre les diagonals.
+  \item Tota part de \(\N\) és enumerable, finita o isomorfa a \(\N\), perquè el mínim és una tria canònica; d'aquí, tot enumerable infinit és isomorf a \(\N\).
+  \item \(\operatorname{List}(A)\) és una part d'\((A+\mathbf1)^{\N}\); el seu principi de recursió es demostra pujant a \(B^{\operatorname{List}(A)}\) i prenent la diagonal sobre la llargada. És enumerable, uniformement, si \(A\) ho és.
+  \item La unió numerable d'enumerables necessita l'elecció numerable (i és consistent que falli sense ella); el producte numerable la incorpora al seu enunciat.
+\end{enumerate}
+\apartat{Errors típics} Confondre els dos usos de la paraula: \emph{enumerable} i \emph{numerable} qualifiquen conjunts (imatge de \(\N\); finit o enumerable infinit), mentre que \enquote{família, unió o producte numerable} i \enquote{elecció numerable} volen dir \emph{indexat per \(\N\)}; identificar infinit i infinit de Dedekind sense elecció; definir una successió \enquote{pel primer element no usat} com si fos una recursió de l'axioma (depèn de tota la història); creure que la unió de dos enumerables i la de numerablement molts estan al mateix nivell axiomàtic; pensar que \(\operatorname{List}(A)\) és \enquote{la suma \(\coprod_nA^{\seg n}\)}, que els axiomes no formen directament; i confondre l'existència del producte numerable com a objecte amb l'existència dels seus punts.
+\apartat{Lectura recomanada} \cite[§§7.6--7.8]{lawvere-rosebrugh} per a Dedekind-infinitud, enumerabilitat i el paper de l'elecció; \cite[§§13, 15--16 i 23]{halmos} per als conjunts infinits, l'elecció i els conjunts numerables en la teoria clàssica; \cite[apèndix~B]{lawvere-rosebrugh} per a les formes de l'elecció; i \cite[pàg.~12]{bell2006} per a la definició de Dedekind i l'axioma d'infinitud com a existència d'un conjunt \(X\cong X+1\).
+\end{resumcap}

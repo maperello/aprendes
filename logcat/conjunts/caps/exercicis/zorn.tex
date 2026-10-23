@@ -1,0 +1,53 @@
+\chapter{Zorn, Hartogs i el teorema del bon ordre}\label{cap:exercicis-zorn}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:zorn} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-zorn} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Hartogs}
+
+\begin{enumerate}
+  \item Demostreu que \(\Hart(A)\), el conjunt de tipus d'ordre dels bons ordres sobre parts d'\(A\) ordenat per segment inicial, és un bon ordre. (Model: secció~\ref{prac:hartogs}; proposició~\ref{prop:hartogs-bon-ordre}.)
+
+  \item Demostreu que \(\Hart(A)\) no admet cap monomorfisme en \(A\). (Model: teorema~\ref{teo:hartogs}.)
+
+  \item Expliqueu per què tota la construcció de \(\Hart(A)\) és \emph{acotada} i no usa cap classe global d'ordinals. \begin{indicacio}Els bons ordres sobre parts d'\(A\), codificats com a parells \((S,R)\), viuen dins \(P(A)\times P(A\times A)\); el quocient per isomorfisme és efectiu (observació~\ref{obs:hartogs-acotat}).\end{indicacio}
+
+  \item Compareu els teoremes de Hartogs i de Cantor com a resultats \enquote{diagonals}. \begin{indicacio}\(P(A)\) dona una mida més gran; \(\Hart(A)\), una longitud d'ordre més gran (observació~\ref{obs:hartogs-cantor}).\end{indicacio}
+\end{enumerate}
+
+\section{El teorema del bon ordre}
+
+\begin{enumerate}[resume]
+  \item Amb l'elecció, demostreu que tot conjunt admet un bon ordre, amb la recursió acotada per \(\Hart(A)\). (Model: secció~\ref{prac:bon-ordre}; teorema~\ref{teo:bon-ordre}.)
+
+  \item Expliqueu quin problema evita la cota de Hartogs respecte d'una recursió \enquote{sobre tots els ordinals}. (Model: observació~\ref{obs:cota-hartogs}.)
+
+  \item Demostreu que si \(A\) admet un bon ordre, aleshores \(A\preceq\Hart(A)\) o \(\Hart(A)\preceq A\), i deduïu-ne quin dels dos casos es dona. \begin{indicacio}Per Hartogs, \(\Hart(A)\not\preceq A\); useu la comparabilitat de bons ordres.\end{indicacio}
+\end{enumerate}
+
+\section{El lema de Zorn}
+
+\begin{enumerate}[resume]
+  \item Doneu un ordre parcial amb diversos maximals i cap màxim. (Model: secció~\ref{prac:zorn}; observació~\ref{obs:maximal-maxim}.)
+
+  \item Amb l'elecció, demostreu el lema de Zorn. (Model: teorema~\ref{teo:zorn}.)
+
+  \item Demostreu, amb Zorn, que tot espai vectorial té una base. (Model: proposició~\ref{prop:base}.)
+
+  \item Demostreu, amb Zorn, que tot ideal propi d'un anell commutatiu amb unitat es conté en un ideal maximal. \begin{indicacio}Ordeneu per inclusió els ideals propis que contenen l'ideal donat; la unió d'una cadena d'ideals propis és un ideal propi (no conté \(1\)); vegeu l'observació~\ref{obs:zorn-aplicacions}.\end{indicacio}
+\end{enumerate}
+
+\section{Les tres equivalències}
+
+\begin{enumerate}[resume]
+  \item Demostreu que (bon ordre) implica (elecció). (Model: secció~\ref{prac:equivalencies}; teorema~\ref{teo:equivalencies}.)
+
+  \item Demostreu que (Zorn) implica (bon ordre). (Model: teorema~\ref{teo:equivalencies}.)
+
+  \item \textbf{(Punt de reflexió.)} Expliqueu per què cap de les direccions de l'equivalència no ha necessitat una recursió més forta que la del capítol~\ref{cap:recursio}. \begin{indicacio}Totes les recursions són acotades per un \(\Hart\) i de codomini fix; vegeu el final del teorema~\ref{teo:equivalencies}.\end{indicacio}
+
+  \item Expliqueu per què la regla de recursió de la prova de Zorn s'ha de donar també en el cas en què la història no és una cadena, encara que aquest cas no es doni mai. \begin{indicacio}El teorema~\ref{teo:recursio-transfinita} demana una regla \(\Phi\) definida per a tota parella \((w,h)\); una clàusula \enquote{altrament} amb un punt fix de \(P\) hi basta.\end{indicacio}
+
+  \item Demostreu amb detall que la unió d'una cadena de bons ordres parcials, ordenada per extensió inicial, és un bon ordre parcial. \begin{indicacio}Per a una part no buida \(T\), preneu un membre \((S,R)\) de la cadena que la toqui; el mínim de \(T\cap S\) ho és de \(T\) perquè les extensions són inicials.\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Digueu quins dels resultats següents usen l'elecció: que \(\Hart(A)\) existeix; que \(\Hart(A)\) és un bon ordre; el teorema de Hartogs; el teorema del bon ordre; el lema de Zorn; que (BO) implica (E). \begin{indicacio}Només el quart i el cinquè; el sisè construeix l'elecció a partir del bon ordre, sense suposar-la.\end{indicacio}
+\end{enumerate}

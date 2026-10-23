@@ -1,0 +1,75 @@
+\chapter[Valors de veritat i construccions finites]{Valors de veritat, parts\texorpdfstring{\\}{ }i construccions finites}\label{cap:exercicis-valors}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:valors} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-valors} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Sumes disjuntes i estables}
+
+\begin{enumerate}
+  \item Demostreu que una aplicació \(m\) és un monomorfisme si i només si és un pullback d'ella mateixa amb projeccions identitat, i useu-ho per reescriure la definició de suma disjunta (definició~\ref{def:suma-disjunta}) només en termes de pullbacks. (Model: secció~\ref{prac:sumes-disjuntes}.)
+
+  \item Enuncieu amb precisió què vol dir que una suma és \emph{estable} per canvi de base (definició~\ref{def:suma-estable}) i expliqueu per què l'estabilitat sola no implica la disjunció. Indiqueu, per a cadascun dels resultats següents, si usa la disjunció, l'estabilitat o totes dues: l'estrictesa de \(\mathbf0\), la distinció \(0\ne1\), la descomposició per canvi de base. \begin{indicacio}El canvi de base al llarg de la identitat no dona cap informació nova. L'estrictesa usa l'estabilitat i després la disjunció; \(0\ne1\) només la disjunció; la descomposició, totes dues.\end{indicacio}
+
+  \item Sigui \(A_0\xrightarrow{i_0}A_0+A_1\xleftarrow{i_1}A_1\) una suma i \(f:X\to A_0+A_1\) qualsevol. Descriviu la suma \(X_0\to X\leftarrow X_1\) que s'obté per canvi de base al llarg de \(f\) i interpreteu-la com una descomposició de \(X\) en dues parts complementàries. \begin{indicacio}És el teorema~\ref{teo:descomposicio-canvi-base}; els \(X_j\) són els pullbacks de les injeccions al llarg de \(f\).\end{indicacio}
+\end{enumerate}
+
+\section{Inicial estricte i distinció dels valors de veritat}
+
+\begin{enumerate}[resume]
+  \item Demostreu que tota aplicació \(f:X\to\mathbf0\) és un isomorfisme. (Model: secció~\ref{prac:zero-u}; enunciat: proposició~\ref{prop:inicial-estricte}.)
+
+  \item Demostreu el lema del buit: un conjunt sense elements globals és inicial. \begin{indicacio}Compareu \(0\circ{!}_X\) i \(1\circ{!}_X\) i useu l'axioma de separació global (axioma~\ref{ax:separacio-globals}), com al model.\end{indicacio}
+
+  \item Demostreu que \(0\neq1\) com a elements de \(\mathbf2\), i deduïu del corol·lari~\ref{cor:elements-de-2} que \(\mathbf2\) té exactament dos elements globals. \begin{indicacio}Suposeu \(0=1\); un punt \(\mathbf1\to\mathbf2\) és mono, i el pullback d'un mono amb ell mateix és el seu domini. Arribeu a \(\mathbf1\cong\mathbf0\).\end{indicacio}
+
+  \item Demostreu que tot element global d'una suma \(A_0+A_1\) es factoritza a través d'exactament una de les dues injeccions. (Enunciat: teorema~\ref{teo:exhaustivitat-sumes}.)
+\end{enumerate}
+
+\section{Parts extremals}
+
+\begin{enumerate}[resume]
+  \item Demostreu que la característica de la part total \(\id_A\) és la constant \(1\), i que la de la part buida \(\mathbf0\rightarrowtail A\) és la constant \(0\). (Model: secció~\ref{prac:extremals}; proposició~\ref{prop:caracteristica-buida}.)
+
+  \item Demostreu que dues parts totals de \(A\) són equivalents i que dues parts buides de \(A\) són equivalents, de manera que \enquote{la} part total i \enquote{la} part buida queden ben definides. (Enunciat: proposició~\ref{prop:parts-extremals-uniques}.)
+
+  \item Verifiqueu, a partir del quadrat característic (teorema~\ref{teo:quadrat-caracteristic}), que la part buida és el pullback de \(0\) al llarg de qualsevol característica constant \(1\). \begin{indicacio}El pullback de dos punts diferents de \(\mathbf2\) és inicial, per disjunció.\end{indicacio}
+\end{enumerate}
+
+\section{Negació i complement}
+
+\begin{enumerate}[resume]
+  \item Demostreu que \(\neg\circ\neg=\id_{\mathbf2}\) i que, per tant, la negació és un isomorfisme. (Model: secció~\ref{prac:complement}; proposició~\ref{prop:negacio-involutiva}.)
+
+  \item Demostreu que el complement és involutiu: \((m^c)^c\equiv_A m\) per a tota part \(m\). \begin{indicacio}Calculeu \(\chi_{(m^c)^c}=\neg\circ\neg\circ\chi_m\) i useu que la característica determina la part.\end{indicacio}
+
+  \item Demostreu que una part i el seu complement descomponen \(A\): \([m,m^c]:S+S^c\to A\) és un isomorfisme. (Enunciat: teorema~\ref{teo:part-complementari}.)
+
+  \item Demostreu que la part total i la part buida són complementàries l'una de l'altra. \begin{indicacio}Compareu les característiques: \(\neg\circ(1\circ{!}_A)=0\circ{!}_A\).\end{indicacio}
+\end{enumerate}
+
+\section{Operacions booleanes amb parts}
+
+\begin{enumerate}[resume]
+  \item Demostreu que la característica de \(m\cap n\) és \(\wedge\circ\langle\chi_m,\chi_n\rangle\) i que la de \(m\cup n\) és \(\vee\circ\langle\chi_m,\chi_n\rangle\). (Model: secció~\ref{prac:booleanes}; proposició~\ref{prop:caracteristica-interseccio} i definició~\ref{def:conjuncio-disjuncio}.)
+
+  \item Demostreu les lleis d'idempotència \(m\cap m\equiv_A m\) i \(m\cup m\equiv_A m\) reduint-les a identitats de taules de veritat sobre \(\mathbf2\). \begin{indicacio}Useu l'extensionalitat de les taules (proposició~\ref{prop:extensionalitat-taules}).\end{indicacio}
+
+  \item Demostreu una de les lleis de De Morgan per a parts, \((m\cap n)^c\equiv_A m^c\cup n^c\, \), traduint-la a una identitat entre \(\neg\), \(\wedge\) i \(\vee\) sobre \(\mathbf2\times\mathbf2\). \begin{indicacio}Comproveu la identitat \(\neg\circ\wedge=\vee\circ(\neg\times\neg)\) sobre els quatre punts de \(\mathbf2\times\mathbf2\); vegeu les lleis booleanes (teorema~\ref{teo:lleis-booleanes}).\end{indicacio}
+
+  \item Demostreu que \(m\subseteq_A n\) si i només si \(m\cap n\equiv_A m\), i també si i només si \(m\cup n\equiv_A n\). (Model de la proposició~\ref{prop:inclusio-booleana}.)
+\end{enumerate}
+
+\section{Límits, coequalitzadors, pushouts i colímits finits}
+
+\begin{enumerate}[resume]
+  \item Demostreu que el coequalitzador \(q:B\to Q\) de \(f,g:A\to B\) és un epimorfisme, i que qualsevol altre coequalitzador dels mateixos \(f,g\) hi és isomorf de manera compatible. (Model: secció~\ref{prac:limits-colimits}; proposicions~\ref{prop:coequalitzador-epi} i~\ref{prop:coequalitzador-unic}.)
+
+  \item Construïu el pushout de \(f:C\to A\) i \(g:C\to B\) com a coequalitzador de \(i_A\circ f\) i \(i_B\circ g\) sobre la suma \(A+B\), i comproveu-ne la propietat universal. \begin{indicacio}Seguiu el teorema~\ref{teo:pushout-construccio}; l'aplicació mediadora és \([u,v]\) factoritzada per \(q\).\end{indicacio}
+
+  \item Demostreu que, tenint productes finits i equalitzadors, existeix el límit de qualsevol diagrama finit, i digueu quines aplicacions calen per imposar cada fletxa del diagrama. (Model del teorema~\ref{teo:limits-finits}.)
+
+  \item Dualitzeu l'exercici anterior: expliqueu com, tenint sumes finites i coequalitzadors, s'obté el colímit de qualsevol diagrama finit. \begin{indicacio}És el teorema~\ref{teo:colimits-finits}; invertiu el sentit de totes les fletxes i canvieu productes/equalitzadors per sumes/coequalitzadors.\end{indicacio}
+
+  \item Demostreu, sense usar cap axioma d'elecció, que tot epimorfisme \(f:A\to B\) és exhaustiu sobre els punts globals. \begin{indicacio}És la proposició~\ref{prop:epi-exhaustiu-punts}: per a \(y:\mathbf1\to B\), mireu la imatge inversa \(f^{-1}(y)\); si no té punts és inicial, i la seva característica \(\chi_y\circ f\) és \(0\circ{!}_A\); cancel·leu \(f\) i arribeu a \(0=1\).\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Per a cadascun dels resultats següents, digueu si es demostra amb els axiomes dels capítols~\ref{cap:aplicacions} i~\ref{cap:parts} sols, o si necessita la disjunció i estabilitat de les sumes, els coequalitzadors, o tots dos: \(0\ne1\); el lema del buit; les lleis booleanes de les parts; l'existència dels límits finits; l'existència dels pushouts; l'exhaustivitat dels epimorfismes sobre punts. \begin{indicacio}Només els límits finits es demostren amb els axiomes anteriors; els pushouts són els únics que necessiten coequalitzadors; la resta usa la disjunció i estabilitat (i el lema del buit i l'exhaustivitat, a més, la separació global).\end{indicacio}
+\end{enumerate}

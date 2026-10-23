@@ -1,0 +1,21 @@
+# ============================================================
+# latexmkrc — Teoria de conjunts (aprendes / logcat)
+# Compilació amb XeLaTeX, Biber i índex automàtic.
+#
+#   latexmk        compilació completa (bibliografia i índex inclosos)
+#   latexmk -c     neteja els fitxers auxiliars
+#
+# Per a l'edició imprimible i la comprovació feu servir el Makefile.
+# ============================================================
+
+# Només el document mestre (sense això latexmk també compila metadata.tex).
+@default_files = ('main.tex');
+
+$pdf_mode  = 5;   # 5 = XeLaTeX
+$xelatex   = 'xelatex -interaction=nonstopmode -halt-on-error %O %S';
+$biber     = 'biber %O %S';
+$bibtex_use = 2;  # Biber; latexmk esborra el .bbl amb -c
+$makeindex = 'makeindex %O -o %D %S';
+
+# Fitxers auxiliars addicionals que `latexmk -c` ha d'esborrar.
+$clean_ext = 'bcf run.xml synctex synctex.gz fls fdb_latexmk xdv auxlock';

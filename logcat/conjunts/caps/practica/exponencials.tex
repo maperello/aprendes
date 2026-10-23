@@ -1,0 +1,98 @@
+\chapter{Exponencials}\label{cap:practica-exponencials}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:exponencials} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició --- l'avaluació i la propietat universal, les aplicacions com a punts, els exponencials de \(\mathbf0\), \(\mathbf1\) i \(\mathbf2\), l'exponencial d'una suma, la composició interna i les famílies--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: comprovar propietats universals per unicitat de la transposada, calcular exponencials identificant la propietat universal d'un objecte conegut, i traduir entre aplicacions \(X\times A\to B\) i aplicacions \(X\to B^A\). Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Propietat universal i transposició}\label{prac:exp-universal}
+
+\begin{exercici}
+\textbf{Unicitat de l'exponencial.} Suposeu que \((E,\operatorname{ev})\) i \((E',\operatorname{ev}')\) són tots dos exponencials de \(B\) per \(A\). Demostreu que hi ha un únic isomorfisme \(w\colon E\to E'\) amb \(\operatorname{ev}'\circ(w\times\id_A)=\operatorname{ev}\). (Reproduïu la proposició~\ref{prop:exponencial-unic}.)
+\end{exercici}
+\begin{solucio}
+Per la propietat universal de \((E',\operatorname{ev}')\) aplicada a \(\operatorname{ev}\colon E\times A\to B\), hi ha una única \(w\colon E\to E'\) amb \(\operatorname{ev}'\circ(w\times\id_A)=\operatorname{ev}\). Simètricament, hi ha una única \(w'\colon E'\to E\) amb \(\operatorname{ev}\circ(w'\times\id_A)=\operatorname{ev}'\). Component, \(\operatorname{ev}\circ((w'\circ w)\times\id_A)=\operatorname{ev}\); però també \(\operatorname{ev}\circ(\id_E\times\id_A)=\operatorname{ev}\), i la unicitat de la transposada de \(\operatorname{ev}\) (definició~\ref{def:exponencial}) dona \(w'\circ w=\id_E\). Simètricament \(w\circ w'=\id_{E'}\). Per tant \(w\) és un isomorfisme, únic compatible amb l'avaluació. És el patró d'unicitat de tota construcció universal.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Descurrificar i currificar són inverses.} Per a una aplicació \(g\colon X\to B^A\), la seva descurrificació és \(\operatorname{ev}\circ(g\times\id_A)\colon X\times A\to B\). Demostreu que currificar la descurrificació torna a donar \(g\), i que descurrificar la currificació de \(h\colon X\times A\to B\) torna a donar \(h\). (Model de la definició~\ref{def:exponencial} i la notació~\ref{not:exponencial}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(h:=\operatorname{ev}\circ(g\times\id_A)\) la descurrificació de \(g\). La currificació \(\lambda(h)\) és, per definició, l'única aplicació \(X\to B^A\) amb \(\operatorname{ev}\circ(\lambda(h)\times\id_A)=h\). Però \(g\) ja compleix \(\operatorname{ev}\circ(g\times\id_A)=h\); per la \emph{unicitat} de la transposada, \(\lambda(h)=g\). Recíprocament, donada \(h\colon X\times A\to B\), la seva currificació \(\lambda(h)\) satisfà \(\operatorname{ev}\circ(\lambda(h)\times\id_A)=h\) per definició; el membre esquerre és exactament la descurrificació de \(\lambda(h)\), de manera que descurrificar \(\lambda(h)\) retorna \(h\). Les dues operacions són, doncs, mútuament inverses.
+\end{solucio}
+
+\section{Aplicacions com a punts}\label{prac:exp-punts}
+
+\begin{exercici}
+\textbf{Els punts de \(B^A\) són les aplicacions \(A\to B\).} Demostreu que hi ha una correspondència biunívoca entre els punts globals \(\mathbf1\to B^A\) i les aplicacions \(A\to B\). (Reproduïu el teorema~\ref{teo:punts-exponencial}.)
+\end{exercici}
+\begin{solucio}
+Fixem l'isomorfisme canònic \(\iota\colon A\xrightarrow{\sim}\mathbf1\times A\) (per la propietat universal del producte amb el terminal). A un punt \(p\colon\mathbf1\to B^A\) li associem \(\Phi(p):=\operatorname{ev}\circ(p\times\id_A)\circ\iota\colon A\to B\). A una aplicació \(f\colon A\to B\) li associem \(\Psi(f):=\lambda(f\circ\iota^{-1})\colon\mathbf1\to B^A\). Que \(\Phi\) i \(\Psi\) són inverses és exactament la unicitat de la transposada: \(\Phi(\Psi(f))=f\) perquè \(\operatorname{ev}\circ(\lambda(f\circ\iota^{-1})\times\id_A)=f\circ\iota^{-1}\), i \(\Psi(\Phi(p))=p\) perquè tots dos tenen la mateixa descurrificació i la transposada és única. Així, un element de \(B^A\) \enquote{és} una aplicació \(A\to B\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Els elements generalitzats són famílies.} Expliqueu per què un element generalitzat \(X\to B^A\) es correspon amb una aplicació \(X\times A\to B\), i com aquesta lectura generalitza el cas dels punts. (Model de l'observació~\ref{obs:generalitzats-exponencial} i la proposició~\ref{prop:families}.)
+\end{exercici}
+\begin{solucio}
+La propietat universal de l'exponencial (definició~\ref{def:exponencial}) diu que les aplicacions \(X\to B^A\) es corresponen bijectivament, via la transposició, amb les aplicacions \(X\times A\to B\): a cada \(g\colon X\to B^A\) li correspon la seva descurrificació \(\operatorname{ev}\circ(g\times\id_A)\), i recíprocament. El cas dels punts és el cas particular \(X=\mathbf1\), on \(\mathbf1\times A\cong A\) i recuperem el teorema~\ref{teo:punts-exponencial}. En general, una aplicació \(X\times A\to B\) es llegeix com una \emph{família} \((f_x)_x\) d'aplicacions \(A\to B\) indexada pels elements generalitzats de \(X\), i \(g\colon X\to B^A\) n'és el \enquote{nom intern}.
+\end{solucio}
+
+\section{Exponencials de \texorpdfstring{\(\mathbf0\), \(\mathbf1\), \(\mathbf2\)}{0, 1, 2}}\label{prac:exp-basics}
+
+\begin{exercici}
+\textbf{\(A^{\mathbf1}\cong A\).} Demostreu que l'exponencial de \(A\) per \(\mathbf1\) és isomorf a \(A\). (Part de la proposició~\ref{prop:exponencials-basics}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(\rho\colon A\times\mathbf1\xrightarrow{\sim}A\) l'isomorfisme de projecció. Definim \(\alpha\colon A\to A^{\mathbf1}\) com la transposada de \(\rho\), és a dir l'única amb \(\operatorname{ev}\circ(\alpha\times\id_{\mathbf1})=\rho\). En sentit contrari, avaluant al punt únic de \(\mathbf1\), \(\beta:=\operatorname{ev}\circ\langle\id,{!}\rangle\colon A^{\mathbf1}\to A\), on \({!}\colon A^{\mathbf1}\to\mathbf1\). La composició \(\beta\circ\alpha=\operatorname{ev}\circ(\alpha\times\id_{\mathbf1})\circ\langle\id_A,{!}_A\rangle=\rho\circ\langle\id_A,{!}_A\rangle=\id_A\) es calcula directament. Per a \(\alpha\circ\beta\), que és una aplicació cap a l'exponencial, es comparen descurrificacions: \(\operatorname{ev}\circ((\alpha\circ\beta)\times\id_{\mathbf1})=\rho\circ(\beta\times\id_{\mathbf1})=\beta\circ p_1=\operatorname{ev}\circ\langle p_1,{!}\rangle=\operatorname{ev}\), i la unicitat de la transposada dona \(\alpha\circ\beta=\id_{A^{\mathbf1}}\). Per tant \(A^{\mathbf1}\cong A\): fixar l'única entrada d'una aplicació \(\mathbf1\to A\) és el mateix que triar un punt de \(A\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{\(A^{\mathbf0}\cong\mathbf1\) i \(\mathbf1^{A}\cong\mathbf1\).} Demostreu totes dues identificacions. (Part de la proposició~\ref{prop:exponencials-basics}.)
+\end{exercici}
+\begin{solucio}
+Per a \(A^{\mathbf0}\): una aplicació \(X\times\mathbf0\to A\) surt del conjunt inicial, perquè \(X\times\mathbf0\cong\mathbf0\) (la projecció \(X\times\mathbf0\to\mathbf0\) és un isomorfisme per l'estrictesa de \(\mathbf0\), proposició~\ref{prop:inicial-estricte}); per tant n'hi ha exactament una. Per la propietat universal de l'exponencial, hi ha exactament una aplicació \(X\to A^{\mathbf0}\) per a cada \(X\), i això caracteritza \(A^{\mathbf0}\) com a terminal: \(A^{\mathbf0}\cong\mathbf1\). Per a \(\mathbf1^{A}\): una aplicació \(X\times A\to\mathbf1\) és única perquè \(\mathbf1\) és terminal; de nou per la propietat universal, hi ha exactament una \(X\to\mathbf1^{A}\) per a cada \(X\), i \(\mathbf1^{A}\cong\mathbf1\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{El conjunt de parts com a exponencial.} Expliqueu per què \(P(A):=\mathbf2^{A}\) mereix el nom de \enquote{conjunt de parts}. (Model de la definició~\ref{def:conjunt-parts}.)
+\end{exercici}
+\begin{solucio}
+Pels punts de l'exponencial (teorema~\ref{teo:punts-exponencial}), els punts globals de \(\mathbf2^{A}\) es corresponen amb les aplicacions \(A\to\mathbf2\). Aquestes són precisament les aplicacions característiques del capítol~\ref{cap:parts}, i pel classificador de parts es corresponen, al seu torn, amb les parts de \(A\) llevat d'equivalència. Per tant, els punts de \(\mathbf2^{A}\) classifiquen les parts de \(A\); això justifica definir \(P(A):=\mathbf2^{A}\). L'existència del conjunt de parts no requereix cap axioma nou: és el cas \(B=\mathbf2\) de l'axioma d'exponencials (axioma~\ref{ax:exponencials}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Els quatre punts de \(\mathbf2^{\mathbf2}\).} Demostreu que \(\mathbf2^{\mathbf2}\cong\mathbf2\times\mathbf2\) i identifiqueu els quatre punts amb les quatre aplicacions \(\mathbf2\to\mathbf2\).
+\end{exercici}
+\begin{solucio}
+Com que \(\mathbf2=\mathbf1+\mathbf1\), l'exponencial d'una suma (proposició~\ref{prop:exponencial-suma}) dona \(\mathbf2^{\mathbf2}=\mathbf2^{\mathbf1+\mathbf1}\cong\mathbf2^{\mathbf1}\times\mathbf2^{\mathbf1}\cong\mathbf2\times\mathbf2\), usant \(A^{\mathbf1}\cong A\). Els punts de \(\mathbf2\times\mathbf2\) són els parells \(\langle a,b\rangle\) amb \(a,b\in\{0,1\}\), que són exactament les quatre injeccions \(\delta_{ab}\) del capítol~\ref{cap:valors} (proposició~\ref{prop:quatre-injeccions}); pel teorema~\ref{teo:punts-exponencial}, un punt de \(\mathbf2^{\mathbf2}\) és una aplicació \(\mathbf2\to\mathbf2\), i la correspondència envia \(\langle a,b\rangle\) a l'aplicació definida per casos \([a,b]\), que val \(a\) sobre \(0\) i \(b\) sobre \(1\). Les quatre són: les dues constants \([0,0]\) i \([1,1]\), la identitat \([0,1]\) i la negació \([1,0]\). Aquest és el primer recompte d'aplicacions del llibre, i el patró ---sumes a l'exponent es tornen productes--- és el que el capítol~\ref{cap:finits} farà servir per comptar \(B^A\) quan \(A\) i \(B\) siguin finits.
+\end{solucio}
+
+\section{L'exponencial d'una suma}\label{prac:exp-suma}
+
+\begin{exercici}
+\textbf{\(B^{A+C}\cong B^{A}\times B^{C}\).} Demostreu que l'exponencial d'una suma es descompon com un producte d'exponencials. (Reproduïu la proposició~\ref{prop:exponencial-suma}.)
+\end{exercici}
+\begin{solucio}
+Comprovem que \(B^{A}\times B^{C}\) té la propietat universal de \(B^{A+C}\); la unicitat (proposició~\ref{prop:exponencial-unic}) donarà l'isomorfisme. Per a tot \(X\), les aplicacions \(X\to B^{A+C}\) es corresponen amb les aplicacions \(X\times(A+C)\to B\). Com que el producte distribueix sobre la suma (teorema~\ref{teo:distributivitat}), \(X\times(A+C)\cong(X\times A)+(X\times C)\), i per la propietat universal de la suma (definició~\ref{def:suma-conjunts}) una aplicació d'aquest conjunt cap a \(B\) és una parella d'aplicacions \(X\times A\to B\) i \(X\times C\to B\). Transposant cada component, aquestes corresponen a \(X\to B^{A}\) i \(X\to B^{C}\), és a dir a una única \(X\to B^{A}\times B^{C}\). Totes les correspondències són naturals en \(X\), de manera que \(B^{A}\times B^{C}\) satisfà la propietat universal de \(B^{A+C}\).
+\end{solucio}
+
+\section{Composició interna i famílies}\label{prac:exp-composicio}
+
+\begin{exercici}
+\textbf{La composició com a aplicació entre exponencials.} Demostreu que existeix una única aplicació \(c\colon C^{B}\times B^{A}\to C^{A}\) que sobre punts envia \((g,f)\) a \(g\circ f\). (Model de la proposició~\ref{prop:composicio-interna}.)
+\end{exercici}
+\begin{solucio}
+Per la propietat universal de \(C^{A}\), definir \(c\) equival a donar una aplicació \((C^{B}\times B^{A})\times A\to C\). La prenem com
+\[
+(C^{B}\times B^{A})\times A\xrightarrow{\ \sim\ }C^{B}\times(B^{A}\times A)\xrightarrow{\id\times\operatorname{ev}}C^{B}\times B\xrightarrow{\operatorname{ev}}C,
+\]
+on la primera fletxa és l'associativitat del producte i les altres dues són avaluacions. La transposada d'aquesta aplicació és la \(c\) buscada. Sobre punts globals, seguint les avaluacions, \((g,f)\) es transforma en \(a\mapsto g(f(a))\), és a dir \(g\circ f\). La unicitat de \(c\) \emph{amb aquesta propietat sobre punts} no la dona la transposada, que només és única per a una aplicació \((C^B\times B^A)\times A\to C\) ja fixada, sinó la separació global: dues aplicacions amb domini \(C^B\times B^A\) que coincideixen sobre tots els punts, que són els parells \(\langle\bar g,\bar f\rangle\), són iguals. Anàlogament, la transposada de la projecció \(\mathbf1\times A\to A\) dona el punt \(\jmath\colon\mathbf1\to A^{A}\) que correspon a \(\id_A\). La composició, que era una operació sobre fletxes, s'ha tornat una aplicació entre conjunts.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Naturalitat de la transposició.} Demostreu que la correspondència entre aplicacions \(X\times A\to B\) i aplicacions \(X\to B^A\) és natural en \(X\): per a tota \(t\colon X'\to X\), currificar i precompondre amb \(t\) coincideix amb precompondre amb \(t\times\id_A\) i currificar. (Part de la proposició~\ref{prop:families}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(h\colon X\times A\to B\) amb currificació \(\widehat h=\lambda(h)\colon X\to B^A\). D'una banda, \(\widehat h\circ t\colon X'\to B^A\). De l'altra, considerem \(h\circ(t\times\id_A)\colon X'\times A\to B\) i la seva currificació \(\lambda(h\circ(t\times\id_A))\). Per veure que coincideixen n'hi ha prou de comprovar que tenen la mateixa descurrificació i usar la unicitat de la transposada:
+\[
+\operatorname{ev}\circ((\widehat h\circ t)\times\id_A)=\operatorname{ev}\circ(\widehat h\times\id_A)\circ(t\times\id_A)=h\circ(t\times\id_A),
+\]
+on hem usat \((\widehat h\circ t)\times\id_A=(\widehat h\times\id_A)\circ(t\times\id_A)\) i la definició de \(\widehat h\). Com que \(\lambda(h\circ(t\times\id_A))\) té, per definició, aquesta mateixa descurrificació, la unicitat de la transposada dona \(\widehat h\circ t=\lambda(h\circ(t\times\id_A))\). Aquesta és la naturalitat que fa que els elements generalitzats de \(B^A\) es comportin com a famílies coherents sota reindexació.
+\end{solucio}

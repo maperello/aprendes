@@ -1,0 +1,116 @@
+\chapter{Relacions, quocients i elecció}\label{cap:practica-relacions}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:relacions} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició --- relacions com a parts de productes, relació inversa i diagonal, relacions d'equivalència, parell nucli, quocients i epimorfismes regulars, efectivitat, particions, i les conseqüències de l'axioma d'elecció--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: traduir una relació al llenguatge de la pertinença generalitzada, construir aplicacions estructurals mitjançant la propietat universal del pullback, i raonar amb quocients i seccions. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Relacions, inversa i diagonal}\label{prac:relacions}
+
+\begin{exercici}
+\textbf{La inversa de la inversa.} Sigui \(r\colon R\rightarrowtail A\times B\) una relació. Demostreu que \(\operatorname{Inv}(\operatorname{Inv}(r))\equiv_{A\times B}r\) i que, per a tots \(x\colon X\to A\), \(y\colon X\to B\), es té \(y\mathrel{\operatorname{Inv}(r)_X}x\) si i només si \(x\mathrel{r_X}y\). (Reproduïu la proposició~\ref{prop:inversa-pertinenca}.)
+\end{exercici}
+\begin{solucio}
+La inversa es defineix component amb l'isomorfisme de commutació \(\sigma\colon A\times B\to B\times A\), que compleix \(\sigma\circ\langle x,y\rangle=\langle y,x\rangle\). Per tant, \(\langle y,x\rangle\) es factoritza a través de \(\operatorname{Inv}(r)=\sigma\circ r\) si i només si \(\langle x,y\rangle\) es factoritza a través de \(r\); això és exactament l'equivalència \(y\mathrel{\operatorname{Inv}(r)_X}x\iff x\mathrel{r_X}y\) (notació~\ref{not:relacio}). Com que \(\sigma\circ\sigma=\id\), aplicar la inversa dues vegades retorna la relació de partida, d'on \(\operatorname{Inv}(\operatorname{Inv}(r))\equiv_{A\times B}r\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{La diagonal detecta la igualtat.} Sigui \(\Delta_A=\langle\id_A,\id_A\rangle\colon A\rightarrowtail A\times A\) la diagonal (definició~\ref{def:diagonal}). Demostreu que és un monomorfisme i que, per a tots \(x,x'\colon X\to A\), es té \(x\mathrel{(\Delta_A)_X}x'\) si i només si \(x=x'\). (Model de la proposició~\ref{prop:diagonal-mono}.)
+\end{exercici}
+\begin{solucio}
+Component \(\Delta_A\) amb la primera projecció s'obté \(p_1\circ\langle\id_A,\id_A\rangle=\id_A\), que és un monomorfisme; per la proposició que diu que si \(g\circ f\) és mono aleshores \(f\) ho és (capítol~\ref{cap:parts}), \(\Delta_A\) és un monomorfisme. Ara, \(\langle x,x'\rangle\) es factoritza a través de \(\Delta_A\) si i només si existeix \(w\colon X\to A\) amb \(\langle x,x'\rangle=\langle\id_A,\id_A\rangle\circ w=\langle w,w\rangle\); igualant components, això equival a \(x=w=x'\), és a dir a \(x=x'\). La diagonal és, doncs, la relació d'igualtat en el sentit generalitzat.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Simetria puntual i simetria estructural.} Sigui \(r\colon R\rightarrowtail A\times A\) una relació sobre \(A\). Demostreu que \(\operatorname{Inv}(r)\equiv_{A\times A}r\) si i només si, per a tot estadi \(X\) i tots \(x,y\colon X\to A\), \(x\mathrel{r_X}y\) implica \(y\mathrel{r_X}x\). Expliqueu per què, amb la separació global, n'hi ha prou amb comprovar-ho per a punts globals.
+\end{exercici}
+\begin{solucio}
+Per l'exercici anterior sobre la inversa, \(y\mathrel{\operatorname{Inv}(r)_X}x\iff x\mathrel{r_X}y\). Si \(\operatorname{Inv}(r)\equiv r\), les dues parts tenen els mateixos elements generalitzats, de manera que \(x\mathrel{r_X}y\) dona \(\langle y,x\rangle\in_X\operatorname{Inv}(r)\), és a dir \(\langle y,x\rangle\in_X r\), és a dir \(y\mathrel{r_X}x\). Recíprocament, si la implicació val a tots els estadis, tot element generalitzat de \(\operatorname{Inv}(r)\) ho és de \(r\) i viceversa, i dues parts amb els mateixos elements generalitzats són equivalents (proposició~\ref{prop:inclusio-pertinenca}). Quant als punts globals: dues parts \(m,n\) d'un mateix conjunt amb els mateixos punts globals són equivalents, perquè la part \(m\cap n^c\) no té cap punt i, pel lema del buit (lema~\ref{lema:buit}), és buida; com que \(m\) es descompon com la suma \((m\cap n)+(m\cap n^c)\) (pullback de la descomposició \(A\cong N+N^c\) del teorema~\ref{teo:part-complementari} al llarg de \(m\), estable per canvi de base), resulta \(m\equiv m\cap n\), és a dir, \(m\subseteq n\); i simètricament. Per tant la simetria puntual implica la simetria estructural; aquesta reducció usa la separació global, i és el motiu pel qual, en la lectura clàssica, les tres condicions sobre punts basten.
+\end{solucio}
+
+\section{El parell nucli}\label{prac:parell-nucli}
+
+\begin{exercici}
+\textbf{El parell nucli és un monomorfisme.} Sigui \(f\colon A\to B\) i \(\operatorname{Nuc}(f)=\langle k_1,k_2\rangle\colon A\times_B A\to A\times A\) el seu parell nucli (definició~\ref{def:kernel-pair}). Demostreu que \(\langle k_1,k_2\rangle\) és un monomorfisme, sense usar cap propietat de \(f\). (Reproduïu la proposició~\ref{prop:kernel-mono}.)
+\end{exercici}
+\begin{solucio}
+Siguin \(u,v\colon X\to A\times_B A\) amb \(\langle k_1,k_2\rangle\circ u=\langle k_1,k_2\rangle\circ v\). Component amb les dues projeccions \(p_1,p_2\) del producte \(A\times A\), obtenim \(k_1\circ u=k_1\circ v\) i \(k_2\circ u=k_2\circ v\). Ara bé, per la unicitat a la propietat universal del pullback, dues aplicacions amb codomini \(A\times_B A\) que coincideixen en compondre amb \(k_1\) i amb \(k_2\) són iguals; per tant \(u=v\). Cap pas ha usat que \(f\) sigui mono: el que fa mono el parell nucli és exclusivament la unicitat del pullback (observació~\ref{obs:kernel-no-mono}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Reflexivitat i simetria del parell nucli.} Amb la notació \(K=A\times_B A\), \(k_1,k_2\colon K\to A\), \(f\circ k_1=f\circ k_2\), construïu les aplicacions estructurals que testimonien que \(\operatorname{Nuc}(f)\) és reflexiu i simètric. (Part de la proposició~\ref{prop:kernel-equivalencia}.)
+\end{exercici}
+\begin{solucio}
+\emph{Reflexivitat.} L'aplicació \(\id_A\) compleix trivialment \(f\circ\id_A=f\circ\id_A\); el parell \((\id_A,\id_A)\) és, doncs, un con sobre el pullback, i la propietat universal proporciona una única \(e\colon A\to K\) amb \(k_1\circ e=\id_A\) i \(k_2\circ e=\id_A\). Aquesta \(e\) realitza la reflexivitat (\enquote{tot element està relacionat amb ell mateix}).
+
+\emph{Simetria.} Les projeccions intercanviades compleixen \(f\circ k_2=f\circ k_1\); per tant \((k_2,k_1)\) és un con sobre el pullback, i la propietat universal dona una única \(s\colon K\to K\) amb \(k_1\circ s=k_2\) i \(k_2\circ s=k_1\). Aquesta \(s\) realitza la simetria. (La transitivitat es construeix anàlogament sobre \(K\times_A K\).)
+\end{solucio}
+
+\section{Quocients i epimorfismes regulars}\label{prac:quocients}
+
+\begin{exercici}
+\textbf{Tot quocient és un epimorfisme regular.} Sigui \(r\) una relació d'equivalència sobre \(A\) i \(q\colon A\twoheadrightarrow A/r\) un quocient. Expliqueu per què \(q\) és un epimorfisme regular. (Model de la proposició~\ref{prop:quocient-regular}.)
+\end{exercici}
+\begin{solucio}
+Per definició (definició~\ref{def:quocient}), el quocient \(q\) és el coequalitzador de les dues projeccions \(r_1,r_2\colon R\to A\) de la relació. Un epimorfisme regular és, precisament, una aplicació que és el coequalitzador d'algun parell d'aplicacions paral·leles (definició~\ref{def:epi-regular}); com que \(q\) ho és de \(r_1,r_2\), és un epimorfisme regular. En particular és un epimorfisme, per la proposició~\ref{prop:coequalitzador-epi} del capítol~\ref{cap:valors}. El recíproc ---que tot epimorfisme sigui regular--- no el tenim encara: el donarà l'axioma d'elecció (observació~\ref{obs:regular-escindit}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Existència i unicitat del quocient.} Justifiqueu que tota relació sobre \(A\) té quocient, únic llevat d'un únic isomorfisme compatible, i que l'aplicació quocient és un epimorfisme. (Enunciat: proposició~\ref{prop:quocient-existeix}.)
+\end{exercici}
+\begin{solucio}
+L'existència és l'axioma de coequalitzadors (axioma~\ref{ax:coequalitzadors} del capítol~\ref{cap:valors}) aplicat a les projeccions \(r_1,r_2\): el seu coequalitzador és el quocient. La unicitat llevat d'un únic isomorfisme compatible és la unicitat dels coequalitzadors (proposició~\ref{prop:coequalitzador-unic}), que ja vam provar amb el patró estàndard de les construccions universals. I que l'aplicació quocient sigui un epimorfisme és la proposició~\ref{prop:coequalitzador-epi}. Els tres ingredients provenen, doncs, de la teoria dels coequalitzadors del capítol anterior.
+\end{solucio}
+
+\section{Efectivitat i correspondència}\label{prac:efectivitat}
+
+\begin{exercici}
+\textbf{Invariància del parell nucli per isomorfisme del codomini.} Siguin \(q\colon A\to B\) i \(w\colon B\to B'\) un isomorfisme, i \(q'=w\circ q\). Demostreu que tot parell nucli de \(q\) és equivalent, com a part de \(A\times A\), a tot parell nucli de \(q'\). (Reproduïu el lema~\ref{lema:nucli-invariant}.)
+\end{exercici}
+\begin{solucio}
+Com que \(w\) és un isomorfisme i \(q'=w\circ q\), per a qualsevol parell \(u,v\) amb codomini \(A\) es té \(q\circ u=q\circ v\iff q'\circ u=q'\circ v\) (component amb \(w\) o amb \(w^{-1}\), que es cancel·la). Per tant, un con sobre el diagrama de pullback de \(q\) amb ell mateix és exactament un con sobre el de \(q'\); les dues propietats universals determinen el mateix objecte llevat d'un únic isomorfisme, de manera que existeix \(\theta\colon K\to K'\) isomorfisme amb \(k_1'\circ\theta=k_1\) i \(k_2'\circ\theta=k_2\). Component amb l'aparellament, \(\langle k_1',k_2'\rangle\circ\theta=\langle k_1,k_2\rangle\); les dues parts es factoritzen l'una per l'altra a través d'un isomorfisme, i per tant són equivalents. Aquest lema és el que fa que el camí \enquote{relació \(\to\) quocient \(\to\) parell nucli} no depengui del quocient triat.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El parell nucli recupera la relació.} Expliqueu, usant l'axioma d'efectivitat, per què per a tota relació d'equivalència \(r\) i tot quocient \(q\) seu es té \(\operatorname{Nuc}(q)\equiv_{A\times A}r\). (Camí (1)$\to$(2) del teorema~\ref{teo:correspondencia}.)
+\end{exercici}
+\begin{solucio}
+L'axioma d'efectivitat (axioma~\ref{ax:exactitud}) garanteix que existeix \emph{algun} quocient \(q_0\) de \(r\) amb un parell nucli equivalent a \(r\). Ara bé, dos quocients qualssevol de \(r\) són isomorfs de manera compatible (unicitat dels coequalitzadors, proposició~\ref{prop:coequalitzador-unic}): hi ha un isomorfisme \(w\) amb \(q=w\circ q_0\). Pel lema~\ref{lema:nucli-invariant}, el parell nucli és invariant sota postcomposició amb un isomorfisme, de manera que el parell nucli de \(q\) també és equivalent a \(r\). Aquest és el sentit precís en què \enquote{prendre quocient} i \enquote{prendre parell nucli} són operacions inverses.
+\end{solucio}
+
+\section{Particions i epimorfismes escindits}\label{prac:particions}
+
+\begin{exercici}
+\textbf{Tot epimorfisme escindit és regular.} Sigui \(q\colon A\to B\) un epimorfisme amb secció \(s\) (\(q\circ s=\id_B\)). Demostreu que \(q\) és el coequalitzador del seu parell nucli. (Reproduïu la proposició~\ref{prop:escindit-regular}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(\operatorname{Nuc}(q)\) amb projeccions \(k_1,k_2\) i \(q\circ k_1=q\circ k_2\). Cal veure que \(q\) té la propietat universal del coequalitzador de \(k_1,k_2\). Ja tenim \(q\circ k_1=q\circ k_2\). Sigui \(h\colon A\to C\) amb \(h\circ k_1=h\circ k_2\); definim \(\bar h:=h\circ s\). Considerem \(\id_A\) i \(s\circ q\): compleixen \(q\circ\id_A=q=q\circ s\circ q\) (perquè \(q\circ s=\id_B\)), de manera que el parell \((\id_A,\,s\circ q)\) es factoritza pel pullback \(\operatorname{Nuc}(q)\): hi ha \(d\colon A\to K\) amb \(k_1\circ d=\id_A\) i \(k_2\circ d=s\circ q\). Aleshores
+\[
+h=h\circ\id_A=h\circ k_1\circ d=h\circ k_2\circ d=h\circ s\circ q=\bar h\circ q,
+\]
+usant \(h\circ k_1=h\circ k_2\) al pas central. La unicitat de \(\bar h\) surt de ser \(q\) un epimorfisme. Per tant \(q\) és el coequalitzador de \(k_1,k_2\), i és regular.
+\end{solucio}
+
+\section{Conseqüències de l'axioma d'elecció}\label{prac:eleccio}
+
+\begin{exercici}
+\textbf{Amb elecció, tot epimorfisme és regular.} Demostreu que, admès l'axioma d'elecció, tot epimorfisme és un epimorfisme regular. (Reproduïu la proposició~\ref{prop:epi-regular-eleccio}.)
+\end{exercici}
+\begin{solucio}
+L'axioma d'elecció (axioma~\ref{ax:eleccio}) afirma que tot epimorfisme és escindit, és a dir, té secció. I la proposició~\ref{prop:escindit-regular} diu que tot epimorfisme escindit és regular. Encadenant-les: tot epimorfisme té secció, per tant és escindit, per tant és regular. Aquesta és la peça que, un cop afegida l'elecció, fa que la correspondència del teorema~\ref{teo:correspondencia} s'estengui de \emph{tots} els epimorfismes amb domini \(A\), no només els regulars (corol·lari~\ref{cor:correspondencia-tots-epis}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Epimorfisme i exhaustivitat generalitzada.} Demostreu que, amb l'axioma d'elecció, tot epimorfisme \(q\colon A\twoheadrightarrow B\) és exhaustiu sobre elements generalitzats: per a tot \(y\colon X\to B\) existeix \(x\colon X\to A\) amb \(q\circ x=y\). (Model de la proposició~\ref{prop:epi-exhaustiu-generalitzat}.)
+\end{exercici}
+\begin{solucio}
+Per l'elecció, \(q\) té una secció \(s\colon B\to A\) amb \(q\circ s=\id_B\). Donat qualsevol \(y\colon X\to B\), preneu \(x:=s\circ y\). Aleshores
+\[
+q\circ x=q\circ(s\circ y)=(q\circ s)\circ y=\id_B\circ y=y.
+\]
+Per tant \(y\) factoritza per \(q\), i \(q\) és exhaustiu sobre els elements generalitzats (és el criteri de la proposició~\ref{prop:exhaustiva-generalitzada-escindit} del capítol~\ref{cap:parts}, aplicat a la secció que dona l'elecció). Prenent l'estadi \(X=\mathbf1\) se'n dedueix l'exhaustivitat sobre els punts globals; però aquesta conseqüència particular no necessita l'elecció, perquè ja es va demostrar al capítol~\ref{cap:valors} (proposició~\ref{prop:epi-exhaustiu-punts}; vegeu la proposició~\ref{prop:epi-exhaustiu-global}). El que l'elecció aporta de nou és la preimatge per a tots els estadis alhora.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Sistema de representants.} Demostreu que, amb l'axioma d'elecció, tot quocient \(q\colon A\twoheadrightarrow A/r\) admet una secció, i interpreteu-ho clàssicament. (Enunciat: proposició~\ref{prop:representants}.)
+\end{exercici}
+\begin{solucio}
+El quocient \(q\) és un epimorfisme (proposició~\ref{prop:quocient-existeix}); per l'axioma d'elecció (axioma~\ref{ax:eleccio}), tot epimorfisme té secció, de manera que existeix \(s\colon A/r\to A\) amb \(q\circ s=\id_{A/r}\). En la lectura clàssica (observació~\ref{obs:seccio-representants}), aquesta secció tria per a cada classe un element que la representa: \(s([a])\) és un punt de la classe \([a]\). Així, l'elecció és exactament el que garanteix que tota partició admet un sistema de representants.
+\end{solucio}

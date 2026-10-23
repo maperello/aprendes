@@ -1,0 +1,81 @@
+\chapter{Tipus ordinals}\label{cap:practica-ordinals}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:ordinals} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició ---tipus ordinals i el seu ordre, zero, successor i límit, suprems acotats, i Burali--Forti--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: definir sobre representants i provar la invariància, caracteritzar el successor com a menor tipus més gran, formar suprems dins un bon ordre donat, i reconèixer l'estructura diagonal de Burali--Forti. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Tipus ordinals i el seu ordre}\label{prac:tipus-ordinals}
+
+\begin{exercici}
+\textbf{L'ordre és independent del representant.} Demostreu que \(\alpha<\beta\) (definida via segments) no depèn dels representants triats de \(\alpha\) i \(\beta\). (Part de la definició~\ref{def:ordre-ordinals}.)
+\end{exercici}
+\begin{solucio}
+Siguin \(W\cong W'\) representants de \(\alpha\) i \(V\cong V'\) de \(\beta\), amb isomorfismes d'ordre \(f\colon W\cong W'\) i \(g\colon V\cong V'\). Si \(W\) és isomorf a un segment inicial propi \(V_{<v}\) de \(V\), aleshores, transportant per \(g\), \(W\) és isomorf a \(V'_{<g(v)}\) (un isomorfisme d'ordre envia segments inicials a segments inicials), i component amb \(f^{-1}\), \(W'\) és isomorf a \(V'_{<g(v)}\), un segment propi de \(V'\). Per tant \(\alpha<\beta\) val amb un parell de representants si i només si val amb l'altre. La clau és la unicitat de l'isomorfisme d'ordre (teorema~\ref{teo:unicitat-iso}), que fa que aquests transports siguin consistents.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Els tipus estan totalment ordenats.} Demostreu que \(<\) sobre tipus ordinals és un ordre estricte total. (Reproduïu la proposició~\ref{prop:ordinals-total}.)
+\end{exercici}
+\begin{solucio}
+Donats dos representants \(W\), \(V\), la tricotomia i la comparabilitat dels bons ordres (teoremes~\ref{teo:tricotomia} i~\ref{teo:comparabilitat}) diuen que es dona exactament una de: \(W\) isomorf a un segment propi de \(V\) (\(\alpha<\beta\)), \(W\cong V\) (\(\alpha=\beta\)), o \(V\) isomorf a un segment propi de \(W\) (\(\beta<\alpha\)). La transitivitat és la de la comparació per segments (proposició~\ref{prop:comparacio-ordres}) i la irreflexivitat és que cap bon ordre no és isomorf a un segment propi seu (corol·lari~\ref{cor:no-segment-propi}). Per tant \(<\) és un ordre estricte total.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Per què no \(\alpha\in\beta\).} Expliqueu per què en aquest llibre l'ordre ordinal es defineix per segments i no per pertinença. (Model de l'observació~\ref{obs:no-pertinença-ordinal}.)
+\end{exercici}
+\begin{solucio}
+En la teoria de von Neumann, un ordinal és el conjunt dels ordinals menors, i \(\alpha<\beta\) es defineix com \(\alpha\in\beta\), fent servir una relació de pertinença global entre conjunts. Aquest llibre no assumeix cap pertinença global: la pertinença és sempre relativa a una part d'un conjunt fix (capítol~\ref{cap:parts-interna}). Per això \(\alpha\in\beta\) no té sentit com a definició de l'ordre ordinal; la relació correcta és \(\alpha<\beta\), definida perquè un representant de \(\alpha\) és isomorf a un segment inicial propi d'un de \(\beta\) (definició~\ref{def:ordre-ordinals}). Escriure \(\alpha\in\beta\) suggeriria una jerarquia material que el punt de vista estructural evita deliberadament.
+\end{solucio}
+
+\section{Zero, successor i límit}\label{prac:zero-successor-limit}
+
+\begin{exercici}
+\textbf{El successor és el menor tipus més gran.} Demostreu que \(\alpha<\alpha+1\) i que no hi ha cap tipus \(\gamma\) amb \(\alpha<\gamma<\alpha+1\). (Reproduïu la proposició~\ref{prop:successor-invariant}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(W\) un representant de \(\alpha\); aleshores \(W+\mathbf1\) representa \(\alpha+1\), amb el punt nou \(\ast\) després de tot \(W\). El segment inicial de \(W+\mathbf1\) determinat per \(\ast\) és \(W\), de manera que \(\alpha<\alpha+1\). Si hi hagués \(\gamma\) amb \(\alpha<\gamma<\alpha+1\), un representant \(G\) seria isomorf a un segment propi de \(W+\mathbf1\); però els segments propis de \(W+\mathbf1\) són \(W\) i els segments de \(W\) (proposició~\ref{prop:parts-inicials}), tots de tipus \(\le\alpha\), contra \(\alpha<\gamma\). Per tant \(\alpha+1\) és el menor tipus estrictament més gran que \(\alpha\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Zero, successor, límit són exhaustius.} Demostreu que tot tipus ordinal és exactament un de zero, successor o límit. (Reproduïu la proposició~\ref{prop:tricotomia-successor}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(W\) un representant. Si \(W\) és inicial, el tipus és \(0\). Si no, mirem si \(W\) té element màxim ---una propietat invariant per isomorfisme d'ordre. Si en té, \(m\), aleshores \(W\cong W_{<m}+\mathbf1\), de manera que el tipus és \(\operatorname{tipus}(W_{<m})+1\), un successor. Si \(W\) no és inicial i no té màxim, el tipus no és zero ni successor (un successor té màxim, proposició~\ref{prop:successor-invariant}), i per tant és límit. Les tres classes són excloents (zero és inicial, successor té màxim, límit no) i cobreixen tots els casos.
+\end{solucio}
+
+\begin{exercici}
+\textbf{\(\omega\) és el primer límit.} Demostreu que \(\omega=\operatorname{tipus}(\N)\) és un tipus límit i que és el menor. (Model de l'observació~\ref{obs:limit-classic}.)
+\end{exercici}
+\begin{solucio}
+\(\N\) amb el seu bon ordre (teorema~\ref{teo:bon-ordre-N}) no té element màxim: per a tot \(n\) hi ha \(s(n)>n\). Per tant \(\omega\) no és successor; i no és zero perquè \(\N\) és no inicial. Així \(\omega\) és límit (definició~\ref{def:tipus-limit}). És el menor: qualsevol tipus menor que \(\omega\) és el d'un segment propi de \(\N\), és a dir d'algun \(\seg{n}\) (proposició~\ref{prop:parts-inicials}), que és finit ---zero o successor. Com que tots els tipus \(<\omega\) són zero o successors, \(\omega\) és el primer tipus límit.
+\end{solucio}
+
+\section{Suprems acotats}\label{prac:suprems}
+
+\begin{exercici}
+\textbf{Suprem d'una família acotada.} Sigui \((\alpha_i)_{i\in I}\) representada dins un bon ordre \(W\) per \(r\colon I\to W\). Demostreu que existeix \(\sup_i\alpha_i\), el menor tipus \(\ge\) tots els \(\alpha_i\). (Reproduïu la proposició~\ref{prop:suprem}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(S=\bigcup_{i}W_{<r(i)}\) la unió indexada (capítol~\ref{cap:families}) dels segments \emph{oberts} \(W_{<r(i)}\), que són els que representen els \(\alpha_i\). Com a unió de parts inicials, \(S\) és inicial, per tant un segment de \(W\) o tot \(W\) (proposició~\ref{prop:parts-inicials}), i és ben ordenat (proposició~\ref{prop:segment-ben-ordenat}). Sigui \(\sigma=\operatorname{tipus}(S)\). Cada \(\alpha_i\le\sigma\) perquè \(W_{<r(i)}\) és una part inicial de \(S\). I \(\sigma\) és el menor amb aquesta propietat: si \(\beta\ge\alpha_i\) per a tot \(i\), amb representant \(V\), cada \(W_{<r(i)}\) té un únic isomorfisme \(f_i\) sobre una part inicial de \(V\) (teorema~\ref{teo:unicitat-iso}); per la unicitat, \(f_j\) estén \(f_i\) quan \(r(i)\le r(j)\), i la reunió dels grafs és una aplicació \(f\colon S\to V\) creixent, injectiva i amb imatge inicial. Així \(\sigma\le\beta\), i \(\sigma=\sup_i\alpha_i\). Compte: amb els segments \emph{tancats} \(W_{\le r(i)}\) el resultat seria massa gran (per a una sola \(r\) igual al mínim de \(W\), \(\alpha=0\) però \(W_{\le r}\) té tipus \(1\)); vegeu l'observació~\ref{obs:suprem-oberts}.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Per què cal l'acotació.} Expliqueu per què no es pot prendre el suprem d'una família arbitrària de tipus sense un bon ordre comú. (Model de l'observació~\ref{obs:suprem-acotat}.)
+\end{exercici}
+\begin{solucio}
+El suprem es construeix com la reunió de segments \emph{dins} un bon ordre \(W\) que representi tots els \(\alpha_i\). Sense un tal \(W\) ---sense un bon ordre que contingui tots els tipus de la família com a segments--- no hi ha res a reunir: caldria formar primer un bon ordre prou llarg, i si els tipus no estan acotats aquest bon ordre no existeix com a conjunt. De fet, la inexistència d'un bon ordre de \emph{tots} els tipus és el teorema de Burali--Forti (teorema~\ref{teo:burali-forti}). Per això cada suprem exigeix exhibir abans la família acotada; escriure \(\sup_i\alpha_i\) sense el \(W\) comú seria una construcció no justificada.
+\end{solucio}
+
+\section{Burali--Forti}\label{prac:burali-forti}
+
+\begin{exercici}
+\textbf{No hi ha conjunt de tots els tipus ordinals.} Demostreu que no existeix cap conjunt ben ordenat que contingui un representant de cada tipus ordinal amb la propietat de segments. (Reproduïu el teorema~\ref{teo:burali-forti}.)
+\end{exercici}
+\begin{solucio}
+Suposem un tal \(\Omega\), ben ordenat pel segment inicial, amb \(\operatorname{tipus}(\Omega_{<\gamma})=\) el tipus representat per \(\gamma\), per a cada \(\gamma\in\Omega\). Aleshores \(\Omega\) té un tipus propi \(\omega_\Omega=\operatorname{tipus}(\Omega)\), i com que \(\Omega\) conté un representant de cada tipus, hi ha \(\gamma\in\Omega\) amb \(\operatorname{tipus}(\Omega_{<\gamma})=\omega_\Omega\). Però \(\Omega_{<\gamma}\) és un segment inicial propi de \(\Omega\), i seria isomorf a \(\Omega\) sencer, contra el corol·lari~\ref{cor:no-segment-propi}. La contradicció mostra que cap tal \(\Omega\) no existeix.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Burali--Forti i Cantor.} Expliqueu en quin sentit Burali--Forti és el paral·lel ordinal del teorema de Cantor. (Model de l'observació~\ref{obs:burali-cantor}.)
+\end{exercici}
+\begin{solucio}
+Tots dos són resultats \enquote{diagonals}: la contradicció surt de fer que la construcció actuï sobre si mateixa. Cantor (teorema~\ref{teo:cantor}) dona \(A\prec P(A)\), d'on no hi ha mida màxima ni conjunt universal (corol·lari~\ref{cor:no-universal}). Burali--Forti dona que no hi ha un bon ordre de tots els tipus ordinals, d'on no hi ha longitud d'ordre màxima. La diferència de funció és que Cantor mesura cardinalitat i Burali--Forti longitud d'ordre; l'estructura de la prova ---la col·lecció de \enquote{tots els} objectes és massa gran per ser un del mateix tipus--- és la mateixa. És per això que la teoria global dels ordinals és de Nivell~II.
+\end{solucio}

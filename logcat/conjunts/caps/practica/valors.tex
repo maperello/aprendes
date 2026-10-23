@@ -1,0 +1,152 @@
+\chapter[Valors de veritat i construccions finites]{Valors de veritat, parts\texorpdfstring{\\}{ }i construccions finites}\label{cap:practica-valors}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:valors} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició --- sumes disjuntes i estables, l'estrictesa de l'inicial, les parts extremals, la negació i la part complementària, les operacions booleanes, i les construccions finites (límits, coequalitzadors, pushouts i colímits)--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: raonar amb l'axioma de sumes disjuntes, provar igualtats d'aplicacions cap a \(\mathbf2\) per extensionalitat de la definició per casos, traduir operacions de parts a operacions sobre característiques, i comprovar propietats universals per unicitat de factorització. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Sumes disjuntes i estables}\label{prac:sumes-disjuntes}
+
+\begin{exercici}
+\textbf{Monomorfismes i pullbacks.} Demostreu que una aplicació \(m:S\to A\) és un monomorfisme si i només si el quadrat format per \(S\), dues còpies de \(\id_S\) i dues còpies de \(m\) és cartesià, és a dir, si i només si \(S\), amb projeccions \(\id_S,\id_S\), és un pullback de \(m\) amb ella mateixa. Aquesta caracterització es farà servir al llarg del capítol, en particular per a les injeccions d'una suma disjunta.
+\end{exercici}
+\begin{solucio}
+El quadrat sempre commuta: \(m\circ\id_S=m\circ\id_S\). Suposem que \(m\) és mono, i siguin \(u,v:X\to S\) amb \(m\circ u=m\circ v\), és a dir, un parell compatible per al pullback de \(m\) amb ella mateixa. Com que \(m\) és mono, \(u=v\), i l'aplicació \(w:=u:X\to S\) compleix \(\id_S\circ w=u\) i \(\id_S\circ w=v\); és única perquè \(\id_S\circ w=u\) la determina. Per tant \(S\) és el pullback. Recíprocament, si el quadrat és cartesià i \(m\circ u=m\circ v\), la propietat universal dona una única \(w\) amb \(\id_S\circ w=u\) i \(\id_S\circ w=v\), d'on \(u=w=v\): \(m\) és mono. Així, \enquote{ser mono} és una condició sobre un pullback, cosa que explica per què la disjunció d'una suma (definició~\ref{def:suma-disjunta}) es formula en termes de pullbacks i de monomorfismes alhora.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Estabilitat: el canvi de base preserva les sumes.} Enuncieu què afirma l'axioma de disjunció i estabilitat (axioma~\ref{ax:sumes-disjuntes}) sobre el pullback d'una suma al llarg d'una aplicació qualsevol, i expliqueu per què d'aquí se segueix que tota suma és disjunta.
+\end{exercici}
+\begin{solucio}
+L'axioma~\ref{ax:sumes-disjuntes} diu dues coses: (i) tota suma és \emph{disjunta} (definició~\ref{def:suma-disjunta}), és a dir, el pullback de les dues injeccions és inicial i cada injecció és mono; i (ii) les sumes són \emph{estables} per canvi de base (definició~\ref{def:suma-estable}): si es fa el pullback d'una suma \(A_0\to A_0+A_1\leftarrow A_1\) al llarg de qualsevol \(f:X\to A_0+A_1\), el resultat torna a ser una suma, amb vèrtex \(X\). La disjunció és, doncs, un cas particular postulat directament; l'estabilitat és el que permet propagar la descomposició de \(A_0+A_1\) a tot element generalitzat, com fa el teorema~\ref{teo:descomposicio-canvi-base}.
+\end{solucio}
+
+\section{L'inicial estricte i la distinció \texorpdfstring{\(0\neq1\)}{0!=1}}\label{prac:zero-u}
+
+\begin{exercici}
+\textbf{Tota aplicació cap a l'inicial és un isomorfisme.} Reproduïu l'argument que mostra que \(\mathbf0\) és estricte: si \(f:X\to\mathbf0\), aleshores \(f\) és un isomorfisme. (Enunciat: proposició~\ref{prop:inicial-estricte}.)
+\end{exercici}
+\begin{solucio}
+Les dues còpies de \(\id_{\mathbf0}\) formen una suma \(\mathbf0\to\mathbf0\leftarrow\mathbf0\) (qualsevol parell d'aplicacions que surten de l'inicial coincideix amb l'única fletxa de l'inicial). Fem el pullback d'aquesta suma al llarg de \(f:X\to\mathbf0\): el pullback de \(\id_{\mathbf0}\) al llarg de \(f\) és \(X\) amb projecció \(\id_X\). Per l'estabilitat (axioma~\ref{ax:sumes-disjuntes}), obtenim una suma \(X\to X\leftarrow X\) amb totes dues injeccions \(\id_X\); i, essent suma, és disjunta, de manera que el pullback de \(\id_X\) amb \(\id_X\) --- que és \(X\)--- és inicial. Així \(X\) és inicial, i com que l'inicial és únic llevat d'isomorfisme, hi ha \(u:X\xrightarrow{\sim}\mathbf0\). Com que de l'inicial \(X\) surt una sola aplicació cap a \(\mathbf0\), forçosament \(f=u\), i \(f\) és un isomorfisme.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Tot conjunt sense punts globals és inicial.} Demostreu el lema del buit (lema~\ref{lema:buit}): si \(X\) no té cap element global \(\mathbf1\to X\), aleshores \(X\cong\mathbf0\).
+\end{exercici}
+\begin{solucio}
+Considerem les dues aplicacions \(0\circ{!}_X\) i \(1\circ{!}_X\) de \(X\) a \(\mathbf2\). Coincideixen sobre \emph{tots} els elements globals de \(X\), simplement perquè \(X\) no en té cap; per l'axioma de separació global (axioma~\ref{ax:separacio-globals}), \(0\circ{!}_X=1\circ{!}_X\). Aquesta igualtat diu que \(({!}_X,{!}_X)\) és un con sobre el pullback de \(0\) i \(1\); la propietat universal dona una aplicació \(X\to P\) cap a aquest pullback. Però la suma \(\mathbf1\xrightarrow{0}\mathbf2\xleftarrow{1}\mathbf1\) és disjunta, de manera que \(P\) és inicial; component, obtenim \(X\to\mathbf0\), i per l'estrictesa (proposició~\ref{prop:inicial-estricte}) \(X\cong\mathbf0\). Contrapositivament: tot conjunt no inicial té almenys un punt global.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Els dos valors de veritat són diferents.} A partir del fet que la suma \(\mathbf1\xrightarrow{0}\mathbf2\xleftarrow{1}\mathbf1\) és disjunta, demostreu que \(0\neq1\) com a elements globals de \(\mathbf2\). (Model del teorema~\ref{teo:zero-diferent-u}.)
+\end{exercici}
+\begin{solucio}
+Com que la suma és disjunta, un pullback de \(0\) i \(1\) és inicial. Suposem, per obtenir contradicció, que \(0=1\). Aleshores aquesta aplicació comuna, essent un element global \(\mathbf1\to\mathbf2\), és un monomorfisme (tot punt \(\mathbf1\to A\) ho és, perquè \(\mathbf1\) és terminal), i el pullback d'un monomorfisme amb ell mateix és el seu domini \(\mathbf1\). Per la unicitat del pullback llevat d'isomorfisme, el pullback inicial de \(0\) i \(1\) seria isomorf a \(\mathbf1\), és a dir \(\mathbf1\cong\mathbf0\), en contradicció amb la no-degeneració (axioma~\ref{ax:no-degeneracio}). Per tant \(0\neq1\), i amb el corol·lari~\ref{cor:elements-de-2} conclourem que \(\mathbf2\) té exactament dos punts.
+\end{solucio}
+
+\section{Parts extremals: la buida i la total}\label{prac:extremals}
+
+\begin{exercici}
+\textbf{La part total té per característica la constant \(1\).} Sigui \(\id_A:A\rightarrowtail A\) la part total de \(A\) (definició~\ref{def:parts-extremals}). Demostreu que la seva aplicació característica és \(1\circ{!}_A:A\to\mathbf2\), la constant de valor \(1\).
+\end{exercici}
+\begin{solucio}
+Comprovem que la constant \(1\circ{!}_A\) satisfà la condició característica de \(\id_A\) (notació~\ref{not:caracteristica}), i la unicitat de l'axioma de representació farà la resta. Sigui \(x:X\to A\) qualsevol. D'una banda, \(x\in_X\id_A\) sempre, amb testimoni el mateix \(x\), perquè \(\id_A\circ x=x\). De l'altra, \((1\circ{!}_A)\circ x=1\circ({!}_A\circ x)=1\circ{!}_X\), perquè \({!}_A\circ x\) és una aplicació \(X\to\mathbf1\) i només n'hi ha una. Per tant, per a tot \(x\), \(x\in_X\id_A\iff(1\circ{!}_A)\circ x=1\circ{!}_X\): totes dues condicions són sempre certes. Això és exactament dir que \(1\circ{!}_A\) és la característica de \(\id_A\). Anàlogament, la part buida \(\bot_A:\mathbf0\rightarrowtail A\) té per característica la constant \(0\circ{!}_A\) (proposició~\ref{prop:caracteristica-buida}), però aquesta direcció és més delicada: cal l'estrictesa de \(\mathbf0\) per veure que \(x\in_X\bot_A\) només passa quan \(X\) és inicial.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Unicitat de les parts extremals.} Demostreu que dues parts totals de \(A\) són equivalents, i que dues parts buides de \(A\) són equivalents. (Enunciat: proposició~\ref{prop:parts-extremals-uniques}.)
+\end{exercici}
+\begin{solucio}
+Una part total és, per definició, una part \(m:S\rightarrowtail A\) que és un isomorfisme. Aleshores tot element generalitzat \(x:X\to A\) hi pertany, amb testimoni \(m^{-1}\circ x\), de manera que el mateix càlcul de l'exercici anterior dona \(\chi_m=1\circ{!}_A\). Si \(m\) i \(m'\) són totes dues totals, tenen la mateixa característica \(1\circ{!}_A\); i com que la característica determina la part llevat d'equivalència (via l'axioma de representació), \(m\equiv_A m'\). El mateix argument, amb la constant \(0\) i la proposició~\ref{prop:caracteristica-buida}, dona la unicitat de la part buida. Així, \enquote{la} part total i \enquote{la} part buida estan ben definides com a classes d'equivalència.
+\end{solucio}
+
+\section{Negació i part complementària}\label{prac:complement}
+
+\begin{exercici}
+\textbf{La negació és una involució.} Demostreu que \(\neg\circ\neg=\id_{\mathbf2}\), on \(\neg:\mathbf2\to\mathbf2\) intercanvia \(0\) i \(1\) (definició~\ref{def:negacio}). (Reproduïu la proposició~\ref{prop:negacio-involutiva}.)
+\end{exercici}
+\begin{solucio}
+La negació es defineix per casos sobre la suma \(\mathbf1\xrightarrow{0}\mathbf2\xleftarrow{1}\mathbf1\) mitjançant \(\neg\circ0=1\) i \(\neg\circ1=0\). Comparem \(\neg\circ\neg\) amb \(\id_{\mathbf2}\) component amb les dues injeccions:
+\[
+(\neg\circ\neg)\circ0=\neg\circ(\neg\circ0)=\neg\circ1=0=\id_{\mathbf2}\circ0,
+\qquad
+(\neg\circ\neg)\circ1=\neg\circ0=1=\id_{\mathbf2}\circ1.
+\]
+Les dues aplicacions coincideixen sobre totes dues injeccions; per l'extensionalitat de la definició per casos (proposició~\ref{prop:extensionalitat-suma} del capítol anterior), \(\neg\circ\neg=\id_{\mathbf2}\). En particular \(\neg\) és un isomorfisme, invers de si mateix.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El complement és involutiu.} Sigui \(m:S\rightarrowtail A\) una part, amb complement \(m^c\) definit per \(\chi_{m^c}=\neg\circ\chi_m\) (definició~\ref{def:complementaria}). Demostreu que \((m^c)^c\equiv_A m\). (Model de la proposició~\ref{prop:complementari-involutiu}.)
+\end{exercici}
+\begin{solucio}
+Apliquem dues vegades la definició del complement en termes de característiques i la involució de la negació:
+\[
+\chi_{(m^c)^c}=\neg\circ\chi_{m^c}=\neg\circ(\neg\circ\chi_m)=(\neg\circ\neg)\circ\chi_m=\id_{\mathbf2}\circ\chi_m=\chi_m.
+\]
+Com que dues parts amb la mateixa característica són equivalents, \((m^c)^c\equiv_A m\). Aquest càlcul redueix una propietat geomètrica de parts (complementar dues vegades torna a l'original) a una propietat algebraica d'una sola aplicació cap a \(\mathbf2\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Una part i el seu complement descomponen \(A\).} Sigui \(m:S\rightarrowtail A\) amb complement \(m^c:S^c\rightarrowtail A\). Expliqueu per què \([m,m^c]:S+S^c\to A\) és un isomorfisme. (Enunciat: teorema~\ref{teo:part-complementari}.)
+\end{exercici}
+\begin{solucio}
+El quadrat característic (teorema~\ref{teo:quadrat-caracteristic}) identifica \(m\) amb el pullback de \(1\) al llarg de \(\chi_m\), i per definició \(m^c\) és el pullback de \(0\) al llarg de la mateixa \(\chi_m\). Ara bé, \(\mathbf1\xrightarrow{1}\mathbf2\xleftarrow{0}\mathbf1\) és una suma (és la suma canònica amb els sumands intercanviats). Per l'estabilitat de les sumes (axioma~\ref{ax:sumes-disjuntes}), els seus pullbacks al llarg de \(\chi_m\) formen també una suma
+\[
+S\xrightarrow{\;m\;}A\xleftarrow{\;m^c\;}S^c,
+\]
+que a més és disjunta. La unicitat de les sumes llevat d'isomorfisme dona que l'aplicació per casos \([m,m^c]:S+S^c\to A\) és un isomorfisme. En termes clàssics: cada element de \(A\) cau exactament dins de \(S\) o dins del seu complement.
+\end{solucio}
+
+\section{Operacions booleanes amb parts}\label{prac:booleanes}
+
+\begin{exercici}
+\textbf{Característica d'una intersecció.} Siguin \(m,n\) parts de \(A\) amb característiques \(\chi_m,\chi_n:A\to\mathbf2\). Expliqueu per què la característica de la intersecció \(m\cap n\) és \(\wedge\circ\langle\chi_m,\chi_n\rangle\), on \(\wedge:\mathbf2\times\mathbf2\to\mathbf2\) és la conjunció. (Model de la proposició~\ref{prop:caracteristica-interseccio}.)
+\end{exercici}
+\begin{solucio}
+Posem \(c:=\langle\chi_m,\chi_n\rangle:A\to\mathbf2\times\mathbf2\). La conjunció és, per definició (definició~\ref{def:conjuncio-disjuncio}), la característica de la part \(\delta_{11}=\langle1,1\rangle:\mathbf1\rightarrowtail\mathbf2\times\mathbf2\); per tant \(\wedge\circ c\) és la característica de la imatge inversa \(c^{-1}(\delta_{11})\) (proposició~\ref{prop:caracteristica-imatge-inversa}). Ara comparem elements generalitzats, no només punts: per a \(x:X\to A\), tenim \(x\in_X c^{-1}(\delta_{11})\) si i només si \(c\circ x\) es factoritza per \(\delta_{11}\), és a dir, si i només si \(c\circ x=\langle1,1\rangle\circ{!}_X\); component amb les dues projeccions, això equival a \(\chi_m\circ x=1\circ{!}_X\) i \(\chi_n\circ x=1\circ{!}_X\), és a dir, a \(x\in_X m\) i \(x\in_X n\), és a dir, a \(x\in_X(m\cap n)\) (proposició~\ref{prop:pertinenca-interseccio}). Dues parts amb els mateixos elements generalitzats són equivalents (proposició~\ref{prop:inclusio-pertinenca}) i, per tant, tenen la mateixa característica: \(\chi_{m\cap n}=\wedge\circ c\). Observeu que l'argument no ha usat la taula de veritat de \(\wedge\), sinó la seva definició com a característica; la taula serveix per als punts globals, però la igualtat de característiques demana tots els estadis.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Una llei booleana per càlcul de característiques.} Useu la traducció de les operacions de parts a operacions sobre característiques per demostrar la llei d'idempotència \(m\cap m\equiv_A m\). (Cas particular de les lleis booleanes, teorema~\ref{teo:lleis-booleanes}.)
+\end{exercici}
+\begin{solucio}
+Per la proposició~\ref{prop:caracteristica-interseccio}, \(\chi_{m\cap m}=\wedge\circ\langle\chi_m,\chi_m\rangle\). La conjunció satisfà \(\wedge\circ\langle t,t\rangle=t\) per a tot valor de veritat \(t\) (la taula de \(\wedge\) val \(1\) a \((1,1)\) i \(0\) a \((0,0)\)); això es comprova sobre els dos punts \(0,1\) de \(\mathbf2\) i s'estén per extensionalitat de les taules (proposició~\ref{prop:extensionalitat-taules}). Per tant \(\chi_{m\cap m}=\chi_m\), i com que la característica determina la part, \(m\cap m\equiv_A m\). El mateix mètode --- reduir una identitat de parts a una identitat de taules de veritat sobre \(\mathbf2\)--- demostra la resta de lleis booleanes.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Inclusió com a conjunció.} Demostreu que \(m\subseteq_A n\) si i només si \(m\cap n\equiv_A m\). (Model de la proposició~\ref{prop:inclusio-booleana}.)
+\end{exercici}
+\begin{solucio}
+Suposem primer \(m\subseteq_A n\). Aleshores tot element generalitzat que pertany a \(m\) pertany a \(n\) (proposició~\ref{prop:inclusio-pertinenca}); per tant les condicions \enquote{pertany a \(m\)} i \enquote{pertany a \(m\) i a \(n\)} defineixen la mateixa part, és a dir \(m\cap n\equiv_A m\). Recíprocament, si \(m\cap n\equiv_A m\), aleshores tot \(x\) que pertany a \(m\) pertany a \(m\cap n\) i, en particular, a \(n\); això és exactament \(m\subseteq_A n\) per la mateixa proposició~\ref{prop:inclusio-pertinenca}. La relació d'inclusió queda així expressada dins de l'àlgebra booleana de les parts (observació~\ref{obs:algebra-booleana-parts}).
+\end{solucio}
+
+\section{Límits, coequalitzadors, pushouts i colímits finits}\label{prac:limits-colimits}
+
+\begin{exercici}
+\textbf{El coequalitzador és un epimorfisme.} Sigui \(q:B\to Q\) el coequalitzador de \(f,g:A\to B\) (definició~\ref{def:coequalitzador}). Demostreu que \(q\) és un epimorfisme. (Reproduïu la proposició~\ref{prop:coequalitzador-epi}.)
+\end{exercici}
+\begin{solucio}
+Suposem \(u\circ q=v\circ q\) amb \(u,v:Q\to Y\). Sigui \(w:=u\circ q=v\circ q:B\to Y\). Com que \(q\circ f=q\circ g\) (equació del coequalitzador), tenim \(w\circ f=u\circ q\circ f=u\circ q\circ g=w\circ g\); és a dir, \(w\) \enquote{coequalitza} \(f\) i \(g\). Per la propietat universal del coequalitzador (notació~\ref{not:coequalitzador}), existeix una \emph{única} aplicació \(t:Q\to Y\) amb \(t\circ q=w\). Però tant \(u\) com \(v\) compleixen \(u\circ q=w=v\circ q\); per la unicitat, \(u=t=v\). Per tant \(q\) és un epimorfisme. És el dual estricte del fet que l'equalitzador és un monomorfisme.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Unicitat del coequalitzador llevat d'isomorfisme.} Suposeu que \(q:B\to Q\) i \(q':B\to Q'\) són tots dos coequalitzadors de \(f,g:A\to B\). Demostreu que \(Q\cong Q'\) de manera compatible amb \(q,q'\). (Enunciat: proposició~\ref{prop:coequalitzador-unic}.)
+\end{exercici}
+\begin{solucio}
+Com que \(q'\) coequalitza \(f,g\) i \(q\) és coequalitzador, hi ha una única \(\varphi:Q\to Q'\) amb \(\varphi\circ q=q'\). Simètricament, hi ha una única \(\psi:Q'\to Q\) amb \(\psi\circ q'=q\). Aleshores \((\psi\circ\varphi)\circ q=\psi\circ q'=q=\id_Q\circ q\); per la unicitat de la factorització a través de \(q\), \(\psi\circ\varphi=\id_Q\). Igualment \(\varphi\circ\psi=\id_{Q'}\). Per tant \(\varphi\) és un isomorfisme amb \(\varphi\circ q=q'\). És el mateix patró d'unicitat de tota construcció universal, ara en la versió \enquote{co}.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Un pushout com a coequalitzador d'una suma.} Descriviu com es construeix el pushout de \(f:C\to A\) i \(g:C\to B\) a partir de la suma \(A+B\) i un coequalitzador. (Model del teorema~\ref{teo:pushout-construccio}.)
+\end{exercici}
+\begin{solucio}
+Formem la suma \(A+B\) amb injeccions \(i_A,i_B\). Les dues aplicacions \(i_A\circ f\) i \(i_B\circ g\) van de \(C\) a \(A+B\); prenem el seu coequalitzador \(q:A+B\to P\) (existeix per l'axioma~\ref{ax:coequalitzadors}). Les composicions \(q\circ i_A:A\to P\) i \(q\circ i_B:B\to P\) satisfan
+\[
+(q\circ i_A)\circ f=q\circ(i_A\circ f)=q\circ(i_B\circ g)=(q\circ i_B)\circ g,
+\]
+és a dir, formen un cocon sobre el diagrama \(A\leftarrow C\rightarrow B\). Aquest cocon és universal: donat qualsevol altre cocon \((u:A\to Y,\;v:B\to Y)\) amb \(u\circ f=v\circ g\), l'aplicació per casos \([u,v]:A+B\to Y\) coequalitza \(i_A\circ f\) i \(i_B\circ g\), i per tant es factoritza de manera única per \(q\). Així \(P\), amb \(q\circ i_A\) i \(q\circ i_B\), és el pushout (definició~\ref{def:pushout}). Aquesta construcció mostra que sumes i coequalitzadors basten per obtenir tots els colímits finits (teorema~\ref{teo:colimits-finits}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Els límits finits es redueixen a productes i equalitzadors.} Expliqueu per què, tenint productes finits i equalitzadors, existeix el límit de qualsevol diagrama finit. (Model del teorema~\ref{teo:limits-finits}.)
+\end{exercici}
+\begin{solucio}
+Sigui un diagrama finit amb conjunts \(D_1,\dots,D_n\) als vèrtexs i unes quantes aplicacions entre ells. Formem el producte \(P=D_1\times\cdots\times D_n\) (existeix per la proposició~\ref{prop:productes-finits}), amb projeccions \(p_i\). Un con sobre el diagrama és una família d'aplicacions \(x_i:X\to D_i\) compatibles amb cada fletxa \(a:D_i\to D_j\) del diagrama, és a dir \(a\circ x_i=x_j\). Cada una d'aquestes equacions de compatibilitat és una condició d'igualtat entre dues aplicacions \(P\to D_j\), a saber \(a\circ p_i\) i \(p_j\); imposar-la equival a factoritzar per l'equalitzador d'aquestes dues aplicacions. Prenent successivament l'equalitzador de totes les condicions (o l'equalitzador simultani via el producte de les \(D_j\) implicades), obtenim un monomorfisme \(e:L\rightarrowtail P\) tal que un con sobre el diagrama és exactament una aplicació \(X\to L\). Aquest \(L\), amb les projeccions \(p_i\circ e\), és el límit (definició~\ref{def:limit}). En resum: el producte recull tots els vèrtexs alhora i els equalitzadors imposen les equacions del diagrama.
+\end{solucio}

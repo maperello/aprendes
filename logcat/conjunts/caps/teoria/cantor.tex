@@ -1,0 +1,454 @@
+\chapter[Schröder--Bernstein i Cantor]{Comparació de conjunts,\texorpdfstring{\\}{ }Schröder--Bernstein i Cantor}\label{cap:cantor}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:parts-interna}: conjunt de parts, pertinença i inclusió internes, el quantificador universal al llarg d'una projecció, i l'ordre \((P(A),\subseteq)\). Del capítol~\ref{cap:imatges}: imatge directa i la seva adjunció. Del capítol~\ref{cap:valors}: complements i definició per casos. Dels capítols~\ref{cap:parts} i~\ref{cap:valors}: que mono i epi es comproven sobre punts globals.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item definir la comparació \(A\preceq B\) i l'equipotència com a relacions del metallenguatge, i demostrar que \(\preceq\) és un preordre invariant;
+  \item demostrar Schröder--Bernstein construint el menor punt fix d'un operador creixent sobre \(P(A)\) amb el quantificador universal, i explicar per què no hi intervé cap elecció;
+  \item demostrar que cap aplicació \(A\to P(A)\) és exhaustiva (argument diagonal) i deduir-ne el teorema de Cantor i la inexistència d'un conjunt universal;
+  \item distingir \enquote{no hi ha exhaustiva} de \enquote{no hi ha isomorfisme}, i situar la paradoxa de Russell com el que el llibre evita en no tenir pertinença global.
+\end{itemize}
+\end{objectius}
+
+Els deu capítols anteriors han construït tota la infraestructura dels
+conjunts ---parts, productes i sumes, quocients, imatges, exponencials i
+el conjunt de parts, els nombres naturals i la cardinalitat fins al
+numerable--- i han comparat conjunts sobretot en el cas finit i en el
+numerable. Ara comença la comparació \emph{general} de mides, i el primer
+canvi és de punt de vista. Un cardinal no serà, d'entrada, un conjunt
+privilegiat que representa una mida, sinó una manera de \emph{comparar}
+conjunts: un conjunt és més petit o igual que un altre quan s'hi injecta, i
+tots dos tenen la mateixa mida quan són isomorfs. Amb només aquest
+vocabulari ---monomorfismes i isomorfismes, res més que el que ja tenim---
+s'obtenen els dos teoremes bàsics de la teoria de Cantor. El primer,
+\emph{Schröder--Bernstein}, diu que dues injeccions en sentits oposats
+basten per construir un isomorfisme: la comparació de mides és
+antisimètrica. El segon, el \emph{teorema de Cantor}, diu que el pas al
+conjunt de parts sempre produeix una mida estrictament més gran, de manera
+que cap univers de conjunts no queda esgotat per una sola mida. Cap dels
+dos no necessita cap axioma nou; en particular, cap dels dos no necessita
+una successió prèvia d'alephs ni l'elecció. Aquest és el capítol més curt de
+la part, i el que fixa el llenguatge de tots els que segueixen.
+
+\section{La comparació de conjunts}\label{sec:comparacio-conjunts}
+
+Recordem que dos conjunts són \emph{equipotents}, \(A\approx B\), quan hi ha
+un isomorfisme \(A\cong B\) (definició~\ref{def:equipotencia}). L'equipotència
+és la igualtat de mida. La comparació que falta ---quan una mida és
+\emph{menor o igual} que una altra--- s'expressa amb un monomorfisme.
+
+\begin{definicio}[Comparació de conjunts]\index{Comparació de conjunts}\label{def:comparacio}
+Siguin \(A\) i \(B\) conjunts.
+\begin{itemize}
+\item \(A\preceq B\) (\emph{\(A\) es domina per \(B\)}) si existeix un
+monomorfisme \(A\hookrightarrow B\).
+\item \(A\approx B\) (\emph{\(A\) és equipotent a \(B\)}) si existeix un
+isomorfisme \(A\cong B\) (definició~\ref{def:equipotencia}).
+\item \(A\prec B\) (\emph{\(A\) és estrictament menor que \(B\)}) si
+\(A\preceq B\) però \(A\not\approx B\).
+\end{itemize}
+\end{definicio}
+
+\begin{observacio}[Una comparació entre conjunts, no una relació interna]\label{obs:comparacio-metateoria}
+Com l'equipotència (definició~\ref{def:equipotencia}), les relacions
+\(\preceq\), \(\approx\) i \(\prec\) són afirmacions \emph{sobre} conjunts,
+formulades al metallenguatge: diuen que existeix una certa aplicació entre
+dos conjunts donats. No són parts internes d'un producte ni relacions sobre
+un suposat «conjunt de tots els conjunts», que no existeix
+(secció~\ref{sec:cantor}). Aquesta distinció, ja feta per a \(\approx\), és
+la que permet parlar de mides sense convertir la pertinença global en una
+noció primitiva; la mantindrem al llarg de tota la part transfinita.
+\end{observacio}
+
+La comparació és un preordre ---reflexiva i transitiva--- i respecta
+l'equipotència. Són fets immediats, però convé enunciar-los perquè fixen que
+\(\preceq\) mesura una mida i no una còpia concreta.
+
+\begin{proposicio}[La comparació és un preordre invariant]\label{prop:preceq-preordre}
+Per a conjunts qualssevol:
+\begin{enumerate}
+\item \(A\preceq A\) (reflexivitat).
+\item Si \(A\preceq B\) i \(B\preceq C\), aleshores \(A\preceq C\)
+(transitivitat).
+\item Si \(A\approx A'\), \(B\approx B'\) i \(A\preceq B\), aleshores
+\(A'\preceq B'\) (invariància per equipotència).
+\item Si \(A\approx B\), aleshores \(A\preceq B\) i \(B\preceq A\).
+\end{enumerate}
+Cap enunciat no usa cap axioma més enllà dels de composició.
+\end{proposicio}
+
+\begin{prova}
+(1) La identitat \(\id_A\colon A\to A\) és un monomorfisme
+(definició~\ref{def:monomorfisme}). (2) La composició de dos monomorfismes és
+un monomorfisme: si \(m\colon A\hookrightarrow B\) i \(n\colon
+B\hookrightarrow C\) són monomorfismes i \((n\circ m)\circ f=(n\circ m)\circ
+g\), aleshores \(n\circ(m\circ f)=n\circ(m\circ g)\) dona \(m\circ f=m\circ
+g\) i, altre cop, \(f=g\). (3) Siguin \(u\colon A'\cong A\), \(v\colon B\cong
+B'\) isomorfismes i \(m\colon A\hookrightarrow B\) un monomorfisme; aleshores
+\(v\circ m\circ u\colon A'\to B'\) és un monomorfisme, perquè els
+isomorfismes són monomorfismes (composició amb la inversa) i la classe dels
+monomorfismes és tancada per composició. (4) Un isomorfisme és alhora un
+monomorfisme i té una inversa, que també ho és; d'aquí \(A\preceq B\) i
+\(B\preceq A\).
+\end{prova}
+
+L'enunciat que \emph{falta} a la proposició anterior és el recíproc del
+punt~(4): si \(A\preceq B\) i \(B\preceq A\), és \(A\approx B\)? És a dir, la
+comparació és \emph{antisimètrica} llevat d'equipotència? Que la resposta
+sigui afirmativa ---i sense cap axioma d'elecció--- és el teorema de
+Schröder--Bernstein, l'objecte de la secció següent.
+
+\section{El teorema de Schröder--Bernstein}\label{sec:schroder-bernstein}
+
+Dues injeccions en sentits oposats, \(f\colon A\hookrightarrow B\) i
+\(g\colon B\hookrightarrow A\), no donen directament cap isomorfisme: no hi
+ha cap raó perquè \(f\) sigui exhaustiva, ni \(g\). El que sí que es pot fer
+és \emph{combinar-les} en una sola bijecció, decidint per a cada element
+d'\(A\) si l'enviem per \(f\) o pel tros invertible de \(g\). La decisió es
+pren identificant una part distingida d'\(A\) ---els «punts bons»--- sobre la
+qual cal usar \(f\), i el seu complement, sobre el qual cal usar
+\(g^{-1}\). Tota la construcció viu dins \(P(A)\) i no fa servir cap tria.
+
+\begin{teorema}[Schröder--Bernstein]\index{Schröder--Bernstein, teorema de}\label{teo:schroder-bernstein}
+Siguin \(A\) i \(B\) conjunts. Si \(A\preceq B\) i \(B\preceq A\), aleshores
+\(A\approx B\). És a dir, de dos monomorfismes \(f\colon A\hookrightarrow B\)
+i \(g\colon B\hookrightarrow A\) se'n construeix un isomorfisme
+\(A\cong B\).\par
+\emph{Axiomes usats:} conjunt de parts, inclusió i pertinença internes i el
+quantificador universal \(\forall\) (capítols~\ref{cap:exponencials}
+i~\ref{cap:parts-interna}), complement, implicació booleana i definició per
+casos (capítol~\ref{cap:valors}), imatge directa i la seva adjunció
+(capítol~\ref{cap:imatges}). Cap axioma nou; en particular, \emph{cap
+elecció}.
+\end{teorema}
+
+\begin{prova}
+Escrivim \(g(Y)\hookrightarrow A\) per a la imatge directa
+(definició~\ref{def:imatge-directa}) d'una part \(Y\hookrightarrow B\), i
+igualment \(f(X)\hookrightarrow B\) per a \(X\hookrightarrow A\). Considerem
+l'operació sobre parts d'\(A\)
+\[
+\Phi\colon P(A)\longrightarrow P(A),
+\qquad
+\Phi(X)\ :=\ A\setminus g\bigl(B\setminus f(X)\bigr),
+\]
+composició d'imatges directes i complements
+(capítols~\ref{cap:imatges} i~\ref{cap:valors}); és una aplicació interna
+\(P(A)\to P(A)\) ben definida. Observem que \(\Phi\) és \emph{creixent} per
+la inclusió: si \(X\subseteq X'\), aleshores \(f(X)\subseteq f(X')\), perquè
+la imatge directa és monòtona ---és adjunta per l'esquerra de la imatge
+inversa (proposició~\ref{prop:adjuncio-imatges})---; d'on \(B\setminus
+f(X')\subseteq B\setminus f(X)\), perquè el complement inverteix la inclusió
+(capítol~\ref{cap:valors}); d'on \(g(B\setminus f(X'))\subseteq g(B\setminus
+f(X))\) altre cop per monotonia de \(g_{*}\); i finalment \(\Phi(X)\subseteq
+\Phi(X')\) prenent complements. El nombre parell d'inversions del complement
+retorna el sentit de la inclusió.
+
+\emph{Un punt fix de \(\Phi\).} Diem que una part \(X\hookrightarrow A\) és
+\emph{\(\Phi\)-tancada} si \(\Phi(X)\subseteq X\). Volem la intersecció de
+totes les parts \(\Phi\)-tancades. Convé construir-la amb cura, perquè és un
+ínfim \emph{arbitrari} ---indexat per una part de \(P(A)\)--- i el llibre
+només té ínfims binaris directament; l'obtenim, però, dins conjunts ja
+construïts, mitjançant el quantificador universal. Considerem sobre el
+producte \(A\times P(A)\) el predicat intern
+\[
+\varphi(a,X)\ :\equiv\ \bigl(\Phi(X)\subseteq X\bigr)\Rightarrow
+\bigl(a\mathrel{\varepsilon} X\bigr),
+\]
+on l'antecedent \(\Phi(X)\subseteq X\) és la inclusió interna
+(definició~\ref{def:inclusio-interna}), avaluada component \(\Phi\) amb la
+projecció, el consequent \(a\mathrel{\varepsilon} X\) és la pertinença
+interna (definició~\ref{def:pertinenca-interna}), i la implicació és la
+booleana interna del capítol~\ref{cap:valors}. Sigui
+\(R_\varphi\hookrightarrow A\times P(A)\) la part que classifica \(\varphi\).
+Aplicant a \(R_\varphi\) el quantificador universal \(\forall_{\pi}\) associat
+a la projecció \(\pi\colon A\times P(A)\to A\)
+(definició~\ref{def:quantificadors}), s'obté una part
+\[
+D\ :=\ \forall_{\pi}(R_\varphi)\ \hookrightarrow\ A,
+\]
+els elements \(a\) de la qual són, per la lectura de \(\forall_{\pi}\), els
+que compleixen \(\varphi(a,X)\) \emph{per a tota} \(X\); és a dir, els \(a\)
+que pertanyen a tota part \(\Phi\)-tancada. Escriurem informalment
+\(D=\bigcap\{X\in P(A):\Phi(X)\subseteq X\}\), amb el benentès que aquesta
+intersecció arbitrària és, per definició, la part \(\forall_{\pi}(R_\varphi)\)
+tot just construïda dins \(A\). La col·lecció de parts \(\Phi\)-tancades és
+no buida: la part total \(A\) ho és, perquè \(\Phi(A)\subseteq A\) sempre.
+Vegem que \(\Phi(D)=D\).
+
+Una precisió abans de seguir. Per la lectura de \(\forall_\pi\)
+(proposició~\ref{prop:quantificadors-lectura}(3)), les \(X\) que intervenen a
+la definició de \(D\) no són només parts globals d'\(A\), sinó elements
+generalitzats \(X\colon Y\to P(A)\), és a dir, parts \(s_X\hookrightarrow
+Y\times A\) a un estadi \(Y\). Els arguments següents valen a qualsevol estadi:
+\(\Phi\) és una aplicació interna, composició de \(\exists_f\), \(\neg_B\),
+\(\exists_g\) i \(\neg_A\), i sobre les parts associades actua per imatges
+directes al llarg de \(\id_Y\times f\) i \(\id_Y\times g\) i per complements
+(proposicions~\ref{prop:quantificadors-lectura}(1)
+i~\ref{prop:booleanes-puntuals}). Per tant la monotonia que acabem de
+provar val igualment a cada estadi, i podem raonar amb \(X\) arbitràries.
+Primer, \(\Phi(D)\subseteq D\). Sigui \(X\) qualsevol part
+\(\Phi\)-tancada. Com que \(D\subseteq X\) i \(\Phi\) és creixent,
+\(\Phi(D)\subseteq\Phi(X)\subseteq X\). Així \(\Phi(D)\subseteq X\) per a
+tota \(X\) \(\Phi\)-tancada, d'on \(\Phi(D)\subseteq D\), que és la
+intersecció de totes. Per tant \(D\) és ella mateixa \(\Phi\)-tancada.
+Segon, \(D\subseteq\Phi(D)\). Com que \(\Phi(D)\subseteq D\) i \(\Phi\) és
+creixent, \(\Phi(\Phi(D))\subseteq\Phi(D)\); és a dir, \(\Phi(D)\) és també
+\(\Phi\)-tancada. Per la definició de \(D\) com a ínfim, \(D\subseteq
+\Phi(D)\). Les dues inclusions donen \(\Phi(D)=D\).
+
+\emph{L'isomorfisme.} Despleguem la igualtat \(D=\Phi(D)=A\setminus
+g(B\setminus f(D))\). Prenent complements a \(A\),
+\[
+A\setminus D\ =\ g\bigl(B\setminus f(D)\bigr).
+\]
+Aquesta és la clau: sobre \(D\) usarem \(f\), i sobre el complement
+\(A\setminus D\) usarem la inversa de \(g\). Definim
+\(h\colon A\to B\) per casos (capítol~\ref{cap:valors}), segons la
+part \(D\) i el seu complement (teorema~\ref{teo:part-complementari}):
+\[
+h(a)\ :=\
+\begin{cases}
+f(a) & \text{si } a\in D,\\[1mm]
+g^{-1}(a) & \text{si } a\in A\setminus D.
+\end{cases}
+\]
+La segona clàusula té sentit, i és una aplicació genuïna: la
+restricció de \(g\) a \(B\setminus f(D)\) és un monomorfisme, i tot
+monomorfisme és un isomorfisme sobre la seva imatge (la seva factorització
+imatge té el factor \(e\) isomorfisme, proposició~\ref{prop:mono-nucli-trivial});
+la imatge és \(g(B\setminus f(D))=A\setminus D\), de manera que hi ha un
+isomorfisme \(A\setminus D\cong B\setminus f(D)\), que és el que escrivim
+\(g^{-1}\). Així \(h=[f|_D,\,g^{-1}]\colon D+(A\setminus D)\cong A\to B\) és la
+definició per casos sobre la descomposició de \(A\)
+(teorema~\ref{teo:part-complementari}).
+
+Comprovem que \(h\) és un isomorfisme veient que és alhora un monomorfisme
+i un epimorfisme. Per la separació global, n'hi ha prou amb comprovar-ho
+sobre \emph{punts globals}: una aplicació injectiva sobre punts és mono
+(observació~\ref{obs:injectiva-mono}) i una d'exhaustiva sobre punts és
+epi (observació~\ref{obs:exhaustiva-epi}); i sobre punts, pertànyer a
+\(D\) o al seu complement, i a \(f(D)\) o al seu complement, són
+alternatives excloents (corol·lari~\ref{cor:elements-de-2}). En el que
+segueix, doncs, \(a,a',b\) són punts.
+
+\emph{Injectivitat.} Suposem \(h(a)=h(a')\). Si tots dos són a \(D\),
+\(f(a)=f(a')\) dona \(a=a'\) perquè \(f\) és un monomorfisme. Si tots dos són
+a \(A\setminus D\), \(g^{-1}(a)=g^{-1}(a')\) dona \(a=g(g^{-1}(a))=
+g(g^{-1}(a'))=a'\). Queda descartar el cas mixt: \(a\in D\) i \(a'\in
+A\setminus D\). Aleshores \(h(a)=f(a)\in f(D)\), mentre que
+\(h(a')=g^{-1}(a')\) amb \(a'=g(b')\) i \(b'\in B\setminus f(D)\); és a dir
+\(h(a')=b'\notin f(D)\). Per tant \(h(a)\in f(D)\) i \(h(a')\notin f(D)\), de
+manera que \(h(a)\neq h(a')\), contra la hipòtesi. El cas mixt és, doncs,
+impossible, i \(h\) és un monomorfisme.
+
+\emph{Exhaustivitat.} Sigui \(b\) un punt de \(B\). Distingim si
+\(b\in f(D)\) o no. Si \(b\in f(D)\), aleshores \(b=f(a)\) amb
+\(a\in D\), i \(h(a)=f(a)=b\). Si \(b\in B\setminus f(D)\), aleshores
+\(g(b)\in g(B\setminus f(D))=A\setminus D\), de manera que
+\(h(g(b))=g^{-1}(g(b))=b\). En tots dos casos \(b\) té preimatge per \(h\);
+\(h\) és exhaustiva sobre punts i, doncs, un epimorfisme.
+
+Un bimorfisme és un isomorfisme
+(proposició~\ref{prop:bimorfisme-isomorfisme}); per tant \(h\colon A\cong
+B\) i \(A\approx B\).
+\end{prova}
+
+\begin{observacio}[Per què no cal elecció]\label{obs:sb-sense-eleccio}
+La construcció de \(D\) no tria res: \(D\) és l'\emph{ínfim} d'una família de
+parts ---les \(\Phi\)-tancades--- completament determinada per les dades
+\(f\) i \(g\), i l'ínfim, quan existeix, és únic i canònic, igual que ho era
+el mínim d'una part de \(\N\) (observació~\ref{obs:minim-vs-eleccio}). Tot
+viu dins un conjunt de parts \(P(A)\) ja construït, i la partició d'\(A\) en
+\(D\) i el seu complement és una decisió \emph{booleana} interna, no una
+successió de tries. És el mateix fenomen del capítol anterior: quan hi ha un
+element distingit canònic ---aquí, l'ínfim--- l'elecció és innecessària. La
+prova alternativa, que itera \(A_0=A\setminus g(B)\), \(A_{n+1}=g(f(A_n))\) i
+en pren la unió, també és correcta, però demana reunir una família indexada
+per \(\N\) i comprovar que està uniformement definida; la via de l'ínfim
+evita aquesta reunió i és, en aquest llibre, la més neta.
+\end{observacio}
+
+\begin{corollari}[Antisimetria de la comparació]\label{cor:preceq-antisimetric}
+Per a conjunts qualssevol, \(A\preceq B\) i \(B\preceq A\) impliquen
+\(A\approx B\). Per tant la comparació \(\preceq\) és un ordre parcial
+\emph{llevat d'equipotència}: reflexiva, transitiva
+(proposició~\ref{prop:preceq-preordre}) i antisimètrica mòdul \(\approx\).
+\end{corollari}
+
+\begin{prova}
+És exactament el teorema~\ref{teo:schroder-bernstein}: de les dues
+dominacions se'n treu un isomorfisme. La reflexivitat i la transitivitat són
+la proposició~\ref{prop:preceq-preordre}.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:sb-classica}
+En termes clàssics, Schröder--Bernstein diu que si hi ha una injecció de
+\(A\) en \(B\) i una de \(B\) en \(A\), aleshores hi ha una bijecció entre
+\(A\) i \(B\): \(\abs{A}\le\abs{B}\) i \(\abs{B}\le\abs{A}\) donen
+\(\abs{A}=\abs{B}\). És el que fa que els cardinals estiguin \emph{totalment
+ordenats} un cop se sap, a més, que dos conjunts qualssevol són comparables
+---cosa que, aquella sí, requereix l'elecció i que veurem més endavant. Aquí
+només hem establert l'antisimetria, que no en necessita cap. La demostració
+per punts bons que hem donat és, essencialment, la de Banach; la formulació
+amb l'operador creixent \(\Phi\) i el seu menor punt fix és el nucli del
+teorema de Knaster--Tarski sobre reticles complets, del qual \(P(A)\) n'és un
+exemple (teorema~\ref{teo:inclusio-ordre}).
+\end{observacio}
+
+\section{L'argument diagonal i el teorema de Cantor}\label{sec:cantor}
+
+El segon teorema compara un conjunt amb el seu conjunt de parts. La
+desigualtat fàcil ---que \(A\) s'injecta en \(P(A)\)--- ja fixa que
+\(A\preceq P(A)\). El contingut és que la desigualtat és \emph{estricta}: no
+hi pot haver cap isomorfisme \(A\cong P(A)\), ni tan sols cap aplicació
+exhaustiva \(A\to P(A)\). La raó és un únic argument, la
+\emph{diagonal} de Cantor, que treballa amb la pertinença interna del
+capítol~\ref{cap:parts-interna}.
+
+\begin{teorema}[Cap aplicació \(A\to P(A)\) no és exhaustiva]\label{teo:diagonal}
+Sigui \(A\) un conjunt i \(f\colon A\to P(A)\) una aplicació qualsevol.
+Aleshores \(f\) no és exhaustiva. Concretament, la part
+\[
+D\ :=\ \{\,a\in A\ \mid\ a\not\mathrel{\varepsilon} f(a)\,\}\ \hookrightarrow\ A
+\]
+---els elements que \emph{no} pertanyen internament a la part que se'ls
+assigna--- no és el valor \(f(a)\) de cap \(a\in A\).\par
+\emph{Axiomes usats:} conjunt de parts i pertinença interna
+(capítol~\ref{cap:parts-interna}), complement (capítol~\ref{cap:valors}).
+Cap axioma nou.
+\end{teorema}
+
+\begin{prova}
+La part \(D\) està ben definida: la pertinença interna \({\in_A}\) és una
+part de \(A\times P(A)\) (definició~\ref{def:pertinenca-interna}), i \(D\) és
+la imatge inversa per \(\langle\id_A,f\rangle\colon A\to A\times P(A)\) del
+seu complement; és a dir, \(D=\{a : \langle a,f(a)\rangle\notin{\in_A}\}\),
+tallada amb el complement (capítol~\ref{cap:valors}) i una imatge inversa
+(capítol~\ref{cap:parts}). El seu nom
+\(\ulcorner D\urcorner\colon\mathbf1\to P(A)\) és un element de \(P(A)\).
+
+Suposem, cap a una contradicció, que \(D\) fos un valor de \(f\): que
+existís un element \(d\colon\mathbf1\to A\) amb \(f(d)=\ulcorner
+D\urcorner\), és a dir amb \(f(d)=D\) com a parts d'\(A\). Preguntem-nos si
+\(d\in D\). Per la definició de \(D\),
+\[
+d\in D
+\quad\Longleftrightarrow\quad
+d\not\mathrel{\varepsilon} f(d).
+\]
+Però \(f(d)=D\), de manera que \(d\mathrel{\varepsilon} f(d)\) equival a
+\(d\in D\) (la pertinença interna a una part constant és la pertinença
+generalitzada, proposició~\ref{prop:pertinenca-interna-lectura}). Substituint,
+\[
+d\in D
+\quad\Longleftrightarrow\quad
+d\notin D,
+\]
+que és una contradicció: la distinció dels dos valors de veritat
+(teorema~\ref{teo:zero-diferent-u}) prohibeix que un element compleixi una
+condició si i només si no la compleix. Per tant no existeix cap \(d\) amb
+\(f(d)=D\), i \(D\) no és a la imatge de \(f\). Com que \(D\) és un element
+de \(P(A)\) que \(f\) no assoleix, \(f\) no és exhaustiva.
+\end{prova}
+
+La desigualtat en l'altre sentit és immediata: cada element determina el seu
+singletó, i això injecta \(A\) dins \(P(A)\).
+
+\begin{proposicio}[El monomorfisme dels singletons]\label{prop:singletons}
+L'aplicació \(\{-\}\colon A\to P(A)\) que envia cada \(a\in A\) al singletó
+\(\{a\}\hookrightarrow A\) és un monomorfisme. Per tant \(A\preceq P(A)\).
+\end{proposicio}
+
+\begin{prova}
+El singletó \(\{a\}\) és la imatge del punt \(a\colon\mathbf1\to A\); en
+termes interns, \(\{-\}\colon A\to P(A)\) és la transposada de la
+característica de la diagonal \(\Delta\hookrightarrow A\times A\)
+(capítols~\ref{cap:relacions} i~\ref{cap:parts-interna}), i és per tant una
+aplicació interna ben definida. És un monomorfisme perquè és injectiu
+sobre punts (observació~\ref{obs:injectiva-mono}): si \(\{a\}=\{a'\}\) com
+a parts d'\(A\) per a dos punts \(a,a'\), com que sempre
+\(a\mathrel{\varepsilon}\{a\}\), resulta \(a\mathrel{\varepsilon}\{a'\}\), és a
+dir \(a=a'\). Així \(A\preceq P(A)\).
+\end{prova}
+
+\begin{teorema}[Cantor]\index{Cantor, teorema de}\label{teo:cantor}
+Per a tot conjunt \(A\),
+\[
+A\ \prec\ P(A).
+\]
+És a dir, \(A\preceq P(A)\) però \(A\not\approx P(A)\): el conjunt de parts
+és estrictament més gran que el conjunt.\par
+\emph{Axiomes usats:} els del teorema~\ref{teo:diagonal} i de la
+proposició~\ref{prop:singletons}; conjunt de parts, pertinença interna i
+complement. Cap axioma nou; cap elecció.
+\end{teorema}
+
+\begin{prova}
+La dominació \(A\preceq P(A)\) és la proposició~\ref{prop:singletons}. Falta
+veure \(A\not\approx P(A)\). Si hi hagués un isomorfisme \(A\cong P(A)\),
+seria en particular una aplicació exhaustiva \(A\to P(A)\), cosa impossible
+pel teorema~\ref{teo:diagonal}. Per tant no hi ha cap isomorfisme, \(A\not
+\approx P(A)\), i combinant amb la dominació, \(A\prec P(A)\).
+\end{prova}
+
+\begin{observacio}[No exhaustiva és més fort que no isomorf]\label{obs:cantor-fort}
+El teorema~\ref{teo:diagonal} diu una cosa més forta que el teorema de
+Cantor: no és només que no hi hagi cap \emph{isomorfisme} \(A\cong P(A)\),
+sinó que no hi ha cap aplicació \emph{exhaustiva} \(A\to P(A)\), sigui o no
+injectiva. Aquesta és la formulació que convé recordar, perquè és la que es
+transporta a altres contextos ---per exemple, per veure que \(\mathbf2^{\N}\)
+no és enumerable: una enumeració seria una exhaustiva
+\(\N\twoheadrightarrow\mathbf2^{\N}\approx P(\N)\), que el
+teorema~\ref{teo:diagonal} prohibeix. Convé mantenir separades, doncs, les
+dues negacions: «no hi ha exhaustiva» i «no hi ha monomorfisme» són
+afirmacions distintes, i la diagonal dona la primera.
+\end{observacio}
+
+\begin{corollari}[No hi ha conjunt universal ni mida màxima]\label{cor:no-universal}
+No existeix cap conjunt \(U\) tal que tot conjunt s'injecti en \(U\). En
+particular, no hi ha cap conjunt de mida màxima: per a tot \(A\) existeix un
+conjunt estrictament més gran, a saber \(P(A)\).
+\end{corollari}
+
+\begin{prova}
+Si un tal \(U\) existís, aleshores \(P(U)\preceq U\), perquè \(P(U)\) també
+seria un conjunt i s'hauria d'injectar en \(U\). Però la
+proposició~\ref{prop:singletons} dona \(U\preceq P(U)\), de manera que
+Schröder--Bernstein (teorema~\ref{teo:schroder-bernstein}) forçaria
+\(U\approx P(U)\), contra el teorema de Cantor
+(teorema~\ref{teo:cantor}). Per tant cap conjunt no domina tots els
+conjunts. La segona afirmació és el teorema de Cantor mateix:
+\(A\prec P(A)\) exhibeix, per a cada \(A\), un conjunt més gran.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica i el lloc de la paradoxa]\label{obs:cantor-classica}
+Clàssicament, el teorema de Cantor és \(\abs{A}<2^{\abs{A}}\): el cardinal
+del conjunt de parts és estrictament més gran que el del conjunt, perquè
+\(P(A)\approx\mathbf2^{A}\) (el conjunt de parts és l'exponencial de base
+\(\mathbf2\), capítol~\ref{cap:exponencials}). D'aquí surt la torre infinita
+de cardinals \(\abs{A}<2^{\abs{A}}<2^{2^{\abs{A}}}<\cdots\), que no s'atura
+mai. El corol·lari~\ref{cor:no-universal} és la forma estructural del fet que
+«el conjunt de tots els conjunts» no existeix: si existís, contindria el seu
+propi conjunt de parts i violaria Cantor. Aquesta és, de fet, la manera
+correcta de dir en aquest llibre el que en la teoria clàssica es formula amb
+la paradoxa de Russell; aquí no hi ha cap paradoxa perquè mai no hem tractat
+la pertinença global entre conjunts com una relació, sinó sempre la
+pertinença \emph{a una part d'un conjunt fix}. La diagonal de Cantor
+reapareixerà, en versió ordinal, com el teorema de Burali--Forti, i en versió
+de famílies, com el teorema de König.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Comparar mides és exhibir aplicacions: \(A\preceq B\) és un monomorfisme, \(A\approx B\) un isomorfisme. Són relacions del metallenguatge entre conjunts, no parts d'un producte.
+  \item Schröder--Bernstein: dues dominacions oposades donen un isomorfisme. La prova és un menor punt fix d'un operador creixent \(\Phi\) sobre \(P(A)\), obtingut com a ínfim amb el quantificador universal; cap elecció.
+  \item L'isomorfisme \(h=[f|_D,g^{-1}]\) es defineix per casos sobre \(D\) i el seu complement, i es comprova que és bimorfisme sobre punts globals, on les alternatives són excloents.
+  \item Argument diagonal: cap \(A\to P(A)\) és exhaustiva, perquè la part \(\{a:a\not\mathrel{\varepsilon}f(a)\}\) no és cap valor. Amb els singletons, \(A\prec P(A)\): Cantor.
+  \item No hi ha conjunt universal ni mida màxima; la paradoxa de Russell no apareix perquè el llibre no té pertinença global, només pertinença a parts d'un conjunt fix.
+\end{enumerate}
+\apartat{Errors típics} Creure que dues injeccions oposades donen directament una bijecció (cal construir-la); intentar l'ínfim de les parts \(\Phi\)-tancades sense el quantificador universal (els axiomes només donen ínfims binaris); fer la distinció de casos de la prova de Schröder--Bernstein sobre elements generalitzats, on \enquote{o} no exclou; confondre \enquote{no isomorf} amb \enquote{no exhaustiu} (la diagonal dona la segona, més forta); i llegir el teorema de Cantor com una afirmació sobre un conjunt de tots els cardinals.
+\apartat{Lectura recomanada} \cite[§§8.1--8.3]{lawvere-rosebrugh} per a l'argument diagonal en conjunts abstractes i el teorema del punt fix de Lawvere, del qual Cantor és un cas; \cite[sessió~29]{lawvere-schanuel} per a una presentació elemental de la diagonal; \cite[§§22 i 25]{halmos} per a Schröder--Bernstein i el teorema de Cantor en la teoria clàssica; i \cite[cap.~3]{jech2003} per a la demostració clàssica de Schröder--Bernstein i l'aritmètica cardinal que en resulta.
+\end{resumcap}

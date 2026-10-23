@@ -1,0 +1,79 @@
+\chapter[Schröder--Bernstein i Cantor]{Comparació de conjunts,\texorpdfstring{\\}{ }Schröder--Bernstein i Cantor}\label{cap:practica-cantor}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:cantor} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició ---la comparació \(\preceq\) i les seves propietats, el teorema de Schröder--Bernstein, i l'argument diagonal amb el teorema de Cantor--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: manipular monomorfismes i isomorfismes com a testimonis de mida, construir un punt fix d'un operador creixent sobre \(P(A)\) sense cap tria, i explotar la diagonal per negar l'exhaustivitat. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{La comparació de conjunts}\label{prac:comparacio-conjunts}
+
+\begin{exercici}
+\textbf{La comparació és un preordre.} Demostreu que \(\preceq\) és reflexiva i transitiva, i que és invariant per equipotència: si \(A\approx A'\), \(B\approx B'\) i \(A\preceq B\), aleshores \(A'\preceq B'\). (Reproduïu la proposició~\ref{prop:preceq-preordre}.)
+\end{exercici}
+\begin{solucio}
+\emph{Reflexivitat:} \(\id_A\) és un monomorfisme (definició~\ref{def:monomorfisme}), de manera que \(A\preceq A\). \emph{Transitivitat:} si \(m\colon A\hookrightarrow B\) i \(n\colon B\hookrightarrow C\) són monomorfismes i \((n\circ m)\circ u=(n\circ m)\circ v\), aleshores \(n\circ(m\circ u)=n\circ(m\circ v)\) dona \(m\circ u=m\circ v\) (perquè \(n\) és mono), i altre cop \(u=v\) (perquè \(m\) ho és); així \(n\circ m\) és un monomorfisme i \(A\preceq C\). \emph{Invariància:} siguin \(p\colon A'\cong A\), \(q\colon B\cong B'\) isomorfismes i \(m\colon A\hookrightarrow B\) un monomorfisme; aleshores \(q\circ m\circ p\colon A'\to B'\) és una composició de monomorfismes (els isomorfismes ho són), per tant un monomorfisme, i \(A'\preceq B'\). Cap pas no usa cap axioma més enllà dels de composició.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Dominacions bàsiques.} Demostreu que tota part \(S\hookrightarrow A\) compleix \(S\preceq A\), i que si \(g\colon A\twoheadrightarrow C\) és exhaustiva \emph{i escindida} (té una secció), aleshores \(C\preceq A\). Comenteu on entra, o no, l'elecció.
+\end{exercici}
+\begin{solucio}
+\emph{Parts:} la inclusió \(S\hookrightarrow A\) és un monomorfisme per definició de part (definició~\ref{def:part}), de manera que \(S\preceq A\) sense cap hipòtesi. \emph{Exhaustives escindides:} si \(s\colon C\to A\) és una secció de \(g\), és a dir \(g\circ s=\id_C\), aleshores \(s\) és un monomorfisme (té retracció \(g\)), i \(C\preceq A\). Aquí la clau és que la secció \emph{ja} ve donada: no s'hi tria res. Si només se sap que \(g\) és exhaustiva, obtenir-ne una secció requereix l'elecció (proposició~\ref{prop:epi-regular-eleccio}); és exactament el pas que aquesta versió de l'enunciat evita en donar la secció per hipòtesi.
+\end{solucio}
+
+\section{El teorema de Schröder--Bernstein}\label{prac:sb}
+
+\begin{exercici}
+\textbf{L'operador \(\Phi\) és creixent.} Donats \(f\colon A\hookrightarrow B\) i \(g\colon B\hookrightarrow A\), sigui \(\Phi(X)=A\setminus g(B\setminus f(X))\) per a \(X\in P(A)\). Demostreu que \(X\subseteq X'\) implica \(\Phi(X)\subseteq\Phi(X')\). (Pas de la prova del teorema~\ref{teo:schroder-bernstein}.)
+\end{exercici}
+\begin{solucio}
+Suposem \(X\subseteq X'\). La imatge directa conserva la inclusió (capítol~\ref{cap:imatges}), de manera que \(f(X)\subseteq f(X')\). El complement la inverteix (capítol~\ref{cap:valors}): \(B\setminus f(X')\subseteq B\setminus f(X)\). Tornant a aplicar la imatge directa, \(g(B\setminus f(X'))\subseteq g(B\setminus f(X))\); i tornant a prendre complements, \(A\setminus g(B\setminus f(X))\subseteq A\setminus g(B\setminus f(X'))\), és a dir \(\Phi(X)\subseteq\Phi(X')\). El nombre parell d'inversions retorna el sentit de la inclusió, de manera que \(\Phi\) és creixent.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El menor punt fix.} Sigui \(\Phi\colon P(A)\to P(A)\) creixent qualsevol, i \(D=\bigcap\{X : \Phi(X)\subseteq X\}\). Demostreu que \(\Phi(D)=D\) i que \(D\) és el \emph{menor} punt fix. (Nucli del teorema~\ref{teo:schroder-bernstein}, i teorema de Knaster--Tarski.)
+\end{exercici}
+\begin{solucio}
+La col·lecció de les parts \(\Phi\)-tancades (les \(X\) amb \(\Phi(X)\subseteq X\)) és no buida perquè \(A\) hi és (\(\Phi(A)\subseteq A\) sempre). \emph{\(\Phi(D)\subseteq D\):} per a tota \(X\) \(\Phi\)-tancada, \(D\subseteq X\) i \(\Phi\) creixent donen \(\Phi(D)\subseteq\Phi(X)\subseteq X\); com que això val per a tota tal \(X\), \(\Phi(D)\subseteq\bigcap X=D\). Per tant \(D\) és \(\Phi\)-tancada. \emph{\(D\subseteq\Phi(D)\):} de \(\Phi(D)\subseteq D\) i \(\Phi\) creixent surt \(\Phi(\Phi(D))\subseteq\Phi(D)\), és a dir \(\Phi(D)\) és també \(\Phi\)-tancada; per la minimalitat de \(D\), \(D\subseteq\Phi(D)\). Així \(\Phi(D)=D\). És el menor punt fix perquè tot punt fix \(X_0=\Phi(X_0)\) és en particular \(\Phi\)-tancat, d'on \(D\subseteq X_0\). Tot això viu dins \(P(A)\) i no usa cap tria: \(D\) és un ínfim, únic i canònic.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Schröder--Bernstein complet.} A partir de \(\Phi(D)=D\), construïu l'isomorfisme \(A\cong B\) i comproveu que és bijectiu. (Reproduïu el teorema~\ref{teo:schroder-bernstein}.)
+\end{exercici}
+\begin{solucio}
+De \(D=\Phi(D)=A\setminus g(B\setminus f(D))\) surt, prenent complements, \(A\setminus D=g(B\setminus f(D))\). La restricció de \(g\) a \(B\setminus f(D)\) és un monomorfisme, i tot monomorfisme és un isomorfisme sobre la seva imatge (proposició~\ref{prop:mono-nucli-trivial}), que aquí és \(A\setminus D\); escrivim \(g^{-1}\colon A\setminus D\to B\setminus f(D)\) la inversa. Definim \(h:=[f|_D,g^{-1}]\colon A\cong D+(A\setminus D)\to B\) per casos (teorema~\ref{teo:part-complementari}). Comprovem que és bimorfisme \emph{sobre punts globals}, cosa que basta per la separació global (observació~\ref{obs:injectiva-mono}, observació~\ref{obs:exhaustiva-epi}); sobre punts, les alternatives \(a\in D\) o \(a\in A\setminus D\) són excloents. \emph{Injectiva:} si \(h(a)=h(a')\) amb tots dos a \(D\), \(f\) mono dona \(a=a'\); amb tots dos fora, aplicar \(g\) dona \(a=a'\); el cas mixt és impossible perquè aleshores \(h(a)\in f(D)\) i \(h(a')\notin f(D)\). \emph{Exhaustiva:} donat un punt \(b\) de \(B\), si \(b\in f(D)\) és \(b=f(a)=h(a)\) amb \(a\in D\); si \(b\notin f(D)\), aleshores \(g(b)\in A\setminus D\) i \(h(g(b))=b\). Injectiva sobre punts és mono i exhaustiva sobre punts és epi, i un bimorfisme és isomorfisme (proposició~\ref{prop:bimorfisme-isomorfisme}), així que \(A\cong B\). Observeu que la distinció de casos no es podria fer sobre elements generalitzats, que poden quedar repartits entre \(D\) i el seu complement; és la raó de passar pels punts.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Antisimetria i encaix.} Deduïu de Schröder--Bernstein que si \(A\preceq B\preceq A\) aleshores \(A\approx B\), i que si \(A\subseteq B\subseteq C\) amb \(A\approx C\), aleshores \(A\approx B\approx C\) (\enquote{teorema de l'entrepà}).
+\end{exercici}
+\begin{solucio}
+La primera part és el corol·lari~\ref{cor:preceq-antisimetric}: dues dominacions oposades donen un isomorfisme (teorema~\ref{teo:schroder-bernstein}). Per a la segona, de les inclusions surt \(A\preceq B\) i \(B\preceq C\); de \(A\approx C\) surt \(C\preceq A\). Encadenant, \(B\preceq C\approx A\preceq B\), és a dir \(B\preceq A\) i \(A\preceq B\) (aquesta darrera per \(A\subseteq B\)); per Schröder--Bernstein, \(A\approx B\). I com que \(A\approx C\), també \(B\approx C\). Cap pas no usa elecció.
+\end{solucio}
+
+\section{L'argument diagonal i el teorema de Cantor}\label{prac:cantor}
+
+\begin{exercici}
+\textbf{La diagonal.} Sigui \(f\colon A\to P(A)\). Demostreu que la part \(D=\{a\in A : a\not\mathrel{\varepsilon} f(a)\}\) no és el valor de cap element, i concloeu que \(f\) no és exhaustiva. (Reproduïu el teorema~\ref{teo:diagonal}.)
+\end{exercici}
+\begin{solucio}
+\(D\) està ben definida com a imatge inversa per \(\langle\id_A,f\rangle\) del complement de la pertinença interna \({\in_A}\subseteq A\times P(A)\) (definició~\ref{def:pertinenca-interna}), tallada amb el complement (capítol~\ref{cap:valors}). Suposem que existís \(d\colon\mathbf1\to A\) amb \(f(d)=D\). Per definició de \(D\), \(d\in D\Leftrightarrow d\not\mathrel{\varepsilon} f(d)\); i com que \(f(d)=D\), la pertinença interna a la part constant \(D\) és la pertinença generalitzada (proposició~\ref{prop:pertinenca-interna-lectura}), és a dir \(d\mathrel{\varepsilon} f(d)\Leftrightarrow d\in D\). Substituint, \(d\in D\Leftrightarrow d\notin D\), que contradiu la distinció dels valors de veritat (teorema~\ref{teo:zero-diferent-u}). Per tant cap \(d\) no compleix \(f(d)=D\), \(D\) no és a la imatge de \(f\), i \(f\) no és exhaustiva.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El teorema de Cantor.} Demostreu que \(A\prec P(A)\) per a tot conjunt \(A\). (Reproduïu el teorema~\ref{teo:cantor}.)
+\end{exercici}
+\begin{solucio}
+\emph{Dominació:} el singletó \(\{-\}\colon A\to P(A)\) és un monomorfisme (proposició~\ref{prop:singletons}): \(\{a\}=\{a'\}\) força \(a=a'\), perquè \(a\mathrel{\varepsilon}\{a\}=\{a'\}\) dona \(a=a'\). Així \(A\preceq P(A)\). \emph{Estrictesa:} si hi hagués un isomorfisme \(A\cong P(A)\), en particular seria una aplicació exhaustiva \(A\to P(A)\), que el teorema~\ref{teo:diagonal} prohibeix. Per tant \(A\not\approx P(A)\), i \(A\prec P(A)\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{No hi ha conjunt universal.} Demostreu que no existeix cap conjunt \(U\) en què tot conjunt s'injecti. (Reproduïu el corol·lari~\ref{cor:no-universal}.)
+\end{exercici}
+\begin{solucio}
+Si un tal \(U\) existís, \(P(U)\) seria un conjunt i s'hauria d'injectar en \(U\), és a dir \(P(U)\preceq U\). Però sempre \(U\preceq P(U)\) pels singletons (proposició~\ref{prop:singletons}). Per Schröder--Bernstein (teorema~\ref{teo:schroder-bernstein}), \(U\approx P(U)\), contra el teorema de Cantor (teorema~\ref{teo:cantor}). La contradicció mostra que cap \(U\) no domina tots els conjunts; en particular no hi ha mida màxima, perquè \(A\prec P(A)\) per a tot \(A\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{\(\mathbf2^{\N}\) no és enumerable.} Useu la diagonal per demostrar que no hi ha cap aplicació exhaustiva \(\N\to\mathbf2^{\N}\); concloeu que \(\mathbf2^{\N}\), i per tant \(P(\N)\), no és enumerable. (Model de l'observació~\ref{obs:cantor-fort}.)
+\end{exercici}
+\begin{solucio}
+Com que \(P(\N)\approx\mathbf2^{\N}\) (el conjunt de parts és l'exponencial de base \(\mathbf2\), capítol~\ref{cap:exponencials}), una exhaustiva \(\N\twoheadrightarrow\mathbf2^{\N}\) donaria, composta amb l'isomorfisme, una exhaustiva \(\N\to P(\N)\), que el teorema~\ref{teo:diagonal} prohibeix. Explícitament, donada \(f\colon\N\to\mathbf2^{\N}\), la successió diagonal \(d(n)=1-f(n)(n)\) difereix de cada \(f(n)\) en la posició \(n\), de manera que no és cap \(f(n)\); \(f\) no és exhaustiva. Un conjunt enumerable admetria una tal exhaustiva des de \(\N\) (definició~\ref{def:enumerable}); com que \(\mathbf2^{\N}\) no és inicial i no n'admet cap, no és enumerable. És l'argument que separa el numerable del continu.
+\end{solucio}

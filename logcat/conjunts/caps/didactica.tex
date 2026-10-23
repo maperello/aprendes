@@ -1,0 +1,44 @@
+% ============================================================
+%  Entorns didàctics locals del volum de categories.
+%  Definits aquí (no a l'estil compartit) per no acoblar-hi
+%  el projecte. Reutilitzen tcolorbox, etoolbox i la paleta
+%  ja carregats per aprendes.sty en mode «sobri».
+%
+%    \begin{objectius} ... \end{objectius}   -> bloc d'obertura
+%    \begin{resumcap}   ... \end{resumcap}   -> bloc de tancament
+%
+%  Dins d'aquests blocs s'hi poden usar els encapçalaments
+%  \apartat{...} per separar prerequisits/objectius/etc.
+% ============================================================
+
+% Color propi per als blocs didàctics: verd pissarra derivat de la
+% paleta existent (cexer = verd), enfosquit per contrastar amb el fons.
+\colorlet{DidacticVerd}{cexer!55!black}
+
+% Estils de bloc: mateixa gramàtica visual que blocenunciat/blocobservacio.
+\tcbset{
+  blocdidactic/.style={
+    enhanced, breakable, sharp corners,
+    frame hidden, boxrule=0pt,
+    colback=DidacticVerd!6,
+    borderline west={2.0pt}{0pt}{DidacticVerd},
+    left=8pt, right=4pt, top=5pt, bottom=5pt,
+    before skip=1.0em, after skip=1.0em,
+  },
+}
+
+% Encapçalament intern d'un apartat del bloc (Prerequisits, Objectius...).
+\newcommand{\apartat}[1]{\par\smallskip{\color{DidacticVerd}\ifpdftex\scshape\else\sffamily\bfseries\fi #1}\par\nobreak\smallskip}
+
+% Bloc d'obertura del capítol.
+\newenvironment{objectius}{%
+  \begin{tcolorbox}[blocdidactic]%
+  \ignorespaces
+}{\end{tcolorbox}}
+
+% Bloc de tancament del capítol.
+\newenvironment{resumcap}{%
+  \begin{tcolorbox}[blocdidactic]%
+  {\color{DidacticVerd}\ifpdftex\scshape\else\sffamily\bfseries\fi S\'{\i}ntesi del cap\'{\i}tol.}\hspace{0.6em}%
+  \ignorespaces
+}{\end{tcolorbox}}

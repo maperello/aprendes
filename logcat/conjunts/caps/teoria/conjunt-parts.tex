@@ -1,0 +1,820 @@
+\chapter{El conjunt de parts i la pertinença interna}\label{cap:parts-interna}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:exponencials}: exponencials, avaluació, transposició i la definició \(P(A):=\mathbf2^A\), amb els punts de \(P(A)\) com a parts d'\(A\). Del capítol~\ref{cap:valors}: les operacions booleanes sobre \(\mathbf2\) i sobre les parts, i el complement. Del capítol~\ref{cap:imatges}: la imatge directa, la seva adjunció amb la imatge inversa, l'estabilitat dels epimorfismes i el lema de pertinença després d'un recobriment.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item distingir la part \(m\), el seu nom \(\ulcorner m\urcorner\colon\mathbf1\to P(A)\) i el conjunt \(P(A)\), i construir la pertinença interna \(\in_A\) com la part classificada per l'avaluació;
+  \item identificar les aplicacions \(X\to P(A)\) amb les parts de \(X\times A\), i llegir un element generalitzat de \(P(A)\) com una família de parts;
+  \item definir les operacions booleanes internes per transposició, calcular-les sobre noms de parts i saber per a quines d'elles la lectura puntual val a tots els estadis;
+  \item construir la imatge inversa interna \(P(f)\) i els quantificadors \(\exists_f\) i \(\forall_f\) com a aplicacions, i demostrar que \(\exists_f\dashv P(f)\dashv\forall_f\);
+  \item demostrar que la imatge directa commuta amb el canvi de base, i usar-ho per llegir \(\exists_f\) sobre elements generalitzats;
+  \item definir la inclusió interna sobre \(P(A)\) amb el quantificador universal i demostrar que és un ordre amb \(\cap\) i \(\cup\) com a ínfim i suprem.
+\end{itemize}
+\end{objectius}
+
+El capítol anterior va definir el \emph{conjunt de parts} d'un conjunt
+\(A\) com l'exponencial
+\[
+P(A):=\mathbf2^{A}
+\]
+(definició~\ref{def:conjunt-parts}), i en va identificar els punts globals
+amb les aplicacions característiques \(A\to\mathbf2\), és a dir, amb les
+parts de \(A\) llevat d'equivalència. Amb això, el conjunt de parts va
+passar a existir com a \emph{objecte} de la teoria. Però definir un
+objecte no és el mateix que estudiar-lo: quedaven obertes la pertinença
+interna, les operacions booleanes sobre \(P(A)\) i l'ordre d'inclusió
+(observació~\ref{obs:parts-obert}). Aquest capítol tanca aquestes
+qüestions.
+
+No hi introduirem cap axioma. Tot el que segueix és conseqüència de
+l'existència d'exponencials del capítol~\ref{cap:exponencials}, del
+classificador de parts del capítol~\ref{cap:parts} i de les operacions
+booleanes sobre \(\mathbf2\) del capítol~\ref{cap:valors}. És, doncs, un
+capítol de consolidació: fa interns, com a estructura sobre un únic
+conjunt \(P(A)\), els fenòmens que fins ara vivien dispersos entre el
+metallenguatge i el conjunt de valors de veritat.
+
+Cal des del principi mantenir separades tres coses que la lectura clàssica
+tendeix a confondre. Primer, una \emph{part} és una fletxa
+\(m\colon S\hookrightarrow A\), un monomorfisme; és una dada del
+metallenguatge. Segon, aquesta part té un únic \emph{punt classificador}
+\[
+\ulcorner m\urcorner\colon\mathbf1\to P(A),
+\]
+el nom intern de la seva aplicació característica \(\chi_m\colon A\to\mathbf2\);
+és un element global d'un conjunt. Tercer, \(P(A)\) és el \emph{conjunt}
+que reuneix tots aquests noms. La distinció entre la part, el seu nom i el
+conjunt que els conté és el fil conductor del capítol.
+
+\section{La relació de pertinença interna}\label{sec:pertinenca-interna}
+
+L'avaluació de l'exponencial \(\mathbf2^{A}\) és una aplicació
+\[
+\operatorname{ev}\colon P(A)\times A\to\mathbf2,
+\]
+és a dir, una aplicació cap al conjunt de valors de veritat. Pel
+classificador de parts (axioma~\ref{ax:representacio}), tota aplicació cap
+a \(\mathbf2\) és la característica d'una part del seu domini. La part que
+classifica l'avaluació és la relació de pertinença que buscàvem.
+
+\begin{definicio}[Pertinença interna]\index{Pertinença interna}\label{def:pertinenca-interna}
+Sigui \(A\) un conjunt. La \emph{relació de pertinença interna} de \(A\)
+és la part de \(A\times P(A)\)
+\[
+{\in_A}\;\colon\;{\in_A}\hookrightarrow A\times P(A)
+\]
+classificada per l'avaluació, llegida sobre \(A\times P(A)\) via
+l'isomorfisme de commutació \(\sigma\colon P(A)\times A\to A\times P(A)\).
+És a dir, \(\in_A\) és la part de \(A\times P(A)\) la característica de la
+qual és
+\[
+\chi_{\in_A}=\operatorname{ev}\circ\sigma^{-1}\colon A\times P(A)\to\mathbf2 .
+\]
+\end{definicio}
+
+\begin{notacio}[Pertinença interna]\label{not:pertinenca-interna}
+Escriurem \(\in_A\) tant per a la part com per al seu domini, seguint la
+convenció de la relació inversa i la diagonal del
+capítol~\ref{cap:relacions}. El predicat eliminable corresponent és
+\(\operatorname{Car}(\operatorname{ev}\circ\sigma^{-1},{\in_A},A\times
+P(A))\) de la definició~\ref{def:caracteristica}, amb \(\sigma\)
+introduïda pel predicat de producte \(\operatorname{Prod}\). Per a un
+parell d'elements generalitzats \(a\colon X\to A\) i \(\alpha\colon X\to
+P(A)\), escriurem
+\[
+a\mathrel{\varepsilon}\alpha
+\quad\text{en lloc de}\quad
+\langle a,\alpha\rangle\in_X{\in_A},
+\]
+i llegirem «\(a\) pertany internament a \(\alpha\)».
+\end{notacio}
+
+La definició no fa res més que aplicar el classificador a una aplicació ja
+existent. El seu contingut apareix quan la traduïm a la pertinença
+generalitzada del capítol~\ref{cap:parts}.
+
+\begin{proposicio}[Lectura de la pertinença interna]\label{prop:pertinenca-interna-lectura}
+Siguin \(a\colon X\to A\) i \(\alpha\colon X\to P(A)\) dos elements
+generalitzats a un mateix estadi \(X\). Aleshores
+\[
+a\mathrel{\varepsilon}\alpha
+\quad\Longleftrightarrow\quad
+\operatorname{ev}\circ\langle\alpha,a\rangle=1\circ{!}_X .
+\]
+En particular, si \(\alpha=\ulcorner m\urcorner\circ{!}_X\) és constant amb
+valor el nom d'una part \(m\colon S\hookrightarrow A\), aleshores
+\[
+a\mathrel{\varepsilon}\alpha
+\quad\Longleftrightarrow\quad
+a\in_X m .
+\]
+\end{proposicio}
+
+\begin{prova}
+Per la propietat característica (notació~\ref{not:caracteristica}),
+\(\langle a,\alpha\rangle\in_X{\in_A}\) equival a
+\(\chi_{\in_A}\circ\langle a,\alpha\rangle=1\circ{!}_X\). Ara bé,
+\(\chi_{\in_A}=\operatorname{ev}\circ\sigma^{-1}\) i
+\(\sigma^{-1}\circ\langle a,\alpha\rangle=\langle\alpha,a\rangle\), d'on
+la primera equivalència.
+
+Per a la segona, sigui \(\alpha=\ulcorner m\urcorner\circ{!}_X\). El punt
+classificador \(\ulcorner m\urcorner\) és, per definició, el nom intern de
+\(\chi_m\), de manera que descurrificar-lo recupera \(\chi_m\): la
+transposada de \(\operatorname{ev}\circ(\ulcorner m\urcorner\times\id_A)\)
+és \(\ulcorner m\urcorner\), i per la unicitat de la transposada
+(definició~\ref{def:exponencial}) es té
+\(\operatorname{ev}\circ(\ulcorner m\urcorner\times\id_A)=\chi_m\circ\rho\),
+on \(\rho\colon\mathbf1\times A\to A\) és la projecció. Component amb
+\(\langle{!}_X,a\rangle\) i usant \(\alpha=\ulcorner m\urcorner\circ{!}_X\),
+\[
+\operatorname{ev}\circ\langle\alpha,a\rangle
+=\chi_m\circ a .
+\]
+Així \(a\mathrel{\varepsilon}\alpha\) equival a
+\(\chi_m\circ a=1\circ{!}_X\), que és exactament \(a\in_X m\).
+\end{prova}
+
+\begin{observacio}[La part, el seu nom i el conjunt]\label{obs:tres-nivells}
+La proposició~\ref{prop:pertinenca-interna-lectura} és el lloc on es
+paguen els dividends de mantenir separats els tres nivells. La
+\emph{part} \(m\colon S\hookrightarrow A\) és una fletxa; el seu
+\emph{nom} \(\ulcorner m\urcorner\colon\mathbf1\to P(A)\) és un punt del
+conjunt \(P(A)\); i la pertinença \(a\in_X m\), que abans era una
+factorització a través de \(m\), es converteix ara en la pertinença
+interna \(a\mathrel{\varepsilon}\ulcorner m\urcorner\), una condició
+expressada íntegrament amb aplicacions cap a \(P(A)\) i \(\mathbf2\). La
+relació primitiva \(\in\) de la teoria clàssica, que allà és una noció no
+definida entre individus, apareix aquí com una \emph{part construïda},
+\(\in_A\hookrightarrow A\times P(A)\), classificada per l'avaluació.
+\end{observacio}
+
+\begin{observacio}[Lectura clàssica]\label{obs:pertinenca-interna-classica}
+En conjunts, \(P(A)\) és el conjunt de subconjunts de \(A\), un punt
+\(\alpha\in P(A)\) és un subconjunt concret, i
+\(\operatorname{ev}(\alpha,a)\) val \(1\) exactament quan \(a\in\alpha\).
+La part \(\in_A\subseteq A\times P(A)\) és, doncs, el graf de la relació
+de pertinença: el conjunt de parells \((a,\alpha)\) amb \(a\in\alpha\). El
+que en la presentació habitual és l'axioma que dona sentit a l'expressió
+\(x\in y\), aquí és un teorema sobre una part determinada per l'avaluació.
+\end{observacio}
+
+\section{\texorpdfstring{Aplicacions cap a \(P(A)\) i parts de \(X\times A\)}{Aplicacions cap a P(A) i parts de X per A}}\label{sec:parts-parametritzades}
+
+El teorema dels punts de l'exponencial (teorema~\ref{teo:punts-exponencial})
+identificava els punts globals \(\mathbf1\to P(A)\) amb les parts de
+\(A\). El cas general d'un estadi \(X\) qualsevol dona la versió
+parametritzada: una aplicació \(X\to P(A)\) és una \emph{família de parts
+de \(A\) indexada per \(X\)}, o equivalentment una part de \(X\times A\).
+
+\begin{teorema}[Parts parametritzades]\label{teo:parts-parametritzades}
+Per a conjunts \(X\) i \(A\), la transposició estableix una
+correspondència biunívoca, natural en \(X\), entre:
+\begin{enumerate}
+\item les aplicacions \(\alpha\colon X\to P(A)\);
+\item les aplicacions \(X\times A\to\mathbf2\);
+\item les parts de \(X\times A\) llevat d'equivalència.
+\end{enumerate}
+La correspondència entre \((1)\) i \((2)\) és la descurrificació; la
+correspondència entre \((2)\) i \((3)\) és el classificador de parts.
+\end{teorema}
+
+\begin{prova}
+L'equivalència entre \((1)\) i \((2)\) és la propietat universal de
+l'exponencial \(P(A)=\mathbf2^{A}\)
+(definició~\ref{def:exponencial}) aplicada amb codomini \(\mathbf2\): a
+cada \(\alpha\colon X\to P(A)\) li correspon
+\(\operatorname{ev}\circ(\alpha\times\id_A)\colon X\times A\to\mathbf2\), i
+la transposició és biunívoca per la unicitat de \(\widehat h\). La
+naturalitat en \(X\) és la de la proposició~\ref{prop:families},
+particularitzada a \(B=\mathbf2\).
+
+L'equivalència entre \((2)\) i \((3)\) és l'axioma de representació
+(axioma~\ref{ax:representacio}): tota aplicació \(X\times A\to\mathbf2\) és
+la característica d'una única part de \(X\times A\) llevat d'equivalència,
+i tota part de \(X\times A\) té una única característica. Componen les dues
+correspondències.
+\end{prova}
+
+\begin{observacio}[Elements generalitzats de \(P(A)\)]\label{obs:generalitzats-parts}
+El teorema diu que un element generalitzat de \(P(A)\) a l'estadi \(X\)
+---una aplicació \(X\to P(A)\)--- no és una sola part de \(A\), sinó una
+part de \(X\times A\), és a dir, una família de parts de \(A\)
+parametritzada per \(X\). El cas global \(X=\mathbf1\) recupera una única
+part de \(\mathbf1\times A\cong A\)
+(teorema~\ref{teo:punts-exponencial}). Aquesta és la mateixa disciplina
+que regeix tot el desenvolupament: les nocions es defineixen sobre
+elements generalitzats, i el cas global n'és el particular \(X=\mathbf1\).
+\end{observacio}
+
+\begin{corollari}[La pertinença interna és universal]\label{cor:pertinenca-universal}
+Sigui \(\alpha\colon X\to P(A)\) i sigui \(s_\alpha\hookrightarrow
+X\times A\) la part que li correspon pel
+teorema~\ref{teo:parts-parametritzades}. Aleshores, per a tot estadi
+\(Y\) i tot parell \(a\colon Y\to A\), \(x\colon Y\to X\),
+\[
+a\mathrel{\varepsilon}(\alpha\circ x)
+\quad\Longleftrightarrow\quad
+\langle x,a\rangle\in_Y s_\alpha .
+\]
+En particular, la part \(\in_A\hookrightarrow A\times P(A)\) és la part
+associada a la identitat \(\id_{P(A)}\colon P(A)\to P(A)\).
+\end{corollari}
+
+\begin{prova}
+Per la proposició~\ref{prop:pertinenca-interna-lectura},
+\(a\mathrel{\varepsilon}(\alpha\circ x)\) equival a
+\(\operatorname{ev}\circ\langle\alpha\circ x,a\rangle=1\circ{!}_Y\). Ara
+\(\langle\alpha\circ x,a\rangle=(\alpha\times\id_A)\circ\langle x,a\rangle\),
+de manera que la condició és
+\(\operatorname{ev}\circ(\alpha\times\id_A)\circ\langle x,a\rangle
+=1\circ{!}_Y\); i \(\operatorname{ev}\circ(\alpha\times\id_A)\) és, per
+construcció, la característica de \(s_\alpha\). Això és
+\(\langle x,a\rangle\in_Y s_\alpha\). Prenent \(X=P(A)\) i
+\(\alpha=\id_{P(A)}\), la part associada té característica
+\(\operatorname{ev}\), que sobre \(A\times P(A)\) és la de \(\in_A\).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:parts-parametritzades-classica}
+Les tres presentacions són les que un curs elemental usa
+indistintament: una funció \(\alpha\colon X\to\mathcal P(A)\) que a cada
+índex assigna un subconjunt; una relació \(R\subseteq X\times A\); i una
+funció \((x,a)\mapsto\chi_R(x,a)\) amb valors de veritat. Que siguin la
+mateixa dada és el que legitima escriure indistintament \(a\in\alpha_x\),
+\((x,a)\in R\) o \(\chi_R(x,a)=1\). El teorema
+dona a aquesta equivalència, habitualment implícita, un estatut
+estructural.
+\end{observacio}
+
+\section{\texorpdfstring{Operacions booleanes internes sobre \(P(A)\)}{Operacions booleanes internes sobre P(A)}}\label{sec:booleanes-internes}
+
+Al capítol~\ref{cap:valors} les operacions booleanes es van definir com a
+aplicacions sobre el conjunt de valors de veritat: la conjunció i la
+disjunció \(\wedge,\vee\colon\mathbf2\times\mathbf2\to\mathbf2\)
+(definició~\ref{def:conjuncio-disjuncio}) i la negació
+\(\neg\colon\mathbf2\to\mathbf2\) (definició~\ref{def:negacio}). Aquestes
+operacions actuen sobre valors de veritat, un a un. Ara les elevarem a
+operacions sobre \(P(A)\), on cada punt reuneix una part sencera. La clau
+és que les operacions sobre \(\mathbf2\) actuen «puntualment» en cada
+element de \(A\), i la transposició les converteix en operacions sobre el
+conjunt de parts.
+
+\begin{definicio}[Operacions booleanes internes]\index{Operacions booleanes internes}\label{def:booleanes-internes}
+Sigui \(A\) un conjunt. Definim les aplicacions internes següents sobre
+\(P(A)\), com a transposades de les operacions puntuals corresponents:
+\begin{itemize}
+\item la \emph{intersecció interna}
+\(\cap_A\colon P(A)\times P(A)\to P(A)\), transposada de
+\[
+P(A)\times P(A)\times A
+\xrightarrow{\;\langle\operatorname{ev}_1,\operatorname{ev}_2\rangle\;}
+\mathbf2\times\mathbf2
+\xrightarrow{\;\wedge\;}
+\mathbf2 ;
+\]
+\item la \emph{unió interna}
+\(\cup_A\colon P(A)\times P(A)\to P(A)\), transposada de la mateixa
+aplicació amb \(\vee\) en lloc de \(\wedge\);
+\item el \emph{complement intern}
+\(\neg_A\colon P(A)\to P(A)\), transposada de
+\(\neg\circ\operatorname{ev}\colon P(A)\times A\to\mathbf2\).
+\end{itemize}
+Aquí \(\operatorname{ev}_1\) i \(\operatorname{ev}_2\) denoten les
+avaluacions de la primera i la segona còpia de \(P(A)\) sobre \(A\),
+obtingudes component \(\operatorname{ev}\) amb les projeccions adequades.
+Anàlogament, els \emph{punts distingits} \(\varnothing_A,\;A_A\colon
+\mathbf1\to P(A)\) són els noms de les aplicacions constants
+\(0\circ{!}_A\) i \(1\circ{!}_A\) (proposició~\ref{prop:caracteristica-total}),
+és a dir, de la part buida i la part total del capítol~\ref{cap:valors}.
+\end{definicio}
+
+\begin{notacio}[Operacions internes]\label{not:booleanes-internes}
+Per a elements generalitzats \(\alpha,\beta\colon X\to P(A)\) escriurem
+\(\alpha\cap_A\beta\), \(\alpha\cup_A\beta\) i \(\neg_A\alpha\) per a les
+composicions de \(\langle\alpha,\beta\rangle\) o \(\alpha\) amb les
+aplicacions de la definició~\ref{def:booleanes-internes}. Quan el conjunt
+\(A\) sigui inequívoc, ometrem el subíndex.
+\end{notacio}
+
+El sentit d'aquestes operacions és que calculen, punt a punt, la
+pertinença interna al resultat. Aquesta és la propietat que les
+caracteritza.
+
+\begin{proposicio}[Càlcul de les operacions internes]\label{prop:booleanes-puntuals}
+Siguin \(\alpha,\beta\colon X\to P(A)\) i \(a\colon X\to A\). Les
+operacions internes es calculen component les avaluacions amb les
+operacions sobre \(\mathbf2\):
+\begin{align*}
+\operatorname{ev}\circ\langle\alpha\cap\beta,a\rangle
+&=\wedge\circ\langle\operatorname{ev}\circ\langle\alpha,a\rangle,
+\operatorname{ev}\circ\langle\beta,a\rangle\rangle,\\
+\operatorname{ev}\circ\langle\alpha\cup\beta,a\rangle
+&=\vee\circ\langle\operatorname{ev}\circ\langle\alpha,a\rangle,
+\operatorname{ev}\circ\langle\beta,a\rangle\rangle,\\
+\operatorname{ev}\circ\langle\neg\alpha,a\rangle
+&=\neg\circ\operatorname{ev}\circ\langle\alpha,a\rangle .
+\end{align*}
+En conseqüència, a tot estadi \(X\),
+\[
+a\mathrel{\varepsilon}(\alpha\cap\beta)
+\quad\Longleftrightarrow\quad
+a\mathrel{\varepsilon}\alpha\ \text{ i }\ a\mathrel{\varepsilon}\beta ;
+\]
+i sobre punts globals (\(X=\mathbf1\)), a més,
+\(a\mathrel{\varepsilon}(\alpha\cup\beta)\) si i només si
+\(a\mathrel{\varepsilon}\alpha\) o \(a\mathrel{\varepsilon}\beta\), i
+\(a\mathrel{\varepsilon}(\neg\alpha)\) si i només si no
+\(a\mathrel{\varepsilon}\alpha\). Finalment, sobre els noms de dues parts
+\(m,n\) de \(A\), les operacions internes recuperen les operacions sobre
+parts del capítol~\ref{cap:valors}:
+\[
+\ulcorner m\urcorner\cap\ulcorner n\urcorner=\ulcorner m\cap n\urcorner,
+\qquad
+\ulcorner m\urcorner\cup\ulcorner n\urcorner=\ulcorner m\cup n\urcorner,
+\qquad
+\neg\ulcorner m\urcorner=\ulcorner m^{c}\urcorner .
+\]
+\end{proposicio}
+
+\begin{prova}
+Les tres identitats són la descurrificació de la
+definició~\ref{def:booleanes-internes}: per la propietat universal de
+l'exponencial,
+\(\operatorname{ev}\circ((\alpha\cap\beta)\times\id_A)
+=\wedge\circ\langle\operatorname{ev}_1,\operatorname{ev}_2\rangle\circ(\langle\alpha,\beta\rangle\times\id_A)\),
+i component amb \(\langle\id_X,a\rangle\) s'obté la primera; les altres
+dues són idèntiques.
+
+Per a la lectura de \(\cap\): \(\wedge\) és la característica de
+\(\delta_{11}=\langle1,1\rangle\colon\mathbf1\hookrightarrow\mathbf2\times\mathbf2\)
+(definició~\ref{def:conjuncio-disjuncio}), de manera que
+\(\wedge\circ\langle u,v\rangle=1\circ{!}_X\) si i només si
+\(\langle u,v\rangle\) es factoritza per \(\delta_{11}\), és a dir, si i
+només si \(u=1\circ{!}_X\) i \(v=1\circ{!}_X\); amb
+\(u=\operatorname{ev}\circ\langle\alpha,a\rangle\) i
+\(v=\operatorname{ev}\circ\langle\beta,a\rangle\), la
+proposició~\ref{prop:pertinenca-interna-lectura} dona l'equivalència, a
+qualsevol estadi.
+
+Per a \(\cup\) i \(\neg\) la lectura amb \enquote{o} i \enquote{no} només
+val sobre punts globals: allà cada avaluació \(u\) i \(v\) és el punt
+\(0\) o el punt \(1\) (corol·lari~\ref{cor:elements-de-2}), i les taules
+de veritat (proposició~\ref{prop:taules-veritat}) decideixen. Sobre un estadi
+general no val: per exemple, amb \(X=\mathbf2\), \(a\) tal que
+\(\operatorname{ev}\circ\langle\alpha,a\rangle=\id_{\mathbf2}\) i
+\(\operatorname{ev}\circ\langle\beta,a\rangle=\neg\), es té
+\(a\mathrel{\varepsilon}(\alpha\cup\beta)\) sense que
+\(a\mathrel{\varepsilon}\alpha\) ni \(a\mathrel{\varepsilon}\beta\).
+És la mateixa frontera que separa el complement d'una part de la negació
+puntual (observació~\ref{obs:complement-classic}).
+
+Per a la darrera afirmació no cal cap lectura puntual: les parts
+\(m\cap n\), \(m\cup n\) i \(m^c\) es van definir per les seves
+característiques, \(\wedge\circ\langle\chi_m,\chi_n\rangle\),
+\(\vee\circ\langle\chi_m,\chi_n\rangle\) i \(\neg\circ\chi_m\)
+(proposició~\ref{prop:caracteristica-interseccio}, definició~\ref{def:operacions-parts}, proposició~\ref{prop:caracteristica-complement}), i les tres identitats
+anteriors amb \(X=\mathbf1\), \(\alpha=\ulcorner m\urcorner\) i
+\(\beta=\ulcorner n\urcorner\) diuen que la descurrificació de
+\(\ulcorner m\urcorner\cap\ulcorner n\urcorner\) és exactament
+\(\wedge\circ\langle\chi_m,\chi_n\rangle\), i anàlogament per a les
+altres dues. Per la unicitat del nom (teorema~\ref{teo:punts-exponencial}),
+els punts coincideixen.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:booleanes-internes-classica}
+Les operacions internes són les operacions de conjunts habituals,
+\(\alpha\cap\beta\), \(\alpha\cup\beta\) i \(A\setminus\alpha\), vistes ara
+com a \emph{aplicacions} \(P(A)\times P(A)\to P(A)\) i \(P(A)\to P(A)\), i
+no com a operacions definides element a element de manera externa. El
+guany estructural és que l'àlgebra de subconjunts de \(A\), que en el
+metallenguatge és una àlgebra booleana sobre les classes d'equivalència de
+parts, es realitza ara com una estructura algebraica \emph{sobre un únic
+conjunt} \(P(A)\), amb operacions que són aplicacions de la teoria.
+\end{observacio}
+
+\begin{observacio}[Les lleis booleanes es transporten]\label{obs:lleis-transportades}
+Les lleis booleanes de les parts (teorema~\ref{teo:lleis-booleanes})
+---commutativitat, associativitat, distributivitat, lleis de De~Morgan,
+complementació--- valen també per a les operacions internes de
+\(P(A)\). La raó és que cada llei és una igualtat entre aplicacions cap a
+\(\mathbf2\) que ja es compleix puntualment sobre \(\mathbf2\)
+(les taules de veritat), i la transposició, en ser biunívoca, transporta
+la igualtat a la corresponent entre aplicacions cap a \(P(A)\). Aquest
+capítol no reescriu les demostracions: n'hi ha prou de fer notar que la
+unicitat de la transposada converteix cada identitat booleana puntual en
+la identitat interna corresponent.
+\end{observacio}
+
+\section{Imatge inversa, imatge directa i quantificadors}\label{sec:quantificadors}
+
+Una aplicació \(f\colon A\to B\) indueix operacions entre els conjunts de
+parts \(P(A)\) i \(P(B)\). La imatge inversa del capítol~\ref{cap:parts} i
+la imatge directa del capítol~\ref{cap:imatges}, que allà eren operacions
+sobre parts individuals, es realitzen ara com a aplicacions internes; i
+l'adjunció entre elles s'estén a una parella de quantificadors associats
+a \(f\).
+
+\begin{definicio}[Imatge inversa interna]\index{Imatge inversa interna}\label{def:imatge-inversa-interna}
+Sigui \(f\colon A\to B\). La \emph{imatge inversa interna} és l'aplicació
+\[
+P(f)\colon P(B)\to P(A)
+\]
+transposada de
+\(\operatorname{ev}\circ(\id_{P(B)}\times f)\colon P(B)\times A\to\mathbf2\).
+Equivalentment, \(P(f)\) és l'única aplicació tal que, per a tot
+\(\beta\colon X\to P(B)\) i tot \(a\colon X\to A\),
+\[
+a\mathrel{\varepsilon}\bigl(P(f)\circ\beta\bigr)
+\quad\Longleftrightarrow\quad
+(f\circ a)\mathrel{\varepsilon}\beta .
+\]
+\end{definicio}
+
+\begin{proposicio}[La imatge inversa interna estén \(f^{-1}\)]\label{prop:imatge-inversa-interna}
+Sobre els noms de parts, \(P(f)\) recupera la imatge inversa del
+capítol~\ref{cap:parts}: per a tota part \(n\) de \(B\),
+\[
+P(f)\circ\ulcorner n\urcorner=\ulcorner f^{-1}(n)\urcorner .
+\]
+Més generalment, si \(\beta\colon X\to P(B)\) correspon a la part
+\(s_\beta\) de \(X\times B\) (teorema~\ref{teo:parts-parametritzades}),
+aleshores \(P(f)\circ\beta\) correspon a la part
+\((\id_X\times f)^{-1}(s_\beta)\) de \(X\times A\).
+\end{proposicio}
+
+\begin{prova}
+La descurrificació de \(P(f)\circ\beta\) és
+\(\operatorname{ev}\circ(\id_{P(B)}\times f)\circ(\beta\times\id_A)
+=\operatorname{ev}\circ(\beta\times\id_B)\circ(\id_X\times f)
+=\chi_{s_\beta}\circ(\id_X\times f)\),
+que és la característica de \((\id_X\times f)^{-1}(s_\beta)\)
+(proposició~\ref{prop:caracteristica-imatge-inversa}). El cas dels noms és
+\(X=\mathbf1\), amb \(\mathbf1\times A\cong A\): la descurrificació de
+\(P(f)\circ\ulcorner n\urcorner\) és \(\chi_n\circ f=\chi_{f^{-1}(n)}\).
+\end{prova}
+
+\begin{proposicio}[La imatge inversa commuta amb el complement]\label{prop:imatge-inversa-complement}
+Sigui \(f\colon A\to B\). Aleshores \(P(f)\circ\neg_B=\neg_A\circ P(f)\).
+\end{proposicio}
+
+\begin{prova}
+Comparem descurrificacions, com a aplicacions \(P(B)\times A\to\mathbf2\).
+D'una banda,
+\(\operatorname{ev}\circ((P(f)\circ\neg_B)\times\id_A)
+=\operatorname{ev}\circ(\id\times f)\circ(\neg_B\times\id_A)
+=\operatorname{ev}\circ(\neg_B\times\id_B)\circ(\id\times f)
+=\neg\circ\operatorname{ev}\circ(\id\times f)\).
+De l'altra,
+\(\operatorname{ev}\circ((\neg_A\circ P(f))\times\id_A)
+=\neg\circ\operatorname{ev}\circ(P(f)\times\id_A)
+=\neg\circ\operatorname{ev}\circ(\id\times f)\).
+Per la unicitat de la transposada, les dues aplicacions coincideixen.
+\end{prova}
+
+Per construir el quantificador existencial com una \emph{aplicació}
+\(P(A)\to P(B)\) necessitem la imatge directa del capítol~\ref{cap:imatges}
+aplicada no a una part d'\(A\), sinó a la part universal \(\in_A\), i un
+lema que diu que la imatge directa es comporta bé sota canvi de base. És
+la propietat que fa que la lectura sobre elements generalitzats de
+\(\exists_f\) sigui la que s'espera.
+
+\begin{lema}[La imatge directa commuta amb el canvi de base]\label{lema:beck-chevalley}
+Sigui
+\[
+\begin{aligned}
+A' &\xrightarrow{\;h\;} A\\
+{\scriptstyle f'}\big\downarrow\ \ &\qquad\big\downarrow{\scriptstyle f}\\
+B' &\xrightarrow{\;h'\;} B
+\end{aligned}
+\]
+un quadrat cartesià. Per a tota part \(s\colon S\hookrightarrow A\),
+\[
+(h')^{-1}\bigl(f_{*}s\bigr)\;\equiv_{B'}\;f'_{*}\bigl(h^{-1}(s)\bigr).
+\]
+\emph{Axiomes usats:} els del capítol~\ref{cap:imatges} (en particular
+l'estabilitat dels epimorfismes, que usa la separació global); cap elecció.
+\end{lema}
+
+\begin{prova}
+Factoritzem \(f\circ s=m\circ e\) amb \(e\colon S\twoheadrightarrow I\)
+epimorfisme i \(m\colon I\hookrightarrow B\) la imatge \(f_*s\)
+(teorema~\ref{teo:factoritzacio}). Fem el pullback de tota aquesta
+factorització al llarg de \(h'\): obtenim \(I':=(h')^{-1}(m)\), una part
+de \(B'\), i \(S':=B'\times_B S\) amb una aplicació \(e'\colon S'\to I'\)
+que és el pullback de \(e\) al llarg de \(I'\to I\), i per tant un
+epimorfisme (lema~\ref{lema:estabilitat-epi-regular}). D'altra banda,
+com que el quadrat de l'enunciat és cartesià, \(S'=B'\times_BS\) coincideix
+amb \(A'\times_AS\) (dos quadrats cartesians encaixats formen un quadrat
+cartesià), que és el domini de \(h^{-1}(s)\); i la composició
+\(f'\circ h^{-1}(s)\colon S'\to B'\) és \(I'\hookrightarrow B'\) precedida
+de \(e'\). Tenim, doncs, una factorització de \(f'\circ h^{-1}(s)\) com a
+epimorfisme seguit de monomorfisme, i per la unicitat de la factorització
+imatge, \(f'_*(h^{-1}(s))\equiv I'=(h')^{-1}(f_*s)\).
+\end{prova}
+
+\begin{definicio}[Quantificadors associats a una aplicació]\index{Quantificadors associats a una aplicació}\label{def:quantificadors}
+Sigui \(f\colon A\to B\). Sigui \(E_A\hookrightarrow P(A)\times A\) la
+part classificada per l'avaluació (la pertinença interna amb els factors
+intercanviats: \(E_A=\sigma^{-1}\circ{\in_A}\)). El \emph{quantificador
+existencial} associat a \(f\) és l'aplicació
+\[
+\exists_f\colon P(A)\to P(B)
+\]
+transposada de la característica de la imatge directa
+\((\id_{P(A)}\times f)_{*}E_A\hookrightarrow P(A)\times B\). El
+\emph{quantificador universal} és
+\[
+\forall_f:=\neg_B\circ\exists_f\circ\neg_A\colon P(A)\to P(B).
+\]
+Escriurem \(\exists_A:=\exists_{{!}_A}\) i \(\forall_A:=\forall_{{!}_A}\)
+per a l'única aplicació \({!}_A\colon A\to\mathbf1\); són aplicacions
+\(P(A)\to P(\mathbf1)\cong\mathbf2\).
+\end{definicio}
+
+\begin{proposicio}[Lectura dels quantificadors]\label{prop:quantificadors-lectura}
+Sigui \(f\colon A\to B\) i sigui \(\alpha\colon X\to P(A)\), amb part
+associada \(s_\alpha\hookrightarrow X\times A\). Aleshores:
+\begin{enumerate}
+\item \(\exists_f\circ\alpha\) correspon a la part
+\((\id_X\times f)_{*}(s_\alpha)\) de \(X\times B\), i
+\(\forall_f\circ\alpha\) a la part
+\(\bigl((\id_X\times f)_{*}(s_\alpha^{c})\bigr)^{c}\). En particular, sobre
+noms, \(\exists_f\ulcorner m\urcorner=\ulcorner f_*m\urcorner\).
+\item Per a \(b\colon X\to B\), \(b\mathrel{\varepsilon}(\exists_f\circ\alpha)\)
+si i només si existeixen un recobriment epimòrfic
+\(p\colon X'\twoheadrightarrow X\) i un \(a\colon X'\to A\) amb
+\(f\circ a=b\circ p\) i \(a\mathrel{\varepsilon}(\alpha\circ p)\). Sobre
+punts globals, \(b\mathrel{\varepsilon}(\exists_f\circ\alpha)\) si i només
+si hi ha un punt \(a\) amb \(f\circ a=b\) i \(a\mathrel{\varepsilon}\alpha\).
+\item Per a \(b\colon X\to B\), \(b\mathrel{\varepsilon}(\forall_f\circ\alpha)\)
+si i només si, per a tot \(x\colon Y\to X\) i tot \(a\colon Y\to A\) amb
+\(f\circ a=b\circ x\), es té \(a\mathrel{\varepsilon}(\alpha\circ x)\).
+\end{enumerate}
+Amb l'axioma d'elecció, el recobriment de~(2) és escindit i el testimoni
+\(a\) es pot prendre ja sobre \(X\).
+\end{proposicio}
+
+\begin{prova}
+\emph{(1)} La descurrificació de \(\exists_f\circ\alpha\) és
+\(\chi_{(\id\times f)_*E_A}\circ(\alpha\times\id_B)\), la característica
+de \((\alpha\times\id_B)^{-1}\bigl((\id_{P(A)}\times f)_*E_A\bigr)\). El
+quadrat format per \(\alpha\times\id_A\colon X\times A\to P(A)\times A\),
+\(\id_X\times f\), \(\id_{P(A)}\times f\) i \(\alpha\times\id_B\) és
+cartesià (és el producte del quadrat cartesià trivial de vèrtex \(X\)
+sobre \(P(A)\) amb el de \(f\) sobre ell mateix). Pel
+lema~\ref{lema:beck-chevalley},
+\((\alpha\times\id_B)^{-1}\bigl((\id\times f)_*E_A\bigr)
+\equiv(\id_X\times f)_*\bigl((\alpha\times\id_A)^{-1}E_A\bigr)\), i
+\((\alpha\times\id_A)^{-1}E_A\) té característica
+\(\operatorname{ev}\circ(\alpha\times\id_A)\), que és la de \(s_\alpha\).
+Per a \(\forall_f\), apliquem el que acabem de veure a \(\neg_A\circ\alpha\),
+que correspon a \(s_\alpha^c\) (proposició~\ref{prop:booleanes-puntuals}),
+i després \(\neg_B\). El cas dels noms és \(X=\mathbf1\).
+
+\emph{(2)} Per~(1), \(b\mathrel{\varepsilon}(\exists_f\circ\alpha)\) vol dir
+\(\langle\id_X,b\rangle\in_X(\id_X\times f)_*(s_\alpha)\). Si hi ha
+\(p\) i \(a\) com a l'enunciat, aleshores
+\(\langle p,a\rangle\in_{X'}s_\alpha\) (corol·lari~\ref{cor:pertinenca-universal})
+i \((\id_X\times f)\circ\langle p,a\rangle=\langle p,f\circ a\rangle
+=\langle\id_X,b\rangle\circ p\), de manera que
+\(\langle\id_X,b\rangle\circ p\) pertany a la imatge directa, i pel
+lema~\ref{lema:pertinenca-recobriment} també \(\langle\id_X,b\rangle\).
+Recíprocament, si \(\langle\id_X,b\rangle\) pertany a
+\((\id_X\times f)_*(s_\alpha)\), prenem el pullback de l'epimorfisme
+\(s_\alpha\twoheadrightarrow\operatorname{Im}\) al llarg del testimoni;
+dona un recobriment \(p\colon X'\twoheadrightarrow X\)
+(lema~\ref{lema:estabilitat-epi-regular}) i un \(w\colon X'\to s_\alpha\),
+i \(a:=\pi_A\circ s_\alpha\circ w\) compleix el que cal. Sobre punts
+globals, un recobriment \(p\colon X'\twoheadrightarrow\mathbf1\) té un punt
+(lema del buit i no-degeneració), i component-hi s'obté el testimoni
+sobre \(\mathbf1\).
+
+\emph{(3)} Usarem dos fets auxiliars. \emph{(a)} Per a una part
+\(M\hookrightarrow Z\) i un element generalitzat \(z\colon Y\to Z\),
+\(z\in_Y M^c\) si i només si la imatge inversa \(z^{-1}(M)\) és buida. En
+efecte, \(\chi_{M^c}\circ z=\neg\circ\chi_M\circ z\)
+(proposició~\ref{prop:caracteristica-complement}), que val \(1\circ{!}_Y\) si i
+només si \(\chi_M\circ z=0\circ{!}_Y\) (componeu amb la involució \(\neg\)), és
+a dir, si i només si \(\chi_{z^{-1}(M)}=\chi_{\bot_Y}\)
+(proposicions~\ref{prop:caracteristica-imatge-inversa}
+i~\ref{prop:caracteristica-buida}), que equival a \(z^{-1}(M)\equiv_Y\bot_Y\)
+(proposició~\ref{prop:caracteristica-determina-part}). \emph{(b)} Si
+\(p\colon T'\twoheadrightarrow T\) és un epimorfisme i \(T'\) és inicial,
+\(T\) és inicial: \(0\circ{!}_T\circ p=1\circ{!}_T\circ p\) perquè \(T'\) és
+inicial, d'on \(0\circ{!}_T=1\circ{!}_T\), i l'argument de la
+proposició~\ref{prop:caracteristica-buida} dona una aplicació \(T\to\mathbf0\).
+
+Escrivim \(K:=s_\alpha\hookrightarrow X\times A\) i
+\(N:=(\id_X\times f)_*(K^c)\hookrightarrow X\times B\). Per~(1),
+\(b\mathrel{\varepsilon}(\forall_f\circ\alpha)\) vol dir
+\(\langle\id_X,b\rangle\in_X N^c\); i, pel
+corol·lari~\ref{cor:pertinenca-universal},
+\(a\mathrel{\varepsilon}(\alpha\circ x)\) vol dir \(\langle x,a\rangle\in_Y K\).
+
+\(\Rightarrow\)) Suposem \(\langle\id_X,b\rangle\in_X N^c\), i siguin
+\(x\colon Y\to X\), \(a\colon Y\to A\) amb \(f\circ a=b\circ x\). Sigui
+\(t\colon T\hookrightarrow Y\) la imatge inversa \(\langle x,a\rangle^{-1}(K^c)\).
+Aleshores \(\langle x,a\rangle\circ t\in K^c\) i, per tant,
+\((\id_X\times f)\circ\langle x,a\rangle\circ t=\langle\id_X,b\rangle\circ x\circ t\)
+pertany a la imatge directa \(N\). Però també pertany a \(N^c\), perquè
+\(\langle\id_X,b\rangle\) hi pertany. Com que \(N\cap N^c\equiv\bot\), \(T\)
+admet una aplicació cap a \(\mathbf0\) i és inicial (estrictesa). Per~(a),
+\(\langle x,a\rangle\in_Y(K^c)^c\equiv K\), és a dir,
+\(a\mathrel{\varepsilon}(\alpha\circ x)\).
+
+\(\Leftarrow\)) Suposem la condició de l'enunciat, i sigui
+\(t\colon T\hookrightarrow X\) la imatge inversa \(\langle\id_X,b\rangle^{-1}(N)\),
+de manera que \(\langle t,b\circ t\rangle\in_T N\). Com a la prova de~(2),
+el pullback de l'epimorfisme \(K^c\twoheadrightarrow N\) al llarg del
+testimoni d'aquesta pertinença dona un epimorfisme
+\(p\colon T'\twoheadrightarrow T\) i un element \(\langle x',a'\rangle\colon
+T'\to X\times A\) de \(K^c\) amb \((\id_X\times f)\circ\langle x',a'\rangle
+=\langle t,b\circ t\rangle\circ p\); és a dir, \(x'=t\circ p\) i
+\(f\circ a'=b\circ x'\). La hipòtesi dona \(\langle x',a'\rangle\in_{T'}K\), i
+com que també és a \(K^c\), \(T'\) és inicial. Per~(b), \(T\) és inicial, i
+per~(a), \(\langle\id_X,b\rangle\in_X N^c\), és a dir,
+\(b\mathrel{\varepsilon}(\forall_f\circ\alpha)\).
+\end{prova}
+
+\begin{proposicio}[Els quantificadors com a adjunts]\label{prop:quantificadors-adjuncio}
+Sigui \(f\colon A\to B\). Per a tot estadi \(X\), tota
+\(\alpha\colon X\to P(A)\) i tota \(\beta\colon X\to P(B)\), amb parts
+associades \(s_\alpha\hookrightarrow X\times A\) i
+\(s_\beta\hookrightarrow X\times B\), i escrivint \(\subseteq\) per a la
+inclusió de parts:
+\[
+s_{\exists_f\alpha}\subseteq s_\beta
+\ \Longleftrightarrow\
+s_\alpha\subseteq s_{P(f)\beta},
+\qquad
+s_{P(f)\beta}\subseteq s_\alpha
+\ \Longleftrightarrow\
+s_\beta\subseteq s_{\forall_f\alpha} .
+\]
+És a dir, \(\exists_f\) és adjunt per l'esquerra i \(\forall_f\) adjunt
+per la dreta de la imatge inversa interna \(P(f)\), a cada estadi.
+\end{proposicio}
+
+\begin{prova}
+Per les proposicions~\ref{prop:imatge-inversa-interna}
+i~\ref{prop:quantificadors-lectura}, \(s_{\exists_f\alpha}=(\id_X\times f)_*s_\alpha\)
+i \(s_{P(f)\beta}=(\id_X\times f)^{-1}s_\beta\); la primera equivalència és,
+doncs, l'adjunció imatge directa\,--\,imatge inversa del
+capítol~\ref{cap:imatges} (proposició~\ref{prop:adjuncio-imatges}) per a
+l'aplicació \(\id_X\times f\). La segona se'n dedueix per dualitat
+booleana:
+\(s_\beta\subseteq s_{\forall_f\alpha}=\bigl((\id\times f)_*(s_\alpha^c)\bigr)^c\)
+equival, per l'antimonotonia del complement, a
+\((\id\times f)_*(s_\alpha^c)\subseteq s_\beta^c\), i per la primera
+adjunció a \(s_\alpha^c\subseteq(\id\times f)^{-1}(s_\beta^c)
+=\bigl((\id\times f)^{-1}s_\beta\bigr)^c\) (la imatge inversa commuta amb
+el complement, proposició~\ref{prop:imatge-inversa-complement}), que per
+l'antimonotonia és \((\id\times f)^{-1}s_\beta\subseteq s_\alpha\).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:quantificadors-classica}
+Per a \(f\colon A\to B\), la imatge inversa és
+\(P(f)(\beta)=f^{-1}(\beta)=\{\,a:f(a)\in\beta\,\}\); el quantificador
+existencial és la imatge directa
+\(\exists_f(\alpha)=\{\,b:\exists a\,(f(a)=b\ \text{i}\ a\in\alpha)\,\}\);
+i l'universal és
+\(\forall_f(\alpha)=\{\,b:\forall a\,(f(a)=b\Rightarrow a\in\alpha)\,\}\).
+Els noms «existencial» i «universal» no són metafòrics: quan
+\(f={!}_A\colon A\to\mathbf1\), \(\exists_A\) diu si hi ha algun element de
+\(A\) que pertany a la part, i \(\forall_A\) si tots hi pertanyen. La
+lògica de predicats sobre \(A\), habitualment presa com a llenguatge
+extern, apareix aquí com l'àlgebra de \(P(A)\) amb aquests adjunts. El
+preu de llegir-ho sobre elements generalitzats és el recobriment de la
+proposició~\ref{prop:quantificadors-lectura}: la mateixa frontera que a
+la composició de relacions.
+\end{observacio}
+
+\section{\texorpdfstring{La inclusió com a ordre sobre \(P(A)\)}{La inclusió com a ordre sobre P(A)}}\label{sec:inclusio-ordre}
+
+La inclusió de parts \(\subseteq_A\) del capítol~\ref{cap:parts} era una
+relació del metallenguatge entre monomorfismes. Ara la realitzarem com una
+\emph{part} de \(P(A)\times P(A)\), és a dir, com una relació interna
+sobre el conjunt de parts, i mostrarem que és un ordre. L'eina és el
+quantificador universal al llarg d'una projecció.
+
+\begin{definicio}[Inclusió interna]\index{Inclusió interna}\label{def:inclusio-interna}
+Sigui \(\Rightarrow:=\vee\circ(\neg\times\id_{\mathbf2})\colon
+\mathbf2\times\mathbf2\to\mathbf2\) la implicació booleana, i sigui
+\(I_A\hookrightarrow P(A)\times P(A)\times A\) la part classificada per
+\(\Rightarrow\circ\langle\operatorname{ev}_1,\operatorname{ev}_2\rangle\).
+La \emph{relació d'inclusió interna} sobre \(P(A)\) és la part
+\[
+{\subseteq_A}\;:=\;\forall_\pi(I_A)\;\hookrightarrow\;P(A)\times P(A),
+\]
+on \(\pi\colon P(A)\times P(A)\times A\to P(A)\times P(A)\) és la
+projecció i \(\forall_\pi\) s'aplica al nom de la part \(I_A\) (és a dir,
+\(\subseteq_A\) és la part de \(P(A)\times P(A)\) el nom de la qual és
+\(\forall_\pi\ulcorner I_A\urcorner\)).
+\end{definicio}
+
+\begin{proposicio}[Lectura de la inclusió interna]\label{prop:inclusio-interna-lectura}
+Siguin \(\alpha,\beta\colon X\to P(A)\), amb parts associades
+\(s_\alpha,s_\beta\hookrightarrow X\times A\). Aleshores
+\[
+\begin{aligned}
+\langle\alpha,\beta\rangle\in_X{\subseteq_A}
+\ &\Longleftrightarrow\
+s_\alpha\subseteq s_\beta\\
+&\Longleftrightarrow\
+\text{per a tot } x\colon Y\to X \text{ i tot } a\colon Y\to A,\\
+&\qquad\qquad
+a\mathrel{\varepsilon}(\alpha\circ x)\Rightarrow a\mathrel{\varepsilon}(\beta\circ x).
+\end{aligned}
+\]
+En particular, sobre els noms de dues parts \(m,n\) de \(A\),
+\(\langle\ulcorner m\urcorner,\ulcorner n\urcorner\rangle\in_{\mathbf1}{\subseteq_A}\)
+si i només si \(m\subseteq_A n\).
+\end{proposicio}
+
+\begin{prova}
+Per la lectura del quantificador universal
+(proposició~\ref{prop:quantificadors-lectura}(3)) amb \(f=\pi\),
+\(\langle\alpha,\beta\rangle\in_X\forall_\pi(I_A)\) vol dir que, per a tot
+\(x\colon Y\to X\) i tot \(c\colon Y\to P(A)\times P(A)\times A\) amb
+\(\pi\circ c=\langle\alpha,\beta\rangle\circ x\) ---és a dir, per a tot
+\(c=\langle\alpha\circ x,\beta\circ x,a\rangle\) amb \(a\colon Y\to A\)---,
+\(c\in_YI_A\), és a dir,
+\(\Rightarrow\circ\langle u,v\rangle=1\circ{!}_Y\) amb
+\(u=\operatorname{ev}\circ\langle\alpha\circ x,a\rangle\) i
+\(v=\operatorname{ev}\circ\langle\beta\circ x,a\rangle\). Ara bé,
+\(\Rightarrow\circ\langle u,v\rangle=\neg u\vee v\) és la característica
+de la part \(T^c\cup U\) de \(Y\), on \(T,U\) són les parts classificades
+per \(u,v\); i \(T^c\cup U\) és total si i només si \(T\subseteq U\)
+(lleis booleanes, teorema~\ref{teo:lleis-booleanes}). Per la
+proposició~\ref{prop:pertinenca-interna-lectura}, \(T\) i \(U\) són les
+imatges inverses \(\langle x,a\rangle^{-1}s_\alpha\) i
+\(\langle x,a\rangle^{-1}s_\beta\). Que la condició valgui per a tots els
+\(x,a\) és, prenent \(Y=s_\alpha\) i \(\langle x,a\rangle\) la seva
+inclusió, exactament \(s_\alpha\subseteq s_\beta\); i recíprocament,
+\(s_\alpha\subseteq s_\beta\) la implica per monotonia de la imatge
+inversa. Això dona les dues equivalències (la tercera és la segona,
+llegida amb el corol·lari~\ref{cor:pertinenca-universal}). Per als noms,
+\(X=\mathbf1\), i \(s_{\ulcorner m\urcorner}\) és \(m\) vista dins
+\(\mathbf1\times A\cong A\).
+\end{prova}
+
+\begin{teorema}[La inclusió interna és un ordre parcial]\label{teo:inclusio-ordre}
+La relació \(\subseteq_A\) sobre \(P(A)\) és reflexiva, antisimètrica i
+transitiva, en el sentit intern següent, per a tots
+\(\alpha,\beta,\gamma\colon X\to P(A)\):
+\begin{enumerate}
+\item \(\langle\alpha,\alpha\rangle\in_X{\subseteq_A}\);
+\item si \(\langle\alpha,\beta\rangle\in_X{\subseteq_A}\) i
+\(\langle\beta,\alpha\rangle\in_X{\subseteq_A}\), aleshores
+\(\alpha=\beta\);
+\item si \(\langle\alpha,\beta\rangle\in_X{\subseteq_A}\) i
+\(\langle\beta,\gamma\rangle\in_X{\subseteq_A}\), aleshores
+\(\langle\alpha,\gamma\rangle\in_X{\subseteq_A}\).
+\end{enumerate}
+A més, la intersecció i la unió internes són l'ínfim i el suprem respecte
+d'aquest ordre: \(\langle\gamma,\alpha\cap\beta\rangle\in_X{\subseteq_A}\)
+si i només si \(\langle\gamma,\alpha\rangle\in_X{\subseteq_A}\) i
+\(\langle\gamma,\beta\rangle\in_X{\subseteq_A}\), i dualment per a
+\(\cup\).
+\end{teorema}
+
+\begin{prova}
+Per la proposició~\ref{prop:inclusio-interna-lectura}, tot es redueix a la
+inclusió de parts de \(X\times A\): \(s_\alpha\subseteq s_\alpha\); si
+\(s_\alpha\subseteq s_\beta\) i \(s_\beta\subseteq s_\alpha\), les parts
+són equivalents i tenen la mateixa característica, de manera que
+\(\alpha=\beta\) per la unicitat de la transposada; i la transitivitat de
+la inclusió de parts és immediata de la
+proposició~\ref{prop:inclusio-pertinenca}. Per a
+l'ínfim, \(s_{\alpha\cap\beta}=s_\alpha\cap s_\beta\) per la
+proposició~\ref{prop:booleanes-puntuals} (les característiques
+coincideixen), i una part és inclosa en una intersecció si i només si ho
+és en cadascun dels factors (proposició~\ref{prop:pertinenca-interseccio});
+dualment, \(s_{\alpha\cup\beta}=s_\alpha\cup s_\beta\) i la unió és el
+suprem per les lleis booleanes (proposició~\ref{prop:inclusio-booleana}).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:inclusio-ordre-classica}
+El teorema diu que \((P(A),\subseteq)\) és un reticle booleà: un conjunt
+parcialment ordenat per la inclusió, amb la intersecció com a ínfim, la
+unió com a suprem, la part buida i la total com a mínim i màxim, i el
+complement com a operació de complementació. És l'estructura de reticle de
+potència de la teoria clàssica, ara construïda com una relació interna
+sobre l'objecte \(P(A)\) en lloc de descrita externament sobre la
+col·lecció de subconjunts.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Tres nivells: la part \(m\colon S\hookrightarrow A\) (una fletxa), el seu nom \(\ulcorner m\urcorner\colon\mathbf1\to P(A)\) (un punt) i el conjunt \(P(A)\). La pertinença interna \(\in_A\hookrightarrow A\times P(A)\) és la part classificada per l'avaluació; sobre noms recupera la pertinença generalitzada.
+  \item Una aplicació \(X\to P(A)\) és el mateix que una part de \(X\times A\): una família de parts d'\(A\) indexada per \(X\). Tot el capítol llegeix les construccions sobre \(P(A)\) a través d'aquesta correspondència.
+  \item Les operacions booleanes internes es defineixen per transposició i es calculen component avaluacions; la lectura amb \enquote{i} val a tots els estadis, les lectures amb \enquote{o} i \enquote{no} només sobre punts. Sobre noms recuperen les operacions de parts, i les lleis booleanes es transporten.
+  \item \(P(f)\) és la imatge inversa interna; \(\exists_f\) és la transposada de la imatge directa de la pertinença al llarg de \(\id\times f\), i \(\forall_f:=\neg\exists_f\neg\). La imatge directa commuta amb el canvi de base (Beck--Chevalley), i això dona la lectura de \(\exists_f\) sobre elements generalitzats (amb recobriment) i l'adjunció \(\exists_f\dashv P(f)\dashv\forall_f\) a cada estadi.
+  \item La inclusió interna és \(\forall_\pi\) de la implicació puntual; es llegeix com la inclusió de les parts associades, i és un ordre amb \(\cap\) i \(\cup\) com a ínfim i suprem.
+  \item Cap axioma nou: tot surt dels exponencials, el classificador i la factorització imatge.
+\end{enumerate}
+\apartat{Errors típics} Identificar la part \(m\) amb el seu nom \(\ulcorner m\urcorner\) o amb el conjunt \(S\); llegir \(a\mathrel{\varepsilon}(\alpha\cup\beta)\) com \enquote{\(a\mathrel{\varepsilon}\alpha\) o \(a\mathrel{\varepsilon}\beta\)} per a un element generalitzat; creure que \(\exists_f\) \enquote{existeix} per la seva lectura puntual, quan és una aplicació que cal construir amb la imatge directa; esperar el testimoni de \(\exists_f\) en el mateix estadi sense elecció; definir la inclusió interna amb \(\forall_A\) (que quantifica cap a \(\mathbf2\)) en lloc de \(\forall_\pi\); i oblidar que \(\forall_f=\neg\exists_f\neg\) depèn del caràcter booleà de la teoria.
+\apartat{Lectura recomanada} \cite[cap.~7--8]{lawvere-rosebrugh} per al conjunt de parts, la pertinença interna, els quantificadors com a adjunts i el reticle de parts; \cite[article~VI, sessions~32--33]{lawvere-schanuel} per a una presentació elemental de l'objecte de parts; \cite[cap.~9]{awodey} per a les adjuncions en general, amb els quantificadors com a exemple; \cite[cap.~IV]{maclane-moerdijk} per als objectes de parts en un topos i la condició de Beck--Chevalley; i \cite[§§5--9]{halmos} per al conjunt de parts i les operacions amb elements.
+\end{resumcap}

@@ -1,0 +1,911 @@
+\chapter{Conjunts finits i cardinalitat finita}\label{cap:finits}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:naturals}: l'objecte \(\N\), la inducció (amb i sense paràmetres), les equacions de Peano, l'aritmètica i l'ordre, amb la convenció que les propietats de l'ordre es comproven sobre punts. Del capítol~\ref{cap:valors}: sumes disjuntes, complements i distributivitat. Dels capítols~\ref{cap:imatges} i~\ref{cap:exponencials}: factorització imatge, exponencials i composició interna. L'axioma d'elecció només apareix en un punt, assenyalat.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item distingir els ordinals finits \([k]\), definits al metanivell per a numerals estàndard, dels segments inicials \(\seg{n}\), que formen una família interna, i explicar per què la finitud es defineix amb els segons;
+  \item construir el conjunt de cardinals \(\operatorname{Card}(A)\hookrightarrow\N\) codificant les bijeccions \(\seg{n}\to A\) dins un exponencial fix, i definir finitud i cardinal a partir d'ell;
+  \item demostrar, per inducció interna sobre un predicat codificat, que un monomorfisme \(\seg{m}\hookrightarrow\seg{n}\) força \(m\le n\), i deduir-ne la unicitat del cardinal;
+  \item demostrar el principi dels calaixos i l'equivalència entre mono, epi i iso en cardinal igual, i saber on intervé l'elecció;
+  \item demostrar els recomptes \(|A+B|=|A|+|B|\), \(|A\times B|=|A|\cdot|B|\), \(|P(A)|=2^{|A|}\) i \(|B^A|=|B|^{|A|}\) per inducció.
+\end{itemize}
+\end{objectius}
+
+Al llarg del llibre, la paraula \emph{finit} ha aparegut només com a
+comentari extern informal: dèiem que una construcció produïa «un nombre
+finit» de casos o que un diagrama tenia «finites» fletxes, sense que
+aquesta finitud fos res precís. Ara que disposem de l'objecte dels nombres
+naturals (capítol~\ref{cap:naturals}), podem convertir-la en una noció
+\emph{precisa} i \emph{interna}: un conjunt \(A\) serà finit quan existeixi
+un punt \(n\colon\mathbf1\to\N\) amb \(\seg{n}\approx A\), és a dir, quan
+\(A\) sigui equipotent a algun dels segments inicials
+(definició~\ref{def:segment-inicial}) que el successor genera. Aquesta és
+una propietat interna, expressada dins el llenguatge mitjançant la família
+uniforme dels segments \(n\mapsto\seg{n}\), i no requereix cap axioma nou.
+Els ordinals finits \([k]\) que introduïm tot seguit
+(definició~\ref{def:ordinal-finit}) no en són la definició, sinó només la
+\emph{lectura externa} per als numerals estàndard
+(observació~\ref{obs:ordinals-metanivell}): una notació de càlcul còmoda,
+lligada als segments per la coincidència de
+l'observació~\ref{obs:segment-numeral}. El capítol és, més aviat, una
+primera aplicació extensa de tot el que s'ha acumulat ---sumes,
+exponencials, conjunt de parts, factorització imatge i inducció--- i el
+pont cap als exercicis computacionals de la part pràctica.
+
+\section{Els ordinals finits}\label{sec:ordinals-finits}
+
+La successió \(\mathbf1,\;\mathbf1+\mathbf1,\;\mathbf1+\mathbf1+\mathbf1,
+\dots\) no és, de moment, res més que una família de conjunts descrita amb
+punts suspensius. Comencem donant-li un nom precís \emph{al metanivell},
+una recursió externa sobre els numerals estàndard; tot seguit
+(secció~\ref{sec:segments-interns}) en construirem la versió \emph{interna}
+i uniforme, els segments inicials, que és la que sostindrà tota la teoria.
+
+\begin{definicio}[Ordinal finit]\index{Ordinal finit}\label{def:ordinal-finit}
+Per a cada natural estàndard \(k\) del metallenguatge definim
+\emph{externament} un conjunt \([k]\), l'\emph{ordinal finit}
+associat a \(k\), per la recursió metateòrica
+\[
+[0]:=\mathbf0,
+\qquad
+[k+1]:=[k]+\mathbf1,
+\]
+on \(\mathbf0\) és el conjunt inicial (capítol~\ref{cap:aplicacions}),
+\(+\) la suma de conjunts (definició~\ref{def:suma-conjunts}) i
+\(\mathbf1\) el conjunt terminal. Aquesta notació assigna un conjunt
+\([k]\), concret llevat d'isomorfisme, a cada numeral estàndard, un per a
+cada \(k\) del metallenguatge; \emph{no} s'estén a un punt intern arbitrari
+\(n\colon\mathbf1\to\N\). Per al pas de \([k]\) a \([k+1]\) escriurem
+\(\iota_k\colon[k]\to[k+1]\) per a la injecció canònica \(i_0\) de la suma
+\([k]+\mathbf1\), i \(\ast_k\colon\mathbf1\to[k+1]\) per a la injecció
+\(i_1\) del sumand nou.
+\end{definicio}
+
+\begin{observacio}[Sobre l'estatut de la recursió d'ordinals]\label{obs:ordinals-metanivell}
+La regla anterior és una recursió al metanivell, no una aplicació interna
+cap a un «conjunt de tots els conjunts», que no existeix. A cada numeral
+estàndard \(\bar k\colon\mathbf1\to\N\) ---el zero, el successor del zero,
+i així successivament--- li correspon el conjunt \([k]\), concret llevat
+d'isomorfisme, un per a cada \(k\) del metallenguatge. No pretenem que tot
+punt global d'un \(\N\) intern sigui d'aquesta forma: en una teoria de
+primer ordre no es pot identificar sense més una variable interna
+\(n\colon\mathbf1\to\N\) amb un numeral construït externament, i per tant la
+notació \([\,\cdot\,]\) no s'estén a un \(n\) intern arbitrari.
+
+Per aquesta raó, la finitud i la cardinalitat internes \emph{no} es
+basaran en la família metanivell \(k\mapsto[k]\), sinó en la família
+\emph{interna} dels segments inicials \(n\mapsto\seg{n}\)
+(definició~\ref{def:segment-inicial}), que prové d'un sol objecte, la
+relació \(\operatorname{Lt}\hookrightarrow\N\times\N\). Els ordinals
+\([k]\) es conservaran només com a \emph{notació de càlcul} per als
+numerals estàndard, lligada als segments per la coincidència externa de
+l'observació~\ref{obs:segment-numeral}.
+\end{observacio}
+
+Convé fixar de seguida les mides petites, que reapareixeran a cada
+inducció.
+
+\begin{proposicio}[Els primers ordinals]\label{prop:ordinals-petits}
+Es tenen isomorfismes canònics \([1]\cong\mathbf1\) i
+\([2]\cong\mathbf1+\mathbf1\cong\mathbf2\). A més, per a cada numeral
+estàndard \(k\) la injecció \(\iota_k\colon[k]\hookrightarrow[k+1]\) és un
+monomorfisme, i \(\ast_k\) és el seu complement dins \([k+1]\).
+\end{proposicio}
+
+\begin{prova}
+El cas \(k=0\) de la definició dona \([1]=\mathbf0+\mathbf1\cong\mathbf1\)
+per la neutralitat del conjunt inicial respecte de la suma
+(capítol~\ref{cap:valors}); aplicant-ho un cop més,
+\([2]=[1]+\mathbf1\cong\mathbf1+\mathbf1\), que és el conjunt de valors de
+veritat \(\mathbf2\). Que \(\iota_k\) és un monomorfisme amb complement
+\(\ast_k\) és la disjunció de la suma (definició~\ref{def:suma-disjunta}):
+en una suma disjunta les dues injeccions són monomorfismes que
+representen parts complementàries. Com que aquestes afirmacions són un
+esquema sobre numerals estàndard, cada instància es comprova externament.
+\end{prova}
+
+\section{Els segments inicials com a família interna}\label{sec:segments-interns}
+
+Els ordinals \([k]\) de la definició~\ref{def:ordinal-finit} pateixen la
+limitació que l'observació~\ref{obs:ordinals-metanivell} ja assenyalava:
+la notació \(k\mapsto[k]\) només està definida per als numerals estàndard
+del metallenguatge i no és, per si sola, una família interna. Ara que
+disposem de l'ordre de
+\(\N\) com a \emph{part} \(\operatorname{Lt}\hookrightarrow\N\times\N\)
+(definició~\ref{def:ordre-naturals}), podem donar una segona presentació
+dels ordinals finits que \emph{sí} és interna i uniforme, i comprovar que
+coincideix amb la primera. Aquesta presentació és la que farà de la
+finitud una propietat interna.
+
+\begin{definicio}[Segment inicial]\index{Segment inicial}\label{def:segment-inicial}
+Per a cada punt \(n\colon\mathbf1\to\N\), el \emph{segment inicial}
+\(\seg{n}\hookrightarrow\N\) és la fibra de la part
+\(\operatorname{Lt}\hookrightarrow\N\times\N\) sobre \(n\): la part de
+\(\N\) formada pels \(k\) amb \(k<n\), és a dir la imatge inversa
+\[
+\seg{n}:=\{\,k\colon\mathbf1\to\N \mid k<n\,\}
+=\operatorname{Lt}\bigl|_{\N\times\{n\}} ,
+\]
+obtinguda com el producte fibrat de \(\operatorname{Lt}\hookrightarrow
+\N\times\N\) al llarg de \(\langle\id_\N,n\circ{!}\rangle\colon\N\to
+\N\times\N\) (definició~\ref{def:pullback}).
+\end{definicio}
+
+\begin{observacio}[La família de segments és interna i uniforme]\label{obs:segments-interns}
+A diferència de \(k\mapsto[k]\), la regla \(n\mapsto\seg{n}\) \emph{sí} que és una única part interna: prové d'un sol
+objecte, la relació \(\operatorname{Lt}\hookrightarrow\N\times\N\), de la
+qual \(\seg{n}\) és la fibra sobre \(n\). Dit d'una altra
+manera, \(\operatorname{Lt}\), vista com una aplicació
+\(\operatorname{Lt}\to\N\) per la segona projecció, és la
+\emph{família uniforme} \((\seg{n})_{n\in\N}\) de tots els
+segments alhora, indexada internament per \(\N\)
+(capítol~\ref{cap:relacions}). És aquesta uniformitat la que permetrà
+quantificar sobre segments dins el llenguatge, cosa que amb \([k]\) sol no
+era possible.
+\end{observacio}
+
+\begin{observacio}[Coincidència externa amb els numerals estàndard]\label{obs:segment-numeral}
+Per a cada numeral estàndard \(k\) del metallenguatge, hi ha un isomorfisme
+\(\seg{\bar k}\cong[k]\) entre el segment del numeral \(\bar
+k\colon\mathbf1\to\N\) i l'ordinal finit \([k]\). Aquesta és una afirmació
+\emph{externa}, un esquema amb una instància per a cada \(k\), i es
+comprova per inducció metateòrica sobre \(k\):
+\[
+\seg{\bar 0}\cong\mathbf0=[0],
+\qquad
+\seg{\overline{k+1}}\cong\seg{\bar k}+\mathbf1\cong[k]+\mathbf1=[k+1],
+\]
+on la primera línia val perquè \(\{j:j<0\}\) és inicial, i el pas usa que
+\(j<\overline{k+1}\) equival a \(j\le\bar k\), és a dir \(j<\bar k\) o
+\(j=\bar k\) (proposició~\ref{prop:ordre-total}), cosa que descompon
+\(\seg{\overline{k+1}}\) en la suma disjunta \(\seg{\bar k}+\mathbf1\).
+
+No enunciem cap identificació \(\seg{n}\cong[n]\) per a un \(n\colon
+\mathbf1\to\N\) \emph{intern} arbitrari: això requeriria una inducció
+interna sobre un objecte, \([n]\), que no és intern. Els \([k]\) queden,
+doncs, com a abreviatura còmoda per als numerals concrets, i tota
+construcció interna del capítol es fa amb els segments \(\seg{n}\).
+\end{observacio}
+
+El que \emph{sí} és intern, i és tot el que la teoria de la finitud
+necessita, és la manera com un segment creix en passar al successor. Ho
+enunciem sobre una variable interna \(n\).
+
+\begin{proposicio}[Descomposició successora del segment]\label{prop:segment-successor}
+Per a tota variable interna \(n\colon\mathbf1\to\N\) hi ha un isomorfisme
+\[
+\seg{s\circ n}\ \cong\ \seg{n}+\mathbf1,
+\]
+en què el sumand \(\seg{n}\) és la part de \(\seg{s\circ n}\) dels
+\(k<n\) i el sumand \(\mathbf1\) és el punt \(n\) mateix. A més
+\(\seg{0}\cong\mathbf0\).
+\end{proposicio}
+
+\begin{prova}
+\(\seg{0}=\{k:k<0\}\) és inicial, perquè \(k<0\) no es compleix per a cap
+punt \(k\) (de \(k+s\circ j=0\) sortiria \(s\circ(k+j)=0\), contra el
+fet que el zero no és cap successor, teorema~\ref{teo:peano}(2)).
+
+Per al successor, un punt \(k\in\seg{s\circ n}\) compleix \(k<s\circ n\),
+que equival a \(k\le n\), és a dir \(k<n\) o bé \(k=n\), i no totes dues
+alhora perquè \(n\not<n\) (pas del successor de l'ordre,
+proposició~\ref{prop:ordre-total}); com a tota la secció de l'ordre, el
+raonament és sobre punts, i la separació global el converteix en una
+igualtat de parts (observació~\ref{obs:ordre-sobre-punts}). Aquesta disjunció exclusiva
+descompon la part \(\seg{s\circ n}\hookrightarrow\N\) en dues parts
+complementàries: la dels \(k<n\), que és \(\seg{n}\), i la del punt únic
+\(k=n\), que és una còpia de \(\mathbf1\). Una part i el seu complement
+formen una suma disjunta (teorema~\ref{teo:part-complementari}), de manera
+que \(\seg{s\circ n}\cong\seg{n}+\mathbf1\).
+\end{prova}
+
+\section{Equipotència i el conjunt de cardinals}\label{sec:equipotencia}
+
+Per definir la finitud com una propietat \emph{interna} ---i, alhora, el
+cardinal com una funció ben definida--- ens cal, per a un conjunt \(A\)
+fixat, poder reunir en una part de \(\N\) tots els \(n\) tals que \(\seg{n}\)
+és isomorf a \(A\). Aquesta part es construeix sense cap circularitat, ni
+amb cap axioma nou, a partir de dues eines ja disponibles: el subconjunt
+dels isomorfismes dins un exponencial, i la factorització imatge. La
+construcció és el cas finit d'una noció més general ---l'\emph{equipotència}
+de dos conjunts--- que reprendrem quan comparem cardinals infinits.
+
+\begin{definicio}[El subconjunt dels isomorfismes]\index{El subconjunt dels isomorfismes}\label{def:iso-exponencial}
+Siguin \(A\) i \(B\) dos conjunts. El \emph{subconjunt dels isomorfismes}
+\(\operatorname{Isos}(A,B)\hookrightarrow B^{A}\) és la part de
+l'exponencial \(B^{A}\) formada pels punts \(f\) que admeten una inversa
+bilateral. Es construeix internament així. Per la composició interna
+(proposició~\ref{prop:composicio-interna}) hi ha aplicacions
+\[
+c_{A}\colon A^{B}\times B^{A}\to A^{A},
+\qquad
+c_{B}\colon B^{A}\times A^{B}\to B^{B},
+\]
+que sobre punts envien \((g,f)\mapsto g\circ f\) i \((f,g)\mapsto f\circ
+g\) respectivament, i identitats internes \(\jmath_A\colon\mathbf1\to
+A^{A}\), \(\jmath_B\colon\mathbf1\to B^{B}\). Considerem l'aplicació
+\[
+\Phi\colon B^{A}\times A^{B}\longrightarrow A^{A}\times B^{B},
+\qquad
+(f,g)\longmapsto\bigl(c_A(g,f),\,c_B(f,g)\bigr)=(g\circ f,\ f\circ g),
+\]
+i l'equalitzador (definició~\ref{def:equalitzador}) de \(\Phi\) amb
+l'aplicació constant de valor \((\jmath_A,\jmath_B)\): la part
+\(P\hookrightarrow B^{A}\times A^{B}\) dels parells \((f,g)\) amb \(g\circ
+f=\id_A\) i \(f\circ g=\id_B\). Aleshores \(\operatorname{Isos}(A,B)\) és la
+imatge (teorema~\ref{teo:factoritzacio}) de \(P\) per la projecció a
+\(B^{A}\): els \(f\) per als quals existeix un tal \(g\).
+\end{definicio}
+
+\begin{observacio}[Els punts de \(\operatorname{Isos}(A,B)\)]\label{obs:iso-punts}
+Pels punts globals de l'exponencial (teorema~\ref{teo:punts-exponencial}),
+un punt \(\mathbf1\to\operatorname{Isos}(A,B)\) és exactament una aplicació
+\(f\colon A\to B\) que és un isomorfisme (definició~\ref{def:isomorfisme}).
+Així, \(\operatorname{Isos}(A,B)\) és no inicial si i només si existeix un
+isomorfisme \(A\cong B\). La part es defineix per a tot parell de conjunts
+amb un únic bloc d'operacions internes, sense triar cap isomorfisme.
+\end{observacio}
+
+\begin{definicio}[Equipotència]\index{Equipotència}\label{def:equipotencia}
+Dos conjunts \(A\) i \(B\) són \emph{equipotents}, i escrivim \(A\approx
+B\), si \(\operatorname{Isos}(A,B)\) és no inicial ---equivalentment, si
+existeix un isomorfisme \(A\cong B\). La relació \(\approx\) és reflexiva
+(la identitat), simètrica (la inversa d'un isomorfisme) i transitiva (la
+composició), és a dir, una relació d'equivalència. Cal entendre aquesta
+afirmació \emph{metateòricament}: com que no hi ha cap conjunt de tots els
+conjunts, \(\approx\) no és una part interna d'un producte, sinó una
+relació entre conjunts formulada al metanivell; reflexivitat, simetria i
+transitivitat s'hi comproven exhibint, en cada cas, l'isomorfisme
+corresponent.
+\end{definicio}
+
+Ara fixem \(A\) i fem variar el segment. La família uniforme
+\((\seg{n})_{n\in\N}\) (observació~\ref{obs:segments-interns}) permet
+reunir en un sol objecte tots els isomorfismes \(\seg{n}\to A\), i
+projectar-los sobre \(\N\) dona la part buscada.
+
+\begin{definicio}[El conjunt de cardinals d'un conjunt]\index{El conjunt de cardinals d'un conjunt}\label{def:card-A}
+Sigui \(A\) un conjunt. Cada segment \(\seg{n}\) és una part de \(\N\)
+(definició~\ref{def:segment-inicial}), de manera que una aplicació
+\(\varphi\colon\seg{n}\to A\) s'estén de manera única a una aplicació
+\(\bar\varphi\colon\N\to A+\mathbf1\) que val \(\varphi\) sobre \(\seg{n}\)
+i el punt afegit \(\ast\colon\mathbf1\to A+\mathbf1\) fora de \(\seg{n}\)
+(definició per casos amb el complement, capítol~\ref{cap:valors}). Així
+totes les aplicacions des de tots els segments viuen dins un \emph{únic}
+exponencial fix, \((A+\mathbf1)^{\N}\), i podem reunir-les en un sol
+objecte.
+
+Definim una part d'un objecte \emph{fix}, sense exponencials de domini
+variable:
+\[
+\mathcal E_A\ \hookrightarrow\ \N\times(A+\mathbf1)^{\N}\times\N^{A},
+\]
+els punts de la qual són els triples \((n,g,h)\) ---amb
+\(g\colon\N\to A+\mathbf1\) i \(h\colon A\to\N\)--- que satisfan
+internament les tres condicions següents, on \(i_A\colon A\to A+\mathbf1\)
+i \(i_1\colon\mathbf1\to A+\mathbf1\) són les injeccions de la suma:
+\begin{enumerate}
+\item[(i)] per a tot \(k<n\), existeix (un únic) \(a\) amb \(g(k)=i_A(a)\)
+i \(h(a)=k\);
+\item[(ii)] per a tot \(a\in A\), \(h(a)<n\) i \(g(h(a))=i_A(a)\);
+\item[(iii)] per a tot \(k\) amb \(k\not<n\), \(g(k)=i_1(\ast)\).
+\end{enumerate}
+Aquestes condicions només fan servir avaluacions dels exponencials
+\emph{fixos} \((A+\mathbf1)^{\N}\) i \(\N^{A}\), l'ordre \(<\)
+(definició~\ref{def:ordre-naturals}), igualtats i quantificadors acotats,
+tots ja construïts; \(\mathcal E_A\) n'és la part corresponent, tallada per
+equalitzadors i imatges inverses. Les condicions (i)--(ii) diuen que
+\(g\) i \(h\) exhibeixen una bijecció entre \(\seg{n}\) i \(A\) (cadascuna
+inversa de l'altra sobre el seu domini), i (iii) fixa \(g\) fora de
+\(\seg{n}\), de manera que un tal triple existeix si i només si
+\(\seg{n}\approx A\).
+
+El \emph{conjunt de cardinals} de \(A\) és la imatge
+(teorema~\ref{teo:factoritzacio}) de la projecció
+\(\pi\colon\mathcal E_A\to\N\):
+\[
+\operatorname{Card}(A)\ :=\ \operatorname{Im}(\pi)\ =\
+\{\,n\colon\mathbf1\to\N \mid \seg{n}\approx A\,\}
+\ \hookrightarrow\ \N .
+\]
+\end{definicio}
+
+\begin{proposicio}[\(\operatorname{Card}(A)\) és una part interna]\label{prop:card-interna}
+Per a tot conjunt \(A\), \(\operatorname{Card}(A)\) és una part ben
+definida de \(\N\), i un punt \(n\colon\mathbf1\to\N\) hi pertany si i
+només si \(\seg{n}\approx A\). La construcció no fa servir cap axioma
+d'elecció ni cap noció prèvia de finitud o cardinal.
+\end{proposicio}
+
+\begin{prova}
+La part \(\mathcal E_A\hookrightarrow\N\times(A+\mathbf1)^{\N}\times\N^{A}\)
+és interna per construcció (definició~\ref{def:card-A}): les condicions
+(i)--(iii) són conjuncions d'equacions entre avaluacions d'exponencials
+fixos i de condicions acotades per l'ordre \(<\), totes tallables amb
+equalitzadors, imatges inverses i quantificadors acotats ja disponibles
+(capítols~\ref{cap:exponencials} i~\ref{cap:parts-interna}). La imatge
+d'una aplicació existeix sempre (teorema~\ref{teo:factoritzacio}), de
+manera que \(\operatorname{Card}(A)=\operatorname{Im}(\pi)\) és una part de
+\(\N\).
+
+Un punt \(n\) es factoritza per aquesta imatge si i només si la fibra
+\((\mathcal E_A)_n\) és no inicial (exhaustivitat de la coprojecció sobre
+la imatge, capítol~\ref{cap:imatges}). Ara bé, un punt de \((\mathcal
+E_A)_n\) és un parell \((g,h)\) que satisfà (i)--(iii); per (i) i (ii),
+\(g\) restringida a \(\seg{n}\) i \(h\) són mútuament inverses, i
+defineixen un isomorfisme \(\seg{n}\to A\), és a dir \(\seg{n}\approx A\).
+Recíprocament, un isomorfisme \(\varphi\colon\seg{n}\to A\) dona el triple
+\((n,\bar\varphi,\varphi^{-1})\), amb \(\bar\varphi\) l'extensió per
+\(\ast\), que satisfà (i)--(iii). Així \(n\in\operatorname{Card}(A)\) si i
+només si \(\seg{n}\approx A\). Cap pas no ha usat la finitud ni el
+cardinal, sinó només exponencials fixos, l'ordre, equalitzadors i la
+imatge.
+\end{prova}
+
+\begin{definicio}[Conjunt finit i cardinal]\index{Conjunt finit i cardinal}\label{def:conjunt-finit}
+Un conjunt \(A\) és \emph{finit} si \(\operatorname{Card}(A)\) és no
+inicial (definició~\ref{def:card-A}); és a dir, si existeix un punt
+\(n\colon\mathbf1\to\N\) amb \(\seg{n}\approx A\). Quan \(A\) és finit,
+provarem tot seguit que \(\operatorname{Card}(A)\) té un \emph{únic} punt
+(teorema~\ref{teo:unicitat-cardinal}); aquest punt és el \emph{cardinal}
+de \(A\), que denotarem \(|A|\colon\mathbf1\to\N\).
+\end{definicio}
+
+\begin{observacio}[La finitud és una propietat interna]\label{obs:finitud-propietat}
+Aquesta definició \emph{sí} és interna, a diferència del que passaria amb
+\([n]\). La clau és que \(\operatorname{Card}(A)\) s'ha construït
+(definició~\ref{def:card-A}, proposició~\ref{prop:card-interna}) com una
+part genuïna de \(\N\) ---la imatge d'una projecció---, sense recórrer a
+cap noció prèvia de finitud ni de cardinal, sinó només a la família interna
+de segments (observació~\ref{obs:segments-interns}), al subconjunt dels
+isomorfismes d'un exponencial (definició~\ref{def:iso-exponencial}) i a la
+factorització imatge (teorema~\ref{teo:factoritzacio}). Per tant «\(A\) és
+finit» ---que \(\operatorname{Card}(A)\) sigui no inicial--- és una
+propietat interna de \(A\), i no un esquema indexat per numerals com ho era
+la caracterització amb \([n]\).
+
+No hi ha circularitat entre finitud i cardinal: primer es construeix la
+part \(\operatorname{Card}(A)\); després, «finit» n'afirma la no-inicialitat
+i el «cardinal» n'és l'únic punt. Cap de les dues nocions no s'ha usat en
+la construcció de \(\operatorname{Card}(A)\). Que aquest punt és únic ---i
+per tant que \(|A|\) és una funció ben definida sobre els conjunts finits,
+invariant per isomorfisme--- és el contingut del
+teorema~\ref{teo:unicitat-cardinal}, que provem tot seguit.
+\end{observacio}
+
+\begin{observacio}[Relació amb la finitud estàndard]\label{obs:finitud-equivalencia}
+La definició interna es pot comparar, \emph{externament}, amb la noció
+ingènua de finitud «isomorf a algun \([k]\)». Per a cada numeral estàndard
+\(k\), la coincidència \(\seg{\bar k}\cong[k]\)
+(observació~\ref{obs:segment-numeral}) dona: si \(A\cong[k]\) per a algun
+numeral \(k\), aleshores \(\seg{\bar k}\approx A\), de manera que
+\(\bar k\in\operatorname{Card}(A)\) i \(A\) és finit en el sentit intern
+(definició~\ref{def:conjunt-finit}). Recíprocament, si es disposa
+\emph{externament} d'un punt global \(n\in\operatorname{Card}(A)\) que
+sigui un numeral estàndard \(\bar k\), aleshores \(A\cong\seg{\bar
+k}\cong[k]\).
+
+Convé distingir tres nivells, que no s'han de confondre:
+\begin{enumerate}
+\item \(\operatorname{Card}(A)\hookrightarrow\N\) és una \emph{part
+interna}, sempre ben definida (proposició~\ref{prop:card-interna});
+\item «\(A\) és finit» és l'afirmació, \emph{externa}, que aquesta part és
+no inicial ---és a dir, que té algun punt global;
+\item un tal punt global és un \(n\colon\mathbf1\to\N\) que no té per què
+ser un numeral estàndard; la identificació amb un \([k]\) concret només és
+possible quan, externament, se sap que \(n\) és un numeral.
+\end{enumerate}
+Els resultats interns del capítol (comparació, unicitat, recomptes) no
+requereixen cap identificació amb numerals: es demostren sobre els segments
+\(\seg{n}\) amb \(n\) intern.
+\end{observacio}
+
+\begin{observacio}[Treballem sobre els segments interns]\label{obs:seg-vs-corxet}
+En tot el que segueix, els resultats interns ---comparació de mides,
+unicitat del cardinal, recomptes--- es demostren \emph{sobre els segments
+\(\seg{n}\)} amb \(n\colon\mathbf1\to\N\) intern, i les inducions es fan
+amb el principi d'inducció (teorema~\ref{teo:induccio}) usant la
+descomposició successora \(\seg{s\circ n}\cong\seg{n}+\mathbf1\)
+(proposició~\ref{prop:segment-successor}) allà on abans s'hauria escrit
+\([s\circ n]=[n]+\mathbf1\). Així cap prova no depèn de la família
+metanivell \([n]\): la finitud i el cardinal són interns
+(definició~\ref{def:conjunt-finit}), i els \([k]\) queden reservats a la
+lectura externa amb numerals concrets (observació~\ref{obs:segment-numeral}).
+\end{observacio}
+
+El nucli de tota la teoria és el fet que dos ordinals isomorfs són iguals.
+El demostrarem per inducció (lema~\ref{lema:comparacio-ordinals}), i en derivarem alhora la unicitat del
+cardinal i el principi dels calaixos.
+
+Abans, però, cal assegurar que la inducció d'aquest lema \emph{sí} que és
+interna. La dificultat és la mateixa que resolguérem per a
+\(\operatorname{Card}(A)\): tant el domini \(\seg{m}\) com el codomini
+\(\seg{n}\) varien amb els punts \(m,n\), de manera que «existeix un
+monomorfisme \(\seg{m}\hookrightarrow\seg{n}\)» no és, escrit així, una
+fórmula amb \(m\) lliure sobre la qual aplicar el principi d'inducció
+(teorema~\ref{teo:induccio}). Ho resolem codificant tots els monomorfismes
+entre segments dins un \emph{exponencial fix}, exactament com fèrem amb
+\(\mathcal E_A\).
+
+\begin{definicio}[Codificació uniforme dels monomorfismes entre segments]\index{Codificació uniforme dels monomorfismes entre segments}\label{def:mono-segments}
+De la mateixa manera que a la definició~\ref{def:card-A}, una aplicació
+\(\seg{m}\to\seg{n}\subseteq\N\) s'estén de manera única a una aplicació
+\(\N\to\N+\mathbf1\) que hi val el punt afegit fora de \(\seg{m}\). Definim
+una part d'un objecte \emph{fix},
+\[
+\mathcal M\ \hookrightarrow\ \N\times\N\times(\N+\mathbf1)^{\N},
+\]
+els punts \((m,n,g)\) de la qual ---amb \(g\colon\N\to\N+\mathbf1\), i
+\(i_\N\colon\N\to\N+\mathbf1\), \(i_1\colon\mathbf1\to\N+\mathbf1\) les
+injeccions de la suma--- satisfan internament:
+\begin{enumerate}
+\item[(m1)] per a tot \(k<m\), existeix un únic \(\ell<n\) amb
+\(g(k)=i_\N(\ell)\);
+\item[(m2)] per a tot \(k\) amb \(k\not<m\), \(g(k)=i_1(\ast)\);
+\item[(m3)] per a tot \(k,k'<m\), si \(g(k)=g(k')\) aleshores \(k=k'\).
+\end{enumerate}
+Aquestes condicions només fan servir avaluacions de l'exponencial \emph{fix}
+\((\N+\mathbf1)^{\N}\), l'ordre \(<\) (definició~\ref{def:ordre-naturals}),
+igualtats i quantificadors acotats; \(\mathcal M\) n'és la part
+corresponent, tallada per equalitzadors i imatges inverses. Les condicions
+(m1)--(m2) diuen que \(g\) codifica una aplicació \(\seg{m}\to\seg{n}\)
+(estesa per \(\ast\)), i (m3) que és injectiva. Així la fibra
+\(\mathcal M_{m,n}\) sobre \((m,n)\) és no inicial si i només si existeix un
+monomorfisme \(\seg{m}\hookrightarrow\seg{n}\).
+\end{definicio}
+
+Amb aquesta codificació, «existeix un monomorfisme
+\(\seg{m}\hookrightarrow\seg{n}\)» esdevé la condició interna
+«\(\mathcal M_{m,n}\) és no inicial», i podem formar el predicat intern
+\[
+P(m)\ :\Longleftrightarrow\ \forall n\colon\mathbf1\to\N\ \bigl(\mathcal
+M_{m,n}\text{ és no inicial}\ \Rightarrow\ m\le n\bigr),
+\]
+que sí que és una fórmula amb \(m\) com a única variable lliure, apta per al
+principi d'inducció (teorema~\ref{teo:induccio}). La prova del lema aplica
+la inducció interna precisament a \(P\).
+
+\begin{lema}[Comparació de segments]\label{lema:comparacio-ordinals}
+Siguin \(m,n\colon\mathbf1\to\N\).
+\begin{enumerate}
+\item Si existeix un monomorfisme \(\seg{m}\hookrightarrow\seg{n}\),
+aleshores \(m\le n\).
+\item Si existeix un isomorfisme \(\seg{m}\cong\seg{n}\), aleshores \(m=n\).
+\end{enumerate}
+\end{lema}
+
+\begin{prova}
+La segona afirmació se segueix de la primera: un isomorfisme dona
+monomorfismes \(\seg{m}\hookrightarrow\seg{n}\) i
+\(\seg{n}\hookrightarrow\seg{m}\), d'on \(m\le n\) i \(n\le m\), i per
+l'antisimetria (proposició~\ref{prop:ordre-total}) \(m=n\).
+
+Provem la primera aplicant el principi d'inducció
+(teorema~\ref{teo:induccio}) al predicat intern \(P(m)\) definit més amunt
+(definició~\ref{def:mono-segments}); com que \(P\) quantifica internament
+sobre \(n\), la inducció és uniforme en \(n\) sense sortir del llenguatge.
+Per a \(P(0)\): si \(\mathcal M_{0,n}\) és no inicial, aleshores \(0\le n\)
+sempre (proposició~\ref{prop:ordre-total}). Per al pas, suposem \(P(m)\) i
+provem \(P(s\circ m)\): sigui \(n\) tal que \(\mathcal M_{s\circ m,\,n}\)
+és no inicial, és a dir hi ha un monomorfisme
+\(f\colon\seg{s\circ m}\hookrightarrow\seg{n}\). Com que \(\seg{s\circ m}\cong\seg{m}+\mathbf1\)
+(proposició~\ref{prop:segment-successor}) és no inicial, també ho és
+\(\seg{n}\); per tant \(n\ne0\) ---si \(n=0\), \(\seg{0}\cong\mathbf0\) no rebria cap
+aplicació des d'un conjunt no inicial (estrictesa de \(\mathbf0\),
+capítol~\ref{cap:valors})---, és a dir \(n=s\circ n'\) per a un (únic)
+punt \(n'\) (lema~\ref{lema:zero-o-successor}), i
+\(\seg{n}\cong\seg{n'}+\mathbf1\)
+(proposició~\ref{prop:segment-successor}).
+
+Escrivim \(\seg{s\circ m}\cong\seg{m}+\mathbf1\) amb les injeccions
+\(\iota\colon\seg{m}\hookrightarrow\seg{s\circ m}\) i
+\(\ast\colon\mathbf1\to\seg{s\circ m}\), i
+\(\seg{n}\cong\seg{n'}+\mathbf1\) amb
+\(\jmath\colon\seg{n'}\hookrightarrow\seg{n}\) i
+\(\ast'\colon\mathbf1\to\seg{n}\). Volem un monomorfisme
+\(g\colon\seg{m}\hookrightarrow\seg{n'}\). El pas essencial és decidir on
+va a parar el punt nou \(f\circ\ast\colon\mathbf1\to\seg{n}\). Com que
+\(\seg{n}\cong\seg{n'}+\mathbf1\) és una suma disjunta, aquest punt global
+es factoritza per exactament una de les dues injeccions
+(teorema~\ref{teo:exhaustivitat-sumes}: tot punt global d'una suma prové
+d'un únic sumand); distingim els dos casos.
+
+\emph{Cas 1: \(f\circ\ast=\ast'\).} Aleshores la imatge inversa
+\((f\circ\iota)^{-1}(\ast')\hookrightarrow\seg{m}\) és buida: un punt
+\(x\) seu compliria \(f\circ\iota\circ x=\ast'=f\circ\ast\), i la
+injectivitat de \(f\) donaria \(\iota\circ x=\ast\), impossible perquè
+\(\iota\) i \(\ast\) són parts complementàries de \(\seg{s\circ m}\) (la
+seva intersecció és inicial i no té punts); sense punts, la imatge
+inversa és inicial pel lema del buit (lema~\ref{lema:buit}). Per tant
+\(f\circ\iota\) es factoritza pel complement de \(\ast'\) (descomposició
+\(\seg{n}\cong\ast'+(\ast')^c\) i estabilitat), que és
+\(\jmath\colon\seg{n'}\hookrightarrow\seg{n}\):
+existeix un únic \(g\colon\seg{m}\to\seg{n'}\) amb \(\jmath\circ
+g=f\circ\iota\). Aquest \(g\) és un monomorfisme perquè \(\jmath\circ g\)
+ho és i \(\jmath\) és un monomorfisme.
+
+\emph{Cas 2: \(f\circ\ast=\jmath\circ q\)} per a un únic punt
+\(q\colon\mathbf1\to\seg{n'}\). Reduïm al Cas~1 permutant a \(\seg{n}\) el
+punt \(\jmath\circ q\) amb el punt nou \(\ast'\). Definim
+\(\tau\colon\seg{n}\to\seg{n}\) \emph{per casos}, usant la descomposició de
+\(\seg{n'}\) en el singleton determinat per \(q\) i el seu complement
+\(C\hookrightarrow\seg{n'}\) (tota part té complement,
+capítol~\ref{cap:valors}), de manera que
+\(\seg{n}\cong C+\mathbf1_q+\mathbf1_{\ast'}\), on \(\mathbf1_q\) és la
+fibra de \(q\) i \(\mathbf1_{\ast'}\) el sumand nou. Sobre aquesta
+descomposició, \(\tau\) actua com:
+\[
+\tau|_C=\id_C,
+\qquad
+\tau|_{\mathbf1_q}\colon\mathbf1_q\xrightarrow{\ \sim\ }\mathbf1_{\ast'},
+\qquad
+\tau|_{\mathbf1_{\ast'}}\colon\mathbf1_{\ast'}\xrightarrow{\ \sim\ }\mathbf1_q,
+\]
+és a dir, la identitat sobre \(C\) i l'intercanvi dels dos singletons.
+Aquesta definició per casos (propietat universal de la suma,
+notació~\ref{not:suma}) fa immediat que \(\tau\circ\tau=\id_{\seg{n}}\),
+ja que intercanviar dues vegades és la identitat sobre cada sumand; per
+tant \(\tau\) és una involució, i en particular un isomorfisme. Aleshores
+\(\tau\circ f\colon\seg{s\circ m}\hookrightarrow\seg{n}\) és un
+monomorfisme amb \(\tau\circ f\circ\ast=\tau\circ\jmath\circ
+q=\ast'\), de manera que recau en el Cas~1; aplicant-hi el Cas~1 obtenim
+el monomorfisme \(g\colon\seg{m}\hookrightarrow\seg{n'}\).
+
+En tots dos casos hi ha un monomorfisme
+\(g\colon\seg{m}\hookrightarrow\seg{n'}\), és a dir \(\mathcal M_{m,n'}\) és
+no inicial. Per la hipòtesi d'inducció \(P(m)\), aplicada a \(n'\), obtenim
+\(m\le n'\), i doncs \(s\circ m\le s\circ n'=n\) (pas del successor,
+proposició~\ref{prop:ordre-total}). Com que \(n\) era arbitrari, això prova
+\(P(s\circ m)\) i tanca la inducció.
+\end{prova}
+
+\begin{teorema}[Unicitat del cardinal finit]\label{teo:unicitat-cardinal}
+Si \(A\) és finit, la part \(\operatorname{Card}(A)\hookrightarrow\N\) té un
+\emph{únic} punt: el cardinal \(n\) amb \(\seg{n}\approx A\) és únic. En
+conseqüència, la notació \(|A|\) està ben definida, i dos conjunts finits
+són isomorfs si i només si tenen el mateix cardinal.
+\end{teorema}
+
+\begin{prova}
+Treballem sobre els segments interns (observació~\ref{obs:seg-vs-corxet}).
+Si \(\seg{m}\approx A\) i \(\seg{n}\approx A\), aleshores
+\(\seg{m}\approx\seg{n}\) per transitivitat de l'equipotència
+(definició~\ref{def:equipotencia}), és a dir hi ha un isomorfisme
+\(\seg{m}\cong\seg{n}\); pel lema~\ref{lema:comparacio-ordinals}, \(m=n\).
+Això prova que \(\operatorname{Card}(A)\) té com a molt un punt, i dona la
+bona definició de \(|A|\). Per a la darrera afirmació, si \(A\cong B\) amb
+\(\seg{|A|}\approx A\) i \(\seg{|B|}\approx B\), aleshores
+\(\seg{|A|}\approx\seg{|B|}\) i \(|A|=|B|\); recíprocament, \(|A|=|B|\)
+dona \(A\approx\seg{|A|}=\seg{|B|}\approx B\), és a dir \(A\cong B\).
+\end{prova}
+
+\section{El principi dels calaixos}\label{sec:calaixos}
+
+La comparació d'ordinals conté ja, essencialment, el principi dels
+calaixos. L'enunciem en la forma habitual i en derivem l'equivalència, per
+a conjunts finits del mateix cardinal, entre injectivitat, exhaustivitat i
+bijectivitat.
+
+\begin{teorema}[Principi dels calaixos]\label{teo:calaixos}
+Siguin \(A\) i \(B\) conjunts finits amb \(|A|>|B|\). Aleshores no hi ha
+cap monomorfisme \(A\hookrightarrow B\). Dit altrament: tota aplicació
+d'un conjunt finit cap a un de cardinal estrictament menor identifica
+almenys dos elements.
+\end{teorema}
+
+\begin{prova}
+Un monomorfisme \(A\hookrightarrow B\) donaria, component amb els
+isomorfismes \(\seg{|A|}\approx A\) i \(B\approx\seg{|B|}\)
+(definició~\ref{def:conjunt-finit}), un monomorfisme
+\(\seg{|A|}\hookrightarrow\seg{|B|}\); pel
+lema~\ref{lema:comparacio-ordinals} seria \(|A|\le|B|\), contra la
+hipòtesi. La reformulació és la negació de la definició de monomorfisme
+(capítol~\ref{cap:aplicacions}): si l'aplicació no és un monomorfisme,
+dos elements generalitzats distints tenen la mateixa imatge.
+\end{prova}
+
+\begin{observacio}[Les induccions dels recomptes són internes]\label{obs:recomptes-interns}
+Les proves que segueixen fan inducció sobre un punt \(n\) en afirmacions
+com \enquote{\(A+\seg{n}\) és finit amb cardinal \(|A|+n\)}, és a dir,
+\enquote{existeix un isomorfisme \(\seg{|A|+n}\to A+\seg{n}\)}, en què
+tant el domini com el codomini varien amb \(n\). Perquè el
+teorema~\ref{teo:induccio} s'hi pugui aplicar cal que la propietat sigui
+una part de \(\N\); i ho és, per la mateixa tècnica de la
+definició~\ref{def:card-A} i de la definició~\ref{def:mono-segments}:
+totes les aplicacions \(\seg{j}\to A+\seg{n}\) s'estenen a aplicacions
+\(\N\to(A+\N)+\mathbf1\), de manera que \enquote{existeix un isomorfisme}
+és la no-inicialitat d'una fibra d'una part d'un exponencial fix, i és
+una fórmula interna en \(n\). No repetirem la codificació a cada
+recompte; el lector la pot reconstruir seguint el model de
+\(\mathcal E_A\).
+\end{observacio}
+
+\begin{lema}[Recompte de la suma finita]\label{lema:recompte-suma}
+Siguin \(A\) i \(B\) conjunts finits. Aleshores la suma \(A+B\) és finita i
+\[
+|A+B|=|A|+|B|,
+\]
+on el segon membre és la suma de naturals (definició~\ref{def:suma-naturals}).
+En particular, si \(B\) no és inicial ---és a dir, \(|B|\ge 1\)--- aleshores
+\(|A+B|>|A|\).
+\end{lema}
+
+\begin{prova}
+Com que \(B\approx\seg{|B|}\), n'hi ha prou de provar, per inducció sobre
+el punt \(n\) (teorema~\ref{teo:induccio}) i amb \(A\) fixat, que
+\(A+\seg{n}\) és finit amb cardinal \(|A|+n\); la propietat és interna en
+\(n\) per l'observació~\ref{obs:recomptes-interns}. Escrivim les dues
+etapes en termes de \(B\). Per a \(|B|=0\), \(B\approx\seg{0}\cong\mathbf0\)
+i la neutralitat del conjunt inicial respecte de la suma
+(capítol~\ref{cap:valors}) dona \(A+B\cong A\), d'on
+\(|A+B|=|A|=|A|+0\).
+
+Pas de \(|B|=n\) a \(|B|=s\circ n\). Sigui \(B\approx\seg{s\circ
+n}\cong\seg{n}+\mathbf1\) (proposició~\ref{prop:segment-successor}). Per
+l'associativitat de la suma de conjunts (capítol~\ref{cap:valors}),
+\[
+A+B\cong A+(\seg{n}+\mathbf1)\cong (A+\seg{n})+\mathbf1 .
+\]
+Per la hipòtesi d'inducció, \(A+\seg{n}\) és finit amb
+\(|A+\seg{n}|=|A|+n\); i afegir un sumand terminal incrementa el cardinal
+en un, perquè \((A+\seg{n})+\mathbf1\approx\seg{|A|+n}+\mathbf1\cong
+\seg{s\circ(|A|+n)}\) per la descomposició successora
+(proposició~\ref{prop:segment-successor}). Així \(A+B\) és finit i
+\[
+|A+B|=s\circ(|A|+n)=|A|+(s\circ n)=|A|+|B|,
+\]
+on la penúltima igualtat és la definició recursiva de la suma
+(definició~\ref{def:suma-naturals}). Finalment, si \(|B|\ge1\) aleshores
+\(|B|=s\circ k\) per a algun \(k\) (lema~\ref{lema:zero-o-successor}) i
+\(|A|+|B|=|A|+(s\circ k)\), que és \(>|A|\) per la definició de l'ordre
+estricte (definició~\ref{def:ordre-naturals}).
+\end{prova}
+
+\begin{lema}[Tota part d'un conjunt finit és finita]\label{lema:part-finita}
+Sigui \(S\hookrightarrow A\) una part d'un conjunt finit \(A\). Aleshores
+\(S\) i el seu complement són finits, i \(|S|\le|A|\).
+\end{lema}
+
+\begin{prova}
+Com que \(A\) és finit, \(A\approx\seg{n}\) amb \(n=|A|\); una part de
+\(A\) es correspon, per aquest isomorfisme, amb una part de \(\seg{n}\),
+així que n'hi ha prou de provar-ho per a \(A=\seg{n}\), per inducció sobre
+\(n\) (teorema~\ref{teo:induccio}).
+
+Per a \(n=0\), \(\seg{0}\cong\mathbf0\) i l'única part és la inicial, que
+és finita amb cardinal \(0\).
+
+Pas de \(n\) a \(s\circ n\). Per la descomposició successora,
+\(\seg{s\circ n}\cong\seg{n}+\mathbf1\)
+(proposició~\ref{prop:segment-successor}). Sigui \(S\hookrightarrow
+\seg{s\circ n}\) una part. La imatge inversa de \(S\) per les dues
+injeccions la descompon en dues parts complementàries: \(S_0\hookrightarrow
+\seg{n}\), la part de \(S\) situada sobre \(\seg{n}\), i \(S_1\hookrightarrow
+\mathbf1\), la part situada sobre el punt nou. Ara \(S\cong S_0+S_1\)
+(les dues parts, complementàries dins \(S\), formen una suma,
+capítol~\ref{cap:valors}). Per la hipòtesi d'inducció, \(S_0\) és finit amb
+\(|S_0|\le n\). I \(S_1\hookrightarrow\mathbf1\) és inicial o terminal
+---les úniques parts de \(\mathbf1\) (capítol~\ref{cap:valors})---, en tot
+cas finit amb \(|S_1|\le1\). Pel recompte de la suma
+(lema~\ref{lema:recompte-suma}), \(S\) és finit i
+\[
+|S|=|S_0|+|S_1|\le n+1=s\circ n=|\seg{s\circ n}| .
+\]
+El complement de \(S\) dins \(\seg{s\circ n}\) es tracta igual, canviant
+\(S_0,S_1\) pels seus complements dins \(\seg{n}\) i \(\mathbf1\)
+respectivament.
+\end{prova}
+
+\begin{teorema}[Injectiu, exhaustiu i bijectiu en el cas finit]\label{teo:endo-finit}
+Sigui \(f\colon A\to B\) una aplicació entre conjunts finits amb
+\(|A|=|B|\). Són equivalents:
+\begin{enumerate}
+\item \(f\) és un monomorfisme;
+\item \(f\) és un epimorfisme;
+\item \(f\) és un isomorfisme.
+\end{enumerate}
+\end{teorema}
+
+\begin{prova}
+Que (3) implica (1) i (2) és immediat. Vegem que (1) implica (3) i,
+després, que (2) implica (3).
+
+\emph{(1) \(\Rightarrow\) (3).} Suposem \(f\) un monomorfisme. Per la
+factorització imatge (teorema~\ref{teo:factoritzacio}), \(f=m\circ e\) amb
+\(e\colon A\twoheadrightarrow\operatorname{Im}(f)\) epimorfisme regular i
+\(m\colon\operatorname{Im}(f)\hookrightarrow B\) monomorfisme; com que
+\(f\) és un monomorfisme, \(e\) és un isomorfisme
+(proposició~\ref{prop:mono-nucli-trivial}), i per tant
+\(\operatorname{Im}(f)\cong A\) és finit amb
+\(|\operatorname{Im}(f)|=|A|=|B|\). Ara \(m\) exhibeix
+\(\operatorname{Im}(f)\) com una part de \(B\). Si \(m\) no fos exhaustiu,
+el seu complement \(C\hookrightarrow B\) seria una part no inicial, finita
+pel lema~\ref{lema:part-finita} (és una part del finit \(B\)), i \(B\) es
+descompondria en la suma disjunta \(B\cong\operatorname{Im}(f)+C\)
+(el complement d'una part i la seva part formen una suma,
+capítol~\ref{cap:valors}). Com que tots dos sumands són finits, s'hi aplica
+el recompte de la suma (lema~\ref{lema:recompte-suma}); i com que \(C\) no
+és inicial, \(|B|=|\operatorname{Im}(f)|+|C|>|\operatorname{Im}(f)|=|B|\),
+una contradicció. Per tant \(m\) és exhaustiu, i sent un monomorfisme
+exhaustiu és un isomorfisme (proposició~\ref{prop:epi-imatge-total} i
+corol·lari~\ref{cor:bimorfisme-iso}). Aleshores \(f=m\circ e\) és
+composició de dos isomorfismes, i és un isomorfisme.
+
+\emph{(2) \(\Rightarrow\) (3).} Suposem ara \(f\) un epimorfisme. Per
+l'axioma d'elecció (axioma~\ref{ax:eleccio}), \(f\) és escindit: existeix
+una secció
+\(s\colon B\to A\) amb \(f\circ s=\id_B\). Tota secció és un monomorfisme
+(proposició~\ref{prop:seccio-mono-retraccio-epi}), de manera que
+\(s\colon B\to A\) és un monomorfisme entre conjunts finits amb
+\(|B|=|A|\). Per la implicació (1)\(\Rightarrow\)(3) ja provada, \(s\) és un
+isomorfisme. Aleshores, de \(f\circ s=\id_B\) se segueix \(f=s^{-1}\)
+---component per la dreta amb \(s^{-1}\)---, i \(f\) és un isomorfisme.
+Aquesta prova evita tota descomposició en fibres i no és circular: només
+usa l'elecció, ja disponible, i la direcció (1)\(\Rightarrow\)(3). És
+l'únic lloc del capítol on intervé l'elecció, i s'hi pot evitar: com que
+\(A\approx\seg{n}\) és ben ordenat, una secció de \(f\) es pot
+\emph{definir} enviant cada punt \(b\) al mínim de la fibra \(f^{-1}(b)\),
+que és no buida perquè \(f\) és exhaustiu sobre punts; la construcció
+interna d'aquesta secció és un exercici.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:calaixos-classica}
+En conjunts, el teorema~\ref{teo:calaixos} és l'enunciat familiar segons
+el qual, si es reparteixen \(|A|\) objectes en \(|B|<|A|\) calaixos, algun
+calaix en rep més d'un. El teorema~\ref{teo:endo-finit} és el fet, també
+familiar i propi \emph{només} del cas finit, que una aplicació d'un
+conjunt finit en si mateix és injectiva exactament quan és exhaustiva.
+Sobre conjunts infinits ---\(\N\) mateix, amb el successor--- això falla:
+el successor és injectiu però no exhaustiu.
+\end{observacio}
+
+\section{Parts d'un conjunt finit}\label{sec:parts-finites}
+
+El pas de \(A\) a \(A+\mathbf1\) duplica el nombre de parts: cada part de
+\(A+\mathbf1\) o bé conté el punt nou o bé no. Aquesta observació,
+convertida en inducció, dona el recompte de parts. Abans, però, ens cal el
+recompte del producte, que la prova utilitza sota la forma de la
+duplicació \(|A\times\mathbf2|=2\cdot|A|\).
+
+\begin{lema}[Recompte del producte finit]\label{lema:recompte-producte}
+Siguin \(A\) i \(B\) conjunts finits. Aleshores el producte \(A\times B\)
+és finit i
+\[
+|A\times B|=|A|\cdot|B|,
+\]
+on el segon membre és el producte de naturals
+(definició~\ref{def:producte-exp}). En particular
+\(|A\times\mathbf2|=2\cdot|A|\).
+\end{lema}
+
+\begin{prova}
+Fem inducció sobre \(|B|\), amb \(A\) fixat (teorema~\ref{teo:induccio}).
+Per a \(|B|=0\), \(B\approx\seg{0}\cong\mathbf0\) i
+\(A\times\mathbf0\cong\mathbf0\) ---el producte per l'inicial és inicial,
+per la distributivitat del producte sobre la suma i l'estrictesa de
+\(\mathbf0\) (capítol~\ref{cap:valors})---, d'on \(|A\times B|=0=|A|\cdot0\).
+
+Pas de \(|B|=n\) a \(|B|=s\circ n\). Sigui \(B\approx\seg{s\circ
+n}\cong\seg{n}+\mathbf1\) (proposició~\ref{prop:segment-successor}). Per la
+distributivitat del producte sobre la suma
+(teorema~\ref{teo:distributivitat}),
+\[
+A\times B\cong A\times(\seg{n}+\mathbf1)\cong (A\times\seg{n})+(A\times\mathbf1)
+\cong (A\times\seg{n})+A,
+\]
+usant \(A\times\mathbf1\cong A\). Per la hipòtesi d'inducció
+\(A\times\seg{n}\) és finit amb \(|A\times\seg{n}|=|A|\cdot n\); pel
+recompte de la suma (lema~\ref{lema:recompte-suma}),
+\[
+|A\times B|=|A\times\seg{n}|+|A|=|A|\cdot n+|A|=|A|\cdot(s\circ n)=|A|\cdot|B|,
+\]
+on la penúltima igualtat és la definició recursiva del producte
+(definició~\ref{def:producte-exp}). El cas \(B=\mathbf2\) (amb
+\(|\mathbf2|=2\)) dona \(|A\times\mathbf2|=|A|\cdot2=2\cdot|A|\) per la
+commutativitat del producte (proposició~\ref{prop:lleis-aritmetica}).
+\end{prova}
+
+\begin{teorema}[Nombre de parts d'un conjunt finit]\label{teo:nombre-parts}
+Si \(A\) és finit amb \(|A|=n\), aleshores el conjunt de parts
+\(\mathcal P(A)\) (definició~\ref{def:conjunt-parts}) és finit i
+\[
+|\mathcal P(A)|=2^{n},
+\]
+on \(2^{n}\) és l'exponenciació de naturals
+(definició~\ref{def:producte-exp}).
+\end{teorema}
+
+\begin{prova}
+Com que \(\mathcal P(A)\cong\mathbf2^{A}\)
+(definició~\ref{def:conjunt-parts}) i \(A\approx\seg{n}\) amb \(n=|A|\),
+n'hi ha prou de provar \(|\mathbf2^{\seg{n}}|=2^{n}\) per inducció sobre
+\(n\). Per a \(n=0\), \(\mathbf2^{\seg{0}}\cong\mathbf2^{\mathbf0}\cong
+\mathbf1\), i \(2^{0}=1\) (definició~\ref{def:producte-exp}). Pas de \(n\)
+a \(s\circ n\): de \(\seg{s\circ n}\cong\seg{n}+\mathbf1\)
+(proposició~\ref{prop:segment-successor}) i de la conversió d'un
+exponencial d'una suma en un producte d'exponencials
+(proposició~\ref{prop:exponencial-suma}),
+\[
+\mathbf2^{\seg{s\circ n}}\cong\mathbf2^{\seg{n}+\mathbf1}\cong
+\mathbf2^{\seg{n}}\times\mathbf2^{\mathbf1}\cong\mathbf2^{\seg{n}}\times\mathbf2 .
+\]
+Per la hipòtesi d'inducció \(\mathbf2^{\seg{n}}\) és finit de cardinal
+\(2^{n}\), i multiplicar per \(\mathbf2\) duplica el cardinal
+(lema~\ref{lema:recompte-producte}), de manera que
+\(\mathbf2^{\seg{s\circ n}}\) té cardinal \(2^{n}+2^{n}=2\cdot2^{n}=
+2^{s\circ n}\), on la darrera igualtat és la definició recursiva de
+l'exponenciació.
+\end{prova}
+
+\begin{observacio}[Els recomptes de la suma i del producte]\label{obs:recompte-producte-suma}
+Els dos recomptes que aquestes proves fan servir ---\(|A+B|=|A|+|B|\) i
+\(|A\times B|=|A|\cdot|B|\) per a conjunts finits--- s'han establert com a
+lemes previs (lemes~\ref{lema:recompte-suma} i~\ref{lema:recompte-producte}),
+tots dos per inducció sobre el cardinal del segon factor. Són la traducció,
+al recompte de cardinals, de la suma disjunta i de l'enumeració fila per
+fila del producte; la duplicació \(|A\times\mathbf2|=2\cdot|A|\) que hem
+usat n'és el cas \(B=\mathbf2\).
+\end{observacio}
+
+\section{Recompte d'aplicacions}\label{sec:recompte-aplicacions}
+
+L'exponencial \(B^{A}\) internalitza el conjunt de les aplicacions de
+\(A\) cap a \(B\) (capítol~\ref{cap:exponencials}). Quan tots dos conjunts
+són finits, en compta exactament les aplicacions.
+
+\begin{teorema}[Nombre d'aplicacions entre conjunts finits]\label{teo:nombre-aplicacions}
+Si \(A\) i \(B\) són finits amb \(|A|=n\) i \(|B|=m\), aleshores
+l'exponencial \(B^{A}\) és finit i
+\[
+|B^{A}|=m^{n} .
+\]
+\end{teorema}
+
+\begin{prova}
+Fixats isomorfismes \(A\approx\seg{n}\) i \(B\approx\seg{m}\) (amb
+\(n=|A|\), \(m=|B|\)), l'exponencial només depèn dels dos conjunts llevat
+d'isomorfisme, de manera que n'hi ha prou de provar
+\(|\seg{m}^{\seg{n}}|=m^{n}\) per inducció sobre \(n\), uniformement en
+\(m\). Per a \(n=0\), \(\seg{m}^{\seg{0}}\cong\seg{m}^{\mathbf0}\cong
+\mathbf1\), i \(m^{0}=1\). Pas de \(n\) a \(s\circ n\): de
+\(\seg{s\circ n}\cong\seg{n}+\mathbf1\)
+(proposició~\ref{prop:segment-successor}) i de la conversió de
+l'exponencial d'una suma (proposició~\ref{prop:exponencial-suma}),
+\[
+\seg{m}^{\seg{s\circ n}}\cong\seg{m}^{\seg{n}+\mathbf1}\cong
+\seg{m}^{\seg{n}}\times\seg{m}^{\mathbf1}\cong\seg{m}^{\seg{n}}\times\seg{m} .
+\]
+Per la hipòtesi d'inducció \(\seg{m}^{\seg{n}}\) té cardinal \(m^{n}\), i
+pel recompte del producte (lema~\ref{lema:recompte-producte}) multiplicar
+per \(\seg{m}\) multiplica el cardinal per \(m\); així
+\(|\seg{m}^{\seg{s\circ n}}|=m^{n}\cdot m=m^{s\circ n}\), la definició
+recursiva de l'exponenciació.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica i enllaç amb la pràctica]\label{obs:recompte-classica}
+Els quatre recomptes ---\(2^{n}\) parts, \(m^{n}\) aplicacions,
+\(|A+B|=|A|+|B|\) i \(|A\times B|=|A|\cdot|B|\)--- són l'aritmètica
+combinatòria elemental, ara obtinguda sense sortir de la teoria: cada
+igualtat és un isomorfisme construït per inducció, no un recompte de
+punts. Aquests enunciats són el punt de partida dels exercicis
+computacionals de la part pràctica, on es calculen cardinals concrets i
+es refà, en casos petits, la inducció general. En particular, el nombre
+d'aplicacions injectives i el de bijeccions de \([k]\) en si mateix
+---les permutacions--- es tracten allà com a aplicació directa del
+principi dels calaixos i del teorema~\ref{teo:endo-finit}.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Dues famílies de \enquote{nombres finits}: els ordinals \([k]=\mathbf1+\dots+\mathbf1\), definits al metanivell per a numerals estàndard, i els segments \(\seg{n}=\{k<n\}\), fibres de \(\operatorname{Lt}\hookrightarrow\N\times\N\), que formen una família interna. Coincideixen externament sobre numerals; la finitud es defineix amb els segments.
+  \item \(\operatorname{Card}(A)\hookrightarrow\N\) és la imatge de la projecció d'una part \(\mathcal E_A\) d'un exponencial fix que codifica les bijeccions \(\seg{n}\to A\); \(A\) és finit si \(\operatorname{Card}(A)\) té algun punt, i el cardinal és aquest punt, únic.
+  \item La unicitat ve de la comparació de segments: un monomorfisme \(\seg{m}\hookrightarrow\seg{n}\) força \(m\le n\). La prova és una inducció interna sobre un predicat codificat, amb el truc de permutar dos punts per reduir al cas en què el punt nou va al punt nou.
+  \item Principi dels calaixos; en cardinal igual, mono, epi i iso coincideixen. L'elecció només s'usa per escindir l'epimorfisme, i es pot evitar amb el bon ordre.
+  \item Recomptes per inducció sobre el cardinal: \(|A+B|=|A|+|B|\), \(|A\times B|=|A|\cdot|B|\), \(|P(A)|=2^{|A|}\), \(|B^A|=|B|^{|A|}\); cadascun és un isomorfisme construït amb la descomposició successora, la distributivitat i l'exponencial d'una suma.
+  \item Les induccions sobre afirmacions d'existència d'isomorfismes són internes perquè les aplicacions entre objectes variables es codifiquen dins exponencials fixos.
+\end{enumerate}
+\apartat{Errors típics} Definir la finitud com \enquote{isomorf a algun \([k]\)}, que és un esquema extern i no una propietat interna; fer inducció sobre \enquote{existeix un isomorfisme \(\seg{n}\cong\cdots\)} sense comprovar que és una part de \(\N\); creure que \(\operatorname{Card}(A)\) necessita triar un isomorfisme (es construeix com una imatge, sense cap tria); oblidar que \enquote{un punt d'una suma ve d'un sumand} val sobre punts globals i no sobre elements generalitzats, cosa essencial al lema de comparació; i pensar que mono \(\Rightarrow\) iso en cardinal igual val per a conjunts infinits (el successor de \(\N\) ho desmenteix).
+\apartat{Lectura recomanada} \cite[§§7.6--7.7 i cap.~8]{lawvere-rosebrugh} per als conjunts finits, el principi dels calaixos i els recomptes en conjunts abstractes; \cite[article~V, sessió~30]{lawvere-schanuel} per al recompte d'aplicacions \(|B^A|=|B|^{|A|}\) amb exemples; \cite[§§12--13]{halmos} per als nombres naturals finits i l'aritmètica de cardinals finits en la teoria clàssica; i \cite[§§7.1--7.2]{awodey} per a l'objecte de nombres naturals i la seva propietat universal en una categoria, que és el que fa possible la codificació interna d'aquest capítol.
+\end{resumcap}

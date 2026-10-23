@@ -1,0 +1,362 @@
+\chapter{Tipus ordinals}\label{cap:ordinals}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:bons-ordres}: bons ordres, segments, rigidesa, comparació per segments i tricotomia. Del capítol~\ref{cap:recursio}: la comparabilitat total. Del capítol~\ref{cap:zorn}: el conjunt de Hartogs \(\Hart(A)\) i el fet que és un bon ordre. Del capítol~\ref{cap:families}: unions indexades de parts. Del capítol~\ref{cap:cantor}: el teorema de Cantor, com a model de Burali--Forti.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item definir un tipus ordinal com un bon ordre llevat d'isomorfisme, sense representant canònic, i comprovar la independència del representant de cada definició;
+  \item demostrar que els tipus estan totalment ordenats per segments, i ben ordenats dins \(\Hart(A)\);
+  \item explicar per què \(\alpha\in\beta\) no és una notació adequada en aquest llibre;
+  \item definir zero, successor i límit, i demostrar que són exhaustius, excloents i invariants;
+  \item construir el suprem d'una família representada dins un bon ordre com el tipus de la reunió dels segments oberts, i saber per què cal l'acotació;
+  \item demostrar el teorema de Burali--Forti i llegir-lo com el paral·lel ordinal del teorema de Cantor.
+\end{itemize}
+\end{objectius}
+
+Els bons ordres mesuren la \emph{forma} d'un procés que es recorre sense
+saltar-se cap pas; però dos bons ordres de la mateixa forma ---isomorfs com a
+ordres--- no s'han de distingir. El \emph{tipus ordinal} és, precisament, un
+bon ordre considerat llevat d'isomorfisme d'ordre: el que queda quan
+s'oblida la naturalesa concreta dels elements i es reté només la manera com
+estan ordenats. Aquest capítol desenvolupa els tipus ordinals amb la
+disciplina estructural del llibre: es defineixen les nocions
+\emph{sobre representants} ---bons ordres concrets--- i després es demostra que
+no depenen del representant, gràcies a la unicitat de l'isomorfisme d'ordre
+(teorema~\ref{teo:unicitat-iso}). L'ordre entre tipus és la comparació per
+segments inicials que ja coneixem; el zero, el successor i els punts límit
+s'obtenen de construccions elementals sobre bons ordres; i els suprems es
+formen \emph{acotadament}, dins un bon ordre donat, sense parlar mai del
+\enquote{conjunt de tots els ordinals} ---que, com veurem amb el teorema de
+Burali--Forti, no existeix. El paral·lelisme amb el capítol de Cantor és
+deliberat: així com no hi ha una mida màxima, tampoc no hi ha una longitud
+d'ordre màxima.
+
+\section{Tipus ordinals i el seu ordre}\label{sec:tipus-ordinals}
+
+\begin{definicio}[Tipus ordinal]\index{Tipus ordinal}\label{def:tipus-ordinal}
+Un \emph{tipus ordinal} és un conjunt ben ordenat considerat llevat
+d'isomorfisme d'ordre (definició~\ref{def:creixent}). Diem que un bon ordre
+\((W,<)\) \emph{representa} el tipus \(\alpha\), i escrivim
+\(\alpha=\operatorname{tipus}(W)\), quan \(\alpha\) és la seva classe
+d'isomorfisme d'ordre. Dos bons ordres representen el mateix tipus si i només
+si són isomorfs com a ordres. \emph{No} escollim cap representant canònic:
+treballem amb bons ordres qualssevol i comprovem, cada vegada, que el que
+definim no depèn del representant triat.
+\end{definicio}
+
+\begin{observacio}[Tipus acotats i teoria global]\label{obs:tipus-acotats}
+Com a la comparació de conjunts (observació~\ref{obs:comparacio-metateoria}),
+\enquote{tipus ordinal} és, en general, una noció metateòrica: parla de bons
+ordres llevat d'isomorfisme, no d'elements d'un conjunt fix. Ara bé, per a un
+conjunt \(A\) donat, els tipus dels bons ordres sobre parts d'\(A\) sí que
+formen un conjunt ---és el conjunt de Hartogs \(\Hart(A)\)
+(definició~\ref{def:hartogs})---, i tota la teoria \emph{acotada} d'aquest
+capítol es pot llegir dins un \(\Hart(A)\) prou gran. La distinció importa: els
+enunciats sobre \enquote{un tipus ordinal} són de Nivell~I quan es poden
+situar dins un \(\Hart(A)\); una teoria \emph{global} de tots els tipus
+ordinals alhora seria de Nivell~II i requeriria SR
+(observació~\ref{obs:sr}). En aquest capítol ens mantenim, tret d'on
+s'indiqui, en el terreny acotat.
+\end{observacio}
+
+L'ordre entre tipus és la comparació per segments inicials del
+capítol~\ref{cap:bons-ordres}, ara llegida sobre tipus.
+
+\begin{definicio}[Ordre dels tipus ordinals]\index{Ordre dels tipus ordinals}\label{def:ordre-ordinals}
+Siguin \(\alpha=\operatorname{tipus}(W)\) i \(\beta=\operatorname{tipus}(V)\).
+Definim
+\[
+\alpha<\beta
+\quad\Longleftrightarrow\quad
+W\ \text{és isomorf a un segment inicial propi de}\ V
+\]
+(definició~\ref{def:mes-curt}), i \(\alpha\le\beta\) si \(\alpha<\beta\) o
+\(\alpha=\beta\). La unicitat de l'isomorfisme d'ordre
+(teorema~\ref{teo:unicitat-iso}) garanteix que la definició \emph{no depèn dels
+representants}: si \(W\cong W'\) i \(V\cong V'\), aleshores \(W\) és isomorf a
+un segment propi de \(V\) si i només si \(W'\) ho és de \(V'\).
+\end{definicio}
+
+\begin{proposicio}[Els tipus ordinals estan totalment ordenats]\label{prop:ordinals-total}
+La relació \(<\) sobre tipus ordinals és un ordre estricte total: per a
+tipus \(\alpha,\beta\) qualssevol es dona exactament una de \(\alpha<\beta\),
+\(\alpha=\beta\), \(\beta<\alpha\). A més, restringida als tipus dels bons
+ordres sobre parts d'un conjunt fix \(A\) ---és a dir, sobre \(\Hart(A)\)---,
+és un bon ordre.\par
+\emph{Axiomes usats:} comparabilitat i tricotomia de bons ordres
+(teoremes~\ref{teo:comparabilitat} i~\ref{teo:tricotomia}), Hartogs
+(proposició~\ref{prop:hartogs-bon-ordre}); cap axioma nou; \emph{cap elecció}.
+\end{proposicio}
+
+\begin{prova}
+La tricotomia i la comparabilitat dels bons ordres
+(teoremes~\ref{teo:tricotomia} i~\ref{teo:comparabilitat}) diuen exactament
+que, per a dos representants \(W\) i \(V\), es dona una i una sola de: \(W\)
+isomorf a un segment propi de \(V\) (és a dir \(\alpha<\beta\)), \(W\cong V\)
+(és a dir \(\alpha=\beta\)), o \(V\) isomorf a un segment propi de \(W\) (és a
+dir \(\beta<\alpha\)). La transitivitat és la de la comparació per segments
+(proposició~\ref{prop:comparacio-ordres}), i la irreflexivitat és que cap bon
+ordre no és isomorf a un segment propi seu
+(corol·lari~\ref{cor:no-segment-propi}). Que sobre \(\Hart(A)\) és un bon
+ordre és la proposició~\ref{prop:hartogs-bon-ordre}.
+\end{prova}
+
+\begin{observacio}[No s'ha d'escriure \(\alpha\in\beta\)]\label{obs:no-pertinença-ordinal}
+Hi ha una diferència important amb la teoria clàssica de von Neumann, on un
+ordinal \emph{és} el conjunt dels ordinals menors i \enquote{\(\alpha<\beta\)}
+es defineix com \enquote{\(\alpha\in\beta\)}. En aquest llibre la pertinença
+és sempre \emph{relativa a una part d'un conjunt fix}
+(capítol~\ref{cap:parts-interna}), i no hi ha cap relació de pertinença global
+entre conjunts; per tant \(\alpha\in\beta\) \emph{no} és una notació adequada
+per a l'ordre ordinal. La relació correcta és \(\alpha<\beta\), definida
+mitjançant segments inicials (definició~\ref{def:ordre-ordinals}). Aquesta no
+és una qüestió de gust: escriure \(\alpha\in\beta\) suggeriria una jerarquia
+material de pertinença que el llibre no assumeix, i que precisament el punt de
+vista estructural vol evitar.
+\end{observacio}
+
+\section{Zero, successor i límit}\label{sec:zero-successor-limit}
+
+Les tres classes bàsiques de tipus ordinals es defineixen sobre
+representants, amb construccions elementals de bons ordres, i després es
+comprova la invariància.
+
+\begin{definicio}[Zero i successor]\index{Zero i successor}\label{def:zero-successor}
+El \emph{tipus zero}, \(0\), és el tipus del bon ordre \emph{inicial}
+\(\mathbf0\) (l'ordre buit): el menor de tots els tipus, perquè \(\mathbf0\) és
+isomorf a un segment inicial de qualsevol bon ordre. Donat un bon ordre
+\((W,<)\), el seu \emph{successor} és el tipus del bon ordre \(W+\mathbf1\)
+---la suma disjunta (definició~\ref{def:suma-disjunta}) amb un punt nou
+\(\ast\) col·locat \emph{després} de tots els elements de \(W\): l'ordre en
+què \(u<\ast\) per a tot \(u\in W\) i la restricció a \(W\) és l'original. Si
+\(\alpha=\operatorname{tipus}(W)\), el successor es denota \(\alpha+1\).
+\end{definicio}
+
+\begin{proposicio}[Invariància i caracterització del successor]\label{prop:successor-invariant}
+El successor no depèn del representant: si \(W\cong V\), aleshores
+\(W+\mathbf1\cong V+\mathbf1\). A més, per a tot bon ordre \(W\):
+\begin{enumerate}
+\item \(\alpha<\alpha+1\), i \(\alpha+1\) és el \emph{menor} tipus
+estrictament més gran que \(\alpha\): no hi ha cap tipus \(\gamma\) amb
+\(\alpha<\gamma<\alpha+1\);
+\item \(\alpha+1\) té un element \emph{màxim} (el punt nou \(\ast\)), i el
+segment inicial que aquest determina és, precisament, \(\alpha\).
+\end{enumerate}
+\emph{Axiomes usats:} suma disjunta (capítol~\ref{cap:valors}), unicitat de
+l'isomorfisme d'ordre (teorema~\ref{teo:unicitat-iso}); cap elecció.
+\end{proposicio}
+
+\begin{prova}
+\emph{Invariància.} Un isomorfisme d'ordre \(f\colon W\cong V\) s'estén a
+\(f+\id\colon W+\mathbf1\cong V+\mathbf1\) enviant \(\ast\) a \(\ast\); conserva
+l'ordre perquè els punts nous ocupen la mateixa posició final. \emph{(1)} El
+segment inicial de \(W+\mathbf1\) determinat pel punt \(\ast\) és exactament
+\(W\), de manera que \(W\) és isomorf a un segment propi de \(W+\mathbf1\), és a
+dir \(\alpha<\alpha+1\). Si hi hagués \(\gamma\) amb \(\alpha<\gamma<\alpha+1\),
+un representant \(G\) de \(\gamma\) seria isomorf a un segment propi de
+\(W+\mathbf1\); els segments propis de \(W+\mathbf1\) són \(W\) mateix i els
+segments de \(W\) (proposició~\ref{prop:parts-inicials}), de manera que
+\(\gamma\le\alpha\), contra \(\alpha<\gamma\). \emph{(2)} El punt \(\ast\) és
+màxim per construcció, i el seu segment inicial és \(W\), que representa
+\(\alpha\) (proposició~\ref{prop:segment-determina-punt}).
+\end{prova}
+
+\begin{definicio}[Tipus límit]\index{Tipus límit}\label{def:tipus-limit}
+Un tipus ordinal \(\lambda\) és \emph{successor} si \(\lambda=\alpha+1\) per a
+algun \(\alpha\); equivalentment, si un (tot) representant seu té un element
+màxim. És \emph{límit} si no és zero ni successor: és a dir, si és no inicial i
+cap representant seu no té element màxim ---per a tot element hi ha un de
+posterior.
+\end{definicio}
+
+\begin{proposicio}[Zero, successor i límit són exhaustius i invariants]\label{prop:tricotomia-successor}
+Tot tipus ordinal és exactament un de: zero, successor o límit; i la classe a
+què pertany no depèn del representant.\par
+\emph{Axiomes usats:} bon ordre (definició~\ref{def:bon-ordre}), unicitat de
+l'isomorfisme d'ordre (teorema~\ref{teo:unicitat-iso}); cap elecció.
+\end{proposicio}
+
+\begin{prova}
+Sigui \(W\) un representant de \(\lambda\). Si \(W\) és inicial, \(\lambda=0\).
+Si no, \(W\) té un element mínim però pot tenir o no un element màxim. Tenir
+element màxim és una propietat invariant per isomorfisme d'ordre (un
+isomorfisme envia màxim a màxim), de manera que no depèn del representant. Si
+\(W\) té màxim \(m\), aleshores \(W\cong W_{<m}+\mathbf1\) ---el segment
+\(W_{<m}\) seguit de \(m\)---, de manera que \(\lambda=\operatorname{tipus}(W_{<m})+1\)
+és successor. Si \(W\) no té màxim i no és inicial, \(\lambda\) no és zero (no
+inicial) ni successor (un successor té màxim, proposició~\ref{prop:successor-invariant}),
+i per tant és límit. Les tres classes són mútuament excloents ---zero és
+inicial, successor té màxim, límit no--- i exhaustives.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica; el primer límit]\label{obs:limit-classic}
+En la notació habitual, \(0,1,2,\dots\) són els tipus dels bons ordres finits
+(els \(\seg{n}\), capítol~\ref{cap:finits}), tots zero o successors; el primer
+tipus \emph{límit} és \(\omega=\operatorname{tipus}(\N)\), el tipus del bon
+ordre dels naturals (teorema~\ref{teo:bon-ordre-N}), que no té element màxim.
+Després venen \(\omega+1,\omega+2,\dots\), successors, i el següent límit
+\(\omega+\omega=\omega\cdot2\), i així successivament. La distinció
+successor/límit és la que governa les definicions per recursió transfinita:
+als successors es fa un pas, als límits es pren un suprem
+(capítol~\ref{cap:recursio}). És per als límits, on no hi ha \enquote{element
+anterior}, que la recursió ha de mirar tota la història i no només el terme
+previ.
+\end{observacio}
+
+\section{Suprems acotats}\label{sec:suprems}
+
+Una família de tipus ordinals, si està \emph{representada dins un bon ordre}
+comú, té suprem; i el suprem es forma acotadament, sense sortir d'aquell bon
+ordre. Aquesta és la manera estructural de reunir tipus sense invocar el
+\enquote{conjunt de tots els ordinals}.
+
+\begin{definicio}[Família de tipus representada dins un bon ordre]\index{Família de tipus representada dins un bon ordre}\label{def:familia-tipus}
+Una família de tipus ordinals \((\alpha_i)_{i\in I}\) està \emph{representada
+dins} un bon ordre \(W\) si existeix una aplicació \(r\colon I\to W\) tal que,
+per a cada \(i\), el tipus \(\alpha_i\) és el del segment inicial
+\(W_{<r(i)}\). És a dir, cada \(\alpha_i\) apareix com el tipus d'un segment de
+\(W\), i la família és la imatge d'una aplicació al conjunt d'índexs
+(capítol~\ref{cap:families}).
+\end{definicio}
+
+\begin{proposicio}[Suprem acotat]\label{prop:suprem}
+Sigui \((\alpha_i)_{i\in I}\) una família de tipus representada dins un bon
+ordre \(W\) per \(r\colon I\to W\), és a dir, amb
+\(\alpha_i=\operatorname{tipus}(W_{<r(i)})\). Aleshores existeix el
+\emph{suprem} \(\sup_i\alpha_i\): el menor tipus ordinal \(\ge\) que tots els
+\(\alpha_i\). Concretament, és el tipus de la reunió
+\[
+S\;=\;\bigcup_{i\in I}W_{<r(i)}
+\]
+dels segments inicials \emph{oberts}, que és una part inicial de \(W\). Si
+\(I\) és inicial, \(S\) és buida i el suprem és \(0\).\par
+\emph{Axiomes usats:} unions indexades de parts (capítol~\ref{cap:families}),
+bon ordre i segments (capítol~\ref{cap:bons-ordres}); cap axioma nou; \emph{cap
+elecció}.
+\end{proposicio}
+
+\begin{prova}
+Sigui \(S=\bigcup_{i\in I}W_{<r(i)}\hookrightarrow W\) la unió indexada
+(capítol~\ref{cap:families}). Com a unió de parts inicials, \(S\) és una part
+inicial de \(W\), i per tant un segment \(W_{<w_0}\) o bé tot \(W\)
+(proposició~\ref{prop:parts-inicials}); en qualsevol cas és ben ordenat
+(proposició~\ref{prop:segment-ben-ordenat}). Sigui
+\(\sigma=\operatorname{tipus}(S)\).
+
+\emph{\(\sigma\) és cota superior.} Cada \(W_{<r(i)}\) és una part inicial de
+\(S\) (és inicial a \(W\) i està continguda a \(S\)), de manera que és tot
+\(S\) o un segment propi de \(S\); en tots dos casos \(\alpha_i\le\sigma\).
+
+\emph{\(\sigma\) és la menor.} Sigui \(\beta\) amb \(\beta\ge\alpha_i\) per a
+tot \(i\), amb representant \(V\). Per a cada \(i\) hi ha un únic
+isomorfisme d'ordre \(f_i\) de \(W_{<r(i)}\) sobre una part inicial de \(V\)
+(teorema~\ref{teo:unicitat-iso}). Aquests isomorfismes són compatibles: si
+\(r(i)\le r(j)\), aleshores \(W_{<r(i)}\) és una part inicial de
+\(W_{<r(j)}\), la restricció de \(f_j\) és un isomorfisme d'ordre de
+\(W_{<r(i)}\) sobre una part inicial de \(V\) (la imatge d'una part inicial
+per un isomorfisme sobre una part inicial és inicial), i per la unicitat
+coincideix amb \(f_i\); i per la totalitat de \(W\), dos índexs sempre són
+en un dels dos casos. La reunió dels grafs de les \(f_i\) és, doncs, una
+relació funcional i total sobre \(S\) (proposició~\ref{prop:aplicacio-funcional}),
+és a dir, una aplicació \(f\colon S\to V\) que és creixent, injectiva i té
+imatge inicial, perquè cada punt de \(S\) i cada desigualtat entre dos punts
+de \(S\) viuen dins un mateix \(W_{<r(j)}\), on \(f\) és \(f_j\). Així \(S\)
+és isomorf a una part inicial de \(V\), i \(\sigma\le\beta\). Per tant
+\(\sigma=\sup_i\alpha_i\).
+\end{prova}
+
+\begin{observacio}[Per què els segments oberts]\label{obs:suprem-oberts}
+La reunió dels segments \emph{tancats} \(W_{\le r(i)}\) dona en general un
+tipus massa gran: si \(I=\mathbf1\) i \(r\) és el mínim de \(W\), aleshores
+\(\alpha=\operatorname{tipus}(W_{<r})=0\), mentre que \(W_{\le r}\) té un
+element i tipus \(1\). El suprem d'una família amb màxim és aquest màxim, i
+la fórmula amb segments oberts ho respecta: si \(r(i_0)\) és el màxim dels
+\(r(i)\), aleshores \(S=W_{<r(i_0)}\) i \(\sigma=\alpha_{i_0}\).
+\end{observacio}
+
+\begin{observacio}[Per què el suprem ha de ser acotat]\label{obs:suprem-acotat}
+La hipòtesi \enquote{representada dins un bon ordre \(W\)} és essencial i és el
+que manté la construcció de Nivell~I. Reunir una família \emph{arbitrària} de
+tipus ordinals ---sense un \(W\) comú que els contingui tots com a segments---
+no es pot fer amb els axiomes actuals: caldria formar primer un bon ordre prou
+llarg, i si els tipus no estan acotats cap axioma de Nivell~I no en garanteix
+cap; i si la família és la de \emph{tots} els tipus, un tal bon ordre és
+impossible, que és el contingut del teorema de Burali--Forti que ve tot
+seguit. Per això, cada vegada que prenem un suprem, hem d'exhibir abans el bon
+ordre \(W\) dins el qual la família viu ---sovint un \(\Hart(A)\) prou gran. És
+la mateixa disciplina de la guia: no escriure \(\sup_i\alpha_i\) sense haver
+construït primer la família acotada que es reuneix.
+\end{observacio}
+
+\section{El teorema de Burali--Forti}\label{sec:burali-forti}
+
+Així com el teorema de Cantor prohibeix una mida màxima, el teorema de
+Burali--Forti prohibeix un \enquote{conjunt de tots els tipus ordinals}: la
+col·lecció de tots ells, si fos un conjunt ben ordenat, tindria un tipus
+estrictament menor que ell mateix.
+
+\begin{teorema}[Burali--Forti]\label{teo:burali-forti}
+No existeix cap conjunt \(\Omega\) que contingui un representant de
+\emph{cada} tipus ordinal i que estigui ben ordenat per la relació de segment
+inicial de manera que el tipus del seu segment \(\Omega_{<\gamma}\) sigui,
+per a cada \(\gamma\in\Omega\), el tipus representat per \(\gamma\).\par
+\emph{Axiomes usats:} bon ordre i segments, no-isomorfisme amb segments propis
+(corol·lari~\ref{cor:no-segment-propi}); cap axioma nou; \emph{cap elecció}.
+\end{teorema}
+
+\begin{prova}
+Suposem que un tal \(\Omega\) existís. Aleshores \((\Omega,<)\) seria un bon
+ordre, i tindria ell mateix un tipus \(\omega_\Omega=\operatorname{tipus}(\Omega)\).
+Com que \(\Omega\) conté un representant de \emph{cada} tipus ordinal, conté un
+element \(\gamma\) que representa \(\omega_\Omega\): és a dir, per la hipòtesi
+sobre \(\Omega\), \(\operatorname{tipus}(\Omega_{<\gamma})=\omega_\Omega=\operatorname{tipus}(\Omega)\).
+Però \(\Omega_{<\gamma}\) és un segment inicial \emph{propi} de \(\Omega\)
+(propi perquè \(\gamma\in\Omega\)), i acabem de dir que és isomorf a \(\Omega\)
+sencer. Això contradiu que cap bon ordre no és isomorf a cap segment inicial
+propi seu (corol·lari~\ref{cor:no-segment-propi}). Per tant no existeix cap tal
+\(\Omega\).
+\end{prova}
+
+\begin{observacio}[Què diu exactament el teorema]\label{obs:burali-hipotesi}
+L'enunciat és precís i convé no ampliar-lo en llegir-lo informalment. Afirma
+que no hi ha cap conjunt \(\Omega\) que \emph{alhora} (i)~contingui un
+representant de cada tipus, (ii)~estigui ben ordenat per segments, i
+(iii)~tingui la propietat que el segment \(\Omega_{<\gamma}\) sigui del tipus
+que \(\gamma\) representa. La frase \enquote{no hi ha conjunt de tots els
+ordinals} n'és la lectura habitual, i és correcta en aquest sentit: no hi ha
+cap conjunt ben ordenat que \emph{indexi coherentment} tots els tipus. El que
+el teorema no diu és res sobre col·leccions de representants sense aquesta
+estructura d'ordre, que en aquest llibre ni tan sols es poden formular sense
+un conjunt ambient. Com que els tipus no són elements de cap conjunt fix
+(observació~\ref{obs:tipus-acotats}), la condició (iii) és la manera de dir
+\enquote{\(\Omega\) és el conjunt dels tipus} sense pertinença global.
+\end{observacio}
+
+\begin{observacio}[Burali--Forti com a paral·lel de Cantor]\label{obs:burali-cantor}
+El teorema és l'anàleg ordinal exacte del teorema de Cantor
+(teorema~\ref{teo:cantor}), i comparteix amb ell l'estructura diagonal: la
+contradicció surt de fer que la construcció s'apliqui a si mateixa. Cantor:
+\(A\prec P(A)\), de manera que no hi ha conjunt universal ni mida màxima
+(corol·lari~\ref{cor:no-universal}). Burali--Forti: no hi ha un bon ordre de
+tots els tipus ordinals, de manera que no hi ha longitud d'ordre màxima. En
+tots dos casos, la moralitat és que la col·lecció de \enquote{tots els}
+objectes d'una mena ---totes les parts, tots els tipus--- és massa gran per
+ser un conjunt del mateix tipus. És per això que la teoria \emph{global} dels
+ordinals és de Nivell~II (observació~\ref{obs:tipus-acotats}): reunir tots els
+tipus demanaria un principi ---SR--- que els axiomes de Nivell~I no donen, i
+que ni tan sols amb SR produiria un \emph{conjunt} ben ordenat de tots ells,
+sinó una família estratificada.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Un tipus ordinal és la classe d'un bon ordre llevat d'isomorfisme d'ordre; un bon ordre concret de la classe n'és un \emph{representant}, i el seu conjunt subjacent, el \emph{suport}. No hi ha representant canònic, i cada definició es comprova independent del representant gràcies a la unicitat de l'isomorfisme d'ordre.
+  \item \(\alpha<\beta\) vol dir que un representant de \(\alpha\) és isomorf a un segment propi d'un de \(\beta\); l'ordre és total, i dins \(\Hart(A)\) és un bon ordre. No s'escriu \(\alpha\in\beta\): no hi ha pertinença global.
+  \item El successor \(\alpha+1\) és el tipus de \(W+\mathbf1\), el menor tipus més gran que \(\alpha\). Tot tipus és exactament zero (representant buit), successor (representant amb màxim) o límit (representant no buit i sense màxim); \(\omega=\operatorname{tipus}(\N)\) és el primer límit.
+  \item El suprem d'una família representada dins \(W\) per \(r\colon I\to W\) és el tipus de \(\bigcup_iW_{<r(i)}\), la reunió dels segments \emph{oberts}; l'acotació és imprescindible.
+  \item Burali--Forti: no hi ha cap bon ordre \(\Omega\) que indexi coherentment tots els tipus (cada \(\gamma\in\Omega\) representa el tipus del segment \(\Omega_{<\gamma}\)). És el paral·lel ordinal de Cantor, i és per això que la teoria global dels ordinals queda fora del Nivell~I.
+\end{enumerate}
+\apartat{Errors típics} Escollir un representant canònic i oblidar comprovar la independència; escriure \(\alpha\in\beta\); confondre \(\mathbf1+W\) (punt nou al principi, mateix tipus que \(W\) si \(W\) és infinit sense màxim, com \(\mathbf1+\N\cong\N\)) amb \(W+\mathbf1\); prendre el suprem amb segments tancats \(W_{\le r(i)}\), que dona un tipus massa gran; i parlar del \enquote{conjunt de tots els ordinals}.
+\apartat{Lectura recomanada} \cite[§§19--21]{halmos} per als ordinals, la seva aritmètica inicial i el teorema de Burali--Forti en la presentació de von Neumann; \cite[cap.~2]{jech2003} i \cite[cap.~I.7--I.8]{kunen2011} per a la teoria clàssica dels ordinals; i \cite[§§8.4--8.5]{lawvere-rosebrugh} per a la lectura estructural dels bons ordres com a tipus.
+\end{resumcap}

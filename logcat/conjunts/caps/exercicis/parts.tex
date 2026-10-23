@@ -1,0 +1,65 @@
+\chapter{Parts i construccions universals}\label{cap:exercicis-parts}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:parts} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-parts} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Cancel·lació i composició de mono/epi}
+
+\begin{enumerate}
+  \item Demostreu que si \(m:A\rightarrowtail B\) és un monomorfisme i \(u:X\to A\) és qualsevol, aleshores \(m\circ u=m\circ u'\) implica \(u=u'\); enuncieu i demostreu la propietat dual per a un epimorfisme. (Model: secció~\ref{prac:cancel-lacio}.)
+
+  \item Siguin \(m:A\rightarrowtail B\) i \(n:B\rightarrowtail C\) monomorfismes. Demostreu que \(n\circ m\) és un monomorfisme i, dualment, que la composició de dos epimorfismes és un epimorfisme. \begin{indicacio}Descomponeu \((n\circ m)\circ u\) amb l'associativitat i cancel·leu primer \(n\), després \(m\), com a la proposició~\ref{prop:composicio-mono-epi}.\end{indicacio}
+
+  \item Siguin \(f:A\to B\) i \(g:B\to C\). Demostreu que si \(g\circ f\) és un epimorfisme, aleshores \(g\) és un epimorfisme. (Dual de l'exercici resolt de cancel·lació posterior.)
+
+  \item Doneu, en el model clàssic, un exemple de \(f\) i \(g\) amb \(g\circ f\) mono però \(g\) no mono, per veure que la conclusió de l'exercici anterior no es pot enfortir a \enquote{\(g\) és mono}. \begin{indicacio}Preneu \(g\) no injectiva però injectiva sobre la imatge de \(f\).\end{indicacio}
+\end{enumerate}
+
+\section{Seccions, retraccions i exhaustivitat generalitzada}
+
+\begin{enumerate}[resume]
+  \item Demostreu que tota retracció és un epimorfisme (la meitat de la proposició~\ref{prop:seccio-mono-retraccio-epi} que no s'ha resolt al text). \begin{indicacio}Dualitzeu l'argument de \enquote{tota secció és un monomorfisme}: component per la dreta amb la secció.\end{indicacio}
+
+  \item Sigui \(e:A\to B\) un epimorfisme escindit amb secció \(s\). Demostreu que \(s\) és un monomorfisme i que \(e\circ s=\id_B\) caracteritza \(s\) entre les possibles seccions. 
+
+  \item Comproveu que, en el model clàssic, una aplicació exhaustiva sobre els elements globals no és necessàriament una retracció si no es disposa d'una elecció de preimatges; relacioneu-ho amb l'observació~\ref{obs:exhaustiva-generalitzada-global}. \begin{indicacio}El pas de \enquote{exhaustiva} a \enquote{escindida} requereix triar, per a cada element de \(B\), una preimatge; sense elecció, la secció pot no existir.\end{indicacio}
+\end{enumerate}
+
+\section{Parts, inclusió i pertinença}
+
+\begin{enumerate}[resume]
+  \item Demostreu que la relació d'inclusió \(\subseteq_A\) és reflexiva i transitiva sobre les parts de \(A\), i que \(m\subseteq_A n\) i \(n\subseteq_A m\) impliquen que \(m\) i \(n\) són parts equivalents. (Model: secció~\ref{prac:parts-inclusio}; per a l'antisimetria vegeu la proposició~\ref{prop:equivalencia-parts}.)
+
+  \item Siguin \(m,n\) parts de \(A\). Demostreu la implicació que falta a la proposició~\ref{prop:inclusio-pertinenca}: si per a tot \(x:X\to A\) es té \(x\in_X m\Rightarrow x\in_X n\), aleshores \(m\subseteq_A n\). \begin{indicacio}Apliqueu la hipòtesi a l'element generalitzat \enquote{genèric} \(x=m:S\to A\), que pertany a \(m\) via \(\id_S\); el testimoni resultant és el \(k\) buscat.\end{indicacio}
+
+  \item Demostreu que si \(x\in_X m\) i \(u:Y\to X\) és qualsevol, aleshores \(x\circ u\in_Y m\). \begin{indicacio}Si \(\bar x\) testimonia \(x\in_X m\), comproveu que \(\bar x\circ u\) testimonia \(x\circ u\in_Y m\).\end{indicacio}
+\end{enumerate}
+
+\section{Sumes, característiques i \texorpdfstring{\(\mathbf2\)}{2}}
+
+\begin{enumerate}[resume]
+  \item Donades \(f:A\to C\) i \(g:B\to C\), demostreu que l'aplicació definida per casos \([f,g]:A+B\to C\) és única amb les propietats \([f,g]\circ i_A=f\) i \([f,g]\circ i_B=g\). (Model: exercici resolt d'unicitat per casos, secció~\ref{prac:sumes}.)
+
+  \item Demostreu que, si existeixen aplicacions \(f\colon A\to B\) i \(g\colon B\to A\), les dues injeccions \(i_0,i_1\) de la suma \(A+B\) són monomorfismes escindits. \begin{indicacio}Construïu una retracció de cada injecció com al model del cograf (proposició~\ref{prop:cograf-retraccio}); una secció és mono. Que les injeccions siguin sempre monomorfismes, sense aquesta hipòtesi, es veurà al capítol~\ref{cap:valors}.\end{indicacio}
+
+  \item Demostreu que dues parts de \(A\) amb la mateixa aplicació característica \(\chi:A\to\mathbf2\) són equivalents, i recíprocament que parts equivalents tenen la mateixa característica. (Model: secció~\ref{prac:caracteristica}; useu l'axioma~\ref{ax:representacio}.)
+
+  \item Comproveu que la característica de la part total \(\id_A\) és l'aplicació constant \(1\circ{!}_A\), i demostreu que una part \(m\colon S\rightarrowtail A\) amb \(\chi_m=1\circ{!}_A\) és equivalent a la total i, per tant, \(m\) és un isomorfisme. \begin{indicacio}Per a la segona part, \(\id_A\in_A m\) dona una secció de \(m\); combineu-ho amb el fet que \(m\) és mono, com a la proposició~\ref{prop:bimorfisme-isomorfisme}.\end{indicacio}
+\end{enumerate}
+
+\section{Productes, equalitzadors i pullbacks}
+
+\begin{enumerate}[resume]
+  \item Demostreu que si \(p_A\circ u=p_A\circ v\) i \(p_B\circ u=p_B\circ v\), aleshores \(u=v\), i deduïu que \(\langle p_A,p_B\rangle=\id_{A\times B}\). (Model: secció~\ref{prac:productes}.)
+
+  \item Demostreu que el producte de \(A\) i \(B\) és únic llevat d'isomorfisme, exhibint els isomorfismes inversos entre dues realitzacions qualssevol. \begin{indicacio}Seguiu el patró de la proposició~\ref{prop:producte-unic}: induïu \(\varphi,\psi\) per les propietats universals i useu la unicitat de factorització per veure \(\psi\circ\varphi=\id\).\end{indicacio}
+
+  \item Demostreu que l'equalitzador \(e:E\rightarrowtail A\) de \(f,g:A\to B\) és un monomorfisme, i que qualsevol altre equalitzador dels mateixos \(f,g\) hi és equivalent com a part. (Model: secció~\ref{prac:equalitzadors-pullbacks}; enunciat: teorema~\ref{teo:equalitzador-universal}.)
+
+  \item En un pullback de \(f:A\to C\) al llarg de \(g:B\to C\), demostreu que si \(f\) és un monomorfisme, la projecció oposada és un monomorfisme, i interpreteu-ho com que la imatge inversa d'una part és una part. \begin{indicacio}Vegeu la proposició~\ref{prop:pullback-mono}; cancel·leu \(f\) i useu la unicitat de la factorització del pullback.\end{indicacio}
+
+  \item Siguin \(g:B\to A\) i una part \(m:S\rightarrowtail A\). Demostreu que \(y\in_X g^{-1}(m)\) si i només si \(g\circ y\in_X m\), i deduïu-ne que \(g^{-1}(\id_A)\equiv_B\id_B\) i que, si \(m\subseteq_A n\), aleshores \(g^{-1}(m)\subseteq_B g^{-1}(n)\). \begin{indicacio}La primera part és la proposició~\ref{prop:pertinenca-imatge-inversa}; per a les altres dues, compareu els elements generalitzats de les parts i useu la proposició~\ref{prop:inclusio-pertinenca}.\end{indicacio}
+
+  \item Siguin \(h\colon C\to B\), \(g\colon B\to A\) i una part \(m\) de \(A\). Demostreu que \((g\circ h)^{-1}(m)\equiv_C h^{-1}\bigl(g^{-1}(m)\bigr)\). \begin{indicacio}Les dues parts tenen els mateixos elements generalitzats: apliqueu dues vegades la proposició~\ref{prop:pertinenca-imatge-inversa}. Alternativament, useu que dos quadrats cartesians encaixats formen un quadrat cartesià.\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Digueu quins axiomes nous del capítol (sumes, representació, productes) intervenen en cadascun d'aquests resultats, i quins es demostren només amb els del capítol~\ref{cap:aplicacions}: la composició de monomorfismes és un monomorfisme; tota secció és un monomorfisme; el testimoni d'una inclusió és únic; \(0,1\colon\mathbf1\to\mathbf2\) són monomorfismes; tot bimorfisme és un isomorfisme; l'equalitzador existeix; el pullback existeix. \begin{indicacio}Els tres primers només usen els axiomes estructurals i les definicions; el quart usa les sumes; el cinquè, la representació; els dos últims, productes i representació.\end{indicacio}
+\end{enumerate}

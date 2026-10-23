@@ -1,0 +1,478 @@
+\chapter{Aritmètica ordinal}\label{cap:aritmetica-ordinal}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:ordinals}: tipus ordinals, el seu ordre, successor, límit i suprem acotat. Del capítol~\ref{cap:bons-ordres}: rigidesa, segments i comparació. Del capítol~\ref{cap:recursio}: recursió transfinita amb codomini fix. Del capítol~\ref{cap:zorn}: el conjunt de Hartogs com a cota. Dels capítols~\ref{cap:valors} i~\ref{cap:parts}: sumes i productes de conjunts.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item definir la suma i el producte ordinals sobre representants (concatenació; \(\beta\) còpies d'\(\alpha\) amb l'ordre antilexicogràfic), demostrar que són bons ordres ben definits i associatius;
+  \item calcular \(1+\omega\), \(\omega+1\), \(2\cdot\omega\), \(\omega\cdot2\), i demostrar la no-commutativitat i la distributivitat només per l'esquerra;
+  \item definir l'exponenciació per funcions de suport finit, deduir-ne les equacions recursives per a base no nul·la, i explicar per què la base \(0\) es tracta a part;
+  \item demostrar que una immersió d'ordre entre bons ordres compara els tipus, i deduir-ne la monotonia de les tres operacions;
+  \item distingir l'aritmètica ordinal (recorda l'ordre) de la cardinal (l'oblida), amb \(2^{\omega}=\omega\) com a exemple clau.
+\end{itemize}
+\end{objectius}
+
+Els tipus ordinals mesuren la forma d'un bon ordre; ara els operem. La suma,
+el producte i l'exponenciació ordinals es defineixen ---seguint la disciplina
+del capítol anterior--- \emph{sobre representants}, amb construccions
+concretes de bons ordres, i després es comprova que el resultat no depèn del
+representant. Dues coses fan aquesta aritmètica diferent de la dels naturals,
+i val la pena anunciar-les d'entrada. Primer, \emph{no és commutativa}: l'ordre
+en què es concatenen o s'iteren els bons ordres importa, i \(1+\omega\) no és
+\(\omega+1\). Segon, recorda \emph{l'ordre} i no la \emph{mida}: dos bons
+ordres poden ser equipotents ---tenir la mateixa cardinalitat--- i tenir tipus
+ordinals ben diferents; l'aritmètica ordinal distingeix el que la cardinal
+(capítol següent) oblidarà. La suma i el producte són operacions binàries de
+Nivell~I, construïdes directament sobre representants. L'exponenciació es
+defineix per recursió transfinita (capítol~\ref{cap:recursio}), i la seva
+clàusula límit ---un suprem--- és el primer lloc on cal vigilar l'acotació:
+mentre la base i l'exponent visquin dins un \(\Hart(A)\) prou gran, tot és de
+Nivell~I; una teoria completament general demanaria SR.
+
+\section{Suma ordinal}\label{sec:suma-ordinal}
+
+\begin{definicio}[Suma ordinal]\index{Suma ordinal}\label{def:suma-ordinal}
+Siguin \(\alpha=\operatorname{tipus}(A)\) i \(\beta=\operatorname{tipus}(B)\)
+tipus ordinals amb representants \((A,<_A)\) i \((B,<_B)\). La \emph{suma
+ordinal} \(\alpha+\beta\) és el tipus del bon ordre sobre la suma disjunta
+\(A+B\) (definició~\ref{def:suma-disjunta}) en què \emph{tots els elements
+d'\(A\) precedeixen tots els de \(B\)}, i dins de cada sumand es manté l'ordre
+original:
+\[
+x<y
+\ \Longleftrightarrow\
+\begin{cases}
+x<_A y & \text{si } x,y\in A,\\
+x<_B y & \text{si } x,y\in B,\\
+\text{cert} & \text{si } x\in A,\ y\in B,\\
+\text{fals} & \text{si } x\in B,\ y\in A.
+\end{cases}
+\]
+\end{definicio}
+
+\begin{proposicio}[La suma és un bon ordre, invariant]\label{prop:suma-bon-ordre}
+L'ordre de la definició~\ref{def:suma-ordinal} és un bon ordre sobre \(A+B\),
+i el seu tipus no depèn dels representants: si \(A\cong A'\) i \(B\cong B'\)
+com a ordres, aleshores \(A+B\cong A'+B'\). Per tant \(\alpha+\beta\) està ben
+definida.\par
+\emph{Axiomes usats:} suma disjunta (capítol~\ref{cap:valors}), bon ordre
+(capítol~\ref{cap:bons-ordres}), unicitat de l'isomorfisme d'ordre
+(teorema~\ref{teo:unicitat-iso}); cap elecció.
+\end{proposicio}
+
+\begin{prova}
+\emph{És un ordre estricte total}: la irreflexivitat i la transitivitat es
+comproven per casos segons els sumands (els casos mixtos són consistents
+perquè \enquote{\(A\) abans de \(B\)} és una decisió global), i la totalitat
+val perquè dos elements qualssevol o són al mateix sumand ---on \(<_A\) o
+\(<_B\) els compara--- o a sumands diferents ---on la clàusula mixta els
+compara. \emph{És ben ordenat}: sigui \(P\hookrightarrow A+B\) una part no
+inicial. Si \(P\cap A\) és no inicial, el seu mínim (pel bon ordre d'\(A\)) és
+el mínim de \(P\), perquè tot element d'\(A\) precedeix tot element de \(B\).
+Si \(P\cap A\) és inicial, aleshores \(P\subseteq B\) i el mínim de \(P\) és el
+seu mínim pel bon ordre de \(B\). \emph{Invariància}: dos isomorfismes d'ordre
+\(f\colon A\cong A'\) i \(g\colon B\cong B'\) donen \(f+g\colon A+B\cong A'+B'\),
+que conserva l'ordre perquè respecta cada sumand i la relació
+\enquote{\(A\) abans de \(B\)}.
+\end{prova}
+
+\begin{proposicio}[Associativitat de la suma]\label{prop:suma-associativa}
+Per a tipus ordinals qualssevol, \((\alpha+\beta)+\gamma=\alpha+(\beta+\gamma)\).
+\end{proposicio}
+
+\begin{prova}
+Els dos costats són el tipus del bon ordre sobre \(A+B+C\) en què tot \(A\)
+precedeix tot \(B\), que precedeix tot \(C\), amb els ordres originals dins de
+cada sumand. L'associativitat de la suma disjunta de conjunts
+(capítol~\ref{cap:valors}) dona un isomorfisme \((A+B)+C\cong A+(B+C)\) que
+conserva aquest ordre; per la unicitat de l'isomorfisme d'ordre
+(teorema~\ref{teo:unicitat-iso}), els tipus coincideixen.
+\end{prova}
+
+\begin{proposicio}[La suma no és commutativa]\label{prop:suma-no-commutativa}
+En general \(\alpha+\beta\neq\beta+\alpha\). Concretament,
+\[
+1+\omega=\omega,
+\qquad\text{però}\qquad
+\omega+1\neq\omega .
+\]
+\end{proposicio}
+
+\begin{prova}
+\emph{\(1+\omega=\omega\)}: \(1+\omega\) és el tipus d'un punt seguit d'una
+còpia de \(\N\); l'aplicació que envia el punt afegit a \(0\) i el natural
+\(n\) a \(n+1\) és un isomorfisme d'ordre amb \(\N\) ---simplement desplaça la
+numeració---, de manera que \(1+\omega=\operatorname{tipus}(\N)=\omega\).
+\emph{\(\omega+1\neq\omega\)}: \(\omega+1\) és el tipus d'una còpia de \(\N\)
+seguida d'un punt \(\ast\) col·locat \emph{després} de tots els naturals.
+Aquest bon ordre té un element \emph{màxim} (el punt \(\ast\)), mentre que
+\(\N\) no en té cap; com que tenir màxim és invariant per isomorfisme d'ordre,
+\(\omega+1\not\cong\omega\), és a dir \(\omega+1\neq\omega\). De fet
+\(\omega+1\) és el successor de \(\omega\) (definició~\ref{def:zero-successor}),
+estrictament més gran que \(\omega\), mentre que \(1+\omega=\omega\): la suma
+per l'esquerra d'un punt \enquote{s'absorbeix} i per la dreta no.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica: concatenar ordres]\label{obs:suma-classica}
+La suma ordinal és la \emph{concatenació} de bons ordres: \(\alpha+\beta\) és
+\enquote{primer tot \(\alpha\), després tot \(\beta\)}. La no-commutativitat
+és intuïtiva des d'aquest punt de vista: afegir un element \emph{abans} d'una
+successió infinita ascendent no canvia la forma (es pot reabsorbir desplaçant
+els índexs), però afegir-lo \emph{després} crea un element màxim que abans no
+hi era, i canvia la forma. És el primer exemple, i el més net, de la
+diferència entre ordre i mida: \(1+\omega\) i \(\omega+1\) són equipotents
+---tots dos numerables--- però tenen tipus ordinals diferents.
+\end{observacio}
+
+\section{Producte ordinal}\label{sec:producte-ordinal}
+
+\begin{definicio}[Producte ordinal]\index{Producte ordinal}\label{def:producte-ordinal}
+Siguin \(\alpha=\operatorname{tipus}(A)\) i \(\beta=\operatorname{tipus}(B)\).
+El \emph{producte ordinal} \(\alpha\cdot\beta\) és el tipus del bon ordre
+sobre el producte \(A\times B\) ordenat \emph{primer per la coordenada de
+\(B\) i després per la d'\(A\)} ---l'ordre \emph{antilexicogràfic}:
+\[
+(a,b)<(a',b')
+\quad\Longleftrightarrow\quad
+b<_B b'\ \ \text{o bé}\ \ (b=b'\ \text{i}\ a<_A a').
+\]
+Intuïtivament, \(\alpha\cdot\beta\) són \(\beta\) còpies d'\(\alpha\)
+col·locades una rere l'altra: per a cada \(b\in B\) hi ha una còpia sencera
+d'\(A\), i les còpies se succeeixen segons l'ordre de \(B\). Fixem aquesta
+convenció ---la coordenada de \(B\) mana--- abans de qualsevol càlcul.
+\end{definicio}
+
+\begin{proposicio}[El producte és un bon ordre, invariant i associatiu]\label{prop:producte-bon-ordre}
+L'ordre antilexicogràfic de la definició~\ref{def:producte-ordinal} és un bon
+ordre sobre \(A\times B\); el seu tipus no depèn dels representants; i el
+producte és associatiu, \((\alpha\cdot\beta)\cdot\gamma=\alpha\cdot(\beta\cdot\gamma)\).\par
+\emph{Axiomes usats:} producte (capítol~\ref{cap:parts}), bon ordre, unicitat
+de l'isomorfisme d'ordre (teorema~\ref{teo:unicitat-iso}); cap elecció.
+\end{proposicio}
+
+\begin{prova}
+\emph{Bon ordre}: és un ordre estricte total (l'antilexicogràfic d'ordres
+totals ho és). Per al bon ordre, sigui \(P\hookrightarrow A\times B\) no
+inicial; la projecció \(\pi_B(P)\hookrightarrow B\) és no inicial i té un mínim
+\(b_0\); dins la fibra \(\{(a,b_0)\in P\}\), la projecció a \(A\) és no
+inicial i té un mínim \(a_0\); aleshores \((a_0,b_0)\) és el mínim de \(P\),
+perquè cap element amb segona coordenada \(>b_0\) no el precedeix, i dins
+\(b_0\) mana \(a_0\). \emph{Invariància}: \(f\times g\) transporta l'ordre.
+\emph{Associativitat}: tots dos costats són el tipus de \(A\times B\times C\)
+amb l'ordre \enquote{la coordenada de \(C\) primer, després la de \(B\),
+després la d'\(A\)}; l'isomorfisme canònic \((A\times B)\times C\cong A\times(B\times C)\)
+el conserva, i la unicitat (teorema~\ref{teo:unicitat-iso}) tanca.
+\end{prova}
+
+\begin{proposicio}[El producte no és commutatiu; distributivitat per l'esquerra]\label{prop:producte-propietats}
+En general \(\alpha\cdot\beta\neq\beta\cdot\alpha\); concretament
+\[
+2\cdot\omega=\omega,
+\qquad\text{però}\qquad
+\omega\cdot2=\omega+\omega\neq\omega .
+\]
+A més val la distributivitat \emph{per l'esquerra}:
+\(\alpha\cdot(\beta+\gamma)=\alpha\cdot\beta+\alpha\cdot\gamma\); en canvi la
+distributivitat per la dreta \emph{falla} en general.
+\end{proposicio}
+
+\begin{prova}
+\emph{\(2\cdot\omega=\omega\)}: són \(\omega\) còpies del bon ordre de dos
+elements, és a dir la successió \(0<1<2<3<\cdots\) agrupada de dos en dos
+\((0,1),(2,3),\dots\); reindexant, és isomorfa a \(\N\), d'on
+\(2\cdot\omega=\omega\). \emph{\(\omega\cdot2=\omega+\omega\)}: són \(2\)
+còpies de \(\N\), l'una després de l'altra ---exactament la concatenació
+\(\omega+\omega\), que té un element que no és el mínim i no té predecessor
+immediat (el primer de la segona còpia); \(\N\) no en té cap de tal, perquè
+tot punt no nul és un successor (lema~\ref{lema:zero-o-successor}), i la
+propietat és invariant per isomorfisme d'ordre. Per tant
+\(\omega+\omega\not\cong\omega\). Per
+tant \(\omega\cdot2\neq2\cdot\omega\). \emph{Distributivitat esquerra}:
+\(\alpha\cdot(\beta+\gamma)\) és \((\beta+\gamma)\) còpies d'\(\alpha\), és a
+dir \(\beta\) còpies seguides de \(\gamma\) còpies, que és
+\(\alpha\cdot\beta+\alpha\cdot\gamma\); l'isomorfisme d'ordre és el canònic
+\(A\times(B+C)\cong(A\times B)+(A\times C)\), que conserva l'antilexicogràfic.
+\emph{La dreta falla}: \((\ 1+1)\cdot\omega=2\cdot\omega=\omega\), però
+\(1\cdot\omega+1\cdot\omega=\omega+\omega\neq\omega\).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica: substituir cada punt per una còpia]\label{obs:producte-classic}
+El producte \(\alpha\cdot\beta\) s'obté prenent el bon ordre \(\beta\) i
+substituint \emph{cada} un dels seus punts per una còpia sencera d'\(\alpha\).
+La convenció \enquote{la coordenada de \(\beta\) mana} és la que fa que això
+sigui \(\beta\) còpies d'\(\alpha\) i no a l'inrevés; amb la convenció
+oposada s'obtindria \(\beta\cdot\alpha\), i com que el producte no és
+commutatiu, cal fixar-la. La distributivitat només val per l'esquerra
+perquè substituir cada punt d'una concatenació \(\beta+\gamma\) per una còpia
+d'\(\alpha\) dona la concatenació de les substitucions; en canvi
+\enquote{repartir} una còpia d'\(\alpha\) sobre una suma a la dreta trenca
+l'estructura.
+\end{observacio}
+
+\section{Exponenciació ordinal}\label{sec:exponenciacio-ordinal}
+
+L'exponenciació no es defineix per una construcció directa sinó \emph{per
+recursió} sobre l'exponent, amb un suprem als límits. És on la disciplina de
+l'acotació esdevé imprescindible.
+
+Per evitar una recursió sobre \enquote{tots els tipus}, que demanaria un
+codomini fix i una cota per a cada suprem, donem una construcció
+\emph{directa} sobre representants, com hem fet amb la suma i el producte,
+i en deduïm les equacions recursives com a teorema.
+
+\begin{definicio}[Funcions de suport finit]\index{Funcions de suport finit}\label{def:suport-finit}
+Siguin \((A,<_A)\) i \((B,<_B)\) bons ordres, amb \(A\) no buit i mínim
+\(0_A\). Una aplicació \(f\colon B\to A\) té \emph{suport finit} si la part
+\(\operatorname{supp}(f):=\{b:f(b)\neq0_A\}\hookrightarrow B\) és finita
+(capítol~\ref{cap:finits}). Les aplicacions de suport finit formen una part
+\[
+E(B,A)\ \hookrightarrow\ A^{B},
+\]
+tallada per la condició interna \enquote{la part classificada per
+\(\neg\circ\chi_{0_A}\circ\operatorname{ev}\) és finita}. L'ordenem
+\emph{antilexicogràficament}: \(f<g\) si \(f\neq g\) i, al \emph{màxim}
+punt \(b\) on difereixen, \(f(b)<_Ag(b)\). El màxim existeix perquè els
+punts on difereixen formen una part finita no buida
+(\(\subseteq\operatorname{supp}f\cup\operatorname{supp}g\)) d'un ordre
+total.
+\end{definicio}
+
+\begin{definicio}[Exponenciació ordinal]\index{Exponenciació ordinal}\label{def:exponenciacio-ordinal}
+Siguin \(\alpha=\operatorname{tipus}(A)\) i \(\beta=\operatorname{tipus}(B)\).
+Si \(\alpha>0\), definim
+\[
+\alpha^{\beta}:=\operatorname{tipus}\bigl(E(B,A),<\bigr).
+\]
+Si \(\alpha=0\), és a dir, si \(A\) és inicial, no hi ha mínim \(0_A\) i
+\(E(B,A)\) no es pot formar; definim aleshores
+\[
+0^{\beta}:=\operatorname{tipus}\bigl(A^{B}\bigr)
+=\begin{cases}1&\text{si }\beta=0,\\0&\text{si }\beta>0,\end{cases}
+\]
+on \(A^{B}\), que té com a molt un punt, porta l'únic ordre possible. Els
+dos valors es justifiquen dins la teoria: si \(B\) és inicial,
+\(A^{B}\cong\mathbf1\) (capítol~\ref{cap:exponencials}); si \(B\) no és
+inicial, un punt de \(A^{B}\) seria una aplicació \(B\to\mathbf0\), que per
+l'estrictesa de \(\mathbf0\) (proposició~\ref{prop:inicial-estricte}) faria
+\(B\) inicial, de manera que \(A^{B}\) no té cap punt i és inicial (lema
+del buit).
+\end{definicio}
+
+\begin{teorema}[L'exponenciació està ben definida i satisfà la recursió]\label{teo:exponenciacio-recursio}
+Sigui \(\alpha>0\). Per a tot bon ordre \(B\):
+\begin{enumerate}
+\item \(E(B,A)\) és un bon ordre, i el seu tipus no depèn dels representants
+d'\(\alpha\) i \(\beta\);
+\item si \(B'\hookrightarrow B\) és una part inicial, l'extensió per \(0_A\)
+fora de \(B'\) identifica \(E(B',A)\) amb una part inicial de \(E(B,A)\);
+\item \(\alpha^{0}=1\), \(\alpha^{\beta+1}=\alpha^{\beta}\cdot\alpha\), i, si
+\(\lambda\) és límit, \(\alpha^{\lambda}=\sup_{\beta<\lambda}\alpha^{\beta}\),
+on el suprem és el de la proposició~\ref{prop:suprem}.
+\end{enumerate}
+\emph{Axiomes usats:} exponencials, finitud (capítol~\ref{cap:finits}),
+bons ordres, inducció transfinita; cap elecció; Nivell~I.
+\end{teorema}
+
+\begin{prova}
+\emph{(2)} Sigui \(\iota\colon E(B',A)\to E(B,A)\) l'extensió per \(0_A\).
+És estrictament creixent (els punts on difereixen dues extensions són els
+mateixos). La imatge és inicial: si \(g<\iota(f)\) i \(b\) és el màxim punt
+on difereixen, aleshores \(b\in B'\) ---si no, \(\iota(f)(b)=0_A\) i
+\(g(b)<0_A\) seria impossible---, i per sobre de \(b\) les dues funcions
+coincideixen, de manera que \(g\) també s'anul·la fora de \(B'\) (que és
+inicial i conté \(b\), de manera que tot punt fora de \(B'\) és \(>b\)).
+
+\emph{(3), cas zero i successor.} Si \(B\) és buit, \(A^{B}\) té un sol
+punt, de suport buit: \(\alpha^0=1\). Si \(B=C+\mathbf1\) amb punt final
+\(\ast\), l'aplicació \(f\mapsto(f|_C,f(\ast))\) és una bijecció
+\(E(B,A)\cong E(C,A)\times A\) (una funció de suport finit sobre \(B\) és
+una sobre \(C\) més un valor a \(\ast\)), i l'ordre antilexicogràfic, que
+mira primer el punt \(\ast\), es correspon exactament amb l'ordre del
+producte ordinal, on mana la coordenada d'\(A\)
+(definició~\ref{def:producte-ordinal}): \(\alpha^{\beta+1}=\alpha^{\beta}\cdot\alpha\).
+
+\emph{(3), cas límit.} Si \(B\) no té màxim, tota \(f\in E(B,A)\) té suport
+finit, acotat per algun punt \(b\) de \(B\) (si el suport és no buit, el seu
+màxim té un posterior, perquè \(B\) no té màxim); per tant
+\(E(B,A)=\bigcup_{b\in B}E(B_{<b},A)\), una unió de parts inicials
+encadenades, per~(2). Pel mateix argument de la proposició~\ref{prop:suprem}
+(isomorfismes únics compatibles sobre una reunió de parts inicials), el tipus
+de la reunió és el suprem dels tipus \(\alpha^{\operatorname{tipus}(B_{<b})}\),
+és a dir, \(\sup_{\beta<\lambda}\alpha^{\beta}\).
+
+\emph{(1)} Per inducció transfinita sobre els segments de \(B\) i \(B\)
+mateix (teorema~\ref{teo:induccio-transfinita}): el cas buit és trivial; el
+successor és un producte ordinal de bons ordres, que és un bon ordre
+(proposició~\ref{prop:producte-bon-ordre}); i al límit, una reunió
+encadenada de parts inicials ben ordenades és ben ordenada (el mínim d'una
+part no buida es troba ja dins de qualsevol membre que la talli, com a la
+prova del lema de Zorn). La independència dels representants: isomorfismes
+d'ordre \(A\cong A'\) i \(B\cong B'\) indueixen, per composició, un
+isomorfisme d'ordre \(E(B,A)\cong E(B',A')\) que respecta el mínim i el
+suport.
+\end{prova}
+
+\begin{observacio}[Per què no definir-la directament per recursió]\label{obs:exponenciacio-acotacio}
+La presentació habitual defineix \(\alpha^{\beta}\) per recursió transfinita
+sobre l'exponent, amb un suprem als límits. Aquí això tindria dos
+inconvenients. Primer, una recursió necessita un codomini fix i cada suprem
+una família representada dins un bon ordre (observació~\ref{obs:suprem-acotat});
+caldria exhibir-los. La construcció per funcions de suport finit els
+proporciona d'entrada: totes les potències \(\alpha^{\beta}\) amb
+\(\beta\le\lambda\) viuen, per~(2), com a parts inicials d'un sol bon ordre
+\(E(L,A)\), sense cap cota externa ni cap apel·lació a SR. Segon, per a la base \(0\) les equacions del zero i del successor
+continuen valent (\(0^{0}=1\) i \(0^{\beta+1}=0^{\beta}\cdot0=0\)), però la
+del límit \emph{no}: amb la clàusula límit literal,
+\(0^{\omega}=\sup\{0^0,0^1,0^2,\dots\}=\sup\{1,0,0,\dots\}=1\), mentre que
+la definició dona \(0^{\omega}=0\), d'acord amb el fet que no hi ha cap
+aplicació \(\N\to\mathbf0\). La raó és que la família \(1,0,0,\dots\) no és
+creixent, i un suprem només recull bé una família creixent. Per això la
+base \(0\) es defineix a part, i la clàusula límit del
+teorema~\ref{teo:exponenciacio-recursio} només s'afirma per a
+\(\alpha>0\), on la família \((\alpha^\beta)_\beta\) és creixent
+(proposició~\ref{prop:monotonia-ordinal}). Una exponenciació amb bases i exponents variant en famílies
+sense un conjunt ambient comú, en canvi, sí que demanaria SR
+(observació~\ref{obs:sr}).
+\end{observacio}
+
+\begin{proposicio}[Càlculs bàsics amb l'exponenciació]\label{prop:exponenciacio-calculs}
+Amb la definició~\ref{def:exponenciacio-ordinal} i el teorema~\ref{teo:exponenciacio-recursio}, per a \(\alpha>0\):
+\[
+\alpha^{1}=\alpha,
+\qquad
+\alpha^{2}=\alpha\cdot\alpha,
+\qquad
+2^{\omega}=\omega,
+\qquad
+\omega^{2}=\omega\cdot\omega .
+\]
+En particular \(2^{\omega}=\omega\neq\mathfrak c\): l'exponenciació
+\emph{ordinal} \(2^{\omega}\) és numerable, ben diferent de l'exponenciació
+\emph{cardinal} \(2^{\aleph_0}\), que és el continu.
+\end{proposicio}
+
+\begin{prova}
+\(\alpha^{1}=\alpha^{0+1}=\alpha^{0}\cdot\alpha=1\cdot\alpha=\alpha\), i
+\(\alpha^{2}=\alpha^{1}\cdot\alpha=\alpha\cdot\alpha\). Per a \(2^{\omega}\):
+és el suprem dels \(2^{n}\) amb \(n<\omega\), tots finits, i el suprem d'una
+successió creixent de tipus finits no acotada és \(\omega\); per tant
+\(2^{\omega}=\omega\). I \(\omega^{2}=\omega^{1}\cdot\omega=\omega\cdot\omega\).
+La comparació amb la cardinal se subratlla perquè és el nucli de la distinció
+del capítol següent: \(2^{\omega}=\omega\) com a \emph{tipus ordinal} (una
+longitud numerable), mentre que com a \emph{cardinal} \(2^{\aleph_0}\) és no
+numerable (teorema~\ref{teo:cantor}); les dues operacions, escrites igual,
+signifiquen coses distintes.
+\end{prova}
+
+\section{Monotonia i ordre contra mida}\label{sec:monotonia-ordre-mida}
+
+\begin{lema}[Les immersions d'ordre comparen tipus]\label{lema:immersio-ordre}
+Siguin \(W\) i \(V\) bons ordres i \(f\colon W\to V\) una aplicació
+estrictament creixent. Aleshores \(\operatorname{tipus}(W)\le\operatorname{tipus}(V)\).
+\end{lema}
+
+\begin{prova}
+Per la comparabilitat (teorema~\ref{teo:comparabilitat}), si no fos
+\(\operatorname{tipus}(W)\le\operatorname{tipus}(V)\) tindríem
+\(V\cong W_{<w}\) per a algun \(w\); compost amb \(f\), donaria una
+aplicació estrictament creixent \(W\to W_{<w}\hookrightarrow W\) amb valor a
+\(w\) estrictament menor que \(w\), contra la rigidesa
+(lema~\ref{lema:rigidesa}).
+\end{prova}
+
+\begin{proposicio}[Monotonia]\label{prop:monotonia-ordinal}
+Les tres operacions són \emph{estrictament creixents per la dreta} i
+\emph{no decreixents per l'esquerra}. En particular, si \(\beta<\gamma\):
+\[
+\alpha+\beta<\alpha+\gamma,
+\qquad
+\alpha\cdot\beta<\alpha\cdot\gamma\ (\alpha>0),
+\qquad
+\alpha^{\beta}<\alpha^{\gamma}\ (\alpha>1),
+\]
+mentre que per l'esquerra només val \(\le\): de \(\beta<\gamma\) se'n
+segueix \(\beta+\alpha\le\gamma+\alpha\), i pot fallar l'estrictesa
+(\(1<2\) però \(1+\omega=2+\omega=\omega\)).
+\end{proposicio}
+
+\begin{prova}
+Siguin \(A,B,C\) representants d'\(\alpha,\beta,\gamma\), amb
+\(B\cong C_{<c}\) per a un punt \(c\) de \(C\) (perquè \(\beta<\gamma\)).
+
+\emph{Suma per la dreta.} \(A+C_{<c}\) és el segment de \(A+C\) determinat
+pel punt \(c\) del segon sumand, que és propi; d'on
+\(\alpha+\beta<\alpha+\gamma\).
+
+\emph{Producte per la dreta.} Si \(\alpha>0\), sigui \(a_0\) el mínim d'\(A\).
+En l'ordre antilexicogràfic, \(A\times C_{<c}\) és el segment de
+\(A\times C\) determinat per \((a_0,c)\), que és propi; d'on
+\(\alpha\cdot\beta<\alpha\cdot\gamma\).
+
+\emph{Exponenciació per la dreta.} Si \(\alpha>1\), el representant \(A\)
+té, a més del mínim \(0_A\), algun punt \(a_1\neq0_A\). Per la invariància
+(teorema~\ref{teo:exponenciacio-recursio}(1)),
+\(\alpha^{\beta}=\operatorname{tipus}(E(C_{<c},A))\), i per
+l'apartat~(2) d'aquell teorema l'extensió per \(0_A\) identifica
+\(E(C_{<c},A)\) amb una part inicial de \(E(C,A)\). Aquesta part és
+\emph{pròpia}: l'aplicació \(g\colon C\to A\) que val \(a_1\) al punt \(c\) i
+\(0_A\) a la resta (definició per casos sobre el singletó \(\{c\}\) i el seu
+complement) té suport \(\{c\}\), finit, i no és l'extensió de cap funció
+sobre \(C_{<c}\), perquè \(g(c)\neq0_A\). Per la
+proposició~\ref{prop:parts-inicials}, \(E(C_{<c},A)\) és isomorf a un segment
+propi de \(E(C,A)\), és a dir, \(\alpha^{\beta}<\alpha^{\gamma}\). No cal cap
+inducció sobre els tipus, que no formen cap conjunt: l'argument passa
+íntegrament dins el bon ordre fix \(C\).
+
+\emph{Per l'esquerra.} Si \(\beta\le\gamma\), hi ha una immersió estrictament
+creixent \(B\to C\) (sobre un segment); en resulten immersions estrictament
+creixents \(B+A\to C+A\) (per a \(\beta+\alpha\le\gamma+\alpha\)) i
+\(B\times A\to C\times A\) en l'ordre antilexicogràfic (per a
+\(\beta\cdot\alpha\le\gamma\cdot\alpha\)),
+i pel lema~\ref{lema:immersio-ordre} els tipus es comparen. Per a
+l'exponenciació, sigui \(D\) un representant de \(\delta\); volem
+\(\beta^{\delta}\le\gamma^{\delta}\). Si \(\beta=0\), \(\beta^{\delta}\) val
+\(1\) o \(0\) segons si \(\delta=0\) o no
+(definició~\ref{def:exponenciacio-ordinal}), i en el primer cas també
+\(\gamma^{0}=1\); la desigualtat és immediata. Si \(\beta>0\), la immersió
+\(j\colon B\to C\) és un isomorfisme d'ordre sobre una part inicial no
+inicial de \(C\), que conté el mínim de \(C\); per tant \(j(0_B)=0_C\). La
+postcomposició \(f\mapsto j\circ f\) envia \(E(D,B)\) dins \(E(D,C)\): conserva
+el suport, perquè \(j\) és injectiva i \(j(0_B)=0_C\), i és estrictament
+creixent, perquè \(f\) i \(f'\) difereixen exactament als mateixos punts que
+\(j\circ f\) i \(j\circ f'\), i al màxim d'aquests punts \(j\) conserva la
+desigualtat. Pel lema~\ref{lema:immersio-ordre},
+\(\beta^{\delta}\le\gamma^{\delta}\). L'exemple \(1+\omega=2+\omega=\omega\)
+(proposició~\ref{prop:suma-no-commutativa}) mostra que per l'esquerra
+l'estrictesa pot fallar.
+\end{prova}
+
+\begin{observacio}[Ordre contra mida: la lliçó de l'aritmètica ordinal]\label{obs:ordre-vs-mida}
+L'aritmètica ordinal \emph{recorda l'ordre}; la cardinal, que veurem tot
+seguit, l'\emph{oblidarà}. Els càlculs d'aquest capítol ho fan tangible.
+Ordinalment, \(1+\omega=\omega\) però \(\omega+1>\omega\);
+\(2\cdot\omega=\omega\) però \(\omega\cdot2>\omega\); \(2^{\omega}=\omega\).
+Els tipus \(\omega\), \(\omega+1\), \(\omega\cdot2\), \(\omega^{2}\) són
+\emph{diferents} dos a dos com a formes d'ordre; en canvi \(2^{\omega}=\omega\)
+(exponenciació \emph{ordinal}!), de manera que \(2^{\omega}\) no és un tipus
+nou sinó el mateix \(\omega\). Tots ells són a més \emph{equipotents}: tots
+numerables, tots de cardinal \(\aleph_0\). Com a \emph{mides} són el mateix. Aquesta és la raó de mantenir separades les dues
+aritmètiques: la ordinal distingeix \(\omega+1\) de \(\omega\), cosa que la
+cardinal no pot fer, perquè oblidar l'ordre és precisament identificar tots
+els bons ordres numerables. El capítol següent construeix l'aritmètica
+cardinal, on \enquote{\(+\)}, \enquote{\(\cdot\)} i \enquote{\(\,\hat{}\,\)}
+signifiquen suma disjunta, producte i exponencial de conjunts \emph{sense}
+ordre, i on \(2^{\aleph_0}\neq\aleph_0\) per Cantor.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Siguin \(A\) i \(B\) representants dels tipus \(\alpha\) i \(\beta\). La suma \(\alpha+\beta\) és el tipus de la concatenació \(A+B\) (tot \(A\) abans de tot \(B\)). El producte \(\alpha\cdot\beta\) és el tipus de \(A\times B\) amb l'ordre antilexicogràfic: una còpia d'\(A\) per cada punt de \(B\). Totes dues operacions no depenen dels representants i són associatives.
+  \item No són commutatives: \(1+\omega=\omega<\omega+1\), \(2\cdot\omega=\omega<\omega\cdot2\). El producte distribueix només per l'esquerra.
+  \item Per a \(\alpha>0\), l'exponenciació \(\alpha^\beta\) és el tipus del conjunt \(E(B,A)\) de les aplicacions de suport finit \(B\to A\), amb l'ordre antilexicogràfic; satisfà \(\alpha^0=1\), \(\alpha^{\beta+1}=\alpha^\beta\cdot\alpha\) i el suprem als límits, sense cap cota externa. Per a \(\alpha=0\), \(0^\beta\) és el tipus de \(A^B\): \(1\) si \(\beta=0\) i \(0\) altrament; la clàusula límit no val per a aquesta base. Així \(2^\omega=\omega\) ordinalment.
+  \item Una immersió estrictament creixent compara tipus. Les tres operacions són estrictament creixents per la dreta i no decreixents per l'esquerra.
+  \item L'aritmètica ordinal recorda l'ordre; la cardinal, que ve tot seguit, l'oblida: \(\omega\), \(\omega+1\), \(\omega\cdot2\), \(\omega^2\) són tipus diferents i la mateixa mida.
+\end{enumerate}
+\apartat{Errors típics} Invertir la convenció del producte (\(\omega\cdot2\) són dues còpies de \(\omega\), no \(\omega\) còpies de \(2\)); pensar que \(\omega+1=1+\omega\); confondre l'exponenciació ordinal \(2^\omega=\omega\) amb la cardinal \(2^{\aleph_0}\); aplicar la clàusula límit a la base \(0\); i creure que la monotonia per l'esquerra és estricta.
+\apartat{Lectura recomanada} \cite[§§19--21]{halmos} per a l'aritmètica ordinal en la teoria clàssica; \cite[cap.~2]{jech2003} per a la suma, el producte i l'exponenciació ordinals, amb la forma normal de Cantor; i \cite[cap.~I.9]{kunen2011} per a la definició recursiva de les operacions i les seves propietats.
+\end{resumcap}

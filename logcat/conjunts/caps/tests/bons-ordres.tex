@@ -1,0 +1,131 @@
+\chapter{Ordres, bons ordres i segments}\label{test:cap13}
+
+Aquest test correspon al capítol~13 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u13}{b,c,b,a,c,b,a,c,b,c,b,b}
+
+\begin{enumerate}
+
+\pregunta Un \emph{ordre estricte} sobre \(W\) és una part \({<}\hookrightarrow W\times W\) que és\ldots
+\begin{itemize}
+\opcio{a}{reflexiva i simètrica.}
+\opcio{b}{irreflexiva i transitiva.}
+\opcio{c}{una relació d'equivalència.}
+\opcio{d}{una aplicació \(W\to W\).}
+\end{itemize}
+\feedback
+\justificacio{Irreflexiva i transitiva: les dues condicions es tallen amb la diagonal i la composició de relacions. La simetria és pròpia de les equivalències, i un ordre no és una aplicació sinó una part de \(W\times W\).}
+
+\pregunta Un ordre estricte és un \emph{bon ordre} quan\ldots
+\begin{itemize}
+\opcio{a}{és total.}
+\opcio{b}{no té elements màxims.}
+\opcio{c}{tota part no inicial de \(W\) té un element mínim.}
+\opcio{d}{és isomorf a \(\N\).}
+\end{itemize}
+\feedback
+\justificacio{És la definició: tota part no inicial té mínim. La totalitat n'és una conseqüència, no la definició, i hi ha bons ordres molt més llargs que \(\N\).}
+
+\pregunta Tot bon ordre\ldots
+\begin{itemize}
+\opcio{a}{és finit.}
+\opcio{b}{és total (i el mínim d'una part no inicial és únic).}
+\opcio{c}{té un element màxim.}
+\opcio{d}{admet cadenes descendents infinites.}
+\end{itemize}
+\feedback
+\justificacio{El mínim de \(\{u,w\}\) decideix la comparació sobre punts, i el lema de transferència la converteix en una igualtat de parts; la unicitat ve de l'antisimetria. Un bon ordre pot ser infinit i no tenir màxim.}
+
+\pregunta El segment inicial \(W_{<w}\) és\ldots
+\begin{itemize}
+\opcio{a}{la part \(\{u\in W : u<w\}\).}
+\opcio{b}{tot \(W\) tret de \(w\).}
+\opcio{c}{el conjunt \(\{u : u>w\}\).}
+\opcio{d}{el mínim de \(W\).}
+\end{itemize}
+\feedback
+\justificacio{El segment és la part dels elements estrictament anteriors a \(w\), imatge inversa de \({<}\) al llarg de \(\langle\id,w\circ{!}\rangle\). No és el complement del punt.}
+
+\pregunta En un bon ordre, les parts inicials pròpies\ldots
+\begin{itemize}
+\opcio{a}{no existeixen.}
+\opcio{b}{poden no tenir mínim.}
+\opcio{c}{són exactament els segments \(W_{<w}\), amb \(w=\min(W\setminus S)\).}
+\opcio{d}{coincideixen amb tot \(W\).}
+\end{itemize}
+\feedback
+\justificacio{Si \(S\) és inicial i pròpia, el mínim \(w\) del complement compleix \(S=W_{<w}\); i aquest \(w\) és únic perquè un segment determina el seu punt.}
+
+\pregunta La \emph{rigidesa} d'un bon ordre diu que, per a \(f\) creixent i injectiva,\ldots
+\begin{itemize}
+\opcio{a}{\(f\) és exhaustiva.}
+\opcio{b}{cap punt no baixa: \(w\le f(w)\) per a tot \(w\).}
+\opcio{c}{\(f\) té un punt fix.}
+\opcio{d}{\(f(w)<w\) per a algun \(w\).}
+\end{itemize}
+\feedback
+\justificacio{Si la part dels punts que baixen fos no buida, el seu mínim \(w_0\) donaria \(f(w_0)<w_0\) i, aplicant \(f\), un punt que baixa encara més petit. Per tant cap punt no baixa.}
+
+\pregunta Entre dos bons ordres, el nombre d'isomorfismes d'ordre és\ldots
+\begin{itemize}
+\opcio{a}{com a molt un.}
+\opcio{b}{sempre exactament un.}
+\opcio{c}{infinit.}
+\opcio{d}{depèn de l'elecció.}
+\end{itemize}
+\feedback
+\justificacio{Si \(f,g\) són isomorfismes d'ordre, \(g^{-1}\circ f\) i la seva inversa són automorfismes i cap punt no baixa en cap dels dos: la composició és la identitat i \(f=g\). Pot no haver-n'hi cap.}
+
+\pregunta Cap bon ordre\ldots
+\begin{itemize}
+\opcio{a}{és total.}
+\opcio{b}{té element mínim.}
+\opcio{c}{és isomorf a cap segment inicial propi seu.}
+\opcio{d}{admet aplicacions creixents.}
+\end{itemize}
+\feedback
+\justificacio{Un tal isomorfisme donaria una creixent injectiva \(W\to W\) amb \(f(w)<w\), contra la rigidesa. És el que fa consistent comparar bons ordres per segments.}
+
+\pregunta La comparació \enquote{ser un segment de} sobre bons ordres és\ldots
+\begin{itemize}
+\opcio{a}{només reflexiva.}
+\opcio{b}{antisimètrica i transitiva (llevat d'isomorfisme d'ordre).}
+\opcio{c}{simètrica.}
+\opcio{d}{una relació d'equivalència.}
+\end{itemize}
+\feedback
+\justificacio{Dues dominacions oposades componen un isomorfisme sobre un segment inicial de si mateix, que no pot ser propi; per tant és un automorfisme, la identitat. És un ordre llevat d'isomorfisme.}
+
+\pregunta La comparabilitat total de dos bons ordres (que almenys una situació de la tricotomia es doni)\ldots
+\begin{itemize}
+\opcio{a}{és falsa en general.}
+\opcio{b}{requereix l'axioma d'elecció.}
+\opcio{c}{s'obté per recursió transfinita, sense elecció (el pas al mínim és canònic).}
+\opcio{d}{és equivalent al teorema de Cantor.}
+\end{itemize}
+\feedback
+\justificacio{L'aparellament es construeix per recursió prenent a cada pas el mínim encara lliure: una tria canònica, no una elecció. La comparabilitat de conjunts \emph{nus} sí que demana l'elecció.}
+
+\pregunta La totalitat d'un ordre, \enquote{\(u=w\) o \(u<w\) o \(w<u\)}, s'enuncia per a punts globals. Què diu com a afirmació sobre parts?
+\begin{itemize}
+\opcio{a}{Que \({<}\) és tot \(W\times W\).}
+\opcio{b}{Que \(\Delta\cup{<}\cup\operatorname{Inv}(<)\) és la part total de \(W\times W\); un element generalitzat pot quedar repartit entre els tres membres.}
+\opcio{c}{Que \({<}\) és una relació d'equivalència.}
+\opcio{d}{Que tot element generalitzat cau sencer en un dels tres membres.}
+\end{itemize}
+\feedback
+\justificacio{Les condicions disjuntives són unions de parts, i la separació global permet comprovar-les sobre punts; però sobre un estadi general \enquote{o} no exclou, i (d) és fals. És la mateixa situació que a l'ordre de \(\N\).}
+
+\pregunta Quina d'aquestes propietats \emph{no} val en un ordre total qualsevol, sinó només amb el bon ordre?
+\begin{itemize}
+\opcio{a}{Que tota aplicació creixent sigui injectiva.}
+\opcio{b}{Que cap punt baixi sota una creixent injectiva (rigidesa) i, per tant, que hi hagi com a molt un isomorfisme d'ordre.}
+\opcio{c}{Que l'ordre sigui transitiu.}
+\opcio{d}{Que els segments inicials siguin parts.}
+\end{itemize}
+\feedback
+\justificacio{La injectivitat de les creixents i la transitivitat valen en qualsevol ordre total; la rigidesa necessita el mínim d'una part (a \(\Z\) la translació \(n\mapsto n+1\) és creixent i injectiva i fa baixar tots els punts, en el sentit que cap punt no queda fix).}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

@@ -1,0 +1,131 @@
+\chapter{Imatges i factoritzacions}\label{test:cap5}
+
+Aquest test correspon al capítol~5 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u5}{c,b,b,a,c,a,c,b,c,b,b,a}
+
+\begin{enumerate}
+
+\pregunta Tota aplicació \(f\colon A\to B\) admet una factorització \(A\to\operatorname{Im}(f)\to B\) on\ldots
+\begin{itemize}
+\opcio{a}{els dos factors són monomorfismes.}
+\opcio{b}{els dos factors són epimorfismes.}
+\opcio{c}{el primer és un epimorfisme regular i el segon un monomorfisme.}
+\opcio{d}{el primer és un monomorfisme i el segon un isomorfisme.}
+\end{itemize}
+\feedback
+\justificacio{La imatge és el quocient pel parell nucli, un coequalitzador, seguit de la inclusió de la imatge dins del codomini, que és un monomorfisme: epi regular seguit de mono, única llevat d'isomorfisme.}
+
+\pregunta La imatge \(\operatorname{Im}(f)\) es pot construir com\ldots
+\begin{itemize}
+\opcio{a}{el producte \(A\times B\).}
+\opcio{b}{el quocient de \(A\) pel parell nucli de \(f\).}
+\opcio{c}{el pullback de \(f\) amb la identitat.}
+\opcio{d}{la suma \(A+B\).}
+\end{itemize}
+\feedback
+\justificacio{El parell nucli relaciona els elements amb la mateixa imatge; el seu quocient els identifica, i el que queda és exactament el conjunt de valors assolits. El producte, el pullback amb la identitat i la suma no tenen res a veure.}
+
+\pregunta Una aplicació \(f\) és un monomorfisme si i només si el seu parell nucli és\ldots
+\begin{itemize}
+\opcio{a}{tot el producte \(A\times A\).}
+\opcio{b}{la diagonal \(\Delta_A\).}
+\opcio{c}{inicial.}
+\opcio{d}{un epimorfisme.}
+\end{itemize}
+\feedback
+\justificacio{\(f\) és mono exactament quan \(f\circ x=f\circ x'\) força \(x=x'\), és a dir, quan el parell nucli no relaciona res més que cada element amb ell mateix: la diagonal. Si fos tot \(A\times A\), \(f\) seria constant.}
+
+\pregunta Una aplicació \(f\) és un epimorfisme regular si i només si\ldots
+\begin{itemize}
+\opcio{a}{el monomorfisme \(m\) de la seva factorització és un isomorfisme (la imatge és tot el codomini).}
+\opcio{b}{el seu parell nucli és la diagonal.}
+\opcio{c}{el seu domini és terminal.}
+\opcio{d}{no té imatge.}
+\end{itemize}
+\feedback
+\justificacio{La imatge és tot el codomini exactament quan \(m\) és isomorfisme; aleshores \(f\) és un coequalitzador seguit d'un iso, és a dir, epi regular. I si \(f\) és epi, \(m\) és epi i mono, doncs iso: per això epi i epi regular coincideixen aquí.}
+
+\pregunta L'adjunció entre imatge directa i imatge inversa diu que \(f_{*}S\subseteq_B T\) si i només si\ldots
+\begin{itemize}
+\opcio{a}{\(T\subseteq_B f_{*}S\).}
+\opcio{b}{\(f^{*}T\subseteq_A S\).}
+\opcio{c}{\(S\subseteq_A f^{*}T\).}
+\opcio{d}{\(S\) i \(T\) són parts totals.}
+\end{itemize}
+\feedback
+\justificacio{És l'adjunció \(f_*\dashv f^*\): la imatge de \(S\) cau dins \(T\) exactament quan \(S\) cau dins la preimatge de \(T\). Les altres opcions inverteixen el sentit d'alguna inclusió.}
+
+\pregunta La imatge directa de la part total de \(A\) és\ldots
+\begin{itemize}
+\opcio{a}{la imatge de \(f\).}
+\opcio{b}{la part buida de \(B\).}
+\opcio{c}{sempre tot \(B\).}
+\opcio{d}{el parell nucli de \(f\).}
+\end{itemize}
+\feedback
+\justificacio{\(f_*A=\operatorname{Im}(f\circ\id_A)=\operatorname{Im}(f)\). Que sigui tot \(B\) equival a que \(f\) sigui epimorfisme.}
+
+\pregunta La composició de dues relacions \(r'\circ r\) es defineix\ldots
+\begin{itemize}
+\opcio{a}{com el producte \(R\times R'\).}
+\opcio{b}{com la suma de \(r\) i \(r'\).}
+\opcio{c}{com la imatge de l'aplicació que recull els extrems del producte fibrat \(R\times_B R'\).}
+\opcio{d}{com el pullback de \(r\) amb \(r'\).}
+\end{itemize}
+\feedback
+\justificacio{El producte fibrat \(R\times_BR'\) encadena testimonis amb el mateix punt mitjà; l'aplicació als extrems dona parells \((a,c)\), i la imatge comprimeix els encadenaments en una part de \(A\times C\): aquí apareix el \enquote{existeix \(b\)}.}
+
+\pregunta Que una relació \(r\) sigui \emph{funcional} vol dir que la seva primera projecció \(r_1\) és\ldots
+\begin{itemize}
+\opcio{a}{un epimorfisme regular (existència del testimoni).}
+\opcio{b}{un monomorfisme (unicitat del testimoni).}
+\opcio{c}{un isomorfisme.}
+\opcio{d}{una aplicació constant.}
+\end{itemize}
+\feedback
+\justificacio{Funcional vol dir com a molt un testimoni per element de \(A\), que és la injectivitat de \(r_1\); total, almenys un, que és la seva exhaustivitat. Isomorfisme és la conjunció.}
+
+\pregunta Sota la correspondència entre aplicacions i relacions, les aplicacions \(A\to B\) es corresponen amb les relacions que són\ldots
+\begin{itemize}
+\opcio{a}{simètriques.}
+\opcio{b}{només funcionals (aplicacions parcials).}
+\opcio{c}{funcionals i totals.}
+\opcio{d}{només totals.}
+\end{itemize}
+\feedback
+\justificacio{Una aplicació és una relació amb exactament un \(y\) per a cada \(x\): funcional (unicitat) i total (existència); la primera projecció és un isomorfisme i \(f=r_2\circ r_1^{-1}\). Només funcional dona les aplicacions parcials.}
+
+\pregunta Una aplicació és un isomorfisme si i només si és\ldots
+\begin{itemize}
+\opcio{a}{un monomorfisme.}
+\opcio{b}{alhora monomorfisme i epimorfisme.}
+\opcio{c}{un epimorfisme regular.}
+\opcio{d}{una relació total.}
+\end{itemize}
+\feedback
+\justificacio{Mono fa de \(e\) un isomorfisme i epi fa de \(m\) un isomorfisme; el compost ho és. És el teorema del bimorfisme llegit a la factorització.}
+
+\pregunta Quin axioma s'usa per demostrar que el factor \(m\) de la factorització imatge és un monomorfisme?
+\begin{itemize}
+\opcio{a}{L'axioma d'elecció: cal una secció de \(e\).}
+\opcio{b}{La separació global, reduint-ho als punts, i l'exhaustivitat dels epimorfismes sobre punts.}
+\opcio{c}{Cap: és immediat de la propietat universal del coequalitzador.}
+\opcio{d}{L'axioma d'efectivitat sol.}
+\end{itemize}
+\feedback
+\justificacio{Mono equival a injectiu sobre punts (separació global); si \(m\circ y=m\circ y'\), les preimatges \(a,a'\) per \(e\) estan relacionades pel parell nucli i \(e\) les identifica. L'elecció dona una prova alternativa, però no és necessària.}
+
+\pregunta Què es pot dir, sense l'axioma d'elecció, d'un epimorfisme \(f\) en aquesta teoria?
+\begin{itemize}
+\opcio{a}{Que és regular i estable per canvi de base, però no necessàriament escindit.}
+\opcio{b}{Que és escindit.}
+\opcio{c}{Res: sense elecció els epimorfismes no tenen cap propietat especial.}
+\opcio{d}{Que és un isomorfisme.}
+\end{itemize}
+\feedback
+\justificacio{Tot epimorfisme és regular (factorització imatge i teorema del bimorfisme) i els epimorfismes són estables per canvi de base (exhaustivitat sobre punts). Que tingui secció és exactament l'elecció.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

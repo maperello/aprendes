@@ -1,0 +1,55 @@
+\chapter{Imatges i factoritzacions}\label{cap:exercicis-imatges}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:imatges} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-imatges} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{La factorització imatge}
+
+\begin{enumerate}
+  \item Descriviu la construcció de la factorització \(A\overset{e}{\twoheadrightarrow}\operatorname{Im}(f)\overset{m}{\hookrightarrow}B\) a partir del parell nucli i el quocient, i justifiqueu l'existència de l'única \(m\) amb \(f=m\circ e\). (Model: secció~\ref{prac:factoritzacio}; teorema~\ref{teo:factoritzacio}.)
+
+  \item Demostreu, sense l'axioma d'elecció, que el factor \(m\) de la factorització és un monomorfisme. \begin{indicacio}Reduïu-ho als punts globals (observació~\ref{obs:injectiva-mono}); de \(m\circ y=m\circ y'\) obteniu preimatges \(a,a'\) per \(e\) (proposició~\ref{prop:epi-exhaustiu-punts}), i useu que \(e\) identifica els relacionats pel parell nucli.\end{indicacio}
+
+  \item Deduïu de la factorització imatge i del teorema del bimorfisme que tot epimorfisme és regular, sense l'elecció. \begin{indicacio}Corol·lari~\ref{cor:epi-regular-sense-eleccio}: si \(f=m\circ e\) és epi, \(m\) és epi i mono.\end{indicacio}
+
+  \item Demostreu que dues factoritzacions (epi regular)--(mono) d'una mateixa \(f\) són isomorfes de manera única i compatible. (Model: unicitat del teorema~\ref{teo:factoritzacio}.)
+
+  \item Identifiqueu, sobre punts globals en el model clàssic, què és \(\operatorname{Im}(f)\) per a una aplicació concreta \(f\) entre conjunts finits, i comproveu que \(m\) n'és la inclusió i \(e\) la correstricció exhaustiva. \begin{indicacio}Vegeu l'observació~\ref{obs:imatge-classica}: la imatge és el conjunt de valors assolits.\end{indicacio}
+\end{enumerate}
+
+\section{Caracteritzacions per la factorització}
+
+\begin{enumerate}[resume]
+  \item Demostreu que \(f\) és un monomorfisme si i només si \(\operatorname{Nuc}(f)\equiv_{A\times A}\Delta_A\), i que en aquest cas \(e\) és un isomorfisme. (Model: secció~\ref{prac:caracteritzacions}; proposició~\ref{prop:mono-nucli-trivial}.)
+
+  \item Demostreu que \(f\) és un epimorfisme si i només si el factor \(m\) és un isomorfisme. (Model: proposició~\ref{prop:epi-imatge-total}.)
+
+  \item Demostreu que \(f\) és un isomorfisme si i només si és alhora monomorfisme i epimorfisme. \begin{indicacio}Combineu les dues caracteritzacions anteriors sobre els factors \(e\) i \(m\); vegeu el corol·lari~\ref{cor:bimorfisme-iso}.\end{indicacio}
+\end{enumerate}
+
+\section{Imatge directa i adjunció}
+
+\begin{enumerate}[resume]
+  \item Demostreu l'adjunció \(f_{*}S\subseteq_B T\iff S\subseteq_A f^{*}T\) per a parts \(S\) de \(A\) i \(T\) de \(B\). (Model: secció~\ref{prac:imatge-directa}; proposició~\ref{prop:adjuncio-imatges}.)
+
+  \item Demostreu que \(f_{*}A=\operatorname{Im}(f)\) i que \(f\) és epimorfisme si i només si \(f_{*}A\equiv_B\id_B\). (Model: corol·lari~\ref{cor:estabilitat-exhaustiva}.)
+
+  \item Useu l'adjunció per demostrar que \(f_{*}\) preserva les inclusions (si \(S\subseteq_A S'\) aleshores \(f_{*}S\subseteq_B f_{*}S'\)) i que \(f^{*}\) també. \begin{indicacio}De \(S\subseteq_A S'\) i \(S'\subseteq_A f^{*}f_{*}S'\) deduïu \(S\subseteq_A f^{*}f_{*}S'\), i torneu a aplicar l'adjunció.\end{indicacio}
+
+  \item Demostreu la unitat i la counitat de l'adjunció: \(S\subseteq_A f^{*}f_{*}S\) i \(f_{*}f^{*}T\subseteq_B T\). \begin{indicacio}Preneu \(T:=f_{*}S\) i \(S:=f^{*}T\) respectivament a l'equivalència de l'adjunció.\end{indicacio}
+\end{enumerate}
+
+\section{Composició de relacions i relacions funcionals}
+
+\begin{enumerate}[resume]
+  \item Demostreu que la composició \(r'\circ r\) de dues relacions és una relació, i expliqueu quin quantificador introdueix la imatge. (Model: secció~\ref{prac:relacions-funcionals}; proposició~\ref{prop:composicio-es-relacio}.)
+
+  \item Demostreu que \(r\) és funcional si i només si per a tot \(x\colon X\to A\) hi ha com a molt un \(y\) amb \(x\mathrel{r_X}y\), i que \(r\) és total si i només si n'hi ha almenys un (potser després d'un canvi d'estadi). (Model: proposició~\ref{prop:funcional-lectura}.)
+
+  \item Demostreu que assignar a cada aplicació el seu graf estableix una correspondència biunívoca (llevat d'equivalència) entre aplicacions \(A\to B\) i relacions funcionals i totals, i que aquesta correspondència respecta la composició. (Model: proposició~\ref{prop:aplicacio-funcional}.)
+
+  \item Demostreu que la relació inversa d'una relació funcional i total no té per què ser funcional, i digueu què significa, sobre punts, que \(\operatorname{Inv}(r)\) sigui total. \begin{indicacio}Traduïu: \(\operatorname{Inv}(r)\) funcional \(=\) \(r\) injectiva; \(\operatorname{Inv}(r)\) total \(=\) \(r\) exhaustiva. Doneu un \(f\) no injectiu com a contraexemple.\end{indicacio}
+
+  \item Demostreu el lema de pertinença després d'un recobriment (lema~\ref{lema:pertinenca-recobriment}): si \(p\colon X'\twoheadrightarrow X\) és un epimorfisme i \(y\circ p\in_{X'}m\), aleshores \(y\in_Xm\). \begin{indicacio}La imatge inversa \(y^{-1}(m)\) és una part de \(X\) per la qual \(p\) es factoritza; és, doncs, mono i epi.\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Per a cadascun dels resultats següents digueu si usa la separació global, l'elecció, tots dos o cap: la construcció de \(e\) i \(m\) amb \(f=m\circ e\); que \(m\) és mono; que tot epimorfisme és regular; l'estabilitat dels epimorfismes per canvi de base; l'adjunció \(f_*\dashv f^*\); que la composició de relacions és una relació. \begin{indicacio}Cap dels sis no usa l'elecció. El segon, el tercer i el quart usen la separació global (a través de l'exhaustivitat sobre punts); el primer, el cinquè i el sisè, cap dels dos.\end{indicacio}
+\end{enumerate}

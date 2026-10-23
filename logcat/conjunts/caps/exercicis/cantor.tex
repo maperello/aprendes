@@ -1,0 +1,47 @@
+\chapter[Schröder--Bernstein i Cantor]{Comparació de conjunts,\texorpdfstring{\\}{ }Schröder--Bernstein i Cantor}\label{cap:exercicis-cantor}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:cantor} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-cantor} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{La comparació de conjunts}
+
+\begin{enumerate}
+  \item Demostreu que \(\preceq\) és reflexiva i transitiva i invariant per equipotència. (Model: secció~\ref{prac:comparacio-conjunts}; proposició~\ref{prop:preceq-preordre}.)
+
+  \item Demostreu que tota part \(S\hookrightarrow A\) compleix \(S\preceq A\), i que una aplicació exhaustiva amb secció donada \(g\colon A\twoheadrightarrow C\) dona \(C\preceq A\). Indiqueu on caldria l'elecció si la secció no vingués donada. (Model: secció~\ref{prac:comparacio-conjunts}; proposició~\ref{prop:epi-regular-eleccio}.)
+
+  \item Demostreu que \(A\preceq B\) si i només si \(A\) és equipotent a alguna part de \(B\). \begin{indicacio}Un monomorfisme \(A\hookrightarrow B\) es factoritza per la seva imatge (teorema~\ref{teo:factoritzacio}), que és una part de \(B\) isomorfa a \(A\).\end{indicacio}
+
+  \item Demostreu que \(\N\preceq A\) si i només si \(A\) és infinit de Dedekind, i relacioneu-ho amb la infinitud sota l'elecció numerable. \begin{indicacio}Un monomorfisme \(\N\hookrightarrow A\) dona un endomonomorfisme no exhaustiu transportant el successor; vegeu el teorema~\ref{teo:infinit-implica-dedekind}.\end{indicacio}
+\end{enumerate}
+
+\section{El teorema de Schröder--Bernstein}
+
+\begin{enumerate}[resume]
+  \item Donats \(f\colon A\hookrightarrow B\) i \(g\colon B\hookrightarrow A\), demostreu que \(\Phi(X)=A\setminus g(B\setminus f(X))\) és creixent sobre \(P(A)\). (Model: secció~\ref{prac:sb}.)
+
+  \item Demostreu que tot operador creixent \(\Phi\colon P(A)\to P(A)\) té un menor punt fix, donat per la intersecció de les seves parts \(\Phi\)-tancades. (Model: secció~\ref{prac:sb}; teorema de Knaster--Tarski.)
+
+  \item A partir del punt fix, completeu la construcció de l'isomorfisme \(A\cong B\) i comproveu-ne la bijectivitat sobre punts; expliqueu per què és legítim comprovar-la sobre punts i no sobre elements generalitzats. (Model: teorema~\ref{teo:schroder-bernstein}.)
+
+  \item Deduïu el \enquote{teorema de l'entrepà}: si \(A\subseteq B\subseteq C\) i \(A\approx C\), aleshores \(A\approx B\approx C\). \begin{indicacio}Les inclusions donen dominacions; encadeneu-les amb l'isomorfisme \(A\approx C\) i apliqueu Schröder--Bernstein.\end{indicacio}
+
+  \item Demostreu que \([0,1]\approx[0,1)\) construint dues injeccions explícites i aplicant Schröder--Bernstein, sense exhibir cap bijecció directa. \begin{indicacio}\([0,1)\hookrightarrow[0,1]\) és la inclusió; \([0,1]\hookrightarrow[0,1)\) es pot donar per \(x\mapsto x/2\).\end{indicacio}
+\end{enumerate}
+
+\section{L'argument diagonal i el teorema de Cantor}
+
+\begin{enumerate}[resume]
+  \item Demostreu que la part diagonal \(D=\{a : a\not\mathrel{\varepsilon} f(a)\}\) no és el valor de cap element, i concloeu que cap \(f\colon A\to P(A)\) no és exhaustiva. (Model: secció~\ref{prac:cantor}; teorema~\ref{teo:diagonal}.)
+
+  \item Demostreu que \(A\prec P(A)\) per a tot \(A\). (Model: teorema~\ref{teo:cantor}.)
+
+  \item Demostreu que no existeix cap conjunt universal ni cap mida màxima. (Model: corol·lari~\ref{cor:no-universal}.)
+
+  \item Demostreu que \(\mathbf2^{\N}\) no és enumerable mitjançant la successió diagonal, i concloeu que \(P(\N)\) tampoc. \begin{indicacio}Donada \(f\colon\N\to\mathbf2^{\N}\), la successió \(d(n)=1-f(n)(n)\) difereix de cada \(f(n)\); vegeu l'observació~\ref{obs:cantor-fort}.\end{indicacio}
+
+  \item Demostreu que si \(A\preceq B\), aleshores \(P(A)\preceq P(B)\), i que si a més \(A\prec B\) i \(B\) no és inicial, es manté \(P(A)\prec P(B)\) sota la comparabilitat total (que assumireu). \begin{indicacio}Un monomorfisme \(A\hookrightarrow B\) indueix \(P(A)\to P(B)\) per imatge directa, injectiva; per a l'estrictesa, useu Cantor i la comparabilitat.\end{indicacio}
+
+  \item \textbf{(Punt de reflexió.)} Expliqueu per què l'argument diagonal no produeix cap paradoxa en aquest llibre, tot i que la \enquote{col·lecció de tots els conjunts} no existeix. \begin{indicacio}La pertinença és sempre relativa a una part d'un conjunt fix; no hi ha cap relació de pertinença global sobre la qual diagonalitzar (observació~\ref{obs:cantor-classica}).\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Digueu quins axiomes intervenen en cadascun dels resultats següents, i confirmeu que cap no usa l'elecció: que \(\preceq\) és un preordre; l'existència del menor punt fix de \(\Phi\); que \(h\) és un isomorfisme; que cap \(A\to P(A)\) és exhaustiva; que no hi ha conjunt universal. \begin{indicacio}Composició; conjunt de parts i quantificador universal; separació global (per comprovar sobre punts) i teorema del bimorfisme; pertinença interna, complement i \(0\ne1\); els dos teoremes anteriors.\end{indicacio}
+\end{enumerate}

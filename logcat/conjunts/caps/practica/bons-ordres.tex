@@ -1,0 +1,74 @@
+\chapter{Ordres, bons ordres i segments}\label{cap:practica-bons-ordres}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:bons-ordres} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició ---ordres i bons ordres, segments inicials, aplicacions creixents i rigidesa, i la comparació per segments--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: passar del mínim d'una part no inicial a la totalitat, identificar les parts inicials amb els segments, i explotar la rigidesa (cap punt no baixa) per obtenir la unicitat dels isomorfismes d'ordre. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Ordres i bons ordres}\label{prac:ordres}
+
+\begin{exercici}
+\textbf{Tot bon ordre és total.} Demostreu que si \({<}\) és un bon ordre sobre \(W\), aleshores dos elements distints qualssevol són comparables, i que el mínim d'una part no inicial és únic. (Reproduïu la proposició~\ref{prop:bon-ordre-total}.)
+\end{exercici}
+\begin{solucio}
+La unicitat del mínim surt de l'antisimetria de \(\le\) (observació~\ref{obs:ordre-part-general}): dos mínims \(m,m'\) compleixen \(m\le m'\) i \(m'\le m\), d'on \(m=m'\). Per a la totalitat, siguin \(u\ne w\) dos punts i \(\{u,w\}\hookrightarrow W\) la imatge del parell \(\langle u,w\rangle\) (teorema~\ref{teo:factoritzacio}), una part no inicial. Pel bon ordre té un mínim, que és \(u\) o \(w\). Si és \(u\), aleshores \(u\le w\) i, com que \(u\ne w\), \(u<w\); si és \(w\), \(w<u\). Per tant \(u<w\) o \(w<u\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{\(\Z\) no és ben ordenat.} Demostreu que \(\Z\) amb l'ordre usual és total però no és un bon ordre. (Model de l'observació~\ref{obs:bon-ordre-classic}.)
+\end{exercici}
+\begin{solucio}
+Que \(\le\) és total sobre \(\Z\) és estàndard: donats dos enters, un dels dos és menor o igual. Però \(\Z\) mateix, com a part no inicial de \(\Z\), no té element mínim: si \(m_0\) en fos el mínim, \(m_0-1<m_0\) seria un enter estrictament menor, contra la minimalitat. Equivalentment, la cadena descendent \(0>-1>-2>\cdots\) no s'atura, i la seva imatge és una part no buida sense mínim. Per tant \(\le\) sobre \(\Z\) és un ordre total que no és un bon ordre.
+\end{solucio}
+
+\section{Segments inicials}\label{prac:segments-bo}
+
+\begin{exercici}
+\textbf{Els segments són ben ordenats.} Demostreu que en un bon ordre \((W,<)\) tota part \(S\hookrightarrow W\), amb l'ordre restringit, és un bon ordre; en particular tot segment \(W_{<w}\). (Reproduïu la proposició~\ref{prop:segment-ben-ordenat}.)
+\end{exercici}
+\begin{solucio}
+La restricció \({<}\cap(S\times S)\) és una part de \(S\times S\) (intersecció de parts, capítol~\ref{cap:valors}), irreflexiva i transitiva perquè ho és \({<}\). Donada una part no inicial \(P\hookrightarrow S\), via \(S\hookrightarrow W\) és una part no inicial de \(W\) (composició de monomorfismes, proposició~\ref{prop:preceq-preordre}), que pel bon ordre de \(W\) té un mínim \(m\); com que \(m\in P\subseteq S\) i \(m\le k\) per a tot \(k\in P\), \(m\) és el mínim de \(P\) dins \(S\). Així \({<}\!\restriction_S\) és un bon ordre, i \(S=W_{<w}\) n'és un cas.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Parts inicials i segments.} Demostreu que en un bon ordre tota part inicial pròpia \(S\subsetneq W\) és un segment \(W_{<w}\), amb \(w\) el mínim de \(W\setminus S\), i que el punt \(w\) és únic. (Reproduïu les proposicions~\ref{prop:parts-inicials} i~\ref{prop:segment-determina-punt}.)
+\end{exercici}
+\begin{solucio}
+Com que \(S\) és pròpia, \(W\setminus S\) (teorema~\ref{teo:part-complementari}) és no inicial i té un mínim \(w\). \emph{\(S\subseteq W_{<w}\):} si \(u\in S\) i fos \(w\le u\), la inicialitat de \(S\) donaria \(w\in S\), contra \(w\in W\setminus S\); per tant \(u<w\). \emph{\(W_{<w}\subseteq S\):} si \(u<w\), aleshores \(u\notin W\setminus S\) perquè \(w\) n'és el mínim, d'on \(u\in S\). Així \(S=W_{<w}\). \emph{Unicitat:} si \(W_{<v}=W_{<w}\) amb \(v\ne w\), la totalitat dona (diguem) \(v<w\), d'on \(v\in W_{<w}=W_{<v}\), és a dir \(v<v\), contra la irreflexivitat.
+\end{solucio}
+
+\section{Creixents i rigidesa}\label{prac:rigidesa}
+
+\begin{exercici}
+\textbf{Cap punt no baixa.} Sigui \((W,<)\) un bon ordre i \(f\colon W\to W\) creixent i injectiva. Demostreu que \(w\le f(w)\) per a tot \(w\). (Reproduïu el lema~\ref{lema:rigidesa}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(P=\{w : f(w)<w\}\hookrightarrow W\) la part dels punts que baixen (imatge inversa per \(\langle f,\id_W\rangle\) de \({<}\), capítols~\ref{cap:parts} i~\ref{cap:relacions}). Si \(P\) no fos inicial, tindria un mínim \(w_0\) amb \(f(w_0)<w_0\). Aplicant \(f\), creixent, \(f(f(w_0))<f(w_0)\), de manera que \(w_1:=f(w_0)\) també és a \(P\) i \(w_1<w_0\), contra la minimalitat de \(w_0\). Per tant \(P\) és inicial: cap punt baixa, i \(w\le f(w)\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Unicitat de l'isomorfisme d'ordre.} Demostreu que entre dos bons ordres hi ha com a molt un isomorfisme d'ordre, i que l'únic automorfisme d'ordre és la identitat. (Reproduïu el teorema~\ref{teo:unicitat-iso}.)
+\end{exercici}
+\begin{solucio}
+Siguin \(f,g\colon W\to V\) isomorfismes d'ordre. Aleshores \(g^{-1}\circ f\) i \(f^{-1}\circ g\) són automorfismes d'ordre de \(W\), inversos l'un de l'altre. Pel lema~\ref{lema:rigidesa}, \(w\le(g^{-1}\circ f)(w)\) per a tot \(w\); i \(w\le(f^{-1}\circ g)(w)\), que component amb \(g^{-1}\circ f\) creixent dona \((g^{-1}\circ f)(w)\le w\). Les dues desigualtats forcen \((g^{-1}\circ f)(w)=w\), és a dir \(g^{-1}\circ f=\id_W\) i \(f=g\). El cas \(W=V\) dona l'automorfisme únic.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Cap bon ordre és isomorf a un segment propi.} Demostreu que cap bon ordre \((W,<)\) és isomorf a cap segment inicial propi seu. (Reproduïu el corol·lari~\ref{cor:no-segment-propi}.)
+\end{exercici}
+\begin{solucio}
+Si \(f\colon W\cong W_{<w}\) fos un isomorfisme d'ordre, component amb la inclusió \(W_{<w}\hookrightarrow W\) tindríem \(f\colon W\to W\) creixent i injectiva amb \(f(w)\in W_{<w}\), és a dir \(f(w)<w\), contra el lema~\ref{lema:rigidesa} (\(w\le f(w)\)). Per tant no existeix cap tal isomorfisme; el cas d'una part inicial pròpia qualsevol es redueix a un segment (proposició~\ref{prop:parts-inicials}).
+\end{solucio}
+
+\section{Comparació de bons ordres}\label{prac:comparacio-ordres}
+
+\begin{exercici}
+\textbf{Antisimetria de la comparació.} Demostreu que si \(W\preceq_{\mathrm o}V\) i \(V\preceq_{\mathrm o}W\), aleshores \(W\cong V\). (Part de la proposició~\ref{prop:comparacio-ordres}.)
+\end{exercici}
+\begin{solucio}
+Per transitivitat (proposició~\ref{prop:comparacio-ordres}(2)), \(W\preceq_{\mathrm o}V\preceq_{\mathrm o}W\) dona un isomorfisme d'ordre de \(W\) sobre un segment inicial de \(W\). Pel corol·lari~\ref{cor:no-segment-propi} aquest segment no pot ser propi, així que és tot \(W\), i la composició és un automorfisme, la identitat (teorema~\ref{teo:unicitat-iso}). Desfent-la, cadascun dels dos isomorfismes de partida és sobre tot l'altre bon ordre, d'on \(W\cong V\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Exclusivitat de la tricotomia.} Demostreu que, entre dos bons ordres, com a molt una de les tres situacions \(W\prec_{\mathrm o}V\), \(W\cong V\), \(V\prec_{\mathrm o}W\) es dona. (Part del teorema~\ref{teo:tricotomia}.)
+\end{exercici}
+\begin{solucio}
+Si \(W\cong V\) i \(W\prec_{\mathrm o}V\) alhora, component \(V\cong W\prec_{\mathrm o}V\) dona \(V\) isomorf a un segment propi seu, contra el corol·lari~\ref{cor:no-segment-propi}; igual amb \(W\cong V\) i \(V\prec_{\mathrm o}W\). Si \(W\prec_{\mathrm o}V\) i \(V\prec_{\mathrm o}W\) alhora, la transitivitat (proposició~\ref{prop:comparacio-ordres}) dona \(W\prec_{\mathrm o}W\), altre cop contra el corol·lari~\ref{cor:no-segment-propi}. Les tres són, doncs, mútuament excloents. (Que almenys una es doni ---la comparabilitat total--- es demostra per recursió transfinita al capítol següent, sense elecció; vegeu l'observació~\ref{obs:tricotomia-recursio}.)
+\end{solucio}

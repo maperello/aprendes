@@ -1,0 +1,131 @@
+\chapter[Schröder--Bernstein i Cantor]{Comparació de conjunts,\texorpdfstring{\\}{ }Schröder--Bernstein i Cantor}\label{test:cap11}
+
+Aquest test correspon al capítol~11 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u11}{b,c,b,a,c,b,a,c,b,c,a,b}
+
+\begin{enumerate}
+
+\pregunta Escrivim \(A\preceq B\) quan\ldots
+\begin{itemize}
+\opcio{a}{existeix una aplicació exhaustiva \(A\to B\).}
+\opcio{b}{existeix un monomorfisme \(A\hookrightarrow B\).}
+\opcio{c}{\(A\) és una part interna de \(B\times B\).}
+\opcio{d}{\(A\) i \(B\) tenen el mateix conjunt de parts.}
+\end{itemize}
+\feedback
+\justificacio{Dominar és injectar-se: \(A\preceq B\) vol dir que hi ha un monomorfisme \(A\hookrightarrow B\). Una exhaustiva \(A\to B\) diu que \(B\) és \enquote{més petit}, no més gran, i les relacions de mida no són parts internes.}
+
+\pregunta La relació \(\prec\) es defineix com\ldots
+\begin{itemize}
+\opcio{a}{\(A\preceq B\) i \(B\preceq A\).}
+\opcio{b}{qualsevol monomorfisme no exhaustiu.}
+\opcio{c}{\(A\preceq B\) però \(A\not\approx B\).}
+\opcio{d}{l'existència d'un epimorfisme regular \(B\to A\).}
+\end{itemize}
+\feedback
+\justificacio{Estrictament menor és dominar sense ser equipotent. Un monomorfisme no exhaustiu d'un conjunt en si mateix és la infinitud de Dedekind, no la comparació estricta.}
+
+\pregunta El teorema de Schröder--Bernstein afirma que\ldots
+\begin{itemize}
+\opcio{a}{tot conjunt s'injecta en el seu conjunt de parts.}
+\opcio{b}{si \(A\preceq B\) i \(B\preceq A\), aleshores \(A\approx B\).}
+\opcio{c}{dos conjunts qualssevol són comparables.}
+\opcio{d}{cap aplicació \(A\to P(A)\) no és exhaustiva.}
+\end{itemize}
+\feedback
+\justificacio{És l'antisimetria de \(\preceq\) llevat d'equipotència: dues injeccions oposades es combinen en una bijecció. La comparabilitat de dos conjunts qualssevol és un altre teorema, que demana l'elecció.}
+
+\pregunta A la prova de Schröder--Bernstein, la part distingida \(D\) s'obté com\ldots
+\begin{itemize}
+\opcio{a}{el menor punt fix d'un operador creixent \(\Phi\) sobre \(P(A)\).}
+\opcio{b}{una tria d'un element a cada fibra.}
+\opcio{c}{la imatge d'una enumeració de \(A\).}
+\opcio{d}{el parell nucli de \(f\).}
+\end{itemize}
+\feedback
+\justificacio{\(\Phi(X)=A\setminus g(B\setminus f(X))\) és creixent, i \(D\) és la intersecció de les parts \(\Phi\)-tancades, construïda amb el quantificador universal: el menor punt fix, canònic.}
+
+\pregunta La prova de Schröder--Bernstein que hem donat\ldots
+\begin{itemize}
+\opcio{a}{requereix l'axioma d'elecció.}
+\opcio{b}{requereix l'elecció numerable.}
+\opcio{c}{no usa cap elecció: l'ínfim és únic i canònic.}
+\opcio{d}{només val per a conjunts finits.}
+\end{itemize}
+\feedback
+\justificacio{L'ínfim d'una família de parts és únic; no es tria res. L'elecció només faria falta per comparar dos conjunts arbitraris, no per a l'antisimetria.}
+
+\pregunta L'argument diagonal de Cantor considera la part\ldots
+\begin{itemize}
+\opcio{a}{\(\{a\in A : a\mathrel{\varepsilon} f(a)\}\).}
+\opcio{b}{\(\{a\in A : a\not\mathrel{\varepsilon} f(a)\}\), que no és cap valor de \(f\).}
+\opcio{c}{el singletó \(\{a\}\) de cada element.}
+\opcio{d}{la imatge directa \(f(A)\).}
+\end{itemize}
+\feedback
+\justificacio{La diagonal \(D=\{a:a\not\mathrel{\varepsilon}f(a)\}\) és una part d'\(A\), tallada amb la pertinença interna i el complement; si fos \(f(d)\), tindríem \(d\in D\iff d\notin D\).}
+
+\pregunta El teorema~\ref{teo:diagonal} (\enquote{cap \(A\to P(A)\) és exhaustiva}) és\ldots
+\begin{itemize}
+\opcio{a}{estrictament més fort que \enquote{no hi ha isomorfisme \(A\cong P(A)\)}.}
+\opcio{b}{equivalent a l'existència d'un conjunt universal.}
+\opcio{c}{una conseqüència de l'elecció.}
+\opcio{d}{fals per a \(A\) infinit.}
+\end{itemize}
+\feedback
+\justificacio{No exhaustiva prohibeix qualsevol aplicació exhaustiva, injectiva o no; no isomorf només prohibeix les bijectives. La primera és la que es transporta, per exemple, a la no-enumerabilitat de \(\mathbf2^{\N}\).}
+
+\pregunta El monomorfisme canònic \(A\hookrightarrow P(A)\) és\ldots
+\begin{itemize}
+\opcio{a}{la característica del complement.}
+\opcio{b}{una aplicació exhaustiva.}
+\opcio{c}{el singletó \(a\mapsto\{a\}\).}
+\opcio{d}{la projecció \(A\times A\to A\).}
+\end{itemize}
+\feedback
+\justificacio{El singletó \(a\mapsto\{a\}\) és la transposada de la característica de la diagonal, i és injectiu sobre punts: \(\{a\}=\{a'\}\) força \(a=a'\).}
+
+\pregunta El teorema de Cantor afirma, per a tot conjunt \(A\),\ldots
+\begin{itemize}
+\opcio{a}{\(A\approx P(A)\).}
+\opcio{b}{\(A\prec P(A)\): el conjunt de parts és estrictament més gran.}
+\opcio{c}{\(P(A)\preceq A\).}
+\opcio{d}{\(A\) és enumerable.}
+\end{itemize}
+\feedback
+\justificacio{Els singletons donen \(A\preceq P(A)\) i la diagonal exclou tot isomorfisme: \(A\prec P(A)\). Per a \(A=\N\), \(P(\N)\) no és enumerable.}
+
+\pregunta Que no existeixi cap conjunt universal se segueix de\ldots
+\begin{itemize}
+\opcio{a}{l'axioma d'elecció.}
+\opcio{b}{la definició d'enumerable.}
+\opcio{c}{Cantor i Schröder--Bernstein: \(U\preceq P(U)\preceq U\) donaria \(U\approx P(U)\).}
+\opcio{d}{el principi del mínim.}
+\end{itemize}
+\feedback
+\justificacio{Un \(U\) universal tindria \(P(U)\preceq U\), i amb \(U\preceq P(U)\) Schröder--Bernstein donaria \(U\approx P(U)\), contra Cantor. No cal cap elecció.}
+
+\pregunta A la prova de Schröder--Bernstein, per què la bijectivitat de \(h=[f|_D,g^{-1}]\) es comprova sobre punts globals?
+\begin{itemize}
+\opcio{a}{Perquè sobre punts les alternatives \enquote{\(a\in D\)} o \enquote{\(a\notin D\)} són excloents, mentre que un element generalitzat pot quedar repartit; i per la separació global, mono i epi es decideixen sobre punts.}
+\opcio{b}{Perquè només hi ha punts en conjunts finits.}
+\opcio{c}{Per comoditat; sobre elements generalitzats l'argument és idèntic.}
+\opcio{d}{Perquè l'elecció ho exigeix.}
+\end{itemize}
+\feedback
+\justificacio{La distinció de casos de la prova usa el complement com a negació, cosa que només val sobre punts. Injectiva sobre punts és mono i exhaustiva sobre punts és epi gràcies a la separació global, i un bimorfisme és isomorfisme.}
+
+\pregunta Com es construeix la intersecció de \emph{totes} les parts \(\Phi\)-tancades, que és un ínfim no finit?
+\begin{itemize}
+\opcio{a}{Iterant la intersecció binària.}
+\opcio{b}{Com \(\forall_\pi(R_\varphi)\), el quantificador universal al llarg de \(A\times P(A)\to A\) aplicat a la part \enquote{si \(X\) és \(\Phi\)-tancada, aleshores \(a\mathrel{\varepsilon}X\)}.}
+\opcio{c}{Amb l'axioma d'elecció.}
+\opcio{d}{No es pot construir; cal postular-la.}
+\end{itemize}
+\feedback
+\justificacio{Els axiomes donen ínfims binaris; els ínfims indexats per una part de \(P(A)\) s'obtenen amb el quantificador universal del capítol 7. És el mateix mecanisme que la inclusió interna.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

@@ -1,0 +1,107 @@
+\chapter{Conjunts finits i cardinalitat finita}\label{cap:practica-finits}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:finits} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició --- els ordinals finits i els segments interns, l'equipotència i el conjunt de cardinals, la comparació de segments i la unicitat del cardinal, el principi dels calaixos, les parts d'un conjunt finit, i els recomptes de parts i d'aplicacions--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: descompondre un segment successor com \(\seg{n}+\mathbf1\), raonar per inducció sobre el cardinal, i traduir sumes/productes/exponencials de conjunts finits en operacions aritmètiques. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Segments inicials}\label{prac:segments}
+
+\begin{exercici}
+\textbf{Descomposició successora del segment.} Demostreu que \(\seg{0}\cong\mathbf0\) i que, per a tot \(n\colon\mathbf1\to\N\), \(\seg{s\circ n}\cong\seg{n}+\mathbf1\), amb \(\seg{n}\) la part dels \(k<n\) i \(\mathbf1\) el punt \(k=n\). (Reproduïu la proposició~\ref{prop:segment-successor}.)
+\end{exercici}
+\begin{solucio}
+\(\seg{0}=\{k:k<0\}\) és inicial, perquè \(k<0\) no es compleix per a cap \(k\): de \(k+s\circ j=0\) sortiria \(s\circ(k+j)=0\), i el zero no és cap successor (teorema~\ref{teo:peano}(2)). Per al successor, i raonant sobre punts com a tota la secció de l'ordre (observació~\ref{obs:ordre-sobre-punts}), un punt \(k\in\seg{s\circ n}\) compleix \(k<s\circ n\), que equival a \(k\le n\), és a dir \(k<n\) o bé \(k=n\), i no totes dues alhora perquè \(n\not<n\) (pas del successor de l'ordre, proposició~\ref{prop:ordre-total}). Aquesta disjunció exclusiva descompon la part \(\seg{s\circ n}\hookrightarrow\N\) en dues parts complementàries: la dels \(k<n\), que és \(\seg{n}\), i la del punt únic \(k=n\), una còpia de \(\mathbf1\). Per la caracterització de la suma disjunta com a parell de parts complementàries (definició~\ref{def:suma-disjunta}), \(\seg{s\circ n}\cong\seg{n}+\mathbf1\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Els primers ordinals.} Demostreu que \([1]\cong\mathbf1\) i \([2]\cong\mathbf2\). (Model de la proposició~\ref{prop:ordinals-petits}.)
+\end{exercici}
+\begin{solucio}
+Per la definició recursiva metateòrica dels ordinals (definició~\ref{def:ordinal-finit}), \([1]=[0]+\mathbf1=\mathbf0+\mathbf1\). Per la neutralitat del conjunt inicial respecte de la suma (capítol~\ref{cap:valors}), \(\mathbf0+\mathbf1\cong\mathbf1\); així \([1]\cong\mathbf1\). Aplicant-ho un cop més, \([2]=[1]+\mathbf1\cong\mathbf1+\mathbf1\), que és per definició el conjunt de valors de veritat \(\mathbf2\). Aquestes igualtats són un esquema sobre numerals estàndard, comprovable externament per a cada instància.
+\end{solucio}
+
+\section{Equipotència i cardinal}\label{prac:equipotencia}
+
+\begin{exercici}
+\textbf{Els punts de \(\operatorname{Isos}(A,B)\).} Demostreu que un punt global \(\mathbf1\to\operatorname{Isos}(A,B)\) és exactament un isomorfisme \(A\to B\), i que \(\operatorname{Isos}(A,B)\) és no inicial si i només si \(A\cong B\). (Reproduïu l'observació~\ref{obs:iso-punts}.)
+\end{exercici}
+\begin{solucio}
+\(\operatorname{Isos}(A,B)\) és la imatge, per la projecció a \(B^{A}\), de la part \(P\hookrightarrow B^{A}\times A^{B}\) dels parells \((f,g)\) amb \(g\circ f=\id_A\) i \(f\circ g=\id_B\) (definició~\ref{def:iso-exponencial}). Pels punts globals de l'exponencial (teorema~\ref{teo:punts-exponencial}), un punt \(\mathbf1\to B^{A}\) és una aplicació \(f\colon A\to B\); pertany a la imatge exactament quan existeix \(g\) amb \(g\circ f=\id_A\) i \(f\circ g=\id_B\), és a dir quan \(f\) és un isomorfisme (definició~\ref{def:isomorfisme}). Per tant \(\operatorname{Isos}(A,B)\) és no inicial si i només si existeix un isomorfisme \(A\cong B\), és a dir \(A\approx B\) (definició~\ref{def:equipotencia}). La part es defineix amb un únic bloc d'operacions internes, sense triar cap isomorfisme.
+\end{solucio}
+
+\begin{exercici}
+\textbf{\(\operatorname{Card}(A)\) és una part de \(\N\).} Expliqueu per què \(\operatorname{Card}(A)\) és una part interna ben definida de \(\N\), i que \(n\in\operatorname{Card}(A)\iff\seg{n}\approx A\). (Reproduïu la proposició~\ref{prop:card-interna}.)
+\end{exercici}
+\begin{solucio}
+La part \(\mathcal E_A\hookrightarrow\N\times(A+\mathbf1)^{\N}\times\N^{A}\) és interna (definició~\ref{def:card-A}): les seves condicions (i)--(iii) són conjuncions d'equacions entre avaluacions d'exponencials \emph{fixos} i de condicions acotades per l'ordre \(<\), totes tallables amb equalitzadors, imatges inverses i quantificadors acotats ja disponibles (capítols~\ref{cap:exponencials} i~\ref{cap:parts-interna}). La imatge d'una aplicació existeix sempre (teorema~\ref{teo:factoritzacio}), de manera que \(\operatorname{Card}(A)=\operatorname{Im}(\pi)\) és una part de \(\N\). Un punt \(n\) hi pertany si i només si la fibra \((\mathcal E_A)_n\) és no inicial; i un punt d'aquesta fibra és un parell \((g,h)\) que, per (i)--(ii), exhibeix \(g|_{\seg{n}}\) i \(h\) com a inverses mútues, és a dir un isomorfisme \(\seg{n}\to A\). Recíprocament, un isomorfisme \(\varphi\colon\seg{n}\to A\) dona el triple \((n,\bar\varphi,\varphi^{-1})\). Així \(n\in\operatorname{Card}(A)\iff\seg{n}\approx A\), sense cap axioma d'elecció ni noció prèvia de finitud.
+\end{solucio}
+
+\section{Comparació de segments i unicitat del cardinal}\label{prac:comparacio}
+
+\begin{exercici}
+\textbf{Isomorfisme de segments implica igualtat.} A partir del fet que un monomorfisme \(\seg{m}\hookrightarrow\seg{n}\) implica \(m\le n\), demostreu que un isomorfisme \(\seg{m}\cong\seg{n}\) implica \(m=n\). (Part del lema~\ref{lema:comparacio-ordinals}.)
+\end{exercici}
+\begin{solucio}
+Un isomorfisme \(\seg{m}\cong\seg{n}\) dona en particular monomorfismes en tots dos sentits: \(\seg{m}\hookrightarrow\seg{n}\) i \(\seg{n}\hookrightarrow\seg{m}\). Per la primera part del lema~\ref{lema:comparacio-ordinals}, el primer dona \(m\le n\) i el segon \(n\le m\). Per l'antisimetria de l'ordre (proposició~\ref{prop:ordre-total}), \(m=n\). Aquesta és la peça que fa que el cardinal estigui ben definit: no hi pot haver dos numerals diferents amb segments isomorfs.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Unicitat del cardinal finit.} Demostreu que si \(A\) és finit, la part \(\operatorname{Card}(A)\) té un únic punt, de manera que \(|A|\) està ben definit, i que dos conjunts finits són isomorfs si i només si tenen el mateix cardinal. (Reproduïu el teorema~\ref{teo:unicitat-cardinal}.)
+\end{exercici}
+\begin{solucio}
+Si \(\seg{m}\approx A\) i \(\seg{n}\approx A\), per transitivitat de l'equipotència (definició~\ref{def:equipotencia}) \(\seg{m}\approx\seg{n}\), és a dir hi ha un isomorfisme \(\seg{m}\cong\seg{n}\); pel lema~\ref{lema:comparacio-ordinals}, \(m=n\). Així \(\operatorname{Card}(A)\) té com a molt un punt, i \(|A|\) queda ben definit. Per a la darrera afirmació: si \(A\cong B\), aleshores \(\seg{|A|}\approx A\cong B\approx\seg{|B|}\) dona \(|A|=|B|\); recíprocament, \(|A|=|B|\) dona \(A\approx\seg{|A|}=\seg{|B|}\approx B\), és a dir \(A\cong B\).
+\end{solucio}
+
+\section{El principi dels calaixos}\label{prac:calaixos}
+
+\begin{exercici}
+\textbf{Principi dels calaixos.} Demostreu que si \(A\) i \(B\) són finits amb \(|A|>|B|\), no hi ha cap monomorfisme \(A\hookrightarrow B\). (Reproduïu el teorema~\ref{teo:calaixos}.)
+\end{exercici}
+\begin{solucio}
+Un monomorfisme \(A\hookrightarrow B\), compost amb els isomorfismes \(\seg{|A|}\approx A\) i \(B\approx\seg{|B|}\) (definició~\ref{def:conjunt-finit}), donaria un monomorfisme \(\seg{|A|}\hookrightarrow\seg{|B|}\). Pel lema~\ref{lema:comparacio-ordinals}, això forçaria \(|A|\le|B|\), contra la hipòtesi \(|A|>|B|\). Per tant no existeix cap monomorfisme \(A\hookrightarrow B\); dit altrament, tota aplicació d'un finit cap a un de cardinal estrictament menor identifica almenys dos elements.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Injectiu \(=\) exhaustiu \(=\) bijectiu en el cas finit.} Sigui \(f\colon A\to B\) entre finits amb \(|A|=|B|\). Demostreu que si \(f\) és un monomorfisme, aleshores \(f\) és un isomorfisme. (Part del teorema~\ref{teo:endo-finit}.)
+\end{exercici}
+\begin{solucio}
+Per la factorització imatge (teorema~\ref{teo:factoritzacio}), \(f=m\circ e\) amb \(e\) epimorfisme regular i \(m\) monomorfisme. Com que \(f\) és mono, \(e\) és un isomorfisme (proposició~\ref{prop:mono-nucli-trivial}); així \(\operatorname{Im}(f)\cong A\) és finit amb \(|\operatorname{Im}(f)|=|A|=|B|\). Si \(m\) no fos exhaustiu, el seu complement \(C\hookrightarrow B\) seria una part no inicial, finita (lema~\ref{lema:part-finita}), i \(B\cong\operatorname{Im}(f)+C\); pel recompte de la suma (lema~\ref{lema:recompte-suma}) i \(C\) no inicial, \(|B|=|\operatorname{Im}(f)|+|C|>|\operatorname{Im}(f)|=|B|\), contradicció. Per tant \(m\) és un monomorfisme exhaustiu, és a dir un isomorfisme (proposició~\ref{prop:epi-imatge-total}, corol·lari~\ref{cor:bimorfisme-iso}); i \(f=m\circ e\) és composició de dos isomorfismes, un isomorfisme.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Una secció sense elecció.} Sigui \(f\colon\seg{n}\to B\) un epimorfisme. Construïu una secció de \(f\) sense l'axioma d'elecció, i deduïu-ne que la direcció (2)\(\Rightarrow\)(3) del teorema~\ref{teo:endo-finit} no necessita l'elecció.
+\end{exercici}
+\begin{solucio}
+Per a cada punt \(b\) de \(B\), la fibra \(f^{-1}(b)\hookrightarrow\seg{n}\hookrightarrow\N\) és una part de \(\N\) no buida, perquè \(f\) és exhaustiu sobre punts (proposició~\ref{prop:epi-exhaustiu-punts}); pel bon ordre de \(\N\) (teorema~\ref{teo:bon-ordre-N}) té un mínim, únic. Això defineix \(s\) sobre punts: \(s(b):=\min f^{-1}(b)\). Per fer-ne una aplicació cal construir-la internament: la relació \(R\hookrightarrow B\times\N\) formada pels parells \((b,k)\) amb \(k<n\), \(f(k)=b\) i \(\forall j<k\,(f(j)\ne b)\) és una part (quantificador acotat, igualtats i l'ordre, com a la definició~\ref{def:card-A}); és funcional, perquè el mínim és únic, i total, perquè tota fibra en té un; per la proposició~\ref{prop:aplicacio-funcional}, \(R\) és el graf d'una aplicació \(s\colon B\to\seg{n}\), i \(f\circ s=\id_B\) perquè coincideixen sobre punts. Amb aquesta secció, la prova del teorema~\ref{teo:endo-finit} continua igual. L'elecció, doncs, no cal per als conjunts finits: el bon ordre fa la tria per nosaltres, com ja anunciava l'observació~\ref{obs:bon-ordre-classica}.
+\end{solucio}
+
+\section{Parts d'un conjunt finit}\label{prac:parts-finites}
+
+\begin{exercici}
+\textbf{Tota part d'un finit és finita.} Sigui \(S\hookrightarrow A\) una part d'un conjunt finit. Demostreu que \(S\) és finita i \(|S|\le|A|\). (Reproduïu el lema~\ref{lema:part-finita}.)
+\end{exercici}
+\begin{solucio}
+Com que \(A\approx\seg{n}\) amb \(n=|A|\), n'hi ha prou de provar-ho per a \(A=\seg{n}\), per inducció sobre \(n\). Per a \(n=0\), \(\seg{0}\cong\mathbf0\) i l'única part és la inicial, finita de cardinal \(0\). Pas de \(n\) a \(s\circ n\): per la descomposició successora, \(\seg{s\circ n}\cong\seg{n}+\mathbf1\) (proposició~\ref{prop:segment-successor}). La imatge inversa de \(S\) per les dues injeccions la descompon en parts complementàries \(S_0\hookrightarrow\seg{n}\) i \(S_1\hookrightarrow\mathbf1\), amb \(S\cong S_0+S_1\). Per la hipòtesi d'inducció \(S_0\) és finita amb \(|S_0|\le n\); i \(S_1\) és inicial o terminal, en tot cas finita amb \(|S_1|\le1\). Pel recompte de la suma (lema~\ref{lema:recompte-suma}), \(S\) és finita i \(|S|=|S_0|+|S_1|\le n+1=|\seg{s\circ n}|\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Nombre de parts d'un conjunt finit.} Demostreu que si \(|A|=n\), aleshores \(|\mathcal P(A)|=2^{n}\). (Reproduïu el teorema~\ref{teo:nombre-parts}.)
+\end{exercici}
+\begin{solucio}
+Com que \(\mathcal P(A)\cong\mathbf2^{A}\) (definició~\ref{def:conjunt-parts}) i \(A\approx\seg{n}\), n'hi ha prou de provar \(|\mathbf2^{\seg{n}}|=2^{n}\) per inducció sobre \(n\). Per a \(n=0\), \(\mathbf2^{\seg{0}}\cong\mathbf2^{\mathbf0}\cong\mathbf1\), i \(2^{0}=1\). Pas de \(n\) a \(s\circ n\): de \(\seg{s\circ n}\cong\seg{n}+\mathbf1\) i de la conversió de l'exponencial d'una suma en producte (proposició~\ref{prop:exponencial-suma}),
+\[
+\mathbf2^{\seg{s\circ n}}\cong\mathbf2^{\seg{n}+\mathbf1}\cong\mathbf2^{\seg{n}}\times\mathbf2^{\mathbf1}\cong\mathbf2^{\seg{n}}\times\mathbf2.
+\]
+Per la hipòtesi d'inducció \(\mathbf2^{\seg{n}}\) té cardinal \(2^{n}\), i multiplicar per \(\mathbf2\) duplica el cardinal (lema~\ref{lema:recompte-producte}); així el cardinal és \(2^{n}+2^{n}=2\cdot2^{n}=2^{s\circ n}\), per la definició recursiva de l'exponenciació (definició~\ref{def:producte-exp}).
+\end{solucio}
+
+\section{Recompte d'aplicacions}\label{prac:recompte-aplicacions}
+
+\begin{exercici}
+\textbf{Nombre d'aplicacions entre finits.} Demostreu que si \(|A|=n\) i \(|B|=m\), aleshores \(|B^{A}|=m^{n}\). (Reproduïu el teorema~\ref{teo:nombre-aplicacions}.)
+\end{exercici}
+\begin{solucio}
+Fixats \(A\approx\seg{n}\) i \(B\approx\seg{m}\), l'exponencial només depèn dels conjunts llevat d'isomorfisme, de manera que n'hi ha prou de provar \(|\seg{m}^{\seg{n}}|=m^{n}\) per inducció sobre \(n\), uniformement en \(m\). Per a \(n=0\), \(\seg{m}^{\seg{0}}\cong\seg{m}^{\mathbf0}\cong\mathbf1\), i \(m^{0}=1\). Pas de \(n\) a \(s\circ n\): de \(\seg{s\circ n}\cong\seg{n}+\mathbf1\) i de la conversió de l'exponencial d'una suma (proposició~\ref{prop:exponencial-suma}),
+\[
+\seg{m}^{\seg{s\circ n}}\cong\seg{m}^{\seg{n}+\mathbf1}\cong\seg{m}^{\seg{n}}\times\seg{m}^{\mathbf1}\cong\seg{m}^{\seg{n}}\times\seg{m}.
+\]
+Per la hipòtesi d'inducció \(\seg{m}^{\seg{n}}\) té cardinal \(m^{n}\), i pel recompte del producte (lema~\ref{lema:recompte-producte}) multiplicar per \(\seg{m}\) multiplica el cardinal per \(m\); així \(|\seg{m}^{\seg{s\circ n}}|=m^{n}\cdot m=m^{s\circ n}\), la definició recursiva de l'exponenciació. Aquest recompte justifica la notació \(|B^{A}|=m^{n}\) i l'ús de \(P(A)=\mathbf2^{A}\) com a \enquote{conjunt de \(2^{n}\) parts}.
+\end{solucio}

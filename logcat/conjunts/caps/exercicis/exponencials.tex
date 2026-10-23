@@ -1,0 +1,49 @@
+\chapter{Exponencials}\label{cap:exercicis-exponencials}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:exponencials} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-exponencials} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Propietat universal i transposició}
+
+\begin{enumerate}
+  \item Demostreu que l'exponencial de \(B\) per \(A\) és únic llevat d'un únic isomorfisme compatible amb l'avaluació. (Model: secció~\ref{prac:exp-universal}; proposició~\ref{prop:exponencial-unic}.)
+
+  \item Demostreu que currificar i descurrificar són operacions mútuament inverses. \begin{indicacio}Useu la unicitat de la transposada de la definició~\ref{def:exponencial} en les dues direccions.\end{indicacio}
+
+  \item Demostreu que la transposició és compatible amb la precomposició en \(A\): per a \(k\colon A'\to A\) i \(h\colon X\times A\to B\), definiu \(B^{k}\colon B^{A}\to B^{A'}\) com la transposada de \(\operatorname{ev}\circ(\id_{B^A}\times k)\) i demostreu que \(\lambda(h\circ(\id_X\times k))=B^{k}\circ\lambda(h)\). \begin{indicacio}Comproveu que els dos costats tenen la mateixa descurrificació i useu la unicitat de la transposada. Sobre punts, \(B^k\) envia \(f\) a \(f\circ k\).\end{indicacio}
+\end{enumerate}
+
+\section{Aplicacions com a punts i famílies}
+
+\begin{enumerate}[resume]
+  \item Demostreu que els punts globals \(\mathbf1\to B^A\) es corresponen biunívocament amb les aplicacions \(A\to B\). (Model: secció~\ref{prac:exp-punts}; teorema~\ref{teo:punts-exponencial}.)
+
+  \item Demostreu que un element generalitzat \(X\to B^A\) es correspon amb una aplicació \(X\times A\to B\), i interpreteu-ho com una família d'aplicacions indexada per \(X\). (Model: proposició~\ref{prop:families}.)
+
+  \item Demostreu la naturalitat de la transposició en \(X\): per a \(t\colon X'\to X\), \(\lambda(h)\circ t=\lambda(h\circ(t\times\id_A))\). \begin{indicacio}Comproveu que tots dos costats tenen la mateixa descurrificació i useu la unicitat.\end{indicacio}
+\end{enumerate}
+
+\section{Exponencials de \texorpdfstring{\(\mathbf0\), \(\mathbf1\), \(\mathbf2\)}{0, 1, 2}}
+
+\begin{enumerate}[resume]
+  \item Demostreu que \(A^{\mathbf1}\cong A\), \(A^{\mathbf0}\cong\mathbf1\) i \(\mathbf1^{A}\cong\mathbf1\). (Model: secció~\ref{prac:exp-basics}; proposició~\ref{prop:exponencials-basics}.)
+
+  \item Demostreu que els punts de \(P(A)=\mathbf2^{A}\) es corresponen amb les parts de \(A\) llevat d'equivalència. (Model: definició~\ref{def:conjunt-parts}.)
+
+  \item Determineu, en el model clàssic, el nombre d'aplicacions \(\mathbf2\to\mathbf2\) i identifiqueu-les amb els punts de \(\mathbf2^{\mathbf2}\). \begin{indicacio}Useu \(\mathbf2^{\mathbf2}\cong\mathbf2^{\mathbf1+\mathbf1}\cong\mathbf2\times\mathbf2\) i compteu-ne els punts.\end{indicacio}
+\end{enumerate}
+
+\section{Suma, composició interna i famílies}
+
+\begin{enumerate}[resume]
+  \item Demostreu que \(B^{A+C}\cong B^{A}\times B^{C}\). (Model: secció~\ref{prac:exp-suma}; proposició~\ref{prop:exponencial-suma}.)
+
+  \item Demostreu que existeix una única composició interna \(c\colon C^{B}\times B^{A}\to C^{A}\) que sobre punts envia \((g,f)\) a \(g\circ f\), i una única \(\jmath\colon\mathbf1\to A^{A}\) corresponent a \(\id_A\). (Model: secció~\ref{prac:exp-composicio}; proposició~\ref{prop:composicio-interna}.)
+
+  \item Demostreu que la composició interna és associativa i que \(\jmath\) n'és neutre, en el sentit de les igualtats internes corresponents sobre \(A^{A}\). \begin{indicacio}Traduïu l'associativitat i la neutralitat a igualtats d'aplicacions cap a l'exponencial i comproveu-les descurrificant amb l'avaluació, com a la proposició~\ref{prop:composicio-interna}.\end{indicacio}
+
+  \item A partir de \(B^{A+C}\cong B^{A}\times B^{C}\), deduïu per iteració que l'exponencial d'una suma de \(n\) còpies de \(A\) és un producte de \(n\) còpies de \(B^{A}\). \begin{indicacio}Inducció sobre \(n\) usant la proposició~\ref{prop:exponencial-suma}; vegeu l'observació~\ref{obs:exponencial-suma-classica}. La inducció és metateòrica: \(n\) és un nombre del metallenguatge fins al capítol~\ref{cap:naturals}.\end{indicacio}
+
+  \item Demostreu les altres dues lleis d'exponents: \((B\times C)^{A}\cong B^{A}\times C^{A}\) i \((C^{B})^{A}\cong C^{A\times B}\). \begin{indicacio}Per a la primera, una aplicació \(X\times A\to B\times C\) és un parell d'aplicacions; per a la segona, transposeu dues vegades usant l'associativitat del producte. En tots dos casos exhibiu l'avaluació, com a la prova de la proposició~\ref{prop:exponencial-suma}.\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Per a cadascun dels resultats següents, digueu si usa l'axioma d'exponencials, la separació global, tots dos o cap: la unicitat de l'exponencial; \(A^{\mathbf0}\cong\mathbf1\); la correspondència entre punts de \(B^A\) i aplicacions \(A\to B\); l'existència de la composició interna; la unicitat de la composició interna determinada pels seus valors sobre punts. \begin{indicacio}La unicitat de l'exponencial no usa cap dels dos (és el patró de les construccions universals); els tres següents usen l'axioma d'exponencials; l'últim, a més, la separació global.\end{indicacio}
+\end{enumerate}

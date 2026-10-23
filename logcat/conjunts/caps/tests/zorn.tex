@@ -1,0 +1,131 @@
+\chapter{Zorn, Hartogs i el teorema del bon ordre}\label{test:cap15}
+
+Aquest test correspon al capítol~15 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u15}{c,b,a,c,b,a,c,b,a,c,b,b}
+
+\begin{enumerate}
+
+\pregunta Els bons ordres sobre parts d'un conjunt \(A\) es codifiquen com\ldots
+\begin{itemize}
+\opcio{a}{elements de \(A\).}
+\opcio{b}{aplicacions \(A\to A\).}
+\opcio{c}{parells \((S,R)\) amb \(S\hookrightarrow A\) i \(R\hookrightarrow S\times S\) un bon ordre sobre \(S\): una part de \(P(A)\times P(A\times A)\).}
+\opcio{d}{seccions d'una família.}
+\end{itemize}
+\feedback
+\justificacio{El suport ha de ser una dada: la relació buida no distingeix el bon ordre sobre un singletó del bon ordre sobre el buit. Per això \((S,R)\in P(A)\times P(A\times A)\).}
+
+\pregunta El conjunt de Hartogs \(\Hart(A)\) és\ldots
+\begin{itemize}
+\opcio{a}{el conjunt de parts de \(A\).}
+\opcio{b}{el conjunt de tipus d'ordre dels bons ordres sobre parts d'\(A\), ordenat per segment inicial.}
+\opcio{c}{una classe global d'ordinals.}
+\opcio{d}{el quocient de \(A\) per una relació.}
+\end{itemize}
+\feedback
+\justificacio{\(\WO(A)\) es quocienta per isomorfisme d'ordre (efectivitat de les relacions d'equivalència) i s'ordena per \enquote{ser segment inicial propi de}. És un conjunt, no una classe.}
+
+\pregunta El teorema de Hartogs afirma que\ldots
+\begin{itemize}
+\opcio{a}{\(\Hart(A)\) no admet cap monomorfisme en \(A\).}
+\opcio{b}{\(\Hart(A)\approx A\).}
+\opcio{c}{\(\Hart(A)\) és finit.}
+\opcio{d}{\(\Hart(A)\hookrightarrow A\) sempre.}
+\end{itemize}
+\feedback
+\justificacio{Si s'hi injectés, el seu tipus seria un element de \(\Hart(A)\) i \(\Hart(A)\) resultaria isomorf a un segment propi de si mateix, contra la rigidesa.}
+
+\pregunta El teorema de Hartogs\ldots
+\begin{itemize}
+\opcio{a}{requereix l'axioma d'elecció.}
+\opcio{b}{és fals per a \(A\) infinit.}
+\opcio{c}{no usa elecció: és l'anàleg ordinal del teorema de Cantor.}
+\opcio{d}{equival al lema de Zorn.}
+\end{itemize}
+\feedback
+\justificacio{La construcció talla, quocienta i ordena dins conjunts ja fets, i la contradicció és diagonal; no hi ha cap tria. És l'anàleg, per a longituds, del que Cantor és per a mides.}
+
+\pregunta El teorema del bon ordre diu que, amb l'elecció,\ldots
+\begin{itemize}
+\opcio{a}{tot conjunt és finit.}
+\opcio{b}{tot conjunt admet un bon ordre.}
+\opcio{c}{tot conjunt és numerable.}
+\opcio{d}{tot ordre parcial té màxim.}
+\end{itemize}
+\feedback
+\justificacio{Amb una funció d'elecció sobre les parts no buides i una recursió acotada per \(\Hart(A)\) s'exhaureix \(A\), i el bon ordre del segment es transporta. No diu res sobre finitud ni numerabilitat.}
+
+\pregunta A la prova del teorema del bon ordre, què atura la recursió?
+\begin{itemize}
+\opcio{a}{La cota de Hartogs: \(\Hart(A)\not\preceq A\), i el procés esgota \(A\) abans.}
+\opcio{b}{L'axioma d'exponencials.}
+\opcio{c}{El teorema de Cantor.}
+\opcio{d}{Res; la recursió no s'atura.}
+\end{itemize}
+\feedback
+\justificacio{Si la recursió no s'aturés, donaria un monomorfisme \(\Hart(A)\hookrightarrow A\), prohibit per Hartogs. Per això Hartogs precedeix el teorema del bon ordre.}
+
+\pregunta El lema de Zorn dona\ldots
+\begin{itemize}
+\opcio{a}{un màxim de l'ordre parcial.}
+\opcio{b}{un bon ordre.}
+\opcio{c}{un element \emph{maximal} (no necessàriament màxim), si tota cadena té cota superior.}
+\opcio{d}{una funció d'elecció canònica.}
+\end{itemize}
+\feedback
+\justificacio{Zorn dona un element que cap altre no supera, suposant que tota cadena té cota. Un màxim és més fort i pot no existir.}
+
+\pregunta \enquote{Maximal} i \enquote{màxim}\ldots
+\begin{itemize}
+\opcio{a}{són el mateix sempre.}
+\opcio{b}{difereixen: un maximal no és superat per cap altre; un màxim supera tots els altres. En un ordre parcial poden no coincidir.}
+\opcio{c}{només tenen sentit en bons ordres.}
+\opcio{d}{no tenen relació.}
+\end{itemize}
+\feedback
+\justificacio{En un ordre parcial pot haver-hi diversos maximals i cap màxim; en un ordre total coincideixen. Afirmar que Zorn dona un màxim és un error habitual.}
+
+\pregunta Una aplicació genuïna del lema de Zorn és\ldots
+\begin{itemize}
+\opcio{a}{que tot espai vectorial té una base.}
+\opcio{b}{el teorema de Cantor.}
+\opcio{c}{la construcció de \(\N\).}
+\opcio{d}{el principi d'inducció.}
+\end{itemize}
+\feedback
+\justificacio{Les parts independents ordenades per inclusió tenen cotes de cadena (la unió, perquè tota combinació lineal és finita), i un maximal és una base. És l'esquema típic d'aplicació de Zorn.}
+
+\pregunta Sobre els altres axiomes del llibre,\ldots
+\begin{itemize}
+\opcio{a}{l'elecció és més forta que el teorema del bon ordre.}
+\opcio{b}{el lema de Zorn és més feble que l'elecció.}
+\opcio{c}{elecció, teorema del bon ordre i lema de Zorn són equivalents.}
+\opcio{d}{cap dels tres no implica els altres.}
+\end{itemize}
+\feedback
+\justificacio{(E)\(\Rightarrow\)(BO) i (E)\(\Rightarrow\)(Z) són els teoremes del capítol; (BO)\(\Rightarrow\)(E) pren el mínim de cada fibra i (Z)\(\Rightarrow\)(BO) maximalitza els bons ordres parcials.}
+
+\pregunta A la prova del lema de Zorn, què es tria amb l'elecció?
+\begin{itemize}
+\opcio{a}{Un element de cada cadena.}
+\opcio{b}{Una \emph{cota superior estricta} de cada cadena, aplicant l'elecció a la família que sobre cada cadena té la part de les seves cotes estrictes.}
+\opcio{c}{Un bon ordre sobre \(P\).}
+\opcio{d}{El maximal mateix.}
+\end{itemize}
+\feedback
+\justificacio{Suposant que no hi ha maximal, cada cadena té cotes estrictes i la família corresponent té les fibres no buides; la secció dona \(c\). La recursió que en resulta donaria \(\Hart(P)\preceq P\), contra Hartogs.}
+
+\pregunta Per què la unió d'una cadena de bons ordres parcials \((S,R)\), ordenats per extensió \emph{inicial}, torna a ser un bon ordre?
+\begin{itemize}
+\opcio{a}{Perquè tota unió d'ordres totals és un bon ordre.}
+\opcio{b}{Perquè una part no buida \(T\) talla algun membre \((S,R)\), i el mínim de \(T\cap S\) ho és de tot \(T\): els punts afegits després són posteriors a tot \(S\).}
+\opcio{c}{Per l'axioma d'elecció.}
+\opcio{d}{Perquè la cadena és finita.}
+\end{itemize}
+\feedback
+\justificacio{La inicialitat de les extensions és essencial: sense ella la unió pot no ser ben ordenada (una cadena d'ordres que afegeixen punts \emph{per sota} donaria una còpia de \(\Z\) negatiu).}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

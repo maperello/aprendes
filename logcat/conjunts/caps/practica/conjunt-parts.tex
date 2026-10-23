@@ -1,0 +1,94 @@
+\chapter{El conjunt de parts i la pertinença interna}\label{cap:practica-parts-interna}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:parts-interna} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició --- la pertinença interna, les parts parametritzades, les operacions booleanes internes, la inclusió com a ordre sobre \(P(A)\), i la imatge inversa interna amb els quantificadors--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: reduir una afirmació interna a la pertinença generalitzada via l'avaluació, calcular operacions internes descurrificant-les cap a \(\mathbf2\), i llegir adjuncions sobre elements generalitzats. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{La pertinença interna}\label{prac:pertinenca-interna}
+
+\begin{exercici}
+\textbf{Lectura de la pertinença interna.} Siguin \(a\colon X\to A\) i \(\alpha\colon X\to P(A)\). Demostreu que \(a\mathrel{\varepsilon}\alpha\) equival a \(\operatorname{ev}\circ\langle\alpha,a\rangle=1\circ{!}_X\), i que si \(\alpha=\ulcorner m\urcorner\circ{!}_X\) és el nom constant d'una part \(m\), aleshores \(a\mathrel{\varepsilon}\alpha\iff a\in_X m\). (Reproduïu la proposició~\ref{prop:pertinenca-interna-lectura}.)
+\end{exercici}
+\begin{solucio}
+Per la propietat característica (notació~\ref{not:caracteristica}), \(\langle a,\alpha\rangle\in_X{\in_A}\) equival a \(\chi_{\in_A}\circ\langle a,\alpha\rangle=1\circ{!}_X\). Com que \(\chi_{\in_A}=\operatorname{ev}\circ\sigma^{-1}\) i \(\sigma^{-1}\circ\langle a,\alpha\rangle=\langle\alpha,a\rangle\), això és \(\operatorname{ev}\circ\langle\alpha,a\rangle=1\circ{!}_X\). Per al cas constant, el nom \(\ulcorner m\urcorner\) descurrifica a \(\chi_m\): \(\operatorname{ev}\circ(\ulcorner m\urcorner\times\id_A)=\chi_m\circ\rho\). Component amb \(\langle{!}_X,a\rangle\) i usant \(\alpha=\ulcorner m\urcorner\circ{!}_X\), s'obté \(\operatorname{ev}\circ\langle\alpha,a\rangle=\chi_m\circ a\); per tant \(a\mathrel{\varepsilon}\alpha\iff\chi_m\circ a=1\circ{!}_X\), que és \(a\in_X m\). La pertinença interna és, doncs, la pertinença generalitzada vista dins del conjunt \(P(A)\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{La pertinença interna és universal.} Sigui \(\alpha\colon X\to P(A)\) i \(s_\alpha\rightarrowtail X\times A\) la part que li correspon. Demostreu que \(a\mathrel{\varepsilon}(\alpha\circ x)\iff\langle x,a\rangle\in_Y s_\alpha\), i que \(\in_A\) és la part associada a \(\id_{P(A)}\). (Reproduïu el corol·lari~\ref{cor:pertinenca-universal}.)
+\end{exercici}
+\begin{solucio}
+Per la proposició~\ref{prop:pertinenca-interna-lectura}, \(a\mathrel{\varepsilon}(\alpha\circ x)\) equival a \(\operatorname{ev}\circ\langle\alpha\circ x,a\rangle=1\circ{!}_Y\). Com que \(\langle\alpha\circ x,a\rangle=(\alpha\times\id_A)\circ\langle x,a\rangle\), la condició és \(\operatorname{ev}\circ(\alpha\times\id_A)\circ\langle x,a\rangle=1\circ{!}_Y\); i \(\operatorname{ev}\circ(\alpha\times\id_A)\) és, per construcció, la característica de \(s_\alpha\). Això és \(\langle x,a\rangle\in_Y s_\alpha\). Prenent \(X=P(A)\) i \(\alpha=\id_{P(A)}\), la part associada té característica \(\operatorname{ev}\), que sobre \(A\times P(A)\) és la de \(\in_A\). Així, la relació de pertinença interna és el cas universal (\(\alpha=\id\)) del qual tota altra pertinença s'obté per reindexació.
+\end{solucio}
+
+\section{Parts parametritzades}\label{prac:parts-parametritzades}
+
+\begin{exercici}
+\textbf{Aplicacions cap a \(P(A)\) són parts de \(X\times A\).} Demostreu que hi ha una correspondència biunívoca, natural en \(X\), entre aplicacions \(\alpha\colon X\to P(A)\), aplicacions \(X\times A\to\mathbf2\), i parts de \(X\times A\) llevat d'equivalència. (Reproduïu el teorema~\ref{teo:parts-parametritzades}.)
+\end{exercici}
+\begin{solucio}
+L'equivalència entre \(\alpha\colon X\to P(A)\) i \(X\times A\to\mathbf2\) és la propietat universal de l'exponencial \(P(A)=\mathbf2^{A}\) (definició~\ref{def:exponencial}): a cada \(\alpha\) li correspon la seva descurrificació \(\operatorname{ev}\circ(\alpha\times\id_A)\), biunívoca per la unicitat de la transposada; la naturalitat en \(X\) és la de la proposició~\ref{prop:families} amb \(B=\mathbf2\). L'equivalència entre \(X\times A\to\mathbf2\) i parts de \(X\times A\) és l'axioma de representació (axioma~\ref{ax:representacio}): tota aplicació cap a \(\mathbf2\) és la característica d'una única part llevat d'equivalència. Component les dues correspondències s'obté l'enunciat. En conseqüència, un element generalitzat de \(P(A)\) és una \emph{família} de parts de \(A\), no una sola part.
+\end{solucio}
+
+\section{Operacions booleanes internes}\label{prac:booleanes-internes}
+
+\begin{exercici}
+\textbf{Càlcul puntual de la intersecció interna.} Siguin \(\alpha,\beta\colon X\to P(A)\) i \(a\colon X\to A\). Demostreu que \(a\mathrel{\varepsilon}(\alpha\cap\beta)\) si i només si \(a\mathrel{\varepsilon}\alpha\) i \(a\mathrel{\varepsilon}\beta\). (Part de la proposició~\ref{prop:booleanes-puntuals}.)
+\end{exercici}
+\begin{solucio}
+Per la proposició~\ref{prop:pertinenca-interna-lectura}, \(a\mathrel{\varepsilon}(\alpha\cap\beta)\) equival a \(\operatorname{ev}\circ\langle\alpha\cap\beta,a\rangle=1\circ{!}_X\). Descurrificant la definició de \(\cap\) (definició~\ref{def:booleanes-internes}), aquesta composició és \(\wedge\circ\langle\operatorname{ev}\circ\langle\alpha,a\rangle,\;\operatorname{ev}\circ\langle\beta,a\rangle\rangle\). Com que \(\wedge\) és la característica de \(\delta_{11}=\langle1,1\rangle\colon\mathbf1\hookrightarrow\mathbf2\times\mathbf2\), aquesta composició val \(1\circ{!}_X\) si i només si \(\langle\operatorname{ev}\circ\langle\alpha,a\rangle,\operatorname{ev}\circ\langle\beta,a\rangle\rangle\) es factoritza per \(\delta_{11}\), és a dir, si i només si tots dos components són \(1\circ{!}_X\): \(a\mathrel{\varepsilon}\alpha\) i \(a\mathrel{\varepsilon}\beta\). L'argument val a tot estadi \(X\) perquè no ha usat la taula de veritat, sinó la definició de \(\wedge\) com a característica. Compareu-ho amb la unió: \(a\mathrel{\varepsilon}(\alpha\cup\beta)\) no equival, en general, a \enquote{\(a\mathrel{\varepsilon}\alpha\) o \(a\mathrel{\varepsilon}\beta\)} (proposició~\ref{prop:booleanes-puntuals}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Les operacions internes estenen les de parts.} Demostreu que sobre els noms de dues parts \(m,n\) de \(A\) es té \(\ulcorner m\urcorner\cap\ulcorner n\urcorner=\ulcorner m\cap n\urcorner\), i anàlogament per a la unió i el complement. (Part de la proposició~\ref{prop:booleanes-puntuals}.)
+\end{exercici}
+\begin{solucio}
+Prenent \(\alpha=\ulcorner m\urcorner\circ{!}_X\) i \(\beta=\ulcorner n\urcorner\circ{!}_X\), l'exercici anterior i la proposició~\ref{prop:pertinenca-interna-lectura} converteixen l'equivalència puntual en \(a\in_X(m\cap n)\iff a\in_X m\text{ i }a\in_X n\), que és la caracterització de la intersecció de parts (proposició~\ref{prop:pertinenca-interseccio}). Com que dues parts amb la mateixa pertinença generalitzada són equivalents (proposició~\ref{prop:inclusio-pertinenca}) i parts equivalents tenen el mateix nom (proposició~\ref{prop:caracteristica-determina-part}), els punts classificadors coincideixen: \(\ulcorner m\urcorner\cap\ulcorner n\urcorner=\ulcorner m\cap n\urcorner\). Per a la unió i el complement no es pot repetir l'argument puntual, perquè la lectura amb \enquote{o} i \enquote{no} no val a tots els estadis; però no cal: les tres identitats de la proposició~\ref{prop:booleanes-puntuals} amb \(X=\mathbf1\) diuen que la descurrificació de \(\ulcorner m\urcorner\cup\ulcorner n\urcorner\) és \(\vee\circ\langle\chi_m,\chi_n\rangle=\chi_{m\cup n}\) (definició~\ref{def:operacions-parts}) i la de \(\neg\ulcorner m\urcorner\) és \(\neg\circ\chi_m=\chi_{m^c}\) (proposició~\ref{prop:caracteristica-complement}), i la unicitat del nom conclou. Les lleis booleanes de les parts es transporten així a \(P(A)\) (observació~\ref{obs:lleis-transportades}).
+\end{solucio}
+
+\section{La inclusió com a ordre}\label{prac:inclusio-ordre}
+
+\begin{exercici}
+\textbf{Lectura de la inclusió interna.} Siguin \(\alpha,\beta\colon X\to P(A)\) amb parts associades \(s_\alpha,s_\beta\hookrightarrow X\times A\). Demostreu que \(\langle\alpha,\beta\rangle\in_X{\subseteq_A}\) si i només si \(s_\alpha\subseteq s_\beta\), i que sobre els noms recupera \(m\subseteq_A n\). (Reproduïu la proposició~\ref{prop:inclusio-interna-lectura}.)
+\end{exercici}
+\begin{solucio}
+Per definició, \(\subseteq_A=\forall_\pi(I_A)\), on \(I_A\) és la part de \(P(A)\times P(A)\times A\) classificada per la implicació puntual \(\Rightarrow\circ\langle\operatorname{ev}_1,\operatorname{ev}_2\rangle\) i \(\pi\) és la projecció que oblida \(A\). La lectura de \(\forall_\pi\) (proposició~\ref{prop:quantificadors-lectura}) diu que \(\langle\alpha,\beta\rangle\in_X\forall_\pi(I_A)\) exactament quan tot \(\langle\alpha\circ x,\beta\circ x,a\rangle\) (amb \(x\colon Y\to X\), \(a\colon Y\to A\)) pertany a \(I_A\), és a dir, quan \(\neg u\vee v=1\circ{!}_Y\) amb \(u=\operatorname{ev}\circ\langle\alpha\circ x,a\rangle\) i \(v=\operatorname{ev}\circ\langle\beta\circ x,a\rangle\). Ara, \(\neg u\vee v\) classifica \(T^c\cup U\), on \(T\) i \(U\) són les parts de \(Y\) classificades per \(u\) i \(v\); i \(T^c\cup U\) és total si i només si \(T\subseteq U\) (lleis booleanes). Com que \(T=\langle x,a\rangle^{-1}s_\alpha\) i \(U=\langle x,a\rangle^{-1}s_\beta\), la condició per a tots els \(x,a\) equival a \(s_\alpha\subseteq s_\beta\): prenent \(Y=s_\alpha\) i \(\langle x,a\rangle\) la seva inclusió s'obté la inclusió, i la monotonia de la imatge inversa dona el recíproc. Sobre els noms, \(X=\mathbf1\) i \(s_{\ulcorner m\urcorner}\) és \(m\) dins \(\mathbf1\times A\cong A\), de manera que la condició és \(m\subseteq_A n\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Reflexivitat i transitivitat de la inclusió interna.} Demostreu que \(\langle\alpha,\alpha\rangle\in_X{\subseteq_A}\) i que la inclusió interna és transitiva. (Part del teorema~\ref{teo:inclusio-ordre}.)
+\end{exercici}
+\begin{solucio}
+Per l'exercici anterior, \(\langle\alpha,\beta\rangle\in_X{\subseteq_A}\) equival a \(s_\alpha\subseteq s_\beta\) com a parts de \(X\times A\). La reflexivitat és \(s_\alpha\subseteq s_\alpha\), i la transitivitat és la de la inclusió de parts: si \(s_\alpha\subseteq s_\beta\) i \(s_\beta\subseteq s_\gamma\), tot element generalitzat de \(s_\alpha\) ho és de \(s_\gamma\) (proposició~\ref{prop:inclusio-pertinenca}). L'antisimetria, que completa l'ordre, és que dues parts incloses l'una en l'altra són equivalents i tenen la mateixa característica, d'on \(\alpha=\beta\) per la unicitat de la transposada; \(\cap\) i \(\cup\) en són l'ínfim i el suprem perquè \(s_{\alpha\cap\beta}=s_\alpha\cap s_\beta\) i \(s_{\alpha\cup\beta}=s_\alpha\cup s_\beta\).
+\end{solucio}
+
+\section{Imatge inversa interna i quantificadors}\label{prac:quantificadors}
+
+\begin{exercici}
+\textbf{Un testimoni només després d'un recobriment.} Sigui \(f=\pi_1\colon\mathbf2\times\mathbf2\to\mathbf2\) la primera projecció i \(\alpha\colon\mathbf1\to P(\mathbf2\times\mathbf2)\) el nom de la diagonal \(\Delta\). Comproveu que \(\exists_f\alpha\) és el nom de la part total de \(\mathbf2\), i que per a l'element generalitzat \(b=\id_{\mathbf2}\colon\mathbf2\to\mathbf2\) es té \(b\mathrel{\varepsilon}\exists_f\alpha\), amb testimoni \(a=\langle\id,\id\rangle\) ja a l'estadi \(\mathbf2\). Expliqueu per què, en general, cal admetre un recobriment, i per què amb l'elecció no cal.
+\end{exercici}
+\begin{solucio}
+Sobre noms, \(\exists_f\ulcorner\Delta\urcorner=\ulcorner\pi_{1*}\Delta\urcorner\), i la imatge de la diagonal per la primera projecció és tot \(\mathbf2\), perquè \(\pi_1\circ\langle\id,\id\rangle=\id\) és un epimorfisme; per tant \(\exists_f\alpha\) és el nom de la part total. Per a \(b=\id_{\mathbf2}\), la lectura de la proposició~\ref{prop:quantificadors-lectura} demana un recobriment \(p\colon X'\twoheadrightarrow\mathbf2\) i un \(a\colon X'\to\mathbf2\times\mathbf2\) amb \(\pi_1\circ a=b\circ p\) i \(a\in\Delta\); aquí \(p=\id\) i \(a=\langle\id,\id\rangle\) serveixen. En general, el que la construcció garanteix és que \(\langle\id_X,b\rangle\) pertany a la imatge directa \((\id\times f)_*(s_\alpha)\), i pertànyer a una imatge dona la preimatge només després de fer el pullback de l'epimorfisme \(s_\alpha\twoheadrightarrow\operatorname{Im}\), que és el recobriment; recollir-la ja sobre \(X\) demana una secció d'aquest epimorfisme, i això és l'elecció. És la mateixa situació que la composició de relacions (proposició~\ref{prop:composicio-es-relacio}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{La imatge inversa interna estén \(f^{-1}\).} Sigui \(f\colon A\to B\) i \(P(f)\colon P(B)\to P(A)\) la imatge inversa interna. Demostreu que \(P(f)\circ\ulcorner n\urcorner=\ulcorner f^{-1}(n)\urcorner\) per a tota part \(n\) de \(B\). (Reproduïu la proposició~\ref{prop:imatge-inversa-interna}.)
+\end{exercici}
+\begin{solucio}
+Per la definició de \(P(f)\) (definició~\ref{def:imatge-inversa-interna}) amb \(\beta=\ulcorner n\urcorner\circ{!}_X\) i la proposició~\ref{prop:pertinenca-interna-lectura}, per a tot \(a\colon X\to A\),
+\[
+a\mathrel{\varepsilon}\bigl(P(f)\circ\ulcorner n\urcorner\bigr)\iff(f\circ a)\in_X n\iff a\in_X f^{-1}(n),
+\]
+on la darrera equivalència és la proposició~\ref{prop:pertinenca-imatge-inversa}. Com que la pertinença generalitzada determina la part i el nom en determina la descurrificació, \(P(f)\circ\ulcorner n\urcorner=\ulcorner f^{-1}(n)\urcorner\). La imatge inversa interna és, doncs, la versió \enquote{com a aplicació entre conjunts de parts} de l'operació \(f^{-1}\) sobre parts.
+\end{solucio}
+
+\begin{exercici}
+\textbf{La imatge inversa commuta amb el complement.} Demostreu que \(P(f)\circ\neg_B=\neg_A\circ P(f)\). (Reproduïu la proposició~\ref{prop:imatge-inversa-complement}.)
+\end{exercici}
+\begin{solucio}
+Les dues aplicacions tenen domini \(P(B)\) i codomini \(P(A)\), de manera que basta comparar-ne les descurrificacions \(P(B)\times A\to\mathbf2\). Per a \(P(f)\circ\neg_B\): \(\operatorname{ev}\circ((P(f)\circ\neg_B)\times\id_A)=\operatorname{ev}\circ(P(f)\times\id_A)\circ(\neg_B\times\id_A)=\operatorname{ev}\circ(\id_{P(B)}\times f)\circ(\neg_B\times\id_A)\), per la definició de \(P(f)\); i com que \((\id\times f)\circ(\neg_B\times\id_A)=(\neg_B\times\id_B)\circ(\id\times f)\), això és \(\operatorname{ev}\circ(\neg_B\times\id_B)\circ(\id\times f)=\neg\circ\operatorname{ev}\circ(\id\times f)\) per la definició de \(\neg_B\). Per a \(\neg_A\circ P(f)\): \(\operatorname{ev}\circ((\neg_A\circ P(f))\times\id_A)=\neg\circ\operatorname{ev}\circ(P(f)\times\id_A)=\neg\circ\operatorname{ev}\circ(\id\times f)\). Les descurrificacions coincideixen i, per la unicitat de la transposada, les aplicacions també. Observeu que l'argument és un càlcul amb transposades i no passa per cap lectura puntual del complement, que només valdria sobre punts globals. Aquesta commutació és el que permet definir \(\forall_f\) a partir de \(\exists_f\) per dualitat.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Els quantificadors com a adjunts.} Siguin \(\alpha\colon X\to P(A)\) i \(\beta\colon X\to P(B)\), amb parts associades \(s_\alpha\) i \(s_\beta\). Demostreu que \(s_{\exists_f\alpha}\subseteq s_\beta\iff s_\alpha\subseteq s_{P(f)\beta}\) i que \(s_{P(f)\beta}\subseteq s_\alpha\iff s_\beta\subseteq s_{\forall_f\alpha}\). (Reproduïu la proposició~\ref{prop:quantificadors-adjuncio}.)
+\end{exercici}
+\begin{solucio}
+Les parts associades són \(s_{\exists_f\alpha}=(\id_X\times f)_*s_\alpha\) (proposició~\ref{prop:quantificadors-lectura}, que és on intervé el lema de Beck--Chevalley) i \(s_{P(f)\beta}=(\id_X\times f)^{-1}s_\beta\) (proposició~\ref{prop:imatge-inversa-interna}). La primera equivalència és, doncs, l'adjunció imatge directa\,--\,imatge inversa del capítol~\ref{cap:imatges} (proposició~\ref{prop:adjuncio-imatges}) aplicada a \(\id_X\times f\). Per a la segona, \(s_{\forall_f\alpha}=\bigl((\id\times f)_*(s_\alpha^c)\bigr)^c\); aleshores \(s_\beta\subseteq s_{\forall_f\alpha}\) equival, per l'antimonotonia del complement, a \((\id\times f)_*(s_\alpha^c)\subseteq s_\beta^c\); per la primera adjunció, a \(s_\alpha^c\subseteq(\id\times f)^{-1}(s_\beta^c)\); i com que la imatge inversa commuta amb el complement, a \(s_\alpha^c\subseteq\bigl((\id\times f)^{-1}s_\beta\bigr)^c\), és a dir, \((\id\times f)^{-1}s_\beta\subseteq s_\alpha\). Així \(\exists_f\) és adjunt per l'esquerra i \(\forall_f\) per la dreta de la imatge inversa interna, a cada estadi \(X\).
+\end{solucio}

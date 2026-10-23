@@ -1,0 +1,81 @@
+\chapter{Aritmètica ordinal}\label{cap:practica-aritmetica-ordinal}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:aritmetica-ordinal} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició ---suma, producte, exponenciació, i monotonia amb la distinció ordre/mida--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: definir sobre representants i provar la invariància, calcular tipus concrets exhibint isomorfismes d'ordre, i separar amb cura l'aritmètica ordinal de la cardinal. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Suma ordinal}\label{prac:suma-ordinal}
+
+\begin{exercici}
+\textbf{La suma és un bon ordre invariant.} Demostreu que l'ordre \enquote{tot \(A\) abans de tot \(B\)} sobre \(A+B\) és un bon ordre i que el seu tipus no depèn dels representants. (Reproduïu la proposició~\ref{prop:suma-bon-ordre}.)
+\end{exercici}
+\begin{solucio}
+És un ordre estricte total: la irreflexivitat i la transitivitat es comproven per casos (els casos mixtos són consistents perquè \enquote{\(A\) abans de \(B\)} és global), i la totalitat perquè dos elements o són al mateix sumand o a sumands diferents. És ben ordenat: donada \(P\hookrightarrow A+B\) no inicial, si \(P\cap A\) és no inicial el seu mínim (bon ordre d'\(A\)) és el mínim de \(P\); si \(P\cap A\) és inicial, \(P\subseteq B\) i el mínim és el de \(P\) en \(B\). Invariància: dos isomorfismes \(f\colon A\cong A'\), \(g\colon B\cong B'\) donen \(f+g\colon A+B\cong A'+B'\), que respecta l'ordre (teorema~\ref{teo:unicitat-iso}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{No commutativitat: \(1+\omega\) contra \(\omega+1\).} Demostreu que \(1+\omega=\omega\) però \(\omega+1\neq\omega\). (Reproduïu la proposició~\ref{prop:suma-no-commutativa}.)
+\end{exercici}
+\begin{solucio}
+\(1+\omega\) és un punt seguit d'una còpia de \(\N\); l'aplicació que envia el punt afegit a \(0\) i \(n\) a \(n+1\) és un isomorfisme d'ordre amb \(\N\), d'on \(1+\omega=\omega\). En canvi \(\omega+1\) és una còpia de \(\N\) seguida d'un punt \(\ast\) posterior a tots els naturals, que és un element \emph{màxim}. Com que \(\N\) no té màxim i tenir màxim és invariant per isomorfisme d'ordre, \(\omega+1\not\cong\omega\). De fet \(\omega+1\) és el successor de \(\omega\) (definició~\ref{def:zero-successor}), estrictament més gran; per l'esquerra el punt s'absorbeix, per la dreta no.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Associativitat.} Demostreu que \((\alpha+\beta)+\gamma=\alpha+(\beta+\gamma)\). (Reproduïu la proposició~\ref{prop:suma-associativa}.)
+\end{exercici}
+\begin{solucio}
+Tots dos costats són el tipus del bon ordre sobre \(A+B+C\) amb tot \(A\) abans de tot \(B\), i tot \(B\) abans de tot \(C\), i els ordres originals dins de cada sumand. L'associativitat de la suma disjunta de conjunts (capítol~\ref{cap:valors}) dona un isomorfisme \((A+B)+C\cong A+(B+C)\) que conserva aquest ordre; per la unicitat de l'isomorfisme d'ordre (teorema~\ref{teo:unicitat-iso}), els tipus coincideixen.
+\end{solucio}
+
+\section{Producte ordinal}\label{prac:producte-ordinal}
+
+\begin{exercici}
+\textbf{El producte és un bon ordre.} Demostreu que l'ordre antilexicogràfic sobre \(A\times B\) (la coordenada de \(B\) primer) és un bon ordre. (Reproduïu la proposició~\ref{prop:producte-bon-ordre}.)
+\end{exercici}
+\begin{solucio}
+És un ordre estricte total (l'antilexicogràfic d'ordres totals ho és). Per al bon ordre, donada \(P\hookrightarrow A\times B\) no inicial: la projecció \(\pi_B(P)\) és no inicial i té mínim \(b_0\); dins la fibra sobre \(b_0\), la projecció a \(A\) té mínim \(a_0\); aleshores \((a_0,b_0)\) és el mínim de \(P\), perquè cap element amb segona coordenada més gran no el precedeix, i dins \(b_0\) mana \(a_0\). Per tant és ben ordenat.
+\end{solucio}
+
+\begin{exercici}
+\textbf{\(2\cdot\omega\) contra \(\omega\cdot2\).} Demostreu que \(2\cdot\omega=\omega\) però \(\omega\cdot2=\omega+\omega\neq\omega\). (Reproduïu la proposició~\ref{prop:producte-propietats}.)
+\end{exercici}
+\begin{solucio}
+\(2\cdot\omega\) són \(\omega\) còpies del bon ordre de dos elements: \((0,1),(2,3),\dots\), que reindexat és \(\N\); d'on \(2\cdot\omega=\omega\). \(\omega\cdot2\) són \(2\) còpies de \(\N\), l'una després de l'altra, és a dir la concatenació \(\omega+\omega\); té un element (el primer de la segona còpia) precedit per infinits altres, sense predecessor immediat, cosa que \(\N\) no té. Per tant \(\omega\cdot2\neq\omega\) i \(\omega\cdot2\neq2\cdot\omega\): el producte no és commutatiu.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Distributivitat per l'esquerra i fallada per la dreta.} Demostreu que \(\alpha\cdot(\beta+\gamma)=\alpha\cdot\beta+\alpha\cdot\gamma\), i doneu un contraexemple de la distributivitat per la dreta. (Reproduïu la proposició~\ref{prop:producte-propietats}.)
+\end{exercici}
+\begin{solucio}
+\(\alpha\cdot(\beta+\gamma)\) són \((\beta+\gamma)\) còpies d'\(\alpha\), és a dir \(\beta\) còpies seguides de \(\gamma\) còpies, que és \(\alpha\cdot\beta+\alpha\cdot\gamma\); l'isomorfisme és el canònic \(A\times(B+C)\cong(A\times B)+(A\times C)\), que conserva l'antilexicogràfic. Per la dreta falla: \((1+1)\cdot\omega=2\cdot\omega=\omega\), però \(1\cdot\omega+1\cdot\omega=\omega+\omega\neq\omega\).
+\end{solucio}
+
+\section{Exponenciació ordinal}\label{prac:exponenciacio-ordinal}
+
+\begin{exercici}
+\textbf{Càlculs bàsics.} Demostreu que \(\alpha^1=\alpha\), \(\alpha^2=\alpha\cdot\alpha\), \(2^\omega=\omega\) i \(\omega^2=\omega\cdot\omega\). (Reproduïu la proposició~\ref{prop:exponenciacio-calculs}.)
+\end{exercici}
+\begin{solucio}
+Per les equacions recursives, que valen per a \(\alpha>0\) (teorema~\ref{teo:exponenciacio-recursio}): \(\alpha^1=\alpha^{0+1}=\alpha^0\cdot\alpha=1\cdot\alpha=\alpha\); \(\alpha^2=\alpha^1\cdot\alpha=\alpha\cdot\alpha\). Per a \(2^\omega\): és el suprem dels \(2^n\) (\(n<\omega\)), tots finits, i el suprem d'una successió creixent no acotada de tipus finits és \(\omega\); així \(2^\omega=\omega\). I \(\omega^2=\omega^1\cdot\omega=\omega\cdot\omega\). En particular \(2^\omega=\omega\) és numerable, ben diferent del cardinal \(2^{\aleph_0}\), que és el continu.
+\end{solucio}
+
+\begin{exercici}
+\textbf{La clàusula límit i la base zero.} Comproveu que, si la clàusula límit s'apliqués a la base \(0\), resultaria \(0^\omega=1\), i expliqueu per què la construcció per funcions de suport finit no necessita cap cota externa per als suprems. (Vegeu l'observació~\ref{obs:exponenciacio-acotacio}.)
+\end{exercici}
+\begin{solucio}
+Amb \(0^0=1\) i \(0^{n+1}=0^n\cdot0=0\), la família \((0^n)_{n<\omega}\) és \(1,0,0,\dots\), el suprem de la qual és \(1\); però clàssicament \(0^\omega=\abs{\varnothing^{\N}}\) hauria de ser \(0\). Per això la base \(0\) es defineix a part. Per a \(\alpha>0\), \(\alpha^\beta\) és el tipus del bon ordre \(E(B,A)\) de les funcions de suport finit; si \(B'\) és una part inicial de \(B\), \(E(B',A)\) n'és una part inicial (extensió per \(0_A\)), de manera que totes les potències amb exponent \(\le\operatorname{tipus}(L)\) viuen com a parts inicials d'un sol \(E(L,A)\). Al límit, \(E(B,A)\) és la reunió de les \(E(B_{<b},A)\), i el seu tipus és el suprem: la cota és el mateix \(E(L,A)\), sense \(\Hart\) ni SR.
+\end{solucio}
+
+\section{Monotonia i ordre contra mida}\label{prac:ordre-mida}
+
+\begin{exercici}
+\textbf{Monotonia estricta per la dreta.} Demostreu que \(\beta<\gamma\) implica \(\alpha+\beta<\alpha+\gamma\), i que per l'esquerra només val \(\le\). (Reproduïu la proposició~\ref{prop:monotonia-ordinal}.)
+\end{exercici}
+\begin{solucio}
+Si \(\beta<\gamma\), un representant de \(\beta\) és un segment inicial propi d'un de \(\gamma\); concatenant \(\alpha\) al davant, \(\alpha+\beta\) resulta un segment inicial propi de \(\alpha+\gamma\), d'on \(\alpha+\beta<\alpha+\gamma\). Per l'esquerra, \(B+A\) \emph{no} és un segment de \(C+A\) (la còpia d'\(A\) va al final), però la inclusió \(B\hookrightarrow C\) seguida de la identitat d'\(A\) és una immersió estrictament creixent \(B+A\to C+A\), i una immersió entre bons ordres compara els tipus (lema~\ref{lema:immersio-ordre}: si \(C+A\) fos més curt, seria isomorf a un segment propi de \(B+A\) i hi hauria una creixent que fa baixar un punt, contra la rigidesa). Així \(\beta+\alpha\le\gamma+\alpha\); l'estrictesa pot fallar, com mostra \(1<2\) amb \(1+\omega=2+\omega=\omega\) (proposició~\ref{prop:suma-no-commutativa}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Ordre contra mida.} Demostreu que \(\omega\), \(\omega+1\), \(\omega\cdot2\) i \(\omega^2\) són tipus ordinals diferents però conjunts equipotents. (Model de l'observació~\ref{obs:ordre-vs-mida}.)
+\end{exercici}
+\begin{solucio}
+Són tipus diferents: \(\omega<\omega+1<\omega\cdot2<\omega^2\) per la monotonia (proposició~\ref{prop:monotonia-ordinal}) i els càlculs (proposicions~\ref{prop:suma-no-commutativa} i~\ref{prop:producte-propietats}); en particular \(\omega+1\) té màxim i \(\omega\) no, etc. Però tots són \emph{numerables}: \(\omega+1=\N+\mathbf1\) és numerable (unió de dos numerables); \(\omega\cdot2=\omega+\omega\) també; i \(\omega^2=\omega\cdot\omega\) és numerable perquè \(\N\times\N\) ho és (aparellament, capítol~\ref{cap:infinitud}). Com a \emph{mides} són el mateix cardinal \(\aleph_0\); com a \emph{formes d'ordre}, tots diferents. És la distinció que motiva mantenir separades l'aritmètica ordinal i la cardinal.
+\end{solucio}

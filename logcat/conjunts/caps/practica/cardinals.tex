@@ -1,0 +1,74 @@
+\chapter{Cardinals i aritmètica cardinal}\label{cap:practica-cardinals}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:cardinals} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició ---aritmètica cardinal relacional, comparabilitat, cardinals inicials i König--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: definir sobre classes d'equipotència i provar la invariància, obtenir la comparabilitat total del teorema del bon ordre, acotar la cerca del cardinal inicial dins un Hartogs, i reconèixer la diagonal de Cantor dins König. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Aritmètica cardinal relacional}\label{prac:aritmetica-cardinal}
+
+\begin{exercici}
+\textbf{Les operacions estan ben definides.} Demostreu que \(\abs{A}+\abs{B}\), \(\abs{A}\cdot\abs{B}\) i \(\abs{B}^{\abs{A}}\) no depenen dels representants. (Reproduïu la proposició~\ref{prop:operacions-invariants}.)
+\end{exercici}
+\begin{solucio}
+Siguin \(f\colon A\cong A'\) i \(g\colon B\cong B'\). Aleshores \(f+g\colon A+B\cong A'+B'\) (functorialitat de la suma disjunta) i \(f\times g\colon A\times B\cong A'\times B'\) (functorialitat del producte) són isomorfismes. Per a l'exponencial, \(h\mapsto g\circ h\circ f^{-1}\) és una bijecció \(B^A\cong B'^{A'}\), amb inversa \(k\mapsto g^{-1}\circ k\circ f\) (propietat universal, definició~\ref{def:exponencial}). Com que les tres construccions són isomorfismes de conjunts, les mides coincideixen, i les operacions estan ben definides sobre classes d'equipotència.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Lleis de l'exponenciació cardinal.} Demostreu \(\kappa^{\mu+\nu}=\kappa^\mu\cdot\kappa^\nu\) i \((\kappa^\mu)^\nu=\kappa^{\mu\cdot\nu}\). (Part de la proposició~\ref{prop:lleis-cardinals}.)
+\end{exercici}
+\begin{solucio}
+Amb \(\kappa=\abs{C}\), \(\mu=\abs{B}\), \(\nu=\abs{A}\): \(C^{B+A}\cong C^B\times C^A\), perquè una aplicació d'una suma disjunta \(B+A\to C\) és exactament un parell d'aplicacions \((B\to C,\,A\to C)\) (propietat universal de la suma), d'on \(\kappa^{\mu+\nu}=\kappa^\mu\cdot\kappa^\nu\). I \((C^B)^A\cong C^{B\times A}\) és la currificació (definició~\ref{def:exponencial}): una aplicació \(A\to C^B\) es correspon amb una \(B\times A\to C\), d'on \((\kappa^\mu)^\nu=\kappa^{\mu\cdot\nu}\) (l'ordre \(B\times A\) correspon a \(\mu\cdot\nu\), indiferent per commutativitat). Transportant aquests isomorfismes a mides (proposició~\ref{prop:operacions-invariants}) s'obtenen les dues lleis, amb les lletres dels representants assignades igual que a l'enunciat.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Cantor cardinal.} Demostreu que \(\abs{A}<2^{\abs{A}}\) per a tot conjunt \(A\). (Reproduïu el teorema~\ref{teo:cantor-cardinal}.)
+\end{exercici}
+\begin{solucio}
+Com que \(P(A)\cong\mathbf2^A\) (capítol~\ref{cap:exponencials}), \(2^{\abs{A}}=\abs{\mathbf2^A}=\abs{P(A)}\). El teorema de Cantor (teorema~\ref{teo:cantor}) diu \(A\prec P(A)\), és a dir \(\abs{A}\le\abs{P(A)}\) i \(\abs{A}\neq\abs{P(A)}\). Per tant \(\abs{A}<2^{\abs{A}}\). Noteu el contrast amb l'ordinal \(2^\omega=\omega\): la mateixa notació, resultats oposats, perquè la cardinal oblida l'ordre i la ordinal el recorda.
+\end{solucio}
+
+\section{Comparabilitat}\label{prac:comparabilitat-cardinals}
+
+\begin{exercici}
+\textbf{Comparabilitat total.} Amb l'elecció, demostreu que dos conjunts qualssevol són comparables, i deduïu que els cardinals estan totalment ordenats mòdul equipotència. (Reproduïu el teorema~\ref{teo:comparabilitat-cardinals}.)
+\end{exercici}
+\begin{solucio}
+Pel teorema del bon ordre (teorema~\ref{teo:bon-ordre}), \(A\) i \(B\) admeten bons ordres \(W_A\), \(W_B\). Per la comparabilitat de bons ordres (teorema~\ref{teo:comparabilitat}), un és isomorf a un segment inicial de l'altre; aquest isomorfisme d'ordre és un monomorfisme de conjunts, d'on \(A\preceq B\) o \(B\preceq A\). Combinat amb Schröder--Bernstein (teorema~\ref{teo:schroder-bernstein}), que dona l'antisimetria mòdul \(\approx\), i amb la reflexivitat i transitivitat (proposició~\ref{prop:preceq-preordre}), la comparació és un ordre total llevat d'equipotència.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Comparabilitat equival a elecció.} Demostreu que si dos conjunts qualssevol són comparables, aleshores val el teorema del bon ordre. (Model de l'observació~\ref{obs:comparabilitat-eleccio}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(A\) qualsevol. Per hipòtesi, \(A\) i \(\Hart(A)\) són comparables. Com que \(\Hart(A)\not\preceq A\) (teorema~\ref{teo:hartogs}), l'única possibilitat és \(A\preceq\Hart(A)\): hi ha un monomorfisme \(A\hookrightarrow\Hart(A)\). Com que \(\Hart(A)\) és un bon ordre (proposició~\ref{prop:hartogs-bon-ordre}), la imatge d'\(A\) hi és una part, que hereta un bon ordre; transportant-lo, \(A\) admet un bon ordre. Així la comparabilitat implica el teorema del bon ordre, equivalent a l'elecció (teorema~\ref{teo:equivalencies}).
+\end{solucio}
+
+\section{Cardinals inicials}\label{prac:cardinals-inicials}
+
+\begin{exercici}
+\textbf{Existència del cardinal inicial.} Amb l'elecció, demostreu que tot conjunt té un únic cardinal inicial, trobat acotadament. (Reproduïu la proposició~\ref{prop:cardinal-inicial}.)
+\end{exercici}
+\begin{solucio}
+Treballem dins \(\Hart(A)\). La part \(E\) dels tipus \([(S,R)]\) amb \(S\approx A\) és no inicial: pel teorema del bon ordre, \(A\) admet un bon ordre \(R\), i \([(A,R)]\in E\). Com que \(\Hart(A)\) és un bon ordre (proposició~\ref{prop:hartogs-bon-ordre}), \(E\) té un mínim \(\alpha\), únic. És inicial: un bon ordre \(V\) de tipus \(<\alpha\) és isomorf a un segment propi d'un representant \((S,R)\) de \(\alpha\), és a dir, a un bon ordre sobre una part d'\(A\); si fos equipotent a \(A\), el seu tipus seria un element de \(E\) menor que \(\alpha\). La cerca no ha sortit de \(\Hart(A)\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{El cardinal és un tipus, no un conjunt escollit.} Expliqueu per què és més net dir que el cardinal inicial és un tipus d'ordre inicial que no pas \enquote{un conjunt}. (Model de l'observació~\ref{obs:cardinal-prudencia}.)
+\end{exercici}
+\begin{solucio}
+El cardinal inicial de \(A\) és el menor tipus d'ordre de la seva mida, únic llevat d'un únic isomorfisme d'ordre (teorema~\ref{teo:unicitat-iso}). Dir \enquote{és un conjunt} suggeriria una tria canònica d'un bon ordre concret d'aquell tipus, que no tenim: escollir-ne un representant és una tria addicional, legítima però no canònica. Per això la teoria relacional treballa amb \(\abs{A}\) com a classe d'equipotència i només introdueix representants qui vulgui una successió distingida. A més, reunir \emph{tots} els cardinals inicials en una successió global seria de Nivell~II, i requeriria SR (observació~\ref{obs:sr}).
+\end{solucio}
+
+\section{El teorema de König}\label{prac:konig}
+
+\begin{exercici}
+\textbf{El teorema de König.} Amb l'elecció, demostreu que \(A_i\prec B_i\) per a tot \(i\) implica \(\sum_i\abs{A_i}<\prod_i\abs{B_i}\). (Reproduïu el teorema~\ref{teo:konig}.)
+\end{exercici}
+\begin{solucio}
+\emph{\(\le\):} triant (elecció) un monomorfisme \(m_i\colon A_i\hookrightarrow B_i\) i un \(b_i\notin\operatorname{Im}(m_i)\) (existeix perquè \(A_i\not\approx B_i\)), enviem un \(a\) de la fibra \(A_i\) a la família amb \(x_i=m_i(a)\) i \(x_j=b_j\) per \(j\ne i\); és injectiva. \emph{\(\neq\):} donada \(F\colon\coprod_i A_i\to\prod_i B_i\), per a cada \(i\) l'aplicació \(F_i=\pi_i\circ F|_{A_i}\colon A_i\to B_i\) no és exhaustiva (car \(A_i\prec B_i\)), i triem \(d_i\notin\operatorname{Im}(F_i)\). La família \((d_i)_i\) no és cap valor de \(F\): si \(F(a)=(d_i)_i\) amb \(a\) a la fibra \(A_{i_0}\), la coordenada \(i_0\) donaria \(F_{i_0}(a)=d_{i_0}\), impossible. Per tant \(F\) no és exhaustiva i \(\sum_i\abs{A_i}\neq\prod_i\abs{B_i}\); amb \(\le\), l'estricta.
+\end{solucio}
+
+\begin{exercici}
+\textbf{König conté Cantor.} Deduïu el teorema de Cantor \(\abs{A}<2^{\abs{A}}\) com a cas particular de König. (Model de l'observació~\ref{obs:konig-cantor}.)
+\end{exercici}
+\begin{solucio}
+Preneu \(I=A\), \(A_i=\mathbf1\) i \(B_i=\mathbf2\) per a tot \(i\). Aleshores \(A_i=\mathbf1\prec\mathbf2=B_i\), i König dona \(\sum_{i\in A}1<\prod_{i\in A}2\), és a dir \(\abs{A}<2^{\abs{A}}\), que és Cantor cardinal (teorema~\ref{teo:cantor-cardinal}). La família diagonal \((d_i)\) de la prova de König és, en aquest cas, exactament la part diagonal de Cantor: per a cada \(i\), \(d_i\) és l'element de \(\mathbf2\) diferent del que \(F\) assigna, és a dir la negació de la pertinença. König és, doncs, la forma indexada de la diagonal.
+\end{solucio}

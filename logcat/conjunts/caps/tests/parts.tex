@@ -1,0 +1,131 @@
+\chapter{Parts i construccions universals}\label{test:cap2}
+
+Aquest test correspon al capítol~2 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u2}{a,c,b,c,b,d,b,a,c,b,c,d}
+
+\begin{enumerate}
+
+\pregunta Una aplicació \(m\colon A\to B\) és un \emph{monomorfisme} quan\ldots
+\begin{itemize}
+\opcio{a}{es pot cancel·lar per l'esquerra: \(m\circ u=m\circ v\Rightarrow u=v\).}
+\opcio{b}{es pot cancel·lar per la dreta: \(u\circ m=v\circ m\Rightarrow u=v\).}
+\opcio{c}{admet sempre una inversa per la dreta.}
+\opcio{d}{el seu domini és el conjunt terminal.}
+\end{itemize}
+\feedback
+\justificacio{Un monomorfisme es cancel·la per l'esquerra: és la formulació estructural de la injectivitat. La cancel·lació per la dreta defineix els epimorfismes, i tenir inversa per la dreta és ser una retracció, condició més forta.}
+
+\pregunta La composició de dos monomorfismes\ldots
+\begin{itemize}
+\opcio{a}{no té per què ser un monomorfisme.}
+\opcio{b}{és un epimorfisme.}
+\opcio{c}{és sempre un monomorfisme.}
+\opcio{d}{és un isomorfisme.}
+\end{itemize}
+\feedback
+\justificacio{Si \((n\circ m)\circ u=(n\circ m)\circ v\), l'associativitat permet cancel·lar primer \(n\) i després \(m\). Res no obliga que la composició sigui epi ni iso.}
+
+\pregunta Tota secció \(s\) (amb \(r\circ s=\id\)) és\ldots
+\begin{itemize}
+\opcio{a}{un epimorfisme.}
+\opcio{b}{un monomorfisme.}
+\opcio{c}{una aplicació constant.}
+\opcio{d}{el conjunt terminal.}
+\end{itemize}
+\feedback
+\justificacio{Si \(r\circ s=\id\) i \(s\circ u=s\circ v\), component amb \(r\) s'obté \(u=v\). Una secció és un monomorfisme escindit; la retracció \(r\) és l'epimorfisme.}
+
+\pregunta Dues parts \(m,n\) de \(A\) compleixen \(m\subseteq_A n\) quan\ldots
+\begin{itemize}
+\opcio{a}{tenen el mateix domini.}
+\opcio{b}{existeix una aplicació \(A\to A\) que les intercanvia.}
+\opcio{c}{existeix \(k\) amb \(m=n\circ k\).}
+\opcio{d}{tenen la mateixa característica.}
+\end{itemize}
+\feedback
+\justificacio{La inclusió de parts és una factorització: \(m\subseteq_A n\) vol dir \(m=n\circ k\) per a alguna \(k\), que resulta única i mono. Tenir la mateixa característica és l'equivalència, no la inclusió.}
+
+\pregunta La propietat universal del producte \(A\times B\) diu que una aplicació \(X\to A\times B\)\ldots
+\begin{itemize}
+\opcio{a}{existeix només si \(X\) és terminal.}
+\opcio{b}{queda determinada de manera única per les seves components sobre les projeccions.}
+\opcio{c}{és sempre un monomorfisme.}
+\opcio{d}{coincideix amb una aplicació \(X\to A+B\).}
+\end{itemize}
+\feedback
+\justificacio{Donades \(f\colon X\to A\) i \(g\colon X\to B\), hi ha una única \(\langle f,g\rangle\colon X\to A\times B\) amb aquestes components; per tant, dues aplicacions cap al producte amb les mateixes components són iguals.}
+
+\pregunta L'aplicació característica \(\chi_m\colon A\to\mathbf2\) d'una part \(m\colon S\rightarrowtail A\)\ldots
+\begin{itemize}
+\opcio{a}{depèn de la parametrització concreta \(S\).}
+\opcio{b}{només existeix quan \(S\) és terminal.}
+\opcio{c}{és sempre constant.}
+\opcio{d}{determina la part llevat d'equivalència.}
+\end{itemize}
+\feedback
+\justificacio{L'axioma de representació dona una única característica per part, i dues parts amb la mateixa característica tenen els mateixos elements generalitzats, de manera que són equivalents. No depèn del domini \(S\) ni és constant en general.}
+
+\pregunta L'equalitzador \(e\colon E\to A\) de dues aplicacions \(f,g\colon A\to B\) sempre és\ldots
+\begin{itemize}
+\opcio{a}{un epimorfisme.}
+\opcio{b}{un monomorfisme.}
+\opcio{c}{un isomorfisme.}
+\opcio{d}{una aplicació constant.}
+\end{itemize}
+\feedback
+\justificacio{Si \(e\circ u=e\circ v\), tots dos igualen \(f\) i \(g\) i, per la unicitat de la factorització, \(u=v\). L'equalitzador és una part del domini; no té per què ser epi ni iso.}
+
+\pregunta En un pullback de \(f\colon A\to C\) al llarg de \(g\colon B\to C\), si \(f\) és un monomorfisme, la projecció oposada\ldots
+\begin{itemize}
+\opcio{a}{és un monomorfisme, i per això la imatge inversa d'una part és una part.}
+\opcio{b}{és un epimorfisme.}
+\opcio{c}{és un isomorfisme.}
+\opcio{d}{no té cap propietat especial.}
+\end{itemize}
+\feedback
+\justificacio{Si \(f\) és mono i \(q_B\circ u=q_B\circ v\), del quadrat se segueix \(f\circ q_A\circ u=f\circ q_A\circ v\), es cancel·la \(f\) i la unicitat del pullback dona \(u=v\). Per això \(f^{-1}(m)\) torna a ser una part.}
+
+\pregunta En aquesta teoria, un bimorfisme (mono i epi alhora)\ldots
+\begin{itemize}
+\opcio{a}{no té per què ser un isomorfisme.}
+\opcio{b}{només existeix entre conjunts terminals.}
+\opcio{c}{és sempre un isomorfisme.}
+\opcio{d}{és sempre una aplicació constant.}
+\end{itemize}
+\feedback
+\justificacio{És un teorema del capítol, no una definició: un epi que és part té característica total, la representació en dona una secció, i la cancel·lació per mono la converteix en inversa.}
+
+\pregunta Siguin \(g\colon B\to A\) i una part \(m\) de \(A\). Es té \(y\in_X g^{-1}(m)\) si i només si\ldots
+\begin{itemize}
+\opcio{a}{\(y\) és un element global.}
+\opcio{b}{\(g\circ y\in_X m\).}
+\opcio{c}{\(g\) és un isomorfisme.}
+\opcio{d}{\(m\) és la part total.}
+\end{itemize}
+\feedback
+\justificacio{És la propietat que caracteritza la imatge inversa com a pullback: \(y\) es factoritza per \(g^{-1}(m)\) exactament quan \(g\circ y\) es factoritza per \(m\).}
+
+\pregunta Quin axioma del capítol fa falta per demostrar que tot bimorfisme és un isomorfisme?
+\begin{itemize}
+\opcio{a}{Cap: se segueix de les definicions de mono i epi.}
+\opcio{b}{L'axioma d'existència de productes.}
+\opcio{c}{L'axioma de representació de les parts.}
+\opcio{d}{L'axioma de separació global.}
+\end{itemize}
+\feedback
+\justificacio{La prova usa la característica del bimorfisme vist com a part: és l'axioma de representació. En una teoria sense classificador de parts, un bimorfisme pot no ser isomorfisme, com passa amb la inclusió dels enters en els racionals vista com a homomorfisme d'anells.}
+
+\pregunta Quina d'aquestes construccions \emph{no} demana cap axioma nou al capítol, perquè es construeix a partir de les altres?
+\begin{itemize}
+\opcio{a}{La suma \(A+B\).}
+\opcio{b}{El producte \(A\times B\).}
+\opcio{c}{La característica \(\chi_m\) d'una part.}
+\opcio{d}{El pullback \(A\times_C B\).}
+\end{itemize}
+\feedback
+\justificacio{El pullback es construeix com un equalitzador dins del producte, i l'equalitzador com la part classificada per \(\operatorname{eq}_B\circ\langle f,g\rangle\). Sumes, productes i representació són els tres axiomes del capítol.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

@@ -1,0 +1,460 @@
+\chapter{Ordres, bons ordres i segments}\label{cap:bons-ordres}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:relacions}: relacions com a parts d'un producte, diagonal, relació inversa. Del capítol~\ref{cap:naturals}: l'ordre de \(\N\), el seu bon ordre, i la convenció que les propietats d'un ordre són afirmacions sobre parts que es comproven sobre punts globals (observació~\ref{obs:ordre-sobre-punts}). Del capítol~\ref{cap:valors}: complements i el lema del buit. Del capítol~\ref{cap:cantor}: la comparació de conjunts, per contrast amb la comparació d'ordres.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item definir ordre estricte, ordre total i bon ordre com a parts de \(W\times W\) amb condicions, i saber quines es llegeixen sobre punts;
+  \item demostrar que tot bon ordre és total i que el mínim és únic;
+  \item definir els segments inicials \(W_{<w}\) i les parts inicials, i demostrar que en un bon ordre les parts inicials pròpies són exactament els segments, que són ben ordenats i determinen el seu punt;
+  \item demostrar la rigidesa (cap punt baixa sota una creixent injectiva), la unicitat de l'isomorfisme d'ordre i que cap bon ordre és isomorf a un segment propi;
+  \item definir la comparació \(\preceq_{\mathrm o}\) per segments, demostrar-ne l'antisimetria i la transitivitat, i la part d'exclusivitat de la tricotomia, sabent que la comparabilitat total demana recursió transfinita i no elecció.
+\end{itemize}
+\end{objectius}
+
+Amb el llenguatge de les famílies a punt (capítol~\ref{cap:families}), la
+part transfinita necessita ara la noció que en serà el fil conductor: la
+d'\emph{ordre}, i sobretot la de \emph{bon ordre}. Un bon ordre és la forma
+abstracta d'un procés que es recorre \enquote{de baix cap amunt} sense
+saltar-se cap pas ni quedar-se encallat: tota subcol·lecció no buida té un
+primer element. Els naturals ja en van ser el primer exemple
+(teorema~\ref{teo:bon-ordre-N}); el que fem aquí és desprendre la propietat
+de \(\N\) i estudiar-la sobre un conjunt qualsevol. La recompensa és doble.
+D'una banda, els bons ordres tenen una \emph{rigidesa} notable ---entre dos
+n'hi ha, com a molt, un isomorfisme d'ordre--- que els fa servir de
+\emph{mesura de forma}: dir que un és \enquote{més curt} que un altre serà,
+literalment, que és isomorf a un segment inicial de l'altre. De l'altra,
+aquesta rigidesa és exactament el que permetrà, al capítol següent, definir
+funcions per recursió al llarg d'un bon ordre. Aquest capítol estableix les
+definicions ---sempre primer sobre parts, després sobre punts--- i els cinc
+resultats bàsics sobre segments i comparació, sense cap axioma nou.
+
+\section{Ordres estrictes, totals i bons ordres}\label{sec:ordres}
+
+Com totes les relacions del llibre (capítol~\ref{cap:relacions}), un ordre
+no serà una fórmula sinó una \emph{part} d'un producte; les lectures sobre
+punts en són la pertinença generalitzada. Mantenim la convenció del
+capítol~\ref{cap:naturals} (observació~\ref{obs:ordre-sobre-punts}): les
+propietats d'un ordre són afirmacions sobre parts de \(W\times W\) o de
+\(W\), i per la separació global i el lema del buit n'hi ha prou amb
+comprovar-les sobre punts globals, on \enquote{o} i \enquote{existeix}
+tenen el sentit clàssic. Les condicions que es formulen amb una implicació
+(com la transitivitat) són inclusions de parts i valen a tots els estadis;
+les que es formulen amb una disjunció (com la totalitat) són igualtats de
+parts amb una unió, i sobre un estadi general un element pot quedar
+repartit entre els membres.
+
+\begin{definicio}[Ordre estricte]\index{Ordre estricte}\label{def:ordre-estricte}
+Un \emph{ordre estricte} sobre un conjunt \(W\) és una part
+\[
+{<}\ \hookrightarrow\ W\times W
+\]
+que és \emph{irreflexiva} i \emph{transitiva}. Escrivim \(u<w\) per a la
+pertinença generalitzada \((u,w)\mathrel{\varepsilon}{<}\)
+(capítol~\ref{cap:relacions}). Les dues condicions, sobre elements
+generalitzats \(u,v,w\colon X\to W\) a un estadi qualsevol, són:
+\begin{itemize}
+\item[(o1)] \emph{irreflexivitat}: mai \(w<w\); és a dir, la part \({<}\) és
+disjunta de la diagonal \(\Delta\hookrightarrow W\times W\)
+(capítol~\ref{cap:relacions});
+\item[(o2)] \emph{transitivitat}: si \(u<v\) i \(v<w\), aleshores \(u<w\).
+\end{itemize}
+El parell \((W,<)\) és un \emph{conjunt ordenat}.
+\end{definicio}
+
+\begin{observacio}[L'ordre és una part, no un esquema]\label{obs:ordre-part-general}
+Com per a \(\N\) (observació~\ref{obs:ordre-part}), \({<}\) és una part
+concreta de \(W\times W\); \enquote{\(u<w\)} n'és la pertinença
+generalitzada, i les condicions (o1)--(o2) es tallen amb la diagonal, la
+composició de relacions i els quantificadors interns
+(capítols~\ref{cap:relacions} i~\ref{cap:parts-interna}). De \({<}\) se'n
+deriva la relació \emph{no estricta} \(\le\), la part
+\({\le}:={<}\cup\Delta\hookrightarrow W\times W\), amb \(u\le w\Leftrightarrow
+(u<w\ \vee\ u=w)\); és reflexiva, i és transitiva i antisimètrica quan
+\({<}\) és un ordre estricte (la irreflexivitat de \({<}\) dona
+l'antisimetria de \(\le\)). Treballarem indistintament amb \({<}\) i amb
+\(\le\), segons convingui.
+\end{observacio}
+
+\begin{definicio}[Ordre total]\index{Ordre total}\label{def:ordre-total-gen}
+Un ordre estricte \({<}\) sobre \(W\) és \emph{total} (o \emph{lineal}) si
+la unió \(\Delta\cup{<}\cup\operatorname{Inv}(<)\) és la part total de
+\(W\times W\); sobre punts globals, si dos punts qualssevol són
+comparables:
+\[
+\text{per a tots } u,w\colon\mathbf1\to W,\qquad u=w\ \ \text{o}\ \ u<w\ \ \text{o}\ \ w<u,
+\]
+i aquestes tres possibilitats són mútuament excloents (\emph{tricotomia}
+puntual), la darrera exclusió per la irreflexivitat i la transitivitat.
+\end{definicio}
+
+\begin{definicio}[Bon ordre]\index{Bon ordre}\label{def:bon-ordre}
+Un ordre estricte \({<}\) sobre \(W\) és un \emph{bon ordre}, i \((W,<)\) un
+conjunt \emph{ben ordenat}, si tota part no inicial de \(W\) té un element
+mínim: per a tota part \(P\hookrightarrow W\) no inicial existeix un punt
+\(m\colon\mathbf1\to W\) que es factoritza per \(P\) i compleix \(m\le k\)
+per a tot element generalitzat \(k\) de \(P\). El mínim, quan existeix, és
+únic.
+\end{definicio}
+
+\begin{lema}[Les parts es determinen pels punts]\label{lema:transferencia-punts}
+Siguin \(R,S\hookrightarrow W\times W\) dues parts (per exemple, dues relacions
+sobre \(W\)). Sota la separació global (teoria ben apuntada,
+axioma~\ref{ax:separacio-globals}), si \(R\) i \(S\) tenen exactament els
+mateixos \emph{punts globals} ---per a tot \(p\colon\mathbf1\to W\times W\),
+\(p\) es factoritza per \(R\) si i només si es factoritza per \(S\)---,
+aleshores \(R\equiv S\) com a parts, i per tant coincideixen sobre \emph{tot}
+element generalitzat \(X\to W\times W\), sigui quin sigui l'estadi \(X\). En
+particular, una relació que conté tots els punts globals de \(W\times W\)
+és la part total.
+\end{lema}
+
+\begin{prova}
+És la reducció als punts que ja vam fer al capítol~\ref{cap:relacions}
+(pràctica) i al capítol~\ref{cap:naturals}: la part \(R\cap S^c\) no té cap
+punt i, pel lema del buit (lema~\ref{lema:buit}), és buida, de manera que
+\(R\subseteq S\) per la descomposició \(R\cong(R\cap S)+(R\cap S^c)\); i
+simètricament. Dues parts incloses l'una en l'altra són equivalents, i la
+pertinença d'un element generalitzat es decideix per factorització, igual
+en totes dues. Observeu el que el lema \emph{no} diu: que una disjunció
+verificada sobre punts (\enquote{\(u<w\) o \(w<u\)}) valgui, disjunt per
+disjunt, sobre elements generalitzats; el que val és que la \emph{unió} de
+les parts corresponents és total.
+\end{prova}
+
+\begin{proposicio}[Tot bon ordre és total]\label{prop:bon-ordre-total}
+Si \({<}\) és un bon ordre sobre \(W\), aleshores és total. El mínim d'una
+part no inicial és, a més, únic.
+\end{proposicio}
+
+\begin{prova}
+La unicitat del mínim surt de l'antisimetria de \(\le\)
+(observació~\ref{obs:ordre-part-general}): dos mínims \(m,m'\) compleixen
+\(m\le m'\) i \(m'\le m\), d'on \(m=m'\). Per a la totalitat, provem primer la
+comparabilitat sobre \emph{punts globals} i després la transferim a tots els
+estadis. Siguin \(u,w\colon\mathbf1\to W\) dos punts distints i considerem la
+part \(\{u,w\}\hookrightarrow W\) ---la imatge del parell
+\(\langle u,w\rangle\colon\mathbf1+\mathbf1\to W\)
+(teorema~\ref{teo:factoritzacio})---, que és no inicial. Pel bon ordre, té un
+mínim, que és \(u\) o bé \(w\). Si el mínim és \(u\), aleshores \(u\le w\), i
+com que \(u\neq w\), \(u<w\); si és \(w\), simètricament \(w<u\). Així la part
+\(\Delta\cup{<}\cup\operatorname{Inv}(<)\hookrightarrow W\times W\) conté
+tots els punts globals de \(W\times W\). Pel
+lema~\ref{lema:transferencia-punts} (separació global), aquesta part és tot
+\(W\times W\), que és la totalitat de la definició~\ref{def:ordre-total-gen}.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:bon-ordre-classic}
+Un bon ordre és un ordre total en què tot subconjunt no buit té un primer
+element. La condició, aparentment modesta, és molt forta: prohibeix les
+cadenes descendents infinites \(w_0>w_1>w_2>\cdots\) ---una tal cadena tindria
+per imatge una part sense mínim--- i és el que fa possible tant la inducció
+com la recursió al llarg de \(W\). Els naturals amb el seu ordre habitual en
+són l'exemple canònic (teorema~\ref{teo:bon-ordre-N}); en canvi \(\Z\), \(\Q\)
+i \(\R\) amb l'ordre usual \emph{no} són ben ordenats, perquè tenen parts no
+buides sense mínim (el mateix \(\Z\), o l'interval obert). Que \emph{tot}
+conjunt admeti \emph{algun} bon ordre és una afirmació molt més forta ---el
+teorema del bon ordre--- que requereix l'elecció i que veurem al
+capítol~\ref{cap:zorn}.
+\end{observacio}
+
+\section{Segments inicials}\label{sec:segments}
+
+La noció que organitza tota la comparació de bons ordres és la de segment
+inicial: el tros de \(W\) que queda \enquote{estrictament per sota} d'un
+punt.
+
+\begin{definicio}[Segment inicial]\index{Segment inicial}\label{def:segment}
+Sigui \((W,<)\) un conjunt ordenat i \(w\colon\mathbf1\to W\) un punt. El
+\emph{segment inicial} determinat per \(w\) és la part
+\[
+W_{<w}\ :=\ \{\,u\in W\ \mid\ u<w\,\}\ \hookrightarrow\ W,
+\]
+la imatge inversa de la relació \({<}\) al llarg de
+\(\langle\id_W,w\circ{!}_W\rangle\); en la lectura sobre punts, els elements
+de \(W_{<w}\) són els \(u\) amb \(u<w\). Més generalment, una part
+\(S\hookrightarrow W\) és un \emph{segment inicial} (o \emph{part inicial})
+de \(W\) si és tancada cap avall: si \(u<w\) i \(w\in S\), aleshores \(u\in
+S\).
+\end{definicio}
+
+\begin{observacio}[Els \(W_{<w}\) i les parts inicials]\label{obs:segments-inicials}
+Tot segment \(W_{<w}\) és una part inicial: si \(u<w'\) i \(w'<w\), la
+transitivitat dona \(u<w\). El recíproc, per a bons ordres, és gairebé cert i
+molt útil: veurem (proposició~\ref{prop:parts-inicials}) que en un bon ordre
+les úniques parts inicials pròpies són exactament els segments \(W_{<w}\).
+Aquesta identificació ---parts inicials \(=\) segments--- és la que farà que
+\enquote{ser un segment de} funcioni com una relació d'ordre entre bons
+ordres.
+\end{observacio}
+
+\begin{proposicio}[Els segments d'un bon ordre són ben ordenats]\label{prop:segment-ben-ordenat}
+Sigui \((W,<)\) un bon ordre i \(S\hookrightarrow W\) una part qualsevol.
+Aleshores la restricció de \({<}\) a \(S\) ---la part
+\({<}\cap(S\times S)\hookrightarrow S\times S\)--- és un bon ordre sobre
+\(S\). En particular, tot segment inicial \(W_{<w}\) és ben ordenat.\par
+\emph{Axiomes usats:} parts i interseccions (capítols~\ref{cap:parts}
+i~\ref{cap:valors}); cap axioma nou.
+\end{proposicio}
+
+\begin{prova}
+La restricció \({<}\!\restriction_S\,={<}\cap(S\times S)\) és una part de
+\(S\times S\) (intersecció de parts, capítol~\ref{cap:valors}), i és
+irreflexiva i transitiva perquè ho és \({<}\): les condicions (o1)--(o2) es
+conserven en restringir a una part. Per al bon ordre, sigui
+\(P\hookrightarrow S\) una part no inicial; via la inclusió
+\(S\hookrightarrow W\), \(P\) és també una part no inicial de \(W\)
+(la composició de monomorfismes és un monomorfisme,
+proposició~\ref{prop:preceq-preordre}), que pel bon ordre de \(W\) té un
+mínim \(m\). Com que \(m\in P\subseteq S\) i \(m\le k\) per a tot \(k\in
+P\), aquest \(m\) és també el mínim de \(P\) dins \(S\). Per tant
+\({<}\!\restriction_S\) és un bon ordre. El cas \(S=W_{<w}\) n'és una
+instància.
+\end{prova}
+
+\begin{proposicio}[Les parts inicials pròpies són segments]\label{prop:parts-inicials}
+Sigui \((W,<)\) un bon ordre i \(S\subsetneq W\) una part inicial pròpia.
+Aleshores existeix un únic punt \(w\colon\mathbf1\to W\) tal que
+\(S=W_{<w}\); concretament, \(w\) és el mínim del complement
+\(W\setminus S\).
+\end{proposicio}
+
+\begin{prova}
+Com que \(S\) és pròpia, el complement \(W\setminus S\)
+(teorema~\ref{teo:part-complementari}) és no inicial, i pel bon ordre té un
+mínim \(w\). Vegem \(S=W_{<w}\). Si \(u\in S\), aleshores \(u<w\): altrament
+\(w\le u\), i com que \(S\) és inicial i \(u\in S\), de \(w\le u\) en sortiria
+\(w\in S\) ---si \(w<u\) per inicialitat, i si \(w=u\) trivialment---, contra
+\(w\in W\setminus S\); així \(u<w\), és a dir \(u\in W_{<w}\).
+Recíprocament, si \(u<w\), aleshores \(u\in S\): com que \(w\) és el
+\emph{mínim} de \(W\setminus S\), cap element estrictament menor que \(w\)
+és al complement, de manera que \(u\in S\). Per tant \(S=W_{<w}\). La
+unicitat de \(w\) és la del punt que determina un segment donat, que provem
+tot seguit (proposició~\ref{prop:segment-determina-punt}).
+\end{prova}
+
+\begin{proposicio}[Un segment determina el seu punt]\label{prop:segment-determina-punt}
+Sigui \((W,<)\) un bon ordre. Si \(W_{<v}=W_{<w}\) com a parts de \(W\),
+aleshores \(v=w\). És a dir, dos segments inicials iguals ---i, més avall,
+isomorfs--- corresponen al mateix punt.
+\end{proposicio}
+
+\begin{prova}
+Suposem \(W_{<v}=W_{<w}\) i, cap a una contradicció, \(v\neq w\). Per la
+totalitat (proposició~\ref{prop:bon-ordre-total}), \(v<w\) o \(w<v\); diguem
+\(v<w\). Aleshores \(v\in W_{<w}=W_{<v}\), és a dir \(v<v\), contra la
+irreflexivitat. Simètricament si \(w<v\). Per tant \(v=w\).
+\end{prova}
+
+\section{Aplicacions creixents i isomorfismes d'ordre}\label{sec:creixents}
+
+\begin{definicio}[Aplicació creixent i isomorfisme d'ordre]\index{Aplicació creixent i isomorfisme d'ordre}\label{def:creixent}
+Siguin \((W,<_W)\) i \((V,<_V)\) conjunts ordenats. Una aplicació
+\(f\colon W\to V\) és \emph{creixent} (o \emph{monòtona}) si conserva
+l'ordre estricte: \(u<_W w\) implica \(f(u)<_V f(w)\), per a tots els
+elements generalitzats \(u,w\colon X\to W\); com a parts,
+\({<_W}\subseteq(f\times f)^{-1}({<_V})\), una inclusió, que val a tots
+els estadis si val sobre punts. És un \emph{isomorfisme
+d'ordre} si és un isomorfisme de conjunts (definició~\ref{def:isomorfisme})
+i la seva inversa també és creixent; equivalentment, si és una bijecció amb
+\(u<_W w\Leftrightarrow f(u)<_V f(w)\). Escrivim \((W,<_W)\cong(V,<_V)\) quan
+n'existeix un.
+\end{definicio}
+
+\begin{observacio}[Creixent i injectiva]\label{obs:creixent-injectiva}
+Sobre un ordre total ---en particular un bon ordre--- tota aplicació
+creixent és automàticament un monomorfisme: sobre punts, si \(f(u)=f(w)\)
+amb \(u\neq w\), la totalitat dona \(u<w\) o \(w<u\), i la monotonia
+\(f(u)<f(w)\) o \(f(w)<f(u)\), contra \(f(u)=f(w)\) i la irreflexivitat;
+injectiva sobre punts és mono (observació~\ref{obs:injectiva-mono}). Per tant, entre
+conjunts totalment ordenats, un isomorfisme d'ordre no és més que una
+aplicació creixent, exhaustiva i amb inversa creixent; i, com veurem, entre
+bons ordres n'hi ha com a molt un.
+\end{observacio}
+
+Els isomorfismes d'ordre entre bons ordres són \emph{rígids}: no en poden
+existir dos diferents. Aquest és el resultat que fa dels bons ordres una
+bona mesura de forma, i el que garantirà, al capítol següent, la unicitat de
+les definicions per recursió transfinita.
+
+\begin{lema}[Rigidesa: cap punt es mou cap avall]\label{lema:rigidesa}
+Sigui \((W,<)\) un bon ordre i \(f\colon W\to W\) una aplicació creixent i
+injectiva. Aleshores \(w\le f(w)\) per a tot \(w\colon\mathbf1\to W\); cap
+element no baixa.
+\end{lema}
+
+\begin{prova}
+Sigui \(P:=\{\,w\in W\mid f(w)<w\,\}\hookrightarrow W\) la part dels punts
+que \emph{baixen} ---la imatge inversa per \(\langle f,\id_W\rangle\) de la
+relació \({<}\) (capítols~\ref{cap:parts} i~\ref{cap:relacions}). Volem
+\(P\) inicial. Si no ho fos, pel bon ordre tindria un mínim \(w_0\), amb
+\(f(w_0)<w_0\). Aplicant \(f\), que és creixent, a la desigualtat
+\(f(w_0)<w_0\) obtenim \(f(f(w_0))<f(w_0)\); és a dir, el punt
+\(w_1:=f(w_0)\) també baixa, \(w_1\in P\), i \(w_1=f(w_0)<w_0\) és
+estrictament menor que el mínim \(w_0\) de \(P\), una contradicció. Per tant
+\(P\) és inicial: cap punt baixa, i \(w\le f(w)\) per a tot \(w\).
+\end{prova}
+
+\begin{teorema}[Unicitat de l'isomorfisme d'ordre]\label{teo:unicitat-iso}
+Entre dos bons ordres \((W,<_W)\) i \((V,<_V)\) hi ha, com a molt, un
+isomorfisme d'ordre. En particular, l'únic automorfisme d'ordre d'un bon
+ordre és la identitat.\par
+\emph{Axiomes usats:} bon ordre, parts, imatges inverses
+(capítols~\ref{cap:parts} i~\ref{cap:imatges}); cap axioma nou; cap elecció.
+\end{teorema}
+
+\begin{prova}
+Siguin \(f,g\colon W\to V\) dos isomorfismes d'ordre. Aleshores
+\(g^{-1}\circ f\colon W\to W\) és un automorfisme d'ordre (composició
+d'isomorfismes d'ordre), i també ho és \(f^{-1}\circ g\), la seva inversa.
+Pel lema~\ref{lema:rigidesa} aplicat a \(g^{-1}\circ f\), \(w\le
+(g^{-1}\circ f)(w)\) per a tot \(w\); aplicat a \(f^{-1}\circ g\),
+\(w\le(f^{-1}\circ g)(w)\), i component amb \(g^{-1}\circ f\)
+(creixent) s'obté \((g^{-1}\circ f)(w)\le w\). Les dues desigualtats donen
+\((g^{-1}\circ f)(w)=w\) per a tot \(w\), és a dir \(g^{-1}\circ f=\id_W\),
+d'on \(f=g\). El cas \(W=V\) dona que l'únic automorfisme és la identitat.
+\end{prova}
+
+\begin{corollari}[Un bon ordre no és isomorf a cap segment propi]\label{cor:no-segment-propi}
+Cap bon ordre \((W,<)\) no és isomorf a cap dels seus segments inicials
+propis \(W_{<w}\). Més en general, cap isomorfisme d'ordre no aplica \(W\)
+sobre una part inicial pròpia.
+\end{corollari}
+
+\begin{prova}
+Suposem un isomorfisme d'ordre \(f\colon W\cong W_{<w}\) per a algun \(w\).
+Compost amb la inclusió \(W_{<w}\hookrightarrow W\), dona una aplicació
+creixent i injectiva \(f\colon W\to W\) amb \(f(w)\in W_{<w}\), és a dir
+\(f(w)<w\). Però això contradiu el lema~\ref{lema:rigidesa}, segons el qual
+\(w\le f(w)\). Per tant no existeix cap tal isomorfisme. El cas d'una part
+inicial pròpia qualsevol es redueix a un segment
+(proposició~\ref{prop:parts-inicials}).
+\end{prova}
+
+\section{Comparació de bons ordres}\label{sec:comparacio-bons-ordres}
+
+Els resultats anteriors permeten \emph{comparar} bons ordres per la relació
+\enquote{ser isomorf a un segment inicial de}. Aquesta relació es comporta
+com un ordre, i és la que, al capítol dels tipus ordinals
+(capítol~\ref{cap:ordinals}), es convertirà en la relació \(<\) entre ordinals.
+
+\begin{definicio}[Un bon ordre com a segment d'un altre]\index{Un bon ordre com a segment d'un altre}\label{def:mes-curt}
+Direm que \((W,<_W)\) és \emph{(isomorf a) un segment inicial} de
+\((V,<_V)\), i escriurem \(W\preceq_{\mathrm o} V\), si existeix un
+isomorfisme d'ordre de \(W\) sobre un segment inicial de \(V\) ---sobre tot
+\(V\), o sobre algun \(V_{<v}\). Escrivim \(W\prec_{\mathrm o}V\) quan és
+sobre un segment \emph{propi} \(V_{<v}\), i \(W\cong V\) quan és sobre tot
+\(V\).
+\end{definicio}
+
+\begin{proposicio}[La comparació per segments és antisimètrica i transitiva]\label{prop:comparacio-ordres}
+Sobre bons ordres:
+\begin{enumerate}
+\item si \(W\preceq_{\mathrm o}V\) i \(V\preceq_{\mathrm o}W\), aleshores
+\(W\cong V\);
+\item si \(W\preceq_{\mathrm o}V\) i \(V\preceq_{\mathrm o}U\), aleshores
+\(W\preceq_{\mathrm o}U\);
+\item l'isomorfisme d'ordre de qualsevol de les situacions és \emph{únic}
+(teorema~\ref{teo:unicitat-iso}).
+\end{enumerate}
+\emph{Axiomes usats:} els dels resultats anteriors; cap axioma nou; cap
+elecció.
+\end{proposicio}
+
+\begin{prova}
+(2) Si \(f\colon W\cong V_{\le}\) sobre un segment de \(V\) i \(g\colon
+V\cong U_{\le}\) sobre un segment de \(U\), aleshores \(g\) aplica el segment
+\(V_{\le}\) sobre un segment de \(U\). En efecte, sigui \(T\) la part
+inicial de \(U\) sobre la qual \(g\) és un isomorfisme d'ordre, i \(S\) una
+part inicial de \(V\). Si \(u<_U g(s)\) amb \(s\in S\), aleshores \(u\in T\)
+perquè \(T\) és inicial, de manera que \(u=g(v)\) per a un \(v\in V\); com que
+\(g\) també \emph{reflecteix} l'ordre (la seva inversa és creixent),
+\(v<_V s\), i \(v\in S\) perquè \(S\) és inicial. Així \(g(S)\) és una part
+inicial de \(U\) (proposició~\ref{prop:parts-inicials}). Per tant \(g\circ f\) aplica
+\(W\) isomòrficament sobre un segment de \(U\); així \(W\preceq_{\mathrm
+o}U\). (1) Si \(W\preceq_{\mathrm o}V\preceq_{\mathrm o}W\), per (2)
+\(W\preceq_{\mathrm o}W\) via un isomorfisme d'ordre de \(W\) sobre un
+segment inicial de \(W\); pel corol·lari~\ref{cor:no-segment-propi} aquest
+segment no pot ser propi, de manera que és tot \(W\) i la composició és un
+automorfisme ---la identitat (teorema~\ref{teo:unicitat-iso}). Desfent-la,
+cadascun dels dos isomorfismes és sobre tot l'altre, d'on \(W\cong V\). (3)
+és el teorema~\ref{teo:unicitat-iso}.
+\end{prova}
+
+Falta el resultat central de comparació: que dos bons ordres qualssevol
+\emph{sempre} són comparables ---un dels dos és isomorf a un segment de
+l'altre. És la \emph{tricotomia}, i és la peça que, en el llenguatge
+estructural, substitueix moltes manipulacions clàssiques amb ordinals de von
+Neumann. La seva prova, però, construeix l'isomorfisme de comparació
+\emph{punt per punt al llarg del bon ordre}, i això és una recursió
+transfinita, que encara no tenim. Enunciem la tricotomia aquí, amb la seva
+dependència declarada, i en donem la part que \emph{no} depèn de la recursió;
+la construcció de l'isomorfisme es completa al capítol següent.
+
+\begin{teorema}[Tricotomia de la comparació; part sense recursió]\label{teo:tricotomia}
+Siguin \((W,<_W)\) i \((V,<_V)\) dos bons ordres. Aleshores \emph{com a molt
+una} de les tres situacions es dona:
+\[
+W\prec_{\mathrm o}V,
+\qquad
+W\cong V,
+\qquad
+V\prec_{\mathrm o}W,
+\]
+i quan es dona, l'isomorfisme d'ordre corresponent és únic. Que \emph{almenys
+una} es dona sempre ---la comparabilitat total--- es demostra construint un
+isomorfisme d'ordre entre \(W\) i un segment de \(V\), o a l'inrevés, per
+recursió transfinita; ho establirem al teorema~\ref{teo:comparabilitat} del
+capítol~\ref{cap:recursio}.\par
+\emph{Axiomes usats (per a l'exclusivitat):} unicitat de l'isomorfisme
+d'ordre i no-isomorfisme amb segments propis
+(teorema~\ref{teo:unicitat-iso}, corol·lari~\ref{cor:no-segment-propi}); cap
+elecció. La comparabilitat total usa la recursió
+transfinita del capítol~\ref{cap:recursio}, també sense elecció.
+\end{teorema}
+
+\begin{prova}[Exclusivitat mútua]
+Provem que les tres situacions són incompatibles dues a dues; l'existència
+d'almenys una es remet al capítol~\ref{cap:recursio}.
+Suposem \(W\cong V\) i
+alhora \(W\prec_{\mathrm o}V\); aleshores, component, \(V\cong W\prec_{\mathrm
+o}V\) dona \(V\) isomorf a un segment propi de si mateix, contra el
+corol·lari~\ref{cor:no-segment-propi}. Igual amb \(W\cong V\) i
+\(V\prec_{\mathrm o}W\). Finalment, si \(W\prec_{\mathrm o}V\) i
+\(V\prec_{\mathrm o}W\) alhora, la transitivitat
+(proposició~\ref{prop:comparacio-ordres}) dona \(W\prec_{\mathrm o}W\), un
+isomorfisme de \(W\) sobre un segment propi, altre cop contra el
+corol·lari~\ref{cor:no-segment-propi}. Per tant les tres són mútuament
+excloents, i la unicitat de l'isomorfisme és el
+teorema~\ref{teo:unicitat-iso}.
+\end{prova}
+
+\begin{observacio}[Per què la comparabilitat necessita recursió, i per què no elecció]\label{obs:tricotomia-recursio}
+La direcció que aquí deixem pendent ---que almenys una de les tres situacions
+es dona--- no és una mancança de la nostra prova, sinó un fet estructural:
+per decidir quin dels dos bons ordres és \enquote{més curt} cal
+\emph{aparellar-los} element a element començant pels mínims respectius, i
+aquest aparellament es defineix per recursió al llarg d'un dels dos ordres.
+No hi intervé cap \emph{tria}: a cada pas, l'element que toca és el
+\emph{mínim} del que queda, que és únic i canònic (com als subobjectes de
+\(\N\), observació~\ref{obs:minim-vs-eleccio}); per això la comparabilitat de
+bons ordres, a diferència de la comparabilitat de conjunts \emph{qualssevol}
+(que veurem amb el teorema del bon ordre), \emph{no} usa l'elecció. El que necessita és
+únicament el principi de recursió transfinita amb codomini fix, que
+construïm al capítol~\ref{cap:recursio}; per això n'hem separat l'enunciat.
+Aquesta és, també, la disciplina que la part transfinita mantindrà: enunciar
+un resultat només quan les seves eines ja existeixen, o declarar
+explícitament de quina depèn.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Un ordre estricte és una part \({<}\hookrightarrow W\times W\) irreflexiva i transitiva; total quan \(\Delta\cup{<}\cup\operatorname{Inv}(<)\) és tot \(W\times W\); bon ordre quan tota part no inicial té mínim. Les propietats es comproven sobre punts, i les disjunctives s'entenen com a unions.
+  \item Tot bon ordre és total i el mínim és únic; els segments \(W_{<w}\) són les parts inicials pròpies, són ben ordenats i determinen el seu punt.
+  \item Rigidesa: sota una creixent injectiva d'un bon ordre en si mateix cap punt baixa. D'aquí, entre dos bons ordres hi ha com a molt un isomorfisme d'ordre, l'únic automorfisme és la identitat, i cap bon ordre és isomorf a un segment propi.
+  \item \(W\preceq_{\mathrm o}V\) (\(W\) isomorf a un segment inicial de \(V\)) és antisimètrica llevat d'isomorfisme i transitiva, i les tres situacions \(W\prec_{\mathrm o}V\), \(W\cong V\), \(V\prec_{\mathrm o}W\) s'exclouen. Que almenys una es doni demana recursió transfinita, no elecció.
+\end{enumerate}
+\apartat{Errors típics} Llegir la totalitat com \enquote{\(u<w\) o \(w<u\)} per a elements generalitzats (val sobre punts; com a parts és una unió total); creure que un bon ordre pot tenir automorfismes no trivials (com els ordres totals densos); confondre \(\preceq_{\mathrm o}\) (segments, forma) amb \(\preceq\) (monomorfismes, mida) del capítol~\ref{cap:cantor}; i pensar que la comparabilitat de bons ordres usa l'elecció, quan el que usa és el mínim.
+\apartat{Lectura recomanada} \cite[§§14 i 17]{halmos} per als conjunts ordenats, els bons ordres, els segments i la comparabilitat en la teoria clàssica, que és el que aquí es reconstrueix sobre parts; \cite[cap.~2]{jech2003} per a la teoria clàssica dels bons ordres i dels ordinals; \cite[cap.~I.6--I.7]{kunen2011} per a la presentació axiomàtica estàndard dels bons ordres i la recursió; i \cite[§§8.4--8.5]{lawvere-rosebrugh} per a l'ordre i els bons ordres en conjunts abstractes.
+\end{resumcap}

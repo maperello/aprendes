@@ -1,0 +1,188 @@
+\documentclass[12pt,a4paper,oneside]{book}
+
+% Teoria de conjunts: una visió categòrica sense categories.
+% Estructura comuna de la col·lecció aprendes / logcat (vegeu el volum de
+% categories, versió 1.7): quatre parts (Teoria, Pràctica, Exercicis
+% proposats, Tests), apèndixs, bibliografia, glossari i índex.
+
+% Metadades pròpies del llibre: una única font de veritat.
+\input{metadata.tex}
+
+% Mode de sortida. Per defecte: pantalla/interactiu. El Makefile defineix
+% \imprimible per generar una còpia pensada per imprimir: fons blanc,
+% enllaços discrets i tests estàtics sense camps AcroForm.
+\newif\ifimprimible
+\ifdefined\imprimible\imprimibletrue\else\imprimiblefalse\fi
+% Nom de la Part IV segons el mode: en paper no hi ha interactivitat.
+\ifimprimible
+  \newcommand{\NomTests}{Tests d'autoavaluació}
+  \newcommand{\nomtests}{tests d'autoavaluació}
+\else
+  \newcommand{\NomTests}{Tests interactius}
+  \newcommand{\nomtests}{tests interactius}
+\fi
+
+% Fitxers compartits de la col·lecció (idèntics als dels altres llibres).
+\usepackage[sobri]{common/aprendes}
+\input{common/preamble.tex}
+
+% ---- Paquets propis d'aquest llibre --------------------------------
+\usepackage{stmaryrd}% \llbracket \rrbracket per a \seg; abans de common/macros.tex
+\usepackage{longtable}% glossari de símbols
+\usepackage[backend=biber,style=alphabetic,doi=true,url=true,isbn=false]{biblatex}
+\addbibresource{bibliografia.bib}
+\setlength{\emergencystretch}{3em}
+\raggedbottom
+
+\input{common/macros.tex}
+\input{caps/conjunts-macros.tex}
+\input{common/interactive-tests.tex}
+\input{caps/tests-estatics.tex}
+\input{caps/didactica.tex}
+
+\makeindex[title={Índex alfabètic},columns=2,intoc]
+
+\begin{document}
+\ifimprimible\pagecolor{white}\else\pagecolor{fons!20}\fi
+\hypermetadata
+
+\frontmatter
+\maketitle
+\input{caps/credits}
+\tableofcontents
+\let\cleardoublepage\clearpage
+
+\input{caps/prefaci}
+\input{caps/introduccio}
+
+\mainmatter
+
+% ============================================================
+% PART I — TEORIA
+% Nivell I (capítols 1-18): ETCS, amb l'elecció a partir del capítol 4.
+% Capítol 19: l'esquema SR com a principi adoptat. Capítol 20: balanç.
+% ============================================================
+\part{Teoria}\label{part:teoria}
+\setcounter{chapter}{0}
+\input{caps/teoria/aplicacions}
+\input{caps/teoria/parts}
+\input{caps/teoria/valors}
+\input{caps/teoria/relacions}
+\input{caps/teoria/imatges}
+\input{caps/teoria/exponencials}
+\input{caps/teoria/conjunt-parts}
+\input{caps/teoria/naturals}
+\input{caps/teoria/finits}
+\input{caps/teoria/infinitud}
+\input{caps/teoria/cantor}
+\input{caps/teoria/families}
+\input{caps/teoria/bons-ordres}
+\input{caps/teoria/recursio}
+\input{caps/teoria/zorn}
+\input{caps/teoria/ordinals}
+\input{caps/teoria/aritmetica-ordinal}
+\input{caps/teoria/cardinals}
+\input{caps/teoria/alephs}
+\input{caps/teoria/models}
+
+% ============================================================
+% PART II — PRÀCTICA
+% Els capítols reprodueixen els noms i l'ordre de la part teòrica
+% (el capítol 20 és un balanç sense capítols paral·lels).
+% ============================================================
+\part{Pràctica}\label{part:practica}
+\setcounter{chapter}{0}
+\input{caps/practica/aplicacions}
+\input{caps/practica/parts}
+\input{caps/practica/valors}
+\input{caps/practica/relacions}
+\input{caps/practica/imatges}
+\input{caps/practica/exponencials}
+\input{caps/practica/conjunt-parts}
+\input{caps/practica/naturals}
+\input{caps/practica/finits}
+\input{caps/practica/infinitud}
+\input{caps/practica/cantor}
+\input{caps/practica/families}
+\input{caps/practica/bons-ordres}
+\input{caps/practica/recursio}
+\input{caps/practica/zorn}
+\input{caps/practica/ordinals}
+\input{caps/practica/aritmetica-ordinal}
+\input{caps/practica/cardinals}
+\input{caps/practica/alephs}
+
+% ============================================================
+% PART III — EXERCICIS PROPOSATS
+% ============================================================
+\part{Exercicis proposats}\label{part:exercicis}
+\setcounter{chapter}{0}
+\input{caps/exercicis/aplicacions}
+\input{caps/exercicis/parts}
+\input{caps/exercicis/valors}
+\input{caps/exercicis/relacions}
+\input{caps/exercicis/imatges}
+\input{caps/exercicis/exponencials}
+\input{caps/exercicis/conjunt-parts}
+\input{caps/exercicis/naturals}
+\input{caps/exercicis/finits}
+\input{caps/exercicis/infinitud}
+\input{caps/exercicis/cantor}
+\input{caps/exercicis/families}
+\input{caps/exercicis/bons-ordres}
+\input{caps/exercicis/recursio}
+\input{caps/exercicis/zorn}
+\input{caps/exercicis/ordinals}
+\input{caps/exercicis/aritmetica-ordinal}
+\input{caps/exercicis/cardinals}
+\input{caps/exercicis/alephs}
+
+% ============================================================
+% PART IV — TESTS
+% En pantalla, un sol entorn Form per a tots els tests: un únic diccionari
+% AcroForm. En mode imprimible les macros dels tests són estàtiques.
+% ============================================================
+\part{\NomTests}\label{part:tests}
+\setcounter{chapter}{0}
+\ifimprimible\else\begin{Form}\fi
+\input{caps/tests/aplicacions}
+\input{caps/tests/parts}
+\input{caps/tests/valors}
+\input{caps/tests/relacions}
+\input{caps/tests/imatges}
+\input{caps/tests/exponencials}
+\input{caps/tests/conjunt-parts}
+\input{caps/tests/naturals}
+\input{caps/tests/finits}
+\input{caps/tests/infinitud}
+\input{caps/tests/cantor}
+\input{caps/tests/families}
+\input{caps/tests/bons-ordres}
+\input{caps/tests/recursio}
+\input{caps/tests/zorn}
+\input{caps/tests/ordinals}
+\input{caps/tests/aritmetica-ordinal}
+\input{caps/tests/cardinals}
+\input{caps/tests/alephs}
+\ifimprimible\else\end{Form}\fi
+
+% ============================================================
+% APÈNDIXS NUMERATS (dins \mainmatter: a \backmatter no es numeren)
+% ============================================================
+\appendix
+\part{Apèndixs}
+\input{caps/solucions-tests}
+\input{caps/apendix-contraexemples}
+\input{caps/apendix-tres-conjunts}
+\input{caps/apendix-correspondencia}
+
+\backmatter
+\input{caps/resum}
+\input{caps/glossari}
+% Lectures complementàries no citades al cos (pendents d'integrar a la
+% introducció i al futur capítol de conjunts variables).
+\nocite{halmos,bell2006,lawvere1994,awodey,lawvere-schanuel}
+\printbibliography[heading=bibintoc,title={Bibliografia}]
+\printindex
+
+\end{document}

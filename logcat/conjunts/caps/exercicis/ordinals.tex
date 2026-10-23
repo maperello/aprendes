@@ -1,0 +1,51 @@
+\chapter{Tipus ordinals}\label{cap:exercicis-ordinals}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:ordinals} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-ordinals} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Tipus ordinals i el seu ordre}
+
+\begin{enumerate}
+  \item Demostreu que \(\alpha<\beta\) no depèn dels representants triats. (Model: secció~\ref{prac:tipus-ordinals}; definició~\ref{def:ordre-ordinals}.)
+
+  \item Demostreu que \(<\) sobre tipus ordinals és un ordre estricte total. (Model: proposició~\ref{prop:ordinals-total}.)
+
+  \item Expliqueu per què l'ordre ordinal es defineix per segments i no per \(\alpha\in\beta\). (Model: observació~\ref{obs:no-pertinença-ordinal}.)
+
+  \item Demostreu que la restricció de \(<\) als tipus dels bons ordres sobre parts d'un fix \(A\) ---és a dir, sobre \(\Hart(A)\)--- és un bon ordre. \begin{indicacio}És la proposició~\ref{prop:hartogs-bon-ordre}, rellegida sobre tipus.\end{indicacio}
+\end{enumerate}
+
+\section{Zero, successor i límit}
+
+\begin{enumerate}[resume]
+  \item Demostreu que \(\alpha+1\) és el menor tipus estrictament més gran que \(\alpha\), i que té element màxim. (Model: secció~\ref{prac:zero-successor-limit}; proposició~\ref{prop:successor-invariant}.)
+
+  \item Demostreu que tot tipus ordinal és exactament un de zero, successor o límit. (Model: proposició~\ref{prop:tricotomia-successor}.)
+
+  \item Demostreu que \(\omega=\operatorname{tipus}(\N)\) és el primer tipus límit. (Model: observació~\ref{obs:limit-classic}.)
+
+  \item Demostreu que un tipus \(\lambda\) és límit si i només si \(\lambda=\sup_{\alpha<\lambda}\alpha\) (el suprem dels tipus estrictament menors, quan aquest està acotat). \begin{indicacio}Un successor \(\alpha+1\) no és el suprem dels menors, perquè \(\alpha\) n'és el màxim; un límit no té màxim entre els menors.\end{indicacio}
+\end{enumerate}
+
+\section{Suprems acotats}
+
+\begin{enumerate}[resume]
+  \item Demostreu que una família de tipus \(\alpha_i=\operatorname{tipus}(W_{<r(i)})\) representada dins un bon ordre \(W\) té suprem, donat per la reunió \(\bigcup_iW_{<r(i)}\) dels segments oberts, i doneu un exemple on la reunió dels segments tancats \(W_{\le r(i)}\) dona un tipus estrictament més gran. (Model: secció~\ref{prac:suprems}; proposició~\ref{prop:suprem}.)
+
+  \item Expliqueu per què l'acotació dins un bon ordre comú és imprescindible. (Model: observació~\ref{obs:suprem-acotat}.)
+
+  \item Demostreu que \(\sup\) és monòton: si \(\alpha_i\le\beta_i\) per a tot \(i\) i totes dues famílies estan acotades dins un mateix \(W\), aleshores \(\sup_i\alpha_i\le\sup_i\beta_i\). \begin{indicacio}Les reunions de segments respecten la inclusió.\end{indicacio}
+\end{enumerate}
+
+\section{Burali--Forti}
+
+\begin{enumerate}[resume]
+  \item Demostreu que no existeix cap conjunt ben ordenat de tots els tipus ordinals amb la propietat de segments. (Model: secció~\ref{prac:burali-forti}; teorema~\ref{teo:burali-forti}.)
+
+  \item Expliqueu el paral·lelisme entre Burali--Forti i Cantor. (Model: observació~\ref{obs:burali-cantor}.)
+
+  \item \textbf{(Punt de reflexió.)} Argumenteu per què la teoria \emph{global} dels tipus ordinals és de Nivell~II mentre que la teoria acotada dins un \(\Hart(A)\) és de Nivell~I. \begin{indicacio}Reunir tots els tipus demanaria SR, i ni tan sols amb SR seria un conjunt ben ordenat (observacions~\ref{obs:tipus-acotats} i~\ref{obs:burali-cantor}).\end{indicacio}
+
+  \item Demostreu que \(\mathbf1+\N\cong\N\) com a bons ordres, mentre que \(\N+\mathbf1\not\cong\N\). Deduïu-ne que la suma de tipus no és commutativa. \begin{indicacio}El successor dona el primer isomorfisme; per al segon, \(\N+\mathbf1\) té màxim i \(\N\) no.\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Confirmeu que cap resultat del capítol no usa l'elecció, i digueu quins es poden situar dins un \(\Hart(A)\) (Nivell~I) i quins parlen de tots els tipus alhora. \begin{indicacio}Tots els resultats són de Nivell~I i sense elecció; Burali--Forti és un enunciat negatiu sobre tots els tipus, demostrat sense sortir del Nivell~I.\end{indicacio}
+\end{enumerate}

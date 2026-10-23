@@ -1,0 +1,471 @@
+\chapter{Famílies, fibres i operacions indexades}\label{cap:families}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:parts}: pullbacks, imatge inversa i fibres. Del capítol~\ref{cap:relacions}: seccions, l'axioma d'elecció i les particions. Del capítol~\ref{cap:parts-interna}: conjunt de parts, pertinença interna i els quantificadors \(\exists_f\), \(\forall_f\) amb les seves lectures i adjuncions. Dels capítols~\ref{cap:infinitud} i~\ref{cap:cantor}: les famílies numerables i la construcció d'ínfims arbitraris amb \(\forall\).
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item representar una família de conjunts indexada per \(I\) com una aplicació \(p\colon E\to I\), i llegir-ne les fibres com a parts del total;
+  \item identificar seccions amb funcions d'elecció, i situar l'elecció com l'existència de seccions per a famílies de fibres no buides;
+  \item construir la suma (el total) i el producte (les seccions, dins \(E^I\)) d'una família, i distingir l'existència del producte com a objecte de l'existència dels seus punts;
+  \item codificar una família de parts d'un conjunt fix com \(\alpha\colon I\to P(A)\), construir-ne la unió i la intersecció indexades amb els quantificadors, i demostrar-ne les propietats de suprem, ínfim i De Morgan;
+  \item demostrar que una família de parts disjuntes que cobreixen \(A\) és una partició, tancant el pont del capítol~\ref{cap:relacions};
+  \item distingir família interna de regla externa, aplicar la regla de treball, i saber què promet l'esquema SR i per què no és l'elecció.
+\end{itemize}
+\end{objectius}
+
+Fins ara hem indexat col·leccions de conjunts d'una manera implícita: una
+família \((A_n)_{n\in\N}\) apareixia al capítol~\ref{cap:infinitud} com una
+aplicació \(p\colon E\to\N\) amb les fibres per components
+(definició~\ref{def:familia-numerable}), i els arguments diagonals del
+capítol~\ref{cap:cantor} només comparaven conjunts d'un en un. Els capítols
+transfinits que vindran ---recursió sobre un bon ordre, suprems de tipus
+ordinals, successions d'alephs--- necessiten manejar \emph{famílies} de
+conjunts amb tota generalitat, i sobretot necessiten un criteri net per
+distingir dues coses que en la pràctica clàssica es confonen: una família
+que \emph{ja existeix} com a objecte, i una \emph{regla} que a cada índex
+assigna un conjunt però que encara no s'ha reunit en cap objecte. Aquesta
+distinció és el cor del capítol i la clau de tot el que segueix; ja es va
+insinuar amb l'assignació \(n\mapsto\seg{n}\) del capítol~\ref{cap:naturals},
+i reapareixerà a cada recursió transfinita.
+
+La idea central és simple i no demana cap vocabulari nou. Una família de
+conjunts indexada per un conjunt \(I\) es representa amb una aplicació
+\(p\colon E\to I\); el conjunt \(E\) és el \emph{total}, i el conjunt indexat
+per \(i\) és la \emph{fibra} de \(p\) sobre \(i\). Tot el capítol desplega
+aquesta idea ---suma, producte, unions i interseccions indexades--- amb les
+eines que ja tenim: pullbacks, exponencials, el conjunt de parts i els
+quantificadors interns. No parlarem de functors ni de fibracions; no en
+calen.
+
+\section{Famílies com a aplicacions, i les seves fibres}\label{sec:families-aplicacions}
+
+\begin{definicio}[Família de conjunts]\index{Família de conjunts}\label{def:familia}
+Una \emph{família de conjunts indexada per \(I\)} és una aplicació
+\(p\colon E\to I\). El conjunt \(I\) és l'\emph{índex}, \(E\) és el conjunt
+\emph{total}, i per a cada element \(i\colon\mathbf1\to I\) la \emph{fibra}
+de la família sobre \(i\) és el producte fibrat
+\[
+E_i\ :=\ \mathbf1\times_I E
+\]
+de \(i\colon\mathbf1\to I\) i \(p\colon E\to I\)
+(definició~\ref{def:pullback}), amb la projecció
+\(E_i\hookrightarrow E\) que n'és un monomorfisme
+(proposició~\ref{prop:pullback-mono}). Escrivim també \(A_i:=E_i\) quan
+volem pensar la família com \((A_i)_{i\in I}\).
+\end{definicio}
+
+\begin{observacio}[La fibra és una part del total]\label{obs:fibra-part}
+La fibra \(E_i=\mathbf1\times_I E\) és exactament la imatge inversa
+\(p^{-1}(i)\hookrightarrow E\) del punt \(i\) per \(p\)
+(definició~\ref{def:imatge-inversa}, i
+observació~\ref{obs:pullback-exemples}): en la lectura clàssica, els seus
+punts són els \(e\in E\) amb \(p(e)=i\). Per tant una família \(p\colon E\to
+I\) no és res més que el seu total \(E\) \emph{repartit} en parts disjuntes,
+una per cada índex, i cada part etiquetada pel seu índex a través de \(p\).
+Aquesta és la manera estructural de dir \enquote{una família de conjunts}
+sense sortir dels conjunts ja construïts: tot viu dins \(E\), i les fibres
+són parts seves.
+\end{observacio}
+
+L'exemple més senzill és el d'una família que no varia amb l'índex.
+
+\begin{definicio}[Família constant]\index{Família constant}\label{def:familia-constant}
+Donat un conjunt \(A\), la \emph{família constant} de valor \(A\) indexada
+per \(I\) és la projecció
+\[
+\pi_I\colon I\times A\longrightarrow I .
+\]
+La seva fibra sobre cada \(i\) és \(\{i\}\times A\cong A\)
+(observació~\ref{obs:pullback-exemples}), de manera que representa la família
+\((A)_{i\in I}\) amb totes les fibres iguals a \(A\).
+\end{definicio}
+
+\begin{observacio}[Tota aplicació és una família, i tota part una família de valors booleans]\label{obs:familia-exemples}
+La noció és prou àmplia per recobrir casos ja coneguts. Una aplicació
+qualsevol \(p\colon E\to I\) es \emph{pot} llegir com a família, i triar com
+llegir-la depèn de què vulguem: la mateixa \(p\colon E\to\N\) del
+capítol~\ref{cap:infinitud} era la família numerable
+(definició~\ref{def:familia-numerable}), cas particular amb \(I=\N\). Una
+part \(m\colon S\hookrightarrow I\), vista com la seva característica
+\(\chi_S\colon I\to\mathbf2\), és la família indexada per \(I\) amb fibra
+\(\mathbf1\) sobre els \(i\in S\) i \(\mathbf0\) fora: una família de conjunts
+\enquote{de com a molt un element}. Aquests exemples fixen la intuïció; el
+contingut del capítol és el que se'n construeix.
+\end{observacio}
+
+\section{Seccions i funcions d'elecció}\label{sec:seccions}
+
+Una família \(p\colon E\to I\) reparteix \(E\) en fibres; \emph{triar} un
+element a cada fibra és exactament donar una secció de \(p\).
+
+\begin{definicio}[Secció d'una família]\index{Secció d'una família}\label{def:seccio-familia}
+Una \emph{secció} de la família \(p\colon E\to I\) és una aplicació
+\(s\colon I\to E\) amb \(p\circ s=\id_I\). Per a cada índex \(i\), el valor
+\(s(i)\) és un element de la fibra \(E_i\), perquè \(p(s(i))=i\); una secció
+és, doncs, una \emph{tria simultània} d'un element a cada fibra ---una
+\emph{funció d'elecció} per a la família.
+\end{definicio}
+
+\begin{observacio}[Quan existeix una secció: el lloc exacte de l'elecció]\label{obs:seccio-eleccio}
+L'existència d'una secció \emph{no} és automàtica, i és precisament aquí on
+apareix ---o no--- l'axioma d'elecció. (Diem indistintament que una fibra és
+\emph{no inicial} o \emph{no buida}: per la separació global i el lema del
+buit, un conjunt és inicial si i només si no té cap punt global, de manera
+que les dues expressions coincideixen en aquest llibre.) Si totes les fibres són no inicials,
+és a dir si \(p\) és un epimorfisme (exhaustivitat sobre punts,
+capítol~\ref{cap:valors}; i tot epimorfisme és regular,
+capítol~\ref{cap:imatges}), l'axioma d'elecció
+(axioma~\ref{ax:eleccio}) diu exactament que \(p\) admet una secció
+(proposició~\ref{prop:epi-regular-eleccio}). Sense elecció, en canvi, una
+família de fibres totes no buides pot no tenir cap secció. Convé retenir la
+distinció, que serà constant en els capítols transfinits: \emph{tenir
+fibres no buides} és una propietat de la família ja donada; \emph{tenir una
+secció} és una tria simultània que, en general, costa l'elecció. Quan les
+fibres porten un element distingit canònic ---un mínim, un ínfim--- la secció
+es construeix sense elecció, com vam veure amb els subobjectes de \(\N\)
+(observació~\ref{obs:minim-vs-eleccio}) i amb la part \(D\) de
+Schröder--Bernstein (observació~\ref{obs:sb-sense-eleccio}).
+\end{observacio}
+
+\section{Suma i producte d'una família}\label{sec:suma-producte}
+
+Les dues operacions bàsiques sobre una família són reunir totes les fibres
+en un sol conjunt ---la suma--- i formar el conjunt de totes les seccions
+---el producte. Totes dues es construeixen amb el que ja tenim.
+
+\begin{definicio}[Suma d'una família]\index{Suma d'una família}\label{def:suma-familia}
+La \emph{suma} de la família \(p\colon E\to I\) és el seu propi total \(E\),
+pensat com la reunió disjunta de les fibres,
+\[
+\sum_{i\in I}E_i\ :=\ E,
+\]
+en què cada fibra \(E_i\hookrightarrow E\) apareix marcada pel seu índex a
+través de \(p\). L'aplicació \(p\) mateixa recorda, per a cada element del
+total, a quina fibra pertany.
+\end{definicio}
+
+\begin{observacio}[La suma no demana res de nou]\label{obs:suma-existeix}
+La suma d'una família \emph{existeix sempre}, sense cap axioma ni cap tria:
+és el conjunt \(E\), que és una de les dades. Aquesta trivialitat aparent és
+important. Recollir \enquote{totes les fibres alhora} és exactament tenir el
+total \(E\); el que pot mancar, com veurem, no és la reunió sinó la
+\emph{regla} que produeix \(E\) a partir d'una assignació índex-a-conjunt
+quan aquesta assignació no ve ja d'una aplicació. Per a la família constant
+\(I\times A\to I\), la suma és \(I\times A\), i recupera el producte
+cartesià habitual llegit com \enquote{\(I\) còpies de \(A\)}.
+\end{observacio}
+
+\begin{definicio}[Producte d'una família]\index{Producte d'una família}\label{def:producte-familia}
+El \emph{producte} de la família \(p\colon E\to I\) és el conjunt de les
+seves seccions,
+\[
+\prod_{i\in I}E_i\ :=\ \{\,s\in E^{I}\ \mid\ p\circ s=\id_I\,\}
+\ \hookrightarrow\ E^{I},
+\]
+la part de l'exponencial \(E^{I}\) (axioma~\ref{ax:exponencials}) tallada per
+l'equació \(p\circ s=\id_I\) ---l'equalitzador de les dues aplicacions
+paral·leles \(E^{I}\to I^{I}\) donades per \(s\mapsto p\circ s\)
+(postcomposició interna amb \(p\)) i per la constant \(s\mapsto\id_I\). Els seus elements
+globals són exactament les seccions de \(p\) (definició~\ref{def:seccio-familia}).
+\end{definicio}
+
+\begin{proposicio}[Existència del producte i el lloc de l'elecció]\label{prop:producte-existeix}
+Per a tota família \(p\colon E\to I\), el producte \(\prod_{i\in I}E_i\)
+\emph{existeix com a conjunt}: és una part interna ben definida de
+\(E^{I}\). En canvi, que sigui \emph{no inicial} ---que tingui algun element
+global--- equival a l'existència d'una secció de \(p\), i per tant, quan les
+fibres són no buides, a una forma d'elecció.\par
+\emph{Axiomes usats:} exponencials (axioma~\ref{ax:exponencials}),
+equalitzadors i parts (capítols~\ref{cap:parts} i~\ref{cap:valors}); cap
+axioma nou per a l'existència \emph{com a objecte}. La no-vacuïtat, per a
+fibres no buides, usa l'elecció (axioma~\ref{ax:eleccio}).
+\end{proposicio}
+
+\begin{prova}
+L'exponencial \(E^{I}\) existeix per l'axioma~\ref{ax:exponencials}, i les
+dues aplicacions paral·leles \(E^{I}\to I^{I}\) donades per
+\(s\mapsto p\circ s\) (postcomposició interna amb \(p\): la composició
+interna del capítol~\ref{cap:exponencials} amb el primer argument fixat al
+nom de \(p\)) i per \(s\mapsto\ulcorner\id_I\urcorner\) (constant) tenen un
+equalitzador, que és una part de \(E^{I}\) (capítol~\ref{cap:parts}); aquesta part és, per construcció,
+\(\prod_{i\in I}E_i\). Fins aquí, cap tria. Un element global del producte és
+una \(s\colon\mathbf1\to E^{I}\) amb \(p\circ s=\id_I\), és a dir ---per
+transposició (definició~\ref{def:exponencial})--- una aplicació
+\(I\to E\) amb \(p\circ s=\id_I\): una secció. Per tant el producte és no
+inicial si i només si \(p\) té una secció. Si les fibres són totes no buides
+(\(p\) epimorfisme), l'existència d'una tal secció és exactament el
+que afirma l'axioma d'elecció (axioma~\ref{ax:eleccio});
+sense elecció pot fallar.
+\end{prova}
+
+\begin{observacio}[Objecte contra elements: una distinció que cal mantenir]\label{obs:objecte-vs-elements}
+La proposició anterior separa dues qüestions que la notació
+\(\prod_{i\in I}E_i\) tendeix a confondre: \emph{existeix el producte?} i
+\emph{té elements?}. La primera es respon sempre que sí, amb exponencials i
+equalitzadors. La segona, per a fibres no buides, és el contingut mateix de
+l'elecció. Aquesta és la versió general del que vam veure amb el producte
+numerable (observació~\ref{obs:producte-numerable}): l'objecte hi és sempre;
+els seus punts, no necessàriament. La mateixa distinció ---objecte contra
+punts globals--- reapareixerà amb les famílies definides per regles, a la
+secció~\ref{sec:regla-vs-familia}.
+\end{observacio}
+
+\section{Famílies de parts d'un conjunt fix}\label{sec:families-parts}
+
+Un cas particularment manejable, i el que més usarem, és el de les famílies
+totes les fibres de les quals són parts d'un mateix conjunt fix \(A\).
+Aleshores la família es codifica com una aplicació cap al conjunt de parts, i
+totes les operacions es fan \emph{acotadament} dins \(A\) i \(P(A)\).
+
+\begin{definicio}[Família de parts d'un conjunt fix]\index{Família de parts d'un conjunt fix}\label{def:familia-parts}
+Una \emph{família de parts} de \(A\) indexada per \(I\) és una aplicació
+\[
+\alpha\colon I\longrightarrow P(A),
+\]
+que a cada índex \(i\) assigna una part \(\alpha(i)\hookrightarrow A\)
+(el seu nom, definició~\ref{def:conjunt-parts}). La \emph{relació de
+pertinença total} de la família és la part
+\[
+R\ :=\ \{\,(i,a)\in I\times A\ \mid\ a\mathrel{\varepsilon}\alpha(i)\,\}
+\ \hookrightarrow\ I\times A,
+\]
+la imatge inversa de la pertinença interna \({\in_A}\)
+(definició~\ref{def:pertinenca-interna}) per \(\id_I\times\alpha\), seguida
+de la commutació. Escrivim \(R_i\hookrightarrow A\) per a la fibra de la
+projecció \(R\to I\) sobre \(i\), que és exactament \(\alpha(i)\).
+\end{definicio}
+
+\begin{observacio}[Tot és acotat]\label{obs:familia-parts-acotada}
+Aquesta és la situació ideal per als capítols transfinits, i la raó per la
+qual la guia insisteix a \emph{acotar} les col·leccions. Una família de parts
+de \(A\) és un únic objecte, \(\alpha\colon I\to P(A)\), que viu dins un
+exponencial fix \(P(A)^{I}\); la seva relació de pertinença total \(R\) viu
+dins \(I\times A\); i cada fibra és una part de \(A\). Res no s'escapa a un
+ambient prèviament construït. Sempre que puguem expressar una col·lecció de
+conjunts com a família de parts d'un fix, les seves unions, interseccions i
+suprems es formaran sense cap principi nou, com veurem tot seguit. La
+dificultat transfinita començarà exactament quan una col·lecció \emph{no} es
+pugui allotjar així.
+\end{observacio}
+
+\begin{definicio}[Unió i intersecció indexades]\index{Unió i intersecció indexades}\label{def:unio-interseccio-indexada}
+Sigui \(\alpha\colon I\to P(A)\) una família de parts de \(A\), amb relació
+de pertinença total \(R\hookrightarrow I\times A\) i projecció
+\(\pi_A\colon I\times A\to A\). La \emph{unió indexada} i la
+\emph{intersecció indexada} de la família són les parts de \(A\)
+\[
+\bigcup_{i\in I}\alpha(i)\ :=\ \exists_{\pi_A}(R),
+\qquad
+\bigcap_{i\in I}\alpha(i)\ :=\ \forall_{\pi_A}(R),
+\]
+on \(\exists_{\pi_A}\) i \(\forall_{\pi_A}\) són els quantificadors interns
+associats a la projecció (definició~\ref{def:quantificadors}), aplicats al
+nom de la part \(R\). Sobre punts globals (proposició~\ref{prop:quantificadors-lectura}):
+un punt \(a\) pertany a la unió quan existeix un punt \(i\) amb
+\(a\mathrel{\varepsilon}\alpha(i)\), i a la intersecció quan
+\(a\mathrel{\varepsilon}\alpha(i)\) per a tot \(i\); sobre elements
+generalitzats, la lectura de la unió és amb recobriment, com sempre amb
+\(\exists\).
+\end{definicio}
+
+\begin{observacio}[La lectura amb quantificadors]\label{obs:unio-interseccio-lectura}
+La formulació anterior és la traducció directa de \enquote{existeix un
+índex\ldots} i \enquote{per a tot índex\ldots} al llenguatge intern del
+capítol~\ref{cap:parts-interna}. Per a la unió: \(a\in\bigcup_i\alpha(i)\)
+diu que la fibra de \(R\) sobre \(a\) ---els índexs \(i\) amb
+\(a\mathrel{\varepsilon}\alpha(i)\)--- és no buida, i això és exactament
+\(\exists_{\pi_A}(R)\). Per a la intersecció, \(a\in\bigcap_i\alpha(i)\) diu
+que \emph{tot} índex compleix \(a\mathrel{\varepsilon}\alpha(i)\), és a dir
+\(\forall_{\pi_A}\) del predicat \enquote{\((i,a)\in R\)}: tots els punts de
+la fibra de \(\pi_A\) sobre \(a\), que són els \((i,a)\), han de ser a \(R\).
+La construcció usa \emph{només} els
+quantificadors interns, ja disponibles; cap suprem infinit adjuntat, cap
+axioma nou. És la mateixa tècnica amb què vam formar la part \(D\) de
+Schröder--Bernstein com un ínfim arbitrari
+(teorema~\ref{teo:schroder-bernstein}).
+\end{observacio}
+
+\begin{proposicio}[Propietats de la unió i la intersecció indexades]\label{prop:unio-interseccio-propietats}
+Sigui \(\alpha\colon I\to P(A)\) una família de parts de \(A\). Aleshores,
+dins \(P(A)\):
+\begin{enumerate}
+\item \(\bigcup_{i\in I}\alpha(i)\) és la menor part de \(A\) que conté totes
+les \(\alpha(i)\); és a dir, el suprem de la família a \((P(A),\subseteq)\).
+\item \(\bigcap_{i\in I}\alpha(i)\) és la major part de \(A\) continguda en
+totes les \(\alpha(i)\); és a dir, l'ínfim de la família.
+\item Es compleixen les lleis de De Morgan indexades:
+\[
+A\setminus\bigcup_{i\in I}\alpha(i)=\bigcap_{i\in I}\bigl(A\setminus\alpha(i)\bigr),
+\qquad
+A\setminus\bigcap_{i\in I}\alpha(i)=\bigcup_{i\in I}\bigl(A\setminus\alpha(i)\bigr).
+\]
+\end{enumerate}
+\emph{Axiomes usats:} conjunt de parts, pertinença interna i quantificadors
+(capítol~\ref{cap:parts-interna}), complement (capítol~\ref{cap:valors}); cap
+axioma nou.
+\end{proposicio}
+
+\begin{prova}
+(1) i (2) són les propietats universals de \(\exists_{\pi_A}\) i
+\(\forall_{\pi_A}\) com a adjunts de la imatge inversa
+(proposició~\ref{prop:quantificadors-adjuncio}, amb l'estadi \(X=\mathbf1\)):
+\(\exists_{\pi_A}(R)\subseteq S\) equival a \(R\subseteq\pi_A^{-1}(S)=I\times S\),
+és a dir, sobre punts, a \(\alpha(i)\subseteq S\) per a tot \(i\) ---la
+propietat del suprem---; i dualment, \(S\subseteq\forall_{\pi_A}(R)\) equival
+a \(I\times S\subseteq R\), és a dir, a \(S\subseteq\alpha(i)\) per a tot
+\(i\) ---la de l'ínfim. (3) surt de les mateixes adjuncions per
+complementació, com a la construcció de \(\forall_f=\neg\exists_f\neg\) de la
+proposició~\ref{prop:quantificadors-adjuncio}, transportant les lleis de De
+Morgan booleanes (observació~\ref{obs:lleis-transportades}) a la família.
+L'argument no fa servir cap hipòtesi sobre \(I\): si \(I\) és inicial, la
+unió és la part buida i la intersecció és tot \(A\), que són, en efecte, el
+suprem i l'ínfim de la família buida.
+\end{prova}
+
+Amb aquest llenguatge podem tancar el pont que el capítol~\ref{cap:relacions}
+va deixar obert: una partició estructural (un epimorfisme) té fibres
+disjuntes que cobreixen el conjunt (proposició~\ref{prop:fibres-particio});
+recíprocament, una família de parts amb aquestes propietats és una
+partició.
+
+\begin{proposicio}[Les famílies de parts disjuntes que cobreixen són particions]\label{prop:familia-particio}
+Sigui \(\alpha\colon I\to P(A)\) una família de parts de \(A\) tal que,
+sobre punts: cada \(\alpha(i)\) és no buida; dos índexs diferents donen
+parts disjuntes, \(i\ne j\Rightarrow\alpha(i)\cap\alpha(j)=\varnothing_A\);
+i la unió indexada és tot \(A\). Aleshores existeix un epimorfisme
+\(q\colon A\twoheadrightarrow I\) ---una partició--- les fibres del qual són
+exactament les \(\alpha(i)\), i és únic amb aquesta propietat.\par
+\emph{Axiomes usats:} els del capítol~\ref{cap:parts-interna} i la separació
+global; cap elecció.
+\end{proposicio}
+
+\begin{prova}
+Sigui \(R\hookrightarrow I\times A\) la relació de pertinença total de la
+família, amb projeccions \(r_I\colon R\to I\) i \(r_A\colon R\to A\). La
+hipòtesi que les parts cobreixen \(A\) diu que \(\exists_{\pi_A}(R)\) és
+total, és a dir, que \(r_A\) és exhaustiva sobre punts: tot punt \(a\)
+pertany a alguna \(\alpha(i)\). La disjunció diu que \(r_A\) és injectiva
+sobre punts: si \((i,a)\) i \((j,a)\) són punts de \(R\), aleshores
+\(a\in\alpha(i)\cap\alpha(j)\), que és buida si \(i\ne j\); per tant \(i=j\).
+Per la separació global, \(r_A\) és un bimorfisme i, doncs, un isomorfisme
+(proposició~\ref{prop:bimorfisme-isomorfisme}). Posem
+\(q:=r_I\circ r_A^{-1}\colon A\to I\). És exhaustiva sobre punts, perquè
+cada \(\alpha(i)\) té un punt \(a\), i aleshores \((i,a)\in R\) i
+\(q(a)=i\); per tant és un epimorfisme, i una partició. La fibra
+\(q^{-1}(i)\) és, per construcció, la part dels \(a\) amb \((i,a)\in R\), és
+a dir, \(\alpha(i)\). La unicitat: una altra \(q'\) amb les mateixes fibres
+coincideix amb \(q\) sobre tots els punts, i per la separació global
+\(q'=q\).
+\end{prova}
+
+\section{Regla externa contra família interna}\label{sec:regla-vs-familia}
+
+Arribem al punt central del capítol, la distinció que la guia demana fer molt
+explícita perquè governa tota la teoria transfinita. Cal separar dos usos de
+la notació \enquote{\(i\mapsto X_i\)}.
+
+\begin{definicio}[Família interna i regla externa]\index{Família interna i regla externa}\label{def:familia-vs-regla}
+Una \emph{família interna} indexada per \(I\) és una aplicació \emph{ja
+donada} \(p\colon E\to I\) (definició~\ref{def:familia}); les seves fibres
+\(E_i\) són parts d'un total \(E\) que existeix com a objecte. En canvi, una
+\emph{regla externa} és una prescripció que, al metallenguatge, associa a
+cada element \(i\) d'\(I\) un conjunt \(X_i\), \emph{sense} que se n'hagi
+exhibit cap aplicació \(E\to I\) les fibres de la qual siguin els \(X_i\).
+Una regla externa \emph{es representa} per una família interna quan existeix
+una tal \(p\colon E\to I\) amb \(E_i\cong X_i\) per a tot \(i\), de manera
+compatible.
+\end{definicio}
+
+\begin{observacio}[El problema, i on ja el vam trobar]\label{obs:regla-externa-problema}
+La diferència no és pedant: hi ha regles externes perfectament definides que
+\emph{no} es poden representar per cap família interna amb els axiomes que
+tenim. L'exemple prototípic ja va aparèixer al capítol~\ref{cap:naturals}: la
+regla \(n\mapsto\seg{n}\), que a cada natural assigna el seu segment inicial,
+és una prescripció clara, però reunir tots els \(\seg{n}\) en un sol total
+\(E\to\N\) demana una construcció que no és cap dels axiomes bàsics ---de fet
+es fa allotjant tots els \(\seg{n}\) dins un exponencial fix, com al
+conjunt de llistes (definició~\ref{def:llistes}). Sempre que puguem allotjar
+els \(X_i\) dins un conjunt ambient comú ---per exemple si tots són parts
+d'un fix \(A\), i aleshores la regla és una aplicació \(I\to P(A)\)
+(definició~\ref{def:familia-parts})--- la representació existeix i no cal res
+nou. El problema genuí apareix quan els \(X_i\) \emph{creixen sense cota
+comuna coneguda}: aleshores no hi ha cap ambient dins el qual tallar-los per
+separació, i la reunió pot escapar-se dels axiomes.
+\end{observacio}
+
+\begin{observacio}[La regla de treball]\label{obs:regla-treball}
+D'aquí surt una disciplina que mantindrem a tot el desenvolupament
+transfinit: \textbf{cada vegada que aparegui una notació \(i\mapsto X_i\),
+cal indicar quina aplicació \(E\to I\) representa la família; i si no
+existeix encara, cal declarar-ho.} Escriure \(\bigcup_{i\in I}X_i\) o
+\(\sup_i X_i\) només té sentit un cop s'ha exhibit el total \(E\), o un
+ambient \(A\) que contingui tots els \(X_i\). Aquesta és la lliçó que fa
+manejable la recursió transfinita: mentre els valors visquin dins un
+codomini fix, la família és interna i tot és de Nivell~I; quan els valors
+siguin conjunts nous sense codomini comú, cal un principi addicional, que
+introduïm a la secció següent i no abans.
+\end{observacio}
+
+\section{Nota sobre la reunió de famílies no acotades (SR)}\label{sec:sr}
+
+\begin{nota}
+Aquesta secció és de \emph{Nivell~II}: enuncia, però \emph{no adopta},
+un principi més fort que els axiomes del llibre. Els capítols de Nivell~I no
+en depenen, i el text ho assenyalarà cada vegada que calgui.
+\end{nota}
+
+Fins ara, tota família que hem format era interna perquè els seus valors
+vivien dins un conjunt ja construït: parts d'un fix \(A\), elements d'un
+exponencial, fibres d'un total donat. Els capítols següents arribaran, però,
+a construccions on aquesta comoditat desapareix: una recursió transfinita els
+valors de la qual són conjunts \emph{nous} sense codomini comú, el pas d'un
+bon ordre al seu representant ordinal, una successió \(\alpha\mapsto\aleph_\alpha\).
+En tots aquests casos tindrem una \emph{regla externa} ben definida
+\(i\mapsto X_i\) i voldrem reunir-la en una \emph{família interna} \(E\to I\),
+però cap axioma de Nivell~I no ens ho garantirà. El principi que ho permet,
+que designarem provisionalment per \textbf{SR} (\enquote{substitució
+estructural}), es pot enunciar orientativament així.
+
+\begin{observacio}[Esquema de reunió de famílies (SR), provisional]\label{obs:sr}
+Suposem que una fórmula, per a cada element \(i\) d'un conjunt \(I\),
+determina un conjunt \(X_i\) \emph{llevat d'un únic isomorfisme compatible
+amb les dades}. Aleshores ---diu SR--- existeix una aplicació \(p\colon E\to
+I\) la fibra de la qual sobre cada \(i\) representa \(X_i\). És a dir: tota
+regla externa uniformement i invariantment definida es pot representar per
+una família interna.
+
+No prenem això com a axioma en aquesta forma. L'enunciat definitiu, com un
+\emph{esquema} de fórmules amb la condició de funcionalitat a isomorfisme
+únic i l'estructura que la garanteix explicitades, és el
+principi~\ref{sr:esquema} del capítol~\ref{cap:alephs}, que també n'identifica
+la formulació adoptada a la literatura; aquí només el deixem anunciat
+perquè el lector sàpiga on i per què farà falta.
+\end{observacio}
+
+\begin{observacio}[SR no és l'elecció]\label{obs:sr-no-eleccio}
+Convé, ja d'entrada, no confondre SR amb l'axioma d'elecció, perquè fan
+feines lògiques diferents ---la mateixa distinció que ja vam marcar al
+capítol~\ref{cap:infinitud}
+(observació~\ref{obs:eleccio-global-vs-numerable}). L'elecció tria un element
+dins cada fibra d'una família que \emph{ja existeix} \(p\colon E\to I\)
+(una secció, secció~\ref{sec:seccions}); SR, en canvi, garanteix
+l'\emph{existència} de la família \(E\to I\) a partir d'una regla que defineix
+els seus valors. La primera opera sobre un total donat; la segona el
+construeix. En els capítols que vénen, mantindrem separats els dos usos i,
+seguint la disciplina de la caixa d'axiomes, marcarem \enquote{elecció} i
+\enquote{SR} allà on cadascun intervingui, mai indistintament.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Una família de conjunts indexada per \(I\) és una aplicació \(p\colon E\to I\); les fibres \(E_i=p^{-1}(i)\) són parts del total. La família constant és una projecció.
+  \item Una secció de \(p\) és una funció d'elecció; per a fibres no buides, l'existència de seccions és l'axioma d'elecció. Quan les fibres tenen un element canònic (mínim, ínfim), la secció es construeix sense elecció.
+  \item La suma d'una família és el total \(E\); existeix sempre. El producte és la part de \(E^I\) de les seccions: existeix sempre com a objecte, i té punts exactament quan \(p\) té secció.
+  \item Una família de parts d'un conjunt fix és \(\alpha\colon I\to P(A)\); la unió i la intersecció indexades són \(\exists_{\pi_A}(R)\) i \(\forall_{\pi_A}(R)\), suprem i ínfim a \((P(A),\subseteq)\), amb les lleis de De Morgan; tot acotat dins \(A\).
+  \item Una família de parts no buides, disjuntes i que cobreixen \(A\) és una partició (un epimorfisme \(A\twoheadrightarrow I\)), i recíprocament.
+  \item Família interna (una \(p\colon E\to I\) donada) contra regla externa (una prescripció \(i\mapsto X_i\)): la regla de treball exigeix dir sempre quina aplicació representa la família. Quan els valors no tenen ambient comú, cal SR, que no és l'elecció: l'elecció tria dins fibres d'una família que existeix, SR fa existir la família.
+\end{enumerate}
+\apartat{Errors típics} Pensar que \enquote{una família de conjunts} és una regla i no una aplicació; confondre l'existència del producte amb la seva no-vacuïtat; llegir la unió indexada sobre elements generalitzats amb un \enquote{existeix} en el mateix estadi; escriure \(\bigcup_iX_i\) sense haver exhibit un total o un ambient; i confondre SR (existència de la família) amb l'elecció (secció d'una família existent).
+\apartat{Lectura recomanada} \cite[cap.~8 i §§9.1--9.2]{lawvere-rosebrugh} per a les famílies com a aplicacions, les fibres i el pas als conjunts variables; \cite[§§9--10]{halmos} per a les famílies, les unions i els productes indexats en la teoria clàssica, on la distinció entre regla i família queda amagada per l'axioma de reemplaçament; \cite[§§2--3]{shulman-comparing} per a la formulació estructural de les famílies i del reemplaçament; i \cite[cap.~I]{maclane-moerdijk} per a les categories de fletxes \(\mathbf{Set}/I\) com a marc general de les famílies indexades.
+\end{resumcap}

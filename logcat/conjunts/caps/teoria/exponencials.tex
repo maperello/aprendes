@@ -1,0 +1,499 @@
+\chapter{Exponencials}\label{cap:exponencials}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:parts}: productes, aparellament, producte d'aplicacions \(f\times g\) i la unicitat de les construccions universals; les aplicacions característiques i el classificador de parts. Del capítol~\ref{cap:valors}: la distributivitat del producte sobre la suma i l'estrictesa de \(\mathbf0\). Del capítol~\ref{cap:aplicacions}: elements generalitzats i separació global.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item enunciar la propietat universal de l'exponencial amb l'avaluació i la transposició, i demostrar que currificar i descurrificar són inverses;
+  \item demostrar la unicitat de l'exponencial llevat d'un únic isomorfisme compatible amb l'avaluació, pel patró habitual;
+  \item explicar en quin sentit les aplicacions \(A\to B\) \enquote{són} els punts de \(B^A\), i per què un element generalitzat \(X\to B^A\) és una família d'aplicacions i no una sola;
+  \item calcular \(A^{\mathbf1}\), \(A^{\mathbf0}\), \(\mathbf1^A\) i \(B^{A+C}\) identificant propietats universals, i definir \(P(A):=\mathbf2^A\);
+  \item construir la composició i la identitat com a aplicacions internes, i saber quin axioma en garanteix la unicitat;
+  \item llegir la naturalitat de la transposició com la coherència de les famílies d'aplicacions sota reindexació.
+\end{itemize}
+\end{objectius}
+
+Fins ara les aplicacions han estat els individus primitius de la teoria:
+tot el llenguatge parla d'aplicacions, i els conjunts no en són més que un
+cas particular, les identitats. Aquest capítol fa el gir que dona nom al
+llibre. Mostrarem que les aplicacions d'un conjunt \(A\) cap a un conjunt
+\(B\) es poden reunir en un conjunt nou, l'\emph{exponencial} \(B^A\), els
+punts del qual són precisament aquelles aplicacions. Les fletxes, que eren
+la matèria primera, esdevenen així també punts d'un conjunt, i poden ser
+manipulades com qualsevol altre element.
+
+Aquesta reunió no se segueix dels axiomes anteriors: cal postular-la. El
+capítol introdueix, doncs, un axioma nou ---l'existència d'exponencials---
+i en treu les conseqüències immediates: la correspondència entre
+aplicacions i punts globals de l'exponencial, el càlcul dels exponencials
+dels conjunts \(\mathbf0\), \(\mathbf1\) i \(\mathbf2\), la representació
+interna de la composició i la identitat, i la descripció de les famílies
+d'aplicacions parametritzades per un estadi. Com sempre, formularem la
+propietat universal sobre elements generalitzats i en recuperarem la
+lectura clàssica com a cas particular.
+
+\section{L'avaluació i la propietat universal}\label{sec:exponencial-universal}
+
+La propietat que ha de caracteritzar l'exponencial és la mateixa que
+regeix, en conjunts, el pas d'una funció de dues variables a una funció
+que en retorna una altra. Si es té una regla que a cada parell
+\((x,a)\) li assigna un element de \(B\), fixant la primera coordenada
+s'obté, per a cada \(x\), una aplicació \(A\to B\); i recíprocament. El
+conjunt \(B^A\) és el codomini del nom intern resultant \(x\mapsto f_x\),
+és a dir, el conjunt de les aplicacions \(A\to B\), i l'avaluació és la
+regla que en recupera el valor.
+
+\begin{definicio}[Exponencial]\index{Exponencial}\label{def:exponencial}
+Siguin \(A\) i \(B\) dos conjunts. Un \emph{exponencial} de \(B\) per
+\(A\) és un conjunt \(E\), juntament amb una aplicació d'\emph{avaluació}
+\[
+\operatorname{ev}\colon E\times A\to B,
+\]
+que compleix la propietat universal següent: per a tot conjunt \(X\) i
+tota aplicació \(h\colon X\times A\to B\), existeix una única aplicació
+\[
+\widehat h\colon X\to E
+\qquad\text{tal que}\qquad
+\operatorname{ev}\circ(\widehat h\times\id_A)=h.
+\]
+\end{definicio}
+
+\begin{notacio}[L'exponencial i la transposició]\label{not:exponencial}
+Escriurem \(B^A\) per a l'exponencial \(E\) de la definició anterior i
+\(\operatorname{Exp}(E,\operatorname{ev},A,B)\) per al predicat,
+eliminable, que l'afirma. En desplegar-lo cal recordar que ni el producte
+ni les projeccions són termes primitius: s'han de quantificar amb el predicat
+de producte \(\operatorname{Producte}\) (definició~\ref{def:producte}), que fixa
+un objecte producte i les seves projeccions llevat d'isomorfisme. Reprenem
+l'abreviació del capítol~\ref{cap:relacions}, que manté les projeccions
+\emph{visibles} com a arguments del predicat:
+\[
+\operatorname{Prod}(P,\pi_1,\pi_2;X,Y):=\operatorname{Producte}(P,\pi_1,\pi_2,X,Y),
+\]
+que diu que \((P,\pi_1,\pi_2)\) és un producte de \(X\) i \(Y\). Cada producte que
+hi intervé
+---el de \(E\) amb \(A\) i, per a cada estadi de prova, el de \(X\) amb
+\(A\)--- s'introdueix amb el seu propi bloc d'existencials, de manera que
+totes les projeccions queden lligades dins l'abast on s'usen:
+\[
+\begin{aligned}
+\operatorname{Exp}(E,\operatorname{ev},A,B)
+\iff{}&
+\operatorname{Conj}(E)
+\\
+&{}\land\exists P\,\exists\pi_1\,\exists\pi_2\,\bigl(
+\operatorname{Prod}(P,\pi_1,\pi_2;E,A)\land\operatorname{ev}\colon P\to B\bigr)
+\\
+&{}\land\forall X\,\forall Q\,\forall q_1\,\forall q_2\,\forall h\,\Bigl(
+\operatorname{Prod}(Q,q_1,q_2;X,A)\land h\colon Q\to B
+\\
+&\hphantom{{}\land\forall X\,\forall Q\,}
+\Rightarrow
+\exists!\,\widehat h\,\exists m\,\bigl(\widehat h\colon X\to E
+\land m\colon Q\to P
+\\
+&\hphantom{{}\land\forall X\,\forall Q\,\Rightarrow\exists!\,\widehat h\,\exists m\,\bigl(}
+{}\land\pi_1\circ m=\widehat h\circ q_1
+\land\pi_2\circ m=q_2
+\\
+&\hphantom{{}\land\forall X\,\forall Q\,\Rightarrow\exists!\,\widehat h\,\exists m\,\bigl(}
+{}\land\operatorname{ev}\circ m=h\bigr)\Bigr),
+\end{aligned}
+\]
+on \(m\colon Q\to P\) és l'aplicació \(\widehat h\times\id_A\), definida
+dins la fórmula per les dues equacions que la propietat universal de
+\((P,\pi_1,\pi_2)\) associa a la parella \((\widehat h\circ q_1,q_2)\); com
+que aquesta \(m\) és única un cop fixada \(\widehat h\), el quantificador
+\(\exists m\) no afegeix cap indeterminació, i l'\(\exists!\) recau només
+sobre \(\widehat h\). Ara les
+projeccions \(q_1,q_2\) del producte variable \(Q\) queden lligades pels
+seus propis quantificadors \(\forall q_1\,\forall q_2\), i no apareix cap
+símbol lliure: el desplegament arriba fins al predicat de producte, i les
+operacions que hi resten ---el producte \(\times\) d'aplicacions, la
+composició \(\circ\), la parella \(\langle\cdot,\cdot\rangle\) i el
+quantificador \(\exists!\)--- són convenis eliminables segons el
+\hyperref[not:criteri-formal]{criteri d'escriptura formal} de la
+introducció, que els tradueix en darrera instància a \(\Dom\), \(\Cod\) i
+\(\Com\). A partir d'ara la usarem abreujada amb \(E\times A\), \(\id_A\) i
+\(\times\), entès que cada aparició s'elimina pel predicat de producte i
+pel criteri esmentat quan els tipus són inequívocs.
+Anomenarem \(\widehat h\) la \emph{transposada} o \emph{currificació} de
+\(h\), i escriurem \(\lambda(h):=\widehat h\). L'operació inversa, que a
+una aplicació \(g\colon X\to B^A\) li associa
+\(\operatorname{ev}\circ(g\times\id_A)\colon X\times A\to B\), l'anomenarem
+\emph{descurrificació}.
+\end{notacio}
+
+L'existència d'exponencials no es dedueix dels axiomes anteriors. La
+postulem.
+
+\begin{axioma}[Existència d'exponencials]\label{ax:exponencials}
+Tot parell de conjunts té un exponencial. Formalment,
+\[
+\forall A\,\forall B\,
+\Bigl(
+\operatorname{Conj}(A)\land\operatorname{Conj}(B)
+\Rightarrow
+\exists E\,\exists e\,
+\operatorname{Exp}(E,e,A,B)
+\Bigr),
+\]
+on \(e\) és una variable d'aplicació ordinària; un cop fixada, adoptem la
+convenció \(\operatorname{ev}:=e\) per a l'avaluació de l'exponencial
+triat.
+\end{axioma}
+
+\begin{proposicio}[Unicitat de l'exponencial]\label{prop:exponencial-unic}
+L'exponencial d'un parell de conjunts és únic llevat d'un únic
+isomorfisme compatible amb l'avaluació. És a dir, si \((E,\operatorname{ev})\)
+i \((E',\operatorname{ev}')\) són tots dos exponencials de \(B\) per \(A\),
+existeix un únic isomorfisme \(w\colon E\to E'\) amb
+\(\operatorname{ev}'\circ(w\times\id_A)=\operatorname{ev}\).
+\end{proposicio}
+
+\begin{prova}
+Apliquem la propietat universal de \((E',\operatorname{ev}')\) a
+l'aplicació \(\operatorname{ev}\colon E\times A\to B\): hi ha una única
+\(w\colon E\to E'\) amb \(\operatorname{ev}'\circ(w\times\id_A)=\operatorname{ev}\).
+Simètricament, hi ha una única \(w'\colon E'\to E\) amb
+\(\operatorname{ev}\circ(w'\times\id_A)=\operatorname{ev}'\). Component,
+\(\operatorname{ev}\circ((w'\circ w)\times\id_A)=\operatorname{ev}\); però
+també \(\operatorname{ev}\circ(\id_E\times\id_A)=\operatorname{ev}\), i la
+unicitat de la transposada de \(\operatorname{ev}\) per la propietat
+universal de \((E,\operatorname{ev})\) dona \(w'\circ w=\id_E\).
+Simètricament \(w\circ w'=\id_{E'}\). Per tant \(w\) és un isomorfisme, i
+és l'únic compatible amb l'avaluació per construcció.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:exponencial-classica}
+En conjunts, \(B^A\) és el conjunt de totes les funcions de \(A\) en
+\(B\), i l'avaluació és \(\operatorname{ev}(f,a)=f(a)\). Donada una funció
+de dues variables \(h(x,a)\), la seva transposada \(\widehat h(x)\) és la
+funció que a cada \(x\) li assigna la funció parcial
+\(a\mapsto h(x,a)\); la condició
+\(\operatorname{ev}\circ(\widehat h\times\id_A)=h\) diu simplement que
+\(\widehat h(x)(a)=h(x,a)\). Aquest és el mecanisme habitual de fixar una
+variable per obtenir una família de funcions de l'altra.
+\end{observacio}
+
+\section{Aplicacions com a punts}\label{sec:aplicacions-punts}
+
+El cas \(X=\mathbf1\) de la propietat universal és el que justifica el
+nom del capítol: identifica els punts globals de \(B^A\) amb les
+aplicacions de \(A\) cap a \(B\).
+
+\begin{teorema}[Punts globals de l'exponencial]\label{teo:punts-exponencial}
+Amb l'axioma d'exponencials, per a cada parell de conjunts \(A\) i \(B\)
+hi ha una correspondència biunívoca entre els punts globals
+\(\mathbf1\to B^A\) i les aplicacions \(A\to B\). La correspondència
+associa a un punt \(p\colon\mathbf1\to B^A\) l'aplicació
+\(\operatorname{ev}\circ(p\times\id_A)\colon\mathbf1\times A\to B\), llegida
+com una aplicació \(A\to B\) via l'isomorfisme
+\(\mathbf1\times A\cong A\).
+\end{teorema}
+
+\begin{prova}
+Fixem l'isomorfisme canònic \(\iota\colon A\xrightarrow{\sim}\mathbf1\times
+A\) donat per la propietat universal del producte amb el terminal
+(la primera projecció és l'única aplicació cap a \(\mathbf1\) i la segona
+és \(\id_A\)). A un punt \(p\colon\mathbf1\to B^A\) li associem
+\(\Phi(p):=\operatorname{ev}\circ(p\times\id_A)\circ\iota\colon A\to B\).
+Recíprocament, a una aplicació \(f\colon A\to B\) li associem la
+transposada de \(f\circ\iota^{-1}\colon\mathbf1\times A\to B\), és a dir,
+\(\Psi(f):=\lambda(f\circ\iota^{-1})\colon\mathbf1\to B^A\). Que \(\Phi\) i
+\(\Psi\) són mútuament inverses és exactament la unicitat de la transposada
+de la definició~\ref{def:exponencial}: \(\Phi(\Psi(f))=f\) perquè
+\(\operatorname{ev}\circ(\lambda(f\circ\iota^{-1})\times\id_A)=f\circ\iota^{-1}\),
+i \(\Psi(\Phi(p))=p\) perquè tots dos tenen la mateixa descurrificació i la
+transposada és única.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:punts-exponencial-classica}
+El teorema diu que un element de \(B^A\) «és» una funció \(A\to B\), tal
+com esperem del conjunt de funcions. La distinció que el llenguatge manté
+---entre el \emph{punt} \(p\colon\mathbf1\to B^A\), que és una dada dins
+d'un conjunt, i l'\emph{aplicació} \(f\colon A\to B\), que és una fletxa
+del metallenguatge--- desapareix en la lectura clàssica, on totes dues coses
+s'identifiquen. En el desenvolupament estructural convé, en canvi,
+conservar-la: és el que permet tractar una aplicació com un objecte sense
+confondre-la amb la fletxa que representa.
+\end{observacio}
+
+\begin{observacio}[Elements generalitzats de l'exponencial]\label{obs:generalitzats-exponencial}
+Més enllà del cas global, la propietat universal identifica els elements
+generalitzats \(X\to B^A\) amb les aplicacions \(X\times A\to B\). Un
+element generalitzat de \(B^A\) a l'estadi \(X\) és, doncs, una família
+d'aplicacions \(A\to B\) parametritzada per \(X\), i no una sola
+aplicació. Aquesta lectura es desenvolupa a la
+secció~\ref{sec:families}.
+\end{observacio}
+
+\section{\texorpdfstring{Els exponencials de \(\mathbf0\), \(\mathbf1\) i \(\mathbf2\)}{Els exponencials de 0, 1 i 2}}\label{sec:exponencials-basics}
+
+Els conjunts distingits dels capítols anteriors donen exponencials que es
+poden identificar explícitament, i que retornen nocions ja conegudes.
+
+\begin{proposicio}[Exponencials amb base o exponent distingits]\label{prop:exponencials-basics}
+Per a tot conjunt \(A\):
+\begin{enumerate}
+\item \(A^{\mathbf1}\cong A\): les aplicacions \(\mathbf1\to A\) són els
+punts de \(A\).
+\item \(A^{\mathbf0}\cong\mathbf1\): hi ha exactament una aplicació
+\(\mathbf0\to A\).
+\item \(\mathbf1^{A}\cong\mathbf1\): hi ha exactament una aplicació
+\(A\to\mathbf1\).
+\end{enumerate}
+\end{proposicio}
+
+\begin{prova}
+\emph{(1)} Construïm les dues aplicacions inverses. D'una banda, sigui
+\(\rho\colon A\times\mathbf1\xrightarrow{\sim}A\) l'isomorfisme
+canònic de projecció. Definim \(\alpha\colon A\to A^{\mathbf1}\) com la
+transposada de la projecció \(\rho\colon A\times\mathbf1\to A\); és a dir,
+\(\alpha\) és l'única aplicació tal que
+\(\operatorname{ev}\circ(\alpha\times\id_{\mathbf1})=\rho\). De l'altra, l'avaluació al punt únic de
+\(\mathbf1\) dona \(\beta:=\operatorname{ev}\circ\langle\id,{!}\rangle
+\colon A^{\mathbf1}\to A\), on \({!}\colon A^{\mathbf1}\to\mathbf1\) és l'única aplicació al
+terminal. Comprovem les dues composicions. D'una banda,
+\(\beta\circ\alpha=\operatorname{ev}\circ\langle\alpha,{!}_A\rangle
+=\operatorname{ev}\circ(\alpha\times\id_{\mathbf1})\circ\langle\id_A,{!}_A\rangle
+=\rho\circ\langle\id_A,{!}_A\rangle=\id_A\). De l'altra, \(\alpha\circ\beta\)
+és una aplicació cap a l'exponencial, i basta comparar descurrificacions:
+\(\operatorname{ev}\circ((\alpha\circ\beta)\times\id_{\mathbf1})
+=\rho\circ(\beta\times\id_{\mathbf1})=\beta\circ p_1
+=\operatorname{ev}\circ\langle p_1,{!}\rangle=\operatorname{ev}\),
+perquè sobre \(A^{\mathbf1}\times\mathbf1\) la segona projecció és
+l'única aplicació al terminal; per la unicitat de la transposada,
+\(\alpha\circ\beta=\id_{A^{\mathbf1}}\). Per
+tant \(A^{\mathbf1}\cong A\), i sota aquest isomorfisme els punts de
+\(A^{\mathbf1}\) són els punts de \(A\).
+
+\emph{(2)} Una aplicació \(X\times\mathbf0\to A\) surt del conjunt inicial:
+\(X\times\mathbf0\cong\mathbf0\), perquè la projecció
+\(X\times\mathbf0\to\mathbf0\) és un isomorfisme per l'estrictesa de
+\(\mathbf0\) (proposició~\ref{prop:inicial-estricte}); de manera que n'hi ha exactament una; per la
+propietat universal, hi ha exactament una aplicació \(X\to A^{\mathbf0}\)
+per a cada \(X\), i això caracteritza \(A^{\mathbf0}\) com a terminal.
+
+\emph{(3)} Una aplicació \(X\times A\to\mathbf1\) és única perquè
+\(\mathbf1\) és terminal; per la propietat universal, hi ha exactament una
+aplicació \(X\to\mathbf1^{A}\) per a cada \(X\), i \(\mathbf1^{A}\) és
+terminal.
+\end{prova}
+
+Un darrer cas mereix un tractament a part. Pel
+teorema~\ref{teo:punts-exponencial}, els punts de \(\mathbf2^{A}\) es
+corresponen amb les aplicacions \(A\to\mathbf2\), que són les aplicacions
+característiques del capítol~\ref{cap:parts}; pel classificador de parts,
+aquestes es corresponen al seu torn amb les parts de \(A\) llevat
+d'equivalència. L'exponencial \(\mathbf2^{A}\) és, doncs, l'objecte els
+punts globals del qual classifiquen les parts de \(A\). Aquesta propietat
+justifica definir-lo com el conjunt de parts.
+
+\begin{definicio}[Conjunt de parts]\index{Conjunt de parts}\label{def:conjunt-parts}
+Per a tot conjunt \(A\), definim el \emph{conjunt de parts} de \(A\) com
+l'exponencial
+\[
+P(A):=\mathbf2^{A}.
+\]
+Els punts de \(P(A)\) es corresponen, pel classificador de parts del
+capítol~\ref{cap:parts}, amb les parts de \(A\) llevat d'equivalència.
+Amb aquesta definició, l'existència del conjunt de parts no requereix cap
+axioma nou més enllà del d'exponencials: és el cas particular \(B=\mathbf2\).
+\end{definicio}
+
+\begin{observacio}[El que resta obert sobre \(P(A)\)]\label{obs:parts-obert}
+Definir \(P(A)\) com a objecte no exhaureix el seu estudi. Queden per
+desenvolupar la relació de \emph{pertinença interna}
+\(\in_A\hookrightarrow A\times P(A)\), les operacions booleanes internes
+sobre \(P(A)\) i l'ordre d'inclusió com a estructura sobre aquest conjunt.
+Aquestes qüestions no s'aborden en aquest estat de la teoria.
+\end{observacio}
+
+\begin{observacio}[Lectura clàssica]\label{obs:exponencials-basics-classica}
+Els quatre casos reprodueixen igualtats familiars de la combinatòria de
+conjunts: \(A^1=A\), \(A^0=1\), \(1^A=1\) i \(2^A=\mathcal P(A)\). L'últim
+és el que motiva la definició \(P(A):=\mathbf2^{A}\) d'aquest capítol, que
+el següent desenvoluparà:
+triar una part de \(A\) és el mateix que assignar a cada element un dels
+dos valors de veritat, és a dir, donar una aplicació característica.
+\end{observacio}
+
+\section{L'exponencial d'una suma}\label{sec:exponencial-suma}
+
+Un darrer isomorfisme, que farem servir en comptar aplicacions sobre
+conjunts finits, tradueix una suma a l'exponent en un producte
+d'exponencials. És la forma interna de la llei \(b^{a+c}=b^{a}\cdot
+b^{c}\).
+
+\begin{proposicio}[L'exponencial d'una suma]\label{prop:exponencial-suma}
+Per a tots els conjunts \(A\), \(C\) i \(B\), hi ha un isomorfisme canònic
+\[
+B^{A+C}\cong B^{A}\times B^{C},
+\]
+on \(A+C\) és la suma de \(A\) i \(C\) (definició~\ref{def:suma-conjunts}).
+\end{proposicio}
+
+\begin{prova}
+N'hi ha prou de comprovar que \(B^{A}\times B^{C}\) satisfà la propietat
+universal de l'exponencial \(B^{A+C}\); la unicitat
+(proposició~\ref{prop:exponencial-unic}) donarà l'isomorfisme canònic.
+Per a tot conjunt \(X\), les aplicacions \(X\to B^{A+C}\) es corresponen,
+per la propietat universal de l'exponencial, amb les aplicacions
+\(X\times(A+C)\to B\). Ara bé, el producte distribueix sobre la suma
+(teorema~\ref{teo:distributivitat}),
+\[
+X\times(A+C)\cong(X\times A)+(X\times C),
+\]
+de manera que, per la propietat universal de la suma
+(definició~\ref{def:suma-conjunts}), una aplicació des d'aquest conjunt
+cap a \(B\) és el mateix que una parella d'aplicacions \(X\times A\to B\) i
+\(X\times C\to B\). Transposant de nou cada component, aquestes
+corresponen a una aplicació \(X\to B^{A}\) i una aplicació \(X\to B^{C}\),
+és a dir, a una única aplicació \(X\to B^{A}\times B^{C}\) per la propietat
+universal del producte. Perquè l'argument sigui una comprovació de la
+propietat universal i no només un recompte de correspondències, cal
+exhibir l'avaluació: és l'aplicació
+\[
+\begin{aligned}
+\operatorname{ev}'\colon(B^A\times B^C)\times(A+C)
+&\;\cong\;(B^A\times B^C)\times A+(B^A\times B^C)\times C\\
+&\xrightarrow{\ [\operatorname{ev}_A\circ(p_1\times\id_A),\ \operatorname{ev}_C\circ(p_2\times\id_C)]\ }B,
+\end{aligned}
+\]
+i la cadena de correspondències anterior diu precisament que tota
+\(h\colon X\times(A+C)\to B\) és \(\operatorname{ev}'\circ(\widehat h\times\id_{A+C})\)
+per a una única \(\widehat h=\langle\lambda(h_A),\lambda(h_C)\rangle\), on
+\(h_A,h_C\) són les dues components de \(h\) sota la distributivitat. Les
+correspondències són naturals en \(X\) perquè cada pas ho és
+(proposició~\ref{prop:families} i unicitat de les definicions per casos), i
+\((B^A\times B^C,\operatorname{ev}')\) és, doncs, un exponencial de \(B\) per \(A+C\).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:exponencial-suma-classica}
+Una aplicació definida sobre una unió disjunta \(A+C\) és exactament una
+aplicació sobre \(A\) juntament amb una aplicació sobre \(C\), triades
+independentment; el nombre de maneres de fer-ho és el producte dels
+nombres respectius. En el cas particular \(A=C\) es recupera
+\(B^{A+A}\cong B^{A}\times B^{A}\); i, iterant, l'exponencial d'un ordinal
+finit es descompon en un producte de còpies, que és el que farà el
+recompte d'aplicacions del capítol~\ref{cap:finits}.
+\end{observacio}
+
+\section{Composició i identitat internes}\label{sec:composicio-interna}
+
+L'avaluació permet expressar dins de la teoria operacions que fins ara
+eren metateòriques. La composició d'aplicacions, en particular, es
+realitza com una aplicació entre exponencials.
+
+\begin{proposicio}[Composició interna]\label{prop:composicio-interna}
+Siguin \(A\), \(B\) i \(C\) conjunts. Existeix una única aplicació
+\[
+c\colon C^{B}\times B^{A}\to C^{A}
+\]
+tal que, sobre punts globals, \(c\) envia el parell \((g,f)\) ---amb
+\(f\colon A\to B\) i \(g\colon B\to C\)--- al punt corresponent a
+\(g\circ f\colon A\to C\). Anàlogament, existeix una única
+\(\jmath\colon\mathbf1\to A^{A}\) que correspon a \(\id_A\).
+\end{proposicio}
+
+\begin{prova}
+Per definir \(c\) n'hi ha prou de donar, per la propietat universal de
+\(C^{A}\), una aplicació \((C^{B}\times B^{A})\times A\to C\). La prenem
+com la composició
+\[
+(C^{B}\times B^{A})\times A
+\longrightarrow
+C^{B}\times(B^{A}\times A)
+\xrightarrow{\id\times\operatorname{ev}}
+C^{B}\times B
+\xrightarrow{\operatorname{ev}}
+C,
+\]
+on la primera fletxa és l'associativitat del producte i les altres dues
+són avaluacions. La transposada d'aquesta aplicació és la \(c\) buscada.
+Sobre punts globals, seguint les avaluacions, \((g,f)\) es transforma en
+l'aplicació \(a\mapsto g(f(a))\), és a dir, \(g\circ f\): si \(\bar g\) i
+\(\bar f\) són els punts que representen \(g\) i \(f\), aleshores
+\(\operatorname{ev}\circ((c\circ\langle\bar g,\bar f\rangle)\times\id_A)\)
+és \(\operatorname{ev}\circ(\bar g\times\id_B)\circ\iota_B\circ\operatorname{ev}\circ(\bar f\times\id_A)\),
+on \(\iota_B\colon B\xrightarrow{\sim}\mathbf1\times B\) és l'isomorfisme
+canònic; llevat de l'isomorfisme \(\mathbf1\times A\cong A\), això és
+\(g\circ f\).
+La \emph{unicitat} de \(c\) amb aquesta propietat no ve de la transposada
+---la condició només en fixa els valors sobre els punts--- sinó de la
+separació global: dues aplicacions \(C^B\times B^A\to C^A\) que
+coincideixen sobre tots els punts globals són iguals, i tot punt global
+del producte \(C^B\times B^A\) és un parell \(\langle\bar g,\bar f\rangle\)
+de punts, per la propietat universal del producte. Per a \(\jmath\), la
+transposada de la projecció \(\mathbf1\times A\to A\) dona el punt que
+correspon a \(\id_A\), únic perquè els punts de \(A^A\) són les aplicacions
+\(A\to A\).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:composicio-interna-classica}
+Internament, el conjunt d'aplicacions \(A^{A}\) amb la composició
+\(c\colon A^{A}\times A^{A}\to A^{A}\) i l'element distingit
+\(\jmath\colon\mathbf1\to A^{A}\) forma el que en el metallenguatge és el
+monoide de les aplicacions de \(A\) en si mateix. El capítol no
+desenvolupa aquesta estructura algebraica; només fa notar que la
+composició, que fins ara era una operació sobre fletxes, s'ha tornat una
+aplicació entre conjunts, susceptible de ser tractada com qualsevol
+altra.
+\end{observacio}
+
+\section{Famílies d'aplicacions}\label{sec:families}
+
+L'observació~\ref{obs:generalitzats-exponencial} identificava un element
+generalitzat \(X\to B^A\) amb una aplicació \(X\times A\to B\). Aquesta
+lectura és la noció d'\emph{família d'aplicacions parametritzada per un
+estadi}, i és la forma en què els exponencials intervenen en les
+construccions posteriors.
+
+\begin{proposicio}[Famílies parametritzades]\label{prop:families}
+Per a conjunts \(X\), \(A\) i \(B\), la transposició estableix una
+correspondència biunívoca, natural en \(X\), entre:
+\begin{enumerate}
+\item les aplicacions \(X\times A\to B\);
+\item les aplicacions \(X\to B^A\).
+\end{enumerate}
+Una aplicació del primer tipus es llegeix com una família
+\((f_x)_{x}\) d'aplicacions \(A\to B\) indexada pels elements generalitzats
+\(x\) de \(X\); la del segon tipus n'és el nom intern.
+\end{proposicio}
+
+\begin{prova}
+La correspondència és la transposició de la definició~\ref{def:exponencial},
+que és biunívoca per la unicitat de \(\widehat h\). La naturalitat en
+\(X\) vol dir que, per a tota aplicació \(t\colon X'\to X\),
+transposar i després precompondre amb \(t\) dona el mateix que
+precompondre amb \(t\times\id_A\) i després transposar; això se segueix de
+la unicitat de la transposada aplicada a
+\(h\circ(t\times\id_A)\), les dues transposicions de la qual coincideixen.
+La lectura com a família s'obté fixant, per a cada element generalitzat
+\(x\colon X'\to X\), l'aplicació \(f_x:=\operatorname{ev}\circ((\widehat
+h\circ x)\times\id_A)\circ\iota\).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:families-classica}
+En conjunts, una família d'aplicacions \((f_x)_{x\in X}\) de \(A\) en
+\(B\) és el mateix que una funció de dues variables \(X\times A\to B\), o
+que una funció \(X\to B^A\) que a cada índex li assigna un element del
+conjunt de funcions. Les tres presentacions ---família indexada, funció de
+dues variables i funció amb valors en un conjunt de funcions--- són la
+mateixa dada vista de tres maneres. Els estadis del desenvolupament
+estructural fan aquest paper d'índexs, ara sense sortir del llenguatge.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item L'exponencial \(B^A\) es caracteritza per una propietat universal: tota \(h\colon X\times A\to B\) té una única transposada \(\widehat h\colon X\to B^A\) amb \(\operatorname{ev}\circ(\widehat h\times\id_A)=h\). Currificar i descurrificar són inverses, i l'exponencial és únic llevat d'un únic isomorfisme compatible amb l'avaluació.
+  \item L'existència d'exponencials és un axioma nou; no se segueix dels anteriors.
+  \item Els punts globals de \(B^A\) són les aplicacions \(A\to B\) (cas \(X=\mathbf1\)): les fletxes, individus primitius, es tornen punts d'un conjunt. Un element generalitzat \(X\to B^A\) és una família d'aplicacions parametritzada per \(X\), i la naturalitat de la transposició en garanteix la coherència sota reindexació.
+  \item \(A^{\mathbf1}\cong A\), \(A^{\mathbf0}\cong\mathbf1\), \(\mathbf1^A\cong\mathbf1\), \(B^{A+C}\cong B^A\times B^C\): cada cas s'obté identificant una propietat universal. En particular \(P(A):=\mathbf2^A\) és el conjunt de parts, sense axioma nou.
+  \item La composició i la identitat es realitzen com a aplicacions internes \(c\colon C^B\times B^A\to C^A\) i \(\jmath\colon\mathbf1\to A^A\); la seva unicitat és la separació global.
+\end{enumerate}
+\apartat{Errors típics} Confondre el punt \(p\colon\mathbf1\to B^A\) amb l'aplicació \(A\to B\) que representa (en la lectura clàssica s'identifiquen; en la teoria són individus diferents lligats per \(\operatorname{ev}\)); creure que un element generalitzat \(X\to B^A\) és una aplicació \(A\to B\), quan és una família; oblidar que \(\widehat h\) és única (la unicitat és el que fa funcionar totes les proves del capítol); pensar que \(B^A\) es construeix a partir dels axiomes anteriors; i deduir la unicitat de la composició interna de la transposada en lloc de la separació global.
+\apartat{Lectura recomanada} \cite[cap.~5 i §§7.1--7.2]{lawvere-rosebrugh} per als conjunts d'aplicacions, l'avaluació, la transposició i les primeres conseqüències; \cite[article~V, sessions~30--31]{lawvere-schanuel} per a una introducció molt elemental als objectes d'aplicacions, amb els exemples de \(\mathbf2^A\) i de les lleis d'exponents; \cite[cap.~6]{awodey} per als exponencials i les categories cartesianament tancades en general; \cite[pàg.~11--12]{bell2006} per a la definició de l'exponencial per adjunció i per a \(2^X\) com a conjunt de parts; i \cite[§8]{halmos} per a les funcions i el conjunt de funcions en la teoria clàssica.
+\end{resumcap}

@@ -1,0 +1,51 @@
+\chapter{Conjunts finits i cardinalitat finita}\label{cap:exercicis-finits}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:finits} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-finits} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Segments inicials i ordinals}
+
+\begin{enumerate}
+  \item Demostreu que \(\seg{0}\cong\mathbf0\) i que \(\seg{s\circ n}\cong\seg{n}+\mathbf1\). (Model: secció~\ref{prac:segments}; proposició~\ref{prop:segment-successor}.)
+
+  \item Demostreu que \([1]\cong\mathbf1\) i \([2]\cong\mathbf2\), i identifiqueu la injecció \(\iota_k\) com un monomorfisme amb complement \(\ast_k\). (Model: proposició~\ref{prop:ordinals-petits}.)
+
+  \item Demostreu que \(\seg{n}\) és una part de \(\N\) i que \(k\mathrel{\varepsilon}\seg{n}\) equival a \(k<n\). \begin{indicacio}\(\seg{n}\) és la imatge inversa de la relació \(\operatorname{Lt}\) (definició~\ref{def:ordre-naturals}) fixant el segon argument a \(n\).\end{indicacio}
+\end{enumerate}
+
+\section{Equipotència i cardinal}
+
+\begin{enumerate}[resume]
+  \item Demostreu que un punt de \(\operatorname{Isos}(A,B)\) és un isomorfisme \(A\to B\), i que \(A\approx B\) si i només si \(\operatorname{Isos}(A,B)\) és no inicial. (Model: secció~\ref{prac:equipotencia}; observació~\ref{obs:iso-punts}.)
+
+  \item Demostreu que \(\operatorname{Card}(A)\) és una part interna de \(\N\) amb \(n\in\operatorname{Card}(A)\iff\seg{n}\approx A\), sense cap axioma d'elecció. (Model: proposició~\ref{prop:card-interna}.)
+
+  \item Demostreu que l'equipotència \(\approx\) és reflexiva, simètrica i transitiva (al metanivell). \begin{indicacio}Exhibiu en cada cas l'isomorfisme: la identitat, la inversa i la composició; vegeu la definició~\ref{def:equipotencia}.\end{indicacio}
+\end{enumerate}
+
+\section{Comparació, unicitat i calaixos}
+
+\begin{enumerate}[resume]
+  \item Demostreu que un isomorfisme \(\seg{m}\cong\seg{n}\) implica \(m=n\), a partir del cas monomòrfic del lema. (Model: secció~\ref{prac:comparacio}; lema~\ref{lema:comparacio-ordinals}.)
+
+  \item Demostreu la unicitat del cardinal finit i que dos finits són isomorfs si i només si tenen el mateix cardinal. (Model: teorema~\ref{teo:unicitat-cardinal}.)
+
+  \item Demostreu el principi dels calaixos: si \(|A|>|B|\), no hi ha cap monomorfisme \(A\hookrightarrow B\). (Model: secció~\ref{prac:calaixos}; teorema~\ref{teo:calaixos}.)
+
+  \item Demostreu que, per a \(f\colon A\to B\) entre finits amb \(|A|=|B|\), ser epimorfisme implica ser isomorfisme. \begin{indicacio}Per l'elecció, \(f\) té secció \(s\); \(s\) és mono entre finits del mateix cardinal, doncs iso per la direcció ja provada, i \(f=s^{-1}\); vegeu el teorema~\ref{teo:endo-finit}. Alternativament, construïu la secció amb el bon ordre, sense elecció (model: secció~\ref{prac:calaixos}).\end{indicacio}
+
+  \item Expliqueu per què la inducció sobre \(n\) en l'afirmació \enquote{\(A+\seg{n}\) és finit amb cardinal \(|A|+n\)} és una inducció interna, codificant les aplicacions \(\seg{j}\to A+\seg{n}\) dins un exponencial fix. \begin{indicacio}Observació~\ref{obs:recomptes-interns}; seguiu el model de \(\mathcal E_A\) (definició~\ref{def:card-A}).\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Digueu quins dels resultats següents usen l'elecció i quins no: la construcció de \(\operatorname{Card}(A)\); la comparació de segments; la unicitat del cardinal; mono \(\Rightarrow\) iso en cardinal igual; epi \(\Rightarrow\) iso en cardinal igual; els quatre recomptes. \begin{indicacio}Només epi \(\Rightarrow\) iso l'usa tal com està demostrat, i es pot evitar amb el bon ordre.\end{indicacio}
+\end{enumerate}
+
+\section{Recomptes}
+
+\begin{enumerate}[resume]
+  \item Demostreu que tota part d'un conjunt finit és finita amb \(|S|\le|A|\), i que el seu complement també és finit. (Model: secció~\ref{prac:parts-finites}; lema~\ref{lema:part-finita}.)
+
+  \item Demostreu els recomptes de la suma i del producte: \(|A+B|=|A|+|B|\) i \(|A\times B|=|A|\cdot|B|\). \begin{indicacio}Inducció sobre \(|B|\), amb la descomposició successora i la distributivitat; vegeu els lemes~\ref{lema:recompte-suma} i~\ref{lema:recompte-producte}.\end{indicacio}
+
+  \item Demostreu que \(|\mathcal P(A)|=2^{n}\) per a \(|A|=n\). (Model: teorema~\ref{teo:nombre-parts}.)
+
+  \item Demostreu que \(|B^{A}|=m^{n}\) per a \(|A|=n\), \(|B|=m\), i deduïu el nombre d'aplicacions \(\seg{3}\to\seg{2}\) i el nombre de parts de \(\seg{3}\). (Model: secció~\ref{prac:recompte-aplicacions}; teorema~\ref{teo:nombre-aplicacions}.)
+\end{enumerate}

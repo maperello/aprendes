@@ -1,0 +1,20 @@
+% ============================================================
+%  Macros pròpies del volum de conjunts.
+%  Es carreguen DESPRÉS de common/macros.tex, que ja defineix
+%  \N, \Z, \Q, \R, \abs, \classe, \id, \dom, \cod, \Hom i \cat.
+%  Requereix stmaryrd (per \llbracket), carregat a main.tex.
+% ============================================================
+
+% Vocabulari primitiu del llenguatge formal (capítol 1)
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\Cod}{Cod}
+\DeclareMathOperator{\Com}{Com}
+\providecommand{\Id}{\mathrm{Id}}
+
+% Segment inicial de N (capítol 9)
+\newcommand{\seg}[1]{\llbracket #1\rrbracket}
+
+% Operadors de la part transfinita (capítol 15 endavant)
+\DeclareMathOperator{\Hart}{Hart}
+\DeclareMathOperator{\WO}{BonOrd}
+\DeclareMathOperator{\camp}{camp}

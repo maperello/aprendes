@@ -1,0 +1,67 @@
+\chapter{Alephs, cofinalitat i continu}\label{cap:practica-alephs}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:alephs} de la Part~\ref{part:teoria}), que és opcional i de Nivell~II. Els exercicis resolts en segueixen l'ordre d'exposició ---\(\aleph_0\) i el cardinal successor, la successió dels alephs, la cofinalitat, i els beths i el continu--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc distingeix amb cura el que és de Nivell~I (el cardinal successor, acotat per Hartogs, i també el continu \(\mathfrak c=\abs{P(\N)}\) i la mateixa hipòtesi del continu) del que demana l'esquema de reunió de famílies (els trams de la successió dels alephs i dels beths com a famílies). Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{\texorpdfstring{\(\aleph_0\)}{aleph 0} i el cardinal successor}\label{prac:aleph0-successor}
+
+\begin{exercici}
+\textbf{El cardinal successor existeix sense SR.} Demostreu que per a tot cardinal \(\kappa\) existeix \(\kappa^+\), acotat per Hartogs, sense usar l'esquema de reunió. (Reproduïu la proposició~\ref{prop:cardinal-successor}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(\kappa=\abs{K}\). El bon ordre \(\Hart(K)\) no s'injecta en \(K\) (teorema~\ref{teo:hartogs}), de manera que \(\abs{\Hart(K)}>\kappa\): existeix algun cardinal més gran. De fet, \(\kappa^+=\abs{\Hart(K)}\) (proposició~\ref{prop:cardinal-successor}): si \(\abs{X}>\kappa\), el teorema del bon ordre dona un bon ordre \(W\) sobre \(X\); per la comparabilitat, o bé \(W\) és isomorf a un segment propi de \(\Hart(K)\), cosa impossible perquè aquests segments representen bons ordres sobre parts de \(K\) i aleshores \(X\preceq K\), o bé \(\Hart(K)\) s'immergeix en \(W\), és a dir, \(\abs{\Hart(K)}\le\abs{X}\). I \(\Hart(K)\) és inicial: un tipus menor és el d'un segment propi, que s'injecta en \(K\). Tota la cerca ha passat dins un \(\Hart\), acotadament; no s'ha reunit cap família no acotada, de manera que no cal l'esquema de reunió (principi~\ref{sr:esquema}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Un pas contra un tram de la successió.} Expliqueu per què \(\aleph_0\) i cada \(\kappa^+\) individual són de Nivell~I, però el tram \((\aleph_n)_{n<\omega}\) com a família demana l'esquema de reunió. (Model de l'observació~\ref{obs:successor-sense-sr}.)
+\end{exercici}
+\begin{solucio}
+Cada cardinal successor \(\kappa^+\) s'obté acotadament per Hartogs (exercici anterior): és una operació que produeix \emph{un} cardinal a partir d'\emph{un} altre, dins un ambient ja construït. En canvi, reunir el tram \(\aleph_0,\aleph_1,\aleph_2,\dots\) indexat per \(\N\) en una família ---i, per a trams més llargs, prolongar-lo als límits--- és passar d'una regla externa \(n\mapsto\aleph_n\) a una família interna \(E\to\N\); i com que els \(\aleph_n\) creixen sense una cota comuna donada d'entrada, aquesta reunió no es pot fer amb els axiomes de Nivell~I i requereix l'esquema de reunió (principi~\ref{sr:esquema}). És la frontera de sempre: un pas és acotat; la successió transfinita no acotada, no.
+\end{solucio}
+
+\section{La successió dels alephs}\label{prac:alephs}
+
+\begin{exercici}
+\textbf{Els alephs són estrictament creixents.} Sota l'esquema de reunió, demostreu que \(\alpha<\beta\) implica \(\aleph_\alpha<\aleph_\beta\). (Part de la proposició~\ref{prop:alephs}.)
+\end{exercici}
+\begin{solucio}
+Per inducció transfinita (teorema~\ref{teo:induccio-transfinita}). Al successor, \(\aleph_{\alpha+1}=(\aleph_\alpha)^+>\aleph_\alpha\) per definició del cardinal successor. Al límit \(\lambda\), \(\aleph_\lambda=\sup_{\beta<\lambda}\aleph_\beta\); per a \(\gamma<\lambda\), agafant qualsevol \(\beta\) amb \(\gamma<\beta<\lambda\) es té \(\aleph_\gamma<\aleph_\beta\le\aleph_\lambda\), i de fet \(\aleph_\lambda>\aleph_\gamma\) perquè el suprem d'una successió estrictament creixent no acotada supera cada terme. Així la successió és estrictament creixent en tot el seu recorregut.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Tot cardinal infinit és un aleph.} Sota elecció i l'esquema de reunió, demostreu que per a tot conjunt infinit \(A\) existeix un únic \(\alpha\) amb \(\abs{A}=\aleph_\alpha\). (Part de la proposició~\ref{prop:alephs}.)
+\end{exercici}
+\begin{solucio}
+Per l'elecció, \(A\) té un cardinal inicial \(\kappa\) (proposició~\ref{prop:cardinal-inicial}). La successió dels alephs \(\le\kappa\) és estrictament creixent (exercici anterior) i acotada per \(\kappa\). Sigui \(\alpha\) el menor tipus amb \(\aleph_\alpha\ge\kappa\); com que cada aleph és el menor cardinal més gran que l'anterior (al successor) o el suprem (al límit), la minimalitat de \(\alpha\) força \(\aleph_\alpha=\kappa\), és a dir \(\abs{A}=\aleph_\alpha\). La unicitat és l'estricta monotonia. Sense elecció, en canvi, hi pot haver conjunts infinits no equipotents a cap aleph, de manera que la hipòtesi és essencial.
+\end{solucio}
+
+\section{Cofinalitat}\label{prac:cofinalitat}
+
+\begin{exercici}
+\textbf{\(\aleph_\omega\) és singular.} Demostreu que \(\operatorname{cf}(\aleph_\omega)=\aleph_0<\aleph_\omega\). (Part de la proposició~\ref{prop:regular-exemples}.)
+\end{exercici}
+\begin{solucio}
+La successió \((\aleph_n)_{n<\omega}\) és estrictament creixent (proposició~\ref{prop:alephs}) i el seu suprem és \(\aleph_\omega\) per definició (definició~\ref{def:alephs}). Per tant el conjunt \(\{\aleph_n:n<\omega\}\) és cofinal en \(\aleph_\omega\): arriba fins al final, perquè qualsevol cardinal \(<\aleph_\omega\) és superat per algun \(\aleph_n\). Aquesta part cofinal té tipus d'ordre \(\omega\), és a dir cardinal \(\aleph_0\). Com que \(\aleph_0<\aleph_\omega\), la cofinalitat de \(\aleph_\omega\) és estrictament menor que ell mateix: \(\aleph_\omega\) és singular (definició~\ref{def:regular-singular}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Els successors són regulars.} Demostreu que tot \(\aleph_{\alpha+1}\) és regular. (Part de la proposició~\ref{prop:regular-exemples}.)
+\end{exercici}
+\begin{solucio}
+Suposem una part cofinal \(C\) de \(\aleph_{\alpha+1}\) de cardinal \(\le\aleph_\alpha\). Aleshores \(\aleph_{\alpha+1}\) seria la unió dels segments determinats pels elements de \(C\), és a dir una unió de \(\le\aleph_\alpha\) conjunts, cadascun de cardinal \(<\aleph_{\alpha+1}\), és a dir \(\le\aleph_\alpha\). Però una tal unió té cardinal \(\le\aleph_\alpha\cdot\aleph_\alpha=\aleph_\alpha<\aleph_{\alpha+1}\) (teorema de Hessenberg, \(\kappa\cdot\kappa=\kappa\), citat al teorema~\ref{teo:hessenberg}; la reunió usa l'elecció per triar les injeccions), contradicció. Per tant tota part cofinal té cardinal \(\aleph_{\alpha+1}\), i \(\operatorname{cf}(\aleph_{\alpha+1})=\aleph_{\alpha+1}\): el successor és regular.
+\end{solucio}
+
+\section{Beths i el continu}\label{prac:beths-continu}
+
+\begin{exercici}
+\textbf{Els beths dominen els alephs.} Sota l'esquema de reunió, demostreu que \(\aleph_\alpha\le\beth_\alpha\) per a tot \(\alpha\). (Reproduïu la proposició~\ref{prop:beths}.)
+\end{exercici}
+\begin{solucio}
+Per inducció transfinita (teorema~\ref{teo:induccio-transfinita}). A \(\alpha=0\), \(\aleph_0=\beth_0\). Al successor, \(\aleph_{\alpha+1}=(\aleph_\alpha)^+\le 2^{\aleph_\alpha}\le 2^{\beth_\alpha}=\beth_{\alpha+1}\): la primera desigualtat perquè \((\aleph_\alpha)^+\) és el menor cardinal \(>\aleph_\alpha\) i \(2^{\aleph_\alpha}>\aleph_\alpha\) per Cantor (teorema~\ref{teo:cantor-cardinal}); la segona per monotonia de l'exponenciació cardinal i la hipòtesi d'inducció. Al límit, \(\aleph_\lambda=\sup_{\beta<\lambda}\aleph_\beta\le\sup_{\beta<\lambda}\beth_\beta=\beth_\lambda\). Així \(\aleph_\alpha\le\beth_\alpha\) sempre.
+\end{solucio}
+
+\begin{exercici}
+\textbf{La hipòtesi del continu, ben formulada.} Enuncieu la hipòtesi del continu i expliqueu per què és una qüestió independent i no un teorema pendent. (Model de les observacions~\ref{obs:hipotesi-continu} i~\ref{obs:hc-independencia}.)
+\end{exercici}
+\begin{solucio}
+El continu és \(\mathfrak c=2^{\aleph_0}=\beth_1\). Per Cantor, \(\mathfrak c>\aleph_0\) (teorema~\ref{teo:cantor-cardinal}), d'on \(\mathfrak c\ge\aleph_1\) sota elecció. La hipòtesi del continu (HC) afirma \(2^{\aleph_0}=\aleph_1\): que no hi ha cap cardinal entre \(\aleph_0\) i \(\mathfrak c\), és a dir que la jerarquia dels successors (\(\aleph\)) i la dels conjunts de parts (\(\beth\)) coincideixen al primer graó. No és un teorema pendent de demostració elemental: els resultats de Gödel i Cohen mostren que, \emph{si ZFC és consistent}, ni HC ni la seva negació no es dedueixen de ZFC; per la bi-interpretabilitat d'ETCS\({}+{}\)SR amb ZFC, tampoc no es dedueixen dels axiomes d'aquest llibre amb SR. És independència \emph{relativa a la consistència}, i és un metateorema citat, no un resultat del llibre. La teoria formula HC amb precisió ---distingint \(\aleph_1\) de \(\beth_1\)--- però no en determina la resposta; el que Cantor estableix és només la desigualtat \(\aleph_0<2^{\aleph_0}\), no on cau exactament \(2^{\aleph_0}\).
+\end{solucio}

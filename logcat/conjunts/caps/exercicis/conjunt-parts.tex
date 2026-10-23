@@ -1,0 +1,57 @@
+\chapter{El conjunt de parts i la pertinença interna}\label{cap:exercicis-parts-interna}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:parts-interna} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-parts-interna} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{La pertinença interna}
+
+\begin{enumerate}
+  \item Demostreu que \(a\mathrel{\varepsilon}\alpha\) equival a \(\operatorname{ev}\circ\langle\alpha,a\rangle=1\circ{!}_X\), i que sobre el nom constant d'una part \(m\) es recupera \(a\in_X m\). (Model: secció~\ref{prac:pertinenca-interna}; proposició~\ref{prop:pertinenca-interna-lectura}.)
+
+  \item Demostreu que \(\in_A\) és la part de \(A\times P(A)\) associada a \(\id_{P(A)}\), i que tota pertinença \(a\mathrel{\varepsilon}(\alpha\circ x)\) s'obté reindexant \(\in_A\). (Model: corol·lari~\ref{cor:pertinenca-universal}.)
+
+  \item Comproveu, sobre punts globals en el model clàssic, que la pertinença interna \(a\mathrel{\varepsilon}\ulcorner m\urcorner\) coincideix amb \(a\in m\) per a una part concreta \(m\) d'un conjunt finit. \begin{indicacio}Descurrifiqueu \(\ulcorner m\urcorner\) i avalueu \(\chi_m\) sobre els punts de \(A\).\end{indicacio}
+\end{enumerate}
+
+\section{Parts parametritzades}
+
+\begin{enumerate}[resume]
+  \item Demostreu la correspondència entre aplicacions \(X\to P(A)\), aplicacions \(X\times A\to\mathbf2\) i parts de \(X\times A\) llevat d'equivalència. (Model: secció~\ref{prac:parts-parametritzades}; teorema~\ref{teo:parts-parametritzades}.)
+
+  \item Interpreteu un element generalitzat \(X\to P(A)\) com una família de parts de \(A\), i digueu què recupera el cas \(X=\mathbf1\). \begin{indicacio}Vegeu l'observació~\ref{obs:generalitzats-parts}; el cas global dona una sola part de \(\mathbf1\times A\cong A\).\end{indicacio}
+\end{enumerate}
+
+\section{Operacions booleanes internes}
+
+\begin{enumerate}[resume]
+  \item Demostreu les tres identitats de càlcul de les operacions internes (proposició~\ref{prop:booleanes-puntuals}) i deduïu-ne que \(a\mathrel{\varepsilon}(\alpha\cap\beta)\) equival a \enquote{\(a\mathrel{\varepsilon}\alpha\) i \(a\mathrel{\varepsilon}\beta\)} a tot estadi, mentre que les lectures amb \enquote{o} i \enquote{no} només valen sobre punts globals. Doneu un contraexemple amb \(X=\mathbf2\) per a la unió. (Model: secció~\ref{prac:booleanes-internes}.)
+
+  \item Demostreu que les operacions internes estenen les de parts sobre els noms: \(\ulcorner m\urcorner\cap\ulcorner n\urcorner=\ulcorner m\cap n\urcorner\), etc. (Model: proposició~\ref{prop:booleanes-puntuals}.)
+
+  \item Demostreu una llei de De Morgan interna, \(\neg(\alpha\cup\beta)=\neg\alpha\cap\neg\beta\), comparant descurrificacions: totes dues aplicacions \(P(A)\times P(A)\to P(A)\) es transposen a \(\neg\circ\vee\circ\langle\operatorname{ev}_1,\operatorname{ev}_2\rangle\) i a \(\wedge\circ(\neg\times\neg)\circ\langle\operatorname{ev}_1,\operatorname{ev}_2\rangle\), que coincideixen per la llei de De Morgan sobre \(\mathbf2\). \begin{indicacio}Vegeu l'observació~\ref{obs:lleis-transportades}; no cal cap lectura puntual.\end{indicacio}
+\end{enumerate}
+
+\section{La inclusió com a ordre}
+
+\begin{enumerate}[resume]
+  \item Demostreu la lectura de la inclusió interna: \(\langle\alpha,\beta\rangle\in_X{\subseteq_A}\) si i només si \(s_\alpha\subseteq s_\beta\) com a parts de \(X\times A\), i que sobre els noms recupera \(m\subseteq_A n\). (Model: secció~\ref{prac:inclusio-ordre}; proposició~\ref{prop:inclusio-interna-lectura}.)
+
+  \item Demostreu que \(\subseteq_A\) és reflexiva, transitiva i antisimètrica, i que \(\cap\) és l'ínfim i \(\cup\) el suprem. (Model: teorema~\ref{teo:inclusio-ordre}.)
+
+  \item Demostreu la propietat de l'ínfim: \(\langle\gamma,\alpha\cap\beta\rangle\in_X{\subseteq_A}\) equival a \(\langle\gamma,\alpha\rangle\in_X{\subseteq_A}\) i \(\langle\gamma,\beta\rangle\in_X{\subseteq_A}\). \begin{indicacio}Useu que \(s_{\alpha\cap\beta}=s_\alpha\cap s_\beta\) i que una part és inclosa en una intersecció si i només si ho és en cadascun dels factors.\end{indicacio}
+\end{enumerate}
+
+\section{Imatge inversa interna i quantificadors}
+
+\begin{enumerate}[resume]
+  \item Demostreu que \(P(f)\circ\ulcorner n\urcorner=\ulcorner f^{-1}(n)\urcorner\) i que \(P(f)\) commuta amb el complement intern. (Model: secció~\ref{prac:quantificadors}; proposicions~\ref{prop:imatge-inversa-interna} i~\ref{prop:imatge-inversa-complement}.)
+
+  \item Demostreu el lema de Beck--Chevalley (lema~\ref{lema:beck-chevalley}) i useu-lo per veure que \(\exists_f\circ\alpha\) correspon a la part \((\id_X\times f)_*(s_\alpha)\). \begin{indicacio}Pulleu enrere la factorització imatge de \(f\circ s\) al llarg de \(h'\): el pullback d'un mono és mono i el d'un epi és epi, i la factorització és única.\end{indicacio}
+
+  \item Demostreu que \(\exists_f\) és adjunt per l'esquerra i \(\forall_f\) adjunt per la dreta de \(P(f)\), respecte de la inclusió de les parts associades. (Model: proposició~\ref{prop:quantificadors-adjuncio}.)
+
+  \item Demostreu que \(\exists_A:=\exists_{{!}_A}\) i \(\forall_A:=\forall_{{!}_A}\), vistes com a aplicacions \(P(A)\to P(\mathbf1)\cong\mathbf2\), envien el nom d'una part \(m\) a \(1\) exactament quan \(m\) és no buida i, respectivament, quan \(m\) és total. \begin{indicacio}Sobre noms, \(\exists_A\ulcorner m\urcorner=\ulcorner{!}_{A*}m\urcorner\), i la imatge de \(m\) dins \(\mathbf1\) és total si i només si \(S\to\mathbf1\) és epi, és a dir, si \(S\) té algun punt (capítol~\ref{cap:valors}); per a \(\forall_A\) useu el complement.\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Digueu quins dels resultats següents usen la separació global (a través de l'estabilitat dels epimorfismes o del lema del buit) i quins no: la construcció de \(\in_A\); el teorema de les parts parametritzades; les identitats de càlcul de les operacions internes; el lema de Beck--Chevalley; la lectura de \(\exists_f\) sobre punts globals; que \(\subseteq_A\) és un ordre. \begin{indicacio}Només el lema de Beck--Chevalley (estabilitat dels epis) i la lectura sobre punts (lema del buit) la usen; cap resultat del capítol no usa l'elecció.\end{indicacio}
+
+  \item Demostreu que \(P(f)\) preserva les operacions booleanes internes: \(P(f)(\beta\cap\beta')=P(f)\beta\cap P(f)\beta'\) i anàlogament per a \(\cup\). \begin{indicacio}Comproveu-ho puntualment amb la definició~\ref{def:imatge-inversa-interna} i el càlcul de \(\cap\).\end{indicacio}
+\end{enumerate}

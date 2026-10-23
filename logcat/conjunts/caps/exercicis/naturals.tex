@@ -1,0 +1,53 @@
+\chapter{L'objecte dels nombres naturals}\label{cap:exercicis-naturals}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:naturals} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-naturals} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Propietat universal, unicitat i iteració}
+
+\begin{enumerate}
+  \item Demostreu que l'objecte dels nombres naturals és únic llevat d'un únic isomorfisme compatible amb \(0\) i \(s\). (Model: secció~\ref{prac:nno-universal}; teorema~\ref{teo:nno-unicitat}.)
+
+  \item Demostreu que la iterada \(\operatorname{it}(t)\colon\N\times A\to A\) d'una autoaplicació \(t\colon A\to A\) existeix i és única. \begin{indicacio}Recursió sobre el sistema \((A^{A},\ulcorner\id_A\urcorner,C_t)\) i descurrificació; vegeu la proposició~\ref{prop:iterada}.\end{indicacio}
+
+  \item Demostreu que la recursora general \(u=\operatorname{rec}(a,t)\) s'obté iterant \(t\) a partir de \(a\): \(u\circ n=t^{n}(a)\) per a tot \(n\). \begin{indicacio}Comproveu que \(t^{(-)}(a)\) satisfà les equacions de la recursora i useu-ne la unicitat; vegeu l'observació~\ref{obs:recursio-iteracio}.\end{indicacio}
+\end{enumerate}
+
+\section{Inducció i equacions de Peano}
+
+\begin{enumerate}[resume]
+  \item Demostreu la unicitat per inducció: si \(f\circ0=g\circ0\) i la part on \(f=g\) és tancada pel successor, aleshores \(f=g\). (Model: secció~\ref{prac:induccio}; proposició~\ref{prop:unicitat-induccio}.)
+
+  \item Demostreu que el zero no és cap successor. (Model: secció~\ref{prac:peano}; teorema~\ref{teo:peano}.)
+
+  \item Demostreu que el successor és un monomorfisme construint el predecessor. \begin{indicacio}Recursió sobre \(\N\times\N\) amb \(q\circ0=\langle0,0\rangle\) i \(q\circ s=\langle p_2,s\circ p_2\rangle\circ q\); proveu \(p_2\circ q=\id\) per unicitat i preneu \(p=p_1\circ q\). Expliqueu per què la recursora de \((\N,0,\id)\) no serveix.\end{indicacio}
+
+  \item Demostreu que tot punt de \(\N\) és \(0\) o un successor (lema~\ref{lema:zero-o-successor}), i deduïu-ne que \(\N\cong\mathbf1+\N\) via \([0,s]\). \begin{indicacio}La unió de la part \(0\) i de la imatge de \(s\) conté \(0\) i és tancada per \(s\); per a l'isomorfisme, \([0,s]\) és mono (el zero no és successor i \(s\) és mono) i epi (exhaustiu sobre punts pel lema).\end{indicacio}
+
+  \item Demostreu la unicitat per inducció amb paràmetres (corol·lari~\ref{cor:induccio-parametres}) i expliqueu on intervenen els exponencials. \begin{indicacio}Transposeu \(f,g\colon X\times\N\to A\) a \(\N\to A^X\) i apliqueu la unicitat per inducció al seu equalitzador.\end{indicacio}
+\end{enumerate}
+
+\section{Aritmètica}
+
+\begin{enumerate}[resume]
+  \item Demostreu \(0+n=n\) i, a partir d'aquí, la neutralitat, l'associativitat i la commutativitat de la suma. (Model: secció~\ref{prac:aritmetica}; proposició~\ref{prop:suma}.)
+
+  \item Demostreu que la suma és cancel·lativa (\(m+k=m+l\Rightarrow k=l\)) i que \(k+l=0\Rightarrow k=l=0\). \begin{indicacio}Inducció sobre \(m\) per a la cancel·lació, usant la injectivitat del successor; per a la suma nul·la, useu que un successor no és zero.\end{indicacio}
+
+  \item Demostreu la distributivitat \(m\cdot(n+k)=m\cdot n+m\cdot k\) i deduïu la commutativitat del producte. \begin{indicacio}Inducció sobre \(k\) per a la distributivitat (proposició~\ref{prop:lleis-aritmetica}); per a la commutativitat, inducció amb els lemes \(0\cdot n=0\) i \((s\circ m)\cdot n=m\cdot n+n\).\end{indicacio}
+
+  \item Demostreu les lleis dels exponents \(m^{p+q}=m^{p}\cdot m^{q}\) i \(m^{p\cdot q}=(m^{p})^{q}\). \begin{indicacio}Inducció sobre \(q\), usant la definició recursiva de l'exponenciació i les lleis del producte (definició~\ref{def:producte-exp}, proposició~\ref{prop:lleis-aritmetica}).\end{indicacio}
+\end{enumerate}
+
+\section{Ordre i bon ordre}
+
+\begin{enumerate}[resume]
+  \item Demostreu que \(\le\) és reflexiu, transitiu i antisimètric a partir de \(m\le n\iff\exists k\,(m+k=n)\). (Model: secció~\ref{prac:ordre}; proposició~\ref{prop:ordre-total}.)
+
+  \item Demostreu que l'ordre és total: per a tots \(m,n\), \(m\le n\) o \(n\le m\). \begin{indicacio}Inducció sobre \(n\) amb \(m\) arbitrari, distingint \(n=m\) i \(n<m\); useu el pas del successor \(m\le n\iff s\circ m\le s\circ n\).\end{indicacio}
+
+  \item Demostreu que tota part no inicial de \(\N\) té un element mínim únic. \begin{indicacio}Contrarecíproc via la part auxiliar \enquote{cap \(k\le n\) no és a \(P\)}, per inducció; vegeu el teorema~\ref{teo:bon-ordre-N}.\end{indicacio}
+
+  \item Demostreu la recursió amb paràmetres: donades \(a\colon X\to A\) i \(t\colon X\times A\to A\), existeix una única \(u\colon X\times\N\to A\) amb les equacions corresponents. (Model: secció~\ref{prac:recursio-parametres}; teorema~\ref{teo:recursio-parametres}.)
+
+  \item \textbf{Sobre punts o sobre elements generalitzats.} Classifiqueu els resultats següents segons si s'han enunciat i demostrat per a elements generalitzats o només per a punts globals, i digueu en cada cas per què: les lleis de l'aritmètica; \enquote{una suma nul·la té els sumands nuls}; la totalitat de l'ordre; el teorema del bon ordre. \begin{indicacio}Les igualtats d'aplicacions valen per a elements generalitzats (inducció amb paràmetres); les afirmacions amb \enquote{o} o \enquote{existeix} es demostren sobre punts, i la separació global les converteix en afirmacions sobre parts (observació~\ref{obs:ordre-sobre-punts}).\end{indicacio}
+\end{enumerate}

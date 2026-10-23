@@ -1,0 +1,83 @@
+\chapter{Famílies, fibres i operacions indexades}\label{cap:practica-families}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:families} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició ---famílies i fibres, seccions i elecció, suma i producte, famílies de parts i operacions indexades, i la distinció regla externa contra família interna--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: llegir una fibra com un pullback, localitzar exactament on entra l'elecció, formar unions i interseccions indexades amb els quantificadors interns, i reconèixer quan una notació \(i\mapsto X_i\) encara no representa cap objecte. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Famílies i fibres}\label{prac:families-fibres}
+
+\begin{exercici}
+\textbf{La fibra és una imatge inversa.} Sigui \(p\colon E\to I\) una família i \(i\colon\mathbf1\to I\) un índex. Demostreu que la fibra \(E_i=\mathbf1\times_I E\) és (isomorfa a) la imatge inversa \(p^{-1}(i)\hookrightarrow E\), i que la projecció \(E_i\to E\) és un monomorfisme. (Reproduïu l'observació~\ref{obs:fibra-part}.)
+\end{exercici}
+\begin{solucio}
+Per definició, \(E_i\) és el pullback de \(i\colon\mathbf1\to I\) i \(p\colon E\to I\) (definició~\ref{def:pullback}). La imatge inversa \(p^{-1}(i)\) és, precisament, el pullback de \(p\) al llarg de la part \(i\colon\mathbf1\hookrightarrow I\) (definició~\ref{def:imatge-inversa}); com que \(i\) és un punt, tots dos pullbacks coincideixen, d'on \(E_i\cong p^{-1}(i)\). La projecció \(E_i\to E\) és el canvi de base de \(i\) al llarg de \(p\); com que \(i\) és un monomorfisme (tot punt ho és) i els monomorfismes es preserven per canvi de base (proposició~\ref{prop:pullback-mono}), la projecció \(E_i\to E\) és un monomorfisme. En la lectura clàssica (observació~\ref{obs:pullback-exemples}), els seus punts són els \(e\in E\) amb \(p(e)=i\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{La família constant.} Descriviu la família constant de valor \(A\) indexada per \(I\) i comproveu que totes les seves fibres són isomorfes a \(A\). (Model de la definició~\ref{def:familia-constant}.)
+\end{exercici}
+\begin{solucio}
+La família constant és la projecció \(\pi_I\colon I\times A\to I\). La seva fibra sobre \(i\) és el pullback \(\mathbf1\times_I(I\times A)\); prenent \(C=I\), \(f=i\colon\mathbf1\to I\) i \(g=\pi_I\), el pullback és \(\{i\}\times A\), isomorf a \(A\) (observació~\ref{obs:pullback-exemples}, cas de la fibra). Per tant \(\pi_I\) representa la família \((A)_{i\in I}\) amb totes les fibres iguals a \(A\). El seu total \(I\times A\) és el producte cartesià, llegit com \enquote{\(I\) còpies de \(A\)}.
+\end{solucio}
+
+\section{Seccions i elecció}\label{prac:seccions}
+
+\begin{exercici}
+\textbf{Secció = funció d'elecció.} Demostreu que una secció \(s\colon I\to E\) de \(p\colon E\to I\) tria un element de cada fibra, i que si \(p\) és un epimorfisme regular, l'existència d'una secció és exactament l'axioma d'elecció. (Reproduïu l'observació~\ref{obs:seccio-eleccio}.)
+\end{exercici}
+\begin{solucio}
+Si \(p\circ s=\id_I\), aleshores per a cada índex \(i\) es té \(p(s(i))=i\), de manera que \(s(i)\) és un element de la fibra \(E_i=p^{-1}(i)\); així \(s\) tria simultàniament un element a cada fibra, és a dir és una funció d'elecció (definició~\ref{def:seccio-familia}). Si \(p\) és un epimorfisme regular ---totes les fibres no inicials--- l'axioma d'elecció (axioma~\ref{ax:eleccio}) afirma exactament que \(p\) s'escindeix, és a dir que admet una secció (proposició~\ref{prop:epi-regular-eleccio}). Sense elecció, en canvi, una família de fibres totes no buides pot no tenir cap secció; la tria simultània no és automàtica. Quan cada fibra porta un element distingit canònic (un mínim, un ínfim), la secció es construeix sense elecció, com als subobjectes de \(\N\) (observació~\ref{obs:minim-vs-eleccio}).
+\end{solucio}
+
+\section{Suma i producte}\label{prac:suma-producte}
+
+\begin{exercici}
+\textbf{El producte com a conjunt de seccions.} Demostreu que \(\prod_{i\in I}E_i=\{s\in E^I : p\circ s=\id_I\}\) existeix com a part interna de \(E^I\), i que els seus elements globals són les seccions de \(p\). (Reproduïu la proposició~\ref{prop:producte-existeix}.)
+\end{exercici}
+\begin{solucio}
+L'exponencial \(E^I\) existeix per l'axioma~\ref{ax:exponencials}. Les aplicacions \(s\mapsto p\circ s\) (postcomposició interna amb \(p\), capítol~\ref{cap:exponencials}) i \(s\mapsto\id_I\) (constant) van de \(E^I\) a \(I^I\); el seu equalitzador és una part de \(E^I\) (capítol~\ref{cap:valors}), que és per definició \(\prod_{i\in I}E_i\). Cap tria fins aquí: l'objecte existeix sempre. Un element global és una \(s\colon\mathbf1\to E^I\) amb \(p\circ s=\id_I\), que per transposició (definició~\ref{def:exponencial}) és una aplicació \(s\colon I\to E\) amb \(p\circ s=\id_I\), és a dir una secció (definició~\ref{def:seccio-familia}). Per tant el producte és no inicial si i només si \(p\) té una secció.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Objecte contra elements.} Expliqueu, amb el producte, la diferència entre \enquote{el producte existeix} i \enquote{el producte té elements}, i digueu on entra l'elecció. (Model de l'observació~\ref{obs:objecte-vs-elements}.)
+\end{exercici}
+\begin{solucio}
+Que el producte \emph{existeixi com a objecte} és sempre cert: es construeix amb exponencials i un equalitzador, sense cap tria (exercici anterior). Que \emph{tingui algun element global} equival, per a fibres no buides, a l'existència d'una secció de \(p\), i això és exactament l'axioma d'elecció (proposició~\ref{prop:epi-regular-eleccio}). La notació \(\prod_{i\in I}E_i\) amaga aquesta diferència: escriure-la no compromet cap tria; afirmar que és no inicial, sí. És la versió general del producte numerable (observació~\ref{obs:producte-numerable}), on l'objecte hi és sempre però els seus punts costen l'elecció numerable.
+\end{solucio}
+
+\section{Famílies de parts i operacions indexades}\label{prac:parts-indexades}
+
+\begin{exercici}
+\textbf{Unió i intersecció indexades.} Sigui \(\alpha\colon I\to P(A)\) una família de parts de \(A\). Definiu \(\bigcup_{i}\alpha(i)\) i \(\bigcap_{i}\alpha(i)\) amb els quantificadors interns i demostreu que són, respectivament, el suprem i l'ínfim de la família a \((P(A),\subseteq)\). (Reproduïu la proposició~\ref{prop:unio-interseccio-propietats}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(R=\{(i,a) : a\mathrel{\varepsilon}\alpha(i)\}\hookrightarrow I\times A\) la relació de pertinença total (definició~\ref{def:familia-parts}) i \(\pi_A\colon I\times A\to A\) la projecció. Posem \(\bigcup_i\alpha(i)=\exists_{\pi_A}(R)\) i \(\bigcap_i\alpha(i)=\forall_{\pi_A}\) del predicat \((i,a)\in R\) (definició~\ref{def:unio-interseccio-indexada}). Per l'adjunció dels quantificadors (proposició~\ref{prop:quantificadors-adjuncio}, estadi \(\mathbf1\)), \(\exists_{\pi_A}(R)\subseteq S\) equival a \(R\subseteq\pi_A^{-1}(S)=I\times S\), és a dir, sobre punts, a \(\alpha(i)\subseteq S\) per a tot \(i\): això caracteritza \(\bigcup_i\alpha(i)\) com la menor part que conté totes les \(\alpha(i)\), el suprem. Dualment, \(\forall_{\pi_A}\) dona la major part continguda en totes, l'ínfim. Tot es fa dins \(P(A)\) amb els quantificadors interns, sense cap axioma nou.
+\end{solucio}
+
+\begin{exercici}
+\textbf{De Morgan indexada.} Demostreu que \(A\setminus\bigcup_i\alpha(i)=\bigcap_i(A\setminus\alpha(i))\). (Part de la proposició~\ref{prop:unio-interseccio-propietats}.)
+\end{exercici}
+\begin{solucio}
+Sobre punts, \(a\) és a \(A\setminus\bigcup_i\alpha(i)\) quan \emph{no} existeix cap \(i\) amb \(a\mathrel{\varepsilon}\alpha(i)\), és a dir quan \emph{per a tot} \(i\) es té \(a\mathrel{\varepsilon}(A\setminus\alpha(i))\); i això és pertànyer a \(\bigcap_i(A\setminus\alpha(i))\). Però la igualtat de parts no s'ha de comprovar sobre punts: és directament la identitat \(\neg\exists_{\pi_A}(R)=\forall_{\pi_A}(\neg R)\), que surt de \(\forall_f=\neg\exists_f\neg\) (proposició~\ref{prop:quantificadors-adjuncio}) i de les lleis de De Morgan booleanes transportades a la família (observació~\ref{obs:lleis-transportades}). Cap pas usa elecció.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Una partició a partir de les seves peces.} Sigui \(\chi\colon\N\to\mathbf2\) la \emph{paritat}, recursora del sistema \((\mathbf2,0,\neg)\): \(\chi(0)=0\) i \(\chi(s\circ n)=\neg\chi(n)\). Siguin \(\alpha(0):=\chi^{-1}(0)\) (els parells) i \(\alpha(1):=\chi^{-1}(1)\) (els senars), vistes com una família \(\alpha\colon\mathbf2\to P(\N)\). Comproveu les hipòtesis de la proposició~\ref{prop:familia-particio} i identifiqueu la partició \(q\colon\N\twoheadrightarrow\mathbf2\) que en resulta.
+\end{exercici}
+\begin{solucio}
+Les dues parts són les imatges inverses dels dos punts de \(\mathbf2\) per \(\chi\), és a dir, la part classificada per \(\chi\) i el seu complement (capítol~\ref{cap:valors}): són disjuntes i la seva unió és tot \(\N\) per construcció. Són no buides: \(0\in\alpha(0)\) i \(s\circ0\in\alpha(1)\), perquè \(\chi(s\circ0)=\neg0=1\). La relació de pertinença total \(R\hookrightarrow\mathbf2\times\N\) és el graf de \(\chi\) amb els factors intercanviats, i \(r_\N\colon R\to\N\) és un isomorfisme (tot punt té exactament una paritat); la partició és \(q=r_{\mathbf2}\circ r_\N^{-1}=\chi\) mateixa, amb fibres \(\alpha(0)\) i \(\alpha(1)\). En general, una partició en dues peces és el mateix que una característica \(A\to\mathbf2\) amb les dues fibres no buides; la proposició ho generalitza a un nombre qualsevol de peces, indexat per \(I\).
+\end{solucio}
+
+\section{Regla externa contra família interna}\label{prac:regla-vs-familia}
+
+\begin{exercici}
+\textbf{\(n\mapsto\seg{n}\) com a regla externa.} Expliqueu per què l'assignació \(n\mapsto\seg{n}\) és una regla externa que \emph{sí} es pot representar per una família interna, i com. (Model de l'observació~\ref{obs:regla-externa-problema}.)
+\end{exercici}
+\begin{solucio}
+La prescripció \(n\mapsto\seg{n}\) associa a cada natural el seu segment inicial; és una regla clara però, en si mateixa, no és cap aplicació \(E\to\N\). Es \emph{representa} per una família interna allotjant tots els \(\seg{n}\) dins un ambient comú: com que cada \(\seg{n}\) és una part de \(\N\), la regla és l'aplicació \(\N\to P(\N)\), \(n\mapsto\seg{n}\) (una família de parts d'un fix, definició~\ref{def:familia-parts}); alternativament, el total es realitza dins un exponencial fix, com al conjunt de llistes (definició~\ref{def:llistes}). La representació existeix precisament perquè hi ha un ambient (\(\N\), o \(P(\N)\)) que conté tots els valors. Sense un tal ambient comú, la reunió podria escapar-se dels axiomes.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Quan la regla no es representa.} Descriviu una situació en què una regla externa \(i\mapsto X_i\) \emph{no} es pot representar amb els axiomes de Nivell~I, i digueu quin principi caldria. (Model de les observacions~\ref{obs:regla-externa-problema} i~\ref{obs:sr}.)
+\end{exercici}
+\begin{solucio}
+Si els conjunts \(X_i\) creixen sense cap cota comuna coneguda ---per exemple la regla \(n\mapsto P^n(A)\) que itera el conjunt de parts, \(A, P(A), P(P(A)),\dots\), on cada terme és estrictament més gran que l'anterior pel teorema de Cantor (teorema~\ref{teo:cantor})--- no hi ha cap conjunt ambient dins el qual tallar tots els \(X_i\) per separació, de manera que no se'n pot formar cap total \(E\to\N\) amb els axiomes bàsics. Reunir aquesta regla en una família interna demana el principi de substitució estructural SR (observació~\ref{obs:sr}), que és de Nivell~II i que no adoptem aquí. Noteu que això \emph{no} és una qüestió d'elecció: no cal triar res dins fibres, sinó garantir l'existència del total (observació~\ref{obs:sr-no-eleccio}).
+\end{solucio}

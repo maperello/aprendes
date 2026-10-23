@@ -1,0 +1,92 @@
+\chapter{Imatges i factoritzacions}\label{cap:practica-imatges}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:imatges} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició --- la factorització (epi regular)--(mono), les caracteritzacions per la factorització, la imatge directa i la seva adjunció amb la imatge inversa, i la composició de relacions amb les relacions funcionals i totals--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: construir la factorització imatge via el parell nucli i el quocient, llegir monomorfismes i epimorfismes a través dels seus factors, i raonar sobre elements generalitzats amb testimonis. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{La factorització imatge}\label{prac:factoritzacio}
+
+\begin{exercici}
+\textbf{Construcció de la factorització.} Sigui \(f\colon A\to B\). Descriviu com es construeixen l'epimorfisme regular \(e\) i el monomorfisme \(m\) de la factorització \(A\overset{e}{\twoheadrightarrow}\operatorname{Im}(f)\overset{m}{\hookrightarrow}B\), i justifiqueu l'existència de l'única \(m\) amb \(f=m\circ e\). (Model del teorema~\ref{teo:factoritzacio}.)
+\end{exercici}
+\begin{solucio}
+Prenem el parell nucli \(n=\operatorname{Nuc}(f)\), que és una relació d'equivalència sobre \(A\) (proposició~\ref{prop:kernel-equivalencia}), i el seu quocient \(e\colon A\twoheadrightarrow A/n\), un epimorfisme regular (proposicions~\ref{prop:quocient-existeix} i~\ref{prop:quocient-regular}). Per definició de parell nucli, \(f\circ k_1=f\circ k_2\), on \(k_1,k_2\) són les projeccions de \(n\); és a dir, \(f\) coiguala el parell \((k_1,k_2)\). Com que \(e\) és el coequalitzador d'aquest parell (definició~\ref{def:coequalitzador}), la seva propietat universal proporciona una \emph{única} aplicació \(m\colon A/n\to B\) amb \(f=m\circ e\). Posant \(\operatorname{Im}(f):=A/n\), obtenim la factorització desitjada; falta veure que \(m\) és mono (exercici següent).
+\end{solucio}
+
+\begin{exercici}
+\textbf{El factor \(m\) és un monomorfisme, sense elecció.} Demostreu que l'aplicació \(m\colon\operatorname{Im}(f)\to B\) de la factorització és un monomorfisme, usant només la separació global i l'exhaustivitat dels epimorfismes sobre punts. Doneu després l'argument alternatiu amb una secció de \(e\), i compareu-los. (Reproduïu el pas central del teorema~\ref{teo:factoritzacio}; vegeu l'observació~\ref{obs:factoritzacio-eleccio}.)
+\end{exercici}
+\begin{solucio}
+\emph{Sense elecció.} Per la separació global, un monomorfisme és el mateix que una aplicació injectiva sobre punts (observació~\ref{obs:injectiva-mono}). Siguin \(y,y'\colon\mathbf1\to I\) amb \(m\circ y=m\circ y'\). Com que \(e\colon A\twoheadrightarrow I\) és un epimorfisme, és exhaustiu sobre punts (proposició~\ref{prop:epi-exhaustiu-punts}): \(y=e\circ a\) i \(y'=e\circ a'\) per a certs \(a,a'\colon\mathbf1\to A\). Aleshores \(f\circ a=m\circ e\circ a=m\circ y=m\circ y'=f\circ a'\), de manera que \((a,a')\) es factoritza pel parell nucli \(n\) de \(f\); i com que \(e\) coiguala les projeccions de \(n\), \(y=e\circ a=e\circ a'=y'\). Per tant \(m\) és injectiva sobre punts, i mono.
+
+\emph{Amb elecció.} Una secció \(s\colon I\to A\) de \(e\) permet fer el mateix a qualsevol estadi: si \(m\circ x=m\circ x'\) amb \(x,x'\colon X\to I\), aleshores \(f\circ s\circ x=m\circ x=m\circ x'=f\circ s\circ x'\), de manera que \(s\circ x\) i \(s\circ x'\) estan relacionats per \(n\), i \(x=e\circ s\circ x=e\circ s\circ x'=x'\).
+
+\emph{Comparació.} El primer argument redueix la qüestió als punts globals, que és on la separació global dona força a la teoria, i després usa que els epimorfismes tenen prou preimatges puntuals. El segon no necessita la separació global, però necessita una secció, és a dir, l'elecció. En una teoria ben apuntada el primer és el bo: no gasta un axioma que no cal.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Unicitat de la factorització.} Suposeu que \(f=m_1\circ e_1=m_2\circ e_2\) són dues factoritzacions (epi regular)--(mono). Demostreu que hi ha un únic isomorfisme \(u\) amb \(m_2\circ u=m_1\) i \(u\circ e_1=e_2\). (Part de unicitat del teorema~\ref{teo:factoritzacio}.)
+\end{exercici}
+\begin{solucio}
+Per la minimalitat de la imatge, cada monomorfisme es factoritza per l'altre: hi ha \(u\colon I_1\to I_2\) i \(v\colon I_2\to I_1\) amb \(m_2\circ u=m_1\) i \(m_1\circ v=m_2\). Aleshores \(m_1\circ v\circ u=m_2\circ u=m_1\); com que \(m_1\) és mono, \(v\circ u=\id_{I_1}\), i simètricament \(u\circ v=\id_{I_2}\). Per tant \(u\) és un isomorfisme. La compatibilitat \(u\circ e_1=e_2\) surt de \(m_2\circ u\circ e_1=m_1\circ e_1=f=m_2\circ e_2\) cancel·lant el monomorfisme \(m_2\); i la unicitat de \(u\), del mateix argument de cancel·lació. És el patró habitual d'unicitat de les construccions universals.
+\end{solucio}
+
+\section{Caracteritzacions per la factorització}\label{prac:caracteritzacions}
+
+\begin{exercici}
+\textbf{Mono si i només si parell nucli trivial.} Demostreu que \(f\colon A\to B\) és un monomorfisme si i només si \(\operatorname{Nuc}(f)\equiv_{A\times A}\Delta_A\), i que en aquest cas l'aplicació exhaustiva \(e\) és un isomorfisme. (Reproduïu la proposició~\ref{prop:mono-nucli-trivial}.)
+\end{exercici}
+\begin{solucio}
+Si \(f\) és mono, aleshores \(f\circ k_1=f\circ k_2\) implica \(k_1=k_2\), de manera que el parell nucli és la diagonal (proposició~\ref{prop:diagonal-mono}). Recíprocament, si \(\operatorname{Nuc}(f)\equiv_{A\times A}\Delta_A\) i \(x,x'\colon X\to A\) compleixen \(f\circ x=f\circ x'\), aleshores \(\langle x,x'\rangle\) es factoritza pel parell nucli, per tant per la diagonal, i això dona \(x=x'\); així \(f\) és mono. En aquest cas el quocient de \(A\) per la diagonal és el mateix \(A\), de manera que \(e\colon A\to\operatorname{Im}(f)\) és un isomorfisme: un monomorfisme \enquote{ja és} la seva pròpia imatge.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Epi si i només si imatge total.} Demostreu que \(f\) és un epimorfisme si i només si el monomorfisme \(m\colon\operatorname{Im}(f)\to B\) és un isomorfisme. (Model de la proposició~\ref{prop:epi-imatge-total}.)
+\end{exercici}
+\begin{solucio}
+Si \(m\) és un isomorfisme, \(f=m\circ e\) és la composició d'un epimorfisme regular \(e\) amb un isomorfisme, i per tant és un epimorfisme (regular). Recíprocament, sigui \(f\) un epimorfisme. Com que \(f=m\circ e\), també \(m\) és un epimorfisme (si \(u\circ m=v\circ m\), component amb \(e\) s'obté \(u\circ f=v\circ f\) i \(u=v\)). Així \(m\) és un bimorfisme i, pel teorema del bimorfisme (proposició~\ref{prop:bimorfisme-isomorfisme}), un isomorfisme. Observeu que aquest argument dona de passada el corol·lari~\ref{cor:epi-regular-sense-eleccio}: tot epimorfisme és regular, perquè és un coequalitzador (\(e\)) seguit d'un isomorfisme. L'argument antic, que suposava \(f\) regular i construïa la inversa de \(m\) amb la propietat universal del coequalitzador, continua sent vàlid però ja no cal.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Isomorfisme via els dos factors.} Demostreu que \(f\) és un isomorfisme si i només si és alhora monomorfisme i epimorfisme. (Model del corol·lari~\ref{cor:bimorfisme-iso}.)
+\end{exercici}
+\begin{solucio}
+Si \(f\) és un isomorfisme, és tant mono com epi. Recíprocament, si \(f\) és mono, l'aplicació exhaustiva \(e\) és un isomorfisme (proposició~\ref{prop:mono-nucli-trivial}); si a més és epi, el monomorfisme \(m\) també ho és (proposició~\ref{prop:epi-imatge-total}). Aleshores \(f=m\circ e\) és composició de dos isomorfismes, i és un isomorfisme. Aquesta és la lectura del teorema del bimorfisme a través de la factorització imatge: cada factor recull una de les dues hipòtesis.
+\end{solucio}
+
+\section{Imatge directa i adjunció}\label{prac:imatge-directa}
+
+\begin{exercici}
+\textbf{L'adjunció imatge directa\,--\,imatge inversa.} Siguin \(f\colon A\to B\), una part \(s\colon S\rightarrowtail A\) i una part \(t\colon T\rightarrowtail B\). Demostreu que \(f_{*}S\subseteq_B T\) si i només si \(S\subseteq_A f^{*}T\). (Reproduïu la proposició~\ref{prop:adjuncio-imatges}.)
+\end{exercici}
+\begin{solucio}
+Suposem \(f_{*}S\subseteq_B T\). Un element generalitzat \(x\colon X\to A\) pertany a \(S\) quan es factoritza per \(s\); en aquest cas \(f\circ x\) es factoritza per \(f\circ s\) i, per la definició d'imatge, per \(f_{*}S\), i per hipòtesi per \(t\). Per tant \(f\circ x\) pertany a \(T\), és a dir \(x\) pertany a \(f^{*}T\) (proposició~\ref{prop:pertinenca-imatge-inversa}); això és \(S\subseteq_A f^{*}T\). Recíprocament, si \(S\subseteq_A f^{*}T\), tot element de \(S\) té imatge dins \(T\); com que \(f_{*}S\) és la part \emph{mínima} per la qual passa \(f\circ s\) i \(t\) n'és una, la minimalitat dona \(f_{*}S\subseteq_B T\). Prendre imatge directa i inversa són, doncs, operacions adjuntes entre les parts de \(A\) i les de \(B\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{La imatge de la part total.} Demostreu que \(f_{*}A=\operatorname{Im}(f)\), i deduïu que \(f\) és un epimorfisme si i només si \(f_{*}A\equiv_B\id_B\). (Reproduïu el corol·lari~\ref{cor:estabilitat-exhaustiva}.)
+\end{exercici}
+\begin{solucio}
+La part total de \(A\) és \(\id_A\), i \(f\circ\id_A=f\); per definició d'imatge directa, \(f_{*}A\) és la imatge de \(f\circ\id_A=f\), és a dir \(f_{*}A=\operatorname{Im}(f)\). La segona afirmació és, aleshores, exactament la proposició~\ref{prop:epi-imatge-total}: \(f\) és epi si i només si \(m\) és iso, és a dir si i només si la imatge és tot \(B\), això és \(f_{*}A\equiv_B\id_B\).
+\end{solucio}
+
+\section{Composició de relacions i relacions funcionals}\label{prac:relacions-funcionals}
+
+\begin{exercici}
+\textbf{La composició de relacions és una relació.} Siguin \(r\) una relació de \(A\) cap a \(B\) i \(r'\) una de \(B\) cap a \(C\). Expliqueu per què \(r'\circ r\) és una relació de \(A\) cap a \(C\), i quin paper hi juga la imatge. (Model de la proposició~\ref{prop:composicio-es-relacio}.)
+\end{exercici}
+\begin{solucio}
+Es forma el producte fibrat \(R\times_B R'\) (que encadena un testimoni de \(r\) amb un de \(r'\) sobre un mateix punt de \(B\)) i l'aplicació \(g\colon R\times_B R'\to A\times C\) que en recull els extrems, \(g=\langle r_1\circ\pi,\;r'_2\circ\pi'\rangle\). La composició \(r'\circ r\) es defineix com la \emph{imatge} d'aquesta \(g\): per la factorització (teorema~\ref{teo:factoritzacio}), la imatge és sempre un monomorfisme cap a \(A\times C\), de manera que \(r'\circ r\) és una part de \(A\times C\), és a dir una relació. La imatge és, precisament, el que introdueix el quantificador existencial \enquote{existeix \(b\) amb \(a\mathrel{r}b\) i \(b\mathrel{r'}c\)}: comprimeix tots els encadenaments possibles en el conjunt de parells efectivament connectats (observació~\ref{obs:composicio-relacions-classica}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Funcionalitat \(=\) unicitat del testimoni.} Sigui \(r\colon R\rightarrowtail A\times B\) una relació amb projeccions \(r_1,r_2\). Demostreu que \(r\) és funcional (és a dir, \(r_1\) és mono) si i només si per a tot \(x\colon X\to A\) hi ha com a molt un \(y\colon X\to B\) amb \(x\mathrel{r_X}y\). (Part de la proposició~\ref{prop:funcional-lectura}.)
+\end{exercici}
+\begin{solucio}
+Recordem que \(x\mathrel{r_X}y\) vol dir que hi ha un testimoni \(\rho\colon X\to R\) amb \(r_1\circ\rho=x\) i \(r_2\circ\rho=y\). Suposem \(r_1\) mono. Si \(x\mathrel{r_X}y\) i \(x\mathrel{r_X}y'\), amb testimonis \(\rho,\rho'\), aleshores \(r_1\circ\rho=x=r_1\circ\rho'\); com que \(r_1\) és mono, \(\rho=\rho'\), i per tant \(y=r_2\circ\rho=r_2\circ\rho'=y'\). Hi ha, doncs, com a molt un \(y\). Recíprocament, suposem la unicitat i siguin \(\rho,\rho'\) amb \(r_1\circ\rho=r_1\circ\rho'\); posant \(y=r_2\circ\rho\), \(y'=r_2\circ\rho'\), tots dos són testimonis del mateix \(x\), d'on \(y=y'\); llavors \(\rho,\rho'\) tenen les dues components iguals, i com que \(r=\langle r_1,r_2\rangle\) és mono, \(\rho=\rho'\). Això prova que \(r_1\) és mono. La funcionalitat és, literalment, la unicitat del testimoni.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Les aplicacions són les relacions funcionals i totals.} Demostreu que assignar a \(f\colon A\to B\) el seu graf \(\langle\id_A,f\rangle\) dona una correspondència biunívoca (llevat d'equivalència de parts) entre aplicacions \(A\to B\) i relacions funcionals i totals. (Model de la proposició~\ref{prop:aplicacio-funcional}.)
+\end{exercici}
+\begin{solucio}
+El graf \(\langle\id_A,f\rangle\colon A\rightarrowtail A\times B\) té primera projecció \(p_1\circ\langle\id_A,f\rangle=\id_A\), un isomorfisme; per tant el graf és funcional i total (definició~\ref{def:relacio-funcional}), amb \(y=f\circ x\) l'únic element relacionat amb cada \(x\). Recíprocament, una relació funcional i total té primera projecció \(r_1\) que és alhora mono i epi, i doncs un isomorfisme (corol·lari~\ref{cor:bimorfisme-iso}); l'aplicació \(f:=r_2\circ r_1^{-1}\) té per graf una part equivalent a \(r\). Aquestes dues assignacions són mútuament inverses llevat d'equivalència. A més, sota la correspondència, la composició de relacions coincideix amb la d'aplicacions: el producte fibrat de dos grafs encadena \(x\) amb \(f\circ x\) i aquest amb \(g\circ(f\circ x)\), i la imatge d'aquest encadenament és el graf de \(g\circ f\).
+\end{solucio}

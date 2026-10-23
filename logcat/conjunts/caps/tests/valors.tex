@@ -1,0 +1,131 @@
+\chapter[Valors de veritat i construccions finites]{Valors de veritat, parts\texorpdfstring{\\}{ }i construccions finites}\label{test:cap3}
+
+Aquest test correspon al capítol~3 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u3}{c,b,a,c,c,a,b,c,b,c,c,b}
+
+\begin{enumerate}
+
+\pregunta Que una suma \(A_0\to A_0+A_1\leftarrow A_1\) sigui \emph{disjunta} vol dir, entre altres coses, que\ldots
+\begin{itemize}
+\opcio{a}{els dos sumands són isomorfs.}
+\opcio{b}{la suma és el conjunt terminal.}
+\opcio{c}{el pullback de les dues injeccions és inicial i cada injecció és un monomorfisme.}
+\opcio{d}{no existeix cap aplicació que en surti.}
+\end{itemize}
+\feedback
+\justificacio{La disjunció diu que les dues injeccions són monomorfismes i que el seu pullback és inicial: les dues còpies no se solapen. Els sumands no han de ser isomorfs, i de la suma en surten tantes aplicacions com defineixi la propietat universal.}
+
+\pregunta El conjunt inicial \(\mathbf0\) és \emph{estricte}. Això significa que\ldots
+\begin{itemize}
+\opcio{a}{no té cap element global.}
+\opcio{b}{tota aplicació \(X\to\mathbf0\) és un isomorfisme.}
+\opcio{c}{és isomorf al terminal.}
+\opcio{d}{admet exactament dos elements.}
+\end{itemize}
+\feedback
+\justificacio{Estricte vol dir que tota aplicació \(X\to\mathbf0\) és un isomorfisme: si alguna cosa es pot enviar a \(\mathbf0\), ja era \(\mathbf0\). Es demostra amb l'estabilitat i la disjunció de la suma \(\mathbf0+\mathbf0\). Que \(\mathbf0\) no tingui punts és una altra propietat, provada al capítol 1.}
+
+\pregunta Els dos elements globals \(0,1\colon\mathbf1\to\mathbf2\)\ldots
+\begin{itemize}
+\opcio{a}{són diferents, i \(\mathbf2\) té exactament dos elements globals.}
+\opcio{b}{coincideixen.}
+\opcio{c}{no són monomorfismes.}
+\opcio{d}{només existeixen si \(\mathbf2\) és inicial.}
+\end{itemize}
+\feedback
+\justificacio{Com que la suma \(\mathbf1+\mathbf1\) és disjunta, si \(0=1\) el pullback de \(0\) amb ella mateixa (que és \(\mathbf1\)) seria inicial, contra la no-degeneració. I tot punt de \(\mathbf2\) ve d'un sumand: és \(0\) o \(1\).}
+
+\pregunta Un conjunt \(X\) sense cap element global\ldots
+\begin{itemize}
+\opcio{a}{és necessàriament el terminal.}
+\opcio{b}{té exactament un element global amagat.}
+\opcio{c}{és inicial (lema del buit).}
+\opcio{d}{és isomorf a \(\mathbf2\).}
+\end{itemize}
+\feedback
+\justificacio{Si \(X\) no té punts, \(0\circ{!}_X\) i \(1\circ{!}_X\) coincideixen buidament sobre tots ells i, per separació global, són iguals; això dona una aplicació cap al pullback inicial de \(0\) i \(1\), i l'estrictesa fa \(X\cong\mathbf0\).}
+
+\pregunta La característica de la part total \(\id_A\colon A\rightarrowtail A\) és\ldots
+\begin{itemize}
+\opcio{a}{la negació \(\neg\).}
+\opcio{b}{una aplicació no constant.}
+\opcio{c}{la constant de valor \(1\).}
+\opcio{d}{la constant de valor \(0\).}
+\end{itemize}
+\feedback
+\justificacio{Tot element generalitzat pertany a la part total, i \((1\circ{!}_A)\circ x=1\circ{!}_X\) per a tot \(x\); la unicitat de la característica fa la resta. La constant \(0\) és la característica de la part buida.}
+
+\pregunta La negació \(\neg\colon\mathbf2\to\mathbf2\) compleix\ldots
+\begin{itemize}
+\opcio{a}{\(\neg\circ\neg=\id_{\mathbf2}\); és una involució.}
+\opcio{b}{\(\neg\circ\neg=\neg\).}
+\opcio{c}{\(\neg\) és una aplicació constant.}
+\opcio{d}{\(\neg\) no és un isomorfisme.}
+\end{itemize}
+\feedback
+\justificacio{\(\neg=[1,0]\) intercanvia els dos punts; \(\neg\circ\neg\) i \(\id_{\mathbf2}\) coincideixen sobre les dues injeccions i, per extensionalitat de la definició per casos, són iguals. Per tant \(\neg\) és un isomorfisme invers de si mateix.}
+
+\pregunta Per a tota part \(m\colon S\rightarrowtail A\), l'aplicació \([m,m^c]\colon S+S^c\to A\)\ldots
+\begin{itemize}
+\opcio{a}{és sempre un monomorfisme però no exhaustiu.}
+\opcio{b}{és un isomorfisme: \(m\) i el seu complement descomponen \(A\).}
+\opcio{c}{és l'aplicació constant.}
+\opcio{d}{només existeix quan \(S\) és buit.}
+\end{itemize}
+\feedback
+\justificacio{\(m\) és el pullback de \(1\) al llarg de \(\chi_m\) i \(m^c\) el de \(0\); com que \(\mathbf1\xrightarrow{1}\mathbf2\xleftarrow{0}\mathbf1\) és una suma, l'estabilitat fa que els seus dos pullbacks formin una suma amb vèrtex \(A\), i la unicitat de les sumes dona l'isomorfisme.}
+
+\pregunta La característica de la intersecció \(m\cap n\) és\ldots
+\begin{itemize}
+\opcio{a}{\(\neg\circ\chi_m\).}
+\opcio{b}{\(\chi_m\circ\chi_n\).}
+\opcio{c}{\(\wedge\circ\langle\chi_m,\chi_n\rangle\), la conjunció de les dues característiques.}
+\opcio{d}{sempre la constant \(1\).}
+\end{itemize}
+\feedback
+\justificacio{La conjunció és la característica de \(\delta_{11}=\langle1,1\rangle\), i \(\wedge\circ\langle\chi_m,\chi_n\rangle\) classifica els elements generalitzats que pertanyen alhora a \(m\) i a \(n\), és a dir, la intersecció. La composició \(\chi_m\circ\chi_n\) ni tan sols està definida.}
+
+\pregunta El coequalitzador \(q\colon B\to Q\) de dues aplicacions \(f,g\colon A\to B\) sempre és\ldots
+\begin{itemize}
+\opcio{a}{un monomorfisme.}
+\opcio{b}{un epimorfisme.}
+\opcio{c}{un isomorfisme.}
+\opcio{d}{una aplicació constant.}
+\end{itemize}
+\feedback
+\justificacio{Dues aplicacions que coincideixen després de compondre amb \(q\) són factoritzacions de la mateixa aplicació a través de \(q\), i la unicitat de la propietat universal les iguala. És el dual del fet que l'equalitzador és mono.}
+
+\pregunta El pushout de \(f\colon C\to A\) i \(g\colon C\to B\) es pot construir\ldots
+\begin{itemize}
+\opcio{a}{com un equalitzador de dues projeccions.}
+\opcio{b}{com el producte \(A\times B\).}
+\opcio{c}{com el coequalitzador de \(i_A\circ f\) i \(i_B\circ g\) sobre la suma \(A+B\).}
+\opcio{d}{només quan \(C\) és inicial.}
+\end{itemize}
+\feedback
+\justificacio{El pushout és el coequalitzador de \(i_A\circ f\) i \(i_B\circ g\) sobre \(A+B\): la suma ajunta \(A\) i \(B\), i el coequalitzador identifica les dues imatges de \(C\). És la construcció dual del pullback com a equalitzador dins d'un producte.}
+
+\pregunta Quin dels resultats següents demana un axioma nou del capítol (disjunció i estabilitat, o coequalitzadors), i no es dedueix dels axiomes dels capítols anteriors?
+\begin{itemize}
+\opcio{a}{L'existència del límit de qualsevol diagrama finit.}
+\opcio{b}{L'existència del pullback de dues aplicacions.}
+\opcio{c}{La distinció \(0\ne1\) entre els dos punts de \(\mathbf2\).}
+\opcio{d}{La unicitat de la característica d'una part.}
+\end{itemize}
+\feedback
+\justificacio{Els límits finits, els pullbacks i la característica surten dels axiomes dels capítols 1 i 2. La distinció \(0\ne1\) necessita la disjunció de la suma \(\mathbf1+\mathbf1\): sense l'axioma nou, els dos punts podrien coincidir.}
+
+\pregunta Un epimorfisme \(f\colon A\to B\) i un punt \(y\colon\mathbf1\to B\). Què es pot afirmar amb els axiomes d'aquest capítol?
+\begin{itemize}
+\opcio{a}{Res: cal l'axioma d'elecció per trobar una preimatge de \(y\).}
+\opcio{b}{Existeix un punt \(x\colon\mathbf1\to A\) amb \(f\circ x=y\), sense elecció.}
+\opcio{c}{Existeix una secció \(s\colon B\to A\) de \(f\).}
+\opcio{d}{\(f\) és un isomorfisme.}
+\end{itemize}
+\feedback
+\justificacio{La fibra \(f^{-1}(y)\) té un punt, perquè si no en tingués seria inicial i la característica \(\chi_y\circ f\) seria \(0\circ{!}_A\), cosa que, cancel·lant \(f\), donaria \(0=1\). Una secció de \(f\) ---una preimatge per a tots els elements generalitzats alhora--- sí que demana l'elecció.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

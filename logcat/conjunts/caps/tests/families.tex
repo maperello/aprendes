@@ -1,0 +1,131 @@
+\chapter{Famílies, fibres i operacions indexades}\label{test:cap12}
+
+Aquest test correspon al capítol~12 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u12}{b,c,b,a,c,b,c,a,b,c,a,b}
+
+\begin{enumerate}
+
+\pregunta Una \emph{família de conjunts} indexada per \(I\) és\ldots
+\begin{itemize}
+\opcio{a}{un element de \(P(I)\).}
+\opcio{b}{una aplicació \(p\colon E\to I\); les fibres són els conjunts indexats.}
+\opcio{c}{un isomorfisme \(E\cong I\).}
+\opcio{d}{una relació d'equivalència sobre \(I\).}
+\end{itemize}
+\feedback
+\justificacio{La família és l'aplicació \(p\), i cada conjunt indexat és una fibra \(p^{-1}(i)\), una part del total: tot viu dins \(E\), sense cap col·lecció de conjunts.}
+
+\pregunta La fibra de \(p\colon E\to I\) sobre un índex \(i\) és\ldots
+\begin{itemize}
+\opcio{a}{tot el total \(E\).}
+\opcio{b}{el conjunt índex \(I\).}
+\opcio{c}{el producte fibrat \(\mathbf1\times_I E\), és a dir \(p^{-1}(i)\).}
+\opcio{d}{l'exponencial \(E^I\).}
+\end{itemize}
+\feedback
+\justificacio{La fibra és el pullback del punt \(i\) i de \(p\), que és la imatge inversa \(p^{-1}(i)\), una part de \(E\) els punts de la qual són els \(e\) amb \(p(e)=i\).}
+
+\pregunta Una \emph{secció} de \(p\colon E\to I\) és\ldots
+\begin{itemize}
+\opcio{a}{una part de \(I\).}
+\opcio{b}{una aplicació \(s\colon I\to E\) amb \(p\circ s=\id_I\): una tria a cada fibra.}
+\opcio{c}{una enumeració de \(E\).}
+\opcio{d}{la projecció \(I\times A\to I\).}
+\end{itemize}
+\feedback
+\justificacio{\(p\circ s=\id\) força \(p(s(i))=i\): \(s(i)\) és a la fibra sobre \(i\). Una secció és una funció d'elecció per a la família.}
+
+\pregunta Per a \(p\) epimorfisme (fibres no buides), l'existència d'una secció\ldots
+\begin{itemize}
+\opcio{a}{és exactament l'axioma d'elecció.}
+\opcio{b}{no requereix cap axioma.}
+\opcio{c}{és falsa sempre.}
+\opcio{d}{equival al teorema de Cantor.}
+\end{itemize}
+\feedback
+\justificacio{Fibres no buides vol dir \(p\) epi; que tot epi tingui secció és la formulació estructural de l'elecció. Sense ella, una família de fibres no buides pot no tenir secció.}
+
+\pregunta La \emph{suma} d'una família \(p\colon E\to I\)\ldots
+\begin{itemize}
+\opcio{a}{no existeix sense elecció.}
+\opcio{b}{és l'exponencial \(E^I\).}
+\opcio{c}{és el propi total \(E\), i existeix sempre.}
+\opcio{d}{és el conjunt de seccions.}
+\end{itemize}
+\feedback
+\justificacio{Recollir totes les fibres alhora és tenir el total: la suma és \(E\), amb \(p\) com a etiqueta de cada element. No cal res.}
+
+\pregunta El \emph{producte} \(\prod_{i\in I}E_i=\{s\in E^I:p\circ s=\id_I\}\)\ldots
+\begin{itemize}
+\opcio{a}{no existeix com a objecte sense elecció.}
+\opcio{b}{existeix sempre com a objecte, però la seva no-vacuïtat (fibres no buides) és l'elecció.}
+\opcio{c}{és sempre buit.}
+\opcio{d}{coincideix amb la suma.}
+\end{itemize}
+\feedback
+\justificacio{El producte és un equalitzador dins \(E^I\), i existeix amb exponencials i parts; els seus punts són les seccions de \(p\), que per a fibres no buides existeixen exactament amb l'elecció.}
+
+\pregunta Una família de parts d'un fix \(A\) es codifica com\ldots
+\begin{itemize}
+\opcio{a}{una relació d'equivalència sobre \(A\).}
+\opcio{b}{un epimorfisme \(A\to I\).}
+\opcio{c}{una aplicació \(\alpha\colon I\to P(A)\), amb pertinença total \(R\hookrightarrow I\times A\).}
+\opcio{d}{una secció de \(A\times A\).}
+\end{itemize}
+\feedback
+\justificacio{Cada \(\alpha(i)\) és una part d'\(A\), i la pertinença total \(R\) és la imatge inversa de \(\in_A\): la família viu dins \(P(A)^I\) i \(I\times A\), acotada.}
+
+\pregunta La unió i la intersecció indexades \(\bigcup_i\alpha(i)\), \(\bigcap_i\alpha(i)\) es formen amb\ldots
+\begin{itemize}
+\opcio{a}{els quantificadors interns \(\exists_{\pi_A}\) i \(\forall_{\pi_A}\), sense cap axioma nou.}
+\opcio{b}{l'axioma d'elecció.}
+\opcio{c}{una successió d'alephs.}
+\opcio{d}{la substitució estructural SR.}
+\end{itemize}
+\feedback
+\justificacio{La unió és \(\exists_{\pi_A}(R)\) i la intersecció \(\forall_{\pi_A}(R)\): suprem i ínfim per l'adjunció dels quantificadors. Cap elecció ni cap principi nou.}
+
+\pregunta La diferència entre una \emph{família interna} i una \emph{regla externa} és que\ldots
+\begin{itemize}
+\opcio{a}{només difereixen en la notació.}
+\opcio{b}{la família ja és una aplicació \(E\to I\); la regla \(i\mapsto X_i\) potser encara no es representa per cap aplicació.}
+\opcio{c}{la regla sempre existeix i la família mai.}
+\opcio{d}{la regla requereix elecció i la família no.}
+\end{itemize}
+\feedback
+\justificacio{Una família interna és un objecte \(E\to I\); una regla externa és una prescripció del metallenguatge que pot no tenir cap aplicació que la representi quan els valors no comparteixen ambient.}
+
+\pregunta El principi de substitució estructural SR\ldots
+\begin{itemize}
+\opcio{a}{és un cas de l'axioma d'elecció.}
+\opcio{b}{ja s'ha adoptat com a axioma en aquest capítol.}
+\opcio{c}{garanteix representar una regla externa uniforme per una família interna; és de Nivell~II i aquí només s'enuncia.}
+\opcio{d}{serveix per triar elements dins fibres.}
+\end{itemize}
+\feedback
+\justificacio{SR garanteix l'existència de la família a partir d'una regla uniforme; és de Nivell II i el llibre només l'enuncia aquí. No és l'elecció, que tria dins fibres d'una família que ja existeix.}
+
+\pregunta Una família \(\alpha\colon I\to P(A)\) de parts no buides, disjuntes dues a dues i que cobreixen \(A\)\ldots
+\begin{itemize}
+\opcio{a}{és una partició de \(A\): la projecció \(R\to A\) de la pertinença total és un isomorfisme, i \(q=r_I\circ r_A^{-1}\) és l'epimorfisme amb fibres \(\alpha(i)\).}
+\opcio{b}{és una secció de \(P(A)\to I\).}
+\opcio{c}{no determina cap aplicació sense l'elecció.}
+\opcio{d}{és el producte de la família.}
+\end{itemize}
+\feedback
+\justificacio{Disjunció i recobriment fan \(r_A\colon R\to A\) injectiva i exhaustiva sobre punts, doncs isomorfisme per separació global; la composició amb \(r_I\) és la partició, única amb aquestes fibres. És el recíproc de les fibres d'una partició del capítol 4.}
+
+\pregunta Per què la regla \(n\mapsto\seg{n}\) es representa per una família interna sense cap principi nou?
+\begin{itemize}
+\opcio{a}{Perquè l'axioma d'elecció tria un segment per a cada \(n\).}
+\opcio{b}{Perquè tots els segments són parts d'un mateix conjunt, \(\N\), i la família és la relació \(\operatorname{Lt}\hookrightarrow\N\times\N\) projectada sobre \(\N\).}
+\opcio{c}{Perquè SR ho garanteix.}
+\opcio{d}{No es representa: és una regla externa.}
+\end{itemize}
+\feedback
+\justificacio{Quan els valors viuen en un ambient comú, la regla és una aplicació \(I\to P(A)\) i la família és la seva pertinença total. SR només cal quan no hi ha cap ambient comú.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

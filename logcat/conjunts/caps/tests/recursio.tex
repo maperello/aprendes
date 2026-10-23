@@ -1,0 +1,131 @@
+\chapter{Inducció i recursió transfinites}\label{test:cap14}
+
+Aquest test correspon al capítol~14 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u14}{b,c,a,b,c,b,a,c,b,c,a,c}
+
+\begin{enumerate}
+
+\pregunta El principi d'inducció transfinita diu que si una part \(S\hookrightarrow W\) compleix\ldots
+\begin{itemize}
+\opcio{a}{\(0\in S\) i \(S\) tancada per successor, aleshores \(S=W\).}
+\opcio{b}{\(W_{<w}\subseteq S\Rightarrow w\in S\) per a tot \(w\), aleshores \(S=W\).}
+\opcio{c}{\(S\) no buida, aleshores \(S=W\).}
+\opcio{d}{\(S\) és inicial, aleshores \(S=W\).}
+\end{itemize}
+\feedback
+\justificacio{La progressivitat mira tot el segment inicial, no només el predecessor: no cal cas base, i cobreix els punts límit. La versió (a) és la inducció de \(\N\).}
+
+\pregunta La prova de la inducció transfinita usa\ldots
+\begin{itemize}
+\opcio{a}{l'axioma d'elecció.}
+\opcio{b}{una successió d'aproximacions.}
+\opcio{c}{el mínim del complement \(W\setminus S\), si fos no buit.}
+\opcio{d}{el teorema de Cantor.}
+\end{itemize}
+\feedback
+\justificacio{Si \(S\neq W\), el complement té mínim \(w_0\); tot el segment \(W_{<w_0}\) és dins \(S\), i la progressivitat força \(w_0\in S\), contradicció. Cap elecció.}
+
+\pregunta A diferència de la inducció sobre \(\N\), la transfinita\ldots
+\begin{itemize}
+\opcio{a}{no necessita cas base separat: el mínim hi és inclòs buidament.}
+\opcio{b}{només val per a conjunts finits.}
+\opcio{c}{requereix separar successor i límit sempre.}
+\opcio{d}{no val per a \(\N\).}
+\end{itemize}
+\feedback
+\justificacio{Per al mínim \(\bot\), \(W_{<\bot}\) és buit i la hipòtesi es compleix buidament, de manera que \(\bot\in S\). La separació en successor i límit és opcional.}
+
+\pregunta En la recursió amb codomini fix, una \emph{història} en \(w\) és\ldots
+\begin{itemize}
+\opcio{a}{un element de \(X\).}
+\opcio{b}{una aplicació \(h\colon W_{<w}\to X\) (els valors sobre el segment inicial).}
+\opcio{c}{una secció d'una família.}
+\opcio{d}{un bon ordre sobre \(X\).}
+\end{itemize}
+\feedback
+\justificacio{La història és la restricció de \(F\) al segment: una aplicació \(W_{<w}\to X\), codificada com a aplicació parcial dins \((X+\mathbf1)^W\).}
+
+\pregunta El teorema de recursió transfinita construeix \(F\colon W\to X\) com\ldots
+\begin{itemize}
+\opcio{a}{una tria simultània a cada fibra.}
+\opcio{b}{un producte de la família.}
+\opcio{c}{la reunió de les solucions parcials compatibles, dins l'exponencial fix \((X+\mathbf1)^W\).}
+\opcio{d}{el quocient per una relació d'equivalència.}
+\end{itemize}
+\feedback
+\justificacio{Les solucions parcials són compatibles (inducció), n'hi ha definides fins a cada punt (inducció) i la seva reunió és funcional i total: aquesta és \(F\). Tot dins un exponencial fix.}
+
+\pregunta La recursió transfinita amb codomini fix\ldots
+\begin{itemize}
+\opcio{a}{requereix l'axioma d'elecció.}
+\opcio{b}{no usa cap elecció: cada valor és \(\Phi\) de la història, i la reunió és canònica.}
+\opcio{c}{només val sobre \(\N\).}
+\opcio{d}{requereix la substitució estructural SR.}
+\end{itemize}
+\feedback
+\justificacio{Cada valor està determinat per la regla, i la reunió de solucions compatibles és canònica: no hi ha cap tria. SR només caldria si el codomini no fos fix.}
+
+\pregunta La comparabilitat total de dos bons ordres es demostra\ldots
+\begin{itemize}
+\opcio{a}{per recursió, aparellant-los pel mínim disponible, sense elecció.}
+\opcio{b}{amb l'axioma d'elecció.}
+\opcio{c}{amb el teorema de Cantor.}
+\opcio{d}{només per a bons ordres finits.}
+\end{itemize}
+\feedback
+\justificacio{\(F(w)=\min(V\setminus F(W_{<w}))\), amb un punt \(\top\) quan \(V\) s'esgota; és creixent amb imatge inicial, i els tres casos surten d'on s'atura.}
+
+\pregunta La comparabilitat de dos bons ordres, comparada amb la de dos conjunts qualssevol,\ldots
+\begin{itemize}
+\opcio{a}{és més difícil i requereix més elecció.}
+\opcio{b}{és equivalent.}
+\opcio{c}{no usa elecció (el mínim és canònic), mentre que la de conjunts nus sí.}
+\opcio{d}{és falsa.}
+\end{itemize}
+\feedback
+\justificacio{Un bon ordre porta incorporada la tria canònica a cada pas: el mínim. En dos conjunts sense ordre no hi ha res que distingeixi cap element, i la comparabilitat demana l'elecció.}
+
+\pregunta Una successió transfinita de parts d'un conjunt fix \(A\) (codomini \(P(A)\))\ldots
+\begin{itemize}
+\opcio{a}{necessita SR.}
+\opcio{b}{és de Nivell~I: el codomini és fix, n'hi ha prou amb la recursió d'aquest capítol.}
+\opcio{c}{requereix elecció.}
+\opcio{d}{no es pot definir.}
+\end{itemize}
+\feedback
+\justificacio{Totes les parts viuen dins el fix \(P(A)\): el codomini és \(X=P(A)\) i la recursió d'aquest capítol s'hi aplica directament.}
+
+\pregunta La successió \(V_0=A\), \(V_{n+1}=P(V_n)\)\ldots
+\begin{itemize}
+\opcio{a}{es defineix amb la recursió de codomini fix.}
+\opcio{b}{és de codomini fix perquè totes són iguals.}
+\opcio{c}{necessita SR: els valors creixen (Cantor) i cap axioma de Nivell~I no en dona un codomini comú.}
+\opcio{d}{requereix l'elecció numerable.}
+\end{itemize}
+\feedback
+\justificacio{Per Cantor, \(V_{n+1}\) és estrictament més gran que \(V_n\), i cap axioma de Nivell~I no dona un conjunt que els contingui tots uniformement: reunir-los en una família és SR.}
+
+\pregunta Per què la regla de recursió \(\Phi(w,h)\) s'ha de donar per a \emph{tota} parella \((w,h)\), i no només per a les històries \enquote{bones}?
+\begin{itemize}
+\opcio{a}{Perquè \(\Phi\) és una aplicació interna i ha d'estar definida a tot el seu domini; si la regla només cobreix un cas, cal afegir-hi una clàusula \enquote{altrament}, encara que no s'arribi a usar.}
+\opcio{b}{Perquè altrament caldria l'elecció.}
+\opcio{c}{No cal: n'hi ha prou amb definir-la on interessa.}
+\opcio{d}{Perquè el bon ordre pot tenir punts límit.}
+\end{itemize}
+\feedback
+\justificacio{\(\Phi\) és una aplicació d'una part de \(W\times(X+\mathbf1)^W\) cap a \(X\), i una aplicació parcial no serveix. És un detall que es repeteix a la prova del lema de Zorn.}
+
+\pregunta On es fa servir el bon ordre a la prova de la recursió transfinita?
+\begin{itemize}
+\opcio{a}{Enlloc: val per a qualsevol ordre.}
+\opcio{b}{Per triar un element a cada pas.}
+\opcio{c}{A les dues induccions (compatibilitat i existència fins a cada punt), que depenen del mínim del complement.}
+\opcio{d}{Per construir l'exponencial \((X+\mathbf1)^W\).}
+\end{itemize}
+\feedback
+\justificacio{La inducció transfinita és el que el bon ordre aporta; en un ordre no ben fundat el \enquote{mínim del complement} podria no existir i la prova s'ensorraria. L'exponencial no depèn de l'ordre.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

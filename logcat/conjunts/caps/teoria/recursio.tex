@@ -1,0 +1,446 @@
+\chapter{Inducció i recursió transfinites}\label{cap:recursio}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:bons-ordres}: bons ordres, segments inicials, parts inicials, rigidesa i la comparació \(\preceq_{\mathrm o}\). Del capítol~\ref{cap:families}: famílies de parts d'un conjunt fix, unions indexades, i la distinció família interna\,--\,regla externa. Dels capítols~\ref{cap:exponencials} i~\ref{cap:parts-interna}: exponencials i parts tallades per condicions internes. Del capítol~\ref{cap:imatges}: el graf d'una relació funcional i total.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item enunciar i demostrar la inducció transfinita pel mínim del complement, i explicar per què no cal cas base;
+  \item formalitzar aplicacions parcials, històries i regles de recursió dins l'exponencial fix \((X+\mathbf1)^W\);
+  \item demostrar la recursió transfinita amb codomini fix: compatibilitat de solucions parcials, existència fins a cada punt, reunió global i unicitat, sense elecció;
+  \item demostrar la comparabilitat total dels bons ordres aparellant pel mínim lliure, i situar-la respecte de la comparabilitat de conjunts (que sí que demana elecció);
+  \item reconèixer definicions per recursió amb codomini fix (sumes iterades, successions de parts, tancaments) i saber quan la separació en casos successor/límit és legítima;
+  \item identificar la frontera: quan els valors són conjunts nous sense codomini comú, la recursió d'aquest capítol no basta i cal SR.
+\end{itemize}
+\end{objectius}
+
+El capítol anterior va establir la rigidesa dels bons ordres i en va deixar
+una peça pendent: que dos bons ordres qualssevol són comparables
+(teorema~\ref{teo:tricotomia}). La comparació es construeix aparellant els
+dos ordres començant pels mínims, i aquest aparellament és una \emph{recursió}
+al llarg d'un bon ordre. Aquest capítol construeix l'eina que faltava. Primer
+la \emph{inducció transfinita}, que generalitza a un bon ordre qualsevol el
+principi d'inducció de \(\N\) (teorema~\ref{teo:induccio}): per provar que una
+propietat val a tot \(W\), n'hi ha prou de provar-la a cada \(w\) suposant-la
+a tot el segment inicial \(W_{<w}\). Després la \emph{recursió transfinita amb
+codomini fix}: quan els valors d'una definició viuen tots dins un conjunt
+\(X\) prefixat, una regla que digui com determinar \(F(w)\) a partir de la
+\enquote{història} \(F|_{W_{<w}}\) defineix una única aplicació \(F\colon W\to
+X\). Tot això és de Nivell~I i no costa cap axioma nou: viu dins exponencials
+i conjunts de parts ja construïts. Amb la recursió a la mà, tanquem la
+comparabilitat total dels bons ordres. Finalment marquem \emph{la frontera}:
+quan els valors \(F(w)\) han de ser conjunts \emph{nous} sense codomini comú,
+la recursió d'aquest capítol no basta i cal la substitució estructural SR
+---el pas a Nivell~II---, que il·lustrem amb un exemple.
+
+\section{Inducció transfinita}\label{sec:induccio-transfinita}
+
+\begin{teorema}[Inducció transfinita]\label{teo:induccio-transfinita}
+Sigui \((W,<)\) un bon ordre i \(S\hookrightarrow W\) una part que compleix
+la condició de \emph{progressivitat}
+\[
+\bigl(W_{<w}\subseteq S\bigr)\ \Longrightarrow\ w\in S
+\qquad\text{per a tot } w\colon\mathbf1\to W .
+\]
+Aleshores \(S=W\).\par
+\emph{Axiomes usats:} bon ordre (definició~\ref{def:bon-ordre}), complement
+(capítol~\ref{cap:valors}); cap axioma nou; cap elecció.
+\end{teorema}
+
+\begin{prova}
+Suposem, cap a una contradicció, que \(S\neq W\); aleshores el complement
+\(W\setminus S\) (teorema~\ref{teo:part-complementari}) és no inicial. Pel bon
+ordre (definició~\ref{def:bon-ordre}) té un element mínim \(w_0\). Com que
+\(w_0\) és el mínim del complement, tot element estrictament menor que \(w_0\)
+és fora del complement, és a dir dins \(S\): per tant \(W_{<w_0}\subseteq S\).
+Però aleshores la progressivitat, aplicada a \(w_0\), dona \(w_0\in S\),
+contra \(w_0\in W\setminus S\). La contradicció mostra que \(W\setminus S\) és
+inicial, és a dir \(S=W\).
+\end{prova}
+
+\begin{observacio}[La forma habitual, sobre propietats]\label{obs:induccio-propietats}
+En la pràctica \(S\) és la part on val una propietat interna
+\(\varphi\) ---la part classificada per \(\varphi\)
+(capítol~\ref{cap:parts-interna})---, i el teorema es llegeix així: si de
+\enquote{\(\varphi\) val a tot \(u<w\)} se'n dedueix \enquote{\(\varphi\) val
+a \(w\)}, per a tot \(w\), aleshores \(\varphi\) val a tot \(W\). No cal cap
+\emph{cas base} separat: el cas del mínim global \(\bot\) de \(W\) hi és
+inclòs, perquè \(W_{<\bot}\) és inicial i la hipòtesi
+\enquote{\(W_{<\bot}\subseteq S\)} es compleix buidament, de manera que la
+progressivitat força \(\bot\in S\). Aquesta és la diferència amb la inducció
+de \(\N\) (teorema~\ref{teo:induccio}), on el zero i el successor se separaven:
+en un bon ordre general no tot element és un successor, i la formulació
+\enquote{tot el segment inicial} unifica els dos casos ---i els límits--- en
+un de sol.
+\end{observacio}
+
+\begin{observacio}[Lectura clàssica]\label{obs:induccio-transf-classica}
+És la \emph{inducció ben fundada} o \emph{inducció transfinita} habitual: per
+demostrar que una propietat val per a tot element d'un conjunt ben ordenat,
+es demostra per a cada element suposant-la per a tots els anteriors. Sobre
+\(\N\) recupera la inducció forta (o \emph{completa}). La bona fundació ---la
+inexistència de cadenes descendents infinites, garantida pel bon ordre
+(observació~\ref{obs:bon-ordre-classic})--- és exactament el que fa vàlid el
+principi: sense ella, el \enquote{mínim del complement} podria no existir.
+Convé mantenir aquesta implicació en la direcció \emph{segura}: tot bon ordre
+exclou tota cadena descendent (fins i tot numerable). El \emph{recíproc}
+---que un ordre sense cadenes descendents numerables sigui ben fundat, o ben
+ordenat--- \emph{no} és gratuït: la seva demostració habitual construeix una
+cadena descendent triant successivament testimonis, i per tant pot requerir
+alguna forma d'elecció (típicament l'elecció dependent). No l'usem en aquesta
+direcció sense declarar-ho.
+\end{observacio}
+
+\section{Recursió transfinita amb codomini fix}\label{sec:recursio-fix}
+
+Passem de \emph{demostrar} per inducció a \emph{definir} per recursió. La
+situació és: un conjunt \emph{fix} \(X\), i una regla que, coneguts els valors
+de \(F\) sobre tot el segment \(W_{<w}\), determina el valor \(F(w)\). Volem
+que aquesta regla defineixi una única \(F\colon W\to X\). La formalització de
+\enquote{els valors sobre \(W_{<w}\)} és una \emph{història parcial}.
+
+\begin{definicio}[Aplicació parcial i història]\index{Aplicació parcial i història}\label{def:historia}
+Una \emph{aplicació parcial} de \(W\) cap a \(X\) és una aplicació
+\(\bar h\colon W\to X+\mathbf1\) cap a \(X\) ampliat amb un punt de
+\enquote{no definit} \(\ast\colon\mathbf1\to X+\mathbf1\); el seu
+\emph{domini de definició} és la part \(\{w\in W: \bar h(w)\neq\ast\}\). Tota
+aplicació parcial viu dins l'exponencial \emph{fix} \((X+\mathbf1)^{W}\)
+(axioma~\ref{ax:exponencials}), i la seva restricció a una part és de nou una
+aplicació parcial. Una \emph{història en \(w\)} és una aplicació
+\(h\colon W_{<w}\to X\) ---una aplicació parcial amb domini de definició
+exactament el segment \(W_{<w}\).
+\end{definicio}
+
+\begin{definicio}[Regla de recursió]\index{Regla de recursió}\label{def:regla-recursio}
+Una \emph{regla de recursió} amb valors a \(X\) és una manera interna
+d'assignar, a cada punt \(w\colon\mathbf1\to W\) i cada història
+\(h\colon W_{<w}\to X\), un element \(\Phi(w,h)\in X\). Formalment, \(\Phi\)
+és una aplicació interna del conjunt de parells \((w,h)\) ---una part de
+\(W\times(X+\mathbf1)^{W}\), tallada per la condició \enquote{\(h\) és una
+història en \(w\)}, que és interna (el domini de definició de \(h\) és
+\(W_{<w}\): igualtats i quantificadors acotats sobre l'exponencial fix,
+capítols~\ref{cap:exponencials} i~\ref{cap:parts-interna})--- cap a \(X\).
+\end{definicio}
+
+\begin{teorema}[Recursió transfinita amb codomini fix]\label{teo:recursio-transfinita}
+Siguin \((W,<)\) un bon ordre, \(X\) un conjunt i \(\Phi\) una regla de
+recursió amb valors a \(X\) (definició~\ref{def:regla-recursio}). Aleshores
+existeix una \emph{única} aplicació \(F\colon W\to X\) tal que
+\[
+F(w)=\Phi\bigl(w,\ F|_{W_{<w}}\bigr)
+\qquad\text{per a tot } w\colon\mathbf1\to W .
+\]
+\emph{Axiomes usats:} exponencials i conjunt de parts
+(capítols~\ref{cap:exponencials} i~\ref{cap:parts-interna}), inducció
+transfinita (teorema~\ref{teo:induccio-transfinita}), imatges i unions de
+parts (capítols~\ref{cap:imatges} i~\ref{cap:valors}); cap axioma nou; cap
+elecció.
+\end{teorema}
+
+\begin{prova}
+Diem que una aplicació parcial \(a\colon D\to X\), amb domini de definició una
+part inicial \(D\hookrightarrow W\), és una \emph{solució parcial} (o
+\emph{aproximació}) si compleix l'equació de recursió allà on és definida:
+\[
+a(w)=\Phi\bigl(w,\ a|_{W_{<w}}\bigr)
+\qquad\text{per a tot } w\in D .
+\]
+Aquesta condició té sentit perquè, si \(D\) és inicial i \(w\in D\), aleshores
+\(W_{<w}\subseteq D\) i la restricció \(a|_{W_{<w}}\) és una història en \(w\).
+El conjunt de les solucions parcials és una part interna \(\mathcal
+A\hookrightarrow(X+\mathbf1)^{W}\), tallada per la condició
+\enquote{el domini és inicial} i per l'equació anterior (quantificadors
+acotats i igualtats sobre l'exponencial fix,
+capítols~\ref{cap:exponencials} i~\ref{cap:parts-interna}). Tot el que segueix
+viu dins aquest exponencial fix i dins \(P(W)\).
+
+\emph{Compatibilitat.} Dues solucions parcials coincideixen allà on totes
+dues són definides: si \(a\colon D\to X\) i \(b\colon E\to X\) són solucions
+parcials, aleshores \(a=b\) sobre \(D\cap E\). En efecte, \(D\cap E\) és una
+part inicial (intersecció de parts inicials), i apliquem la inducció
+transfinita (teorema~\ref{teo:induccio-transfinita}) sobre \(W\) a la part
+\[
+S=\{\,w\in W\ \mid\ w\notin D\cap E\ \text{ o bé }\ a(w)=b(w)\,\}.
+\]
+Sigui \(w\) amb \(W_{<w}\subseteq S\); volem \(w\in S\). Si \(w\notin D\cap
+E\), ja hi és. Si \(w\in D\cap E\), aleshores \(W_{<w}\subseteq D\cap E\)
+(inicialitat), i per la hipòtesi \(W_{<w}\subseteq S\) tenim \(a=b\) sobre
+\(W_{<w}\); per tant \(a|_{W_{<w}}=b|_{W_{<w}}\), i l'equació de recursió dona
+\[
+a(w)=\Phi(w,a|_{W_{<w}})=\Phi(w,b|_{W_{<w}})=b(w),
+\]
+és a dir \(w\in S\). Per inducció \(S=W\), és a dir \(a=b\) sobre \(D\cap E\).
+
+\emph{Existència de solucions prou llargues.} Vegem, també per inducció, que
+per a cada \(w\colon\mathbf1\to W\) existeix una solució parcial el domini de
+la qual conté \(w\) ---de fet conté el segment \(W_{\le w}=W_{<w}\cup\{w\}\).
+Sigui
+\[
+T=\{\,w\in W\ \mid\ \text{existeix una solució parcial definida a } W_{\le w}\,\}.
+\]
+Prenem \(w\) amb \(W_{<w}\subseteq T\). Per a cada \(u<w\) hi ha, doncs, una
+solució parcial definida fins a \(u\); per la compatibilitat, totes aquestes
+solucions coincideixen a les seves interseccions, de manera que la seva
+\emph{reunió} és una única aplicació ben definida \(g\colon W_{<w}\to X\)
+---el graf és la unió indexada dels grafs, funcional per la compatibilitat
+(capítol~\ref{cap:families}; vegeu la reunió global, més avall)---, i \(g\) és una solució parcial amb domini el
+segment inicial \(W_{<w}\) (satisfà l'equació a cada \(u<w\) perquè hi
+coincideix amb alguna solució parcial que sí que la satisfà). Ara estenem
+\(g\) a \(W_{\le w}\) posant
+\[
+g^{+}(u)=g(u)\ \text{ per a } u<w,
+\qquad
+g^{+}(w)=\Phi\bigl(w,\ g\bigr),
+\]
+que és una aplicació parcial amb domini inicial \(W_{\le w}\); satisfà
+l'equació a tot \(u<w\) (com \(g\)) i a \(w\) per construcció, ja que
+\(g^{+}|_{W_{<w}}=g\). Per tant \(g^{+}\) és una solució parcial definida a
+\(W_{\le w}\), i \(w\in T\). Per inducció transfinita \(T=W\).
+
+\emph{La reunió global.} Per la compatibilitat, totes les solucions parcials
+formen una família compatible, i es poden reunir en una sola aplicació.
+Concretament, sigui \(G\hookrightarrow W\times X\) la relació
+\(\{(w,x):\exists a\in\mathcal A\ (a(w)=x)\}\), una unió indexada per
+\(\mathcal A\) (capítol~\ref{cap:families}); és funcional per la
+compatibilitat, i el seu domini \(W'=\bigcup\{\,D\mid a\colon D\to X\
+\text{solució parcial}\,\}\) és una part inicial de \(W\). Per la
+proposició~\ref{prop:aplicacio-funcional}, \(G\) és el graf d'una única
+aplicació \(F\colon W'\to X\), que coincideix amb cada solució parcial sobre
+el seu domini; i \(F\) mateixa és una solució parcial. Com que \(T=W\), per a cada \(w\) hi ha una solució parcial
+definida a \(W_{\le w}\), de manera que \(w\in W'\); per tant \(W'=W\) i
+\(F\colon W\to X\) és total. Satisfà l'equació de recursió a tot \(w\) perquè
+és una solució parcial amb domini \(W\).
+
+\emph{Unicitat.} Si \(F,F'\colon W\to X\) satisfan totes dues l'equació, són
+solucions parcials amb domini \(W\); per la compatibilitat coincideixen sobre
+\(W\cap W=W\), és a dir \(F=F'\).
+\end{prova}
+
+\begin{observacio}[On és cada axioma, i on no hi ha elecció]\label{obs:recursio-sense-eleccio}
+La construcció no fa cap tria. Cada solució parcial que apareix està
+\emph{determinada} per l'equació de recursió ---no se'n tria cap d'un conjunt
+d'alternatives---, i la reunió de solucions compatibles és una operació
+canònica sobre parts (capítol~\ref{cap:families}), no una selecció. Tot viu
+dins l'exponencial fix \((X+\mathbf1)^{W}\) i dins \(P(W)\): és la
+manifestació, aquí, del principi de la guia segons el qual mentre els valors
+visquin en un codomini fix la família és interna i tot és de Nivell~I. L'única
+cosa que fa el bon ordre és garantir, via la inducció transfinita, la
+compatibilitat i l'existència fins a cada punt; en un ordre no ben fundat la
+prova s'ensorraria, perquè el \enquote{mínim del complement} podria no
+existir. Compareu amb la comparabilitat de conjunts \emph{qualssevol}, que sí
+que necessita elecció (capítol~\ref{cap:zorn}): la diferència és, altre cop,
+que aquí cada pas té una resposta canònica.
+\end{observacio}
+
+\begin{observacio}[La recursió de \(\N\) com a cas particular]\label{obs:recursio-N-cas}
+Sobre \(W=\N\) amb el seu bon ordre (teorema~\ref{teo:bon-ordre-N}), una regla
+que només depèn del valor anterior ---\(\Phi(w,h)\) donat per \(h(\text{el
+predecessor de }w)\), i un valor inicial a \(0\)--- és exactament la recursió
+primitiva amb paràmetres (teorema~\ref{teo:recursio-parametres}). La recursió
+transfinita la generalitza en dues direccions: el pas pot mirar \emph{tota} la
+història, no només el terme anterior, i l'índex pot ser un bon ordre qualsevol,
+amb punts límit que no tenen predecessor immediat. És per als límits que la
+formulació \enquote{història sobre tot \(W_{<w}\)} és imprescindible: allà no
+hi ha cap \enquote{terme anterior} d'on partir.
+\end{observacio}
+
+\section{La comparabilitat total dels bons ordres}\label{sec:comparabilitat}
+
+Amb la recursió podem tancar la comparació de bons ordres que el capítol
+anterior va deixar oberta: dos bons ordres qualssevol són comparables. La
+idea és definir, per recursió, l'única aplicació que aparella \(W\) amb un
+segment inicial de \(V\) enviant cada element al \enquote{primer lloc lliure}.
+
+\begin{teorema}[Comparabilitat total dels bons ordres]\label{teo:comparabilitat}
+Siguin \((W,<_W)\) i \((V,<_V)\) dos bons ordres. Aleshores es dona
+\emph{almenys una} ---i per tant, amb el teorema~\ref{teo:tricotomia},
+\emph{exactament una}--- de les tres situacions:
+\[
+W\prec_{\mathrm o}V,
+\qquad
+W\cong V,
+\qquad
+V\prec_{\mathrm o}W .
+\]
+En conseqüència, la comparació per segments és un ordre total (llevat
+d'isomorfisme d'ordre) sobre els bons ordres.\par
+\emph{Axiomes usats:} recursió transfinita
+(teorema~\ref{teo:recursio-transfinita}), bon ordre i segments
+(capítol~\ref{cap:bons-ordres}); cap axioma nou; \emph{cap elecció}.
+\end{teorema}
+
+\begin{prova}
+Adjuntem a \(V\) un punt exterior \(\top\), formant \(V^{+}=V+\mathbf1\), i
+definim per recursió transfinita (teorema~\ref{teo:recursio-transfinita})
+sobre \(W\) una aplicació \(F\colon W\to V^{+}\) amb la regla següent: donada
+la història \(F|_{W_{<w}}\), sigui
+\[
+F(w)\ :=\
+\begin{cases}
+\min\bigl(V\setminus F(W_{<w})\bigr) & \text{si } V\setminus F(W_{<w})\neq\varnothing,\\[1mm]
+\top & \text{altrament,}
+\end{cases}
+\]
+on \(F(W_{<w})\hookrightarrow V\) és la imatge de la història
+(capítol~\ref{cap:imatges}), \(V\setminus F(W_{<w})\) el seu complement a
+\(V\), i el mínim és el del bon ordre de \(V\) ---únic i canònic, de manera
+que la regla és interna i \emph{no} usa elecció. Pel
+teorema~\ref{teo:recursio-transfinita}, \(F\) existeix i és única.
+
+\emph{\(F\) és creixent mentre no val \(\top\).} Si \(u<_W w\) i \(F(w)\neq
+\top\), aleshores \(F(u)\neq\top\) i \(F(u)<_V F(w)\). Llegim \(F(W_{<w})\)
+com la part de \(V\) formada pels valors de la història diferents de
+\(\top\); com que \(W_{<u}\subseteq W_{<w}\), es té
+\(F(W_{<u})\subseteq F(W_{<w})\). Primer, \(F(u)\neq\top\): si fos
+\(F(u)=\top\), seria \(F(W_{<u})=V\), d'on \(F(W_{<w})=V\) i \(F(w)=\top\),
+contra la hipòtesi. Així \(F(u)=\min(V\setminus F(W_{<u}))\), i \(F(u)\in
+F(W_{<w})\) perquè \(u<_W w\). En canvi, \(F(w)=\min(V\setminus F(W_{<w}))\)
+no és a \(F(W_{<w})\); en particular \(F(w)\neq F(u)\), i \(F(w)\) tampoc no
+és a \(F(W_{<u})\), és a dir, \(F(w)\in V\setminus F(W_{<u})\). Per la
+\emph{minimalitat de \(F(u)\)} en aquest complement, \(F(u)\le_V F(w)\), i com
+que són diferents, \(F(u)<_V F(w)\).
+En particular, sobre la part \(W_0:=\{w: F(w)\neq\top\}\), que és inicial
+(si \(F(w)\neq\top\) i \(u<_W w\), aleshores \(F(u)\neq\top\)), \(F\) és
+creixent i injectiva, i la seva imatge és una part inicial de \(V\): si \(v<_VF(w)\) amb
+\(w\in W_0\), aleshores \(v\in F(W_{<w})\), perquè \(F(w)\) és el mínim del
+complement de \(F(W_{<w})\) i \(v\) no pot ser-hi; així \(v\) és a la
+imatge.
+
+\emph{Els tres casos.} Distingim segons on s'atura \(F\).
+\begin{itemize}
+\item Si \(F\) no pren mai el valor \(\top\) (és a dir \(W_0=W\)), aleshores
+\(F\colon W\to V\) és un isomorfisme d'ordre sobre un segment inicial de
+\(V\): creixent, injectiva, amb imatge inicial. Si la imatge és tot \(V\),
+\(W\cong V\); si és un segment propi, \(W\prec_{\mathrm o}V\).
+\item Si \(F\) pren el valor \(\top\), sigui \(w_0\) el mínim amb
+\(F(w_0)=\top\). Aleshores \(V\setminus F(W_{<w_0})=\varnothing\), és a dir
+\(F(W_{<w_0})=V\): la restricció \(F|_{W_{<w_0}}\colon W_{<w_0}\to V\) és
+creixent, injectiva i exhaustiva, per tant un isomorfisme d'ordre
+\(W_{<w_0}\cong V\). Així \(V\) és isomorf al segment \(W_{<w_0}\) de \(W\), que és propi
+(\(w_0\notin W_{<w_0}\)), d'on \(V\prec_{\mathrm o}W\).
+\end{itemize}
+En tots els casos es dona una de les tres situacions. L'exclusivitat i la
+unicitat de l'isomorfisme són el teorema~\ref{teo:tricotomia}. Cap pas no ha
+usat elecció: l'única selecció a cada etapa és el mínim, canònic.
+\end{prova}
+
+\begin{observacio}[Comparabilitat de bons ordres vs. d'ordres qualssevol]\label{obs:comparabilitat-vs-eleccio}
+Aquest teorema completa el que l'observació~\ref{obs:tricotomia-recursio}
+anunciava: la comparabilitat \emph{total} dels bons ordres és un teorema
+\emph{sense elecció}, perquè l'aparellament es fa prenent a cada pas el mínim
+disponible. És un contrast important amb la comparabilitat de conjunts
+\emph{qualssevol} ---donats \(A\) i \(B\), \(A\preceq B\) o \(B\preceq A\)---,
+que sí que requereix l'elecció i que provarem via el teorema del bon ordre (capítol~\ref{cap:zorn}). La moralitat: un bon ordre porta incorporada, a
+cada pas, la tria canònica que en un conjunt nu s'ha de postular.
+\end{observacio}
+
+\section{Exemples de definició per recursió}\label{sec:exemples-recursio}
+
+La recursió transfinita amb codomini fix cobreix una gran varietat de
+definicions. En donem tres, totes de Nivell~I ---el codomini és fix en cada
+cas--- i una nota sobre la separació en casos successor i límit.
+
+\begin{observacio}[Sumes iterades i tancaments]\label{obs:exemples-recursio}
+\emph{Sumes iterades en un monoide.} Si \((M,\cdot,e)\) és un monoide intern i
+\((a_v)_{v\in W}\) una família d'elements de \(M\) indexada per un bon ordre
+\(W\) ---una aplicació \(W\to M\)---, la recursió amb \(X=M\) i
+\(\Phi(w,h)=\bigl(\prod_{u<w}a_u\bigr)\cdot a_w\), és a dir \enquote{el
+producte de la història, multiplicat pel terme actual}, defineix les sumes
+parcials. El codomini \(M\) és fix.
+
+\emph{Successió transfinita de parts d'un fix.} Amb \(X=P(A)\) per a un
+conjunt fix \(A\), qualsevol regla que construeixi \(S_w\hookrightarrow A\) a
+partir de les parts anteriors \((S_u)_{u<w}\) ---per exemple
+\(S_w=\bigcup_{u<w}g(S_u)\) per a una operació \(g\colon P(A)\to P(A)\)---
+defineix una successió transfinita \((S_w)_{w\in W}\) de parts d'\(A\). Com que
+totes viuen dins el fix \(P(A)\), el codomini és fix i n'hi ha prou amb el
+teorema~\ref{teo:recursio-transfinita}.
+
+\emph{Tancament d'una part sota una operació.} Donada \(g\colon P(A)\to P(A)\)
+monòtona, el \emph{tancament} d'una part \(S_0\) sota \(g\) s'obté iterant
+\(g\) transfinitament fins a l'estabilitat; cada iterada és una part del fix
+\(A\), de manera que tota la construcció és de Nivell~I. És la mateixa tècnica
+del menor punt fix que ja vam usar a Schröder--Bernstein
+(teorema~\ref{teo:schroder-bernstein}), ara desplegada com a recursió.
+\end{observacio}
+
+\begin{observacio}[Successor i límit: separar només quan és exhaustiu]\label{obs:successor-limit}
+És còmode definir una recursió separant tres casos ---el mínim \(\bot\), els
+punts \emph{successors} (els que tenen un predecessor immediat) i els punts
+\emph{límit} (els que no en tenen)--- i donant una clàusula per a cadascun.
+Aquesta separació és \emph{legítima} només si s'ha comprovat que és
+\emph{exhaustiva} per al bon ordre considerat: que tot element és \(\bot\), o
+successor, o límit. Convé demostrar-ho abans d'usar-la, perquè la nostra
+formulació general (teorema~\ref{teo:recursio-transfinita}) \emph{no} la
+requereix ---la regla \(\Phi(w,h)\) mira tota la història i cobreix els tres
+casos uniformement. La separació és una comoditat de presentació, no una
+necessitat; i escriure-la sense provar-ne l'exhaustivitat és una de les fonts
+d'error més habituals en els arguments transfinits.
+\end{observacio}
+
+\section{La frontera: quan el codomini no és fix}\label{sec:frontera-sr}
+
+\begin{nota}
+Aquesta secció torna a tocar el \emph{Nivell~II}: descriu una situació
+que la recursió d'aquest capítol \emph{no} cobreix, i per a la qual cal la
+substitució estructural SR, ja anunciada al capítol~\ref{cap:families}.
+\end{nota}
+
+Tot el que hem fet suposa un codomini \emph{fix} \(X\): els valors \(F(w)\)
+són elements d'un conjunt donat per endavant. Hi ha, però, recursions on el
+valor \(F(w)\) ha de ser un \emph{conjunt nou}, que no viu dins cap codomini
+prefixat.
+
+\begin{observacio}[Un exemple on el codomini no és fix]\label{obs:frontera-exemple}
+Considerem la regla que a cada natural \(n\) assigna la iterada del conjunt de
+parts,
+\[
+V_0=A,
+\qquad
+V_{n+1}=P(V_n),
+\]
+i que en un bon ordre amb límits assignaria als límits la reunió dels
+anteriors. Cada \(V_{n}\) és estrictament més gran que l'anterior pel teorema
+de Cantor (teorema~\ref{teo:cantor}), i cap dels axiomes de Nivell~I no
+proporciona un conjunt \(X\) dins del qual tots els \(V_n\) s'allotgin com
+a parts d'una manera uniforme: les construccions finites a partir d'\(A\)
+donen conjunts de mida \(P^k(A)\) per a un \(k\) concret, i no hi ha cap
+construcció que els recorri tots. La successió \((V_n)_{n\in\N}\) és, doncs,
+una \emph{regla externa} (definició~\ref{def:familia-vs-regla}) sense
+codomini fix conegut, i el teorema~\ref{teo:recursio-transfinita} no s'hi
+aplica. (No és que un tal \(X\) sigui \emph{impossible}: en models més
+grans n'hi ha; és que els axiomes de Nivell~I no en garanteixen cap, i de
+fet hi ha models de tots ells on la reunió no existeix.) Reunir aquesta successió en una família interna
+\(n\mapsto V_n\) ---i, més encara, prolongar-la transfinitament--- és
+exactament el que fa la substitució estructural SR
+(observació~\ref{obs:sr}): una recursió els valors de la qual són conjunts
+variables. Sense SR, la successió dels \(V_n\) queda com a regla externa,
+definible terme a terme però no reunible en un sol objecte.
+\end{observacio}
+
+\begin{observacio}[La línia divisòria, i el que en depèn]\label{obs:frontera-balanc}
+La distinció és neta i val la pena tenir-la ben present. Si els valors d'una
+recursió \emph{viuen tots dins un conjunt fix} ---elements d'un \(X\), parts
+d'un \(A\), aplicacions d'un exponencial---, la recursió és de Nivell~I i la
+dona el teorema~\ref{teo:recursio-transfinita} sense cap axioma nou. Si els
+valors són \emph{conjunts nous sense codomini comú}, cal SR (Nivell~II). En
+els capítols que vénen, el pas d'un bon ordre al seu representant ordinal
+escollit, la successió \(\alpha\mapsto\aleph_\alpha\) i les jerarquies
+iterades com la dels \(V_n\) cauran del costat de Nivell~II; en canvi, tota la
+teoria dels tipus ordinals \emph{acotats} ---els que viuen sobre parts d'un
+conjunt fix--- es podrà fer amb la recursió d'aquest capítol. Mantindrem la
+disciplina de la caixa d'axiomes: marcarem \enquote{SR} exactament allà on el
+codomini deixi de ser fix, i enlloc més.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Inducció transfinita: en un bon ordre, una part progressiva (\(W_{<w}\subseteq S\Rightarrow w\in S\)) és tot \(W\). La prova és el mínim del complement; el cas del mínim de \(W\) queda inclòs.
+  \item Recursió amb codomini fix: una regla \(\Phi(w,h)\) que llegeix la història determina una única \(F\colon W\to X\). Es construeix dins \((X+\mathbf1)^W\): les solucions parcials són compatibles (inducció), n'hi ha fins a cada punt (inducció) i es reuneixen en una (graf funcional i total). Cap elecció.
+  \item Comparabilitat total dels bons ordres: l'aparellament \(F(w)=\min(V\setminus F(W_{<w}))\), amb un punt \(\top\) quan \(V\) s'esgota, és creixent amb imatge inicial, i els tres casos surten d'on s'atura. Sense elecció: el mínim és la tria.
+  \item Sumes iterades, successions de parts d'un fix i tancaments són recursions amb codomini fix. La separació successor/límit és una comoditat, legítima només si és exhaustiva.
+  \item Frontera: quan els valors són conjunts nous sense codomini comú (la torre \(P^n(A)\)), els axiomes de Nivell~I no garanteixen la família, i cal SR.
+\end{enumerate}
+\apartat{Errors típics} Afegir un cas base a la inducció transfinita (ja hi és); creure que la recursió transfinita demana elecció (cada pas està determinat); confondre la comparabilitat de bons ordres (sense elecció) amb la de conjunts (amb elecció); usar la separació successor/límit sense haver provat que és exhaustiva; i afirmar que la torre \(P^n(A)\) no cap en cap conjunt, quan el que val és que cap axioma de Nivell~I no en dona un.
+\apartat{Lectura recomanada} \cite[§§17--18]{halmos} per a la inducció i la recursió transfinites i la comparabilitat dels bons ordres en la teoria clàssica; \cite[cap.~2]{jech2003} i \cite[cap.~I.9]{kunen2011} per al teorema de recursió transfinita i el seu ús amb el reemplaçament, que és el que aquí es marca com a frontera; i \cite[§§3--4]{shulman-comparing} per a la recursió transfinita en teoria estructural de conjunts i el paper del reemplaçament de contextos.
+\end{resumcap}

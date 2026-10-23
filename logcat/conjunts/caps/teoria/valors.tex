@@ -1,0 +1,1982 @@
+\chapter[Valors de veritat i construccions finites]{Valors de veritat, parts\texorpdfstring{\\}{ }i construccions finites}\label{cap:valors}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:parts}: parts, inclusió i pertinença generalitzada, sumes i productes amb les seves propietats universals, l'axioma de representació i les aplicacions característiques, i la construcció d'equalitzadors, pullbacks i imatges inverses. Del capítol~\ref{cap:aplicacions}: el conjunt inicial, la no-degeneració i la separació global. De la lògica elemental, les taules de veritat de la negació, la conjunció i la disjunció.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item enunciar l'axioma de disjunció i estabilitat de les sumes i explicar què hi afegeix respecte de la propietat universal;
+  \item demostrar que \(\mathbf0\) és estricte, que \(0\ne1\) a \(\mathbf2\) i que un conjunt sense punts és inicial, i deduir-ne que tot punt d'una suma prové d'un sol sumand i que tot epimorfisme és exhaustiu sobre punts;
+  \item treballar amb la part buida, la part total i el complement d'una part, i amb el quadrat característic com a pullback;
+  \item definir la negació, la conjunció i la disjunció com a aplicacions sobre \(\mathbf2\), calcular-ne les taules i traduir les operacions entre parts a operacions entre característiques;
+  \item demostrar les lleis booleanes de les parts per extensionalitat de les taules de veritat;
+  \item definir con, límit, cocon i colímit d'un diagrama finit, i construir tots els límits finits a partir de productes i equalitzadors, i tots els colímits finits a partir de sumes i coequalitzadors;
+  \item distingir quines construccions del capítol demanen un axioma nou i quines no.
+\end{itemize}
+\end{objectius}
+
+L'axioma de les sumes garanteix que tot parell de conjunts té una suma, i
+l'axioma de representació converteix
+\(\mathbf2=\mathbf1+\mathbf1\) en el conjunt que classifica les parts.
+Aquests axiomes, però, encara no expressen que les dues aplicacions
+canòniques d'una suma siguin disjuntes ni que aquesta descomposició es
+conservi en fer un canvi de base. En particular, fins ara no hem pogut
+demostrar que els dos elements globals canònics
+\[
+0,1:\mathbf1\to\mathbf2
+\]
+siguin diferents.
+
+En les cinc primeres seccions reforçarem el comportament de les sumes amb
+un axioma nou. A partir d'aquest axioma obtindrem la distinció entre
+\(0\) i \(1\), identificarem les parts buida i total, construirem el
+complement d'una part i recuperarem, en el metallenguatge, les operacions
+i les lleis de l'àlgebra booleana de les parts.
+
+\section{Sumes disjuntes i estables}\label{sec:sumes-disjuntes}
+
+Considerem una suma
+\[
+A_0\xrightarrow{i_0}S\xleftarrow{i_1}A_1.
+\]
+La propietat universal de la suma determina les aplicacions que surten de
+\(S\). Ara introduirem dues propietats que descriuen com les dues
+injeccions se situen dins de \(S\) i com es comporten en fer
+un canvi de base.
+
+\begin{definicio}[Suma disjunta]\index{Suma disjunta}\label{def:suma-disjunta}
+Una suma
+\[
+A_0\xrightarrow{i_0}S\xleftarrow{i_1}A_1
+\]
+és \emph{disjunta} si les dues injeccions són
+monomorfismes i el seu pullback és inicial. Formalment,
+\[
+\begin{aligned}
+&\operatorname{SumaDisj}(S,i_0,i_1,A_0,A_1)
+\\
+\iff{}&
+\operatorname{Suma}(S,i_0,i_1,A_0,A_1)
+\land\operatorname{Mono}(i_0)
+\land\operatorname{Mono}(i_1)
+\\
+&{}\land
+\exists P\,\exists q_0\,\exists q_1\,
+\bigl(
+\operatorname{Pullback}(P,q_0,q_1,i_0,i_1)
+\land\operatorname{Inicial}(P)
+\bigr).
+\end{aligned}
+\]
+\end{definicio}
+
+Geomètricament, la disjunció afirma que el quadrat cartesià
+\begin{center}
+\begin{tikzpicture}[scale=1.05, every node/.style={font=\small}, >=Stealth]
+  \node (P) at (0,2.2) {\(P\cong\mathbf0\)};
+  \node (A1) at (4.0,2.2) {\(A_1\)};
+  \node (A0) at (0,0) {\(A_0\)};
+  \node (S) at (4.0,0) {\(S\)};
+
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (P) -- node[above] {\(q_1\)} (A1);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (P) -- node[left] {\(q_0\)} (A0);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (A1) -- node[right] {\(i_1\)} (S);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (A0) -- node[below] {\(i_0\)} (S);
+\end{tikzpicture}
+\end{center}
+té un conjunt inicial com a vèrtex superior esquerre. Això expressa que
+les dues parts de \(S\) representades per \(i_0\) i \(i_1\) no tenen
+cap part comuna.
+
+\begin{definicio}[Suma estable]\index{Suma estable}\label{def:suma-estable}
+Una suma
+\[
+A_0\xrightarrow{i_0}S\xleftarrow{i_1}A_1
+\]
+és \emph{estable} si, per a tota aplicació \(f:B\to S\), les imatges
+inverses de les dues injeccions formen una suma amb vèrtex
+\(B\). Formalment,
+\[
+\begin{aligned}
+&\operatorname{SumaEst}(S,i_0,i_1,A_0,A_1)
+\\
+\iff{}&
+\operatorname{Suma}(S,i_0,i_1,A_0,A_1)
+\\
+&{}\land
+\forall B\,\forall f\,
+\Bigl(
+\operatorname{Conj}(B)\land f:B\to S
+\\
+&\qquad{}\Rightarrow
+\exists B_0\,\exists B_1\,
+\exists j_0\,\exists j_1\,
+\exists k_0\,\exists k_1\,
+\Bigl(
+\operatorname{Pullback}(B_0,j_0,k_0,f,i_0)
+\\
+&\qquad\qquad{}\land
+\operatorname{Pullback}(B_1,j_1,k_1,f,i_1)
+\land
+\operatorname{Suma}(B,j_0,j_1,B_0,B_1)
+\Bigr)
+\Bigr).
+\end{aligned}
+\]
+\end{definicio}
+
+La definició queda representada pels dos quadrats cartesians
+\begin{center}
+\begin{tikzpicture}[scale=0.95, every node/.style={font=\small}, >=Stealth]
+  \node (B0) at (0,2.2) {\(B_0\)};
+  \node (A0) at (3.2,2.2) {\(A_0\)};
+  \node (B) at (0,0) {\(B\)};
+  \node (S0) at (3.2,0) {\(S\)};
+
+  \node (B1) at (5.2,2.2) {\(B_1\)};
+  \node (A1) at (8.4,2.2) {\(A_1\)};
+  \node (Bbis) at (5.2,0) {\(B\)};
+  \node (S1) at (8.4,0) {\(S\)};
+
+  \draw[->, thick] (B0) -- node[above] {\(k_0\)} (A0);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (B0) -- node[left] {\(j_0\)} (B);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (A0) -- node[right] {\(i_0\)} (S0);
+  \draw[->, thick] (B) -- node[below] {\(f\)} (S0);
+
+  \draw[->, thick] (B1) -- node[above] {\(k_1\)} (A1);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (B1) -- node[left] {\(j_1\)} (Bbis);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (A1) -- node[right] {\(i_1\)} (S1);
+  \draw[->, thick] (Bbis) -- node[below] {\(f\)} (S1);
+\end{tikzpicture}
+\end{center}
+i per l'afirmació que les dues fletxes obtingudes tornen a confluir en
+una suma:
+\[
+B_0\xrightarrow{j_0}B\xleftarrow{j_1}B_1.
+\]
+Així, una descomposició de \(S\) en dues parts es transporta enrere al
+llarg de qualsevol aplicació \(f:B\to S\).
+
+\begin{axioma}[Disjunció i estabilitat de les sumes]\label{ax:sumes-disjuntes}
+Tota suma és disjunta i estable. Formalment,
+\[
+\begin{aligned}
+\forall S\,\forall i_0\,\forall i_1\,
+\forall A_0\,\forall A_1\,
+\Bigl(&
+\operatorname{Suma}(S,i_0,i_1,A_0,A_1)
+\\
+&{}\Rightarrow
+\operatorname{SumaDisj}(S,i_0,i_1,A_0,A_1)
+\land
+\operatorname{SumaEst}(S,i_0,i_1,A_0,A_1)
+\Bigr).
+\end{aligned}
+\]
+\end{axioma}
+
+\begin{observacio}[Informació aportada per l'axioma]\label{obs:necessitat-axioma}
+La propietat universal de la suma determina com es defineix una
+aplicació que surt de \(A_0+A_1\), però no proporciona per si sola una
+construcció que demostri que les dues injeccions són
+disjuntes ni que els seus canvis de base continuen formant una suma.
+L'axioma~\ref{ax:sumes-disjuntes} incorpora aquestes dues propietats i
+fa que les sumes es comportin estructuralment com les unions disjuntes
+de la teoria clàssica de conjunts.
+\end{observacio}
+
+\section{La distinció entre \texorpdfstring{\(0\) i \(1\)}{0 i 1}}\label{sec:zero-u}
+
+Abans de distingir els dos elements globals de \(\mathbf2\), obtindrem
+una conseqüència estructural de l'estabilitat: si existeix una aplicació
+d'un conjunt cap a \(\mathbf0\), aquest conjunt és inicial.
+
+\begin{definicio}[Conjunt inicial estricte]\index{Conjunt inicial estricte}\label{def:inicial-estricte}
+Un conjunt inicial \(I\) és \emph{estricte} si tota aplicació amb
+codomini \(I\) és un isomorfisme. Formalment,
+\[
+\begin{aligned}
+\operatorname{InicialEstricte}(I)
+&\iff
+\operatorname{Inicial}(I)
+\\[-0.2em]
+&\quad{}\land
+\forall X\,\forall f\,
+\Bigl(
+\operatorname{Conj}(X)
+\land\Dom(f,X)\land\Cod(f,I)
+\Rightarrow\operatorname{Iso}(f)
+\Bigr).
+\end{aligned}
+\]
+\end{definicio}
+
+\begin{proposicio}[Estrictesa del conjunt inicial]\label{prop:inicial-estricte}
+El conjunt inicial escollit \(\mathbf0\) és estricte.
+\end{proposicio}
+
+\begin{prova}
+Sigui \(f:X\to\mathbf0\). Les dues identitats
+\[
+\mathbf0\xrightarrow{\id_{\mathbf0}}\mathbf0
+\xleftarrow{\id_{\mathbf0}}\mathbf0
+\]
+formen una suma de \(\mathbf0\) i \(\mathbf0\): donades dues
+aplicacions amb domini \(\mathbf0\), totes dues són l'única aplicació
+que surt de l'inicial.
+
+Fem el canvi de base d'aquesta suma al llarg de \(f\). El pullback de
+\(\id_{\mathbf0}\) al llarg de \(f\) és \(X\), amb projecció
+\(\id_X:X\to X\). Per l'estabilitat, les dues identitats formen una
+suma
+\[
+X\xrightarrow{\id_X}X\xleftarrow{\id_X}X.
+\]
+Aquesta suma és disjunta. El pullback de les dues identitats és el
+mateix conjunt \(X\), i la disjunció implica que \(X\) és inicial.
+Per la unicitat dels conjunts inicials llevat d'un únic isomorfisme, existeix un isomorfisme \(u:X\to\mathbf0\). Com que \(X\) és inicial, només hi ha una aplicació de \(X\) en \(\mathbf0\); per tant, \(f=u\) i \(f\) és un isomorfisme.
+\end{prova}
+
+\begin{teorema}[Distinció dels valors de veritat]\label{teo:zero-diferent-u}
+Els dos elements globals canònics
+\[
+0,1:\mathbf1\to\mathbf2
+\]
+són diferents.
+\end{teorema}
+
+\begin{prova}
+La suma
+\[
+\mathbf1\xrightarrow{0}\mathbf2\xleftarrow{1}\mathbf1
+\]
+és disjunta. Per tant, un pullback de \(0\) i \(1\) és inicial.
+Suposem que \(0=1\). Aleshores el quadrat
+\begin{center}
+\begin{tikzpicture}[scale=1.05, every node/.style={font=\small}, >=Stealth]
+  \node (OneA) at (0,2.0) {\(\mathbf1\)};
+  \node (OneB) at (3.8,2.0) {\(\mathbf1\)};
+  \node (OneC) at (0,0) {\(\mathbf1\)};
+  \node (Two) at (3.8,0) {\(\mathbf2\)};
+
+  \draw[->, thick] (OneA) -- node[above] {\(\id_{\mathbf1}\)} (OneB);
+  \draw[->, thick] (OneA) -- node[left] {\(\id_{\mathbf1}\)} (OneC);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (OneB) -- node[right] {\(1\)} (Two);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (OneC) -- node[below] {\(0\)} (Two);
+\end{tikzpicture}
+\end{center}
+seria cartesià: com que aquesta aplicació és un monomorfisme, el
+pullback d'ella mateixa amb ella mateixa és el seu domini. Per la unicitat dels
+pullbacks llevat d'isomorfisme, \(\mathbf1\) seria isomorf al pullback
+inicial de \(0\) i \(1\). Així,
+\[
+\mathbf1\cong\mathbf0,
+\]
+en contradicció amb l'axioma de no-degeneració. Per tant,
+\(0\neq1\).
+\end{prova}
+
+La conseqüència principal de l'estabilitat no és només una afirmació
+sobre els punts globals d'una suma. És una descomposició de qualsevol
+element generalitzat.
+
+\begin{teorema}[Descomposició per canvi de base]\label{teo:descomposicio-canvi-base}
+Sigui
+\[
+A_0\xrightarrow{i_0}A_0+A_1\xleftarrow{i_1}A_1
+\]
+una suma i sigui \(x:X\to A_0+A_1\). Considerem els pullbacks
+\[
+X_0:=X\times_{A_0+A_1}A_0,
+\qquad
+X_1:=X\times_{A_0+A_1}A_1,
+\]
+amb projeccions \(j_0:X_0\to X\), \(j_1:X_1\to X\) i aplicacions \(k_0:X_0\to A_0\), \(k_1:X_1\to A_1\). Aleshores
+\[
+X_0\xrightarrow{j_0}X\xleftarrow{j_1}X_1
+\]
+és una suma disjunta. En particular, l'aplicació induïda
+\[
+[j_0,j_1]:X_0+X_1\xrightarrow{\sim}X
+\]
+és un isomorfisme.
+\end{teorema}
+
+\begin{prova}
+Per l'estabilitat de la suma, les dues projeccions
+\(j_0\) i \(j_1\) formen una suma amb vèrtex \(X\). Per
+l'axioma~\ref{ax:sumes-disjuntes}, aquesta suma és també disjunta.
+Finalment, \(X_0+X_1\) i \(X\) són dos representants d'una mateixa
+propietat universal; la unicitat de les sumes llevat d'un únic
+isomorfisme dona el resultat.
+\end{prova}
+
+\begin{observacio}[Lectura dels elements generalitzats d'una suma]\label{obs:elements-generalitzats-suma}
+Un element generalitzat
+\[
+x:X\to A_0+A_1
+\]
+no ha de provenir íntegrament d'un sol sumand. El
+teorema~\ref{teo:descomposicio-canvi-base} afirma, en canvi, que el seu
+estadi es descompon en una suma
+\[
+X\cong X_0+X_1,
+\]
+de manera que la restricció de \(x\) a \(X_0\) es factoritza a través
+de \(i_0\), i la restricció a \(X_1\) es factoritza a través de
+\(i_1\). Aquesta és la formulació estructural de l'exhaustivitat de les
+sumes.
+\end{observacio}
+
+El teorema anterior té dues conseqüències sobre els elements globals. La primera usa, a més, l'axioma de separació global i caracteritza els conjunts sense elements globals.
+
+\begin{lema}[Lema del buit]\label{lema:buit}
+Tot conjunt sense elements globals és inicial.
+\end{lema}
+
+\begin{prova}
+Sigui \(X\) un conjunt sense elements globals. Les aplicacions
+\[
+0\circ {!}_X,
+\qquad
+1\circ {!}_X
+\]
+de \(X\) a \(\mathbf2\) coincideixen sobre tots els elements globals de \(X\) ---no n'hi ha cap--- i, per l'\hyperref[ax:separacio-globals]{axioma de separació global}, són iguals. Aquesta igualtat diu que el parell \(({!}_X,{!}_X)\) satisfà l'equació de compatibilitat del pullback de \(0\) i \(1\). La propietat universal proporciona una aplicació \(X\to P\), on \(P\) és un pullback d'aquestes dues aplicacions; com que \(P\) és inicial, obtenim per composició una aplicació \(X\to\mathbf0\). Per l'estrictesa del conjunt inicial (proposició~\ref{prop:inicial-estricte}), \(X\cong\mathbf0\).
+\end{prova}
+
+La segona és l'exhaustivitat de les sumes sobre els elements globals, que ara es dedueix del teorema de descomposició per canvi de base.
+
+\begin{teorema}[Exhaustivitat de les sumes]\label{teo:exhaustivitat-sumes}
+Sigui \(A_0\xrightarrow{i_0}A_0+A_1\xleftarrow{i_1}A_1\) una suma. Tot element global \(x:\mathbf1\to A_0+A_1\) es factoritza a través d'exactament una de les dues injeccions.
+\end{teorema}
+
+\begin{prova}
+Apliquem el teorema~\ref{teo:descomposicio-canvi-base} a \(x\), amb estadi \(X=\mathbf1\). Obtenim una suma
+\[
+X_0\longrightarrow\mathbf1\longleftarrow X_1.
+\]
+Els dos conjunts \(X_0,X_1\) no poden ser tots dos inicials, perquè la seva suma és \(\mathbf1\), que no és inicial. Per tant, almenys un dels dos no és inicial. Per la contraposició del lema~\ref{lema:buit}, aquest conjunt té un element global; suposem que és \(s:\mathbf1\to X_0\). Com que \(j_0\circ s=\id_{\mathbf1}\), tenim
+\[
+j_0\circ(s\circ j_0)=(j_0\circ s)\circ j_0=j_0=j_0\circ\id_{X_0}.
+\]
+Com que \(j_0\) és un monomorfisme, \(s\circ j_0=\id_{X_0}\); així, \(j_0\) és un isomorfisme. La commutativitat del quadrat cartesià dona
+\[
+x=x\circ j_0\circ s=i_0\circ k_0\circ s,
+\]
+de manera que \(x\) es factoritza a través d'\(i_0\). La factorització és única perquè \(i_0\) és un monomorfisme.
+
+Els dos conjunts no poden tenir simultàniament un element global. En efecte, dos punts \(s_0:\mathbf1\to X_0\) i \(s_1:\mathbf1\to X_1\) satisfarien \(j_0\circ s_0=\id_{\mathbf1}=j_1\circ s_1\), i la propietat universal del pullback de \(j_0\) i \(j_1\) produiria una aplicació \(\mathbf1\to\mathbf0\), en contradicció amb la proposició~\ref{prop:no-fletxa-u-zero}. Per tant, \(x\) es factoritza a través d'una sola de les dues injeccions.
+\end{prova}
+
+\begin{corollari}[Els elements de \(\mathbf2\)]\label{cor:elements-de-2}
+Tot element global de \(\mathbf2\) és \(0\) o \(1\). Com que el teorema~\ref{teo:zero-diferent-u} afirma que són diferents, \(\mathbf2\) té exactament dos elements globals.
+\end{corollari}
+
+\begin{prova}
+És el cas \(A_0=A_1=\mathbf1\) del teorema~\ref{teo:exhaustivitat-sumes}: factoritzar-se a través de l'injecció \(0\) vol dir ser \(0\), i a través d'\(1\), ser \(1\).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica dels punts d'una suma]\label{obs:punts-suma}
+En el model clàssic dels conjunts, la suma \(A_0+A_1\) és la unió disjunta, i els seus punts són els punts d'\(A_0\) juntament amb els d'\(A_1\), sense solapament. El teorema~\ref{teo:exhaustivitat-sumes} i la disjunció de l'axioma~\ref{ax:sumes-disjuntes} recuperen aquesta imatge dins de la teoria: tot punt global prové d'un sumand o de l'altre, i mai de tots dos alhora.
+\end{observacio}
+
+\section{La part buida i la part total}\label{sec:buida-total}
+
+El conjunt inicial estricte permet construir una part buida de qualsevol
+conjunt. La part total ja havia aparegut al capítol anterior, representada
+per la identitat.
+
+\begin{definicio}[Part buida i part total]\index{Part buida i part total}\label{def:parts-extremals}
+Una part \(m\) de \(A\) és \emph{buida} si el seu domini és inicial, i
+és \emph{total} si \(m\) és un isomorfisme. Formalment,
+\[
+\begin{aligned}
+\operatorname{Buida}(m,A)
+&\iff
+\operatorname{Part}(m,A)
+\land
+\exists I\,
+\bigl(
+\operatorname{Inicial}(I)\land\Dom(m,I)
+\bigr),
+\\[0.5ex]
+\operatorname{Total}(m,A)
+&\iff
+\operatorname{Part}(m,A)
+\land\operatorname{Iso}(m).
+\end{aligned}
+\]
+\end{definicio}
+
+\begin{proposicio}\label{prop:parts-extremals-existeixen}
+Per a tot conjunt \(A\), l'única aplicació
+\[
+u_A:\mathbf0\to A
+\]
+és una part buida, i la identitat
+\[
+\id_A:A\to A
+\]
+és una part total.
+\end{proposicio}
+
+\begin{prova}
+La identitat és un isomorfisme i, per tant, un monomorfisme.
+
+Vegem que \(u_A\) és un monomorfisme. Siguin \(r,s:X\to\mathbf0\)
+amb \(u_A\circ r=u_A\circ s\). L'existència de \(r\) implica, per
+l'estrictesa de \(\mathbf0\), que \(X\) és inicial. Per tant, només hi
+ha una aplicació de \(X\) en \(\mathbf0\), i \(r=s\). Així,
+\(u_A\) és un monomorfisme amb codomini \(A\).
+\end{prova}
+
+\begin{notacio}[Parts extremals]\label{not:parts-extremals}
+Fixarem com a representants de les parts buida i total de \(A\)
+\[
+\bot_A:=u_A:\mathbf0\hookrightarrow A,
+\qquad
+\top_A:=\id_A:A\hookrightarrow A.
+\]
+\end{notacio}
+
+\begin{proposicio}[Unicitat de les parts extremals]\label{prop:parts-extremals-uniques}
+Qualsevol part buida de \(A\) és equivalent a \(\bot_A\), i qualsevol
+part total de \(A\) és equivalent a \(\top_A\).
+\end{proposicio}
+
+\begin{prova}
+Sigui \(m:I\hookrightarrow A\) una part buida. Els conjunts \(I\) i
+\(\mathbf0\) són inicials i, per tant, existeix un únic isomorfisme
+\(t:I\to\mathbf0\). Com que només hi ha una aplicació d'un conjunt
+inicial cap a \(A\),
+\[
+m=\bot_A\circ t.
+\]
+Si \(t^{-1}:\mathbf0\to I\) és la inversa, també
+\[
+\bot_A=m\circ t^{-1}.
+\]
+Així, \(m\equiv_A\bot_A\).
+
+Sigui ara \(n:T\hookrightarrow A\) una part total. Com que \(n\) és un
+isomorfisme,
+\[
+n=\top_A\circ n,
+\qquad
+\top_A=n\circ n^{-1}.
+\]
+Per tant, \(n\equiv_A\top_A\).
+\end{prova}
+
+A la \hyperref[prop:caracteristica-total]{proposició~\ref*{prop:caracteristica-total}} hem demostrat que la característica de la part total és
+\[
+\chi_{\top_A}=1\circ {!}_A.
+\]
+La característica de la part buida és la constant complementària.
+
+\begin{proposicio}[Característica de la part buida]\label{prop:caracteristica-buida}
+La característica de \(\bot_A\) és
+\[
+\chi_{\bot_A}=0\circ {!}_A.
+\]
+\end{proposicio}
+
+\begin{prova}
+Sigui \(x:X\to A\). Comprovarem que
+\[
+x\in_X\bot_A
+\quad\Longleftrightarrow\quad
+0\circ {!}_X=1\circ {!}_X.
+\]
+
+Suposem primer que \(x\in_X\bot_A\). Existeix una aplicació
+\(w:X\to\mathbf0\). Per l'estrictesa de \(\mathbf0\), el conjunt
+\(X\) és inicial; per tant, les dues aplicacions de \(X\) en
+\(\mathbf2\) són iguals i
+\[
+0\circ {!}_X=1\circ {!}_X.
+\]
+
+Recíprocament, suposem aquesta igualtat. El parell
+\(({!}_X,{!}_X)\) satisfà aleshores l'equació de compatibilitat per al pullback de
+\(0,1:\mathbf1\to\mathbf2\). La seva propietat universal proporciona una aplicació \(X\to P\), on \(P\) és un pullback de \(0\) i \(1\). Com que \(P\) és inicial per la disjunció de la suma, obtenim per composició una aplicació \(X\to\mathbf0\). L'estrictesa implica que \(X\) és inicial. En
+conseqüència, \(x:X\to A\) coincideix amb la composició de l'única
+aplicació \(X\to\mathbf0\) amb \(\bot_A\), i
+\(x\in_X\bot_A\).
+
+Per la unicitat de l'aplicació característica,
+\(\chi_{\bot_A}=0\circ {!}_A\).
+\end{prova}
+
+La propietat característica es pot expressar ara mitjançant un quadrat
+cartesià.
+
+\begin{teorema}[El quadrat característic]\label{teo:quadrat-caracteristic}
+Sigui \(m:S\hookrightarrow A\) una part. El quadrat
+\begin{center}
+\begin{tikzpicture}[scale=1.05, every node/.style={font=\small}, >=Stealth]
+  \node (S) at (0,2.1) {\(S\)};
+  \node (One) at (4.0,2.1) {\(\mathbf1\)};
+  \node (A) at (0,0) {\(A\)};
+  \node (Two) at (4.0,0) {\(\mathbf2\)};
+
+  \draw[->, thick] (S) -- node[above] {\({!}_S\)} (One);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (S) -- node[left] {\(m\)} (A);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (One) -- node[right] {\(1\)} (Two);
+  \draw[->, thick] (A) -- node[below] {\(\chi_m\)} (Two);
+\end{tikzpicture}
+\end{center}
+és cartesià. Per tant, \(m\) és una imatge inversa de la part
+\(1:\mathbf1\hookrightarrow\mathbf2\) per \(\chi_m\).
+\end{teorema}
+
+\begin{prova}
+El quadrat commuta perquè
+\[
+\chi_m\circ m=1\circ {!}_S.
+\]
+Siguin \(x:X\to A\) i \(t:X\to\mathbf1\) tals que
+\[
+\chi_m\circ x=1\circ t.
+\]
+Per la terminalitat de \(\mathbf1\), \(t={!}_X\). La definició
+d'aplicació característica dona
+\[
+x\in_Xm.
+\]
+Per tant, existeix una aplicació \(\bar{x}:X\to S\) tal que
+\[
+m\circ\bar{x}=x.
+\]
+A més, \({!}_S\circ\bar{x}=t\) per la unicitat de les aplicacions cap
+a \(\mathbf1\). L'aplicació \(\bar{x}\) és única perquè \(m\) és un
+monomorfisme. Això és exactament la propietat universal del pullback.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica de les parts extremals]\label{obs:parts-extremals-classiques}
+En la teoria clàssica de conjunts, \(\bot_A\) representa el subconjunt
+buit i \(\top_A\) representa tot el conjunt \(A\). Les seves
+característiques són, respectivament, les aplicacions constants amb
+valor \(0\) i amb valor \(1\). Dins la teoria, aquesta interpretació es
+recupera a partir de les propietats universals del conjunt inicial, de
+la identitat i del classificador de parts.
+\end{observacio}
+
+\section{La part complementària}\label{sec:complementaria}
+
+La suma \(\mathbf2=\mathbf1+\mathbf1\) permet intercanviar els dos
+valors de veritat.
+
+\begin{definicio}[Negació]\index{Negació}\label{def:negacio}
+La \emph{negació} és l'única aplicació
+\[
+\neg=[1,0]:\mathbf2\to\mathbf2
+\]
+que compleix
+\[
+\neg\circ0=1,
+\qquad
+\neg\circ1=0.
+\]
+Formalment,
+\[
+\begin{aligned}
+\operatorname{Neg}(t)
+\iff{}&
+\Dom(t,\mathbf2)\land\Cod(t,\mathbf2)
+\\
+&{}\land\Com(0,t,1)
+\land\Com(1,t,0).
+\end{aligned}
+\]
+\end{definicio}
+
+\begin{proposicio}\label{prop:negacio-involutiva}
+La negació és una involució:
+\[
+\neg\circ\neg=\id_{\mathbf2}.
+\]
+En particular, és un isomorfisme invers de si mateix.
+\end{proposicio}
+
+\begin{prova}
+Les aplicacions \(\neg\circ\neg\) i \(\id_{\mathbf2}\) tenen les
+mateixes composicions amb les dues injeccions de la suma:
+\[
+(\neg\circ\neg)\circ0=\neg\circ1=0,
+\qquad
+(\neg\circ\neg)\circ1=\neg\circ0=1.
+\]
+L'extensionalitat de la definició per casos dona
+\(\neg\circ\neg=\id_{\mathbf2}\).
+\end{prova}
+
+\begin{proposicio}[Característica del valor \(0\)]\label{prop:caracteristica-zero}
+Considerada com una part
+\[
+0:\mathbf1\hookrightarrow\mathbf2,
+\]
+l'aplicació característica de \(0\) és la negació:
+\[
+\chi_0=\neg.
+\]
+\end{proposicio}
+
+\begin{prova}
+Sigui \(x:X\to\mathbf2\). Com que l'única aplicació
+\(X\to\mathbf1\) és \({!}_X\), tenim
+\[
+x\in_X0
+\quad\Longleftrightarrow\quad
+x=0\circ {!}_X.
+\]
+Si aquesta igualtat es compleix, aleshores
+\[
+\neg\circ x
+=\neg\circ0\circ {!}_X
+=1\circ {!}_X.
+\]
+Recíprocament, si \(\neg\circ x=1\circ {!}_X\), componem amb
+\(\neg\) i usem la involució:
+\[
+x
+=\neg\circ\neg\circ x
+=\neg\circ1\circ {!}_X
+=0\circ {!}_X.
+\]
+Així, \(\neg\) compleix la propietat característica de la part
+\(0\), i la unicitat dona el resultat.
+\end{prova}
+
+\begin{definicio}[Part complementària]\index{Part complementària}\label{def:complementaria}
+Sigui \(m\) una part de \(A\). Una part \(n\) de \(A\) és
+\emph{complementària} de \(m\) si és una imatge inversa de la part
+\(0:\mathbf1\hookrightarrow\mathbf2\) per l'aplicació característica
+de \(m\). Formalment,
+\[
+\begin{aligned}
+\operatorname{Compl}(n,m,A)
+\iff{}&
+\operatorname{Part}(m,A)
+\\
+&{}\land
+\exists\chi\,
+\bigl(
+\operatorname{Car}(\chi,m,A)
+\land\operatorname{ImInv}(n,\chi,0)
+\bigr).
+\end{aligned}
+\]
+\end{definicio}
+
+\begin{notacio}[Complement d'una part]\label{not:complementaria}
+Fixarem una part complementària de \(m:S\hookrightarrow A\) i
+l'escriurem
+\[
+m^c:S^c\hookrightarrow A.
+\]
+Geomètricament, \(m^c\) queda determinada pel quadrat cartesià
+\begin{center}
+\begin{tikzpicture}[scale=1.05, every node/.style={font=\small}, >=Stealth]
+  \node (Sc) at (0,2.1) {\(S^c\)};
+  \node (One) at (4.0,2.1) {\(\mathbf1\)};
+  \node (A) at (0,0) {\(A\)};
+  \node (Two) at (4.0,0) {\(\mathbf2\)};
+
+  \draw[->, thick] (Sc) -- node[above] {\({!}_{S^c}\)} (One);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (Sc) -- node[left] {\(m^c\)} (A);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (One) -- node[right] {\(0\)} (Two);
+  \draw[->, thick] (A) -- node[below] {\(\chi_m\)} (Two);
+\end{tikzpicture}
+\end{center}
+\end{notacio}
+
+\begin{proposicio}[Característica del complement]\label{prop:caracteristica-complement}
+Per a tota part \(m\) de \(A\),
+\[
+\chi_{m^c}=\neg\circ\chi_m.
+\]
+\end{proposicio}
+
+\begin{prova}
+Per la proposició sobre la característica d'una imatge inversa,
+\[
+\chi_{m^c}=\chi_0\circ\chi_m.
+\]
+La proposició~\ref{prop:caracteristica-zero} identifica
+\(\chi_0\) amb \(\neg\), i obtenim la fórmula anunciada.
+\end{prova}
+
+\begin{proposicio}[Involució del complement]\label{prop:complementari-involutiu}
+Per a tota part \(m\) de \(A\),
+\[
+{(m^c)}^c\equiv_A m.
+\]
+\end{proposicio}
+
+\begin{prova}
+Per la proposició anterior i la involució de la negació,
+\[
+\chi_{{(m^c)}^c}
+=\neg\circ\chi_{m^c}
+=\neg\circ\neg\circ\chi_m
+=\chi_m.
+\]
+La caracterització de les parts equivalents mitjançant les seves
+aplicacions característiques dona
+\({(m^c)}^c\equiv_A m\).
+\end{prova}
+
+\begin{teorema}[Descomposició en una part i el seu complement]\label{teo:part-complementari}
+Per a tota part \(m:S\hookrightarrow A\), les dues parts
+\[
+m:S\hookrightarrow A,
+\qquad
+m^c:S^c\hookrightarrow A
+\]
+formen una suma disjunta. En particular,
+\[
+[m,m^c]:S+S^c\xrightarrow{\sim}A
+\]
+és un isomorfisme.
+\end{teorema}
+
+\begin{prova}
+El quadrat característic del
+teorema~\ref{teo:quadrat-caracteristic} identifica \(m\) amb el
+pullback de \(1\) al llarg de \(\chi_m\). Per definició, \(m^c\) és el
+pullback de \(0\) al llarg de la mateixa aplicació.
+
+Les aplicacions
+\[
+\mathbf1\xrightarrow{1}\mathbf2\xleftarrow{0}\mathbf1
+\]
+formen també una suma, obtinguda de la suma canònica intercanviant els
+dos sumands. Per l'estabilitat, els seus dos pullbacks al llarg de
+\(\chi_m:A\to\mathbf2\) formen una suma
+\[
+S\xrightarrow{m}A\xleftarrow{m^c}S^c.
+\]
+Aquesta suma és disjunta per l'axioma~\ref{ax:sumes-disjuntes}. La
+unicitat de les sumes llevat d'un únic isomorfisme dona
+\([m,m^c]:S+S^c\xrightarrow{\sim}A\).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica del complement]\label{obs:complement-classic}
+Per a un element global \(x:\mathbf1\to A\), l'element
+\(\chi_m\circ x\) és \(0\) o \(1\). La fórmula
+\[
+\chi_{m^c}=\neg\circ\chi_m
+\]
+implica, per tant,
+\[
+x\in m^c
+\quad\Longleftrightarrow\quad
+x\notin m.
+\]
+Aquesta equivalència és una lectura sobre punts globals. Per a un
+element generalitzat \(x:X\to A\), l'estadi \(X\) pot descompondre's
+en una part que es factoritza per \(m\) i una part que es factoritza
+per \(m^c\); no cal que tota la família pertanyi íntegrament a una de
+les dues parts.
+\end{observacio}
+
+Amb la part buida i la distinció entre \(0\) i \(1\) podem tancar la qüestió que el capítol anterior va deixar oberta (observació~\ref{obs:exhaustiva-epi}): els epimorfismes són exhaustius sobre els punts globals, i no cal cap axioma d'elecció per demostrar-ho.
+
+\begin{proposicio}[Els epimorfismes són exhaustius sobre punts]\label{prop:epi-exhaustiu-punts}
+Sigui \(f\colon A\to B\) un epimorfisme. Per a tot element global \(y\colon\mathbf1\to B\) existeix un element global \(x\colon\mathbf1\to A\) tal que \(f\circ x=y\). Juntament amb l'observació~\ref{obs:exhaustiva-epi}, una aplicació és un epimorfisme si i només si és exhaustiva sobre els elements globals.\par
+\emph{Axiomes usats:} separació global, representació de les parts, disjunció i estabilitat de les sumes; \emph{cap elecció}.
+\end{proposicio}
+
+\begin{prova}
+Tot element global \(y\colon\mathbf1\to B\) és un monomorfisme, perquè dues aplicacions paral·leles \(X\to\mathbf1\) sempre són iguals; és, doncs, una part de \(B\), amb característica \(\chi_y\). Sigui \(q\colon P\hookrightarrow A\) la imatge inversa \(f^{-1}(y)\), amb \(q'\colon P\to\mathbf1\) l'altra projecció del quadrat cartesià, de manera que \(f\circ q=y\circ q'\).
+
+Si \(P\) té un element global \(s\colon\mathbf1\to P\), posem \(x:=q\circ s\); aleshores \(f\circ x=y\circ q'\circ s=y\), perquè \(q'\circ s=\id_{\mathbf1}\) per la terminalitat.
+
+Si \(P\) no té cap element global, pel lema del buit (lema~\ref{lema:buit}) \(P\) és inicial, de manera que \(f^{-1}(y)\) és una part buida de \(A\) i, per la proposició~\ref{prop:caracteristica-buida} i la unicitat de les parts extremals, \(\chi_{f^{-1}(y)}=0\circ{!}_A\). D'altra banda, \(\chi_{f^{-1}(y)}=\chi_y\circ f\) (proposició~\ref{prop:caracteristica-imatge-inversa}). Així
+\[
+\chi_y\circ f=0\circ{!}_A=(0\circ{!}_B)\circ f,
+\]
+i com que \(f\) és un epimorfisme, \(\chi_y=0\circ{!}_B\). Però \(y\in y\) amb testimoni \(\id_{\mathbf1}\), de manera que \(\chi_y\circ y=1\); i també \(\chi_y\circ y=0\circ{!}_B\circ y=0\). Obtenim \(0=1\), contra el teorema~\ref{teo:zero-diferent-u}. Aquest cas és, doncs, impossible, i el primer dona la preimatge buscada.
+\end{prova}
+
+\begin{observacio}[Dues exhaustivitats, un sol epimorfisme]\label{obs:dues-exhaustivitats}
+Tenim ara el quadre complet. Ser epimorfisme equival a ser exhaustiu sobre els \emph{punts globals}, i això es demostra amb els axiomes d'aquest capítol. Ser exhaustiu sobre els elements \emph{generalitzats} equival a tenir secció (proposició~\ref{prop:exhaustiva-generalitzada-escindit}) i és, en principi, més fort: que tot epimorfisme tingui secció és exactament l'axioma d'elecció, que s'introduirà al capítol~\ref{cap:relacions}. La diferència entre les dues exhaustivitats és la diferència entre \emph{saber que hi ha} una preimatge per a cada punt i \emph{tenir una regla} que en triï una per a cada element generalitzat alhora.
+\end{observacio}
+
+\section{Operacions booleanes amb parts}\label{sec:booleanes}
+
+La intersecció de parts ja s'ha construït al capítol~2 mitjançant un
+pullback. Ara introduirem la unió i la diferència, i mostrarem que les
+parts d'un conjunt, considerades llevat d'equivalència, satisfan les
+lleis booleanes.
+
+\subsection{Producte d'aplicacions i distributivitat}
+
+\begin{notacio}[Producte d'aplicacions]\label{not:producte-aplicacions}
+Siguin
+\[
+f:A\to B,
+\qquad
+g:C\to D.
+\]
+Denotarem per
+\[
+f\times g:A\times C\to B\times D
+\]
+l'única aplicació determinada per
+\[
+p_B\circ(f\times g)=f\circ p_A,
+\qquad
+p_D\circ(f\times g)=g\circ p_C.
+\]
+Equivalentment,
+\[
+f\times g
+=
+\langle f\circ p_A,\,g\circ p_C\rangle.
+\]
+\end{notacio}
+
+\begin{teorema}[Distributivitat del producte respecte de la suma]\label{teo:distributivitat}
+Siguin
+\[
+B_0\xrightarrow{i_0}B_0+B_1\xleftarrow{i_1}B_1
+\]
+les injeccions d'una suma. Per a tot conjunt \(A\), les
+dues aplicacions
+\[
+\id_A\times i_0:A\times B_0\to A\times(B_0+B_1),
+\]
+\[
+\id_A\times i_1:A\times B_1\to A\times(B_0+B_1)
+\]
+formen una suma. En particular,
+\[
+A\times(B_0+B_1)
+\cong
+(A\times B_0)+(A\times B_1).
+\]
+\end{teorema}
+
+\begin{prova}
+Sigui
+\[
+p:A\times(B_0+B_1)\to B_0+B_1
+\]
+la segona projecció. El quadrat
+\begin{center}
+\begin{tikzpicture}[scale=1.0, every node/.style={font=\small}, >=Stealth]
+  \node (AB0) at (0,2.1) {\(A\times B_0\)};
+  \node (B0) at (4.2,2.1) {\(B_0\)};
+  \node (ABS) at (0,0) {\(A\times(B_0+B_1)\)};
+  \node (S) at (4.2,0) {\(B_0+B_1\)};
+
+  \draw[->, thick] (AB0) -- node[above] {\(p_{B_0}\)} (B0);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (AB0) -- node[left] {\(\id_A\times i_0\)} (ABS);
+  \draw[{Hooks[right]}-{Stealth[scale=1.2]}, thick] (B0) -- node[right] {\(i_0\)} (S);
+  \draw[->, thick] (ABS) -- node[below] {\(p\)} (S);
+\end{tikzpicture}
+\end{center}
+és cartesià. En efecte, commuta per la definició del producte
+d'aplicacions. Si \(u:X\to A\times(B_0+B_1)\) i \(v:X\to B_0\)
+compleixen \(p\circ u=i_0\circ v\), l'aplicació
+\[
+w=\langle p_A\circ u,v\rangle:X\to A\times B_0
+\]
+compleix
+\[
+(\id_A\times i_0)\circ w=u,
+\qquad
+p_{B_0}\circ w=v.
+\]
+La unicitat se segueix de la propietat universal del producte. El cas
+de \(i_1\) és anàleg.
+
+Per tant, \(A\times B_0\) i \(A\times B_1\) són els dos canvis de base
+de les injeccions al llarg de \(p\). L'estabilitat de la
+suma implica que conflueixen en una suma amb vèrtex
+\(A\times(B_0+B_1)\).
+\end{prova}
+
+\subsection{Les quatre injeccions de \texorpdfstring{\(\mathbf2\times\mathbf2\)}{2 per 2}}
+
+Per a \(a,b\in\{0,1\}\), escriurem
+\[
+\delta_{ab}:=\langle a,b\rangle:
+\mathbf1\to\mathbf2\times\mathbf2.
+\]
+Aquesta notació pertany al metallenguatge: els símbols \(a,b\) recorren
+els dos elements globals canònics ja distingits.
+
+\begin{proposicio}[Descomposició de \(\mathbf2\times\mathbf2\)]\label{prop:quatre-injeccions}
+Les quatre aplicacions
+\[
+\delta_{00},\quad
+\delta_{01},\quad
+\delta_{10},\quad
+\delta_{11}
+\]
+són les injeccions d'una suma iterada de quatre còpies de
+\(\mathbf1\) amb vèrtex \(\mathbf2\times\mathbf2\).
+\end{proposicio}
+
+\begin{prova}
+Apliquem el teorema~\ref{teo:distributivitat} a
+\(\mathbf2=\mathbf1+\mathbf1\) en el segon factor. Obtenim una suma
+\[
+\mathbf2\times\mathbf1
+\xrightarrow{\id_{\mathbf2}\times0}
+\mathbf2\times\mathbf2
+\xleftarrow{\id_{\mathbf2}\times1}
+\mathbf2\times\mathbf1.
+\]
+La primera projecció
+\[
+p_{\mathbf2}:\mathbf2\times\mathbf1\to\mathbf2
+\]
+és un isomorfisme, amb inversa
+\(\langle\id_{\mathbf2},{!}_{\mathbf2}\rangle\). Així, cadascun dels
+dos sumands és una còpia de
+\(\mathbf2=\mathbf1+\mathbf1\).
+
+Seguim explícitament les quatre injeccions. Per a
+\(a,b\in\{0,1\}\), la injecció corresponent és la composició
+\[
+\mathbf1
+\xrightarrow{\langle a,\id_{\mathbf1}\rangle}
+\mathbf2\times\mathbf1
+\xrightarrow{\id_{\mathbf2}\times b}
+\mathbf2\times\mathbf2.
+\]
+Les seves components són
+\[
+\begin{aligned}
+p_1\circ
+(\id_{\mathbf2}\times b)
+\circ\langle a,\id_{\mathbf1}\rangle&=a,\\
+p_2\circ
+(\id_{\mathbf2}\times b)
+\circ\langle a,\id_{\mathbf1}\rangle&=b.
+\end{aligned}
+\]
+Per la unicitat de la propietat universal del producte, aquesta
+composició és exactament \(\langle a,b\rangle=\delta_{ab}\). Això identifica les quatre còpies de \(\mathbf1\), en l'ordre produït
+per aquesta descomposició, amb
+\[
+\delta_{00},\quad\delta_{10},\quad\delta_{01},\quad\delta_{11}.
+\]
+Per a les taules de veritat les enumerarem en l'ordre convencional
+\(\delta_{00},\delta_{01},\delta_{10},\delta_{11}\); aquesta
+reordenació no altera la propietat universal de la suma iterada.
+\end{prova}
+
+\begin{proposicio}[Disjunció de les quatre injeccions]\label{prop:delta-disjuntes}
+Per a \(a,b,c,d\in\{0,1\}\), si \((a,b)\neq(c,d)\), el pullback de
+\[
+\delta_{ab},\delta_{cd}:\mathbf1\to\mathbf2\times\mathbf2
+\]
+és inicial.
+\end{proposicio}
+
+\begin{prova}
+Sigui \(P\) un pullback de \(\delta_{ab}\) i \(\delta_{cd}\). Les dues aplicacions de \(P\) a \(\mathbf1\) són necessàriament \({!}_P\). En compondre la igualtat del pullback amb les dues projeccions de \(\mathbf2\times\mathbf2\), obtenim
+\[
+a\circ {!}_P=c\circ {!}_P,
+\qquad
+b\circ {!}_P=d\circ {!}_P.
+\]
+Com que els parells són diferents, almenys una d'aquestes igualtats és
+\[
+0\circ {!}_P=1\circ {!}_P.
+\]
+La propietat universal d'un pullback inicial \(R\) de \(0\) i \(1\) proporciona una aplicació \(P\to R\); per composició amb l'única aplicació \(R\to\mathbf0\), obtenim una aplicació \(P\to\mathbf0\). Per l'estrictesa de \(\mathbf0\), el conjunt \(P\) és inicial.
+\end{prova}
+
+\begin{proposicio}[Extensionalitat de les taules de veritat]\label{prop:extensionalitat-taules}
+Siguin \(F,G:\mathbf2\times\mathbf2\to B\). Aleshores
+\[
+F=G
+\quad\Longleftrightarrow\quad
+F\circ\delta_{ab}=G\circ\delta_{ab}
+\quad
+\text{per a tots }a,b\in\{0,1\}.
+\]
+
+Anàlogament, dues aplicacions
+\[
+F,G:(\mathbf2\times\mathbf2)\times\mathbf2\to B
+\]
+són iguals si coincideixen sobre les vuit aplicacions
+\[
+\delta_{abc}:=\langle\delta_{ab},c\rangle,
+\qquad a,b,c\in\{0,1\}.
+\]
+\end{proposicio}
+
+\begin{prova}
+La primera afirmació és l'extensionalitat de la definició per casos
+aplicada a la suma de quatre còpies de \(\mathbf1\) de la proposició
+anterior. Aplicant novament la distributivitat, ara a
+\((\mathbf2\times\mathbf2)\times\mathbf2\), obtenim una suma de vuit
+còpies de \(\mathbf1\); el mateix argument dona la segona afirmació.
+\end{prova}
+
+\subsection{Conjunció, disjunció i parts}
+
+Les aplicacions \(\delta_{11}\) i \(\delta_{00}\) són
+monomorfismes, perquè són injeccions d'una suma disjunta.
+Per tant, representen parts de \(\mathbf2\times\mathbf2\).
+
+\begin{definicio}[Conjunció i disjunció]\index{Conjunció i disjunció}\label{def:conjuncio-disjuncio}
+La \emph{conjunció} és l'aplicació característica de la part
+\(\delta_{11}\):
+\[
+\wedge:=\chi_{\delta_{11}}:
+\mathbf2\times\mathbf2\to\mathbf2.
+\]
+La \emph{disjunció} és l'aplicació característica del complement de la
+part \(\delta_{00}\):
+\[
+\vee:=\chi_{\delta_{00}^{c}}:
+\mathbf2\times\mathbf2\to\mathbf2.
+\]
+\end{definicio}
+
+\begin{proposicio}[Taules de veritat]\label{prop:taules-veritat}
+Per a \(a,b\in\{0,1\}\),
+\[
+\wedge\circ\delta_{ab}
+=
+\begin{cases}
+1,&(a,b)=(1,1),\\
+0,&(a,b)\neq(1,1),
+\end{cases}
+\]
+i
+\[
+\vee\circ\delta_{ab}
+=
+\begin{cases}
+0,&(a,b)=(0,0),\\
+1,&(a,b)\neq(0,0).
+\end{cases}
+\]
+\end{proposicio}
+
+\begin{prova}
+Com que \(\wedge\) és la característica de \(\delta_{11}\), tenim
+\[
+\wedge\circ\delta_{11}=1.
+\]
+Si \((a,b)\neq(1,1)\), el pullback de \(\delta_{ab}\) i
+\(\delta_{11}\) és inicial per la proposició~\ref{prop:delta-disjuntes}. Per tant, la imatge inversa de
+\(\delta_{11}\) per \(\delta_{ab}\) és la part buida de
+\(\mathbf1\). La fórmula de la característica d'una imatge inversa
+dona
+\[
+\wedge\circ\delta_{ab}
+=\chi_{\bot_{\mathbf1}}
+=0.
+\]
+Això prova la taula de la conjunció.
+
+El mateix argument, aplicat ara a la part \(\delta_{00}\), mostra
+que la seva característica val \(1\) sobre \(\delta_{00}\) i
+\(0\) sobre les altres tres injeccions. Com que
+\(\delta_{00}^{c}\) és la part complementària,
+\[
+\vee=\chi_{\delta_{00}^{c}}
+=\neg\circ\chi_{\delta_{00}}.
+\]
+Per tant, \(\vee\) val \(0\) sobre \(\delta_{00}\) i
+\(1\) sobre les altres tres aplicacions. Aquesta és la taula de la
+disjunció.
+\end{prova}
+
+\begin{proposicio}[Característica de la intersecció]\label{prop:caracteristica-interseccio}
+Siguin \(m\) i \(n\) parts de \(A\). Aleshores
+\[
+\chi_{m\cap n}
+=
+\wedge\circ\langle\chi_m,\chi_n\rangle.
+\]
+\end{proposicio}
+
+\begin{prova}
+Posem
+\[
+c:=\langle\chi_m,\chi_n\rangle:
+A\to\mathbf2\times\mathbf2.
+\]
+Com que \(\wedge\) és la característica de \(\delta_{11}\), la
+composició \(\wedge\circ c\) és la característica de la imatge inversa
+\(c^{-1}(\delta_{11})\).
+
+Per a qualsevol \(x:X\to A\),
+\[
+\begin{aligned}
+x\in_Xc^{-1}(\delta_{11})
+&\Longleftrightarrow
+c\circ x\text{ es factoritza a través de }\delta_{11}
+\\
+&\Longleftrightarrow
+\chi_m\circ x=1\circ {!}_X
+\ \land\
+\chi_n\circ x=1\circ {!}_X
+\\
+&\Longleftrightarrow
+x\in_Xm\ \land\ x\in_Xn
+\\
+&\Longleftrightarrow
+x\in_X(m\cap n).
+\end{aligned}
+\]
+La caracterització de la inclusió mitjançant els elements generalitzats
+implica que \(c^{-1}(\delta_{11})\) i \(m\cap n\) són parts
+equivalents. Per tant, tenen la mateixa aplicació característica, i
+obtenim la fórmula anunciada.
+\end{prova}
+
+\begin{definicio}[Unió i diferència de parts]\index{Unió i diferència de parts}\label{def:operacions-parts}
+Siguin \(m\) i \(n\) parts de \(A\). Una part \(u\) de \(A\) és una
+\emph{unió} de \(m\) i \(n\) si la seva característica és
+\[
+\chi_u=\vee\circ\langle\chi_m,\chi_n\rangle.
+\]
+Formalment,
+\[
+\begin{aligned}
+\operatorname{Unio}(u,m,n,A)
+\iff{}&
+\operatorname{Part}(u,A)
+\land\operatorname{Part}(m,A)
+\land\operatorname{Part}(n,A)
+\\
+&{}\land
+\exists\alpha\,\exists\beta\,\exists\gamma\,
+\Bigl(
+\operatorname{Car}(\alpha,m,A)
+\land\operatorname{Car}(\beta,n,A)
+\\
+&\qquad{}\land\operatorname{Car}(\gamma,u,A)
+\land
+\gamma=\vee\circ\langle\alpha,\beta\rangle
+\Bigr).
+\end{aligned}
+\]
+
+Una part \(d\) de \(A\) és una \emph{diferència} de \(m\) i \(n\) si
+és una intersecció de \(m\) amb una part complementària de \(n\).
+Formalment,
+\[
+\begin{aligned}
+\operatorname{Dif}(d,m,n,A)
+\iff
+\exists c\,
+\bigl(
+\operatorname{Compl}(c,n,A)
+\land\operatorname{Inter}(d,m,c,A)
+\bigr).
+\end{aligned}
+\]
+\end{definicio}
+
+\begin{notacio}[Unió i diferència]\label{not:operacions-parts}
+Fixarem representants i escriurem
+\[
+m\cup n,
+\qquad
+m\setminus n:=m\cap n^c.
+\]
+Aquestes parts són úniques llevat d'equivalència.
+\end{notacio}
+
+\begin{observacio}[Lectura clàssica de les operacions]\label{obs:lectura-classica-operacions}
+Per a un element global \(x\in A\), les taules de veritat donen
+\[
+\begin{aligned}
+x\in m\cap n
+&\Longleftrightarrow x\in m\text{ i }x\in n,\\
+x\in m\cup n
+&\Longleftrightarrow x\in m\text{ o }x\in n,\\
+x\in m\setminus n
+&\Longleftrightarrow x\in m\text{ i }x\notin n.
+\end{aligned}
+\]
+La primera equivalència ja és vàlida per a tots els elements
+generalitzats, perquè la intersecció s'ha construït mitjançant un
+pullback. Les altres dues són, en aquesta forma disjuntiva, lectures
+sobre punts globals.
+\end{observacio}
+
+\subsection{Lleis booleanes}
+
+\begin{teorema}[Lleis booleanes de les parts]\label{teo:lleis-booleanes}
+Siguin \(m,n,p\) parts d'un mateix conjunt \(A\). Llevat
+d'equivalència de parts, es compleixen les identitats següents.
+
+\emph{Commutativitat:}
+\[
+m\cap n\equiv_A n\cap m,
+\qquad
+m\cup n\equiv_A n\cup m.
+\]
+
+\emph{Associativitat:}
+\[
+(m\cap n)\cap p\equiv_A m\cap(n\cap p),
+\]
+\[
+(m\cup n)\cup p\equiv_A m\cup(n\cup p).
+\]
+
+\emph{Idempotència:}
+\[
+m\cap m\equiv_A m,
+\qquad
+m\cup m\equiv_A m.
+\]
+
+\emph{Elements neutres i absorbents:}
+\[
+m\cap\top_A\equiv_A m,
+\qquad
+m\cup\bot_A\equiv_A m,
+\]
+\[
+m\cap\bot_A\equiv_A\bot_A,
+\qquad
+m\cup\top_A\equiv_A\top_A.
+\]
+
+\emph{Complementació:}
+\[
+m\cap m^c\equiv_A\bot_A,
+\qquad
+m\cup m^c\equiv_A\top_A,
+\qquad
+{(m^c)}^c\equiv_A m.
+\]
+
+\emph{Distributivitat:}
+\[
+m\cap(n\cup p)
+\equiv_A
+(m\cap n)\cup(m\cap p),
+\]
+\[
+m\cup(n\cap p)
+\equiv_A
+(m\cup n)\cap(m\cup p).
+\]
+
+\emph{Absorció:}
+\[
+m\cap(m\cup n)\equiv_A m,
+\qquad
+m\cup(m\cap n)\equiv_A m.
+\]
+
+\emph{Lleis de De Morgan:}
+\[
+(m\cap n)^c\equiv_A m^c\cup n^c,
+\]
+\[
+(m\cup n)^c\equiv_A m^c\cap n^c.
+\]
+\end{teorema}
+
+\begin{prova}
+Les fórmules de les característiques obtingudes fins ara són
+\[
+\chi_{m^c}=\neg\circ\chi_m,
+\]
+\[
+\chi_{m\cap n}
+=\wedge\circ\langle\chi_m,\chi_n\rangle,
+\]
+\[
+\chi_{m\cup n}
+=\vee\circ\langle\chi_m,\chi_n\rangle,
+\]
+i
+\[
+\chi_{\bot_A}=0\circ {!}_A,
+\qquad
+\chi_{\top_A}=1\circ {!}_A.
+\]
+Per tant, cada identitat de parts es redueix a una identitat entre
+aplicacions construïdes amb
+\(0,1,\neg,\wedge\) i \(\vee\).
+
+Abreujarem \(\wedge\circ\langle a,b\rangle\) per \(a\wedge b\),
+\(\vee\circ\langle a,b\rangle\) per \(a\vee b\), i les
+composicions amb \(\neg\) de la manera habitual.
+Per la proposició~\ref{prop:extensionalitat-taules}, les identitats de
+dues variables es comproven sobre les quatre aplicacions
+\(\delta_{ab}\), i les de tres variables sobre les vuit aplicacions
+\(\delta_{abc}\). Les taules de veritat donen, per a
+\(a,b,c\in\{0,1\}\),
+\[
+\begin{gathered}
+a\wedge b=b\wedge a,
+\qquad
+a\vee b=b\vee a,\\
+(a\wedge b)\wedge c=a\wedge(b\wedge c),
+\qquad
+(a\vee b)\vee c=a\vee(b\vee c),\\
+a\wedge a=a,
+\qquad
+a\vee a=a,\\
+a\wedge1=a,
+\quad
+a\vee0=a,
+\quad
+a\wedge0=0,
+\quad
+a\vee1=1,\\
+a\wedge\neg a=0,
+\qquad
+a\vee\neg a=1,\\
+a\wedge(b\vee c)
+=(a\wedge b)\vee(a\wedge c),\\
+a\vee(b\wedge c)
+=(a\vee b)\wedge(a\vee c),\\
+a\wedge(a\vee b)=a,
+\qquad
+a\vee(a\wedge b)=a,\\
+\neg(a\wedge b)=\neg a\vee\neg b,
+\qquad
+\neg(a\vee b)=\neg a\wedge\neg b.
+\end{gathered}
+\]
+
+Per exemple, la primera llei distributiva es verifica sense ometre cap
+cas: si \(a=0\), tots dos membres valen \(0\); si \(a=1\), tots dos
+membres valen \(b\vee c\). La primera llei de De Morgan també es
+comprova directament: el membre esquerre val \(0\) únicament quan
+\(a=b=1\), i el membre dret té exactament el mateix comportament. La
+resta d'igualtats es llegeixen immediatament de les mateixes taules.
+L'extensionalitat converteix aquestes verificacions finites en
+igualtats d'aplicacions.
+
+Finalment, dues parts són equivalents si i només si tenen la mateixa
+aplicació característica. Substituint \(a,b,c\) per
+\(\chi_m,\chi_n,\chi_p\) en les identitats anteriors obtenim totes les
+equivalències enunciades. La involució del complement ja havia estat
+demostrada a la proposició~\ref{prop:complementari-involutiu}.
+\end{prova}
+
+\begin{proposicio}[Inclusió i operacions booleanes]\label{prop:inclusio-booleana}
+Per a dues parts \(m,n\) de \(A\),
+\[
+m\subseteq_A n
+\quad\Longleftrightarrow\quad
+m\cap n\equiv_A m
+\quad\Longleftrightarrow\quad
+m\cup n\equiv_A n.
+\]
+\end{proposicio}
+
+\begin{prova}
+Per la caracterització de la inclusió mitjançant els elements
+generalitzats,
+\(m\subseteq_A n\) és equivalent al fet que tota aplicació que es
+factoritza per \(m\) també es factoritzi per \(n\). Juntament amb la
+caracterització de la intersecció, això equival a
+\[
+x\in_X(m\cap n)
+\quad\Longleftrightarrow\quad
+x\in_Xm
+\]
+per a tot \(X\) i tot \(x:X\to A\), és a dir,
+\(m\cap n\equiv_A m\).
+
+Si \(m\cap n\equiv_A m\), la compatibilitat de la unió amb
+l'equivalència i la llei d'absorció donen
+\[
+m\cup n
+\equiv_A
+(m\cap n)\cup n
+\equiv_A n.
+\]
+Recíprocament, si \(m\cup n\equiv_A n\), aleshores
+\[
+m\cap n
+\equiv_A
+m\cap(m\cup n)
+\equiv_A m
+\]
+per absorció. Això completa les equivalències.
+\end{prova}
+
+\begin{observacio}[Àlgebra booleana de les parts]\label{obs:algebra-booleana-parts}
+Fixat un conjunt \(A\), les parts de \(A\) no formen encara un conjunt
+intern de la teoria. En el metallenguatge, però, podem considerar les
+seves classes d'equivalència. Les operacions
+\[
+\cap,\qquad\cup,\qquad{}^c,
+\]
+les classes de \(\bot_A\) i \(\top_A\), i l'ordre induït per
+\(\subseteq_A\) converteixen aquestes classes en una àlgebra booleana.
+Aquesta afirmació resumeix les lleis del
+teorema~\ref{teo:lleis-booleanes}; no introdueix encara un conjunt
+intern de totes les parts de \(A\).
+\end{observacio}
+
+\begin{observacio}[Quadre de dependències de les seccions~\ref{sec:sumes-disjuntes} a~\ref{sec:booleanes}]\label{obs:quadre-dependencies-cap3}
+El quadre següent indica, per a cada resultat, quins dels axiomes següents intervenen a la seva demostració (directament o a través dels resultats que cita): \textbf{R}, representació de les parts (axioma~\ref{ax:representacio}, del qual depenen també els equalitzadors i els pullbacks); \textbf{D}, disjunció de les sumes, i \textbf{E}, estabilitat per canvi de base (les dues meitats de l'axioma~\ref{ax:sumes-disjuntes}); \textbf{N}, no-degeneració (axioma~\ref{ax:no-degeneracio}); \textbf{S}, separació global (axioma~\ref{ax:separacio-globals}). Els axiomes estructurals, el terminal, l'inicial, les sumes i els productes s'usen a tot arreu i no es consignen. Dues lectures del quadre: la columna \textbf{S} mostra que tota la lògica booleana de les parts es demostra \emph{sense} separació global, que només cal per al lema del buit i les seves conseqüències; i la columna \textbf{N} mostra que la no-degeneració intervé només per distingir \(0\) d'\(1\).
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.70\linewidth}ccccc@{}}
+\toprule
+Resultat & R & D & E & N & S\\
+\midrule
+Estrictesa de \(\mathbf0\) (prop.~\ref{prop:inicial-estricte}) & \(\bullet\) & \(\bullet\) & \(\bullet\) & & \\
+\(0\ne1\) (teor.~\ref{teo:zero-diferent-u}) & \(\bullet\) & \(\bullet\) & & \(\bullet\) & \\
+Descomposició per canvi de base (teor.~\ref{teo:descomposicio-canvi-base}) & \(\bullet\) & \(\bullet\) & \(\bullet\) & & \\
+Lema del buit (lema~\ref{lema:buit}) & \(\bullet\) & \(\bullet\) & \(\bullet\) & & \(\bullet\) \\
+Exhaustivitat de les sumes; elements de \(\mathbf2\) (teor.~\ref{teo:exhaustivitat-sumes}, cor.~\ref{cor:elements-de-2}) & \(\bullet\) & \(\bullet\) & \(\bullet\) & & \(\bullet\) \\
+Unicitat de les parts extremals (prop.~\ref{prop:parts-extremals-uniques}) & \(\bullet\) & \(\bullet\) & \(\bullet\) & & \\
+Característica de la part buida (prop.~\ref{prop:caracteristica-buida}) & \(\bullet\) & \(\bullet\) & \(\bullet\) & & \\
+Quadrat característic (teor.~\ref{teo:quadrat-caracteristic}) & \(\bullet\) & & & & \\
+Negació involutiva; \(\chi_0=\neg\); característica del complement (props.~\ref{prop:negacio-involutiva}, \ref{prop:caracteristica-zero}, \ref{prop:caracteristica-complement}) & \(\bullet\) & & & & \\
+Descomposició \(A\cong S+S^c\) (teor.~\ref{teo:part-complementari}) & \(\bullet\) & & \(\bullet\) & & \\
+Epimorfismes exhaustius sobre punts (prop.~\ref{prop:epi-exhaustiu-punts}) & \(\bullet\) & \(\bullet\) & \(\bullet\) & \(\bullet\) & \(\bullet\) \\
+Distributivitat; quatre injeccions (teor.~\ref{teo:distributivitat}, prop.~\ref{prop:quatre-injeccions}) & \(\bullet\) & & \(\bullet\) & & \\
+Disjunció de les \(\delta_{ab}\); taules de veritat (props.~\ref{prop:delta-disjuntes}, \ref{prop:taules-veritat}) & \(\bullet\) & \(\bullet\) & \(\bullet\) & & \\
+Extensionalitat de les taules (prop.~\ref{prop:extensionalitat-taules}) & \(\bullet\) & & \(\bullet\) & & \\
+Característica de la intersecció (prop.~\ref{prop:caracteristica-interseccio}) & \(\bullet\) & & & & \\
+Lleis booleanes; inclusió i operacions (teor.~\ref{teo:lleis-booleanes}, prop.~\ref{prop:inclusio-booleana}) & \(\bullet\) & \(\bullet\) & \(\bullet\) & & \\
+\bottomrule
+\end{tabular}
+\end{center}
+Cap fila no cita un resultat posterior: l'ordre del quadre és l'ordre de les demostracions, de manera que no hi ha dependències circulars. En particular, \(0\ne1\) es demostra abans que qualsevol operació booleana, i cap llei booleana no l'usa.
+\end{observacio}
+
+\section{Diagrames finits i límits finits}\label{sec:limits-finits}
+
+Els productes, els equalitzadors i els pullbacks responen a un mateix patró: un conjunt que resol universalment un sistema finit de compatibilitats entre aplicacions. Aquesta secció unifica aquest patró sota el nom de \emph{límit} i demostra que tots els límits finits existeixen sense afegir cap axioma.
+
+\begin{observacio}[Els diagrames finits pertanyen al metallenguatge]\label{obs:diagrama-metateoric}
+Un \emph{diagrama finit} consta d'una llista finita de conjunts
+\[
+A_1,\ldots,A_n
+\]
+i d'una llista finita d'aplicacions
+\[
+f_\alpha:A_{s(\alpha)}\to A_{t(\alpha)}.
+\]
+La finitud es compta en el metallenguatge. No hem codificat els diagrames com a conjunts interns de la teoria. Per tant, l'afirmació «tot diagrama finit té límit» és un metateorema: per a cada forma finita concreta proporciona una fórmula i una demostració dins de la teoria.
+\end{observacio}
+
+\begin{notacio}[Productes finits]\label{not:productes-finits}
+Per a una llista finita de conjunts \(A_1,\ldots,A_n\), escriurem
+\[
+\prod_{i=1}^{n}A_i
+\]
+per un producte iterat escollit. El producte buit és \(\mathbf1\), el producte d'un sol conjunt és aquest mateix conjunt i els productes de longitud més gran es construeixen iterant els productes binaris.
+\end{notacio}
+
+\begin{proposicio}[Existència dels productes finits]\label{prop:productes-finits}
+Tota llista finita de conjunts té un producte, únic llevat d'un únic isomorfisme compatible amb les projeccions.
+\end{proposicio}
+
+\begin{prova}
+Per a la llista buida, la propietat universal és la del conjunt terminal \(\mathbf1\). Per a una llista d'un sol conjunt, la identitat proporciona el producte. Si ja existeix el producte de \(A_1,\ldots,A_n\), el producte binari
+\[
+\left(\prod_{i=1}^{n}A_i\right)\times A_{n+1}
+\]
+té la propietat universal del producte de la llista ampliada. La unicitat se segueix, com en el cas binari, aplicant les propietats universals en les dues direccions.
+\end{prova}
+
+Fixem ara un diagrama finit \(D\) amb conjunts \((A_i)_i\) i aplicacions \(f_\alpha:A_{s(\alpha)}\to A_{t(\alpha)}\).
+
+\begin{definicio}[Con]\index{Con}\label{def:con}
+Un \emph{con} sobre \(D\), amb vèrtex \(X\), és una família finita d'aplicacions
+\[
+c_i:X\to A_i
+\]
+tal que, per a cada aplicació \(f_\alpha\) del diagrama,
+\[
+f_\alpha\circ c_{s(\alpha)}=c_{t(\alpha)}.
+\]
+
+Per al diagrama fix \(D\), aquesta definició abrevia la fórmula finita
+\[
+\operatorname{Con}_D\bigl(X,(c_i)_i\bigr)
+\iff
+\operatorname{Conj}(X)
+\land
+\bigwedge_i\bigl(c_i:X\to A_i\bigr)
+\land
+\bigwedge_\alpha
+\Com\bigl(c_{s(\alpha)},f_\alpha,c_{t(\alpha)}\bigr).
+\]
+Els símbols \(\bigwedge_i\) i \(\bigwedge_\alpha\) representen conjuncions finites del metallenguatge, que es poden desplegar en cada diagrama concret.
+\end{definicio}
+
+\begin{definicio}[Límit]\index{Límit}\label{def:limit}
+Un con
+\[
+\bigl(L,(\ell_i)_i\bigr)
+\]
+és un \emph{límit} de \(D\) si, per a qualsevol altre con
+\[
+\bigl(X,(c_i)_i\bigr),
+\]
+existeix una única aplicació \(u:X\to L\) tal que
+\[
+\ell_i\circ u=c_i
+\qquad\text{per a tot }i.
+\]
+
+Per a cada diagrama finit fix, aquesta condició és una abreviació d'una fórmula finita construïda amb els predicats ja definits.
+\end{definicio}
+
+\begin{notacio}[Con i límit]\label{not:limit}
+La família \((\ell_i)_i\) s'anomena el \emph{con límit}. La seva propietat universal es representa afegint, des de qualsevol altre con, una única fletxa discontínua \(u:X\to L\) que fa commutar tots els triangles
+\[
+\ell_i\circ u=c_i.
+\]
+\end{notacio}
+
+\begin{observacio}[Casos particulars]\label{obs:limits-casos}
+El límit del diagrama buit és el conjunt terminal \(\mathbf1\). El límit de dos conjunts sense fletxes entre ells és el seu producte. El límit d'un parell d'aplicacions paral·leles és el seu equalitzador, i el límit d'un diagrama
+\[
+A\longrightarrow C\longleftarrow B
+\]
+és el pullback corresponent.
+\end{observacio}
+
+\begin{teorema}[Existència dels límits finits]\label{teo:limits-finits}
+Tot diagrama finit té límit.
+\end{teorema}
+
+\begin{prova}
+Sigui \(D\) un diagrama finit amb conjunts \((A_i)_i\) i aplicacions
+\[
+f_\alpha:A_{s(\alpha)}\to A_{t(\alpha)}.
+\]
+Formem els productes finits
+\[
+P=\prod_i A_i,
+\qquad
+Q=\prod_\alpha A_{t(\alpha)},
+\]
+amb projeccions \(p_i:P\to A_i\) i \(q_\alpha:Q\to A_{t(\alpha)}\). La propietat universal de \(Q\) determina dues aplicacions \(r,r':P\to Q\) mitjançant
+\[
+q_\alpha\circ r=p_{t(\alpha)},
+\qquad
+q_\alpha\circ r'=f_\alpha\circ p_{s(\alpha)}.
+\]
+Sigui
+\[
+\ell:L\hookrightarrow P
+\]
+l'equalitzador de \(r\) i \(r'\), i posem
+\[
+\ell_i:=p_i\circ\ell:L\to A_i.
+\]
+
+Com que \(r\circ\ell=r'\circ\ell\), en compondre amb cada projecció \(q_\alpha\) obtenim
+\[
+\ell_{t(\alpha)}=f_\alpha\circ\ell_{s(\alpha)}.
+\]
+Per tant, \((L,(\ell_i)_i)\) és un con.
+
+Sigui ara \((X,(c_i)_i)\) un con qualsevol. La propietat universal de \(P\) proporciona una única aplicació \(c:X\to P\) tal que
+\[
+p_i\circ c=c_i
+\qquad\text{per a tot }i.
+\]
+Per a cada \(\alpha\),
+\[
+\begin{aligned}
+q_\alpha\circ r\circ c
+&=p_{t(\alpha)}\circ c
+=c_{t(\alpha)}\\
+&=f_\alpha\circ c_{s(\alpha)}
+=f_\alpha\circ p_{s(\alpha)}\circ c
+=q_\alpha\circ r'\circ c.
+\end{aligned}
+\]
+Com que les projeccions de \(Q\) separen aplicacions, \(r\circ c=r'\circ c\). La propietat universal de l'equalitzador determina una única \(u:X\to L\) amb
+\[
+\ell\circ u=c.
+\]
+Aleshores
+\[
+\ell_i\circ u=p_i\circ\ell\circ u=p_i\circ c=c_i.
+\]
+Si \(u'\) té les mateixes components, les projeccions de \(P\) donen \(\ell\circ u'=c\), i la unicitat de l'equalitzador implica \(u'=u\). Així, \((L,(\ell_i)_i)\) és un límit.
+\end{prova}
+
+\begin{observacio}[Balanç dels límits finits]\label{obs:tots-limits-finits}
+La construcció només ha fet servir el conjunt terminal, els productes binaris i els equalitzadors. Per tant, els axiomes anteriors ja garanteixen tots els límits finits; no cal afegir cap axioma d'existència nou.
+\end{observacio}
+
+\section{Coequalitzadors}\label{sec:coequalitzadors}
+
+Els equalitzadors resolen el problema d'igualar dues aplicacions paral·leles restringint-ne el domini. La construcció dual les iguala després de compondre-les amb una aplicació comuna.
+
+\begin{definicio}[Coequalitzador]\index{Coequalitzador}\label{def:coequalitzador}
+Una aplicació \(q\) és un \emph{coequalitzador} de dues aplicacions paral·leles \(f,g\) si
+\[
+q\circ f=q\circ g
+\]
+i si tota aplicació que també les coequalitza es factoritza de manera única a través de \(q\). Formalment,
+\[
+\begin{aligned}
+\operatorname{Coeq}(q,f,g)
+\iff
+\exists A\,\exists B\,\exists Q\,\Bigl(&
+ f:A\to B\land g:A\to B\land q:B\to Q
+\\
+&{}\land
+\exists p\,
+ \bigl(\Com(f,q,p)\land\Com(g,q,p)\bigr)
+\\
+&{}\land
+\forall C\,\forall h\,\Bigl(
+ h:B\to C
+\\
+&\qquad{}\land
+ \exists p'\,
+ \bigl(\Com(f,h,p')\land\Com(g,h,p')\bigr)
+\\
+&\qquad{}\Rightarrow
+ \exists!\bar h\,
+ \bigl(\bar h:Q\to C\land\Com(q,\bar h,h)\bigr)
+\Bigr)
+\Bigr).
+\end{aligned}
+\]
+\end{definicio}
+
+\begin{notacio}[Propietat universal del coequalitzador]\label{not:coequalitzador}
+Per a \(f,g:A\to B\), escriurem un coequalitzador com
+\[
+A
+\mathrel{\substack{\xrightarrow{\ f\ }\\[-0.6ex]\xrightarrow[\ g\ ]{}}}
+B\xrightarrow{q}Q.
+\]
+La propietat universal afirma que, si \(h:B\to C\) satisfà
+\[
+h\circ f=h\circ g,
+\]
+existeix una única \(\bar h:Q\to C\) tal que
+\[
+\bar h\circ q=h.
+\]
+Es representa mitjançant el diagrama
+\begin{center}
+\begin{tikzpicture}[scale=1.1,every node/.style={font=\small},>=Stealth]
+  \node (A) at (0,1.8) {\(A\)};
+  \node (B) at (2.8,1.8) {\(B\)};
+  \node (Q) at (5.6,1.8) {\(Q\)};
+  \node (C) at (5.6,0) {\(C\)};
+  \draw[->,thick] (A) to[bend left=22] node[above] {\(f\)} (B);
+  \draw[->,thick] (A) to[bend right=22] node[below] {\(g\)} (B);
+  \draw[->,thick] (B) -- node[above] {\(q\)} (Q);
+  \draw[->,thick] (B) -- node[below left] {\(h\)} (C);
+  \draw[->,thick,dashed] (Q) -- node[right] {\(\bar h\)} (C);
+\end{tikzpicture}
+\end{center}
+La fletxa discontínua expressa simultàniament l'existència i la unicitat de la factorització.
+\end{notacio}
+
+\begin{proposicio}[Unicitat del coequalitzador]\label{prop:coequalitzador-unic}
+Si \(q:B\to Q\) i \(q':B\to Q'\) són coequalitzadors de \(f,g:A\to B\), existeix un únic isomorfisme \(w:Q\to Q'\) tal que
+\[
+w\circ q=q'.
+\]
+\end{proposicio}
+
+\begin{prova}
+La propietat universal de \(q\), aplicada a \(q'\), proporciona una única \(w:Q\to Q'\) amb \(w\circ q=q'\). Simètricament, obtenim \(w':Q'\to Q\) amb \(w'\circ q'=q\). Aleshores
+\[
+(w'\circ w)\circ q=q=\id_Q\circ q.
+\]
+La unicitat de la factorització a través de \(q\) implica \(w'\circ w=\id_Q\). De manera anàloga, \(w\circ w'=\id_{Q'}\).
+\end{prova}
+
+\begin{proposicio}\label{prop:coequalitzador-epi}
+Tot coequalitzador és un epimorfisme.
+\end{proposicio}
+
+\begin{prova}
+Sigui \(q:B\to Q\) un coequalitzador de \(f,g\), i siguin \(y,y':Q\to C\) amb
+\[
+y\circ q=y'\circ q.
+\]
+L'aplicació comuna \(h:=y\circ q\) coequalitza \(f\) i \(g\). Tant \(y\) com \(y'\) són factoritzacions de \(h\) a través de \(q\); per la unicitat de la propietat universal, \(y=y'\).
+\end{prova}
+
+\begin{observacio}[Per què cal un axioma nou]\label{obs:necessitat-coequalitzadors}
+Els equalitzadors s'han construït al capítol~\ref{cap:parts} a partir dels productes i de la representació de les parts. Les construccions disponibles fins ara no proporcionen una construcció dual dels coequalitzadors. Per garantir-ne l'existència, cal incorporar un axioma nou. Aquesta observació no afirma una independència lògica; només assenyala que els axiomes i les construccions establerts no n'han donat encara cap construcció.
+\end{observacio}
+
+\begin{axioma}[Existència de coequalitzadors]\label{ax:coequalitzadors}
+Tot parell d'aplicacions paral·leles té un coequalitzador. Formalment,
+\[
+\forall A\,\forall B\,\forall f\,\forall g\,
+\Bigl(
+ f:A\to B\land g:A\to B
+ \Rightarrow
+ \exists q\,\operatorname{Coeq}(q,f,g)
+\Bigr).
+\]
+\end{axioma}
+
+\section{Pushouts}\label{sec:pushouts}
+
+Els pushouts, o sumes amalgamades, són la construcció dual dels pullbacks. Es poden construir combinant una suma amb un coequalitzador.
+
+\begin{definicio}[Pushout o suma amalgamada]\index{Pushout o suma amalgamada}\label{def:pushout}
+Donades dues aplicacions amb domini comú
+\[
+f:C\to A,
+\qquad
+g:C\to B,
+\]
+un \emph{pushout} o una \emph{suma amalgamada} és un parell d'aplicacions
+\[
+j_A:A\to P,
+\qquad
+j_B:B\to P
+\]
+tal que
+\[
+j_A\circ f=j_B\circ g
+\]
+i que és universal amb aquesta propietat. Formalment,
+\[
+\begin{aligned}
+&\operatorname{Pushout}(j_A,j_B,f,g)\\
+&\iff
+\exists A\,\exists B\,\exists C\,\exists P\,\Bigl(&
+ f:C\to A\land g:C\to B
+\\
+&{}\land j_A:A\to P\land j_B:B\to P
+\\
+&{}\land
+\exists d\,
+ \bigl(\Com(f,j_A,d)\land\Com(g,j_B,d)\bigr)
+\\
+&{}\land
+\forall X\,\forall a\,\forall b\,\Bigl(
+ a:A\to X\land b:B\to X
+\\
+&\qquad{}\land
+ \exists d'\,
+ \bigl(\Com(f,a,d')\land\Com(g,b,d')\bigr)
+\\
+&\qquad{}\Rightarrow
+ \exists!u\,\bigl(
+ u:P\to X
+\\
+&\qquad\qquad{}\land
+ \Com(j_A,u,a)\land\Com(j_B,u,b)
+ \bigr)
+\Bigr)
+\Bigr).
+\end{aligned}
+\]
+\end{definicio}
+
+\begin{notacio}[Propietat universal del pushout]\label{not:pushout}
+El quadrat
+\begin{center}
+\begin{tikzpicture}[scale=1.05,every node/.style={font=\small},>=Stealth]
+  \node (C) at (0,2.2) {\(C\)};
+  \node (B) at (4.0,2.2) {\(B\)};
+  \node (A) at (0,0) {\(A\)};
+  \node (P) at (4.0,0) {\(P\)};
+  \node (X) at (6.8,1.1) {\(X\)};
+  \draw[->,thick] (C) -- node[above] {\(g\)} (B);
+  \draw[->,thick] (C) -- node[left] {\(f\)} (A);
+  \draw[->,thick] (B) -- node[right] {\(j_B\)} (P);
+  \draw[->,thick] (A) -- node[below] {\(j_A\)} (P);
+  \draw[->,thick] (A) -- node[below] {\(a\)} (X);
+  \draw[->,thick] (B) -- node[above] {\(b\)} (X);
+  \draw[->,thick,dashed] (P) -- node[below right] {\(u\)} (X);
+\end{tikzpicture}
+\end{center}
+és \emph{cocartesià} quan, per a totes les aplicacions \(a:A\to X\) i \(b:B\to X\) amb
+\[
+a\circ f=b\circ g,
+\]
+existeix una única \(u:P\to X\) tal que
+\[
+u\circ j_A=a,
+\qquad
+u\circ j_B=b.
+\]
+\end{notacio}
+
+\begin{teorema}[Construcció del pushout]\label{teo:pushout-construccio}
+Tot parell d'aplicacions \(f:C\to A\) i \(g:C\to B\) amb domini comú té un pushout. Es construeix com el coequalitzador de les aplicacions paral·leles
+\[
+i_A\circ f,
+\qquad
+i_B\circ g:C\to A+B,
+\]
+on \(i_A\) i \(i_B\) són les injeccions de la suma.
+\end{teorema}
+
+\begin{prova}
+Sigui
+\[
+q:A+B\to P
+\]
+el coequalitzador de \(i_A\circ f\) i \(i_B\circ g\), i definim
+\[
+j_A:=q\circ i_A,
+\qquad
+j_B:=q\circ i_B.
+\]
+La igualtat del coequalitzador dona
+\[
+j_A\circ f=q\circ i_A\circ f
+=q\circ i_B\circ g
+=j_B\circ g.
+\]
+
+Siguin \(a:A\to X\) i \(b:B\to X\) amb \(a\circ f=b\circ g\). La propietat universal de la suma determina
+\[
+[a,b]:A+B\to X
+\]
+amb \([a,b]\circ i_A=a\) i \([a,b]\circ i_B=b\). A més,
+\[
+[a,b]\circ i_A\circ f
+=a\circ f
+=b\circ g
+=[a,b]\circ i_B\circ g.
+\]
+Per la propietat universal del coequalitzador, existeix una única \(u:P\to X\) amb
+\[
+u\circ q=[a,b].
+\]
+Aleshores \(u\circ j_A=a\) i \(u\circ j_B=b\). Si \(u'\) compleix les mateixes igualtats, les aplicacions \(u'\circ q\) i \([a,b]\) coincideixen després de compondre-les amb \(i_A\) i \(i_B\); la unicitat en la propietat universal de la suma implica \(u'\circ q=[a,b]\), i la unicitat del coequalitzador dona \(u'=u\).
+\end{prova}
+
+\section{Colímits finits}\label{sec:colimits-finits}
+
+La construcció dels colímits finits és dual de la dels límits finits. Ara sí que fa servir l'axioma d'existència de coequalitzadors.
+
+\begin{notacio}[Sumes finites]\label{not:sumes-finits}
+Per a una llista finita de conjunts \(A_1,\ldots,A_n\), escriurem
+\[
+\coprod_{i=1}^{n}A_i
+\]
+per una suma iterada escollida. La suma buida és \(\mathbf0\), la suma d'un sol conjunt és aquest mateix conjunt i les sumes de longitud més gran es construeixen iterant les sumes binàries.
+\end{notacio}
+
+\begin{proposicio}[Existència de les sumes finites]\label{prop:sumes-finits}
+Tota llista finita de conjunts té una suma, única llevat d'un únic isomorfisme compatible amb les injeccions.
+\end{proposicio}
+
+\begin{prova}
+La suma buida és el conjunt inicial \(\mathbf0\), i el cas d'un sol conjunt és immediat. El pas inductiu consisteix a sumar el conjunt següent a una suma iterada ja construïda. La unicitat se segueix de les propietats universals, exactament com en el cas binari.
+\end{prova}
+
+Fixem novament un diagrama finit \(D\) amb conjunts \((A_i)_i\) i aplicacions \(f_\alpha:A_{s(\alpha)}\to A_{t(\alpha)}\).
+
+\begin{definicio}[Cocon]\index{Cocon}\label{def:cocon}
+Un \emph{cocon} sobre \(D\), amb vèrtex \(X\), és una família finita d'aplicacions
+\[
+c_i:A_i\to X
+\]
+tal que, per a cada \(f_\alpha\),
+\[
+c_{t(\alpha)}\circ f_\alpha=c_{s(\alpha)}.
+\]
+Per al diagrama fix, aquesta condició és una abreviació d'una conjunció finita del llenguatge formal.
+\end{definicio}
+
+\begin{definicio}[Colímit]\index{Colímit}\label{def:colimit}
+Un cocon
+\[
+\bigl(L,(\ell_i)_i\bigr)
+\]
+és un \emph{colímit} de \(D\) si, per a qualsevol altre cocon
+\[
+\bigl(X,(c_i)_i\bigr),
+\]
+existeix una única aplicació \(u:L\to X\) tal que
+\[
+u\circ\ell_i=c_i
+\qquad\text{per a tot }i.
+\]
+Com en el cas dels límits, aquesta definició és un esquema finit del metallenguatge que es desplega en una fórmula per a cada diagrama concret.
+\end{definicio}
+
+\begin{teorema}[Existència dels colímits finits]\label{teo:colimits-finits}
+Tot diagrama finit té colímit.
+\end{teorema}
+
+\begin{prova}
+Formem les sumes finites
+\[
+S=\coprod_i A_i,
+\qquad
+R=\coprod_\alpha A_{s(\alpha)},
+\]
+amb injeccions \(u_i:A_i\to S\) i \(v_\alpha:A_{s(\alpha)}\to R\). La propietat universal de \(R\) determina dues aplicacions \(r,r':R\to S\) mitjançant
+\[
+r\circ v_\alpha=u_{s(\alpha)},
+\qquad
+r'\circ v_\alpha=u_{t(\alpha)}\circ f_\alpha.
+\]
+Sigui
+\[
+q:S\to L
+\]
+el coequalitzador de \(r\) i \(r'\), i posem
+\[
+\ell_i:=q\circ u_i:A_i\to L.
+\]
+Com que \(q\circ r=q\circ r'\), en compondre amb cada \(v_\alpha\) obtenim
+\[
+\ell_{s(\alpha)}=\ell_{t(\alpha)}\circ f_\alpha.
+\]
+Per tant, \((L,(\ell_i)_i)\) és un cocon.
+
+Sigui \((X,(c_i)_i)\) un cocon qualsevol. La propietat universal de \(S\) proporciona una única aplicació \(c:S\to X\) amb
+\[
+c\circ u_i=c_i.
+\]
+Per a cada \(\alpha\),
+\[
+\begin{aligned}
+c\circ r\circ v_\alpha
+&=c_{s(\alpha)}
+=c_{t(\alpha)}\circ f_\alpha\\
+&=c\circ u_{t(\alpha)}\circ f_\alpha
+=c\circ r'\circ v_\alpha.
+\end{aligned}
+\]
+La unicitat en la propietat universal de la suma \(R\) implica \(c\circ r=c\circ r'\). Per la propietat universal del coequalitzador, existeix una única \(u:L\to X\) amb
+\[
+u\circ q=c.
+\]
+Aleshores
+\[
+u\circ\ell_i=u\circ q\circ u_i=c_i.
+\]
+Si \(u'\) té les mateixes components, les aplicacions \(u'\circ q\) i \(c\) coincideixen sobre totes les injeccions \(u_i\); per la unicitat en la propietat universal de la suma \(S\), són iguals, i la unicitat del coequalitzador dona \(u'=u\).
+\end{prova}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item L'axioma de disjunció i estabilitat diu que les sumes es comporten com unions disjuntes i que aquesta descomposició es conserva per canvi de base. És la primera propietat \emph{global} de les construccions: la propietat universal sola no la dona.
+  \item Tres conseqüències en cadena: \(\mathbf0\) és estricte (tota aplicació cap a \(\mathbf0\) és isomorfisme), \(0\ne1\) a \(\mathbf2\), i un conjunt sense punts és inicial. Amb elles, tot punt d'una suma ve d'un sol sumand i tot epimorfisme és exhaustiu sobre punts, sense elecció.
+  \item La part buida \(\bot_A\) i la part total \(\top_A\) tenen característiques \(0\circ{!}_A\) i \(1\circ{!}_A\); el quadrat característic és un pullback, de manera que tota part és la imatge inversa de \(1\colon\mathbf1\hookrightarrow\mathbf2\) per la seva característica. El complement \(m^c\) és la imatge inversa de \(0\), i \(m\) i \(m^c\) descomponen \(A\) en una suma.
+  \item La negació, la conjunció i la disjunció són aplicacions \(\neg\colon\mathbf2\to\mathbf2\) i \(\wedge,\vee\colon\mathbf2\times\mathbf2\to\mathbf2\); les operacions entre parts es tradueixen en operacions entre característiques, i les lleis booleanes es comproven sobre els quatre (o vuit) punts de \(\mathbf2\times\mathbf2\) per extensionalitat de les taules de veritat.
+  \item Un límit és un con universal sobre un diagrama finit. Tots els límits finits existeixen a partir de \(\mathbf1\), els productes binaris i els equalitzadors, sense cap axioma nou; els colímits finits existeixen a partir de \(\mathbf0\), les sumes i els coequalitzadors, que sí que es postulen.
+  \item Els diagrames finits, els cons i els límits pertanyen al metallenguatge: per a cada forma finita concreta, l'enunciat és una fórmula i la demostració, una demostració de la teoria.
+\end{enumerate}
+\apartat{Errors típics} Creure que la propietat universal de la suma ja implica que les injeccions són disjuntes o monomorfismes; pensar que \(0\ne1\) és evident, quan és un teorema que depèn de la disjunció i de la no-degeneració; suposar que un conjunt \enquote{sense elements} és inicial per definició, quan és el lema del buit i usa la separació global; llegir \(x\in m^c\iff x\notin m\) per a elements generalitzats, quan només val per a punts globals (un element generalitzat es pot repartir entre \(m\) i \(m^c\)); confondre la unió, definida per la característica, amb una construcció universal com la suma; i aplicar la dualitat per obtenir els colímits dels límits, quan la construcció dels límits no usa cap axioma i la dels colímits usa el de coequalitzadors.
+\apartat{Lectura recomanada} \cite[cap.~3 i~4]{lawvere-rosebrugh} per als límits finits, les sumes disjuntes i els colímits, i \cite[apèndix~A]{lawvere-rosebrugh} per a la lògica com a àlgebra de parts, que és el contingut de la secció~\ref{sec:booleanes}; \cite[article~VI, sessions~32--33]{lawvere-schanuel} per a una introducció molt elemental als subobjectes i a l'objecte de valors de veritat; \cite[§§3.2--3.4 i §5.4]{awodey} per a coequalitzadors, pushouts i colímits en una categoria general; \cite[pàg.~11--12]{bell2006} per al paper de \(\mathbf2\) com a objecte de valors de veritat; i \cite[§§4--5]{halmos} per a les operacions booleanes fetes amb elements.
+\end{resumcap}

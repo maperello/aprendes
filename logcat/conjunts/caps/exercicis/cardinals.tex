@@ -1,0 +1,51 @@
+\chapter{Cardinals i aritmètica cardinal}\label{cap:exercicis-cardinals}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:cardinals} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-cardinals} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Aritmètica cardinal relacional}
+
+\begin{enumerate}
+  \item Demostreu que la suma, el producte i l'exponenciació cardinals estan ben definits sobre classes d'equipotència. (Model: secció~\ref{prac:aritmetica-cardinal}; proposició~\ref{prop:operacions-invariants}.)
+
+  \item Demostreu les lleis d'exponents \(\kappa^{\mu+\nu}=\kappa^\mu\cdot\kappa^\nu\) i \((\kappa^\mu)^\nu=\kappa^{\mu\cdot\nu}\). (Model: proposició~\ref{prop:lleis-cardinals}.)
+
+  \item Demostreu que \(\abs{A}<2^{\abs{A}}\) per a tot \(A\), i contrasteu-ho amb \(2^\omega=\omega\) ordinal. (Model: teorema~\ref{teo:cantor-cardinal}; observació~\ref{obs:cardinal-vs-ordinal}.)
+
+  \item Demostreu que l'aritmètica cardinal és commutativa (suma i producte), a diferència de l'ordinal. \begin{indicacio}\(A+B\cong B+A\) i \(A\times B\cong B\times A\); oblidar l'ordre elimina l'asimetria (observació~\ref{obs:cardinal-vs-ordinal}).\end{indicacio}
+\end{enumerate}
+
+\section{Comparabilitat}
+
+\begin{enumerate}[resume]
+  \item Amb l'elecció, demostreu que dos conjunts qualssevol són comparables i que els cardinals estan totalment ordenats mòdul equipotència. (Model: secció~\ref{prac:comparabilitat-cardinals}; teorema~\ref{teo:comparabilitat-cardinals}.)
+
+  \item Demostreu que la comparabilitat total implica el teorema del bon ordre. (Model: observació~\ref{obs:comparabilitat-eleccio}.)
+
+  \item Demostreu que, sense elecció, \(\preceq\) és igualment reflexiva, transitiva i antisimètrica mòdul \(\approx\), però potser no total. \begin{indicacio}La reflexivitat i transitivitat són la proposició~\ref{prop:preceq-preordre}; l'antisimetria és Schröder--Bernstein (corol·lari~\ref{cor:preceq-antisimetric}); la totalitat és el que costa elecció.\end{indicacio}
+\end{enumerate}
+
+\section{Cardinals inicials}
+
+\begin{enumerate}[resume]
+  \item Amb l'elecció, demostreu que tot conjunt té un únic cardinal inicial, trobat acotadament dins un Hartogs. (Model: secció~\ref{prac:cardinals-inicials}; proposició~\ref{prop:cardinal-inicial}.)
+
+  \item Expliqueu per què el cardinal inicial és un tipus d'ordre, no un conjunt escollit. (Model: observació~\ref{obs:cardinal-prudencia}.)
+
+  \item Demostreu que un bon ordre inicial no és equipotent a cap dels seus segments inicials propis. \begin{indicacio}Un segment propi té tipus estrictament menor; si fos equipotent, contradiria la inicialitat (definició~\ref{def:cardinal-inicial}).\end{indicacio}
+\end{enumerate}
+
+\section{El teorema de König}
+
+\begin{enumerate}[resume]
+  \item Amb l'elecció, demostreu el teorema de König: \(A_i\prec B_i\) implica \(\sum_i\abs{A_i}<\prod_i\abs{B_i}\). (Model: secció~\ref{prac:konig}; teorema~\ref{teo:konig}.)
+
+  \item Deduïu Cantor \(\abs{A}<2^{\abs{A}}\) com a cas particular de König. (Model: observació~\ref{obs:konig-cantor}.)
+
+  \item \textbf{(Punt de reflexió.)} Expliqueu en quin sentit el teorema de König és la forma \enquote{indexada} de la diagonal de Cantor. \begin{indicacio}La família \((d_i)\) difereix de cada valor de \(F\) en una coordenada; amb \(A_i=\mathbf1\), \(B_i=\mathbf2\), és la part diagonal (observació~\ref{obs:konig-cantor}).\end{indicacio}
+
+  \item Doneu un contraexemple a la monotonia en l'exponent quan la base és \(0\), i expliqueu on falla la prova. \begin{indicacio}\(0^0=1\) i \(0^1=0\); per estendre una aplicació \(A\to C\) a \(B\to C\) cal un punt de \(C\).\end{indicacio}
+
+  \item A la prova de König, identifiqueu els tres llocs on s'usa l'elecció, i escriviu cadascun com una secció d'una família interna indexada per \(I\). (Model: teorema~\ref{teo:konig}.)
+
+  \item \textbf{Axiomes usats.} Digueu quins resultats del capítol usen l'elecció: les lleis de l'aritmètica; Cantor cardinal; la comparabilitat total; l'existència del cardinal inicial; König. \begin{indicacio}Els tres últims.\end{indicacio}
+\end{enumerate}

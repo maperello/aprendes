@@ -1,0 +1,92 @@
+\chapter{Infinitud, enumerabilitat i seqüències}\label{cap:practica-infinitud}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:infinitud} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició --- la infinitud i la infinitud de Dedekind, els conjunts enumerables i numerables, els subobjectes de \(\N\), les llistes finites, i les unions numerables--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: exhibir un monomorfisme no exhaustiu, compondre enumeracions sense elecció, usar el principi del mínim en lloc d'una tria, i identificar exactament on entra l'elecció numerable. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Infinitud i infinitud de Dedekind}\label{prac:infinits}
+
+\begin{exercici}
+\textbf{\(\N\) és infinit de Dedekind.} Demostreu que el successor \(s\colon\N\to\N\) és un monomorfisme no exhaustiu, i deduïu que \(\N\) és infinit. (Reproduïu la proposició~\ref{prop:N-dedekind}.)
+\end{exercici}
+\begin{solucio}
+Que \(s\) és un monomorfisme és el teorema~\ref{teo:peano}(1): de \(s\circ m=s\circ n\) se segueix \(m=n\). Que no és exhaustiu és el teorema~\ref{teo:peano}(2): \(0\) no és de la forma \(s\circ n\) per a cap \(n\), de manera que el punt \(0\colon\mathbf1\to\N\) no factoritza per \(s\), i la imatge de \(s\) és la part pròpia complementària del zero. Així \(s\) exhibeix \(\N\) com a infinit de Dedekind (definició~\ref{def:dedekind-infinit}). Que \(\N\) és infinit se'n segueix: si fos finit, \(s\) hauria de ser exhaustiu (teorema~\ref{teo:endo-finit}), contra el que acabem de veure.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Dedekind implica infinit.} Demostreu que tot conjunt infinit de Dedekind és infinit, sense cap axioma nou. (Reproduïu la proposició~\ref{prop:dedekind-implica-infinit}.)
+\end{exercici}
+\begin{solucio}
+És el contrarecíproc del cas finit. Si un conjunt \(A\) fos alhora finit i infinit de Dedekind, tindria un monomorfisme \(A\hookrightarrow A\) no exhaustiu; però pel teorema~\ref{teo:endo-finit}, tot monomorfisme d'un conjunt finit en si mateix és exhaustiu, una contradicció. Per tant un conjunt infinit de Dedekind no pot ser finit, és a dir, és infinit. La direcció oposada ---que tot infinit és infinit de Dedekind--- sí que requereix l'elecció numerable (teorema~\ref{teo:infinit-implica-dedekind}), perquè cal triar, alhora i per a cada llargada, una llista injectiva dins \(A\); un cop triades, la còpia de \(\N\) es construeix sense més tries.
+\end{solucio}
+
+\section{Enumerables i numerables}\label{prac:enumerables}
+
+\begin{exercici}
+\textbf{Imatge i part d'un enumerable.} Sigui \(A\) enumerable. Demostreu que tota imatge exhaustiva \(g\colon A\twoheadrightarrow C\) és enumerable i que tota part de \(A\) és enumerable, sense elecció. (Part de la proposició~\ref{prop:estabilitat-enumerable}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(e\colon\N\twoheadrightarrow A\) una enumeració. \emph{Imatge:} si \(g\) és exhaustiva, la composició \(g\circ e\colon\N\twoheadrightarrow C\) també ho és (l'exhaustivitat es preserva per composició, capítol~\ref{cap:imatges}), i és una enumeració de \(C\). \emph{Part:} sigui \(m\colon P\hookrightarrow A\) una part no inicial i \(p_0\colon\mathbf1\to P\) un punt (existeix perquè \(P\) no és inicial). Definim \(r\colon A\to P\) enviant els elements de \(P\) en si mateixos i la resta a \(p_0\); és una retracció de \(m\), construïda amb la decisió del complement (capítol~\ref{cap:valors}) i sense cap tria infinita. Aleshores \(r\circ e\colon\N\twoheadrightarrow P\) és una enumeració. Els casos inicials són immediats. Cap pas no usa elecció: només es fa servir una única enumeració donada.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Suma i producte de dos enumerables.} Demostreu que si \(A\) i \(B\) són enumerables, aleshores \(A+B\) i \(A\times B\) també ho són. (Part de la proposició~\ref{prop:estabilitat-enumerable}.)
+\end{exercici}
+\begin{solucio}
+Siguin \(e\colon\N\twoheadrightarrow A\) i \(f\colon\N\twoheadrightarrow B\) enumeracions. \emph{Suma:} d'un isomorfisme \(\N\cong\N+\N\) (per exemple la partició en parells i senars, obtinguda de l'aritmètica del capítol~\ref{cap:naturals}) s'obté \(\N\cong\N+\N\xrightarrow{e+f}A+B\), exhaustiva. \emph{Producte:} n'hi ha prou amb una bijecció \(\N\cong\N\times\N\) (un aparellament), perquè aleshores \(\N\cong\N\times\N\xrightarrow{e\times f}A\times B\) és exhaustiva. Un tal aparellament es construeix explícitament per recursió, per exemple amb la diagonalització \((i,j)\mapsto\tfrac12(i+j)(i+j+1)+j\), la inversa de la qual també es defineix per recursió; és una aplicació concreta, no una tria. Cap dels dos usa elecció.
+\end{solucio}
+
+\begin{exercici}
+\textbf{L'aparellament per diagonals.} Sigui \(\nu\colon\N\times\N\to\N\times\N\) definida per \(\nu(0,j)=(s\circ j,0)\) i \(\nu(s\circ i',j)=(i',s\circ j)\), i \(u\colon\N\to\N\times\N\) la recursora de \((\N\times\N,\langle0,0\rangle,\nu)\). Demostreu que \(u\) és bijectiva. (Detalls de la proposició~\ref{prop:estabilitat-enumerable}(4).)
+\end{exercici}
+\begin{solucio}
+\(\nu\) està ben definida per casos perquè tot punt \(i\) és zero o successor, de manera única (lema~\ref{lema:zero-o-successor}). \emph{\(\nu\) és injectiva:} \(\nu(i,j)=\nu(i',j')\) força el mateix cas (la segona component és \(0\) en el primer cas i un successor en el segon), i dins de cada cas la injectivitat de \(s\) dona \((i,j)=(i',j')\). \emph{\((0,0)\) no és a la imatge de \(\nu\):} en el primer cas la primera component és un successor, en el segon ho és la segona. \emph{\(u\) és injectiva:} com en la prova de les equacions de Peano, \(u\circ s=\nu\circ u\) i la part dels \(n\) tals que \(u(n)=u(n')\Rightarrow n=n'\) per a tot \(n'\) conté el zero (perquè \((0,0)\) no és a la imatge de \(\nu\), \(u(n')=u(0)\) força \(n'=0\)) i és tancada pel successor (per la injectivitat de \(\nu\)). \emph{\(u\) és exhaustiva:} per a cada \(d\), la part \(D_d\) dels parells \((i,j)\) amb \(i+j=d\) té \(d+1\) punts i \(\nu\) els recorre des de \((d,0)\) fins a \((0,d)\) i salta a \((d+1,0)\); per inducció sobre \(d\) tots els punts de \(D_d\) són a la imatge de \(u\), i tot parell és a algun \(D_d\). Per tant \(u\) és un bimorfisme, és a dir, un isomorfisme.
+\end{solucio}
+
+\section{Subobjectes de \texorpdfstring{\(\N\)}{N}}\label{prac:subobjectes}
+
+\begin{exercici}
+\textbf{Tota part de \(\N\) és enumerable.} Demostreu que tota part \(P\hookrightarrow\N\) és enumerable, i que és finita o isomorfa a \(\N\), sense elecció. (Reproduïu el teorema~\ref{teo:subobjectes-N}.)
+\end{exercici}
+\begin{solucio}
+Si \(P\) és inicial, és enumerable per definició. Suposem \(P\) no inicial. La clau és el \emph{principi del mínim}: tota part no inicial de \(\N\) té un element mínim (teorema~\ref{teo:bon-ordre-N}), la qual cosa no usa elecció perquè el mínim és \emph{únic} i per tant canònic. Definim l'autoaplicació \(t\colon P\to P\) que envia \(x\) al mínim dels elements de \(P\) estrictament més grans que \(x\), si n'hi ha, i a \(x\) altrament (el seu graf és una part funcional i total de \(P\times P\), tallada amb quantificadors interns), i \(a\colon\N\to P\) com la recursora del sistema \((P,\min P,t)\): una recursió simple, sense paràmetres ni tries. Si per a algun \(n\) no en queda cap de més gran, la successió s'estabilitza i la seva imatge \(\{a_0<\dots<a_n\}\) és tot \(P\), que és finit. Altrament \(a\) és estrictament creixent, per tant un monomorfisme, i la seva imatge és tot \(P\) (cap element pot ser omès, perquè la successió creix almenys d'una unitat a cada pas); així \(a\colon\N\to P\) és una bijecció creixent i \(P\cong\N\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Els enumerables infinits són \(\N\).} Demostreu que un conjunt és enumerable infinit si i només si és isomorf a \(\N\). (Reproduïu el corol·lari~\ref{cor:enumerable-infinit-N}.)
+\end{exercici}
+\begin{solucio}
+Si \(A\cong\N\), és enumerable (per la identitat) i infinit (proposició~\ref{prop:N-dedekind}). Recíprocament, sigui \(A\) enumerable infinit amb enumeració \(e\colon\N\twoheadrightarrow A\). Construïm un monomorfisme \(A\hookrightarrow\N\) sense elecció: definim \(r\colon A\to\N\) enviant cada \(a\) al \emph{mínim} índex \(n\) amb \(e_n=a\); aquest mínim existeix i és únic pel principi del mínim, de manera que \(r\) està ben definida i és una secció de \(e\), en particular un monomorfisme. La seva imatge és una part de \(\N\), que pel teorema~\ref{teo:subobjectes-N} és finita o isomorfa a \(\N\); com que \(A\) és infinit, és el segon cas, i \(A\cong\N\). En conseqüència, tots els numerables infinits són isomorfs entre si, amb \(\N\) com a representant. El mínim substitueix aquí l'elecció (observació~\ref{obs:minim-vs-eleccio}).
+\end{solucio}
+
+\section{Llistes finites}\label{prac:llistes}
+
+\begin{exercici}
+\textbf{Recursió sobre llistes.} Demostreu que \((\operatorname{List}(A),\varepsilon,\operatorname{cons})\) satisfà el principi de recursió: per a tot \((B,b,t)\) amb \(b\colon\mathbf1\to B\) i \(t\colon A\times B\to B\), existeix una única \(h\colon\operatorname{List}(A)\to B\) amb \(h\circ\varepsilon=b\) i \(h\circ\operatorname{cons}=t\circ(\id_A\times h)\). (Model de la proposició~\ref{prop:recursio-llistes}.)
+\end{exercici}
+\begin{solucio}
+\emph{Existència.} Sigui \(L=\operatorname{List}(A)\). En lloc d'una família d'aplicacions amb dominis variables, construïm per recursió simple una successió de punts de l'exponencial fix \(B^{L}\). Sigui \(\Phi\colon B^{L}\to B^{L}\) la transposada de l'aplicació \(B^{L}\times L\to B\) definida per casos sobre \(L\cong\mathbf1+A\times L\): \((h,\varepsilon)\mapsto b\) i \((h,\operatorname{cons}(a,u))\mapsto t(a,\operatorname{ev}(h,u))\). La recursora \(H\colon\N\to B^{L}\) del sistema \((B^{L},\ulcorner b\circ{!}\urcorner,\Phi)\) compleix \(H_0=b\circ{!}\) i \(H_{m+1}=\Phi(H_m)\), i per inducció sobre \(m\) les \(H_m\) coincideixen sobre les llistes de llargada \(\le m\) amb totes les posteriors. La diagonal \(h(u):=H_{\ell(u)}(u)\), és a dir \(h=\operatorname{ev}\circ\langle H\circ\ell,\id_L\rangle\), compleix \(h(\varepsilon)=H_0(\varepsilon)=b\) i \(h(\operatorname{cons}(a,u))=H_{\ell(u)+1}(\operatorname{cons}(a,u))=t(a,H_{\ell(u)}(u))=t(a,h(u))\).
+
+\emph{Unicitat.} Si \(h'\) compleix les mateixes equacions, aleshores \(h=h'\) sobre les llistes de llargada \(0\), i si coincideixen sobre les de llargada \(\le m\), l'equació del \(\operatorname{cons}\) força la coincidència sobre les de llargada \(m+1\); per inducció sobre \(m\) (teorema~\ref{teo:induccio}), \(h=h'\). Això estableix la inicialitat de \((\operatorname{List}(A),\varepsilon,\operatorname{cons})\) a partir de la construcció, no a l'inrevés.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Enumerabilitat de \(\operatorname{List}(A)\).} Demostreu que si \(A\) és enumerable, aleshores \(\operatorname{List}(A)\) també ho és, sense elecció. (Model de l'observació~\ref{obs:llistes-enumerables}.)
+\end{exercici}
+\begin{solucio}
+Per la lectura de \(\operatorname{List}(A)\) com a suma indexada \(\coprod_{n\in\N}A^{\seg{n}}\) (observació~\ref{obs:llistes-segment}), cada sumand \(A^{\seg{n}}\) és un producte finit d'enumerables i per tant enumerable (proposició~\ref{prop:estabilitat-enumerable}). La clau és que cada \(A^{\seg{n}}\) ve amb una enumeració \emph{canònica}, derivada \emph{uniformement} de la d'\(A\) i de l'aparellament \(\N\cong\N\times\N\), no triada. Amb aquesta uniformitat, l'assignació \((n,k)\mapsto\) \enquote{\(k\)-èsim element de \(A^{\seg{n}}\)} és una aplicació exhaustiva \(\N\times\N\twoheadrightarrow\operatorname{List}(A)\), que composta amb l'aparellament dona una enumeració de \(\operatorname{List}(A)\). No cal elecció precisament perquè les enumeracions dels sumands són uniformes, no arbitràries; és el contrast amb el cas de la secció següent.
+\end{solucio}
+
+\section{Unions numerables}\label{prac:unions}
+
+\begin{exercici}
+\textbf{Unió numerable d'enumerables.} Suposant l'elecció numerable, demostreu que la unió disjunta d'una família numerable \((A_n)_{n\in\N}\) d'enumerables és enumerable. (Reproduïu el teorema~\ref{teo:unio-numerable}.)
+\end{exercici}
+\begin{solucio}
+Per a cada \(n\), \(A_n\) és enumerable: o bé inicial, o bé existeix un epimorfisme \(\N\twoheadrightarrow A_n\). El conjunt \(E'\to\N\) que sobre cada \(n\) (amb \(A_n\) no inicial) té per fibra les enumeracions de \(A_n\) és una família de conjunts no buits indexada per \(\N\). L'axioma d'elecció numerable (axioma~\ref{ax:eleccio-numerable}) en proporciona una secció, és a dir una tria simultània d'una enumeració \(e_n\colon\N\twoheadrightarrow A_n\) per a cada \(n\). Amb aquesta tria, l'aplicació \((n,k)\mapsto e_n(k)\) de \(\N\times\N\) cap a \(\coprod_n A_n\) és exhaustiva, i component-la amb un aparellament \(\N\cong\N\times\N\) s'obté una enumeració de la unió disjunta. Tota imatge seva és enumerable per la proposició~\ref{prop:estabilitat-enumerable}(1).
+\end{solucio}
+
+\begin{exercici}
+\textbf{On és l'elecció, i on no.} Expliqueu per què la unió de \emph{dos} enumerables i l'enumerabilitat de \(\operatorname{List}(A)\) no necessiten elecció, mentre que la unió numerable sí. (Model de l'observació~\ref{obs:eleccio-unio}.)
+\end{exercici}
+\begin{solucio}
+El pas irreductible del teorema~\ref{teo:unio-numerable} és la tria \emph{simultània} de les \(e_n\). Cada \(A_n\) enumerable \emph{té} alguna enumeració, però la definició d'enumerabilitat n'afirma només l'existència; res no en selecciona cap de canònica quan els \(A_n\) són arbitraris, i encadenar infinites eleccions en una sola aplicació \(n\mapsto e_n\) és exactament el contingut de l'axioma~\ref{ax:eleccio-numerable}. En canvi, la unió de dos enumerables (proposició~\ref{prop:estabilitat-enumerable}) usa només \emph{dues} enumeracions donades, i \(\operatorname{List}(A)\) (observació~\ref{obs:llistes-enumerables}) deriva totes les enumeracions dels sumands \emph{uniformement} d'una de sola. La diferència no és la mida de la família, sinó si les enumeracions vénen donades/uniformes o s'han de triar. De fet, sense elecció és consistent que una unió numerable de conjunts de dos elements no sigui enumerable.
+\end{solucio}

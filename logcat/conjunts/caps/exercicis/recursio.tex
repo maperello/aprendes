@@ -1,0 +1,51 @@
+\chapter{Inducció i recursió transfinites}\label{cap:exercicis-recursio}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:recursio} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-recursio} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Inducció transfinita}
+
+\begin{enumerate}
+  \item Demostreu el principi d'inducció transfinita: si \(W_{<w}\subseteq S\) implica \(w\in S\) per a tot \(w\), aleshores \(S=W\). (Model: secció~\ref{prac:induccio-transfinita}; teorema~\ref{teo:induccio-transfinita}.)
+
+  \item Expliqueu per què la inducció transfinita no necessita cas base separat. (Model: observació~\ref{obs:induccio-propietats}.)
+
+  \item Deduïu de la inducció transfinita el \emph{principi del mínim} per a un bon ordre: tota part no inicial té mínim. \begin{indicacio}Contrarecíproc: si una part no té mínim, useu la inducció per veure que el seu complement és tot \(W\).\end{indicacio}
+\end{enumerate}
+
+\section{Recursió amb codomini fix}
+
+\begin{enumerate}[resume]
+  \item Demostreu que dues solucions parcials d'una regla \(\Phi\) coincideixen a la intersecció dels dominis. (Model: secció~\ref{prac:recursio-fix}; teorema~\ref{teo:recursio-transfinita}.)
+
+  \item Demostreu l'existència i unicitat de \(F\colon W\to X\) amb \(F(w)=\Phi(w,F|_{W_{<w}})\). (Model: teorema~\ref{teo:recursio-transfinita}.)
+
+  \item Justifiqueu que la construcció de \(F\) no usa cap elecció i que tot viu dins un exponencial fix. \begin{indicacio}Cada valor és \(\Phi\) de la història; la reunió de solucions compatibles és canònica (observació~\ref{obs:recursio-sense-eleccio}).\end{indicacio}
+
+  \item Demostreu que la recursió primitiva amb paràmetres sobre \(\N\) (teorema~\ref{teo:recursio-parametres}) és el cas particular de la recursió transfinita en què \(\Phi\) només mira el terme anterior. \begin{indicacio}Vegeu l'observació~\ref{obs:recursio-N-cas}; a \(\N\) tot no-zero és successor.\end{indicacio}
+\end{enumerate}
+
+\section{Comparabilitat total}
+
+\begin{enumerate}[resume]
+  \item Demostreu que dos bons ordres qualssevol són comparables, construint per recursió l'aparellament pel mínim disponible. (Model: secció~\ref{prac:comparabilitat}; teorema~\ref{teo:comparabilitat}.)
+
+  \item Expliqueu per què aquesta comparabilitat no usa elecció, en contrast amb la de conjunts qualssevol. (Model: observació~\ref{obs:comparabilitat-vs-eleccio}.)
+
+  \item Deduïu de la comparabilitat total que la comparació per segments és un ordre total (llevat d'isomorfisme d'ordre) sobre els bons ordres. \begin{indicacio}Combineu l'exclusivitat (teorema~\ref{teo:tricotomia}) amb l'existència (teorema~\ref{teo:comparabilitat}).\end{indicacio}
+\end{enumerate}
+
+\section{Exemples de recursió}
+
+\begin{enumerate}[resume]
+  \item Definiu per recursió una successió transfinita de parts d'un fix \(A\) amb \(S_w=\bigcup_{u<w}g(S_u)\) i justifiqueu que és de Nivell~I. (Model: secció~\ref{prac:exemples-recursio}; observació~\ref{obs:exemples-recursio}.)
+
+  \item Definiu per recursió el tancament d'una part \(S_0\hookrightarrow A\) sota una operació monòtona \(g\colon P(A)\to P(A)\), i relacioneu-ho amb el menor punt fix de Schröder--Bernstein. \begin{indicacio}Itereu \(g\) transfinitament dins el fix \(P(A)\); vegeu el teorema~\ref{teo:schroder-bernstein}.\end{indicacio}
+
+  \item Expliqueu per què \(V_0=A\), \(V_{n+1}=P(V_n)\) no es defineix amb la recursió de codomini fix, i quin principi cal. (Model: observació~\ref{obs:frontera-exemple}.)
+
+  \item \textbf{(Punt de reflexió.)} Argumenteu per què separar en casos successor i límit és legítim només després de provar que la separació és exhaustiva per al bon ordre considerat. \begin{indicacio}La formulació general amb la història no ho requereix; la separació és una comoditat que pot amagar casos (observació~\ref{obs:successor-limit}).\end{indicacio}
+
+  \item Comproveu que la reunió de totes les solucions parcials és una aplicació: que la relació \(G=\{(w,x):\exists a\in\mathcal A\,(a(w)=x)\}\) és funcional i té domini una part inicial. \begin{indicacio}La funcionalitat és la compatibilitat; useu la proposició~\ref{prop:aplicacio-funcional}.\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Digueu quins dels resultats següents usen elecció, i quins SR: la inducció transfinita; la recursió amb codomini fix; la comparabilitat total dels bons ordres; la successió \((P^n(A))_{n\in\N}\). \begin{indicacio}Cap dels tres primers; el quart queda fora del Nivell~I.\end{indicacio}
+\end{enumerate}

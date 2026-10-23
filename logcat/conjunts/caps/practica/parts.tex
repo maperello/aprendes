@@ -1,0 +1,206 @@
+\chapter{Parts i construccions universals}\label{cap:practica-parts}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:parts} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició --- monomorfismes i epimorfismes, parts i inclusió, pertinença generalitzada, sumes, aplicacions característiques, productes, equalitzadors, pullbacks i imatges inverses--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}: cada bloc fixa una tècnica (cancel·lar per un mono, exhibir el testimoni d'una inclusió o d'una pertinença, comprovar una propietat universal per unicitat de factorització) que després es reutilitza. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Cancel·lació per un monomorfisme}\label{prac:cancel-lacio}
+
+\begin{exercici}
+\textbf{Un ús de la cancel·lació.} Sigui \(m:A\to B\) un monomorfisme i siguin \(u,v:X\to A\) amb
+\[
+m\circ u=m\circ v.
+\]
+Demostreu que \(u=v\).
+\end{exercici}
+
+\begin{solucio}
+Per definició (definició~\ref{def:monomorfisme}), un monomorfisme es pot cancel·lar per l'esquerra: per a tot parell d'aplicacions paral·leles \(u,v:X\to A\),
+\[
+m\circ u=m\circ v\quad\Longrightarrow\quad u=v.
+\]
+La hipòtesi és exactament l'antecedent d'aquesta implicació; per tant, \(u=v\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Dualitzeu-ho: cancel·lació per un epimorfisme.} Sigui \(e:A\to B\) un epimorfisme i siguin \(u,v:B\to Y\) amb \(u\circ e=v\circ e\). Demostreu que \(u=v\).
+\end{exercici}
+\begin{solucio}
+Un epimorfisme (definició~\ref{def:epimorfisme}) es cancel·la per la dreta: per a tot parell d'aplicacions paral·leles \(u,v:B\to Y\), de \(u\circ e=v\circ e\) se'n segueix \(u=v\). La hipòtesi és l'antecedent, i s'obté \(u=v\). L'enunciat és el dual estricte de l'exercici anterior: s'obté intercanviant \enquote{per l'esquerra} per \enquote{per la dreta} i invertint el sentit de les fletxes.
+\end{solucio}
+
+\section{Isomorfismes, monomorfismes i epimorfismes}\label{prac:iso-mono-epi}
+
+\begin{exercici}
+\textbf{Isomorfisme implica monomorfisme.} Demostreu que tot isomorfisme és un monomorfisme, sense fer servir cap resultat que no sigui els axiomes i la definició d'inversa.
+\end{exercici}
+\begin{solucio}
+Sigui \(f\colon A\to B\) un isomorfisme amb invers \(f^{-1}\), i suposem \(f\circ u=f\circ v\). Component per l'esquerra amb \(f^{-1}\):
+\[
+u=\id_A\circ u=(f^{-1}\circ f)\circ u=f^{-1}\circ(f\circ u)=f^{-1}\circ(f\circ v)=(f^{-1}\circ f)\circ v=\id_A\circ v=v.
+\]
+Hem usat la neutralitat, la definició d'invers i l'associativitat. Com que \(f\circ u=f\circ v\) implica \(u=v\), \(f\) és un monomorfisme. Aquest és exactament el contingut de la proposició~\ref{prop:isomorfisme-mono-epi}, que afirma que tot isomorfisme és alhora mono i epi.
+\end{solucio}
+
+\begin{exercici}
+\textbf{La composició de monomorfismes és un monomorfisme.} Siguin \(m:A\rightarrowtail B\) i \(n:B\rightarrowtail C\) dos monomorfismes. Demostreu que \(n\circ m\) és un monomorfisme. (Model de la proposició~\ref{prop:composicio-mono-epi}.)
+\end{exercici}
+\begin{solucio}
+Suposem \((n\circ m)\circ u=(n\circ m)\circ v\) amb \(u,v:X\to A\). Per associativitat (axioma~\ref{ax:associativitat}),
+\[
+n\circ(m\circ u)=n\circ(m\circ v).
+\]
+Com que \(n\) és un monomorfisme, es cancel·la per l'esquerra i \(m\circ u=m\circ v\). Com que \(m\) també ho és, \(u=v\). Per tant \(n\circ m\) és un monomorfisme. El mateix argument, dualitzat, prova que la composició d'epimorfismes és un epimorfisme.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Cancel·lació posterior detecta monomorfismes.} Siguin \(f:A\to B\) i \(g:B\to C\) tals que \(g\circ f\) és un monomorfisme. Demostreu que \(f\) és un monomorfisme.
+\end{exercici}
+\begin{solucio}
+Suposem \(f\circ u=f\circ v\). Component per l'esquerra amb \(g\) i usant l'associativitat,
+\[
+(g\circ f)\circ u=g\circ(f\circ u)=g\circ(f\circ v)=(g\circ f)\circ v.
+\]
+Com que \(g\circ f\) és un monomorfisme, \(u=v\). Per tant \(f\) és un monomorfisme. Observeu que no cal cap hipòtesi sobre \(g\): només que el compost sigui mono. El resultat dual diu que si \(g\circ f\) és un epimorfisme, aleshores \(g\) ho és.
+\end{solucio}
+
+\section{Seccions, retraccions i escindits}\label{prac:seccio-retraccio}
+
+\begin{exercici}
+\textbf{Tota secció és un monomorfisme.} Sigui \(s:A\to B\) una secció, és a dir, existeix \(r:B\to A\) amb \(r\circ s=\id_A\). Demostreu que \(s\) és un monomorfisme. (Meitat de la proposició~\ref{prop:seccio-mono-retraccio-epi}.)
+\end{exercici}
+\begin{solucio}
+Suposem \(s\circ u=s\circ v\). Component per l'esquerra amb la retracció \(r\):
+\[
+u=\id_A\circ u=(r\circ s)\circ u=r\circ(s\circ u)=r\circ(s\circ v)=(r\circ s)\circ v=\id_A\circ v=v.
+\]
+Per tant \(s\) és un monomorfisme. Dualment, tota retracció és un epimorfisme: un mono (resp.\ epi) que a més és secció (resp.\ retracció) s'anomena \emph{escindit} (observació~\ref{obs:escindits}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Exhaustivitat generalitzada d'un epimorfisme escindit.} Sigui \(e:A\to B\) una retracció, amb secció \(s:B\to A\) tal que \(e\circ s=\id_B\). Demostreu que tot element generalitzat \(y:X\to B\) es factoritza com \(y=e\circ x\) per a algun \(x:X\to A\). (Model de la proposició~\ref{prop:exhaustiva-generalitzada-escindit}.)
+\end{exercici}
+\begin{solucio}
+Preneu \(x=s\circ y:X\to A\). Aleshores, per associativitat i la relació \(e\circ s=\id_B\),
+\[
+e\circ x=e\circ(s\circ y)=(e\circ s)\circ y=\id_B\circ y=y.
+\]
+Així \(y\) factoritza per \(e\), de manera que \(e\) és exhaustiva sobre els elements generalitzats (definició~\ref{def:exhaustiva-generalitzada}). La secció proporciona explícitament una elecció de preimatge, \(x=s\circ y\).
+\end{solucio}
+
+\section{Parts i inclusió}\label{prac:parts-inclusio}
+
+\begin{exercici}
+\textbf{Unicitat del testimoni d'una inclusió.} Siguin \(m:S\rightarrowtail A\) i \(n:T\rightarrowtail A\) dues parts amb \(m\subseteq_A n\). Demostreu que l'aplicació \(k:S\to T\) amb \(m=n\circ k\) és única, i que és un monomorfisme. (Reproduïu la proposició~\ref{prop:testimoni-inclusio}.)
+\end{exercici}
+\begin{solucio}
+Si \(m=n\circ k=n\circ k'\), com que \(n\) és un monomorfisme es cancel·la per l'esquerra i \(k=k'\); això dona la unicitat. Per veure que \(k\) és mono, suposem \(k\circ u=k\circ v\). Aleshores
+\[
+m\circ u=(n\circ k)\circ u=n\circ(k\circ u)=n\circ(k\circ v)=(n\circ k)\circ v=m\circ v,
+\]
+i, com que \(m\) és mono, \(u=v\). El testimoni d'una inclusió és, doncs, un monomorfisme únic.
+\end{solucio}
+
+\begin{exercici}
+\textbf{La inclusió és reflexiva i transitiva.} Sigui \(m:S\rightarrowtail A\) una part. Demostreu que \(m\subseteq_A m\), i que si \(m\subseteq_A n\) i \(n\subseteq_A p\), aleshores \(m\subseteq_A p\).
+\end{exercici}
+\begin{solucio}
+Per la reflexivitat, prenem \(k=\id_S\); aleshores \(m=m\circ\id_S\), i per definició d'inclusió (definició~\ref{def:inclusio}) \(m\subseteq_A m\). Per la transitivitat, siguin \(k:S\to T\) i \(l:T\to U\) els testimonis de \(m=n\circ k\) i \(n=p\circ l\). Aleshores
+\[
+m=n\circ k=(p\circ l)\circ k=p\circ(l\circ k),
+\]
+de manera que \(l\circ k\) testimonia \(m\subseteq_A p\). La relació d'inclusió és, per tant, un preordre sobre les parts de \(A\).
+\end{solucio}
+
+\section{Pertinença generalitzada}\label{prac:pertinenca}
+
+\begin{exercici}
+\textbf{Unicitat del testimoni d'una pertinença.} Siguin \(m:S\rightarrowtail A\) una part i \(x:X\to A\) amb \(x\in_X m\). Demostreu que el testimoni \(\bar x:X\to S\) amb \(x=m\circ\bar x\) és únic. (Reproduïu la proposició~\ref{prop:testimoni-pertinenca}.)
+\end{exercici}
+\begin{solucio}
+Si \(x=m\circ\bar x=m\circ\bar x'\), com que \(m\) és un monomorfisme es cancel·la per l'esquerra i \(\bar x=\bar x'\). Per tant, quan un element generalitzat pertany a una part, ho fa \enquote{d'una sola manera}: el seu testimoni queda determinat.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Inclusió com a implicació de pertinences.} Siguin \(m:S\rightarrowtail A\) i \(n:T\rightarrowtail A\). Demostreu que si \(m\subseteq_A n\), aleshores per a tot \(x:X\to A\) amb \(x\in_X m\) es té \(x\in_X n\). (Una direcció de la proposició~\ref{prop:inclusio-pertinenca}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(k:S\to T\) el testimoni de \(m=n\circ k\), i \(\bar x:X\to S\) el de \(x=m\circ\bar x\). Aleshores
+\[
+x=m\circ\bar x=(n\circ k)\circ\bar x=n\circ(k\circ\bar x),
+\]
+de manera que \(k\circ\bar x:X\to T\) és un testimoni de \(x\in_X n\) (vegeu la figura~\ref{fig:fonamental} de la teoria). La inclusió de parts es tradueix, doncs, en \enquote{tot element de \(S\) és element de \(T\)}, ara en el sentit generalitzat.
+\end{solucio}
+
+\section{Sumes i definició per casos}\label{prac:sumes}
+
+\begin{exercici}
+\textbf{Unicitat de l'aplicació definida per casos.} Sigui \(A+B\) una suma amb injeccions \(i_A,i_B\), i siguin \(f:A\to C\), \(g:B\to C\). Demostreu que hi ha \emph{com a molt} una aplicació \(h:A+B\to C\) amb \(h\circ i_A=f\) i \(h\circ i_B=g\). (És la unicitat a la propietat universal; vegeu la proposició~\ref{prop:extensionalitat-suma}.)
+\end{exercici}
+\begin{solucio}
+Suposem que \(h\) i \(h'\) compleixen totes dues les equacions: \(h\circ i_A=f=h'\circ i_A\) i \(h\circ i_B=g=h'\circ i_B\). La propietat universal de la suma (definició~\ref{def:suma-conjunts}) diu que una aplicació que surt de \(A+B\) queda determinada pels seus dos components sobre les injeccions; en altres paraules, dues aplicacions \(A+B\to C\) que coincideixen en compondre amb \(i_A\) i amb \(i_B\) són iguals. Per tant \(h=h'\). L'existència la garanteix la mateixa propietat universal; aquest exercici n'aïlla la unicitat.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El cograf com a retracció.} Donada \(f:A\to B\), considereu el cograf \(\kappa_f=[f,\id_B]:A+B\to B\) (definició~\ref{def:cograf}). Comproveu, a partir de les equacions de la suma, que la injecció \(i_1:B\to A+B\) admet \(\kappa_f\) com a retracció, i expliqueu per què el mateix argument no dona, sense més, que \(i_0:A\to A+B\) sigui un monomorfisme. (Model de la proposició~\ref{prop:cograf-retraccio}.)
+\end{exercici}
+\begin{solucio}
+L'aplicació \(\kappa_f=[f,\id_B]\) existeix per la propietat universal de la suma i compleix \(\kappa_f\circ i_0=f\) i \(\kappa_f\circ i_1=\id_B\). La segona equació diu precisament que \(\kappa_f\) és una retracció de la injecció \(i_1\); per tant \(i_1\) és una secció i, en particular, un monomorfisme escindit (exercici de la secció~\ref{prac:seccio-retraccio}). Per fer el mateix amb \(i_0\) necessitaríem una aplicació \(g\colon B\to A\) amb què formar \([\id_A,g]\colon A+B\to A\), i una tal \(g\) pot no existir (per exemple, si \(B=\mathbf1\) i \(A\) no té punts). Que \emph{totes} les injeccions siguin monomorfismes és conseqüència de la disjunció de les sumes, al capítol~\ref{cap:valors}; observeu que la injecció \(i_0\) de l'exemple, \(\mathbf0\to\mathbf0+\mathbf1\), és mono per una altra raó: tota aplicació amb domini \(\mathbf0\) ho és, perquè dues aplicacions paral·leles cap a \(\mathbf0\) sempre són iguals.
+\end{solucio}
+
+\section{El conjunt \texorpdfstring{\(\mathbf2\)}{2} i aplicacions característiques}\label{prac:caracteristica}
+
+\begin{exercici}
+\textbf{Una part està determinada per la seva característica.} Sigui \(m:S\rightarrowtail A\) una part amb aplicació característica \(\chi_m:A\to\mathbf2\) (definició~\ref{def:caracteristica}). Demostreu que si dues parts \(m,n\) de \(A\) tenen la mateixa característica, \(\chi_m=\chi_n\), aleshores són equivalents. (Model de la proposició~\ref{prop:caracteristica-determina-part}.)
+\end{exercici}
+\begin{solucio}
+La característica de \(m\) està definida per la condició \(x\in_X m\iff\chi_m\circ x=1\circ{!}_X\), per a tot estadi \(X\) i tot \(x\colon X\to A\) (notació~\ref{not:caracteristica}). Si \(\chi_m=\chi_n\), aleshores, per a tot \(x\),
+\[
+x\in_X m\iff\chi_m\circ x=1\circ{!}_X\iff\chi_n\circ x=1\circ{!}_X\iff x\in_X n,
+\]
+és a dir, \(m\) i \(n\) tenen exactament els mateixos elements generalitzats a tots els estadis. Per la proposició~\ref{prop:inclusio-pertinenca}, aplicada en els dos sentits, \(m\subseteq_A n\) i \(n\subseteq_A m\); per tant \(m\equiv_A n\) (definició~\ref{def:parts-equivalents}). Juntament amb la unicitat de la característica que dona l'axioma de representació (axioma~\ref{ax:representacio}), això fa de \(\chi_m\) un invariant complet de la classe d'equivalència d'una part.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Bimorfisme més representació dona isomorfisme.} Useu el context de les aplicacions característiques per explicar per què, en aquesta teoria, tot bimorfisme és un isomorfisme. (Enunciat: proposició~\ref{prop:bimorfisme-isomorfisme}.)
+\end{exercici}
+\begin{solucio}
+Un bimorfisme (definició~\ref{def:bimorfisme}) és alhora mono i epi. Com a monomorfisme, \(f:A\rightarrowtail B\) és una part de \(B\), amb característica \(\chi_f:B\to\mathbf2\). L'argument té tres passos. Primer, \(f\) pertany a la part \(f\) amb testimoni \(\id_A\), de manera que \(\chi_f\circ f=1\circ{!}_A\); però també \((1\circ{!}_B)\circ f=1\circ{!}_A\), i com que \(f\) és un \emph{epimorfisme}, \(\chi_f=1\circ{!}_B\). Segon, això diu que \(\chi_f\circ\id_B=1\circ{!}_B\), és a dir, \(\id_B\in_B f\): existeix \(g\colon B\to A\) amb \(f\circ g=\id_B\). Tercer, \(f\circ(g\circ f)=(f\circ g)\circ f=f=f\circ\id_A\), i com que \(f\) és un \emph{monomorfisme}, \(g\circ f=\id_A\). Així \(g\) és la inversa de \(f\). Observeu on intervé cada hipòtesi: l'epimorfisme força la característica a ser la total (proposició~\ref{prop:caracteristica-total}), la representació converteix això en una secció, i el monomorfisme fa de la secció una inversa. El corol·lari~\ref{cor:isomorfisme-bimorfisme} en recull el recíproc, ja provat abans.
+\end{solucio}
+
+\section{Productes i aparellament}\label{prac:productes}
+
+\begin{exercici}
+\textbf{Les projeccions separen aplicacions.} Sigui \(A\times B\) un producte amb projeccions \(p_A,p_B\), i siguin \(u,v:X\to A\times B\) amb \(p_A\circ u=p_A\circ v\) i \(p_B\circ u=p_B\circ v\). Demostreu que \(u=v\). (Model de la proposició~\ref{prop:projeccions-separen}.)
+\end{exercici}
+\begin{solucio}
+La propietat universal del producte (definició~\ref{def:producte}) diu que una aplicació cap a \(A\times B\) queda unívocament determinada per les seves dues components sobre les projeccions: donades \(f:X\to A\) i \(g:X\to B\), existeix una única \(\langle f,g\rangle:X\to A\times B\) amb \(p_A\circ\langle f,g\rangle=f\) i \(p_B\circ\langle f,g\rangle=g\). Ara bé, tant \(u\) com \(v\) tenen les mateixes components, \(f:=p_A\circ u=p_A\circ v\) i \(g:=p_B\circ u=p_B\circ v\); per la \emph{unicitat} de la factorització, \(u=\langle f,g\rangle=v\). Les projeccions, doncs, són conjuntament \enquote{cancel·lables}.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Unicitat del producte llevat d'isomorfisme.} Suposeu que \((P,p_A,p_B)\) i \((Q,q_A,q_B)\) satisfan totes dues la propietat universal del producte de \(A\) i \(B\). Esbosseu per què \(P\cong Q\). (Enunciat: proposició~\ref{prop:producte-unic}.)
+\end{exercici}
+\begin{solucio}
+Per la propietat universal de \(Q\), les aplicacions \(p_A,p_B\) que surten de \(P\) indueixen una única \(\varphi:P\to Q\) amb \(q_A\circ\varphi=p_A\) i \(q_B\circ\varphi=p_B\). Simètricament, la propietat universal de \(P\) indueix \(\psi:Q\to P\) amb \(p_A\circ\psi=q_A\) i \(p_B\circ\psi=q_B\). El compost \(\psi\circ\varphi:P\to P\) satisfà les mateixes equacions que \(\id_P\) respecte de \(p_A,p_B\); per la unicitat de la factorització (l'exercici anterior), \(\psi\circ\varphi=\id_P\). Igualment \(\varphi\circ\psi=\id_Q\). Per tant \(\varphi\) és un isomorfisme i \(P\cong Q\). Aquest és el patró estàndard: \emph{tot objecte definit per una propietat universal és únic llevat d'isomorfisme}.
+\end{solucio}
+
+\section{Equalitzadors, pullbacks i imatges inverses}\label{prac:equalitzadors-pullbacks}
+
+\begin{exercici}
+\textbf{L'equalitzador és un monomorfisme.} Sigui \(e:E\to A\) l'equalitzador de \(f,g:A\to B\) (definició~\ref{def:equalitzador}). Demostreu que \(e\) és un monomorfisme.
+\end{exercici}
+\begin{solucio}
+Suposem \(e\circ u=e\circ v\) amb \(u,v:X\to E\). Sigui \(w:=e\circ u=e\circ v:X\to A\). Aleshores \(f\circ w=g\circ w\) (perquè \(f\circ e=g\circ e\), i \(w\) factoritza per \(e\)); és a dir, \(w\) equalitza \(f\) i \(g\). Per la propietat universal de l'equalitzador (teorema~\ref{teo:equalitzador-universal}), existeix una \emph{única} aplicació \(t:X\to E\) amb \(e\circ t=w\). Però tant \(u\) com \(v\) compleixen \(e\circ u=w=e\circ v\); per la unicitat, \(u=t=v\). Per tant \(e\) és un monomorfisme.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El pullback d'un monomorfisme és un monomorfisme.} En un pullback (definició~\ref{def:pullback}) de \(f:A\to C\) al llarg de \(g:B\to C\), suposeu que \(f\) és un monomorfisme. Demostreu que el canvi de base \(g^{*}(f)\), la projecció cap a \(B\) (observació~\ref{obs:pullback-exemples}), també ho és. (Enunciat: proposició~\ref{prop:pullback-mono}.)
+\end{exercici}
+\begin{solucio}
+Sigui el pullback \(P\) amb projeccions \(p:P\to A\) i \(q:P\to B\), tals que \(f\circ p=g\circ q\); la projecció \(q\) és la que anomenem \(g^{*}(f)\). Suposem \(q\circ u=q\circ v\) amb \(u,v:X\to P\). Volem \(u=v\). Component les equacions del quadrat, \(f\circ(p\circ u)=g\circ(q\circ u)=g\circ(q\circ v)=f\circ(p\circ v)\); com que \(f\) és mono, \(p\circ u=p\circ v\). Així, \(u\) i \(v\) tenen la mateixa composició amb totes dues projeccions \(p\) i \(q\). Per la unicitat a la propietat universal del pullback (teorema~\ref{teo:pullback-universal}), les dues aplicacions \(X\to P\) que factoritzen el mateix con són iguals: \(u=v\). Per tant \(g^{*}(f)=q\) és un monomorfisme. Aquest és el fet que fa que la imatge inversa d'una part torni a ser una part (definició~\ref{def:imatge-inversa}).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Pertinença a la imatge inversa.} Siguin \(g:B\to A\) i una part \(m:S\rightarrowtail A\), amb imatge inversa \(g^{-1}(m):P\rightarrowtail B\). Demostreu que, per a tot \(y:X\to B\), es té \(y\in_X g^{-1}(m)\) si i només si \(g\circ y\in_X m\). (Model de la proposició~\ref{prop:pertinenca-imatge-inversa}.)
+\end{exercici}
+\begin{solucio}
+La imatge inversa és el pullback de \(m\) al llarg de \(g\): un quadrat cartesià amb projeccions \(q_B\colon P\to B\) (que és \(g^{-1}(m)\)) i \(q_S\colon P\to S\), amb \(g\circ q_B=m\circ q_S\). Si \(y\in_X g^{-1}(m)\), hi ha \(w\colon X\to P\) amb \(y=q_B\circ w\), i aleshores \(g\circ y=g\circ q_B\circ w=m\circ(q_S\circ w)\), de manera que \(q_S\circ w\) testimonia \(g\circ y\in_X m\). Recíprocament, si \(g\circ y=m\circ z\) per a algun \(z\colon X\to S\), el parell \((y,z)\) compleix la condició de commutativitat del pullback, i la propietat universal (teorema~\ref{teo:pullback-universal}) dona \(w\colon X\to P\) amb \(q_B\circ w=y\) i \(q_S\circ w=z\); la primera igualtat és \(y\in_X g^{-1}(m)\). En termes clàssics: \(y\) cau dins \(g^{-1}(m)\) exactament quan la seva imatge \(g\circ y\) cau dins \(m\).
+\end{solucio}

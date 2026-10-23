@@ -1,0 +1,131 @@
+\chapter{Relacions, quocients i elecció}\label{test:cap4}
+
+Aquest test correspon al capítol~4 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u4}{b,c,b,a,c,b,c,a,c,b,b,c}
+
+\begin{enumerate}
+
+\pregunta En aquesta teoria, una \emph{relació} d'un conjunt \(A\) cap a un conjunt \(B\) és\ldots
+\begin{itemize}
+\opcio{a}{una aplicació \(A\to B\).}
+\opcio{b}{una part d'un producte \(A\times B\).}
+\opcio{c}{un element global de \(A\times B\).}
+\opcio{d}{un isomorfisme \(A\to B\).}
+\end{itemize}
+\feedback
+\justificacio{Una relació és una part \(r\colon R\rightarrowtail A\times B\); els parells relacionats són els elements generalitzats que hi pertanyen. Una aplicació \(A\to B\) és el cas particular d'una relació funcional, i es recupera com a part per la seva gràfica.}
+
+\pregunta La diagonal \(\Delta_A=\langle\id_A,\id_A\rangle\) compleix que \(x\mathrel{(\Delta_A)_X}x'\) si i només si\ldots
+\begin{itemize}
+\opcio{a}{\(x\) és un element global.}
+\opcio{b}{\(x\) i \(x'\) tenen codominis diferents.}
+\opcio{c}{\(x=x'\).}
+\opcio{d}{\(A\) és terminal.}
+\end{itemize}
+\feedback
+\justificacio{\(\langle x,x'\rangle\) es factoritza per \(\langle\id_A,\id_A\rangle\) exactament quan \(x=w=x'\) per a alguna \(w\). La diagonal és la relació d'igualtat, i això val a tots els estadis.}
+
+\pregunta El parell nucli \(\langle k_1,k_2\rangle\) d'una aplicació \(f\colon A\to B\) sempre és\ldots
+\begin{itemize}
+\opcio{a}{un epimorfisme.}
+\opcio{b}{un monomorfisme, encara que \(f\) no ho sigui.}
+\opcio{c}{un isomorfisme.}
+\opcio{d}{un monomorfisme només si \(f\) ho és.}
+\end{itemize}
+\feedback
+\justificacio{La prova només usa la unicitat de la factorització pel pullback: dues aplicacions cap a \(A\times_BA\) amb les mateixes projeccions són iguals. Cap propietat de \(f\) hi intervé.}
+
+\pregunta El parell nucli de qualsevol aplicació \(f\colon A\to B\) és\ldots
+\begin{itemize}
+\opcio{a}{una relació d'equivalència sobre \(A\).}
+\opcio{b}{una relació d'ordre.}
+\opcio{c}{sempre la diagonal.}
+\opcio{d}{una part de \(B\times B\).}
+\end{itemize}
+\feedback
+\justificacio{Reflexivitat, simetria i transitivitat s'obtenen factoritzant \((\id_A,\id_A)\), \((k_2,k_1)\) i el parell adequat sobre \(K\times_AK\) pel pullback. És la diagonal només quan \(f\) és mono.}
+
+\pregunta Un \emph{epimorfisme regular} és una aplicació que\ldots
+\begin{itemize}
+\opcio{a}{admet una inversa per la dreta.}
+\opcio{b}{és alhora mono i epi.}
+\opcio{c}{és el coequalitzador d'algun parell d'aplicacions paral·leles.}
+\opcio{d}{té domini terminal.}
+\end{itemize}
+\feedback
+\justificacio{És la definició: coequalitzador d'algun parell paral·lel. Tenir inversa per la dreta és ser escindit, condició més forta sense l'elecció; mono i epi alhora és ser bimorfisme, que ja és isomorfisme.}
+
+\pregunta L'aplicació quocient \(q\colon A\twoheadrightarrow A/r\) d'una relació d'equivalència\ldots
+\begin{itemize}
+\opcio{a}{és un monomorfisme.}
+\opcio{b}{és un epimorfisme regular, i és única llevat d'un únic isomorfisme compatible.}
+\opcio{c}{no existeix sense l'axioma d'elecció.}
+\opcio{d}{és sempre un isomorfisme.}
+\end{itemize}
+\feedback
+\justificacio{El quocient és el coequalitzador de \(r_1,r_2\), que existeix per l'axioma de coequalitzadors i és únic llevat d'un únic isomorfisme compatible; l'elecció no hi intervé. És isomorfisme només si \(r\) és la diagonal.}
+
+\pregunta L'axioma d'\emph{efectivitat} de les relacions d'equivalència afirma que\ldots
+\begin{itemize}
+\opcio{a}{tota relació és simètrica.}
+\opcio{b}{tot epimorfisme té secció.}
+\opcio{c}{en prendre el quocient i després el parell nucli es recupera la relació original.}
+\opcio{d}{tota aplicació és un epimorfisme.}
+\end{itemize}
+\feedback
+\justificacio{L'efectivitat diu que el parell nucli d'un quocient de \(r\) és equivalent a \(r\): quocient i parell nucli són inversos. Que tot epimorfisme tingui secció és l'elecció.}
+
+\pregunta L'axioma d'\emph{elecció}, en la seva formulació estructural, diu que\ldots
+\begin{itemize}
+\opcio{a}{tot epimorfisme és escindit (té secció).}
+\opcio{b}{tot monomorfisme és escindit.}
+\opcio{c}{tota relació d'equivalència és efectiva.}
+\opcio{d}{tot conjunt té un element global.}
+\end{itemize}
+\feedback
+\justificacio{En forma estructural, l'elecció diu que tot epimorfisme té secció. Que tot mono sigui escindit és fals (\(\mathbf0\to\mathbf1\) no té retracció); l'efectivitat és un altre axioma.}
+
+\pregunta Amb l'axioma d'elecció, tot epimorfisme\ldots
+\begin{itemize}
+\opcio{a}{és un monomorfisme.}
+\opcio{b}{és un isomorfisme.}
+\opcio{c}{és regular i exhaustiu sobre elements generalitzats.}
+\opcio{d}{deixa d'existir.}
+\end{itemize}
+\feedback
+\justificacio{Amb secció, un epimorfisme és regular (coequalitzador del seu parell nucli) i exhaustiu sobre elements generalitzats (\(x:=s\circ y\)). No és mono ni iso en general.}
+
+\pregunta En la lectura clàssica, una secció \(s\) d'un quocient \(q\colon A\twoheadrightarrow A/r\)\ldots
+\begin{itemize}
+\opcio{a}{col·lapsa totes les classes en un punt.}
+\opcio{b}{tria un representant de cada classe d'equivalència.}
+\opcio{c}{és sempre la identitat.}
+\opcio{d}{només existeix si \(r\) és la diagonal.}
+\end{itemize}
+\feedback
+\justificacio{Com que \(q\circ s=\id\), el punt \(s(b)\) cau a la fibra de \(b\), és a dir, a la classe que \(b\) representa: la secció tria un element per classe.}
+
+\pregunta Quina d'aquestes afirmacions és certa \emph{sense} l'axioma d'elecció?
+\begin{itemize}
+\opcio{a}{Tot epimorfisme té secció.}
+\opcio{b}{Tot epimorfisme és exhaustiu sobre els punts globals.}
+\opcio{c}{Tot epimorfisme és exhaustiu sobre els elements generalitzats.}
+\opcio{d}{Tot quocient admet un sistema de representants.}
+\end{itemize}
+\feedback
+\justificacio{L'exhaustivitat sobre punts es va demostrar al capítol 3 amb la separació global i la disjunció de les sumes. Les altres tres afirmacions són formulacions equivalents de l'elecció, o conseqüències directes seves.}
+
+\pregunta Per què es postula l'efectivitat de les relacions d'equivalència com a axioma en aquest llibre?
+\begin{itemize}
+\opcio{a}{Perquè és independent de tots els altres axiomes del llibre.}
+\opcio{b}{Perquè és falsa en el model clàssic i cal imposar-la.}
+\opcio{c}{Perquè la seva demostració necessita el conjunt de parts, que encara no s'ha introduït.}
+\opcio{d}{Perquè equival a l'axioma d'elecció.}
+\end{itemize}
+\feedback
+\justificacio{En la formulació categòrica és un teorema que es demostra a partir del conjunt de parts (capítol 7); aquí es postula per poder usar-la abans. En el model clàssic és certa, i no té res a veure amb l'elecció.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

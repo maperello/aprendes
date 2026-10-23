@@ -1,0 +1,131 @@
+\chapter{Tipus ordinals}\label{test:cap16}
+
+Aquest test correspon al capítol~16 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u16}{b,c,b,a,c,b,c,a,b,c,c,b}
+
+\begin{enumerate}
+
+\pregunta Un \emph{tipus ordinal} és\ldots
+\begin{itemize}
+\opcio{a}{un conjunt transitiu.}
+\opcio{b}{un conjunt ben ordenat considerat llevat d'isomorfisme d'ordre.}
+\opcio{c}{una part de \(\N\).}
+\opcio{d}{una relació d'equivalència.}
+\end{itemize}
+\feedback
+\justificacio{Un tipus és la classe d'isomorfisme d'ordre d'un bon ordre; no es tria cap representant. Els conjunts transitius són la presentació de von Neumann, que aquest llibre no adopta.}
+
+\pregunta L'ordre entre tipus, \(\alpha<\beta\), es defineix com\ldots
+\begin{itemize}
+\opcio{a}{\(\alpha\in\beta\).}
+\opcio{b}{existeix una aplicació \(\alpha\to\beta\).}
+\opcio{c}{un representant de \(\alpha\) és isomorf a un segment inicial propi d'un de \(\beta\).}
+\opcio{d}{\(\alpha\) i \(\beta\) són equipotents.}
+\end{itemize}
+\feedback
+\justificacio{És la comparació per segments del capítol 13, llegida sobre tipus. \(\alpha\in\beta\) no té sentit sense pertinença global, i l'equipotència compara mides, no longituds.}
+
+\pregunta Que l'ordre \(\alpha<\beta\) no depengui dels representants es deu a\ldots
+\begin{itemize}
+\opcio{a}{l'axioma d'elecció.}
+\opcio{b}{la unicitat de l'isomorfisme d'ordre entre bons ordres.}
+\opcio{c}{l'axioma d'exponencials.}
+\opcio{d}{el teorema de Cantor.}
+\end{itemize}
+\feedback
+\justificacio{Si \(W\cong W'\) i \(V\cong V'\), els isomorfismes únics transporten segments propis en segments propis. Cap elecció no hi intervé.}
+
+\pregunta El successor \(\alpha+1\) és el tipus de\ldots
+\begin{itemize}
+\opcio{a}{\(W+\mathbf1\): \(W\) amb un punt nou col·locat després de tot \(W\).}
+\opcio{b}{\(P(W)\).}
+\opcio{c}{\(W\times W\).}
+\opcio{d}{\(\mathbf1+W\): un punt nou al principi.}
+\end{itemize}
+\feedback
+\justificacio{El punt nou va al final, de manera que és màxim i el seu segment és \(W\). Posar-lo al principi (\(\mathbf1+W\)) dona un altre tipus en general, i per a \(W=\N\) el mateix tipus que \(W\).}
+
+\pregunta El successor \(\alpha+1\)\ldots
+\begin{itemize}
+\opcio{a}{és límit.}
+\opcio{b}{no té element màxim.}
+\opcio{c}{és el menor tipus estrictament més gran que \(\alpha\), i té màxim.}
+\opcio{d}{és igual a \(\alpha\).}
+\end{itemize}
+\feedback
+\justificacio{\(W\) és el segment del punt nou, d'on \(\alpha<\alpha+1\); un tipus entremig seria un segment propi de \(W+\mathbf1\), és a dir \(W\) o un segment de \(W\), d'on \(\le\alpha\).}
+
+\pregunta Un tipus és \emph{límit} quan\ldots
+\begin{itemize}
+\opcio{a}{és zero.}
+\opcio{b}{no és zero ni successor: els seus representants són no buits i no tenen màxim.}
+\opcio{c}{té element màxim.}
+\opcio{d}{és finit.}
+\end{itemize}
+\feedback
+\justificacio{Zero és el buit, successor és tenir màxim; límit és la resta. Tenir màxim és invariant per isomorfisme d'ordre, de manera que la classificació no depèn del representant.}
+
+\pregunta El primer tipus límit és\ldots
+\begin{itemize}
+\opcio{a}{\(0\).}
+\opcio{b}{\(1\).}
+\opcio{c}{\(\omega=\operatorname{tipus}(\N)\).}
+\opcio{d}{no n'hi ha.}
+\end{itemize}
+\feedback
+\justificacio{Els tipus finits són zero o successors; \(\N\) no té màxim i no és buit, i tot tipus menor és el d'un segment \(\seg{n}\), finit.}
+
+\pregunta El suprem d'una família de tipus \emph{representada dins un bon ordre \(W\)}\ldots
+\begin{itemize}
+\opcio{a}{és el tipus de la reunió \(\bigcup_iW_{<r(i)}\) dels segments oberts que representen els \(\alpha_i\).}
+\opcio{b}{no existeix mai.}
+\opcio{c}{requereix l'elecció.}
+\opcio{d}{és el conjunt de tots els ordinals.}
+\end{itemize}
+\feedback
+\justificacio{La reunió dels segments oberts és inicial; cada \(\alpha_i\) n'és una part inicial i qualsevol cota comuna rep la reunió, enganxant els isomorfismes únics. Amb segments tancats el resultat seria massa gran.}
+
+\pregunta El teorema de Burali--Forti afirma que\ldots
+\begin{itemize}
+\opcio{a}{tot tipus té successor.}
+\opcio{b}{no existeix cap bon ordre \(\Omega\) que indexi coherentment tots els tipus, és a dir, en què cada \(\gamma\) representi el tipus del segment \(\Omega_{<\gamma}\).}
+\opcio{c}{\(\omega\) és el darrer tipus.}
+\opcio{d}{tot bon ordre és finit.}
+\end{itemize}
+\feedback
+\justificacio{Si \(\Omega\) existís, tindria un tipus representat per algun \(\gamma\in\Omega\), i \(\Omega\) seria isomorf al seu segment propi \(\Omega_{<\gamma}\), contra la rigidesa.}
+
+\pregunta Burali--Forti és\ldots
+\begin{itemize}
+\opcio{a}{una conseqüència de l'elecció.}
+\opcio{b}{independent de Cantor.}
+\opcio{c}{el paral·lel ordinal del teorema de Cantor (no hi ha longitud d'ordre màxima).}
+\opcio{d}{fals sense SR.}
+\end{itemize}
+\feedback
+\justificacio{Com Cantor amb les mides, Burali--Forti diu que la col·lecció de totes les longituds és massa gran per ser un conjunt del mateix tipus; cap dels dos no usa l'elecció ni SR.}
+
+\pregunta Amb \(\alpha_i=\operatorname{tipus}(W_{<r(i)})\), per què el suprem es pren amb els segments \emph{oberts} \(W_{<r(i)}\) i no amb els tancats \(W_{\le r(i)}\)?
+\begin{itemize}
+\opcio{a}{És indiferent: donen el mateix tipus.}
+\opcio{b}{Perquè els tancats no són parts inicials.}
+\opcio{c}{Perquè els tancats donen en general un tipus massa gran: amb un sol índex i \(r\) el mínim de \(W\), \(\alpha=0\) però \(W_{\le r}\) té tipus \(1\).}
+\opcio{d}{Perquè els oberts necessiten l'elecció.}
+\end{itemize}
+\feedback
+\justificacio{Els segments que representen els \(\alpha_i\) són els oberts, i la seva reunió és exactament el suprem; amb els tancats s'hi afegeixen els punts \(r(i)\), que poden sobrepassar-lo.}
+
+\pregunta \(\mathbf1+\N\) (un punt nou \emph{abans} de \(\N\)) i \(\N+\mathbf1\) (un punt nou \emph{després}), com a bons ordres\ldots
+\begin{itemize}
+\opcio{a}{són tots dos isomorfs a \(\N\).}
+\opcio{b}{el primer és isomorf a \(\N\) (via el successor) i el segon no (té màxim): la suma de tipus no és commutativa.}
+\opcio{c}{cap dels dos no és isomorf a \(\N\).}
+\opcio{d}{són isomorfs entre si.}
+\end{itemize}
+\feedback
+\justificacio{\(\mathbf1+\N\cong\N\) enviant el punt nou a \(0\) i \(n\) a \(s(n)\); \(\N+\mathbf1\) té màxim, que és invariant, i per tant té tipus \(\omega+1\neq\omega\).}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

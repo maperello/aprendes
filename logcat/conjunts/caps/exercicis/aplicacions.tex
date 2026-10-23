@@ -1,0 +1,67 @@
+\chapter{Aplicacions, dominis, codominis i composició}\label{cap:exercicis-aplicacions}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:aplicacions} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-aplicacions} de la Part~\ref{part:practica}). Els marcats amb una indicació són els més exigents.
+
+\section{Llenguatge formal, composició i estabilitat}
+
+\begin{enumerate}
+  \item Escriviu amb els predicats \(\Dom\), \(\Cod\) i \(\Com\) que \(h\) és la composició de \(f\) seguida de \(g\), que el domini de \(h\) coincideix amb el de \(f\) i que el codomini de \(h\) coincideix amb el de \(g\).
+
+  \item Traduïu al llenguatge dels predicats la frase \enquote{\(f\) i \(g\) tenen el mateix codomini}. Feu-ho de dues maneres: amb una variable auxiliar per al codomini comú i sense.
+
+  \item Siguin \(f\colon A\to B\), \(g\colon B\to C\) i \(h\colon C\to D\). Escriviu les dues maneres d'agrupar \(h\circ g\circ f\) i justifiqueu-ne la igualtat a partir de l'axioma d'associativitat.
+
+  \item Demostreu que si \(\Com(f,g,h)\) i \(\Com(f,g,h')\), aleshores \(h=h'\). \begin{indicacio}És la unicitat de la composició (proposició~\ref{prop:composicio-unica}); cap raonament nou, només citar-la correctament.\end{indicacio}
+\end{enumerate}
+
+\section{Identitats i conjunts}
+
+\begin{enumerate}[resume]
+  \item Demostreu que per a tot conjunt \(A\) es té \(\id_A\circ\id_A=\id_A\), i que \(\id_A\) és l'única aplicació \(A\to A\) amb aquesta propietat que a més és neutra per composició.
+
+  \item Sigui \(e\colon A\to A\) una aplicació amb \(e\circ e=e\) (un \emph{idempotent}). Doneu, en el model clàssic, un exemple d'un idempotent que no sigui la identitat. \begin{indicacio}Una aplicació constant \(A\to A\) amb valor un punt fix serveix; comproveu \(e\circ e=e\).\end{indicacio}
+\end{enumerate}
+
+\section{Igualtat d'aplicacions i elements generalitzats}
+
+\begin{enumerate}[resume]
+  \item Siguin \(f,g\colon A\to B\). Demostreu que si \(f=g\), aleshores \(f\circ x=g\circ x\) per a tot element generalitzat \(x\colon X\to A\). (És la direcció fàcil del criteri d'igualtat.)
+
+  \item Expliqueu amb un exemple del model clàssic per què la separació per elements \emph{globals} no seria suficient si no la postuléssim: descriviu dos conjunts i dues aplicacions paral·leles que un observador que només mirés punts de \(\mathbf1\) no podria distingir sense l'axioma. \begin{indicacio}Penseu en què passa quan el domini no té elements globals, com \(\mathbf0\); relacioneu-ho amb l'observació~\ref{obs:separacio-no-degeneracio}.\end{indicacio}
+\end{enumerate}
+
+\section{Isomorfismes}
+
+\begin{enumerate}[resume]
+  \item Sigui \(f\colon A\to B\) un isomorfisme. Demostreu que \({(f^{-1})}^{-1}=f\).
+
+  \item Demostreu que la isomorfia es comporta transitivament: de \(A\cong B\) i \(B\cong C\), deduïu \(A\cong C\). Indiqueu quin isomorfisme concret exhibeix \(A\cong C\).
+
+  \item Demostreu que \(\cong\) és una relació d'equivalència sobre els conjunts (reflexiva, simètrica i transitiva), tot dient quins resultats del capítol useu a cada propietat.
+
+  \item Siguin \(f,g\colon A\to B\) isomorfismes amb \(f^{-1}=g^{-1}\). Demostreu que \(f=g\). \begin{indicacio}Componeu la igualtat de les inverses convenientment amb \(f\) o \(g\) i useu la neutralitat.\end{indicacio}
+\end{enumerate}
+
+\section{Terminals, inicials i no-degeneració}
+
+\begin{enumerate}[resume]
+  \item Demostreu que si \(I_1\) i \(I_2\) són tots dos inicials, hi ha un únic isomorfisme \(I_1\to I_2\). (Dual de la unicitat del terminal.)
+
+  \item Demostreu que tota aplicació \(A\to\mathbf1\) és \({!}_A\). Deduïu-ne que, per a cada estadi \(X\), el conjunt \(\mathbf1\) té exactament un element generalitzat en l'estadi \(X\), i compareu-ho amb el nombre d'aplicacions \(\mathbf1\to A\) per a un conjunt \(A\) qualsevol. \begin{indicacio}El que és únic és l'aplicació \emph{cap} a \(\mathbf1\); les aplicacions \emph{des de} \(\mathbf1\) són els punts d'\(A\), i poden ser molts o cap.\end{indicacio}
+
+  \item Demostreu que no existeix cap aplicació \(\mathbf1\to\mathbf0\) reproduint l'argument del resolt corresponent, i deduïu que \(\mathbf0\) no té cap element global.
+
+  \item Suposeu un univers alternatiu en què se satisfan tots els axiomes tret de la no-degeneració, i en què \(\mathbf0\cong\mathbf1\). Demostreu que aleshores entre cada parell de conjunts hi ha exactament una aplicació. \begin{indicacio}Vegeu l'observació~\ref{obs:zero-u-sense-separacio}; useu que tot conjunt rebria i emetria una única fletxa cap a i des de l'objecte col·lapsat.\end{indicacio}
+
+  \item Escriviu l'enunciat dual de la proposició~\ref{prop:no-fletxa-u-zero} i digueu si és cert. \begin{indicacio}El dual és la mateixa proposició: la no-degeneració és autodual. Compareu-ho amb l'exercici resolt sobre la no-autodualitat de la separació global.\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Per a cadascun dels resultats següents, digueu quins dels nou axiomes del capítol intervenen a la demostració i quins no hi intervenen: la unicitat de la composició (proposició~\ref{prop:composicio-unica}), la unicitat de la inversa (proposició~\ref{prop:inversa-unica}), la unicitat del terminal llevat d'isomorfisme (proposició~\ref{prop:terminal-unic}), la inexistència d'aplicacions \(\mathbf1\to\mathbf0\) (proposició~\ref{prop:no-fletxa-u-zero}) i l'extensionalitat global (proposició~\ref{prop:extensionalitat-global}). \begin{indicacio}Les tres primeres només usen els axiomes estructurals i, si escau, les definicions; les dues últimes són les úniques que necessiten la no-degeneració i la separació global, respectivament.\end{indicacio}
+\end{enumerate}
+
+\section{Elements globals i aplicacions constants}
+
+\begin{enumerate}[resume]
+  \item Sigui \(b\colon\mathbf1\to B\) un punt i \(c\colon A\to B\) la constant de valor \(b\). Demostreu que si \(A\) té almenys un element global, aleshores \(c\) queda determinada pel seu valor sobre qualsevol d'ells.
+
+  \item Siguin \(b,b'\colon\mathbf1\to B\) dos punts i \(c,c'\colon A\to B\) les constants respectives. Demostreu que \(c=c'\) si i només si \(b=b'\), suposant que \(A\) no és inicial. \begin{indicacio}Per a una direcció componeu amb un element global de \(A\); l'altra és immediata. On s'usa que \(A\) no és inicial?\end{indicacio}
+\end{enumerate}

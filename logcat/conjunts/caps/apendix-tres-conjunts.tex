@@ -1,0 +1,85 @@
+\chapter{Tres conjunts al llarg del llibre}\label{cap:tres-conjunts}
+
+Tres conjunts reapareixen a gairebé tots els capítols: \(\mathbf2\), \(\N\) i
+el conjunt de parts \(P(A)\). Aquest apèndix recull, per a cadascun, el que
+el llibre en va dient a mesura que avança, de manera que es pugui seguir el
+fil d'una construcció a la següent.
+
+\section*{\texorpdfstring{El conjunt \(\mathbf2\)}{El conjunt 2}}
+
+\begin{description}
+\item[Definició.] \(\mathbf2:=\mathbf1+\mathbf1\), la suma de dues còpies del
+terminal; no es postula (capítol~\ref{cap:parts}).
+\item[Dos punts.] Els seus punts són \(0\) i \(1\), són diferents i no n'hi ha
+cap altre (corol·lari~\ref{cor:elements-de-2}); la distinció \(0\ne1\) usa la
+disjunció de les sumes i la no-degeneració.
+\item[Classificador de parts.] Cada part \(m\) d'un conjunt \(A\) té una única
+característica \(\chi_m\colon A\to\mathbf2\), i cada aplicació cap a
+\(\mathbf2\) classifica alguna part (axioma~\ref{ax:representacio},
+teorema~\ref{teo:quadrat-caracteristic}).
+\item[Lògica.] La negació, la conjunció i la disjunció són aplicacions
+\(\mathbf2\to\mathbf2\) i \(\mathbf2\times\mathbf2\to\mathbf2\), i les operacions
+entre parts són les seves composicions amb les característiques
+(capítol~\ref{cap:valors}).
+\item[Exponencials.] \(\mathbf2^{\mathbf2}\cong\mathbf2\times\mathbf2\) té quatre
+punts: les dues constants, la identitat i la negació
+(capítol~\ref{cap:exponencials}); i \(P(A):=\mathbf2^A\).
+\item[Recompte.] \(\abs{P(A)}=2^{\abs{A}}\) per a \(A\) finit
+(capítol~\ref{cap:finits}), i \(\abs{A}<2^{\abs{A}}\) en general (Cantor,
+capítol~\ref{cap:cantor}).
+\item[Ordinal i cardinal.] Com a tipus d'ordre, \(2^\omega=\omega\); com a
+cardinal, \(2^{\aleph_0}=\mathfrak c\) és el continu
+(capítols~\ref{cap:aritmetica-ordinal} i~\ref{cap:alephs}).
+\end{description}
+
+\section*{\texorpdfstring{L'objecte \(\N\)}{L'objecte N}}
+
+\begin{description}
+\item[Definició.] Una propietat universal de recursió: tot sistema
+\((A,a,t)\) rep una única \(u\) amb \(u\circ0=a\) i \(u\circ s=t\circ u\)
+(axioma~\ref{ax:naturals}).
+\item[Inducció i Peano.] La unicitat de la recursora és la inducció; el
+zero no és successor, el successor és injectiu i tot punt és zero o
+successor (teorema~\ref{teo:peano}, lema~\ref{lema:zero-o-successor}).
+D'aquí, \(\N\cong\mathbf1+\N\).
+\item[Aritmètica i ordre.] Suma, producte i exponenciació per recursió;
+\(\le\) com a part de \(\N\times\N\); bon ordre
+(teorema~\ref{teo:bon-ordre-N}).
+\item[Finitud.] Els segments \(\seg{n}\) són fibres d'una part de
+\(\N\times\N\), i \(\operatorname{Card}(A)\) és una part de \(\N\)
+(capítol~\ref{cap:finits}).
+\item[Infinitud.] El successor fa de \(\N\) un infinit de Dedekind;
+\(\N\cong\N\times\N\) (proposició~\ref{prop:estabilitat-enumerable}), i tota
+part de \(\N\) és finita o isomorfa a \(\N\)
+(teorema~\ref{teo:subobjectes-N}).
+\item[Mida i forma.] \(\abs{\N}=\aleph_0\), el menor cardinal infinit;
+\(\operatorname{tipus}(\N)=\omega\), el primer tipus límit; i
+\(P(\N)\) no és enumerable (capítols~\ref{cap:cantor}, \ref{cap:ordinals}
+i~\ref{cap:alephs}).
+\end{description}
+
+\section*{\texorpdfstring{El conjunt de parts \(P(A)\)}{El conjunt de parts P(A)}}
+
+\begin{description}
+\item[Definició.] \(P(A):=\mathbf2^A\); els seus punts són els noms de les
+parts d'\(A\), i una aplicació \(X\to P(A)\) és una família de parts
+(teorema~\ref{teo:parts-parametritzades}).
+\item[Pertinença interna.] \(\in_A\hookrightarrow A\times P(A)\) és la part
+classificada per l'avaluació (capítol~\ref{cap:parts-interna}).
+\item[Lògica interna.] Operacions booleanes, imatge inversa \(P(f)\) i
+quantificadors \(\exists_f\dashv P(f)\dashv\forall_f\)
+(definició~\ref{def:quantificadors}, lema~\ref{lema:beck-chevalley}); la
+inclusió interna en fa un reticle booleà (teorema~\ref{teo:inclusio-ordre}).
+\item[Famílies i ínfims.] Les unions i interseccions indexades d'una família
+de parts, i l'ínfim de les parts \(\Phi\)-tancades de Schröder--Bernstein,
+s'obtenen amb els quantificadors (capítols~\ref{cap:cantor}
+i~\ref{cap:families}).
+\item[Mida.] \(A\prec P(A)\) (teorema~\ref{teo:cantor}); no hi ha conjunt
+universal.
+\item[Ordres i ordinals.] Els bons ordres sobre parts d'\(A\) viuen dins
+\(P(A)\times P(A\times A)\), i el conjunt de Hartogs és un quocient d'una
+part d'aquest conjunt (definició~\ref{def:hartogs}).
+\item[Jerarquies.] La torre \(A,P(A),P^2(A),\dots\) com a família, i els
+beths \(\beth_{\alpha+1}=2^{\beth_\alpha}\), demanen l'esquema SR
+(capítols~\ref{cap:recursio} i~\ref{cap:alephs}).
+\end{description}

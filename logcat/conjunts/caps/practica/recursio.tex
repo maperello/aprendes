@@ -1,0 +1,74 @@
+\chapter{Inducció i recursió transfinites}\label{cap:practica-recursio}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:recursio} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició ---inducció transfinita, recursió amb codomini fix, la comparabilitat total dels bons ordres, i exemples de definició per recursió--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: usar el mínim del complement per a la inducció, reunir solucions parcials compatibles dins un exponencial fix per a la recursió, i aparellar dos bons ordres pel mínim disponible sense elecció. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Inducció transfinita}\label{prac:induccio-transfinita}
+
+\begin{exercici}
+\textbf{El principi d'inducció transfinita.} Sigui \((W,<)\) un bon ordre i \(S\hookrightarrow W\) tal que \(W_{<w}\subseteq S\) implica \(w\in S\), per a tot \(w\). Demostreu que \(S=W\). (Reproduïu el teorema~\ref{teo:induccio-transfinita}.)
+\end{exercici}
+\begin{solucio}
+Suposem \(S\ne W\); aleshores \(W\setminus S\) (teorema~\ref{teo:part-complementari}) és no inicial i, pel bon ordre (definició~\ref{def:bon-ordre}), té un mínim \(w_0\). Com que \(w_0\) és el mínim del complement, cap element \(<w_0\) no és al complement, és a dir \(W_{<w_0}\subseteq S\). Per la progressivitat aplicada a \(w_0\), \(w_0\in S\), contra \(w_0\in W\setminus S\). La contradicció força \(W\setminus S\) inicial, és a dir \(S=W\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Cap cas base separat.} Expliqueu per què la inducció transfinita no necessita un cas base per al mínim global \(\bot\) de \(W\), a diferència de la inducció sobre \(\N\). (Model de l'observació~\ref{obs:induccio-propietats}.)
+\end{exercici}
+\begin{solucio}
+El cas del mínim \(\bot\) queda inclòs a la clàusula general. En efecte, \(W_{<\bot}\) és inicial, de manera que la hipòtesi \enquote{\(W_{<\bot}\subseteq S\)} es compleix \emph{buidament} (no hi ha cap element \(<\bot\)); la progressivitat aplicada a \(\bot\) força aleshores \(\bot\in S\). Així, la mateixa clàusula \enquote{si tot el segment inicial és a \(S\), llavors \(w\) hi és} cobreix el mínim, els successors i els límits d'un sol cop. A \(\N\) es separava zero i successor perquè tot element és un o l'altre; en un bon ordre general això no val (hi ha límits sense predecessor), i la formulació amb el segment inicial els unifica.
+\end{solucio}
+
+\section{Recursió amb codomini fix}\label{prac:recursio-fix}
+
+\begin{exercici}
+\textbf{Compatibilitat de les solucions parcials.} Demostreu que dues solucions parcials \(a\colon D\to X\) i \(b\colon E\to X\) de la mateixa regla \(\Phi\) coincideixen sobre \(D\cap E\). (Pas de la prova del teorema~\ref{teo:recursio-transfinita}.)
+\end{exercici}
+\begin{solucio}
+\(D\cap E\) és inicial (intersecció de parts inicials). Apliquem la inducció transfinita (teorema~\ref{teo:induccio-transfinita}) a \(S=\{w : w\notin D\cap E\ \text{o}\ a(w)=b(w)\}\). Sigui \(w\) amb \(W_{<w}\subseteq S\). Si \(w\notin D\cap E\), ja \(w\in S\). Si \(w\in D\cap E\), aleshores \(W_{<w}\subseteq D\cap E\) per inicialitat, i la hipòtesi dona \(a=b\) sobre \(W_{<w}\), és a dir \(a|_{W_{<w}}=b|_{W_{<w}}\); l'equació de recursió dona \(a(w)=\Phi(w,a|_{W_{<w}})=\Phi(w,b|_{W_{<w}})=b(w)\), d'on \(w\in S\). Per inducció \(S=W\), és a dir \(a=b\) sobre \(D\cap E\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Existència i unicitat de \(F\).} Demostreu que per a tota regla \(\Phi\) amb valors al fix \(X\) existeix una única \(F\colon W\to X\) amb \(F(w)=\Phi(w,F|_{W_{<w}})\). (Reproduïu el teorema~\ref{teo:recursio-transfinita}.)
+\end{exercici}
+\begin{solucio}
+\emph{Existència.} Per inducció transfinita es prova que per a cada \(w\) hi ha una solució parcial definida a \(W_{\le w}\): donat \(w\) amb solucions parcials fins a cada \(u<w\), la compatibilitat (exercici anterior) fa que la seva reunió sigui una solució parcial \(g\colon W_{<w}\to X\), i estenent-la amb \(g^+(w):=\Phi(w,g)\) s'obté una solució parcial fins a \(W_{\le w}\). La reunió de \emph{totes} les solucions parcials és, per compatibilitat, una única aplicació \(F\) sobre una part inicial \(W'\); com que hi ha solucions fins a cada \(w\), \(W'=W\), i \(F\colon W\to X\) satisfà l'equació a tot arreu. Tot viu dins l'exponencial fix \((X+\mathbf1)^W\) i dins \(P(W)\). \emph{Unicitat.} Dues solucions totals són solucions parcials amb domini \(W\); per compatibilitat coincideixen, \(F=F'\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Sense elecció.} Expliqueu per què la construcció de \(F\) no usa cap elecció. (Model de l'observació~\ref{obs:recursio-sense-eleccio}.)
+\end{exercici}
+\begin{solucio}
+Cada solució parcial està \emph{determinada} per l'equació de recursió: a cada punt del seu domini, el valor és \(\Phi(w,\cdot)\) de la història, no un element triat entre alternatives. La reunió de solucions parcials compatibles és una operació canònica sobre parts (unió indexada, capítol~\ref{cap:families}), no una selecció. I tot passa dins l'exponencial fix \((X+\mathbf1)^W\), un conjunt ja construït. No hi ha, doncs, cap punt on calgui triar simultàniament un element de cada membre d'una família; per això no intervé l'elecció. El bon ordre només s'usa, via la inducció, per garantir compatibilitat i existència fins a cada punt.
+\end{solucio}
+
+\section{La comparabilitat total}\label{prac:comparabilitat}
+
+\begin{exercici}
+\textbf{Dos bons ordres són comparables.} Demostreu que, donats dos bons ordres \(W\) i \(V\), es dona una de les tres situacions de la tricotomia, construint per recursió l'aparellament pel mínim disponible. (Reproduïu el teorema~\ref{teo:comparabilitat}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(V^+=V+\mathbf1\) amb punt exterior \(\top\), i \(F\colon W\to V^+\) definida per recursió (teorema~\ref{teo:recursio-transfinita}): \(F(w)=\min(V\setminus F(W_{<w}))\) si el complement és no buit, i \(\top\) altrament. El mínim és únic i canònic, de manera que la regla és interna i no usa elecció. Sobre \(W_0=\{w:F(w)\ne\top\}\), inicial, \(F\) és creixent i injectiva amb imatge un segment inicial de \(V\). Si \(F\) no val mai \(\top\), \(F\) és un isomorfisme de \(W\) sobre un segment de \(V\) (tot \(V\): \(W\cong V\); propi: \(W\prec_{\mathrm o}V\)). Si \(w_0\) és el mínim amb \(F(w_0)=\top\), aleshores \(F(W_{<w_0})=V\) i \(F|_{W_{<w_0}}\colon W_{<w_0}\cong V\), d'on \(V\prec_{\mathrm o}W\). En tots els casos, comparables; l'exclusivitat és el teorema~\ref{teo:tricotomia}.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Per què no cal elecció.} Contrasteu la comparabilitat de dos bons ordres amb la de dos conjunts qualssevol pel que fa a l'elecció. (Model de l'observació~\ref{obs:comparabilitat-vs-eleccio}.)
+\end{exercici}
+\begin{solucio}
+A l'aparellament de dos bons ordres, a cada pas es tria el \emph{mínim} del que queda de \(V\); aquest mínim existeix i és únic pel bon ordre, de manera que no hi ha cap tria arbitrària i tota la construcció és canònica. En canvi, la comparabilitat de dos conjunts \emph{qualssevol} ---\(A\preceq B\) o \(B\preceq A\)--- no disposa de cap tria canònica sobre conjunts nus, i s'obté només via el teorema del bon ordre, que és equivalent a l'elecció. La diferència és, doncs, que un bon ordre porta incorporada a cada pas la tria que en un conjunt nu s'ha de postular.
+\end{solucio}
+
+\section{Exemples de recursió}\label{prac:exemples-recursio}
+
+\begin{exercici}
+\textbf{Successió transfinita de parts.} Donada \(g\colon P(A)\to P(A)\), definiu per recursió una successió \((S_w)_{w\in W}\) de parts d'\(A\) amb \(S_w=\bigcup_{u<w}g(S_u)\), i digueu per què és de Nivell~I. (Model de l'observació~\ref{obs:exemples-recursio}.)
+\end{exercici}
+\begin{solucio}
+Prenem \(X=P(A)\), fix, i la regla \(\Phi(w,h)=\bigcup_{u<w}g(h(u))\), que a partir de la història \(h=S|_{W_{<w}}\) forma la unió indexada de les \(g(S_u)\) ---una part d'\(A\), obtinguda amb els quantificadors interns (capítol~\ref{cap:families}). Pel teorema~\ref{teo:recursio-transfinita} existeix una única \(S\colon W\to P(A)\) amb \(S_w=\bigcup_{u<w}g(S_u)\). És de Nivell~I perquè totes les \(S_w\) viuen dins el conjunt \emph{fix} \(P(A)\): el codomini no varia, de manera que no cal cap principi nou. La monotonia de \(g\), si es té, fa la successió creixent.
+\end{solucio}
+
+\begin{exercici}
+\textbf{On cal SR.} Expliqueu per què la successió \(V_0=A\), \(V_{n+1}=P(V_n)\) \emph{no} es pot definir amb el teorema de recursió d'aquest capítol, i quin principi cal. (Model de l'observació~\ref{obs:frontera-exemple}.)
+\end{exercici}
+\begin{solucio}
+El teorema~\ref{teo:recursio-transfinita} demana un codomini \emph{fix} \(X\) que contingui tots els valors. Aquí cada \(V_{n+1}=P(V_n)\) és estrictament més gran que \(V_n\) pel teorema de Cantor (teorema~\ref{teo:cantor}), de manera que no existeix cap conjunt \(X\) que contingui tots els \(V_n\) com a elements: el codomini hauria de créixer a cada pas. La regla \(n\mapsto V_n\) és una \emph{regla externa} (definició~\ref{def:familia-vs-regla}) i reunir-la en una família interna demana la substitució estructural SR (observació~\ref{obs:sr}), que és de Nivell~II. No és una qüestió d'elecció: no es tria res dins fibres, sinó que cal garantir l'existència del total (observació~\ref{obs:sr-no-eleccio}).
+\end{solucio}

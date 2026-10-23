@@ -1,0 +1,760 @@
+\chapter{Models, mida i comparació amb \texorpdfstring{ZF\slash ETCS}{ZF/ETCS}}\label{cap:models}
+
+\begin{objectius}
+\apartat{Prerequisits} Tot el llibre, i en particular els axiomes tal com s'han anat introduint, l'esquema SR del capítol~\ref{cap:alephs} i les observacions de lectura clàssica. Familiaritat informal amb els axiomes de ZFC, que es recorden a la taula de la secció~\ref{sec:taula-comparativa}.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item recórrer els axiomes del llibre per grups i explicar-ne les dependències;
+  \item identificar l'estructura obtinguda com un topos ben apuntat amb objecte dels nombres naturals i elecció, és a dir, un model d'ETCS;
+  \item comparar, axioma per axioma, aquesta presentació amb ZFC i amb l'ETCS de Lawvere, distingint els axiomes equivalents, els derivats i els addicionals;
+  \item situar la força de la teoria (Nivell~I, amb i sense SR) respecte de la teoria de Zermelo acotada i de ZFC;
+  \item explicar com es recupera la pertinença, què se'n perd i què se'n guanya.
+\end{itemize}
+\end{objectius}
+
+Els capítols anteriors han bastit, a partir d'un llenguatge en què els
+únics individus són les aplicacions, tota la infraestructura que
+habitualment associem als conjunts: parts i pertinença, productes i sumes,
+quocients, imatges, exponencials, el conjunt de parts, els nombres
+naturals i la cardinalitat fins al numerable. I, en una segona part, han
+portat aquesta construcció fins a la teoria clàssica de l'infinit: la
+comparació general de mides amb Schröder--Bernstein i el teorema de Cantor
+(capítol~\ref{cap:cantor}), els bons ordres i la recursió transfinita
+(capítols~\ref{cap:bons-ordres} i~\ref{cap:recursio}), Zorn, Hartogs i el
+teorema del bon ordre (capítol~\ref{cap:zorn}), els tipus ordinals i la seva
+aritmètica (capítols~\ref{cap:ordinals} i~\ref{cap:aritmetica-ordinal}), els
+cardinals i la seva aritmètica (capítol~\ref{cap:cardinals}) i ---amb un principi
+addicional--- la jerarquia sencera dels alephs i dels beths
+(capítol~\ref{cap:alephs}). En cap
+moment hem necessitat la relació de pertinença \(\in\) com a noció primitiva.
+És natural que, un cop acabada la construcció, el lector es faci tres
+preguntes: si això que hem obtingut és \emph{realment} una teoria de
+conjunts; què és capaç d'expressar i què no; i quina relació guarda amb la
+teoria clàssica de Zermelo--Fraenkel que va aprendre primer. Aquest capítol
+final hi respon. No conté cap axioma nou ni cap construcció nova: és un
+capítol metateòric, escrit per situar l'edifici sencer ---inclosa la part
+transfinita--- i per assenyalar-ne els límits amb honestedat.
+
+\section{Recapitulació dels axiomes}\label{sec:recapitulacio-axiomes}
+
+Convé, abans de res, tenir a la vista tots els axiomes que hem assumit i
+l'ordre en què depenen els uns dels altres. Els agrupem pel paper que fan.
+
+El \textbf{grup del llenguatge de composició} fixa què és una aplicació i
+com es componen: l'existència i unicitat de domini i codomini
+(axioma~\ref{ax:dom-cod}), l'existència de la composició quan els tipus
+encaixen (axioma~\ref{ax:composicio-existencia}), el seu domini i codomini
+(axioma~\ref{ax:composicio-dom-cod}), l'associativitat
+(axioma~\ref{ax:associativitat}) i les lleis de neutralitat
+(axioma~\ref{ax:neutralitat}). Aquests cinc axiomes són la base sobre la
+qual descansa tota la resta; en el vocabulari que hem evitat, diuen que les
+aplicacions i els conjunts formen una categoria.
+
+El \textbf{grup dels objectes distingits i la separació} dona els punts de
+partida per construir: l'existència d'un conjunt terminal
+(axioma~\ref{ax:terminal-existencia}) i d'un d'inicial
+(axioma~\ref{ax:inicial-existencia}), la no-degeneració que els separa,
+\(\mathbf0\ncong\mathbf1\) (axioma~\ref{ax:no-degeneracio}), i la separació
+de les aplicacions pels elements globals
+(axioma~\ref{ax:separacio-globals}), que és la que fa que els punts
+\(\mathbf1\to A\) siguin prou nombrosos per distingir aplicacions ---la
+propietat que més endavant expressarem dient que la teoria és \emph{ben
+apuntada}.
+
+El \textbf{grup de les construccions finites} postula les operacions
+universals bàsiques: l'existència de sumes (axioma~\ref{ax:sumes}), la seva
+disjunció i estabilitat (axioma~\ref{ax:sumes-disjuntes}), l'existència de
+productes (axioma~\ref{ax:productes}), la representació de les parts per
+aplicacions cap a \(\mathbf2\) (axioma~\ref{ax:representacio}) ---el nucli
+lògic de tot el llibre--- i l'existència de coequalitzadors
+(axioma~\ref{ax:coequalitzadors}). Amb ells s'obtenen tots els límits i
+colímits finits i tota l'àlgebra booleana de parts.
+
+El \textbf{grup de la regularitat i l'exactitud} controla les imatges i
+els quocients: l'efectivitat de les relacions d'equivalència
+(axioma~\ref{ax:exactitud}), que casa quocients i parells nucli. Combinat
+amb els coequalitzadors i la separació global, dona la factorització
+imatge, i amb ella que tot epimorfisme és regular i estable per canvi de
+base, sense elecció (capítol~\ref{cap:imatges}).
+
+El \textbf{grup de l'ordre superior} fa la teoria capaç de parlar de si
+mateixa: l'existència d'exponencials (axioma~\ref{ax:exponencials}), de la
+qual surt, prenent \(\mathbf2^{A}\), el conjunt de parts com a objecte, la
+pertinença interna i els quantificadors.
+
+El \textbf{grup de l'infinit} afegeix l'única font d'infinitud: l'objecte
+dels nombres naturals amb la seva propietat universal de recursió
+(axioma~\ref{ax:naturals}), del qual pengen la inducció, l'aritmètica, la
+finitud interna i tota la cardinalitat numerable.
+
+Finalment, els \textbf{axiomes d'elecció}, que hem mantingut separats
+perquè molts resultats no en depenen: l'elecció global ---tot epimorfisme
+s'escindeix--- (axioma~\ref{ax:eleccio}) i, com a cas particular seu,
+l'elecció numerable (axioma~\ref{ax:eleccio-numerable}), que va ser
+necessària per identificar les dues nocions d'infinitud
+(teorema~\ref{teo:infinit-implica-dedekind}) i per la unió numerable
+d'enumerables (teorema~\ref{teo:unio-numerable}).
+
+Fora d'aquesta llista, i amb un estatus deliberadament diferent, hi ha
+l'\textbf{esquema de reunió de famílies} o \emph{substitució estructural}
+(principi~\ref{sr:esquema}), que la part transfinita ha necessitat només al
+capítol opcional dels alephs (capítol~\ref{cap:alephs}). Insistim que SR \emph{no} és un axioma més al costat dels anteriors: és un
+\emph{esquema} ---una instància per a cada fórmula funcional i invariant per
+isomorfisme---, no una sentència, exactament com el reemplaçament de la
+teoria clàssica és un esquema i no un axioma únic. Per això l'hem presentat
+com un \emph{principi} a part i no amb l'entorn dels axiomes, i per això tots
+els capítols fins al~18 en són independents: la teoria de Nivell~I ---tota
+la que va del llenguatge d'aplicacions fins als cardinals--- no el fa servir.
+Només la reunió de famílies transfinites no acotades ---la successió dels
+alephs, els beths--- el requereix. Aquesta és la línia divisòria que
+recorrerem amb detall a la secció~\ref{sec:etcs-sr}.
+
+\begin{observacio}[El mapa de dependències]\label{obs:mapa-dependencies}
+La lectura del llibre segueix, de fet, aquest ordre de dependència. El
+llenguatge de composició no pressuposa res; els objectes distingits el
+necessiten; les construccions finites necessiten els objectes distingits;
+la regularitat necessita sumes i coequalitzadors; els exponencials
+necessiten els productes; l'objecte dels nombres naturals necessita els
+exponencials per a la recursió amb paràmetres
+(observació~\ref{obs:exponencials-recursio}); i l'elecció és transversal,
+invocada només on s'assenyala. Cap axioma no es fa servir abans
+d'enunciar-se, i cap grup no depèn d'un de posterior. Aquesta és la raó
+per la qual el llibre es pot llegir linealment: l'estructura lògica i
+l'estructura expositiva coincideixen.
+\end{observacio}
+
+\section{Què és, categòricament, l'estructura obtinguda}\label{sec:caracteritzacio}
+
+Reunits tots els axiomes, es pot dir en una sola frase quina mena
+d'estructura formen les aplicacions i els conjunts d'aquest llibre. En el
+vocabulari de la teoria de categories ---que no hem fet servir en cap
+demostració, però que aquí, en un capítol de balanç, resulta el més
+econòmic per anomenar el conjunt---, l'estructura és un \emph{topos ben
+apuntat, amb objecte dels nombres naturals i elecció}. Desglossem-ho amb
+paraules planes, perquè cada peça correspon exactament a un grup
+d'axiomes.
+
+Ser un \emph{topos elemental} vol dir tres coses, que són les que hem
+postulat: que hi ha tots els límits finits ---terminal, productes,
+equalitzadors i les seves combinacions, que vam obtenir al
+capítol~\ref{cap:valors}---; que hi ha exponencials
+(axioma~\ref{ax:exponencials}); i que les parts d'un conjunt qualsevol
+estan representades per les aplicacions cap a un objecte fix \(\mathbf2\),
+el \emph{classificador de subobjectes} (axioma~\ref{ax:representacio}).
+Aquesta darrera és la propietat decisiva: fa que la lògica dels
+subconjunts sigui interna a la teoria, amb el conjunt de parts, la
+pertinença i els quantificadors com a objectes i aplicacions de ple dret,
+tal com vam veure al capítol~\ref{cap:parts-interna}.
+
+\emph{Ben apuntat} (\emph{well-pointed}) és el que afegeix l'axioma de separació pels elements
+globals (axioma~\ref{ax:separacio-globals}) juntament amb la
+no-degeneració (axioma~\ref{ax:no-degeneracio}): els punts
+\(\mathbf1\to A\) basten per distingir aplicacions, i \(\mathbf1\) no
+coincideix amb \(\mathbf0\). És el que permet raonar «element a element»,
+com fem contínuament amb els elements globals i generalitzats, sense
+trair el punt de vista estructural. Un topos qualsevol no té per què ser
+ben apuntat; el nostre sí, i això l'acosta molt a la categoria dels
+conjunts ordinaris.
+
+L'\emph{objecte dels nombres naturals} (axioma~\ref{ax:naturals}) i
+l'\emph{elecció} (axioma~\ref{ax:eleccio}) són els dos ingredients que
+completen el quadre. Un topos ben apuntat amb aquests dos afegits és,
+precisament, un model de la teoria estructural de conjunts de Lawvere,
+l'ETCS~\cite{lawvere1964,lawvere-etcs-reprint}. Dit d'una altra manera:
+
+\begin{observacio}[La tesi del llibre, en una frase]\label{obs:tesi-etcs}
+Els axiomes d'aquest llibre són una axiomatització d'ETCS presentada en un
+llenguatge de primer ordre d'aplicacions, sense el vocabulari de la teoria
+de categories. Tot el que hem demostrat és, doncs, un teorema d'ETCS; i
+qualsevol model d'ETCS ---en particular la categoria dels conjunts
+clàssics--- satisfà els nostres axiomes. Aquesta és la resposta curta a la
+pregunta «és realment una teoria de conjunts?»: ho és tant com ETCS, que
+és una axiomatització \emph{autònoma} de la categoria dels conjunts,
+proposada com a fonament alternatiu de la matemàtica~\cite{lawvere-rosebrugh,mclarty-catset}.
+Evitem l'expressió \enquote{axiomatització completa}, que es podria confondre
+amb la \emph{completesa lògica} (que tot enunciat o la seva negació és
+demostrable) o amb la \emph{categoricitat} (que hi ha un únic model llevat
+d'isomorfisme): cap de les dues no val aquí ---ETCS és una teoria de primer
+ordre, subjecta a la incompletesa i amb molts models no isomorfs---, ni cap de
+les dues no es demostra en aquest llibre. \enquote{Autònoma} vol dir només que
+els axiomes es basten a si mateixos com a presentació dels conjunts, sense dependre d'una teoria material prèvia.
+\end{observacio}
+
+\section{La part transfinita dins el balanç}\label{sec:transfinit-balanc}
+
+El capítol que en la primera versió d'aquest llibre tancava el volum
+s'aturava a la cardinalitat numerable. La part transfinita
+(capítols~\ref{cap:cantor}--\ref{cap:alephs}) ha estès el desenvolupament
+fins a la teoria clàssica de l'infinit, i convé situar-la dins aquest
+balanç, perquè il·lumina exactament què es pot fer amb els axiomes de
+Nivell~I i què demana un principi addicional.
+
+El primer bloc és \emph{purament diagonal} i no costa cap axioma nou. El
+teorema de \textbf{Schröder--Bernstein} (teorema~\ref{teo:schroder-bernstein})
+---dues injeccions oposades donen un isomorfisme--- es prova pel menor punt
+fix d'un operador creixent sobre \(P(A)\), sense elecció. El teorema de
+\textbf{Cantor} (teorema~\ref{teo:cantor}) ---\(A\prec P(A)\)--- és
+l'argument diagonal, i tampoc no necessita res de nou; d'ell surt que no hi
+ha conjunt universal ni mida màxima. Aquests dos resultats són, en el
+llenguatge estructural, teoremes elementals sobre parts i pertinença interna.
+
+El segon bloc és la \emph{teoria de l'ordre}, també de Nivell~I. Els
+\textbf{bons ordres} (capítol~\ref{cap:bons-ordres}) tenen la rigidesa que
+els fa mesura de forma ---entre dos n'hi ha com a molt un isomorfisme
+d'ordre---, i sobre ells es construeixen la \textbf{inducció} i la
+\textbf{recursió transfinites} amb codomini fix (capítol~\ref{cap:recursio}),
+la reunió de solucions parcials dins un exponencial fix, \emph{sense}
+elecció. Amb la recursió es tanca la comparabilitat de bons ordres
+(teorema~\ref{teo:comparabilitat}). El teorema de \textbf{Hartogs}
+(teorema~\ref{teo:hartogs}) ---un bon ordre que no s'injecta en \(A\)--- és
+el paral·lel ordinal de Cantor, i és igualment de Nivell~I: es construeix
+tallant els bons ordres sobre parts d'\(A\) ---parells \((S,R)\) dins
+\(P(A)\times P(A\times A)\)--- i quocientant-los per isomorfisme.
+
+El tercer bloc introdueix l'\emph{elecció}. El teorema del \textbf{bon
+ordre} (teorema~\ref{teo:bon-ordre}) i el \textbf{lema de Zorn}
+(capítol~\ref{cap:zorn}) es demostren amb l'elecció i la cota de Hartogs
+---que evita, precisament, la recursió \enquote{sobre tots els ordinals}---,
+i resulten equivalents a l'elecció. Sobre aquesta base, els \textbf{tipus
+ordinals} i la seva aritmètica (capítols~\ref{cap:ordinals}
+i~\ref{cap:aritmetica-ordinal}) i els \textbf{cardinals} i la seva
+(capítol~\ref{cap:cardinals}) es desenvolupen amb el teorema de Cantor
+reaparegut com \(\abs{A}<2^{\abs{A}}\), la comparabilitat total dels
+cardinals i el teorema de Burali--Forti (teorema~\ref{teo:burali-forti}) com
+a segon gran resultat diagonal ---no hi ha longitud d'ordre màxima.
+
+Tot això és de Nivell~I o de Nivell~I més elecció: viu dins conjunts ja
+construïts, acotat per un \(\Hart\) sempre que cal reunir tipus. \emph{Només}
+el capítol final dels alephs (capítol~\ref{cap:alephs}) surt d'aquest terreny,
+i ho fa exactament en un punt: reunir la successió transfinita no acotada
+\(\alpha\mapsto\aleph_\alpha\) ---i la dels beths--- en una família. Aquest
+és l'únic lloc de tot el llibre on cal SR, i és el tema de la
+secció~\ref{sec:etcs-sr}.
+
+\section{Ordinal material i tipus estructural}\label{sec:vonneumann}
+
+La part transfinita permet, a més, precisar una comparació que la
+introducció només podia insinuar: la que hi ha entre l'\emph{ordinal
+material} de la teoria clàssica i el \emph{tipus d'ordre estructural}
+d'aquest llibre.
+
+En la teoria de von Neumann, un ordinal \emph{és} un conjunt: un conjunt
+transitiu ben ordenat per la pertinença, de manera que cada ordinal és
+literalment el conjunt dels ordinals menors ---\(0=\varnothing\),
+\(1=\{0\}\), \(2=\{0,1\}\), \(\omega=\{0,1,2,\dots\}\)--- i
+\enquote{\(\alpha<\beta\)} es defineix com \enquote{\(\alpha\in\beta\)}. És
+una construcció elegant i canònica: cada tipus de bon ordre té \emph{un}
+representant distingit, l'ordinal de von Neumann, i la relació d'ordre és la
+pertinença mateixa. El preu és que descansa sobre la pertinença global i la
+jerarquia acumulativa: un ordinal arrossega tota la seva història de
+membres, i la seva construcció ---per recursió al llarg de tots els
+ordinals--- fa servir el reemplaçament.
+
+En aquest llibre un \emph{tipus ordinal} no és cap conjunt privilegiat, sinó
+un bon ordre \emph{considerat llevat d'isomorfisme d'ordre}
+(definició~\ref{def:tipus-ordinal}), i \enquote{\(\alpha<\beta\)} es defineix
+per segments inicials, no per pertinença ---de fet vam advertir explícitament
+que \(\alpha\in\beta\) no és una notació adequada. Els dos enfocaments
+descriuen la mateixa matemàtica, i la traducció és neta: el tipus estructural
+d'un bon ordre \(W\) correspon a la classe d'isomorfisme d'ordre de \(W\),
+i l'ordinal material de von Neumann n'és el representant canònic que la teoria
+clàssica \emph{tria} dins aquesta classe. On l'estructural diu \enquote{el
+tipus de \(W\), únic llevat d'un únic isomorfisme}, el material diu
+\enquote{l'ordinal \(\in\)-transitiu isomorf a \(W\)}. La diferència no és de
+contingut sinó de si es fa o no una tria canònica de representant: el
+tractament estructural la evita perquè no la necessita, i perquè triar-la
+demanaria la mateixa pertinença global que hem volgut no fer primitiva.
+
+\begin{observacio}[Per què l'estructural no tria representant]\label{obs:vonneumann-representant}
+Es podria pensar que l'ordinal de von Neumann és \enquote{millor} perquè és
+canònic. Però la seva canonicitat és exactament el que costa la pertinença
+global: per triar, dins cada classe d'isomorfisme de bons ordres, l'ordinal
+\(\in\)-transitiu, cal disposar de la relació \(\in\) i de la recursió que el
+construeix ---i, per als ordinals grans, del reemplaçament. El tractament
+estructural prefereix treballar amb el tipus \emph{sense} representant, com fa
+la pràctica matemàtica quan diu \enquote{el tipus d'ordre de \(\Q\)} sense
+identificar-lo amb cap conjunt concret. Quan es vol un representant ---per
+exemple per fer aritmètica còmoda--- se'n pot triar un amb l'elecció (el
+cardinal inicial n'és un exemple, capítol~\ref{cap:cardinals}), però és una
+tria \emph{addicional}, no un tret primitiu. Aquesta és la mateixa filosofia
+que separa \(\abs{A}\) com a classe d'equipotència del cardinal inicial
+escollit: l'estructura reté el que és invariant, i deixa la tria de
+representant per a qui la vulgui.
+\end{observacio}
+
+\section{Interpretació en conjunts petits}\label{sec:conjunts-petits}
+
+Una manera de convèncer-se que els axiomes descriuen conjunts és
+interpretar-los en un univers ja conegut i comprovar que s'hi compleixen.
+Fixem, doncs, un univers de conjunts clàssics ---els conjunts d'una teoria
+de Zermelo--Fraenkel, posem--- i llegim-hi cada noció del llibre.
+
+Un \emph{conjunt} del llibre és, en aquesta lectura, un conjunt ordinari.
+Una \emph{aplicació} és una funció en el sentit habitual, amb el seu
+domini i el seu codomini fixats ---no un simple graf, sinó una funció amb
+els seus dos extrems marcats, que és el que demana l'axioma~\ref{ax:dom-cod}.
+La \emph{composició} és la composició de funcions; les \emph{identitats}
+són les funcions identitat. El conjunt \emph{terminal} \(\mathbf1\) és
+qualsevol singletó \(\{\ast\}\); l'\emph{inicial} \(\mathbf0\) és el
+conjunt buit; la \emph{no-degeneració} és el fet que \(\varnothing\) i
+\(\{\ast\}\) no són equipotents. Un \emph{element global} \(\mathbf1\to A\)
+és, exactament, un element de \(A\) en el sentit ordinari, perquè triar
+una funció des d'un singletó és triar un valor. El conjunt \(\mathbf2\) és
+qualsevol parell \(\{0,1\}\), i una \emph{part} de \(A\) es correspon amb
+un subconjunt ordinari via la seva funció característica
+(axioma~\ref{ax:representacio}). Les \emph{sumes} són unions disjuntes; els
+\emph{productes}, productes cartesians; els \emph{coequalitzadors},
+quocients per relacions d'equivalència; els \emph{exponencials}
+\(B^{A}\), el conjunt de totes les funcions de \(A\) a \(B\); l'\emph{objecte
+dels nombres naturals}, el conjunt \(\{0,1,2,\dots\}\) amb el zero i el
+successor.
+
+\begin{observacio}[La lectura és fidel, però no és l'única]\label{obs:interpretacio-fidel}
+Sota aquesta interpretació, cadascun dels divuit axiomes ---els disset
+estructurals més l'elecció global, sense comptar-hi l'elecció numerable,
+que n'és un cas particular--- és un teorema
+elemental de la teoria clàssica de conjunts: que tota funció té domini i
+codomini, que el producte cartesià existeix, que el conjunt de funcions
+existeix, i així successivament. Per això la categoria dels conjunts
+clàssics és un model dels nostres axiomes, i qualsevol cosa que hàgim
+demostrat hi val. Ara bé ---i això és essencial---, \emph{no és l'únic}
+model. Els mateixos axiomes se satisfan en universos molt més petits o de
+mides diferents: per exemple, la col·lecció dels conjunts \emph{finits}, amb
+les funcions entre ells, compleix tots els axiomes \emph{llevat} del de
+l'infinit (axioma~\ref{ax:naturals}), i restringint-se a un univers de
+Grothendieck (un univers de conjunts de rang menor que un cardinal
+inaccessible) s'obtenen models complets tancats sota totes les operacions,
+inclòs el conjunt de parts. La teoria no fixa un univers; en descriu una
+\emph{forma}, i molts universos de mides diferents la tenen.
+\end{observacio}
+
+\begin{observacio}[Per què no serveixen els hereditàriament numerables]\label{obs:no-hcountable}
+Podria temptar prendre com a model \enquote{petit} la col·lecció dels conjunts
+\emph{hereditàriament numerables}. No funciona: aquesta col·lecció \emph{no}
+és tancada sota el conjunt de parts. En efecte, \(\N\) és hereditàriament
+numerable, però \(P(\N)\) no ho és ---és no numerable---, de manera que
+l'axioma del conjunt de parts falla dins d'aquell univers. Un model complet
+dels axiomes ha de ser tancat sota totes les operacions que aquests postulen;
+per això cal, o bé un univers de Grothendieck (tancat sota parts amb el marge
+de mida corresponent), o bé un univers amb hipòtesis de mida explícites que
+garanteixin la clausura. La numerabilitat hereditària, tota sola, no la dona.
+\end{observacio}
+
+Aquesta pluralitat de models no és un defecte sinó el senyal distintiu
+d'una axiomatització estructural: descriu els conjunts \emph{llevat
+d'isomorfisme i llevat d'equivalència de la categoria sencera}, sense
+comprometre's amb cap realització particular. És el mateix que passa amb
+els axiomes de grup, que no descriuen \emph{un} grup sinó la forma comuna
+a tots.
+
+\section{Pertinença primitiva i pertinença recuperada}\label{sec:pertinenca}
+
+La diferència més visible amb la teoria clàssica és el paper de la
+pertinença. Val la pena precisar-la, perquè és on es concentra bona part
+del canvi de perspectiva anunciat a la introducció.
+
+En la teoria de Zermelo--Fraenkel, \(\in\) és una relació \emph{primitiva}
+i \emph{global}: té sentit preguntar-se, per a dos conjunts qualssevol
+\(x\) i \(A\), si \(x\in A\), i la resposta forma part de les dades del
+món. Que \(3\in 5\) (en la codificació de von Neumann els naturals són
+conjunts, i \(5=\{0,1,2,3,4\}\)) és un fet; que \(3\in\pi\), amb una certa
+codificació dels reals, també ho és, encara que sigui un fet estrany.
+Aquesta globalitat té una conseqüència: cada conjunt arrossega tota la
+seva història interna ---els seus elements, els elements dels seus
+elements, i així avall fins al buit---, i l'axioma de fonamentació
+garanteix que aquesta baixada acaba.
+
+En la teoria d'aquest llibre no hi ha cap relació \(\in\) primitiva. El
+que hi ha és una pertinença \emph{recuperada}, i \emph{local}. «Ser
+element de \(A\)» vol dir ser un element global \(\mathbf1\to A\), o més
+generalment un element generalitzat \(X\to A\); i «pertànyer a una part
+\(P\hookrightarrow A\)» vol dir factoritzar per la inclusió, cosa que la
+pertinença interna del capítol~\ref{cap:parts-interna} converteix en una
+aplicació \(A\to\mathbf2\) avaluada al punt. Aquesta pertinença sempre és
+\emph{relativa a un conjunt ambient}: un element ho és \emph{d'un} conjunt
+determinat, i la pregunta «aquest element pertany a aquell altre conjunt?»
+només té sentit un cop fixat el codomini.
+
+\begin{observacio}[Què es perd i què es guanya]\label{obs:pertinenca-local}
+La pèrdua és la pertinença creuada entre conjunts arbitraris: aquí no té
+sentit preguntar si \(\N\) és element de \(\R\), ni si un element de \(A\)
+«és el mateix» que un element de \(B\) quan \(A\) i \(B\) no tenen cap
+relació ---els elements no tenen identitat pròpia fora del conjunt que els
+allotja. En la lectura estructural això no és una mancança sinó una
+disciplina: reflecteix que en la pràctica matemàtica mai no comparem un
+nombre natural amb un nombre real «com a conjunts», sinó a través d'una
+aplicació explícita \(\N\to\R\). El guany és que desapareixen els fets
+accidentals de codificació ---el \(3\in\pi\) d'abans--- que la teoria
+clàssica genera i que cap matemàtic no fa servir. La informació que queda
+és exactament la invariant per isomorfisme, que és la que la matemàtica
+utilitza.
+\end{observacio}
+
+\begin{observacio}[Es pot recuperar una \(\in\) global?]\label{obs:recuperar-in}
+Sí, i el fet que es pugui és el pont tècnic amb la teoria clàssica. A
+partir d'un model dels nostres axiomes ---amb un afegit sobre la mida que
+esmentarem--- es pot construir una relació \(\in\) global i un univers de
+conjunts «amb elements», recuperant un model de (una part de) Zermelo. La
+construcció associa a cada conjunt estructural un arbre d'aplicacions que
+en codifica una versió «ben fundada», i és inversa, en el sentit adequat,
+de la lectura de la secció~\ref{sec:conjunts-petits}. No la desenvolupem
+aquí; el que importa és que la pertinença global no és una dada primitiva
+irrenunciable, sinó una estructura \emph{derivable} quan es vol, a canvi
+d'hipòtesis addicionals de reemplaçament~\cite{mclarty-catset,shulman-comparing}.
+\end{observacio}
+
+\section{Comparació amb ZF/ZFC i amb ETCS}\label{sec:comparacio}
+
+Amb això a la mà, podem situar el llibre respecte de les dues grans
+famílies d'axiomatitzacions.
+
+Respecte de \textbf{ZF/ZFC}, la diferència de fons no és de potència sinó
+de \emph{primitius}. ZF pren com a primitius els conjunts i la relació
+\(\in\), i construeix les funcions com a conjunts de parells; nosaltres
+prenem com a primitives les aplicacions, i recuperem la pertinença com una
+noció derivada i local, tal com acabem de veure (secció~\ref{sec:pertinenca}).
+La diferència no és que ZF descrigui un univers únic i la nostra teoria molts:
+ZF és igualment una teoria de primer ordre amb molts models no isomorfs (pel
+teorema de Löwenheim--Skolem i la incompletesa, en té de mides i tipus
+d'isomorfisme diferents). El contrast correcte és de \emph{criteri d'identitat}:
+en la lectura material de ZF, cada element està determinat \emph{absolutament}
+per la relació \(\in\) ---dos conjunts amb els mateixos elements són el mateix,
+i la pertinença fixa la identitat de cada objecte dins un model donat---,
+mentre que en la lectura estructural la identitat és \emph{llevat
+d'isomorfisme}: un objecte només està determinat pel seu paper en la categoria,
+i cap propietat interna distingeix objectes isomorfs. La distinció, doncs, és
+entre identitat rígida per \(\in\) i identitat estructural llevat
+d'isomorfisme, no entre una teoria amb model únic i una amb molts models. En el
+pla lògic, totes dues són teories de primer ordre, però amb signatures
+diferents: la de ZF té un únic símbol de relació \(\in\); la nostra, els
+predicats \(\Dom\), \(\Cod\) i \(\Com\) sobre aplicacions.
+
+Respecte d'\textbf{ETCS}, la relació és de \emph{presentació}, no de
+contingut. Com ja hem dit (observació~\ref{obs:tesi-etcs}), els nostres
+axiomes són ETCS. La diferència amb l'exposició de Lawvere és que ell la
+formula en el llenguatge de les categories ---parla de límits, objectes
+exponencials i classificador de subobjectes--- mentre que nosaltres hem
+volgut que cada axioma fos una fórmula elemental sobre aplicacions,
+llegible sense saber teoria de categories, i que les construccions
+categòriques apareguessin com a \emph{teoremes} i no com a vocabulari de
+partida. El contingut matemàtic és el mateix; canvia qui és el públic.
+
+\begin{observacio}[Força relativa: el lloc exacte a l'escala]\label{obs:forca-relativa}
+La comparació de força mereix una mica de cura, perquè el resultat sovint
+sorprèn. ETCS ---i per tant aquest llibre--- \emph{no} és tan fort com
+ZFC. La seva força demostrativa és la de la teoria de Zermelo amb elecció
+i amb separació restringida a fórmules \emph{acotades} (l'anomenada
+\(Z\) acotada, o \(\mathrm{BZC}\)): ETCS i \(\mathrm{BZC}\) demostren
+exactament els mateixos enunciats aritmètics, són \emph{equiconsistents} i
+mútuament interpretables~\cite{osius1974,mclarty-catset}. El que separa ETCS de ZFC
+és l'\emph{esquema de reemplaçament}, que ETCS en la seva forma bàsica no
+inclou. Afegint a ETCS una versió categòrica concreta del reemplaçament ---la
+formulació de reemplaçament\slash col·lecció estructural adoptada com a SR
+(observació~\ref{obs:sr-rigor}, capítol~\ref{cap:alephs})--- s'obté una teoria
+de la mateixa força que ZFC, i llavors la correspondència amb la teoria
+clàssica és exacta en el sentit precís de la bi-interpretabilitat demostrada
+a~\cite{osius1974,shulman-comparing} (no en el sentit de completesa lògica).
+La correspondència depèn, doncs, de \emph{quina} versió de l'esquema
+s'adopti, i és per a aquella versió que val el teorema de comparació. Així, en
+l'escala de les teories de conjunts, aquest llibre se situa una mica per
+sota de ZFC ---al nivell de la teoria de Zermelo amb elecció---, que és
+més que suficient per a pràcticament tota la matemàtica ordinària, però
+que cal saber reconèixer per no atribuir a la teoria una potència que no
+té sense l'afegit del reemplaçament.
+\end{observacio}
+
+\subsection{ETCS, reemplaçament i la substitució estructural}\label{sec:etcs-sr}
+
+La discussió anterior sobre la força relativa pren un relleu concret ara que
+el llibre ha desenvolupat la part transfinita, perquè és allà on la
+diferència entre ETCS i ETCS reforçat es fa tangible. Convé, doncs,
+distingir amb precisió les dues teories.
+
+La \textbf{teoria de Nivell~I} d'aquest llibre ---els capítols~1 a~18--- és
+ETCS: un topos ben apuntat amb objecte dels nombres naturals i elecció, de
+la força de la teoria de Zermelo acotada amb elecció. \emph{Tota} la teoria
+de l'infinit fins als cardinals hi cap: Cantor, Schröder--Bernstein, bons
+ordres, recursió transfinita, Zorn, Hartogs, tipus ordinals, aritmètica
+ordinal i cardinal. La raó per la qual hi cap, malgrat que la presentació
+clàssica de bona part d'això usa el reemplaçament, és que hem mantingut
+totes les construccions \emph{acotades}: cada recursió té codomini fix, cada
+suprem de tipus es pren dins un bon ordre ja construït, i la cota de Hartogs
+substitueix a tot arreu la recursió \enquote{sobre tots els ordinals}. Aquest
+és el contingut de la traducció que el llibre proposa: allà on la teoria
+clàssica reuniria una família transfinita amb el reemplaçament, l'estructural
+la manté dins un \(\Hart\) i la tracta amb la recursió de codomini fix.
+
+La \textbf{teoria reforçada}, ETCS més la substitució estructural SR
+(principi~\ref{sr:esquema}), només fa falta quan la família transfinita
+\emph{no es pot acotar}: la successió \(\alpha\mapsto\aleph_\alpha\), els
+beths, les jerarquies iterades \(A,P(A),P^2(A),\dots\) reunides en un sol
+objecte. SR és la traducció estructural de l'\emph{esquema de reemplaçament}:
+allà on ZF diu \enquote{la imatge d'un conjunt per una funció-classe és un
+conjunt}, SR diu \enquote{una regla externa uniforme i invariant es
+representa per una família interna}. Amb SR afegit, la teoria assoleix la
+força de ZFC, i la correspondència amb la teoria clàssica esdevé exacta en el
+sentit precís de la bi-interpretabilitat ---no de completesa lògica---, per a
+la formulació concreta de l'esquema adoptada (observació~\ref{obs:sr-rigor})
+\cite{osius1974,shulman-comparing}.
+
+\begin{observacio}[SR és un esquema, no un axioma; i és opcional]\label{obs:sr-metateoric}
+Dues precisions tanquen aquesta comparació. Primera, sobre l'\emph{estatus}:
+SR no és un axioma més al costat de l'elecció, sinó un \emph{esquema} de
+fórmules, com el reemplaçament clàssic; per això el llibre el presenta com un
+principi a part (principi~\ref{sr:esquema}) i el marca separadament a la
+caixa de dependències, no barrejat amb els axiomes. Segona, sobre
+l'\emph{abast}: SR és estrictament opcional. El volum es pot llegir sencer
+fins al capítol~18 sense ell; només el capítol dels alephs
+(capítol~\ref{cap:alephs}) el requereix, i ho fa de manera explícita a cada
+ús. Un lector que vulgui quedar-se en ETCS pur té, doncs, tota la teoria de
+l'infinit numerable, ordinal i cardinal a la seva disposició; qui vulgui els
+trams de la successió dels alephs i dels beths com a famílies ha d'adoptar SR, sabent que amb
+això puja al nivell de força de ZFC. (El continu \(\mathfrak c=\abs{P(\N)}\) i
+la hipòtesi del continu, en canvi, ja són accessibles sense SR, al Nivell~I.)
+Aquesta és la línia divisòria exacta entre les dues teories, i el llibre l'ha
+fet visible a cada pas en comptes d'amagar-la.
+\end{observacio}
+
+\section{Taula comparativa: ZFC, ETCS i aquest llibre}\label{sec:taula-comparativa}
+
+Recollim en tres taules els axiomes de les tres presentacions, i en una
+quarta la correspondència entre elles. Per a ZFC seguim la formulació dels
+manuals~\cite{jech2003,kunen2011}; per a ETCS, la forma moderna que en donen
+McLarty i Shulman~\cite{mclarty-catset,shulman-comparing}, equivalent a
+l'original de Lawvere~\cite{lawvere1964,lawvere-etcs-reprint}.
+
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.30\linewidth}>{\raggedright\arraybackslash}p{0.62\linewidth}@{}}
+\toprule
+\multicolumn{2}{@{}l}{\textbf{ZFC} (primitius: conjunts i \(\in\))}\\
+\midrule
+Extensionalitat & Dos conjunts amb els mateixos elements són iguals.\\
+Fonament & Tot conjunt no buit té un element disjunt d'ell.\\
+Separació (esquema) & \(\{x\in A:\varphi(x)\}\) és un conjunt, per a tota fórmula \(\varphi\).\\
+Parells & \(\{a,b\}\) és un conjunt.\\
+Unió & \(\bigcup A\) és un conjunt.\\
+Parts & \(P(A)\) és un conjunt.\\
+Infinit & Hi ha un conjunt inductiu.\\
+Reemplaçament (esquema) & La imatge d'un conjunt per una funció-classe és un conjunt.\\
+Elecció & Tota família de conjunts no buits té una funció d'elecció.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.30\linewidth}>{\raggedright\arraybackslash}p{0.62\linewidth}@{}}
+\toprule
+\multicolumn{2}{@{}l}{\textbf{ETCS} (primitius: objectes, fletxes i composició)}\\
+\midrule
+Categoria & La composició és associativa i té identitats.\\
+Límits finits & Hi ha objecte terminal, productes binaris i equalitzadors.\\
+Exponencials & Per a tots \(A,B\) hi ha \(B^A\) amb avaluació universal.\\
+Classificador & Hi ha \(\Omega\) que classifica els subobjectes.\\
+Nombres naturals & Hi ha un objecte de nombres naturals.\\
+Ben apuntat & \(\mathbf1\) separa les fletxes, i \(\mathbf0\not\cong\mathbf1\).\\
+Elecció & Tot epimorfisme té secció.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.30\linewidth}>{\raggedright\arraybackslash}p{0.62\linewidth}@{}}
+\toprule
+\multicolumn{2}{@{}l}{\textbf{Aquest llibre} (primitius: aplicacions; \(\Dom\), \(\Cod\), \(\Com\))}\\
+\midrule
+Estructurals (5) & Domini i codomini, composició, associativitat, neutralitat (capítol~\ref{cap:aplicacions}).\\
+Objectes distingits & Terminal, inicial, no-degeneració, separació global (capítol~\ref{cap:aplicacions}).\\
+Construccions finites & Sumes, disjunció i estabilitat, productes, representació de les parts per \(\mathbf2\), coequalitzadors (capítols~\ref{cap:parts} i~\ref{cap:valors}).\\
+Exactitud & Efectivitat de les relacions d'equivalència (capítol~\ref{cap:relacions}).\\
+Exponencials & Existència de \(B^A\) (capítol~\ref{cap:exponencials}).\\
+Nombres naturals & Recursió sobre \(\N\) (capítol~\ref{cap:naturals}).\\
+Elecció & Tot epimorfisme té secció, i la numerable com a cas particular (capítols~\ref{cap:relacions} i~\ref{cap:infinitud}).\\
+SR (esquema, opcional) & Reunió de famílies determinades llevat d'isomorfisme únic (capítol~\ref{cap:alephs}).\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+La taula següent posa les tres presentacions en correspondència. La darrera
+columna diu l'estatus de l'axioma del llibre respecte d'ETCS:
+\emph{equivalent} (és el mateix axioma, en llenguatge d'aplicacions),
+\emph{derivat} (és un teorema d'ETCS que el llibre postula perquè el
+necessita abans de tenir les eines per demostrar-lo) o \emph{addicional}
+(va més enllà d'ETCS).
+
+\begin{center}\footnotesize
+\begin{tabular}{@{}>{\raggedright\arraybackslash\hspace{0pt}}p{0.17\linewidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.21\linewidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.16\linewidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.18\linewidth}>{\raggedright\arraybackslash\hspace{0pt}}p{0.13\linewidth}@{}}
+\toprule
+Contingut & ZFC & ETCS & Aquest llibre & Estatus\\
+\midrule
+Composició i identitats & Implícites (funcions com a conjunts de parells) & Categoria & 5 axiomes estructurals & equivalent\\
+Terminal & \(\{\varnothing\}\) (Parells) & Límits finits & Axioma & equivalent\\
+Inicial & \(\varnothing\) (Separació) & Teorema en un topos & Axioma & derivat\\
+Productes & Parells, Parts, Separació & Límits finits & Axioma & equivalent\\
+Equalitzadors & Separació & Límits finits & Teorema (cap.~\ref{cap:parts}) & equivalent\\
+Sumes; disjunció i estabilitat & Parells, Unió & Teoremes en un topos & Axiomes & derivats\\
+Coequalitzadors & Parts, Separació (classes) & Teorema en un topos & Axioma & derivat\\
+Efectivitat & Classes d'equivalència & Teorema en un topos & Axioma & derivat\\
+Classificador & Separació i Parts (característiques) & Classificador \(\Omega\) & Representació per \(\mathbf2\) & equivalent (\(\Omega\cong\mathbf2\))\\
+Exponencials, \(P(A)\) & Parts, Separació & Exponencials & Axioma; \(P(A):=\mathbf2^A\) & equivalent\\
+Infinit & Infinit & Nombres naturals & Recursió sobre \(\N\) & equivalent\\
+Extensionalitat & Extensionalitat & Ben apuntat & Separació global i no-degeneració & equivalent\\
+Elecció & Elecció & Elecció & Elecció & equivalent\\
+Separació & Esquema per a tota fórmula & Només fórmules acotades, via \(\Omega\) & Igual que ETCS & equivalent\\
+Reemplaçament & Esquema & Absent & SR, opcional & addicional\\
+Fonament & Fonament & Sense contrapartida & Sense contrapartida (no hi ha \(\in\) global) & ---\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{observacio}[Lectura de la taula]\label{obs:lectura-taula}
+Tres conclusions. \emph{Primera}: sense SR, els axiomes del llibre són
+exactament ETCS. Els que figuren com a \enquote{derivats} ---l'inicial, les
+sumes amb la seva disjunció i estabilitat, els coequalitzadors i
+l'efectivitat--- són teoremes en qualsevol topos, demostrables a partir
+dels límits finits, els exponencials i el classificador (vegeu el volum de
+categories~\cite{perello-categories} i~\cite[cap.~IV]{maclane-moerdijk}); el
+llibre els postula perquè els necessita als capítols~\ref{cap:parts}
+a~\ref{cap:relacions}, abans de disposar del conjunt de parts amb què es
+demostrarien. Com a teoria, doncs, el llibre no és més fort que ETCS:
+només és redundant. \emph{Segona}: la diferència amb ZFC és doble. Hi ha
+dos axiomes de ZFC sense contrapartida ---el \emph{fonament}, que parla
+d'una pertinença global que aquí no existeix, i el \emph{reemplaçament},
+que aquí és l'esquema opcional SR---, i la \emph{separació} és més feble,
+restringida a les condicions que es poden expressar com a parts, és a dir,
+amb quantificadors acotats per conjunts ja donats. \emph{Tercera}: que el
+classificador sigui el conjunt \(\mathbf2=\mathbf1+\mathbf1\), de dos punts,
+és un tret dels conjunts constants: en un topos qualsevol el classificador
+\(\Omega\) pot tenir més valors de veritat, i és la combinació de ben
+apuntat i elecció la que el redueix a \(\mathbf2\) (Diaconescu: l'elecció
+fa booleà el topos). Per això el llibre el pot postular directament.
+\end{observacio}
+
+\begin{observacio}[Què és demostrat i què és citat]\label{obs:taula-citat}
+La taula barreja dues menes d'afirmacions, que cal no confondre. Les
+columnes \enquote{ZFC} i \enquote{Aquest llibre} i la correspondència entre
+elles en el pla del \emph{contingut} (quin principi fa la feina de quin) són
+comparacions informals que el lector pot comprovar amb el llibre a la mà.
+En canvi, les afirmacions sobre \emph{teories} ---que els axiomes
+\enquote{derivats} són teoremes de tot topos, que ETCS és equivalent a BZC, i
+que ETCS\({}+{}\)SR és bi-interpretable amb ZFC--- són \emph{metateoremes
+citats} de la literatura~\cite{osius1974,mclarty-catset,shulman-comparing,maclane-moerdijk},
+no resultats demostrats en aquest volum, i la darrera depèn de la
+formulació concreta de SR (observació~\ref{obs:sr-rigor}). El que el llibre
+sí que demostra és la direcció directa: que tots els seus teoremes són
+conseqüència dels axiomes de la taula.
+\end{observacio}
+
+\begin{observacio}[Força de les tres teories]\label{obs:forca-taula}
+En força, l'escala és: \(\text{Nivell~I}=\text{ETCS}\equiv\mathrm{BZC}\)
+(Zermelo amb elecció i separació acotada) \(<\) \(\mathrm{ZFC}\equiv
+\text{ETCS}+\text{SR}\), on \(\equiv\) indica bi-interpretabilitat i \(<\) que
+la teoria de la dreta demostra la consistència de la de l'esquerra
+(observació~\ref{obs:forca-relativa};
+\cite{osius1974,mclarty-catset,shulman-comparing}). La mancança de
+reemplaçament no es nota en la matemàtica ordinària, i la part transfinita
+del llibre s'ha mantingut al Nivell~I gràcies a les cotes de Hartogs; només
+la jerarquia sencera dels alephs i dels beths l'exigeix.
+\end{observacio}
+
+\section{Límits del desenvolupament}\label{sec:limits}
+
+Tanquem amb els límits, que un capítol de balanç honest no pot ometre.
+Són de tres menes: de mida, de consistència i de força expressiva.
+
+\subsection{Mida}\label{subsec:mida}
+
+Els axiomes no diuen res sobre \emph{quants} conjunts hi ha ni sobre com
+n'és de gran l'univers. Garanteixen que hi ha un conjunt infinit
+(\(\N\)), i que a partir de qualsevol conjunt se'n poden formar el de parts
+i els exponencials ---de manera que hi ha conjunts arbitràriament grans en
+el sentit de Cantor---, però no postulen cap cardinal inaccessible ni cap
+tancament sota famílies de mida arbitrària. En particular, sense afegir SR,
+no hi ha reemplaçament: no es pot, en general, formar la unió d'una família
+de conjunts indexada per un conjunt quan la família ve donada per una
+\emph{fórmula} i no per una aplicació ja existent ---és exactament la
+distinció entre regla externa i família interna que vam fer al
+capítol~\ref{cap:families}. Aquesta és la limitació de mida més important de
+la teoria de Nivell~I, i és exactament la que SR (principi~\ref{sr:esquema})
+aixeca, permetent reunir les famílies transfinites no acotades del
+capítol~\ref{cap:alephs}. Amb SR, la teoria té la força del reemplaçament;
+sense ell, es queda ---còmodament--- en tota la matemàtica que no reuneix
+col·leccions transfinites no acotades.
+
+\subsection{Consistència relativa}\label{subsec:consistencia}
+
+Com qualsevol teoria que interpreti l'aritmètica, la nostra no pot
+demostrar la seva pròpia consistència, pel segon teorema de Gödel. El que
+sí que tenim són resultats de consistència \emph{relativa}: la teoria és
+consistent si ho és la teoria de Zermelo amb elecció, i recíprocament, per
+la interpretació mútua esmentada. Dit d'una altra manera, no demanem al
+lector cap acte de fe que no demani ja la teoria clàssica: qui accepti la
+consistència de \(\mathrm{ZFC}\) ---o fins i tot només la de \(Z\) amb
+elecció--- accepta la d'aquest llibre. No n'obtenim, doncs, cap garantia
+absoluta de consistència; només la seguretat que no hem introduït cap risc
+nou respecte del que la matemàtica ja assumeix.
+
+\subsection{Força expressiva}\label{subsec:expressiva}
+
+Finalment, hi ha coses que la teoria, tal com és, expressa amb dificultat
+o no expressa. Les propietats que \emph{no} són invariants per isomorfisme
+---els fets de codificació interna, la pertinença creuada entre conjunts
+sense relació--- no s'hi poden ni tan sols formular, i això, com hem
+argumentat, és volgut. Pel que fa als arguments transfinits, la situació és
+més matisada del que la primera versió d'aquest capítol suggeria: la teoria
+de l'ordre, els tipus ordinals i la recursió transfinita \emph{sí} que hi
+són, sencers, mentre es mantinguin \emph{acotats} ---la recursió amb codomini
+fix (capítol~\ref{cap:recursio}), els suprems dins un bon ordre, la cota de
+Hartogs. El que queda fora de la teoria de Nivell~I, sense SR, és
+exactament la reunió de col·leccions transfinites \emph{no acotades}: els
+trams de la successió dels \(\aleph_\alpha\) i \(\beth_\alpha\), la jerarquia
+acumulativa \(V_\alpha\) per a ordinals grans, o la recursió al llarg de
+qualsevol ordinal fix per molt llarg que sigui. Tot això és accessible amb SR
+(capítol~\ref{cap:alephs}), sempre tram a tram: ni amb SR no hi ha cap
+objecte indexat per tots els ordinals;
+i sense SR es queda fora ---no per una mancança del llenguatge, sinó per la
+mateixa raó que ho queda a ETCS: manca el reemplaçament. Res d'això no és
+una objecció: és la delimitació natural d'una teoria pensada per fonamentar
+la matemàtica ordinària amb el mínim de compromisos, i que fa explícit,
+mitjançant SR, el punt on cal pagar-ne un de més fort.
+
+\begin{observacio}[Balanç del capítol i del llibre]\label{obs:balanc-metateoric}
+Aquest capítol ha respost les tres preguntes amb què s'obria. \emph{És
+realment una teoria de conjunts?} Sí: és una axiomatització d'ETCS,
+autònoma, en un llenguatge d'aplicacions
+(observació~\ref{obs:tesi-etcs}), i la categoria dels conjunts clàssics
+n'és un model (secció~\ref{sec:conjunts-petits}). \emph{Què pot expressar?}
+Tota la matemàtica que viu llevat d'isomorfisme ---que és, a la pràctica,
+tota la matemàtica ordinària---, amb la força de la teoria de Zermelo amb
+elecció; i, dins d'aquesta, tota la teoria clàssica de l'infinit ---Cantor,
+bons ordres, recursió transfinita, ordinals i cardinals--- \emph{acotada},
+sense cap principi nou (secció~\ref{sec:transfinit-balanc}). Només la reunió
+de col·leccions transfinites no acotades ---els trams de la successió dels alephs i
+dels beths--- demana la substitució estructural SR, que porta la teoria a la
+força de ZFC (secció~\ref{sec:etcs-sr}); el continu mateix
+\(\mathfrak c=\abs{P(\N)}\) i la hipòtesi del continu, en canvi, són ja de
+Nivell~I. \emph{Quina relació té amb la teoria clàssica?}
+És equiconsistent i mútuament interpretable amb \(Z\) acotada amb elecció,
+una mica més feble que ZFC, i coincideix amb ZFC quan s'hi afegeix SR ---la
+traducció estructural del reemplaçament (observació~\ref{obs:forca-relativa},
+secció~\ref{sec:etcs-sr}); la diferència essencial és que substitueix la
+pertinença primitiva i global per una de derivada i local
+(secció~\ref{sec:pertinenca}), i que tracta ordinals i cardinals com a
+\emph{tipus} llevat d'isomorfisme en comptes de com a conjunts privilegiats
+(secció~\ref{sec:vonneumann}).
+
+Amb això es tanca el recorregut començat a la introducció. Vam prometre
+construir els conjunts sense posar els elements al centre, prenent les
+aplicacions com a únics primitius i recuperant-ho tot ---parts,
+pertinença, productes, quocients, funcions, nombres i cardinalitat--- a
+partir del domini, el codomini i la composició. El recorregut ha arribat,
+partint d'aquí, fins a la teoria clàssica de l'infinit sencera: mides i
+formes d'ordre, cada una amb la seva aritmètica, els dos grans teoremes
+diagonals ---Cantor i Burali--Forti--- que impedeixen una mida o una
+longitud màximes, i, amb SR, la jerarquia dels alephs i la formulació precisa
+de la hipòtesi del continu. Tot dit en un llenguatge que posa en primer pla
+les relacions entre conjunts en comptes de la seva composició interna. Qui
+vulgui anar més enllà ---grans cardinals, forcing, o la traducció detallada
+cap a l'univers de von Neumann i tornada--- té, en la
+bibliografia~\cite{mclarty-catset,shulman-comparing,lawvere-rosebrugh}, els fils
+per continuar.
+\end{observacio}

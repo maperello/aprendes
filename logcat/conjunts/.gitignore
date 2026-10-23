@@ -1,0 +1,25 @@
+# Fitxers auxiliars de LaTeX (el main.pdf es versiona: és el que enllaça la web)
+*.aux
+*.bcf
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.log
+*.out
+*.run.xml
+*.synctex
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.xdv
+*.auxlock
+*.xdvlog
+# PDF: es versionen main.pdf i imprimible.pdf (els que enllaça la web).
+
+# Documentació interna de desenvolupament: no es publica.
+docs/

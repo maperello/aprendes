@@ -1,0 +1,1290 @@
+\chapter{Aplicacions, dominis, codominis i composició}\label{cap:aplicacions}
+
+\begin{objectius}
+\apartat{Prerequisits} Llenguatge elemental de la lògica de primer ordre: variables, predicats, connectives, quantificadors i igualtat, i la distinció entre existència i unicitat. Familiaritat informal amb les funcions entre conjunts (domini, codomini, composició, identitat), que aquí es reconstrueix des de zero. No es pressuposa cap coneixement de teoria axiomàtica de conjunts ni de teoria de categories; les comparacions amb la teoria clàssica són només de lectura.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item llegir i escriure fórmules amb els tres predicats primitius \(\Dom\), \(\Cod\) i \(\Com\), i traduir-hi la notació habitual \(f\colon A\to B\) i \(g\circ f\);
+  \item enunciar els cinc axiomes estructurals i deduir-ne l'estabilitat del domini i del codomini i la unicitat de la composició;
+  \item explicar per què un conjunt és, en aquesta teoria, una aplicació identitat, i fer servir el conveni de les majúscules per als conjunts;
+  \item llegir un diagrama commutatiu com una igualtat de composicions;
+  \item distingir elements generalitzats i elements globals, i aplicar el criteri d'igualtat d'aplicacions per elements generalitzats;
+  \item definir isomorfisme, demostrar la unicitat de la inversa i les propietats de la isomorfia, i reconèixer una propietat estructural;
+  \item definir conjunt terminal i conjunt inicial, demostrar-ne la unicitat llevat d'un únic isomorfisme i formular el principi de dualitat;
+  \item explicar la funció de cadascun dels quatre axiomes d'existència i de separació: terminal, inicial, no-degeneració i separació global.
+\end{itemize}
+\end{objectius}
+
+\section{El llenguatge formal i els axiomes inicials}
+
+El nostre objectiu és construir axiomàticament una teoria estructural de conjunts, diferent de la teoria clàssica de conjunts. Per exposar-la usarem un llenguatge de primer ordre amb igualtat i, quan sigui convenient, la notació estàndard de la pràctica matemàtica com a abreviació del llenguatge formal.
+
+Totes les variables del nostre llenguatge, majúscules i minúscules, recorren un mateix univers d'individus, que anomenarem \emph{aplicacions}. Fins que no hàgim definit els conjunts, no hi haurà cap distinció formal entre variables majúscules i minúscules. El vocabulari no lògic consta de dos predicats binaris, \(\Dom\) i \(\Cod\), i d'un predicat ternari, \(\Com\). La lectura prevista és la següent:
+\begin{itemize}
+  \item \(\Dom(f,a)\) es llegeix \enquote{\(a\) és el domini de \(f\)}.
+  \item \(\Cod(f,b)\) es llegeix \enquote{\(b\) és el codomini de \(f\)}.
+  \item \(\Com(f,g,h)\) es llegeix \enquote{\(h\) és el resultat de compondre primer \(f\) i després \(g\)}.
+\end{itemize}
+
+\section{Axiomes i propietats estructurals}\label{sec:axiomes-estructurals}
+
+Primer hem de garantir que el domini, el codomini i la composició es comporten com esperem. Per això enunciem els cinc axiomes següents. 
+
+\begin{axioma}[Existència i unicitat del domini i del codomini]\label{ax:dom-cod}
+Tota aplicació té un domini i un codomini únics:
+\[
+\forall f\,\exists a\,\Bigl(\Dom(f,a)\land
+  \forall a' \,\bigl(\Dom(f,a')\Rightarrow a=a'\bigr)\Bigr)
+\]
+i
+\[
+\forall f\,\exists b\,\Bigl(\Cod(f,b)\land
+  \forall b'\,\bigl(\Cod(f,b')\Rightarrow b=b'\bigr)\Bigr).
+\]
+\end{axioma}
+
+\begin{axioma}[Existència de la composició]\label{ax:composicio-existencia}
+Dues aplicacions es poden compondre si i només si el codomini de la primera coincideix amb el domini de la segona:
+\[
+\forall f\,\forall g\,
+\Bigl(
+  \exists a\bigl(\Cod(f,a)\land\Dom(g,a)\bigr)
+  \Leftrightarrow
+  \exists h\,\Com(f,g,h)
+\Bigr).
+\]
+\end{axioma}
+
+Observeu que aquest axioma només afirma l'existència d'una aplicació composta. La seva unicitat es demostra a la \hyperref[prop:composicio-unica]{proposició~\ref*{prop:composicio-unica}} com una conseqüència dels axiomes.
+
+\begin{axioma}[Domini i codomini de la composició]\label{ax:composicio-dom-cod}
+L'aplicació composta conserva el domini de la primera aplicació i el codomini de la segona:
+\[
+\forall f\,\forall g\,\forall h\,\forall a\,\forall b\,
+\Bigl(
+  \Com(f,g,h)\land\Dom(f,a)\land\Cod(g,b)
+  \Rightarrow
+  \Dom(h,a)\land\Cod(h,b)
+\Bigr).
+\]
+\end{axioma}
+
+\begin{axioma}[Llei associativa]\label{ax:associativitat}
+Si tres aplicacions es poden compondre consecutivament, el resultat no depèn de la manera d'agrupar-les:
+\[
+\begin{aligned}
+\forall f\,\forall g\,\forall h\,\forall u\,\forall v\,\forall w\,\forall z\,
+\Bigl(&\Com(f,g,u)\land\Com(g,h,v)\\
+      &\land\Com(u,h,w)\land\Com(f,v,z)
+      \Rightarrow w=z\Bigr).
+\end{aligned}
+\]
+\end{axioma}
+
+En aquesta fórmula, \(u\) és una composició de \(f\) seguida de \(g\), \(v\) és una composició de \(g\) seguida de \(h\), \(w\) és una composició d'\(u\) seguida d'\(h\), i \(z\) és una composició de \(f\) seguida de \(v\).
+
+\begin{axioma}[Lleis de neutralitat]\label{ax:neutralitat}
+El domini d'una aplicació actua com a neutre per la dreta en la composició:
+\[
+\forall f\,\forall a\,
+\bigl(\Dom(f,a)\Rightarrow\Com(a,f,f)\bigr)
+\]
+i el codomini actua com a neutre per l'esquerra:
+\[
+\forall f\,\forall b\,
+\bigl(\Cod(f,b)\Rightarrow\Com(f,b,f)\bigr).
+\]
+\end{axioma}
+
+L'estabilitat del domini i del codomini, que inicialment es podria prendre com un axioma, és una conseqüència dels cinc axiomes anteriors.
+
+\begin{proposicio}[Estabilitat del domini i del codomini]\label{prop:estabilitat}
+Si una aplicació és domini o codomini d'una altra, aleshores és domini i codomini de si mateixa:
+\[
+\forall f \, \forall a \, \Bigl(\Dom(f,a)\Rightarrow\bigl(\Dom(a,a)\land\Cod(a,a)\bigr)\Bigr)
+\]
+i
+\[
+\forall f \, \forall b \, \Bigl(\Cod(f,b)\Rightarrow\bigl(\Dom(b,b)\land\Cod(b,b)\bigr)\Bigr).
+\]
+\end{proposicio}
+
+\begin{prova}
+Suposem primer que \(\Dom(f,a)\). Per la \hyperref[ax:neutralitat]{primera llei de neutralitat}, obtenim
+\[
+\Com(a,f,f).
+\]
+Com que aquesta composició existeix, l'\hyperref[ax:composicio-existencia]{axioma~\ref*{ax:composicio-existencia}} proporciona una aplicació \(x\) tal que
+\[
+\Cod(a,x)\land\Dom(f,x).
+\]
+La unicitat del domini de \(f\), juntament amb \(\Dom(f,a)\), implica \(x=a\). Per tant,
+\begin{equation}\label{eq:codaa}
+\Cod(a,a).
+\end{equation}
+Per l'\hyperref[ax:dom-cod]{axioma~\ref*{ax:dom-cod}}, existeixen aplicacions \(y\) i \(b\) tals que \(\Dom(a,y)\) i \(\Cod(f,b)\). L'\hyperref[ax:composicio-dom-cod]{axioma~\ref*{ax:composicio-dom-cod}}, aplicat a
+\[
+\Com(a,f,f),\qquad \Dom(a,y),\qquad \Cod(f,b),
+\]
+dona \(\Dom(f,y)\). Com que també \(\Dom(f,a)\), la unicitat del domini de \(f\) implica \(y=a\). Així,
+\begin{equation}\label{eq:domaa}
+\Dom(a,a).
+\end{equation}
+De \eqref{eq:codaa} i \eqref{eq:domaa} deduïm
+\[
+\Dom(a,a)\land\Cod(a,a).
+\]
+Considerem ara que \(\Cod(f,b)\). Per la \hyperref[ax:neutralitat]{segona llei de neutralitat},
+\[
+\Com(f,b,f).
+\]
+L'\hyperref[ax:composicio-existencia]{axioma~\ref*{ax:composicio-existencia}} implica que hi ha una aplicació \(x\) tal que
+\[
+\Cod(f,x)\land\Dom(b,x).
+\]
+Per la unicitat del codomini de \(f\), tenim \(x=b\), i per tant
+\begin{equation}\label{eq:dombb}
+\Dom(b,b).
+\end{equation}
+Finalment, per l'\hyperref[ax:dom-cod]{axioma~\ref*{ax:dom-cod}}, existeixen aplicacions \(y\) i \(c\) tals que \(\Cod(b,y)\) i \(\Dom(f,c)\). L'\hyperref[ax:composicio-dom-cod]{axioma~\ref*{ax:composicio-dom-cod}}, aplicat a
+\[
+\Com(f,b,f),\qquad \Dom(f,c),\qquad \Cod(b,y),
+\]
+dona \(\Cod(f,y)\). Com que també \(\Cod(f,b)\), la unicitat del codomini de \(f\) implica \(y=b\). Així,
+\begin{equation}\label{eq:codbb}
+\Cod(b,b).
+\end{equation}
+De \eqref{eq:dombb} i \eqref{eq:codbb} deduïm
+\[
+\Dom(b,b)\land\Cod(b,b).
+\]
+\end{prova}
+
+També la unicitat de la composició es dedueix dels axiomes.
+
+\begin{proposicio}[Unicitat de la composició]\label{prop:composicio-unica}
+La composició de dues aplicacions que es poden compondre està unívocament determinada:
+\[
+\forall f \, \forall g \, \forall h \, \forall h' \, \bigl(\Com(f,g,h)\land\Com(f,g,h')\Rightarrow h=h'\bigr).
+\]
+\end{proposicio}
+
+\begin{prova}
+Suposem que
+\[
+\Com(f,g,h)
+\qquad\text{i}\qquad
+\Com(f,g,h').
+\]
+Per l'\hyperref[ax:dom-cod]{axioma~\ref*{ax:dom-cod}}, existeixen aplicacions \(a\) i \(b\) tals que \(\Dom(f,a)\) i \(\Cod(g,b)\). Per l'\hyperref[ax:composicio-dom-cod]{axioma~\ref*{ax:composicio-dom-cod}},
+\[
+\Dom(h,a)\land\Cod(h,b).
+\]
+Les \hyperref[ax:neutralitat]{lleis de neutralitat} donen
+\[
+\Com(g,b,g)
+\qquad\text{i}\qquad
+\Com(h,b,h).
+\]
+Apliquem ara l'\hyperref[ax:associativitat]{axioma~\ref*{ax:associativitat}} a les quatre relacions
+\[
+\Com(f,g,h),\qquad
+\Com(g,b,g),\qquad
+\Com(h,b,h),\qquad
+\Com(f,g,h').
+\]
+En resulta \(h=h'\).
+\end{prova}
+
+\section{Identitats i conjunts}\label{sec:identitats-conjunts}
+
+Definirem els conjunts com un tipus determinat d'aplicacions, però abans introduirem les aplicacions que actuaran com a identitats.
+
+\begin{definicio}[Aplicació identitat]\index{Aplicació identitat}\label{def:identitat}
+Una aplicació \(e\) és una \emph{identitat} si és el seu propi domini i el seu propi codomini:
+\[
+\operatorname{Id}(e)
+\iff
+\Dom(e,e)\land \Cod(e,e).
+\]
+\end{definicio}
+
+L'\hyperref[ax:neutralitat]{axioma~\ref*{ax:neutralitat}} garanteix que qualsevol aplicació així definida actua com a neutre en totes les composicions compatibles. En efecte, si \(e\) és el domini d'una aplicació \(f\), és a dir, si \(\Dom(f,e)\), aleshores \(\Com(e,f,f)\); anàlogament, de \(\Cod(f,e)\) s'obté \(\Com(f,e,f)\). El que aporta la definició és el recíproc: les aplicacions neutres són exactament les que són el seu propi domini i codomini, com veurem tot seguit.
+
+\begin{proposicio}\label{prop:dom-cod-identitats}
+El domini i el codomini de qualsevol aplicació són identitats. A més, si una identitat \(e\) té \(a\) com a domini o com a codomini, aleshores \(e=a\).
+\end{proposicio}
+
+\begin{prova}
+Si \(\Dom(f,a)\) o \(\Cod(f,a)\), la \hyperref[prop:estabilitat]{proposició~\ref*{prop:estabilitat}} dona
+\[
+\Dom(a,a)\land \Cod(a,a),
+\]
+i, per tant, \(a\) és una identitat.
+
+Ara suposem que \(e\) és una identitat i que \(\Dom(e,a)\). Com que també \(\Dom(e,e)\), la unicitat del domini de \(e\) implica \(e=a\). El cas en què \(\Cod(e,a)\) és anàleg.
+\end{prova}
+
+\begin{definicio}[Conjunt]\index{Conjunt}\label{def:conjunt}
+Un \emph{conjunt} és una aplicació que té per domini i codomini la mateixa aplicació:
+\[
+\operatorname{Conj}(a)
+\iff
+\Dom(a,a)\land \Cod(a,a).
+\]
+\end{definicio}
+
+Si comparem la \hyperref[def:identitat]{definició~\ref*{def:identitat}} i la \hyperref[def:conjunt]{definició~\ref*{def:conjunt}} és obvi que tot conjunt és una identitat i a l'inrevés:
+\[
+\operatorname{Conj}(a)
+\iff
+\operatorname{Id}(a)
+\iff
+\Dom(a,a)\land \Cod(a,a).
+\]
+
+La \hyperref[prop:dom-cod-identitats]{proposició~\ref*{prop:dom-cod-identitats}} garanteix que el domini i el codomini de qualsevol aplicació són conjunts. També, si un conjunt \(a\) té \(b\) com a domini o com a codomini, aleshores \(a=b\).
+
+\begin{notacio}[Conveni sobre les variables]\label{not:variables-conjunts-aplicacions}
+A partir d'ara prendrem el conveni metalingüístic que permetrà reconèixer immediatament quines variables estan restringides als conjunts. Les lletres majúscules
+\[
+A,B,C,\ldots
+\]
+es reservaran per a variables restringides als conjunts. Així,
+\[
+\forall A\,\varphi(A)
+\]
+és una abreviació de
+\[
+\forall A\,\bigl(\operatorname{Conj}(A)\Rightarrow\varphi(A)\bigr),
+\]
+i
+\[
+\exists A\,\varphi(A)
+\]
+és una abreviació de
+\[
+\exists A\,\bigl(\operatorname{Conj}(A)\land\varphi(A)\bigr).
+\]
+La mateixa convenció s'aplica al quantificador d'existència única. Quan una majúscula aparegui lliure en una definició, un enunciat o una demostració, entendrem que designa un conjunt.
+
+\bigskip
+
+Les lletres minúscules
+\[
+f,g,h,x,y,z,\ldots
+\]
+denotaran aplicacions arbitràries. No se n'exclouen les identitats: una variable minúscula pot designar també un conjunt quan el context ho permeti.
+
+Si \(A\) és un conjunt, escriurem \(\id_A\) quan vulguem destacar el seu paper d'identitat. Aquesta notació no designa una aplicació diferent de \(A\):
+\[
+\id_A=A.
+\]
+Totes aquestes convencions són eliminables i no modifiquen el llenguatge formal d'una sola mena. Per tant, després d'haver-les declarat, les podrem usar també en definicions i axiomes, sempre com a abreviacions del llenguatge primitiu.
+\end{notacio}
+
+\section{Notació i diagrames d'aplicacions}\label{sec:diagrames-aplicacions}
+
+Un cop definits els conjunts i les identitats, podem introduir els convenis de notació que faran més llegible el desenvolupament posterior. Aquests convenis pertanyen al metallenguatge i són eliminables en el sentit establert pel \hyperref[not:criteri-formal]{criteri d'escriptura formal} de la introducció.
+
+\begin{notacio}[Aplicacions, domini, codomini i composició]\label{not:aplicacions-tipades}
+D'acord amb el conveni anterior, les expressions
+\[
+f:A\rightarrow B
+\qquad\text{i}\qquad
+A\xrightarrow{f}B
+\]
+són abreviacions de la fórmula
+\[
+\Dom(f,A)\land\Cod(f,B).
+\]
+No introduïm cap predicat primitiu nou per expressar aquest fet.
+Per l'\hyperref[ax:dom-cod]{axioma~\ref*{ax:dom-cod}}, el domini i el codomini estan unívocament determinats. Per això escriurem
+\[
+A=\dom(f),
+\qquad
+B=\cod(f),
+\qquad
+f:\dom(f)\to\cod(f).
+\]
+Amb aquesta notació, l'estabilitat s'escriu
+\[
+\dom(\dom(f))=\dom(f),
+\qquad
+\cod(\dom(f))=\dom(f),
+\]
+\[
+\dom(\cod(f))=\cod(f),
+\qquad
+\cod(\cod(f))=\cod(f).
+\]
+Si \(\cod(f)=\dom(g)\), l'existència i la unicitat de la composició determinen una única aplicació \(h\) tal que \(\Com(f,g,h)\). Escriurem
+\[
+h=g\circ f.
+\]
+Així, \(g\circ f\) és una abreviació metalingüística de l'única aplicació \(h\) que satisfà \(\Com(f,g,h)\); no és un terme primitiu nou del llenguatge.
+\end{notacio}
+
+\begin{notacio}[Diagrames d'aplicacions i commutativitat]
+\label{not:diagrames-commutatius}
+
+Un \emph{diagrama d'aplicacions} és una representació geomètrica
+del metallenguatge en què els conjunts es representen mitjançant
+vèrtexs i les aplicacions mitjançant fletxes. Un camí orientat
+representa la composició successiva de les aplicacions que el
+formen. Direm que un diagrama és \emph{commutatiu} quan els camins orientats que s'hi comparen,
+amb el mateix origen i el mateix destí, determinen la mateixa aplicació composta.
+
+Aquesta notació no introdueix nous individus, nous predicats ni
+nous axiomes. Cada afirmació concreta de commutativitat és una
+abreviació metalingüística d'una igualtat entre composicions i,
+per tant, es pot traduir mitjançant el predicat \(\Com\) i la
+igualtat. La noció general de diagrama finit, necessària per
+estudiar els límits finits, s'introduirà quan correspongui.
+\end{notacio}
+
+Siguin
+\[
+f:A\to B,\qquad g:B\to C,\qquad h:A\to C.
+\]
+El triangle
+\begin{center}
+\begin{tikzpicture}[scale=1.1, every node/.style={font=\small}]
+  \node (A) at (0,1.6) {\(A\)};
+  \node (B) at (3.2,1.6) {\(B\)};
+  \node (C) at (3.2,0) {\(C\)};
+  \draw[-{Stealth[scale=1.15]}, thick] (A) -- node[above] {\(f\)} (B);
+  \draw[-{Stealth[scale=1.15]}, thick] (B) -- node[right] {\(g\)} (C);
+  \draw[-{Stealth[scale=1.15]}, thick] (A) -- node[below left] {\(h\)} (C);
+\end{tikzpicture}
+\end{center}
+és \emph{commutatiu} si els dos camins d'\(A\) a \(C\) determinen la mateixa aplicació, és a dir, si
+\[
+h=g\circ f.
+\]
+En el llenguatge formal, aquesta igualtat s'expressa directament mitjançant
+\[
+\Com(f,g,h).
+\]
+
+De la mateixa manera, siguin
+\[
+f:A\to B,\qquad g:A\to C,\qquad h:B\to D,\qquad k:C\to D.
+\]
+El quadrat
+\begin{center}
+\begin{tikzpicture}[scale=1.1, every node/.style={font=\small}]
+  \node (A) at (0,1.8) {\(A\)};
+  \node (B) at (3.4,1.8) {\(B\)};
+  \node (C) at (0,0) {\(C\)};
+  \node (D) at (3.4,0) {\(D\)};
+  \draw[-{Stealth[scale=1.15]}, thick] (A) -- node[above] {\(f\)} (B);
+  \draw[-{Stealth[scale=1.15]}, thick] (A) -- node[left] {\(g\)} (C);
+  \draw[-{Stealth[scale=1.15]}, thick] (B) -- node[right] {\(h\)} (D);
+  \draw[-{Stealth[scale=1.15]}, thick] (C) -- node[below] {\(k\)} (D);
+\end{tikzpicture}
+\end{center}
+és commutatiu quan els dos camins d'\(A\) a \(D\) determinen
+la mateixa aplicació:
+\[
+h\circ f=k\circ g.
+\]
+Formalment, aquesta condició es pot escriure
+\[
+\exists u\,\bigl(\Com(f,h,u)\land\Com(g,k,u)\bigr).
+\]
+En efecte, aquesta fórmula afirma que els dos camins tenen una
+mateixa aplicació composta.
+
+En general, quan en un diagrama comparem diversos camins amb
+el mateix origen i el mateix destí, la commutativitat significa
+que totes les composicions indicades són iguals. Per exemple,
+la llei associativa, l'\hyperref[ax:associativitat]{axioma~\ref*{ax:associativitat}}, afirma que, per a aplicacions
+\[
+A\xrightarrow{f}B\xrightarrow{g}C\xrightarrow{h}D,
+\]
+les dues maneres de reagrupar la composició determinen la mateixa
+aplicació:
+\[
+h\circ(g\circ f)=(h\circ g)\circ f.
+\]
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=1.2, every node/.style={font=\small}]
+    \node (A) at (0,1.6) {\(A\)};
+    \node (B) at (2.0,1.6) {\(B\)};
+    \node (C) at (4.0,1.6) {\(C\)};
+    \node (D) at (6.0,1.6) {\(D\)};
+    \draw[-{Stealth[scale=1.2]}, thick] (A) -- node[above] {\(f\)} (B);
+    \draw[-{Stealth[scale=1.2]}, thick] (B) -- node[above] {\(g\)} (C);
+    \draw[-{Stealth[scale=1.2]}, thick] (C) -- node[above] {\(h\)} (D);
+    \draw[-{Stealth[scale=1.2]}, thick] (A) to[bend right=20] node[below] {\(g \circ f\)} (C);
+    \draw[-{Stealth[scale=1.2]}, thick] (B) to[bend left=20] node[above=6pt] {\(h \circ g\)} (D);
+    \draw[-{Stealth[scale=1.2]}, thick] (A) to[bend right=38] node[below] {\(h\circ(g\circ f)=(h\circ g)\circ f\)} (D);
+  \end{tikzpicture}
+  \caption{La llei associativa: els dos camins agrupats de \(A\) a \(D\) són la mateixa aplicació.}
+  \label{fig:associativa}
+\end{figure}
+
+Quan una aplicació aparegui com la fletxa que s'ha de trobar en una condició d'existència o d'unicitat, la podrem representar mitjançant una fletxa discontínua. Una vegada establertes aquestes condicions, la representarem mitjançant una fletxa contínua.
+
+\begin{figure}[H]
+  \centering
+\begin{tikzpicture}[scale=1.1, every node/.style={font=\small}]
+  \node (A) at (0,1.6) {\(A\)};
+  \node (B) at (3.2,1.6) {\(B\)};
+  \node (C) at (3.2,0) {\(C\)};
+  \draw[-{Stealth[scale=1.15]}, thick] (A) -- node[above] {\(f\)} (B);
+  \draw[-{Stealth[scale=1.15]}, thick] (B) -- node[right] {\(g\)} (C);
+  \draw[-{Stealth[scale=1.15]}, thick, dashed] (A) -- node[below left] {\(g \circ f\)} (C);
+\end{tikzpicture}
+\caption{Diagrama de la composició: quan \(\cod(f)=\dom(g)\), la fletxa \(g \circ f\) existeix i és única.}
+  \label{fig:composicio}
+\end{figure}
+
+Amb aquesta notació, l'\hyperref[ax:composicio-dom-cod]{axioma~\ref*{ax:composicio-dom-cod}} s'expressa així:
+\[
+\dom(g\circ f)=\dom(f)
+\quad \text{i} \quad
+\cod(g\circ f)=\cod(g).
+\]
+
+Finalment, l'\hyperref[ax:neutralitat]{axioma~\ref*{ax:neutralitat}} s'escriu així:
+
+\[
+f \circ \dom(f)=f,
+\qquad
+\cod(f) \circ f=f.
+\]
+
+\begin{notacio}[Identitat d'un conjunt]\label{not:identitat-conjunt}
+Un conjunt \(A\) compleix \(\dom(A)=\cod(A)=A\), i per això podem escriure
+\[
+A:A\to A.
+\]
+Quan vulguem posar de relleu el seu paper neutral en la composició, escriurem
+\[
+\id_A.
+\]
+Formalment,
+\[
+\id_A=A;
+\]
+les expressions \(A\) i \(\id_A\) designen la mateixa aplicació, no dues aplicacions diferents.
+\end{notacio}
+
+Com a mostra d'aquesta notació, considerem una aplicació \(f:A\to B\). L'\hyperref[ax:neutralitat]{axioma~\ref*{ax:neutralitat}} s'expressa així:
+\[
+f\circ \id_A=f
+\qquad\text{i}\qquad
+\id_B\circ f=f.
+\]
+Els dos triangles commutatius següents posen de relleu el paper neutral dels conjunts:
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=1.05, every node/.style={font=\small}]
+    \node (A1) at (0,1.6) {\(A\)};
+    \node (A2) at (2.5,1.6) {\(A\)};
+    \node (B1) at (2.5,0) {\(B\)};
+    \draw[-{Stealth[scale=1.15]}, thick] (A1) -- node[above] {\(\id_A\)} (A2);
+    \draw[-{Stealth[scale=1.15]}, thick] (A2) -- node[right] {\(f\)} (B1);
+    \draw[-{Stealth[scale=1.15]}, thick] (A1) -- node[below left] {\(f\)} (B1);
+
+    \node (A3) at (4.8,1.6) {\(A\)};
+    \node (B2) at (7.3,1.6) {\(B\)};
+    \node (B3) at (7.3,0) {\(B\)};
+    \draw[-{Stealth[scale=1.15]}, thick] (A3) -- node[above] {\(f\)} (B2);
+    \draw[-{Stealth[scale=1.15]}, thick] (B2) -- node[right] {\(\id_B\)} (B3);
+    \draw[-{Stealth[scale=1.15]}, thick] (A3) -- node[below left] {\(f\)} (B3);
+  \end{tikzpicture}
+  \caption{Diagrames de les lleis de neutralitat: \(f\circ\id_A=f\) i \(\id_B\circ f=f\).}
+  \label{fig:neutralitat}
+\end{figure}
+
+\section{Igualtat d'aplicacions}\label{sec:igualtat-aplicacions}
+
+La pregunta que ens fem ara és: quan dues aplicacions són iguals? Els axiomes que hem introduït fins ara permeten el bon comportament de les aplicacions. De fet, en la \hyperref[sec:diagrames-aplicacions]{secció~\ref*{sec:diagrames-aplicacions}} hem vist com una aplicació \(f\) es podia escriure com 
+\[
+f:\dom(f) \rightarrow \cod(f),
+\]
+i, per tant, dues aplicacions només poden ser iguals si tenen el mateix domini i el mateix codomini; en aquest cas direm que són \emph{paral·leles}\index{Aplicacions paral·leles}. Ara bé, les aplicacions també es poden comparar per la manera com es componen amb altres aplicacions. Considerem, doncs, dues aplicacions \(f,g:A\to B\) i una aplicació \(x:X\to A\). L'\hyperref[ax:composicio-existencia]{axioma~\ref*{ax:composicio-existencia}} i l'\hyperref[ax:composicio-dom-cod]{axioma~\ref*{ax:composicio-dom-cod}} garanteixen que
+\[
+f\circ x:X\rightarrow B \quad \text{i} \quad g\circ x:X\rightarrow B.
+\]
+És natural esperar que si \(f\) i \(g\) són iguals, també ho siguin
+\[
+f\circ x=g\circ x.
+\]
+
+Aquesta propietat es formula en la proposició següent.
+
+\begin{proposicio}[Aplicacions iguals]\label{prop:aplicacions-iguals}
+Siguin \(f,g:A\to B\). Aleshores,
+\[
+f=g
+\iff
+\forall X \, \forall x \, \bigl( x:X \to A \Rightarrow f \circ x=g\circ x\bigr).
+\]
+\end{proposicio}
+
+\begin{prova}
+Si \(f=g\), la igualtat \(f\circ x=g\circ x\) se segueix per substitució per a qualsevol \(x:X\to A\) i qualsevol \(X\).
+
+Recíprocament, suposem que \(f\circ x=g\circ x\) per a tot \(X\) i tot \(x:X\to A\). Prenem \(X=A\) i \(x=\id_A:A\to A\). Per l'\hyperref[ax:neutralitat]{axioma~\ref*{ax:neutralitat}}, obtenim
+\[
+f=f\circ\id_A=g\circ\id_A=g.
+\]
+\end{prova}
+
+Observeu la importància de la frase \enquote{per a tot \(X\) i tot \(x:X\to A\)} en la prova anterior. Això és la raó per la qual introduïm la definició següent.
+
+\begin{definicio}[Element generalitzat]\index{Element generalitzat}\label{def:element-generalitzat}
+Un \emph{element generalitzat de \(A\) en l'estadi \(X\)}, o un \emph{element de \(A\) parametritzat per \(X\)}, és una aplicació amb domini \(X\) i codomini \(A\). Formalment,
+\[
+\operatorname{ElemGen}(x,X,A)
+\iff
+\Dom(x,X)\land\Cod(x,A).
+\]
+Les majúscules \(X\) i \(A\) estan restringides als conjunts per la convenció~\ref{not:variables-conjunts-aplicacions}.
+\end{definicio}
+
+\begin{notacio}[Elements generalitzats i avaluació]\label{not:elements-generalitzats}
+Escriurem
+\[
+x\in_X A
+\quad\Longleftrightarrow\quad
+x:X\to A
+\]
+per indicar que \(x\) és un element generalitzat de \(A\) en l'estadi \(X\).
+
+En el capítol següent escriurem també \(x\in_X m\) quan \(m\) sigui una part de \(A\); en aquest segon ús, la notació expressarà que \(x\) es factoritza a través de \(m\). El tipus de l'expressió situada a la dreta distingirà les dues lectures.
+
+Si \(f:A\to B\) i \(x\in_X A\), anomenarem \emph{avaluació generalitzada de \(f\) en \(x\)} la composició \(f\circ x:X\to B\). Quan sigui útil, podrem escriure
+\[
+f_X(x)=f\circ x.
+\]
+\end{notacio}
+
+Així, la \hyperref[def:element-generalitzat]{definició~\ref*{def:element-generalitzat}} i la \hyperref[not:elements-generalitzats]{notació~\ref*{not:elements-generalitzats}} permeten enunciar la \hyperref[prop:aplicacions-iguals]{proposició~\ref*{prop:aplicacions-iguals}} d'aquesta manera: dues aplicacions paral·leles són iguals si i només si les seves avaluacions coincideixen sobre tots els elements generalitzats del domini, sigui quin sigui l'estadi.
+
+La \hyperref[prop:aplicacions-iguals]{proposició~\ref*{prop:aplicacions-iguals}} compara aplicacions paral·leles. En el cas de dos conjunts, considerats com les aplicacions identitat \(A:A\to A\) i \(B:B\to B\), la hipòtesi que siguin paral·leles ja exigeix \(A=B\). Per tant, aquesta proposició no proporciona una noció nova per comparar conjunts diferents. La qüestió adequada és quan dos conjunts tenen la mateixa estructura, i aquesta comparació es formularà mitjançant els isomorfismes en la \hyperref[sec:isomorfismes]{secció~\ref*{sec:isomorfismes}}.
+
+\section{Isomorfismes}\label{sec:isomorfismes}
+
+Introduïm ara el concepte que ens permetrà afirmar que dos conjunts són estructuralment iguals.
+
+\begin{definicio}[Isomorfisme]\index{Isomorfisme}\label{def:isomorfisme}
+Una aplicació \(f:A\to B\) és un \emph{isomorfisme} si existeix una aplicació \(g:B\to A\) tal que
+\[
+g\circ f=\id_A
+\qquad\text{i}\qquad
+f\circ g=\id_B.
+\]
+Formalment,
+\[
+\begin{aligned}
+\operatorname{Iso}(f)
+\iff {}&
+\exists A\,\exists B\,\exists g\,
+\Bigl(
+    \Dom(f,A)\land \Cod(f,B)
+\\
+&\qquad\land \Dom(g,B)\land \Cod(g,A)
+\\
+&\qquad\land \Com(f,g,A)
+\\
+&\qquad\land \Com(g,f,B)
+\Bigr).
+\end{aligned}
+\]
+Aquí les majúscules quantificades són variables restringides als conjunts. Direm que dos conjunts \(A\) i \(B\) són \emph{isomorfs} si existeix un isomorfisme entre ells. Formalment,
+\[
+\operatorname{Isomorfs}(A,B)
+\iff
+\exists f\,\bigl(
+\operatorname{Iso}(f)\land\Dom(f,A)\land\Cod(f,B)
+\bigr).
+\]
+\end{definicio}
+
+\begin{notacio}[Isomorfia de conjunts]\label{not:isomorfia}
+Si \(f:A \to B\) és un isomorfisme escriurem abreujadament \(f:A \xrightarrow{\sim} B\). Si \(\operatorname{Isomorfs}(A,B)\), escriurem
+\[
+A\cong B.
+\]
+Si no són isomorfs, escriurem \(A\ncong B\).
+\end{notacio}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=1.2, every node/.style={font=\small}]
+    \node (A) at (0,0) {\(A\)};
+    \node (B) at (3,0) {\(B\)};
+    \draw[-{Stealth[scale=1.2]}, thick] (A) edge[bend left=20] node[above] {\(f\)} (B);
+    \draw[-{Stealth[scale=1.2]}, thick, dashed] (B) edge[bend left=20] node[below] {\(g\)} (A);
+    \draw[-{Stealth[scale=1.2]}, thick] (A) to [out=135,in=225,looseness=6] node[left] {\(\id_A\)} (A);
+    \draw[-{Stealth[scale=1.2]}, thick] (B) to [out=45,in=315,looseness=6] node[right] {\(\id_B\)} (B);
+  \end{tikzpicture}
+  \caption{Diagrama d'un isomorfisme: anar i tornar equival a no moure's, en els dos sentits.}
+  \label{fig:isomorfisme}
+\end{figure}
+
+Quan \(f\) és un isomorfisme, diem que \(g\) és una \emph{inversa de} \(f\). A la \hyperref[prop:inversa-unica]{proposició~\ref*{prop:inversa-unica}} veurem que és única. 
+\begin{proposicio}[Unicitat de la inversa]\label{prop:inversa-unica}
+La inversa d'un isomorfisme, si existeix, és única.
+\end{proposicio}
+
+\begin{prova}
+Suposem que \(g\) i \(g'\) són inverses de \(f\colon A \to B\). La llei associativa i les lleis de neutralitat donen
+\[
+g = g \circ \id_B = g \circ (f \circ g') = (g \circ f) \circ g' = \id_A \circ g' = g'.
+\]
+\end{prova}
+
+\begin{notacio}[Inversa d'un isomorfisme]\label{not:inversa}
+Per la unicitat demostrada, si \(f\) és un isomorfisme denotarem la seva única inversa per \(f^{-1}\).
+\end{notacio}
+
+Les propietats bàsiques dels isomorfismes es dedueixen ara mecànicament dels axiomes.
+
+\begin{proposicio}\label{prop:isos-basics}
+\begin{enumerate}
+\item La identitat de tot conjunt \(A\) és un isomorfisme, amb \(A^{-1}=A\); en particular, \(A\cong A\).
+\item Si \(f\) és un isomorfisme, \(f^{-1}\) també ho és, amb \({(f^{-1})}^{-1} = f\); en particular, \(A \cong B\) implica \(B \cong A\).
+\item Si \(f\colon A \to B\) i \(g\colon B \to C\) són isomorfismes, \(g \circ f\) també ho és, amb \({(g\circ f)}^{-1}=f^{-1}\circ g^{-1}\); en particular, \(A \cong B\) i \(B \cong C\) impliquen \(A \cong C\).
+\end{enumerate}
+\end{proposicio}
+
+\begin{prova}
+(1) Un conjunt és una identitat, i \(A \circ A = A\) per l'\hyperref[ax:neutralitat]{axioma~\ref*{ax:neutralitat}}, de manera que \(\id_A\) és inversa d'ella mateixa. (2) Les dues equacions de la definició són simètriques en \(f\) i \(f^{-1}\). (3) Comprovem una de les dues equacions; l'altra és anàloga:
+\[
+(f^{-1} \circ g^{-1}) \circ (g \circ f)
+= f^{-1} \circ (g^{-1} \circ g) \circ f
+= f^{-1} \circ \id_B \circ f
+= f^{-1} \circ f
+= \id_A,
+\]
+on hem usat l'\hyperref[ax:associativitat]{axioma~\ref*{ax:associativitat}} per reagrupar sense ambigüitat.
+\end{prova}
+
+\begin{observacio}\label{obs:isomorfia-equivalencia}
+La \hyperref[prop:isos-basics]{proposició~\ref*{prop:isos-basics}} diu que la isomorfia \(\cong\) es comporta com una relació d'equivalència entre els conjunts: reflexiva, simètrica i transitiva. Atenció a l'estatus d'aquesta afirmació: la relació \(\cong\) no forma part de la teoria (no hi ha, encara, cap noció de relació definida); és una relació del \emph{metallenguatge}, definida sobre l'univers per la fórmula d'existència d'un isomorfisme. De fet, el paper que té la isomorfia per als conjunts és el d'\emph{igualtat estructural}: per exemple, si un conjunt és terminal, aleshores tot conjunt isomorf també és terminal i, a l'inrevés. La propietat estructural de ser terminal la veurem a la \hyperref[sec:terminals]{secció~\ref*{sec:terminals}}.
+\end{observacio}
+
+
+\section{Conjunts terminals}\label{sec:terminals}
+
+Les construccions que introduirem a partir d'ara es caracteritzen
+mitjançant les aplicacions que hi arriben o que en surten i les
+equacions que aquestes aplicacions satisfan. Abans de presentar-ne
+la primera, precisem el significat de les expressions
+\emph{propietat estructural} i \emph{propietat universal}. 
+
+\begin{observacio}[Propietats estructurals i propietats universals]
+\label{obs:propietats-estructurals-universals}
+
+Una propietat \(\mathcal P\) dels conjunts és \emph{estructural}\index{Propietat estructural}
+si només depèn de les aplicacions i de les seves composicions i es
+conserva en substituir un conjunt per un conjunt isomorf. Això
+significa que, si \(A\cong B\), aleshores
+\[
+\mathcal P(A)\Longleftrightarrow\mathcal P(B).
+\]
+
+Per tant, una propietat estructural no depèn de la presentació
+particular d'un conjunt, sinó de la manera com aquest conjunt es
+relaciona amb la resta de conjunts mitjançant les aplicacions.
+
+Una \emph{propietat universal}\index{Propietat universal} és una propietat que caracteritza
+un conjunt, sovint juntament amb unes aplicacions distingides,
+mitjançant una condició d'existència i unicitat. Habitualment,
+afirma que, per a qualsevol conjunt \(X\) i per a unes aplicacions
+donades, existeix una única aplicació que fa commutar les
+composicions corresponents, en el sentit de la
+\hyperref[not:diagrames-commutatius]{notació~\ref*{not:diagrames-commutatius}}.
+
+Les propietats universals que considerarem són estructurals.
+A més, determinen el conjunt i les seves aplicacions distingides
+llevat d'un únic isomorfisme compatible amb aquestes aplicacions.
+
+La terminalitat és el primer exemple que donarem: un conjunt \(T\) és terminal
+quan, per a cada conjunt \(X\), existeix una única aplicació
+\(X\to T\), és a dir, és un conjunt al qual arriba una única aplicació des de qualsevol altre conjunt.
+\end{observacio}
+
+\begin{definicio}[Conjunt terminal]\index{Conjunt terminal}\label{def:terminal}
+Un conjunt \(T\) és \emph{terminal} si, per a qualsevol conjunt \(X\), existeix una única aplicació \(X\to T\). Formalment,
+\[
+\operatorname{Terminal}(T)
+\iff
+\operatorname{Conj}(T)\land
+\forall X\Bigl(
+  \operatorname{Conj}(X)\Rightarrow
+  \exists!f\bigl(\Dom(f,X)\land \Cod(f,T)\bigr)
+\Bigr).
+\]
+\end{definicio}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=1.2, every node/.style={font=\small}]
+    \node (T) at (2.2,0) {\(T\)};
+    \node (X) at (0,1.6) {\(X\)};
+    \node (Y) at (2.2,1.9) {\(Y\)};
+    \node (Z) at (4.4,1.6) {\(Z\)};
+    \draw[-{Stealth[scale=1.2]}, thick, dashed] (X) -- (T);
+    \draw[-{Stealth[scale=1.2]}, thick, dashed] (Y) -- (T);
+    \draw[-{Stealth[scale=1.2]}, thick, dashed] (Z) -- (T);
+  \end{tikzpicture}
+  \caption{Diagrama de la terminalitat: des de cada conjunt arriba exactament una aplicació al conjunt terminal.}
+  \label{fig:terminal}
+\end{figure}
+
+\begin{proposicio}[Invariància de la terminalitat per isomorfisme]\label{prop:terminal-invariant-iso}
+Siguin \(T\) i \(T'\) conjunts isomorfs. Si \(T\) és terminal, aleshores \(T'\) també és terminal.
+\end{proposicio}
+
+\begin{prova}
+Siguin \(u:T\xrightarrow{\sim}T'\) i \(X\) un conjunt qualsevol. Com que \(T\) és terminal, existeix una única aplicació \(t:X\to T\). Per tant,
+\[
+u\circ t:X\to T'
+\]
+proporciona una aplicació de \(X\) en \(T'\).
+
+Si \(v:X\to T'\) és qualsevol altra aplicació, aleshores \(u^{-1}\circ v:X\to T\). Per la unicitat terminal,
+\[
+u^{-1}\circ v=t.
+\]
+Component per l'esquerra amb \(u\), obtenim \(v=u\circ t\). Així, existeix una única aplicació \(X\to T'\), i \(T'\) és terminal.
+\end{prova}
+
+\begin{proposicio}\label{prop:terminal-unic}
+Si dos conjunts \(T_1\) i \(T_2\) són terminals, aleshores existeix un únic isomorfisme \(T_1\to T_2\). En particular, \(T_1\cong T_2\).
+\end{proposicio}
+
+\begin{prova}
+Com que \(T_2\) és terminal, existeix una única aplicació
+\[
+f:T_1\to T_2.
+\]
+Com que \(T_1\) és terminal, existeix una única aplicació
+\[
+g:T_2\to T_1.
+\]
+La composició \(g\circ f:T_1\to T_1\) coincideix amb \(\id_{T_1}\), perquè la terminalitat de \(T_1\) garanteix que només hi ha una aplicació de \(T_1\) en \(T_1\). Anàlogament,
+\[
+f\circ g=\id_{T_2}.
+\]
+Per tant, \(f\) és un isomorfisme. La seva unicitat se segueix de la terminalitat de \(T_2\).
+\end{prova}
+
+\begin{axioma}[Existència d'un conjunt terminal]\label{ax:terminal-existencia}
+Existeix almenys un conjunt terminal:
+\[
+\exists T\,\operatorname{Terminal}(T).
+\]
+\end{axioma}
+
+\begin{notacio}[Conjunt terminal escollit]\label{not:terminal-escollit}
+Per l'axioma i la proposició anteriors podem fixar un conjunt terminal, que denotarem per \(\mathbf1\). Per a cada conjunt \(X\), denotarem per
+\[
+{!}_X:X\to\mathbf1
+\]
+l'única aplicació determinada per la terminalitat de \(\mathbf1\). Qualsevol propietat estructural demostrada per a \(\mathbf1\)
+la satisfarà qualsevol altre conjunt terminal, perquè tots
+els conjunts terminals són isomorfs.
+
+El símbol \(\mathbf1\) no és una constant del llenguatge formal, que només té variables: quan aparegui dins d'una fórmula, com passarà en dos dels axiomes d'aquest capítol, és una abreviació eliminable. Una fórmula \(\varphi(\mathbf1)\) abreuja
+\[
+\forall T\,\bigl(\operatorname{Terminal}(T)\Rightarrow\varphi(T)\bigr),
+\]
+i, com que els terminals existeixen i són tots isomorfs, per a les propietats estructurals \(\varphi\) aquesta fórmula equival a \(\exists T\,\bigl(\operatorname{Terminal}(T)\land\varphi(T)\bigr)\). El mateix conveni s'aplicarà a \(\mathbf0\) i, en general, a tots els conjunts que fixem per una propietat universal.
+\end{notacio}
+
+\section{Conjunts inicials i no-degeneració}\label{sec:inicials}
+
+La noció dual de conjunt terminal és la de conjunt inicial.
+
+\begin{observacio}[Nocions duals]\label{obs:dualitat}
+Dues nocions són \emph{duals} quan la definició d'una s'obté de la definició de l'altra invertint sistemàticament el sentit de totes les aplicacions.
+
+En el llenguatge formal, la transformació dual intercanvia domini i codomini i inverteix l'ordre de la composició:
+\[
+\Dom\longleftrightarrow\Cod,
+\qquad
+\Com(f,g,h)\longleftrightarrow\Com(g,f,h).
+\]
+Les connectives lògiques i els quantificadors no es modifiquen. Així, la fórmula abreujada \(f:A\to B\) es transforma en la fórmula que, en l'enunciat dual, s'escriu \(f:B\to A\). Això no significa que l'aplicació \(f\) de la teoria original hagi adquirit una inversa ni que n'hàgim capgirat realment el sentit: estem transformant una fórmula del metallenguatge en una altra fórmula.
+
+La transformació és involutiva: el dual del dual és l'enunciat original. A més, els cinc axiomes estructurals de la secció~\ref{sec:axiomes-estructurals} es transformen, eventualment després de canviar el nom de variables quantificades, en els mateixos axiomes. Per inducció sobre la longitud d'una demostració, qualsevol resultat obtingut només a partir d'aquests axiomes dona lloc a un resultat dual. Aquest és un principi metateòric sobre el nostre sistema formal, no una operació nova sobre els individus de la teoria.
+
+La noció dual de conjunt terminal és la de conjunt inicial. En la terminalitat, des de qualsevol conjunt surt una única aplicació que arriba al terminal:
+\[
+X\longrightarrow T.
+\]
+En dualitzar-la, obtenim que des de l'inicial surt una única aplicació cap a qualsevol conjunt:
+\[
+I\longrightarrow X.
+\]
+La proposició~\ref{prop:invariancia-inicialitat} és la dual de
+la proposició~\ref{prop:terminal-invariant-iso}. Igualment, la
+proposició~\ref{prop:inicial-unic} sobre la unicitat dels conjunts inicials llevat d'un
+únic isomorfisme és la dual de la proposició~\ref{prop:terminal-unic} corresponent per als
+conjunts terminals. Mantindrem, tanmateix, les demostracions
+explícites perquè el text sigui autosuficient.
+
+El principi de dualitat s'estén als axiomes d'existència del terminal i de l'inicial, que són duals l'un de l'altre, i a l'axioma de no-degeneració, que és autodual. No s'estén, en canvi, a l'axioma de separació global que introduirem a la secció~\ref{sec:lectura-classica}: el seu dual afirmaria que dues aplicacions paral·leles \(f,g\colon A\to B\) són iguals quan \(y\circ f=y\circ g\) per a tota \(y\colon B\to\mathbf0\), i com que cap conjunt no inicial no té aplicacions cap a \(\mathbf0\), això forçaria la igualtat de totes les aplicacions paral·leles. A partir d'aquell axioma, doncs, la teoria deixa de ser simètrica, i cada resultat que en depengui s'haurà de demostrar sense apel·lar a la dualitat.\index{Dualitat}
+\end{observacio}
+
+\begin{definicio}[Conjunt inicial]\index{Conjunt inicial}\label{def:inicial}
+Un conjunt \(I\) és \emph{inicial} si, per a qualsevol conjunt \(Y\), existeix una única aplicació \(I\to Y\). Formalment,
+\[
+\operatorname{Inicial}(I)
+\iff
+\operatorname{Conj}(I)\land
+\forall Y\Bigl(
+  \operatorname{Conj}(Y)\Rightarrow
+  \exists!f\bigl(\Dom(f,I)\land \Cod(f,Y)\bigr)
+\Bigr).
+\]
+\end{definicio}
+
+\begin{proposicio}[Invariància de la inicialitat per isomorfisme]
+\label{prop:invariancia-inicialitat}
+Siguin \(I\) i \(I'\) conjunts isomorfs. Si \(I\) és inicial,
+aleshores \(I'\) també és inicial.
+\end{proposicio}
+
+\begin{prova}
+Sigui
+\[
+u:I\xrightarrow{\sim}I'
+\]
+un isomorfisme i sigui \(X\) un conjunt. Com que \(I\) és
+inicial, existeix una única aplicació
+\[
+f:I\to X.
+\]
+Per tant,
+\[
+f\circ u^{-1}:I'\to X
+\]
+proporciona una aplicació d'\(I'\) en \(X\).
+
+Sigui ara \(v:I'\to X\) qualsevol altra aplicació. Aleshores
+\[
+v\circ u:I\to X.
+\]
+Per la unicitat determinada per la inicialitat d'\(I\),
+\[
+v\circ u=f.
+\]
+Component per la dreta amb \(u^{-1}\), obtenim
+\[
+v
+=v\circ\id_{I'}
+=v\circ(u\circ u^{-1})
+=(v\circ u)\circ u^{-1}
+=f\circ u^{-1}.
+\]
+Així, existeix una única aplicació \(I'\to X\), i \(I'\) és
+inicial.
+\end{prova}
+
+\begin{proposicio}\label{prop:inicial-unic}
+Si dos conjunts \(I_1\) i \(I_2\) són inicials, aleshores existeix un únic isomorfisme \(I_1\to I_2\). En particular, \(I_1\cong I_2\).
+\end{proposicio}
+
+\begin{prova}
+Com que \(I_1\) és inicial, existeix una única aplicació
+\[
+f:I_1\to I_2.
+\]
+Com que \(I_2\) és inicial, existeix una única aplicació
+\[
+g:I_2\to I_1.
+\]
+La composició \(g\circ f:I_1\to I_1\) coincideix amb \(\id_{I_1}\), perquè la inicialitat de \(I_1\) garanteix que només hi ha una aplicació de \(I_1\) en \(I_1\). Anàlogament,
+\[
+f\circ g=\id_{I_2}.
+\]
+Per tant, \(f\) és un isomorfisme. La seva unicitat se segueix de la inicialitat de \(I_1\).
+\end{prova}
+
+\begin{axioma}[Existència d'un conjunt inicial]\label{ax:inicial-existencia}
+Existeix almenys un conjunt inicial:
+\[
+\exists I\,\operatorname{Inicial}(I).
+\]
+\end{axioma}
+
+\begin{notacio}[Conjunt inicial escollit]\label{not:inicial-escollit}
+Per l'axioma i la proposició anteriors podem fixar un conjunt inicial, que denotarem per \(\mathbf0\). Per a cada conjunt \(X\), denotarem per
+\[
+\mathbf{0}_X:\mathbf0\to X
+\]
+l'única aplicació determinada per la inicialitat de \(\mathbf0\). Qualsevol propietat estructural demostrada per a \(\mathbf0\)
+la satisfarà qualsevol altre conjunt inicial, perquè tots
+els conjunts inicials són isomorfs.
+\end{notacio}
+
+\begin{axioma}[No-degeneració]\label{ax:no-degeneracio}
+Cap conjunt inicial no és isomorf a cap conjunt terminal. Formalment,
+\[
+\forall I\,\forall T\,\Bigl(\operatorname{Inicial}(I)\land\operatorname{Terminal}(T)\Rightarrow\neg\operatorname{Isomorfs}(I,T)\Bigr).
+\]
+Amb els conjunts fixats \(\mathbf0\) i \(\mathbf1\) i la notació de la isomorfia, escriurem equivalentment
+\[
+\mathbf0\ncong\mathbf1.
+\]
+\end{axioma}
+
+Aquest axioma exclou directament la identificació estructural
+entre el conjunt inicial i el conjunt terminal. La seva formulació
+només utilitza la noció d'isomorfia i no pressuposa la lectura
+clàssica que introduirem a la secció següent.
+
+\begin{proposicio}\label{prop:no-fletxa-u-zero}
+No existeix cap aplicació
+\[
+x:\mathbf1\to\mathbf0.
+\]
+\end{proposicio}
+
+\begin{prova}
+Suposem que existeix \(x:\mathbf1\to\mathbf0\). Per la inicialitat de \(\mathbf0\), existeix una única aplicació
+\[
+y:\mathbf0\to\mathbf1.
+\]
+La composició \(x\circ y:\mathbf0\to\mathbf0\) coincideix amb \(\id_{\mathbf0}\), perquè de \(\mathbf0\) a \(\mathbf0\) només hi ha una aplicació. De la mateixa manera, la terminalitat de \(\mathbf1\) implica
+\[
+y\circ x=\id_{\mathbf1}.
+\]
+Per tant, \(x\) és un isomorfisme, en contradicció amb l'\hyperref[ax:no-degeneracio]{axioma de no-degeneració}.
+\end{prova}
+
+\begin{observacio}[Què passaria si \(\mathbf0\cong\mathbf1\)]\label{obs:zero-u-sense-separacio}
+Suposem, només en aquesta observació, que existeixen isomorfismes inversos
+\[
+i:\mathbf1\to\mathbf0,
+\qquad
+j:\mathbf0\to\mathbf1.
+\]
+Per a qualsevol conjunt \(A\), la composició
+\[
+\mathbf1\xrightarrow{i}\mathbf0\xrightarrow{\mathbf{0}_A}A
+\]
+proporciona una aplicació \(\mathbf1\to A\). A més, si \(x,y:\mathbf1\to A\), aleshores
+\[
+x\circ j=y\circ j
+\]
+per la inicialitat de \(\mathbf0\), i component per la dreta amb \(i\) obtenim \(x=y\). Per tant, de \(\mathbf0\cong\mathbf1\) se segueix que existeix exactament una aplicació \(\mathbf1\to A\) per a cada conjunt \(A\).
+
+També existeix almenys una aplicació entre dos conjunts qualssevol \(A\) i \(B\), obtinguda component
+\[
+A\xrightarrow{{!}_A}\mathbf1
+\xrightarrow{i}\mathbf0
+\xrightarrow{\mathbf{0}_B}B.
+\]
+Tanmateix, sense cap axioma addicional no se'n dedueix que totes les aplicacions paral·leles \(A\to B\) siguin iguals. Aquesta conclusió requerirà l'axioma de separació global que introduirem a la secció següent.
+\end{observacio}
+
+\section{Lectura clàssica mitjançant elements globals}\label{sec:lectura-classica}
+
+Observeu que el desenvolupament fet fins ara és enterament estructural, en el
+sentit de l'observació~\ref{obs:propietats-estructurals-universals}:
+només hi intervenen aplicacions, composicions, identitats,
+isomorfismes i propietats universals.
+
+Ara introduirem una lectura addicional que permet recuperar part
+del llenguatge habitual de la teoria clàssica de conjunts.
+Aquesta lectura no substituirà els elements generalitzats en el
+desenvolupament estructural.
+
+\begin{definicio}[Element global o punt]\index{Element global o punt}\label{def:element-global}
+Un \emph{element global}, o simplement un \emph{element} o un \emph{punt}, d'un conjunt \(A\) és una aplicació
+\[
+x:\mathbf1\to A.
+\]
+Formalment,
+\[
+\operatorname{Element}(x,A)
+\iff
+\Dom(x,\mathbf1)\land\Cod(x,A).
+\]
+\end{definicio}
+
+\begin{notacio}[Pertinença global i valor d'una aplicació]\label{not:elements-globals}
+La teoria no conté una relació primitiva de pertinença. En el metallenguatge escriurem
+\[
+x\in A
+\quad\Longleftrightarrow\quad
+x:\mathbf1\to A.
+\]
+Així, \(x\in A\) és el cas particular \(x\in_{\mathbf1}A\).
+
+Si \(f:A\to B\) i \(x\in A\), escriurem
+\[
+f(x)=f\circ x
+\]
+per al valor de \(f\) en \(x\). Llavors \(f(x)\in B\). Si, a més, \(g:B\to C\), l'associativitat dona la regla habitual
+\[
+(g\circ f)(x)=g(f(x)).
+\]
+\end{notacio}
+
+La primera igualtat es representa mitjançant el triangle següent:
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=1.2, every node/.style={font=\small}]
+    \node (One) at (0,0) {\(\mathbf{1}\)};
+    \node (A) at (2,1.5) {\(A\)};
+    \node (B) at (4,0) {\(B\)};
+    \draw[-{Stealth[scale=1.2]}, thick] (One) -- node[above left] {\(x\)} (A);
+    \draw[-{Stealth[scale=1.2]}, thick] (A) -- node[above right] {\(f\)} (B);
+    \draw[-{Stealth[scale=1.2]}, thick] (One) -- node[below] {\(f\circ x=f(x)\)} (B);
+  \end{tikzpicture}
+  \caption{El valor de \(f\) en \(x\) és una composició.}
+  \label{fig:avaluacio_triangle}
+\end{figure}
+
+La compatibilitat amb la composició queda reflectida en el diagrama següent:
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[scale=1.2, every node/.style={font=\small}]
+    \node (One) at (0,0) {\(\mathbf{1}\)};
+    \node (A) at (2,0) {\(A\)};
+    \node (B) at (4,0) {\(B\)};
+    \node (C) at (6,0) {\(C\)};
+    \draw[-{Stealth[scale=1.2]}, thick] (One) -- node[above] {\(x\)} (A);
+    \draw[-{Stealth[scale=1.2]}, thick] (A) -- node[above] {\(f\)} (B);
+    \draw[-{Stealth[scale=1.2]}, thick] (B) -- node[above] {\(g\)} (C);
+    \draw[-{Stealth[scale=1.2]}, thick] (One) to[bend left=35] node[above] {\((g\circ f)(x)\)} (C);
+    \draw[-{Stealth[scale=1.2]}, thick] (One) to[bend right=35] node[below] {\(g(f(x))\)} (C);
+  \end{tikzpicture}
+  \caption{La regla \((g\circ f)(x)=g(f(x))\) és una conseqüència de l'associativitat.}
+  \label{fig:associativitat_avaluacio_diagrama}
+\end{figure}
+
+\begin{definicio}[Aplicació constant]\index{Aplicació constant}\label{def:constant}
+Una aplicació \(f:A\to B\) és \emph{constant} si existeix un element global \(b:\mathbf1\to B\) tal que
+\[
+f=b\circ {!}_A.
+\]
+Formalment,
+\[
+\begin{aligned}
+\operatorname{Const}(f)
+\iff {}&
+\exists A\,\exists B\,\exists u\,\exists b\,
+\Bigl(
+    \Dom(f,A)\land \Cod(f,B)
+\\
+&\qquad\land \Dom(u,A)\land \Cod(u,\mathbf1)
+\\
+&\qquad\land \Dom(b,\mathbf1)\land \Cod(b,B)
+\\
+&\qquad\land \Com(u,b,f)
+\Bigr).
+\end{aligned}
+\]
+\end{definicio}
+
+\begin{figure}[H]
+  \centering
+\begin{tikzpicture}[scale=1.1, every node/.style={font=\small}]
+  \node (A) at (0,1.6) {\(A\)};
+  \node (B) at (3.2,1.6) {\(B\)};
+  \node (C) at (3.2,0) {\(C\)};
+  \draw[-{Stealth[scale=1.15]}, thick] (A) -- node[above] {\(f\)} (B);
+  \draw[-{Stealth[scale=1.15]}, thick] (C) -- node[right] {\(b\)} (B);
+  \draw[-{Stealth[scale=1.15]}, thick] (A) -- node[below left] {\({!}_A\)} (C);
+\end{tikzpicture}
+\caption{La factorització per \(\mathbf1\) de l'aplicació constant: \(f=b\circ {!}_A\).}
+  \label{fig:aplicacio-constant}
+\end{figure}
+
+\begin{observacio}[La convenció sobre les aplicacions constants]\label{obs:constants-domini-buit}
+La definició anterior incorpora explícitament un valor \(b\in B\). Per tant, una aplicació amb domini \(\mathbf0\) és constant en aquest sentit només si el codomini té almenys un element global que permeti la factorització per \(\mathbf1\). En particular, \(\id_{\mathbf0}:\mathbf0\to\mathbf0\) no és constant segons aquesta convenció, perquè no existeix cap aplicació \(\mathbf1\to\mathbf0\).
+
+Aquesta opció difereix de la convenció puntual de la teoria clàssica segons la qual tota funció amb domini buit és constant per vacuïtat. Adoptarem la definició estructural per factorització, i assenyalarem explícitament el cas buit quan sigui rellevant.
+\end{observacio}
+
+\begin{observacio}[Els punts de \(\mathbf1\) i de \(\mathbf0\)]\label{obs:punts-zero-u}
+El conjunt terminal \(\mathbf1\) té exactament un element global: \(\id_{\mathbf1}\). En efecte, tota aplicació \(\mathbf1\to\mathbf1\) coincideix amb aquesta identitat per la terminalitat.
+
+En canvi, la \hyperref[prop:no-fletxa-u-zero]{proposició~\ref*{prop:no-fletxa-u-zero}} afirma que \(\mathbf0\) no té cap element global. Tot i això, \(\mathbf0\) té un element generalitzat en l'estadi \(\mathbf0\), que és
+\[
+\id_{\mathbf0}:\mathbf0\to\mathbf0.
+\]
+Aquesta diferència mostra que els elements generalitzats contenen més informació estructural que els punts globals.
+\end{observacio}
+
+La \hyperref[prop:aplicacions-iguals]{proposició~\ref*{prop:aplicacions-iguals}} garanteix que la totalitat dels elements generalitzats separa sempre les aplicacions. No se segueix, en canvi, dels axiomes estructurals que els elements globals siguin suficients per distingir-les. Per recuperar el principi d'extensionalitat global d'aplicacions, habitual de la teoria clàssica de conjunts, introduïm l'axioma addicional següent.
+
+\begin{axioma}[Separació d'aplicacions per elements globals]\label{ax:separacio-globals}
+Dues aplicacions paral·leles que coincideixen sobre tots els elements globals són iguals. Formalment,
+\[
+\begin{aligned}
+\forall f\,\forall g\,\forall A\,\forall B\,\Bigl(&
+\Dom(f,A)\land\Cod(f,B)\land
+\Dom(g,A)\land\Cod(g,B)
+\\
+&{}\land
+\forall T\,\forall x\,\forall y\,\forall z\,
+\Bigl(
+\operatorname{Terminal}(T)\land\Dom(x,T)\land\Cod(x,A)
+\\
+&\qquad{}\land\Com(x,f,y)\land\Com(x,g,z)
+\Rightarrow y=z
+\Bigr)
+\Rightarrow f=g
+\Bigr).
+\end{aligned}
+\]
+Amb els convenis de notació, aquesta fórmula s'escriu
+\[
+\left[
+\forall x:\mathbf1\to A,\quad f\circ x=g\circ x
+\right]
+\Longrightarrow f=g.
+\]
+Equivalentment,
+\[
+f\ne g
+\quad\Longrightarrow\quad
+\exists x:\mathbf1\to A
+\text{ tal que }
+f\circ x\ne g\circ x.
+\]
+\end{axioma}
+
+Aquest axioma és addicional: no és necessari per definir els conjunts, els isomorfismes, els conjunts inicials i terminals ni les construccions universals del capítol següent. La seva funció és assegurar que els elements globals determinen les aplicacions, tal com ocorre en la teoria clàssica de conjunts. En la terminologia de Lawvere, l'axioma diu que \(\mathbf1\) és un \emph{separador} i que la teoria és \emph{ben apuntada}\index{Ben apuntat}\index{Separador}: els punts globals separen les aplicacions. És un dels dos axiomes ---l'altre és l'elecció--- que distingeixen els conjunts constants de les altres estructures que satisfan la resta d'axiomes del llibre, com veurem al capítol~\ref{cap:models}.
+
+\begin{proposicio}[Extensionalitat global de les aplicacions]\label{prop:extensionalitat-global}
+Siguin \(f,g:A\to B\). Aleshores
+\[
+f=g
+\quad\Longleftrightarrow\quad
+\forall x:\mathbf1\to A,\quad f(x)=g(x).
+\]
+\end{proposicio}
+
+\begin{prova}
+Si \(f=g\), la igualtat dels valors se segueix per substitució. La implicació recíproca és exactament l'\hyperref[ax:separacio-globals]{axioma de separació d'aplicacions per elements globals}.
+\end{prova}
+
+\begin{observacio}[Separació global i no-degeneració]
+\label{obs:separacio-no-degeneracio}
+
+L'axioma de no-degeneració i l'axioma de separació global tenen
+funcions diferents.
+
+L'axioma de no-degeneració afirma directament que
+\[
+\mathbf0\ncong\mathbf1.
+\]
+Per tant, exclou que el conjunt inicial i el conjunt terminal
+representin la mateixa estructura.
+
+En canvi, l'axioma de separació global afirma que les aplicacions
+amb domini \(\mathbf1\) són suficients per distingir dues
+aplicacions paral·leles. Si \(f,g:A\to B\) i
+\[
+f\circ x=g\circ x
+\]
+per a tot \(x:\mathbf1\to A\), aleshores \(f=g\).
+
+La separació global no substitueix la no-degeneració. En efecte,
+suposem que
+\[
+\mathbf0\cong\mathbf1.
+\]
+L'\hyperref[obs:zero-u-sense-separacio]
+{observació~\ref*{obs:zero-u-sense-separacio}} mostra que, en
+aquest cas, per a cada conjunt \(A\) existiria exactament una
+aplicació
+\[
+x_A:\mathbf1\to A.
+\]
+També existiria almenys una aplicació entre cada parell de
+conjunts \(A\) i \(B\), obtinguda mitjançant la composició
+\[
+A\xrightarrow{{!}_A}\mathbf1
+ \longrightarrow\mathbf0
+ \xrightarrow{\mathbf{0}_B}B.
+\]
+
+Sense la separació global, d'això no se segueix que dues
+aplicacions paral·leles \(f,g:A\to B\) hagin de ser iguals.
+
+Si hi afegim la separació global, però, totes dues aplicacions
+coincideixen sobre l'únic punt \(x_A\), perquè
+\[
+f\circ x_A
+\quad\text{i}\quad
+g\circ x_A
+\]
+són aplicacions \(\mathbf1\to B\), i només n'hi ha una. Per
+separació global, \(f=g\).
+
+Per tant, si s'acceptessin simultàniament
+\(\mathbf0\cong\mathbf1\) i la separació global, entre cada parell
+de conjunts existiria exactament una aplicació. Aquest és el
+col·lapse estructural que l'axioma de no-degeneració exclou.
+\end{observacio}
+
+\begin{observacio}[El domini d'individus i la qüestió de mida]\label{obs:mida-univers}
+Com en la teoria estructural de conjunts de Lawvere, la nostra teoria es defineix pels seus axiomes i no per referència a un domini de «tots els conjunts»: els conjunts són certes aplicacions, i la seva totalitat no és, ella mateixa, un objecte de la teoria. La qüestió de mida no es planteja, doncs, dins del sistema; apareix només quan volem \emph{interpretar-lo} en un model conjuntista, com farem tot seguit amb la interpretació clàssica.
+
+En aquesta interpretació, els individus són les funcions entre conjunts, i aquí sí que cal una precaució: la col·lecció de totes les funcions entre tots els conjunts no és, en la teoria clàssica \textsf{ZFC}, un conjunt, sinó una totalitat massa gran per ser-ho. Per disposar d'un domini que sigui un conjunt honest ---i, per tant, d'una estructura de primer ordre legítima--- adoptem a la metateoria un únic axioma addicional, a la manera de Mac Lane~\cite{maclane-moerdijk,shulman-sets}: existeix un \emph{univers} \(\mathcal U\), un conjunt tancat per les operacions conjuntistes usuals i que conté un conjunt infinit. Els seus elements s'anomenen \emph{conjunts petits}, i la interpretació pren com a individus les funcions entre conjunts petits, que formen un subconjunt de \(\mathcal U\). L'existència d'un tal univers equival a la d'un cardinal inaccessible i no se segueix de \textsf{ZFC} sol; és un supòsit feble i estàndard, i n'hi ha prou amb un de sol per a tot el desenvolupament.
+
+Podríem, alternativament, interpretar la teoria en una metateoria amb classes pròpies ---\textsf{NBG} o \textsf{ZFC} amb classes--- i prendre com a domini la classe de totes les funcions. Aquesta via és consistent, però importa la distinció conjunt/classe, basada en la pertinença, que el punt de vista estructural precisament evita: la noció de «classe pròpia» no té cap correlat intern en una teoria on els conjunts són identitats i no col·leccions. Preferim, doncs, la relativització a un univers, que expressa la mida dins de l'ontologia de conjunts, sense recórrer a cap noció primitiva de classe.
+
+Convé subratllar que l'univers \(\mathcal U\) viu a la metateoria, no al llenguatge: dins la teoria segueix havent-hi només aplicacions i els predicats \(\Dom\), \(\Cod\) i \(\Com\), i no s'hi afegeix cap primitiva nova. L'univers és un artefacte del \emph{model}, no un objecte de la teoria. La contrapartida \emph{interna} de la mida ---la diferència entre les aplicacions entre dos conjunts fixats, que sí que formen un objecte, i la totalitat de les aplicacions, que no en forma cap--- apareixerà més endavant amb els \emph{exponencials}: l'objecte \(B^A\) de les aplicacions de \(A\) a \(B\) existeix per a cada parell de conjunts, mentre que no hi ha cap objecte de «totes les aplicacions». Aquesta serà la manifestació, dins la teoria, de la mateixa distinció que aquí expressem a la metateoria.
+\end{observacio}
+
+\begin{observacio}[Interpretació clàssica del conjunt terminal]\label{obs:model-classic-terminal}
+Considerem la interpretació clàssica en què els individus són les funcions entre conjunts petits, en el sentit precisat a l'observació~\ref{obs:mida-univers}. Si \(f:S\to T\) és una funció clàssica, el seu domini i el seu codomini en la nostra teoria són les funcions identitat
+\[
+\id_S:S\to S,
+\qquad
+\id_T:T\to T,
+\]
+i \(\Com(f,g,h)\) expressa que \(h=g\circ f\) en el sentit habitual. Per tant, els conjunts de la nostra teoria es realitzen com les funcions identitat dels conjunts clàssics. Quan no hi hagi risc de confusió, identificarem metalingüísticament \(\id_S\) amb el conjunt clàssic subjacent \(S\).
+
+Sota aquesta interpretació, els conjunts terminals són exactament les identitats dels conjunts unitaris. En efecte, si \(S=\{*\}\), per a qualsevol conjunt \(A\) existeix una única funció \(A\to S\). Recíprocament, si \(\id_T\) és terminal, hi ha una única funció \(\{*\}\to T\); com que aquestes funcions es corresponen amb els elements de \(T\), el conjunt \(T\) té exactament un element.
+
+Fixat un conjunt unitari \(S=\{*\}\), per a qualsevol conjunt clàssic \(A\) hi ha una bijecció entre les funcions
+\[
+x:S\to A
+\]
+i els elements de \(A\): la funció \(x\) determina \(x(*)\), i cada \(a\in A\) determina l'única funció \(x_a:S\to A\) tal que \(x_a(*)=a\). Per això, una aplicació \(x:\mathbf1\to A\) representa, en la interpretació clàssica, un element del conjunt subjacent a \(A\).
+
+Aquesta correspondència és externa. Els individus de la teoria continuen essent aplicacions, i \(\mathbf1\) és formalment una aplicació identitat. L'escriptura
+\[
+\mathbf1\in\mathbf1
+\]
+pertany a la notació metalingüística introduïda en aquest capítol: afirma que \(\id_{\mathbf1}:\mathbf1\to\mathbf1\) és l'únic element global de \(\mathbf1\); no introdueix una relació interna de pertinença.
+
+Aquesta interpretació recupera la imatge ingènua d'un conjunt com una col·lecció, o un \enquote{sac}, de punts. Però és només una imatge externa. Dins la teoria, un conjunt es defineix com una aplicació identitat \(A:A\to A\), i els seus punts globals són aplicacions amb domini \(\mathbf1\) i codomini \(A\). El desenvolupament estructural treballarà també amb els elements generalitzats \(X\to A\), per a qualsevol estadi \(X\). L'axioma de separació global permet recuperar una altra característica de la teoria clàssica: una aplicació queda determinada pels valors que pren sobre tots els punts globals del seu domini.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item El llenguatge té una sola mena d'individus, les aplicacions, i tres predicats primitius, \(\Dom\), \(\Cod\) i \(\Com\). Tota la notació habitual (\(f\colon A\to B\), \(g\circ f\), \(\id_A\), els diagrames) és una abreviació eliminable.
+  \item Els cinc axiomes estructurals regulen el domini, el codomini i la composició; d'ells es dedueixen l'estabilitat del domini i del codomini i la unicitat de la composició.
+  \item Un conjunt és una aplicació que és el seu propi domini i codomini, és a dir, una identitat. Els conjunts no es construeixen a partir d'elements: els elements, globals o generalitzats, són aplicacions cap al conjunt.
+  \item Dues aplicacions paral·leles són iguals si i només si coincideixen sobre tots els elements generalitzats del domini; que n'hi hagi prou amb els elements globals és un axioma a part, la separació global, que fa la teoria ben apuntada.
+  \item Un isomorfisme és una aplicació amb inversa, que és única. La isomorfia és la igualtat estructural: les propietats que estudiem són invariants per isomorfisme.
+  \item Les propietats universals ---la terminalitat és la primera--- caracteritzen un conjunt per les aplicacions que hi arriben o que en surten, i el determinen llevat d'un únic isomorfisme.
+  \item El principi de dualitat intercanvia domini i codomini i inverteix la composició; val per als axiomes estructurals i per als d'existència del terminal i de l'inicial, però no per a la separació global.
+  \item Els axiomes de no-degeneració i de separació global tenen funcions diferents: el primer exclou \(\mathbf0\cong\mathbf1\); el segon diu que els punts globals determinen les aplicacions. Junts, exclouen el col·lapse en què entre cada parell de conjunts hi hauria una sola aplicació.
+\end{enumerate}
+\apartat{Errors típics} Pensar que \(\id_A\) és una aplicació diferent del conjunt \(A\) (són el mateix individu); confondre \enquote{\(A\) és un conjunt} amb \enquote{\(A\) té elements globals} (el conjunt \(\mathbf0\) no en té cap i és un conjunt); creure que la unicitat de la identitat vol dir que només hi ha una aplicació \(A\to A\); oblidar que \(g\circ f\) només està definida quan \(\cod(f)=\dom(g)\); llegir \(x\in A\) com una relació primitiva, quan és l'abreviació de \(x\colon\mathbf1\to A\); confondre el criteri d'igualtat per elements generalitzats, que és un teorema, amb la separació per elements globals, que és un axioma; pensar que una propietat universal determina un conjunt \emph{únic}, quan el determina llevat d'un únic isomorfisme; i aplicar el principi de dualitat a un resultat que usa la separació global.
+\apartat{Lectura recomanada} \cite[cap.~1]{lawvere-rosebrugh} per a la presentació original dels conjunts abstractes, les aplicacions, la composició i els elements generalitzats, de la qual aquest capítol és una versió formalitzada; \cite[sessions~1--5]{lawvere-schanuel} per a una introducció molt elemental a la composició, les identitats, els isomorfismes i les seccions; \cite[pàg.~10--11]{bell2006} per a l'explicació filosòfica de per què els elements d'un conjunt abstracte han de ser aplicacions \(\mathbf1\to X\) i de \(\mathbf1\) com a separador; \cite{lawvere-etcs-reprint} per als axiomes originals d'ETCS, amb la introducció de McLarty; i, com a contrast, \cite[§§1--3]{halmos} per al punt de partida de la teoria clàssica, on els primers axiomes parlen d'elements i de pertinença.
+\end{resumcap}
+

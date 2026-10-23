@@ -1,0 +1,131 @@
+\chapter{Alephs, cofinalitat i continu}\label{test:cap19}
+
+Aquest test correspon al capítol~19 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u19}{b,c,a,b,c,b,a,c,b,c,b,c}
+
+\begin{enumerate}
+
+\pregunta L'esquema de reunió de famílies (SR)\ldots
+\begin{itemize}
+\opcio{a}{és una sentència, com l'axioma d'elecció.}
+\opcio{b}{és un \emph{esquema} (una instància per fórmula), no una sentència; no és un axioma més.}
+\opcio{c}{és una forma d'elecció.}
+\opcio{d}{ja és un dels axiomes de Nivell~I del llibre.}
+\end{itemize}
+\feedback
+\justificacio{SR és una família d'enunciats, un per a cada fórmula funcional a isomorfisme únic, com el reemplaçament de ZFC. Es presenta com a principi a part i és opcional: el Nivell~I no l'inclou.}
+
+\pregunta \(\aleph_0\) és\ldots
+\begin{itemize}
+\opcio{a}{el continu.}
+\opcio{b}{un cardinal successor.}
+\opcio{c}{\(\abs{\N}\), el menor cardinal infinit.}
+\opcio{d}{un tipus ordinal límit qualsevol.}
+\end{itemize}
+\feedback
+\justificacio{\(\aleph_0=\abs{\N}\) és el menor cardinal infinit: tot infinit de Dedekind conté una còpia de \(\N\), i amb l'elecció numerable tot infinit ho és. No és successor ni el continu.}
+
+\pregunta El cardinal successor \(\kappa^+\)\ldots
+\begin{itemize}
+\opcio{a}{existeix sense l'esquema de reunió, acotat per Hartogs.}
+\opcio{b}{requereix l'esquema de reunió.}
+\opcio{c}{no existeix sempre.}
+\opcio{d}{és igual a \(2^\kappa\).}
+\end{itemize}
+\feedback
+\justificacio{\(\kappa^+=\abs{\Hart(K)}\): el menor bon ordre que no cap dins \(K\) és el menor cardinal més gran. Cap família no acotada, cap SR.}
+
+\pregunta Què requereix l'esquema de reunió, i no només un pas?
+\begin{itemize}
+\opcio{a}{Calcular \(\aleph_0+\aleph_0\).}
+\opcio{b}{Reunir, per a un ordinal fix \(\lambda\), el tram \((\aleph_\beta)_{\beta<\lambda}\) en una família interna indexada per \(\lambda\), especialment als passos límit.}
+\opcio{c}{Obtenir un sol \(\kappa^+\).}
+\opcio{d}{Comparar dos cardinals.}
+\end{itemize}
+\feedback
+\justificacio{Cada pas és acotat; el que demana SR és reunir un tram fins a un ordinal fix en una família indexada per un conjunt, i prendre suprems als límits. La família de \emph{tots} els alephs no existeix com a objecte, ni amb SR: els tipus ordinals no formen cap conjunt d'índexs.}
+
+\pregunta Sota elecció, tot cardinal infinit\ldots
+\begin{itemize}
+\opcio{a}{és \(\aleph_0\).}
+\opcio{b}{és el continu.}
+\opcio{c}{és un aleph \(\aleph_\alpha\) per a un únic \(\alpha\).}
+\opcio{d}{no té cardinal inicial.}
+\end{itemize}
+\feedback
+\justificacio{Amb el cardinal inicial i la família dels alephs fins a \(\kappa+1\), el mínim \(\alpha\) amb \(\aleph_\alpha\ge\kappa\) compleix \(\aleph_\alpha=\kappa\); la unicitat és la monotonia estricta.}
+
+\pregunta Un cardinal és \emph{regular} quan\ldots
+\begin{itemize}
+\opcio{a}{és un cardinal límit.}
+\opcio{b}{\(\operatorname{cf}(\kappa)=\kappa\): no s'arriba al seu final amb menys de \(\kappa\) passos.}
+\opcio{c}{és singular.}
+\opcio{d}{és igual a \(\aleph_0\).}
+\end{itemize}
+\feedback
+\justificacio{Regular vol dir que tota part cofinal té la mateixa mida; els límits poden ser regulars o singulars.}
+
+\pregunta \(\aleph_\omega\)\ldots
+\begin{itemize}
+\opcio{a}{és singular: \(\operatorname{cf}(\aleph_\omega)=\aleph_0<\aleph_\omega\).}
+\opcio{b}{és regular.}
+\opcio{c}{és un cardinal successor.}
+\opcio{d}{és numerable.}
+\end{itemize}
+\feedback
+\justificacio{La successió \((\aleph_n)_{n<\omega}\) és cofinal en \(\aleph_\omega\) i té longitud \(\omega\): \(\operatorname{cf}(\aleph_\omega)=\aleph_0\).}
+
+\pregunta Els nombres beth es defineixen amb \(\beth_{\alpha+1}=\ldots\)
+\begin{itemize}
+\opcio{a}{\((\beth_\alpha)^+\).}
+\opcio{b}{\(\beth_\alpha+1\).}
+\opcio{c}{\(2^{\beth_\alpha}\), amb \(\beth_0=\aleph_0\) i suprem als límits.}
+\opcio{d}{\(\beth_\alpha\cdot\aleph_0\).}
+\end{itemize}
+\feedback
+\justificacio{Els beths pugen pel conjunt de parts; els alephs, pel successor. HCG diu que les dues jerarquies coincideixen.}
+
+\pregunta El continu és\ldots
+\begin{itemize}
+\opcio{a}{\(\aleph_1\) per definició.}
+\opcio{b}{\(\mathfrak c=\abs{P(\N)}=2^{\aleph_0}=\beth_1\).}
+\opcio{c}{\(\aleph_0\).}
+\opcio{d}{un cardinal finit.}
+\end{itemize}
+\feedback
+\justificacio{\(\mathfrak c\) és la mida de \(P(\N)\), de Nivell~I; que sigui \(\aleph_1\) és la hipòtesi del continu, no una definició.}
+
+\pregunta La hipòtesi del continu \(2^{\aleph_0}=\aleph_1\)\ldots
+\begin{itemize}
+\opcio{a}{és un teorema demostrable amb un argument diagonal.}
+\opcio{b}{és falsa.}
+\opcio{c}{és independent de ZFC si ZFC és consistent (i, per bi-interpretabilitat, d'aquesta teoria amb SR); la teoria la formula però no la resol.}
+\opcio{d}{és el teorema de Cantor.}
+\end{itemize}
+\feedback
+\justificacio{Gödel i Cohen mostren la independència relativa a la consistència de ZFC; com que ETCS amb SR i ZFC són bi-interpretables, el resultat es transporta. No és un teorema del llibre sinó un metateorema citat.}
+
+\pregunta Per què l'esquema SR exigeix que cada \(X_i\) estigui determinat llevat d'un isomorfisme \emph{únic}?
+\begin{itemize}
+\opcio{a}{Perquè altrament l'esquema seria l'elecció.}
+\opcio{b}{Perquè, sense unicitat, no hi ha cap manera canònica d'enganxar les fibres en una sola família; amb bons ordres, la rigidesa la garanteix.}
+\opcio{c}{És indiferent.}
+\opcio{d}{Perquè els conjunts infinits no tenen automorfismes.}
+\end{itemize}
+\feedback
+\justificacio{Un conjunt infinit determinat només llevat d'isomorfisme té molts automorfismes, i triar-ne la identificació seria una forma d'elecció. Les instàncies del llibre porten sempre bons ordres, l'únic automorfisme dels quals és la identitat.}
+
+\pregunta La regularitat dels cardinals successors usa\ldots
+\begin{itemize}
+\opcio{a}{només els axiomes de Nivell~I.}
+\opcio{b}{SR.}
+\opcio{c}{l'elecció i el teorema de Hessenberg, \(\kappa\cdot\kappa=\kappa\), que el llibre cita sense demostrar.}
+\opcio{d}{la hipòtesi del continu.}
+\end{itemize}
+\feedback
+\justificacio{Si una part cofinal tingués mida \(\le\aleph_\alpha\), \(\aleph_{\alpha+1}\) seria reunió de \(\le\aleph_\alpha\) conjunts de mida \(\le\aleph_\alpha\), i \(\aleph_\alpha\cdot\aleph_\alpha=\aleph_\alpha\). La reunió tria injeccions (elecció) i usa Hessenberg, que és un resultat clàssic citat.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

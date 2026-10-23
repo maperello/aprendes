@@ -1,0 +1,131 @@
+\chapter{Exponencials}\label{test:cap6}
+
+Aquest test correspon al capítol~6 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u6}{b,c,b,a,c,b,c,a,b,c,b,b}
+
+\begin{enumerate}
+
+\pregunta Un exponencial \(B^A\) ve donat per un conjunt \(E\) i una aplicació d'avaluació \(\operatorname{ev}\colon E\times A\to B\) tal que\ldots
+\begin{itemize}
+\opcio{a}{\(\operatorname{ev}\) és un isomorfisme.}
+\opcio{b}{tota \(h\colon X\times A\to B\) té una única transposada \(\widehat h\colon X\to E\) amb \(\operatorname{ev}\circ(\widehat h\times\id_A)=h\).}
+\opcio{c}{\(E\) és el producte \(A\times B\).}
+\opcio{d}{\(\operatorname{ev}\) és un epimorfisme regular.}
+\end{itemize}
+\feedback
+\justificacio{És la propietat universal: l'avaluació és universal entre les aplicacions \(E'\times A\to B\). L'avaluació no és iso ni epi regular en general, i \(E\) no és el producte.}
+
+\pregunta La \emph{transposada} (o currificació) de \(h\colon X\times A\to B\) és\ldots
+\begin{itemize}
+\opcio{a}{una aplicació \(B\to X\times A\).}
+\opcio{b}{una aplicació \(X\times A\to E\).}
+\opcio{c}{l'única aplicació \(\widehat h\colon X\to B^A\) que descurrifica a \(h\).}
+\opcio{d}{sempre un isomorfisme.}
+\end{itemize}
+\feedback
+\justificacio{La transposada és l'única \(\widehat h\colon X\to B^A\) tal que \(\operatorname{ev}\circ(\widehat h\times\id_A)=h\): fixa la primera variable i deixa una aplicació de la segona. Només és iso en casos especials.}
+
+\pregunta Els punts globals \(\mathbf1\to B^A\) es corresponen biunívocament amb\ldots
+\begin{itemize}
+\opcio{a}{els punts de \(A\).}
+\opcio{b}{les aplicacions \(A\to B\).}
+\opcio{c}{les parts de \(B\).}
+\opcio{d}{els punts de \(B\).}
+\end{itemize}
+\feedback
+\justificacio{És el cas \(X=\mathbf1\) de la propietat universal, amb \(\mathbf1\times A\cong A\): les aplicacions \(\mathbf1\times A\to B\) són les aplicacions \(A\to B\).}
+
+\pregunta L'exponencial és únic\ldots
+\begin{itemize}
+\opcio{a}{llevat d'un únic isomorfisme compatible amb l'avaluació.}
+\opcio{b}{de manera absoluta, com a individu de la teoria.}
+\opcio{c}{només quan \(A\) és terminal.}
+\opcio{d}{només amb l'axioma d'elecció.}
+\end{itemize}
+\feedback
+\justificacio{Com tota construcció universal: dos exponencials estan lligats per un únic isomorfisme compatible amb les avaluacions. No hi ha unicitat absoluta, i l'elecció no hi intervé.}
+
+\pregunta Quin dels següents isomorfismes és correcte?
+\begin{itemize}
+\opcio{a}{\(A^{\mathbf1}\cong\mathbf1\).}
+\opcio{b}{\(A^{\mathbf0}\cong A\).}
+\opcio{c}{\(A^{\mathbf1}\cong A\).}
+\opcio{d}{\(\mathbf1^{A}\cong A\).}
+\end{itemize}
+\feedback
+\justificacio{Les aplicacions \(\mathbf1\to A\) són els punts de \(A\): \(A^{\mathbf1}\cong A\). Els altres són \(A^{\mathbf0}\cong\mathbf1\) i \(\mathbf1^A\cong\mathbf1\).}
+
+\pregunta El conjunt de parts \(P(A)\) es defineix com\ldots
+\begin{itemize}
+\opcio{a}{el producte \(A\times\mathbf2\).}
+\opcio{b}{l'exponencial \(\mathbf2^{A}\).}
+\opcio{c}{la suma \(A+\mathbf2\).}
+\opcio{d}{el parell nucli de \(A\).}
+\end{itemize}
+\feedback
+\justificacio{Els punts de \(\mathbf2^A\) són les aplicacions \(A\to\mathbf2\), és a dir, les característiques, que classifiquen les parts d'\(A\). Per això \(P(A):=\mathbf2^A\), sense cap axioma nou.}
+
+\pregunta L'exponencial d'una suma satisfà\ldots
+\begin{itemize}
+\opcio{a}{\(B^{A+C}\cong B^{A}+B^{C}\).}
+\opcio{b}{\(B^{A+C}\cong B^{A\times C}\).}
+\opcio{c}{\(B^{A+C}\cong B^{A}\times B^{C}\).}
+\opcio{d}{\(B^{A+C}\cong B^{A}\).}
+\end{itemize}
+\feedback
+\justificacio{Una aplicació sobre una suma és un parell d'aplicacions sobre els sumands: via la distributivitat, \(X\times(A+C)\cong X\times A+X\times C\), i transposant, \(B^{A+C}\cong B^A\times B^C\).}
+
+\pregunta La composició interna és una aplicació\ldots
+\begin{itemize}
+\opcio{a}{\(c\colon C^{B}\times B^{A}\to C^{A}\) que sobre punts envia \((g,f)\) a \(g\circ f\).}
+\opcio{b}{\(c\colon C^{A}\to C^{B}\times B^{A}\).}
+\opcio{c}{que només existeix si \(A=B=C\).}
+\opcio{d}{que coincideix amb l'avaluació.}
+\end{itemize}
+\feedback
+\justificacio{La composició interna és la transposada de l'avaluació iterada \((C^B\times B^A)\times A\to C^B\times B\to C\); sobre punts fa \((g,f)\mapsto g\circ f\), i és única per la separació global.}
+
+\pregunta Un element generalitzat \(X\to B^A\) es llegeix, en general, com\ldots
+\begin{itemize}
+\opcio{a}{un punt de \(B\).}
+\opcio{b}{una família d'aplicacions \(A\to B\) parametritzada per \(X\).}
+\opcio{c}{una sola aplicació \(A\to B\).}
+\opcio{d}{una part de \(A\).}
+\end{itemize}
+\feedback
+\justificacio{Un element generalitzat \(X\to B^A\) es transposa en \(X\times A\to B\): per a cada \(x\) de \(X\), una aplicació \(A\to B\). Només quan \(X=\mathbf1\) és una sola aplicació.}
+
+\pregunta L'existència d'exponencials per a tot parell de conjunts\ldots
+\begin{itemize}
+\opcio{a}{es dedueix dels axiomes anteriors.}
+\opcio{b}{només val per a conjunts finits.}
+\opcio{c}{es postula com un axioma nou.}
+\opcio{d}{és equivalent a l'axioma d'elecció.}
+\end{itemize}
+\feedback
+\justificacio{Els exponencials es postulen; en la formulació categòrica són, amb el classificador, l'axioma que fa de la teoria un topos. No es dedueixen dels axiomes anteriors ni tenen res a veure amb l'elecció.}
+
+\pregunta Quin axioma garanteix que la composició interna \(c\colon C^B\times B^A\to C^A\) és l'\emph{única} aplicació que sobre punts envia \((g,f)\) a \(g\circ f\)?
+\begin{itemize}
+\opcio{a}{L'axioma d'exponencials, per la unicitat de la transposada.}
+\opcio{b}{La separació global: les aplicacions queden determinades pels punts.}
+\opcio{c}{L'axioma d'elecció.}
+\opcio{d}{Cap: l'existència ja implica la unicitat.}
+\end{itemize}
+\feedback
+\justificacio{La transposada és única per a una aplicació \((C^B\times B^A)\times A\to C\) ja fixada; però la condició \enquote{sobre punts envia \((g,f)\) a \(g\circ f\)} només fixa els valors de \(c\) sobre punts globals, i és la separació global la que fa que això la determini.}
+
+\pregunta Quants punts globals té \(\mathbf2^{\mathbf2}\), i per què?
+\begin{itemize}
+\opcio{a}{Dos, perquè \(\mathbf2^{\mathbf2}\cong\mathbf2\).}
+\opcio{b}{Quatre, perquè \(\mathbf2^{\mathbf2}\cong\mathbf2^{\mathbf1+\mathbf1}\cong\mathbf2\times\mathbf2\), i \(\mathbf2\times\mathbf2\) té quatre punts.}
+\opcio{c}{Un, perquè és terminal.}
+\opcio{d}{Infinits.}
+\end{itemize}
+\feedback
+\justificacio{Són les quatre aplicacions \(\mathbf2\to\mathbf2\): les dues constants, la identitat i la negació. L'exponencial d'una suma i \(A^{\mathbf1}\cong A\) donen \(\mathbf2\times\mathbf2\), els punts del qual són les quatre injeccions \(\delta_{ab}\).}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

@@ -1,0 +1,49 @@
+\chapter{Alephs, cofinalitat i continu}\label{cap:exercicis-alephs}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:alephs} de la Part~\ref{part:teoria}), opcional i de Nivell~II, i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-alephs} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents. Recordeu de marcar, a cada resultat, si depèn de l'elecció, de l'esquema de reunió (principi~\ref{sr:esquema}), o de cap dels dos.
+
+\section{\texorpdfstring{\(\aleph_0\)}{aleph 0} i el cardinal successor}
+
+\begin{enumerate}
+  \item Demostreu que \(\kappa^+\) existeix per a tot \(\kappa\), acotat per Hartogs, sense l'esquema de reunió. (Model: secció~\ref{prac:aleph0-successor}; proposició~\ref{prop:cardinal-successor}.)
+
+  \item Expliqueu per què cada \(\kappa^+\) és de Nivell~I però la successió \((\aleph_n)_n\) demana l'esquema de reunió. (Model: observació~\ref{obs:successor-sense-sr}.)
+
+  \item Demostreu que \(\aleph_0\) és el menor cardinal infinit. \begin{indicacio}Tot conjunt infinit conté una còpia de \(\N\) (capítol~\ref{cap:infinitud}); tot enumerable infinit és equipotent a \(\N\) (corol·lari~\ref{cor:enumerable-infinit-N}).\end{indicacio}
+\end{enumerate}
+
+\section{La successió dels alephs}
+
+\begin{enumerate}[resume]
+  \item Sota l'esquema de reunió, demostreu que els alephs són estrictament creixents. (Model: secció~\ref{prac:alephs}; proposició~\ref{prop:alephs}.)
+
+  \item Sota elecció i l'esquema de reunió, demostreu que tot cardinal infinit és un aleph. (Model: proposició~\ref{prop:alephs}.)
+
+  \item Identifiqueu explícitament la instància de l'esquema de reunió que s'usa per definir, fixat un ordinal \(\lambda\), la família \((\aleph_\beta)_{\beta<\lambda}\) indexada pel conjunt \(\lambda\). \begin{indicacio}La fórmula \enquote{\(\beta\mapsto\) el cardinal inicial \(\aleph_\beta\)} és funcional i invariant per isomorfisme; la notació global \(\alpha\mapsto\aleph_\alpha\) és només una regla de classe. Vegeu la definició~\ref{def:alephs}.\end{indicacio}
+\end{enumerate}
+
+\section{Cofinalitat}
+
+\begin{enumerate}[resume]
+  \item Demostreu que \(\aleph_\omega\) és singular, amb \(\operatorname{cf}(\aleph_\omega)=\aleph_0\). (Model: secció~\ref{prac:cofinalitat}; proposició~\ref{prop:regular-exemples}.)
+
+  \item Demostreu que tot cardinal successor és regular. (Model: proposició~\ref{prop:regular-exemples}.)
+
+  \item Deduïu del teorema de König que \(\operatorname{cf}(2^{\aleph_0})>\aleph_0\): el continu no té cofinalitat numerable. \begin{indicacio}Si \(2^{\aleph_0}\) fos suprem d'una successió numerable de cardinals menors, König donaria una contradicció (observació~\ref{obs:cofinalitat-importa}).\end{indicacio}
+\end{enumerate}
+
+\section{Beths i el continu}
+
+\begin{enumerate}[resume]
+  \item Sota l'esquema de reunió, demostreu que \(\aleph_\alpha\le\beth_\alpha\) per a tot \(\alpha\). (Model: secció~\ref{prac:beths-continu}; proposició~\ref{prop:beths}.)
+
+  \item Enuncieu la hipòtesi del continu i la generalitzada, i expliqueu per què són qüestions independents. (Model: observacions~\ref{obs:hipotesi-continu} i~\ref{obs:hc-independencia}.)
+
+  \item \textbf{(Punt de reflexió.)} Expliqueu per què la teoria \enquote{formula HC amb precisió però no la resol}, i què significa exactament que HC sigui independent. \begin{indicacio}La teoria distingeix \(\aleph_1\) de \(\beth_1\); Cantor només dona \(\aleph_0<2^{\aleph_0}\); Gödel i Cohen mostren que cap dels dos costats no es dedueix dels axiomes (observació~\ref{obs:hc-independencia}).\end{indicacio}
+
+  \item Descriviu la instància de l'esquema SR que s'usa als límits de la construcció dels alephs: quin és el conjunt d'índexs, quina la fórmula, quina l'estructura, i per què l'isomorfisme entre dues realitzacions és únic. (Model: prova de la proposició~\ref{prop:alephs}.)
+
+  \item Deduïu de König que \(\operatorname{cf}(2^{\aleph_0})>\aleph_0\). \begin{indicacio}Si \(2^{\aleph_0}=\sum_n\abs{A_n}\) amb \(\abs{A_n}<2^{\aleph_0}\), compareu amb \(\prod_n2^{\aleph_0}=2^{\aleph_0\cdot\aleph_0}\).\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Per a cadascun dels resultats següents, digueu si és de Nivell~I, si usa l'elecció, SR, o un resultat citat: \(\kappa^+=\abs{\Hart(K)}\); la família \((\aleph_\beta)_{\beta<\lambda}\); tot cardinal infinit és un aleph; la regularitat dels successors; la formulació d'HC; la independència d'HC. \begin{indicacio}Nivell~I amb elecció; SR; SR i elecció; elecció i Hessenberg (citat); Nivell~I; metateorema citat, sota la hipòtesi de consistència de ZFC.\end{indicacio}
+\end{enumerate}

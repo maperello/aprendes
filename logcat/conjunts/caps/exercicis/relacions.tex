@@ -1,0 +1,61 @@
+\chapter{Relacions, quocients i elecció}\label{cap:exercicis-relacions}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:relacions} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-relacions} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Relacions, inversa i diagonal}
+
+\begin{enumerate}
+  \item Sigui \(r\colon R\rightarrowtail A\times B\) una relació. Demostreu que \(y\mathrel{\operatorname{Inv}(r)_X}x\) si i només si \(x\mathrel{r_X}y\), i deduïu que \(\operatorname{Inv}(\operatorname{Inv}(r))\equiv_{A\times B}r\). (Model: secció~\ref{prac:relacions}.)
+
+  \item Demostreu que la diagonal \(\Delta_A\) és un monomorfisme i que \(x\mathrel{(\Delta_A)_X}x'\) equival a \(x=x'\). (Model: proposició~\ref{prop:diagonal-mono}.)
+
+  \item Demostreu que una relació \(r\) sobre \(A\) és \emph{simètrica} en el sentit generalitzat (\(x\mathrel{r_X}y\Rightarrow y\mathrel{r_X}x\) a tots els estadis) si i només si \(\operatorname{Inv}(r)\equiv_{A\times A}r\), i que, amb la separació global, n'hi ha prou amb els punts globals. \begin{indicacio}Model: secció~\ref{prac:relacions}. Per a la segona part, dues parts amb els mateixos punts globals són equivalents pel lema del buit.\end{indicacio}
+
+  \item Demostreu que la diagonal és simètrica: \(\operatorname{Inv}(\Delta_A)\equiv_{A\times A}\Delta_A\). \begin{indicacio}\(\sigma\circ\langle\id_A,\id_A\rangle=\langle\id_A,\id_A\rangle\).\end{indicacio}
+\end{enumerate}
+
+\section{El parell nucli}
+
+\begin{enumerate}[resume]
+  \item Demostreu que el parell nucli \(\langle k_1,k_2\rangle\colon A\times_B A\to A\times A\) de qualsevol \(f\colon A\to B\) és un monomorfisme, i observeu que la prova no usa cap propietat de \(f\). (Model: secció~\ref{prac:parell-nucli}; proposició~\ref{prop:kernel-mono}.)
+
+  \item Construïu les aplicacions estructurals que testimonien la reflexivitat i la simetria del parell nucli \(\operatorname{Nuc}(f)\). \begin{indicacio}Per a la reflexivitat, factoritzeu \((\id_A,\id_A)\) pel pullback; per a la simetria, \((k_2,k_1)\).\end{indicacio}
+
+  \item Completeu la prova que \(\operatorname{Nuc}(f)\) és una relació d'equivalència construint l'aplicació de transitivitat sobre \(K\times_A K\). \begin{indicacio}Seguiu la proposició~\ref{prop:kernel-equivalencia}: comproveu \(f\circ(k_1\circ p)=f\circ(k_2\circ q)\) i factoritzeu pel pullback \(K\).\end{indicacio}
+\end{enumerate}
+
+\section{Quocients i epimorfismes regulars}
+
+\begin{enumerate}[resume]
+  \item Demostreu que tota relació sobre \(A\) té quocient, únic llevat d'un únic isomorfisme compatible, i que l'aplicació quocient és un epimorfisme. (Model: secció~\ref{prac:quocients}; proposició~\ref{prop:quocient-existeix}.)
+
+  \item Demostreu que tot quocient d'una relació d'equivalència és un epimorfisme regular. (Model: proposició~\ref{prop:quocient-regular}.)
+
+  \item Doneu un exemple, en el model clàssic, d'un epimorfisme, i comproveu que és el quocient pel seu propi parell nucli. \begin{indicacio}Preneu una aplicació exhaustiva entre conjunts finits; el parell nucli identifica els punts amb la mateixa imatge.\end{indicacio}
+\end{enumerate}
+
+\section{Efectivitat i correspondència}
+
+\begin{enumerate}[resume]
+  \item Demostreu que el parell nucli és invariant, com a part de \(A\times A\), sota postcomposició del codomini amb un isomorfisme. (Model: secció~\ref{prac:efectivitat}; lema~\ref{lema:nucli-invariant}.)
+
+  \item Usant l'axioma d'efectivitat, demostreu que per a tota relació d'equivalència \(r\) i tot quocient \(q\) seu es té \(\operatorname{Nuc}(q)\equiv_{A\times A}r\). (Camí (1)$\to$(2) del teorema~\ref{teo:correspondencia}.)
+
+  \item Demostreu l'altra direcció de la correspondència: per a tot epimorfisme regular \(q\colon A\twoheadrightarrow Q\), el quocient del seu parell nucli és isomorf a \(Q\) de manera compatible amb \(q\). \begin{indicacio}Factoritzeu \(q\) per \(q'\colon A\to A/\operatorname{Nuc}(q)\) i demostreu que la mediadora \(\bar q\) és un isomorfisme, com al teorema~\ref{teo:correspondencia}.\end{indicacio}
+\end{enumerate}
+
+\section{Particions, escindits i elecció}
+
+\begin{enumerate}[resume]
+  \item Demostreu que tot epimorfisme escindit és el coequalitzador del seu parell nucli, i per tant és regular. (Model: secció~\ref{prac:particions}; proposició~\ref{prop:escindit-regular}.)
+
+  \item Demostreu que, amb l'axioma d'elecció, tot epimorfisme és regular, i deduïu que la correspondència s'estén a tots els epimorfismes amb domini \(A\). (Model: secció~\ref{prac:eleccio}; proposició~\ref{prop:epi-regular-eleccio} i corol·lari~\ref{cor:correspondencia-tots-epis}.)
+
+  \item Demostreu que, amb l'axioma d'elecció, tot epimorfisme \(q\colon A\twoheadrightarrow B\) és exhaustiu sobre elements generalitzats. Expliqueu per què l'exhaustivitat sobre els punts globals, en canvi, no necessita l'elecció. \begin{indicacio}Preneu una secció \(s\) i comproveu \(q\circ(s\circ y)=y\); vegeu les proposicions~\ref{prop:epi-exhaustiu-generalitzat} i~\ref{prop:epi-exhaustiu-global}.\end{indicacio}
+
+  \item Demostreu que un epimorfisme és escindit si i només si és exhaustiu sobre elements generalitzats, i doneu un exemple clàssic (sense usar l'elecció) d'un epimorfisme escindit que no és isomorfisme. \begin{indicacio}Proposició~\ref{prop:exhaustiva-generalitzada-escindit} del capítol~\ref{cap:parts}; una projecció \(A\times B\to A\) amb \(B\) no buit té secció \(\langle\id_A,b\circ{!}_A\rangle\).\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Digueu, per a cadascun dels resultats següents, si usa l'efectivitat, l'elecció, tots dos o cap: el parell nucli és una relació d'equivalència; tot quocient és un epimorfisme regular; el parell nucli del quocient recupera la relació; tot epimorfisme escindit és regular; tot epimorfisme és regular; tot epimorfisme és exhaustiu sobre punts. \begin{indicacio}Només el tercer usa l'efectivitat i només el cinquè l'elecció; el primer, el segon i el quart no usen cap dels dos, i el sisè tampoc (capítol~\ref{cap:valors}).\end{indicacio}
+
+  \item Demostreu que, amb l'axioma d'elecció, tot quocient \(q\colon A\twoheadrightarrow A/r\) admet una secció, i interpreteu-la com un sistema de representants de les classes. (Model: proposició~\ref{prop:representants}.)
+\end{enumerate}

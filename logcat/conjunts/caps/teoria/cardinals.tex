@@ -1,0 +1,369 @@
+\chapter{Cardinals i aritmètica cardinal}\label{cap:cardinals}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:cantor}: comparació i equipotència, Schröder--Bernstein, Cantor i la diagonal. Del capítol~\ref{cap:zorn}: Hartogs, el teorema del bon ordre i les equivalències de l'elecció. Del capítol~\ref{cap:families}: sumes i productes de famílies. Dels capítols~\ref{cap:valors}, \ref{cap:parts} i~\ref{cap:exponencials}: les construccions i els isomorfismes canònics que transporten les lleis.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item tractar el cardinal \(\abs{A}\) com a classe d'equipotència, sense representant, i definir-ne la suma, el producte i l'exponenciació comprovant-ne la invariància;
+  \item demostrar les lleis de l'aritmètica cardinal com a isomorfismes canònics, i la monotonia en l'exponent només per a base no nul·la;
+  \item demostrar Cantor en forma cardinal i distingir \(2^{\aleph_0}\) de \(2^{\omega}\);
+  \item demostrar que la comparabilitat total dels cardinals equival a l'elecció;
+  \item construir el cardinal inicial d'un conjunt dins \(\Hart(A)\) i explicar la prudència amb \enquote{el cardinal és un conjunt};
+  \item demostrar el teorema de König, identificant cada ús de l'elecció, i deduir-ne Cantor.
+\end{itemize}
+\end{objectius}
+
+L'aritmètica ordinal recordava l'ordre; la cardinal l'oblida. Un
+\emph{cardinal} és el que queda d'un conjunt quan se n'oblida qualsevol
+ordre i es reté només la \emph{mida} ---la classe d'equipotència. Aquest
+capítol desenvolupa l'aritmètica de les mides amb la mateixa disciplina de
+sempre: les operacions \(+\), \(\cdot\) i l'exponenciació es defineixen
+\emph{sobre representants} ---suma disjunta, producte i exponencial de
+conjunts--- i es comprova que no depenen del representant, és a dir que estan
+ben definides sobre classes d'equipotència. En aquest primer nivell no cal
+cap \enquote{nombre cardinal} com a objecte: n'hi ha prou amb la relació
+d'equipotència i la comparació per monomorfismes del capítol~\ref{cap:cantor}.
+El teorema de Cantor hi reapareix com la desigualtat fonamental
+\(\abs{A}<2^{\abs{A}}\). Després, amb l'elecció, veurem que dos conjunts
+qualssevol són comparables, de manera que els cardinals queden totalment
+ordenats; i que cada conjunt té un \emph{cardinal inicial} ---el menor tipus
+d'ordre de la seva mida---, amb la prudència que aquest és un tipus, no un
+conjunt escollit. Tanquem amb el teorema de König, un refinament diagonal de
+Cantor per a famílies.
+
+\section{Cardinalitat sense nombres cardinals}\label{sec:cardinalitat-relacional}
+
+Recordem del capítol~\ref{cap:cantor} la comparació de conjunts: \(A\preceq B\)
+si hi ha un monomorfisme \(A\hookrightarrow B\), \(A\approx B\) si hi ha un
+isomorfisme (equipotència, definició~\ref{def:equipotencia}), i \(A\prec B\)
+si \(A\preceq B\) però \(A\not\approx B\) (definició~\ref{def:comparacio}). El
+\emph{cardinal} d'\(A\), que escrivim \(\abs{A}\), és \(A\) considerat llevat
+d'equipotència; \(\abs{A}=\abs{B}\) vol dir \(A\approx B\). Com amb els tipus
+ordinals, no cal escollir cap representant: treballem amb conjunts qualssevol
+i comprovem la invariància.
+
+\begin{definicio}[Operacions cardinals]\index{Operacions cardinals}\label{def:operacions-cardinals}
+Per a conjunts \(A\) i \(B\), es defineixen la \emph{suma}, el \emph{producte}
+i l'\emph{exponenciació} cardinals per
+\[
+\abs{A}+\abs{B}:=\abs{A+B},
+\qquad
+\abs{A}\cdot\abs{B}:=\abs{A\times B},
+\qquad
+\abs{B}^{\abs{A}}:=\abs{B^{A}},
+\]
+és a dir, com els cardinals de la suma disjunta
+(definició~\ref{def:suma-disjunta}), del producte
+(definició~\ref{def:producte}) i de l'exponencial
+(definició~\ref{def:exponencial}), respectivament. Aquestes són operacions
+\emph{sobre classes d'equipotència}, no sobre cap conjunt global de cardinals.
+\end{definicio}
+
+\begin{proposicio}[Les operacions estan ben definides]\label{prop:operacions-invariants}
+La suma, el producte i l'exponenciació cardinals no depenen dels
+representants: si \(A\approx A'\) i \(B\approx B'\), aleshores
+\[
+A+B\approx A'+B',
+\qquad
+A\times B\approx A'\times B',
+\qquad
+B^{A}\approx B'^{A'} .
+\]
+\emph{Axiomes usats:} suma, producte, exponencials
+(capítols~\ref{cap:valors},~\ref{cap:parts} i~\ref{cap:exponencials}); cap
+elecció.
+\end{proposicio}
+
+\begin{prova}
+Siguin \(f\colon A\cong A'\) i \(g\colon B\cong B'\) isomorfismes. Aleshores
+\(f+g\colon A+B\cong A'+B'\) (functorialitat de la suma disjunta,
+capítol~\ref{cap:valors}) i \(f\times g\colon A\times B\cong A'\times B'\)
+(functorialitat del producte, capítol~\ref{cap:parts}) són isomorfismes. Per a
+l'exponencial, \(h\mapsto g\circ h\circ f^{-1}\) és una bijecció
+\(B^{A}\cong B'^{A'}\), amb inversa \(k\mapsto g^{-1}\circ k\circ f\);
+internament, és la transposada de
+\(g\circ\operatorname{ev}\circ(\id_{B^A}\times f^{-1})\colon B^A\times A'\to B'\)
+(propietat universal de l'exponencial, definició~\ref{def:exponencial}). Les
+tres construccions són isomorfismes de conjunts, de manera que les mides
+coincideixen.
+\end{prova}
+
+\begin{proposicio}[Lleis de l'aritmètica cardinal]\label{prop:lleis-cardinals}
+Per a cardinals qualssevol \(\kappa=\abs{A}\), \(\mu=\abs{B}\),
+\(\nu=\abs{C}\):
+\begin{enumerate}
+\item suma i producte són \emph{commutatius} i \emph{associatius}, amb neutres
+\(\abs{\mathbf0}=0\) per a la suma i \(\abs{\mathbf1}=1\) per al producte;
+\item distributivitat: \(\kappa\cdot(\mu+\nu)=\kappa\cdot\mu+\kappa\cdot\nu\);
+\item lleis d'exponents: \(\kappa^{\mu+\nu}=\kappa^{\mu}\cdot\kappa^{\nu}\),
+\((\kappa\cdot\mu)^{\nu}=\kappa^{\nu}\cdot\mu^{\nu}\),
+\((\kappa^{\mu})^{\nu}=\kappa^{\mu\cdot\nu}\);
+\item monotonia: si \(\kappa\le\mu\) (és a dir \(A\preceq B\)), aleshores
+\(\kappa+\nu\le\mu+\nu\), \(\kappa\cdot\nu\le\mu\cdot\nu\) i
+\(\kappa^{\nu}\le\mu^{\nu}\) (monotonia en la \emph{base}); a l'\emph{exponent},
+si a més \(\nu\neq 0\), aleshores \(\nu^{\kappa}\le\nu^{\mu}\);
+\item compatibilitat amb els recomptes finits: sobre conjunts finits, aquestes
+operacions coincideixen amb la suma, el producte i la potència de naturals
+(capítol~\ref{cap:finits}).
+\end{enumerate}
+\emph{Axiomes usats:} propietats universals de suma, producte i exponencial;
+cap elecció.
+\end{proposicio}
+
+\begin{prova}
+Cada llei és un isomorfisme canònic de conjunts, transportat a mides per la
+proposició~\ref{prop:operacions-invariants}. \emph{(1)} La commutativitat de
+la suma és \(A+B\cong B+A\) i la del producte \(A\times B\cong B\times A\); les
+associativitats són els isomorfismes canònics corresponents; els neutres són
+\(A+\mathbf0\cong A\) i \(A\times\mathbf1\cong A\). \emph{(2)} És la
+distributivitat \(A\times(B+C)\cong(A\times B)+(A\times C)\)
+(capítol~\ref{cap:valors}). \emph{(3)} Són els isomorfismes exponencials, que alineem lletra a lletra amb
+l'enunciat. Per a \(\kappa^{\mu+\nu}=\kappa^{\mu}\cdot\kappa^{\nu}\), amb
+\(\kappa=\abs C\), \(\mu=\abs B\), \(\nu=\abs A\): \(C^{B+A}\cong C^{B}\times
+C^{A}\) (una aplicació d'una suma és un parell d'aplicacions). Per a
+\((\kappa\cdot\mu)^{\nu}=\kappa^{\nu}\cdot\mu^{\nu}\), amb \(\kappa=\abs C\),
+\(\mu=\abs B\), \(\nu=\abs A\): \((C\times B)^{A}\cong C^{A}\times B^{A}\). Per
+a \((\kappa^{\mu})^{\nu}=\kappa^{\mu\cdot\nu}\), amb \(\kappa=\abs C\),
+\(\mu=\abs B\), \(\nu=\abs A\): \((C^{B})^{A}\cong C^{B\times A}\)
+(currificació, definició~\ref{def:exponencial}). En els tres casos les lletres
+dels representants s'assignen igual que a l'enunciat, i l'ordre del producte
+\(B\times A\) és el que correspon a \(\mu\cdot\nu\) (indiferent per
+commutativitat).
+\emph{(4)} La monotonia \emph{en la base} surt de compondre un monomorfisme
+\(A\hookrightarrow B\) amb les operacions, que preserven monomorfismes: de
+\(A\hookrightarrow B\) s'obté \(A+C\hookrightarrow B+C\),
+\(A\times C\hookrightarrow B\times C\) i \(A^{C}\hookrightarrow B^{C}\) per
+postcomposició. Per a l'\emph{exponent}, en canvi, un monomorfisme
+\(A\hookrightarrow B\) indueix per \emph{precomposició} una aplicació
+\(C^{B}\to C^{A}\) ---en la direcció contrària---, i per anar de \(C^{A}\) cap
+a \(C^{B}\) cal estendre cada \(f\colon A\to C\) a \(B\to C\). Amb
+\(\nu=\abs C\neq 0\) fixem un punt \(c_0\in C\) i estenem per casos: sobre la
+imatge de \(A\) copiem \(f\), i sobre el complement de \(A\) dins \(B\)
+posem el valor constant \(c_0\); això dona un monomorfisme \(C^{A}\hookrightarrow
+C^{B}\), és a dir \(\nu^{\kappa}\le\nu^{\mu}\). Quan \(\nu=0\) la construcció
+falla i l'enunciat és fals: \(0^{0}=1\not\le 0=0^{1}\), tot i que \(0\le 1\).
+Per això la monotonia en l'exponent només s'afirma per a \(\nu\neq 0\).
+\emph{(5)} Sobre segments
+\(\seg{m}\) i \(\seg{n}\), \(\seg{m}+\seg{n}\approx\seg{m+n}\),
+\(\seg{m}\times\seg{n}\approx\seg{m\cdot n}\) i
+\(\seg{n}^{\seg{m}}\approx\seg{n^{m}}\) són els recomptes finits del
+capítol~\ref{cap:finits}.
+\end{prova}
+
+\begin{teorema}[Cantor, en forma cardinal]\label{teo:cantor-cardinal}
+Per a tot conjunt \(A\),
+\[
+\abs{A}\ <\ 2^{\abs{A}} .
+\]
+És a dir, \(\abs{A}\le 2^{\abs{A}}\) i \(\abs{A}\neq 2^{\abs{A}}\), on
+\(2^{\abs{A}}=\abs{\mathbf2^{A}}=\abs{P(A)}\).\par
+\emph{Axiomes usats:} teorema de Cantor (teorema~\ref{teo:cantor}), exponencial
+\(P(A)\cong\mathbf2^{A}\) (capítol~\ref{cap:exponencials}); cap elecció.
+\end{teorema}
+
+\begin{prova}
+Com que \(P(A)\cong\mathbf2^{A}\) (el conjunt de parts és l'exponencial de
+base \(\mathbf2\), capítol~\ref{cap:exponencials}), es té
+\(2^{\abs{A}}=\abs{\mathbf2^{A}}=\abs{P(A)}\). El teorema de Cantor
+(teorema~\ref{teo:cantor}) diu \(A\prec P(A)\), és a dir
+\(\abs{A}\le\abs{P(A)}\) i \(\abs{A}\neq\abs{P(A)}\). Per tant
+\(\abs{A}<2^{\abs{A}}\).
+\end{prova}
+
+\begin{observacio}[Ordinal contra cardinal, un cop més]\label{obs:cardinal-vs-ordinal}
+L'exponenciació cardinal \(2^{\abs{A}}\) és radicalment diferent de l'ordinal
+del capítol anterior. Ordinalment, \(2^{\omega}=\omega\)
+(proposició~\ref{prop:exponenciacio-calculs}): una longitud numerable.
+Cardinalment, \(2^{\aleph_0}=\abs{P(\N)}>\aleph_0\) pel teorema de Cantor: una
+mida no numerable, el continu. La mateixa notació \enquote{\(2\) elevat a}
+significa coses oposades segons si recorda l'ordre (ordinal) o l'oblida
+(cardinal). És per evitar aquesta confusió que hem construït les dues
+aritmètiques per separat, i que escriurem \(\aleph_0\) per al cardinal de
+\(\N\) i \(\omega\) per al seu tipus d'ordre, tot i que \enquote{són} el
+mateix conjunt.
+\end{observacio}
+
+\section{Comparabilitat i ordre total dels cardinals}\label{sec:comparabilitat-cardinals}
+
+En el primer nivell, la comparació \(\preceq\) és un preordre invariant
+(proposició~\ref{prop:preceq-preordre}) i, per Schröder--Bernstein, és
+antisimètrica mòdul equipotència (corol·lari~\ref{cor:preceq-antisimetric}).
+El que \emph{no} tenim sense elecció és que sigui \emph{total}: que dos
+conjunts qualssevol siguin comparables. Això ho dona el teorema del bon ordre.
+
+\begin{teorema}[Comparabilitat total dels cardinals]\label{teo:comparabilitat-cardinals}
+Suposem l'axioma d'elecció (axioma~\ref{ax:eleccio}). Aleshores dos conjunts
+qualssevol són comparables:
+\[
+A\preceq B
+\qquad\text{o bé}\qquad
+B\preceq A .
+\]
+Combinat amb Schröder--Bernstein (teorema~\ref{teo:schroder-bernstein}), la
+comparació de cardinals és un \emph{ordre total llevat d'equipotència}:
+reflexiu, transitiu, antisimètric mòdul \(\approx\) i total.\par
+\emph{Axiomes usats:} teorema del bon ordre (teorema~\ref{teo:bon-ordre}) ---i
+per tant elecció---, comparabilitat de bons ordres
+(teorema~\ref{teo:comparabilitat}), Schröder--Bernstein
+(teorema~\ref{teo:schroder-bernstein}).
+\end{teorema}
+
+\begin{prova}
+Pel teorema del bon ordre (teorema~\ref{teo:bon-ordre}), \(A\) i \(B\) admeten
+bons ordres; siguin \(W_A\) i \(W_B\) representants. Per la comparabilitat de
+bons ordres (teorema~\ref{teo:comparabilitat}), un dels dos és isomorf a un
+segment inicial de l'altre ---diguem \(W_A\) isomorf a un segment de \(W_B\).
+Aquest isomorfisme d'ordre és en particular un monomorfisme de conjunts
+\(A\hookrightarrow B\), d'on \(A\preceq B\). Simètricament en l'altre cas. Per
+tant \(A\preceq B\) o \(B\preceq A\). La resta ---reflexivitat, transitivitat,
+antisimetria mòdul \(\approx\)--- és la proposició~\ref{prop:preceq-preordre} i
+el corol·lari~\ref{cor:preceq-antisimetric}.
+\end{prova}
+
+\begin{observacio}[La comparabilitat és equivalent a l'elecció]\label{obs:comparabilitat-eleccio}
+La comparabilitat total dels cardinals no és només \emph{conseqüència} de
+l'elecció: n'és \emph{equivalent}. Si dos conjunts qualssevol són comparables,
+aleshores en particular tot conjunt \(A\) és comparable amb \(\Hart(A)\); com
+que \(\Hart(A)\not\preceq A\) (teorema~\ref{teo:hartogs}), ha de ser
+\(A\preceq\Hart(A)\), és a dir \(A\) s'injecta en un bon ordre, i per tant
+hereta un bon ordre ---d'on el teorema del bon ordre, equivalent a l'elecció
+(teorema~\ref{teo:equivalencies}). Aquesta és una altra manifestació del
+paper de Hartogs: la seva cota converteix la comparabilitat en bon ordre.
+\end{observacio}
+
+\section{Cardinals inicials}\label{sec:cardinals-inicials}
+
+Fins ara \enquote{\(\abs{A}\)} ha estat una classe d'equipotència, no un
+objecte. Amb l'elecció podem, si volem, triar per a cada mida un
+\emph{representant} distingit: el menor tipus d'ordre d'aquella mida. Cal
+fer-ho amb la prudència que la guia recomana.
+
+\begin{definicio}[Bon ordre inicial i cardinal inicial]\index{Bon ordre inicial i cardinal inicial}\label{def:cardinal-inicial}
+Un bon ordre \(W\) és \emph{inicial} si cap bon ordre de tipus estrictament
+menor no és equipotent a \(W\): per a tot bon ordre \(V\) amb
+\(\operatorname{tipus}(V)<\operatorname{tipus}(W)\), es té \(V\not\approx W\).
+Amb l'elecció, cada conjunt \(A\) és equipotent a algun bon ordre
+(teorema~\ref{teo:bon-ordre}); el \emph{cardinal inicial} de \(A\) és el
+\emph{menor} tipus d'ordre \(\alpha\) tal que un (tot) representant seu és
+equipotent a \(A\). Aquest tipus és inicial i únic.
+\end{definicio}
+
+\begin{proposicio}[Existència i unicitat del cardinal inicial]\label{prop:cardinal-inicial}
+Suposem l'elecció. Per a tot conjunt \(A\) existeix un únic cardinal inicial
+\(\alpha\), i és un tipus d'ordre inicial. La cerca està \emph{acotada}: el
+menor tipus equipotent a \(A\) és un element de \(\Hart(A)\), sense recórrer
+cap classe global.\par
+\emph{Axiomes usats:} teorema del bon ordre (teorema~\ref{teo:bon-ordre}),
+Hartogs i el bon ordre de \(\Hart\) (proposició~\ref{prop:hartogs-bon-ordre});
+elecció.
+\end{proposicio}
+
+\begin{prova}
+Sigui \(E\hookrightarrow\Hart(A)\) la part dels tipus \([(S,R)]\) amb
+\(S\approx A\) (una condició interna sobre \(\WO(A)\), invariant per
+isomorfisme, que baixa al quocient). És no inicial: pel teorema del bon ordre
+\(A\) admet un bon ordre \(R\), i \([(A,R)]\in E\). Per ser \(\Hart(A)\) un bon
+ordre (proposició~\ref{prop:hartogs-bon-ordre}), \(E\) té un mínim \(\alpha\),
+únic. És inicial: si un bon ordre \(V\) amb \(\operatorname{tipus}(V)<\alpha\)
+fos equipotent a \(A\), aleshores \(V\) seria isomorf a un segment propi d'un
+representant \((S,R)\) de \(\alpha\), és a dir, a un bon ordre sobre una part
+de \(S\subseteq A\); el seu tipus seria un element de \(E\) menor que
+\(\alpha\), contra la minimalitat. Tota la cerca ha passat dins \(\Hart(A)\),
+acotadament.
+\end{prova}
+
+\begin{observacio}[\enquote{El cardinal és un conjunt}: una prudència]\label{obs:cardinal-prudencia}
+Convé ser prudent amb la frase \enquote{el cardinal de \(A\) és un conjunt}.
+En el tractament estructural, el cardinal inicial de \(A\) és un \emph{tipus
+d'ordre} inicial ---únic llevat d'un únic isomorfisme d'ordre
+(teorema~\ref{teo:unicitat-iso})---, no un conjunt privilegiat escollit
+d'entrada. Triar-ne un representant concret (un bon ordre determinat d'aquell
+tipus) és una \emph{tria addicional}, legítima però no canònica. Aquesta és la
+raó per la qual, en el primer nivell, hem treballat amb \(\abs{A}\) com a
+classe d'equipotència i no com a objecte: la teoria relacional no necessita
+representants, i només els introdueix ---amb l'elecció--- qui vulgui una
+successió distingida de cardinals. Una \emph{successió global} de tots els
+cardinals inicials, d'altra banda, seria de Nivell~II: reunir-los tots
+demanaria SR (observació~\ref{obs:sr}), igual que la successió dels
+\(\aleph_\alpha\) que veurem al capítol opcional.
+\end{observacio}
+
+\section{El teorema de König}\label{sec:konig}
+
+Tanquem amb un refinament de Cantor per a famílies: si cada terme d'una
+família és estrictament més petit que el corresponent d'una altra, la suma
+dels primers és estrictament menor que el producte dels segons. La prova és,
+en el fons, la diagonal de Cantor.
+
+\begin{teorema}[König]\index{König, teorema de}\label{teo:konig}
+Suposem l'elecció. Siguin \((A_i)_{i\in I}\) i \((B_i)_{i\in I}\) dues famílies
+de conjunts, indexades pel mateix \(I\), amb \(A_i\prec B_i\) per a cada \(i\).
+Aleshores
+\[
+\sum_{i\in I}\abs{A_i}\ <\ \prod_{i\in I}\abs{B_i},
+\]
+on la suma és el cardinal de la suma disjunta \(\coprod_i A_i\) i el producte
+el del producte \(\prod_i B_i\) (capítol~\ref{cap:families}).\par
+\emph{Axiomes usats:} elecció (axioma~\ref{ax:eleccio}), famílies, suma i
+producte (capítol~\ref{cap:families}), la diagonal de Cantor
+(teorema~\ref{teo:diagonal}).
+\end{teorema}
+
+\begin{prova}
+L'elecció s'usa en tres llocs, que assenyalem: per triar alhora un
+monomorfisme \(m_i\) i un punt fora de la seva imatge per a cada \(i\); per
+deduir de \(F_i\) exhaustiva que \(B_i\preceq A_i\) (una secció); i per triar
+alhora els punts \(d_i\) de la diagonal. Les tres tries són seccions de
+famílies internes indexades per \(I\), construïdes amb exponencials
+(capítol~\ref{cap:families}).
+
+\emph{\(\le\).} Hi ha un monomorfisme \(\coprod_i A_i\hookrightarrow\prod_i B_i\):
+com que \(A_i\prec B_i\), en particular \(A_i\preceq B_i\), i triant (per
+l'elecció) un monomorfisme \(m_i\colon A_i\hookrightarrow B_i\) i un punt
+\(b_i\in B_i\setminus\operatorname{Im}(m_i)\) ---no buit perquè \(m_i\) no és
+exhaustiu, ja que \(A_i\not\approx B_i\)---, enviem un element \(a\) de la
+fibra \(A_i\) a la família \((x_j)_{j\in I}\) amb \(x_i=m_i(a)\) i \(x_j=b_j\)
+per a \(j\neq i\). És injectiva perquè la coordenada \(i\) i la posició del
+\enquote{no-\(b\)} determinen \(a\) i \(i\).
+
+\emph{\(\neq\).} Vegem que cap aplicació \(F\colon\coprod_i A_i\to\prod_i B_i\)
+no és exhaustiva ---la diagonal. Per a cada \(i\), la restricció de \(F\) a la
+fibra \(A_i\), seguida de la projecció \(\pi_i\colon\prod_j B_j\to B_i\), dona
+una aplicació \(F_i\colon A_i\to B_i\); com que \(A_i\prec B_i\), \(F_i\) no és
+exhaustiva (si ho fos, una secció seva, que existeix per l'elecció, donaria
+\(B_i\preceq A_i\), i per Schröder--Bernstein \(A_i\approx B_i\)), de manera que existeix
+\(d_i\in B_i\setminus\operatorname{Im}(F_i)\) ---triem-ne un per l'elecció. La
+família \((d_i)_{i\in I}\in\prod_i B_i\) no és cap valor de \(F\): si fos
+\(F(a)=(d_i)_i\) amb \(a\) a la fibra \(A_{i_0}\), aleshores la coordenada
+\(i_0\) donaria \(F_{i_0}(a)=d_{i_0}\), contra \(d_{i_0}\notin\operatorname{Im}(F_{i_0})\).
+Per tant \(F\) no és exhaustiva, cap \(\coprod_i A_i\to\prod_i B_i\) no ho és,
+i \(\sum_i\abs{A_i}\neq\prod_i\abs{B_i}\). Amb la desigualtat \(\le\), s'obté
+l'estricta.
+\end{prova}
+
+\begin{observacio}[König conté Cantor]\label{obs:konig-cantor}
+El teorema de Cantor és el cas particular de König amb \(I=A\), \(A_i=\mathbf1\)
+i \(B_i=\mathbf2\) per a tot \(i\): aleshores \(A_i=\mathbf1\prec\mathbf2=B_i\),
+i König dona
+\[
+\abs{A}=\sum_{i\in A}1<\prod_{i\in A}2=2^{\abs{A}},
+\]
+que és exactament \(\abs{A}<2^{\abs{A}}\) (teorema~\ref{teo:cantor-cardinal}).
+La \enquote{idea diagonal} que apareix a la prova de König ---construir una
+família \((d_i)\) que difereix de cada valor en alguna coordenada--- és
+literalment la diagonal de Cantor, ara repartida coordenada a coordenada. Per
+això König es pot veure com la forma \emph{indexada} del teorema de Cantor.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item El cardinal \(\abs{A}\) és la classe del conjunt \(A\) llevat d'equipotència (no un tipus d'ordre: no hi ha ordre); suma, producte i exponenciació són els cardinals de \(A+B\), \(A\times B\) i \(B^A\), i les lleis són isomorfismes canònics. La monotonia en l'exponent demana base no nul·la: \(0^0=1\not\le0=0^1\).
+  \item Cantor: \(\abs{A}<2^{\abs{A}}\). L'exponenciació cardinal \(2^{\aleph_0}\) no té res a veure amb l'ordinal \(2^\omega=\omega\).
+  \item Sense elecció, \(\preceq\) és un preordre antisimètric mòdul \(\approx\); la totalitat és equivalent a l'elecció (Hartogs fa el pas de comparabilitat a bon ordre).
+  \item Amb l'elecció, el cardinal inicial d'\(A\) és el menor tipus d'ordre de \(\Hart(A)\) el suport d'un representant del qual és equipotent a \(A\); és un tipus, no un conjunt, i triar-ne un representant és una tria més.
+  \item König: si \(A_i\prec B_i\) per a tot \(i\), \(\sum\abs{A_i}<\prod\abs{B_i}\). La prova és una diagonal coordenada a coordenada, i usa l'elecció tres vegades. Conté Cantor com a cas particular.
+\end{enumerate}
+\apartat{Errors típics} Escriure \(\abs{A}\) com si fos un conjunt fix; aplicar la monotonia en l'exponent amb base \(0\); confondre \(2^\omega\) ordinal amb \(2^{\aleph_0}\) cardinal; creure que la comparabilitat de cardinals és gratuïta; i passar de \enquote{exhaustiva} a \enquote{domina} sense elecció.
+\apartat{Lectura recomanada} \cite[§§22--25]{halmos} per a l'aritmètica cardinal clàssica; \cite[cap.~3 i~5]{jech2003} per als cardinals, König i el paper de l'elecció; \cite[cap.~I.10]{kunen2011} per als cardinals inicials; i \cite[§§8.5--8.6]{lawvere-rosebrugh} per a la mida dels conjunts abstractes.
+\end{resumcap}

@@ -1,0 +1,594 @@
+\chapter{Alephs, cofinalitat i continu}\label{cap:alephs}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:cardinals}: aritmètica cardinal, comparabilitat amb l'elecció, cardinals inicials i König. Del capítol~\ref{cap:zorn}: Hartogs. Dels capítols~\ref{cap:ordinals} i~\ref{cap:recursio}: tipus ordinals, suprems acotats i recursió transfinita amb codomini fix. Del capítol~\ref{cap:families}: famílies internes i regles externes. Del capítol~\ref{cap:infinitud}: \(\N\cong\N\times\N\).
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item enunciar l'esquema SR, explicar la condició d'isomorfisme únic i distingir SR de l'elecció;
+  \item demostrar, al Nivell~I, que \(\kappa^{+}=\abs{\Hart(K)}\), i situar el pas de cada \(\kappa\) al seu successor fora de SR;
+  \item construir, sota SR, la família \((\aleph_\beta)_{\beta<\lambda}\) per a un \(\lambda\) fix, identificant la instància de l'esquema, i demostrar que tot cardinal infinit és un aleph;
+  \item definir cofinalitat, regularitat i singularitat, i justificar els exemples \(\aleph_0\), \(\aleph_{\alpha+1}\) i \(\aleph_\omega\), sabent quin resultat clàssic se cita;
+  \item definir els beths i el continu, i formular HC i HCG, separant el que és de Nivell~I del que demana SR;
+  \item explicar en quin sentit HC és independent, i sota quina hipòtesi de consistència.
+\end{itemize}
+\end{objectius}
+
+Aquest capítol és opcional i de \emph{Nivell~II}: a diferència de tots els
+anteriors, fa servir un principi més fort que els axiomes bàsics del llibre
+---la substitució estructural SR, fins ara només anunciada
+(observació~\ref{obs:sr})---, i el declara explícitament a cada construcció que
+el necessita. La raó és estructural i ja la coneixem: reunir en un sol objecte
+una successió transfinita de cardinals que \emph{creixen sense cota comuna}
+---els alephs \(\aleph_\alpha\), els beths \(\beth_\alpha\)--- és exactament el
+tipus de regla externa que els axiomes de Nivell~I no poden representar
+(observació~\ref{obs:frontera-exemple}). Amb SR, sí. El capítol recorre la
+jerarquia dels cardinals infinits: \(\aleph_0\) i el cardinal successor
+\(\kappa^{+}\) (que encara és de Nivell~I, gràcies a Hartogs), la successió
+\(\alpha\mapsto\aleph_\alpha\) (ja de Nivell~II), la cofinalitat i la distinció
+regular\slash singular, els nombres \(\beth\), i el continu
+\(\mathfrak c=2^{\aleph_0}\). Es tanca amb la hipòtesi del continu, presentada
+com el que és ---una qüestió \emph{independent} dels axiomes--- i no com un
+problema pendent de solució elemental. No entrem en forcing ni en grans
+cardinals; l'objectiu és formular amb precisió què pregunta la hipòtesi del
+continu i per què la teoria desenvolupada permet plantejar-la.
+
+\section{La substitució estructural com a esquema adoptat}\label{sec:sr-adoptat}
+
+Fins ara SR ha estat un \emph{esquema provisional}
+(observació~\ref{obs:sr}): l'enunciàvem per assenyalar on faria falta, però no
+l'assumíem. En aquest capítol el prenem com a principi de treball, en la forma
+d'esquema, i el marcarem a la caixa d'axiomes de cada resultat que en depengui.
+
+\begin{principi}[Esquema de reunió de famílies (substitució estructural, SR)]\label{sr:esquema}
+Sigui \(\varphi(i,X,R,\vec p)\) una fórmula del llenguatge del llibre en què
+\(i\) és una variable d'element, \(X\) una variable de conjunt, \(R\) una
+variable d'\emph{estructura sobre \(X\)} (una part de \(X\), de \(X\times X\),
+una aplicació amb \(X\) com a domini o codomini, o una llista finita
+d'estructures d'aquests tipus) i \(\vec p\) una llista de
+paràmetres fixats. Suposem que, per a un conjunt \(I\) donat, \(\varphi\) és
+\emph{funcional a isomorfisme únic}: per a cada element \(i\colon\mathbf1\to I\),
+\begin{enumerate}
+  \item existeix algun parell \((X,R)\) tal que \(\varphi(i,X,R,\vec p)\), i
+  \item si \(\varphi(i,X,R,\vec p)\) i \(\varphi(i,X',R',\vec p)\), hi ha un
+    \emph{únic} isomorfisme \(u\colon X\to X'\) que transporta \(R\) en \(R'\).
+\end{enumerate}
+Aleshores existeixen una aplicació \(p\colon E\to I\) i una estructura
+\(S\) sobre \(E\) que es restringeix a cada fibra, tals que, per a tot
+\(i\colon\mathbf1\to I\), la fibra \(E_i=p^{-1}(i)\) amb l'estructura
+restringida \(S_i\) satisfà \(\varphi(i,E_i,S_i,\vec p)\).
+\end{principi}
+
+En paraules: una regla externa \(i\mapsto(X_i,R_i)\) que determina cada
+\((X_i,R_i)\) llevat d'un \emph{únic} isomorfisme es representa per una família
+interna \(E\to I\). La unicitat de l'isomorfisme a la clàusula~2 és essencial, i
+és el que diferencia \enquote{determinat llevat d'isomorfisme únic} de
+\enquote{determinat llevat d'isomorfisme}: un conjunt infinit determinat només
+llevat d'isomorfisme té molts automorfismes, i no hi ha cap manera canònica
+d'enganxar les fibres; un bon ordre, o un cardinal inicial amb el seu ordre, en
+té exactament un, la identitat, i les fibres s'enganxen sense ambigüitat.
+
+\begin{observacio}[SR és un esquema, no un axioma més]\label{obs:sr-esquema-opcional}
+Convé ser precisos sobre l'estatus de SR, perquè no és del mateix tipus lògic
+que els axiomes que hem fet servir fins ara. L'\emph{elecció}
+(axioma~\ref{ax:eleccio}) o l'\emph{efectivitat} (axioma~\ref{ax:exactitud})
+són \emph{sentències}: cadascuna, un únic enunciat afegit a la teoria. SR, en
+canvi, és un \emph{esquema} ---una família d'enunciats, una instància per a
+cada fórmula funcional i invariant per isomorfisme---, de la mateixa manera que
+el reemplaçament de la teoria clàssica és un esquema i no una sentència. Per
+això no el presentem com un axioma més a l'estil de l'elecció, sinó com un
+\emph{principi} a part, i per això, a la caixa de dependències, \enquote{SR} no
+figura com una hipòtesi al mateix nivell que \enquote{elecció}: assenyala que
+s'ha usat una instància de l'esquema de reunió, i indicarem \emph{quina} cada
+vegada. SR és, a més, \emph{opcional}: no forma part dels axiomes de Nivell~I
+del llibre, i tots els capítols anteriors en són independents.
+\end{observacio}
+
+\begin{observacio}[Què afegeix SR, i què no]\label{obs:sr-abast}
+SR converteix una \emph{regla externa} \(i\mapsto X_i\) en una \emph{família
+interna} \(E\to I\) (definició~\ref{def:familia-vs-regla}), sempre que la regla
+sigui uniforme i invariant. És exactament el que mancava per reunir famílies no
+acotades: amb SR, l'objecte total \(E\) existeix, i amb ell la suma
+\(\coprod_i X_i\), el suprem d'una família de tipus no prèviament acotada, i les
+successions transfinites de conjunts variables. El que SR \emph{no} és ---cal
+repetir-ho--- és una forma d'elecció (observació~\ref{obs:sr-no-eleccio}):
+l'elecció tria dins fibres d'una família \emph{ja existent}; SR fa \emph{existir}
+la família. En aquest capítol usarem tots dos, i els marcarem per separat.
+\end{observacio}
+
+\begin{observacio}[Quina formulació adoptem, i què en citem]\label{obs:sr-rigor}
+El principi~\ref{sr:esquema} és la versió, en el llenguatge d'aquest llibre, del
+\emph{reemplaçament estructural} que Shulman formula i estudia a
+\cite{shulman-comparing}: una instància de l'esquema per a cada fórmula
+\(\varphi\) del llenguatge, amb la condició de funcionalitat a isomorfisme únic
+i amb els paràmetres \(\vec p\) i el conjunt d'índexs \(I\) com a dades fixades.
+Tres precisions. Primera, l'\emph{estructura} \(R\) és la que fa que l'isomorfisme
+de la clàusula~2 sigui únic: en les instàncies que usarem, \(R\) serà sempre un bon ordre sobre \(X\), o una aplicació
+\(X\to I'\) amb un bon ordre sobre cada fibra, de manera que la unicitat és
+la rigidesa dels bons ordres
+(teorema~\ref{teo:unicitat-iso}). Segona, la formulació de McLarty a
+\cite{mclarty-catset} demana només \enquote{llevat d'isomorfisme}, sense
+unicitat; en presència de l'elecció (axioma~\ref{ax:eleccio}) les dues versions
+són equivalents, perquè l'elecció permet fixar representants i, un cop fixats,
+l'esquema amb unicitat reconstrueix la família; aquí preferim la versió amb
+unicitat perquè no barreja SR amb l'elecció. Tercera, SR és un esquema sobre
+fórmules del llenguatge, no sobre \enquote{regles} arbitràries del
+metallenguatge: una regla \(i\mapsto X_i\) que no es pugui escriure com una
+fórmula \(\varphi\) no en dona cap instància.
+
+Amb aquesta formulació, l'afirmació que ETCS${}+{}$SR \enquote{té la força de
+ZFC} és un \emph{teorema citat}, no un resultat del llibre: Osius
+\cite{osius1974} va demostrar que ETCS més reemplaçament és equivalent a ZFC,
+i Shulman \cite{shulman-comparing} en dona la forma precisa com a
+bi-interpretabilitat entre ETCS${}+{}$reemplaçament estructural i ZFC. El
+que sí que fem aquí és marcar, a cada resultat que en depèn, \emph{quina}
+instància de l'esquema s'usa (quina \(\varphi\), quin \(I\), quina estructura
+\(R\)), de manera que el lector pugui comprovar que compleix les dues clàusules.
+\end{observacio}
+
+\begin{lema}[Separació completa sota SR]\label{lema:separacio-sr}
+Suposem SR. Sigui \(\psi(i,\vec p)\) una fórmula qualsevol del llenguatge del
+llibre ---amb quantificadors no acotats, si cal--- i \(I\) un conjunt. Aleshores
+existeix una part \(m\colon S\hookrightarrow I\) tal que, per a tot punt
+\(i\colon\mathbf1\to I\), \(i\) es factoritza per \(m\) si i només si
+\(\psi(i,\vec p)\). En particular, la inducció transfinita
+(teorema~\ref{teo:induccio-transfinita}) s'aplica a propietats
+\(\psi\) dels punts d'un bon ordre definides per fórmules arbitràries.\par
+\emph{Axiomes usats:} SR, amb la instància indicada a la prova.
+\end{lema}
+
+\begin{prova}
+Considerem la fórmula
+\[
+\varphi(i,X,R,\vec p)\ :\equiv\
+\bigl(\psi(i,\vec p)\land\operatorname{Terminal}(X)\bigr)\lor
+\bigl(\neg\psi(i,\vec p)\land\operatorname{Inicial}(X)\bigr),
+\]
+amb \(R:=\id_X\) com a estructura trivial. És funcional a isomorfisme únic:
+per a cada \(i\) es dona \(\psi(i,\vec p)\) o la seva negació, i hi ha un \(X\)
+adequat (\(\mathbf1\) o \(\mathbf0\)); i dos \(X,X'\) que compleixen
+\(\varphi\) per al mateix \(i\) són tots dos terminals o tots dos inicials, de
+manera que hi ha un únic isomorfisme entre ells
+(proposicions~\ref{prop:terminal-unic} i~\ref{prop:inicial-unic}). SR dona una
+família \(p\colon E\to I\) amb fibra terminal sobre els \(i\) que compleixen
+\(\psi\) i inicial sobre els altres. L'aplicació \(p\) és un monomorfisme: és
+injectiva sobre punts, perquè dos punts de \(E\) amb la mateixa imatge \(i\)
+són a la fibra \(E_i\), que és terminal o inicial, i per tant coincideixen
+(observació~\ref{obs:injectiva-mono}). Un punt \(i\) es factoritza per \(p\)
+si i només si la fibra \(E_i\) té algun punt, és a dir, si i només si és
+terminal, és a dir, si i només si \(\psi(i,\vec p)\). Prenem \(m:=p\). La
+darrera afirmació és immediata, perquè el teorema~\ref{teo:induccio-transfinita}
+només demana que la propietat defineixi una part i la hipòtesi de
+progressivitat sobre punts.
+\end{prova}
+
+\section{\texorpdfstring{\(\aleph_0\)}{aleph 0} i el cardinal successor}\label{sec:aleph0-successor}
+
+Comencem pel més petit dels cardinals infinits i per l'operació que fa pujar un
+graó. Aquesta secció és, de fet, de \emph{Nivell~I}: no necessita SR, perquè el
+cardinal successor està acotat per Hartogs.
+
+\begin{definicio}[\(\aleph_0\)]\index{aleph zero@\(\aleph_0\)}\label{def:aleph0}
+\(\aleph_0:=\abs{\N}\), el cardinal del conjunt dels naturals ---el menor
+cardinal infinit, perquè tot conjunt infinit conté una còpia de \(\N\)
+(capítol~\ref{cap:infinitud}) i tot enumerable infinit és equipotent a \(\N\)
+(corol·lari~\ref{cor:enumerable-infinit-N}). Com a \emph{tipus d'ordre}, el
+mateix conjunt és \(\omega\); com a \emph{cardinal}, és \(\aleph_0\). Escrivim
+\(\aleph_0\) quan pensem la mida i \(\omega\) quan pensem la forma d'ordre.
+\end{definicio}
+
+\begin{definicio}[Cardinal successor]\index{Cardinal successor}\label{def:cardinal-successor}
+Sigui \(\kappa\) un cardinal, representat per un conjunt \(K\). El \emph{cardinal
+successor} \(\kappa^{+}\) és el menor cardinal estrictament més gran que
+\(\kappa\): el menor cardinal que \emph{no} s'injecta en \(K\).
+\end{definicio}
+
+\begin{proposicio}[Existència del cardinal successor; Nivell I]\label{prop:cardinal-successor}
+Per a tot cardinal \(\kappa=\abs{K}\) existeix \(\kappa^{+}\), i és
+exactament el cardinal del bon ordre de Hartogs:
+\[
+\kappa^{+}=\abs{\Hart(K)}.
+\]
+A més, \(\Hart(K)\) és un bon ordre inicial, de manera que \(\kappa^{+}\) és un
+cardinal inicial. L'existència \emph{no} usa SR.\par
+\emph{Axiomes usats:} Hartogs (teorema~\ref{teo:hartogs},
+proposició~\ref{prop:hartogs-bon-ordre}), teorema del bon ordre
+(teorema~\ref{teo:bon-ordre}), comparabilitat de bons ordres
+(teorema~\ref{teo:comparabilitat}); elecció (només a través del teorema del
+bon ordre); \emph{cap SR}.
+\end{proposicio}
+
+\begin{prova}
+Escrivim \(H=\Hart(K)\). Hem de veure dues coses: que \(\abs{H}>\kappa\), i que
+tot conjunt \(X\) amb \(\abs{X}>\kappa\) satisfà \(\abs{H}\le\abs{X}\).
+
+La primera és el teorema de Hartogs: \(H\not\preceq K\), és a dir,
+\(\abs{H}\not\le\kappa\), i per la comparabilitat dels cardinals
+(teorema~\ref{teo:comparabilitat-cardinals}) \(\abs{H}>\kappa\).
+
+Per a la segona, sigui \(X\) un conjunt amb \(\abs{X}>\kappa\), és a dir,
+\(X\not\preceq K\). Pel teorema del bon ordre, \(X\) admet un bon ordre; sigui
+\(W\) aquest bon ordre sobre \(X\). Per la comparabilitat dels bons ordres,
+o bé \(W\) és isomorf a un segment inicial propi de \(H\), o bé \(H\) és
+isomorf a un segment inicial (propi o no) de \(W\). El primer cas és impossible:
+el segment inicial propi de \(H\) determinat per un tipus \(\alpha=[(S,R)]\) té
+precisament el tipus \(\alpha\) (lema~\ref{lema:segment-tipus}), és a dir, és
+isomorf a un bon ordre \((S,R)\) sobre una part \(S\) de \(K\); així \(W\)
+s'injectaria en \(K\) i tindríem \(X\preceq K\), contra la hipòtesi. Queda el segon cas, que dona
+precisament un monomorfisme \(H\hookrightarrow X\), és a dir, \(\abs{H}\le\abs{X}\).
+
+Finalment, \(H\) és inicial: un bon ordre \(V\) de tipus menor que el de
+\(H\) és isomorf a un segment inicial propi de \(H\), que pel mateix
+lema~\ref{lema:segment-tipus} s'injecta en \(K\); si \(V\) fos equipotent a
+\(H\) tindríem \(H\approx V\preceq K\), contra Hartogs. Tota la cerca ha quedat dins de \(H\), un conjunt ja construït;
+per això no cal SR.
+\end{prova}
+
+\begin{observacio}[Per què el successor és Hartogs]\label{obs:successor-hartogs}
+La igualtat \(\kappa^{+}=\abs{\Hart(K)}\) és la lectura cardinal del teorema de
+Hartogs: \(\Hart(K)\) és el menor bon ordre que no cap dins de \(K\), i amb
+l'elecció, que fa que tot conjunt sigui ben ordenable, \enquote{el menor bon
+ordre que no cap} i \enquote{el menor conjunt que no cap} coincideixen. Sense
+elecció, \(\abs{\Hart(K)}\) continua essent el menor cardinal \emph{ben
+ordenable} que no és \(\le\kappa\), però pot haver-hi conjunts \(X\) amb
+\(\abs{X}>\kappa\) en què \(\Hart(K)\) no s'injecta, i aleshores
+\enquote{el menor cardinal \(>\kappa\)} deixa de tenir sentit.
+\end{observacio}
+
+\begin{observacio}[On encara no cal SR]\label{obs:successor-sense-sr}
+Observem que \(\aleph_0\) i el pas \(\kappa\mapsto\kappa^{+}\) són de
+Nivell~I: cada \(\kappa^{+}\) individual s'obté acotadament per Hartogs. SR
+només farà falta quan vulguem reunir un \emph{tram} de la successió
+\(\aleph_0,\aleph_1,\aleph_2,\dots\) ---el que va fins a un ordinal fix
+\(\lambda\)--- en una família interna i prolongar-lo als límits; és a dir,
+quan passem d'un pas a una família. És la mateixa frontera de sempre: una
+operació binària o un successor són acotats; una successió transfinita no
+acotada demana SR.
+\end{observacio}
+
+\section{La successió dels alephs}\label{sec:alephs}
+
+Ara sí, reunim els cardinals infinits en successions. Un punt de rigor
+important: la col·lecció de \emph{tots} els tipus ordinals és pròpia, no un
+conjunt, i per tant no pot ser el conjunt d'índexs d'una família interna
+\(E\to I\). Per això no construïm cap objecte intern
+\enquote{\(\alpha\mapsto\aleph_\alpha\) per a tots els \(\alpha\)}; construïm,
+per a cada bon ordre \emph{fix} \(\lambda\), el tram
+\((\aleph_\beta)_{\beta<\lambda}\) indexada pel \emph{conjunt} \(\lambda\).
+La notació global \(\alpha\mapsto\aleph_\alpha\) és aleshores una regla del
+metallenguatge (una funció-classe), no un objecte del sistema. Aquest és el
+primer ús essencial de SR.
+
+\begin{definicio}[Els alephs fins a un ordinal fix]\index{Els alephs fins a un ordinal fix}\label{def:alephs}
+Sigui \(\lambda\) un bon ordre (un tipus ordinal fix). La família
+\((\aleph_\beta)_{\beta<\lambda}\), indexada pel conjunt \(\lambda\), es
+defineix per recursió transfinita sobre \(\lambda\)
+(teorema~\ref{teo:recursio-transfinita}):
+\[
+\aleph_0=\abs{\N},
+\qquad
+\aleph_{\beta+1}=(\aleph_\beta)^{+},
+\qquad
+\aleph_\mu=\sup_{\beta<\mu}\aleph_\beta\quad(\mu<\lambda\ \text{límit}).
+\]
+Els casos zero i successor són de Nivell~I (definició~\ref{def:cardinal-successor});
+la clàusula límit \emph{i} la reunió del tram en una família indexada pel
+conjunt \(\lambda\) requereixen SR, amb la instància que es descriu a la
+prova de la proposició~\ref{prop:alephs}. La notació
+\(\alpha\mapsto\aleph_\alpha\) sense cota superior és només la regla de
+classe subjacent, no un conjunt.
+\end{definicio}
+
+\begin{proposicio}[Els alephs, sota SR]\label{prop:alephs}
+Suposem SR. Aleshores:
+\begin{enumerate}
+\item per a cada bon ordre fix \(\lambda\), la família
+\((\aleph_\beta)_{\beta<\lambda}\) existeix com a família interna indexada pel
+\emph{conjunt} \(\lambda\);
+\item és estrictament creixent: \(\beta<\gamma<\lambda\) implica
+\(\aleph_\beta<\aleph_\gamma\);
+\item \emph{tot} cardinal infinit és un aleph, en sentit metateòric: per a
+tot conjunt infinit \(A\) existeix algun tipus ordinal \(\alpha\) amb
+\(\abs{A}=\aleph_\alpha\), i aquest \(\alpha\) és únic. (No s'afirma cap
+objecte intern que contingui tots els \(\aleph_\alpha\) alhora; l'enunciat és
+un esquema sobre \(A\), no una igualtat entre famílies.)
+\end{enumerate}
+\emph{Axiomes usats:} SR (principi~\ref{sr:esquema}) per a la família sobre
+\(\lambda\), amb la instància \enquote{\((X,R)\) és una solució fins a
+\(\gamma\)} als límits; elecció (proposició~\ref{prop:cardinal-inicial}) per
+a~(3); Hartogs per als successors.
+\end{proposicio}
+
+\begin{prova}
+\emph{(1)} Fixem un representant \(L\) de \(\lambda\). Anomenem \emph{solució
+fins a \(\beta\)} (per a \(\beta\in L\)) una família \(q\colon X\to L_{\le\beta}\)
+amb un bon ordre sobre cada fibra (codificat com una part de \(X\times X\)),
+tal que la fibra sobre \(0\) té tipus \(\aleph_0\), la fibra sobre
+\(\gamma+1\) té per tipus el successor cardinal del de la fibra sobre
+\(\gamma\), i la fibra sobre un límit \(\mu\) té per tipus el suprem dels de
+les fibres sobre \(\gamma<\mu\). Les fibres són bons ordres inicials, de
+manera que dues solucions fins a \(\beta\) estan lligades per un \emph{únic}
+isomorfisme compatible (rigidesa, teorema~\ref{teo:unicitat-iso}, fibra a
+fibra). Per inducció transfinita sobre \(\beta\) es veu que n'hi ha una per
+a cada \(\beta\in L\); la propietat \enquote{existeix una solució fins a
+\(\beta\)} quantifica sobre conjunts arbitraris i no és, en principi, una part
+de \(L\), però ho és pel lema~\ref{lema:separacio-sr}, de manera que la
+inducció és legítima. Pas a pas: al successor s'afegeix una fibra
+(proposició~\ref{prop:cardinal-successor}, Nivell~I); al límit \(\mu\),
+l'esquema SR (principi~\ref{sr:esquema}) aplicat al conjunt d'índexs
+\(L_{<\mu}\) i a la fórmula \(\varphi(\gamma,X,R)\): \enquote{\((X,R)\) és
+una solució fins a \(\gamma\)}, amb \(R\) la llista formada per la
+projecció i l'ordre de les fibres, dona una família \(F\to L_{<\mu}\) la fibra \(F_\gamma\) de la qual és una
+solució fins a \(\gamma\). Aquestes solucions són compatibles en el sentit
+següent. Si \(\gamma\le\delta<\mu\), la \emph{restricció} de la solució
+\(F_\delta\) a \(L_{\le\gamma}\) ---la imatge inversa de \(L_{\le\gamma}\) per
+la seva projecció, amb els ordres de les fibres restringits--- és de nou una
+solució fins a \(\gamma\), perquè les condicions de la recursió sobre
+\(\gamma'\le\gamma\) només miren fibres sobre \(L_{\le\gamma}\). Per la
+clàusula d'unicitat de SR hi ha, doncs, un \emph{únic} isomorfisme
+\(u_{\gamma\delta}\) de \(F_\gamma\) sobre aquesta restricció que commuta amb
+les projeccions cap a \(L_{\le\gamma}\) i conserva l'ordre de cada fibra; i
+per la unicitat, aquests isomorfismes són coherents
+(\(u_{\gamma\varepsilon}=u_{\delta\varepsilon}|\circ u_{\gamma\delta}\) per
+a \(\gamma\le\delta\le\varepsilon\)), perquè els dos costats són isomorfismes
+del mateix tipus entre les mateixes solucions. Prenem ara, per a cada
+\(\gamma<\mu\), la fibra de \(F_\gamma\) sobre el punt final \(\gamma\)
+(la \enquote{diagonal}): és la part de \(F\) dels elements que es projecten
+a \((\gamma,\gamma)\), i com a \(\gamma\) varia forma una família interna
+\(D\to L_{<\mu}\), tallada dins \(F\) per una condició sobre les dues
+projeccions. Per la coherència, la restricció de \(D\) a \(L_{\le\gamma}\) és
+isomorfa a \(F_\gamma\) mateixa, de manera que \(D\) satisfà la recursió a
+tots els \(\gamma<\mu\). El suprem d'aquests tipus és el
+tipus del límit directe dels representants (cada fibra s'immergeix com a
+part inicial de les posteriors, de manera única), per l'argument de la
+proposició~\ref{prop:suprem}; i és un cardinal inicial, perquè un tipus
+menor és menor que algun \(\aleph_\gamma\) i, per tant, de mida
+\(\le\aleph_\gamma<\aleph_{\gamma+1}\le\) la del suprem. Afegint aquesta
+fibra s'obté la solució fins a \(\mu\). Una darrera aplicació del mateix
+argument sobre tot \(L\) dona la família \(E\to\lambda\).
+
+\emph{(2)} Per inducció transfinita (teorema~\ref{teo:induccio-transfinita}):
+al successor, \(\aleph_{\gamma+1}=(\aleph_\gamma)^{+}>\aleph_\gamma\); al
+límit \(\mu\), \(\aleph_\mu\) és cota superior de tots els \(\aleph_\gamma\),
+\(\gamma<\mu\), i per a cada \(\gamma<\mu\) també \(\gamma+1<\mu\), de manera
+que \(\aleph_\mu\ge\aleph_{\gamma+1}>\aleph_\gamma\).
+
+\emph{(3)} Per inducció, \(\beta\le\aleph_\beta\) com a tipus (al successor,
+\(\aleph_{\beta+1}>\aleph_\beta\ge\beta\), i és un tipus estrictament més gran;
+al límit, el suprem domina cada terme). Sigui \(A\) infinit i \(\kappa\) el
+seu cardinal inicial (proposició~\ref{prop:cardinal-inicial}, amb elecció).
+Prenem \(\lambda=\kappa+1\) i la família de (1). Com que
+\(\aleph_\kappa\ge\kappa\), la part dels \(\beta\le\kappa\) amb
+\(\aleph_\beta\ge\kappa\) és no buida; sigui \(\alpha\) el seu mínim. Si
+\(\alpha=0\), \(\kappa\le\aleph_0\) i, com que \(A\) és infinit,
+\(\kappa=\aleph_0\). Si \(\alpha=\gamma+1\), \(\aleph_\gamma<\kappa\), d'on
+\(\aleph_\alpha=(\aleph_\gamma)^{+}\le\kappa\le\aleph_\alpha\). Si \(\alpha\)
+és límit, \(\aleph_\gamma<\kappa\) per a tot \(\gamma<\alpha\), d'on
+\(\aleph_\alpha=\sup_{\gamma<\alpha}\aleph_\gamma\le\kappa\le\aleph_\alpha\). En
+tots els casos \(\aleph_\alpha=\kappa=\abs{A}\). La unicitat és la
+monotonia estricta de (2).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:alephs-classica}
+Els alephs enumeren \emph{tots} els cardinals infinits en ordre creixent:
+\(\aleph_0<\aleph_1<\aleph_2<\cdots<\aleph_\omega<\aleph_{\omega+1}<\cdots\),
+un per a cada tipus ordinal. La part (3) ---que no hi ha cap cardinal infinit
+\enquote{entre els alephs}--- és el que fa que la jerarquia sigui exhaustiva, i
+depèn de l'elecció (via el cardinal inicial). Sense elecció, hi pot haver
+conjunts infinits que no siguin equipotents a cap aleph. Els trams de la
+successió, com a objectes, són el primer lloc del llibre on SR és
+inevitable: cada \(\aleph_\alpha\) individual existeix sense SR, però un tram
+\((\aleph_\beta)_{\beta<\lambda}\) com a família interna, no. La família de
+\emph{tots} els alephs no existeix com a objecte ni tan sols amb SR: els
+tipus ordinals no formen cap conjunt d'índexs (Burali--Forti).
+\end{observacio}
+
+\section{Cofinalitat; cardinals regulars i singulars}\label{sec:cofinalitat}
+
+La cofinalitat mesura \enquote{amb quina rapidesa} es pot arribar al final d'un
+bon ordre, i distingeix dues menes de cardinals límit.
+
+\begin{definicio}[Cofinalitat]\index{Cofinalitat}\label{def:cofinalitat}
+Sigui \((W,<)\) un bon ordre sense element màxim. Una part \(C\hookrightarrow W\)
+és \emph{cofinal} si per a tot \(w\in W\) existeix \(c\in C\) amb \(w\le c\)
+---\(C\) \enquote{arriba fins al final} de \(W\). La \emph{cofinalitat}
+\(\operatorname{cf}(W)\) és el menor tipus ordinal d'una part cofinal de \(W\),
+ben ordenada per l'ordre restringit. Per a un cardinal límit \(\kappa\),
+\(\operatorname{cf}(\kappa)\) és la cofinalitat d'un bon ordre inicial que el
+representa.
+\end{definicio}
+
+\begin{definicio}[Regular i singular]\index{Regular i singular}\label{def:regular-singular}
+Un cardinal infinit \(\kappa\) és \emph{regular} si \(\operatorname{cf}(\kappa)=\kappa\)
+---no es pot arribar al seu final amb menys de \(\kappa\) passos---, i
+\emph{singular} si \(\operatorname{cf}(\kappa)<\kappa\).
+\end{definicio}
+
+\begin{teorema}[Hessenberg; citat]\label{teo:hessenberg}
+Per a tot cardinal infinit \(\kappa\), \(\kappa\cdot\kappa=\kappa\). En
+conseqüència, amb l'elecció, la reunió de \(\le\kappa\) conjunts de cardinal
+\(\le\kappa\) té cardinal \(\le\kappa\).\par
+\emph{No el demostrem}: la prova clàssica bon-ordena \(\kappa\times\kappa\)
+per l'ordre de Gödel (primer pel màxim de les dues coordenades) i és de
+Nivell~I amb l'elecció, però llarga; vegeu~\cite[teorema~3.5]{jech2003}. El
+cas \(\kappa=\aleph_0\) és \(\N\cong\N\times\N\), que sí que hem demostrat
+(proposició~\ref{prop:estabilitat-enumerable}).
+\end{teorema}
+
+\begin{proposicio}[Exemples de regularitat, sota elecció i SR]\label{prop:regular-exemples}
+Suposem elecció i SR.
+\begin{enumerate}
+\item \(\aleph_0\) és regular: cap part finita de \(\N\) no és cofinal.
+\item Tot cardinal successor \(\aleph_{\alpha+1}\) és regular.
+\item \(\aleph_\omega\) és singular: \(\operatorname{cf}(\aleph_\omega)=\aleph_0<\aleph_\omega\),
+perquè la successió \((\aleph_n)_{n<\omega}\) és cofinal en \(\aleph_\omega\) i
+té longitud \(\omega\).
+\end{enumerate}
+\emph{Axiomes usats:} elecció, SR (per a \(\aleph_\omega\) i la successió dels
+alephs); cofinalitat (definició~\ref{def:cofinalitat}).
+\end{proposicio}
+
+\begin{prova}
+\emph{(1)} Una part finita de \(\N\) té un màxim, de manera que no arriba fins al
+final; una part cofinal és, doncs, infinita, i tota part infinita de \(\N\)
+és isomorfa a \(\N\) com a ordre (teorema~\ref{teo:subobjectes-N}), de tipus
+\(\omega\).
+\emph{(2)} Si \(C\) fos una part cofinal de \(\aleph_{\alpha+1}\) de cardinal
+\(\le\aleph_\alpha\), aleshores \(\aleph_{\alpha+1}\) seria la unió de \(\le\aleph_\alpha\)
+conjunts cadascun de cardinal \(\le\aleph_\alpha\) (els segments determinats pels
+elements de \(C\)); però una tal unió té cardinal \(\le\aleph_\alpha\cdot\aleph_\alpha=\aleph_\alpha<\aleph_{\alpha+1}\)
+(teorema~\ref{teo:hessenberg}), contradicció.
+Per tant tota part cofinal té cardinal \(\aleph_{\alpha+1}\), i el successor és
+regular. \emph{(3)} La successió \((\aleph_n)_{n<\omega}\) és estrictament
+creixent (proposició~\ref{prop:alephs}) i el seu suprem és \(\aleph_\omega\)
+(definició~\ref{def:alephs}); per tant \(\{\aleph_n:n<\omega\}\) és cofinal en
+\(\aleph_\omega\) i té tipus \(\omega\), d'on \(\operatorname{cf}(\aleph_\omega)=\aleph_0<\aleph_\omega\).
+\end{prova}
+
+\begin{observacio}[Per què importa la cofinalitat]\label{obs:cofinalitat-importa}
+La distinció regular\slash singular és la que governa quins cardinals es poden
+\enquote{assolir des de baix}. Un cardinal regular no és el suprem de menys
+cardinals més petits; un de singular, sí. Aquesta és, també, la raó per la qual
+el teorema de König (teorema~\ref{teo:konig}) té conseqüències sobre la
+cofinalitat: implica \(\operatorname{cf}(2^{\aleph_0})>\aleph_0\): si \(2^{\aleph_0}\) fos la
+reunió d'una successió \((A_n)_{n\in\N}\) de parts de cardinal
+\(<2^{\aleph_0}\), König donaria
+\(2^{\aleph_0}\le\sum_n\abs{A_n}<\prod_n2^{\aleph_0}=(2^{\aleph_0})^{\aleph_0}=2^{\aleph_0\cdot\aleph_0}=2^{\aleph_0}\),
+absurd. És a dir, el continu no pot ser un cardinal de cofinalitat numerable ---una de les
+poques coses que la teoria \emph{sí} diu sobre \(2^{\aleph_0}\), a diferència del
+seu valor exacte.
+\end{observacio}
+
+\section{Els nombres beth i el continu}\label{sec:beths-continu}
+
+Els alephs pugen \enquote{d'un en un} pel cardinal successor; els beths pugen
+\enquote{de cop} pel conjunt de parts. La diferència entre les dues jerarquies
+és, precisament, el contingut de la hipòtesi del continu.
+
+\begin{definicio}[Els beths fins a un ordinal fix]\index{Els beths fins a un ordinal fix}\label{def:beths}
+Com amb els alephs, per a cada bon ordre fix \(\lambda\) la família
+\((\beth_\beta)_{\beta<\lambda}\), indexada pel conjunt \(\lambda\), es
+defineix per recursió transfinita sobre \(\lambda\), sota SR:
+\[
+\beth_0=\aleph_0,
+\qquad
+\beth_{\beta+1}=2^{\beth_\beta},
+\qquad
+\beth_\mu=\sup_{\beta<\mu}\beth_\beta\quad(\mu<\lambda\ \text{límit}).
+\]
+La notació global \(\alpha\mapsto\beth_\alpha\) és, de nou, una regla de
+classe del metallenguatge, no un objecte intern indexat per tots els
+ordinals. El \emph{continu} és
+\[
+\mathfrak c\ :=\ \abs{P(\N)}\ =\ 2^{\aleph_0}\ =\ \beth_1 ,
+\]
+i, notablement, ja és de Nivell~I: \(P(\N)\) està construït i \(\beth_1\) és un
+sol pas de conjunt de parts, sense reunir cap família no acotada.
+\emph{Axiomes usats:} SR (per a la família sobre \(\lambda\) i els suprems
+límit), Cantor cardinal (teorema~\ref{teo:cantor-cardinal}) per a l'estricta
+pujada.
+\end{definicio}
+
+\begin{proposicio}[Els beths pugen estrictament; \(\aleph_\alpha\le\beth_\alpha\)]\label{prop:beths}
+Suposem SR. La successió dels beths és estrictament creixent
+---\(\beth_\alpha<\beth_{\alpha+1}=2^{\beth_\alpha}\) pel teorema de Cantor
+(teorema~\ref{teo:cantor-cardinal})--- i domina els alephs terme a terme:
+\(\aleph_\alpha\le\beth_\alpha\) per a tot \(\alpha\), amb igualtat a
+\(\alpha=0\).\par
+\emph{Axiomes usats:} SR, Cantor cardinal, monotonia de l'exponenciació
+cardinal (proposició~\ref{prop:lleis-cardinals}); elecció, a través del
+cardinal successor i de la comparabilitat dels cardinals.
+\end{proposicio}
+
+\begin{prova}
+L'estricta pujada al successor és \(\beth_\alpha<2^{\beth_\alpha}\)
+(teorema~\ref{teo:cantor-cardinal}); als límits, el suprem d'una successió
+estrictament creixent és més gran que cada terme. Per a
+\(\aleph_\alpha\le\beth_\alpha\), inducció transfinita
+(teorema~\ref{teo:induccio-transfinita}): a \(\alpha=0\), \(\aleph_0=\beth_0\); al
+successor, \(\aleph_{\alpha+1}=(\aleph_\alpha)^{+}\le 2^{\aleph_\alpha}\le
+2^{\beth_\alpha}=\beth_{\alpha+1}\) ---la primera desigualtat perquè
+\((\aleph_\alpha)^{+}\) és el menor cardinal \(>\aleph_\alpha\) i
+\(2^{\aleph_\alpha}>\aleph_\alpha\) (Cantor), la segona per monotonia i la
+hipòtesi d'inducció; a un límit \(\mu\),
+\(\aleph_\mu=\sup_{\beta<\mu}\aleph_\beta\le\sup_{\beta<\mu}\beth_\beta=\beth_\mu\).
+Totes dues induccions són sobre el bon ordre fix que indexa les famílies, amb
+propietats que són parts pel lema~\ref{lema:separacio-sr}.
+\end{prova}
+
+\section{La hipòtesi del continu}\label{sec:hipotesi-continu}
+
+Amb els alephs i els beths a la mà podem formular amb precisió la pregunta que
+Cantor va deixar oberta.
+
+\begin{observacio}[La hipòtesi del continu]\label{obs:hipotesi-continu}
+El continu és \(\mathfrak c=2^{\aleph_0}=\beth_1\). Sabem, pel teorema de Cantor,
+que \(\mathfrak c>\aleph_0\) (teorema~\ref{teo:cantor-cardinal}); per tant, sota
+l'elecció, \(\mathfrak c\ge\aleph_1\), el menor cardinal no numerable. La
+\emph{hipòtesi del continu} (HC) és l'afirmació que no hi ha cap cardinal entre
+\(\aleph_0\) i \(\mathfrak c\):
+\[
+2^{\aleph_0}=\aleph_1,
+\qquad\text{equivalentment}\qquad
+\beth_1=\aleph_1 .
+\]
+La \emph{hipòtesi del continu generalitzada} (HCG) afirma \(2^{\aleph_\alpha}=\aleph_{\alpha+1}\)
+per a tot \(\alpha\), és a dir \(\beth_\alpha=\aleph_\alpha\) per a tot \(\alpha\):
+que les dues jerarquies, la dels successors i la dels conjunts de parts,
+coincideixen.
+\end{observacio}
+
+\begin{observacio}[HC no necessita SR]\label{obs:hc-sense-sr}
+Remarquem que la sola \emph{formulació} d'HC ---i la seva veritat o
+falsedat--- no depèn de l'esquema SR, tot i que aquest capítol és, en conjunt,
+de Nivell~II. En efecte, els dos membres de \(2^{\aleph_0}=\aleph_1\) existeixen
+ja al Nivell~I: el continu és \(\mathfrak c=\abs{P(\N)}\), i \(P(\N)\) està
+construït pel conjunt de parts; i \(\aleph_1=(\aleph_0)^{+}\) existeix
+individualment per Hartogs (definició~\ref{def:cardinal-successor}), sense
+reunir cap família no acotada de cardinals. El que \emph{sí} requereix SR és
+disposar d'un tram \((\aleph_\beta)_{\beta<\lambda}\) o
+\((\beth_\beta)_{\beta<\lambda}\) com a família interna ---per exemple per
+enunciar HCG uniformement sobre tots els \(\beta<\lambda\); HCG per a
+\emph{tots} els ordinals és un esquema d'enunciats, un per a cada
+\(\lambda\)---, no pas l'equació d'HC en si. Per
+tant, associar \enquote{el continu} al Nivell~II és imprecís: el continu i HC
+són de Nivell~I; només la jerarquia global dels alephs és de Nivell~II.
+\end{observacio}
+
+\begin{observacio}[Què pregunta HC, i per què Cantor no la resol]\label{obs:hc-independencia}
+El punt essencial ---i el tancament del capítol--- és que HC \emph{no és un
+teorema pendent de demostració elemental}, sinó una qüestió \emph{independent}
+dels axiomes habituals. La teoria desenvolupada en aquest llibre permet
+\emph{formular} HC amb tota precisió: distingeix la pujada per successor
+(\(\aleph\)) de la pujada per conjunt de parts (\(\beth\)), i HC pregunta si
+coincideixen al primer graó. Però la teoria \emph{no} determina la resposta.
+El que Cantor va establir ---i és tot el que un argument diagonal pot
+establir--- és la \emph{desigualtat} \(\aleph_0<2^{\aleph_0}\)
+(teorema~\ref{teo:cantor}); saber \emph{on cau} exactament \(2^{\aleph_0}\) dins
+la successió dels alephs és una altra qüestió. Els resultats de Gödel (1938)~\cite{godel1940} i
+Cohen (1963)~\cite{cohen1966} mostren que, \emph{si ZFC és consistent}, ni HC ni la seva negació no es
+poden demostrar a ZFC: HC és \emph{independent de ZFC}, relativament a la
+seva consistència. Com que ETCS${}+{}$SR i ZFC són bi-interpretables
+(observació~\ref{obs:sr-rigor}), la independència es transporta a la teoria
+d'aquest llibre amb SR; i a fortiori a la teoria de Nivell~I, que és més
+feble. Cap d'aquests resultats no es demostra aquí: són metateoremes citats. La teoria fixa el que
+és forçós ---\(\mathfrak c>\aleph_0\), i \(\operatorname{cf}(\mathfrak c)>\aleph_0\)
+per König (observació~\ref{obs:cofinalitat-importa})--- i deixa lliure la resta.
+No entrem aquí en els mètodes ---forcing, models interns--- que estableixen
+aquesta independència; només subratllem que la pregunta està ben plantejada i
+que la seva resposta no és accessible pels mitjans d'aquest volum, ni per cap
+refinament elemental d'ells. Per a un tractament complet d'aquests mètodes i de
+l'aritmètica cardinal clàssica, vegeu els manuals estàndard~\cite{jech2003,kunen2011}.
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item SR és un esquema: una regla externa que determina cada \((X_i,R_i)\) llevat d'un \emph{únic} isomorfisme es representa per una família interna \(E\to I\). Fa existir famílies; l'elecció tria dins famílies que ja existeixen. És opcional, i porta la teoria a la força de ZFC.
+  \item \(\aleph_0=\abs{\N}\) i \(\kappa^{+}=\abs{\Hart(K)}\) són de Nivell~I. La família \((\aleph_\beta)_{\beta<\lambda}\), per a un \(\lambda\) fix, demana SR als límits; la instància és \enquote{ser una solució de la recursió fins a \(\gamma\)}, rígida perquè les fibres són bons ordres.
+  \item Amb l'elecció, tot cardinal infinit és un aleph. Cofinalitat: \(\aleph_0\) i els successors són regulars (els successors, amb el teorema de Hessenberg, citat); \(\aleph_\omega\) és singular.
+  \item Els beths pugen pel conjunt de parts i dominen els alephs. El continu \(\mathfrak c=\beth_1=2^{\aleph_0}\) i la hipòtesi del continu són de Nivell~I; els trams de la successió com a famílies, de Nivell~II.
+  \item HC és independent de ZFC si ZFC és consistent (Gödel, Cohen); per la bi-interpretabilitat, també d'aquesta teoria amb SR. König en diu una cosa forçosa: \(\operatorname{cf}(2^{\aleph_0})>\aleph_0\).
+\end{enumerate}
+\apartat{Errors típics} Parlar de la família de \emph{tots} els alephs com d'un objecte (ni amb SR no existeix: només els trams fins a un ordinal fix); creure que SR és una forma d'elecció; aplicar SR a regles determinades només llevat d'isomorfisme (sense unicitat); atribuir HC al Nivell~II; afirmar que HC és \enquote{independent} sense la hipòtesi de consistència; i usar \(\kappa\cdot\kappa=\kappa\) com si s'hagués demostrat al llibre.
+\apartat{Lectura recomanada} \cite[§§2--4 i~7]{shulman-comparing} per al reemplaçament estructural i la comparació amb ZFC; \cite{osius1974} per al resultat original; \cite[cap.~3, 5 i~12--15]{jech2003} per als alephs, la cofinalitat, Hessenberg, König i la independència d'HC; \cite[cap.~I.10 i~VII]{kunen2011} per al forcing; \cite{godel1940,cohen1966} per als resultats originals d'independència; i \cite[§25]{halmos} per a una primera lectura dels alephs i del continu.
+\end{resumcap}

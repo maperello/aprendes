@@ -1,0 +1,686 @@
+\chapter{Imatges i factoritzacions}\label{cap:imatges}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:relacions}: parell nucli, quocient, epimorfisme regular i l'axioma d'efectivitat. Del capítol~\ref{cap:parts}: bimorfismes, imatge inversa, el graf d'una aplicació i l'equivalència entre injectivitat i monomorfisme. Del capítol~\ref{cap:valors}: l'exhaustivitat dels epimorfismes sobre punts. L'axioma d'elecció no s'usa en aquest capítol.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item definir la imatge d'una aplicació com a part mínima per la qual es factoritza, construir-la com a quocient del parell nucli i demostrar-ne la unicitat;
+  \item demostrar, sense elecció, que el factor monomòrfic de la factorització és un monomorfisme, i que tot epimorfisme és regular;
+  \item demostrar que els epimorfismes són estables per canvi de base i explicar en quin sentit la teoria és regular;
+  \item caracteritzar monomorfismes, epimorfismes i isomorfismes per la degeneració d'un dels dos factors de la factorització imatge;
+  \item definir la imatge directa d'una part i demostrar l'adjunció amb la imatge inversa;
+  \item compondre relacions i llegir la composició per elements generalitzats, amb el paper dels recobriments epimòrfics;
+  \item identificar les aplicacions amb les relacions funcionals i totals, i la composició de relacions amb la d'aplicacions.
+\end{itemize}
+\end{objectius}
+
+El capítol precedent va lligar les relacions d'equivalència amb els
+epimorfismes regulars, i va mostrar que tot epimorfisme regular és el
+quocient del seu parell nucli. Aquestes eines tenen una conseqüència
+immediata que encara no hem explotat: tota aplicació, sigui quina sigui,
+es descompon de manera essencialment única en una part exhaustiva seguida
+d'una part injectiva. La part injectiva és la \emph{imatge} de
+l'aplicació.
+
+Aquest és un capítol de consolidació. No hi afegim cap axioma: tot el que
+segueix es dedueix dels productes, els pullbacks i els coequalitzadors ja
+disponibles, i de l'axioma d'efectivitat del
+capítol~\ref{cap:relacions}. Tampoc no hi fem servir l'axioma d'elecció:
+en el punt on seria més temptador ---la prova que el factor monomòrfic de
+la factorització imatge és un monomorfisme--- n'hi ha prou amb la
+separació global i amb l'exhaustivitat dels epimorfismes sobre punts
+(observació~\ref{obs:factoritzacio-eleccio}). Una conseqüència
+d'aquesta via és que tot epimorfisme resulta regular sense elecció, cosa
+que al capítol anterior només havíem obtingut amb ella. El resultat és
+una manera uniforme de parlar
+de la imatge d'una aplicació i de la imatge directa d'una part, que
+completa la imatge inversa introduïda al capítol~\ref{cap:parts} i precisa
+en quin sentit la teoria obtinguda és regular. Com sempre, definirem les
+nocions sobre elements generalitzats i en recuperarem la lectura clàssica
+com a cas particular.
+
+\section{La imatge d'una aplicació}\label{sec:imatge}
+
+Sigui \(f\colon A\to B\) una aplicació. El seu parell nucli
+\(\operatorname{Nuc}(f)\) (definició~\ref{def:kernel-pair}) és una relació
+d'equivalència sobre \(A\) (proposició~\ref{prop:kernel-equivalencia}):
+identifica els elements generalitzats de \(A\) que \(f\) envia al mateix
+lloc. És natural, doncs, prendre'n el quocient i comparar-lo amb \(B\).
+
+\begin{definicio}[Imatge d'una aplicació]\index{Imatge d'una aplicació}\label{def:imatge}
+Sigui \(f\colon A\to B\). Una \emph{imatge} de \(f\) és una part
+\(m\colon I\hookrightarrow B\) per la qual \(f\) es factoritza com
+\[
+f=m\circ e,
+\qquad
+e\colon A\twoheadrightarrow I,
+\]
+amb \(e\) un epimorfisme, i que és \emph{mínima} amb aquesta propietat: si
+\(m'\colon I'\hookrightarrow B\) és una part i \(f\) es factoritza a
+través de \(m'\), aleshores \(m\) es factoritza a través de \(m'\).
+\end{definicio}
+
+\begin{notacio}[La imatge]\label{not:imatge}
+Escriurem \(\operatorname{Im}(f)\) per a la part \(m\colon
+I\hookrightarrow B\) de la definició anterior, i
+\(\operatorname{Imatge}(m,e,f)\) per al predicat, eliminable, que afirma
+que \(m\) és una imatge de \(f\) amb aplicació exhaustiva associada
+\(e\). Desplegat, aquest predicat quantifica el domini \(I\), l'aplicació
+\(e\), i les condicions que \(m\) és un monomorfisme, que \(e\) és un
+epimorfisme, que \(f=m\circ e\) i la minimalitat. Com és habitual, un cop
+introduïdes les abreviacions les farem servir en les proves; d'ara
+endavant ometrem aquest desplegament quan els tipus siguin inequívocs.
+\end{notacio}
+
+La definició demana la minimalitat entre totes les parts a través de les
+quals passa \(f\). El resultat principal del capítol és que aquesta part
+mínima existeix sempre i que es pot construir explícitament: és el
+quocient de \(A\) pel parell nucli de \(f\).
+
+\begin{teorema}[Existència i factorització]\label{teo:factoritzacio}
+Tota aplicació \(f\colon A\to B\) admet una imatge. A més, existeix una
+factorització
+\[
+A\overset{e}{\twoheadrightarrow}\operatorname{Im}(f)\overset{m}{\hookrightarrow}B,
+\]
+on \(e\) és un epimorfisme regular i \(m\) un monomorfisme, i aquesta
+factorització és única llevat d'un únic isomorfisme compatible.
+\end{teorema}
+
+\begin{prova}
+\emph{Construcció.} Prenem el parell nucli \(n=\operatorname{Nuc}(f)\),
+que és una relació d'equivalència sobre \(A\)
+(proposició~\ref{prop:kernel-equivalencia}), i el seu quocient
+\(e\colon A\twoheadrightarrow A/n\)
+(proposició~\ref{prop:quocient-existeix}), un epimorfisme regular
+(proposició~\ref{prop:quocient-regular}). Per definició de parell nucli,
+\(f\circ k_1=f\circ k_2\), on \(k_1,k_2\) són les projeccions de \(n\); és
+a dir, \(f\) coiguala el parell \((k_1,k_2)\). Com que \(e\) és el
+coequalitzador d'aquest parell, la seva propietat universal
+(definició~\ref{def:coequalitzador}) proporciona una única aplicació
+\(m\colon A/n\to B\) amb
+\[
+f=m\circ e.
+\]
+Anomenem \(I:=A/n\).
+
+\emph{\(m\) és un monomorfisme.} Per l'observació~\ref{obs:injectiva-mono}
+del capítol~\ref{cap:parts}, que usa la separació global, n'hi ha prou amb
+veure que \(m\) és injectiva sobre els punts globals. Siguin
+\(y,y'\colon\mathbf1\to I\) amb \(m\circ y=m\circ y'\). Com que \(e\) és un
+epimorfisme, és exhaustiu sobre punts
+(proposició~\ref{prop:epi-exhaustiu-punts}): existeixen
+\(a,a'\colon\mathbf1\to A\) amb \(e\circ a=y\) i \(e\circ a'=y'\).
+Aleshores
+\[
+f\circ a=m\circ e\circ a=m\circ y=m\circ y'=m\circ e\circ a'=f\circ a',
+\]
+de manera que el parell \((a,a')\) es factoritza pel parell nucli \(n\)
+de \(f\): hi ha \(d\colon\mathbf1\to A\times_BA\) amb \(k_1\circ d=a\) i
+\(k_2\circ d=a'\). Com que \(e\) coiguala \(k_1\) i \(k_2\),
+\[
+y=e\circ a=e\circ k_1\circ d=e\circ k_2\circ d=e\circ a'=y'.
+\]
+Per tant \(m\) és injectiva sobre punts i, doncs, un monomorfisme.
+
+\emph{Minimalitat.} Suposem que \(f\) es factoritza també a través d'una
+part \(m'\colon I'\hookrightarrow B\), diguem \(f=m'\circ g\) amb
+\(g\colon A\to I'\). Aleshores \(m'\circ g\) coiguala el parell nucli de
+\(f\): en efecte, \(m'\circ g\circ k_1=f\circ k_1=f\circ k_2=m'\circ
+g\circ k_2\), i com que \(m'\) és un monomorfisme, \(g\circ k_1=g\circ
+k_2\). Per la propietat universal del coequalitzador \(e\), \(g\) es
+factoritza de manera única com \(g=t\circ e\) per a alguna
+\(t\colon I\to I'\). Aleshores \(m'\circ t\circ e=m'\circ g=f=m\circ e\);
+com que \(e\) és un epimorfisme, \(m'\circ t=m\). Això mostra que \(m\) es
+factoritza a través de \(m'\), que és la minimalitat.
+
+\emph{Unicitat.} Siguin \(m_1\colon I_1\hookrightarrow B\) i
+\(m_2\colon I_2\hookrightarrow B\) dues imatges de \(f\), amb aplicacions
+exhaustives \(e_1,e_2\). Per la minimalitat de cadascuna respecte de
+l'altra, \(m_1\) es factoritza a través de \(m_2\) i recíprocament: hi ha
+\(u\colon I_1\to I_2\) i \(v\colon I_2\to I_1\) amb \(m_2\circ u=m_1\) i
+\(m_1\circ v=m_2\). Aleshores \(m_1\circ v\circ u=m_2\circ u=m_1\); com
+que \(m_1\) és un monomorfisme, \(v\circ u=\id_{I_1}\), i simètricament
+\(u\circ v=\id_{I_2}\). Per tant \(u\) és un isomorfisme, i és compatible
+amb les factoritzacions perquè \(u\circ e_1=e_2\) se'n dedueix component
+\(m_2\circ u\circ e_1=m_1\circ e_1=f=m_2\circ e_2\) i cancel·lant el
+monomorfisme \(m_2\). La unicitat d'\(u\) és clara pel mateix argument de
+cancel·lació.
+
+\emph{Tota factorització en epimorfisme regular i monomorfisme és una
+imatge.} Falta veure que la unicitat s'aplica a \emph{qualsevol}
+factorització \(f=m''\circ e''\) amb \(e''\colon A\twoheadrightarrow I''\)
+epimorfisme regular i \(m''\colon I''\hookrightarrow B\) monomorfisme, i no
+només a les que són mínimes per hipòtesi. Primer, \(e''\) és el
+coequalitzador del seu propi parell nucli: si \(e''\) és el coequalitzador
+d'un parell \(f',g'\colon C\to A\), aleshores \(e''\circ f'=e''\circ g'\) i
+el parell \((f',g')\) es factoritza pel parell nucli de \(e''\) (propietat
+universal del pullback); per tant tota aplicació que coiguala el parell
+nucli coiguala \((f',g')\) i es factoritza de manera única per \(e''\), i
+\(e''\) mateix coiguala el seu parell nucli. Segon, com que \(m''\) és un
+monomorfisme, \(e''\circ u=e''\circ v\) si i només si \(f\circ u=f\circ v\),
+de manera que el pullback de \(f\) amb ella mateixa ho és també de \(e''\)
+amb ella mateixa: \(e''\) és un coequalitzador de les projeccions
+\(k_1,k_2\) del parell nucli de \(f\). L'argument de la minimalitat,
+repetit amb \(e''\) en lloc de \(e\), mostra aleshores que \(m''\) es
+factoritza per tota part per la qual es factoritza \(f\): \(m''\) és una
+imatge de \(f\), i el paràgraf anterior dona l'únic isomorfisme compatible
+amb \((m,e)\).
+\end{prova}
+
+\begin{observacio}[Sense elecció]\label{obs:factoritzacio-eleccio}
+La construcció de \(e\) i \(m\), la minimalitat i la unicitat no depenen
+de cap axioma més enllà dels coequalitzadors i l'efectivitat. El pas que
+podria semblar necessitar l'elecció ---que \(m\) sigui un monomorfisme---
+s'ha fet amb la separació global, reduint-lo als punts globals, i amb
+l'exhaustivitat dels epimorfismes sobre punts, que és un teorema del
+capítol~\ref{cap:valors}. Amb l'elecció l'argument és encara més curt:
+una secció \(s\) de \(e\) dona directament, per a \(x,x'\colon X\to I\)
+amb \(m\circ x=m\circ x'\), que \(s\circ x\) i \(s\circ x'\) estan
+relacionats pel parell nucli i, doncs, \(x=e\circ s\circ x=e\circ s\circ
+x'=x'\); però no cal. En les teories sense separació global (com les
+dels conjunts variables del capítol~\ref{cap:models}) cap de les dues
+vies no és disponible, i la prova passa per elements generalitzats i
+recobriments epimòrfics; és el preu de no tenir prou punts.
+\end{observacio}
+
+\begin{corollari}[Tot epimorfisme és regular; sense elecció]\label{cor:epi-regular-sense-eleccio}
+Tota aplicació \(f\colon A\to B\) que és un epimorfisme és un epimorfisme
+regular: és el coequalitzador del seu parell nucli.
+\end{corollari}
+
+\begin{prova}
+Factoritzem \(f=m\circ e\) pel teorema~\ref{teo:factoritzacio}. Com que
+\(f\) és un epimorfisme i \(f=m\circ e\), també \(m\) ho és; i \(m\) és un
+monomorfisme. Per tant \(m\) és un bimorfisme i, per la
+proposició~\ref{prop:bimorfisme-isomorfisme} del capítol~\ref{cap:parts},
+un isomorfisme. Així \(f=m\circ e\) és el compost d'un coequalitzador amb
+un isomorfisme, i és un coequalitzador del mateix parell: el parell
+nucli de \(f\), que coincideix amb el de \(e\) pel
+lema~\ref{lema:nucli-invariant}.
+\end{prova}
+
+\begin{observacio}[Què afegeix l'elecció, revisat]\label{obs:epi-regular-revisat}
+Al capítol~\ref{cap:relacions} vam obtenir que tot epimorfisme és regular
+com a conseqüència de l'elecció (proposició~\ref{prop:epi-regular-eleccio}).
+El corol·lari anterior mostra que l'elecció hi era supèrflua: la
+factorització imatge i el teorema del bimorfisme basten. El que l'elecció
+continua afegint, i que no se segueix d'aquí, és que tot epimorfisme
+sigui \emph{escindit}. Tenim, doncs, tres nocions en ordre de força:
+epimorfisme, que amb aquest corol·lari coincideix amb epimorfisme regular;
+i epimorfisme escindit, estrictament més fort sense l'elecció i
+equivalent als anteriors amb ella.
+\end{observacio}
+
+\begin{observacio}[Lectura clàssica]\label{obs:imatge-classica}
+En el model clàssic, la imatge de \(f\colon A\to B\) és el subconjunt
+\(\{\,f(a):a\in A\,\}\subseteq B\) dels valors efectivament assolits. La
+factorització \(A\twoheadrightarrow\operatorname{Im}(f)\hookrightarrow B\)
+és la descomposició habitual d'una funció en la sobrejecció sobre la seva
+imatge seguida de la inclusió de la imatge dins del codomini. El parell
+nucli identifica els elements amb la mateixa imatge, i el quocient és el
+conjunt de valors assolits, cadascun comptat una sola vegada.
+\end{observacio}
+
+\begin{lema}[Estabilitat dels epimorfismes per canvi de base]\label{lema:estabilitat-epi-regular}
+Si \(e\colon A\twoheadrightarrow C\) és un epimorfisme i \(g\colon D\to C\)
+és una aplicació qualsevol, aleshores la projecció
+\(e'\colon D\times_C A\to D\) del pullback de \(e\) al llarg de \(g\) és
+també un epimorfisme (i, pel corol·lari~\ref{cor:epi-regular-sense-eleccio},
+un epimorfisme regular). No s'usa l'elecció.
+\end{lema}
+
+\begin{prova}
+Considerem el pullback
+\[
+\begin{aligned}
+D\times_C A &\xrightarrow{\;\pi_A\;} A\\
+{\scriptstyle e'}\big\downarrow\ \ &\qquad\big\downarrow{\scriptstyle e}\\
+D &\xrightarrow{\;\;g\;\;} C.
+\end{aligned}
+\]
+Per la proposició~\ref{prop:epi-exhaustiu-global} del
+capítol~\ref{cap:relacions}, n'hi ha prou amb veure que \(e'\) és
+exhaustiva sobre punts. Sigui \(d\colon\mathbf1\to D\). El punt
+\(g\circ d\colon\mathbf1\to C\) té una preimatge per \(e\), que és
+exhaustiu sobre punts: \(a\colon\mathbf1\to A\) amb \(e\circ a=g\circ d\).
+El parell \((d,a)\) és compatible, i la propietat universal del pullback
+dona \(w\colon\mathbf1\to D\times_CA\) amb \(e'\circ w=d\). Per tant tot
+punt de \(D\) té preimatge per \(e'\).
+
+Amb l'elecció hi ha una prova que no passa pels punts: una secció \(s\)
+de \(e\) dona la secció \(\langle\id_D,s\circ g\rangle\) de \(e'\), de
+manera que \(e'\) és fins i tot escindit.
+\end{prova}
+
+\begin{observacio}[Una teoria regular]\label{obs:regularitat}
+La factorització del teorema~\ref{teo:factoritzacio} és el que en la
+terminologia categòrica es demana a una categoria \emph{regular}: tota
+aplicació es descompon com un epimorfisme regular seguit d'un
+monomorfisme, i, pel lema~\ref{lema:estabilitat-epi-regular}, els
+epimorfismes regulars són estables per canvi de base. Amb l'axioma
+d'efectivitat del capítol~\ref{cap:relacions} ja teníem les relacions
+d'equivalència efectives; ara veiem que la factorització imatge n'és una
+conseqüència i que, un cop demostrada l'estabilitat, la nostra teoria
+disposa de la infraestructura d'una categoria regular~\cite{borceux-vol2},
+i, com que tot epimorfisme és regular, d'una en què els epimorfismes i
+els epimorfismes regulars coincideixen. Tot això s'ha obtingut sense
+l'axioma d'elecció, però no sense la separació global, que és el que ha
+permès reduir les proves als punts globals; la
+secció~\ref{sec:imatge-directa} en complementa la lectura amb l'adjunció
+entre imatge directa i imatge inversa.
+\end{observacio}
+
+\section{Caracteritzacions per la factorització}\label{sec:caracteritzacions}
+
+La factorització imatge unifica en un sol enunciat les nocions de
+monomorfisme, epimorfisme i isomorfisme: cadascuna correspon a una
+degeneració d'un dels dos factors.
+
+\begin{proposicio}[Monomorfismes i parell nucli trivial]\label{prop:mono-nucli-trivial}
+Una aplicació \(f\colon A\to B\) és un monomorfisme si i només si el seu
+parell nucli és la diagonal, és a dir,
+\(\operatorname{Nuc}(f)\equiv_{A\times A}\Delta_A\). En aquest cas
+l'aplicació exhaustiva de la factorització és un isomorfisme
+\(A\xrightarrow{\sim}\operatorname{Im}(f)\).
+\end{proposicio}
+
+\begin{prova}
+Si \(f\) és un monomorfisme, aleshores \(f\circ k_1=f\circ k_2\) implica
+\(k_1=k_2\), de manera que el parell nucli és la diagonal
+(proposició~\ref{prop:diagonal-mono}). Recíprocament, si
+\(\operatorname{Nuc}(f)\equiv_{A\times A}\Delta_A\) i \(x,x'\colon X\to A\)
+compleixen \(f\circ x=f\circ x'\), aleshores \(\langle x,x'\rangle\) es
+factoritza a través del parell nucli, per tant a través de la diagonal, i
+això dona \(x=x'\) (proposició~\ref{prop:diagonal-mono}); per tant \(f\) és
+un monomorfisme. En aquest cas el quocient de \(A\) per la diagonal és el
+mateix \(A\), de manera que \(e\colon A\to\operatorname{Im}(f)\) és un
+isomorfisme.
+\end{prova}
+
+\begin{proposicio}[Epimorfismes i imatge total]\label{prop:epi-imatge-total}
+Una aplicació \(f\colon A\to B\) és un epimorfisme (equivalentment, un
+epimorfisme regular) si i només si la seva imatge és tot el codomini, és
+a dir, si el monomorfisme \(m\colon\operatorname{Im}(f)\hookrightarrow B\)
+és un isomorfisme.
+\end{proposicio}
+
+\begin{prova}
+Si \(m\) és un isomorfisme, \(f=m\circ e\) és el compost d'un epimorfisme
+regular amb un isomorfisme, i per tant un epimorfisme regular.
+Recíprocament, si \(f\) és un epimorfisme, \(m\) és un epimorfisme (perquè
+\(f=m\circ e\)) i un monomorfisme, i per tant un isomorfisme pel teorema
+del bimorfisme (proposició~\ref{prop:bimorfisme-isomorfisme}); és
+l'argument del corol·lari~\ref{cor:epi-regular-sense-eleccio}.
+\end{prova}
+
+\begin{corollari}[Bimorfisme i isomorfisme]\label{cor:bimorfisme-iso}
+Una aplicació és un isomorfisme si i només si és alhora un monomorfisme i
+un epimorfisme. Equivalentment, si i només si tots dos factors de
+la seva factorització imatge són isomorfismes.
+\end{corollari}
+
+\begin{prova}
+Si \(f\) és un isomorfisme, és tant mono com epi. Recíprocament,
+si \(f\) és un monomorfisme, l'aplicació exhaustiva \(e\) és un
+isomorfisme (proposició~\ref{prop:mono-nucli-trivial}); si a més és un
+epimorfisme, el monomorfisme \(m\) també ho és
+(proposició~\ref{prop:epi-imatge-total}). Aleshores \(f=m\circ e\) és
+composició de dos isomorfismes, i és un isomorfisme. El resultat ja es va
+demostrar al capítol~\ref{cap:parts} amb el classificador de parts; el que
+oferim aquí és la seva lectura a través de la factorització imatge: cada
+factor recull una de les dues hipòtesis.
+\end{prova}
+
+\section{Imatge directa d'una part}\label{sec:imatge-directa}
+
+La factorització imatge s'aplica en particular a la composició d'una part
+amb una aplicació, i produeix la noció d'\emph{imatge directa}, dual de la
+imatge inversa del capítol~\ref{cap:parts}.
+
+\begin{definicio}[Imatge directa]\index{Imatge directa}\label{def:imatge-directa}
+Siguin \(f\colon A\to B\) una aplicació i \(s\colon S\hookrightarrow A\)
+una part de \(A\). La \emph{imatge directa} de \(s\) per \(f\) és la
+imatge de la composició \(f\circ s\colon S\to B\):
+\[
+f_{*}(s):=\operatorname{Im}(f\circ s)\;\colon\; f_{*}S\hookrightarrow B.
+\]
+\end{definicio}
+
+\begin{notacio}[Imatge directa]\label{not:imatge-directa}
+Escriurem \(f_{*}(s)\) o \(f_{*}S\) per a la part de \(B\) obtinguda, i
+reservarem \(f^{*}\) per a la imatge inversa (definició~\ref{def:imatge-inversa}).
+El predicat eliminable corresponent és
+\(\operatorname{Imatge}(m,e,f\circ s)\) de la notació~\ref{not:imatge}
+aplicat a \(f\circ s\).
+\end{notacio}
+
+\begin{proposicio}[Adjunció imatge directa\,--\,imatge inversa]\label{prop:adjuncio-imatges}
+Siguin \(f\colon A\to B\), una part \(s\colon S\hookrightarrow A\) i una
+part \(t\colon T\hookrightarrow B\). Aleshores
+\[
+f_{*}S\subseteq_B T
+\qquad\text{si i només si}\qquad
+S\subseteq_A f^{*}T.
+\]
+\end{proposicio}
+
+\begin{prova}
+Suposem \(f_{*}S\subseteq_B T\). Sobre elements generalitzats, un
+\(x\colon X\to A\) es factoritza a través de \(s\) precisament quan
+pertany a \(S\); en aquest cas \(f\circ x\) es factoritza a través de
+\(f\circ s\) i, per la definició d'imatge, a través de \(f_{*}S\), i per
+hipòtesi a través de \(t\). Per tant \(f\circ x\) pertany a \(T\), és a
+dir, \(x\) pertany a la imatge inversa \(f^{*}T\)
+(proposició~\ref{prop:pertinenca-imatge-inversa}); això és \(S\subseteq_A
+f^{*}T\). Recíprocament, si \(S\subseteq_A f^{*}T\), tot element
+generalitzat de \(S\) té imatge per \(f\) dins de \(T\); com que
+\(f_{*}S\) és la part mínima de \(B\) a través de la qual passa \(f\circ
+s\), i \(t\) és una part a través de la qual passa \(f\circ s\), la
+minimalitat dona \(f_{*}S\subseteq_B T\).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:imatge-directa-classica}
+En conjunts, la imatge directa és \(f_{*}(S)=\{\,f(a):a\in S\,\}\) i la
+inversa és \(f^{*}(T)=\{\,a:f(a)\in T\,\}\). La
+proposició~\ref{prop:adjuncio-imatges} és l'equivalència elemental
+\(f(S)\subseteq T\iff S\subseteq f^{-1}(T)\), que expressa que prendre
+imatge directa i prendre imatge inversa són operacions adjuntes entre les
+parts de \(A\) i les de \(B\). Estructuralment, aquesta adjunció no
+necessita cap axioma nou: només la factorització imatge i la propietat
+universal de la imatge inversa.
+\end{observacio}
+
+\begin{corollari}[La imatge total és la imatge de \(f\)]\label{cor:estabilitat-exhaustiva}
+La imatge directa de la part total de \(A\) és la imatge de \(f\):
+\(f_{*}A=\operatorname{Im}(f)\). En conseqüència, \(f\) és un epimorfisme
+si i només si \(f_{*}A\equiv_B\id_B\).
+\end{corollari}
+
+\begin{prova}
+La part total de \(A\) és \(\id_A\), i \(f\circ\id_A=f\), de manera que
+\(f_{*}A=\operatorname{Im}(f)\). La segona afirmació és la
+proposició~\ref{prop:epi-imatge-total}.
+\end{prova}
+
+\section{Composició de relacions}\label{sec:composicio-relacions}
+
+Les eines d'aquest capítol permeten compondre relacions, i no només
+aplicacions. Una relació de \(A\) cap a \(B\) i una relació de \(B\) cap a
+\(C\) es componen prenent la imatge de la relació producte a través de la
+projecció adequada. Recuperem així, estructuralment, la composició
+clàssica de relacions.
+
+\begin{definicio}[Composició de relacions]\index{Composició de relacions}\label{def:composicio-relacions}
+Siguin \(r\colon R\hookrightarrow A\times B\) una relació de \(A\) cap a
+\(B\) i \(r'\colon R'\hookrightarrow B\times C\) una relació de \(B\) cap
+a \(C\). El seu \emph{producte fibrat sobre \(B\)} és el pullback de la
+segona projecció de \(r\) amb la primera de \(r'\):
+\[
+R\times_B R'\hookrightarrow R\times R',
+\]
+que recull els parells de testimonis \((\rho,\rho')\) amb el segon
+component de \(\rho\) igual al primer de \(\rho'\); és a dir, el pullback
+de \(r_2\colon R\to B\) amb \(r'_1\colon R'\to B\), amb projeccions
+\(\pi\colon R\times_B R'\to R\) i \(\pi'\colon R\times_B R'\to R'\) que
+compleixen \(r_2\circ\pi=r'_1\circ\pi'\). La \emph{composició}
+\(r'\circ r\) és la imatge de l'aplicació
+\[
+g:=\langle r_1\circ\pi,\;r'_2\circ\pi'\rangle\colon
+R\times_B R'\longrightarrow A\times C,
+\]
+que a cada testimoni li assigna el primer component de \(\rho\) i el segon
+de \(\rho'\).
+\end{definicio}
+
+Abans de llegir la composició per elements generalitzats necessitem un fet
+que s'usa sovint quan es treballa amb recobriments: la pertinença a una
+part es pot comprovar després d'un epimorfisme.
+
+\begin{lema}[Pertinença després d'un recobriment]\label{lema:pertinenca-recobriment}
+Siguin \(m\colon S\hookrightarrow B\) una part, \(y\colon X\to B\) un
+element generalitzat i \(p\colon X'\twoheadrightarrow X\) un epimorfisme.
+Si \(y\circ p\in_{X'}m\), aleshores \(y\in_Xm\).
+\end{lema}
+
+\begin{prova}
+Sigui \(m'\colon P\hookrightarrow X\) la imatge inversa \(y^{-1}(m)\), amb
+l'altra projecció \(q\colon P\to S\), de manera que \(y\circ m'=m\circ q\).
+Per la proposició~\ref{prop:pertinenca-imatge-inversa}, la hipòtesi
+\(y\circ p\in_{X'}m\) equival a \(p\in_{X'}m'\): existeix
+\(w\colon X'\to P\) amb \(m'\circ w=p\). Com que \(p\) és un epimorfisme i
+es factoritza per \(m'\), també \(m'\) és un epimorfisme; i és un
+monomorfisme. Pel teorema del bimorfisme
+(proposició~\ref{prop:bimorfisme-isomorfisme}), \(m'\) és un isomorfisme,
+de manera que \(\id_X\in_Xm'\) i, de nou per la
+proposició~\ref{prop:pertinenca-imatge-inversa}, \(y\in_Xm\).
+\end{prova}
+
+\begin{proposicio}[La composició és una relació]\label{prop:composicio-es-relacio}
+Amb les notacions anteriors, \(r'\circ r\) és una relació de \(A\) cap a
+\(C\). Sobre elements generalitzats, \(x\mathrel{(r'\circ r)_X}z\) es
+compleix si i només si existeix un recobriment epimòrfic
+\(p\colon X'\twoheadrightarrow X\) i un element \(y\colon X'\to B\) amb
+\[
+(x\circ p)\mathrel{r_{X'}}y
+\qquad\text{i}\qquad
+y\mathrel{r'_{X'}}(z\circ p).
+\]
+Amb l'axioma d'elecció, el recobriment \(p\) és escindit, de manera que el
+testimoni es pot recollir ja en el mateix estadi \(X\).
+\end{proposicio}
+
+\begin{prova}
+Que \(r'\circ r\) és una part de \(A\times C\) és immediat de la
+definició d'imatge, que produeix sempre un monomorfisme cap al codomini
+\(A\times C\) (teorema~\ref{teo:factoritzacio}). Provem la caracterització
+sobre elements generalitzats construint explícitament el testimoni.
+
+Factoritzem \(g=m\circ e\) amb \(e\colon R\times_B R'\twoheadrightarrow
+\operatorname{Im}(g)\) epimorfisme regular i
+\(m\colon\operatorname{Im}(g)\hookrightarrow A\times C\) monomorfisme, de
+manera que \(r'\circ r=m\).
+
+\emph{(\(\Leftarrow\)) De les components al testimoni de la composició.}
+Suposem que hi ha un recobriment \(p\colon X'\twoheadrightarrow X\) i un
+\(y\colon X'\to B\) amb \((x\circ p)\mathrel{r_{X'}}y\) i
+\(y\mathrel{r'_{X'}}(z\circ p)\). Els dos testimonis són fletxes
+\(\rho\colon X'\to R\) i \(\rho'\colon X'\to R'\) amb
+\(r_1\circ\rho=x\circ p\), \(r_2\circ\rho=y\), \(r'_1\circ\rho'=y\) i
+\(r'_2\circ\rho'=z\circ p\). Com que \(r_2\circ\rho=y=r'_1\circ\rho'\), la
+propietat universal del pullback \(R\times_B R'\) (definició~\ref{def:pullback})
+proporciona una única \(w\colon X'\to R\times_B R'\) amb \(\pi\circ w=\rho\)
+i \(\pi'\circ w=\rho'\). Aleshores
+\[
+g\circ w=\langle r_1\circ\pi\circ w,\;r'_2\circ\pi'\circ w\rangle
+=\langle r_1\circ\rho,\;r'_2\circ\rho'\rangle
+=\langle x\circ p,\;z\circ p\rangle=\langle x,z\rangle\circ p,
+\]
+de manera que \(\langle x,z\rangle\circ p\) es factoritza a través de
+\(g\), i per tant a través de \(m=r'\circ r\). Com que \(p\) és un
+epimorfisme, el lema~\ref{lema:pertinenca-recobriment} dona que
+\(\langle x,z\rangle\) pertany a la part \(m\), és a dir,
+\(x\mathrel{(r'\circ r)_X}z\).
+
+\emph{(\(\Rightarrow\)) Del testimoni de la composició a les components.}
+Suposem \(x\mathrel{(r'\circ r)_X}z\), és a dir, que
+\(\langle x,z\rangle\colon X\to A\times C\) es factoritza a través de
+\(m\). Sense elecció, \(e\) no té per què ser exhaustiu sobre elements
+generalitzats (proposició~\ref{prop:exhaustiva-generalitzada-escindit});
+el que sí que val és que l'element
+generalitzat \(\bar x\colon X\to\operatorname{Im}(g)\) que testimonia
+aquesta factorització ---l'únic amb \(m\circ\bar x=\langle x,z\rangle\),
+únic perquè \(m\) és un monomorfisme--- es realitza, sobre algun
+recobriment epimòrfic \(p\colon X'\twoheadrightarrow X\), com
+la imatge per \(e\) d'un element generalitzat
+\(w\colon X'\to R\times_B R'\): basta prendre el pullback de \(e\) al
+llarg de \(\bar x\), amb projeccions \(p\) ---un epimorfisme pel
+lema~\ref{lema:estabilitat-epi-regular}--- i \(w\). És a dir,
+\(e\circ w=\bar x\circ p\), d'on
+\(g\circ w=m\circ e\circ w=m\circ\bar x\circ p=\langle x,z\rangle\circ
+p\). Posem \(\rho:=\pi\circ w\),
+\(\rho':=\pi'\circ w\) i \(y:=r_2\circ\rho\). La commutativitat del
+pullback dona \(r'_1\circ\rho'=r'_1\circ\pi'\circ w=r_2\circ\pi\circ
+w=r_2\circ\rho=y\). D'altra banda, la definició de \(g\) dona
+\(r_1\circ\rho=x\circ p\) i \(r'_2\circ\rho'=z\circ p\). Per tant \(\rho\)
+testimonia \((x\circ p)\mathrel{r_{X'}}y\) i \(\rho'\) testimonia
+\(y\mathrel{r'_{X'}}(z\circ p)\), com volíem.
+
+En tots dos casos, amb l'axioma d'elecció (capítol~\ref{cap:relacions}) tot
+epimorfisme és escindit; prenent una secció de \(p\) es transporta el
+testimoni al mateix estadi \(X\) i el recobriment es pot ometre.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:composicio-relacions-classica}
+En conjunts, la composició de relacions és la relació habitual
+\[
+r'\circ r=\{\,(a,c):\exists b\,\bigl((a,b)\in r\text{ i }(b,c)\in
+r'\bigr)\,\}.
+\]
+El quantificador existencial sobre \(b\) és exactament el que la imatge
+introdueix: la projecció del producte fibrat recull tots els encadenaments
+possibles, i la imatge els comprimeix en el conjunt de parells
+\((a,c)\) efectivament connectats. En el llenguatge global, l'existència
+del testimoni \(b\) per a cada parell pot requerir l'elecció; sobre
+elements generalitzats, en canvi, el testimoni existeix sempre després
+d'un canvi d'estadi.
+\end{observacio}
+
+\begin{definicio}[Relació funcional, total, i funcional i total]\index{Relació funcional, total, i funcional i total}\label{def:relacio-funcional}
+Sigui \(r\colon R\hookrightarrow A\times B\) una relació de \(A\) cap a
+\(B\), amb projeccions \(r_1\colon R\to A\) i \(r_2\colon R\to B\). Diem
+que \(r\) és:
+\begin{enumerate}
+\item \emph{funcional} si la primera projecció \(r_1\colon R\to A\) és un
+monomorfisme (com a molt un testimoni per a cada element de \(A\));
+\item \emph{total} si la primera projecció \(r_1\colon R\to A\) és un
+epimorfisme regular (com a mínim un testimoni per a cada element de
+\(A\));
+\item \emph{funcional i total} si és alhora funcional i total.
+\end{enumerate}
+\end{definicio}
+
+Les dues condicions són independents i, juntes, equivalen a demanar que
+\(r_1\) sigui un isomorfisme: un monomorfisme que és també un epimorfisme
+regular és un isomorfisme (corol·lari~\ref{cor:bimorfisme-iso}). Convé
+mantenir-les separades, perquè les relacions funcionals que no són totals
+---les aplicacions \emph{parcials}--- apareixen de manera natural, i la
+correspondència amb les aplicacions (proposició~\ref{prop:aplicacio-funcional})
+usa precisament la totalitat com a condició addicional sobre la
+funcionalitat.
+
+Cadascuna de les dues meitats té la seva lectura sobre elements
+generalitzats. La funcionalitat és la unicitat del testimoni; la
+totalitat, la seva existència. Ho recollim per separat i després en
+combinem les conseqüències.
+
+\begin{proposicio}[Lectura de la funcionalitat i la totalitat]\label{prop:funcional-lectura}
+Sigui \(r\colon R\hookrightarrow A\times B\) una relació. Aleshores:
+\begin{enumerate}
+\item \(r\) és funcional si i només si per a tot element generalitzat
+\(x\colon X\to A\) hi ha \emph{com a molt} un \(y\colon X\to B\) amb
+\(x\mathrel{r_X}y\);
+\item \(r\) és total si i només si per a tot element generalitzat
+\(x\colon X\to A\) existeix \emph{almenys} un \(y\colon X\to B\) amb
+\(x\mathrel{r_X}y\), possiblement després d'un canvi d'estadi;
+\item \(r\) és funcional i total si i només si per a tot \(x\colon X\to A\)
+existeix un \emph{únic} \(y\colon X\to B\) amb \(x\mathrel{r_X}y\), ja en
+el mateix estadi \(X\).
+\end{enumerate}
+\end{proposicio}
+
+\begin{prova}
+Recordem que \(x\mathrel{r_X}y\) (definició~\ref{def:relacio}) significa que la parella
+\(\langle x,y\rangle\colon X\to A\times B\) es factoritza a través de la
+part \(r\), és a dir, que existeix \(\rho\colon X\to R\) amb
+\(r\circ\rho=\langle x,y\rangle\); aquest \(\rho\), quan existeix, és el
+\emph{testimoni} de la relació. Component amb les projeccions del
+producte, això equival a \(r_1\circ\rho=x\) i \(r_2\circ\rho=y\).
+
+\emph{Funcionalitat.} Suposem \(r_1\) mono. Si \(x\mathrel{r_X}y\) i
+\(x\mathrel{r_X}y'\), tenim testimonis \(\rho,\rho'\colon X\to R\) amb
+\(r_1\circ\rho=x=r_1\circ\rho'\); com que \(r_1\) és un monomorfisme,
+\(\rho=\rho'\), i per tant \(y=r_2\circ\rho=r_2\circ\rho'=y'\). Hi ha,
+doncs, com a molt un \(y\). Recíprocament, suposem la unicitat del \(y\) i
+siguin \(\rho,\rho'\colon X\to R\) amb \(r_1\circ\rho=r_1\circ\rho'=:x\).
+Posant \(y:=r_2\circ\rho\) i \(y':=r_2\circ\rho'\), tots dos són
+testimonis de \(x\), d'on \(y=y'\); llavors \(\rho\) i \(\rho'\) tenen les
+dues components iguals, i com que \(r=\langle r_1,r_2\rangle\) és un
+monomorfisme, \(\rho=\rho'\). Això prova que \(r_1\) és un monomorfisme.
+
+\emph{Totalitat.} Suposem \(r_1\) epimorfisme, i sigui \(x\colon X\to A\).
+Prenem el pullback de \(r_1\) al llarg de \(x\), amb projeccions
+\(u\colon X'\to X\) i \(\rho\colon X'\to R\), de manera que
+\(r_1\circ\rho=x\circ u\); pel lema~\ref{lema:estabilitat-epi-regular},
+\(u\) és un epimorfisme. Posant \(y:=r_2\circ\rho\colon X'\to B\), el
+testimoni \(\rho\) dona \((x\circ u)\mathrel{r_{X'}}y\): aquesta és
+l'existència \emph{a menys del canvi d'estadi} \(u\). Recíprocament, si
+per a \(x=\id_A\) existeix un testimoni després d'un recobriment
+\(u\colon X'\twoheadrightarrow A\), tenim \(\rho\colon X'\to R\) amb
+\(r_1\circ\rho=u\); com que \(u\) és un epimorfisme que es factoritza per
+\(r_1\), també \(r_1\) és un epimorfisme, i regular pel
+corol·lari~\ref{cor:epi-regular-sense-eleccio}.
+
+\emph{Funcional i total.} És la conjunció de les dues anteriors: la
+totalitat dona l'existència d'un testimoni i la funcionalitat en dona la
+unicitat, de manera que el \(y\) existeix i és únic. Quan totes dues es
+compleixen, \(r_1\) és un isomorfisme
+(corol·lari~\ref{cor:bimorfisme-iso}) i el testimoni és
+\(\rho=r_1^{-1}\circ x\), definit ja en el mateix estadi \(X\) sense
+passar a cap recobriment; llavors \(y=r_2\circ r_1^{-1}\circ x\).
+\end{prova}
+
+\begin{proposicio}[Aplicacions com a relacions funcionals]\label{prop:aplicacio-funcional}
+Assignar a cada aplicació \(f\colon A\to B\) el seu graf
+\(\langle\id_A,f\rangle\colon A\hookrightarrow A\times B\) estableix una
+correspondència biunívoca, llevat d'equivalència de parts, entre les
+aplicacions de \(A\) cap a \(B\) i les relacions funcionals de \(A\) cap a
+\(B\) que a més són totals ---és a dir, funcionals i totals en el sentit
+de la definició~\ref{def:relacio-funcional}, amb primera projecció alhora
+monomorfisme i epimorfisme regular---.
+Sota aquesta correspondència, la composició de relacions de la
+definició~\ref{def:composicio-relacions} coincideix amb la composició
+d'aplicacions.
+\end{proposicio}
+
+\begin{prova}
+El graf d'una aplicació és un monomorfisme perquè la primera projecció
+del producte el reparametritza com \(\id_A\)
+(proposició~\ref{prop:graf-part}); de fet la seva primera projecció
+\emph{és} \(\id_A\), un isomorfisme, de manera que el graf és funcional i
+total en el sentit de la definició~\ref{def:relacio-funcional}, amb
+\(y=f\circ x\) l'únic element relacionat amb cada \(x\).
+Recíprocament, una relació funcional i total té primera projecció
+\(r_1\colon R\to A\) alhora monomorfisme i epimorfisme, i per tant un
+isomorfisme (corol·lari~\ref{cor:bimorfisme-iso}); doncs
+\(f:=r_2\circ r_1^{-1}\colon A\to B\) és una aplicació el graf de la qual
+és equivalent a \(r\). Aquestes dues assignacions són mútuament inverses
+llevat d'equivalència de parts. Que la composició de relacions es
+correspon amb la d'aplicacions es comprova directament. Siguin
+\(f\colon A\to B\) i \(g\colon B\to C\), amb grafs
+\(r=\langle\id_A,f\rangle\) i \(r'=\langle\id_B,g\rangle\), de manera que
+\(r_1=\id_A\), \(r_2=f\), \(r'_1=\id_B\) i \(r'_2=g\). El pullback de
+\(r_2=f\) amb \(r'_1=\id_B\) és \(A\) mateix, amb projeccions
+\(\pi=\id_A\) i \(\pi'=f\): si \(u\colon X\to A\) i \(v\colon X\to B\)
+compleixen \(f\circ u=v\), l'única \(w\colon X\to A\) amb \(\id_A\circ
+w=u\) i \(f\circ w=v\) és \(w=u\). Aleshores l'aplicació de la
+definició~\ref{def:composicio-relacions} és
+\(\langle r_1\circ\pi,\,r'_2\circ\pi'\rangle=\langle\id_A,g\circ f\rangle\),
+que ja és un monomorfisme (proposició~\ref{prop:graf-part}); la seva
+imatge és ella mateixa (proposició~\ref{prop:mono-nucli-trivial}), és a
+dir, \(r'\circ r\) és el graf de \(g\circ f\).
+\end{prova}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item La imatge d'una aplicació és la part mínima del codomini per la qual es factoritza, i existeix sempre: és el quocient del domini pel parell nucli. La factorització \(f=m\circ e\), epimorfisme seguit de monomorfisme, és única llevat d'un únic isomorfisme.
+  \item Que \(m\) sigui un monomorfisme es demostra sobre punts, amb la separació global i l'exhaustivitat dels epimorfismes sobre punts: no cal l'elecció.
+  \item Conseqüència: tot epimorfisme és regular (coequalitzador del seu parell nucli), sense elecció. L'elecció només afegeix que sigui escindit. Els epimorfismes són estables per canvi de base, i la teoria és regular.
+  \item Mono, epi i iso es llegeixen a la factorització: \(f\) és mono si \(e\) és iso (parell nucli diagonal), epi si \(m\) és iso (imatge total), iso si ho són tots dos.
+  \item La imatge directa \(f_*S=\operatorname{Im}(f\circ s)\) és adjunta a la imatge inversa: \(f_*S\subseteq T\iff S\subseteq f^*T\).
+  \item Les relacions es componen prenent la imatge del producte fibrat; sobre elements generalitzats, el testimoni intermedi existeix després d'un recobriment epimòrfic. Les aplicacions són exactament les relacions funcionals i totals, i la composició de relacions estén la d'aplicacions.
+\end{enumerate}
+\apartat{Errors típics} Pensar que la imatge és \enquote{el conjunt dels valors} com si fos un conjunt a part (és una part del codomini, un monomorfisme); creure que cal l'elecció per a la factorització imatge o per a \enquote{tot epi és regular}, quan basta la separació global; oblidar que la minimalitat és part de la definició d'imatge, i no només la factorització; confondre \(f_*\) (imatge directa, que necessita la factorització) amb \(f^*\) (imatge inversa, un pullback); suposar que el testimoni \(y\) de la composició \(r'\circ r\) existeix en el mateix estadi \(X\) sense elecció; i identificar \enquote{relació funcional} amb \enquote{aplicació}, quan falta la totalitat.
+\apartat{Lectura recomanada} \cite[§§4.3--4.5 i cap.~5]{lawvere-rosebrugh} per a la factorització imatge, les imatges directes i la lectura de les relacions com a parts de productes; \cite[article~IV, sessions~22--23]{lawvere-schanuel} per a la imatge d'una aplicació amb exemples elementals; \cite[§§5.3--5.4 i §§9.6--9.7]{awodey} per a les categories regulars, les factoritzacions i la seva relació amb els límits; \cite[cap.~2]{borceux-vol2} per a la teoria general de les categories regulars i exactes, que és el marc del capítol; i \cite[§§7--10]{halmos} per a les relacions, les funcions, les famílies i les inverses en la teoria clàssica.
+\end{resumcap}

@@ -1,0 +1,30 @@
+% Dades pròpies del llibre. Es carrega abans del preàmbul compartit.
+% Una sola font de veritat per a la portada i les metadades del PDF.
+% Actualitzeu versió i data a cada versió publicada.
+\newcommand{\llibretitol}{Teoria de conjunts}
+\newcommand{\llibresubtitol}{Una visió categòrica sense categories}
+\newcommand{\llibreautor}{Miquel Àngel Perelló}
+\newcommand{\llibreversio}{1.7}
+% Data editorial fixa (reproduïble), en lloc de \today.
+\newcommand{\llibredata}{Octubre de 2026}
+\newcommand{\llibreany}{2026}
+% Els enllaços ja inclouen \url (no s'han d'embolcallar de nou).
+\newcommand{\llibreweb}{\url{https://aprendes.com/logcat/}}
+\newcommand{\llibrerepositori}{\url{https://github.com/maperello/aprendes}}
+\newcommand{\llibreerrates}{\url{https://github.com/maperello/aprendes/issues}}
+
+\title{\llibretitol\\[0.8em]\large\llibresubtitol}
+\author{\llibreautor}
+\date{\llibredata}
+
+% S'ha de cridar després de carregar hyperref (és a preamble.tex).
+\newcommand{\hypermetadata}{%
+  \hypersetup{%
+    pdftitle={\llibretitol: \llibresubtitol},
+    pdfauthor={\llibreautor},
+    pdfsubject={Teoria estructural de conjunts (ETCS) exposada en un llenguatge de primer ordre sobre aplicacions, sense pressuposar la teoria de categories: parts, construccions universals, exponencials, nombres naturals, cardinalitat, bons ordres, ordinals i cardinals. Versió \llibreversio\ (\llibredata). Llicència CC BY-SA 4.0},
+    pdfkeywords={teoria de conjunts, ETCS, conjunts estructurals, Lawvere, topos ben apuntat, axioma d'elecció, ordinals, cardinals, hipòtesi del continu},
+    bookmarksnumbered=true,
+    bookmarksopen=true%
+  }%
+}

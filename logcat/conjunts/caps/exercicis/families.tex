@@ -1,0 +1,57 @@
+\chapter{Famílies, fibres i operacions indexades}\label{cap:exercicis-families}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:families} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-families} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Famílies i fibres}
+
+\begin{enumerate}
+  \item Demostreu que la fibra \(E_i=\mathbf1\times_I E\) és la imatge inversa \(p^{-1}(i)\) i que la projecció \(E_i\to E\) és un monomorfisme. (Model: secció~\ref{prac:families-fibres}; observació~\ref{obs:fibra-part}.)
+
+  \item Descriviu la família constant \(I\times A\to I\) i comproveu que totes les fibres són isomorfes a \(A\). (Model: definició~\ref{def:familia-constant}.)
+
+  \item Sigui \(m\colon S\hookrightarrow I\) una part, vista com a característica \(\chi_S\colon I\to\mathbf2\). Descriviu la família que representa i les seves fibres. \begin{indicacio}La fibra sobre \(i\) és \(\mathbf1\) si \(i\in S\) i \(\mathbf0\) altrament; vegeu l'observació~\ref{obs:familia-exemples}.\end{indicacio}
+\end{enumerate}
+
+\section{Seccions i elecció}
+
+\begin{enumerate}[resume]
+  \item Demostreu que una secció de \(p\colon E\to I\) tria un element de cada fibra, i que per a \(p\) epimorfisme l'existència d'una secció és l'axioma d'elecció. (Model: secció~\ref{prac:seccions}; observació~\ref{obs:seccio-eleccio}.)
+
+  \item Demostreu que si cada fibra de \(p\colon E\to I\) porta un mínim per a un bon ordre intern donat, aleshores \(p\) té una secció \emph{sense} elecció. \begin{indicacio}Definiu \(s(i)\) com el mínim de la fibra \(E_i\); és únic i canònic, com als subobjectes de \(\N\) (observació~\ref{obs:minim-vs-eleccio}).\end{indicacio}
+\end{enumerate}
+
+\section{Suma i producte}
+
+\begin{enumerate}[resume]
+  \item Demostreu que \(\prod_{i\in I}E_i=\{s\in E^I:p\circ s=\id_I\}\) existeix com a part interna de \(E^I\) i que els seus elements globals són les seccions de \(p\). (Model: secció~\ref{prac:suma-producte}; proposició~\ref{prop:producte-existeix}.)
+
+  \item Distingiu, amb el producte, \enquote{existeix com a objecte} de \enquote{té elements}, i localitzeu l'elecció. (Model: observació~\ref{obs:objecte-vs-elements}.)
+
+  \item Demostreu que la suma d'una família \(p\colon E\to I\) existeix sempre i és el propi total \(E\), i que per a la família constant coincideix amb \(I\times A\). \begin{indicacio}No cal cap axioma: el total és una de les dades (observació~\ref{obs:suma-existeix}).\end{indicacio}
+
+  \item Sigui \(I=\mathbf2\) i \(p\colon E\to\mathbf2\) amb fibres \(E_0,E_1\). Demostreu que \(\sum_{i}E_i\cong E_0+E_1\) i \(\prod_{i}E_i\cong E_0\times E_1\). \begin{indicacio}Sobre un índex de dos elements, suma i producte indexats recuperen la suma i el producte binaris.\end{indicacio}
+\end{enumerate}
+
+\section{Famílies de parts i operacions indexades}
+
+\begin{enumerate}[resume]
+  \item Definiu \(\bigcup_i\alpha(i)\) i \(\bigcap_i\alpha(i)\) amb els quantificadors interns i demostreu que són el suprem i l'ínfim a \((P(A),\subseteq)\). (Model: secció~\ref{prac:parts-indexades}; proposició~\ref{prop:unio-interseccio-propietats}.)
+
+  \item Demostreu les dues lleis de De Morgan indexades. \begin{indicacio}\(\neg\exists_{\pi_A}(R)=\forall_{\pi_A}(\neg R)\); vegeu la proposició~\ref{prop:quantificadors-adjuncio}.\end{indicacio}
+
+  \item Demostreu que una família \(\alpha\colon I\to P(A)\) de parts no buides, disjuntes i que cobreixen \(A\) determina una partició \(q\colon A\twoheadrightarrow I\) amb fibres \(\alpha(i)\). (Model: secció~\ref{prac:parts-indexades}; proposició~\ref{prop:familia-particio}.)
+
+  \item Demostreu la distributivitat \(\beta\cap\bigcup_i\alpha(i)=\bigcup_i(\beta\cap\alpha(i))\) per a una part fixa \(\beta\hookrightarrow A\). \begin{indicacio}Traduïu-ho a \enquote{existeix \(i\) amb \(a\in\beta\) i \(a\in\alpha(i)\)} i useu l'adjunció de \(\exists_{\pi_A}\).\end{indicacio}
+\end{enumerate}
+
+\section{Regla externa contra família interna}
+
+\begin{enumerate}[resume]
+  \item Expliqueu per què \(n\mapsto\seg{n}\) és una regla externa representable per una família interna, i com. (Model: secció~\ref{prac:regla-vs-familia}; observació~\ref{obs:regla-externa-problema}.)
+
+  \item Descriviu una regla externa \emph{no} representable amb els axiomes de Nivell~I i digueu quin principi caldria. (Model: observacions~\ref{obs:regla-externa-problema} i~\ref{obs:sr}.)
+
+  \item \textbf{(Punt de reflexió.)} Argumenteu per què la representabilitat d'una regla externa \emph{no} és una qüestió d'elecció sinó de substitució. \begin{indicacio}L'elecció tria dins fibres d'una família ja existent; la substitució garanteix l'existència de la família (observació~\ref{obs:sr-no-eleccio}).\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Per a cadascun dels resultats següents, digueu si usa l'elecció, la separació global, cap dels dos, o si queda fora del Nivell~I: l'existència del producte com a objecte; la no-vacuïtat del producte d'una família de fibres no buides; la unió i la intersecció indexades; que una família de parts disjuntes que cobreixen és una partició; la representació de \(n\mapsto\seg{n}\) per una família interna; la representació d'una regla sense ambient comú. \begin{indicacio}Cap; elecció; cap; separació global; cap (exponencial fix); SR, fora del Nivell~I.\end{indicacio}
+\end{enumerate}

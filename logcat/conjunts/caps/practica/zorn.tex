@@ -1,0 +1,75 @@
+\chapter{Zorn, Hartogs i el teorema del bon ordre}\label{cap:practica-zorn}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:zorn} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició ---Hartogs, el teorema del bon ordre, el lema de Zorn i les seves aplicacions, i les tres equivalències--- i serveixen de model per als exercicis proposats de la Part~\ref{part:exercicis}. Cada bloc fixa una tècnica: acotar una construcció dins \(P(A\times A)\), usar \(\Hart(A)\) com a cota que atura una recursió, distingir maximal de màxim, i tancar una cadena d'equivalències amb les dependències explícites. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Hartogs}\label{prac:hartogs}
+
+\begin{exercici}
+\textbf{\(\Hart(A)\) és un bon ordre.} Demostreu que el conjunt dels tipus d'ordre dels bons ordres sobre parts d'\(A\), ordenat per segment inicial, és un bon ordre. (Reproduïu la proposició~\ref{prop:hartogs-bon-ordre}.)
+\end{exercici}
+\begin{solucio}
+Els bons ordres sobre parts d'\(A\) formen una part \(\WO(A)\hookrightarrow P(A)\times P(A\times A)\), els parells \((S,R)\) amb \(S\hookrightarrow A\) i \(R\hookrightarrow S\times S\) bon ordre estricte sobre tot \(S\) (definició~\ref{def:bons-ordres-parts}); la relació \enquote{ser isomorf} és una equivalència interna, i pel quocient efectiu (axioma~\ref{ax:exactitud}) s'obté \(\Hart(A)=\WO(A)/\cong\). L'ordre \(<\) per segment inicial és total i exclusiu per la comparabilitat de bons ordres (teorema~\ref{teo:comparabilitat}) i la tricotomia (teorema~\ref{teo:tricotomia}); és irreflexiu perquè cap bon ordre no és isomorf a un segment propi seu (corol·lari~\ref{cor:no-segment-propi}). Per al bon ordre, donada una part no inicial \(T\) i \(\alpha_0=[(S_0,R_0)]\in T\), els tipus de \(T\) menors que \(\alpha_0\) es corresponen amb segments inicials de \((S_0,R_0)\), és a dir amb una part no inicial del suport \(S_0\) (proposició~\ref{prop:parts-inicials}), que té mínim pel bon ordre \(R_0\); aquest mínim dona el mínim de \(T\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Teorema de Hartogs.} Demostreu que \(\Hart(A)\) no admet cap monomorfisme en \(A\). (Reproduïu el teorema~\ref{teo:hartogs}.)
+\end{exercici}
+\begin{solucio}
+Si \(m\colon\Hart(A)\hookrightarrow A\) fos un monomorfisme, transportant l'ordre de \(\Hart(A)\) per \(m\) la imatge \(S_*:=m(\Hart(A))\) seria una part d'\(A\) amb un bon ordre \(R_*\hookrightarrow S_*\times S_*\) isomorf a \(\Hart(A)\); així \((S_*,R_*)\in\WO(A)\) i el seu tipus \([(S_*,R_*)]\) és un element de \(\Hart(A)\). Però el segment inicial de \(\Hart(A)\) determinat per \([(S_*,R_*)]\) és isomorf a un bon ordre d'aquell tipus (lema~\ref{lema:segment-tipus}), és a dir a \(\Hart(A)\) mateix; per tant \(\Hart(A)\) seria isomorf a un segment inicial \emph{propi} de si mateix (propi perquè \([(S_*,R_*)]\in\Hart(A)\)), contra el corol·lari~\ref{cor:no-segment-propi}. La contradicció mostra que no hi ha cap tal \(m\): \(\Hart(A)\not\preceq A\).
+\end{solucio}
+
+\section{El teorema del bon ordre}\label{prac:bon-ordre}
+
+\begin{exercici}
+\textbf{Tot conjunt admet un bon ordre.} Amb l'elecció, demostreu que tot conjunt \(A\) es pot ben ordenar, fent la recursió acotada per \(\Hart(A)\). (Reproduïu el teorema~\ref{teo:bon-ordre}.)
+\end{exercici}
+\begin{solucio}
+Per l'elecció, sigui \(c\) una funció que tria un element de cada part no inicial d'\(A\) (proposició~\ref{prop:epi-regular-eleccio}). Amb \(A^+=A+\mathbf1\) i punt exterior \(\top\), definim per recursió (teorema~\ref{teo:recursio-transfinita}) sobre \(\Hart(A)\) una \(F\colon\Hart(A)\to A^+\): \(F(\alpha)=c(A\setminus F(\Hart(A)_{<\alpha}))\) si el complement és no buit, i \(\top\) altrament. Sobre \(\{F\ne\top\}\), \(F\) és creixent i injectiva cap a \(A\); si no valgués mai \(\top\), seria un monomorfisme \(\Hart(A)\hookrightarrow A\), contra Hartogs (teorema~\ref{teo:hartogs}). Sigui \(\alpha_0\) el mínim amb \(F(\alpha_0)=\top\): aleshores \(F(\Hart(A)_{<\alpha_0})=A\), i \(F|_{\Hart(A)_{<\alpha_0}}\) és una bijecció del segment sobre \(A\); transportant-ne l'ordre s'obté un bon ordre sobre tot \(A\). La recursió ha estat acotada per \(\Hart(A)\), no sobre cap classe.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Per què la cota de Hartogs.} Expliqueu quin problema evita fer la recursió sobre \(\Hart(A)\) en lloc de \enquote{sobre tots els ordinals}. (Model de l'observació~\ref{obs:cota-hartogs}.)
+\end{exercici}
+\begin{solucio}
+La prova clàssica \enquote{va triant un element del que queda} sembla recórrer una col·lecció d'ordinals que no és a priori un conjunt, de manera que el teorema de recursió no s'hi aplicaria directament. En fer la recursió sobre el bon ordre \emph{concret} \(\Hart(A)\) ---que sí que és un conjunt (definició~\ref{def:hartogs})--- el teorema de recursió amb codomini fix (teorema~\ref{teo:recursio-transfinita}) s'aplica sense reserves, i el teorema de Hartogs garanteix que el procés s'atura abans d'esgotar \(\Hart(A)\). Així la cota converteix una recursió aparentment sense fi en una d'acotada i legítima.
+\end{solucio}
+
+\section{El lema de Zorn}\label{prac:zorn}
+
+\begin{exercici}
+\textbf{Maximal no és màxim.} Doneu un ordre parcial amb diversos maximals i cap màxim, i expliqueu la diferència. (Model de l'observació~\ref{obs:maximal-maxim}.)
+\end{exercici}
+\begin{solucio}
+Prenem les parts pròpies d'un conjunt de dos elements \(\{0,1\}\), ordenades per inclusió: \(\varnothing\subsetneq\{0\}\) i \(\varnothing\subsetneq\{1\}\), però \(\{0\}\) i \(\{1\}\) són incomparables. Tots dos singletons són \emph{maximals} (cap part pròpia no els supera), però cap no és \emph{màxim} (no contenen l'altre). Un màxim seria \(\ge\) que tots; un maximal, només un element que cap altre no supera estrictament. En un ordre total coincideixen; en un parcial, no. El lema de Zorn dona un maximal, no un màxim.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El lema de Zorn.} Amb l'elecció, demostreu que un ordre parcial no inicial on tota cadena té cota superior té un element maximal. (Reproduïu el teorema~\ref{teo:zorn}.)
+\end{exercici}
+\begin{solucio}
+Suposem que \(P\) no té maximal: aleshores tot \(x\) té un \(x'>x\), i tota cadena té una cota superior \emph{estricta}. Per l'elecció, sigui \(c\) una funció que assigna a cada cadena una cota estricta. Definim per recursió (teorema~\ref{teo:recursio-transfinita}) sobre \(\Hart(P)\) una \(F\colon\Hart(P)\to P\) amb \(F(\alpha)=c(F(\Hart(P)_{<\alpha}))\) quan la imatge és una cadena. Per inducció (teorema~\ref{teo:induccio-transfinita}), la imatge és sempre una cadena i \(F\) és estrictament creixent, per tant un monomorfisme \(\Hart(P)\hookrightarrow P\), contra Hartogs (teorema~\ref{teo:hartogs}). La contradicció ve de suposar \(P\) sense maximal; per tant en té un.
+ Observeu dos punts de rigor: la tria no és d'un element d'una cadena sinó d'una \emph{cota superior estricta} seva, i es fa aplicant l'elecció a la família que sobre cada cadena té la part de les seves cotes estrictes; i la regla de recursió s'ha de completar amb una clàusula \enquote{altrament} (per exemple, un punt fix \(p_0\in P\)) perquè estigui definida per a tota història, encara que aquest cas no s'arribi a donar mai.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Tot espai vectorial té base.} Demostreu, amb Zorn, que tot espai vectorial té una base. (Reproduïu la proposició~\ref{prop:base}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(P\) el conjunt de les parts linealment independents de \(V\), ordenat per inclusió. Tota cadena \(C\) té cota superior \(U=\bigcup C\): \(U\) és independent perquè tota combinació lineal usa un nombre finit de vectors, tots en un mateix membre de la cadena (per ser \(C\) totalment ordenada), on són independents. Pel lema de Zorn (teorema~\ref{teo:zorn}), \(P\) té un maximal \(B\), independent per ser a \(P\). És generador: si un \(v\) no fos combinació lineal de \(B\), aleshores \(B\cup\{v\}\) seria independent i estrictament més gran, contra la maximalitat. Per tant \(B\) és una base.
+\end{solucio}
+
+\section{Les tres equivalències}\label{prac:equivalencies}
+
+\begin{exercici}
+\textbf{Bon ordre implica elecció.} Demostreu que si tot conjunt admet un bon ordre, aleshores val l'axioma d'elecció. (Part del teorema~\ref{teo:equivalencies}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(p\colon E\twoheadrightarrow I\) una família de parts no inicials. Ben ordenem \(E\). Cada fibra \(E_i=p^{-1}(i)\) és una part no inicial d'\(E\), i té un \emph{mínim} únic per al bon ordre (definició~\ref{def:bon-ordre}). L'aplicació \(s(i)=\min(E_i)\) és una secció de \(p\), definida sense cap tria addicional perquè el mínim és canònic. Per tant tota família de parts no buides té secció, que és l'elecció (axioma~\ref{ax:eleccio}). El bon ordre substitueix aquí la tria per l'operació canònica \enquote{mínim}.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Zorn implica bon ordre.} Demostreu que el lema de Zorn implica que tot conjunt admet un bon ordre. (Part del teorema~\ref{teo:equivalencies}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(P\) el conjunt dels bons ordres parcials \((S,R)\) d'\(A\) ---\(S\hookrightarrow A\), \(R\) bon ordre sobre \(S\)---, ordenat per extensió inicial: \((S,R)\le(S',R')\) si \(S\) és un segment inicial de \((S',R')\) i \(R=R'|_S\). Tota cadena té cota superior (la unió dels dominis i dels ordres, que és un bon ordre parcial perquè les unions de segments encaixats són ben ordenades). Pel lema de Zorn (teorema~\ref{teo:zorn}), \(P\) té un maximal \((S_*,R_*)\). Ha de ser \(S_*=A\): si quedés \(a\notin S_*\), afegint-lo al final tindríem un bon ordre parcial més gran, contra la maximalitat. Per tant \(R_*\) ben ordena tot \(A\).
+\end{solucio}

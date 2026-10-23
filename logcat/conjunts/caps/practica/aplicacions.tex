@@ -1,0 +1,170 @@
+\chapter{Aplicacions, dominis, codominis i composició}\label{cap:practica-aplicacions}
+
+Aquest capítol acompanya el capítol homònim de la part teòrica (capítol~\ref{cap:aplicacions} de la Part~\ref{part:teoria}). Els exercicis resolts en segueixen l'ordre d'exposició i serveixen de model per als exercicis proposats: cada bloc treballa una tècnica ---traduir al llenguatge dels predicats, encadenar igualtats amb neutralitat i associativitat, raonar amb propietats universals--- que després es reutilitza. Convé intentar cada enunciat abans de llegir-ne la solució.
+
+\section{Llenguatge formal, composició i estabilitat}\label{prac:axiomes}
+
+\begin{exercici}
+\textbf{Traduir al llenguatge dels predicats.} Escriviu, usant només els predicats \(\Dom\), \(\Cod\) i \(\Com\), la frase \enquote{\(g\circ f\) està definida i té el mateix domini que \(f\)}. No feu servir la notació \(f\colon A\to B\).
+\end{exercici}
+\begin{solucio}
+Introduïm variables per a la composició \(h\) i per al domini comú \(d\):
+\[
+\exists h\,\exists d\,\bigl(\Com(f,g,h)\land\Dom(f,d)\land\Dom(h,d)\bigr).
+\]
+El predicat \(\Com(f,g,h)\) afirma alhora que la composició està definida i que és \(h\); la conjunció \(\Dom(f,d)\land\Dom(h,d)\) expressa que \(h\) i \(f\) tenen el mateix domini.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El domini d'una aplicació és un conjunt.} Useu la proposició d'estabilitat (proposició~\ref{prop:estabilitat}) per demostrar que si \(\Dom(f,d)\), aleshores \(\Dom(d,d)\).
+\end{exercici}
+\begin{solucio}
+La proposició d'estabilitat afirma que el domini de qualsevol aplicació és un conjunt, i que un conjunt és el seu propi domini. Com que \(d\) és el domini de \(f\), és un conjunt, i per tant \(\Dom(d,d)\). En el llenguatge del capítol, \(d\) és una identitat, i l'escrivim \(d=\dom(f)\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Composició amb identitats.} Sigui \(f\colon A\to B\). Demostreu que \(f\circ\id_A=f\) i \(\id_B\circ f=f\), i identifiqueu quin axioma useu a cada pas.
+\end{exercici}
+\begin{solucio}
+Per les lleis de neutralitat (axioma~\ref{ax:neutralitat}), tota identitat és neutra per la composició quan aquesta està definida. Com que \(\dom(f)=A\), la composició \(f\circ\id_A\) està definida i val \(f\); com que \(\cod(f)=B\), la composició \(\id_B\circ f\) està definida i val \(f\). Totes dues igualtats són instàncies directes de l'axioma de neutralitat.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El codomini de la composició.} Siguin \(f\colon A\to B\) i \(g\colon B\to C\). Demostreu, a partir de l'axioma sobre el domini i el codomini de la composició (axioma~\ref{ax:composicio-dom-cod}), que \(\cod(g\circ f)=C\) i \(\dom(g\circ f)=A\).
+\end{exercici}
+\begin{solucio}
+L'axioma~\ref{ax:composicio-dom-cod} diu que, quan \(g\circ f\) està definida, el seu domini és el de \(f\) i el seu codomini és el de \(g\). La composició està definida perquè \(\cod(f)=B=\dom(g)\). Aplicant l'axioma, \(\dom(g\circ f)=\dom(f)=A\) i \(\cod(g\circ f)=\cod(g)=C\). Així \(g\circ f\colon A\to C\), com anticipava la notació tipada (notació~\ref{not:aplicacions-tipades}).
+\end{solucio}
+
+\section{Identitats i conjunts}\label{prac:identitats}
+
+\begin{exercici}
+\textbf{Els conjunts són les identitats.} Demostreu que un individu \(A\) de l'univers és un conjunt si i només si \(A=\dom(A)\).
+\end{exercici}
+\begin{solucio}
+Per definició, \(A\) és un conjunt quan és una identitat, és a dir, quan \(\Dom(A,A)\land\Cod(A,A)\). Si \(A\) és un conjunt, aleshores \(\Dom(A,A)\), i com que el domini és únic (axioma~\ref{ax:dom-cod}), \(A=\dom(A)\). Recíprocament, si \(A=\dom(A)\), aleshores \(\Dom(A,A)\); per la proposició d'estabilitat, el domini \(\dom(A)=A\) és un conjunt, de manera que \(A\) ho és.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Endoaplicació que no és identitat.} Doneu, en el model clàssic, un exemple d'una aplicació amb domini igual al codomini que no sigui una identitat, i expliqueu per què no contradiu la unicitat de la identitat.
+\end{exercici}
+\begin{solucio}
+Sigui \(A\) un conjunt amb dos elements globals diferents \(a_0,a_1\), i \(c\colon A\to A\) l'aplicació constant amb valor \(a_0\), és a dir, \(c\circ a_0=c\circ a_1=a_0\). El seu domini i codomini coincideixen (tots dos són \(A\)), de manera que és una endoaplicació. No és una identitat perquè \(c\circ a_1=a_0\neq a_1\), mentre que la identitat compliria \(\id_A\circ a_1=a_1\). No hi ha contradicció: la unicitat afirma que hi ha una sola aplicació \emph{neutra} de \(A\) en \(A\), no una sola endoaplicació; les endoaplicacions poden ser moltes, i només una d'elles és neutra.
+\end{solucio}
+
+\section{Igualtat d'aplicacions i elements generalitzats}\label{prac:igualtat}
+
+\begin{exercici}
+\textbf{Igualtat per elements generalitzats.} Enuncieu el criteri d'igualtat d'aplicacions per elements generalitzats (proposició~\ref{prop:aplicacions-iguals}) i useu-lo per demostrar que si \(f\circ x=g\circ x\) per a \emph{tot} element generalitzat \(x\colon X\to A\) (amb \(X\) arbitrari), aleshores \(f=g\).
+\end{exercici}
+\begin{solucio}
+El criteri diu que dues aplicacions paral·leles \(f,g\colon A\to B\) són iguals si i només si coincideixen en compondre-les amb tots els elements generalitzats del domini. La hipòtesi és exactament l'antecedent d'aquest criteri, per a tots els estadis \(X\); en particular, prenent \(X=A\) i \(x=\id_A\), obtenim \(f=f\circ\id_A=g\circ\id_A=g\). El criteri general permet, doncs, concloure \(f=g\) directament.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Separació per elements globals.} Siguin \(f,g\colon A\to B\) dues aplicacions tals que \(f\circ x=g\circ x\) per a tot element global \(x\colon\mathbf1\to A\). Enuncieu quin axioma permet concloure \(f=g\) i apliqueu-lo, tot indicant en què difereix del criteri de l'exercici anterior.
+\end{exercici}
+\begin{solucio}
+És l'axioma de separació d'aplicacions per elements globals (axioma~\ref{ax:separacio-globals}): si dues aplicacions paral·leles coincideixen després de compondre-les amb tots els elements \emph{globals} del domini, són iguals. Com que la hipòtesi és exactament \(f\circ x=g\circ x\) per a tot \(x\colon\mathbf1\to A\), l'axioma dona \(f=g\). La diferència amb la proposició~\ref{prop:aplicacions-iguals} és l'abast: aquell criteri quantifica sobre \emph{tots} els estadis \(X\), i val sempre; aquest axioma només fa servir l'estadi \(X=\mathbf1\), i és una hipòtesi addicional que recupera l'extensionalitat clàssica.
+\end{solucio}
+
+\section{Isomorfismes}\label{prac:isomorfismes}
+
+\begin{exercici}
+\textbf{Unicitat de la inversa.} Suposeu que \(g\) i \(g'\) són totes dues inverses d'un isomorfisme \(f\colon A\to B\). Demostreu que \(g=g'\), indicant on useu l'associativitat i on la neutralitat.
+\end{exercici}
+\begin{solucio}
+Partim de \(g\) i hi inserim \(\id_B=f\circ g'\):
+\[
+g=g\circ\id_B=g\circ(f\circ g')=(g\circ f)\circ g'=\id_A\circ g'=g'.
+\]
+La segona igualtat usa que \(g'\) és inversa de \(f\) (per la dreta); la tercera és l'associativitat (axioma~\ref{ax:associativitat}); la quarta usa que \(g\) és inversa de \(f\) (per l'esquerra); i la primera i l'última són les lleis de neutralitat. Per tant, la inversa és única, i la podem denotar \(f^{-1}\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{La inversa d'una composició.} Siguin \(f\colon A\to B\) i \(g\colon B\to C\) isomorfismes. Demostreu que \(g\circ f\) és un isomorfisme amb invers \(f^{-1}\circ g^{-1}\).
+\end{exercici}
+\begin{solucio}
+Comprovem les dues igualtats de la definició d'isomorfisme. D'una banda,
+\[
+(f^{-1}\circ g^{-1})\circ(g\circ f)=f^{-1}\circ(g^{-1}\circ g)\circ f=f^{-1}\circ\id_B\circ f=f^{-1}\circ f=\id_A,
+\]
+i, de l'altra, pel mateix camí,
+\[
+(g\circ f)\circ(f^{-1}\circ g^{-1})=g\circ(f\circ f^{-1})\circ g^{-1}=g\circ\id_B\circ g^{-1}=\id_C.
+\]
+Hem usat l'associativitat per reagrupar i les definicions de \(f^{-1}\) i \(g^{-1}\). Per tant, \(g\circ f\) és un isomorfisme i \({(g\circ f)}^{-1}=f^{-1}\circ g^{-1}\).
+\end{solucio}
+
+\section{Conjunts terminals}\label{prac:terminals}
+
+\begin{exercici}
+\textbf{Unicitat del conjunt terminal.} Demostreu que si \(T_1\) i \(T_2\) són tots dos terminals, hi ha un únic isomorfisme \(T_1\to T_2\).
+\end{exercici}
+\begin{solucio}
+Com que \(T_2\) és terminal, hi ha exactament una aplicació \(t\colon T_1\to T_2\); com que \(T_1\) és terminal, hi ha exactament una \(s\colon T_2\to T_1\). La composició \(s\circ t\colon T_1\to T_1\) és una aplicació de \(T_1\) en ell mateix; però \(T_1\) és terminal, i l'única aplicació \(T_1\to T_1\) és \(\id_{T_1}\), de manera que \(s\circ t=\id_{T_1}\). Anàlogament, \(t\circ s=\id_{T_2}\). Així, \(t\) és un isomorfisme, i és únic perquè ja ho era com a aplicació.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Un element global d'un terminal.} Quantes aplicacions \(\mathbf1\to\mathbf1\) hi ha? Deduïu-ne que l'únic element global de \(\mathbf1\) és \(\id_{\mathbf1}\).
+\end{exercici}
+\begin{solucio}
+Com que \(\mathbf1\) és terminal, hi ha exactament una aplicació de qualsevol conjunt cap a \(\mathbf1\); en particular, exactament una de \(\mathbf1\) en \(\mathbf1\). Aquesta aplicació ha de ser \(\id_{\mathbf1}\), que sempre existeix. Un element global de \(\mathbf1\) és una aplicació \(\mathbf1\to\mathbf1\), i com que només n'hi ha una, l'únic element global de \(\mathbf1\) és \(\id_{\mathbf1}\).
+\end{solucio}
+
+\section{Conjunts inicials, dualitat i no-degeneració}\label{prac:inicials}
+
+\begin{exercici}
+\textbf{Invariància de la inicialitat per isomorfisme.} Sigui \(I\) un conjunt inicial i \(I\cong J\). Demostreu que \(J\) també és inicial. (Model dual de la proposició~\ref{prop:terminal-invariant-iso}.)
+\end{exercici}
+\begin{solucio}
+Sigui \(w\colon I\to J\) un isomorfisme amb invers \(w^{-1}\), i sigui \(A\) un conjunt qualsevol. Com que \(I\) és inicial, hi ha exactament una aplicació \(u\colon I\to A\). Definim \(v:=u\circ w^{-1}\colon J\to A\); existeix, doncs, almenys una aplicació \(J\to A\). Per veure que és única, sigui \(v'\colon J\to A\) qualsevol; aleshores \(v'\circ w\colon I\to A\) és una aplicació des de l'inicial \(I\), de manera que \(v'\circ w=u\), i component per la dreta amb \(w^{-1}\) obtenim \(v'=u\circ w^{-1}=v\). Així \(J\) té exactament una aplicació cap a cada conjunt, és a dir, és inicial. L'argument és el dual exacte del de la terminalitat: s'obté invertint el sentit de totes les fletxes.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El conjunt inicial no té elements globals.} Demostreu que no existeix cap aplicació \(\mathbf1\to\mathbf0\).
+\end{exercici}
+\begin{solucio}
+Suposem que existís \(x\colon\mathbf1\to\mathbf0\). Com que \(\mathbf0\) és inicial, hi ha exactament una aplicació \(\mathbf0\to\mathbf1\), diguem \(u\). La composició \(x\circ u\colon\mathbf0\to\mathbf0\) és \(\id_{\mathbf0}\) per la inicialitat, i \(u\circ x\colon\mathbf1\to\mathbf1\) és \(\id_{\mathbf1}\) per la terminalitat. Aleshores \(\mathbf0\) i \(\mathbf1\) serien isomorfs, en contradicció amb l'axioma de no-degeneració (axioma~\ref{ax:no-degeneracio}). Per tant, no hi ha cap aplicació \(\mathbf1\to\mathbf0\).
+\end{solucio}
+
+\begin{exercici}
+\textbf{Distingir amb la no-degeneració.} Expliqueu per què, sense l'axioma de no-degeneració, no es podria demostrar que \(\mathbf0\) i \(\mathbf1\) són diferents.
+\end{exercici}
+\begin{solucio}
+Els axiomes d'existència del terminal i de l'inicial només afirmen que aquests conjunts existeixen i tenen les seves propietats universals; res en aquestes propietats no impedeix que un mateix conjunt sigui alhora inicial i terminal. De fet, en un univers amb un sol conjunt (i una sola aplicació, la seva identitat) totes dues propietats es compleixen trivialment. Cal, doncs, un axioma que exclogui aquest cas degenerat: és exactament el que fa l'axioma de no-degeneració, en postular que \(\mathbf0\) i \(\mathbf1\) no són isomorfs.
+\end{solucio}
+
+\begin{exercici}
+\textbf{Dualitzar formalment.} Escriviu, amb els predicats \(\Dom\), \(\Cod\) i \(\Com\), la fórmula \(\operatorname{Terminal}(T)\) de la definició~\ref{def:terminal} i apliqueu-hi la transformació dual de l'observació~\ref{obs:dualitat}. Comproveu que el resultat és la fórmula \(\operatorname{Inicial}(T)\).
+\end{exercici}
+\begin{solucio}
+La definició diu que, per a tot conjunt \(X\), existeix una única \(f\) amb \(\Dom(f,X)\land\Cod(f,T)\). La transformació dual intercanvia \(\Dom\) i \(\Cod\) (i no toca els quantificadors ni la igualtat), de manera que la fórmula es converteix en: per a tot conjunt \(X\), existeix una única \(f\) amb \(\Cod(f,X)\land\Dom(f,T)\), és a dir, una única \(f\colon T\to X\). Això és exactament la definició~\ref{def:inicial} d'\(\operatorname{Inicial}(T)\). La dualitat no és una analogia: és una substitució mecànica de símbols.
+\end{solucio}
+
+\begin{exercici}
+\textbf{La separació global no és autodual.} Escriviu l'enunciat dual de l'axioma de separació global (axioma~\ref{ax:separacio-globals}) i demostreu que, afegit als altres axiomes, implicaria que dues aplicacions paral·leles qualssevol són iguals.
+\end{exercici}
+\begin{solucio}
+L'axioma diu: si \(f,g\colon A\to B\) i \(f\circ x=g\circ x\) per a tot \(x\colon\mathbf1\to A\), aleshores \(f=g\). El dual intercanvia el sentit de les fletxes i l'ordre de la composició, i substitueix el terminal per l'inicial: si \(f,g\colon A\to B\) i \(y\circ f=y\circ g\) per a tot \(y\colon B\to\mathbf0\), aleshores \(f=g\). Ara bé, si \(B\) no és inicial no hi ha cap aplicació \(B\to\mathbf0\) (una tal \(y\) donaria, amb \(\mathbf0_B\), un isomorfisme \(B\cong\mathbf0\) pel mateix argument de la proposició~\ref{prop:no-fletxa-u-zero}), de manera que la hipòtesi \enquote{per a tota \(y\)} es compleix buidament i l'enunciat dual conclouria \(f=g\) per a tot parell d'aplicacions paral·leles. Per això el principi de dualitat deixa de valer a partir d'aquest axioma: la teoria dels conjunts constants no és simètrica.
+\end{solucio}
+
+\section{Elements globals i aplicacions constants}\label{prac:constants}
+
+\begin{exercici}
+\textbf{Una constant és constant després de compondre.} Sigui \(c\colon A\to B\) l'aplicació constant de valor \(b\colon\mathbf1\to B\) (definició~\ref{def:constant}), i sigui \(u\colon X\to A\) qualsevol. Demostreu que \(c\circ u\) és també constant de valor \(b\).
+\end{exercici}
+\begin{solucio}
+Per definició, \(c=b\circ{!}_A\), on \({!}_A\colon A\to\mathbf1\) és l'única aplicació cap al terminal. Aleshores
+\[
+c\circ u=(b\circ{!}_A)\circ u=b\circ({!}_A\circ u).
+\]
+Ara \({!}_A\circ u\colon X\to\mathbf1\) és una aplicació cap al terminal, i com que n'hi ha exactament una, \({!}_A\circ u={!}_X\). Per tant \(c\circ u=b\circ{!}_X\), que és, per definició, l'aplicació constant \(X\to B\) de valor \(b\). Hem usat només l'associativitat i la propietat universal del terminal.
+\end{solucio}
+
+\begin{exercici}
+\textbf{El valor d'una constant sobre un punt.} Amb la notació de l'exercici anterior, demostreu que per a tot element global \(x\colon\mathbf1\to A\) es té \(c\circ x=b\). Interpreteu-ho en la lectura clàssica.
+\end{exercici}
+\begin{solucio}
+Prenent \(X=\mathbf1\) i \(u=x\) a l'exercici anterior, \(c\circ x=b\circ{!}_{\mathbf1}\). Però \({!}_{\mathbf1}\colon\mathbf1\to\mathbf1\) és l'única aplicació del terminal en ell mateix, que és \(\id_{\mathbf1}\); per tant \(c\circ x=b\circ\id_{\mathbf1}=b\). En la lectura clàssica (secció~\ref{sec:lectura-classica}), això diu que la funció constant de valor \(b\) envia \emph{tot} punt del domini al mateix element \(b\), com és d'esperar.
+\end{solucio}

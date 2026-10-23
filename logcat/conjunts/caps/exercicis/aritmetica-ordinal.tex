@@ -1,0 +1,53 @@
+\chapter{Aritmètica ordinal}\label{cap:exercicis-aritmetica-ordinal}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:aritmetica-ordinal} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-aritmetica-ordinal} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Suma ordinal}
+
+\begin{enumerate}
+  \item Demostreu que la suma ordinal és un bon ordre invariant. (Model: secció~\ref{prac:suma-ordinal}; proposició~\ref{prop:suma-bon-ordre}.)
+
+  \item Demostreu que \(1+\omega=\omega\) però \(\omega+1\neq\omega\). (Model: proposició~\ref{prop:suma-no-commutativa}.)
+
+  \item Demostreu que la suma ordinal és associativa. (Model: proposició~\ref{prop:suma-associativa}.)
+
+  \item Demostreu que \(\alpha+\beta=\beta+\alpha\) si i només si \(\alpha\) i \(\beta\) són \enquote{commensurables} en el sentit adequat; en particular, doneu dos tipus finits que commuten i expliqueu per què amb \(\omega\) es trenca. \begin{indicacio}Els tipus finits commuten (aritmètica de \(\N\)); amb un límit, la reabsorció per l'esquerra trenca la simetria (proposició~\ref{prop:suma-no-commutativa}).\end{indicacio}
+\end{enumerate}
+
+\section{Producte ordinal}
+
+\begin{enumerate}[resume]
+  \item Demostreu que el producte ordinal (antilexicogràfic, la coordenada de \(\beta\) primer) és un bon ordre. (Model: secció~\ref{prac:producte-ordinal}; proposició~\ref{prop:producte-bon-ordre}.)
+
+  \item Demostreu que \(2\cdot\omega=\omega\) però \(\omega\cdot2\neq\omega\). (Model: proposició~\ref{prop:producte-propietats}.)
+
+  \item Demostreu la distributivitat per l'esquerra i doneu un contraexemple de la distributivitat per la dreta. (Model: proposició~\ref{prop:producte-propietats}.)
+
+  \item Demostreu que el producte ordinal és associatiu. \begin{indicacio}Tots dos costats són \(A\times B\times C\) amb la coordenada de \(C\) primer, després \(B\), després \(A\); useu l'isomorfisme canònic i la unicitat (teorema~\ref{teo:unicitat-iso}).\end{indicacio}
+\end{enumerate}
+
+\section{Exponenciació ordinal}
+
+\begin{enumerate}[resume]
+  \item Demostreu que \(\alpha^1=\alpha\), \(\alpha^2=\alpha\cdot\alpha\), \(2^\omega=\omega\) i \(\omega^2=\omega\cdot\omega\). (Model: secció~\ref{prac:exponenciacio-ordinal}; proposició~\ref{prop:exponenciacio-calculs}.)
+
+  \item Demostreu que \(E(B,A)\cong E(C,A)\times A\) quan \(B=C+\mathbf1\), i que l'ordre antilexicogràfic correspon al del producte ordinal; deduïu \(\alpha^{\beta+1}=\alpha^\beta\cdot\alpha\). Comproveu també que la clàusula límit, aplicada a la base \(0\), donaria \(0^\omega=1\). (Model: teorema~\ref{teo:exponenciacio-recursio}, observació~\ref{obs:exponenciacio-acotacio}.)
+
+  \item Demostreu que \(2^\omega=\omega\neq2^{\aleph_0}\), distingint l'exponenciació ordinal de la cardinal. \begin{indicacio}L'ordinal \(2^\omega\) és el suprem dels \(2^n\) finits; la cardinal \(2^{\aleph_0}\) és no numerable per Cantor (teorema~\ref{teo:cantor}).\end{indicacio}
+\end{enumerate}
+
+\section{Monotonia i ordre contra mida}
+
+\begin{enumerate}[resume]
+  \item Demostreu la monotonia estricta per la dreta i només \(\le\) per l'esquerra. (Model: secció~\ref{prac:ordre-mida}; proposició~\ref{prop:monotonia-ordinal}.)
+
+  \item Demostreu que \(\omega\), \(\omega+1\), \(\omega\cdot2\), \(\omega^2\) són tipus diferents però tots equipotents, i que \(2^\omega=\omega\) (de manera que \(2^\omega\) no és un tipus nou, sinó el mateix \(\omega\)). (Model: observació~\ref{obs:ordre-vs-mida}.)
+
+  \item \textbf{(Punt de reflexió.)} Expliqueu per què l'aritmètica ordinal \enquote{recorda l'ordre} i la cardinal l'\enquote{oblidarà}, i què significa exactament oblidar l'ordre. \begin{indicacio}Oblidar l'ordre és identificar tots els bons ordres equipotents; l'aritmètica cardinal opera sobre classes d'equipotència (observació~\ref{obs:ordre-vs-mida}).\end{indicacio}
+
+  \item Demostreu que una aplicació estrictament creixent entre bons ordres \(W\to V\) implica \(\operatorname{tipus}(W)\le\operatorname{tipus}(V)\), i useu-ho per provar \(\beta\cdot\alpha\le\gamma\cdot\alpha\) quan \(\beta\le\gamma\). (Model: lema~\ref{lema:immersio-ordre}.)
+
+  \item Demostreu que \(\omega+\omega\not\cong\omega\) trobant una propietat d'ordre invariant que distingeixi els dos bons ordres. \begin{indicacio}Un punt que no és el mínim i no té predecessor immediat.\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Confirmeu que cap resultat del capítol no usa l'elecció, i digueu si algun requereix una cota externa per mantenir-se al Nivell~I. \begin{indicacio}Cap: la construcció per funcions de suport finit proporciona les cotes; SR només caldria per a famílies de bases o exponents sense ambient comú.\end{indicacio}
+\end{enumerate}

@@ -1,0 +1,97 @@
+\chapter*{Glossari de símbols}
+\addcontentsline{toc}{chapter}{Glossari de símbols}
+\label{cap:glossari-simbols}
+\markboth{Glossari de símbols}{Glossari de símbols}
+
+Aquest glossari recull la notació pròpia del llibre, agrupada per blocs
+temàtics. La darrera columna indica el capítol on el símbol s'introdueix o es
+defineix.
+
+\begingroup
+\renewcommand{\arraystretch}{1.35}
+
+\subsection*{Llenguatge bàsic: aplicacions, dominis i composició}
+
+\noindent
+\begin{longtable}{@{}p{0.20\textwidth}p{0.62\textwidth}p{0.10\textwidth}@{}}
+\toprule
+\textbf{Símbol} & \textbf{Significat} & \textbf{Cap.}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Símbol} & \textbf{Significat} & \textbf{Cap.}\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\(\Dom(f,a)\) & \(a\) és el domini de l'aplicació \(f\) & \ref{cap:aplicacions}\\
+\(\Cod(f,b)\) & \(b\) és el codomini de l'aplicació \(f\) & \ref{cap:aplicacions}\\
+\(\Com(f,g,h)\) & \(h\) és la composició de \(f\) i després \(g\) & \ref{cap:aplicacions}\\
+\(g\circ f\) & composició d'aplicacions (primer \(f\), després \(g\)) & \ref{cap:aplicacions}\\
+\(\id_A\), \(\mathrm{id}\) & aplicació identitat sobre \(A\) & \ref{cap:aplicacions}\\
+\(f\colon A\to B\) & aplicació de domini \(A\) i codomini \(B\) & \ref{cap:aplicacions}\\
+\(x\colon X\to A\) & element generalitzat de \(A\) a l'estadi \(X\) & \ref{cap:aplicacions}\\
+\(\mathbf1\) & conjunt terminal (un sol punt) & \ref{cap:aplicacions}\\
+\(\mathbf0\) & conjunt inicial (buit) & \ref{cap:aplicacions}\\
+\(a\colon\mathbf1\to A\) & element global o punt de \(A\) & \ref{cap:aplicacions}\\
+\(A\cong B\) & \(A\) i \(B\) són isomorfs & \ref{cap:aplicacions}\\
+\end{longtable}
+
+\subsection*{Parts, lògica interna i construccions universals}
+
+\noindent
+\begin{longtable}{@{}p{0.20\textwidth}p{0.62\textwidth}p{0.10\textwidth}@{}}
+\toprule
+\textbf{Símbol} & \textbf{Significat} & \textbf{Cap.}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Símbol} & \textbf{Significat} & \textbf{Cap.}\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\(S\hookrightarrow A\) & monomorfisme; \(S\) és una part de \(A\) & \ref{cap:parts}\\
+\(P(A)\) & conjunt de parts de \(A\) & \ref{cap:parts-interna}\\
+\(A\times B\) & producte de conjunts & \ref{cap:parts}\\
+\(A+B\) & suma (coproducte) de conjunts & \ref{cap:parts}\\
+\(B^A\) & exponencial: aplicacions de \(A\) cap a \(B\) & \ref{cap:exponencials}\\
+\(a\mathrel{\varepsilon}\beta\) & pertinença generalitzada interna & \ref{cap:parts-interna}\\
+\(\neg_A\) & complement intern sobre \(P(A)\) & \ref{cap:parts-interna}\\
+\(\exists_f,\ \forall_f\) & quantificadors interns al llarg de \(f\) & \ref{cap:parts-interna}\\
+\(\abs{A}\) & cardinal (mida) de \(A\) & \ref{cap:cardinals}\\
+\end{longtable}
+
+\subsection*{Naturals, ordre i transfinit}
+
+\noindent
+\begin{longtable}{@{}p{0.20\textwidth}p{0.62\textwidth}p{0.10\textwidth}@{}}
+\toprule
+\textbf{Símbol} & \textbf{Significat} & \textbf{Cap.}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Símbol} & \textbf{Significat} & \textbf{Cap.}\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\(\N,\ \Z,\ \Q,\ \R\) & naturals, enters, racionals, reals & \ref{cap:infinitud}\\
+\(\seg{n}\) & segment inicial \(\{0,\dots,n-1\}\) de \(\N\) & \ref{cap:infinitud}\\
+\(A\preceq B\) & \(A\) s'injecta en \(B\) (mida menor o igual) & \ref{cap:cantor}\\
+\(A\prec B\) & \(A\) té mida estrictament menor que \(B\) & \ref{cap:cantor}\\
+\((S,R)\) & bon ordre: suport \(S\) amb relació \(R\) & \ref{cap:zorn}\\
+\(\WO(A)\) & bons ordres sobre parts de \(A\) & \ref{cap:zorn}\\
+\(\camp(S,R)\) & suport d'un bon ordre (és \(S\)) & \ref{cap:zorn}\\
+\(\Hart(A)\) & conjunt de Hartogs de \(A\) & \ref{cap:zorn}\\
+\([(S,R)],\ [R]\) & tipus d'ordre d'un bon ordre & \ref{cap:zorn}\\
+\(\omega\) & tipus d'ordre dels naturals & \ref{cap:ordinals}\\
+\(\aleph_\alpha\) & cardinals infinits (alephs) & \ref{cap:cardinals}\\
+\(\aleph_0\) & cardinal dels naturals; \(\abs{\N}\) & \ref{cap:cardinals}\\
+\(\kappa^{+}\) & cardinal successor de \(\kappa\) & \ref{cap:cardinals}\\
+\(\beth_\alpha\) & cardinals beth & \ref{cap:alephs}\\
+\(\mathfrak c\) & el continu; \(\abs{P(\N)}=2^{\aleph_0}\) & \ref{cap:alephs}\\
+\(\operatorname{cf}(\kappa)\) & cofinalitat de \(\kappa\) & \ref{cap:alephs}\\
+\end{longtable}
+
+\endgroup

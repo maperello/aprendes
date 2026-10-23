@@ -1,0 +1,132 @@
+\phantomsection
+\chapter*{Introducció}
+\addcontentsline{toc}{chapter}{Introducció}
+\label{cap:introduccio}
+
+Aquest llibre desenvolupa una teoria estructural de conjunts en la qual les aplicacions són els únics individus primitius. Els conjunts, els elements i les construccions habituals es recuperen progressivament a partir dels dominis, els codominis i la composició.
+
+
+\phantomsection
+\section*{Una mirada diferent: el punt de vista estructural}
+\addcontentsline{toc}{section}{Una mirada diferent: el punt de vista estructural}
+
+En la teoria clàssica de conjunts ---la formulació tradicional de
+Zermelo--Fraenkel--- els protagonistes indiscutibles són els
+\textbf{elements}. Un conjunt es descriu visualment com un «sac» o una
+«col·lecció» on guardem objectes dins, i la relació fonamental és la pertinença \( \in \), mitjançant la qual diem que un element \(x\) pertany al conjunt \(A\) escrivint \(x \in A\). Les aplicacions són actors secundaris, definides a posteriori com a conjunts de parells ordenats.
+
+En aquest llibre canviarem la perspectiva: \textbf{els
+protagonistes seran les aplicacions}.
+
+Farem com en geometria: per entendre les figures sovint interessa més
+saber \textbf{com es transformen o es relacionen entre elles} ---mitjançant
+moviments, projeccions o simetries--- que no pas preguntar-se de què estan
+fetes per dins. Adoptarem la mateixa actitud amb els conjunts: ens
+interessarà com es relacionen mitjançant les aplicacions, més que no pas
+la seva estructura interna de pertinença.
+
+\begin{center}
+\begin{tikzpicture}[scale=1,every node/.style={font=\small}]
+
+%--------------------------------------------------
+% Visió clàssica
+%--------------------------------------------------
+
+\node[font=\bfseries] at (1.5,3.2) {Visió clàssica (ZF)};
+
+\draw[thick,rounded corners=14pt] (0,0) rectangle (3,2.5);
+
+\node at (1.5,2.75) {$A$};
+
+\fill (0.8,1.8) circle (2pt) node[right=2pt] {$x$};
+\fill (2.2,1.0) circle (2pt) node[right=2pt] {$y$};
+\fill (1.1,0.5) circle (2pt) node[right=2pt] {$z$};
+
+\node at (1.5,-0.45)
+{Contenidor d'elements: $x\in A$};
+
+%--------------------------------------------------
+% Fletxa central
+%--------------------------------------------------
+
+\draw[-{Stealth[scale=1.4]},line width=1.2pt]
+(4.0,1.25)--(5.8,1.25);
+
+%--------------------------------------------------
+% Visió estructural
+%--------------------------------------------------
+
+\node[font=\bfseries] at (8.5,3.2)
+{Visió estructural (aquest llibre)};
+
+\node (A) at (7.2,1.8) {$A$};
+\node (B) at (9.6,1.8) {$B$};
+\node (C) at (8.4,0.4) {$C$};
+
+% Aplicacions
+
+\draw[-{Stealth[scale=1.2]},thick]
+(A)--node[above]{$f$}(B);
+
+\draw[-{Stealth[scale=1.2]},thick]
+(A)--node[left]{$g$}(C);
+
+\draw[-{Stealth[scale=1.2]},thick]
+(C)--node[right]{$h$}(B);
+
+%--------------------------------------------------
+% Identitats
+%--------------------------------------------------
+
+% id_A
+\draw[-{Stealth[scale=1]},thick]
+(7.20,2.00)
+.. controls (6.80,2.45) and (7.60,2.45) ..
+(7.20,2.00);
+\node[font=\scriptsize] at (6.55,2.48)
+{$\id_A$};
+
+% id_B
+\draw[-{Stealth[scale=1]},thick]
+(9.60,2.00)
+.. controls (9.20,2.45) and (10.00,2.45) ..
+(9.60,2.00);
+\node[font=\scriptsize] at (10.25,2.48)
+{$\id_B$};
+
+% id_C
+\draw[-{Stealth[scale=1]},thick]
+(8.40,0.20)
+.. controls (8.00,-0.25) and (8.80,-0.25) ..
+(8.40,0.20);
+\node[font=\scriptsize] at (9.05,-0.28)
+{$\id_C$};
+
+\node at (8.4,-0.85)
+{Xarxa d'aplicacions};
+
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Una mica de context: d'on ve aquesta idea?}
+
+Aquesta manera de reconsiderar els fonaments de la matemàtica \textbf{no és
+nova}. La va proposar el matemàtic F.~William Lawvere durant la dècada de
+1960~\cite{lawvere1964}, en adonar-se que la pràctica quotidiana ---en àlgebra, topologia o
+anàlisi--- consisteix a estudiar com els objectes interactuen entre ells
+mitjançant aplicacions, i no pas a registrar la naturalesa dels seus
+elements interns.
+
+Lawvere ho va formular en el llenguatge de la teoria de categories, en el
+que es coneix com la \emph{teoria estructural de conjunts de Lawvere}
+(ETCS)~\cite{lawvere1964,lawvere-etcs-reprint}, però \textbf{per seguir aquest llibre no cal conèixer la teoria de categories}. Una presentació moderna, propera a l'esperit d'aquest llibre, es troba a \cite{lawvere-rosebrugh}; per a la lectura des de la teoria de topos, vegeu \cite{maclane-moerdijk}.
+
+El nostre objectiu és construir una teoria estructural de conjunts des de zero, amb un llenguatge formal de primer ordre elemental i amb els convenis habituals que permeten abreujar la notació.
+
+
+\section*{Criteri d'escriptura formal}\label{not:criteri-formal}
+Les definicions i els axiomes s'escriuran mitjançant fórmules del llenguatge formal o mitjançant abreviacions introduïdes explícitament. En les proposicions, els teoremes i les demostracions farem servir sistemàticament aquestes abreviacions, perquè la notació primitiva no amagui l'estructura matemàtica dels arguments.
+
+Cada conveni introduït en un entorn de notació és eliminable: qualsevol expressió que el contingui es pot traduir a una fórmula construïda amb \(\Dom\), \(\Cod\), \(\Com\), la igualtat i els predicats definits anteriorment. Per tant, aquests convenis no amplien la teoria; només en simplifiquen l'escriptura.
+
+La presentació alterna tres nivells. El nivell formal fixa les definicions i els axiomes; el nivell geomètric els representa mitjançant diagrames externs de fletxes; i les observacions de lectura clàssica expliquen com es recuperen els conjunts i les funcions habituals. Aquests tres nivells es mantindran diferenciats al llarg de l'obra.

@@ -1,0 +1,51 @@
+\chapter{Ordres, bons ordres i segments}\label{cap:exercicis-bons-ordres}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:bons-ordres} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-bons-ordres} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Ordres i bons ordres}
+
+\begin{enumerate}
+  \item Demostreu que tot bon ordre és total i que el mínim d'una part no inicial és únic. (Model: secció~\ref{prac:ordres}; proposició~\ref{prop:bon-ordre-total}.)
+
+  \item Demostreu que \(\Z\) amb l'ordre usual és total però no és un bon ordre. (Model: observació~\ref{obs:bon-ordre-classic}.)
+
+  \item Demostreu que un ordre estricte \({<}\) prohibeix les cadenes descendents finites \(w_0>w_1>\cdots>w_n>w_0\) (cap cicle), i que un bon ordre prohibeix a més tota cadena descendent infinita. \begin{indicacio}Un cicle contradiu la irreflexivitat via la transitivitat; una cadena infinita té imatge sense mínim.\end{indicacio}
+
+  \item Sigui \({<}\) un bon ordre sobre \(W\) no inicial. Demostreu que \(W\) té un element mínim global \(\bot\), i que \(W_{<\bot}\) és inicial. \begin{indicacio}Apliqueu el bon ordre a la part total \(W\).\end{indicacio}
+\end{enumerate}
+
+\section{Segments inicials}
+
+\begin{enumerate}[resume]
+  \item Demostreu que tota part d'un bon ordre, amb l'ordre restringit, és un bon ordre. (Model: secció~\ref{prac:segments-bo}; proposició~\ref{prop:segment-ben-ordenat}.)
+
+  \item Demostreu que en un bon ordre les parts inicials pròpies són exactament els segments \(W_{<w}\), i que el punt \(w\) és únic. (Model: proposicions~\ref{prop:parts-inicials} i~\ref{prop:segment-determina-punt}.)
+
+  \item Demostreu que la intersecció i la unió de dues parts inicials són parts inicials, i que per a \(v\le w\) es té \(W_{<v}\subseteq W_{<w}\). \begin{indicacio}La condició de tancament cap avall es preserva per intersecció i unió; per als segments, useu la transitivitat.\end{indicacio}
+\end{enumerate}
+
+\section{Creixents i rigidesa}
+
+\begin{enumerate}[resume]
+  \item Demostreu que en un bon ordre cap punt no baixa sota una aplicació creixent injectiva: \(w\le f(w)\). (Model: secció~\ref{prac:rigidesa}; lema~\ref{lema:rigidesa}.)
+
+  \item Demostreu que entre dos bons ordres hi ha com a molt un isomorfisme d'ordre, i que l'únic automorfisme és la identitat. (Model: teorema~\ref{teo:unicitat-iso}.)
+
+  \item Demostreu que cap bon ordre és isomorf a un segment inicial propi seu. (Model: corol·lari~\ref{cor:no-segment-propi}.)
+
+  \item Demostreu que sobre un ordre \emph{total} tota aplicació creixent és injectiva, i doneu un contraexemple sobre un ordre no total. \begin{indicacio}Per a la injectivitat useu la tricotomia puntual; per al contraexemple, una antisimetria fallida en un ordre parcial.\end{indicacio}
+\end{enumerate}
+
+\section{Comparació de bons ordres}
+
+\begin{enumerate}[resume]
+  \item Demostreu que la comparació \enquote{ser un segment de} és antisimètrica i transitiva sobre bons ordres. (Model: secció~\ref{prac:comparacio-ordres}; proposició~\ref{prop:comparacio-ordres}.)
+
+  \item Demostreu que, entre dos bons ordres, com a molt una de les tres situacions de la tricotomia es dona. (Model: teorema~\ref{teo:tricotomia}.)
+
+  \item \textbf{(Punt de reflexió.)} Expliqueu per què la comparabilitat total de dos bons ordres necessita recursió transfinita però \emph{no} elecció, a diferència de la comparabilitat de dos conjunts qualssevol. \begin{indicacio}L'aparellament es fa prenent a cada pas el mínim del que queda, únic i canònic; no hi ha cap tria (observació~\ref{obs:tricotomia-recursio}).\end{indicacio}
+
+  \item \textbf{Punts i parts.} Per a cadascuna de les afirmacions següents, digueu si és una inclusió de parts (vàlida a tots els estadis) o una igualtat amb una unió (comprovable sobre punts): la transitivitat; la irreflexivitat; la totalitat; que una aplicació és creixent; la tricotomia. \begin{indicacio}Les tres primeres i la quarta són inclusions o disjuncions de parts; la totalitat i la tricotomia són unions totals, i es comproven sobre punts (lema~\ref{lema:transferencia-punts}).\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Confirmeu que cap resultat del capítol no usa l'elecció, i digueu on intervé la separació global: tot bon ordre és total; els segments són ben ordenats; les parts inicials pròpies són segments; la rigidesa; la unicitat de l'isomorfisme d'ordre. \begin{indicacio}La separació global intervé a la totalitat (pas de punts a parts) i, a través d'ella, a \enquote{creixent implica mono}.\end{indicacio}
+\end{enumerate}

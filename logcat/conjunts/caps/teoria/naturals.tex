@@ -1,0 +1,924 @@
+\chapter{L'objecte dels nombres naturals}\label{cap:naturals}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:exponencials}: exponencials, transposició, noms d'aplicacions i composició interna. Del capítol~\ref{cap:parts}: parts, equalitzadors, seccions i retraccions, i el teorema del bimorfisme. Del capítol~\ref{cap:valors}: \(0\ne1\), el lema del buit i la lectura de les sumes i les unions sobre punts. Del capítol~\ref{cap:parts-interna}: quantificadors i operacions booleanes internes, per a la part auxiliar del teorema del bon ordre.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item enunciar l'axioma de l'objecte dels nombres naturals com una propietat universal de recursió i demostrar-ne la unicitat llevat d'un únic isomorfisme;
+  \item construir la iterada d'una autoaplicació i la recursió amb paràmetres a partir de l'axioma, pujant als exponencials;
+  \item demostrar el principi d'inducció i la unicitat per inducció, amb i sense paràmetres, i explicar per què són la cara d'unicitat de la recursió;
+  \item deduir les equacions de Peano, en particular la injectivitat del successor mitjançant el predecessor construït sobre \(\N\times\N\), i que tot punt és zero o successor;
+  \item definir suma, producte i exponenciació per recursió i demostrar-ne les lleis per inducció amb paràmetres;
+  \item construir l'ordre dels naturals com una part de \(\N\times\N\), demostrar que és total sobre punts i que \(\N\) és ben ordenat, i saber per què aquestes propietats es comproven sobre punts globals.
+\end{itemize}
+\end{objectius}
+
+Els capítols precedents han completat el que es podria anomenar la part
+\emph{finita} de la teoria: aplicacions, parts, construccions booleanes,
+relacions, quocients, imatges, exponencials i el conjunt de parts. Cap
+d'aquestes construccions produeix, per si sola, un conjunt infinit; els
+axiomes acumulats permeten formar sumes, productes i exponencials de
+conjunts ja donats, però mai no forcen l'existència d'un conjunt amb
+infinits elements distingibles. Aquest capítol introdueix l'últim axioma
+estructural essencial del llibre, que trenca aquesta limitació:
+l'existència d'un \emph{objecte dels nombres naturals}.
+
+La forma d'aquest axioma segueix la disciplina de tot el
+desenvolupament. No postularem una llista de propietats de \(\N\) ---les
+equacions de Peano--- sinó una única \emph{propietat universal}: la
+capacitat de definir aplicacions per recursió. D'aquesta propietat en
+derivarem, com a teoremes, el principi d'inducció, les equacions de Peano
+i tota l'aritmètica elemental. Aquesta és la lliçó del capítol: el que en
+la presentació habitual són cinc axiomes independents sobre el zero i el
+successor apareix aquí com a conseqüència d'una sola condició de
+definibilitat, coherent amb la manera com el llibre ha tractat el
+producte, l'exponencial i el conjunt de parts.
+
+\section{La propietat universal de recursió}\label{sec:nno-universal}
+
+En conjunts, definir una successió \(u_0,u_1,u_2,\dots\) per recursió vol
+dir donar un valor inicial \(u_0\) i una regla que, a partir de \(u_n\),
+en produeix el següent \(u_{n+1}\). Perquè aquesta descripció determini
+una única successió cal que el conjunt d'índexs estigui generat pel zero i
+el pas al successor sense cap altra relació. La propietat universal que
+segueix diu exactament això: que a partir d'un punt inicial i una
+autoaplicació de qualsevol conjunt hi ha una i una sola manera de
+respectar el zero i el successor.
+
+\begin{axioma}[Existència d'un objecte dels nombres naturals]\label{ax:naturals}
+Existeixen un conjunt \(\N\), un element global \(0\colon\mathbf1\to\N\) i
+una aplicació \(s\colon\N\to\N\), el \emph{successor}, amb la propietat
+universal següent: per a tot conjunt \(A\), tot element global
+\(a\colon\mathbf1\to A\) i tota aplicació \(t\colon A\to A\), existeix una
+\emph{única} aplicació
+\[
+u\colon\N\to A
+\qquad\text{tal que}\qquad
+u\circ 0=a
+\quad\text{i}\quad
+u\circ s=t\circ u .
+\]
+\end{axioma}
+
+\begin{notacio}[L'objecte dels nombres naturals]\label{not:nno}
+Anomenarem \(\N\) l'\emph{objecte dels nombres naturals}, i
+\((\N,0,s)\) la terna que el presenta. L'aplicació \(u\) de
+l'axioma~\ref{ax:naturals} és la \emph{recursora} de les dades
+\((a,t)\), i escriurem \(u=\operatorname{rec}(a,t)\) quan calgui
+distingir-la. Les dues condicions
+\[
+u\circ 0=a,
+\qquad
+u\circ s=t\circ u
+\]
+diuen que \(u\) fa commutar el diagrama
+\[
+\mathbf1\xrightarrow{\;0\;}\N\xrightarrow{\;s\;}\N,
+\qquad
+\mathbf1\xrightarrow{\;a\;}A\xrightarrow{\;t\;}A,
+\]
+amb \(u\) vertical; una terna \((A,a,t)\) formada per un conjunt, un punt
+i una autoaplicació l'anomenarem un \emph{sistema recursiu}. El predicat
+eliminable corresponent, \(\operatorname{Nno}(\N,0,s)\), s'escriu com la
+propietat universal, quantificant els punts globals amb el predicat de
+conjunt terminal del capítol~\ref{cap:aplicacions} i les composicions amb
+el predicat \(\operatorname{Com}\); no el desplegarem, perquè segueix el
+mateix patró que \(\operatorname{Exp}\)
+(notació~\ref{not:exponencial}).
+\end{notacio}
+
+Com en els altres axiomes d'existència, la terna \((\N,0,s)\) és única
+llevat d'un isomorfisme compatible. Aquesta unicitat és el primer teorema,
+i la seva demostració és el patró de tots els arguments per recursió que
+seguiran.
+
+\begin{teorema}[Unicitat de l'objecte dels nombres naturals]\label{teo:nno-unicitat}
+Siguin \((\N,0,s)\) i \((\N',0',s')\) dues ternes que compleixen la
+propietat universal de l'axioma~\ref{ax:naturals}. Aleshores existeix un
+únic isomorfisme \(\varphi\colon\N\to\N'\) amb
+\[
+\varphi\circ 0=0'
+\qquad\text{i}\qquad
+\varphi\circ s=s'\circ\varphi .
+\]
+\end{teorema}
+
+\begin{prova}
+Apliquem la propietat universal de \((\N,0,s)\) al sistema recursiu
+\((\N',0',s')\): hi ha una única \(\varphi\colon\N\to\N'\) amb
+\(\varphi\circ 0=0'\) i \(\varphi\circ s=s'\circ\varphi\). Simètricament,
+la propietat de \((\N',0',s')\) aplicada a \((\N,0,s)\) dona una única
+\(\psi\colon\N'\to\N\) amb \(\psi\circ 0'=0\) i
+\(\psi\circ s'=s\circ\psi\). La composició \(\psi\circ\varphi\colon\N\to\N\)
+compleix \((\psi\circ\varphi)\circ 0=0\) i
+\((\psi\circ\varphi)\circ s=s\circ(\psi\circ\varphi)\); però la identitat
+\(\id_\N\) compleix les mateixes dues condicions, i la propietat universal
+de \((\N,0,s)\) aplicada al sistema \((\N,0,s)\) mateix diu que hi ha una
+sola aplicació així. Per tant \(\psi\circ\varphi=\id_\N\, \); igualment
+\(\varphi\circ\psi=\id_{\N'}\). Així \(\varphi\) és un isomorfisme, i és
+l'únic amb les propietats requerides per la unicitat de la recursora.
+\end{prova}
+
+\begin{observacio}[El paper de la unicitat en la recursió]\label{obs:unicitat-recursio}
+La demostració anterior conté, en miniatura, l'estratègia que farem servir
+constantment: per veure que dues aplicacions \(\N\to A\) coincideixen,
+n'hi ha prou de comprovar que totes dues resolen un mateix problema de
+recursió, perquè la solució és única. Aquest «principi d'unicitat de la
+recursora» és, com veurem a la secció~\ref{sec:induccio}, una altra cara
+del principi d'inducció.
+\end{observacio}
+
+\begin{observacio}[Lectura clàssica]\label{obs:nno-classica}
+En conjunts, \(\N=\{0,1,2,\dots\}\), \(0\) és el zero i \(s(n)=n+1\). La
+propietat universal és el \emph{teorema de recursió} de Dedekind: donats
+un conjunt \(A\), un element \(a\in A\) i una funció \(t\colon A\to A\),
+hi ha una única successió \(u\colon\N\to A\) amb \(u(0)=a\) i
+\(u(n+1)=t(u(n))\). El que habitualment es demostra a partir dels axiomes
+de Peano ---que la recursió està ben definida--- és aquí l'axioma mateix,
+i els axiomes de Peano en seran conseqüència
+(secció~\ref{sec:peano}).
+\end{observacio}
+
+\section{Iteració i el teorema de recursió}\label{sec:recursio}
+
+El cas més simple de la propietat universal és aquell en què el valor
+inicial és un punt genèric i la regla no depèn de l'índex: la
+\emph{iteració} d'una aplicació. En separem l'enunciat perquè és la forma
+en què la recursió apareix més sovint i perquè fixa la notació per a les
+potències d'una autoaplicació.
+
+\begin{definicio}[Iterada d'una autoaplicació]\index{Iterada d'una autoaplicació}\label{def:iterada}
+Sigui \(t\colon A\to A\) una autoaplicació d'un conjunt \(A\). La
+\emph{iterada} de \(t\) és l'única aplicació
+\[
+\operatorname{it}(t)\colon\N\times A\to A
+\]
+tal que, escrivint \(t^{n}(x):=\operatorname{it}(t)\circ\langle n,x\rangle\)
+per a elements generalitzats \(n\colon X\to\N\) i \(x\colon X\to A\),
+\[
+t^{0}(x)=x
+\qquad\text{i}\qquad
+t^{\,s\circ n}(x)=t\bigl(t^{n}(x)\bigr).
+\]
+\end{definicio}
+
+\begin{proposicio}[Existència i unicitat de la iterada]\label{prop:iterada}
+Per a tota autoaplicació \(t\colon A\to A\), l'aplicació
+\(\operatorname{it}(t)\) de la definició~\ref{def:iterada} existeix i és
+única.
+\end{proposicio}
+
+\begin{prova}
+Considerem l'exponencial \(A^{A}\) del capítol~\ref{cap:exponencials} i
+el sistema recursiu \((A^{A},\ulcorner\id_A\urcorner,C_t)\), on
+\(\ulcorner\id_A\urcorner\colon\mathbf1\to A^{A}\) és el nom de la
+identitat i \(C_t\colon A^{A}\to A^{A}\) és la composició interna per
+\(t\) per l'esquerra: la transposada de
+\(t\circ\operatorname{ev}\colon A^A\times A\to A\), que sobre punts envia
+\(g\) a \(t\circ g\) (és la composició interna del
+capítol~\ref{cap:exponencials} amb el primer argument fixat).
+Per l'axioma~\ref{ax:naturals} hi ha una única
+\(\pi\colon\N\to A^{A}\) amb \(\pi\circ 0=\ulcorner\id_A\urcorner\) i
+\(\pi\circ s=C_t\circ\pi\); intuïtivament \(\pi(n)=\ulcorner
+t^{n}\urcorner\). Descurrificant \(\pi\) s'obté
+\(\operatorname{it}(t):=\operatorname{ev}\circ(\pi\times\id_A)
+\colon\N\times A\to A\), i les dues equacions de \(\pi\), llegides a
+través de l'avaluació, són exactament \(t^{0}(x)=x\) i
+\(t^{\,s\circ n}(x)=t(t^{n}(x))\). La unicitat de \(\operatorname{it}(t)\)
+es redueix, per la unicitat de la transposada
+(definició~\ref{def:exponencial}), a la de \(\pi\), que és la de la
+recursora.
+\end{prova}
+
+\begin{observacio}[La recursió general via iteració]\label{obs:recursio-iteracio}
+La iteració és, en realitat, tan general com la recursió: donada una regla
+\(t\colon A\to A\) i un valor inicial \(a\colon\mathbf1\to A\), la
+recursora \(u=\operatorname{rec}(a,t)\) de l'axioma~\ref{ax:naturals}
+s'obté iterant \(t\) a partir de \(a\), és a dir,
+\(u\circ n=t^{n}(a)\) per a tot \(n\colon X\to\N\). Aquesta és la lectura
+que justifica escriure la recursió com «aplicar \(n\) vegades la regla a
+la llavor». La proposició~\ref{prop:iterada} mostra que aquest «aplicar
+\(n\) vegades» és una construcció legítima de la teoria, no una
+abreviatura metalingüística: viu com l'aplicació \(\operatorname{it}(t)\).
+\end{observacio}
+
+\section{El principi d'inducció}\label{sec:induccio}
+
+La propietat universal és una afirmació sobre \emph{definició} d'aplicacions.
+El principi d'inducció n'és la contrapartida sobre \emph{demostració}:
+diu que \(\N\) no té cap part pròpia que contingui el zero i sigui tancada
+pel successor. Els dos enunciats estan estretament lligats: el principi
+d'inducció equival a la part d'\emph{unicitat} de la propietat universal
+---la que garanteix que dues aplicacions definides per la mateixa recursió
+coincideixen---, mentre que la part d'\emph{existència}, que produeix
+efectivament les aplicacions recursives, no se'n dedueix. Aquesta
+correspondència, que precisarem a
+l'observació~\ref{obs:recursio-i-induccio}, és el cor del capítol.
+
+\begin{teorema}[Principi d'inducció]\label{teo:induccio}
+Sigui \(m\colon S\hookrightarrow\N\) una part de \(\N\) tal que
+\begin{enumerate}
+\item \(0\) es factoritza per \(m\) (és a dir, \(0\in_{\mathbf1}m\)); i
+\item \(s\) preserva \(m\): existeix una aplicació \(s_S\colon S\to S\)
+tal que \(m\circ s_S=s\circ m\); és a dir, \(s\circ m\) es factoritza per
+\(m\).
+\end{enumerate}
+Aleshores \(m\) és un isomorfisme; equivalentment, \(S=\N\) com a parts de
+\(\N\).
+\end{teorema}
+
+\begin{prova}
+Les hipòtesis diuen que \((S,0_S,s_S)\) és un sistema recursiu, on
+\(0_S\colon\mathbf1\to S\) és la factorització de \(0\) per \(m\)
+(condició~1) i \(s_S\colon S\to S\) és l'aplicació donada per la
+condició~2. Aquestes compleixen
+\[
+m\circ 0_S=0,
+\qquad
+m\circ s_S=s\circ m .
+\]
+Així \(m\colon S\to\N\) és un morfisme de sistemes recursius. Per la
+propietat universal de \((\N,0,s)\) aplicada al sistema \((S,0_S,s_S)\),
+hi ha una única \(u\colon\N\to S\) amb \(u\circ 0=0_S\) i
+\(u\circ s=s_S\circ u\). Llavors \(m\circ u\colon\N\to\N\) compleix
+\(m\circ u\circ 0=m\circ 0_S=0\) i
+\(m\circ u\circ s=m\circ s_S\circ u=s\circ m\circ u\); com que \(\id_\N\)
+compleix les mateixes condicions, la unicitat de la recursora dona
+\(m\circ u=\id_\N\). Aleshores \(m\) és una retracció i, per tant, un
+epimorfisme (proposició~\ref{prop:seccio-mono-retraccio-epi}); però \(m\)
+és també un monomorfisme (és una part). Una aplicació que és alhora
+monomorfisme i epimorfisme és un isomorfisme
+(corol·lari~\ref{cor:isomorfisme-bimorfisme}). Per tant \(m\) és un
+isomorfisme.
+\end{prova}
+
+\begin{observacio}[Inducció sobre elements generalitzats]\label{obs:induccio-generalitzada}
+La versió del teorema~\ref{teo:induccio} en termes de parts és la més
+directa d'usar, però la seva força pràctica apareix en la formulació
+predicativa. Sigui \(\varphi\) una propietat d'elements generalitzats de
+\(\N\), és a dir, una part \(m_\varphi\hookrightarrow\N\). Aleshores el
+teorema diu:
+\[
+\bigl(0\in m_\varphi\ \text{ i }\ (n\in m_\varphi\Rightarrow s\circ
+n\in m_\varphi)\bigr)
+\quad\Longrightarrow\quad
+n\in m_\varphi\ \text{ per a tot } n\colon X\to\N .
+\]
+En aquesta forma, l'inducció és la regla de demostració habitual: cas
+base al zero, pas inductiu del successor, conclusió per a tot natural.
+Notem que la propietat \(\varphi\) ha de ser una \emph{part} de \(\N\),
+és a dir, ha de correspondre a una aplicació \(\N\to\mathbf2\) via el
+classificador (axioma~\ref{ax:representacio}); no tota afirmació del
+metallenguatge defineix una part, i aquesta restricció és el que
+distingeix la inducció interna de l'esquema d'inducció clàssic
+(observació~\ref{obs:induccio-classica}).
+\end{observacio}
+
+\begin{proposicio}[Unicitat per inducció]\label{prop:unicitat-induccio}
+Siguin \(f,g\colon\N\to A\) dues aplicacions. Si \(f\circ 0=g\circ 0\) i
+\(f\circ s=g\circ s\) sempre que \(f\) i \(g\) coincideixin ---més
+precisament, si la part on \(f\) i \(g\) coincideixen conté el zero i és
+tancada pel successor--- aleshores \(f=g\).
+\end{proposicio}
+
+\begin{prova}
+Sigui \(e\colon E\hookrightarrow\N\) l'equalitzador de \(f\) i \(g\)
+(capítol~\ref{cap:parts}), la part de \(\N\) on totes dues coincideixen.
+La hipòtesi diu que \(E\) conté el zero i és tancada pel successor, de
+manera que pel teorema~\ref{teo:induccio} \(e\) és un isomorfisme; per
+tant \(f\) i \(g\) coincideixen a tot \(\N\), és a dir, \(f=g\).
+\end{prova}
+
+Les demostracions per inducció de la resta del capítol tenen, gairebé
+sempre, \emph{paràmetres}: es vol veure que dues aplicacions
+\(X\times\N\to A\) coincideixen, fent inducció sobre la variable de \(\N\)
+amb la de \(X\) fixada. La part de \(X\times\N\) on coincideixen no és
+una part de \(\N\), i el teorema~\ref{teo:induccio} no s'hi aplica
+directament; els exponencials resolen la dificultat.
+
+\begin{corollari}[Unicitat per inducció amb paràmetres]\label{cor:induccio-parametres}
+Siguin \(f,g\colon X\times\N\to A\). Si
+\(f\circ(\id_X\times0)=g\circ(\id_X\times0)\) (com a aplicacions
+\(X\times\mathbf1\to A\)) i, per a tot estadi \(Y\) i tots
+\(x\colon Y\to X\), \(n\colon Y\to\N\),
+\[
+f\circ\langle x,n\rangle=g\circ\langle x,n\rangle
+\quad\Longrightarrow\quad
+f\circ\langle x,s\circ n\rangle=g\circ\langle x,s\circ n\rangle,
+\]
+aleshores \(f=g\).
+\end{corollari}
+
+\begin{prova}
+Transposem respecte de \(X\): \(f\) i \(g\) corresponen a
+\(\widehat f,\widehat g\colon\N\to A^{X}\), amb
+\(f=\operatorname{ev}\circ(\widehat f\times\id_X)\circ\sigma\), on
+\(\sigma\colon X\times\N\to\N\times X\) és la commutació. Sigui
+\(e\colon E\hookrightarrow\N\) l'equalitzador de \(\widehat f\) i
+\(\widehat g\). La primera hipòtesi diu que
+\(\widehat f\circ0\) i \(\widehat g\circ0\) tenen la mateixa
+descurrificació, de manera que \(0\in E\). Si \(n\colon Y\to\N\) pertany a
+\(E\), aleshores \(\widehat f\circ n=\widehat g\circ n\) i, descurrificant,
+\(f\circ\langle x,n\rangle=g\circ\langle x,n\rangle\) per a tot
+\(x\colon Y\to X\); per la segona hipòtesi,
+\(f\circ\langle x,s\circ n\rangle=g\circ\langle x,s\circ n\rangle\) per a
+tot \(x\), i com que els \(\langle x,s\circ n\rangle\) amb \(x\) arbitrari
+determinen la restricció a \(X\times Y\) (prenent \(x\) la projecció
+\(X\times Y\to X\) i \(n\) composta amb l'altra projecció), les
+transposades coincideixen sobre \(s\circ n\): \(s\circ n\in E\). Per
+inducció (teorema~\ref{teo:induccio}), \(E=\N\), d'on
+\(\widehat f=\widehat g\) i \(f=g\).
+\end{prova}
+
+En la pràctica escriurem aquestes induccions amb elements generalitzats
+\(m,n\colon X\to\N\), \enquote{amb \(m\) fixat i inducció sobre \(n\)}: el
+corol·lari és el que legitima aquesta manera de parlar.
+
+\begin{observacio}[Recursió i inducció]\label{obs:recursio-i-induccio}
+La proposició~\ref{prop:unicitat-induccio} explicita el que
+l'observació~\ref{obs:unicitat-recursio} anunciava: la part
+d'\emph{unicitat} de la propietat universal és exactament el principi
+d'inducció. La part d'\emph{existència} de la recursora, en canvi, és el
+que garanteix que les definicions per recursió produeixen aplicacions
+efectives. Existència i unicitat de la recursora són, doncs, la definició
+per recursió i la demostració per inducció, respectivament.
+\end{observacio}
+
+\section{Les equacions de Peano}\label{sec:peano}
+
+Amb la inducció disponible podem derivar, com a teoremes, les propietats
+que en la presentació axiomàtica de Peano es prenen com a punt de partida:
+que el zero no és cap successor i que el successor és injectiu. La
+coherència amb el llibre demana obtenir-les de la propietat universal, i
+no a l'inrevés.
+
+\begin{teorema}[Equacions de Peano]\label{teo:peano}
+En tota terna \((\N,0,s)\) que compleixi l'axioma~\ref{ax:naturals}:
+\begin{enumerate}
+\item el successor \(s\colon\N\to\N\) és un monomorfisme;
+\item el zero no és cap successor: no hi ha cap \(n\colon X\to\N\) amb
+\(X\) no inicial tal que \(s\circ n=0\circ{!}_X\). En termes clàssics,
+això diu que la imatge del successor i el zero són disjunts.
+\end{enumerate}
+\end{teorema}
+
+\begin{prova}
+\emph{(2) El zero no és cap successor.} Definim per recursió una aplicació
+\(d\colon\N\to\mathbf2\) amb \(d\circ 0=1\) i
+\(d\circ s=0\circ{!}_\N\), és a dir, la recursora del sistema
+\((\mathbf2,1,0\circ{!}_{\mathbf2})\) ---la regla constant \(0\)---. Si fos
+\(s\circ n=0\circ{!}_X\) per a algun \(n\colon X\to\N\) amb \(X\) no
+inicial, component amb \(d\) obtindríem
+\(d\circ s\circ n=d\circ 0\circ{!}_X\), és a dir,
+\(0\circ{!}_X=1\circ{!}_X\). Com que \(X\) no és inicial, té un punt
+\(x\) (lema del buit, lema~\ref{lema:buit}), i component-hi obtenim
+\(0=1\), contra el teorema~\ref{teo:zero-diferent-u}. Per tant cap
+successor no és el zero.
+
+\emph{(1) El successor és injectiu.} Construïm un \emph{predecessor}
+\(p\colon\N\to\N\) amb \(p\circ s=\id_\N\). No es pot fer amb una recursió
+directa sobre \(\N\): la condició \(p\circ s=\id_\N\) no té la forma
+\(u\circ s=t\circ u\) de l'axioma (una recursora amb \(t=\id\) compleix
+\(u\circ s=u\), i és constant). El recurs habitual és recórrer parells
+consecutius. Sigui \(q\colon\N\to\N\times\N\) la recursora del sistema
+\((\N\times\N,\ \langle0,0\rangle,\ \langle p_2,\,s\circ p_2\rangle)\):
+\[
+q\circ0=\langle0,0\rangle,
+\qquad
+q\circ s=\langle p_2,s\circ p_2\rangle\circ q .
+\]
+Intuïtivament \(q(n)=(n-1,n)\) per a \(n\ge1\) i \(q(0)=(0,0)\). Vegem
+primer que \(p_2\circ q=\id_\N\): es compleix
+\(p_2\circ q\circ0=0\) i
+\(p_2\circ q\circ s=p_2\circ\langle p_2,s\circ p_2\rangle\circ q
+=s\circ(p_2\circ q)\), i \(\id_\N\) compleix \(\id\circ0=0\) i
+\(\id\circ s=s\circ\id\); per la unicitat de la recursora del sistema
+\((\N,0,s)\), \(p_2\circ q=\id_\N\). Definim \(p:=p_1\circ q\). Aleshores
+\[
+p\circ s=p_1\circ q\circ s=p_1\circ\langle p_2,s\circ p_2\rangle\circ q
+=p_2\circ q=\id_\N .
+\]
+Així \(s\) és una secció de \(p\) i, per tant, un monomorfisme
+(proposició~\ref{prop:seccio-mono-retraccio-epi}): si
+\(s\circ n=s\circ n'\), component amb \(p\) resulta \(n=n'\). Conservarem
+l'aplicació \(p\), el \emph{predecessor}, que compleix \(p\circ0=0\) i
+\(p\circ s=\id_\N\).
+\end{prova}
+
+\begin{observacio}[Per què cal el parell]\label{obs:predecessor-parell}
+L'argument anterior és el primer exemple d'una tècnica general: una
+funció que \enquote{mira enrere} (el predecessor) no és una recursió
+simple, però esdevé recursió simple si se'n recorda prou informació (el
+parell \((n-1,n)\)). És la mateixa idea que, en programació, converteix
+una recursió sobre el valor anterior en una iteració amb estat. Amb la
+recursió amb paràmetres del final del capítol
+(teorema~\ref{teo:recursio-parametres}) es pot fer el mateix per a
+regles que depenen de l'índex.
+\end{observacio}
+
+\begin{lema}[Tot punt és zero o successor]\label{lema:zero-o-successor}
+Sigui \(U\hookrightarrow\N\) la unió de la part \(0\colon\mathbf1\hookrightarrow\N\)
+i de la imatge \(s_*\N\hookrightarrow\N\) del successor. Aleshores \(U\) és
+total; en conseqüència, tot punt \(l\colon\mathbf1\to\N\) és \(0\) o és de
+la forma \(s\circ l'\) per a un únic punt \(l'\), a saber \(l'=p\circ l\).
+\end{lema}
+
+\begin{prova}
+\(0\in U\) perquè \(0\) pertany al primer sumand de la unió. Si \(n\in U\),
+aleshores \(s\circ n\in s_*\N\subseteq U\) (tot \(s\circ n\) es factoritza
+per la imatge de \(s\)). Per inducció (teorema~\ref{teo:induccio}), \(U\)
+és total. Un punt \(l\) de \(\N\) pertany, doncs, a la unió
+\(0\cup s_*\N\), i un punt d'una unió pertany a un dels dos membres
+(la característica de la unió és \(\vee\) de les característiques, i
+sobre un punt els valors són \(0\) o \(1\), corol·lari~\ref{cor:elements-de-2}).
+Si \(l\in s_*\N\), hi ha \(l'\) amb \(s\circ l'=l\) (exhaustivitat de
+l'epimorfisme \(\N\twoheadrightarrow s_*\N\) sobre punts,
+proposició~\ref{prop:epi-exhaustiu-punts}), únic per la injectivitat de
+\(s\), i \(p\circ l=p\circ s\circ l'=l'\).
+\end{prova}
+
+\begin{observacio}[Peano complet]\label{obs:peano-complet}
+Amb el teorema~\ref{teo:peano} i el principi d'inducció
+(teorema~\ref{teo:induccio}) es tenen les cinc afirmacions de Peano:
+\(0\) és un natural; el successor és una aplicació \(\N\to\N\); el zero no
+és successor de cap natural; el successor és injectiu; i val la inducció.
+La diferència amb la presentació habitual és l'ordre lògic: aquí no són
+axiomes sinó conseqüències d'una única propietat universal, que a més
+garanteix ---cosa que els axiomes de Peano de primer ordre no fan--- que
+les definicions per recursió estan sempre ben definides.
+\end{observacio}
+
+\begin{observacio}[Lectura clàssica]\label{obs:induccio-classica}
+En la teoria clàssica de primer ordre, la inducció és un \emph{esquema}:
+una còpia de l'axioma per a cada fórmula del llenguatge. Aquí la inducció
+és un únic teorema, però quantifica sobre \emph{parts} de \(\N\), és a
+dir, sobre aplicacions \(\N\to\mathbf2\). Com que, per l'axioma de
+representació (axioma~\ref{ax:representacio}), les parts de \(\N\) es
+corresponen amb els punts de \(P(\N)\), l'inducció d'aquest capítol és una
+inducció de «segon ordre» respecte del llenguatge intern: abraça totes
+les propietats que defineixen una part, no només les expressables per una
+fórmula prefixada. Aquesta és la font de la categoricitat de \(\N\)
+(teorema~\ref{teo:nno-unicitat}), que l'aritmètica de primer ordre no té.
+\end{observacio}
+
+\section{Suma, producte i exponenciació}\label{sec:aritmetica}
+
+Tota l'aritmètica elemental es defineix ara per recursió. Definirem cada
+operació fixant un argument i iterant sobre l'altre, i en derivarem les
+propietats per inducció. Presentem la suma amb detall i indiquem el
+producte i l'exponenciació, que segueixen el mateix patró.
+
+\begin{definicio}[Suma]\index{Suma}\label{def:suma-naturals}
+La \emph{suma} és l'aplicació \(+\colon\N\times\N\to\N\) definida per
+recursió sobre el segon argument: és la iterada del successor,
+\[
+m+n:=s^{n}(m)=\operatorname{it}(s)\circ\langle n,m\rangle,
+\]
+de manera que, per a elements generalitzats \(m,n\colon X\to\N\),
+\[
+m+0=m
+\qquad\text{i}\qquad
+m+(s\circ n)=s\circ(m+n).
+\]
+\end{definicio}
+
+\begin{proposicio}[Propietats de la suma]\label{prop:suma}
+La suma és associativa, commutativa i té el zero com a element neutre:
+per a tots \(k,m,n\colon X\to\N\),
+\[
+(k+m)+n=k+(m+n),
+\qquad
+m+n=n+m,
+\qquad
+0+n=n=n+0 .
+\]
+A més, és \emph{cancel·lativa}: si \(m+k=m+l\), aleshores \(k=l\); i una
+suma és nul·la només trivialment: si \(k+l=0\), aleshores \(k=l=0\).
+\end{proposicio}
+
+\begin{prova}
+Totes les igualtats són igualtats entre aplicacions \(\N\times\N\to\N\)
+(o \(\N^3\to\N\)), i es demostren per inducció sobre un dels arguments amb
+els altres com a paràmetres, és a dir, pel
+corol·lari~\ref{cor:induccio-parametres}; escrivim els arguments com a
+elements generalitzats \(k,m,n\colon X\to\N\). La definició dona
+\(n+0=n\) directament; provem primer les dues igualtats auxiliars
+\[
+0+n=n,
+\qquad
+(s\circ m)+n=s\circ(m+n),
+\]
+i després en deduïm la neutralitat, l'associativitat i la commutativitat.
+
+\emph{Neutralitat per l'esquerra \(0+n=n\).} La part de \(\N\) on
+\(0+n=n\) conté el zero, perquè \(0+0=0\); i és tancada pel successor,
+perquè si \(0+n=n\) aleshores \(0+(s\circ n)=s\circ(0+n)=s\circ n\). Per
+inducció, val a tot \(\N\).
+
+\emph{Segona igualtat auxiliar \((s\circ m)+n=s\circ(m+n)\).} Per inducció
+sobre \(n\). Per a \(n=0\): \((s\circ m)+0=s\circ m=s\circ(m+0)\). Pas de
+\(n\) a \(s\circ n\): \((s\circ m)+(s\circ n)=s\circ((s\circ m)+n)
+=s\circ s\circ(m+n)=s\circ(m+(s\circ n))\), on la primera i la darrera
+igualtats són la definició de la suma i la central és la hipòtesi
+d'inducció.
+
+\emph{Associativitat.} Per inducció sobre \(n\). Per a \(n=0\):
+\((k+m)+0=k+m=k+(m+0)\). Pas de \(n\) a \(s\circ n\):
+\((k+m)+(s\circ n)=s\circ((k+m)+n)=s\circ(k+(m+n))=k+(m+(s\circ n))\),
+usant la definició de la suma i la hipòtesi d'inducció.
+
+\emph{Commutativitat.} Per inducció sobre \(n\), amb les dues igualtats
+auxiliars. Per a \(n=0\): \(m+0=m=0+m\). Pas de \(n\) a \(s\circ n\):
+\(m+(s\circ n)=s\circ(m+n)=s\circ(n+m)=(s\circ n)+m\), on la primera
+igualtat és la definició, la segona la hipòtesi d'inducció i la tercera la
+segona igualtat auxiliar.
+
+\emph{Cancel·lació.} Aquí la propietat que es propaga no és una igualtat
+entre dues aplicacions sinó una implicació quantificada,
+\(\forall k\,\forall l\,(m+k=m+l\Rightarrow k=l)\); la part de \(\N\) que
+defineix existeix pels quantificadors interns i la implicació booleana
+(capítol~\ref{cap:parts-interna}), i la seva pertinença es llegeix, per la
+proposició~\ref{prop:quantificadors-lectura}(3), així: \(m\colon X\to\N\) hi
+pertany si per a tot \(y\colon Y\to X\) i tots \(k,l\colon Y\to\N\), de
+\(m\circ y+k=m\circ y+l\) se segueix \(k=l\). Els dos passos següents
+comproven aquesta condició a qualsevol estadi, i el
+teorema~\ref{teo:induccio} s'hi aplica. Per inducció sobre \(m\), doncs. Per a \(m=0\): de
+\(0+k=0+l\) i la neutralitat per l'esquerra surt \(k=l\). Pas de \(m\) a
+\(s\circ m\): si \((s\circ m)+k=(s\circ m)+l\), aleshores per la segona
+igualtat auxiliar \(s\circ(m+k)=s\circ(m+l)\); la injectivitat del
+successor (teorema~\ref{teo:peano}(1)) dona
+\(m+k=m+l\), i la hipòtesi d'inducció \(k=l\).
+
+\emph{Suma nul·la.} Aquesta afirmació la provem per a punts globals
+\(k,l\colon\mathbf1\to\N\), que és com es farà servir. Pel
+lema~\ref{lema:zero-o-successor}, \(l=0\) o \(l=s\circ l'\) per a algun
+punt \(l'\). En el segon cas,
+\(k+l=k+(s\circ l')=s\circ(k+l')\ne0\), perquè el zero no és cap successor
+(teorema~\ref{teo:peano}(2)); per tant \(k+l=0\) força \(l=0\), i llavors
+\(k=k+0=0\).
+\end{prova}
+
+\begin{definicio}[Producte i exponenciació]\index{Producte i exponenciació}\label{def:producte-exp}
+El \emph{producte} \(\cdot\colon\N\times\N\to\N\) es defineix per recursió
+sobre el segon argument iterant la suma per \(m\):
+\[
+m\cdot 0=0,
+\qquad
+m\cdot(s\circ n)=(m\cdot n)+m .
+\]
+L'\emph{exponenciació} \(\N\times\N\to\N\), \((m,n)\mapsto m^{n}\), es
+defineix iterant el producte per \(m\):
+\[
+m^{0}=s\circ 0\;(=1),
+\qquad
+m^{\,s\circ n}=(m^{n})\cdot m .
+\]
+\end{definicio}
+
+\begin{proposicio}[Les lleis de l'aritmètica]\label{prop:lleis-aritmetica}
+Per a tots \(k,m,n\colon X\to\N\), el producte és associatiu, commutatiu,
+distributiu sobre la suma i té \(1:=s\circ 0\) com a element neutre, i
+l'exponenciació satisfà les lleis dels exponents:
+\[
+m\cdot(n+k)=m\cdot n+m\cdot k,
+\qquad
+m^{\,n+k}=m^{n}\cdot m^{k},
+\qquad
+m^{\,n\cdot k}=(m^{n})^{k}.
+\]
+\end{proposicio}
+
+\begin{prova}
+Demostrem la distributivitat per l'esquerra
+\(m\cdot(n+k)=m\cdot n+m\cdot k\) com a model; és la llei de la qual
+depenen l'associativitat i la commutativitat del producte, i la primera
+llei dels exponents. Fem inducció sobre \(k\)
+(teorema~\ref{teo:induccio}), amb \(m,n\) fixats, usant la unicitat per
+inducció (proposició~\ref{prop:unicitat-induccio}) per garantir que la
+part on val la igualtat és tot \(\N\).
+
+\emph{Cas base \(k=0\).} Per la definició de suma i de producte
+(definicions~\ref{def:suma-naturals} i~\ref{def:producte-exp}),
+\(m\cdot(n+0)=m\cdot n=m\cdot n+0=m\cdot n+m\cdot 0\).
+
+\emph{Pas de \(k\) a \(s\circ k\).}
+\[
+m\cdot\bigl(n+(s\circ k)\bigr)
+=m\cdot\bigl(s\circ(n+k)\bigr)
+=m\cdot(n+k)+m
+=(m\cdot n+m\cdot k)+m,
+\]
+on la primera igualtat és la definició de suma, la segona la definició de
+producte, i la tercera la hipòtesi d'inducció; i, reordenant amb
+l'associativitat de la suma (proposició~\ref{prop:suma}),
+\[
+(m\cdot n+m\cdot k)+m=m\cdot n+(m\cdot k+m)=m\cdot n+m\cdot(s\circ k),
+\]
+usant altre cop la definició de producte. Per inducció, la igualtat val a
+tot \(\N\).
+
+Les altres lleis es demostren totes per inducció seguint aquest mateix
+esquema ---inducció sobre un argument, amb la distributivitat i la
+proposició~\ref{prop:suma} com a lemes---, exactament com la prova
+anterior i com la de la proposició~\ref{prop:suma}. Cap no requereix cap
+axioma nou: totes són conseqüència de l'axioma~\ref{ax:naturals}, de la
+definició recursiva de les operacions (definicions~\ref{def:suma-naturals}
+i~\ref{def:producte-exp}) i de les propietats de la suma ja demostrades
+(proposició~\ref{prop:suma}).
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:lleis-classica}
+L'estructura \((\N,0,s,+,\cdot)\) és el semianell dels nombres naturals:
+les lleis de la proposició~\ref{prop:lleis-aritmetica} són precisament els
+axiomes de semianell commutatiu, ara \emph{teoremes} d'inducció en lloc de
+postulats. Les lleis dels exponents \(m^{p+q}=m^{p}\cdot m^{q}\) i
+\(m^{p\cdot q}=(m^{p})^{q}\) són les que, al capítol següent, donaran els
+recomptes \(|B^{A}|=m^{n}\) i la seva compatibilitat amb la suma i el
+producte de cardinals.
+\end{observacio}
+
+\section{L'ordre dels naturals}\label{sec:ordre-naturals}
+
+Fins ara hem tractat \(\N\) com un objecte algebraic ---amb el zero, el
+successor i les operacions---, però encara no hem construït la relació
+d'ordre que en fa una successió \(0<1<2<\dots\). La definim aquí, a partir
+de la suma, i en derivem la propietat que el capítol següent farà servir
+constantment: \(\N\) és \emph{ben ordenat}, és a dir, tota part no buida en
+té un mínim. Com totes les relacions del llibre, l'ordre no és una fórmula
+externa sinó una \emph{part} d'un producte
+(capítol~\ref{cap:relacions}).
+
+\begin{observacio}[Com es demostren les propietats de l'ordre]\label{obs:ordre-sobre-punts}
+Les propietats de l'ordre que segueixen ---totalitat, bon ordre--- són
+afirmacions sobre \emph{parts} de \(\N\) o de \(\N\times\N\): per exemple,
+la totalitat diu que la unió \(\operatorname{Leq}\cup\operatorname{Inv}(\operatorname{Leq})\)
+és la part total de \(\N\times\N\). Per la separació global i el lema del
+buit, dues parts d'un mateix conjunt amb els mateixos punts globals són
+equivalents (capítol~\ref{cap:relacions}, pràctica), de manera que n'hi ha
+prou amb comprovar aquestes afirmacions \emph{sobre punts globals}; i
+sobre punts, la pertinença a una unió és \enquote{o} i la pertinença a
+una imatge és \enquote{existeix} (capítol~\ref{cap:valors},
+corol·lari~\ref{cor:elements-de-2}; capítol~\ref{cap:imatges}). Per això,
+en aquesta secció, \(m,n,k\) denotaran punts globals de \(\N\) llevat que
+es digui el contrari. Les igualtats aritmètiques de la secció anterior,
+en canvi, són igualtats d'aplicacions i s'han demostrat sobre elements
+generalitzats.
+\end{observacio}
+
+\begin{definicio}[Ordre dels naturals]\index{Ordre dels naturals}\label{def:ordre-naturals}
+La relació \emph{menor o igual} sobre \(\N\) és la part
+\(\operatorname{Leq}\hookrightarrow\N\times\N\) donada per la imatge
+(teorema~\ref{teo:factoritzacio}) de l'aplicació
+\[
+\langle\pi_1,+\rangle\colon\N\times\N\longrightarrow\N\times\N,
+\qquad
+(m,k)\longmapsto(m,\,m+k).
+\]
+Escriurem \(m\le n\) per «\(\langle m,n\rangle\) es factoritza per
+\(\operatorname{Leq}\)», és a dir, per la pertinença generalitzada
+\(\langle m,n\rangle\in\operatorname{Leq}\). Sobre punts globals, per
+l'exhaustivitat dels epimorfismes sobre punts,
+\[
+m\le n
+\quad\Longleftrightarrow\quad
+\exists k\colon\mathbf1\to\N\ \text{ amb }\ m+k=n
+\]
+(sobre elements generalitzats, el \(k\) existeix després d'un
+recobriment, com sempre amb les imatges).
+L'ordre \emph{estricte} és la part
+\(\operatorname{Lt}\hookrightarrow\N\times\N\) amb
+\(m<n\Leftrightarrow(m\le n\wedge m\ne n)\), equivalentment
+\(\exists k\colon m+(s\circ k)=n\).
+\end{definicio}
+
+\begin{observacio}[L'ordre és una part, no un esquema]\label{obs:ordre-part}
+La definició no introdueix cap primitiva nova: \(\operatorname{Leq}\) és
+una part concreta de \(\N\times\N\), obtinguda per factorització imatge
+d'una aplicació ja disponible, i \(m\le n\) n'és la pertinença
+generalitzada en el sentit del capítol~\ref{cap:relacions}. El
+quantificador \(\exists k\) de la lectura equival, internament, a
+travessar aquesta imatge; no és una quantificació metateòrica. Aquesta és
+la diferència amb els «comentaris externs» sobre finitud que fèiem abans
+de tenir \(\N\): l'ordre, ara, viu dins la teoria.
+\end{observacio}
+
+\begin{proposicio}[L'ordre és un ordre total]\label{prop:ordre-total}
+La relació \(\le\) sobre \(\N\) és reflexiva, antisimètrica, transitiva i
+total; és a dir, per a tots els punts \(k,m,n\colon\mathbf1\to\N\):
+\begin{enumerate}
+\item \(n\le n\) per a tot \(n\);
+\item si \(m\le n\) i \(n\le m\), aleshores \(m=n\);
+\item si \(k\le m\) i \(m\le n\), aleshores \(k\le n\);
+\item per a tots \(m,n\), \(m\le n\) o bé \(n\le m\).
+\end{enumerate}
+A més, \(0\le n\) sempre, i \(m\le n\) si i només si \(s\circ m\le s\circ
+n\).
+\end{proposicio}
+
+\begin{prova}
+\emph{Reflexivitat.} \(n+0=n\) (definició~\ref{def:suma-naturals}), d'on
+\(n\le n\) prenent \(k=0\).
+
+\emph{Transitivitat.} Si \(k+a=m\) i \(m+b=n\), aleshores
+\(k+(a+b)=(k+a)+b=m+b=n\) per l'associativitat de la suma
+(proposició~\ref{prop:suma}), d'on \(k\le n\) prenent l'increment
+\(a+b\).
+
+\emph{\(0\le n\) i el pas del successor.} Com que \(0+n=n\)
+(proposició~\ref{prop:suma}), \(0\le n\) per a tot \(n\). I
+\((s\circ m)+k=s\circ(m+k)\) per la igualtat auxiliar de la
+proposició~\ref{prop:suma}, i \(s\circ(m+k)=s\circ n\) equival a \(m+k=n\)
+per la injectivitat del successor (teorema~\ref{teo:peano}(1)); així
+\(m+k=n\Leftrightarrow(s\circ m)+k=s\circ n\), i per tant \(m\le n\Leftrightarrow s\circ m\le
+s\circ n\).
+
+\emph{Antisimetria.} Suposem \(m+k=n\) i \(n+l=m\). Substituint,
+\(m+(k+l)=(m+k)+l=n+l=m=m+0\), i per la cancel·lació de la suma
+(proposició~\ref{prop:suma}) \(k+l=0\); com que una suma nul·la té tots dos
+sumands nuls (proposició~\ref{prop:suma}), \(k=l=0\), d'on \(n=m+k=m\).
+
+\emph{Totalitat.} Fixat el punt \(m\), sigui \(T_m\hookrightarrow\N\) la
+part dels \(n\) amb \(m\le n\) o \(n\le m\): és la imatge inversa, per
+\(\langle m\circ{!},\id\rangle\colon\N\to\N\times\N\), de la unió
+\(\operatorname{Leq}\cup\operatorname{Inv}(\operatorname{Leq})\). Vegem
+per inducció (teorema~\ref{teo:induccio}) que \(T_m\) és total, i
+aleshores tot punt \(n\) hi pertany. Per a \(n=0\): \(0\le m\) sempre, així que
+\(m\le0\vee0\le m\). Pas de \(n\) a \(s\circ n\): sigui \(n\) un punt de \(T_m\), de manera que
+\(m\le n\) o \(n\le m\) (pertinença d'un punt a una unió). Si \(m\le n\), aleshores \(m\le n\le
+s\circ n\) per transitivitat (car \(n\le s\circ n\), ja que
+\(n+s\circ0=s\circ n\)). Si \(n\le m\), distingim: o bé \(n=m\), i
+aleshores \(m=n\le s\circ n\); o bé \(n<m\), i aleshores \(s\circ n\le m\)
+perquè de \(n+(s\circ k)=m\) surt \(s\circ n+k=m\) amb el pas del
+successor. En tots els casos \(m\le s\circ n\) o \(s\circ n\le m\), és a dir,
+\(s\circ n\in T_m\). Hem comprovat el cas base i el pas sobre punts;
+com que \(T_m\) és una part de \(\N\) i les parts es determinen pels
+punts (observació~\ref{obs:ordre-sobre-punts}), la part dels \(n\) amb
+\(n\in T_m\Rightarrow s\circ n\in T_m\) és total, i el
+teorema~\ref{teo:induccio} s'aplica.
+\end{prova}
+
+\begin{teorema}[\(\N\) és ben ordenat]\label{teo:bon-ordre-N}
+Tota part no inicial \(P\hookrightarrow\N\) té un \emph{element mínim}: un
+punt \(m_0\colon\mathbf1\to\N\) que es factoritza per \(P\) i compleix
+\(m_0\le k\) per a tot element generalitzat \(k\) de \(P\). El mínim, quan
+existeix, és únic.
+\end{teorema}
+
+\begin{prova}
+La unicitat és immediata per l'antisimetria
+(proposició~\ref{prop:ordre-total}): dos mínims \(m_0,m_0'\) compleixen
+\(m_0\le m_0'\) i \(m_0'\le m_0\), d'on \(m_0=m_0'\).
+
+Per a l'existència provem el contrarecíproc: si \(P\) no té element mínim,
+aleshores \(P\) és inicial. Tot el raonament és sobre punts globals, en el
+sentit de l'observació~\ref{obs:ordre-sobre-punts}: les parts de \(\N\)
+queden determinades pels seus punts (separació global i lema del buit),
+de manera que una part conté el zero, o és tancada pel successor, o és
+total, si i només si ho és sobre punts; i sobre punts, \enquote{o},
+\enquote{existeix} i la pertinença a una imatge tenen el sentit clàssic.
+Introduïm la part auxiliar
+\(R\hookrightarrow\N\) classificada per la fórmula interna
+\[
+R(n)\ :\Longleftrightarrow\ \forall k\ (k\le n\Rightarrow \neg(k\mathrel{\varepsilon}P)),
+\]
+és a dir, «cap natural \(\le n\) no pertany a \(P\)». Aquesta part existeix
+pels quantificadors interns i les operacions booleanes sobre \(P(\N)\)
+(capítol~\ref{cap:parts-interna}), i el quantificador acotat \(\forall
+k(k\le n\Rightarrow\cdots)\) és intern perquè \(\le\) és una part
+(definició~\ref{def:ordre-naturals}).
+
+Vegem que \(R=\N\) per inducció (teorema~\ref{teo:induccio}), sota la
+hipòtesi que \(P\) no té mínim.
+
+\emph{Cas base.} \(R(0)\) diu que cap \(k\le0\) no és a \(P\); com que
+\(k\le0\) força \(k=0\) (de \(k+a=0\) surt \(k=0\) perquè una suma nul·la té els
+dos sumands nuls, proposició~\ref{prop:suma}), \(R(0)\) equival a \(0\notin P\). Ara
+bé, si \(0\in P\), aleshores \(0\) seria el mínim de \(P\), perquè \(0\le
+k\) per a tot \(k\) (proposició~\ref{prop:ordre-total}); com que \(P\) no
+té mínim, \(0\notin P\), i doncs \(R(0)\).
+
+\emph{Pas de \(n\) a \(s\circ n\).} Suposem \(R(n)\): cap \(k\le n\) no és
+a \(P\). Els naturals \(\le s\circ n\) són els \(\le n\) i el mateix
+\(s\circ n\) ---perquè \(k\le s\circ n\) i \(k\ne s\circ n\) impliquen
+\(k\le n\) pel pas del successor (proposició~\ref{prop:ordre-total}). Per
+la hipòtesi \(R(n)\), cap dels primers no és a \(P\); resta veure que
+\(s\circ n\notin P\). Però si \(s\circ n\in P\), aleshores \(s\circ n\)
+seria el \emph{mínim} de \(P\): per a tot \(j\in P\), com que cap \(k\le
+n\) no és a \(P\) (per \(R(n)\)), ha de ser \(n<j\), és a dir \(s\circ
+n\le j\) (pas del successor). Això contradiu que \(P\) no tingui mínim.
+Per tant \(s\circ n\notin P\), i \(R(s\circ n)\).
+
+Hem comprovat sobre punts que \(R\) conté el zero i que tot punt de \(R\)
+té el successor a \(R\); això vol dir que la part \(R\cap s^{-1}(R^c)\)
+no té punts i és buida, és a dir, \(s\circ r\) es factoritza per \(R\),
+que és la hipòtesi del teorema~\ref{teo:induccio}. Per inducció,
+\(R=\N\). Però \(R(n)\) per a tot punt \(n\) diu, en particular prenent
+\(k=n\), que cap punt de \(\N\) no pertany a \(P\); per tant \(P\) no té
+punts i, pel lema del buit (lema~\ref{lema:buit}), és inicial. Això prova
+el contrarecíproc, i per tant tota part no inicial de \(\N\) té un mínim.
+Finalment, que \(m_0\) sigui mínim per a tot element generalitzat \(k\) de
+\(P\), i no només per als punts, és la inclusió de parts
+\(P\subseteq\{k:m_0\le k\}\), que de nou es comprova sobre punts.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica i ús posterior]\label{obs:bon-ordre-classica}
+El teorema~\ref{teo:bon-ordre-N} és el \emph{principi del bon ordre} dels
+naturals, equivalent en la matemàtica clàssica al principi d'inducció: tota
+col·lecció no buida de naturals té un mínim. El farem servir de manera
+essencial al capítol següent ---per exemple, per triar canònicament un
+element de cada part no buida de \(\N\) sense recórrer a cap axioma
+d'elecció (el mínim és únic, i per tant una tria \emph{definida})--- i és
+la base de tota la comparació de segments inicials que sosté la noció de
+finitud. La restricció a \(\N\) és deliberada: la noció general de conjunt
+\emph{ben ordenat} i el seu paper en la teoria de l'ordre es
+desenvoluparan més endavant, quan calguin per als ordinals.
+\end{observacio}
+
+\begin{definicio}[Successió]\index{Successió}\label{def:successio}
+Una \emph{successió} d'elements d'un conjunt \(A\) és una aplicació
+\(a\colon\N\to A\). El conjunt de totes les successions d'\(A\) és
+l'exponencial \(A^{\N}\). Un element global de \(A^{\N}\) és una successió
+en el sentit clàssic \((a_0,a_1,a_2,\dots)\), amb \(a_n:=a\circ n\); un
+element generalitzat \(X\to A^{\N}\) és una família de successions
+parametritzada per \(X\), o equivalentment una aplicació
+\(X\times\N\to A\) (proposició~\ref{prop:families}).
+\end{definicio}
+
+La recursió de l'axioma~\ref{ax:naturals} defineix aplicacions
+\(\N\to A\) a partir de dades \emph{globals} \((a,t)\). Sovint, però, cal
+definir una successió que depèn d'un paràmetre \(x\) que recorre un estadi
+\(X\), amb un valor inicial \(a(x)\) i una regla \(t(x,-)\) que també en
+depèn. Els exponencials permeten reduir aquest cas al de
+l'axioma~\ref{ax:naturals}.
+
+\begin{teorema}[Recursió amb paràmetres]\label{teo:recursio-parametres}
+Siguin \(A\) i \(X\) conjunts, \(a\colon X\to A\) una aplicació i
+\(t\colon X\times A\to A\) una aplicació. Aleshores existeix una única
+aplicació
+\[
+u\colon X\times\N\to A
+\]
+tal que, per a tot \(x\colon Y\to X\) i tot \(n\colon Y\to\N\),
+\[
+u\circ\langle x,0\circ{!}_Y\rangle=a\circ x
+\qquad\text{i}\qquad
+u\circ\langle x,s\circ n\rangle=t\circ\langle x,\,u\circ\langle
+x,n\rangle\rangle .
+\]
+\end{teorema}
+
+\begin{prova}
+Transposem respecte de \(X\). Pel capítol~\ref{cap:exponencials}, una
+aplicació \(u\colon X\times\N\to A\) equival a la seva transposada
+\(\widehat u\colon\N\to A^{X}\), i les dues condicions sobre \(u\) es
+tradueixen, per la unicitat de la transposada, en condicions sobre
+\(\widehat u\). El valor inicial \(a\colon X\to A\) té nom
+\(\ulcorner a\urcorner\colon\mathbf1\to A^{X}\), i la regla
+\(t\colon X\times A\to A\) determina una autoaplicació
+\(T\colon A^{X}\to A^{X}\): la transposada de
+\(t\circ\langle\pi_X,\operatorname{ev}\rangle\colon A^X\times X\to A\),
+que sobre punts envia \(g\) a \(x\mapsto t(x,g(x))\). Aplicant
+l'axioma~\ref{ax:naturals} al sistema recursiu
+\((A^{X},\ulcorner a\urcorner,T)\) s'obté una única
+\(\widehat u\colon\N\to A^{X}\) amb
+\(\widehat u\circ 0=\ulcorner a\urcorner\) i
+\(\widehat u\circ s=T\circ\widehat u\). La seva descurrificada \(u\) és
+l'aplicació buscada, i és única perquè ho és \(\widehat u\).
+\end{prova}
+
+\begin{observacio}[El paper dels exponencials]\label{obs:exponencials-recursio}
+El teorema~\ref{teo:recursio-parametres} és la raó tècnica per la qual
+convé haver introduït els exponencials abans que \(\N\). L'axioma de
+recursió, tal com s'enuncia, només parla de dades globals sobre un
+conjunt \(A\); la recursió amb paràmetres, que és la que fa falta a la
+pràctica, s'hi redueix pujant a l'exponencial \(A^{X}\) i tornant a baixar
+per descurrificació. Sense exponencials caldria un axioma de recursió més
+fort, amb paràmetres incorporats; amb ells, la forma simple de
+l'axioma~\ref{ax:naturals} és suficient. Aquesta economia ---un axioma
+mínim que la resta de l'estructura amplifica--- és la mateixa que hem vist
+amb el producte i el conjunt de parts.
+\end{observacio}
+
+\begin{observacio}[Lectura clàssica]\label{obs:recursio-parametres-classica}
+La recursió amb paràmetres és la forma en què es defineixen en la
+pràctica la major part de les successions: el terme \(u(x,n+1)\) es calcula
+a partir de \(u(x,n)\) i del paràmetre \(x\), com en la definició de la
+successió de Fibonacci, dels factorials, o de qualsevol iteració amb dades
+d'entrada. El teorema garanteix que totes aquestes definicions produeixen
+funcions ben definides, i el fa reduint-les al teorema de recursió simple
+a través del conjunt de funcions \(A^{X}\).
+\end{observacio}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item L'objecte dels nombres naturals es postula per una sola propietat universal, la recursió: per a tot sistema recursiu \((A,a,t)\) hi ha una única \(u\colon\N\to A\) amb \(u\circ0=a\) i \(u\circ s=t\circ u\). És únic llevat d'un únic isomorfisme.
+  \item La unicitat de la recursora és el principi d'inducció; l'existència és la definició per recursió. Els exponencials estenen totes dues coses als paràmetres: recursió amb paràmetres i inducció amb paràmetres, per transposició.
+  \item Les equacions de Peano són teoremes. El successor és injectiu perquè té una retracció, el predecessor, que no és una recursió simple sinó la primera projecció d'una recursió sobre \(\N\times\N\). Tot punt és zero o successor.
+  \item Suma, producte i exponenciació es defineixen iterant, i les seves lleis es demostren per inducció amb paràmetres, com a igualtats d'aplicacions \(\N^k\to\N\).
+  \item L'ordre \(\le\) és una part de \(\N\times\N\), la imatge de \((m,k)\mapsto(m,m+k)\). Les seves propietats (total, bon ordre) són afirmacions sobre parts, i per la separació global es comproven sobre punts globals, on \enquote{o} i \enquote{existeix} tenen el sentit clàssic.
+  \item \(\N\) és ben ordenat: tota part no buida té un mínim, únic i, per tant, definible sense elecció.
+\end{enumerate}
+\apartat{Errors típics} Definir el predecessor com la recursora de \((\N,0,\id)\), que és constant; fer inducció sobre \(n\) amb un paràmetre \(m\) generalitzat sense passar per l'exponencial (la part on dues aplicacions \(X\times\N\to A\) coincideixen no és una part de \(\N\)); llegir \enquote{\(m\le n\) o \(n\le m\)} sobre elements generalitzats, quan només val sobre punts; prendre les cinc propietats de Peano com a axiomes, quan aquí són conseqüències; i oblidar que la inducció del llibre quantifica sobre parts de \(\N\), no sobre fórmules, cosa que la fa de \enquote{segon ordre} i dona la unicitat de \(\N\).
+\apartat{Lectura recomanada} \cite[§§7.3--7.5]{lawvere-rosebrugh} per a l'objecte dels nombres naturals, la recursió i la inducció en conjunts abstractes; \cite[sessió~26 i article~V]{lawvere-schanuel} per a una presentació elemental dels sistemes dinàmics discrets i de la recursió; \cite[§§11--13]{halmos} per als axiomes de Peano, el teorema de recursió i l'aritmètica en la teoria clàssica, que és el que aquí s'ha derivat; \cite[§4.7]{maclane-moerdijk} per a l'objecte de nombres naturals en un topos i la recursió amb paràmetres; i \cite[pàg.~12]{bell2006} per a la definició de conjunt infinit de Dedekind i l'axioma d'infinitud.
+\end{resumcap}

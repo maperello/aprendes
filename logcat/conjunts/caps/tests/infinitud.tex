@@ -1,0 +1,131 @@
+\chapter{Infinitud, enumerabilitat i seqüències}\label{test:cap10}
+
+Aquest test correspon al capítol~10 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u10}{b,c,a,b,c,b,a,c,b,c,b,b}
+
+\begin{enumerate}
+
+\pregunta Un conjunt \(A\) és \emph{infinit} quan\ldots
+\begin{itemize}
+\opcio{a}{admet un monomorfisme no exhaustiu.}
+\opcio{b}{\(\operatorname{Card}(A)\) és inicial: no hi ha cap \(n\) amb \(\seg{n}\approx A\).}
+\opcio{c}{és isomorf a \(\N\).}
+\opcio{d}{no té elements globals.}
+\end{itemize}
+\feedback
+\justificacio{Infinit és la negació de finit: \(\operatorname{Card}(A)\) no té cap punt. Admetre un endomonomorfisme no exhaustiu és ser infinit de Dedekind, una noció diferent fins que no s'usa l'elecció; i hi ha infinits no isomorfs a \(\N\).}
+
+\pregunta Un conjunt \(A\) és \emph{infinit de Dedekind} quan\ldots
+\begin{itemize}
+\opcio{a}{no és isomorf a cap ordinal estàndard.}
+\opcio{b}{tota aplicació \(A\to A\) és exhaustiva.}
+\opcio{c}{existeix un monomorfisme \(A\hookrightarrow A\) no exhaustiu.}
+\opcio{d}{és finit.}
+\end{itemize}
+\feedback
+\justificacio{És la definició de Dedekind: \(A\) es posa en bijecció amb una part pròpia seva. Que tota aplicació \(A\to A\) sigui exhaustiva és fals en general; (a) és la finitud externa, i (d) és el contrari.}
+
+\pregunta El testimoni que \(\N\) és infinit de Dedekind és\ldots
+\begin{itemize}
+\opcio{a}{el successor \(s\), monomorfisme no exhaustiu.}
+\opcio{b}{la identitat.}
+\opcio{c}{el zero.}
+\opcio{d}{el parell nucli de \(s\).}
+\end{itemize}
+\feedback
+\justificacio{El successor és injectiu (té el predecessor com a retracció) i no exhaustiu (el zero no és successor): \(\N\) es posa en bijecció amb la seva part pròpia \(\N\setminus\{0\}\).}
+
+\pregunta La implicació \enquote{tot conjunt infinit és infinit de Dedekind}\ldots
+\begin{itemize}
+\opcio{a}{no usa cap axioma.}
+\opcio{b}{requereix (alguna forma d')elecció, com l'elecció numerable.}
+\opcio{c}{és falsa.}
+\opcio{d}{és equivalent al principi del mínim.}
+\end{itemize}
+\feedback
+\justificacio{Cal triar alhora una llista injectiva de cada llargada; sense cap elecció és consistent que hi hagi infinits que no siguin de Dedekind. La direcció contrària no usa res, i el principi del mínim no hi té res a veure.}
+
+\pregunta Un conjunt \(A\) és \emph{enumerable} quan és inicial o bé\ldots
+\begin{itemize}
+\opcio{a}{admet un monomorfisme \(A\hookrightarrow\N\).}
+\opcio{b}{és finit.}
+\opcio{c}{existeix un epimorfisme regular \(\N\twoheadrightarrow A\).}
+\opcio{d}{és isomorf a \(\mathcal P(\N)\).}
+\end{itemize}
+\feedback
+\justificacio{Enumerable és ser imatge de \(\N\): els elements es llisten, amb repeticions. Un monomorfisme \(A\hookrightarrow\N\) dona una part de \(\N\), que també és enumerable, però la definició és per l'epimorfisme.}
+
+\pregunta Quina d'aquestes operacions preserva l'enumerabilitat \emph{sense} elecció?
+\begin{itemize}
+\opcio{a}{La unió d'una família numerable arbitrària.}
+\opcio{b}{La suma i el producte de dos enumerables, i les parts i imatges.}
+\opcio{c}{El producte d'una família numerable.}
+\opcio{d}{Cap.}
+\end{itemize}
+\feedback
+\justificacio{Suma i producte es fan amb \(\N\cong\N+\N\) i un aparellament; parts amb una retracció i imatges per composició: tot amb les enumeracions donades. La unió i el producte d'una família numerable demanen triar.}
+
+\pregunta Tota part \(P\hookrightarrow\N\)\ldots
+\begin{itemize}
+\opcio{a}{és enumerable, i finita o isomorfa a \(\N\), sense elecció.}
+\opcio{b}{és sempre infinita.}
+\opcio{c}{requereix l'elecció per enumerar-se.}
+\opcio{d}{és isomorfa a \(\mathcal P(\N)\).}
+\end{itemize}
+\feedback
+\justificacio{Pel bon ordre, l'enumeració creixent \(a_{n+1}=\) mínim dels elements més grans que \(a_n\) es defineix per recursió simple; o s'estabilitza (part finita) o és una bijecció amb \(\N\).}
+
+\pregunta El fet que els subobjectes de \(\N\) s'enumerin sense elecció es deu a\ldots
+\begin{itemize}
+\opcio{a}{l'axioma d'exponencials.}
+\opcio{b}{la finitud de \(\N\).}
+\opcio{c}{el principi del mínim: cada part no inicial té un mínim únic i canònic.}
+\opcio{d}{l'elecció numerable.}
+\end{itemize}
+\feedback
+\justificacio{El mínim d'una part no inicial de \(\N\) és únic i, per tant, una tria definida: no cal cap axioma per fer-la. En un conjunt infinit sense ordre, aquesta comoditat no existeix.}
+
+\pregunta El conjunt de llistes finites \(\operatorname{List}(A)\) satisfà un principi de recursió amb\ldots
+\begin{itemize}
+\opcio{a}{només un cas base.}
+\opcio{b}{la llista buida \(\varepsilon\) i l'operació \(\operatorname{cons}\).}
+\opcio{c}{el successor de \(\N\).}
+\opcio{d}{el parell nucli.}
+\end{itemize}
+\feedback
+\justificacio{\(\operatorname{List}(A)\) té la llista buida i \(\operatorname{cons}\), i és l'àlgebra inicial per a \(\mathbf1+A\times(-)\): tota \((B,b,t)\) rep una única \(h\). És el principi que defineix llargada, concatenació i plegats.}
+
+\pregunta La unió numerable d'enumerables és enumerable\ldots
+\begin{itemize}
+\opcio{a}{sempre, sense cap axioma.}
+\opcio{b}{mai.}
+\opcio{c}{sota l'axioma d'elecció numerable, que tria una enumeració per a cada \(A_n\).}
+\opcio{d}{només si tots els \(A_n\) són finits.}
+\end{itemize}
+\feedback
+\justificacio{Cal una enumeració per a cada \(A_n\) alhora; la definició d'enumerable només n'afirma l'existència, i l'elecció numerable les tria. Amb les \(e_n\) triades, un aparellament enumera la unió.}
+
+\pregunta A la prova que infinit implica Dedekind, on s'usa l'elecció numerable?
+\begin{itemize}
+\opcio{a}{Per veure que per a cada \(n\) existeix alguna llista injectiva de llargada \(n+1\).}
+\opcio{b}{Per triar alhora una llista injectiva \(f_n\) per a cada \(n\), és a dir, una secció de la família \(E\to\N\).}
+\opcio{c}{Per prendre el mínim índex nou dins una llista.}
+\opcio{d}{Per construir el desplaçament del successor sobre \(\N+C\).}
+\end{itemize}
+\feedback
+\justificacio{L'existència fibra a fibra es prova per inducció sense tries; el mínim és canònic; el desplaçament és una definició per casos. L'únic pas no canònic és la tria simultània de les \(f_n\), que és exactament una secció d'una família indexada per \(\N\).}
+
+\pregunta Per què \(\operatorname{List}(A)\) és enumerable sense elecció quan \(A\) ho és, mentre que la unió numerable d'enumerables necessita l'elecció?
+\begin{itemize}
+\opcio{a}{Perquè \(\operatorname{List}(A)\) és finit.}
+\opcio{b}{Perquè les enumeracions de les llistes de cada llargada deriven uniformement d'una sola enumeració d'\(A\) i d'un aparellament, mentre que en una família arbitrària les enumeracions de les fibres s'han de triar.}
+\opcio{c}{Perquè \(\operatorname{List}(A)\) no és una unió.}
+\opcio{d}{No és cert: també necessita l'elecció.}
+\end{itemize}
+\feedback
+\justificacio{\(\operatorname{List}(\N)\cong\N\) per una codificació explícita, i \(\operatorname{List}(e)\) és exhaustiva prenent els mínims índexs; tot és canònic. En una família \((A_n)\) qualsevol, cada \(A_n\) té enumeracions però cap de distingida: triar-ne una per a cada \(n\) és l'elecció numerable.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

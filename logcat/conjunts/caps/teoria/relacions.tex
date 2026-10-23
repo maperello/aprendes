@@ -1,0 +1,505 @@
+\chapter{Relacions, quocients i elecció}\label{cap:relacions}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:parts}: parts, pertinença generalitzada, productes i aparellament, pullbacks i la caracterització dels monomorfismes; seccions, retraccions i exhaustivitat sobre elements generalitzats. Del capítol~\ref{cap:valors}: coequalitzadors i la seva unicitat, i la proposició que els epimorfismes són exhaustius sobre punts. De la teoria clàssica, la noció informal de relació d'equivalència, classe i partició.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item definir una relació com a part d'un producte i llegir-la per elements generalitzats, amb el cas global com a cas particular;
+  \item construir la relació inversa i la diagonal, i formular estructuralment la reflexivitat, la simetria i la transitivitat mitjançant les aplicacions \(e\), \(s\) i \(c\);
+  \item demostrar que el parell nucli d'una aplicació qualsevol és una relació d'equivalència;
+  \item definir el quocient com a coequalitzador de les projeccions i l'epimorfisme regular, i demostrar que tot quocient és un epimorfisme regular;
+  \item enunciar l'axioma d'efectivitat, explicar per què cal, i demostrar la correspondència entre relacions d'equivalència i epimorfismes regulars;
+  \item identificar relacions d'equivalència, particions i quocients com a tres descripcions del mateix objecte;
+  \item enunciar l'axioma d'elecció en forma estructural, distingir-ne les tres lectures, i deduir-ne que tot epimorfisme és regular, escindit i exhaustiu sobre elements generalitzats;
+  \item distingir el que depèn de l'elecció del que ja valia sense ella: en particular, que l'exhaustivitat sobre punts no en depèn.
+\end{itemize}
+\end{objectius}
+
+Amb els productes disposem d'un lloc on viuen les parelles, i amb les parts, d'una manera d'assenyalar-ne subconjunts. La combinació de totes dues nocions és la de \emph{relació}. Aquest capítol la desenvolupa fins a les seves conseqüències més fortes: les relacions d'equivalència, formulades estructuralment; els quocients que en resulten, entesos com a coequalitzadors; la correspondència exacta entre relacions d'equivalència i epimorfismes regulars; i, finalment, l'axioma d'elecció i les seves conseqüències. Com als capítols anteriors, definirem les nocions primer sobre elements generalitzats i en recuperarem la lectura clàssica sobre punts globals com a cas particular.
+
+\section{Relacions com a parts de productes}\label{sec:relacions}
+
+\begin{definicio}[Relació]\index{Relació}\label{def:relacio}
+Una \emph{relació} d'un conjunt \(A\) cap a un conjunt \(B\) és una part d'un producte de \(A\) i \(B\). Escrivint \(\operatorname{Part}(r,P)\) per a «\(r\) és una part de \(P\)», i recordant que el predicat \(\operatorname{Producte}\) (definició~\ref{def:producte}) porta com a arguments el vèrtex i les dues projeccions,
+\[
+\operatorname{Rel}(r,A,B)
+\iff
+\exists P\,\exists p_A\,\exists p_B\,
+\bigl(\operatorname{Producte}(P,p_A,p_B,A,B)\land\operatorname{Part}(r,P)\bigr).
+\]
+\end{definicio}
+
+Sigui \(r\colon R\hookrightarrow A\times B\) una relació, amb projeccions del producte \(p_A\colon A\times B\to A\) i \(p_B\colon A\times B\to B\). La composició amb \(r\) dona les dues \emph{projeccions de la relació}
+\[
+r_A:=p_A\circ r\colon R\to A,
+\qquad
+r_B:=p_B\circ r\colon R\to B.
+\]
+
+\begin{notacio}[Pertinença generalitzada a una relació]\label{not:relacio}
+Siguin \(x\colon X\to A\) i \(y\colon X\to B\) dos elements generalitzats en un mateix estadi \(X\). Direm que \emph{estan relacionats en l'estadi \(X\)}, i ho escriurem \(x\mathrel{r_X}y\), quan la parella \(\langle x,y\rangle\colon X\to A\times B\) és un element generalitzat de la part \(r\):
+\[
+x\mathrel{r_X}y
+\quad\overset{\text{def}}{\Longleftrightarrow}\quad
+\langle x,y\rangle\in_X r.
+\]
+El cas global és el de l'estadi terminal \(X=\mathbf1\): per a punts \(a\colon\mathbf1\to A\) i \(b\colon\mathbf1\to B\), escriurem \(a\mathrel{r}b\) en lloc de \(a\mathrel{r_{\mathbf1}}b\).
+\end{notacio}
+
+\begin{observacio}[Lectura clàssica]\label{obs:relacio-classica}
+En el model clàssic, una relació entre \(A\) i \(B\) és un conjunt de parelles ordenades, un subconjunt de \(A\times B\); la nostra definició hi coincideix, amb l'única diferència que el subconjunt es presenta com un monomorfisme. La pertinença generalitzada \(x\mathrel{r_X}y\) recupera, en l'estadi global \(\mathbf1\), la pertinença habitual \((a,b)\in r\).
+\end{observacio}
+
+\section{La relació inversa i la diagonal}\label{sec:inversa-diagonal}
+
+Dues relacions es construeixen des de zero amb les eines del capítol~\ref{cap:parts}: la que inverteix l'ordre dels arguments i la que identifica cada element amb ell mateix.
+
+\begin{definicio}[Relació inversa]\index{Relació inversa}\label{def:relacio-inversa}
+Sigui \(r\colon R\hookrightarrow A\times B\) una relació. La seva \emph{inversa} és la part de \(B\times A\) obtinguda component \(r\) amb l'isomorfisme de commutació \(\sigma\colon A\times B\to B\times A\):
+\[
+\operatorname{Inv}(r)\;:=\;\sigma\circ r\colon R\hookrightarrow B\times A.
+\]
+\end{definicio}
+
+\begin{proposicio}\label{prop:inversa-pertinenca}
+Per a tot estadi \(X\) i tots els elements generalitzats \(x\colon X\to A\), \(y\colon X\to B\), es té \(y\mathrel{\operatorname{Inv}(r)_X}x\) si i només si \(x\mathrel{r_X}y\). En particular, \(\operatorname{Inv}(\operatorname{Inv}(r))\equiv_{A\times B}r\).
+\end{proposicio}
+
+\begin{prova}
+L'isomorfisme de commutació compleix \(\sigma\circ\langle x,y\rangle=\langle y,x\rangle\). Per tant, \(\langle y,x\rangle\) es factoritza a través de \(\sigma\circ r\) si i només si \(\langle x,y\rangle\) es factoritza a través de \(r\), que és el que afirma l'equivalència. Com que \(\sigma\circ\sigma=\id\), aplicar la inversa dues vegades retorna la relació original.
+\end{prova}
+
+\begin{definicio}[Diagonal]\index{Diagonal}\label{def:diagonal}
+La \emph{diagonal} d'un conjunt \(A\) és la part de \(A\times A\) donada per l'aplicació d'aparellament de la identitat amb ella mateixa:
+\[
+\Delta_A\;:=\;\langle\id_A,\id_A\rangle\colon A\hookrightarrow A\times A.
+\]
+\end{definicio}
+
+\begin{proposicio}\label{prop:diagonal-mono}
+La diagonal \(\Delta_A\) és un monomorfisme. Per a tot estadi \(X\) i tots \(x,x'\colon X\to A\), es té \(x\mathrel{(\Delta_A)_X}x'\) si i només si \(x=x'\). A més, \(\operatorname{Inv}(\Delta_A)\equiv_{A\times A}\Delta_A\).
+\end{proposicio}
+
+\begin{prova}
+Component \(\Delta_A\) amb la primera projecció s'obté \(p_1\circ\langle\id_A,\id_A\rangle=\id_A\), que és un monomorfisme; per tant \(\Delta_A\) és un monomorfisme. Ara, \(\langle x,x'\rangle\) es factoritza a través de \(\Delta_A\) si i només si existeix \(w\colon X\to A\) amb \(\langle x,x'\rangle=\langle\id_A,\id_A\rangle\circ w=\langle w,w\rangle\), és a dir, si i només si \(x=w=x'\). Finalment, la simetria de la diagonal se segueix de \(\sigma\circ\langle\id_A,\id_A\rangle=\langle\id_A,\id_A\rangle\).
+\end{prova}
+
+\section{Relacions d'equivalència}\label{sec:equivalencia}
+
+Les tres propietats clàssiques ---reflexiva, simètrica i transitiva--- s'han de formular estructuralment, és a dir, mitjançant aplicacions entre \(R\), \(A\) i els productes fibrats corresponents, i no només com a condicions sobre els punts globals. Una condició puntual no proporciona, en general, les aplicacions que realitzen internament les operacions sobre els parells relacionats; per això prenem com a definició la forma estructural, i en recuperem la lectura puntual en una observació.
+
+Sigui \(r\colon R\hookrightarrow A\times A\) una relació sobre \(A\), amb projeccions \(r_1:=p_1\circ r\) i \(r_2:=p_2\circ r\) de \(R\) cap a \(A\).
+
+\begin{definicio}[Relació d'equivalència]\index{Relació d'equivalència}\label{def:equivalencia}
+Una relació \(r\colon R\hookrightarrow A\times A\) sobre \(A\) és una \emph{relació d'equivalència} si compleix les tres condicions estructurals següents.
+\begin{enumerate}
+\item \emph{Reflexivitat}: existeix una aplicació \(e\colon A\to R\) tal que
+\[
+r_1\circ e=\id_A,
+\qquad
+r_2\circ e=\id_A.
+\]
+\item \emph{Simetria}: existeix una aplicació \(s\colon R\to R\) tal que
+\[
+r_1\circ s=r_2,
+\qquad
+r_2\circ s=r_1.
+\]
+\item \emph{Transitivitat}: formant el producte fibrat \(R\times_A R\) de \(r_2\colon R\to A\) amb \(r_1\colon R\to A\), amb projeccions \(p,q\colon R\times_A R\to R\), existeix una aplicació \(c\colon R\times_A R\to R\) tal que
+\[
+r_1\circ c=r_1\circ p,
+\qquad
+r_2\circ c=r_2\circ q.
+\]
+\end{enumerate}
+\end{definicio}
+
+\begin{notacio}[El predicat d'equivalència]\label{not:equiv-predicat}
+Escriurem \(\operatorname{Equiv}(r,A)\) per abreujar la conjunció de les tres condicions anteriors. En desplegar-la cal recordar que ni el producte \(A\times A\), ni el seu domini, ni les projeccions són termes primitius: s'han de quantificar amb el predicat de producte \(\operatorname{Producte}\) (definició~\ref{def:producte}) i el de pullback \(\operatorname{Pullback}\) (definició~\ref{def:pullback}). Abreujarem amb \(\operatorname{Prod}(P,\pi_1,\pi_2;A,A):=\operatorname{Producte}(P,\pi_1,\pi_2,A,A)\) el fet que \((P,\pi_1,\pi_2)\) és un producte de \(A\) amb ell mateix ---la mateixa abreviació \(\operatorname{Prod}(P,\pi_1,\pi_2;X,Y)\) que reprendrem al capítol~\ref{cap:exponencials}. A diferència de \(\operatorname{Rel}\), que amaga el seu propi producte sota un existencial intern, aquí necessitem que \(P\), les seves projeccions \(\pi_1,\pi_2\) i el domini \(R\) de la part \(r\) restin \emph{visibles} a tota la fórmula, perquè les tres condicions s'hi refereixen; per això els introduïm tots amb un únic bloc de quantificadors al capdavant i els mantenim dins d'un sol abast:
+\[
+\begin{aligned}
+\operatorname{Equiv}(r,A)
+\iff{}&
+\exists P\,\exists\pi_1\,\exists\pi_2\,\exists R\,\exists r_1\,\exists r_2\,\Bigl(
+\operatorname{Prod}(P,\pi_1,\pi_2;A,A)\land\operatorname{Part}(r,P)
+\\
+&\qquad{}\land\,\Dom(r,R)\land r_1=\pi_1\circ r\land r_2=\pi_2\circ r
+\\
+&\qquad{}\land\exists e\,\bigl(e\colon A\to R\land r_1\circ e=\id_A\land r_2\circ e=\id_A\bigr)
+\\
+&\qquad{}\land\exists s\,\bigl(s\colon R\to R\land r_1\circ s=r_2\land r_2\circ s=r_1\bigr)
+\\
+&\qquad{}\land\exists F\,\exists p\,\exists q\,\exists c\,\bigl(
+\operatorname{Pullback}(F,p,q,r_2,r_1)
+\\
+&\qquad\qquad{}\land\,c\colon F\to R
+\land r_1\circ c=r_1\circ p\land r_2\circ c=r_2\circ q
+\bigr)
+\Bigr),
+\end{aligned}
+\]
+on ara \(P\) és el producte \(A\times A\) amb projeccions \(\pi_1,\pi_2\); \(r\colon R\hookrightarrow P\) és la part que representa la relació, amb domini \(R\); \(r_1,r_2\colon R\to A\) són les seves projeccions, \emph{definides dins la fórmula} per les equacions \(r_1=\pi_1\circ r\), \(r_2=\pi_2\circ r\) i no preses com a primitives; i \(F\) és el domini del producte fibrat \(R\times_A R\) de \(r_2\) amb \(r_1\). Tots ells queden lligats pels existencials del capdavant i determinats llevat d'isomorfisme pels predicats \(\operatorname{Prod}\) i \(\operatorname{Pullback}\). El parèntesi extern no es tanca fins després de l'última clàusula, de manera que cap condició no fa servir \(R\), \(r_1\), \(r_2\) ni \(F\) fora del seu abast. Aquí el desplegament arriba fins als predicats \(\operatorname{Prod}\), \(\operatorname{Part}\) i \(\operatorname{Pullback}\); les operacions que hi resten ---la composició \(\circ\), la igualtat d'aplicacions i les fletxes tipades--- són convenis eliminables segons el \hyperref[not:criteri-formal]{criteri d'escriptura formal} de la introducció. A partir d'ara la usarem abreujada amb \(A\times A\), \(R\times_A R\), \(r_1\), \(r_2\), \(\id_A\) i les fletxes tipades, entès que cada aparició s'elimina pels predicats corresponents ---i, en darrera instància, per \(\Dom\), \(\Cod\) i \(\Com\)--- quan els tipus són inequívocs.
+\end{notacio}
+
+\begin{notacio}[Lectura de les tres condicions]\label{not:equivalencia}
+Les tres aplicacions es poden llegir en termes de la pertinença generalitzada. La reflexivitat equival a la inclusió de parts \(\Delta_A\subseteq_{A\times A}r\); la simetria, a \(\operatorname{Inv}(r)\equiv_{A\times A}r\). Per a la transitivitat, el producte fibrat \(R\times_A R\) recull els parells \((\rho,\rho')\) de testimonis amb \(r_2\circ\rho=r_1\circ\rho'\) ---és a dir, tals que el segon component de \(\rho\) coincideix amb el primer de \(\rho'\)---, i l'aplicació \(c\) en produeix un tercer testimoni que enllaça el primer component de \(\rho\) amb el segon de \(\rho'\).
+\end{notacio}
+
+\begin{observacio}[Lectura clàssica sobre punts globals]\label{obs:equivalencia-classica}
+En l'estadi global, les tres condicions recuperen les propietats habituals. La reflexivitat dona \(a\mathrel{r}a\) per a tot punt \(a\colon\mathbf1\to A\), component \(e\) amb \(a\). La simetria dona \(a\mathrel{r}b\Rightarrow b\mathrel{r}a\), aplicant \(s\) al testimoni. I la transitivitat dona \(a\mathrel{r}b\land b\mathrel{r}c\Rightarrow a\mathrel{r}c\): dos testimonis amb el punt \(b\) comú determinen un element global de \(R\times_A R\), i \(c\) en produeix el testimoni de \(a\mathrel{r}c\). Convé remarcar que aquestes implicacions puntuals no bastarien, en canvi, per \emph{definir} l'equivalència: sense les aplicacions \(e\), \(s\) i \(c\) no disposaríem de les operacions internes que el desenvolupament posterior necessita.
+\end{observacio}
+
+\section{El parell nucli d'una aplicació}\label{sec:kernel-pair}
+
+L'exemple fonamental de relació d'equivalència ---i el que farà de pont cap als quocients--- prové de qualsevol aplicació.
+
+\begin{definicio}[Parell nucli]\index{Parell nucli}\label{def:kernel-pair}
+Sigui \(f\colon A\to B\). El seu \emph{parell nucli} és la relació sobre \(A\) donada pel pullback de \(f\) amb ella mateixa:
+\[
+\operatorname{Nuc}(f)\;:=\;\langle k_1,k_2\rangle\colon A\times_B A\hookrightarrow A\times A,
+\]
+on \(k_1,k_2\colon A\times_B A\to A\) són les dues projeccions del pullback, que compleixen \(f\circ k_1=f\circ k_2\).
+\end{definicio}
+
+\begin{proposicio}[El parell nucli és un monomorfisme]\label{prop:kernel-mono}
+L'aplicació \(\langle k_1,k_2\rangle\colon A\times_B A\to A\times A\) és un monomorfisme.
+\end{proposicio}
+
+\begin{prova}
+Siguin \(u,v\colon X\to A\times_B A\) amb \(\langle k_1,k_2\rangle\circ u=\langle k_1,k_2\rangle\circ v\). Component aquesta igualtat amb les dues projeccions \(p_1,p_2\) del producte \(A\times A\), obtenim
+\[
+k_1\circ u=k_1\circ v,
+\qquad
+k_2\circ u=k_2\circ v.
+\]
+Ara bé, per la propietat universal del pullback, dues aplicacions amb codomini \(A\times_B A\) coincideixen tan bon punt coincideixen les seves composicions amb \(k_1\) i \(k_2\). Per tant, les igualtats anteriors impliquen \(u=v\), i \(\langle k_1,k_2\rangle\) és un monomorfisme.
+\end{prova}
+
+\begin{observacio}[La prova no usa que \(f\) sigui mono]\label{obs:kernel-no-mono}
+Notem que la demostració anterior no suposa en cap moment que \(f\) sigui un monomorfisme ---no ho és, en general. El que fa mono el parell nucli és exclusivament la unicitat de la propietat universal del pullback, no cap propietat de \(f\).
+\end{observacio}
+
+\begin{proposicio}[El parell nucli és una relació d'equivalència]\label{prop:kernel-equivalencia}
+Per a tota aplicació \(f\colon A\to B\), el parell nucli \(\operatorname{Nuc}(f)\) és una relació d'equivalència sobre \(A\).
+\end{proposicio}
+
+\begin{prova}
+Escrivim \(K=A\times_B A\) amb projeccions \(k_1,k_2\), de manera que \(f\circ k_1=f\circ k_2\). Construïm les tres aplicacions estructurals.
+
+\emph{Reflexivitat.} L'aplicació \(\id_A\) compleix \(f\circ\id_A=f\circ\id_A\), de manera que la propietat universal del pullback proporciona una única \(e\colon A\to K\) amb \(k_1\circ e=\id_A\) i \(k_2\circ e=\id_A\).
+
+\emph{Simetria.} Les projeccions intercanviades compleixen \(f\circ k_2=f\circ k_1\), de manera que la propietat universal proporciona una única \(s\colon K\to K\) amb \(k_1\circ s=k_2\) i \(k_2\circ s=k_1\).
+
+\emph{Transitivitat.} Formem \(K\times_A K\), el pullback de \(k_2\colon K\to A\) amb \(k_1\colon K\to A\), amb projeccions \(p,q\colon K\times_A K\to K\); per construcció \(k_2\circ p=k_1\circ q\). Aleshores
+\[
+f\circ(k_1\circ p)=f\circ(k_2\circ p)=f\circ(k_1\circ q)=f\circ(k_2\circ q),
+\]
+on la primera i la tercera igualtats són \(f\circ k_1=f\circ k_2\) i la central és \(k_2\circ p=k_1\circ q\). En particular \(f\circ(k_1\circ p)=f\circ(k_2\circ q)\), i la propietat universal del pullback \(K\) proporciona una única \(c\colon K\times_A K\to K\) amb \(k_1\circ c=k_1\circ p\) i \(k_2\circ c=k_2\circ q\). Aquestes són exactament les equacions de la transitivitat.
+\end{prova}
+
+\begin{observacio}[Lectura clàssica]\label{obs:kernel-classica}
+En el model clàssic, el parell nucli de \(f\) és la relació «\(a\) i \(a'\) tenen la mateixa avaluació per \(f\)», és a dir, \(f\circ a=f\circ a'\) sobre punts globals. És l'exemple canònic de relació d'equivalència, i el teorema de correspondència d'aquest capítol dirà que, per als epimorfismes regulars, tota relació d'equivalència n'és un: la del seu propi quocient.
+\end{observacio}
+
+\section{Quocients i epimorfismes regulars}\label{sec:quocients}
+
+Donada una relació d'equivalència, volem el conjunt que resulta d'identificar els elements relacionats. La seva propietat universal és la d'un coequalitzador de les dues projeccions.
+
+\begin{definicio}[Quocient]\index{Quocient}\label{def:quocient}
+Sigui \(r\colon R\hookrightarrow A\times A\) una relació sobre \(A\), amb projeccions \(r_1,r_2\colon R\to A\). Un \emph{quocient} de \(A\) per \(r\) és un coequalitzador de \(r_1\) i \(r_2\):
+\[
+\operatorname{Quoc}(q,r)
+\iff
+\operatorname{Coeq}(q,r_1,r_2).
+\]
+\end{definicio}
+
+\begin{notacio}[Quocient]\label{not:quocient}
+Denotarem el quocient per \(q\colon A\twoheadrightarrow A/r\). La seva propietat universal diu que \(q\) identifica els elements relacionats ---\(q\circ r_1=q\circ r_2\)--- i que és universal amb aquesta propietat: tota aplicació \(h\) amb \(h\circ r_1=h\circ r_2\) es factoritza de manera única a través de \(q\).
+\end{notacio}
+
+\begin{proposicio}[Existència i unicitat del quocient]\label{prop:quocient-existeix}
+Tota relació sobre \(A\) té quocient, únic llevat d'un únic isomorfisme compatible, i l'aplicació quocient \(q\colon A\twoheadrightarrow A/r\) és un epimorfisme.
+\end{proposicio}
+
+\begin{prova}
+L'existència és l'axioma de coequalitzadors (axioma~\ref{ax:coequalitzadors}) aplicat a \(r_1,r_2\); la unicitat llevat d'un únic isomorfisme és la unicitat dels coequalitzadors (proposició~\ref{prop:coequalitzador-unic}); i que \(q\) sigui epimorfisme, la proposició~\ref{prop:coequalitzador-epi}.
+\end{prova}
+
+Els quocients són coequalitzadors, i els coequalitzadors són un tipus especial d'epimorfisme, que aïllem amb un nom propi.
+
+\begin{definicio}[Epimorfisme regular]\index{Epimorfisme regular}\label{def:epi-regular}
+Una aplicació \(q\) és un \emph{epimorfisme regular} si és el coequalitzador d'algun parell d'aplicacions paral·leles:
+\[
+\operatorname{EpiReg}(q)
+\iff
+\exists f\,\exists g\,\operatorname{Coeq}(q,f,g).
+\]
+\end{definicio}
+
+\begin{proposicio}[Tot quocient és un epimorfisme regular]\label{prop:quocient-regular}
+Per a tota relació d'equivalència \(r\), l'aplicació quocient \(q\colon A\twoheadrightarrow A/r\) és un epimorfisme regular.
+\end{proposicio}
+
+\begin{prova}
+Per definició, \(q\) és el coequalitzador de les projeccions \(r_1,r_2\), de manera que és, en particular, coequalitzador d'un parell d'aplicacions paral·leles.
+\end{prova}
+
+\begin{observacio}[Regular i escindit]\label{obs:regular-escindit}
+Tot epimorfisme regular és un epimorfisme, per la proposició~\ref{prop:coequalitzador-epi}. El recíproc ---que tot epimorfisme sigui regular--- no el demostrarem amb els axiomes actuals; el retrobarem al final del capítol com a conseqüència de l'axioma d'elecció, en veure que tot epimorfisme escindit és regular, i el capítol~\ref{cap:imatges} en donarà una altra lectura a través de la factorització per la imatge.
+\end{observacio}
+
+\section{L'axioma d'efectivitat}\label{sec:exactitud}
+
+Tenim dos camins entre aplicacions i relacions d'equivalència. D'una aplicació en surt una relació d'equivalència ---el seu parell nucli (proposició~\ref{prop:kernel-equivalencia}). I d'una relació d'equivalència en surt una aplicació ---el seu quocient. Manca saber que aquests dos camins es corresponen: que el parell nucli del quocient recupera la relació de partida. Això és el que la teoria, tal com la tenim, encara no garanteix.
+
+\begin{definicio}[Parell nucli d'una aplicació, com a predicat]\index{Parell nucli d'una aplicació, com a predicat}\label{def:esparellnucli}
+Direm que una relació \(n\) \emph{és un parell nucli de \(q\)}, i ho escriurem \(\operatorname{EsNuc}(n,q)\), quan \(n\) és la part de \(A\times A\) determinada per un pullback de \(q\) amb ella mateixa. Formalment,
+\[
+\begin{aligned}
+\operatorname{EsNuc}(n,q)
+\iff{}&
+\exists A\,\exists B\,\exists K\,\exists k_1\,\exists k_2\,\Bigl(
+q\colon A\to B
+\\
+&{}\land\operatorname{Pullback}(K,k_1,k_2,q,q)
+\land n=\langle k_1,k_2\rangle
+\land\operatorname{Part}(n,A\times A)
+\Bigr).
+\end{aligned}
+\]
+\end{definicio}
+
+\begin{definicio}[Relació efectiva]\index{Relació efectiva}\label{def:efectiva}
+Una relació d'equivalència \(r\) sobre \(A\) és \emph{efectiva} si existeix un quocient \(q\) de \(r\) i un parell nucli \(n\) de \(q\) tal que \(n\) i \(r\) són parts equivalents:
+\[
+\operatorname{Efectiva}(r,A)
+\iff
+\exists q\,\exists n\,\bigl(
+\operatorname{Quoc}(q,r)\land\operatorname{EsNuc}(n,q)\land n\equiv_{A\times A}r
+\bigr).
+\]
+\end{definicio}
+
+\begin{axioma}[Efectivitat de les relacions d'equivalència]\label{ax:exactitud}
+Tota relació d'equivalència és efectiva:
+\[
+\forall A\,\forall r\,\bigl(
+\operatorname{Equiv}(r,A)
+\;\Rightarrow\;
+\operatorname{Efectiva}(r,A)
+\bigr).
+\]
+Desplegant \(\operatorname{Efectiva}\), l'axioma afirma que per a tota relació d'equivalència \(r\) existeixen un quocient \(q\) i un parell nucli \(n\) de \(q\) amb \(n\equiv_{A\times A}r\). Tots els objectes ---quocient, pullback, producte--- estan quantificats existencialment; l'axioma no pressuposa cap tria canònica de cap d'ells.
+\end{axioma}
+
+\begin{observacio}[Sobre el nom i la formulació de l'axioma]\label{obs:exactitud-formulacio}
+La formulació quantifica explícitament el quocient \(q\) en lloc d'usar un terme funcional \(q_r\). El motiu és que els quocients només estan determinats llevat d'un únic isomorfisme compatible: no disposem d'una elecció canònica de quocient per a cada relació, i per tant \(q_r\) no designaria un individu únic de la teoria. En quantificar \(q\), l'axioma afirma el que ha d'afirmar ---l'existència d'un quocient el parell nucli del qual recupera \(r\)--- sense pressuposar cap tria. La independència del representant se segueix de la unicitat del quocient llevat d'isomorfisme.
+
+Quant al nom, hem preferit \emph{efectivitat de les relacions d'equivalència} a \emph{exactitud}. En la terminologia categòrica, una categoria regular té límits finits, admet factoritzacions (epimorfisme regular)--(monomorfisme) i els seus epimorfismes regulars són estables per canvi de base; una categoria exacta és una categoria regular en què, a més, tota relació d'equivalència és efectiva. Aquest axioma postula precisament aquesta condició addicional ---l'efectivitat---, damunt de la infraestructura regular que la teoria ja té; no forma part de la definició de regularitat que tot epimorfisme sigui regular, i de fet això no es demostra fins que s'afegeix l'axioma d'elecció (proposició~\ref{prop:epi-regular-eleccio}). El nom triat evita, doncs, atribuir a la teoria més estructura de la que aquest axioma li dona per si sol.
+
+Com l'axioma de coequalitzadors (observació~\ref{obs:necessitat-coequalitzadors}), aquest és un axioma \emph{de treball}: en la formulació categòrica de la teoria, l'efectivitat de les relacions d'equivalència és un teorema que es demostra a partir del conjunt de parts, i per tant no figura entre els axiomes d'ETCS. El postulem aquí perquè el necessitem abans de disposar del conjunt de parts (capítol~\ref{cap:parts-interna}); el capítol~\ref{cap:models} en farà el balanç.
+\end{observacio}
+
+\begin{observacio}[Lectura clàssica]\label{obs:exactitud-classica}
+En el model clàssic, l'efectivitat expressa que les classes d'equivalència parteixen el conjunt sense solapaments ni pèrdues: si dos elements tenen la mateixa classe en el quocient, ja estaven relacionats. Els coequalitzadors, garantits al capítol~\ref{cap:valors}, proporcionen el quocient; però res no assegura, sense aquest axioma, que en passar al quocient i tornar a prendre el parell nucli es recuperi la relació original en lloc d'una de més grossa.
+\end{observacio}
+
+\begin{lema}[Invariància del parell nucli sota isomorfisme del codomini]\label{lema:nucli-invariant}
+Siguin \(q\colon A\to B\) i \(w\colon B\to B'\) un isomorfisme, i sigui \(q'=w\circ q\). Aleshores tot parell nucli de \(q\) és equivalent, com a part de \(A\times A\), a tot parell nucli de \(q'\).
+\end{lema}
+
+\begin{prova}
+Siguin \(K\) un pullback de \(q\) amb ella mateixa, amb projeccions \(k_1,k_2\), i \(K'\) un pullback de \(q'\) amb ella mateixa, amb projeccions \(k_1',k_2'\). Com que \(w\) és un isomorfisme, per a qualsevol parell d'aplicacions \(u,v\) amb codomini \(A\) es té
+\[
+q\circ u=q\circ v
+\quad\Longleftrightarrow\quad
+q'\circ u=q'\circ v,
+\]
+ja que \(q'=w\circ q\) i \(w\) es pot cancel·lar. Per tant, un con sobre el diagrama de pullback de \(q\) ho és exactament sobre el de \(q'\), i les dues propietats universals determinen el mateix objecte llevat d'un únic isomorfisme: existeix un isomorfisme \(\theta\colon K\to K'\) amb \(k_1'\circ\theta=k_1\) i \(k_2'\circ\theta=k_2\). Component amb l'aparellament, \(\langle k_1',k_2'\rangle\circ\theta=\langle k_1,k_2\rangle\), de manera que les parts \(\langle k_1,k_2\rangle\) i \(\langle k_1',k_2'\rangle\) de \(A\times A\) es factoritzen l'una per l'altra a través d'un isomorfisme, i són equivalents.
+\end{prova}
+
+\begin{teorema}[Correspondència entre relacions d'equivalència i epimorfismes regulars]\label{teo:correspondencia}
+Amb l'axioma d'efectivitat, els dos camins següents són inversos l'un de l'altre, llevat d'isomorfisme:
+\begin{enumerate}
+\item d'una relació d'equivalència \(r\) sobre \(A\), prendre un quocient \(q\colon A\twoheadrightarrow A/r\);
+\item d'un epimorfisme regular \(q\colon A\twoheadrightarrow Q\), prendre el seu parell nucli \(\operatorname{Nuc}(q)\).
+\end{enumerate}
+És a dir: per a tota relació d'equivalència \(r\), \(\operatorname{Nuc}(q)\equiv_{A\times A} r\); i per a tot epimorfisme regular \(q\colon A\twoheadrightarrow Q\), el quocient de \(\operatorname{Nuc}(q)\) és isomorf a \(Q\) de manera compatible amb \(q\).
+\end{teorema}
+
+\begin{prova}
+\emph{Camí (1) seguit de (2).} Sigui \(r\) una relació d'equivalència i \(q\) un quocient \emph{qualsevol} seu. L'axioma d'efectivitat (axioma~\ref{ax:exactitud}) proporciona \emph{algun} quocient \(q_0\) i un parell nucli seu equivalent a \(r\). Ara bé, dos quocients qualssevol de \(r\) són isomorfs de manera compatible, per la unicitat dels coequalitzadors (proposició~\ref{prop:coequalitzador-unic}): existeix un isomorfisme \(w\) amb \(q=w\circ q_0\). Pel lema~\ref{lema:nucli-invariant} anterior, el parell nucli és invariant sota postcomposició amb un isomorfisme, de manera que un parell nucli de \(q\) també és equivalent a \(r\).
+
+\emph{Camí (2) seguit de (1).} Sigui \(q\colon A\twoheadrightarrow Q\) un epimorfisme regular, coequalitzador d'un parell \(f,g\colon C\to A\). El parell nucli \(\operatorname{Nuc}(q)\) té projeccions \(k_1,k_2\) amb \(q\circ k_1=q\circ k_2\), de manera que \(q\) coiguala \(k_1,k_2\) i, per la propietat universal del quocient \(A/\operatorname{Nuc}(q)\), es factoritza com \(q=\bar q\circ q'\), on \(q'\colon A\twoheadrightarrow A/\operatorname{Nuc}(q)\) és el quocient i \(\bar q\colon A/\operatorname{Nuc}(q)\to Q\). Vegem que \(\bar q\) és un isomorfisme.
+
+\emph{\(\bar q\) és un epimorfisme}: com que \(q=\bar q\circ q'\) és un epimorfisme, \(\bar q\) també ho és.
+
+\emph{\(\bar q\) és un isomorfisme}: com que \(q\) és coequalitzador de \(f,g\), tenim \(q\circ f=q\circ g\); per la propietat universal del pullback, el parell \((f,g)\) es factoritza a través de \(\operatorname{Nuc}(q)\), de manera que \(q'\circ f=q'\circ g\). Aleshores \(q'\) coiguala \(f,g\), i com que \(q\) és el coequalitzador de \(f,g\), existeix una única \(t\colon Q\to A/\operatorname{Nuc}(q)\) amb \(t\circ q=q'\). Ara \(\bar q\circ t\circ q=\bar q\circ q'=q=\id_Q\circ q\); com que \(q\) és epimorfisme, \(\bar q\circ t=\id_Q\). I \(t\circ\bar q\circ q'=t\circ q=q'\); com que \(q'\) és epimorfisme, \(t\circ\bar q=\id\). Per tant \(\bar q\) és un isomorfisme, invers de \(t\), compatible amb les aplicacions quocient.
+\end{prova}
+
+\section{Particions}\label{sec:particions}
+
+La imatge geomètrica d'una relació d'equivalència és una \emph{partició}: una descomposició del conjunt en peces. En la teoria clàssica, una partició es descriu com una família de subconjunts no buits, disjunts i exhaustius; però encara no hem construït cap noció de família arbitrària de parts, i, a més, una relació d'equivalència pot tenir un nombre arbitrari de classes. Adoptem, doncs, la formulació estructural, que no depèn de cap noció de família ni es limita al cas finit.
+
+\begin{definicio}[Partició]\index{Partició}\label{def:particio}
+Una \emph{partició} d'un conjunt \(A\) és un epimorfisme regular amb domini \(A\),
+\[
+q\colon A\twoheadrightarrow Q,
+\]
+considerat llevat d'un isomorfisme compatible del codomini: dues particions \(q\colon A\twoheadrightarrow Q\) i \(q'\colon A\twoheadrightarrow Q'\) es consideren la mateixa si existeix un isomorfisme \(w\colon Q\to Q'\) amb \(w\circ q=q'\).
+\end{definicio}
+
+\begin{teorema}[Triangle partició--relació--quocient]\label{teo:triangle}
+Amb l'axioma d'efectivitat, per a un conjunt \(A\) hi ha una correspondència biunívoca, llevat d'isomorfisme, entre:
+\begin{enumerate}
+\item les relacions d'equivalència sobre \(A\);
+\item les particions de \(A\), és a dir, els epimorfismes regulars amb domini \(A\);
+\item els quocients de \(A\), és a dir, les aplicacions \(q\colon A\twoheadrightarrow Q\) que són coequalitzador d'alguna relació d'equivalència sobre \(A\), considerades llevat d'isomorfisme compatible del codomini.
+\end{enumerate}
+\end{teorema}
+
+\begin{prova}
+La correspondència entre (1) i (2) és el teorema~\ref{teo:correspondencia}: a cada relació d'equivalència li correspon el seu quocient, que és un epimorfisme regular amb domini \(A\) (proposició~\ref{prop:quocient-regular}), i a cada epimorfisme regular el seu parell nucli, que és una relació d'equivalència (proposició~\ref{prop:kernel-equivalencia}); l'efectivitat fa que aquestes dues assignacions siguin inverses. Per a la identificació entre (2) i (3), tot quocient d'\(A\) per una relació d'equivalència és, per definició, un coequalitzador, i per tant un epimorfisme regular. Recíprocament, un epimorfisme regular \(q\) és el coequalitzador d'\emph{algun} parell d'aplicacions paral·leles, que no ha de ser cap relació d'equivalència; però el camí (2) seguit de (1) del teorema~\ref{teo:correspondencia} mostra que \(q=\bar q\circ q'\), amb \(q'\) el quocient d'\(A\) per \(\operatorname{Nuc}(q)\) i \(\bar q\) un isomorfisme. Per tant \(q\) és ell mateix un coequalitzador del parell nucli \(\operatorname{Nuc}(q)\), que és una relació d'equivalència (proposició~\ref{prop:kernel-equivalencia}), és a dir, un quocient d'\(A\) en el sentit de (3).
+\end{prova}
+
+\begin{observacio}[Partició estructural i partició clàssica]\label{obs:particio-classica}
+Clàssicament, una partició d'\(A\) és una família de subconjunts no buits, dos a dos disjunts, la unió dels quals és \(A\). La definició~\ref{def:particio} no diu això literalment: diu que una partició és un epimorfisme regular \(q\colon A\twoheadrightarrow Q\). Les dues descripcions es connecten per les \emph{fibres} de \(q\), i la proposició següent demostra, dins la teoria, que les fibres tenen exactament les tres propietats clàssiques. El recíproc ---reconstruir \(q\) a partir d'una família de parts--- demana parlar de famílies indexades per un conjunt, cosa que farem al capítol~\ref{cap:families}; allà es veurà que una família \(E\to Q\) de parts d'\(A\) disjuntes i que cobreixen \(A\) és el mateix que una partició, i que el conjunt de les peces és el quocient \(Q\).
+\end{observacio}
+
+\begin{proposicio}[Les fibres d'una partició són les peces]\label{prop:fibres-particio}
+Sigui \(q\colon A\twoheadrightarrow Q\) una partició. Per a cada punt \(y\colon\mathbf1\to Q\), la fibra \(q^{-1}(y)\hookrightarrow A\) és una part d'\(A\), i:
+\begin{enumerate}
+\item cap fibra no és buida: \(q^{-1}(y)\) té algun punt;
+\item dues fibres sobre punts diferents són disjuntes: si \(y\ne y'\), aleshores \(q^{-1}(y)\cap q^{-1}(y')\) és la part buida;
+\item les fibres cobreixen \(A\) sobre punts: tot punt \(a\colon\mathbf1\to A\) pertany a la fibra \(q^{-1}(q\circ a)\), i només a aquesta.
+\end{enumerate}
+La relació d'equivalència corresponent a \(q\) relaciona dos punts d'\(A\) si i només si són a la mateixa fibra.\par
+\emph{Axiomes usats:} separació global, representació de les parts i disjunció i estabilitat de les sumes (a través del lema del buit i de l'exhaustivitat dels epimorfismes sobre punts); \emph{cap elecció}.
+\end{proposicio}
+
+\begin{prova}
+Tot punt \(y\colon\mathbf1\to Q\) és un monomorfisme, de manera que \(q^{-1}(y)\) és la imatge inversa d'una part (definició~\ref{def:imatge-inversa}), i és una part d'\(A\).
+
+\emph{(1)} Com que \(q\) és un epimorfisme, és exhaustiu sobre punts (proposició~\ref{prop:epi-exhaustiu-punts}): hi ha \(a\colon\mathbf1\to A\) amb \(q\circ a=y\), i per la proposició~\ref{prop:pertinenca-imatge-inversa}, \(a\in q^{-1}(y)\).
+
+\emph{(2)} Un punt de la intersecció \(q^{-1}(y)\cap q^{-1}(y')\) és un punt \(a\) amb \(q\circ a=y\) i \(q\circ a=y'\) (proposició~\ref{prop:pertinenca-interseccio}), de manera que \(y=y'\). Si \(y\ne y'\), la intersecció no té cap punt i, pel lema del buit (lema~\ref{lema:buit}), és inicial: és la part buida.
+
+\emph{(3)} Per a tot \(a\), \(q\circ a\) és un punt de \(Q\) i \(a\in q^{-1}(q\circ a)\) trivialment; i si \(a\in q^{-1}(y)\), aleshores \(y=q\circ a\), de manera que la fibra és única.
+
+Finalment, dos punts \(a,a'\) estan relacionats pel parell nucli de \(q\) si i només si \(q\circ a=q\circ a'\), és a dir, si i només si són a la mateixa fibra; i el parell nucli de \(q\) és la relació d'equivalència que el teorema~\ref{teo:triangle} li assigna.
+\end{prova}
+
+\begin{observacio}[Per què només sobre punts]\label{obs:particio-punts}
+Les tres propietats s'han enunciat sobre punts globals perquè és allà on tenen la forma clàssica. Sobre elements generalitzats la situació és la de sempre: un \(x\colon X\to A\) pot no caure dins de cap fibra sencera (si \(q\circ x\) no és constant), i aleshores no és a cap peça, sinó repartit entre diverses. És la mateixa diferència que separa el complement d'una part (capítol~\ref{cap:valors}) de la negació puntual. Les particions en un nombre finit de peces es podran definir quan s'hagin construït els nombres naturals i els conjunts finits.
+\end{observacio}
+
+\section{Epimorfismes escindits i quocients}\label{sec:escindits-quocients}
+
+Les seccions i les retraccions (definició~\ref{def:seccio-retraccio}), els monomorfismes i els epimorfismes escindits (observació~\ref{obs:escindits}), i l'exhaustivitat sobre elements generalitzats (definició~\ref{def:exhaustiva-generalitzada}) ja s'han introduït al capítol~\ref{cap:parts}. No els redefinim; en recordem la terminologia i n'establim el resultat nou que fa de pont cap a l'elecció.
+
+Recordem que una aplicació \(f\) és un \emph{epimorfisme escindit} si té una secció, és a dir, si existeix \(s\) amb \(f\circ s=\id\) (definició~\ref{def:seccio-retraccio}), i que tota secció és un monomorfisme i tota retracció un epimorfisme (proposició~\ref{prop:seccio-mono-retraccio-epi}).
+
+\begin{proposicio}[Tot epimorfisme escindit és regular]\label{prop:escindit-regular}
+Si \(q\colon A\to B\) és un epimorfisme escindit, aleshores \(q\) és el coequalitzador del seu parell nucli; en particular, és un epimorfisme regular.
+\end{proposicio}
+
+\begin{prova}
+Sigui \(s\colon B\to A\) una secció de \(q\), amb \(q\circ s=\id_B\), i sigui \(\operatorname{Nuc}(q)\) el parell nucli, amb projeccions \(k_1,k_2\colon K\to A\) i \(q\circ k_1=q\circ k_2\). Comprovem que \(q\) té la propietat universal del coequalitzador de \(k_1,k_2\).
+
+Ja tenim \(q\circ k_1=q\circ k_2\). Sigui ara \(h\colon A\to C\) amb \(h\circ k_1=h\circ k_2\); hem de trobar una única \(\bar h\colon B\to C\) amb \(\bar h\circ q=h\). Definim \(\bar h:=h\circ s\). Per veure que \(\bar h\circ q=h\), considerem les dues aplicacions \(\id_A\) i \(s\circ q\), totes dues de \(A\) a \(A\). Compleixen \(q\circ\id_A=q=q\circ(s\circ q)\), ja que \(q\circ s\circ q=\id_B\circ q=q\). Per la propietat universal del pullback, el parell \((\id_A,\,s\circ q)\) es factoritza a través de \(\operatorname{Nuc}(q)\): existeix \(d\colon A\to K\) amb \(k_1\circ d=\id_A\) i \(k_2\circ d=s\circ q\). Aleshores
+\[
+h=h\circ\id_A=h\circ k_1\circ d=h\circ k_2\circ d=h\circ s\circ q=\bar h\circ q,
+\]
+on hem usat \(h\circ k_1=h\circ k_2\) al pas central. La unicitat de \(\bar h\) se segueix del fet que \(q\) és un epimorfisme. Per tant, \(q\) és el coequalitzador de \(k_1,k_2\), i és un epimorfisme regular.
+\end{prova}
+
+\begin{observacio}[Una secció com a sistema de representants]\label{obs:seccio-representants}
+En la lectura clàssica, una secció \(s\colon B\to A\) d'un quocient \(q\colon A\twoheadrightarrow B\) tria, per a cada peça, un element que la representa: com que \(q\circ s=\id_B\), el punt \(s(b)\) pertany a la fibra sobre \(b\), és a dir, a la classe corresponent. Una secció és, doncs, un \emph{sistema de representants} de les classes. Que tota partició admeti un sistema de representants ---que tot quocient tingui secció--- no se segueix, però, dels axiomes actuals: és el contingut de l'axioma d'elecció, que introduïm tot seguit.
+\end{observacio}
+
+\section{L'axioma d'elecció}\label{sec:eleccio}
+
+\begin{axioma}[Elecció]\label{ax:eleccio}
+Tot epimorfisme és escindit:
+\[
+\begin{aligned}
+\forall A\,\forall B\,\forall q\,\Bigl(
+&\operatorname{Epi}(q)\land\Dom(q,A)\land\Cod(q,B)
+\\
+&{}\Rightarrow
+\exists s\,\bigl(\Dom(s,B)\land\Cod(s,A)\land\Com(s,q,\id_B)\bigr)
+\Bigr).
+\end{aligned}
+\]
+\end{axioma}
+
+\begin{notacio}[Elecció]\label{not:eleccio}
+En notació de fletxes: per a tot epimorfisme \(q\colon A\twoheadrightarrow B\) existeix una aplicació \(s\colon B\to A\) amb \(q\circ s=\id_B\).
+\end{notacio}
+
+\begin{observacio}[Les tres lectures de l'elecció]\label{obs:eleccio-lectures}
+L'axioma admet tres formulacions que convé mantenir distingides. La \emph{formulació estructural} és la que hem donat: tot epimorfisme té secció. La \emph{lectura clàssica} diu que, donada una família de conjunts no buits ---les fibres d'un epimorfisme---, se'n pot triar simultàniament un element de cadascuna; és la forma més intuïtiva, però parla de fibres i eleccions, nocions que aquí són externes. I la \emph{formulació en termes de famílies} ---tota família de conjunts no buits té una funció d'elecció--- és, de moment, també externa, perquè no hem construït encara els objectes de famílies arbitràries. Adoptem la formulació estructural com a axioma, i reservem les altres dues per a la lectura.
+\end{observacio}
+
+\section{Conseqüències de l'elecció}\label{sec:consequencies-eleccio}
+
+L'axioma d'elecció, combinat amb els resultats anteriors, tanca diverses qüestions que havien quedat obertes.
+
+\begin{proposicio}[Tot epimorfisme és regular]\label{prop:epi-regular-eleccio}
+Amb l'axioma d'elecció, tot epimorfisme és un epimorfisme regular.
+\end{proposicio}
+
+\begin{prova}
+Per l'axioma d'elecció (axioma~\ref{ax:eleccio}), tot epimorfisme és escindit; i per la proposició~\ref{prop:escindit-regular}, tot epimorfisme escindit és regular. Avancem que al capítol~\ref{cap:imatges} (corol·lari~\ref{cor:epi-regular-sense-eleccio}) es veurà que la conclusió val sense l'elecció, per una altra via: la factorització imatge.
+\end{prova}
+
+\begin{corollari}[La correspondència s'estén a tots els epimorfismes]\label{cor:correspondencia-tots-epis}
+Amb els axiomes d'efectivitat i d'elecció, la correspondència del teorema~\ref{teo:correspondencia} val entre les relacions d'equivalència sobre \(A\) i \emph{tots} els epimorfismes amb domini \(A\), no només els regulars.
+\end{corollari}
+
+\begin{prova}
+Per la proposició~\ref{prop:epi-regular-eleccio}, tot epimorfisme és regular; per tant, la classe dels epimorfismes amb domini \(A\) coincideix amb la dels epimorfismes regulars amb domini \(A\), i el teorema~\ref{teo:correspondencia} s'hi aplica.
+\end{prova}
+
+\begin{proposicio}[Exhaustivitat generalitzada dels epimorfismes]\label{prop:epi-exhaustiu-generalitzat}
+Amb l'axioma d'elecció, tot epimorfisme \(q\colon A\twoheadrightarrow B\) és exhaustiu sobre elements generalitzats: per a tot estadi \(X\) i tot \(y\colon X\to B\), existeix \(x\colon X\to A\) amb \(q\circ x=y\).
+\end{proposicio}
+
+\begin{prova}
+Per l'elecció, \(q\) té una secció \(s\colon B\to A\). Per la proposició~\ref{prop:exhaustiva-generalitzada-escindit}, tenir secció equival a l'exhaustivitat sobre elements generalitzats; explícitament, donat \(y\colon X\to B\), l'element \(x:=s\circ y\) compleix \(q\circ x=q\circ s\circ y=y\).
+\end{prova}
+
+\begin{proposicio}[Epimorfisme i exhaustivitat global; sense elecció]\label{prop:epi-exhaustiu-global}
+Amb l'axioma de separació global, i sense l'axioma d'elecció, una aplicació és un epimorfisme si i només si és exhaustiva sobre els elements globals.
+\end{proposicio}
+
+\begin{prova}
+Si \(q\) és exhaustiva sobre els elements globals, és un epimorfisme per l'observació~\ref{obs:exhaustiva-epi} del capítol~\ref{cap:parts}, que usa la separació global. Recíprocament, si \(q\) és un epimorfisme, és exhaustiva sobre punts per la proposició~\ref{prop:epi-exhaustiu-punts} del capítol~\ref{cap:valors}, que usa la separació global i la disjunció de les sumes.
+\end{prova}
+
+\begin{observacio}[El que l'elecció no afegeix]\label{obs:eleccio-no-afegeix}
+La proposició anterior també se segueix de la proposició~\ref{prop:epi-exhaustiu-generalitzat} prenent l'estadi \(X=\mathbf1\), però per aquesta via s'hi arriba amb l'elecció, cosa que és innecessària. Convé no atribuir a l'elecció més del que fa: el que aporta és el pas dels punts globals a \emph{tots} els estadis alhora, és a dir, la secció.
+\end{observacio}
+
+\begin{proposicio}[Representants de les classes]\label{prop:representants}
+Amb l'axioma d'elecció, tot quocient \(q\colon A\twoheadrightarrow A/r\) admet una secció. En la interpretació clàssica, això significa que es pot triar un representant de cada classe d'equivalència.
+\end{proposicio}
+
+\begin{prova}
+El quocient \(q\) és un epimorfisme (proposició~\ref{prop:quocient-existeix}); per l'elecció, té secció. La lectura com a sistema de representants és la de l'observació~\ref{obs:seccio-representants}.
+\end{prova}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Una relació és una part d'un producte, i es llegeix per elements generalitzats: \(x\mathrel{r_X}y\) vol dir \(\langle x,y\rangle\in_X r\). Les relacions clàssiques són el cas de l'estadi \(\mathbf1\).
+  \item Reflexivitat, simetria i transitivitat es formulen amb aplicacions \(e\colon A\to R\), \(s\colon R\to R\) i \(c\colon R\times_AR\to R\), no amb condicions sobre punts: les condicions puntuals en són conseqüència, però no bastarien per definir-les.
+  \item Tota aplicació genera una relació d'equivalència, el seu parell nucli, i tota relació genera una aplicació, el seu quocient, que és un coequalitzador i, per tant, un epimorfisme regular.
+  \item L'axioma d'efectivitat tanca el cercle: el parell nucli del quocient recupera la relació. Amb ell, relacions d'equivalència, epimorfismes regulars amb domini \(A\) i particions d'\(A\) són tres descripcions del mateix objecte.
+  \item L'axioma d'elecció diu que tot epimorfisme té secció. En conseqüència, tot epimorfisme és exhaustiu sobre elements generalitzats i tot quocient admet un sistema de representants; també en resulta que tot epimorfisme és regular, encara que el capítol~\ref{cap:imatges} ho demostrarà sense elecció.
+  \item L'exhaustivitat sobre \emph{punts} no és una conseqüència de l'elecció: ja valia sense ella. L'elecció és el pas de tenir una preimatge per a cada punt a tenir-les totes alhora.
+\end{enumerate}
+\apartat{Errors típics} Definir una relació d'equivalència per les tres condicions sobre punts globals, que no donen les aplicacions internes; pensar que el parell nucli és mono perquè \(f\) ho és (ho és sempre, per la unicitat del pullback); creure que el quocient només existeix amb l'elecció (existeix pels coequalitzadors); suposar que el parell nucli del quocient recupera la relació \enquote{per definició}, quan és l'axioma d'efectivitat; confondre epimorfisme regular (coequalitzador d'algun parell) amb epimorfisme escindit (amb secció), que és més fort sense l'elecció; i atribuir a l'elecció l'equivalència entre epimorfisme i exhaustivitat sobre punts.
+\apartat{Lectura recomanada} \cite[cap.~4 i apèndix~B]{lawvere-rosebrugh} per als coequalitzadors, els epimorfismes i l'axioma d'elecció en la forma \enquote{tot epimorfisme té secció}, i per a la discussió de les formulacions equivalents de l'elecció; \cite[article~V, sessions~28--29]{lawvere-schanuel} per a una presentació elemental de les seccions i l'elecció; \cite[§§3.4, 5.5 i 9.8]{awodey} per a coequalitzadors, parells nuclis i categories regulars i exactes, que és el marc categòric d'aquest capítol; \cite[pàg.~12]{bell2006} per a la formulació de l'elecció en termes d'epis i seccions i per què és correcta per als conjunts abstractes; i \cite[§§7, 15--16]{halmos} per a les relacions d'equivalència, les particions i l'elecció en la teoria clàssica.
+\end{resumcap}

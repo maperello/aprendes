@@ -1,0 +1,131 @@
+\chapter{Aplicacions, dominis, codominis i composició}\label{test:cap1}
+
+Aquest test correspon al capítol~1 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u1}{b,c,b,a,c,c,b,a,c,b,c,d}
+
+\begin{enumerate}
+
+\pregunta Quin és el vocabulari no lògic primitiu de la teoria?
+\begin{itemize}
+\opcio{a}{La pertinença, la inclusió i la igualtat.}
+\opcio{b}{Els predicats \(\Dom\), \(\Cod\) i \(\Com\).}
+\opcio{c}{Els conjunts, els elements i les funcions.}
+\opcio{d}{La suma, el producte i la composició.}
+\end{itemize}
+\feedback
+\justificacio{Els únics símbols no lògics del llenguatge són els dos predicats binaris \(\Dom\) i \(\Cod\) i el ternari \(\Com\). Conjunts, elements, pertinença i inclusió són nocions definides o abreviacions.}
+
+\pregunta La composició \(g\circ f\) està definida quan\ldots
+\begin{itemize}
+\opcio{a}{el domini de \(f\) coincideix amb el domini de \(g\).}
+\opcio{b}{el codomini de \(g\) coincideix amb el domini de \(f\).}
+\opcio{c}{el codomini de \(f\) coincideix amb el domini de \(g\).}
+\opcio{d}{sempre: dues aplicacions qualssevol es poden compondre.}
+\end{itemize}
+\feedback
+\justificacio{L'axioma d'existència de la composició demana \(\cod(f)=\dom(g)\): primer s'aplica \(f\) i després \(g\). Les altres opcions confonen l'ordre o ignoren que la composició és parcial.}
+
+\pregunta Segons la nostra teoria, un element global d'un conjunt \(A\) és\ldots
+\begin{itemize}
+\opcio{a}{un individu primitiu que pertany a \(A\).}
+\opcio{b}{una aplicació \(\mathbf1\to A\).}
+\opcio{c}{una aplicació \(A\to\mathbf1\).}
+\opcio{d}{una aplicació \(A\to\mathbf2\).}
+\end{itemize}
+\feedback
+\justificacio{No hi ha elements primitius: un punt d'\(A\) és una aplicació des del terminal, \(x\colon\mathbf1\to A\). Les aplicacions \(A\to\mathbf1\) i \(A\to\mathbf2\) són, respectivament, l'única \({!}_A\) i les futures parts d'\(A\).}
+
+\pregunta Quantes aplicacions hi ha d'un conjunt qualsevol \(A\) cap al conjunt terminal \(\mathbf1\)?
+\begin{itemize}
+\opcio{a}{Exactament una.}
+\opcio{b}{Tantes com elements globals té \(A\).}
+\opcio{c}{Cap, si \(A\) té més d'un element global.}
+\opcio{d}{Depèn del conjunt \(A\).}
+\end{itemize}
+\feedback
+\justificacio{És la definició de terminal: des de qualsevol conjunt, inclòs \(\mathbf0\), hi ha exactament una aplicació cap a \(\mathbf1\), sigui quin sigui el nombre d'elements globals del domini.}
+
+\pregunta Si \(f:A\to B\) és un isomorfisme, quantes inverses té?
+\begin{itemize}
+\opcio{a}{Almenys una, però en pot tenir més.}
+\opcio{b}{Dues: una per l'esquerra i una per la dreta.}
+\opcio{c}{Exactament una, per l'associativitat i les lleis de neutralitat.}
+\opcio{d}{Cap: la inversa només existeix per a la identitat.}
+\end{itemize}
+\feedback
+\justificacio{Si \(g\) i \(g'\) són inverses, \(g=g\circ(f\circ g')=(g\circ f)\circ g'=g'\): neutralitat i associativitat forcen la unicitat. Una inversa ho és alhora per l'esquerra i per la dreta.}
+
+\pregunta Segons la proposició d'unicitat de la composició, si \(\Com(f,g,h)\) i \(\Com(f,g,h')\), aleshores\ldots
+\begin{itemize}
+\opcio{a}{\(h\) i \(h'\) tenen dominis diferents.}
+\opcio{b}{no se'n pot dir res sense més hipòtesis.}
+\opcio{c}{\(h=h'\).}
+\opcio{d}{\(h\circ h'=\id\).}
+\end{itemize}
+\feedback
+\justificacio{És exactament la proposició d'unicitat de la composició, que es demostra amb l'associativitat i les lleis de neutralitat; l'axioma només n'assegura l'existència.}
+
+\pregunta Quan diem que \(A\) és un \emph{conjunt} en aquesta teoria?
+\begin{itemize}
+\opcio{a}{Quan té almenys un element global.}
+\opcio{b}{Quan \(A\) és una identitat, és a dir \(\Dom(A,A)\) i \(\Cod(A,A)\).}
+\opcio{c}{Quan hi ha una aplicació \(A\to\mathbf2\).}
+\opcio{d}{Quan \(A\) és terminal.}
+\end{itemize}
+\feedback
+\justificacio{Un conjunt és una identitat: una aplicació que és el seu propi domini i codomini. Tenir punts, tenir parts o ser terminal són propietats que alguns conjunts tenen i d'altres no.}
+
+\pregunta El criteri d'igualtat d'aplicacions per elements generalitzats diu que \(f=g\) quan\ldots
+\begin{itemize}
+\opcio{a}{\(f\circ x=g\circ x\) per a tot element generalitzat \(x\colon X\to A\), amb \(X\) arbitrari.}
+\opcio{b}{\(f\) i \(g\) tenen el mateix domini.}
+\opcio{c}{\(f\circ x=g\circ x\) només per a \(x\colon\mathbf1\to A\).}
+\opcio{d}{\(f\) i \(g\) són totes dues identitats.}
+\end{itemize}
+\feedback
+\justificacio{El criteri quantifica sobre \emph{tots} els estadis \(X\); n'hi ha prou amb \(X=A\) i \(x=\id_A\). Restringir-se a \(X=\mathbf1\) és el contingut de l'axioma de separació global, no del criteri.}
+
+\pregunta Les lleis de neutralitat afirmen que, quan les composicions estan definides,\ldots
+\begin{itemize}
+\opcio{a}{\(f\circ g=g\circ f\).}
+\opcio{b}{tota aplicació és un isomorfisme.}
+\opcio{c}{\(f\circ\id=f\) i \(\id\circ f=f\).}
+\opcio{d}{\(f\circ f=f\).}
+\end{itemize}
+\feedback
+\justificacio{Les lleis de neutralitat diuen que el domini i el codomini actuen com a neutres: \(f\circ\id_{\dom f}=f\) i \(\id_{\cod f}\circ f=f\). La composició no és commutativa ni idempotent en general.}
+
+\pregunta Quantes aplicacions hi ha del conjunt terminal \(\mathbf1\) cap al conjunt inicial \(\mathbf0\)?
+\begin{itemize}
+\opcio{a}{Exactament una.}
+\opcio{b}{Cap, per la no-degeneració.}
+\opcio{c}{Tantes com elements té \(\mathbf0\).}
+\opcio{d}{Infinites.}
+\end{itemize}
+\feedback
+\justificacio{Una aplicació \(\mathbf1\to\mathbf0\) donaria, amb l'única \(\mathbf0\to\mathbf1\), un isomorfisme \(\mathbf0\cong\mathbf1\), prohibit per la no-degeneració. Per això \(\mathbf0\) no té cap element global.}
+
+\pregunta Quin és l'enunciat dual de \enquote{des de tot conjunt arriba exactament una aplicació a \(T\)}?
+\begin{itemize}
+\opcio{a}{\enquote{Cap aplicació no arriba a \(T\)}.}
+\opcio{b}{\enquote{Tota aplicació que surt de \(T\) és un isomorfisme}.}
+\opcio{c}{\enquote{De \(T\) surt exactament una aplicació cap a tot conjunt}.}
+\opcio{d}{\enquote{\(T\) té exactament un element global}.}
+\end{itemize}
+\feedback
+\justificacio{La dualitat intercanvia domini i codomini: \enquote{arribar a \(T\)} es converteix en \enquote{sortir de \(T\)}, i la condició d'existència i unicitat es conserva. És la definició de conjunt inicial.}
+
+\pregunta Quin axioma garanteix que una aplicació queda determinada pels valors que pren sobre els punts globals del seu domini?
+\begin{itemize}
+\opcio{a}{La llei associativa.}
+\opcio{b}{L'axioma d'existència d'un conjunt terminal.}
+\opcio{c}{L'axioma de no-degeneració.}
+\opcio{d}{L'axioma de separació global: \(\mathbf1\) és un separador.}
+\end{itemize}
+\feedback
+\justificacio{Que els elements \emph{generalitzats} determinin les aplicacions és un teorema; que n'hi hagi prou amb els \emph{globals} és l'axioma de separació global, que fa la teoria ben apuntada. L'existència del terminal només diu que \(\mathbf1\) existeix.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

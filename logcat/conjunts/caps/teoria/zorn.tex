@@ -1,0 +1,511 @@
+\chapter{Zorn, Hartogs i el teorema del bon ordre}\label{cap:zorn}
+
+\begin{objectius}
+\apartat{Prerequisits} Del capítol~\ref{cap:bons-ordres}: bons ordres, segments, rigidesa i comparació. Del capítol~\ref{cap:recursio}: inducció i recursió transfinites amb codomini fix, i la comparabilitat total. Del capítol~\ref{cap:relacions}: l'axioma d'elecció, els quocients i l'efectivitat. Del capítol~\ref{cap:families}: seccions, funcions d'elecció i unions indexades.
+\apartat{Objectius} En acabar el capítol, el lector hauria de poder:
+\begin{itemize}
+  \item codificar un bon ordre sobre una part d'\(A\) com un parell \((S,R)\) dins \(P(A)\times P(A\times A)\), i explicar per què el suport ha de ser una dada;
+  \item construir \(\Hart(A)\) com a quocient de \(\WO(A)\) per isomorfisme, demostrar que és un bon ordre i que el segment anterior a un tipus té aquell tipus;
+  \item demostrar el teorema de Hartogs, sense elecció, i veure'l com l'anàleg ordinal del teorema de Cantor;
+  \item demostrar el teorema del bon ordre amb una recursió \emph{acotada per \(\Hart(A)\)}, i explicar per què la cota evita la recursió sobre tots els ordinals;
+  \item distingir maximal de màxim, demostrar el lema de Zorn amb la mateixa cota i aplicar-lo (existència de bases);
+  \item demostrar el cercle d'equivalències entre elecció, bon ordre i Zorn, marcant quina direcció introdueix l'elecció.
+\end{itemize}
+\end{objectius}
+
+Els dos capítols anteriors han donat la teoria dels bons ordres i la
+recursió transfinita \emph{sense} usar l'elecció. Aquest capítol hi torna a
+introduir l'elecció (axioma~\ref{ax:eleccio}) i en treu les tres grans
+conseqüències que, en la teoria clàssica, apareixen encadenades: el
+\emph{lema de Zorn}, el \emph{teorema del bon ordre} i, com a frontissa
+tècnica entre tots dos, el \emph{teorema de Hartogs}. La novetat respecte del
+tractament habitual és doble. Primer, el punt de vista estructural manté totes
+les construccions \emph{acotades}: en lloc de parlar de \enquote{tots els
+ordinals}, treballarem amb parells \((S,R)\), on \(S\) és una part d'un
+conjunt fix \(A\) i \(R\) un bon ordre sobre \(S\); aquests parells formen una
+part de \(P(A)\times P(A\times A)\), i els seus tipus d'ordre s'obtenen
+per un quocient efectiu. Segon, la construcció de Hartogs ---un bon ordre
+\(\Hart(A)\) que no s'injecta en \(A\)--- proporciona la \emph{cota} que atura
+les recursions: gràcies a ella, el teorema del bon ordre no necessita cap
+recursió \enquote{sobre tots els ordinals}, sinó una de sola, acotada per
+\(\Hart(A)\). Al final del capítol tancarem el cercle clàssic mostrant que
+elecció, teorema del bon ordre i lema de Zorn són equivalents.
+
+
+\section{El teorema de Hartogs}\label{sec:hartogs}
+
+Comencem per Hartogs, perquè no usa l'elecció i perquè és la peça que fa
+acotades les construccions posteriors. La idea és reunir tots els
+\emph{tipus} de bons ordres que es poden posar sobre parts d'\(A\), i veure
+que aquesta col·lecció, ordenada, és un bon ordre massa gran per cabre dins
+\(A\).
+
+\begin{definicio}[Bons ordres sobre parts d'un conjunt fix]\index{Bons ordres sobre parts d'un conjunt fix}\label{def:bons-ordres-parts}
+Sigui \(A\) un conjunt. Un \emph{bon ordre sobre una part d'\(A\)} és un
+\emph{parell} \((S,R)\) format per un \emph{suport} \(S\hookrightarrow A\)
+---un element de \(P(A)\)--- i una relació \(R\hookrightarrow S\times S\)
+---un element de \(P(S\times S)\hookrightarrow P(A\times A)\)
+(definició~\ref{def:relacio})--- tal que \(R\) és un bon ordre estricte
+(definició~\ref{def:bon-ordre}) sobre \emph{tot} \(S\). Codifiquem el parell
+com un element del conjunt fix
+\[
+(S,R)\ \in\ P(A)\times P(A\times A).
+\]
+La col·lecció d'aquests bons ordres és una part interna
+\[
+\WO(A)\ \hookrightarrow\ P(A)\times P(A\times A),
+\]
+tallada per les condicions internes \enquote{\(R\hookrightarrow S\times S\), i
+\(R\) és irreflexiva, transitiva, total i ben fundada sobre \(S\)} ---totes
+expressables amb igualtats i quantificadors acotats sobre
+\(P(A)\times P(A\times A)\) (capítols~\ref{cap:relacions}
+i~\ref{cap:parts-interna}). Escrivim \(\camp(S,R):=S\) per al suport, que ara
+és una dada del parell i no una quantitat derivada.
+\end{definicio}
+
+\begin{observacio}[Per què el parell, i no la sola relació]\label{obs:parell-suport}
+Codificar el bon ordre només per la relació \(R\) i recuperar-ne el suport
+com \(\camp(R)=\{a: \exists b\,(a\mathrel R b\vee b\mathrel R a)\}\) falla en
+els casos degenerats. Sobre un singletó \(\{a\}\), un bon ordre estricte és la
+relació \emph{buida}, i aleshores \(\camp(R)=\varnothing\), de manera que la
+relació buida sola no distingeix l'ordre buit sobre \(\varnothing\) dels
+ordres sobre subconjunts d'un element. El parell \((S,R)\) fixa el suport
+explícitament i elimina l'ambigüitat: el bon ordre buit sobre \(\{a\}\) queda
+representat per \((\{a\},\varnothing)\), diferent de
+\((\varnothing,\varnothing)\). Amb la codificació antiga, en canvi,
+\(\Hart(A)\) d'un singletó \(A\) podria contenir un únic tipus que
+\emph{sí} s'injecta en \(A\), contradient l'enunciat de Hartogs
+(teorema~\ref{teo:hartogs}); el parell ho evita.
+\end{observacio}
+
+\begin{observacio}[Tot és acotat]\label{obs:hartogs-acotat}
+Aquesta és la clau del tractament estructural de Hartogs. Un bon ordre sobre
+una part d'\(A\) \emph{no} és un objecte extern: és un element del conjunt fix
+\(P(A)\times P(A\times A)\), i \(\WO(A)\) n'és una part. No parlem de
+\enquote{tots els bons ordres} en abstracte, sinó dels que caben sobre parts
+d'un conjunt donat, que formen un conjunt ja construït. Tota la resta de la
+secció ---la identificació per isomorfisme, el quocient, l'ordre--- passa dins
+aquest ambient, sense cap classe global.
+\end{observacio}
+
+\begin{definicio}[Tipus d'ordre; el conjunt de Hartogs]\index{Tipus d'ordre; el conjunt de Hartogs}\label{def:hartogs}
+Sobre \(\WO(A)\), la relació \enquote{\((S,R)\) i \((S',R')\) són isomorfs com
+a bons ordres} ---és a dir, hi ha una bijecció \(S\to S'\) que transporta
+\(R\) en \(R'\)--- és una relació d'equivalència interna \(\cong\) (reflexiva,
+simètrica i transitiva, per composició d'isomorfismes d'ordre). Per
+l'efectivitat de les relacions d'equivalència (axioma~\ref{ax:exactitud})
+existeix el quocient
+\[
+\Hart(A)\ :=\ \WO(A)/\cong,
+\]
+el \emph{conjunt dels tipus d'ordre} dels bons ordres sobre parts d'\(A\). La
+classe \([(S,R)]\in\Hart(A)\) és el \emph{tipus d'ordre} del bon ordre
+\((S,R)\); quan el suport se sobreentén escrivim simplement \([R]\).
+Ordenem \(\Hart(A)\) per la relació de segment inicial: per a dos tipus
+\(\alpha=[(S,R)]\) i \(\beta=[(S',R')]\),
+\[
+\alpha<\beta
+\quad:\Longleftrightarrow\quad
+(S,R)\ \text{és isomorf a un segment inicial propi de}\ (S',R')
+\]
+(definició~\ref{def:mes-curt}), que no depèn dels representants:
+component isomorfismes d'ordre, si \((S,R)\cong(S_1,R_1)\) i
+\((S',R')\cong(S'_1,R'_1)\), un isomorfisme de \((S,R)\) sobre un segment
+propi de \((S',R')\) dona un isomorfisme de \((S_1,R_1)\) sobre un segment
+propi de \((S'_1,R'_1)\).
+\end{definicio}
+
+\begin{proposicio}[\(\Hart(A)\) és un bon ordre]\label{prop:hartogs-bon-ordre}
+La relació \(<\) sobre \(\Hart(A)\) de la definició~\ref{def:hartogs} és un
+bon ordre.\par
+\emph{Axiomes usats:} conjunt de parts, relacions i quocients efectius
+(capítols~\ref{cap:relacions} i~\ref{cap:parts-interna},
+axioma~\ref{ax:exactitud}), comparabilitat de bons ordres
+(teorema~\ref{teo:comparabilitat}); \emph{cap elecció}.
+\end{proposicio}
+
+\begin{prova}
+Que \(<\) és un ordre estricte total és la comparació de bons ordres del
+capítol~\ref{cap:recursio}: dos tipus qualssevol són comparables
+(teorema~\ref{teo:comparabilitat}), i l'exclusivitat i la transitivitat són
+la tricotomia i la proposició~\ref{prop:comparacio-ordres}; la
+irreflexivitat és que cap bon ordre no és isomorf a un segment propi seu
+(corol·lari~\ref{cor:no-segment-propi}). Falta el bon ordre: tota part no
+inicial \(T\hookrightarrow\Hart(A)\) té mínim. Sigui
+\(\alpha_0=[(S_0,R_0)]\in T\) qualsevol. Si \(\alpha_0\) ja és el mínim, fet.
+Si no, els tipus de \(T\) estrictament menors que \(\alpha_0\) corresponen,
+per definició de \(<\), a segments inicials propis de \((S_0,R_0)\); i els
+segments inicials de \((S_0,R_0)\) estan en bijecció creixent amb els punts
+del suport \(S_0\) (proposició~\ref{prop:parts-inicials}), que és un bon
+ordre. Per tant \(\{\beta\in T:\beta<\alpha_0\}\) es correspon amb una part no
+inicial de \(S_0\), que té mínim pel bon ordre \(R_0\); aquest mínim dona el
+tipus mínim de \(T\). Així \(\Hart(A)\) és ben
+ordenat.
+\end{prova}
+
+\begin{lema}[El segment anterior a un tipus té aquell tipus]\label{lema:segment-tipus}
+Sigui \(\alpha=[(S,R)]\in\Hart(A)\). El segment inicial propi
+\[
+\Hart(A)_{<\alpha}\ :=\ \{\,\beta\in\Hart(A):\beta<\alpha\,\}
+\]
+amb l'ordre \(<\) heretat és un bon ordre de tipus exactament \(\alpha\); és a
+dir, \((\Hart(A)_{<\alpha},<)\) és isomorf a \((S,R)\).\par
+\emph{Axiomes usats:} els de la proposició~\ref{prop:hartogs-bon-ordre};
+\emph{cap elecció}.
+\end{lema}
+
+\begin{prova}
+Per definició de \(<\), un tipus \(\beta=[(S',R')]\) compleix \(\beta<\alpha\)
+si i només si \((S',R')\) és isomorf a un segment inicial propi de \((S,R)\).
+Ara bé, els segments inicials propis de \((S,R)\) estan en bijecció creixent
+amb els punts de \(S\): a cada \(s\in S\) li correspon el segment
+\(S_{<s}=\{t\in S: t\mathrel R s\}\), i tot segment inicial propi és d'aquesta
+forma (proposició~\ref{prop:parts-inicials}). Dos punts diferents donen
+segments no isomorfs, perquè cap bon ordre no és isomorf a un segment propi
+seu (corol·lari~\ref{cor:no-segment-propi}). Així l'aplicació
+\[
+s\ \longmapsto\ [\,(S_{<s},\,R\!\restriction\!S_{<s})\,]
+\]
+és una bijecció de \(S\) sobre \(\Hart(A)_{<\alpha}\), i és creixent perquè
+\(s\mathrel R s'\) equival a \(S_{<s}\) ser segment inicial propi de
+\(S_{<s'}\). Per tant és un isomorfisme d'ordre \((S,R)\cong
+\Hart(A)_{<\alpha}\), i \(\Hart(A)_{<\alpha}\) té tipus \(\alpha\).
+\end{prova}
+
+\begin{teorema}[Hartogs]\index{Hartogs, teorema de}\label{teo:hartogs}
+Per a tot conjunt \(A\), el bon ordre \(\Hart(A)\) \emph{no} admet cap
+monomorfisme \(\Hart(A)\hookrightarrow A\). És a dir, \(\Hart(A)\not\preceq A\):
+hi ha un bon ordre estrictament \enquote{massa llarg} per a \(A\).\par
+\emph{Axiomes usats:} els de la proposició~\ref{prop:hartogs-bon-ordre}; cap
+axioma nou; \emph{cap elecció}.
+\end{teorema}
+
+\begin{prova}
+Suposem, cap a una contradicció, un monomorfisme \(m\colon\Hart(A)\hookrightarrow
+A\). Transportant l'ordre de \(\Hart(A)\) per \(m\), la imatge
+\(S_{*}:=m(\Hart(A))\hookrightarrow A\) és una part d'\(A\) dotada d'un bon
+ordre \(R_{*}\hookrightarrow S_{*}\times S_{*}\) isomorf a \(\Hart(A)\) ---és a
+dir, \((S_{*},R_{*})\in\WO(A)\), i el seu tipus
+\([(S_{*},R_{*})]\in\Hart(A)\) és el tipus del bon ordre \(\Hart(A)\) mateix.
+Ara bé, per construcció, \(\Hart(A)\) ordena \emph{tots} els tipus de bons
+ordres sobre parts d'\(A\), inclòs \([(S_{*},R_{*})]\); i pel
+lema~\ref{lema:segment-tipus} el segment inicial de \(\Hart(A)\) determinat per
+un tipus \(\alpha\) és isomorf a un bon ordre de tipus \(\alpha\). En
+particular, \(\Hart(A)\) seria isomorf al segment inicial de \(\Hart(A)\)
+determinat per \([(S_{*},R_{*})]\), un segment inicial \emph{propi} de si
+mateix ---perquè \([(S_{*},R_{*})]\) és un element de \(\Hart(A)\). Això
+contradiu que cap bon ordre no és isomorf a cap segment propi seu
+(corol·lari~\ref{cor:no-segment-propi}). Per tant no existeix cap tal \(m\), i
+\(\Hart(A)\not\preceq A\).
+\end{prova}
+
+\begin{observacio}[Hartogs com a paral·lel de Cantor]\label{obs:hartogs-cantor}
+El teorema de Hartogs és, per als \emph{ordres}, l'anàleg del que el teorema
+de Cantor (teorema~\ref{teo:cantor}) és per a les \emph{mides}: així com
+\(P(A)\) produeix una mida estrictament més gran que \(A\), \(\Hart(A)\)
+produeix un bon ordre estrictament més llarg que qualsevol que càpiga dins
+\(A\). Cap dels dos no usa elecció, i tots dos són \enquote{diagonals} en un
+sentit ampli: la contradicció surt de fer actuar la construcció sobre si
+mateixa. La diferència de funció és que \(P\) mesura cardinalitat i
+\(\Hart\) mesura longitud d'ordre; per això \(\Hart(A)\) serà la cota natural
+de les recursions que segueixen, on el que importa és la longitud.
+\end{observacio}
+
+\section{El teorema del bon ordre}\label{sec:teorema-bon-ordre}
+
+Amb l'elecció i la cota de Hartogs podem provar que tot conjunt admet un bon
+ordre. La idea és anar exhaurint \(A\) triant successivament un element del
+que queda; el que garanteix que el procés \emph{acaba} ---i per tant que és
+una recursió acotada, no una \enquote{sobre tots els ordinals}--- és
+\(\Hart(A)\).
+
+\begin{teorema}[Teorema del bon ordre (Zermelo)]\label{teo:bon-ordre}
+Suposem l'axioma d'elecció (axioma~\ref{ax:eleccio}). Aleshores tot conjunt
+\(A\) admet un bon ordre: existeix una relació \(R\hookrightarrow A\times A\)
+que és un bon ordre sobre tot \(A\).\par
+\emph{Axiomes usats:} elecció (axioma~\ref{ax:eleccio}), Hartogs
+(teorema~\ref{teo:hartogs}), recursió transfinita amb codomini fix
+(teorema~\ref{teo:recursio-transfinita}); cap recursió \enquote{sobre tots els
+ordinals} ---la construcció és acotada per \(\Hart(A)\).
+\end{teorema}
+
+\begin{prova}
+Per l'elecció (axioma~\ref{ax:eleccio}), la família de les parts no inicials
+d'\(A\) admet una \emph{funció d'elecció}: una aplicació
+\(c\colon P(A)\setminus\{\varnothing\}\to A\) amb \(c(S)\in S\) per a tota
+part no inicial \(S\) ---una secció de la família corresponent
+(definició~\ref{def:seccio-familia}, proposició~\ref{prop:epi-regular-eleccio}).
+Afegim un punt exterior \(\top\), formant \(A^{+}=A+\mathbf1\), i definim per
+recursió transfinita (teorema~\ref{teo:recursio-transfinita}) sobre el bon
+ordre \(\Hart(A)\) una aplicació \(F\colon\Hart(A)\to A^{+}\) amb la regla:
+donada la història \(F|_{\Hart(A)_{<\alpha}}\),
+\[
+F(\alpha)\ :=\
+\begin{cases}
+c\bigl(A\setminus F(\Hart(A)_{<\alpha})\bigr) & \text{si } A\setminus F(\Hart(A)_{<\alpha})\neq\varnothing,\\[1mm]
+\top & \text{altrament,}
+\end{cases}
+\]
+és a dir, a cada etapa es tria ---amb \(c\)--- un element d'\(A\) encara no
+fet servir, i \(\top\) quan ja no en queda cap. El codomini \(A^{+}\) és
+\emph{fix}, de manera que el teorema~\ref{teo:recursio-transfinita} s'aplica i
+\(F\) existeix.
+
+\emph{\(F\) s'atura.} Sobre la part \(H_0=\{\alpha:F(\alpha)\neq\top\}\), la
+regla fa \(F\) \emph{injectiva} cap a \(A\) (encara no hi ha cap ordre fixat
+sobre \(A\), de manera que no té sentit dir-la \enquote{creixent}): si
+\(\beta<\alpha\) i \(F(\alpha)\neq\top\), aleshores
+\(F(\alpha)\notin F(\Hart(A)_{<\alpha})\), en particular \(F(\alpha)\neq
+F(\beta)\). Si \(F\) no prengués mai \(\top\),
+\(F\colon\Hart(A)\hookrightarrow A\) seria un monomorfisme, contra el teorema
+de Hartogs (teorema~\ref{teo:hartogs}). Per tant existeix algun \(\alpha\) amb
+\(F(\alpha)=\top\); sigui \(\alpha_0\) el mínim
+(bon ordre de \(\Hart(A)\), proposició~\ref{prop:hartogs-bon-ordre}).
+
+\emph{El bon ordre sobre \(A\).} Per la minimalitat de \(\alpha_0\),
+\(F(\alpha)\neq\top\) per a tot \(\alpha<\alpha_0\); i per a
+\(\alpha>\alpha_0\) també \(F(\alpha)=\top\), perquè
+\(F(\Hart(A)_{<\alpha})\supseteq F(\Hart(A)_{<\alpha_0})=A\) i el complement
+és buit. Així \(F(\alpha)=\top\) exactament per a \(\alpha\ge\alpha_0\); i
+\(F(\alpha_0)=\top\) vol dir \(A\setminus F(\Hart(A)_{<\alpha_0})=\varnothing\),
+és a dir \(F(\Hart(A)_{<\alpha_0})=A\). Així la restricció
+\[
+F|_{\Hart(A)_{<\alpha_0}}\colon\ \Hart(A)_{<\alpha_0}\ \longrightarrow\ A
+\]
+és injectiva i exhaustiva: una bijecció entre el segment inicial
+\(\Hart(A)_{<\alpha_0}\) ---un bon ordre (proposició~\ref{prop:segment-ben-ordenat})---
+i \(A\) (encara sense ordre). Transportant l'ordre del segment per aquesta
+bijecció s'obté un bon ordre \(R\hookrightarrow A\times A\) sobre tot \(A\), i
+respecte d'aquest ordre transportat la bijecció esdevé, ja sí, un isomorfisme
+d'ordre creixent. El procés ha estat
+\emph{acotat} per \(\Hart(A)\): no hem recorregut \enquote{tots els
+ordinals}, sinó el bon ordre concret \(\Hart(A)\), i ens hem aturat en
+\(\alpha_0<\) la seva longitud.
+\end{prova}
+
+\begin{observacio}[Per què cal la cota de Hartogs]\label{obs:cota-hartogs}
+La construcció \enquote{anar triant un element del que queda} és la prova
+clàssica de Zermelo, però tal com se sol enunciar amaga una recursió sobre
+una col·lecció d'ordinals que no és, a priori, un conjunt. El tractament
+estructural ho evita fent la recursió sobre el bon ordre \emph{concret}
+\(\Hart(A)\), que sí que és un conjunt (definició~\ref{def:hartogs}): la
+recursió transfinita amb codomini fix (teorema~\ref{teo:recursio-transfinita})
+s'hi aplica directament, i el teorema de Hartogs garanteix que abans
+d'esgotar \(\Hart(A)\) ja s'han esgotat els elements d'\(A\). Aquesta és la
+raó tècnica per la qual Hartogs precedeix el teorema del bon ordre: és la cota
+que converteix una recursió \enquote{potencialment sense fi} en una recursió
+acotada de Nivell~I més elecció.
+\end{observacio}
+
+\section{El lema de Zorn}\label{sec:zorn}
+
+La tercera forma de maximalitat és el lema de Zorn, que en la pràctica
+matemàtica és la més usada. El demostrarem a partir del teorema del bon
+ordre; primer, el vocabulari.
+
+\begin{definicio}[Cadena, cota superior, maximal]\index{Cadena, cota superior, maximal}\label{def:zorn-nocions}
+Sigui \((P,\le)\) un conjunt parcialment ordenat (un ordre reflexiu,
+antisimètric i transitiu, capítol~\ref{cap:bons-ordres}).
+\begin{itemize}
+\item Una \emph{cadena} de \(P\) és una part \(C\hookrightarrow P\) totalment
+ordenada per \(\le\): dos elements qualssevol de \(C\) són comparables.
+\item Una \emph{cota superior} d'una part \(S\hookrightarrow P\) és un
+element \(b\in P\) amb \(s\le b\) per a tot \(s\in S\).
+\item Un element \(m\in P\) és \emph{maximal} si cap element no el supera
+estrictament: \(m\le x\) implica \(m=x\).
+\end{itemize}
+\end{definicio}
+
+\begin{observacio}[Maximal no és màxim]\label{obs:maximal-maxim}
+Convé no confondre \emph{maximal} amb \emph{màxim}. Un \emph{màxim} és un
+element \(\ge\) que \emph{tots} els altres; un \emph{maximal} és només un
+element que \emph{cap} altre no supera. En un ordre total coincideixen, però
+en un ordre parcial pot haver-hi diversos maximals i cap màxim: per exemple,
+en les parts pròpies d'un conjunt de dos elements ordenades per inclusió, els
+dos singletons són tots dos maximals, i no hi ha màxim. El lema de Zorn dona
+un \emph{maximal}, no un màxim; afirmar que dona un màxim seria fals.
+\end{observacio}
+
+\begin{teorema}[Lema de Zorn]\index{Zorn, lema de}\label{teo:zorn}
+Suposem l'axioma d'elecció (axioma~\ref{ax:eleccio}). Sigui \((P,\le)\) un
+conjunt parcialment ordenat no inicial en què \emph{tota cadena té una cota
+superior}. Aleshores \(P\) té almenys un element maximal.\par
+\emph{Axiomes usats:} elecció (axioma~\ref{ax:eleccio}), teorema del bon
+ordre (teorema~\ref{teo:bon-ordre}) i recursió transfinita
+(teorema~\ref{teo:recursio-transfinita}); tot acotat, cap recursió sobre una
+classe.
+\end{teorema}
+
+\begin{prova}
+Suposem, cap a una contradicció, que \(P\) no té cap maximal: per a tot
+\(x\in P\) existeix \(x'\) amb \(x<x'\). Aleshores tota cadena \(C\) té, a
+més d'una cota superior, una cota superior \emph{estricta} ---un element
+estrictament més gran que tots els de \(C\)---: prenent una cota superior
+\(b\) de \(C\) i un \(b'>b\) (que existeix perquè \(b\) no és maximal),
+\(b'\) supera estrictament tot \(C\).
+
+Considerem la família indexada per les parts de \(P\) que té, sobre cada
+part \(C\), la part de \(P\) de les seves cotes superiors estrictes
+(una part de \(P(P)\times P\), tallada amb quantificadors interns). Les
+fibres sobre les cadenes són no buides pel paràgraf anterior; restringint
+la família a la part de les cadenes i aplicant l'elecció
+(axioma~\ref{ax:eleccio}) obtenim una aplicació \(c\) que a cada cadena
+\(C\) assigna una cota superior estricta \(c(C)\notin C\). Fixem també un
+punt qualsevol \(p_0\in P\) (\(P\) no és inicial). Definim per recursió
+transfinita (teorema~\ref{teo:recursio-transfinita}) sobre \(\Hart(P)\) una
+aplicació \(F\colon\Hart(P)\to P\) amb la regla \emph{total}
+\[
+F(\alpha):=
+\begin{cases}
+c\bigl(F(\Hart(P)_{<\alpha})\bigr) & \text{si } F(\Hart(P)_{<\alpha})\text{ és una cadena},\\[1mm]
+p_0 & \text{altrament},
+\end{cases}
+\]
+on la condició \enquote{ser una cadena} és interna (quantificadors acotats
+sobre \(P\times P\)); la segona clàusula no s'arribarà a usar mai, però fa
+que la regla estigui definida per a tota història, com el
+teorema~\ref{teo:recursio-transfinita} exigeix. Per inducció transfinita
+(teorema~\ref{teo:induccio-transfinita}) es comprova alhora que la imatge
+\(F(\Hart(P)_{<\alpha})\) és sempre una cadena i que \(F\) és estrictament
+creixent: si ho és per a tot \(\beta<\alpha\), els valors \(F(\beta)\)
+estan totalment ordenats, de manera que la imatge és una cadena, el primer
+cas de la regla s'aplica, i \(F(\alpha)=c(\cdot)\) supera estrictament tots
+els \(F(\beta)\) amb \(\beta<\alpha\). Per tant \(F\colon\Hart(P)\to P\) és un
+monomorfisme (una aplicació estrictament creixent des d'un ordre total és
+injectiva), és a dir \(\Hart(P)\preceq P\). Però això contradiu el teorema de
+Hartogs (teorema~\ref{teo:hartogs}), \(\Hart(P)\not\preceq P\). La
+contradicció ve de suposar que \(P\) no té maximal; per tant \(P\) en té un.
+\end{prova}
+
+\begin{observacio}[La cota de Hartogs, altre cop]\label{obs:zorn-hartogs}
+La prova de Zorn és, estructuralment, la mateixa que la del teorema del bon
+ordre: una recursió que tria a cada pas un element \enquote{nou} (aquí, una
+cota estricta) i que \emph{no pot continuar indefinidament} perquè
+\(\Hart(P)\) no s'injecta en \(P\). És el teorema de Hartogs, i no cap
+recursió sobre una classe d'ordinals, el que atura el procés i dona la
+contradicció. Aquesta és la manera estructural, i acotada, de fer el que en
+la prova clàssica es fa \enquote{iterant fins que ja no es pot}.
+\end{observacio}
+
+\subsection{Una aplicació: tot espai vectorial té una base}\label{sub:base}
+
+Perquè Zorn no quedi com un enunciat purament fundacional, en donem una
+aplicació matemàtica genuïna: l'existència de bases. Es formula amb el
+vocabulari d'aquest llibre prenent un espai vectorial com un conjunt amb les
+operacions internes corresponents; el que importa aquí és l'estructura de
+l'argument de Zorn.
+
+\begin{proposicio}[Existència de base]\label{prop:base}
+Suposem l'elecció. Tot espai vectorial \(V\) sobre un cos \(K\) té una base:
+una part \(B\hookrightarrow V\) linealment independent i generadora.\par
+\emph{Axiomes usats:} lema de Zorn (teorema~\ref{teo:zorn}); per tant elecció.
+\end{proposicio}
+
+\begin{prova}
+Sigui \(P\) el conjunt de les parts linealment independents de \(V\),
+ordenat per inclusió ---una part de \(P(V)\) tallada per la condició interna
+d'independència lineal (cap combinació lineal finita no trivial no s'anul·la),
+que és un conjunt parcialment ordenat no inicial (la part buida hi és, o
+qualsevol singletó no nul). Vegem que tota cadena \(C\hookrightarrow P\) té
+cota superior: la unió \(U=\bigcup C\) (unió indexada de parts,
+capítol~\ref{cap:families}) és linealment independent, perquè tota
+combinació lineal involucra només un nombre \emph{finit} de vectors, que per
+ser \(C\) una cadena viuen tots en un mateix membre de la cadena, on són
+independents; i \(U\) conté tots els membres de \(C\), és a dir n'és cota
+superior. Pel lema de Zorn (teorema~\ref{teo:zorn}), \(P\) té un element
+maximal \(B\). Aquesta \(B\) és una base: és independent per ser a \(P\), i
+és generadora perquè si algun \(v\in V\) no fos combinació lineal de \(B\),
+aleshores \(B\cup\{v\}\) seria independent i estrictament més gran, contra la
+maximalitat de \(B\).
+\end{prova}
+
+\begin{observacio}[Altres aplicacions]\label{obs:zorn-aplicacions}
+El mateix esquema ---ordenar per inclusió, veure que les unions de cadenes
+resten dins la classe, i prendre un maximal--- dona molts resultats
+d'existència no constructius: l'extensió d'un filtre a un ultrafiltre, la
+clausura algebraica d'un cos, l'existència d'ideals maximals en un anell amb
+unitat, o el teorema de Hahn--Banach en la seva forma algebraica. En tots,
+Zorn substitueix una tria \enquote{fins a l'infinit} per un maximal; i en
+tots, la propietat de tancament per unions de cadenes és el que cal
+comprovar.
+\end{observacio}
+
+\section{Les tres equivalències}\label{sec:equivalencies}
+
+Tanquem el capítol amb el cercle clàssic: sobre la base dels altres axiomes
+del llibre, les tres afirmacions són equivalents.
+
+\begin{teorema}[Elecció, bon ordre i Zorn són equivalents]\label{teo:equivalencies}
+Sobre els axiomes del llibre \emph{sense} l'elecció, les tres afirmacions
+següents són equivalents:
+\[
+\begin{aligned}
+\text{(E) elecció}
+\quad&\Longleftrightarrow\quad
+\text{(BO) tot conjunt admet un bon ordre}\\
+&\Longleftrightarrow\quad
+\text{(Z) lema de Zorn.}
+\end{aligned}
+\]
+\emph{Axiomes usats:} recursió transfinita i Hartogs
+(capítols~\ref{cap:recursio} i aquest), que no depenen de l'elecció; les
+implicacions que \emph{introdueixen} l'elecció es marquen a la prova.
+\end{teorema}
+
+\begin{prova}
+\emph{(E) \(\Rightarrow\) (BO)} és el teorema del bon ordre
+(teorema~\ref{teo:bon-ordre}); \emph{(E) \(\Rightarrow\) (Z)} és el lema de
+Zorn (teorema~\ref{teo:zorn}). Falten dues direccions que \emph{retornen}
+l'elecció.
+
+\emph{(BO) \(\Rightarrow\) (E).} Sigui \(p\colon E\twoheadrightarrow I\) una
+família de parts no inicials (un epimorfisme regular). Per (BO), fixem un bon
+ordre sobre \(E\). Aleshores cada fibra \(E_i=p^{-1}(i)\) és una part no
+inicial d'\(E\), i té un \emph{mínim} per al bon ordre
+(definició~\ref{def:bon-ordre}); l'aplicació \(s\colon I\to E\) que a cada
+\(i\) assigna \(\min(E_i)\) és una secció de \(p\) ---està ben definida
+perquè el mínim és únic i canònic, sense cap tria addicional. Per tant tota
+família de parts no buides té secció, que és l'elecció (axioma~\ref{ax:eleccio}).
+
+\emph{(Z) \(\Rightarrow\) (BO)}, i per tant \((Z)\Rightarrow(E)\). Sigui \(A\)
+un conjunt; volem ben ordenar-lo. Considerem el conjunt \(P\) dels
+\emph{bons ordres parcials} d'\(A\): els parells \((S,R)\) amb
+\(S\hookrightarrow A\) i \(R\) un bon ordre sobre \(S\) ---una part de
+\(P(A)\times P(A\times A)\). Ordenem \(P\) per \emph{extensió inicial}:
+\((S,R)\le(S',R')\) si \(S\hookrightarrow S'\), \(R\) és la restricció de
+\(R'\) a \(S\), i \(S\) és un \emph{segment inicial} de \((S',R')\). Tota cadena \(C\) té cota superior: siguin
+\(S_{C}=\bigcup\{S:(S,R)\in C\}\) i \(R_{C}=\bigcup\{R:(S,R)\in C\}\) les
+unions indexades (capítol~\ref{cap:families}). \(R_{C}\) és un ordre
+estricte total sobre \(S_{C}\), perquè dos punts qualssevol són en un mateix
+membre de la cadena (que està totalment ordenada per extensió inicial) i
+allà són comparables; i és un bon ordre: si \(T\hookrightarrow S_{C}\) és
+una part no buida, prenem un punt \(t\in T\) i un membre \((S,R)\in C\) amb
+\(t\in S\); el mínim de \(T\cap S\) per \(R\) és el mínim de tot \(T\),
+perquè qualsevol altre punt de \(T\) o bé és a \(S\), o bé és en un membre
+que estén \((S,R)\) \emph{inicialment}, i aleshores és \(\ge\) tots els
+punts de \(S\). Finalment \((S_{C},R_{C})\) estén inicialment cada membre
+de \(C\), de manera que n'és cota superior. (La cadena buida té per cota
+\((\varnothing,\varnothing)\in P\).) Pel lema de Zorn
+(teorema~\ref{teo:zorn}), \(P\) té un maximal \((S_{*},R_{*})\). Ha de ser
+\(S_{*}=A\): si quedés un element \(a\in A\setminus S_{*}\), afegint-lo al
+final de \(R_{*}\) obtindríem un bon ordre parcial estrictament més gran,
+contra la maximalitat. Per tant \(R_{*}\) és un bon ordre sobre tot \(A\), i
+val (BO).
+
+Les tres afirmacions són, doncs, equivalents. Cap direcció no ha exigit una
+recursió més forta que la del capítol~\ref{cap:recursio}: la construcció de
+\(\Hart\) i les recursions són totes acotades i de codomini fix.
+\end{prova}
+
+\begin{resumcap}
+\apartat{Idees centrals}
+\begin{enumerate}
+  \item Un bon ordre sobre una part d'\(A\) és un parell \((S,R)\) dins \(P(A)\times P(A\times A)\); el suport ha de ser una dada perquè la relació buida no el determina. \(\WO(A)\) és una part interna i \(\Hart(A)=\WO(A)/\!\cong\) existeix per l'efectivitat.
+  \item \(\Hart(A)\), ordenat per segment inicial, és un bon ordre, i el segment anterior a un tipus \(\alpha\) té tipus \(\alpha\). Teorema de Hartogs: \(\Hart(A)\not\preceq A\), sense elecció; és l'anàleg ordinal de Cantor.
+  \item Teorema del bon ordre: amb una funció d'elecció sobre les parts no buides d'\(A\) i una recursió \emph{acotada per \(\Hart(A)\)}, s'exhaureix \(A\) abans d'esgotar \(\Hart(A)\), i la bijecció resultant transporta el bon ordre del segment.
+  \item Lema de Zorn amb la mateixa cota: si no hi hagués maximal, una recursió que tria cotes estrictes donaria \(\Hart(P)\preceq P\), contra Hartogs. Zorn dona un maximal, no un màxim.
+  \item Elecció, bon ordre i Zorn són equivalents; (BO)\(\Rightarrow\)(E) pel mínim de cada fibra, (Z)\(\Rightarrow\)(BO) per maximalitat en els bons ordres parcials.
+\end{enumerate}
+\apartat{Errors típics} Codificar un bon ordre només per la relació, perdent el suport; parlar de \enquote{tots els ordinals} en lloc de \(\Hart(A)\); donar una regla de recursió definida només en el cas bo (ha de ser total); confondre maximal amb màxim, o cota superior amb cota estricta; i oblidar que la unió d'una cadena de bons ordres parcials és ben ordenada \emph{perquè} les extensions són inicials.
+\apartat{Lectura recomanada} \cite[§§15--17]{halmos} per a l'elecció, Zorn i el teorema del bon ordre en la teoria clàssica; \cite[cap.~5]{jech2003} per al teorema de Hartogs, l'aleph de Hartogs i les equivalències de l'elecció; \cite[cap.~I.12]{kunen2011} per a la presentació axiomàtica d'aquests resultats; i \cite[apèndix~B]{lawvere-rosebrugh} per a la formulació estructural de l'elecció i els seus equivalents.
+\end{resumcap}

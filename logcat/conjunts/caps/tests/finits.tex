@@ -1,0 +1,131 @@
+\chapter{Conjunts finits i cardinalitat finita}\label{test:cap9}
+
+Aquest test correspon al capítol~9 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u9}{b,c,b,a,c,b,a,c,b,c,a,c}
+
+\begin{enumerate}
+
+\pregunta El segment inicial satisfà la descomposició successora\ldots
+\begin{itemize}
+\opcio{a}{\(\seg{s\circ n}\cong\seg{n}\times\mathbf2\).}
+\opcio{b}{\(\seg{s\circ n}\cong\seg{n}+\mathbf1\).}
+\opcio{c}{\(\seg{s\circ n}\cong\seg{n}\).}
+\opcio{d}{\(\seg{s\circ n}\cong\mathbf1\).}
+\end{itemize}
+\feedback
+\justificacio{Un punt \(k<s\circ n\) compleix \(k\le n\): o bé \(k<n\) o bé \(k=n\), i no totes dues coses. Les dues parts complementàries són \(\seg{n}\) i el punt \(n\), i formen la suma.}
+
+\pregunta La finitud i la cardinalitat internes es basen en\ldots
+\begin{itemize}
+\opcio{a}{els ordinals metanivell \([k]\).}
+\opcio{b}{un conjunt de tots els conjunts.}
+\opcio{c}{la família interna dels segments \(n\mapsto\seg{n}\).}
+\opcio{d}{l'axioma d'elecció.}
+\end{itemize}
+\feedback
+\justificacio{Els segments són les fibres de la part \(\operatorname{Lt}\hookrightarrow\N\times\N\), una família interna indexada per \(\N\); els \([k]\) només existeixen per a numerals del metallenguatge, i no hi ha cap conjunt de tots els conjunts.}
+
+\pregunta Un punt global de \(\operatorname{Isos}(A,B)\) és\ldots
+\begin{itemize}
+\opcio{a}{un monomorfisme \(A\to B\).}
+\opcio{b}{un isomorfisme \(A\to B\).}
+\opcio{c}{una part de \(A\times B\).}
+\opcio{d}{un element de \(A\).}
+\end{itemize}
+\feedback
+\justificacio{\(\operatorname{Isos}(A,B)\) és la imatge, dins \(B^A\), dels parells \((f,g)\) amb \(g\circ f=\id\) i \(f\circ g=\id\); un punt seu és una \(f\) que admet inversa, és a dir, un isomorfisme.}
+
+\pregunta Un conjunt \(A\) és \emph{finit} quan\ldots
+\begin{itemize}
+\opcio{a}{\(\operatorname{Card}(A)\) és no inicial, és a dir, existeix \(n\) amb \(\seg{n}\approx A\).}
+\opcio{b}{\(A\) és terminal.}
+\opcio{c}{\(A\) admet un element global.}
+\opcio{d}{\(A\cong\N\).}
+\end{itemize}
+\feedback
+\justificacio{És la definició: \(\operatorname{Card}(A)\) és la imatge de la projecció de les bijeccions codificades \(\seg{n}\to A\) sobre \(\N\), i \(A\) és finit quan aquesta part té algun punt. Ser terminal o tenir un punt són condicions molt més fortes; \(\N\) no és finit.}
+
+\pregunta El cardinal \(|A|\) d'un conjunt finit està ben definit perquè\ldots
+\begin{itemize}
+\opcio{a}{s'admet l'axioma d'elecció.}
+\opcio{b}{\(\N\) és infinit.}
+\opcio{c}{un isomorfisme \(\seg{m}\cong\seg{n}\) força \(m=n\).}
+\opcio{d}{tot conjunt és finit.}
+\end{itemize}
+\feedback
+\justificacio{El lema de comparació de segments dona \(m\le n\) de tot monomorfisme \(\seg{m}\hookrightarrow\seg{n}\); un isomorfisme dona les dues desigualtats i \(m=n\). Cap elecció no hi intervé.}
+
+\pregunta El principi dels calaixos diu que si \(|A|>|B|\) (finits), aleshores\ldots
+\begin{itemize}
+\opcio{a}{\(A\cong B\).}
+\opcio{b}{no hi ha cap monomorfisme \(A\hookrightarrow B\).}
+\opcio{c}{no hi ha cap aplicació \(A\to B\).}
+\opcio{d}{\(B\) és inicial.}
+\end{itemize}
+\feedback
+\justificacio{Un monomorfisme \(A\hookrightarrow B\) donaria un monomorfisme \(\seg{|A|}\hookrightarrow\seg{|B|}\) i, per comparació de segments, \(|A|\le|B|\). Sí que hi ha aplicacions \(A\to B\), però cap d'injectiva.}
+
+\pregunta Per a \(f\colon A\to B\) entre finits amb \(|A|=|B|\), ser monomorfisme, epimorfisme o isomorfisme\ldots
+\begin{itemize}
+\opcio{a}{són tres condicions equivalents.}
+\opcio{b}{no tenen cap relació.}
+\opcio{c}{només coincideixen si \(A\) és terminal.}
+\opcio{d}{mai no es donen alhora.}
+\end{itemize}
+\feedback
+\justificacio{Mono \(\Rightarrow\) iso pel recompte de la suma aplicat a \(B=\operatorname{Im}(f)+C\); epi \(\Rightarrow\) iso escindint \(f\) i aplicant l'anterior a la secció. És el tret propi del cas finit: a \(\N\) el successor és mono i no epi.}
+
+\pregunta El nombre de parts d'un conjunt finit amb \(|A|=n\) és\ldots
+\begin{itemize}
+\opcio{a}{\(n\).}
+\opcio{b}{\(n^{2}\).}
+\opcio{c}{\(2^{n}\).}
+\opcio{d}{\(2\cdot n\).}
+\end{itemize}
+\feedback
+\justificacio{\(P(A)\cong\mathbf2^{A}\), i per inducció \(|\mathbf2^{\seg{s\circ n}}|=|\mathbf2^{\seg{n}}\times\mathbf2|=2\cdot2^n\), amb \(2^0=1\).}
+
+\pregunta El nombre d'aplicacions \(A\to B\) entre finits amb \(|A|=n\), \(|B|=m\) és\ldots
+\begin{itemize}
+\opcio{a}{\(n\cdot m\).}
+\opcio{b}{\(m^{n}\).}
+\opcio{c}{\(n^{m}\).}
+\opcio{d}{\(n+m\).}
+\end{itemize}
+\feedback
+\justificacio{Per inducció sobre \(n\) amb l'exponencial d'una suma: \(|\seg{m}^{\seg{s\circ n}}|=|\seg{m}^{\seg{n}}\times\seg{m}|=m^n\cdot m\). L'exponent és el cardinal del domini.}
+
+\pregunta Tota part \(S\) d'un conjunt finit \(A\)\ldots
+\begin{itemize}
+\opcio{a}{és sempre infinita.}
+\opcio{b}{té el mateix cardinal que \(A\).}
+\opcio{c}{és finita amb \(|S|\le|A|\).}
+\opcio{d}{és inicial.}
+\end{itemize}
+\feedback
+\justificacio{Per inducció sobre el cardinal d'\(A\), descomponent la part en el que cau sobre \(\seg{n}\) i el que cau sobre el punt nou; el recompte de la suma dona \(|S|\le n+1\). El complement també és finit.}
+
+\pregunta Per què la inducció del lema de comparació de segments es fa sobre el predicat codificat \(P(m)\) i no directament sobre \enquote{existeix un monomorfisme \(\seg{m}\hookrightarrow\seg{n}\)}?
+\begin{itemize}
+\opcio{a}{Perquè el principi d'inducció només s'aplica a parts de \(\N\), i \enquote{existeix un monomorfisme entre dos objectes que varien amb \(m,n\)} només és una part un cop codificat dins un exponencial fix.}
+\opcio{b}{Perquè la inducció necessita l'axioma d'elecció.}
+\opcio{c}{Perquè els segments no són conjunts.}
+\opcio{d}{Per comoditat; es podria fer directament.}
+\end{itemize}
+\feedback
+\justificacio{Les aplicacions \(\seg{m}\to\seg{n}\) s'estenen a \(\N\to\N+\mathbf1\), i \enquote{existeix un monomorfisme} esdevé la no-inicialitat d'una fibra de la part \(\mathcal M\) de \(\N\times\N\times(\N+\mathbf1)^{\N}\): una fórmula interna en \(m\). Sense això, la inducció seria un esquema extern.}
+
+\pregunta On intervé l'axioma d'elecció en aquest capítol?
+\begin{itemize}
+\opcio{a}{En la construcció de \(\operatorname{Card}(A)\), per triar un isomorfisme.}
+\opcio{b}{En la unicitat del cardinal.}
+\opcio{c}{Només per escindir l'epimorfisme a \enquote{epi \(\Rightarrow\) iso en cardinal igual}, i s'hi pot evitar amb el bon ordre de \(\N\).}
+\opcio{d}{A tots els recomptes.}
+\end{itemize}
+\feedback
+\justificacio{\(\operatorname{Card}(A)\) és una imatge, sense cap tria; la comparació i els recomptes són induccions. L'única secció que cal, la d'un epimorfisme entre finits, es pot definir prenent el mínim de cada fibra, que és únic.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

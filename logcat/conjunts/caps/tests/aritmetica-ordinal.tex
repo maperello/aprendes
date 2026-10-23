@@ -1,0 +1,131 @@
+\chapter{Aritmètica ordinal}\label{test:cap17}
+
+Aquest test correspon al capítol~17 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u17}{b,c,a,b,c,a,c,b,a,c,b,a}
+
+\begin{enumerate}
+
+\pregunta La suma ordinal \(\alpha+\beta\) és el tipus de\ldots
+\begin{itemize}
+\opcio{a}{\(A\times B\) amb l'ordre lexicogràfic.}
+\opcio{b}{\(A+B\) amb tot \(A\) abans de tot \(B\).}
+\opcio{c}{\(P(A+B)\).}
+\opcio{d}{\(A\cup B\) sense ordre.}
+\end{itemize}
+\feedback
+\justificacio{Concatenar és posar tot \(A\) abans de tot \(B\) dins la suma disjunta, mantenint cada ordre. L'ordre lexicogràfic sobre el producte dona el producte ordinal, no la suma.}
+
+\pregunta La suma ordinal\ldots
+\begin{itemize}
+\opcio{a}{és commutativa.}
+\opcio{b}{no és associativa.}
+\opcio{c}{és associativa però no commutativa: \(1+\omega=\omega\neq\omega+1\).}
+\opcio{d}{no és un bon ordre.}
+\end{itemize}
+\feedback
+\justificacio{Els dos costats de l'associativitat ordenen \(A+B+C\) en el mateix ordre; però afegir un punt al davant de \(\N\) s'absorbeix i al darrere no.}
+
+\pregunta \(1+\omega\) i \(\omega+1\)\ldots
+\begin{itemize}
+\opcio{a}{compleixen \(1+\omega=\omega\) i \(\omega+1>\omega\) (aquest té element màxim).}
+\opcio{b}{són iguals.}
+\opcio{c}{tots dos són successors de \(\omega\).}
+\opcio{d}{no són numerables.}
+\end{itemize}
+\feedback
+\justificacio{\(1+\N\cong\N\) desplaçant la numeració; \(\N+1\) té màxim, propietat invariant, de manera que \(\omega+1\neq\omega\) i és el seu successor.}
+
+\pregunta El producte ordinal \(\alpha\cdot\beta\) és el tipus de \(A\times B\) ordenat\ldots
+\begin{itemize}
+\opcio{a}{només per la coordenada d'\(A\).}
+\opcio{b}{primer per la coordenada de \(B\), després per la d'\(A\): \(\beta\) còpies d'\(\alpha\).}
+\opcio{c}{sense ordre.}
+\opcio{d}{per inclusió.}
+\end{itemize}
+\feedback
+\justificacio{Mana la coordenada de \(B\): per a cada punt de \(B\) hi ha una còpia sencera d'\(A\). Invertir la convenció donaria \(\beta\cdot\alpha\).}
+
+\pregunta \(2\cdot\omega\) i \(\omega\cdot2\)\ldots
+\begin{itemize}
+\opcio{a}{són iguals.}
+\opcio{b}{no estan definits.}
+\opcio{c}{compleixen \(2\cdot\omega=\omega\) però \(\omega\cdot2=\omega+\omega\neq\omega\).}
+\opcio{d}{són tots dos finits.}
+\end{itemize}
+\feedback
+\justificacio{\(\omega\) parelles una rere l'altra són \(\omega\); dues còpies de \(\omega\) tenen un punt no mínim sense predecessor immediat, que \(\N\) no té.}
+
+\pregunta La distributivitat del producte ordinal\ldots
+\begin{itemize}
+\opcio{a}{val per l'esquerra: \(\alpha\cdot(\beta+\gamma)=\alpha\cdot\beta+\alpha\cdot\gamma\); per la dreta falla.}
+\opcio{b}{val per tots dos costats.}
+\opcio{c}{no val mai.}
+\opcio{d}{val només per la dreta.}
+\end{itemize}
+\feedback
+\justificacio{\(\beta+\gamma\) còpies d'\(\alpha\) són \(\beta\) còpies seguides de \(\gamma\) còpies; per la dreta, \((1+1)\cdot\omega=\omega\) mentre que \(\omega+\omega\neq\omega\).}
+
+\pregunta Per a una base \(\alpha>0\), l'exponenciació ordinal satisfà les equacions\ldots
+\begin{itemize}
+\opcio{a}{\(\alpha^\lambda=\alpha\) als límits.}
+\opcio{b}{\(\alpha^{\beta+1}=\alpha+\alpha^\beta\).}
+\opcio{c}{\(\alpha^0=1\), \(\alpha^{\beta+1}=\alpha^\beta\cdot\alpha\), \(\alpha^\lambda=\sup_{\beta<\lambda}\alpha^\beta\).}
+\opcio{d}{una única clàusula.}
+\end{itemize}
+\feedback
+\justificacio{Amb la construcció per funcions de suport finit, aquestes tres equacions són un teorema per a \(\alpha>0\): unitat, multiplicar per \(\alpha\) al successor, suprem al límit.}
+
+\pregunta La clàusula límit de l'exponenciació\ldots
+\begin{itemize}
+\opcio{a}{no requereix res especial.}
+\opcio{b}{demana una família \((\alpha^\beta)_{\beta<\lambda}\) representada dins un bon ordre (la construcció per suport finit la proporciona), i no s'aplica a la base \(0\).}
+\opcio{c}{requereix l'axioma d'elecció.}
+\opcio{d}{només val per a \(\alpha\) finit.}
+\end{itemize}
+\feedback
+\justificacio{Per a \(\alpha>0\), totes les potències fins a \(\lambda\) són parts inicials d'un sol bon ordre de funcions de suport finit, que fa de cota; per a la base \(0\) la clàusula no val. Sense un ambient comú per a bases o exponents variables caldria SR.}
+
+\pregunta \(2^\omega\) com a tipus ordinal\ldots
+\begin{itemize}
+\opcio{a}{és \(\omega\) (numerable), diferent del cardinal \(2^{\aleph_0}\) (el continu).}
+\opcio{b}{és el continu.}
+\opcio{c}{no està definit.}
+\opcio{d}{és finit.}
+\end{itemize}
+\feedback
+\justificacio{\(2^\omega=\sup_n2^n\) i tots els \(2^n\) són finits: el suprem és \(\omega\). El cardinal \(2^{\aleph_0}\) és el del conjunt de parts de \(\N\), no numerable per Cantor.}
+
+\pregunta La diferència clau entre aritmètica ordinal i cardinal és que\ldots
+\begin{itemize}
+\opcio{a}{la cardinal és més gran.}
+\opcio{b}{són idèntiques.}
+\opcio{c}{l'ordinal recorda l'ordre; la cardinal l'oblida (identifica bons ordres equipotents).}
+\opcio{d}{l'ordinal no té exponenciació.}
+\end{itemize}
+\feedback
+\justificacio{Tots els tipus numerables infinits tenen la mateixa mida; la cardinal els identifica, l'ordinal els distingeix per la seva forma.}
+
+\pregunta Per què \(\beta\le\gamma\) implica \(\beta+\alpha\le\gamma+\alpha\), si \(B+A\) no és un segment de \(C+A\)?
+\begin{itemize}
+\opcio{a}{Perquè la suma és commutativa.}
+\opcio{b}{Perquè hi ha una immersió estrictament creixent \(B+A\to C+A\), i una immersió entre bons ordres compara els tipus (rigidesa).}
+\opcio{c}{Per l'axioma d'elecció.}
+\opcio{d}{No és cert en general.}
+\end{itemize}
+\feedback
+\justificacio{Si \(C+A\) fos més curt, seria isomorf a un segment propi de \(B+A\), i la composició amb la immersió faria baixar un punt, contra la rigidesa. L'estrictesa, en canvi, pot fallar.}
+
+\pregunta Per què la base \(0\) es tracta a part en l'exponenciació ordinal?
+\begin{itemize}
+\opcio{a}{Perquè si s'hi apliqués la clàusula límit resultaria \(0^\omega=\sup\{1,0,0,\dots\}=1\), mentre que \(0^\beta\) ha de ser \(0\) per a \(\beta\ge1\).}
+\opcio{b}{Perquè \(0^0\) no està definit.}
+\opcio{c}{Perquè \(0\) no és un tipus ordinal.}
+\opcio{d}{No es tracta a part.}
+\end{itemize}
+\feedback
+\justificacio{La construcció per funcions de suport finit necessita el mínim \(0_A\), que no existeix si \(A\) és buit; i la clàusula límit, aplicada a \(0\), no reproduiria \(\abs{\varnothing^{B}}=0\). Per això \(0^0:=1\) i \(0^\beta:=0\) per a \(\beta>0\).}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

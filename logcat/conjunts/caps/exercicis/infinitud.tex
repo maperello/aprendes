@@ -1,0 +1,51 @@
+\chapter{Infinitud, enumerabilitat i seqüències}\label{cap:exercicis-infinitud}
+
+Aquests exercicis proposats corresponen al capítol homònim de la part teòrica (capítol~\ref{cap:infinitud} de la Part~\ref{part:teoria}) i es resolen amb les tècniques dels exercicis resolts de la part pràctica (capítol~\ref{cap:practica-infinitud} de la Part~\ref{part:practica}). Cada secció remet al bloc de resolts que en dona el model. Els marcats amb una indicació són els més exigents.
+
+\section{Infinitud i infinitud de Dedekind}
+
+\begin{enumerate}
+  \item Demostreu que \(s\colon\N\to\N\) és un monomorfisme no exhaustiu i que, per tant, \(\N\) és infinit de Dedekind i infinit. (Model: secció~\ref{prac:infinits}; proposició~\ref{prop:N-dedekind}.)
+
+  \item Demostreu que tot conjunt infinit de Dedekind és infinit, sense cap axioma nou. (Model: proposició~\ref{prop:dedekind-implica-infinit}.)
+
+  \item Demostreu que si \(A\) és infinit de Dedekind, aleshores existeix un monomorfisme \(\N\hookrightarrow A\). \begin{indicacio}Iteneu el monomorfisme no exhaustiu \(f\) a partir d'un punt fora de la seva imatge; useu la recursió (capítol~\ref{cap:naturals}) per definir \(n\mapsto f^{n}(a_0)\) i comproveu que és injectiva.\end{indicacio}
+\end{enumerate}
+
+\section{Enumerables i numerables}
+
+\begin{enumerate}[resume]
+  \item Demostreu que tota imatge exhaustiva i tota part d'un conjunt enumerable són enumerables, sense elecció. (Model: secció~\ref{prac:enumerables}; proposició~\ref{prop:estabilitat-enumerable}.)
+
+  \item Demostreu que la suma i el producte de dos conjunts enumerables són enumerables. \begin{indicacio}Useu \(\N\cong\N+\N\) i un aparellament \(\N\cong\N\times\N\); vegeu la proposició~\ref{prop:estabilitat-enumerable}.\end{indicacio}
+
+  \item Demostreu que \(\N\times\N\) és enumerable exhibint explícitament un aparellament \(\N\cong\N\times\N\). \begin{indicacio}Model: secció~\ref{prac:enumerables}; la recursora de \enquote{següent parell en l'ordre per diagonals} és bijectiva. La fórmula tancada \(\tfrac12(i+j)(i+j+1)+j\) és correcta, però pressuposa la divisió.\end{indicacio}
+\end{enumerate}
+
+\section{Subobjectes de \texorpdfstring{\(\N\)}{N}}
+
+\begin{enumerate}[resume]
+  \item Demostreu que tota part de \(\N\) és enumerable i que és finita o isomorfa a \(\N\), sense elecció. (Model: secció~\ref{prac:subobjectes}; teorema~\ref{teo:subobjectes-N}.)
+
+  \item Demostreu que un conjunt és enumerable infinit si i només si és isomorf a \(\N\). (Model: corol·lari~\ref{cor:enumerable-infinit-N}.)
+
+  \item Expliqueu per què el principi del mínim permet evitar l'elecció en aquests resultats, i on deixaria de funcionar per a un conjunt infinit qualsevol. \begin{indicacio}El mínim d'una part no inicial de \(\N\) és únic i canònic; en un infinit sense ordre no hi ha tria distingida (observació~\ref{obs:minim-vs-eleccio}).\end{indicacio}
+\end{enumerate}
+
+\section{Llistes i unions numerables}
+
+\begin{enumerate}[resume]
+  \item Demostreu el principi de recursió sobre \(\operatorname{List}(A)\): per a tot \((B,b,t)\) hi ha una única \(h\) amb \(h\circ\varepsilon=b\) i \(h\circ\operatorname{cons}=t\circ(\id_A\times h)\). (Model: secció~\ref{prac:llistes}; proposició~\ref{prop:recursio-llistes}.)
+
+  \item Definiu, per recursió sobre llistes, la llargada \(\ell\), la concatenació amb una llista fixada i un plegat d'una operació binària. \begin{indicacio}Trieu \((B,b,t)\) adequats: \((\N,0,s\circ\pi_2)\) per a la llargada; itereu \(\operatorname{cons}\) per a la concatenació.\end{indicacio}
+
+  \item Demostreu que si \(A\) és enumerable, aleshores \(\operatorname{List}(A)\) és enumerable, sense elecció. (Model: observació~\ref{obs:llistes-enumerables}.)
+
+  \item Demostreu, amb l'elecció numerable, que la unió disjunta d'una família numerable d'enumerables és enumerable, i identifiqueu el pas que usa l'elecció. (Model: secció~\ref{prac:unions}; teorema~\ref{teo:unio-numerable} i observació~\ref{obs:eleccio-unio}.)
+
+  \item A la prova del teorema~\ref{teo:infinit-implica-dedekind}, expliqueu per què \enquote{\(a_n\) és el primer valor de \(f_n\) que no és cap \(a_i\) amb \(i<n\)} no és una recursió de l'axioma~\ref{ax:naturals}, i comproveu amb detall que la construcció amb llistes de llargada \(2^n\) és injectiva. \begin{indicacio}La regla depèn de tota la història \(a_0,\dots,a_{n-1}\), no només de \(a_{n-1}\); amb \(V_n\) definit a partir de les \(f_{2^m-1}\), \(a_m\in V_n\) per a \(m<n\) i \(a_n\notin V_n\).\end{indicacio}
+
+  \item Demostreu que \(\operatorname{List}(\N)\cong\N\) mitjançant la codificació \(c(\varepsilon)=0\), \(c(\operatorname{cons}(k,u))=s(\pi(k,c(u)))\), amb \(\pi\) un aparellament bijectiu. \begin{indicacio}Injectivitat per inducció sobre la llargada; exhaustivitat per inducció sobre el codi, usant que tot natural és \(0\) o \(s(\pi(k,m))\) amb \(m\) més petit que el codi.\end{indicacio}
+
+  \item \textbf{Axiomes usats.} Per a cadascun dels resultats següents, digueu si usa l'elecció numerable o no: \(\N\) és infinit de Dedekind; Dedekind implica infinit; infinit implica Dedekind; estabilitat de l'enumerabilitat; tota part de \(\N\) és enumerable; \(\operatorname{List}(A)\) és enumerable si \(A\) ho és; la unió numerable d'enumerables és enumerable. \begin{indicacio}Només el tercer i l'últim.\end{indicacio}
+\end{enumerate}

@@ -1,0 +1,131 @@
+\chapter{Cardinals i aritmètica cardinal}\label{test:cap18}
+
+Aquest test correspon al capítol~18 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u18}{b,c,a,b,c,b,a,c,b,c,b,c}
+
+\begin{enumerate}
+
+\pregunta El cardinal \(\abs{A}\), en el primer nivell, és\ldots
+\begin{itemize}
+\opcio{a}{un conjunt transitiu escollit.}
+\opcio{b}{la classe d'equipotència de \(A\): el conjunt \(A\) llevat d'isomorfisme.}
+\opcio{c}{el conjunt de parts de \(A\).}
+\opcio{d}{un tipus d'ordre.}
+\end{itemize}
+\feedback
+\justificacio{És la classe d'equipotència: no es tria cap representant. Els cardinals inicials, que són tipus d'ordre, apareixen més tard i amb l'elecció.}
+
+\pregunta La suma cardinal es defineix com\ldots
+\begin{itemize}
+\opcio{a}{\(\abs{A}+\abs{B}=\abs{A\times B}\).}
+\opcio{b}{\(\abs{A}+\abs{B}=\abs{A^B}\).}
+\opcio{c}{\(\abs{A}+\abs{B}=\abs{A+B}\) (cardinal de la suma disjunta).}
+\opcio{d}{el màxim de \(\abs{A}\) i \(\abs{B}\).}
+\end{itemize}
+\feedback
+\justificacio{La suma és el cardinal de la suma disjunta; el producte, el del producte; l'exponenciació, el de l'exponencial. Prendre el màxim és un teorema per a infinits, no la definició.}
+
+\pregunta Que les operacions cardinals estiguin ben definides vol dir que\ldots
+\begin{itemize}
+\opcio{a}{no depenen dels representants (invariància per equipotència).}
+\opcio{b}{requereixen l'elecció.}
+\opcio{c}{només valen per a conjunts finits.}
+\opcio{d}{depenen de l'ordre.}
+\end{itemize}
+\feedback
+\justificacio{Isomorfismes \(A\cong A'\), \(B\cong B'\) donen isomorfismes entre les sumes, els productes i els exponencials. Cap elecció.}
+
+\pregunta A diferència de l'aritmètica ordinal, la cardinal\ldots
+\begin{itemize}
+\opcio{a}{no té exponenciació.}
+\opcio{b}{és commutativa (suma i producte), perquè oblida l'ordre.}
+\opcio{c}{no és associativa.}
+\opcio{d}{és igual a l'ordinal.}
+\end{itemize}
+\feedback
+\justificacio{\(A+B\cong B+A\) i \(A\times B\cong B\times A\) com a conjunts: oblidant l'ordre, l'asimetria de l'aritmètica ordinal desapareix.}
+
+\pregunta El teorema de Cantor en forma cardinal diu\ldots
+\begin{itemize}
+\opcio{a}{\(\abs{A}=2^{\abs{A}}\).}
+\opcio{b}{\(2^{\abs{A}}\le\abs{A}\).}
+\opcio{c}{\(\abs{A}<2^{\abs{A}}\), amb \(2^{\abs{A}}=\abs{P(A)}\).}
+\opcio{d}{\(\abs{A}\) és sempre finit.}
+\end{itemize}
+\feedback
+\justificacio{\(P(A)\cong\mathbf2^A\), i Cantor dona \(A\prec P(A)\): \(\abs{A}\le2^{\abs{A}}\) i no hi ha igualtat.}
+
+\pregunta Que dos conjunts qualssevol siguin comparables (\(A\preceq B\) o \(B\preceq A\))\ldots
+\begin{itemize}
+\opcio{a}{val sempre sense cap axioma.}
+\opcio{b}{s'obté del teorema del bon ordre, i és equivalent a l'elecció.}
+\opcio{c}{és fals.}
+\opcio{d}{equival al teorema de Cantor.}
+\end{itemize}
+\feedback
+\justificacio{Amb bons ordres sobre \(A\) i \(B\), la comparabilitat de bons ordres dona un monomorfisme en un sentit. Recíprocament, comparant \(A\) amb \(\Hart(A)\) es ben ordena \(A\): equival a l'elecció.}
+
+\pregunta Combinant la comparabilitat amb Schröder--Bernstein, la comparació de cardinals és\ldots
+\begin{itemize}
+\opcio{a}{un ordre total llevat d'equipotència.}
+\opcio{b}{només un preordre.}
+\opcio{c}{una relació d'equivalència.}
+\opcio{d}{no reflexiva.}
+\end{itemize}
+\feedback
+\justificacio{Preordre sense elecció, antisimètric mòdul \(\approx\) per Schröder--Bernstein, i total amb l'elecció.}
+
+\pregunta El cardinal inicial d'un conjunt és\ldots
+\begin{itemize}
+\opcio{a}{el conjunt de parts.}
+\opcio{b}{qualsevol bon ordre equipotent.}
+\opcio{c}{el menor tipus d'ordre de la seva mida (un tipus inicial, trobat acotadament).}
+\opcio{d}{sempre \(\N\).}
+\end{itemize}
+\feedback
+\justificacio{És el mínim, dins \(\Hart(A)\), dels tipus amb suport equipotent a \(A\): existeix i és únic, i cap tipus menor no té la mida d'\(A\).}
+
+\pregunta El teorema de König afirma que, si \(A_i\prec B_i\) per a tot \(i\),\ldots
+\begin{itemize}
+\opcio{a}{\(\sum_i\abs{A_i}=\prod_i\abs{B_i}\).}
+\opcio{b}{\(\sum_i\abs{A_i}<\prod_i\abs{B_i}\).}
+\opcio{c}{\(\prod_i\abs{B_i}<\sum_i\abs{A_i}\).}
+\opcio{d}{les famílies no existeixen.}
+\end{itemize}
+\feedback
+\justificacio{La injecció de la suma en el producte dona \(\le\), i la diagonal coordenada a coordenada exclou tota exhaustiva. És una desigualtat estricta.}
+
+\pregunta El teorema de König\ldots
+\begin{itemize}
+\opcio{a}{és independent de Cantor.}
+\opcio{b}{contradiu Cantor.}
+\opcio{c}{conté Cantor com a cas particular (\(A_i=\mathbf1\), \(B_i=\mathbf2\)); la seva prova és la diagonal.}
+\opcio{d}{no usa la diagonal.}
+\end{itemize}
+\feedback
+\justificacio{Amb \(I=A\), \(A_i=\mathbf1\), \(B_i=\mathbf2\), la suma és \(\abs{A}\) i el producte \(2^{\abs{A}}\). La família diagonal \((d_i)\) és la part diagonal de Cantor.}
+
+\pregunta La monotonia en l'exponent, \(\kappa\le\mu\Rightarrow\nu^\kappa\le\nu^\mu\)\ldots
+\begin{itemize}
+\opcio{a}{val sempre.}
+\opcio{b}{val per a \(\nu\neq0\); per a \(\nu=0\) falla: \(0^0=1\not\le0=0^1\).}
+\opcio{c}{requereix l'elecció.}
+\opcio{d}{només val per a conjunts finits.}
+\end{itemize}
+\feedback
+\justificacio{Per estendre una aplicació \(A\to C\) a \(B\to C\) cal un valor per als punts de \(B\) fora d'\(A\), és a dir, un punt de \(C\). Amb \(C\) buit no n'hi ha, i el contraexemple és \(0^0=1\), \(0^1=0\).}
+
+\pregunta Quantes vegades usa l'elecció la prova del teorema de König?
+\begin{itemize}
+\opcio{a}{Cap.}
+\opcio{b}{Una, per a la diagonal.}
+\opcio{c}{Tres: per triar els monomorfismes i els punts exteriors, per passar d'exhaustiva a domina, i per triar els punts de la diagonal.}
+\opcio{d}{Només per definir la suma.}
+\end{itemize}
+\feedback
+\justificacio{Les tres tries són seccions de famílies indexades per \(I\). Per a \(I\) finit es poden evitar, però en general König necessita l'elecció.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

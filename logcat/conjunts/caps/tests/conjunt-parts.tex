@@ -1,0 +1,131 @@
+\chapter{El conjunt de parts i la pertinença interna}\label{test:cap7}
+
+Aquest test correspon al capítol~7 de la part teòrica. Cada pregunta té una única resposta correcta.
+
+\iniciTest{u7}{b,c,b,a,c,b,a,c,b,a,c,a}
+
+\begin{enumerate}
+
+\pregunta La relació de pertinença interna \(\in_A\) és la part de \(A\times P(A)\) classificada per\ldots
+\begin{itemize}
+\opcio{a}{la negació \(\neg\).}
+\opcio{b}{l'avaluació \(\operatorname{ev}\) (llegida sobre \(A\times P(A)\)).}
+\opcio{c}{la diagonal de \(A\).}
+\opcio{d}{el parell nucli de \(A\).}
+\end{itemize}
+\feedback
+\justificacio{L'avaluació \(\operatorname{ev}\colon P(A)\times A\to\mathbf2\) és una aplicació cap als valors de veritat, i el classificador la converteix en la característica d'una part; aquesta part, llegida sobre \(A\times P(A)\), és \(\in_A\).}
+
+\pregunta Que \(a\mathrel{\varepsilon}\alpha\) (amb \(\alpha=\ulcorner m\urcorner\) el nom d'una part \(m\)) equival a\ldots
+\begin{itemize}
+\opcio{a}{\(a\) és un element global.}
+\opcio{b}{\(m\) és la part total.}
+\opcio{c}{\(a\in_X m\).}
+\opcio{d}{\(\alpha\) és constant.}
+\end{itemize}
+\feedback
+\justificacio{Descurrificant el nom \(\ulcorner m\urcorner\) es recupera \(\chi_m\), de manera que \(\operatorname{ev}\circ\langle\alpha,a\rangle=\chi_m\circ a\), i això val \(1\circ{!}_X\) exactament quan \(a\in_Xm\). La pertinença interna estén la generalitzada.}
+
+\pregunta Un element generalitzat \(X\to P(A)\) es correspon amb\ldots
+\begin{itemize}
+\opcio{a}{un punt de \(A\).}
+\opcio{b}{una part de \(X\times A\) (una família de parts de \(A\)).}
+\opcio{c}{una sola part de \(A\).}
+\opcio{d}{una aplicació \(A\to X\).}
+\end{itemize}
+\feedback
+\justificacio{Transposant \(X\to\mathbf2^A\) s'obté \(X\times A\to\mathbf2\), que classifica una part de \(X\times A\). Només quan \(X=\mathbf1\) és una sola part d'\(A\); en general és una família indexada per \(X\).}
+
+\pregunta La intersecció interna \(\alpha\cap\beta\) es defineix com la transposada de\ldots
+\begin{itemize}
+\opcio{a}{\(\wedge\circ\langle\operatorname{ev}_1,\operatorname{ev}_2\rangle\).}
+\opcio{b}{\(\vee\circ\langle\operatorname{ev}_1,\operatorname{ev}_2\rangle\).}
+\opcio{c}{\(\neg\circ\operatorname{ev}\).}
+\opcio{d}{la projecció \(P(A)\times P(A)\to P(A)\).}
+\end{itemize}
+\feedback
+\justificacio{És la definició: la conjunció puntual de les dues avaluacions, transposada perquè actuï sobre \(P(A)\). Amb \(\vee\) s'obté la unió interna i amb \(\neg\) el complement intern.}
+
+\pregunta Sobre els noms de parts, les operacions internes\ldots
+\begin{itemize}
+\opcio{a}{no tenen cap relació amb les operacions de parts.}
+\opcio{b}{intercanvien unió i intersecció.}
+\opcio{c}{recuperen les operacions de parts: \(\ulcorner m\urcorner\cap\ulcorner n\urcorner=\ulcorner m\cap n\urcorner\).}
+\opcio{d}{sempre donen la part buida.}
+\end{itemize}
+\feedback
+\justificacio{Les descurrificacions de \(\ulcorner m\urcorner\cap\ulcorner n\urcorner\), \(\ulcorner m\urcorner\cup\ulcorner n\urcorner\) i \(\neg\ulcorner m\urcorner\) són \(\wedge\circ\langle\chi_m,\chi_n\rangle\), \(\vee\circ\langle\chi_m,\chi_n\rangle\) i \(\neg\circ\chi_m\), que són les característiques de \(m\cap n\), \(m\cup n\) i \(m^c\).}
+
+\pregunta La inclusió interna \(\subseteq_A\) sobre \(P(A)\) és\ldots
+\begin{itemize}
+\opcio{a}{una relació d'equivalència.}
+\opcio{b}{un ordre parcial (reflexiu, antisimètric, transitiu).}
+\opcio{c}{un isomorfisme.}
+\opcio{d}{sempre buida.}
+\end{itemize}
+\feedback
+\justificacio{Sobre les parts associades, \(\subseteq_A\) es llegeix com la inclusió de parts de \(X\times A\), que és reflexiva i transitiva; l'antisimetria ve de la unicitat de la característica i de la transposada.}
+
+\pregunta Respecte de l'ordre d'inclusió intern, la intersecció i la unió internes són\ldots
+\begin{itemize}
+\opcio{a}{l'ínfim i el suprem, respectivament.}
+\opcio{b}{el màxim i el mínim absoluts.}
+\opcio{c}{sense relació amb l'ordre.}
+\opcio{d}{tots dos l'ínfim.}
+\end{itemize}
+\feedback
+\justificacio{\(s_{\alpha\cap\beta}=s_\alpha\cap s_\beta\) i \(s_{\alpha\cup\beta}=s_\alpha\cup s_\beta\); una part és inclosa en la intersecció si i només si ho és en totes dues, i la unió és la part més petita que les conté. Mínim i màxim són \(\varnothing_A\) i \(A_A\).}
+
+\pregunta La imatge inversa interna \(P(f)\colon P(B)\to P(A)\), sobre els noms de parts, recupera\ldots
+\begin{itemize}
+\opcio{a}{la imatge directa \(f_{*}\).}
+\opcio{b}{el complement.}
+\opcio{c}{la imatge inversa \(f^{-1}\).}
+\opcio{d}{la identitat.}
+\end{itemize}
+\feedback
+\justificacio{La descurrificació de \(P(f)\circ\ulcorner n\urcorner\) és \(\chi_n\circ f\), que és la característica de \(f^{-1}(n)\). La imatge directa és \(\exists_f\), no \(P(f)\).}
+
+\pregunta Els quantificadors \(\exists_f\) i \(\forall_f\) són, respectivament,\ldots
+\begin{itemize}
+\opcio{a}{tots dos adjunts per l'esquerra de \(P(f)\).}
+\opcio{b}{adjunt per l'esquerra i adjunt per la dreta de \(P(f)\).}
+\opcio{c}{iguals a \(P(f)\).}
+\opcio{d}{sense relació amb \(P(f)\).}
+\end{itemize}
+\feedback
+\justificacio{Sobre parts associades, \(\exists_f\) és la imatge directa i \(P(f)\) la imatge inversa al llarg de \(\id\times f\), i l'adjunció \(f_*\dashv f^{-1}\) del capítol 5 dona l'esquerra; \(\forall_f=\neg\exists_f\neg\) és l'adjunt dret per dualitat booleana.}
+
+\pregunta Les operacions \(\exists_A\) i \(\forall_A\) (per \({!}_A\colon A\to\mathbf1\)) afirmen, respectivament, que una part de \(A\)\ldots
+\begin{itemize}
+\opcio{a}{és no buida, i que és total.}
+\opcio{b}{és buida, i que és no buida.}
+\opcio{c}{és un isomorfisme.}
+\opcio{d}{coincideix amb la diagonal.}
+\end{itemize}
+\feedback
+\justificacio{Per a \({!}_A\colon A\to\mathbf1\), \(\exists_A\ulcorner m\urcorner\) és el nom de la imatge de \(S\) dins \(\mathbf1\), total si i només si \(S\) té algun punt; i \(\forall_A\ulcorner m\urcorner=\neg\exists_A\ulcorner m^c\urcorner\) és \(1\) si i només si \(m^c\) és buida, és a dir, \(m\) total.}
+
+\pregunta Per a elements generalitzats \(\alpha,\beta\colon X\to P(A)\) i \(a\colon X\to A\), quina lectura val a \emph{tots} els estadis?
+\begin{itemize}
+\opcio{a}{\(a\mathrel{\varepsilon}(\alpha\cup\beta)\) si i només si \(a\mathrel{\varepsilon}\alpha\) o \(a\mathrel{\varepsilon}\beta\).}
+\opcio{b}{\(a\mathrel{\varepsilon}(\neg\alpha)\) si i només si no \(a\mathrel{\varepsilon}\alpha\).}
+\opcio{c}{\(a\mathrel{\varepsilon}(\alpha\cap\beta)\) si i només si \(a\mathrel{\varepsilon}\alpha\) i \(a\mathrel{\varepsilon}\beta\).}
+\opcio{d}{Totes tres.}
+\end{itemize}
+\feedback
+\justificacio{La conjunció és la característica de \(\delta_{11}\), i \(\langle u,v\rangle\) es factoritza per \(\delta_{11}\) si i només si \(u=v=1\circ{!}\); això val a tot estadi. Per a \(\cup\) i \(\neg\) un element generalitzat pot quedar repartit (\(X=\mathbf2\), \(u=\id\), \(v=\neg\)): les lectures amb \enquote{o} i \enquote{no} només valen sobre punts globals.}
+
+\pregunta Com es construeix el quantificador existencial \(\exists_f\colon P(A)\to P(B)\) com a aplicació?
+\begin{itemize}
+\opcio{a}{Com la transposada de la característica de la imatge directa de la pertinença \(E_A\) al llarg de \(\id\times f\).}
+\opcio{b}{Com la transposada de \(\operatorname{ev}\circ(\id\times f)\).}
+\opcio{c}{Postulant-lo amb un axioma nou.}
+\opcio{d}{Com la composició \(P(f)\circ\neg_B\).}
+\end{itemize}
+\feedback
+\justificacio{La imatge directa del capítol 5, aplicada a la part universal \(E_A\hookrightarrow P(A)\times A\) al llarg de \(\id\times f\), dona una part de \(P(A)\times B\); la seva característica es transposa a \(\exists_f\). L'opció (b) és \(P(f)\), la imatge inversa. No cal cap axioma: tot surt dels exponencials i de la factorització imatge.}
+
+\end{enumerate}
+\clauestatica
+\finalitzaTest

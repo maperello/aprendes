@@ -1,0 +1,145 @@
+\chapter{Quasiexemples i contraexemples}\label{cap:contraexemples}
+
+Una definició s'entén de debò quan se sap què \emph{no} la compleix. Aquest
+apèndix recull, capítol per capítol, els exemples que mostren on falla una
+afirmació plausible, quina hipòtesi és imprescindible o per què una
+construcció no es pot simplificar. Molts provenen de la teoria clàssica de
+conjunts o d'altres estructures matemàtiques: no són models dels axiomes del
+llibre, sinó contrastos que fan visible el paper de cada axioma.
+
+\section*{Aplicacions, parts i valors de veritat (capítols 1--3)}
+
+\begin{description}
+\item[Un conjunt sense punts.] El conjunt inicial \(\mathbf0\) és un conjunt
+de ple dret i no té cap element global
+(capítol~\ref{cap:aplicacions}). \enquote{Ser un conjunt} i \enquote{tenir
+elements} són coses diferents.
+
+\item[La separació global no és autodual.] El dual de l'axioma de separació
+global (axioma~\ref{ax:separacio-globals}) diria que dues aplicacions
+paral·leles coincideixen si coincideixen després de compondre-les amb
+totes les aplicacions cap a \(\mathbf0\); com que d'un conjunt no inicial no
+en surt cap, l'enunciat faria iguals totes les aplicacions paral·leles. A
+partir d'aquest axioma la dualitat deixa de valer
+(observació~\ref{obs:dualitat}).
+
+\item[Un bimorfisme que no és isomorfisme.] En els anells, la inclusió
+\(\Z\hookrightarrow\mathbb Q\) és mono i epi però no té inversa. En aquesta
+teoria no pot passar: el teorema del bimorfisme
+(proposició~\ref{prop:bimorfisme-isomorfisme}) usa l'axioma de
+representació, que els anells no tenen.
+
+\item[Dues parts amb el mateix domini.] Els dos punts
+\(0,1\colon\mathbf1\hookrightarrow\mathbf2\) són parts de \(\mathbf2\) amb el
+mateix domini i no són equivalents: una part és una fletxa, no el seu
+domini.
+
+\item[Una injecció de suma sense la retracció del cograf.] L'argument del
+cograf (proposició~\ref{prop:cograf-retraccio}) fa mono la injecció
+\(i_0\colon A\to A+B\) quan hi ha alguna \(B\to A\). Per a \(A=\mathbf0\) i
+\(B=\mathbf1\) no n'hi ha cap; \(i_0\) és mono per una altra raó (tota
+aplicació amb domini \(\mathbf0\) ho és), i en general cal la disjunció de
+les sumes.
+
+\item[Un element generalitzat repartit.] Siguin \(A=X=\mathbf2\), \(m\) el
+punt \(1\colon\mathbf1\hookrightarrow\mathbf2\) i \(x=\id_{\mathbf2}\). Aleshores
+\(x\) no pertany a \(m\) ni al seu complement: sobre el punt \(0\) cau al
+complement i sobre el punt \(1\), a \(m\). Per això \enquote{\(x\in m^c\)
+si i només si \(x\notin m\)} només val sobre punts globals
+(observació~\ref{obs:complement-classic}).
+\end{description}
+
+\section*{Relacions, imatges, exponencials i parts (capítols 4--7)}
+
+\begin{description}
+\item[Un monomorfisme no escindit.] L'única aplicació \(\mathbf0\to\mathbf1\)
+és mono i no té cap retracció, perquè no hi ha cap aplicació
+\(\mathbf1\to\mathbf0\). L'axioma d'elecció parla dels epimorfismes, no dels
+monomorfismes.
+
+\item[Un epimorfisme sense secció.] En els conjunts constants, l'elecció ho
+impedeix. Però en els conjunts que varien contínuament sobre un espai (els
+feixos sobre la circumferència), la projecció del doble recobriment de la
+circumferència sobre ella mateixa és un epimorfisme sense secció: la
+\enquote{tria} d'un punt a cada fibra no es pot fer contínuament
+\cite[pàg.~14]{bell2006}. Allà l'elecció i la separació global fallen
+alhora.
+
+\item[Un element generalitzat d'un exponencial no és una aplicació.] Un
+element \(X\to B^A\) és una família d'aplicacions \(A\to B\) indexada per
+\(X\); només per a \(X=\mathbf1\) n'és una de sola
+(teorema~\ref{teo:punts-exponencial}).
+
+\item[La unió interna sobre elements generalitzats.] Siguin
+\(\alpha=\ulcorner1\urcorner\) i \(\beta=\ulcorner0\urcorner\), els noms dels
+dos punts com a parts de \(\mathbf2\), i \(a=\id_{\mathbf2}\). Aleshores
+\(a\mathrel{\varepsilon}(\alpha\cup\beta)\), perquè la unió és total, però
+\(a\) no pertany ni a \(\alpha\) ni a \(\beta\). Les lectures amb \enquote{o}
+i \enquote{no} només valen sobre punts
+(proposició~\ref{prop:booleanes-puntuals}).
+\end{description}
+
+\section*{Nombres naturals, finitud i infinitud (capítols 8--12)}
+
+\begin{description}
+\item[El predecessor que no ho és.] La recursora del sistema
+\((\N,0,\id_\N)\) compleix \(u\circ s=u\) i \(u\circ0=0\): és la constant
+\(0\), no el predecessor. Cal una recursió sobre \(\N\times\N\)
+(observació~\ref{obs:predecessor-parell}).
+
+\item[Dues desigualtats que fallen alhora.] Els elements generalitzats
+\(m=[0,s\circ0]\) i \(n=[s\circ0,0]\colon\mathbf2\to\N\) no compleixen ni \(m\le n\) ni
+\(n\le m\), però el parell pertany a la unió de les dues relacions: la
+totalitat de l'ordre és una afirmació sobre parts.
+
+\item[Mono no iso amb la mateixa mida.] El successor \(s\colon\N\to\N\) és
+mono i no epi. En els conjunts finits del mateix cardinal, mono, epi i iso
+coincideixen; en els infinits, no.
+
+\item[Una unió numerable sense elecció.] Sense l'elecció numerable és
+consistent que la recta real sigui una unió numerable de conjunts
+numerables (Feferman--Lévy; vegeu~\cite{jech2003}). El
+teorema~\ref{teo:unio-numerable} necessita, doncs, l'elecció numerable.
+
+\item[Dues dominacions sense isomorfisme evident.] \(\N\hookrightarrow\N+\mathbf1\)
+i \(\N+\mathbf1\hookrightarrow\N\) (pel successor) són monomorfismes oposats,
+cap dels dos no és isomorfisme, i tanmateix \(\N\cong\N+\mathbf1\):
+Schröder--Bernstein construeix un isomorfisme \emph{nou}
+(teorema~\ref{teo:schroder-bernstein}).
+\end{description}
+
+\section*{Bons ordres, ordinals i cardinals (capítols 13--19)}
+
+\begin{description}
+\item[Rigidesa en un ordre total que no és bo.] A \(\Z\), l'aplicació
+\(n\mapsto n-1\) és creixent i injectiva i fa baixar tots els punts; i la
+translació és un automorfisme diferent de la identitat. La rigidesa
+(lema~\ref{lema:rigidesa}) depèn del mínim de les parts.
+
+\item[Una cadena de bons ordres que no ho és.] Per a cada \(n\),
+sigui \(W_n\) la part finita de \(\Z\) formada pels enters entre \(-n\) i
+\(0\), amb l'ordre usual. Cada \(W_n\) és un bon ordre i estén l'anterior
+\emph{per sota}; formen una cadena la unió de la qual (els enters no positius) no té
+mínim. A la prova del lema de Zorn cal que les extensions siguin inicials.
+
+\item[El suprem amb segments tancats.] Amb un sol índex i \(r\) el mínim
+d'un bon ordre \(W\), el tipus de \(W_{<r}\) és \(0\) però \(W_{\le r}\) té
+tipus \(1\) (observació~\ref{obs:suprem-oberts}).
+
+\item[L'aritmètica ordinal no és commutativa.] \(1+\omega=\omega<\omega+1\)
+i \(2\cdot\omega=\omega<\omega\cdot2\); i per l'esquerra la monotonia no és
+estricta: \(1<2\) però \(1+\omega=2+\omega\)
+(proposició~\ref{prop:monotonia-ordinal}).
+
+\item[La base zero.] Amb la clàusula límit, \(0^\omega\) valdria
+\(\sup\{1,0,0,\dots\}=1\), i no \(0\); per això la base \(0\) es tracta a
+part (teorema~\ref{teo:exponenciacio-recursio}). En els cardinals, la
+monotonia en l'exponent falla per la mateixa raó: \(0^0=1\not\le0=0^1\)
+(proposició~\ref{prop:lleis-cardinals}).
+
+\item[Una regla sense unicitat.] Una regla que determina cada \(X_i\) només
+llevat d'isomorfisme ---per exemple, \enquote{un conjunt numerable}--- no
+permet enganxar les fibres de manera canònica, perquè cada fibra té molts
+automorfismes; per això l'esquema SR (principi~\ref{sr:esquema}) demana
+isomorfisme únic.
+\end{description}
